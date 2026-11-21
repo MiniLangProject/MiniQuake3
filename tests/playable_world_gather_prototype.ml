@@ -76,7 +76,7 @@ function syntheticProof()
   image=materials.Image(1,1,bytes([255,255,255,255]));wave=shader.Wave(5,0.2,0.7,0.3,1.25)
   stage=materials.RuntimeStage(["effect"],[image],[81],0.0,[materials.UvMod("scroll",0.13,-0.23,0.0,0.0,0.0,0.0,shader.blankWave())],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"environment","wave",wave,"wave",wave,[255,255,255,255],false,false,false,false,256.0,[])
   deform=shader.Deform("wave",0.02,wave,[0.0,0.0,0.0],0.0,0.0,0.0)
-  material=materials.Material(0,"synthetic","effect",image,81,[stage],[deform],true,3.0,false,false,0.0,0.0)
+  material=materials.Material(0,"synthetic","effect",image,81,[stage],[deform],true,3.0,false,false,0.0,0.0,false)
   catalog=materials.Catalog([material],0,1,1,1,0,1);triangles=array(6,void)
   for index=0 to 5
     a=render.RenderVertex([index*3.0,0.0,0.0],[0.0,0.0],[0.0,0.0],[0.0,0.0,1.0],[20+index,40,60,255],[255,255,255,255],[0.0,0.0],0.0,index*3)

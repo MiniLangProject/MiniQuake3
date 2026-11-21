@@ -3,7 +3,7 @@
 // Complete native adapter for code/botlib/be_aas_sample.c.
 package mq3.botlib.aas_sample
 import mq3.format.aas as aas
-import mq3.botlib.aas_runtime as runtime
+import mq3.botlib.aas_runtime as aasSampleRuntime
 import mq3.botlib.aas_trace_areas as traceAreas
 import mq3.botlib.aas_client_trace as clientTrace
 import mq3.compat.numeric as n
@@ -51,7 +51,7 @@ function AAS_DeAllocAASLink(world,link)
 end function
 function AAS_InitAASLinkedEntities(world) world.areaLinked=array(world.map.counts[aas.LUMP_AREAS],void);for index=0 to len(world.areaLinked)-1 world.areaLinked[index]=[] end for;world.linkedEntities=[];return true end function
 function AAS_FreeAASLinkedEntities(world) world.areaLinked=[];world.linkedEntities=[];return void end function
-function AAS_PointAreaNum(world,point) return runtime.pointAreaNum(world.runtime,point) end function
+function AAS_PointAreaNum(world,point) return aasSampleRuntime.pointAreaNum(world.runtime,point) end function
 function AAS_PointReachabilityAreaIndex(world,origin)
   clusterCount=world.map.counts[aas.LUMP_CLUSTERS];if origin==void then total=0;for index=0 to clusterCount-1 value=aas.cluster(world.map,index);total=total+value.numReachabilityAreas end for;return total end if
   areaNum=AAS_PointAreaNum(world,origin);if not validArea(world,areaNum) then return 0 end if;settings=aas.areaSettings(world.map,areaNum);if settings.numReachableAreas==0 then return 0 end if;clusterNum=settings.cluster;areaIndex=settings.clusterAreaNum
@@ -60,7 +60,7 @@ function AAS_PointReachabilityAreaIndex(world,origin)
 end function
 function AAS_AreaCluster(world,areaNum) if not validArea(world,areaNum) then return 0 end if;return aas.areaSettings(world.map,areaNum).cluster end function
 function AAS_AreaPresenceType(world,areaNum) if not validArea(world,areaNum) then return 0 end if;return aas.areaSettings(world.map,areaNum).presenceType end function
-function AAS_PointPresenceType(world,point) return runtime.pointPresenceType(world.runtime,point) end function
+function AAS_PointPresenceType(world,point) return aasSampleRuntime.pointPresenceType(world.runtime,point) end function
 function AAS_SwimLevel(world,point) contents=0;if world.services.pointContentsFn!=void then contents=world.services.pointContentsFn(world.services.context,point) end if;if (contents&CONTENTS_LAVA)!=0 then return 3 else if (contents&CONTENTS_SLIME)!=0 then return 2 else if (contents&CONTENTS_WATER)!=0 then return 1 end if;return 0 end function
 function AAS_BoxOriginDistanceFromPlane(normal,mins,maxs,side)
   point=[0.0,0.0,0.0]
@@ -91,6 +91,28 @@ function AAS_InsideFace(world,faceNum,pnormal,point,epsilon)
   face=aas.face(world.map,faceNum);for offset=0 to face.numEdges-1 signedEdge=aas.edgeIndex(world.map,face.firstEdge+offset);vertices=edgeVertices(world,signedEdge);edgevec=sub(vertices[1],vertices[0]);pointvec=sub(point,vertices[0]);separation=cross(edgevec,pnormal);if dot(pointvec,separation)<0.0-epsilon then return false end if end for;return true
 end function
 function AAS_PointInsideFace(world,faceNum,point,epsilon) face=aas.face(world.map,faceNum);plane=aas.plane(world.map,face.planeNum);return AAS_InsideFace(world,faceNum,plane.normal,point,epsilon) end function
+function againstLadder(rt,origin)
+  areaNum=aasSampleRuntime.pointAreaNum(rt,origin)
+  if areaNum==0 then areaNum=aasSampleRuntime.pointAreaNum(rt,[origin[0]+1.0,origin[1],origin[2]]) end if
+  if areaNum==0 then areaNum=aasSampleRuntime.pointAreaNum(rt,[origin[0]+1.0,origin[1]+1.0,origin[2]]) end if
+  if areaNum==0 then areaNum=aasSampleRuntime.pointAreaNum(rt,[origin[0]-1.0,origin[1]+1.0,origin[2]]) end if
+  if areaNum==0 then areaNum=aasSampleRuntime.pointAreaNum(rt,[origin[0]-1.0,origin[1]-1.0,origin[2]]) end if
+  if areaNum==0 then return false end if
+  settings=aas.areaSettings(rt.map,areaNum)
+  if (settings.flags&aas.AREA_LADDER)==0 or (settings.presenceType&PRESENCE_NORMAL)==0 then return false end if
+  area=aas.area(rt.map,areaNum)
+  if area.numFaces==0 then return false end if
+  for offset=0 to area.numFaces-1
+    faceNum=aas.faceIndex(rt.map,area.firstFace+offset)
+    side=0
+    if faceNum<0 then side=1;faceNum=0-faceNum end if
+    face=aas.face(rt.map,faceNum)
+    if (face.flags&aas.FACE_LADDER)==0 then continue end if
+    plane=aas.plane(rt.map,face.planeNum^side)
+    if aasSampleRuntime.absValue(dot(plane.normal,origin)-plane.dist)<3.0 and AAS_PointInsideFace(rt,faceNum,origin,0.1) then return true end if
+  end for
+  return false
+end function
 function AAS_AreaGroundFace(world,areaNum,point)
   if not validArea(world,areaNum) then return 0 end if;area=aas.area(world.map,areaNum);for offset=0 to area.numFaces-1 faceNum=aas.faceIndex(world.map,area.firstFace+offset);if faceNum<0 then faceNum=0-faceNum end if;face=aas.face(world.map,faceNum);if (face.flags&FACE_GROUND)!=0 then plane=aas.plane(world.map,face.planeNum);normal=[0.0,0.0,1.0];if plane.normal[2]<0.0 then normal=[0.0,0.0,-1.0] end if;if AAS_InsideFace(world,faceNum,normal,point,0.01) then return faceNum end if end if end for;return 0
 end function
@@ -105,10 +127,10 @@ function AAS_UnlinkFromAreas(world,links)
   count=0;for each id in links if id<0 or id>=len(world.heap) then continue end if;link=world.heap[id];if not link.allocated then continue end if;remaining=[];for each current in world.areaLinked[link.areaNum] if current!=id then remaining=remaining+[current] end if end for;world.areaLinked[link.areaNum]=remaining;AAS_DeAllocAASLink(world,link);count=count+1 end for;return count
 end function
 function AAS_AASLinkEntity(world,absmins,absmaxs,entNum)
-  if len(world.areaLinked)==0 then AAS_InitAASLinkedEntities(world) end if;areas=runtime.bboxAreas(world.runtime,absmins,absmaxs,128);result=[]
+  if len(world.areaLinked)==0 then AAS_InitAASLinkedEntities(world) end if;areas=aasSampleRuntime.bboxAreas(world.runtime,absmins,absmaxs,128);result=[]
   for each areaNum in areas duplicate=false;for each id in world.areaLinked[areaNum] if world.heap[id].allocated and world.heap[id].entNum==entNum then duplicate=true;break end if end for;if duplicate then continue end if;link=AAS_AllocAASLink(world);if link==void then break end if;link.entNum=entNum;link.areaNum=areaNum;world.areaLinked[areaNum]=[link.id]+world.areaLinked[areaNum];result=result+[link.id] end for;world.linkedEntities=world.linkedEntities+[result];return result
 end function
 function AAS_LinkEntityClientBBox(world,absmins,absmaxs,entNum,presenceType) bounds=AAS_PresenceTypeBoundingBox(presenceType);newmins=[absmins[0]-bounds[1][0],absmins[1]-bounds[1][1],absmins[2]-bounds[1][2]];newmaxs=[absmaxs[0]-bounds[0][0],absmaxs[1]-bounds[0][1],absmaxs[2]-bounds[0][2]];return AAS_AASLinkEntity(world,newmins,newmaxs,entNum) end function
-function AAS_BBoxAreas(world,absmins,absmaxs,maximum) return runtime.bboxAreas(world.runtime,absmins,absmaxs,maximum) end function
-function AAS_AreaInfo(world,areaNum) if not validArea(world,areaNum) then return void end if;return runtime.areaInfo(world.runtime,areaNum) end function
+function AAS_BBoxAreas(world,absmins,absmaxs,maximum) return aasSampleRuntime.bboxAreas(world.runtime,absmins,absmaxs,maximum) end function
+function AAS_AreaInfo(world,areaNum) if not validArea(world,areaNum) then return void end if;return aasSampleRuntime.areaInfo(world.runtime,areaNum) end function
 function AAS_PlaneFromNum(world,planeNum) if planeNum<0 or planeNum>=world.map.counts[aas.LUMP_PLANES] then return void end if;return aas.plane(world.map,planeNum) end function

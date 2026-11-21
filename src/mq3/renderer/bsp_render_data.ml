@@ -221,23 +221,38 @@ function makeGridNormals(control,width,height)
   for index=0 to len(control)-1 control[index]=vertexWithNormal(control[index],normals[index]) end for
   return control
 end function
-function subdividePatch(control,width,height,errorLimit)
+function subdividePatchWithErrors(control,width,height,errorLimit)
   first=subdivideHorizontal(control,width,height,errorLimit);control=transposeGrid(first[0],first[1],first[2]);width=first[2];height=first[1]
   second=subdivideHorizontal(control,width,height,errorLimit);control=transposeGrid(second[0],second[1],second[2]);width=second[2];height=second[1]
   control=putGridPointsOnCurve(control,width,height)
   grid=compactGrid(control,width,height,first[3],second[3])
   control=makeGridNormals(grid[0],grid[1],grid[2])
-  return [control,grid[1],grid[2]]
+  return [control,grid[1],grid[2],grid[3],grid[4]]
 end function
-function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,errorLimit)
-  grid=subdividePatch(control,width,height,errorLimit);control=grid[0];width=grid[1];height=grid[2];count=0;truncated=false
-  for row=0 to height-2
-    for column=0 to width-2
-      a=row*width+column;b=a+width;c=a+1;d=b+1;pair=[[control[a],control[b],control[c]],[control[c],control[b],control[d]]]
+function subdividePatch(control,width,height,errorLimit)
+  grid=subdividePatchWithErrors(control,width,height,errorLimit);return [grid[0],grid[1],grid[2]]
+end function
+function patchGrid(map,faceOffset,errorLimit)
+  firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
+  if firstVert is error or numVerts is error or firstVert<0 or numVerts<0 or firstVert+numVerts>map.counts[10] then return fail("face vertex range outside lump") end if
+  if width is error or height is error or width<3 or height<3 or width>MAX_PATCH_SIZE or height>MAX_PATCH_SIZE or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
+  control=array(numVerts,void)
+  for index=0 to numVerts-1 value=vertex(map,firstVert+index);if value is error then return value end if;control[index]=value end for
+  return subdividePatchWithErrors(control,width,height,errorLimit)
+end function
+function appendPatchGrid(triangles,control,width,columns,rows,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles)
+  count=0;truncated=false
+  for row=0 to len(rows)-2
+    for column=0 to len(columns)-2
+      a=rows[row]*width+columns[column];b=rows[row+1]*width+columns[column];c=rows[row]*width+columns[column+1];d=rows[row+1]*width+columns[column+1]
+      pair=[[control[a],control[b],control[c]],[control[c],control[b],control[d]]]
       for local=0 to 1 triangleIndex=count;count=count+1;if triangles.size<maxTriangles then triangles.add(RenderTriangle(pair[local],textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)) else truncated=true end if end for
     end for
   end for
   return [count,truncated]
+end function
+function gridIndexes(size)
+  indexes=array(size,0);for index=0 to size-1 indexes[index]=index end for;return indexes
 end function
 
 // Face and meshvert order is retained. Repeated face indexes are ignored after
@@ -248,6 +263,11 @@ function extractWithPatchError(map,faceIndexes,maxTriangles,patchError) return e
 // Internal retained-world path. Consumers must treat shared face vertices as
 // immutable; the public extractor deliberately keeps its independent corners.
 function extractRetainedWithPatchError(map,faceIndexes,maxTriangles,patchError) return extractMode(map,faceIndexes,maxTriangles,patchError,true) end function
+function patchNoDraw(map,textureIndex)
+  shaderOffset=recordRange(map,1,textureIndex,72);if shaderOffset is error then return shaderOffset end if
+  surfaceFlags=i32(map,shaderOffset+64);if surfaceFlags is error then return surfaceFlags end if
+  return (surfaceFlags&0x80)!=0
+end function
 function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
   if not validMap(map) then return fail("invalid BSP object") end if
   if faceIndexes==void then return fail("missing face list") end if
@@ -272,13 +292,15 @@ function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
         if textureIndex<0 or textureIndex>=map.counts[1] then return fail("face texture index outside shader lump") end if
         if lightmapIndex < -1 or lightmapIndex>=map.counts[14] then return fail("face lightmap index outside lump") end if
         if firstVert<0 or numVerts<0 or firstVert+numVerts>map.counts[10] then return fail("face vertex range outside lump") end if
+        if kind==MST_PATCH then
+          noDraw=patchNoDraw(map,textureIndex);if noDraw is error then return noDraw end if
+          if noDraw then skipped=skipped+1;continue end if
+        end if
         surfaceCount=surfaceCount+1
         if kind==MST_PATCH then
           patchSurfaceCount=patchSurfaceCount+1
-          width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
-          if width is error or height is error or width<3 or height<3 or width>MAX_PATCH_SIZE or height>MAX_PATCH_SIZE or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
-          control=array(numVerts,void);for controlIndex=0 to numVerts-1 value=vertex(map,firstVert+controlIndex);if value is error then return value end if;control[controlIndex]=value end for
-          patch=appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,patchError)
+          grid=patchGrid(map,faceOffset,patchError);if grid is error then return grid end if
+          patch=appendPatchGrid(triangles,grid[0],grid[1],gridIndexes(grid[1]),gridIndexes(grid[2]),textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles)
           triangleCount=triangleCount+patch[0];if patch[1] then truncated=true end if
         else
           if firstMesh<0 or numMesh<0 or firstMesh+numMesh>map.counts[11] or numMesh%3!=0 then return fail("face meshvert range is invalid") end if

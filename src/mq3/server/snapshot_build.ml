@@ -89,7 +89,7 @@ function addVisibleMode(worldState,host,origin,outFrame,numbers,portal,builder)
   index=0
   while index<len(worldState.entities)
     entity=worldState.entities[index]
-    if not entity.linked then index=index+1;continue end if
+    if entity==void or not entity.linked then index=index+1;continue end if
     if entity.state.number!=index then entity.state.number=index end if
     flags=entity.svFlags;clientNum=outFrame.playerState.clientNum
     if (flags&SVF_NOCLIENT)!=0 then index=index+1;continue end if
@@ -138,7 +138,7 @@ function buildClientSnapshot(worldState,host,ps,clientEntityPresent,zombie)
   numbers=EntityNumbers(void,0);builder=snapshotLists.List.withCapacity(32)
   outFrame.playerState=playerstate.copy(ps);clientNum=ps.clientNum
   if clientNum<0 or clientNum>=MAX_GENTITIES or clientNum>=len(worldState.entities) then return error(6873,"snapshot build: bad client entity") end if
-  worldState.entities[clientNum].snapshotCounter=worldState.snapshotCounter
+  clientEntity=worldState.entities[clientNum];if clientEntity!=void then clientEntity.snapshotCounter=worldState.snapshotCounter end if
   origin=[ps.origin[0],ps.origin[1],ps.origin[2]+ps.viewheight]
   addVisibleMode(worldState,host,origin,outFrame,numbers,false,builder)
   selected=builder.toArray()

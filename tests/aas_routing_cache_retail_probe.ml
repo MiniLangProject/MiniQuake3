@@ -13,5 +13,19 @@ function main(args)
   walk=cache.query(store,779,center(map,779),1889,routing.TFL_DEFAULT);rocket=cache.query(store,779,center(map,779),1889,routing.TFL_ROCKETJUMP|routing.TFL_AIR);checks=checks+require(walk.travelTime==118 and walk.reachNum==1235 and rocket.travelTime==302 and rocket.reachNum==1234,"travel flags remain separate cache keys")
   miss=cache.query(store,2,center(map,2),100,routing.TFL_DEFAULT);checks=checks+require(miss.travelTime==0 and miss.reachNum==0,"unreachable result is cached")
   missAgain=cache.query(store,2,center(map,2),100,routing.TFL_DEFAULT);checks=checks+require(missAgain.travelTime==0 and store.hits==2 and store.misses==5,"cached unreachable query")
+  // Sweep distinct origins across actual AAS reachability transitions. The
+  // original weighted search remains the comparison oracle.
+  for each goal in [2,10,779,1889]
+    for each flags in [routing.TFL_DEFAULT,routing.TFL_WALK|routing.TFL_AIR,routing.TFL_ROCKETJUMP|routing.TFL_AIR]
+      for index=1 to 24
+        source=1+(index*79)%(len(router.settings)-1)
+        origin=center(map,source);origin[0]=origin[0]+index*1.25
+        expected=routing.areaTravelTimeToGoalArea(router,source,origin,goal,flags)
+        actual=cache.weightedTravelTime(store,source,origin,goal,flags)
+        equal=require(expected==actual,"weighted destination to "+str(goal)+" from "+str(source)+" differs: "+str(actual)+"/"+str(expected))
+        if equal is error then return equal end if
+      end for
+    end for
+  end for
   print("PASS: "+str(checks)+" retail q3dm1 cluster/portal cache checks hits="+str(store.hits)+" misses="+str(store.misses));return 0
 end function

@@ -31,7 +31,7 @@ function textureImage()
   return materials.Image(DLIGHT_SIZE,DLIGHT_SIZE,pixels)
 end function
 
-function createCatalog(slot) if slot<0 or slot>=512 then return fail("invalid texture slot") end if;return Catalog(slot,textureImage()) end function
+function createCatalog(slot) if slot<0 or slot>=window.NATIVE_TEXTURE_SLOTS then return fail("invalid texture slot") end if;return Catalog(slot,textureImage()) end function
 function upload(catalog) if catalog==void or not window.uploadTextureNoMip(catalog.textureSlot,catalog.image.pixels,catalog.image.width,catalog.image.height) then return fail("could not upload projected-light texture") end if;return 1 end function
 function release(catalog) if catalog!=void then window.releaseTexture(catalog.textureSlot) end if;return void end function
 

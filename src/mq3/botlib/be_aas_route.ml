@@ -8,6 +8,7 @@ import mq3.botlib.aas_routing as routing
 import mq3.botlib.aas_routing_tables as tables
 import mq3.botlib.aas_routing_cache as routeCache
 import mq3.botlib.aas_route_extras as extras
+import mq3.botlib.cache_lru as lru
 import mq3.format.aas as aas
 import mq3.compat.numeric as n
 
@@ -58,14 +59,14 @@ function AAS_RemoveRoutingCacheInCluster(state,cluster)
   if state==void then return 0 end if;kept=[];removed=0
   for each value in state.lru if value.cluster==cluster then value.linked=false;state.routingCacheSize=state.routingCacheSize-value.size;removed=removed+1 else kept=kept+[value] end if end for
   state.lru=kept;if state.routingCacheSize<0 then state.routingCacheSize=0 end if
-  state.cache.areaCaches=[];state.cache.entries=[];state.cache.areaIndex.clear();state.cache.routeIndex.clear();return removed
+  AAS_FreeAllClusterAreaCache(state);return removed
 end function
 function AAS_RemoveRoutingCacheUsingArea(state,areaNum)
   if not validState(state) or areaNum<=0 or areaNum>=len(state.router.settings) then return 0 end if
   cluster=state.router.settings[areaNum].cluster;removed=0
   if cluster>0 then removed=removed+AAS_RemoveRoutingCacheInCluster(state,cluster)
   else portal=routeCache.portalForArea(state.cache,areaNum);if portal!=void and not (portal is error) then removed=removed+AAS_RemoveRoutingCacheInCluster(state,portal.frontCluster);removed=removed+AAS_RemoveRoutingCacheInCluster(state,portal.backCluster) end if end if
-  state.cache.portalCaches=[];state.cache.entries=[];state.cache.portalIndex.clear();state.cache.routeIndex.clear();return removed
+  AAS_FreeAllPortalCache(state);return removed
 end function
 function AAS_EnableRoutingArea(state,areaNum,enable)
   if not validState(state) then return 0 end if;before=runtimeAas.enableRoutingArea(state.runtime,areaNum,-1);result=runtimeAas.enableRoutingArea(state.runtime,areaNum,enable)
@@ -93,10 +94,10 @@ function AAS_AllocRoutingCache(state,numTravelTimes)
   if state==void or numTravelTimes<0 then return void end if;size=48+numTravelTimes*3;value=RoutingCache(size,0,0,0,array(numTravelTimes,0),array(numTravelTimes,0),0.0,false,0);state.routingCacheSize=state.routingCacheSize+size;AAS_LinkCache(state,value)
   while state.maxRoutingCacheSize>0 and state.routingCacheSize>state.maxRoutingCacheSize and len(state.lru)>1 AAS_FreeOldestCache(state) end while;return value
 end function
-function AAS_FreeAllClusterAreaCache(state) if state==void then return 0 end if;count=len(state.cache.areaCaches);state.cache.areaCaches=[];state.cache.entries=[];state.cache.areaIndex.clear();state.cache.routeIndex.clear();return count end function
-function AAS_InitClusterAreaCache(state) if state==void then return 0 end if;state.cache.areaCaches=[];state.cache.areaIndex.clear();return state.runtime.map.counts[aas.LUMP_CLUSTERS] end function
-function AAS_FreeAllPortalCache(state) if state==void then return 0 end if;count=len(state.cache.portalCaches);state.cache.portalCaches=[];state.cache.entries=[];state.cache.portalIndex.clear();state.cache.routeIndex.clear();return count end function
-function AAS_InitPortalCache(state) if state==void then return 0 end if;state.cache.portalCaches=[];state.cache.portalIndex.clear();return state.runtime.map.counts[aas.LUMP_AREAS] end function
+function AAS_FreeAllClusterAreaCache(state) if state==void then return 0 end if;count=len(state.cache.areaCaches);state.cache.areaCaches=[];state.cache.areaIndex.clear();lru.clear(state.cache.areaLru);routeCache.clearRouteEntries(state.cache);return count end function
+function AAS_InitClusterAreaCache(state) if state==void then return 0 end if;AAS_FreeAllClusterAreaCache(state);return state.runtime.map.counts[aas.LUMP_CLUSTERS] end function
+function AAS_FreeAllPortalCache(state) if state==void then return 0 end if;count=len(state.cache.portalCaches);state.cache.portalCaches=[];state.cache.portalIndex.clear();lru.clear(state.cache.portalLru);routeCache.clearRouteEntries(state.cache);return count end function
+function AAS_InitPortalCache(state) if state==void then return 0 end if;AAS_FreeAllPortalCache(state);return state.runtime.map.counts[aas.LUMP_AREAS] end function
 function AAS_InitRoutingUpdate(state) if state==void then return 0 end if;return state.runtime.map.counts[aas.LUMP_AREAS]+state.runtime.map.counts[aas.LUMP_PORTALS] end function
 function AAS_CreateAllRoutingCache(state)
   if not validState(state) then return 0 end if;created=0;areaCount=len(state.router.settings)
@@ -122,7 +123,7 @@ function AAS_InitRouting(state)
   if not validState(state) then return false end if;AAS_InitTravelFlagFromType(state);AAS_InitAreaContentsTravelFlags(state);AAS_InitRoutingUpdate(state);AAS_CreateReversedReachability(state);AAS_InitClusterAreaCache(state);AAS_InitPortalCache(state);AAS_CalculateAreaTravelTimes(state);AAS_InitPortalMaxTravelTimes(state);AAS_InitReachabilityAreas(state);state.initialized=true;return true
 end function
 function AAS_FreeRoutingCaches(state)
-  if state==void then return 0 end if;count=len(state.cache.entries)+len(state.cache.areaCaches)+len(state.cache.portalCaches)+len(state.lru);routeCache.clear(state.cache);state.staticTables=void;state.areaContentTravelFlags=[];state.reachabilityAreas=[];state.reachabilityAreaIndex=[];state.lru=[];state.routingCacheSize=0;state.initialized=false;return count
+  if state==void then return 0 end if;count=state.cache.entries.len()+len(state.cache.areaCaches)+len(state.cache.portalCaches)+len(state.lru);routeCache.clear(state.cache);state.staticTables=void;state.areaContentTravelFlags=[];state.reachabilityAreas=[];state.reachabilityAreaIndex=[];state.lru=[];state.routingCacheSize=0;state.initialized=false;return count
 end function
 function AAS_UpdateAreaRoutingCache(state,value) if state==void or value==void then return void end if;return routeCache.buildAreaCache(state.cache,value.cluster,value.goalAreaNum,value.travelFlags) end function
 function AAS_GetAreaRoutingCache(state,cluster,areaNum,travelFlags) if state==void then return void end if;return routeCache.getAreaCache(state.cache,cluster,areaNum,travelFlags) end function

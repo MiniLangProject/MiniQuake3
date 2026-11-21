@@ -39,6 +39,7 @@ import mq3.server.snapshot_build as snapshotBuild
 import mq3.botlib.lifecycle_runtime as botlibRuntime
 import mq3.botlib.be_interface as botInterface
 import mq3.botlib.aas_runtime as aasRuntime
+import mq3.botlib.aas_sample as aasSample
 import mq3.botlib.aas_routing as aasRouting
 import mq3.botlib.aas_routing_cache as aasRoutingCache
 import mq3.botlib.aas_route_extras as aasRouteExtras
@@ -135,12 +136,13 @@ import mq3.client.ui_lan_cache as uiLanCache
 import mq3.client.ui_lan_ingress as uiLanIngress
 import mq3.client.ui_lan_queries as uiLanQueries
 import mq3.client.ui_lan_udp as uiLanUdp
+import mq3.platform.win_main_runtime as botCacheWinMain
 import std.fs as fs
 import std.string as strings
 import std.ds.list as lists
 
 const MAX_CONFIGSTRINGS=1024
-const MAX_CLIENTS=8
+const MAX_CLIENTS=64
 // The pinned 1.32b g_public.h intentionally embeds entityState_t at the start
 // of entityShared_t. gentity_t consequently contains s followed by r.s and the
 // engine-owned shared fields below. These are QVM byte offsets, not host layout.
@@ -158,13 +160,13 @@ const R_CURRENTORIGIN=488
 const R_CURRENTANGLES=500
 const R_OWNERNUM=512
 
-struct FileCursor data offset end struct
+struct FileCursor data offset writePath end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands cgameSnapshotScratch end struct
 struct Boot game runtime context cgame ui end struct
-struct Snapshot serverTime playerState entities end struct
+struct Snapshot serverTime playerState entities areaBits end struct
 // The original engine keeps one cvar/key/userinfo store alive while moving
 // from ui.qvm into a local game.  MiniQuake3 boots the heavy game host only
 // after the UI selects a map, so explicitly carry that persistent state across
@@ -201,7 +203,16 @@ function vmRuntimeAddCommand(host,name,machineRuntime)
   return commands.addContextCommand(host.context.commandState,name,vmInfoCommand,machineRuntime)
 end function
 function milliseconds(context) return context.now end function
-function emitPrint(context,text) context.prints=context.prints+[text];if context.clientTextInput!=void and context.clientTextInput.consoleRuntime!=void then context.clientTextInput.consoleRuntime.realtime=context.now;clientConsole.CL_ConsolePrint(context.clientTextInput.consoleRuntime,text,640) end if;return void end function
+function emitPrint(context,text)
+  // The desktop console owns a bounded scrollback. Standalone probes retain
+  // their transcript, since they have no interactive desktop session.
+  if context.uiLanCacheHost.context.root=="" then context.prints=context.prints+[text] end if
+  if context.clientTextInput!=void and context.clientTextInput.consoleRuntime!=void then
+    context.clientTextInput.consoleRuntime.realtime=context.now
+    clientConsole.CL_ConsolePrint(context.clientTextInput.consoleRuntime,text,640)
+  end if
+  return void
+end function
 function emitError(context,text) context.errors=context.errors+[text];return void end function
 function consoleCommand(context,when,text)
   context.console=context.console+[[when,text]]
@@ -239,11 +250,38 @@ function sectorListCommand(commandState,context) return serverWorld.SV_SectorLis
 function consoleCrosshairPlayer(context) return nativeCgameMain.crosshairPlayer(context.nativeMain) end function
 function consoleLastAttacker(context) return nativeCgameMain.lastAttacker(context.nativeMain) end function
 
+function desktopFilePath(root,name)
+  if root=="" or typeof(name)!="string" or name=="" then return "" end if
+  relative=strings.replaceAll(name,"\\","/")
+  for each component in strings.split(relative,"/")
+    if component=="" or component[0]=="." or strings.endsWith(component,".") or strings.endsWith(component," ") then return "" end if
+    for each ch in bytes(component)
+      if ch<32 or ch==34 or ch==42 or ch==58 or ch==60 or ch==62 or ch==63 or ch==124 then return "" end if
+    end for
+  end for
+  return fs.joinPath(root,relative)
+end function
 function openFile(context,name,mode)
-  // The initial local match is read-only. Baseq3 treats a failed optional log
-  // open as non-fatal; every packaged read comes directly from the retail PK3.
-  if mode!=0 then return common.OpenResult(0,-1) end if
-  data=try(pk3.read(context.archive,name));if data is error then return common.OpenResult(0,-1) end if
+  data=bytes(0,0);writePath=""
+  if mode==0 then
+    data=try(pk3.read(context.archive,name))
+    if data is error then
+      path=desktopFilePath(context.uiLanCacheHost.context.root,name)
+      if path=="" or not fs.isFile(path) then return common.OpenResult(0,-1) end if
+      data=try(fs.readAllBytes(path));if data is error then return common.OpenResult(0,-1) end if
+    end if
+  else
+    if mode<1 or mode>3 then return common.OpenResult(0,-1) end if
+    writePath=desktopFilePath(context.uiLanCacheHost.context.root,name)
+    lower=strings.toLowerAscii(name)
+    // QVM output is data only. Never let a module replace game archives,
+    // executables, or the QVMs that will be loaded during the next launch.
+    if writePath=="" or not (strings.endsWith(lower,".log") or strings.endsWith(lower,".txt") or strings.endsWith(lower,".cfg") or strings.endsWith(lower,".game")) then return common.OpenResult(0,-1) end if
+    created=void
+    if mode==1 then created=try(fs.writeAllBytes(writePath,data))
+    else created=try(fs.appendAllBytes(writePath,data)) end if
+    if created is error or not created then return common.OpenResult(0,-1) end if
+  end if
   handle=1
   while handle<len(context.files) and context.files[handle]!=void and context.files[handle].offset>=0 handle=handle+1 end while
   if handle>=len(context.files) then
@@ -251,14 +289,19 @@ function openFile(context,name,mode)
     expanded=array(capacity,void);if len(context.files)>0 then copyArray(expanded,0,context.files,0,len(context.files)) end if;context.files=expanded
   end if
   if handle>=context.nextFile then context.nextFile=handle+1 end if
-  context.files[handle]=FileCursor(data,0);return common.OpenResult(handle,len(data))
+  context.files[handle]=FileCursor(data,0,writePath);return common.OpenResult(handle,len(data))
 end function
 function readFile(context,handle,count)
   if handle<=0 or handle>=len(context.files) or context.files[handle]==void or context.files[handle].offset<0 or count<0 then return bytes(0,0) end if
   cursor=context.files[handle];available=len(cursor.data)-cursor.offset;if available<=0 then return bytes(0,0) end if;if count>available then count=available end if
   result=slice(cursor.data,cursor.offset,count);cursor.offset=cursor.offset+count;return result
 end function
-function writeFile(context,handle,data) return 0 end function
+function writeFile(context,handle,data)
+  if handle<=0 or handle>=len(context.files) or context.files[handle]==void then return 0 end if
+  path=context.files[handle].writePath;if path=="" then return 0 end if
+  written=try(fs.appendAllBytes(path,data));if written is error or not written then return 0 end if
+  return len(data)
+end function
 function closeFile(context,handle) if handle>0 and handle<len(context.files) then context.files[handle]=void end if;return void end function
 function pcLoad(context,name) data=try(pk3.read(context.archive,name));if data is error then return void end if;return data end function
 
@@ -400,10 +443,18 @@ function qagameFileList(context,vm,base)
   return count
 end function
 function readLoadedAas(host,name) return host[0] end function
+function saveBotRoutes(context)
+  if context.aasRouteCache==void or context.aasCachePath=="" then return void end if
+  directory=context.qvmRoot+"/maps"
+  if not botCacheWinMain.Sys_Mkdir(directory) or not aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) then
+    emitPrint(context,"Could not write bot route cache "+context.aasCachePath+"\n")
+  end if
+  return void
+end function
 function botlibLoadMap(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));if name is error then return name end if
   result=botInterface.Export_BotLibLoadMap(context.botlib,name,botInterface.services(context));if result!=botInterface.BLERR_NOERROR then return result end if
-  if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if
+  saveBotRoutes(context)
   context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aiVisiblePosition.router=void
   data=try(pk3.read(context.archive,"maps/"+name+".aas"));if data is error then context.aas=void;return 3 end if
   aasHost=aasFile.services([data]);aasHost.readFileFn=readLoadedAas;aasState=aasFile.create(aasHost);loaded=aasFile.AAS_LoadAASFile(aasState,"maps/"+name+".aas",void);if loaded!=aasFile.BLERR_NOERROR then context.aas=void;return loaded end if;map=aasState.map
@@ -411,7 +462,11 @@ function botlibLoadMap(context,vm,base)
   aasEntities.bindRuntime(context.aasEntities,context.aas)
   context.aasRouter=aasRouting.create(context.aas);if context.aasRouter is error then context.aas=void;context.aasRouter=void;return 7 end if
   context.aasRouteCache=aasRoutingCache.create(context.aasRouter,4096)
-  context.aasCachePath="";if context.qvmRoot!="" then context.aasCachePath=context.qvmRoot+"/maps/"+name+".rcd";aasRoutingCache.loadRcd(context.aasRouteCache,context.aasCachePath) end if
+  context.aasCachePath=""
+  if context.qvmRoot!="" and not strings.contains(name,"/") and not strings.contains(name,"\\") and not strings.contains(name,":") then
+    context.aasCachePath=context.qvmRoot+"/maps/"+name+".rcd"
+    aasRoutingCache.loadRcd(context.aasRouteCache,context.aasCachePath)
+  end if
   context.aiMoveRuntime.aas=context.aas;context.aiMoveRuntime.router=context.aasRouter;context.aiVisiblePosition.router=context.aasRouter
   gameType=botlibRuntime.integerVariable(context.botlib,"g_gametype",0);aiLevelItems.bind(context.aiLevelItems,context.aasEntities,context.aas,context.botBspEntities,gameType,context,levelItemPlace)
   aiMapGoals.initialize(context.aiMapGoals,context.aas,context.botBspEntities)
@@ -543,6 +598,30 @@ function moveClientTrace(context,start,finish,presence,passEntity)
   result=aasMovementTrace(context,start,finish,presence,passEntity);if result is error then return result end if;return aiMoveRuntime.GroundTrace(result.startsolid,result.fraction,result.ent,result.endpos)
 end function
 function moveOnGround(context,origin,presence,passEntity) return aasClientMovement.onGround(context.aasMovement,origin,presence,passEntity,context.aasMovement.settings.maxsteepness) end function
+function moveAgainstLadder(context,origin) return aasSample.againstLadder(context.aas,origin) end function
+function moveGapDistance(context,origin,direction,entityNum)
+  finish=[origin[0],origin[1],origin[2]-60.0]
+  ground=aasMovementTrace(context,origin,finish,aasRuntime.PRESENCE_CROUCH,entityNum)
+  if ground is error or ground.fraction>=1.0 then return 1.0 end if
+  groundZ=ground.endpos[2]+1.0
+  settings=context.aasMovement.settings
+  for step=1 to 12
+    distance=8.0*step
+    start=[origin[0]+distance*direction[0],origin[1]+distance*direction[1],groundZ+24.0]
+    finish=[start[0],start[1],start[2]-48.0-settings.maxbarrier]
+    ground=aasMovementTrace(context,start,finish,aasRuntime.PRESENCE_CROUCH,entityNum)
+    if ground is error then return distance end if
+    if not ground.startsolid then
+      if ground.endpos[2]<groundZ-settings.maxstep-8.0 then
+        lower=[ground.endpos[0],ground.endpos[1],ground.endpos[2]-20.0]
+        if (aasPointContents(context,lower)&aasClientMovement.CONTENTS_WATER)!=0 then return 0.0 end if
+        return distance
+      end if
+      groundZ=ground.endpos[2]
+    end if
+  end for
+  return 0.0
+end function
 function moveBlockTrace(context,state,direction,checkBottom)
   bounds=aasRuntime.presenceTypeBoundingBox(state.presenceType);if bounds is error then return bounds end if;mins=[bounds[0][0],bounds[0][1],bounds[0][2]];maxs=[bounds[1][0],bounds[1][1],bounds[1][2]]
   vertical=direction[2];if vertical<0.0 then vertical=0.0-vertical end if;if vertical<0.7 then mins[2]=mins[2]+context.aasMovement.settings.maxstep;maxs[2]=maxs[2]-10.0 end if
@@ -562,10 +641,16 @@ function moveHorizontalVelocityForJump(context,zVelocity,start,finish)
 end function
 function moveEntityModel(context,entity) return aasEntities.info(context.aasEntities,entity).modelindex end function
 function moveModelType(context,model)
+  if model<=0 then return 0 end if
   wanted="*"+str(model)
   for entityNum=1 to len(context.botBspEntities)-1
     entity=context.botBspEntities[entityNum];modelPair=aiMapGoals.epair(entity,"model");if not modelPair[0] or modelPair[1]!=wanted then continue end if
-    classname=aiMapGoals.epair(entity,"classname");if classname[0] and classname[1]=="func_plat" then return aiMoveRuntime.MODELTYPE_FUNC_PLAT end if;if classname[0] and classname[1]=="func_bobbing" then return aiMoveRuntime.MODELTYPE_FUNC_BOB end if
+    classname=aiMapGoals.epair(entity,"classname")
+    if not classname[0] then continue end if
+    if classname[1]=="func_plat" then return aiMoveRuntime.MODELTYPE_FUNC_PLAT end if
+    if classname[1]=="func_bobbing" then return aiMoveRuntime.MODELTYPE_FUNC_BOB end if
+    if classname[1]=="func_door" then return aiMoveRuntime.MODELTYPE_FUNC_DOOR end if
+    if classname[1]=="func_static" then return aiMoveRuntime.MODELTYPE_FUNC_STATIC end if
   end for;return 0
 end function
 function moveModelReachability(context,model)
@@ -615,8 +700,44 @@ function moveBarrierJump(context,state,direction,speed)
   trace=aasMovementTrace(context,start,finish,aasRuntime.PRESENCE_NORMAL,state.entityNum);if trace is error or trace.startsolid then return false end if;start=[trace.endpos[0],trace.endpos[1],trace.endpos[2]];finish=[trace.endpos[0],trace.endpos[1],state.origin[2]]
   trace=aasMovementTrace(context,start,finish,aasRuntime.PRESENCE_NORMAL,state.entityNum);if trace is error or trace.startsolid or trace.fraction>=1.0 or n.fsub(trace.endpos[2],state.origin[2])<context.aasMovement.settings.maxstep then return false end if;return true
 end function
+function moveWalkDirection(context,state,direction,speed,type)
+  movement=context.aiMoveRuntime
+  horizontal=aiMoveRuntime.normalize([direction[0],direction[1],0.0])[1]
+  if moveBarrierJump(context,state,horizontal,speed) then
+    aiMoveRuntime.emitJump(movement,state)
+    state.moveFlags=state.moveFlags|aiMoveRuntime.MFL_BARRIERJUMP
+    return aiMoveRuntime.emitMovement(movement,state,horizontal,speed)
+  end if
+  state.moveFlags=state.moveFlags&(~aiMoveRuntime.MFL_BARRIERJUMP)
+  jump=(type&aiMoveRuntime.MOVE_JUMP)!=0
+  crouch=(type&aiMoveRuntime.MOVE_CROUCH)!=0
+  presence=aasRuntime.PRESENCE_NORMAL
+  if crouch and not jump then presence=aasRuntime.PRESENCE_CROUCH end if
+  if not jump then jump=moveGapDistance(context,state.origin,horizontal,state.entityNum)>0.0 end if
+  hazard=aasClientMovement.SE_ENTERSLIME|aasClientMovement.SE_ENTERLAVA|aasClientMovement.SE_HITGROUNDDAMAGE
+  events=hazard|aasClientMovement.SE_ENTERWATER
+  maxFrames=2;cmdFrames=2;up=0.0
+  if jump then maxFrames=30;cmdFrames=1;up=400.0;events=events|aasClientMovement.SE_HITGROUND end if
+  origin=[state.origin[0],state.origin[1],state.origin[2]+0.5]
+  command=[horizontal[0]*speed,horizontal[1]*speed,up]
+  prediction=aasClientMovement.predict(context.aasMovement,state.entityNum,origin,presence,true,state.velocity,command,cmdFrames,maxFrames,0.1,events,0,false)
+  if prediction is error or (prediction.stopevent&hazard)!=0 or (jump and prediction.frames>=maxFrames) then return false end if
+  if (prediction.stopevent&aasClientMovement.SE_HITGROUND)!=0 then
+    landingDirection=aiMoveRuntime.normalize(prediction.velocity)[1]
+    if moveGapDistance(context,prediction.endpos,landingDirection,state.entityNum)>0.0 then return false end if
+    if moveGapDistance(context,prediction.endpos,horizontal,state.entityNum)>0.0 then return false end if
+  end if
+  displacement=[prediction.endpos[0]-state.origin[0],prediction.endpos[1]-state.origin[1],0.0]
+  if aiMoveRuntime.distance(displacement,[0.0,0.0,0.0])<speed*state.thinkTime*0.5 then return false end if
+  if jump then aiMoveRuntime.emitJump(movement,state) end if
+  if crouch then aiMoveRuntime.emitCrouch(movement,state) end if
+  return aiMoveRuntime.emitMovement(movement,state,horizontal,speed)
+end function
 function moveRouteReachability(context,area,origin,goalArea,travelFlags)
   if context.aasRouteCache==void then return 0 end if;return aasRoutingCache.areaReachabilityToGoalArea(context.aasRouteCache,area,origin,goalArea,travelFlags)
+end function
+function moveRouteTravelTime(context,area,origin,goalArea,travelFlags)
+  return aasRoutingCache.weightedTravelTime(context.aasRouteCache,area,origin,goalArea,travelFlags)
 end function
 function moveSignedRandom(context) return n.fsub(n.fmul(2.0,aiGoalSelection.randomFloat(context.aiGoalSelection)),1.0) end function
 function botlibText(context,name,fallback) value=botlibRuntime.varGet(context.botlib,name);if value=="" then return fallback end if;return value end function
@@ -636,8 +757,8 @@ end function
 function extendedQagame(context,vm,base,op)
   if op==38 then return qagameFileList(context,vm,base) end if
   if op>=200 and op<600 then context.lastBotTrap=op end if
-  if op==200 then if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if;context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botInterface.Export_BotLibSetup(context.botlib,botInterface.services(context));if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configured=aiConsoleMessages.configureFromBotlib(context.aiConsole,context.botlib);if configured is error then return configured end if;configureAasMovement(context);aiItemWeights.setReloadCharacters(context.aiItemWeights,botlibRuntime.integerVariable(context.botlib,"bot_reloadcharacters",0));noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if end if;return result end if
-  if op==201 then if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if;context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiVisiblePosition.router=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.shutdown(context.aiChatOutput);aiMapGoals.clear(context.aiMapGoals);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botInterface.Export_BotLibShutdown(context.botlib,botInterface.services(context),context.pcRegistry);if result==0 then context.aasEntities=aasEntities.create(1024) end if;return result end if
+  if op==200 then saveBotRoutes(context);context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botInterface.Export_BotLibSetup(context.botlib,botInterface.services(context));if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configured=aiConsoleMessages.configureFromBotlib(context.aiConsole,context.botlib);if configured is error then return configured end if;configureAasMovement(context);aiItemWeights.setReloadCharacters(context.aiItemWeights,botlibRuntime.integerVariable(context.botlib,"bot_reloadcharacters",0));noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if end if;return result end if
+  if op==201 then saveBotRoutes(context);context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiVisiblePosition.router=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.shutdown(context.aiChatOutput);aiMapGoals.clear(context.aiMapGoals);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botInterface.Export_BotLibShutdown(context.botlib,botInterface.services(context),context.pcRegistry);if result==0 then context.aasEntities=aasEntities.create(1024) end if;return result end if
   if op==202 then return botlibVarSet(context,vm,base) end if
   if op==203 then return botlibVarGet(context,vm,base) end if
   if op==204 then return pcAddDefine(context,vm,base) end if
@@ -772,7 +893,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8))
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8),bytes(cgameSyscall.SNAPSHOT_SIZE,0))
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -790,8 +911,10 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   if not commands.addContextCommand(context.commandState,"condump",dumpConsoleCommand,context) then return fail("condump command already registered") end if
   if not commands.addContextCommand(context.commandState,"sectorlist",sectorListCommand,context) then return fail("sectorlist command already registered") end if
   context.aasMovement=aasClientMovement.services(context);context.aasMovement.traceFn=aasMovementTrace;context.aasMovement.pointContentsFn=aasPointContents;context.aasMovement.pointAreaFn=aasMovementPointArea;context.aasMovement.pointPresenceFn=aasMovementPointPresence;context.aasMovement.areaContentsFn=aasMovementAreaContents;context.aasMovement.traceAreasFn=aasMovementTraceAreas
-  context.elementaryActions=elementaryActions.create(MAX_CLIENTS,botClientCommand,context)
-  context.aiCharacters=aiCharacters.create(MAX_CLIENTS,context,botCharacterRead)
+  maxClients=serverInit.SV_BoundMaxClients(serverLifecycle,1)
+  context.clientStates=array(maxClients,0)
+  context.elementaryActions=elementaryActions.create(maxClients,botClientCommand,context)
+  context.aiCharacters=aiCharacters.create(maxClients,context,botCharacterRead)
   context.aiItemWeights=aiItemWeights.create(context,botCharacterRead)
   context.aiLevelItems=aiLevelItems.create(context.aiItemWeights)
   context.aiGoalState=aiGoalState.create(context.aiResources,context,goalStateTime,goalStateName,goalStateLog,goalStatePrint)
@@ -804,11 +927,15 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   context.aiChatOutput=aiChatOutput.create(context.aiChat,context.aiChatStrings,context.elementaryActions,context,botCharacterRead,goalStateTime,chatOutputRandom)
   context.aiChatGoalTail=aiChatGoalTail.create(context.aiChat,context.aiGoalState,context.aiLevelItems)
   moveServices=aiMoveRuntime.services(context);moveServices.groundTraceFn=moveGroundTrace;moveServices.entityModelFn=moveEntityModel;moveServices.modelTypeFn=moveModelType;moveServices.modelReachabilityFn=moveModelReachability;moveServices.swimmingFn=moveSwimming;moveServices.clientTraceFn=moveClientTrace;moveServices.elementaryActions=context.elementaryActions;moveServices.onGroundFn=moveOnGround;moveServices.blockTraceFn=moveBlockTrace;moveServices.jumpRunStartFn=moveJumpRunStart;moveServices.gravityFn=moveGravity;moveServices.horizontalVelocityForJumpFn=moveHorizontalVelocityForJump;moveServices.elevatorStateFn=moveElevatorState;moveServices.barrierJumpFn=moveBarrierJump;moveServices.routeReachabilityFn=moveRouteReachability;moveServices.randomFn=moveSignedRandom;moveServices.pointContentsFn=aasPointContents;moveServices.funcBobStateFn=moveFuncBobState;moveServices.grappleConfigFn=moveGrappleConfig;moveServices.grappleStateFn=moveGrappleState;moveServices.grappleTraceFn=moveGrappleTrace
+  moveServices.againstLadderFn=moveAgainstLadder
+  moveServices.gapDistanceFn=moveGapDistance
+  moveServices.walkDirectionFn=moveWalkDirection
+  moveServices.routeTravelTimeFn=moveRouteTravelTime
   context.aiMoveRuntime=aiMoveRuntime.create(context.aiResources,void,void,moveServices)
   context.aiVisiblePosition=aiPredictVisible.create(void,context,predictVisibleTrace)
   context.aiMapGoals=aiMapGoals.create()
   context.aiWeaponWeights=aiWeaponWeights.create(context,botCharacterRead,context.aiItemWeights)
-  context.botServer=botServerBridge.create(MAX_CLIENTS);botServerBridge.setTime(context.botServer,now)
+  context.botServer=botServerBridge.create(maxClients);botServerBridge.setTime(context.botServer,now)
   context.aiConsole=aiConsoleMessages.create(context.aiResources)
   context.pcRegistry=pcParser.create(context,pcLoad)
   runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader;runtimeHost.symbolFn=imageLoader;runtimeHost.developerFn=vmRuntimeDeveloper;runtimeHost.registerCvarFn=vmRuntimeRegister;runtimeHost.addCommandFn=vmRuntimeAddCommand
@@ -827,7 +954,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   world=qworld.services(context);world.traceFn=traceWorld;world.pointContentsFn=pointContents;world.entitiesInBoxFn=entitiesInBox;world.entityContactFn=entityContact;world.getUsercmdFn=getUsercmd;gameSyscalls.worldServices=world
   host=gameVm.services(machineRuntime,qagame.callback(gameSyscalls),loadVm,callVm,restartVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.entityStringFn=entityString;host.clearClientEntityFn=clearClient;host.botEnableFn=botEnable
   game=gameVm.create(host);if game is error then return game end if;context.game=game
-  initialized=gameVm.initialize(game,now,MAX_CLIENTS);if initialized is error then return initialized end if
+  initialized=gameVm.initialize(game,now,maxClients);if initialized is error then return initialized end if
   // Server commands (including addbot) must dispatch before CG_INIT; the
   // original Start Server UI leaves them queued behind the map transition.
   boot=Boot(game,machineRuntime,context,void,void)
@@ -842,11 +969,13 @@ function bootWithQvms(archive,map,now,qvmRoot) return bootConfigured(archive,map
 function bootWithQvmsSettingsNamed(archive,map,mapName,now,qvmRoot,settings) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,false,mapName,true,settings) end function
 function bootWithQvmsSettings(archive,map,now,qvmRoot,settings) return bootWithQvmsSettingsNamed(archive,map,"q3dm1",now,qvmRoot,settings) end function
 function bootUiShell(archive,map,now,qvmRoot) return bootConfiguredNamedMode(archive,map,now,qvmRoot,false,"q3dm1",false) end function
+function bootUiShellSettings(archive,map,now,qvmRoot,settings) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,false,"q3dm1",false,settings) end function
 function bootWithBots(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,true) end function
 function bootWithBotsNamed(archive,map,mapName,now,qvmRoot) return bootConfiguredNamed(archive,map,now,qvmRoot,true,mapName) end function
 function boot(archive,map,now) return bootConfigured(archive,map,now,"",false) end function
 
 function connectLocal(value,clientNum)
+  if value==void or clientNum<0 or clientNum>=len(value.context.clientStates) or value.context.clientStates[clientNum]!=0 then return fail("local client slot is unavailable") end if
   denied=gameVm.clientConnect(value.game,clientNum,true,false);if denied is error then return denied end if
   if denied!=0 then return fail("GAME_CLIENT_CONNECT rejected local client") end if
   value.context.clientStates[clientNum]=1;begun=gameVm.clientBegin(value.game,clientNum);if begun is error then value.context.clientStates[clientNum]=0;value.context.userinfos[clientNum]="";botServerBridge.resetClient(value.context.botServer,clientNum);return begun end if
@@ -917,7 +1046,7 @@ function submitUsercmd(value,clientNum,command)
   if command==void then return fail("valid usercmd is required") end if;return submitUsercmdAtHostTime(value,clientNum,command,command.serverTime)
 end function
 function submitUsercmdAtHostTime(value,clientNum,command,hostTime)
-  if value==void or clientNum<0 or clientNum>=MAX_CLIENTS or command==void or hostTime<0 then return fail("valid match, client, usercmd and host time are required") end if
+  if value==void or clientNum<0 or clientNum>=len(value.context.clientStates) or command==void or hostTime<0 then return fail("valid match, client, usercmd and host time are required") end if
   if value.context.clientStates[clientNum]==0 then return fail("usercmd client is not active") end if
   recorded=recordLocalUsercmd(value.context,clientNum,command);if recorded is error then return recorded end if
   value.context.now=hostTime
@@ -928,7 +1057,28 @@ function runFrame(value,serverTime)
   return runServerFrame(value,serverTime)
 end function
 function runServerFrame(value,serverTime)
-  executed=commands.execute(value.context.commandState);if executed is error then return executed end if
+  return runServerTickMode(value,serverTime,true)
+end function
+function runServerTick(value,serverTime)
+  return runServerTickMode(value,serverTime,false)
+end function
+function runBotFrame(value,hostTime)
+  if value.game.botEnable==0 or hostTime<=value.context.botServer.lastFrameTime then return void end if
+  context=value.context
+  context.now=hostTime
+  botServerBridge.setTime(context.botServer,hostTime)
+  botFrame=gameVm.botStartFrame(value.game,hostTime);if botFrame is error then return botFrame end if
+  context.botServer.lastFrameTime=hostTime
+  for each pending in botServerBridge.takePending(context.botServer)
+    clientNum=pending[0];recorded=recordLocalUsercmd(context,clientNum,pending[1]);if recorded is error then return recorded end if
+    thought=gameVm.clientThink(value.game,clientNum);if thought is error then return thought end if
+  end for
+  return void
+end function
+function runServerTickMode(value,serverTime,botTick)
+  if value.context.uiLanCacheHost.context.root=="" then
+    executed=commands.execute(value.context.commandState);if executed is error then return executed end if
+  end if
   value.context.now=serverTime;botServerBridge.setTime(value.context.botServer,serverTime)
   // CL_SendClientCommand is delivered to GAME_CLIENT_COMMAND on the next
   // server tick. In particular, CG_ScoresDown's "score" must reach qagame.
@@ -939,11 +1089,7 @@ function runServerFrame(value,serverTime)
       delivered=gameVm.clientCommand(value.game,0);if delivered is error then return delivered end if
     end if
   end for
-  if value.game.botEnable!=0 then botFrame=gameVm.botStartFrame(value.game,serverTime);if botFrame is error then return botFrame end if end if
-  for each pending in botServerBridge.takePending(value.context.botServer)
-    clientNum=pending[0];recorded=recordLocalUsercmd(value.context,clientNum,pending[1]);if recorded is error then return recorded end if
-    thought=gameVm.clientThink(value.game,clientNum);if thought is error then return thought end if
-  end for
+  if botTick then botFrame=runBotFrame(value,serverTime);if botFrame is error then return botFrame end if end if
   result=gameVm.runFrame(value.game,serverTime);if result is error then return result end if
   value.context.frames=value.context.frames+1;return result
 end function
@@ -1031,16 +1177,17 @@ function snapshotInput(value)
   if value==void or value.game==void then return fail("active game is required") end if
   context=value.context;machine=value.game.slot.machine
   if machine==void or context.gameClients<=0 or context.entityStride<=0 then return fail("qagame did not locate its state") end if
-  mappedList=lists.List.withCapacity(context.entityCount)
+  mapped=array(context.entityCount,void);decoded=0
   for index=0 to context.entityCount-1
-    state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
     spatial=context.spatialScene.entities[index]
-    mappedList.add(snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2))
+    if not spatial.linked or (spatial.svFlags&snapshotBuild.SVF_NOCLIENT)!=0 then continue end if
+    state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
+    mapped[index]=snapshotBuild.snapshotEntity(state,true,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2)
+    decoded=decoded+1
   end for
-  mapped=mappedList.toArray()
   ringCapacity=context.entityCount;if ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES then ringCapacity=snapshotBuild.MAX_SNAPSHOT_ENTITIES end if;if ringCapacity<1 then ringCapacity=1 end if
   buildWorld=snapshotBuild.world(true,mapped,ringCapacity);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context)
-  return SnapshotInput(buildWorld,host,context.entityCount)
+  return SnapshotInput(buildWorld,host,decoded)
 end function
 function snapshotCore(value,clientNum)
   input=snapshotInput(value);if input is error then return input end if
@@ -1054,7 +1201,7 @@ function snapshotCorePrepared(value,clientNum,input)
   frame=snapshotBuild.buildClientSnapshot(buildWorld,host,ps,context.linked[clientNum],false);if frame is error then return frame end if
   entities=array(frame.numEntities,void)
   if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities[index]=buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity] end for end if
-  result=Snapshot(context.now,ps,entities);context.latestSnapshot=result;context.snapshotNumber=context.snapshotNumber+1;return result
+  result=Snapshot(context.now,ps,entities,frame.areaBits);context.latestSnapshot=result;context.snapshotNumber=context.snapshotNumber+1;return result
 end function
 
 function snapshot(value,clientNum)
@@ -1160,15 +1307,30 @@ function glconfigBytes(context)
   n.writeU32(output,11304,1280);n.writeU32(output,11308,720);n.writeU32(output,11312,n.floatBits(1280.0/720.0));return output
 end function
 
-function snapshotBytes(context,number)
-  value=context.latestSnapshot
-  if value==void or number!=context.snapshotNumber then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
-  output=bytes(cgameSyscall.SNAPSHOT_SIZE,0);n.writeU32(output,8,value.serverTime);writeWords(output,44,playerstate.words(value.playerState))
+function encodeSnapshot(context,value,output)
+  n.writeU32(output,8,value.serverTime)
+  for index=0 to snapshotBuild.MAX_MAP_AREA_BYTES-1 output[12+index]=value.areaBits[index] end for
+  writeWords(output,44,playerstate.words(value.playerState))
   count=len(value.entities);if count>256 then count=256 end if;n.writeU32(output,512,count)
-  for index=0 to count-1 writeWords(output,516+index*entitystate.BYTE_SIZE,entitystate.words(value.entities[index])) end for
+  if count>0 then for index=0 to count-1 writeWords(output,516+index*entitystate.BYTE_SIZE,entitystate.words(value.entities[index])) end for end if
   // snapshot_t stores the reliable command sequence after its 256 entities.
   // Cgame advances CG_ExecuteNewServerCommands to this value when promoted.
   n.writeU32(output,53768,context.cgameServerCommands.commandSequence)
+  return output
+end function
+function snapshotBytes(context,number)
+  value=context.latestSnapshot
+  if value==void or number!=context.snapshotNumber then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
+  output=encodeSnapshot(context,value,bytes(cgameSyscall.SNAPSHOT_SIZE,0))
+  return cgameSyscall.BytesResult(true,output)
+end function
+// syscall_cgame copies the result into QVM memory synchronously. Keep one
+// host buffer per match and clear the unused entity tail between snapshots.
+function snapshotBytesScratch(context,number)
+  value=context.latestSnapshot
+  if value==void or number!=context.snapshotNumber then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
+  output=context.cgameSnapshotScratch
+  fillBytes(output,0,len(output),0);encodeSnapshot(context,value,output)
   return cgameSyscall.BytesResult(true,output)
 end function
 
@@ -1196,10 +1358,10 @@ function registerModel(context,name)
   else
     if not strings.endsWith(strings.toLowerAscii(name),".md3") then return 0 end if
     data=try(pk3.read(context.archive,name));if data is error then return 0 end if;parsed=try(md3.loadPacked(data));if parsed is error then return 0 end if
-    levels=[parsed];stem=decode(slice(bytes(name),0,len(bytes(name))-4))
+    levels=[md3.normalizeSurfaceNames(parsed)];stem=decode(slice(bytes(name),0,len(bytes(name))-4))
     for lod=1 to 2
       lodData=try(pk3.read(context.archive,stem+"_"+str(lod)+".md3"));if lodData is error then break end if
-      lodModel=try(md3.loadPacked(lodData));if lodModel is error then break end if;levels=levels+[lodModel]
+      lodModel=try(md3.loadPacked(lodData));if lodModel is error then break end if;levels=levels+[md3.normalizeSurfaceNames(lodModel)]
     end for
     loaded=qvmSceneGeometry.md3Lods(levels)
   end if
@@ -1289,8 +1451,8 @@ function cgameBoxTraceCached(context,vm,base,capsule,transformed)
   return cgameCollisionCache.trace(context.cgameQueryMemo,context,vm,base,capsule,transformed,cgameBoxTraceReference)
 end function
 function decodeRefdef(vm,address)
-  at=common.pointer(vm,address,368,"refdef");axis=[]
-  for row=0 to 2 axis=axis+[readVector(vm.data,at+36+row*12)] end for
+  at=common.pointer(vm,address,368,"refdef")
+  axis=[readVector(vm.data,at+36),readVector(vm.data,at+48),readVector(vm.data,at+60)]
   return Refdef(n.readI32(vm.data,at),n.readI32(vm.data,at+4),n.readI32(vm.data,at+8),n.readI32(vm.data,at+12),n.bitsFloat(n.readI32(vm.data,at+16)),n.bitsFloat(n.readI32(vm.data,at+20)),readVector(vm.data,at+24),axis,n.readI32(vm.data,at+72),n.readI32(vm.data,at+76),slice(vm.data,at+80,32))
 end function
 function soundVector(vm,address,label) if address==0 then return void end if;return common.readFloatVector(vm,address,3,label) end function
@@ -1298,9 +1460,12 @@ function soundEvent(kind,entity,channel,handle,origin,velocity,axis,flag,text,te
 function addCgamePolys(context,vm,base,multiple)
   shader=common.argument(vm,base,1);numVerts=common.argument(vm,base,2);numPolys=1;if multiple then numPolys=common.argument(vm,base,4) end if
   if numVerts<=0 or numPolys<0 then return fail("invalid cgame polygon counts") end if
-  total=numVerts*numPolys;at=common.pointer(vm,common.argument(vm,base,3),total*24,"polyVert array");vertices=[]
+  if numPolys==0 then return 0 end if
+  total=numVerts*numPolys
+  if total>n.quotient(len(vm.data),24) then return fail("invalid cgame polygon storage count") end if
+  at=common.pointer(vm,common.argument(vm,base,3),total*24,"polyVert array");vertices=array(total,void)
   for index=0 to total-1
-    offset=at+index*24;vertices=vertices+[sceneQueue.PolyVert(readVector(vm.data,offset),[n.bitsFloat(n.readI32(vm.data,offset+12)),n.bitsFloat(n.readI32(vm.data,offset+16))],[vm.data[offset+20],vm.data[offset+21],vm.data[offset+22],vm.data[offset+23]])]
+    offset=at+index*24;vertices[index]=sceneQueue.PolyVert(readVector(vm.data,offset),[n.bitsFloat(n.readI32(vm.data,offset+12)),n.bitsFloat(n.readI32(vm.data,offset+16))],[vm.data[offset+20],vm.data[offset+21],vm.data[offset+22],vm.data[offset+23]])
   end for
   sceneQueue.addPolys(context.scene,shader,numVerts,vertices,numPolys);return 0
 end function
@@ -1337,8 +1502,8 @@ end function
 function cgameMarkFragmentsReference(context,vm,base)
   numPoints=common.argument(vm,base,1);maxPoints=common.argument(vm,base,4);maxFragments=common.argument(vm,base,6)
   if numPoints<3 or numPoints>1024 or maxPoints<0 or maxPoints>131072 or maxFragments<0 or maxFragments>131072 then return fail("invalid cgame mark-fragment counts") end if
-  pointsAt=common.pointer(vm,common.argument(vm,base,2),numPoints*12,"mark source points");points=[]
-  for index=0 to numPoints-1 points=points+[readVector(vm.data,pointsAt+index*12)] end for
+  pointsAt=common.pointer(vm,common.argument(vm,base,2),numPoints*12,"mark source points");points=array(numPoints,void)
+  for index=0 to numPoints-1 points[index]=readVector(vm.data,pointsAt+index*12) end for
   projection=common.readFloatVector(vm,common.argument(vm,base,3),3,"mark projection")
   result=markFragments.project(context.markMap,context.collisionWorld,points,projection,maxPoints,maxFragments);if result is error then return result end if
   if len(result.points)>0 then outputAt=common.pointer(vm,common.argument(vm,base,5),maxPoints*12,"mark point output");for index=0 to len(result.points)-1 writeVector(vm.data,outputAt+index*12,result.points[index]) end for end if
@@ -1416,8 +1581,8 @@ function extendedCgame(context,vm,base,op)
     address=common.argument(vm,base,1);color=void;if address!=0 then color=common.readFloatVector(vm,address,4,"render color") end if;renderQueue.setColor(context.renderQueue,color);return 0
   end if
   if op==46 then
-    values=[];for index=1 to 8 values=values+[n.bitsFloat(common.argument(vm,base,index))] end for
-    renderQueue.stretchPic(context.renderQueue,values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],common.argument(vm,base,9));return 0
+    values=array(8,0.0);for index=1 to 8 values[index-1]=n.bitsFloat(common.argument(vm,base,index)) end for
+    renderQueue.stretchPicValues(context.renderQueue,values,common.argument(vm,base,9));return 0
   end if
   if op==47 then
     mins=common.pointer(vm,common.argument(vm,base,2),12,"model mins");maxs=common.pointer(vm,common.argument(vm,base,3),12,"model maxs")
@@ -1472,7 +1637,7 @@ function bootCgame(value)
   shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
   syscalls=cgameSyscall.services(shared,context);syscalls.addCommandFn=addCommand;syscalls.removeCommandFn=removeCommand;syscalls.sendClientCommandFn=sendClientCommand;syscalls.updateScreenFn=updateScreen
   syscalls.loadWorldFn=loadWorld;syscalls.registerModelFn=registerModel;syscalls.registerSkinFn=registerSkin;syscalls.registerShaderFn=registerShader;syscalls.registerShaderNoMipFn=registerShaderNoMip;syscalls.clearSceneFn=clearScene
-  syscalls.getGlconfigFn=glconfigBytes;syscalls.getGameStateFn=gameStateBytes;syscalls.getCurrentSnapshotNumberFn=currentSnapshot;syscalls.getSnapshotFn=snapshotBytes;syscalls.getServerCommandFn=cgameServerCommand
+  syscalls.getGlconfigFn=glconfigBytes;syscalls.getGameStateFn=gameStateBytes;syscalls.getCurrentSnapshotNumberFn=currentSnapshot;syscalls.getSnapshotFn=snapshotBytesScratch;syscalls.getServerCommandFn=cgameServerCommand
   syscalls.getCurrentCmdNumberFn=currentCmdNumber;syscalls.getUserCmdFn=clientUsercmd;syscalls.setUserCmdValueFn=setUsercmdValue;syscalls.memoryRemainingFn=memoryRemaining;syscalls.extendedFn=extendedCgameHost
   syscalls.keyServices=cgameKeys.stateServices(context.cgameKeys)
   syscalls.pcServices=cgamePc.registryServices(context.pcRegistry)
@@ -1590,8 +1755,42 @@ function uiUnique(values,value)
   for each current in values if strings.toLowerAscii(current)==strings.toLowerAscii(value) then return values end if end for
   return values+[value]
 end function
+function uiDesktopModList(dataRoot)
+  if dataRoot=="" then return [] end if
+  installRoot=fs.joinPath(dataRoot,"..")
+  names=try(fs.listDir(installRoot));if names is error then return [] end if
+  mods=lists.List.withCapacity(8)
+  for each name in names
+    if not stringEqualsIgnoreCaseAscii(name,"baseq3") then
+      directory=desktopFilePath(installRoot,name)
+      if directory!="" and fs.isDir(directory) then
+        candidates=try(fs.listDir(directory))
+        if not (candidates is error) then
+          for each leaf in candidates
+            if strings.endsWith(strings.toLowerAscii(leaf),".pk3") and fs.isFile(fs.joinPath(directory,leaf)) then
+              description=name;descPath=fs.joinPath(directory,"description.txt")
+              if fs.isFile(descPath) then
+                size=try(fs.fileSize(descPath))
+                if not (size is error) and size<=4096 then
+                  text=try(fs.readAllText(descPath))
+                  if not (text is error) then
+                    lines=strings.split(text,"\n")
+                    if len(lines)>0 and strings.trim(lines[0])!="" then description=commands.copyString(strings.trim(lines[0]),49) end if
+                  end if
+                end if
+              end if
+              mods.add(name);mods.add(description);break
+            end if
+          end for
+        end if
+      end if
+    end if
+  end for
+  return mods.toArray()
+end function
 function uiFileList(context,path,extension)
-  if path=="$modlist" then return [] end if
+  dataRoot=context.uiLanCacheHost.context.root
+  if path=="$modlist" then return uiDesktopModList(dataRoot) end if
   prefix=path;if prefix!="" and not strings.endsWith(prefix,"/") then prefix=prefix+"/" end if
   lowerPrefix=strings.toLowerAscii(prefix);wanted=strings.toLowerAscii(extension);directories=wanted=="/"
   if wanted!="" and not directories and wanted[0]!="." then wanted="."+wanted end if
@@ -1608,10 +1807,22 @@ function uiFileList(context,path,extension)
       end if
     end if
   end for
+  if path=="demos" and not directories then
+    directory=desktopFilePath(dataRoot,path)
+    if directory!="" and fs.isDir(directory) then
+      names=try(fs.listDir(directory))
+      if not (names is error) then
+        for each name in names
+          lowerName=strings.toLowerAscii(name)
+          if (wanted=="" or strings.endsWith(lowerName,wanted)) and fs.isFile(fs.joinPath(directory,name)) then result=uiUnique(result,name) end if
+        end for
+      end if
+    end if
+  end if
   return result
 end function
 function uiSetColor(context,color) return renderQueue.setColor(context.renderQueue,color) end function
-function uiStretchPic(context,values,shader) return renderQueue.stretchPic(context.renderQueue,values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],shader) end function
+function uiStretchPic(context,values,shader) return renderQueue.stretchPicValues(context.renderQueue,values,shader) end function
 function uiLanLoad(context) return uiLanCache.load(context.uiLan,context.uiLanCacheHost) end function
 function uiLanSave(context) return uiLanCache.save(context.uiLan,context.uiLanCacheHost) end function
 function uiLanAdd(context,source,name,address) return uiLan.add(context.uiLan,source,name,address) end function

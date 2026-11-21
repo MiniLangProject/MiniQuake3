@@ -15,7 +15,7 @@ struct Camera position yaw pitch moveSpeed mouseSensitivity end struct
 struct Controls forward back left right up down mouseX mouseY end struct
 struct ScreenPoint x y depth end struct
 struct ScreenLine visible a b clipped end struct
-struct Projection position right up forward halfWidth halfHeight focal nearDistance end struct
+struct Projection position right up forward halfWidth halfHeight focal nearDistance verticalFocal end struct
 
 function camera(position,yaw,pitch,moveSpeed,mouseSensitivity)
   if position==void or len(position)!=3 then return error(7470,"viewer camera needs a three-component position") end if
@@ -128,7 +128,7 @@ function prepareProjection(state,width,height,horizontalFovDegrees,nearDistance)
   if state==void or width<=0 or height<=0 or nearDistance<=0.0 then return error(7480,"invalid prepared projection") end if
   focal=focalLength(width,horizontalFovDegrees);if focal is error then return focal end if
   axes=cameraBasis(state)
-  return Projection(state.position,axes[1],axes[2],axes[0],width*0.5,height*0.5,focal,nearDistance)
+  return Projection(state.position,axes[1],axes[2],axes[0],width*0.5,height*0.5,focal,nearDistance,focal)
 end function
 
 function preparedViewPoint(projection,world)
@@ -145,7 +145,7 @@ function projectPreparedView(projection,point)
   depth=point[2]
   if depth<projection.nearDistance then return void end if
   scale=projection.focal/depth
-  return ScreenPoint(projection.halfWidth+point[0]*scale,projection.halfHeight-point[1]*scale,depth)
+  return ScreenPoint(projection.halfWidth+point[0]*scale,projection.halfHeight-point[1]*projection.verticalFocal/depth,depth)
 end function
 
 function projectPrepared(projection,world)

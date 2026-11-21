@@ -69,6 +69,7 @@ def main():
     scripts.append(("test_default_launcher.py",[]))
     scripts.append(("test_default_exe_startup.py",[]))
     scripts.append(("test_qvm_menu_startup.py",[]))
+    if args.data_root: scripts.append(("test_desktop_session_retail.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_common_complete.py",[]))
     scripts.append(("test_cmd_complete.py",[]))
     scripts.append(("test_q_shared_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))

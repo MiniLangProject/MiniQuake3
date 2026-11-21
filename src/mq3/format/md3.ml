@@ -5,6 +5,7 @@ package mq3.format.md3
 
 import mq3.compat.numeric as n
 import mq3.renderer.surface_md3 as md3Mesh
+import std.string as strings
 
 const MD3_IDENT=0x33504449
 const MD3_VERSION=15
@@ -50,6 +51,16 @@ function fixedString(data,offset,capacity)
   check=span(offset,capacity,len(data));if check is error then return check end if
   count=0;while count<capacity and data[offset+count]!=0 count=count+1 end while
   return decode(slice(data,offset,count))
+end function
+
+// The renderer strips a trailing LOD suffix before resolving skin mappings.
+function normalizeSurfaceNames(model)
+  for each surface in model.surfaces
+    name=strings.toLowerAscii(surface.name);raw=bytes(name)
+    if len(raw)>2 and raw[len(raw)-2]==95 then name=decode(slice(raw,0,len(raw)-2)) end if
+    surface.name=name
+  end for
+  return model
 end function
 
 // Both representations pass through the identical complete parser/validation.

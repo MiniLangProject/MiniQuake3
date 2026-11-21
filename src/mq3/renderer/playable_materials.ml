@@ -8,7 +8,9 @@ import mq3.renderer.shader_index as shaderIndex
 import mq3.renderer.shader_parser as shaderParser
 import mq3.shared.parser as tokenParser
 import mq3.platform.playable_jpeg as jpeg
+import mq3.platform.playable_window as window
 import mq3.compat.transcendental as trans
+import std.ds.list as lists
 import std.string as strings
 import std.string_builder as stringBuilder
 
@@ -34,7 +36,7 @@ const ALPHA_TEST_GE128=3
 struct Image width height pixels end struct
 struct UvMod kind a b c d e f wave end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual portalRange tcGenVectors end struct
-struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime end struct
+struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime noPicMip end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
 function fail(message) return error(7486,"preview materials: "+message) end function
@@ -181,7 +183,7 @@ end function
 
 function usableStage(stage)
   if stage==void or stage.isLightmap or len(stage.images)==0 then return false end if
-  name=strings.toLowerAscii(stage.images[0]);return name!="$lightmap" and name!="$whiteimage"
+  return not stringEqualsIgnoreCaseAscii(stage.images[0],"$lightmap")
 end function
 
 function loadRuntimeStage(archive,stage,nextSlot,endSlot)
@@ -195,7 +197,9 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
   names=[];images=[];slots=[];limit=len(stage.images);if limit>MAX_ANIMATION_FRAMES then limit=MAX_ANIMATION_FRAMES end if
   for index=0 to limit-1
     if nextSlot>=endSlot then break end if
-    loaded=loadImage(archive,stage.images[index])
+    imageName=stage.images[index];loaded=void
+    if stringEqualsIgnoreCaseAscii(imageName,"$whiteimage") then loaded=["$whiteimage",Image(8,8,bytes(8*8*4,255))]
+    else loaded=loadImage(archive,imageName) end if
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
@@ -228,9 +232,9 @@ function resolvedShaderSort(shader)
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
-  result=[];deforms=[];twoSided=false;sort=3.0;polygonOffset=false;noMipMaps=false;clampTime=0.0;parsed=try(shaderParser.parseIndexed(index,name))
+  result=[];deforms=[];twoSided=false;sort=3.0;polygonOffset=false;noMipMaps=false;clampTime=0.0;noPicMip=false;parsed=try(shaderParser.parseIndexed(index,name))
   if not (parsed is error) and parsed!=void then
-    deforms=parsed.deforms;twoSided=parsed.cull=="twoSided";sort=resolvedShaderSort(parsed);polygonOffset=parsed.polygonOffset;noMipMaps=parsed.noMipMaps;clampTime=parsed.clampTime
+    deforms=parsed.deforms;twoSided=parsed.cull=="twoSided";sort=resolvedShaderSort(parsed);polygonOffset=parsed.polygonOffset;noMipMaps=parsed.noMipMaps;clampTime=parsed.clampTime;noPicMip=parsed.noPicMip
     for each parsedStage in parsed.stages
       if parsedStage.isLightmap and len(result)<MAX_RUNTIME_STAGES then result=result+[lightmapRuntimeStage(parsedStage)]
       else if usableStage(parsedStage) and len(result)<MAX_RUNTIME_STAGES then
@@ -247,7 +251,7 @@ function runtimeStages(archive,index,name,nextSlot,endSlot)
     if loaded==void and mapped!=name then loaded=directRuntimeStage(archive,name,nextSlot,endSlot) end if
     if loaded!=void then result=[loaded[0]];nextSlot=loaded[1] end if
   end if
-  return [result,nextSlot,deforms,twoSided,sort,polygonOffset,noMipMaps,clampTime]
+  return [result,nextSlot,deforms,twoSided,sort,polygonOffset,noMipMaps,clampTime,noPicMip]
 end function
 
 function floorNumber(value) integer=n.trunc32(value);if value<integer then return integer-1 end if;return integer end function
@@ -429,10 +433,9 @@ end function
 
 function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)
   if archive==void or not validMap(map) then return fail("archive and BSP are required") end if
-  if maxMaterials<0 or maxMaterials>BASE_TEXTURE_SLOT_COUNT then return fail("material limit outside slot budget") end if
-  if firstSlot<BASE_TEXTURE_FIRST_SLOT or firstSlot+maxMaterials>BASE_TEXTURE_FIRST_SLOT+BASE_TEXTURE_SLOT_COUNT then return fail("base texture slots outside range") end if
+  if firstSlot<0 or firstSlot>window.NATIVE_TEXTURE_SLOTS or maxMaterials<0 or maxMaterials>window.NATIVE_TEXTURE_SLOTS-firstSlot then return fail("base texture slots outside range") end if
   if index==void or scriptCount<0 then return fail("shader index and count are required") end if
-  materialList=[];attempted=0;nextSlot=firstSlot;endSlot=firstSlot+maxMaterials;animated=0;effects=0
+  materialList=lists.List.withCapacity(map.counts[1]);attempted=0;nextSlot=firstSlot;endSlot=firstSlot+maxMaterials;animated=0;effects=0
   textureIndex=0
   while textureIndex<map.counts[1] and nextSlot<endSlot
     name=shaderName(map,textureIndex);if name is error then return name end if
@@ -441,7 +444,7 @@ function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)
     if len(stages)>0 then
       firstImageName="";firstImage=void;firstImageSlot=-1
       for each stage in stages if firstImageSlot<0 and len(stage.slots)>0 then firstImageName=stage.imageNames[0];firstImage=stage.images[0];firstImageSlot=stage.slots[0] end if end for
-      materialList=materialList+[Material(textureIndex,name,firstImageName,firstImage,firstImageSlot,stages,resolved[2],resolved[3],resolved[4],resolved[5],resolved[6],0.0,resolved[7])]
+      materialList.add(Material(textureIndex,name,firstImageName,firstImage,firstImageSlot,stages,resolved[2],resolved[3],resolved[4],resolved[5],resolved[6],0.0,resolved[7],resolved[8]))
       for each stage in stages
         if len(stage.slots)>1 then animated=animated+1 end if
         if stage.blend!=BLEND_OPAQUE or stage.alphaTest!=ALPHA_TEST_NONE or len(stage.uvMods)>0 then effects=effects+1 end if
@@ -449,7 +452,7 @@ function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)
     end if
     textureIndex=textureIndex+1
   end while
-  return Catalog(materialList,scriptCount,attempted,len(materialList),nextSlot-firstSlot,animated,effects)
+  return Catalog(materialList.toArray(),scriptCount,attempted,materialList.len(),nextSlot-firstSlot,animated,effects)
 end function
 
 function load(archive,map,maxMaterials,firstSlot)

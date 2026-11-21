@@ -18,7 +18,7 @@ struct Point x y depth end struct
 function fail(message) return error(7745,"Baseq3 console background: "+message) end function
 function load(archive,firstTextureSlot)
   if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or firstTextureSlot+REQUIRED_TEXTURES>512 then return fail("two native texture slots are required") end if
+  if firstTextureSlot<0 or firstTextureSlot+REQUIRED_TEXTURES>window.NATIVE_TEXTURE_SLOTS then return fail("two native texture slots are required") end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
   parsed=shaderParser.parseIndexed(scripts[0],SHADER_NAME);if parsed is error then return parsed end if
   if parsed==void or len(parsed.stages)!=REQUIRED_TEXTURES then return fail("Retail console shader must have two stages") end if

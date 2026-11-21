@@ -25,11 +25,11 @@ CHECKS = {
         ),
     },
     "src/mq3/engine/local_qvm_match.ml": {
-        "requires": ("mappedList=lists.List.withCapacity", "entities=array(frame.numEntities,void)"),
+        "requires": ("mapped=array(context.entityCount,void)", "entities=array(frame.numEntities,void)"),
         "forbids": ("mapped=mapped+[", "entities=entities+["),
     },
     "src/mq3/client/qvm_preview_app.ml": {
-        "requires": ("std.ds.queue", "pendingInputEvents.enqueue", "pendingInputEvents.dequeue"),
+        "requires": ("for each event in nativeEvents", "applyInputEvent(inputBridge,state,event)"),
         "forbids": ("pendingInputEvents=pendingInputEvents+[", "slice(pendingInputEvents,1,"),
     },
     "src/mq3/platform/playable_window.ml": {

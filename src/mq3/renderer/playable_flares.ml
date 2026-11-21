@@ -57,7 +57,7 @@ end function
 
 function load(archive,map,scripts,textureSlot,enabled)
   flares=parse(map);if flares is error then return flares end if
-  if textureSlot<0 or textureSlot>=512 then return fail("invalid texture slot") end if
+  if textureSlot<0 or textureSlot>=window.NATIVE_TEXTURE_SLOTS then return fail("invalid texture slot") end if
   image=void
   if enabled or len(flares)>0 then
     name=materials.mappedImageName(scripts,"flareShader");if name==void then name="gfx/misc/flare" end if

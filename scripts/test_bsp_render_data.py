@@ -11,7 +11,7 @@ def main():
     out=ROOT/'build/reference/bsp_render_data';out.mkdir(parents=True,exist_ok=True)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/bsp_render_data_contracts.ml','--output','bsp_render_data_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/bsp_render_data_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    expected='PASS: 64 BSP render-data contracts'
+    expected='PASS: 65 BSP render-data contracts'
     if value!=expected:raise RuntimeError(value)
     original_renderer=ROOT/'Quake-III-Arena-original-source/code/renderer/tr_bsp.c'
     (out/'bsp_lighting_shift_under_test.inc').write_text(extract(original_renderer,['R_ColorShiftLightingBytes']),encoding='utf-8',newline='\n')
@@ -59,17 +59,17 @@ def main():
         'records': len(native.splitlines()),
         'normal_records': normal_records,
         'grid_records': grid_records,
-        'contracts': 64,
+        'contracts': 65,
         'functions': ['R_ColorShiftLightingBytes', 'R_SubdividePatchToGrid', *patch_helpers],
         'q3dm1': map_probe,
         'scope': (
             'BSP46 planar, triangle-soup, quadratic MST_PATCH and inline brush-model extraction. '
-            'Adaptive subdivision, collinear row and column removal, position, UV and color interpolation, '
+            'Adaptive subdivision, collinear row and column removal, SURF_NODRAW mesh exclusion, position, UV and color interpolation, '
             'and exact wrapped and degenerate patch normals. Source vertex identity, shader and lightmap '
             'references, face order, limits, validation, RGB/RGBA decoding and Baseq3 overbright color shifting.'
         ),
         'sources': {p.relative_to(ROOT).as_posix(): sha(p) for p in files},
     }
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f"PASS: {report['records']} exact lighting-shift + {normal_records} exact patch-normal + {grid_records} exact patch-grid records + 64 BSP render-data contracts")
+    print(f"PASS: {report['records']} exact lighting-shift + {normal_records} exact patch-normal + {grid_records} exact patch-grid records + 65 BSP render-data contracts")
 if __name__=='__main__':main()

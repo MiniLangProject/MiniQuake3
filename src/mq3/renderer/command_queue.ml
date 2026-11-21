@@ -73,12 +73,14 @@ function setColor(queue,rgba)
   return append(queue,RC_SET_COLOR,SET_COLOR_BYTES,[rgba[0],rgba[1],rgba[2],rgba[3]],void)
 end function
 
-function stretchPic(queue,x,y,w,h,s1,t1,s2,t2,shaderHandle)
+function stretchPicValues(queue,values,shaderHandle)
   if queue==void or not queue.registered then return false end if
+  if values==void or len(values)!=8 then return fail("stretch picture requires eight values") end if
   shader=shaderHandle
   if queue.shaderFn!=void then shader=queue.shaderFn(queue.shaderContext,shaderHandle) end if
-  return append(queue,RC_STRETCH_PIC,STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],shader)
+  return append(queue,RC_STRETCH_PIC,STRETCH_PIC_BYTES,values,shader)
 end function
+function stretchPic(queue,x,y,w,h,s1,t1,s2,t2,shaderHandle) return stretchPicValues(queue,[x,y,w,h,s1,t1,s2,t2],shaderHandle) end function
 
 function drawBuffer(queue,buffer)
   if queue==void or not queue.registered then return false end if

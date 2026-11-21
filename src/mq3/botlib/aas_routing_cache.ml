@@ -11,6 +11,7 @@ import mq3.botlib.crc16 as crc16
 import std.fs as fs
 import std.ds.hashmap as maps
 import std.ds.queue as queues
+import std.ds.list as lists
 import mq3.botlib.cache_lru as lru
 
 const CACHE_AREA=1
@@ -26,11 +27,13 @@ const RCD_RECORD_HEADER_SIZE=24
 struct Entry type cluster areaNum goalAreaNum travelFlags hasOrigin originBits route generation serial end struct
 struct AreaCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
 struct PortalCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
-struct Cache router entries areaCaches portalCaches generation serial maxEntries hits misses evictions invalidations areaHits areaMisses areaUpdates areaEvictions portalHits portalMisses portalUpdates portalEvictions staticTables routeIndex areaIndex portalIndex scratch scratchBuilds routeLru areaLru portalLru end struct
+struct Cache router entries areaCaches portalCaches generation serial maxEntries hits misses evictions invalidations areaHits areaMisses areaUpdates areaEvictions portalHits portalMisses portalUpdates portalEvictions staticTables routeIndex areaIndex portalIndex scratch scratchBuilds routeLru areaLru portalLru destinationLru destinationCosts weightedBuilds weightedFallbacks end struct
 
 function create(router,maxEntries)
   if maxEntries<=0 then maxEntries=DEFAULT_MAX_ENTRIES end if;generation=0;if router!=void and router.runtime!=void then generation=router.runtime.cacheInvalidations end if
-  return Cache(router,[],[],[],generation,0,maxEntries,0,0,0,0,0,0,0,0,0,0,0,0,routingTables.create(router),maps.HashMap.withCapacity(maxEntries*2),maps.HashMap.withCapacity(maxEntries),maps.HashMap.withCapacity(maxEntries),void,0,lru.create(maxEntries),lru.create(maxEntries),lru.create(maxEntries))
+  destinationCapacity=16
+  if router!=void and len(router.reaches)>65536 then destinationCapacity=4 end if
+  return Cache(router,lists.List.withCapacity(maxEntries),[],[],generation,0,maxEntries,0,0,0,0,0,0,0,0,0,0,0,0,routingTables.create(router),maps.HashMap.withCapacity(maxEntries*2),maps.HashMap.withCapacity(maxEntries),maps.HashMap.withCapacity(maxEntries),void,0,lru.create(maxEntries),lru.create(maxEntries),lru.create(maxEntries),lru.create(destinationCapacity),array(destinationCapacity,void),0,0)
 end function
 function portalForArea(cache,areaNum)
   if cache==void or cache.router==void or areaNum<=0 or areaNum>=len(cache.router.settings) then return void end if;cluster=cache.router.settings[areaNum].cluster;if cluster>=0 then return void end if
@@ -68,7 +71,15 @@ function tableKey(cluster,goalAreaNum,travelFlags)
 end function
 function sync(cache)
   if cache==void or cache.router==void or cache.router.runtime==void then return 0 end if;current=cache.router.runtime.cacheInvalidations
-  if current!=cache.generation then cache.entries=[];cache.areaCaches=[];cache.portalCaches=[];cache.routeIndex.clear();cache.areaIndex.clear();cache.portalIndex.clear();resetLru(cache);cache.generation=current;cache.invalidations=cache.invalidations+1 end if;return current
+  if current!=cache.generation then clearRouteEntries(cache);cache.areaCaches=[];cache.portalCaches=[];cache.areaIndex.clear();cache.portalIndex.clear();resetLru(cache);cache.generation=current;cache.invalidations=cache.invalidations+1 end if;return current
+end function
+function clearRouteEntries(cache)
+  cache.entries.clear()
+  cache.routeIndex.clear()
+  lru.clear(cache.routeLru)
+  lru.clear(cache.destinationLru)
+  for slot=0 to len(cache.destinationCosts)-1 cache.destinationCosts[slot]=void end for
+  return void
 end function
 // Area and portal builders have separate scratch space: portal propagation
 // calls getAreaCache recursively and must not overwrite its own queue.
@@ -202,6 +213,68 @@ function propagatedPortalRoute(cache,goalCluster,areaNum,origin,goalAreaNum,trav
   end for end if
   if bestReach<0 then return noRoute end if;return routing.Route(bestTime,bestReach)
 end function
+// Store the cost of the route after each incoming reach. Travel between
+// reaches depends on their endpoints, so a cache of costs per area loses
+// information. Origin travel is added only when choosing the first reach.
+function buildDestinationCosts(cache,goalAreaNum,travelFlags)
+  router=cache.router;tables=cache.staticTables
+  costs=array(len(router.reaches),0)
+  heap=routing.heapCreate(len(router.reaches))
+  for each link in tables.reversed[goalAreaNum]
+    if not routing.edgeAllowed(router,router.reaches[link.linkNum],travelFlags) then continue end if
+    costs[link.linkNum]=1
+    routing.heapPut(heap,link.linkNum,1,link.linkNum)
+  end for
+  while heap.size>0
+    current=routing.heapPop(heap)
+    number=current[1];source=tables.reachSources[number]
+    if source==0 then continue end if
+    reach=router.reaches[number]
+    row=tables.areaTravelTimes[source][number-router.settings[source].firstReachableArea]
+    predecessors=tables.reversed[source]
+    if len(predecessors)==0 then continue end if
+    for index=0 to len(predecessors)-1
+      incoming=predecessors[index].linkNum
+      if not routing.edgeAllowed(router,router.reaches[incoming],travelFlags) then continue end if
+      cost=current[0]+reach.travelTime+row[index]
+      if costs[incoming]==0 or cost<costs[incoming] then
+        costs[incoming]=cost
+        routing.heapPut(heap,incoming,cost,incoming)
+      end if
+    end for
+  end while
+  cache.weightedBuilds=cache.weightedBuilds+1
+  return costs
+end function
+function weightedRoute(cache,areaNum,origin,goalAreaNum,travelFlags,timeOnly)
+  router=cache.router
+  if cache.staticTables.truncatedSources==0 then
+    key=tableKey(0,goalAreaNum,travelFlags)
+    slot=lru.touch(cache.destinationLru,key)
+    if slot<0 then
+      slot=lru.reserve(cache.destinationLru,key)
+      cache.destinationCosts[slot]=buildDestinationCosts(cache,goalAreaNum,travelFlags)
+    end if
+    costs=cache.destinationCosts[slot]
+    settings=router.settings[areaNum]
+    if settings.numReachableAreas==0 then return routing.Route(0,0) end if
+    best=0;bestTime=0;tied=false
+    for number=settings.firstReachableArea to settings.firstReachableArea+settings.numReachableAreas-1
+      if costs[number]==0 then continue end if
+      reach=router.reaches[number]
+      cost=costs[number]+reach.travelTime
+      if origin!=void then cost=cost+routing.areaTravelTime(router,areaNum,origin,reach.start) end if
+      if best==0 or cost<bestTime then
+        best=number;bestTime=cost;tied=false
+      else if cost==bestTime then tied=true end if
+    end for
+    if not tied or timeOnly then return routing.Route(bestTime,best) end if
+  end if
+  // On an equal total the forward search's stable reach ordering decides
+  // which route to use. Preserve its choice and cache the resulting point.
+  cache.weightedFallbacks=cache.weightedFallbacks+1
+  return routing.areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags)
+end function
 function query(cache,areaNum,origin,goalAreaNum,travelFlags)
   if cache==void or cache.router==void then return routing.Route(0,0) end if
   if areaNum<=0 or goalAreaNum<=0 or areaNum>=len(cache.router.settings) or goalAreaNum>=len(cache.router.settings) then return routing.Route(0,0) end if
@@ -217,18 +290,26 @@ function query(cache,areaNum,origin,goalAreaNum,travelFlags)
   // dense retail graphs; keep its reusable area/portal tables, but cache the
   // authoritative route whenever the two results differ.
   if kind[0]==CACHE_AREA then
-    direct=routing.areaRouteToGoalArea(cache.router,areaNum,origin,goalAreaNum,flags)
+    direct=weightedRoute(cache,areaNum,origin,goalAreaNum,flags,false)
     if route.travelTime!=direct.travelTime or route.reachNum!=direct.reachNum then route=direct end if
   end if;cache.serial=cache.serial+1
   entry=Entry(kind[0],kind[1],areaNum,goalAreaNum,flags,origin!=void,originBits,routing.Route(route.travelTime,route.reachNum),cache.generation,cache.serial)
   slot=lru.reserve(cache.routeLru,key)
-  if slot==len(cache.entries) then cache.entries=cache.entries+[entry]
-  else old=cache.entries[slot];cache.routeIndex.remove(routeKey(old.type,old.cluster,old.areaNum,old.goalAreaNum,old.travelFlags,old.hasOrigin,old.originBits));cache.entries[slot]=entry;cache.evictions=cache.evictions+1 end if
+  if slot==cache.entries.len() then cache.entries.add(entry)
+  else old=cache.entries.get(slot);cache.routeIndex.remove(routeKey(old.type,old.cluster,old.areaNum,old.goalAreaNum,old.travelFlags,old.hasOrigin,old.originBits));cache.entries.set(slot,entry);cache.evictions=cache.evictions+1 end if
   cache.routeIndex.set(key,entry);return route
 end function
 function areaTravelTimeToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags) return query(cache,areaNum,origin,goalAreaNum,travelFlags).travelTime end function
 function areaReachabilityToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags) return query(cache,areaNum,origin,goalAreaNum,travelFlags).reachNum end function
-function clear(cache) if cache!=void then cache.entries=[];cache.areaCaches=[];cache.portalCaches=[];cache.routeIndex.clear();cache.areaIndex.clear();cache.portalIndex.clear();resetLru(cache);cache.generation=0;if cache.router!=void and cache.router.runtime!=void then cache.generation=cache.router.runtime.cacheInvalidations end if;cache.serial=0;cache.hits=0;cache.misses=0;cache.evictions=0;cache.invalidations=0;cache.areaHits=0;cache.areaMisses=0;cache.areaUpdates=0;cache.areaEvictions=0;cache.portalHits=0;cache.portalMisses=0;cache.portalUpdates=0;cache.portalEvictions=0 end if;return 0 end function
+function weightedTravelTime(cache,areaNum,origin,goalAreaNum,travelFlags)
+  if cache==void or cache.router==void or areaNum<=0 or goalAreaNum<=0 or areaNum>=len(cache.router.settings) or goalAreaNum>=len(cache.router.settings) then return 0 end if
+  if areaNum==goalAreaNum then return 1 end if
+  sync(cache)
+  flags=normalizedFlags(cache,areaNum,goalAreaNum,travelFlags)
+  if origin!=void and len(origin)!=3 then return 0 end if
+  return weightedRoute(cache,areaNum,origin,goalAreaNum,flags,true).travelTime
+end function
+function clear(cache) if cache!=void then clearRouteEntries(cache);cache.areaCaches=[];cache.portalCaches=[];cache.areaIndex.clear();cache.portalIndex.clear();resetLru(cache);cache.generation=0;if cache.router!=void and cache.router.runtime!=void then cache.generation=cache.router.runtime.cacheInvalidations end if;cache.serial=0;cache.hits=0;cache.misses=0;cache.evictions=0;cache.invalidations=0;cache.areaHits=0;cache.areaMisses=0;cache.areaUpdates=0;cache.areaEvictions=0;cache.portalHits=0;cache.portalMisses=0;cache.portalUpdates=0;cache.portalEvictions=0;cache.weightedBuilds=0;cache.weightedFallbacks=0 end if;return 0 end function
 
 // AAS_WriteRouteCache writes a stable 32-byte RCD v2 header.  The original
 // payload embeds native pointers, so MiniQuake3 follows that header with a
@@ -284,7 +365,7 @@ function decodeRcd(cache,data)
   seenPortals=maps.HashMap.withCapacity(cache.maxEntries);seenAreas=maps.HashMap.withCapacity(cache.maxEntries)
   for each value in portals key=tableKey(value.cluster,value.goalAreaNum,value.travelFlags);if seenPortals.get(key)!=void then return false end if;seenPortals.set(key,true) end for
   for each value in areas key=tableKey(value.cluster,value.goalAreaNum,value.travelFlags);if seenAreas.get(key)!=void then return false end if;seenAreas.set(key,true) end for
-  cache.entries=[];cache.routeIndex.clear();cache.portalIndex.clear();cache.areaIndex.clear();resetLru(cache);cache.portalCaches=portals;cache.areaCaches=areas
+  clearRouteEntries(cache);cache.portalIndex.clear();cache.areaIndex.clear();resetLru(cache);cache.portalCaches=portals;cache.areaCaches=areas
   for each value in portals key=tableKey(value.cluster,value.goalAreaNum,value.travelFlags);cache.portalIndex.set(key,value);lru.reserve(cache.portalLru,key) end for
   for each value in areas key=tableKey(value.cluster,value.goalAreaNum,value.travelFlags);cache.areaIndex.set(key,value);lru.reserve(cache.areaLru,key) end for
   cache.generation=generation;cache.serial=serial;return true

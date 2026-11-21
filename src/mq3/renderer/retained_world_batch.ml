@@ -18,7 +18,7 @@ function blank(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags)
   return Cache(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags,void,void,[],void,void,[],void,void,void,false,"",0,0,0)
 end function
 function unsupported(material)
-  return material!=void and (material.sort==1.0 or batches.hasDeform(material.deforms,"autosprite") or batches.hasDeform(material.deforms,"autosprite2"))
+  return material!=void and (batches.hasDeform(material.deforms,"autosprite") or batches.hasDeform(material.deforms,"autosprite2"))
 end function
 function stageView(full,commands)
   count=full.commands.count;vertexCache=void
@@ -74,7 +74,9 @@ function create(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags)
   lookup=batches.materialTable(data,catalog);faceCount=len(world.trianglesByFace);state.fallbackFaces=array(faceCount,false)
   if faceCount>0 then for face=0 to faceCount-1
     texture=world.faceTextureIndexes[face]
-    if texture>=0 and texture<len(lookup) then state.fallbackFaces[face]=unsupported(lookup[texture]) end if
+    // Selecting complete faces keeps billboard pairs intact. Keep the legacy
+    // order for an odd face whose triangles could pair across face boundaries.
+    if len(world.trianglesByFace[face])%2!=0 and texture>=0 and texture<len(lookup) then state.fallbackFaces[face]=unsupported(lookup[texture]) end if
   end for end if
   state.base=makeStream(state,data,full.base,void,0,lookup);if state.base is error then return state.base end if
   state.streams=array(len(full.passes),void)

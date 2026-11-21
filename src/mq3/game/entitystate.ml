@@ -83,44 +83,44 @@ function load(data,offset)
 end function
 
 function words(state)
-  result = []
-  result = result+[n.u32(state.number)]
-  result = result+[n.u32(state.eType)]
-  result = result+[n.u32(state.eFlags)]
-  result = result+[n.u32(state.pos.trType)]
-  result = result+[n.u32(state.pos.trTime)]
-  result = result+[n.u32(state.pos.trDuration)]
-  result = result+[n.floatBits(state.pos.trBase[0]),n.floatBits(state.pos.trBase[1]),n.floatBits(state.pos.trBase[2])]
-  result = result+[n.floatBits(state.pos.trDelta[0]),n.floatBits(state.pos.trDelta[1]),n.floatBits(state.pos.trDelta[2])]
-  result = result+[n.u32(state.apos.trType)]
-  result = result+[n.u32(state.apos.trTime)]
-  result = result+[n.u32(state.apos.trDuration)]
-  result = result+[n.floatBits(state.apos.trBase[0]),n.floatBits(state.apos.trBase[1]),n.floatBits(state.apos.trBase[2])]
-  result = result+[n.floatBits(state.apos.trDelta[0]),n.floatBits(state.apos.trDelta[1]),n.floatBits(state.apos.trDelta[2])]
-  result = result+[n.u32(state.time)]
-  result = result+[n.u32(state.time2)]
-  result = result+[n.floatBits(state.origin[0]),n.floatBits(state.origin[1]),n.floatBits(state.origin[2])]
-  result = result+[n.floatBits(state.origin2[0]),n.floatBits(state.origin2[1]),n.floatBits(state.origin2[2])]
-  result = result+[n.floatBits(state.angles[0]),n.floatBits(state.angles[1]),n.floatBits(state.angles[2])]
-  result = result+[n.floatBits(state.angles2[0]),n.floatBits(state.angles2[1]),n.floatBits(state.angles2[2])]
-  result = result+[n.u32(state.otherEntityNum)]
-  result = result+[n.u32(state.otherEntityNum2)]
-  result = result+[n.u32(state.groundEntityNum)]
-  result = result+[n.u32(state.constantLight)]
-  result = result+[n.u32(state.loopSound)]
-  result = result+[n.u32(state.modelindex)]
-  result = result+[n.u32(state.modelindex2)]
-  result = result+[n.u32(state.clientNum)]
-  result = result+[n.u32(state.frame)]
-  result = result+[n.u32(state.solid)]
-  result = result+[n.u32(state.event)]
-  result = result+[n.u32(state.eventParm)]
-  result = result+[n.u32(state.powerups)]
-  result = result+[n.u32(state.weapon)]
-  result = result+[n.u32(state.legsAnim)]
-  result = result+[n.u32(state.torsoAnim)]
-  result = result+[n.u32(state.generic1)]
-  return result
+  return [
+    n.u32(state.number),
+    n.u32(state.eType),
+    n.u32(state.eFlags),
+    n.u32(state.pos.trType),
+    n.u32(state.pos.trTime),
+    n.u32(state.pos.trDuration),
+    n.floatBits(state.pos.trBase[0]),n.floatBits(state.pos.trBase[1]),n.floatBits(state.pos.trBase[2]),
+    n.floatBits(state.pos.trDelta[0]),n.floatBits(state.pos.trDelta[1]),n.floatBits(state.pos.trDelta[2]),
+    n.u32(state.apos.trType),
+    n.u32(state.apos.trTime),
+    n.u32(state.apos.trDuration),
+    n.floatBits(state.apos.trBase[0]),n.floatBits(state.apos.trBase[1]),n.floatBits(state.apos.trBase[2]),
+    n.floatBits(state.apos.trDelta[0]),n.floatBits(state.apos.trDelta[1]),n.floatBits(state.apos.trDelta[2]),
+    n.u32(state.time),
+    n.u32(state.time2),
+    n.floatBits(state.origin[0]),n.floatBits(state.origin[1]),n.floatBits(state.origin[2]),
+    n.floatBits(state.origin2[0]),n.floatBits(state.origin2[1]),n.floatBits(state.origin2[2]),
+    n.floatBits(state.angles[0]),n.floatBits(state.angles[1]),n.floatBits(state.angles[2]),
+    n.floatBits(state.angles2[0]),n.floatBits(state.angles2[1]),n.floatBits(state.angles2[2]),
+    n.u32(state.otherEntityNum),
+    n.u32(state.otherEntityNum2),
+    n.u32(state.groundEntityNum),
+    n.u32(state.constantLight),
+    n.u32(state.loopSound),
+    n.u32(state.modelindex),
+    n.u32(state.modelindex2),
+    n.u32(state.clientNum),
+    n.u32(state.frame),
+    n.u32(state.solid),
+    n.u32(state.event),
+    n.u32(state.eventParm),
+    n.u32(state.powerups),
+    n.u32(state.weapon),
+    n.u32(state.legsAnim),
+    n.u32(state.torsoAnim),
+    n.u32(state.generic1)
+  ]
 end function
 
 function copy(source)

@@ -22,7 +22,8 @@ struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriang
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
 function isSky(triangle,flags) return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
-function resolvedLightmapSlot(triangle) slot=triangle.lightmapIndex;if slot<0 or slot>=64 then return -1 end if;return slot end function
+const MAX_BSP_LIGHTMAPS=256
+function resolvedLightmapSlot(triangle) slot=triangle.lightmapIndex;if slot<0 or slot>=MAX_BSP_LIGHTMAPS then return -1 end if;return slot end function
 function appendResolved(commands,triangle,baseSlot,useLightmap)
   va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2];lightmapSlot=-1;if useLightmap then lightmapSlot=resolvedLightmapSlot(triangle) end if
   colorA=va.color;colorB=vb.color;colorC=vc.color;if lightmapSlot>=0 then colorA=[255,255,255,255];colorB=colorA;colorC=colorA end if
@@ -54,25 +55,27 @@ function sortedMaterials(values)
   result=array(len(values),void);if len(values)>0 then copyArray(result,0,values,0,len(values));sorting.sortBy(result,materialBefore) end if
   return result
 end function
-function uploadMaterials(catalog)
+function uploadMaterialsFrom(catalog,firstSlot)
   if catalog==void or catalog.materials==void then return fail("missing material catalog") end if
-  uploaded=[]
+  uploaded=array(window.NATIVE_TEXTURE_SLOTS,false);count=0
   for each material in catalog.materials
     for each stage in material.stages
       if len(stage.slots)>0 then
       for index=0 to len(stage.slots)-1
         slot=stage.slots[index]
-        if not contains(uploaded,slot) then
+        if slot>=window.NATIVE_TEXTURE_SLOTS then return fail("material stage exceeds native texture range") end if
+        if slot>=firstSlot and not uploaded[slot] then
           image=stage.images[index]
-          if image==void or not window.uploadTextureMipmapped(slot,image.pixels,image.width,image.height,not material.noMipMaps) then return fail("could not upload material stage") end if
-          uploaded=uploaded+[slot]
+          if image==void or not window.uploadMaterialTexture(slot,image.pixels,image.width,image.height,not material.noMipMaps,not material.noPicMip) then return fail("could not upload material stage") end if
+          uploaded[slot]=true;count=count+1
         end if
       end for
       end if
     end for
   end for
-  return len(uploaded)
+  return count
 end function
+function uploadMaterials(catalog) return uploadMaterialsFrom(catalog,0) end function
 function releaseMaterials(catalog)
   if catalog==void or catalog.materials==void then return 0 end if
   released=[]
@@ -164,9 +167,10 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
   end for
   passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;polygonOffsetCount=0;emitted=base.count
   for each material in sortedMaterials(catalog.materials)
-    primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].depthWrite end if
+    if len(material.stages)==0 then continue end if
+    primaryWrites=material.stages[0].depthWrite
     for stageIndex=0 to len(material.stages)-1
-      stage=material.stages[stageIndex];if not dynamicMaterialStage(material,stage) then continue end if
+      stage=material.stages[stageIndex];if stageIndex==0 and not dynamicMaterialStage(material,stage) then continue end if
       triangles=[];if material.textureIndex>=0 and material.textureIndex<len(groups) then triangles=groups[material.textureIndex] end if
       pass=buildStagePassTriangles(triangles,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites));if pass is error then return pass end if
       if pass!=void then
@@ -224,7 +228,11 @@ function refreshMaterials(batch,renderData,catalog,skyTextureFlags)
   for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(counts) and not isSky(triangle,skyTextureFlags) then counts[triangle.textureIndex]=counts[triangle.textureIndex]+1 end if end for
   expectedPasses=0
   for each material in catalog.materials
-    if material.textureIndex>=0 and material.textureIndex<len(counts) and counts[material.textureIndex]>0 then for each stage in material.stages if dynamicMaterialStage(material,stage) then expectedPasses=expectedPasses+1 end if end for end if
+    if material.textureIndex>=0 and material.textureIndex<len(counts) and counts[material.textureIndex]>0 and len(material.stages)>0 then
+      for stageIndex=0 to len(material.stages)-1
+        if stageIndex>0 or dynamicMaterialStage(material,material.stages[stageIndex]) then expectedPasses=expectedPasses+1 end if
+      end for
+    end if
   end for
   if expectedPasses!=len(batch.passes) then return false end if
   oldBaseCount=batch.base.count;batch.base=window.resetTriangleBatch(batch.base);skippedSky=0;drawable=0

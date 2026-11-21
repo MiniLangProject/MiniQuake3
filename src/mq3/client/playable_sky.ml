@@ -69,12 +69,12 @@ end function
 
 function loadIndexed(archive,index,shaderName,firstTextureSlot,maxTextureSlots)
   if archive==void or index==void then return fail("PK3 archive and shader index are required") end if
-  if firstTextureSlot<0 or firstTextureSlot>=512 or maxTextureSlots<1 then return fail("insufficient native texture slots") end if
+  if firstTextureSlot<0 or firstTextureSlot>=window.NATIVE_TEXTURE_SLOTS or maxTextureSlots<1 then return fail("insufficient native texture slots") end if
   parsed=shaderParser.parseIndexed(index,shaderName);if parsed is error then return parsed end if
   if parsed==void or not hasSurfaceParm(parsed,"sky") then return fail("shader is not a retail sky: "+shaderName) end if
   layers=[]
   for each stage in parsed.stages
-    if len(layers)>=maxTextureSlots or firstTextureSlot+len(layers)>=512 then break end if
+    if len(layers)>=maxTextureSlots or firstTextureSlot+len(layers)>=window.NATIVE_TEXTURE_SLOTS then break end if
     layer=layerFromStage(archive,stage,firstTextureSlot+len(layers));if layer!=void then layers=layers+[layer] end if
   end for
   if len(layers)==0 then return fail("sky has no supported retail cloud stages: "+shaderName) end if

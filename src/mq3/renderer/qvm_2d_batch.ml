@@ -210,7 +210,7 @@ end function
 
 function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps,scripts)
   if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>512 then return fail("invalid native texture slot range") end if
+  if firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>window.NATIVE_TEXTURE_SLOTS then return fail("invalid native texture slot range") end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
   revision=0;if shaderRemaps!=void then revision=shaderRemaps.revision end if
@@ -240,11 +240,17 @@ function build(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlo
   return buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps,scripts)
 end function
 
-function upload(catalog)
+function uploadFrom(catalog,first)
   if catalog==void then return fail("catalog is required") end if
-  for each texture in catalog.textures if not window.uploadTextureMipmapped(texture.slot,texture.image.pixels,texture.image.width,texture.image.height,not texture.noMipMaps) then release(catalog);return fail("could not upload "+texture.imageName) end if end for
+  if first<0 or first>len(catalog.textures) then return fail("invalid upload cursor") end if
+  if first==len(catalog.textures) then return first end if
+  for index=first to len(catalog.textures)-1
+    texture=catalog.textures[index]
+    if not window.uploadTextureMipmapped(texture.slot,texture.image.pixels,texture.image.width,texture.image.height,not texture.noMipMaps) then return fail("could not upload "+texture.imageName) end if
+  end for
   return len(catalog.textures)
 end function
+function upload(catalog) return uploadFrom(catalog,0) end function
 function release(catalog) if catalog!=void then for each texture in catalog.textures window.releaseTexture(texture.slot) end for end if;return void end function
 
 function updatePass(pass,nowMilliseconds)

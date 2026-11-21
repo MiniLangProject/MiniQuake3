@@ -58,32 +58,53 @@ function create()
 end function
 
 function copy(source)
-  result = create()
-  result.commandTime = source.commandTime; result.pm_type = source.pm_type; result.bobCycle = source.bobCycle
-  result.pm_flags = source.pm_flags; result.pm_time = source.pm_time
-  result.origin = [source.origin[0],source.origin[1],source.origin[2]]
-  result.velocity = [source.velocity[0],source.velocity[1],source.velocity[2]]
-  result.weaponTime = source.weaponTime; result.gravity = source.gravity; result.speed = source.speed
-  result.delta_angles = [source.delta_angles[0],source.delta_angles[1],source.delta_angles[2]]
-  result.groundEntityNum = source.groundEntityNum; result.legsTimer = source.legsTimer; result.legsAnim = source.legsAnim
-  result.torsoTimer = source.torsoTimer; result.torsoAnim = source.torsoAnim; result.movementDir = source.movementDir
-  result.grapplePoint = [source.grapplePoint[0],source.grapplePoint[1],source.grapplePoint[2]]
-  result.eFlags = source.eFlags; result.eventSequence = source.eventSequence
-  result.events = [source.events[0],source.events[1]]; result.eventParms = [source.eventParms[0],source.eventParms[1]]
-  result.externalEvent = source.externalEvent; result.externalEventParm = source.externalEventParm; result.externalEventTime = source.externalEventTime
-  result.clientNum = source.clientNum; result.weapon = source.weapon; result.weaponstate = source.weaponstate
-  result.viewangles = [source.viewangles[0],source.viewangles[1],source.viewangles[2]]
-  result.viewheight = source.viewheight; result.damageEvent = source.damageEvent; result.damageYaw = source.damageYaw
-  result.damagePitch = source.damagePitch; result.damageCount = source.damageCount
-  result.stats = []; result.persistant = []; result.powerups = []; result.ammo = []
-  for index = 0 to 15
-    result.stats = result.stats+[source.stats[index]]; result.persistant = result.persistant+[source.persistant[index]]
-    result.powerups = result.powerups+[source.powerups[index]]; result.ammo = result.ammo+[source.ammo[index]]
-  end for
-  result.generic1 = source.generic1; result.loopSound = source.loopSound; result.jumppad_ent = source.jumppad_ent
-  result.ping = source.ping; result.pmove_framecount = source.pmove_framecount; result.jumppad_frame = source.jumppad_frame
-  result.entityEventSequence = source.entityEventSequence
-  return result
+  return PlayerState(
+    source.commandTime,
+    source.pm_type,
+    source.bobCycle,
+    source.pm_flags,
+    source.pm_time,
+    [source.origin[0],source.origin[1],source.origin[2]],
+    [source.velocity[0],source.velocity[1],source.velocity[2]],
+    source.weaponTime,
+    source.gravity,
+    source.speed,
+    [source.delta_angles[0],source.delta_angles[1],source.delta_angles[2]],
+    source.groundEntityNum,
+    source.legsTimer,
+    source.legsAnim,
+    source.torsoTimer,
+    source.torsoAnim,
+    source.movementDir,
+    [source.grapplePoint[0],source.grapplePoint[1],source.grapplePoint[2]],
+    source.eFlags,
+    source.eventSequence,
+    [source.events[0],source.events[1]],
+    [source.eventParms[0],source.eventParms[1]],
+    source.externalEvent,
+    source.externalEventParm,
+    source.externalEventTime,
+    source.clientNum,
+    source.weapon,
+    source.weaponstate,
+    [source.viewangles[0],source.viewangles[1],source.viewangles[2]],
+    source.viewheight,
+    source.damageEvent,
+    source.damageYaw,
+    source.damagePitch,
+    source.damageCount,
+    [source.stats[0],source.stats[1],source.stats[2],source.stats[3],source.stats[4],source.stats[5],source.stats[6],source.stats[7],source.stats[8],source.stats[9],source.stats[10],source.stats[11],source.stats[12],source.stats[13],source.stats[14],source.stats[15]],
+    [source.persistant[0],source.persistant[1],source.persistant[2],source.persistant[3],source.persistant[4],source.persistant[5],source.persistant[6],source.persistant[7],source.persistant[8],source.persistant[9],source.persistant[10],source.persistant[11],source.persistant[12],source.persistant[13],source.persistant[14],source.persistant[15]],
+    [source.powerups[0],source.powerups[1],source.powerups[2],source.powerups[3],source.powerups[4],source.powerups[5],source.powerups[6],source.powerups[7],source.powerups[8],source.powerups[9],source.powerups[10],source.powerups[11],source.powerups[12],source.powerups[13],source.powerups[14],source.powerups[15]],
+    [source.ammo[0],source.ammo[1],source.ammo[2],source.ammo[3],source.ammo[4],source.ammo[5],source.ammo[6],source.ammo[7],source.ammo[8],source.ammo[9],source.ammo[10],source.ammo[11],source.ammo[12],source.ammo[13],source.ammo[14],source.ammo[15]],
+    source.generic1,
+    source.loopSound,
+    source.jumppad_ent,
+    source.ping,
+    source.pmove_framecount,
+    source.jumppad_frame,
+    source.entityEventSequence
+  )
 end function
 
 function load(data, offset)
@@ -138,51 +159,51 @@ function load(data, offset)
 end function
 
 function words(ps)
-  result = []
-  result = result+[n.u32(ps.commandTime)]
-  result = result+[n.u32(ps.pm_type)]
-  result = result+[n.u32(ps.bobCycle)]
-  result = result+[n.u32(ps.pm_flags)]
-  result = result+[n.u32(ps.pm_time)]
-  result = result+[n.floatBits(ps.origin[0]),n.floatBits(ps.origin[1]),n.floatBits(ps.origin[2])]
-  result = result+[n.floatBits(ps.velocity[0]),n.floatBits(ps.velocity[1]),n.floatBits(ps.velocity[2])]
-  result = result+[n.u32(ps.weaponTime)]
-  result = result+[n.u32(ps.gravity)]
-  result = result+[n.u32(ps.speed)]
-  result = result+[n.u32(ps.delta_angles[0]),n.u32(ps.delta_angles[1]),n.u32(ps.delta_angles[2])]
-  result = result+[n.u32(ps.groundEntityNum)]
-  result = result+[n.u32(ps.legsTimer)]
-  result = result+[n.u32(ps.legsAnim)]
-  result = result+[n.u32(ps.torsoTimer)]
-  result = result+[n.u32(ps.torsoAnim)]
-  result = result+[n.u32(ps.movementDir)]
-  result = result+[n.floatBits(ps.grapplePoint[0]),n.floatBits(ps.grapplePoint[1]),n.floatBits(ps.grapplePoint[2])]
-  result = result+[n.u32(ps.eFlags)]
-  result = result+[n.u32(ps.eventSequence)]
-  result = result+[n.u32(ps.events[0]),n.u32(ps.events[1])]
-  result = result+[n.u32(ps.eventParms[0]),n.u32(ps.eventParms[1])]
-  result = result+[n.u32(ps.externalEvent)]
-  result = result+[n.u32(ps.externalEventParm)]
-  result = result+[n.u32(ps.externalEventTime)]
-  result = result+[n.u32(ps.clientNum)]
-  result = result+[n.u32(ps.weapon)]
-  result = result+[n.u32(ps.weaponstate)]
-  result = result+[n.floatBits(ps.viewangles[0]),n.floatBits(ps.viewangles[1]),n.floatBits(ps.viewangles[2])]
-  result = result+[n.u32(ps.viewheight)]
-  result = result+[n.u32(ps.damageEvent)]
-  result = result+[n.u32(ps.damageYaw)]
-  result = result+[n.u32(ps.damagePitch)]
-  result = result+[n.u32(ps.damageCount)]
-  result = result+[n.u32(ps.stats[0]),n.u32(ps.stats[1]),n.u32(ps.stats[2]),n.u32(ps.stats[3]),n.u32(ps.stats[4]),n.u32(ps.stats[5]),n.u32(ps.stats[6]),n.u32(ps.stats[7]),n.u32(ps.stats[8]),n.u32(ps.stats[9]),n.u32(ps.stats[10]),n.u32(ps.stats[11]),n.u32(ps.stats[12]),n.u32(ps.stats[13]),n.u32(ps.stats[14]),n.u32(ps.stats[15])]
-  result = result+[n.u32(ps.persistant[0]),n.u32(ps.persistant[1]),n.u32(ps.persistant[2]),n.u32(ps.persistant[3]),n.u32(ps.persistant[4]),n.u32(ps.persistant[5]),n.u32(ps.persistant[6]),n.u32(ps.persistant[7]),n.u32(ps.persistant[8]),n.u32(ps.persistant[9]),n.u32(ps.persistant[10]),n.u32(ps.persistant[11]),n.u32(ps.persistant[12]),n.u32(ps.persistant[13]),n.u32(ps.persistant[14]),n.u32(ps.persistant[15])]
-  result = result+[n.u32(ps.powerups[0]),n.u32(ps.powerups[1]),n.u32(ps.powerups[2]),n.u32(ps.powerups[3]),n.u32(ps.powerups[4]),n.u32(ps.powerups[5]),n.u32(ps.powerups[6]),n.u32(ps.powerups[7]),n.u32(ps.powerups[8]),n.u32(ps.powerups[9]),n.u32(ps.powerups[10]),n.u32(ps.powerups[11]),n.u32(ps.powerups[12]),n.u32(ps.powerups[13]),n.u32(ps.powerups[14]),n.u32(ps.powerups[15])]
-  result = result+[n.u32(ps.ammo[0]),n.u32(ps.ammo[1]),n.u32(ps.ammo[2]),n.u32(ps.ammo[3]),n.u32(ps.ammo[4]),n.u32(ps.ammo[5]),n.u32(ps.ammo[6]),n.u32(ps.ammo[7]),n.u32(ps.ammo[8]),n.u32(ps.ammo[9]),n.u32(ps.ammo[10]),n.u32(ps.ammo[11]),n.u32(ps.ammo[12]),n.u32(ps.ammo[13]),n.u32(ps.ammo[14]),n.u32(ps.ammo[15])]
-  result = result+[n.u32(ps.generic1)]
-  result = result+[n.u32(ps.loopSound)]
-  result = result+[n.u32(ps.jumppad_ent)]
-  result = result+[n.u32(ps.ping)]
-  result = result+[n.u32(ps.pmove_framecount)]
-  result = result+[n.u32(ps.jumppad_frame)]
-  result = result+[n.u32(ps.entityEventSequence)]
-  return result
+  return [
+    n.u32(ps.commandTime),
+    n.u32(ps.pm_type),
+    n.u32(ps.bobCycle),
+    n.u32(ps.pm_flags),
+    n.u32(ps.pm_time),
+    n.floatBits(ps.origin[0]),n.floatBits(ps.origin[1]),n.floatBits(ps.origin[2]),
+    n.floatBits(ps.velocity[0]),n.floatBits(ps.velocity[1]),n.floatBits(ps.velocity[2]),
+    n.u32(ps.weaponTime),
+    n.u32(ps.gravity),
+    n.u32(ps.speed),
+    n.u32(ps.delta_angles[0]),n.u32(ps.delta_angles[1]),n.u32(ps.delta_angles[2]),
+    n.u32(ps.groundEntityNum),
+    n.u32(ps.legsTimer),
+    n.u32(ps.legsAnim),
+    n.u32(ps.torsoTimer),
+    n.u32(ps.torsoAnim),
+    n.u32(ps.movementDir),
+    n.floatBits(ps.grapplePoint[0]),n.floatBits(ps.grapplePoint[1]),n.floatBits(ps.grapplePoint[2]),
+    n.u32(ps.eFlags),
+    n.u32(ps.eventSequence),
+    n.u32(ps.events[0]),n.u32(ps.events[1]),
+    n.u32(ps.eventParms[0]),n.u32(ps.eventParms[1]),
+    n.u32(ps.externalEvent),
+    n.u32(ps.externalEventParm),
+    n.u32(ps.externalEventTime),
+    n.u32(ps.clientNum),
+    n.u32(ps.weapon),
+    n.u32(ps.weaponstate),
+    n.floatBits(ps.viewangles[0]),n.floatBits(ps.viewangles[1]),n.floatBits(ps.viewangles[2]),
+    n.u32(ps.viewheight),
+    n.u32(ps.damageEvent),
+    n.u32(ps.damageYaw),
+    n.u32(ps.damagePitch),
+    n.u32(ps.damageCount),
+    n.u32(ps.stats[0]),n.u32(ps.stats[1]),n.u32(ps.stats[2]),n.u32(ps.stats[3]),n.u32(ps.stats[4]),n.u32(ps.stats[5]),n.u32(ps.stats[6]),n.u32(ps.stats[7]),n.u32(ps.stats[8]),n.u32(ps.stats[9]),n.u32(ps.stats[10]),n.u32(ps.stats[11]),n.u32(ps.stats[12]),n.u32(ps.stats[13]),n.u32(ps.stats[14]),n.u32(ps.stats[15]),
+    n.u32(ps.persistant[0]),n.u32(ps.persistant[1]),n.u32(ps.persistant[2]),n.u32(ps.persistant[3]),n.u32(ps.persistant[4]),n.u32(ps.persistant[5]),n.u32(ps.persistant[6]),n.u32(ps.persistant[7]),n.u32(ps.persistant[8]),n.u32(ps.persistant[9]),n.u32(ps.persistant[10]),n.u32(ps.persistant[11]),n.u32(ps.persistant[12]),n.u32(ps.persistant[13]),n.u32(ps.persistant[14]),n.u32(ps.persistant[15]),
+    n.u32(ps.powerups[0]),n.u32(ps.powerups[1]),n.u32(ps.powerups[2]),n.u32(ps.powerups[3]),n.u32(ps.powerups[4]),n.u32(ps.powerups[5]),n.u32(ps.powerups[6]),n.u32(ps.powerups[7]),n.u32(ps.powerups[8]),n.u32(ps.powerups[9]),n.u32(ps.powerups[10]),n.u32(ps.powerups[11]),n.u32(ps.powerups[12]),n.u32(ps.powerups[13]),n.u32(ps.powerups[14]),n.u32(ps.powerups[15]),
+    n.u32(ps.ammo[0]),n.u32(ps.ammo[1]),n.u32(ps.ammo[2]),n.u32(ps.ammo[3]),n.u32(ps.ammo[4]),n.u32(ps.ammo[5]),n.u32(ps.ammo[6]),n.u32(ps.ammo[7]),n.u32(ps.ammo[8]),n.u32(ps.ammo[9]),n.u32(ps.ammo[10]),n.u32(ps.ammo[11]),n.u32(ps.ammo[12]),n.u32(ps.ammo[13]),n.u32(ps.ammo[14]),n.u32(ps.ammo[15]),
+    n.u32(ps.generic1),
+    n.u32(ps.loopSound),
+    n.u32(ps.jumppad_ent),
+    n.u32(ps.ping),
+    n.u32(ps.pmove_framecount),
+    n.u32(ps.jumppad_frame),
+    n.u32(ps.entityEventSequence)
+  ]
 end function

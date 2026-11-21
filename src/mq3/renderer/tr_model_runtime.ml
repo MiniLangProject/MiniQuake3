@@ -53,12 +53,7 @@ function R_ModelInit(state)
   state.models=[];state.numModels=0;value=R_AllocModel(state);if value==void then return fail("could not allocate null model") end if;value.type=MOD_BAD;return true
 end function
 
-function normalizeSurfaceNames(value)
-  for each surface in value.surfaces
-    name=strings.toLowerAscii(surface.name);raw=bytes(name);if len(raw)>2 and raw[len(raw)-2]==95 then name=decode(slice(raw,0,len(raw)-2)) end if;surface.name=name
-  end for
-  return value
-end function
+function normalizeSurfaceNames(value) return md3.normalizeSurfaceNames(value) end function
 function R_LoadMD3(model,lod,data,name)
   if model==void or lod<0 or lod>=MD3_MAX_LODS then return fail("invalid MD3 destination") end if
   value=md3.load(data);if value is error then return value end if

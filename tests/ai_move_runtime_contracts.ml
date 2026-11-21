@@ -50,7 +50,13 @@ function main(args)
   count=count+require(movement.reachabilityArea(runtime,[1.0,0.0,0.0],17)==1,"reachability falls back to fuzzy point without host ground trace")
   service.groundTraceFn=moveGround;count=count+require(movement.reachabilityArea(runtime,[1.0,0.0,0.0],17)==1,"world ground trace returns fuzzy point area")
   host.groundEntity=7;service.entityModelFn=moveEntityModel;service.modelTypeFn=moveModelType;service.modelReachabilityFn=moveModelReachability
-  count=count+require(movement.reachabilityArea(runtime,[1.0,0.0,0.0],17)==3,"platform ground resolves its model reachability destination")
+  platformArea=movement.reachabilityArea(runtime,[1.0,0.0,0.0],17)
+  previousTravelType=router.reaches[2].travelType;previousFace=router.reaches[2].faceNum
+  router.reaches[2].travelType=aasRouting.TRAVEL_ELEVATOR;router.reaches[2].faceNum=9
+  onPlatform=movement.checkStandingOnMover(runtime,state,movement.emptyMoveResult())
+  count=count+require(platformArea==3 and not onPlatform.blocked and state.lastReachNum==2,"standing on a platform selects its model reachability")
+  router.reaches[2].travelType=previousTravelType;router.reaches[2].faceNum=previousFace
+  host.groundEntity=movement.ENTITYNUM_WORLD
 
   goal=resources.Goal([30.0,0.0,0.0],4,[-1.0,-1.0,-1.0],[1.0,1.0,1.0],0,9,0,0);state.origin=[1.0,0.0,0.0];state.lastReachNum=1;state.lastAreaNum=1;state.lastGoalAreaNum=4
   view=movement.movementViewTarget(runtime,handle,goal,aasRouting.TFL_DEFAULT,5.0,[99.0,99.0,99.0]);count=count+require(view.found and view.target==[4.0,0.0,0.0],"view lookahead interpolates along first reachability")

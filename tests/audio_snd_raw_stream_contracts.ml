@@ -20,7 +20,7 @@ function main(args)
   reset=raw.create(22050);reset.rawEnd=2;raw.setSoundTime(reset,5);raw.enqueue(reset,1,22050,1,1,bytes([255]),1.0);count=count+require(reset.rawEnd==6 and reset.left[5]==8323072,"late stream starts at current sound time")
   reset.rawEnd=raw.MAX_RAW_SAMPLES-1;reset.soundTime=0;raw.enqueue(reset,2,22050,2,1,pcm16([7,9]),1.0);count=count+require(reset.left[raw.MAX_RAW_SAMPLES-1]==1792 and reset.left[0]==2304,"raw ring wraps at 16384 frames")
 
-  toneData=pcm16([1000,1000]);tone=wav.Sound(22050,1,16,2,44100,toneData);catalog=assets.Catalog(void,[assets.Clip(1,"tone.wav",tone,void)],[],1)
+  toneData=pcm16([1000,1000]);tone=wav.Sound(22050,1,16,2,44100,toneData);clip=assets.Clip(1,"tone.wav",tone,void);catalog=assets.Catalog(void,[clip],[],1,1,[void,clip])
   mixed=playback.create(catalog,22050,2);audio=Audio(pcm16([100,100,200,200]),2,22050,2,16,4);count=count+require(playback.queueRaw(mixed,audio,1.0)==2,"cinematic PCM enters playback raw ring")
   playback.apply(mixed,[command("local",1)]);chunk=playback.render(mixed)
   count=count+require(read16(chunk.samples,0)==495 and read16(chunk.samples,2)==495 and read16(chunk.samples,4)==595,"raw stream and QVM one-shot share integer paintbuffer")

@@ -3,6 +3,7 @@
 package mq3.client.original_ui_session
 
 import mq3.client.keycodes as q3keys
+import mq3.platform.playable_window as window
 
 const KEYCATCH_UI=2
 const KEYCATCH_CONSOLE=1
@@ -132,10 +133,44 @@ function frame(state,now)
   mouseEvents=0;delta=state.mouseDeltaFn(state.inputContext)
   if delta==void or len(delta)!=2 then return fail("mouse callback must return two components") end if
   if acceptsInput(state) and (delta[0]!=0 or delta[1]!=0) then sent=state.services.mouseEventFn(state.services.context,delta[0],delta[1]);if sent is error then return sent end if;mouseEvents=1 end if
+  return finishOriginalUiFrame(state,now,menuOpened,keyEvents,charEvents,mouseEvents)
+end function
+
+function finishOriginalUiFrame(state,now,menuOpened,keyEvents,charEvents,mouseEvents)
   refreshed=false;commandStart=state.services.commandCountFn(state.services.context)
   if active(state) then
     value=state.services.refreshFn(state.services.context,now);if value is error then return value end if;refreshed=true;state.frameCount=state.frameCount+1
   end if
   count=state.services.commandCountFn(state.services.context)
   return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)
+end function
+
+// Win32 supplies key transitions, text and pointer deltas in message order.
+// Keep physical keys distinct from WM_CHAR, as in CL_KeyEvent/CL_CharEvent.
+function frameQueued(state,now,events)
+  if state==void or typeof(now)!="int" or now<0 then return fail("valid state and frame time are required") end if
+  keyEvents=0;charEvents=0;mouseEvents=0;menuOpened=false
+  for each event in events
+    if event.type==window.INPUT_KEY then
+      key=event.value;down=event.value2!=0
+      if state.services.stateEventFn!=void then
+        observed=state.services.stateEventFn(state.services.context,key,down);if observed is error then return observed end if
+      end if
+      if acceptsInput(state) then
+        sent=state.services.keyEventFn(state.services.context,key,down);if sent is error then return sent end if
+        keyEvents=keyEvents+1
+      else if key==27 and down and not active(state) then
+        opened=openMain(state);if opened is error then return opened end if;menuOpened=true
+      end if
+    else if event.type==window.INPUT_CHAR then
+      if event.value!=96 and event.value!=126 and acceptsInput(state) then
+        sent=state.services.keyEventFn(state.services.context,event.value|K_CHAR_FLAG,true);if sent is error then return sent end if
+        charEvents=charEvents+1
+      end if
+    else if event.type==window.INPUT_MOUSE and acceptsInput(state) then
+      sent=state.services.mouseEventFn(state.services.context,event.value,event.value2);if sent is error then return sent end if
+      mouseEvents=mouseEvents+1
+    end if
+  end for
+  return finishOriginalUiFrame(state,now,menuOpened,keyEvents,charEvents,mouseEvents)
 end function

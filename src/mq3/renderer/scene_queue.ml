@@ -54,11 +54,12 @@ function addPolys(state,hShader,numVerts,vertices,numPolys)
   if not state.registered then return 0 end if
   if hShader==0 then diagnostic(state,"NULL poly shader");return 0 end if
   if numVerts<=0 or numPolys<0 or len(vertices)<numVerts*numPolys then return error(3471,"scene queue: invalid polygon input") end if
+  if numPolys==0 then return 0 end if
   added=0
   for polyIndex=0 to numPolys-1
     if state.numPolyVerts+numVerts>state.maxPolyVerts or len(state.polys)>=state.maxPolys then diagnostic(state,"poly capacity reached");return added end if
-    copied=[]
-    for index=0 to numVerts-1 copied=copied+[vertex(vertices[polyIndex*numVerts+index])] end for
+    copied=array(numVerts,void)
+    for index=0 to numVerts-1 copied[index]=vertex(vertices[polyIndex*numVerts+index]) end for
     if state.hardwareType==GLHW_RAGEPRO then copied[0].modulate=[255,255,255,255] end if
     fog=fogForVertices(state,copied);state.polys=state.polys+[Poly(hShader,copied,fog)];state.numPolyVerts=state.numPolyVerts+numVerts;added=added+1
   end for
@@ -78,8 +79,7 @@ function payloadVector(payload,offset)
 end function
 function decodeEntity(value)
   if value==void or typeof(value.payload)!="bytes" or len(value.payload)!=140 then return error(3471,"scene queue: invalid refEntity payload") end if
-  data=value.payload;axes=[]
-  for row=0 to 2 axes=axes+[payloadVector(data,28+row*12)] end for
+  data=value.payload;axes=[payloadVector(data,28),payloadVector(data,40),payloadVector(data,52)]
   return DecodedRefEntity(value.reType,n.readI32(data,4),n.readI32(data,8),payloadVector(data,12),n.bitsFloat(n.readI32(data,24)),axes,n.readI32(data,64)!=0,payloadVector(data,68),n.readI32(data,80),payloadVector(data,84),n.readI32(data,96),n.bitsFloat(n.readI32(data,100)),n.readI32(data,104),n.readI32(data,108),n.readI32(data,112),[data[116],data[117],data[118],data[119]],[n.bitsFloat(n.readI32(data,120)),n.bitsFloat(n.readI32(data,124))],n.bitsFloat(n.readI32(data,128)),n.bitsFloat(n.readI32(data,132)),n.bitsFloat(n.readI32(data,136)))
 end function
 

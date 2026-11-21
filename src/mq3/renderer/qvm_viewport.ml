@@ -31,9 +31,10 @@ function prepare(refdef,sourceWidth,sourceHeight,targetWidth,targetHeight)
   if right-left>2147483647 or bottom-top>2147483647 then return fail("scaled viewport dimensions exceed native integer range") end if
   area=window.viewport(left,top,right-left,bottom-top);if area is error then return area end if
   focal=viewer.focalLength(area.width,refdef.fovX);if focal is error then return focal end if
+  verticalFocal=viewer.focalLength(area.height,refdef.fovY);if verticalFocal is error then return verticalFocal end if
   // refdef_t stores forward/LEFT/up (AnglesToAxis); the projection expects
   // screen-right. Passing left mirrored the scene and horizontal mouse look.
   screenAxes=viewer.refdefBasis(refdef.viewaxis)
-  projection=viewer.Projection(refdef.vieworg,screenAxes[1],refdef.viewaxis[2],refdef.viewaxis[0],area.x+area.width*0.5,area.y+area.height*0.5,focal,1.0)
+  projection=viewer.Projection(refdef.vieworg,screenAxes[1],refdef.viewaxis[2],refdef.viewaxis[0],area.x+area.width*0.5,area.y+area.height*0.5,focal,1.0,verticalFocal)
   return Prepared(area,projection)
 end function

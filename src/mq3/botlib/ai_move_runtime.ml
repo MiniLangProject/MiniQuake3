@@ -30,6 +30,8 @@ const MFL_GRAPPLERESET=publicHeaders.MFL_GRAPPLERESET
 const EXTERNAL_MOVE_FLAGS=MFL_ONGROUND|MFL_WATERJUMP|MFL_TELEPORTED|MFL_GRAPPLEPULL|MFL_WALK
 const MODELTYPE_FUNC_PLAT=1
 const MODELTYPE_FUNC_BOB=2
+const MODELTYPE_FUNC_DOOR=3
+const MODELTYPE_FUNC_STATIC=4
 const ENTITYNUM_WORLD=1022
 const ENTITYNUM_NONE=1023
 const CONTENTS_SOLID_PLAYERCLIP=0x10001
@@ -58,7 +60,7 @@ const WEAPON_ROCKET_LAUNCHER=5
 const WEAPON_BFG=9
 const WEAPON_GRAPPLE=10
 
-struct Services context groundTraceFn entityModelFn modelTypeFn modelReachabilityFn swimmingFn clientTraceFn nextReachabilityFn elementaryActions onGroundFn againstLadderFn gapDistanceFn blockTraceFn walkDirectionFn jumpRunStartFn gravityFn horizontalVelocityForJumpFn elevatorStateFn barrierJumpFn routeReachabilityFn randomFn pointContentsFn funcBobStateFn grappleConfigFn grappleStateFn grappleTraceFn end struct
+struct Services context groundTraceFn entityModelFn modelTypeFn modelReachabilityFn swimmingFn clientTraceFn nextReachabilityFn elementaryActions onGroundFn againstLadderFn gapDistanceFn blockTraceFn walkDirectionFn jumpRunStartFn gravityFn horizontalVelocityForJumpFn elevatorStateFn barrierJumpFn routeReachabilityFn randomFn pointContentsFn funcBobStateFn grappleConfigFn grappleStateFn grappleTraceFn routeTravelTimeFn end struct
 struct Runtime pools aas router services end struct
 struct GroundTrace startSolid fraction entity endPos end struct
 struct ElevatorState onMover down bottomCenter maxBarrier end struct
@@ -67,7 +69,7 @@ struct GrappleConfig offhand weaponIndex onCommand offCommand end struct
 struct ViewTargetResult found target end struct
 struct MoveResult failure type blocked blockEntity travelType flags weapon moveDir idealViewAngles end struct
 
-function services(context) return Services(context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
+function services(context) return Services(context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
 function create(pools,aas,router,host) return Runtime(pools,aas,router,host) end function
 function copyVector(value) return [value[0],value[1],value[2]] end function
 function distance(a,b) x=n.fsub(b[0],a[0]);y=n.fsub(b[1],a[1]);z=n.fsub(b[2],a[2]);return n.fsqrt(n.fadd(n.fadd(n.fmul(x,x),n.fmul(y,y)),n.fmul(z,z))) end function
@@ -195,8 +197,11 @@ function bestReachability(runtime,state,goal,travelFlags)
   if settings.numReachableAreas>0 then for reachNum=settings.firstReachableArea to settings.firstReachableArea+settings.numReachableAreas-1 reach=runtime.router.reaches[reachNum];skip=false
     for avoidIndex=0 to resources.MAX_AVOIDREACH-1 if state.avoidReach[avoidIndex]==reachNum and state.avoidReachTimes[avoidIndex]>=moveAas.getTime(runtime.aas) and state.avoidReachTries[avoidIndex]>AVOIDREACH_TRIES then skip=true end if end for;if skip then continue end if
     if state.lastGoalAreaNum==goal.areaNum and reach.areaNum==state.lastAreaNum then continue end if;if not moveRouting.edgeAllowed(runtime.router,reach,effectiveFlags) then continue end if
-    route=moveRouting.areaRouteToGoalArea(runtime.router,reach.areaNum,reach.finish,goal.areaNum,effectiveFlags);if route.travelTime==0 then continue end if
-    if reachAvoided(state,reach,state.origin) then resultFlags=resultFlags|MOVERESULT_BLOCKEDBYAVOIDSPOT;continue end if;total=route.travelTime+reach.travelTime;if bestTime==0 or total<bestTime then bestTime=total;best=reachNum end if
+    routeTime=0
+    if runtime.services!=void and runtime.services.routeTravelTimeFn!=void then routeTime=runtime.services.routeTravelTimeFn(runtime.services.context,reach.areaNum,reach.finish,goal.areaNum,effectiveFlags)
+    else routeTime=moveRouting.areaTravelTimeToGoalArea(runtime.router,reach.areaNum,reach.finish,goal.areaNum,effectiveFlags) end if
+    if routeTime==0 then continue end if
+    if reachAvoided(state,reach,state.origin) then resultFlags=resultFlags|MOVERESULT_BLOCKEDBYAVOIDSPOT;continue end if;total=routeTime+reach.travelTime;if bestTime==0 or total<bestTime then bestTime=total;best=reachNum end if
   end for end if;return [best,resultFlags]
 end function
 function reachabilityTime(reach)
@@ -508,21 +513,61 @@ end function
 function unsupportedTravel(reach)
   result=emptyMoveResult();result.failure=true;result.type=reach.travelType&moveRouting.TRAVELTYPE_MASK;result.travelType=reach.travelType;return result
 end function
+function checkStandingOnMover(runtime,state,result)
+  host=runtime.services
+  if host==void or host.groundTraceFn==void or host.entityModelFn==void or host.modelTypeFn==void or host.modelReachabilityFn==void then return result end if
+  bounds=moveAas.presenceTypeBoundingBox(state.presenceType)
+  if bounds is error then return result end if
+  finish=[state.origin[0],state.origin[1],state.origin[2]-3.0]
+  ground=host.groundTraceFn(host.context,state.origin,bounds[0],bounds[1],finish,state.entityNum,CONTENTS_SOLID_PLAYERCLIP)
+  if ground==void or ground is error or ground.startSolid or ground.fraction>=1.0 or ground.entity==ENTITYNUM_WORLD or ground.entity==ENTITYNUM_NONE then return result end if
+  model=host.entityModelFn(host.context,ground.entity)
+  kind=host.modelTypeFn(host.context,model)
+  if kind==MODELTYPE_FUNC_PLAT or kind==MODELTYPE_FUNC_BOB then
+    travelKind=moveRouting.TRAVEL_ELEVATOR
+    topFlag=publicHeaders.MOVERESULT_ONTOPOF_ELEVATOR
+    if kind==MODELTYPE_FUNC_BOB then travelKind=moveRouting.TRAVEL_FUNCBOB;topFlag=publicHeaders.MOVERESULT_ONTOPOF_FUNCBOB end if
+    selected=state.lastReachNum
+    if selected<1 or selected>=len(runtime.router.reaches) or (runtime.router.reaches[selected].travelType&moveRouting.TRAVELTYPE_MASK)!=travelKind or (runtime.router.reaches[selected].faceNum&65535)!=model then
+      selected=host.modelReachabilityFn(host.context,model)
+      if selected>0 and selected<len(runtime.router.reaches) then
+        state.lastReachNum=selected
+        state.reachabilityTime=n.fadd(moveAas.getTime(runtime.aas),reachabilityTime(runtime.router.reaches[selected]))
+      end if
+    end if
+    if selected>0 and selected<len(runtime.router.reaches) then result.flags=result.flags|topFlag;return result end if
+  else if kind==MODELTYPE_FUNC_STATIC or kind==MODELTYPE_FUNC_DOOR then
+    if moveAas.areaReachability(runtime.aas,fuzzyPointReachabilityArea(runtime,state.origin))!=0 then return result end if
+  end if
+  result.blocked=true
+  result.blockEntity=ground.entity
+  result.flags=result.flags|MOVERESULT_ONTOPOFOBSTACLE
+  return result
+end function
 function moveToGoal(runtime,handle,goal,travelFlags)
   result=emptyMoveResult();if runtime==void or runtime.router==void then result.failure=true;return result end if;state=resources.moveState(runtime.pools,handle);if state==void or goal==void then result.failure=true;return result end if
   if not resetGrapple(runtime,state) then result.failure=true;return result end if
-  state.moveFlags=state.moveFlags&(~(MFL_SWIMMING|MFL_AGAINSTLADDER));if onGround(runtime,state) then state.moveFlags=state.moveFlags|MFL_ONGROUND end if;if isSwimming(runtime,state) then state.moveFlags=state.moveFlags|MFL_SWIMMING end if;if runtime.services.againstLadderFn!=void and runtime.services.againstLadderFn(runtime.services.context,state.origin) then state.moveFlags=state.moveFlags|MFL_AGAINSTLADDER end if
+  state.moveFlags=state.moveFlags&(~(MFL_SWIMMING|MFL_AGAINSTLADDER))
+  if onGround(runtime,state) then state.moveFlags=state.moveFlags|MFL_ONGROUND end if
+  if (state.moveFlags&MFL_ONGROUND)!=0 then
+    result=checkStandingOnMover(runtime,state,result)
+    if result.blocked then return result end if
+  end if
+  if isSwimming(runtime,state) then state.moveFlags=state.moveFlags|MFL_SWIMMING end if
+  if runtime.services!=void and runtime.services.againstLadderFn!=void and runtime.services.againstLadderFn(runtime.services.context,state.origin) then state.moveFlags=state.moveFlags|MFL_AGAINSTLADDER end if
   active=(state.moveFlags&(MFL_ONGROUND|MFL_SWIMMING|MFL_AGAINSTLADDER))!=0
   if active then
     state.areaNum=fuzzyPointReachabilityArea(runtime,state.origin);if state.areaNum==0 then result.failure=true;result.blocked=true;result.type=RESULTTYPE_INSOLIDAREA;return result end if;if state.areaNum==goal.areaNum then return moveInGoalArea(runtime,state,goal) end if
     reachNum=state.lastReachNum
-    if reachNum>0 then
+    if reachNum>0 and reachNum<len(runtime.router.reaches) then
       reach=runtime.router.reaches[reachNum];kind=reach.travelType&moveRouting.TRAVELTYPE_MASK
       if (moveRouting.travelFlagForType(reach.travelType)&travelFlags)==0 then reachNum=0
       else if kind==moveRouting.TRAVEL_GRAPPLEHOOK then if state.reachabilityTime<moveAas.getTime(runtime.aas) or (state.moveFlags&MFL_GRAPPLERESET)!=0 then reachNum=0 end if
-      else if kind==moveRouting.TRAVEL_ELEVATOR or kind==moveRouting.TRAVEL_FUNCBOB then if state.areaNum==reach.areaNum or state.reachabilityTime<moveAas.getTime(runtime.aas) then reachNum=0 end if
+      else if kind==moveRouting.TRAVEL_ELEVATOR or kind==moveRouting.TRAVEL_FUNCBOB then
+        if (result.flags&publicHeaders.MOVERESULT_ONTOPOF_FUNCBOB)!=0 then state.reachabilityTime=n.fadd(moveAas.getTime(runtime.aas),5.0) end if
+        if state.areaNum==reach.areaNum or state.reachabilityTime<moveAas.getTime(runtime.aas) then reachNum=0 end if
       else if state.lastGoalAreaNum!=goal.areaNum or state.reachabilityTime<moveAas.getTime(runtime.aas) or state.lastAreaNum!=state.areaNum then reachNum=0 end if
-    end if
+    else reachNum=0 end if
     resultFlags=0;if reachNum==0 then selected=bestReachability(runtime,state,goal,travelFlags);reachNum=selected[0];resultFlags=selected[1];state.reachAreaNum=state.areaNum;state.jumpReach=0;state.moveFlags=state.moveFlags&(~MFL_GRAPPLERESET);if reachNum>0 then state.reachabilityTime=n.fadd(moveAas.getTime(runtime.aas),reachabilityTime(runtime.router.reaches[reachNum])) end if end if
     state.lastReachNum=reachNum;state.lastGoalAreaNum=goal.areaNum;state.lastAreaNum=state.areaNum;if reachNum==0 then result.failure=true;result.flags=resultFlags;state.lastOrigin=copyVector(state.origin);return result end if;reach=runtime.router.reaches[reachNum]
     kind=reach.travelType&moveRouting.TRAVELTYPE_MASK
@@ -564,7 +609,13 @@ function moveToGoal(runtime,handle,goal,travelFlags)
 end function
 function moveInDirection(runtime,handle,direction,speed,type)
   if runtime==void then return false end if;state=resources.moveState(runtime.pools,handle);if state==void then return false end if;normal=normalize(direction);normalized=normal[1]
-  if isSwimming(runtime,state) then return emitMovement(runtime,state,normalized,speed) end if;if not onGround(runtime,state) then if (state.moveFlags&1)!=0 and state.velocity[2]<50.0 then emitMovement(runtime,state,direction,speed) end if;return true end if
-  if runtime.services.walkDirectionFn==void then return false end if;return runtime.services.walkDirectionFn(runtime.services.context,state,direction,speed,type)
+  if isSwimming(runtime,state) then return emitMovement(runtime,state,normalized,speed) end if
+  if onGround(runtime,state) then state.moveFlags=state.moveFlags|MFL_ONGROUND end if
+  if (state.moveFlags&MFL_ONGROUND)==0 then
+    if (state.moveFlags&MFL_BARRIERJUMP)!=0 and state.velocity[2]<50.0 then emitMovement(runtime,state,direction,speed) end if
+    return true
+  end if
+  if runtime.services==void or runtime.services.walkDirectionFn==void then return false end if
+  return runtime.services.walkDirectionFn(runtime.services.context,state,direction,speed,type)
 end function
 function supportsTrap(op) return op==OP_MOVE_TO_GOAL or op==OP_MOVE_IN_DIRECTION or op==OP_REACHABILITY_AREA or op==OP_MOVEMENT_VIEW_TARGET or op==OP_INIT_MOVE_STATE end function

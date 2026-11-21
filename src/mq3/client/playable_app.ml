@@ -71,11 +71,12 @@ const HEIGHT=480
 const HORIZONTAL_FOV=90.0
 const MAX_LINES=0
 const WORLD_SELECTION_INTERVAL=15
-const PLAYER_TEXTURE_FIRST_SLOT=336
+const LIGHTMAP_SLOTS=playableWorldBatch.MAX_BSP_LIGHTMAPS
+const PLAYER_TEXTURE_FIRST_SLOT=LIGHTMAP_SLOTS+272
 const PLAYER_TRIANGLES_PER_SURFACE=8192
 const MAX_DETAILED_PLAYER_MODELS=5
 const MAX_TARGET_WEAPON_TRIANGLES=512
-const MAX_NATIVE_TEXTURE_SLOTS=512
+const MAX_NATIVE_TEXTURE_SLOTS=PLAYER_TEXTURE_FIRST_SLOT+176
 const MAX_ITEM_MODELS=48
 const MAX_ITEM_TEXTURES=64
 const MAX_VISIBLE_ITEMS=24
@@ -981,18 +982,17 @@ function runLimited(map,maxFrames,sound,archive)
   if shaderScripts!=void and map.counts[12]>0 then loadedFog=try(playableFog.load(map,shaderScripts[0]));if not (loadedFog is error) then fogCatalog=loadedFog end if end if
   catalog=void
   if archive!=void and shaderScripts!=void then
-    loadedCatalog=try(materials.loadIndexed(archive,map,256,64,shaderScripts[0],shaderScripts[1]))
+    loadedCatalog=try(materials.loadIndexed(archive,map,256,LIGHTMAP_SLOTS,shaderScripts[0],shaderScripts[1]))
     if not (loadedCatalog is error) then catalog=loadedCatalog end if
   end if
   loading=showNativeLoading(nativeLoading,42,"Loading world textures");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   if catalog!=void then
-    twoSidedTextures=array(map.counts[1],false);for each material in catalog.materials twoSidedTextures[material.textureIndex]=material.twoSided end for
-    configuredCache=worldSelection.setTwoSidedTextures(worldCache,twoSidedTextures);if configuredCache is error then window.shutdown();return configuredCache end if
+    configuredCache=worldSelection.setIndexedCulling(worldCache,shaderScripts[0]);if configuredCache is error then window.shutdown();return configuredCache end if
     preparedWorld=worldSelection.prepareCached(worldCache,camera,worldConfig);if preparedWorld is error then window.shutdown();return preparedWorld end if;triangles=preparedWorld.renderData
   end if
   projectileCatalog=void
   if archive!=void then
-    projectileFirst=64;if catalog!=void then projectileFirst=64+catalog.textureCount end if
+    projectileFirst=LIGHTMAP_SLOTS;if catalog!=void then projectileFirst=LIGHTMAP_SLOTS+catalog.textureCount end if
     availableProjectileSlots=PLAYER_TEXTURE_FIRST_SLOT-projectileFirst
     if availableProjectileSlots>MAX_PROJECTILE_TEXTURES then availableProjectileSlots=MAX_PROJECTILE_TEXTURES end if
     if availableProjectileSlots>0 then
@@ -1003,7 +1003,7 @@ function runLimited(map,maxFrames,sound,archive)
   loading=showNativeLoading(nativeLoading,54,"Loading effects and sky");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   skyCatalog=void
   if archive!=void then
-    skyFirst=64;if catalog!=void then skyFirst=64+catalog.textureCount end if
+    skyFirst=LIGHTMAP_SLOTS;if catalog!=void then skyFirst=LIGHTMAP_SLOTS+catalog.textureCount end if
     if projectileCatalog!=void then skyFirst=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if
     skySlots=PLAYER_TEXTURE_FIRST_SLOT-skyFirst
     if skySlots>=playableSky.REQUIRED_TEXTURES and shaderScripts!=void then
@@ -1011,30 +1011,30 @@ function runLimited(map,maxFrames,sound,archive)
     end if
   end if
   if fogCatalog!=void then
-    fogTextureSlot=64;if catalog!=void then fogTextureSlot=64+catalog.textureCount end if
+    fogTextureSlot=LIGHTMAP_SLOTS;if catalog!=void then fogTextureSlot=LIGHTMAP_SLOTS+catalog.textureCount end if
     if projectileCatalog!=void then fogTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if
     if skyCatalog!=void then fogTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if
     if fogTextureSlot<PLAYER_TEXTURE_FIRST_SLOT then assignedFog=playableFog.assignTexture(fogCatalog,fogTextureSlot);if assignedFog is error then fogCatalog=void end if else fogCatalog=void end if
   end if
   dlightCatalog=void
   if catalog!=void then
-    dlightTextureSlot=64+catalog.textureCount;if projectileCatalog!=void then dlightTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then dlightTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then dlightTextureSlot=fogCatalog.textureSlot+1 end if
+    dlightTextureSlot=LIGHTMAP_SLOTS+catalog.textureCount;if projectileCatalog!=void then dlightTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then dlightTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then dlightTextureSlot=fogCatalog.textureSlot+1 end if
     if dlightTextureSlot<PLAYER_TEXTURE_FIRST_SLOT then createdDlights=try(dynamicLights.createCatalog(dlightTextureSlot));if not (createdDlights is error) then dlightCatalog=createdDlights end if end if
   end if
   markCatalog=void
   if archive!=void then
-    markTextureSlot=64;if catalog!=void then markTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then markTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then markTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then markTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then markTextureSlot=dlightCatalog.textureSlot+1 end if
+    markTextureSlot=LIGHTMAP_SLOTS;if catalog!=void then markTextureSlot=LIGHTMAP_SLOTS+catalog.textureCount end if;if projectileCatalog!=void then markTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then markTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then markTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then markTextureSlot=dlightCatalog.textureSlot+1 end if
     if markTextureSlot+4<=PLAYER_TEXTURE_FIRST_SLOT then loadedMarks=try(playableMarks.load(archive,markTextureSlot,4));if not (loadedMarks is error) then markCatalog=loadedMarks end if end if
   end if
   shadowCatalog=void
   if archive!=void then
-    shadowTextureSlot=64;if catalog!=void then shadowTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then shadowTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then shadowTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then shadowTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then shadowTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then shadowTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if
+    shadowTextureSlot=LIGHTMAP_SLOTS;if catalog!=void then shadowTextureSlot=LIGHTMAP_SLOTS+catalog.textureCount end if;if projectileCatalog!=void then shadowTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then shadowTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then shadowTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then shadowTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then shadowTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if
     if shadowTextureSlot<PLAYER_TEXTURE_FIRST_SLOT then loadedShadow=try(playerShadows.load(archive,shadowTextureSlot));if not (loadedShadow is error) then shadowCatalog=loadedShadow end if end if
   end if
   worldConfig.runtime.shadowCatalog=shadowCatalog
   explosionCatalog=void
   if archive!=void then
-    explosionTextureSlot=64;if catalog!=void then explosionTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then explosionTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then explosionTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then explosionTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then explosionTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then explosionTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if;if shadowCatalog!=void then explosionTextureSlot=shadowCatalog.textureSlot+1 end if
+    explosionTextureSlot=LIGHTMAP_SLOTS;if catalog!=void then explosionTextureSlot=LIGHTMAP_SLOTS+catalog.textureCount end if;if projectileCatalog!=void then explosionTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then explosionTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then explosionTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then explosionTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then explosionTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if;if shadowCatalog!=void then explosionTextureSlot=shadowCatalog.textureSlot+1 end if
     if explosionTextureSlot+playableExplosions.MAX_TEXTURES<=PLAYER_TEXTURE_FIRST_SLOT then loadedExplosions=try(playableExplosions.load(archive,explosionTextureSlot,playableExplosions.MAX_TEXTURES));if not (loadedExplosions is error) then explosionCatalog=loadedExplosions end if end if
   end if
   modelAssets=void;if shaderScripts!=void then modelAssets=archivePlayerAssets(archive,shaderScripts[0]) end if
@@ -1055,7 +1055,7 @@ function runLimited(map,maxFrames,sound,archive)
   hudState=hud.state(playerState.health,playerState.armor,playerState.ammo,"READY","WASD MOVE  MOUSE1 FIRE  SPACE JUMP")
   baseHudCatalog=void;baseHudState=baseHud.state(playerState.health,playerState.armor,playerState.ammo,playerState.weapon,0,0,0)
   if archive!=void then
-    hudTextureFirst=64;if catalog!=void then hudTextureFirst=64+catalog.textureCount end if
+    hudTextureFirst=LIGHTMAP_SLOTS;if catalog!=void then hudTextureFirst=LIGHTMAP_SLOTS+catalog.textureCount end if
     if projectileCatalog!=void then hudTextureFirst=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if
     if skyCatalog!=void then hudTextureFirst=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if
     if fogCatalog!=void then hudTextureFirst=fogCatalog.textureSlot+1 end if
@@ -1162,7 +1162,7 @@ function runLimited(map,maxFrames,sound,archive)
   if catalog!=void and fogCatalog!=void then fogged=playableWorldBatch.attachFog(worldBatchState,triangles,fogCatalog);if fogged is error then window.shutdown();return fogged end if end if
   if catalog!=void and dlightCatalog!=void then lit=playableWorldBatch.attachDynamicLights(worldBatchState,triangles,dlightReceiveFlags,dlightCatalog);if lit is error then window.shutdown();return lit end if end if
   loading=showNativeLoading(nativeLoading,97,"Building world geometry");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
-  lightmapCount=map.counts[14];if lightmapCount>64 then lightmapCount=64 end if
+  lightmapCount=map.counts[14];if lightmapCount>LIGHTMAP_SLOTS then lightmapCount=LIGHTMAP_SLOTS end if
   for index=0 to lightmapCount-1
     window.poll()
     pixels=renderData.lightmapRgba(map,index);if pixels is error then window.shutdown();return pixels end if

@@ -23,6 +23,11 @@ from inventory import sha
 RELEASE = "1.3.9"
 PACKAGE_SHA256 = "46cbe327d0b42085045ba4f5e1a71bfb395ebc7b10bb3956285db6e469fbfc70"
 COMPILER_SHA256 = "269aecaa2232b634809edd80be95eda52f837ad4be022f9a778633bd47d9ba62"
+TEST_RUNTIME_FLAGS = ("--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m")
+# The real-time app collects in the background to avoid multi-second pauses
+# when the game and renderer allocate during combat.
+PLAYABLE_RUNTIME_FLAGS = ("--heap-reserve", "2g", "--heap-commit", "128m",
+                          "--gc-limit", "64m", "--gc-concurrent")
 PACKAGE_URL = ("https://github.com/MiniLangProject/MiniLangCompilerML/releases/download/"
                "v1.3.9/MiniLangCompilerML-1.3.9-windows-x64.zip")
 
@@ -100,7 +105,7 @@ def main() -> int:
         with native_build_lock(output):
             build_native(output, msvc_env("x64"))
         flags = ["-I", str(ROOT / "src"), "-I", str(library_root),
-                 "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"]
+                 *(PLAYABLE_RUNTIME_FLAGS if gui else TEST_RUNTIME_FLAGS)]
         inputs = {"mode": "published-release", "release": RELEASE,
                   "package_sha256": PACKAGE_SHA256, "compiler": sha(compiler),
                   "subsystem": "windows" if gui else "console", "flags": flags,

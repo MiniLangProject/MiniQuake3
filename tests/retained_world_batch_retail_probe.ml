@@ -38,20 +38,22 @@ function retainedProofMap(archive,name)
   map=bsp.load(pk3.read(archive,"maps/"+name+".bsp"));if map is error then return map end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
   catalog=materials.loadIndexed(archive,map,256,64,scripts[0],scripts[1]);if catalog is error then return catalog end if
-  world=selection.buildCache(map,render.DEFAULT_PATCH_ERROR);if world is error then return world end if
+  world=selection.buildCacheForPatches(map,render.DEFAULT_PATCH_ERROR,true);if world is error then return world end if
   flags=array(map.counts[1],false);receive=array(map.counts[1],false);twoSided=array(map.counts[1],false)
   for index=0 to len(flags)-1 flags[index]=sky.isSkyShaderIndexed(scripts[0],materials.shaderName(map,index));receive[index]=not flags[index] and (materials.shaderSurfaceFlags(map,index)&0x20000)==0 end for
   for each material in catalog.materials if material.textureIndex>=0 and material.textureIndex<len(twoSided) then twoSided[material.textureIndex]=material.twoSided;if material.sort>3.0 then receive[material.textureIndex]=false end if end if end for
   selection.setTwoSidedTextures(world,twoSided)
   fogCatalog=void;if map.counts[12]>0 then fogCatalog=fog.load(map,scripts[0]);if fogCatalog is error then return fogCatalog end if;fog.assignTexture(fogCatalog,319) end if
   lightCatalog=lights.createCatalog(320);started=timer.milliseconds();cache=retained.create(world,catalog,flags,fogCatalog,lightCatalog,receive);if cache is error then return cache end if;createMs=timer.milliseconds()-started
-  cfg=selection.defaults(1280,720);cfg.horizontalFov=90.0;cfg.triangleBudget=world.totalTriangleCount
+  cfg=selection.defaults(1280,720);cfg.horizontalFov=90.0;cfg.triangleBudget=world.totalTriangleCount;cfg.lodCurveError=250.0
   camera=viewer.camera([1024.0,1000.0,50.125],90.0,0.0,0.0,0.0);if name!="q3dm1" then camera.position=[0.0,0.0,80.0] end if
-  cases=0;referenceMs=0;cacheMs=0;comparedBytes=0
+  cases=0;referenceMs=0;cacheMs=0;comparedBytes=0;coarseSelections=0
   for frame=0 to 71
     camera.yaw=90.0+frame*5;camera.pitch=(frame%3-1)*10.0;axes=qmath.AnglesToAxis([camera.pitch,camera.yaw,0.0]);cfg.runtime=axes
+    cfg.lodCurveError=250.0;if (frame&1)==1 then cfg.lodCurveError=1.0 end if
     chosen=selection.prepareCached(world,camera,cfg);if chosen is error then return chosen end if
     if chosen.selection.rejectedBudget!=0 then return retainedProofFail("budget dropped geometry") end if
+    for each face in chosen.selection.faceIndexes if face>=map.counts[13] then coarseSelections=coarseSelections+1 end if end for
     started=timer.milliseconds();actual=retained.select(cache,chosen);if actual is error then return actual end if;cacheMs=cacheMs+timer.milliseconds()-started
     for repetition=0 to 1
       started=timer.milliseconds();expected=batches.buildMaterials(chosen.renderData,catalog,flags);if expected is error then return expected end if
@@ -64,7 +66,7 @@ function retainedProofMap(archive,name)
       actual=retained.select(cache,chosen);if actual is error then return actual end if
     end for
   end for
-  print "MAP "+name+" cases="+str(cases)+" selections="+str(cache.selections)+" fallbacks="+str(cache.fallbacks)+" staticPrimes="+str(cache.staticPrimes)+" bytesCompared="+str(comparedBytes)+" createMs="+str(createMs)+" referenceBuildMs="+str(referenceMs)+" retainedSelectMs="+str(cacheMs)
+  print "MAP "+name+" cases="+str(cases)+" selections="+str(cache.selections)+" fallbacks="+str(cache.fallbacks)+" staticPrimes="+str(cache.staticPrimes)+" bytesCompared="+str(comparedBytes)+" createMs="+str(createMs)+" referenceBuildMs="+str(referenceMs)+" retainedSelectMs="+str(cacheMs)+" coarsePatchSelections="+str(coarseSelections)
   return cases
 end function
 function main(args)
@@ -72,6 +74,7 @@ function main(args)
   archive=pk3.open(args[0]);if archive is error then return archive end if
   count=retainedProofMap(archive,"q3dm1");if count is error then return count end if
   value=retainedProofMap(archive,"q3ctf1");if value is error then return value end if;count=count+value
+  value=retainedProofMap(archive,"q3dm0");if value is error then return value end if;count=count+value
   print "PASS: "+str(count)+" productive retained-world retail differential cases (selected stage/fog/dlight bytes and reuse)"
   return 0
 end function

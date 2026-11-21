@@ -61,10 +61,10 @@ int main(void) {
     playable_window_clear_depth(1000.0);
     if (playable_window_sample_depth(0, 0) != -1.0) return 15;
     if (playable_window_upload_texture(-1, texture, 2, 2) ||
-        playable_window_upload_texture(512, texture, 2, 2) ||
+        playable_window_upload_texture(4096, texture, 2, 2) ||
         playable_window_upload_texture(0, 0, 2, 2) ||
         !playable_window_upload_texture(0, texture, 2, 2) ||
-        !playable_window_upload_texture(511, texture, 2, 2) ||
+        !playable_window_upload_texture(4095, texture, 2, 2) ||
         playable_window_upload_texture_mipmapped(1, texture, 2, 2, 2) ||
         !playable_window_upload_texture_mipmapped(1, texture, 2, 2, 0)) return 2;
     playable_window_draw_triangle(0,

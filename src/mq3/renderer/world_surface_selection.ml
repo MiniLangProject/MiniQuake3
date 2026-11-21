@@ -9,6 +9,10 @@ import mq3.shared.math as qmath
 import std.ds.list as lists
 import std.sort as sorting
 import mq3.renderer.native_world_selection as nativeWorld
+import mq3.renderer.playable_materials as materials
+import mq3.renderer.shader_parser as shaderParser
+import mq3.renderer.world_patch_lod as patchLod
+import mq3.platform.playable_window as window
 
 const NODE_STRIDE=36
 const PLANE_STRIDE=16
@@ -18,13 +22,17 @@ const DEFAULT_HORIZONTAL_FOV=100.0
 const DEFAULT_NEAR_DISTANCE=1.0
 const DEFAULT_FAR_DISTANCE=8192.0
 const DEFAULT_TRIANGLE_BUDGET=12000
+const CULL_FRONT=0
+const CULL_TWO_SIDED=1
+const CULL_BACK=2
+const FACE_PLANE_EPSILON=8.0
 
-struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError runtime end struct
+struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError runtime verticalFov areaMask lodCurveError end struct
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
 struct PreparedWorld selection renderData end struct
 struct Frustum slopeX slopeY radiusScaleX radiusScaleY end struct
-struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes twoSidedTextureFlags trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount nativeFaces nativeVisible nativeOutput nativePrevious nativeSelected end struct
+struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes cullModes trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount nativeFaces nativeVisible nativeOutput nativePrevious nativeSelected areaMask patches end struct
 
 function fail(text) return error(7490,"World surface selection: "+text) end function
 function validMap(map)
@@ -42,9 +50,16 @@ function config(width,height,horizontalFov,nearDistance,farDistance,triangleBudg
   if nearDistance<=0.0 or farDistance<=nearDistance then return fail("invalid distance range") end if
   if triangleBudget<0 then return fail("negative triangle budget") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
-  return SelectionConfig(width,height,n.f32(horizontalFov),n.f32(nearDistance),n.f32(farDistance),triangleBudget,backfaceCull,n.f32(patchError),void)
+  return SelectionConfig(width,height,n.f32(horizontalFov),n.f32(nearDistance),n.f32(farDistance),triangleBudget,backfaceCull,n.f32(patchError),void,void,void,void)
 end function
 function defaults(width,height) return config(width,height,DEFAULT_HORIZONTAL_FOV,DEFAULT_NEAR_DISTANCE,DEFAULT_FAR_DISTANCE,DEFAULT_TRIANGLE_BUDGET,true,render.DEFAULT_PATCH_ERROR) end function
+function setView(cfg,refdef)
+  cfg.horizontalFov=refdef.fovX;cfg.verticalFov=refdef.fovY;cfg.runtime=refdef.viewaxis;cfg.areaMask=refdef.areaMask
+  return cfg
+end function
+function forView(cfg,refdef)
+  return SelectionConfig(cfg.width,cfg.height,refdef.fovX,cfg.nearDistance,cfg.farDistance,cfg.triangleBudget,cfg.backfaceCull,cfg.patchError,refdef.viewaxis,refdef.fovY,refdef.areaMask,cfg.lodCurveError)
+end function
 
 // This is CM_PointLeafnum's BSP walk, kept here so selection needs no loaded
 // collision world. Negative children encode leaves as -1-leafIndex.
@@ -100,6 +115,10 @@ end function
 function prepareFrustum(cfg)
   focal=viewer.focalLength(cfg.width,cfg.horizontalFov);if focal is error then return focal end if
   sx=cfg.width/(2.0*focal);sy=cfg.height/(2.0*focal)
+  if cfg.verticalFov!=void then
+    verticalFocal=viewer.focalLength(cfg.height,cfg.verticalFov);if verticalFocal is error then return verticalFocal end if
+    sy=cfg.height/(2.0*verticalFocal)
+  end if
   return Frustum(sx,sy,n.fsqrt(1.0+sx*sx),n.fsqrt(1.0+sy*sy))
 end function
 function visibleInPreparedFrustum(local,radius,cfg,frustum)
@@ -123,19 +142,49 @@ function before(a,b)
   if a.importance>b.importance then return false end if
   return a.faceIndex<b.faceIndex
 end function
-function buildCache(map,patchError)
+function preparePatches(patches,byFace,counts,nativeFaces,centers,radii,normals)
+  patchLod.stitch(patches);coarseCount=0;coarseTriangles=0
+  for each patch in patches
+    allAxes=patchLod.axes(patch.grid);patch.variants=allAxes
+    full=patchLod.triangles(patch,allAxes[len(allAxes)-1],patch.face);if full is error then return full end if
+    byFace[patch.face]=full;counts[patch.face]=len(full)
+    stored=nativeWorld.store(nativeFaces,patch.face,render.MST_PATCH,len(full),centers[patch.face],radii[patch.face],normals[patch.face]);if stored!=1 then return fail("native patch cache rejected input") end if
+    coarseCount=coarseCount+len(allAxes)-1
+    if len(allAxes)>1 then for index=0 to len(allAxes)-2
+      axis=allAxes[index];coarseTriangles=coarseTriangles+(len(axis.columns)-1)*(len(axis.rows)-1)*2
+    end for end if
+  end for
+  total=0;for each count in counts total=total+count end for
+  // A large custom map can still use its fine mesh without capping visible
+  // faces simply because an optional retained LOD cache would exceed storage.
+  if total+coarseTriangles>window.TRIANGLE_BATCH_MAX_COUNT then coarseCount=0 end if
+  return coarseCount
+end function
+
+function buildCache(map,patchError) return buildCacheForPatches(map,patchError,false) end function
+function buildCacheForPatches(map,patchError,withVariants)
   if not validMap(map) then return fail("invalid BSP object") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
   centers=array(map.counts[13],void);radii=array(map.counts[13],0.0);counts=array(map.counts[13],0);kinds=array(map.counts[13],0);normals=array(map.counts[13],void);textureIndexes=array(map.counts[13],-1);byFace=array(map.counts[13],void)
   nativeFaces=bytes(map.counts[13]*72,0)
+  patchList=lists.List.new();patches=void
   for faceIndex=0 to map.counts[13]-1
     byFace[faceIndex]=[];offset=map.offsets[13]+faceIndex*FACE_STRIDE;textureIndexes[faceIndex]=i32(map,offset);kind=i32(map,offset+8);kinds[faceIndex]=kind
+    if kind==render.MST_PATCH then
+      noDraw=render.patchNoDraw(map,textureIndexes[faceIndex]);if noDraw is error then return noDraw end if
+      if noDraw then continue end if
+    end if
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       bounds=faceBounds(map,offset);if bounds is error then return bounds end if;centers[faceIndex]=bounds[0];radii[faceIndex]=bounds[1]
       // Patch extraction already subdivides the control grid. Reuse its
       // triangle count instead of running the same subdivision twice.
       amount=0;faceData=void
+      normals[faceIndex]=[f32(map,offset+84),f32(map,offset+88),f32(map,offset+92)]
       if kind==render.MST_PATCH then
+        if withVariants then
+          patch=patchLod.read(map,faceIndex,offset,textureIndexes[faceIndex],patchError);if patch is error then return patch end if
+          patchList.add(patch);continue
+        end if
         patchLimit=(render.MAX_GRID_SIZE-1)*(render.MAX_GRID_SIZE-1)*2
         faceData=render.extractRetainedWithPatchError(map,[faceIndex],patchLimit,patchError);if faceData is error then return faceData end if
         if faceData.truncated then return fail("patch exceeded renderer grid limit") end if
@@ -145,7 +194,6 @@ function buildCache(map,patchError)
         faceData=render.extractRetainedWithPatchError(map,[faceIndex],amount,patchError);if faceData is error then return faceData end if
       end if
       counts[faceIndex]=amount
-      normals[faceIndex]=[f32(map,offset+84),f32(map,offset+88),f32(map,offset+92)]
       stored=nativeWorld.store(nativeFaces,faceIndex,kind,amount,centers[faceIndex],radii[faceIndex],normals[faceIndex]);if stored!=1 then return fail("native face cache rejected input") end if
       // Extract each face into its final bucket.  The former whole-map
       // extraction repeatedly appended to one ever-growing immutable array,
@@ -153,24 +201,85 @@ function buildCache(map,patchError)
       byFace[faceIndex]=faceData.triangles
     end if
   end for
+  if patchList.len()>0 then
+    all=patchList.toArray();coarse=preparePatches(all,byFace,counts,nativeFaces,centers,radii,normals);if coarse is error then return coarse end if
+    if coarse>0 then
+      // Variant records use synthetic face IDs. BSP PVS, distance checks,
+      // and native culling still run over the original surface IDs only.
+      rawFaces=map.counts[13];expanded=rawFaces+coarse
+      extendedFaces=array(expanded,void);copyArray(extendedFaces,0,byFace,0,rawFaces);byFace=extendedFaces
+      extendedKinds=array(expanded,render.MST_PATCH);copyArray(extendedKinds,0,kinds,0,rawFaces);kinds=extendedKinds
+      extendedTextures=array(expanded,-1);copyArray(extendedTextures,0,textureIndexes,0,rawFaces);textureIndexes=extendedTextures
+      patches=array(rawFaces,void);variantFace=rawFaces
+      for each patch in all
+        axes=patch.variants;last=len(axes)-1
+        if last>0 then
+          variants=array(len(axes),void)
+          for index=0 to last-1
+            data=patchLod.triangles(patch,axes[index],variantFace);if data is error then return data end if
+            byFace[variantFace]=data;textureIndexes[variantFace]=patch.texture
+            variants[index]=patchLod.WorldLodVariant(axes[index].minimum,variantFace);variantFace=variantFace+1
+          end for
+          variants[last]=patchLod.WorldLodVariant(axes[last].minimum,patch.face)
+          patch.variants=variants;patches[patch.face]=patch
+        end if
+      end for
+    end if
+  end if
   totalTriangles=0;for each count in counts totalTriangles=totalTriangles+count end for
   clusterCount=0;if map.lengths[16]>=8 then clusterCount=i32(map,map.offsets[16]);if clusterCount is error or clusterCount<0 then return fail("invalid visibility cluster count") end if end if
   // One extra slot caches the no-vis fallback shared by every leaf.
-  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),totalTriangles,array(clusterCount+1,void),array(clusterCount+1,0),clusterCount,nativeFaces,array(clusterCount+1,void),bytes(32+map.counts[13]*4,0),bytes(32+map.counts[13]*4,0),[])
+  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],CULL_FRONT),byFace,n.f32(patchError),totalTriangles,array(clusterCount+1,void),array(clusterCount+1,0),clusterCount,nativeFaces,array(clusterCount+1,void),bytes(32+map.counts[13]*4,0),bytes(32+map.counts[13]*4,0),[],void,patches)
+end function
+
+function setCullModes(cache,modes)
+  if cache==void or modes==void or len(modes)!=cache.map.counts[1] then return fail("cull mode table does not match BSP shaders") end if
+  cache.cullModes=modes
+  if cache.nativeFaces!=void and cache.map.counts[13]>0 then
+    for index=0 to cache.map.counts[13]-1
+      texture=cache.faceTextureIndexes[index];mode=CULL_FRONT
+      if texture>=0 and texture<len(modes) then mode=modes[texture] end if
+      if nativeWorld.setCullMode(cache.nativeFaces,index,mode)!=1 then return fail("native face flags rejected input") end if
+    end for
+  end if
+  return cache
 end function
 
 function setTwoSidedTextures(cache,flags)
   if cache==void or flags==void or len(flags)!=cache.map.counts[1] then return fail("two-sided texture table does not match BSP shaders") end if
-  cache.twoSidedTextureFlags=flags
-  if cache.nativeFaces!=void and len(cache.faceTextureIndexes)>0 then for index=0 to len(cache.faceTextureIndexes)-1 texture=cache.faceTextureIndexes[index];enabled=false;if texture>=0 and texture<len(flags) then enabled=flags[texture] end if;stored=nativeWorld.twoSided(cache.nativeFaces,index,enabled);if stored!=1 then return fail("native face flags rejected input") end if end for end if
-  return cache
+  modes=array(len(flags),CULL_FRONT)
+  if len(flags)>0 then for index=0 to len(flags)-1 if flags[index] then modes[index]=CULL_TWO_SIDED end if end for end if
+  return setCullModes(cache,modes)
 end function
 
-function visibleFaces(map,cameraCluster,pvsUsed)
+function setIndexedCulling(cache,index)
+  modes=array(cache.map.counts[1],CULL_FRONT)
+  if len(modes)==0 then return setCullModes(cache,modes) end if
+  for textureIndex=0 to len(modes)-1
+    name=materials.shaderName(cache.map,textureIndex);if name is error then return name end if
+    shader=try(shaderParser.parseIndexed(index,name));if shader==void or shader is error then continue end if
+    if shader.cull=="twoSided" then modes[textureIndex]=CULL_TWO_SIDED else if shader.cull=="back" then modes[textureIndex]=CULL_BACK end if
+  end for
+  return setCullModes(cache,modes)
+end function
+
+function equalAreaMask(left,right)
+  if left==void or right==void then return left==right end if
+  if len(left)!=len(right) then return false end if
+  if len(left)==0 then return true end if
+  for index=0 to len(left)-1 if left[index]!=right[index] then return false end if end for
+  return true
+end function
+
+function visibleFaces(map,cameraCluster,pvsUsed,areaMask)
   faceList=lists.List.withCapacity(map.counts[13]);seenFaces=array(map.counts[13],false);rejectedPvs=0
   for leafIndex=0 to map.counts[4]-1
     leafOffset=map.offsets[4]+leafIndex*LEAF_STRIDE;cluster=i32(map,leafOffset)
     leafVisible=true;if pvsUsed then leafVisible=pvsContains(map,cameraCluster,cluster) end if
+    if areaMask!=void and cameraCluster>=0 then
+      area=i32(map,leafOffset+4);if area is error then return area end if
+      if area>=0 and (area>>3)<len(areaMask) and (areaMask[area>>3]&(1<<(area&7)))!=0 then leafVisible=false end if
+    end if
     if leafVisible then
       first=i32(map,leafOffset+32);count=i32(map,leafOffset+36)
       if first<0 or count<0 or first+count>map.counts[5] then return fail("invalid leaf surface range") end if
@@ -181,11 +290,15 @@ function visibleFaces(map,cameraCluster,pvsUsed)
   return [faceList.toArray(),rejectedPvs]
 end function
 
-function cachedVisibleFaces(cache,map,cameraCluster,pvsUsed)
-  if cache==void then return visibleFaces(map,cameraCluster,pvsUsed) end if
+function cachedVisibleFaces(cache,map,cameraCluster,pvsUsed,areaMask)
+  if cache==void then return visibleFaces(map,cameraCluster,pvsUsed,areaMask) end if
+  if not equalAreaMask(cache.areaMask,areaMask) then
+    cache.areaMask=areaMask
+    cache.pvsFaces=array(cache.pvsClusterCount+1,void);cache.nativeVisible=array(cache.pvsClusterCount+1,void)
+  end if
   slot=cache.pvsClusterCount;if pvsUsed then slot=cameraCluster end if
-  if slot<0 or slot>=len(cache.pvsFaces) then return visibleFaces(map,cameraCluster,pvsUsed) end if
-  if cache.pvsFaces[slot]==void then result=visibleFaces(map,cameraCluster,pvsUsed);if result is error then return result end if;cache.pvsFaces[slot]=result[0];cache.pvsRejected[slot]=result[1] end if
+  if slot<0 or slot>=len(cache.pvsFaces) then return visibleFaces(map,cameraCluster,pvsUsed,areaMask) end if
+  if cache.pvsFaces[slot]==void then result=visibleFaces(map,cameraCluster,pvsUsed,areaMask);if result is error then return result end if;cache.pvsFaces[slot]=result[0];cache.pvsRejected[slot]=result[1] end if
   return [cache.pvsFaces[slot],cache.pvsRejected[slot]]
 end function
 
@@ -197,7 +310,7 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   leaf=pointLeaf(map,pvsOrigin);if leaf is error then return leaf end if
   cameraCluster=i32(map,map.offsets[4]+leaf*LEAF_STRIDE);if cameraCluster is error then return cameraCluster end if
   pvsUsed=map.lengths[16]>0 and cameraCluster>=0
-  visible=cachedVisibleFaces(cache,map,cameraCluster,pvsUsed);if visible is error then return visible end if;faceIndexes=visible[0];rejectedPvs=visible[1]
+  visible=cachedVisibleFaces(cache,map,cameraCluster,pvsUsed,cfg.areaMask);if visible is error then return visible end if;faceIndexes=visible[0];rejectedPvs=visible[1]
   // Camera axes and trigonometric frustum terms are invariant across all
   // candidate faces. A QVM refdef can supply its exact rolled camera axes.
   axes=cfg.runtime;if axes==void then axes=viewer.cameraBasis(camera) end if
@@ -218,18 +331,23 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   candidateList=lists.List.withCapacity(len(faceIndexes));rejectedFrustum=0;rejectedBackface=0;rejectedDistance=0
   for each faceIndex in faceIndexes
     faceOffset=map.offsets[13]+faceIndex*FACE_STRIDE;kind=i32(map,faceOffset+8)
+    if kind==render.MST_PATCH then
+      noDraw=render.patchNoDraw(map,i32(map,faceOffset));if noDraw is error then return noDraw end if
+      if noDraw then continue end if
+    end if
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       center=[0.0,0.0,0.0];radius=0.0
       if cache==void then bounds=faceBounds(map,faceOffset);if bounds is error then return bounds end if;center=bounds[0];radius=bounds[1] else center=cache.faceCenters[faceIndex];radius=cache.faceRadii[faceIndex] end if
       local=viewPointAxes(camera,center,axes);distanceSquared=local[0]*local[0]+local[1]*local[1]+local[2]*local[2]
       if distanceSquared>(cfg.farDistance+radius)*(cfg.farDistance+radius) then rejectedDistance=rejectedDistance+1 else
         if not visibleInPreparedFrustum(local,radius,cfg,frustum) then rejectedFrustum=rejectedFrustum+1 else
-          back=false;twoSided=false
-          if cache!=void then textureIndex=cache.faceTextureIndexes[faceIndex];if textureIndex>=0 and textureIndex<len(cache.twoSidedTextureFlags) then twoSided=cache.twoSidedTextureFlags[textureIndex] end if end if
-          if cfg.backfaceCull and kind==render.MST_PLANAR and not twoSided then
+          back=false;mode=CULL_FRONT
+          if cache!=void then textureIndex=cache.faceTextureIndexes[faceIndex];if textureIndex>=0 and textureIndex<len(cache.cullModes) then mode=cache.cullModes[textureIndex] end if end if
+          if cfg.backfaceCull and kind==render.MST_PLANAR and mode!=CULL_TWO_SIDED then
             nx=0.0;ny=0.0;nz=0.0
             if cache==void then nx=f32(map,faceOffset+84);ny=f32(map,faceOffset+88);nz=f32(map,faceOffset+92) else nx=cache.faceNormals[faceIndex][0];ny=cache.faceNormals[faceIndex][1];nz=cache.faceNormals[faceIndex][2] end if
-            back=nx*(camera.position[0]-center[0])+ny*(camera.position[1]-center[1])+nz*(camera.position[2]-center[2])<0.0
+            facing=nx*(camera.position[0]-center[0])+ny*(camera.position[1]-center[1])+nz*(camera.position[2]-center[2])
+            if mode==CULL_BACK then back=facing>FACE_PLANE_EPSILON else back=facing< -FACE_PLANE_EPSILON end if
           end if
           if back then rejectedBackface=rejectedBackface+1 else
             triangles=0
@@ -268,6 +386,23 @@ function choosePortalCached(cache,camera,pvsOrigin,cfg)
   return chooseCorePvs(cache.map,camera,pvsOrigin,cfg,cache)
 end function
 
+function choosePatchLod(cache,chosen,camera,cfg)
+  if cfg.lodCurveError==void or cache.patches==void or len(chosen.faceIndexes)==0 then return chosen end if
+  axes=cfg.runtime;if axes==void then axes=viewer.cameraBasis(camera) end if
+  selected=void
+  for index=0 to len(chosen.faceIndexes)-1
+    face=chosen.faceIndexes[index];patch=cache.patches[face]
+    if patch==void then continue end if
+    variant=patchLod.select(patch,camera.position,axes[0],cfg.lodCurveError);if variant is error then return variant end if
+    if variant==face then continue end if
+    if selected==void then selected=array(len(chosen.faceIndexes),0);copyArray(selected,0,chosen.faceIndexes,0,len(chosen.faceIndexes)) end if
+    selected[index]=variant
+    chosen.estimatedTriangleCount=chosen.estimatedTriangleCount-len(cache.trianglesByFace[face])+len(cache.trianglesByFace[variant])
+  end for
+  if selected!=void then chosen.faceIndexes=selected end if
+  return chosen
+end function
+
 function cachedRenderData(cache,chosen)
   if cache==void or chosen==void then return fail("cache and selection required") end if
   total=0;patches=0
@@ -282,6 +417,7 @@ end function
 
 function prepareCached(cache,camera,cfg)
   chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
+  chosen=choosePatchLod(cache,chosen,camera,cfg);if chosen is error then return chosen end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 // Keep the already-flattened triangle stream when camera motion does not
@@ -289,11 +425,13 @@ end function
 // while the hot frame path avoids rebuilding an identical immutable array.
 function prepareCachedRetained(cache,camera,cfg,previous)
   chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
+  chosen=choosePatchLod(cache,chosen,camera,cfg);if chosen is error then return chosen end if
   if previous!=void and previous.selection!=void and previous.renderData!=void and sameFaces(previous.selection.faceIndexes,chosen.faceIndexes) then return PreparedWorld(chosen,previous.renderData) end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 function preparePortalCached(cache,camera,pvsOrigin,cfg)
   chosen=choosePortalCached(cache,camera,pvsOrigin,cfg);if chosen is error then return chosen end if
+  chosen=choosePatchLod(cache,chosen,camera,cfg);if chosen is error then return chosen end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 

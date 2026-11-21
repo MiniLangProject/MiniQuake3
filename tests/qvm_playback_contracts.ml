@@ -23,7 +23,9 @@ function main(args)
   tone=sound16([1000,2000,3000,4000],22050);other=sound16([-1000,-2000,-3000,-4000],22050)
   intro=stereo16([111,222],22050);musicLoop=stereo16([333,444,555,666],22050)
   mu=compressed.Compressed(compressed.METHOD_MULAW,[compressed.Block(bytes([0,128]),2,0,0)],2)
-  catalog=assets.Catalog(void,[assets.Clip(3,"sound/a.wav",tone,void),assets.Clip(8,"sound/b.wav",other,void),assets.Clip(9,"music/intro.wav",intro,void),assets.Clip(10,"music/loop.wav",musicLoop,void),assets.Clip(11,"sound/compressed.wav",tone,mu)],[],5)
+  clips=[assets.Clip(3,"sound/a.wav",tone,void),assets.Clip(8,"sound/b.wav",other,void),assets.Clip(9,"music/intro.wav",intro,void),assets.Clip(10,"music/loop.wav",musicLoop,void),assets.Clip(11,"sound/compressed.wav",tone,mu)]
+  handles=array(12,void);for each clip in clips handles[clip.handle]=clip end for
+  catalog=assets.Catalog(void,clips,[],5,11,handles)
   count=count+req(assets.canonicalPath("/SOUND/A")=="sound/a.wav","canonical sound path")
   count=count+req(assets.canonicalPath("music\\SONIC5.WAV")=="music/sonic5.wav","QVM backslash path normalized")
   count=count+req(assets.canonicalPath("*death1.wav")=="*death1.wav","custom sound name retained")

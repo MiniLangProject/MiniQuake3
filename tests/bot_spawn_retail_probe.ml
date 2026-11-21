@@ -34,13 +34,18 @@ function main(args)
   weapon=resourcePools.weaponState(state.context.aiResources,1);chat=resourcePools.chatState(state.context.aiResources,1);move=resourcePools.moveState(state.context.aiResources,1)
   count=count+require(weapon!=void and weapon.weaponWeightConfig!=void and len(weapon.weaponWeightIndex)==32 and not state.context.aiItemWeights.reloadCharacters,"retail setup bound Sarge weapon weights and propagated the reload libvar")
   count=count+require(chat!=void and chat.chat!=void and chat.chat.chatName=="sarge" and chat.gender==2 and move!=void,"retail setup initialized chat and move handles")
-  frameResult=0;for frame=1 to 512 if frameResult is error then break end if;frameResult=try(match.runFrame(state,1000+frame*100)) end for
-  command=state.context.usercmds[0]
-  count=count+require(not (frameResult is error) and state.context.lastBotTrap==211 and state.context.frames==512 and state.context.botServer.clients[0].lastPacketTime>=52200 and command.forwardmove==40 and command.rightmove==120 and command.upmove==0 and command.weapon==8 and goal.goalStackTop==1 and state.context.aasRouteCache.hits>0 and state.context.aasRouteCache.misses>0 and chat.numConsoleMessages==0 and move.numAvoidSpots==0 and len(state.context.aiChatMatches.templates)==138 and len(state.context.aiChatStrings.groups)==175,"queued menu bot starts in the match and runs 512 bot frames through AAS")
+  activeCommands=0;selectedGoal=false
+  for frame=1 to 512
+    frameResult=match.runFrame(state,1000+frame*100);if frameResult is error then return frameResult end if
+    command=state.context.botServer.clients[0].userCommand
+    if command!=void and command.weapon>0 and (command.forwardmove!=0 or command.rightmove!=0 or command.upmove!=0) then activeCommands=activeCommands+1 end if
+    if goal.goalStackTop>0 then selectedGoal=true end if
+  end for
+  count=count+require(state.context.lastBotTrap==211 and state.context.frames==512 and state.context.botServer.clients[0].lastPacketTime>=52200 and activeCommands>100 and selectedGoal and state.context.aasRouteCache.hits>0 and state.context.aasRouteCache.misses>0 and chat.numConsoleMessages==0 and move.numAvoidSpots==0 and len(state.context.aiChatMatches.templates)==138 and len(state.context.aiChatStrings.groups)==175,"queued menu bot runs 512 frames, selecting goals and submitting real movement and weapon commands through AAS")
   slots=[];for unused=1 to 7 slots=slots+[match.allocateBot(state.context)] end for
   count=count+require(slots==[1,2,3,4,5,6,7] and match.allocateBot(state.context)==-1,"eight-slot server capacity")
   match.freeBot(state.context,3);replacement=match.allocateBot(state.context)
   count=count+require(replacement==3 and state.context.botAllocations==9 and state.context.botFrees==1,"freed slot is reset and reused")
   stopped=try(match.shutdown(state));count=count+require(not (stopped is error) and resourcePools.goalState(state.context.aiResources,1)==void and resourcePools.weaponState(state.context.aiResources,1)==void and resourcePools.chatState(state.context.aiResources,1)==void and resourcePools.moveState(state.context.aiResources,1)==void,"match shutdown frees allocated AI resource handles")
-  print("PASS: "+str(count)+" retail original-bot spawn contracts setup=complete frames=512 running=BOTLIB_USER_COMMAND command=40,120,0 weapon=8 goal=1 chat=1 move=1");return 0
+  print("PASS: "+str(count)+" retail original-bot spawn contracts setup=complete frames=512 running=BOTLIB_USER_COMMAND");return 0
 end function

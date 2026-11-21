@@ -12,10 +12,10 @@ const CG_KEY_GETKEY=63
 const MAX_KEYS=256
 
 struct Services context isDownFn getCatcherFn setCatcherFn getKeyFn end struct
-struct State down bindings catcher overstrike end struct
+struct State down bindings catcher overstrike bindingSerial end struct
 
 function services(context) return Services(context,void,void,void,void) end function
-function create() return State(array(MAX_KEYS,false),array(MAX_KEYS,void),0,false) end function
+function create() return State(array(MAX_KEYS,false),array(MAX_KEYS,void),0,false,0) end function
 function fail(message) return error(7487,"cgame key traps: "+message) end function
 function unavailable(name) return fail(name+" service unavailable") end function
 function arg(vm,base,index) return common.argument(vm,base,index) end function
@@ -35,7 +35,9 @@ function getCatcher(state) if state==void then return 0 end if;return state.catc
 function setCatcher(state,value) if state!=void then state.catcher=value end if;return void end function
 function setBinding(state,key,value)
   if state==void or not validKey(key) then return false end if
-  if value==void then value="" end if;state.bindings[key]=value;return true
+  if value==void then value="" end if
+  if state.bindings[key]!=value then state.bindings[key]=value;state.bindingSerial=state.bindingSerial+1 end if
+  return true
 end function
 function getBinding(state,key)
   if state==void or not validKey(key) then return "" end if

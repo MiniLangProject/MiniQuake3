@@ -49,7 +49,7 @@ function main(args)
   count=count+idCheck(geometry.triangles[0].positions[0]==geometry.triangles[2].positions[0] and geometry.triangles[0].vertexIds[0]!=geometry.triangles[2].vertexIds[0] and geometry.triangles[0].texCoords[0]!=geometry.triangles[2].texCoords[0],"coincident UV/normal seam vertices are never welded")
   count=count+idCheck(geometry.triangles[3].vertexIds==[5,6,7] and geometry.triangles[6].vertexIds==[10,11,12],"surface and entity namespaces remain separate despite identical coordinates")
   image=idMaterials.Image(1,1,bytes(4,255));stage=idMaterials.RuntimeStage(["fx"],[image],[336],0.0,[],idMaterials.BLEND_ADD,idMaterials.ALPHA_TEST_NONE,"environment","vertex",idShader.blankWave(),"lightingspecular",idShader.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
-  material=idMats.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0);catalog=idCatalog(geometry.triangles,material);prepared=idBatch.build(catalog);if prepared is error then return prepared end if
+  material=idMats.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0,false);catalog=idCatalog(geometry.triangles,material);prepared=idBatch.build(catalog);if prepared is error then return prepared end if
   count=count+idCheck(prepared.geometry.triangles[1].vertices[0].sourceIndex==2 and len(prepared.batch.passes[0].vertexCache.frames)==20,"scene conversion retains dense mesh IDs into stage slots")
   saved=array(12,void);for index=0 to 11 saved[index]=geometry.triangles[index].vertexIds;geometry.triangles[index].vertexIds=void end for
   reference=idBatch.build(catalog);if reference is error then return reference end if

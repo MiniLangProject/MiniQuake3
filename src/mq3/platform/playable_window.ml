@@ -5,6 +5,7 @@ import mq3.compat.numeric as numeric
 import std.ds.list as lists
 
 extern function create(width as i32,height as i32) from "playable_window.dll" symbol "playable_window_create" returns i32
+extern function setModeNative(width as i32,height as i32,fullscreen as i32,frequency as i32,output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_set_mode" returns i32
 extern function glConfigureNative(driver as ptr,driverLength as i32,colorBits as i32,depthBits as i32,stencilBits as i32,stereo as i32,fullscreen as i32,frequency as i32,swapInterval as i32) from "playable_window.dll" symbol "playable_window_gl_configure" returns i32
 extern function glConfigureDriverNative(driver as ptr,driverLength as i32) from "playable_window.dll" symbol "playable_window_gl_configure_driver" returns i32
 extern function glConfigurePixelFormatNative(colorBits as i32,depthBits as i32,stencilBits as i32,stereo as i32) from "playable_window.dll" symbol "playable_window_gl_configure_pixel_format" returns i32
@@ -65,6 +66,8 @@ extern function setStencilPassNative(pass as i32) from "playable_window.dll" sym
 extern function finishStencilShadowNative(x as i32,y as i32,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_finish_stencil_shadow" returns i32
 extern function uploadTextureNative(slot as i32,rgba as ptr,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_upload_texture" returns i32
 extern function uploadTextureMipmappedNative(slot as i32,rgba as ptr,width as i32,height as i32,mipmapped as i32) from "playable_window.dll" symbol "playable_window_upload_texture_mipmapped" returns i32
+extern function uploadMaterialTextureNative(slot as i32,rgba as ptr,width as i32,height as i32,mipmapped as i32,allowPicmip as i32) from "playable_window.dll" symbol "playable_window_upload_material_texture" returns i32
+extern function setTextureSettingsNative(picmip as i32,mode as i32) from "playable_window.dll" symbol "playable_window_set_texture_settings" returns void
 extern function releaseTextureNative(slot as i32) from "playable_window.dll" symbol "playable_window_release_texture" returns void
 extern function triangleNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,light0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,light1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,light2 as double,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle" returns void
 extern function triangleColoredNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,red0 as i32,green0 as i32,blue0 as i32,alpha0 as i32,red1 as i32,green1 as i32,blue1 as i32,alpha1 as i32,red2 as i32,green2 as i32,blue2 as i32,alpha2 as i32,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_colored" returns void
@@ -73,6 +76,8 @@ extern function writeScreenQuadNative(records as ptr,byteCount as i32,triangleIn
 extern function worldTriangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,halfWidth as double,halfHeight as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch" returns i32
 extern function worldTriangleBatchViewportNative(records as ptr,byteCount as i32,triangleCount as i32,viewportX as i32,viewportY as i32,viewportWidth as i32,viewportHeight as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch_viewport" returns i32
 
+// Matches PLAYABLE_TEXTURE_SLOTS in native/playable_win32.c.
+const NATIVE_TEXTURE_SLOTS=4096
 const VK_ESCAPE=27
 const VK_LBUTTON=1
 const VK_RBUTTON=2
@@ -117,6 +122,13 @@ struct Viewport x y width height end struct
 struct LoadingPoint x y end struct
 struct InputEvent time type value value2 end struct
 struct WindowState active minimized x y fullscreen altTabDisabled soundActivationSerial end struct
+struct DisplayMode width height fullscreen end struct
+
+function setMode(width,height,fullscreen,frequency)
+  output=bytes(12,0);flag=0;if fullscreen then flag=1 end if
+  if setModeNative(width,height,flag,frequency,output,3)==0 then return error(7480,"could not change Win32 display mode") end if
+  return DisplayMode(numeric.readI32(output,0),numeric.readI32(output,4),numeric.readI32(output,8)!=0)
+end function
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
@@ -255,6 +267,18 @@ function uploadTextureMipmapped(slot,rgba,width,height,mipmapped)
   return uploadTextureMipmappedNative(slot,nativeBytesPtr(rgba),width,height,value)!=0
 end function
 function uploadTextureNoMip(slot,rgba,width,height) return uploadTextureMipmapped(slot,rgba,width,height,false) end function
+function uploadMaterialTexture(slot,rgba,width,height,mipmapped,allowPicmip)
+  if typeof(rgba)!="bytes" then return error(7483,"preview texture must be RGBA bytes") end if
+  mip=0;if mipmapped then mip=1 end if
+  picmip=0;if allowPicmip then picmip=1 end if
+  return uploadMaterialTextureNative(slot,nativeBytesPtr(rgba),width,height,mip,picmip)!=0
+end function
+function setTextureSettings(picmip,textureMode)
+  modes=["GL_NEAREST","GL_LINEAR","GL_NEAREST_MIPMAP_NEAREST","GL_LINEAR_MIPMAP_NEAREST","GL_NEAREST_MIPMAP_LINEAR","GL_LINEAR_MIPMAP_LINEAR"]
+  mode=-1
+  for index=0 to len(modes)-1 if stringEqualsIgnoreCaseAscii(textureMode,modes[index]) then mode=index;break end if end for
+  setTextureSettingsNative(picmip,mode)
+end function
 function releaseTexture(slot) releaseTextureNative(slot);return void end function
 function drawTriangle(textureSlot,a,uvA,lightA,b,uvB,lightB,c,uvC,lightC,red,green,blue)
   triangleNative(textureSlot,a.x,a.y,a.depth,uvA[0],uvA[1],lightA,b.x,b.y,b.depth,uvB[0],uvB[1],lightB,c.x,c.y,c.depth,uvC[0],uvC[1],lightC,red,green,blue)
@@ -342,7 +366,8 @@ end function
 function submitWorldTriangleBatch(batch,projection)
   if batch.count==0 then return 0 end if
   if projection==void or projection.position==void or projection.right==void or projection.up==void or projection.forward==void then return error(7488,"invalid world triangle projection") end if
-  rendered=worldTriangleBatchNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0],projection.up[1],projection.up[2],projection.forward[0],projection.forward[1],projection.forward[2],projection.halfWidth,projection.halfHeight,projection.focal,projection.nearDistance)
+  verticalScale=projection.verticalFocal/projection.focal
+  rendered=worldTriangleBatchNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0]*verticalScale,projection.up[1]*verticalScale,projection.up[2]*verticalScale,projection.forward[0],projection.forward[1],projection.forward[2],projection.halfWidth,projection.halfHeight,projection.focal,projection.nearDistance)
   if rendered!=batch.count then return error(7488,"native world triangle batch was rejected") end if
   return rendered
 end function
@@ -358,7 +383,10 @@ function submitWorldTriangleBatchViewport(batch,projection,area)
   if not validViewportRectangle(area.x,area.y,area.width,area.height) then return error(7490,"invalid world triangle viewport") end if
   if projection==void or projection.position==void or projection.right==void or projection.up==void or projection.forward==void then return error(7488,"invalid world triangle projection") end if
   if batch.count==0 then return 0 end if
-  rendered=worldTriangleBatchViewportNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,area.x,area.y,area.width,area.height,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0],projection.up[1],projection.up[2],projection.forward[0],projection.forward[1],projection.forward[2],projection.focal,projection.nearDistance)
+  // Native world draws use one focal value. Scale the submitted view-space
+  // Y row so hardware and software project with the refdef's vertical focal.
+  verticalScale=projection.verticalFocal/projection.focal
+  rendered=worldTriangleBatchViewportNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,area.x,area.y,area.width,area.height,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0]*verticalScale,projection.up[1]*verticalScale,projection.up[2]*verticalScale,projection.forward[0],projection.forward[1],projection.forward[2],projection.focal,projection.nearDistance)
   if rendered!=batch.count then return error(7488,"native viewport world triangle batch was rejected") end if
   return rendered
 end function

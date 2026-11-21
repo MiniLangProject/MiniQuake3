@@ -10,10 +10,12 @@ import std.string as strings
 import std.ds.list as lists
 
 const EFFECT_OUTPUT_RATE=22050
+// Three buffers at 22050 Hz hold at most 139 ms of sampled audio.
+const CHUNK_FRAMES=1024
 
 struct Clip handle path sound compressed end struct
 struct Missing handle path reason end struct
-struct Catalog archive clips missing registered end struct
+struct Catalog archive clips missing registered scanned handles end struct
 
 function fail(message) return error(7650,"QVM sound assets: "+message) end function
 
@@ -33,13 +35,11 @@ function retailPath(name,playerModel)
 end function
 
 function clipForHandle(catalog,handle)
-  if catalog==void or handle<=0 then return void end if
-  for each clip in catalog.clips if clip.handle==handle then return clip end if end for
-  return void
+  if catalog==void or handle<=0 or handle>=len(catalog.handles) then return void end if
+  clip=catalog.handles[handle];if clip==false then return void end if;return clip
 end function
 function missingForHandle(catalog,handle)
-  if catalog==void or handle<=0 then return false end if
-  for each item in catalog.missing if item.handle==handle then return true end if end for;return false
+  return catalog!=void and handle>0 and handle<len(catalog.handles) and catalog.handles[handle]==false
 end function
 
 function clipForPath(catalog,path)
@@ -89,27 +89,30 @@ end function
 function loadForPlayer(archive,assetNames,kinds,playerModel)
   if archive==void or assetNames==void or kinds==void then return fail("archive and handle tables are required") end if
   if len(assetNames)!=len(kinds) then return fail("asset and kind tables differ in length") end if
-  clips=lists.List.withCapacity(len(assetNames));missing=lists.List.withCapacity(16);registered=0
-  for index=0 to len(assetNames)-1
-    if kinds[index]=="sound" then
-      registered=registered+1;path=canonicalPath(assetNames[index]);decoded=try(decodePlayerEffectPath(archive,index+1,path,playerModel))
-      if decoded is error then missing.add(Missing(index+1,path,str(decoded))) else clips.add(decoded) end if
-    end if
-  end for
-  return Catalog(archive,clips.toArray(),missing.toArray(),registered)
+  return syncForPlayer(Catalog(archive,[],[],0,0,[void]),assetNames,kinds,playerModel)
 end function
 function load(archive,assetNames,kinds) return loadForPlayer(archive,assetNames,kinds,"sarge") end function
 
 function syncForPlayer(catalog,assetNames,kinds,playerModel)
   if catalog==void or assetNames==void or kinds==void or len(assetNames)!=len(kinds) then return fail("invalid catalog synchronization") end if
-  clips=lists.List.withCapacity(len(catalog.clips)+8);for each clip in catalog.clips clips.add(clip) end for
-  missing=lists.List.withCapacity(len(catalog.missing)+8);for each item in catalog.missing missing.add(item) end for;registered=0
-  for index=0 to len(assetNames)-1
+  // Handles are append-only within a VM session.
+  count=len(assetNames)
+  if count<catalog.scanned then return fail("asset table was reset without rebuilding the sound catalog") end if
+  if count==catalog.scanned then return catalog end if
+  newSounds=0
+  for index=catalog.scanned to count-1 if kinds[index]=="sound" then newSounds=newSounds+1 end if end for
+  if newSounds==0 then catalog.scanned=count;return catalog end if
+  clips=lists.List.withCapacity(len(catalog.clips)+newSounds);for each clip in catalog.clips clips.add(clip) end for
+  missing=lists.List.withCapacity(len(catalog.missing)+newSounds);for each item in catalog.missing missing.add(item) end for
+  handles=array(count+1,void);copyArray(handles,0,catalog.handles,0,len(catalog.handles))
+  for index=catalog.scanned to count-1
     if kinds[index]=="sound" then
-      registered=registered+1
-      if clipForHandle(catalog,index+1)==void and not missingForHandle(catalog,index+1) then path=canonicalPath(assetNames[index]);decoded=try(decodePlayerEffectPath(catalog.archive,index+1,path,playerModel));if decoded is error then missing.add(Missing(index+1,path,str(decoded))) else clips.add(decoded) end if end if
+      handle=index+1;path=canonicalPath(assetNames[index]);decoded=try(decodePlayerEffectPath(catalog.archive,handle,path,playerModel))
+      if decoded is error then missing.add(Missing(handle,path,str(decoded)));handles[handle]=false
+      else clips.add(decoded);handles[handle]=decoded end if
     end if
   end for
-  catalog.clips=clips.toArray();catalog.missing=missing.toArray();catalog.registered=registered;return catalog
+  catalog.clips=clips.toArray();catalog.missing=missing.toArray();catalog.registered=catalog.registered+newSounds;catalog.scanned=count;catalog.handles=handles
+  return catalog
 end function
 function sync(catalog,assetNames,kinds) return syncForPlayer(catalog,assetNames,kinds,"sarge") end function

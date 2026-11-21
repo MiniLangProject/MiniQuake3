@@ -12,7 +12,7 @@ struct Binding shaderHandle customSkin shaderName surfaceName materialIndex end 
 struct Texture imageName image slot end struct
 // Field layout intentionally matches playable_materials.Material so the
 // existing multi-pass native batch path can consume QVM materials directly.
-struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime end struct
+struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime noPicMip end struct
 struct ResolvedTriangle triangle materialIndex end struct
 struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding shaderRemaps end struct
 
@@ -56,9 +56,7 @@ function addTextures(textureList,stages)
   result=textureList
   for each stage in stages
     if len(stage.images)>0 then for index=0 to len(stage.images)-1
-      duplicate=false
-      for each texture in result if texture.slot==stage.slots[index] then duplicate=true;break end if end for
-      if not duplicate then result=result+[Texture(stage.imageNames[index],stage.images[index],stage.slots[index])] end if
+      result=result+[Texture(stage.imageNames[index],stage.images[index],stage.slots[index])]
     end for end if
   end for
   return result
@@ -71,7 +69,7 @@ function addBeamMaterial(output,endSlot)
   existing=materialIndex(output.materials,BUILTIN_BEAM);if existing>=0 then return existing end if
   if output.nextTextureSlot>=endSlot then return -1 end if
   image=whiteImage();slot=output.nextTextureSlot;stage=beamStage(image,slot);index=len(output.materials)
-  output.materials=output.materials+[Material(index,BUILTIN_BEAM,"$whiteimage",image,slot,[stage],[],true,9.0,false,true,0.0,0.0)]
+  output.materials=output.materials+[Material(index,BUILTIN_BEAM,"$whiteimage",image,slot,[stage],[],true,9.0,false,true,0.0,0.0,true)]
   output.textures=output.textures+[Texture("$whiteimage",image,slot)];output.nextTextureSlot=slot+1;return index
 end function
 function projectionShadowStage(image,slot)
@@ -81,7 +79,7 @@ function addProjectionShadowMaterial(output,endSlot)
   existing=materialIndex(output.materials,BUILTIN_PROJECTION_SHADOW);if existing>=0 then return existing end if
   if output.nextTextureSlot>=endSlot then return -1 end if
   image=whiteImage();slot=output.nextTextureSlot;stage=projectionShadowStage(image,slot);index=len(output.materials)
-  output.materials=output.materials+[Material(index,BUILTIN_PROJECTION_SHADOW,"$whiteimage",image,slot,[stage],[],true,4.0,true,true,0.0,0.0)]
+  output.materials=output.materials+[Material(index,BUILTIN_PROJECTION_SHADOW,"$whiteimage",image,slot,[stage],[],true,4.0,true,true,0.0,0.0,true)]
   output.textures=output.textures+[Texture("$whiteimage",image,slot)];output.nextTextureSlot=slot+1;return index
 end function
 function hasImage(stages)
@@ -165,7 +163,9 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
         stages=runtime[0];output.nextTextureSlot=runtime[1]
         firstName="";firstImage=void;firstSlot=-1
         for each stage in stages if firstSlot<0 and len(stage.images)>0 then firstName=stage.imageNames[0];firstImage=stage.images[0];firstSlot=stage.slots[0] end if end for
-        output.materials=output.materials+[Material(len(output.materials),shaderName,firstName,firstImage,firstSlot,stages,runtime[2],runtime[3],runtime[4],runtime[5],runtime[6],0.0,runtime[7])]
+        noMip=runtime[6];noPicMip=runtime[8]
+        if typedName(assets,kinds,triangle.shaderHandle,"shaderNoMip","shaderNoMip")!="" then noMip=true;noPicMip=true end if
+        output.materials=output.materials+[Material(len(output.materials),shaderName,firstName,firstImage,firstSlot,stages,runtime[2],runtime[3],runtime[4],runtime[5],noMip,0.0,runtime[7],noPicMip)]
         index=len(output.materials)-1;output.textures=addTextures(output.textures,stages)
       end if
     end if

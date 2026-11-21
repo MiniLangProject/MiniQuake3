@@ -4,6 +4,30 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Korrekturen aus dem Intensiv-Audit, 21. November 2026
+
+Der reguläre Windows-Start verwendet jetzt eine gemeinsame Menü- und
+Match-Schleife. Lokale Spielwechsel, Verlassen der Arena und Einzelspieler-
+Levelauswahl laufen über den Befehlsbuffer. Einstellungen, Bindings und die
+von der Original-QVM vergebenen Platzierungen landen in `baseq3/q3config.cfg`.
+`vid_restart` und Alt+Enter ändern den Anzeigemodus am bestehenden Fenster.
+Die lokale Simulation pausiert mit dem Ingame-Menü. Unter einer bildfüllenden
+UI entfallen Cgame-Rendering und Weltaufbereitung.
+
+Textur- und Tonregistrierungen verarbeiten neue Einträge. Die lokale
+Nachholzeit pro Bildschirmframe ist auf 200 ms begrenzt. Der Matchhost bindet
+Bot-Bewegung und AAS-Routing ein. Die Retail-Tests prüfen Botbewegung und echte
+Schussereignisse auf `q3dm0` und `q3dm1`. Der Renderer überträgt Area-Masken,
+beachtet Shader-Culling, `SURF_NODRAW`, `$whiteimage` und vertikalen FOV und
+löst Crashs MD3-Oberflächen über alle Detailstufen auf die Retail-Skins auf.
+
+Der [Retail-Prüfbericht](verification/2026-11-21-intensive-audit-fixes.md)
+enthält die Messungen zu den Windows- und Performance-Korrekturen. Der
+[Intensiv-Audit](INTENSIVE_AUDIT_2026-11-21.md) hält den Ausgangszustand fest.
+Remote-Serverbeitritt, Demo-Wiedergabe und Mod-Aktivierung
+sind im Windows-Spielpfad noch offen. `map_restart` lädt die aktuelle Karte neu.
+Die historische Testsuite verlangt weiterhin den exakt eingefrorenen Compiler.
+
 ## Patch-Gitter und Einschlagmarken, 21. November 2026
 
 Die Patch-Unterteilung entfernt bei mehreren geraden Abschnitten nur noch

@@ -20,7 +20,11 @@ int main(void) {
     if (playableWindowProc(0, WM_SYSCOMMAND, SC_SCREENSAVE, 0) != 0) return 5;
     playableWindowProc(0, WM_SYSKEYDOWN, VK_RETURN, 0);
     if (!playable_window_take_video_restart() || playable_window_take_video_restart() ||
-            !playable_window_window_state(state, 7) || !state[4]) return 6;
+            !playable_window_window_state(state, 7) || state[4]) return 6;
+    /* Repeats must not queue a second fullscreen toggle. The host applies
+     * the first request between frames after reading the current cvars. */
+    playableWindowProc(0, WM_SYSKEYDOWN, VK_RETURN, 1L << 30);
+    if (playable_window_take_video_restart()) return 15;
     playableWindowProc(0, WM_KEYDOWN, 'X', 0x002d0000);
     if (!playable_window_next_input_event((unsigned char *)&event, sizeof(event)) ||
             event.type != PLAYABLE_INPUT_KEY || event.value != 'x' || !event.value2) return 7;

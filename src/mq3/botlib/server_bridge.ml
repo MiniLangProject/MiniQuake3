@@ -16,13 +16,13 @@ const MAX_RELIABLE_COMMANDS=64
 const USERCMD_SIZE=24
 
 struct Client snapshotEntities reliableCommands reliableSequence reliableAcknowledge lastPacketTime userCommand pending end struct
-struct State clients now end struct
+struct State clients now lastFrameTime end struct
 struct ConsoleResult available text end struct
 
 function emptyClient() return Client([],array(MAX_RELIABLE_COMMANDS,""),0,0,0,void,false) end function
 function create(maxClients)
   if maxClients<1 then return error(7580,"bot server bridge: client capacity must be positive") end if
-  clients=array(maxClients,void);for index=0 to maxClients-1 clients[index]=emptyClient() end for;return State(clients,0)
+  clients=array(maxClients,void);for index=0 to maxClients-1 clients[index]=emptyClient() end for;return State(clients,0,-1)
 end function
 function clientAt(state,client)
   if state==void or client<0 or client>=len(state.clients) then return void end if;return state.clients[client]

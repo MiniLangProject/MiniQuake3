@@ -37,7 +37,7 @@ function main(args)
 
   image=materials.Image(1,1,bytes([255,255,255,255]))
   stage=materials.RuntimeStage(["fx"],[image],[336],0.0,[materials.UvMod("entitytranslate",0.0,0.0,0.0,0.0,0.0,0.0,shaderParser.blankWave())],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
-  material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0)
+  material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0,false)
   dynamicCatalog=catalogFor([sourceTriangle(2.0,white,white,1)],[material]);dynamicPrepared=sceneBatch.build(dynamicCatalog);if dynamicPrepared is error then return dynamicPrepared end if
   dynamicCatalog.triangles[0]=sceneMaterials.ResolvedTriangle(sourceTriangle(9.0,red,[19,29,39,49],1),0)
   dynamicRefreshed=sceneBatch.refresh(dynamicPrepared,dynamicCatalog);if dynamicRefreshed is error then return dynamicRefreshed end if

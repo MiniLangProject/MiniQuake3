@@ -404,7 +404,7 @@ API int mq3_md3_transform(const unsigned char *input,int inputBytes,unsigned cha
 
 typedef struct worldFace_s {
     double center[3],radius,normal[3];
-    int32_t kind,triangles,twoSided,reserved;
+    int32_t kind,triangles,cullMode,reserved;
 } worldFace;
 typedef char worldFaceSizeMustBe72[sizeof(worldFace)==72 ? 1 : -1];
 API int mq3_world_store_face(unsigned char *records,int bytes,int index,int kind,int triangles,
@@ -413,11 +413,14 @@ API int mq3_world_store_face(unsigned char *records,int bytes,int index,int kind
     if (!records||index<0||((int64_t)index+1)*72>bytes||triangles<0) return 0;
     face.center[0]=x;face.center[1]=y;face.center[2]=z;face.radius=radius;
     face.normal[0]=nx;face.normal[1]=ny;face.normal[2]=nz;face.kind=kind;face.triangles=triangles;
-    face.twoSided=0;face.reserved=0;memcpy(records+(size_t)index*72,&face,72);return 1;
+    face.cullMode=0;face.reserved=0;memcpy(records+(size_t)index*72,&face,72);return 1;
+}
+API int mq3_world_set_cull_mode(unsigned char *records,int bytes,int index,int mode) {
+    if (!records||index<0||((int64_t)index+1)*72>bytes||mode<0||mode>2) return 0;
+    write32(records+(size_t)index*72+64,mode);return 1;
 }
 API int mq3_world_set_two_sided(unsigned char *records,int bytes,int index,int twoSided) {
-    if (!records||index<0||((int64_t)index+1)*72>bytes) return 0;
-    write32(records+(size_t)index*72+64,twoSided!=0);return 1;
+    return mq3_world_set_cull_mode(records,bytes,index,twoSided!=0);
 }
 API int mq3_world_filter(const unsigned char *records,int recordBytes,int faceCount,
         const unsigned char *visible,int visibleBytes,int visibleCount,
@@ -447,9 +450,9 @@ API int mq3_world_filter(const unsigned char *records,int recordBytes,int faceCo
         horizontal=local[2]*slopeX+face.radius*radiusScaleX;vertical=local[2]*slopeY+face.radius*radiusScaleY;
         if (local[2]+face.radius<nearDistance||local[2]-face.radius>farDistance||
                 local[0]<-horizontal||local[0]>horizontal||local[1]<-vertical||local[1]>vertical) { ++rejectedFrustum;continue; }
-        if (backfaceCull&&face.kind==1&&!face.twoSided) {
+        if (backfaceCull&&face.kind==1&&face.cullMode!=1) {
             double facing=face.normal[0]*(camera[0]-face.center[0])+face.normal[1]*(camera[1]-face.center[1])+face.normal[2]*(camera[2]-face.center[2]);
-            if (facing<0.0) { ++rejectedBackface;continue; }
+            if ((face.cullMode==2&&facing>8.0)||(face.cullMode==0&&facing< -8.0)) { ++rejectedBackface;continue; }
         }
         ++candidates;
         if (face.triangles>0) {

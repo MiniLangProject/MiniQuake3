@@ -16,7 +16,7 @@ def main():
         result = run([ROOT / "build/singleplayer_bot_retail_probe.exe",
                       (args.data_root / "baseq3/pak0.pk3").resolve(),
                       ROOT / "build/reference/qvms", map_name], ROOT, timeout=240).strip()
-        if not any(line.startswith(f"PASS: 9 singleplayer {map_name} bot and human contracts bot50ms=") for line in result.splitlines()):
+        if not any(line.startswith(f"PASS: 12 singleplayer {map_name} bot and human contracts bot50ms=") for line in result.splitlines()):
             raise RuntimeError(result)
         score_line = next((line for line in result.splitlines() if line.startswith("SCORE_REPLY: scores ")), "")
         fields = score_line.split()

@@ -293,6 +293,16 @@ int main(void) {
             !playable_window_upload_texture_mipmapped(5, bilinearColors, 2, 2, 0) ||
             textures[5].mipLevelCount != 1 || textures[5].mipPixels[0] != 0) return 41;
 
+    playable_window_set_texture_settings(1, 3);
+    if (!playable_window_upload_material_texture(16, bilinearColors, 2, 2, 1, 1) ||
+            textures[16].width != 1 || textures[16].height != 1 ||
+            textures[16].pixels[0] != UINT32_C(0xff808080) || textures[16].mipLevelCount != 1) return 81;
+    if (!playable_window_upload_material_texture(17, bilinearColors, 2, 2, 1, 0) ||
+            textures[17].width != 2 || textures[17].height != 2 || textures[17].mipLevelCount != 2) return 82;
+    playable_window_release_texture(16);
+    playable_window_release_texture(17);
+    playable_window_set_texture_settings(0, 3);
+
     /* ProjectDlightTexture uses DST_COLOR/ONE: each light channel scales the
      * existing framebuffer channel and adds it back with saturation. */
     playable_window_begin_frame(0, 0, 0);

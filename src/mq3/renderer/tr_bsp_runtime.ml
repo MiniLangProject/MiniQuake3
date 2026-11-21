@@ -13,6 +13,7 @@ import mq3.renderer.playable_light_grid as lightGrid
 import mq3.renderer.playable_fog as playableFog
 import mq3.renderer.playable_flares as playableFlares
 import mq3.renderer.qvm_scene_geometry as sceneGeometry
+import mq3.renderer.patch_stitch as patchStitch
 
 const MST_PLANAR=1
 const MST_PATCH=2
@@ -176,69 +177,10 @@ end function
 function R_MergedHeightPoints(grid,offset)
   i=1;while i<grid.height-1 j=i+1;while j<grid.height-1 if nearPoint(grid.control[offset+i*grid.width].position,grid.control[offset+j*grid.width].position,0.1) then return true end if;j=j+1 end while;i=i+1 end while;return false
 end function
-function copyLodErrors(source,target)
-  for sourceRow=0 to source.height-1
-    for sourceColumn=0 to source.width-1
-      edge=sourceRow==0 or sourceRow==source.height-1 or sourceColumn==0 or sourceColumn==source.width-1
-      if not edge then continue end if
-      point=source.control[sourceRow*source.width+sourceColumn].position
-      sourceWidthEdge=sourceRow==0 or sourceRow==source.height-1
-      sourceError=source.heightLodError[sourceRow];if sourceWidthEdge then sourceError=source.widthLodError[sourceColumn] end if
-      for targetRow=0 to target.height-1
-        for targetColumn=0 to target.width-1
-          targetEdge=targetRow==0 or targetRow==target.height-1 or targetColumn==0 or targetColumn==target.width-1
-          if targetEdge and nearPoint(point,target.control[targetRow*target.width+targetColumn].position,0.1) then
-            if targetRow==0 or targetRow==target.height-1 then target.widthLodError[targetColumn]=sourceError else target.heightLodError[targetRow]=sourceError end if
-          end if
-        end for
-      end for
-    end for
-  end for
-  return target
-end function
-function R_FixSharedVertexLodError_r(grids,start,grid)
-  index=start;while index<len(grids) other=grids[index];if not other.lodFixed and sameLodGroup(grid,other) then copyLodErrors(grid,other);other.lodFixed=2;R_FixSharedVertexLodError_r(grids,index+1,other) end if;index=index+1 end while;return true
-end function
-function R_FixSharedVertexLodError(grids) for index=0 to len(grids)-1 if not grids[index].lodFixed then grids[index].lodFixed=2;R_FixSharedVertexLodError_r(grids,index+1,grids[index]) end if end for;return grids end function
-
-function atPosition(vertex,position) return render.RenderVertex(position,vertex.baseUV,vertex.lightmapUV,vertex.normal,vertex.color,vertex.entityColor,vertex.entityTexCoord,vertex.shaderTime,vertex.sourceIndex) end function
-function insertColumn(grid,column,row,vertex,errorValue)
-  if grid.width>=MAX_GRID_SIZE then return false end if;result=[]
-  for currentRow=0 to grid.height-1
-    for col=0 to grid.width-1
-      if col==column then inserted=render.halfVertex(grid.control[currentRow*grid.width+col-1],grid.control[currentRow*grid.width+col]);if currentRow==row then inserted=atPosition(inserted,vertex.position) end if;result=result+[inserted] end if
-      result=result+[grid.control[currentRow*grid.width+col]]
-    end for
-  end for
-  lod=[];for col=0 to grid.width-1 if col==column then lod=lod+[errorValue] end if;lod=lod+[grid.widthLodError[col]] end for;if column==grid.width then lod=lod+[errorValue] end if;grid.control=result;grid.width=grid.width+1;grid.widthLodError=lod;return true
-end function
-function insertRow(grid,row,column,vertex,errorValue)
-  if grid.height>=MAX_GRID_SIZE then return false end if;result=[]
-  for current=0 to grid.height-1
-    if current==row then for col=0 to grid.width-1 inserted=render.halfVertex(grid.control[(current-1)*grid.width+col],grid.control[current*grid.width+col]);if col==column then inserted=atPosition(inserted,vertex.position) end if;result=result+[inserted] end for end if
-    for col=0 to grid.width-1 result=result+[grid.control[current*grid.width+col]] end for
-  end for
-  lod=[];for current=0 to grid.height-1 if current==row then lod=lod+[errorValue] end if;lod=lod+[grid.heightLodError[current]] end for;if row==grid.height then lod=lod+[errorValue] end if;grid.control=result;grid.height=grid.height+1;grid.heightLodError=lod;return true
-end function
-function edgePoint(grid,side,index) if side==0 then return grid.control[index] end if;if side==1 then return grid.control[(grid.height-1)*grid.width+index] end if;if side==2 then return grid.control[index*grid.width] end if;return grid.control[index*grid.width+grid.width-1] end function
-function edgeCount(grid,side) if side<2 then return grid.width end if;return grid.height end function
-function R_StitchPatches(grid1,grid2)
-  if not sameLodGroup(grid1,grid2) then return false end if
-  for side1=0 to 3 count1=edgeCount(grid1,side1);start=0;while start<count1-2
-    a=edgePoint(grid1,side1,start);middle=edgePoint(grid1,side1,start+1);b=edgePoint(grid1,side1,start+2)
-    for side2=0 to 3 count2=edgeCount(grid2,side2);for at=0 to count2-2
-      c=edgePoint(grid2,side2,at);d=edgePoint(grid2,side2,at+1)
-      if (nearPoint(a.position,c.position,0.1) and nearPoint(b.position,d.position,0.1)) or (nearPoint(a.position,d.position,0.1) and nearPoint(b.position,c.position,0.1)) then
-        errorValue=grid1.widthLodError[start+1];if side1>=2 then errorValue=grid1.heightLodError[start+1] end if
-        inserted=false;if side2<2 then anchor=0;if side2==1 then anchor=grid2.height-1 end if;inserted=insertColumn(grid2,at+1,anchor,middle,errorValue) else anchor=0;if side2==3 then anchor=grid2.width-1 end if;inserted=insertRow(grid2,at+1,anchor,middle,errorValue) end if;if inserted then grid2.lodStitched=false;return true end if
-      end if
-    end for end for
-    start=start+1
-  end while end for;return false
-end function
-function R_StitchAllPatches(grids)
-  count=0;changed=true;guard=0;while changed and guard<MAX_GRID_SIZE*len(grids) changed=false;for i=0 to len(grids)-1 for j=0 to len(grids)-1 if i!=j and R_StitchPatches(grids[i],grids[j]) then count=count+1;changed=true end if end for end for;guard=guard+1 end while;return count
-end function
+function R_FixSharedVertexLodError_r(grids,start,grid) return patchStitch.R_FixSharedVertexLodError_r(grids,start,grid) end function
+function R_FixSharedVertexLodError(grids) return patchStitch.R_FixSharedVertexLodError(grids) end function
+function R_StitchPatches(grid1,grid2) return patchStitch.R_StitchPatches(grid1,grid2) end function
+function R_StitchAllPatches(grids) return patchStitch.R_StitchAllPatches(grids) end function
 function R_MovePatchSurfacesToHunk(grids) result=[];for each grid in grids result=result+[Grid(grid.control,grid.width,grid.height,grid.widthLodError,grid.heightLodError,grid.lodOrigin,grid.lodRadius,grid.lodFixed,grid.lodStitched)] end for;return result end function
 
 function RE_LoadWorldMap(state,name,data,shaderIndex)

@@ -245,6 +245,36 @@ static void shutdownHardwareRenderer(void) {
     hardwarePackedVertices = 0; hardwarePackedStates = 0; hardwarePackedCapacity = 0;
     hardwareRenderer = 0;
 }
+static const GLenum hardwareTextureMinFilters[] = {GL_NEAREST,GL_LINEAR,GL_NEAREST_MIPMAP_NEAREST,
+    GL_LINEAR_MIPMAP_NEAREST,GL_NEAREST_MIPMAP_LINEAR,GL_LINEAR_MIPMAP_LINEAR};
+static const GLenum hardwareTextureMagFilters[] = {GL_NEAREST,GL_LINEAR,GL_NEAREST,GL_LINEAR,GL_NEAREST,GL_LINEAR};
+static int hardwareTextureMode = 3;
+
+static void hardwareTextureFilters(const playableTexture *texture) {
+    GLenum min = texture->mipmapped ? hardwareTextureMinFilters[hardwareTextureMode] : GL_LINEAR;
+    GLenum mag = texture->mipmapped ? hardwareTextureMagFilters[hardwareTextureMode] : GL_LINEAR;
+    mq_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, min);
+    mq_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, mag);
+}
+
+static void hardwareSetTextureMode(int mode) {
+    GLint previousActive, previousBinding;
+    int slot;
+    if (mode < 0 || mode > 5 || mode == hardwareTextureMode) return;
+    hardwareTextureMode = mode;
+    if (!hardwareRenderer) return;
+    mq_glGetIntegerv(MQ_GL_ACTIVE_TEXTURE, &previousActive);
+    mq_glActiveTexture(MQ_GL_TEXTURE0);
+    mq_glGetIntegerv(GL_TEXTURE_BINDING_2D, &previousBinding);
+    for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) {
+        if (!hardwareTextures[slot] || !textures[slot].mipmapped) continue;
+        mq_glBindTexture(GL_TEXTURE_2D, hardwareTextures[slot]);
+        hardwareTextureFilters(&textures[slot]);
+    }
+    mq_glBindTexture(GL_TEXTURE_2D, (GLuint)previousBinding);
+    mq_glActiveTexture((GLenum)previousActive);
+}
+
 static void hardwareUploadTexture(int slot) {
     playableTexture *texture = &textures[slot];
     int level;
@@ -262,9 +292,7 @@ static void hardwareUploadTexture(int slot) {
     for (level = 1; level < texture->mipLevelCount; ++level)
         mq_glTexImage2D(GL_TEXTURE_2D, level, GL_RGBA, texture->mipWidths[level-1],
             texture->mipHeights[level-1], 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, texture->mipPixels[level-1]);
-    mq_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-        texture->mipLevelCount > 1 ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
-    mq_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    hardwareTextureFilters(texture);
     /* A lazy upload requested while configuring TMU1 must not overwrite the
      * base texture already bound on TMU0. Public uploads are state-neutral too. */
     mq_glBindTexture(GL_TEXTURE_2D, (GLuint)previousBinding);

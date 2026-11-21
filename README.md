@@ -67,7 +67,7 @@ complete behavioral parity.
 | Graphical execution | An earlier `q3dm0` replay completed 300 frames; the README capture run separately exercises both pictured arenas. |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
 | Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
-| Desktop lifecycle and persistence | A separate candidate exists; complete restart/map/menu/video and persistent-file integration is not yet accepted in this core change set. |
+| Desktop lifecycle and persistence | The Windows host routes local map, restart and menu commands and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |
 | Broader compatibility | Longer interactive sessions, multiplayer interoperability, hardware-specific behavior and complete 1:1 parity still need acceptance testing. |
 
 The hosted Windows screenshot runs use **software rendering** and do not
@@ -184,13 +184,15 @@ regenerating the historical manifest with unrelated compiler inputs.
 | Scoreboard | Hold `Tab` |
 | Chat / team chat | `T` / `Y` |
 | Menu | `Esc` |
+| Toggle fullscreen | `Alt+Enter` |
 
-The Controls menu provides rebinding and mouse settings, transferred from the
-menu into the match. The audited normal desktop host does not yet provide the
-complete persistent `q3config.cfg` and QVM write integration; its separate
-candidate still needs end-to-end acceptance. Do not rely on settings surviving
-a program restart in this core-only version. The current starter configuration
-uses an inverted vertical mouse axis, which can be changed in Controls.
+Controls provides rebinding and mouse settings, including the default inverted
+vertical axis. Setup → System → Graphics applies Video Mode and Fullscreen
+while the same game window stays open. The runtime uses a borderless fullscreen
+window if the graphics driver cannot switch to the selected display mode.
+Live mode changes scale the QVM's existing logical viewport to the new surface.
+Controls, archived settings and single-player placement use the local
+`baseq3/q3config.cfg` beside the executable.
 
 ## Tests and verification
 
@@ -201,6 +203,8 @@ After building and supplying `build/baseq3/pak0.pk3`:
 ```powershell
 python scripts/test_default_launcher.py
 python scripts/test_default_exe_startup.py
+python scripts/test_desktop_video_retail.py
+python scripts/test_desktop_session_retail.py --data-root build --published
 python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml --output singleplayer_bot_retail_probe.exe
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm0
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm1

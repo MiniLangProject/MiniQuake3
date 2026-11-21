@@ -1,7 +1,7 @@
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 struct Point x y depth end struct
-struct Projection position right up forward halfWidth halfHeight focal nearDistance end struct
+struct Projection position right up forward halfWidth halfHeight focal nearDistance verticalFocal end struct
 function require(condition,message) if not condition then return error(7489,message) end if;return 1 end function
 function main(args)
   count=0;batch=window.createTriangleBatch(2)
@@ -26,7 +26,7 @@ function main(args)
   count=count+require(try(window.createTriangleBatch(0)) is error and try(window.createTriangleBatch(65537)) is error,"capacity range")
   area=window.viewport(4,5,16,12);count=count+require(area.x==4 and area.y==5 and area.width==16 and area.height==12,"viewport dimensions preserved")
   count=count+require(try(window.viewport(-1,0,16,12)) is error and try(window.viewport(0,0,0,12)) is error,"viewport dimensions validated")
-  projection=Projection([0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],[1.0,0.0,0.0],8.0,6.0,8.0,1.0)
+  projection=Projection([0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],[1.0,0.0,0.0],8.0,6.0,8.0,1.0,8.0)
   window.resetTriangleBatch(batch);count=count+require(window.submitWorldTriangleBatchViewport(batch,projection,area)==0,"empty viewport batch accepted")
   count=count+require(try(window.submitWorldTriangleBatchViewport(batch,void,area)) is error,"viewport projection validated")
   print("PASS: "+str(count)+" playable triangle batch contracts");return 0

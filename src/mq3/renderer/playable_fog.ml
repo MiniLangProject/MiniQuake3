@@ -73,7 +73,7 @@ function textureImage()
 end function
 
 function assignTexture(catalog,slot)
-  if catalog==void or slot<0 or slot>=512 then return fail("invalid fog texture slot") end if
+  if catalog==void or slot<0 or slot>=window.NATIVE_TEXTURE_SLOTS then return fail("invalid fog texture slot") end if
   catalog.textureSlot=slot;return 1
 end function
 

@@ -68,8 +68,8 @@ end function
 
 function drawStretchPic(vm,base,host)
   if host.renderer.drawStretchPicFn==void then return unavailable("draw stretch pic") end if
-  values=[]
-  for index=1 to 8 values=values+[n.bitsFloat(arg(vm,base,index))] end for
+  values=array(8,0.0)
+  for index=1 to 8 values[index-1]=n.bitsFloat(arg(vm,base,index)) end for
   host.renderer.drawStretchPicFn(host.context,values,arg(vm,base,9));return 0
 end function
 
@@ -100,10 +100,21 @@ function getFileList(vm,base,host)
   if pathAt!=0 then path=common.readString(vm,pathAt) end if;if extensionAt!=0 then extension=common.readString(vm,extensionAt) end if
   entries=host.fileListFn(host.context,path,extension)
   if entries==void then entries=[] end if;data=bytes(capacity,0);cursor=0;count=0
-  for each name in entries
-    encoded=bytes(name);if cursor+len(encoded)+1>capacity then break end if
-    copyBytes(data,cursor,encoded,0,len(encoded));cursor=cursor+len(encoded)+1;count=count+1
-  end for
+  if path=="$modlist" then
+    index=0
+    while index+1<len(entries)
+      name=bytes(entries[index]);description=bytes(entries[index+1])
+      if cursor+len(name)+len(description)+2>capacity then break end if
+      copyBytes(data,cursor,name,0,len(name));cursor=cursor+len(name)+1
+      copyBytes(data,cursor,description,0,len(description));cursor=cursor+len(description)+1
+      count=count+1;index=index+2
+    end while
+  else
+    for each name in entries
+      encoded=bytes(name);if cursor+len(encoded)+1>capacity then break end if
+      copyBytes(data,cursor,encoded,0,len(encoded));cursor=cursor+len(encoded)+1;count=count+1
+    end for
+  end if
   if capacity>0 then common.writeRaw(vm,arg(vm,base,3),data,capacity,"file list output") end if
   return count
 end function

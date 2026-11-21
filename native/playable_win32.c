@@ -56,6 +56,9 @@ static int openGLSwapInterval;
 static int requestedFullscreen;
 static int requestedDisplayFrequency;
 static int displayModeChanged;
+static int highResolutionTimer;
+static int liveModeWidth;
+static int liveModeHeight;
 static wchar_t requestedOpenGLDriver[MAX_PATH];
 static int gammaRampAvailable;
 static int gammaRampChanged;
@@ -142,7 +145,7 @@ static int inputMidiEnabled;
 static int inputMidiDevice;
 static int inputMidiChannel = 1;
 
-#define PLAYABLE_TEXTURE_SLOTS 512
+#define PLAYABLE_TEXTURE_SLOTS 4096
 #define PLAYABLE_MAX_TEXTURE_SIZE 4096
 #define PLAYABLE_MAX_MIP_LEVELS 13
 
@@ -156,9 +159,11 @@ typedef struct playableTexture_s {
     int mipWidths[PLAYABLE_MAX_MIP_LEVELS - 1];
     int mipHeights[PLAYABLE_MAX_MIP_LEVELS - 1];
     int mipLevelCount;
+    int mipmapped;
 } playableTexture;
 
 static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
+static int texturePicmip;
 static int rasterBlendMode;
 static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
@@ -872,36 +877,24 @@ static void releaseSurface(void) {
 
 static int allocateSurface(int width, int height) {
     SIZE_T byteCount;
-    releaseSurface();
+    void *next[4] = {0};
+    int i;
     if (width < 1 || height < 1 || width > 16384 || height > 16384) return 0;
+    if (width == surfaceWidth && height == surfaceHeight) return 1;
     byteCount = (SIZE_T)width * (SIZE_T)height * 4u;
-    if (byteCount / 4u != (SIZE_T)width * (SIZE_T)height) return 0;
-    pixels = (uint32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!pixels) return 0;
-    presentedPixels = (uint32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!presentedPixels) {
-        VirtualFree(pixels, 0, MEM_RELEASE);
-        pixels = 0;
-        return 0;
+    for (i = 0; i < 4; ++i) {
+        next[i] = VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+        if (!next[i]) {
+            while (i > 0) VirtualFree(next[--i], 0, MEM_RELEASE);
+            return 0;
+        }
     }
-    depthPixels = (float *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!depthPixels) {
-        VirtualFree(pixels, 0, MEM_RELEASE);
-        VirtualFree(presentedPixels, 0, MEM_RELEASE);
-        pixels = 0;
-        presentedPixels = 0;
-        return 0;
-    }
-    stencilPixels = (int32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!stencilPixels) {
-        VirtualFree(pixels, 0, MEM_RELEASE);
-        VirtualFree(presentedPixels, 0, MEM_RELEASE);
-        VirtualFree(depthPixels, 0, MEM_RELEASE);
-        pixels = 0;
-        presentedPixels = 0;
-        depthPixels = 0;
-        return 0;
-    }
+    AcquireSRWLockExclusive(&presentationLock);
+    releaseSurface();
+    pixels = (uint32_t *)next[0];
+    presentedPixels = (uint32_t *)next[1];
+    depthPixels = (float *)next[2];
+    stencilPixels = (int32_t *)next[3];
     surfaceWidth = width;
     surfaceHeight = height;
     ZeroMemory(&bitmapInfo, sizeof(bitmapInfo));
@@ -911,6 +904,75 @@ static int allocateSurface(int width, int height) {
     bitmapInfo.bmiHeader.biPlanes = 1;
     bitmapInfo.bmiHeader.biBitCount = 32;
     bitmapInfo.bmiHeader.biCompression = BI_RGB;
+    ReleaseSRWLockExclusive(&presentationLock);
+    return 1;
+}
+
+typedef struct playableDisplayMode_s {
+    int width, height, fullscreen, frequency;
+} playableDisplayMode;
+
+static int setExclusiveDisplay(int width, int height, int frequency) {
+    DEVMODEW mode;
+    ZeroMemory(&mode, sizeof(mode)); mode.dmSize = sizeof(mode);
+    mode.dmPelsWidth = (DWORD)width; mode.dmPelsHeight = (DWORD)height;
+    mode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
+    if (frequency > 0) {
+        mode.dmDisplayFrequency = (DWORD)frequency;
+        mode.dmFields |= DM_DISPLAYFREQUENCY;
+    }
+    if (ChangeDisplaySettingsW(&mode, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) return 0;
+    displayModeChanged = 1;
+    return 1;
+}
+
+/* Run on the HWND thread between frames. Keep the DC and GL context alive so
+ * a mode change does not reload the map or invalidate texture handles. */
+static int changeWindowMode(HWND hwnd, const playableDisplayMode *mode) {
+    int width = mode->width, height = mode->height;
+    int left, top, exclusive = displayModeChanged;
+    DWORD style = WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_THICKFRAME);
+    RECT rect = {0};
+    RECT work = {0};
+    if (liveModeWidth == width && liveModeHeight == height &&
+            requestedFullscreen == mode->fullscreen &&
+            requestedDisplayFrequency == mode->frequency) return 1;
+    restoreDisplayMode();
+    if (mode->fullscreen) {
+        style = WS_POPUP;
+        if (!setExclusiveDisplay(width, height, mode->frequency)) {
+            /* Drivers need not expose every original Quake mode. Use the
+             * desktop geometry when exclusive switching is unavailable. */
+            width = GetSystemMetrics(SM_CXSCREEN);
+            height = GetSystemMetrics(SM_CYSCREEN);
+        }
+        left = top = 0;
+    } else {
+        SystemParametersInfoW(SPI_GETWORKAREA, 0, &work, 0);
+        left = work.left + (work.right - work.left - width) / 2;
+        top = work.top + (work.bottom - work.top - height) / 2;
+        if (left < work.left) left = work.left;
+        if (top < work.top) top = work.top;
+    }
+    if (!allocateSurface(width, height)) {
+        restoreDisplayMode();
+        if (exclusive) setExclusiveDisplay(surfaceWidth, surfaceHeight, requestedDisplayFrequency);
+        return 0;
+    }
+    requestedFullscreen = mode->fullscreen;
+    requestedDisplayFrequency = mode->frequency;
+    liveModeWidth = mode->width;
+    liveModeHeight = mode->height;
+    rect.right = width; rect.bottom = height;
+    if (!requestedFullscreen) AdjustWindowRect(&rect, style, FALSE);
+    ShowWindow(hwnd, SW_RESTORE);
+    SetWindowLongPtrW(hwnd, GWL_STYLE, style | WS_VISIBLE);
+    SetWindowPos(hwnd, HWND_TOP, left, top, rect.right - rect.left,
+        rect.bottom - rect.top, SWP_FRAMECHANGED | SWP_SHOWWINDOW);
+    if (InterlockedCompareExchange(&inputAppActive, 0, 0)) {
+        deactivateMouseOnWindow();
+        activateMouseOnWindow(hwnd);
+    }
     return 1;
 }
 
@@ -930,6 +992,11 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
         case WM_APP + 2:
             if (wParam) activateMouseOnWindow(hwnd); else deactivateMouseOnWindow();
             return 0;
+        case WM_APP + 3: {
+            playableDisplayMode mode = { LOWORD(lParam), HIWORD(lParam), LOWORD(wParam) != 0, HIWORD(wParam) };
+            if (mode.width < 160 || mode.height < 120 || mode.width > 4096 || mode.height > 4096) return 0;
+            return changeWindowMode(hwnd, &mode);
+        }
         case WM_DESTROY:
             setAltTabDisabled(hwnd, 0);
             if (windowDC) ReleaseDC(hwnd, windowDC);
@@ -986,10 +1053,10 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             return 0;
         case WM_SYSKEYDOWN:
             if (wParam == VK_RETURN) {
-                requestedFullscreen = !requestedFullscreen;
-                InterlockedExchange(&videoRestartRequested, 1);
+                if (!(lParam & (1L << 30))) InterlockedExchange(&videoRestartRequested, 1);
                 return 0;
             }
+            if (wParam == VK_F4) return DefWindowProcW(hwnd, message, wParam, lParam);
             queueKeyboardEvent(mapScanKey(wParam, lParam), 1, currentMilliseconds());
             return 0;
         case WM_KEYUP:
@@ -1229,6 +1296,7 @@ PLAYABLE_API int playable_window_create(int width, int height) {
     if (!openGLDepthBits) openGLDepthBits = 24;
     if (!openGLStencilBits) openGLStencilBits = 8;
     initializeOpenGL(requestedOpenGLDriver[0] ? requestedOpenGLDriver : L"opengl32.dll");
+    highResolutionTimer = timeBeginPeriod(1) == TIMERR_NOERROR;
     return 1;
 }
 
@@ -1279,7 +1347,18 @@ PLAYABLE_API int playable_window_gl_color_bits(void) { return openGLColorBits; }
 PLAYABLE_API int playable_window_gl_depth_bits(void) { return openGLDepthBits; }
 PLAYABLE_API int playable_window_gl_stencil_bits(void) { return openGLStencilBits; }
 PLAYABLE_API int playable_window_gl_stereo(void) { return openGLStereo; }
-PLAYABLE_API int playable_window_gl_fullscreen(void) { return requestedFullscreen && displayModeChanged; }
+PLAYABLE_API int playable_window_gl_fullscreen(void) { return requestedFullscreen; }
+
+PLAYABLE_API int playable_window_set_mode(int width, int height, int fullscreen,
+        int frequency, int *output, int capacity) {
+    if (!windowHandle || !output || capacity < 3 || width < 160 || height < 120 ||
+            width > 4096 || height > 4096 || frequency < 0 || frequency > 65535) return 0;
+    if (!SendMessageW(windowHandle, WM_APP + 3, MAKEWPARAM(fullscreen != 0, frequency),
+            MAKELPARAM(width, height))) return 0;
+    output[0] = surfaceWidth; output[1] = surfaceHeight;
+    output[2] = requestedFullscreen;
+    return 1;
+}
 
 PLAYABLE_API int playable_window_gl_info(int which, unsigned char *output, int capacity) {
     const char *source = "";
@@ -1696,7 +1775,7 @@ PLAYABLE_API double playable_window_sample_depth(int x, int y) {
 }
 
 static int uploadTexture(int slot, const unsigned char *rgba,
-        int width, int height, int mipmapped) {
+        int width, int height, int mipmapped, int picmip) {
     playableTexture *texture;
     SIZE_T pixelCount;
     SIZE_T byteCount;
@@ -1723,7 +1802,7 @@ static int uploadTexture(int slot, const unsigned char *rgba,
         uint32_t *previous = copy;
         int previousWidth = width;
         int previousHeight = height;
-        while (mipmapped && (previousWidth > 1 || previousHeight > 1) &&
+        while ((mipmapped || mipCount < picmip) && (previousWidth > 1 || previousHeight > 1) &&
                 mipCount < PLAYABLE_MAX_MIP_LEVELS - 1) {
             int nextWidth = previousWidth > 1 ? previousWidth / 2 : 1;
             int nextHeight = previousHeight > 1 ? previousHeight / 2 : 1;
@@ -1767,6 +1846,18 @@ static int uploadTexture(int slot, const unsigned char *rgba,
             previous = next;previousWidth = nextWidth;previousHeight = nextHeight;
         }
     }
+    if (picmip > mipCount) picmip = mipCount;
+    if (picmip > 0) {
+        int level;
+        VirtualFree(copy, 0, MEM_RELEASE);
+        for (level = 0; level < picmip-1; ++level) VirtualFree(mipPixels[level], 0, MEM_RELEASE);
+        copy = mipPixels[picmip-1];width = mipWidths[picmip-1];height = mipHeights[picmip-1];
+        mipCount -= picmip;
+        for (level = 0; level < mipCount; ++level) {
+            mipPixels[level] = mipPixels[level+picmip];mipWidths[level] = mipWidths[level+picmip];
+            mipHeights[level] = mipHeights[level+picmip];
+        }
+    }
     texture = &textures[slot];
     if (texture->pixels) {
         int level;
@@ -1783,6 +1874,7 @@ static int uploadTexture(int slot, const unsigned char *rgba,
     texture->widthMask = (width & (width - 1)) == 0 ? width - 1 : -1;
     texture->heightMask = (height & (height - 1)) == 0 ? height - 1 : -1;
     texture->mipLevelCount = mipCount + 1;
+    texture->mipmapped = mipmapped;
     for (i = 0; i < (SIZE_T)mipCount; ++i) {
         texture->mipPixels[i] = mipPixels[i];texture->mipWidths[i] = mipWidths[i];
         texture->mipHeights[i] = mipHeights[i];
@@ -1793,13 +1885,23 @@ static int uploadTexture(int slot, const unsigned char *rgba,
 
 PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *rgba,
         int width, int height) {
-    return uploadTexture(slot, rgba, width, height, 1);
+    return uploadTexture(slot, rgba, width, height, 1, 0);
 }
 
 PLAYABLE_API int playable_window_upload_texture_mipmapped(int slot,
         const unsigned char *rgba, int width, int height, int mipmapped) {
     if (mipmapped != 0 && mipmapped != 1) return 0;
-    return uploadTexture(slot, rgba, width, height, mipmapped);
+    return uploadTexture(slot, rgba, width, height, mipmapped, 0);
+}
+
+PLAYABLE_API int playable_window_upload_material_texture(int slot,
+        const unsigned char *rgba, int width, int height, int mipmapped, int allowPicmip) {
+    return uploadTexture(slot, rgba, width, height, mipmapped != 0, allowPicmip ? texturePicmip : 0);
+}
+
+PLAYABLE_API void playable_window_set_texture_settings(int picmip, int mode) {
+    texturePicmip = picmip < 0 ? 0 : picmip > 16 ? 16 : picmip;
+    hardwareSetTextureMode(mode);
 }
 
 PLAYABLE_API void playable_window_release_texture(int slot) {
@@ -3460,6 +3562,11 @@ PLAYABLE_API void playable_window_shutdown(void) {
     inputJoystickAvailable = 0;
     ZeroMemory(&inputJoystickCaps, sizeof(inputJoystickCaps));
     restoreDisplayMode();
+    requestedFullscreen = 0;
+    requestedDisplayFrequency = 0;
+    liveModeWidth = liveModeHeight = 0;
+    if (highResolutionTimer) timeEndPeriod(1);
+    highResolutionTimer = 0;
     resetInputEvents();
     releaseSurface();
     for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) playable_window_release_texture(slot);
