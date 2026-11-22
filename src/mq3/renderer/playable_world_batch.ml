@@ -2,6 +2,7 @@
 // Retained world-space commands for native projection and rasterization.
 package mq3.renderer.playable_world_batch
 import std.ds.list as lists
+import std.ds.hashmap as maps
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.playable_materials as materials
@@ -17,6 +18,7 @@ import std.sort as sorting
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct VertexCache slots frames positions uvs colors end struct
+struct VertexIndexScratch visited slots serial end struct
 struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime initialized end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog dlightBatch dlightCatalog end struct
 
@@ -103,23 +105,50 @@ function groupedTriangles(renderData,flags,count)
   for each triangle in renderData.triangles if not isSky(triangle,flags) and triangle.textureIndex>=0 and triangle.textureIndex<count then index=triangle.textureIndex;result[index][offsets[index]]=triangle;offsets[index]=offsets[index]+1 end if end for
   return result
 end function
-function createVertexCache(sourceIndexes)
-  maximum=-1
-  for each triangle in sourceIndexes for each sourceIndex in triangle if sourceIndex>maximum then maximum=sourceIndex end if end for end for
+function vertexIndexScratch() return VertexIndexScratch([],[],0) end function
+function createVertexCacheWithScratch(sourceIndexes,scratch)
+  maximum=-1;references=0
+  for each triangle in sourceIndexes
+    references=references+len(triangle)
+    for each sourceIndex in triangle if sourceIndex>maximum then maximum=sourceIndex end if end for
+  end for
   if maximum<0 then return void end if
-  lookup=array(maximum+1,-1);slots=array(len(sourceIndexes),void);count=0;triangleIndex=0
+  // A visible portal may contain a few vertices from a high BSP vertex ID.
+  // Dense indexing would allocate maximum+1 entries for every shader pass.
+  sparse=maximum>262144 and maximum+1>references*16
+  sparseLookup=void
+  if sparse then sparseLookup=maps.HashMap.new() else
+    if scratch==void then scratch=vertexIndexScratch() end if
+    if len(scratch.visited)<=maximum or len(scratch.slots)<=maximum or scratch.serial>=2147483647 then
+      scratch.visited=array(maximum+1,0);scratch.slots=array(maximum+1,0);scratch.serial=0
+    end if
+    scratch.serial=scratch.serial+1
+  end if
+  slots=array(len(sourceIndexes),void);count=0;triangleIndex=0
   for each triangle in sourceIndexes
     triangleSlots=array(len(triangle),-1);corner=0
     for each sourceIndex in triangle
       slot=-1
-      if sourceIndex>=0 then slot=lookup[sourceIndex];if slot<0 then slot=count;lookup[sourceIndex]=slot;count=count+1 end if end if
+      if sourceIndex>=0 then
+        if sparse then
+          found=sparseLookup.get(sourceIndex)
+          // Store slot+1: MiniLang's dynamic void comparison also matches
+          // integer zero, which would otherwise duplicate the first vertex.
+          if found==void then slot=count;sparseLookup.set(sourceIndex,slot+1);count=count+1 else slot=found-1 end if
+        else
+          if scratch.visited[sourceIndex]!=scratch.serial then
+            slot=count;scratch.visited[sourceIndex]=scratch.serial;scratch.slots[sourceIndex]=slot;count=count+1
+          else slot=scratch.slots[sourceIndex] end if
+        end if
+      end if
       triangleSlots[corner]=slot;corner=corner+1
     end for
     slots[triangleIndex]=triangleSlots;triangleIndex=triangleIndex+1
   end for
   return VertexCache(slots,array(count,-1),array(count,void),array(count,void),array(count,void))
 end function
-function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
+function createVertexCache(sourceIndexes) return createVertexCacheWithScratch(sourceIndexes,vertexIndexScratch()) end function
+function buildStagePassTriangles(triangles,material,stage,primary,depthEqual,indexScratch)
   count=len(triangles);if count<1 then return void end if
   commands=window.createTriangleBatch(count);sourceUvs=array(count,void);sourceDeformUvs=array(count,void);sourcePositions=array(count,void);sourceIndexes=array(count,void);sourceNormals=array(count,void);sourceColors=array(count,void);sourceEntityColors=array(count,void);sourceEntityTexCoords=array(count,void);sourceShaderTimes=array(count,void);outputIndex=0
   for each triangle in triangles
@@ -142,13 +171,13 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
       sourceShaderTimes[outputIndex]=[triangle.vertices[0].shaderTime,triangle.vertices[1].shaderTime,triangle.vertices[2].shaderTime];outputIndex=outputIndex+1
   end for
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
-  vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
+  vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCacheWithScratch(sourceIndexes,indexScratch) end if
   firstStage=void;if len(material.stages)>0 then firstStage=material.stages[0] end if
   return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceColors,sourceEntityColors,sourceEntityTexCoords,sourceShaderTimes,[],materials.fogAdjustment(firstStage,stage),stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset,material.timeOffset,material.clampTime,false)
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   triangles=[];for each triangle in renderData.triangles if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then triangles=triangles+[triangle] end if end for
-  return buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
+  return buildStagePassTriangles(triangles,material,stage,primary,depthEqual,vertexIndexScratch())
 end function
 
 // BSP and MD3 triangles typically arrive in material runs. Resolve the
@@ -180,14 +209,14 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
   base=window.createTriangleBatch(capacity);if base is error then return base end if
   skippedSky=fillMaterialBase(base,renderData,lookup,skyTextureFlags);if skippedSky is error then return skippedSky end if
   drawable=len(renderData.triangles)-skippedSky
-  passes=lists.List.withCapacity(len(catalog.materials));animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;polygonOffsetCount=0;emitted=base.count
+  passes=lists.List.withCapacity(len(catalog.materials));indexScratch=vertexIndexScratch();animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;polygonOffsetCount=0;emitted=base.count
   for each material in sortedMaterials(catalog.materials)
     if len(material.stages)==0 or material.textureIndex<0 or material.textureIndex>=len(groups) then continue end if
     triangles=groups[material.textureIndex];if len(triangles)==0 then continue end if
     primaryWrites=material.stages[0].depthWrite
     for stageIndex=0 to len(material.stages)-1
       stage=material.stages[stageIndex];if stageIndex==0 and not dynamicMaterialStage(material,stage) then continue end if
-      pass=buildStagePassTriangles(triangles,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites));if pass is error then return pass end if
+      pass=buildStagePassTriangles(triangles,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites),indexScratch);if pass is error then return pass end if
       if pass!=void then
         passes.add(pass);emitted=emitted+pass.commands.count
         if len(stage.slots)>1 then animated=animated+1 end if;if len(stage.uvMods)>0 then modified=modified+1 end if;if stage.blend!=materials.BLEND_OPAQUE then blended=blended+1 end if

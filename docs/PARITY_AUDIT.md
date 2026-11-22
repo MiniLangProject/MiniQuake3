@@ -67,6 +67,15 @@ P99 stieg von 44 auf 46 ms, während die längsten Frames im Median von
 Die P99-Ruckler sind weiterhin offen.
 [Messwerte und Differentialtests](verification/2026-11-22-combat-frame-times.md#einschlagmarken-im-botkampf)
 
+Der Material-Batch-Aufbau für Portalansichten verwendet nun einen
+wiederverwendeten Vertex-ID-Besuchszähler statt einer großen neuen Tabelle
+je Shader-Pass. Drei abwechselnde Retail-Botkampf-Paare ergaben im Median
+79,79 statt 78,12 FPS und P99 44 statt 47 ms. Der Effekt ist begrenzt;
+Botkampf und Portalansichten ruckeln weiterhin deutlich. Ein Diagnosebuild
+ohne Portalansicht bestätigte den Einfluss dieses Renderpfads, gehört aber
+nicht zum Spiel.
+[A/B-Messung und Grenzen](verification/2026-11-22-combat-frame-times.md#portal-batch-und-vertex-indizes)
+
 ## Renderer und Shaderzeiten, 22. November 2026
 
 Der Renderer verwendet bei gleicher Entity-Zeit die berechnete Shaderzeit

@@ -57708,6 +57708,14 @@
           ],
           "status": "tested_complete",
           "scope": "All 17 tr_shade.c symbols: element and strip drawing, animated images, surface lifecycle, color/texture generation, multitexture stages, projected dynamic lights, fog and optimized stage iterators."
+        },
+        {
+          "original": "RB_IterateStagesGeneric retained vertex staging",
+          "target_files": [
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive retained stage keeps original vertex identity while reusing a generation-stamped lookup across shader passes in one material batch. Nineteen identity and 64 world-batch contracts pass; three alternating 3200-frame Retail bot A/B pairs show median 78.12 to 79.79 FPS and P99 47 to 44 ms. Full shader-stage and long-run performance parity remain open."
         }
       ],
       "target": [

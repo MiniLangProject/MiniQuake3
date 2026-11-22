@@ -39,6 +39,11 @@ function idBytesEqual(a,b)
 end function
 function main(args)
   count=0;model=idModel();state=idScene.create(2,0);state.registered=true
+  sparse=idWorld.createVertexCache([[1000000,2,1000000],[2,500000,-1]])
+  count=count+idCheck(len(sparse.frames)==3 and sparse.slots[0][0]==sparse.slots[0][2] and sparse.slots[0][1]==sparse.slots[1][0],"sparse BSP IDs keep shared stage slots without a maximum-sized table")
+  count=count+idCheck(sparse.slots[1][2]==-1 and sparse.slots[1][1]!=sparse.slots[0][0],"sparse lookup excludes fallback IDs and keeps distinct vertices")
+  scratch=idWorld.vertexIndexScratch();firstSlots=idWorld.createVertexCacheWithScratch([[10000,2,10000]],scratch);nextSlots=idWorld.createVertexCacheWithScratch([[2,10000,2]],scratch)
+  count=count+idCheck(len(scratch.visited)==10001 and len(firstSlots.frames)==2 and len(nextSlots.frames)==2 and firstSlots.slots[0]==[0,1,0] and nextSlots.slots[0]==[0,1,0],"batch scratch reuses dense storage with a fresh visit serial")
   first=idPayload([200,100,50,255]);second=idPayload([50,100,200,255]);idN.writeU32(first,100,idN.floatBits(0.75));idN.writeU32(second,100,idN.floatBits(0.25));idScene.addEntity(state,0,first);idScene.addEntity(state,0,second)
   cache=idGeo.createFrameCache(void,16);refdef=IdRefdef([[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],[0.0,0.0,0.0],1000,1)
   geometry=idGeo.buildRecordsWithFrameCache(idScene.sceneEntities(state),[],["model"],[model],refdef,8192,cache,void);if geometry is error then return geometry end if

@@ -270,3 +270,40 @@ allein keine Erklärung für die Ruckler; Portal-/Geometrieaufbau und
 Simulation müssen getrennt weiter optimiert werden. Rohdaten:
 `build/reports/mark_native_profile.txt` und
 `build/reports/mark_native_profile_replay.log`.
+
+### Portal-Batch und Vertex-Indizes
+
+Ein **nur für die Diagnose** gebauter Replay ohne Portalansicht verwendete
+dieselbe Bot-Simulation und dieselben 752 Positionsänderungen, 1.650
+Angriffseingaben und 160 Munitionsabnahmen. In zwei A/B-Paaren sank P99
+von 46/45 auf 34/32 ms. Diese Variante ist wegen der fehlenden
+Portalzeichnung kein Spielbuild. Sie grenzt die Ruckler auf den zusätzlichen
+Renderpfad ein. Eine zweite Instrumentierung maß 144 Portalvorbereitungen
+ab 5 ms: Flächen-Clipping lag bei höchstens 1 ms, der
+Material-Batch-Aufbau im Mittel bei 5,98 ms und bei Spitzen bis 25 ms.
+Rohdaten: `build/reports/no_portal_diagnostic_ab.json` und
+`build/reports/portal_phase_diagnostic.log`.
+
+Beim Batch-Aufbau bekam jeder Shader-Pass bisher eine neue, bis zur höchsten
+BSP-Vertex-ID gefüllte Lookup-Tabelle. Für dünn belegte IDs erzeugte das
+viele große Arrays. Eine HashMap-Variante sparte Speicher, war aber im
+3.200-Frame-A/B-Vergleich langsamer (Median 78,15 statt 80,37 FPS,
+P99 47 statt 46 ms) und wurde verworfen. Die produktive Fassung nutzt
+stattdessen eine pro Material-Batch wiederverwendete Tabelle mit
+Besuchsnummer; nur extrem dünn belegte IDs über 262.144 verwenden die
+sparse Zuordnung. Originale Vertex-Identität und Pass-Reihenfolge bleiben
+erhalten. Drei abwechselnde Retail-A/B-Paare auf der RTX 5080 ergaben:
+
+| Paar | FPS vorher → nachher | P99 vorher → nachher | Längster Frame vorher → nachher |
+| --- | ---: | ---: | ---: |
+| 1 | 78,07 → 80,98 | 47 → 44 ms | 66 → 64 ms |
+| 2 | 78,12 → 79,79 | 48 → 43 ms | 69 → 65 ms |
+| 3 | 80,73 → 78,10 | 46 → 44 ms | 67 → 65 ms |
+| Median | **78,12 → 79,79** | **47 → 44 ms** | **67 → 65 ms** |
+
+Der produktive Kandidat bestand 19 Vertex-Identitäts-, 64 World-Batch-,
+40 Portal-Render-, zwei große Portal-Clipping- und 54 Retained-World-
+Verträge sowie den 3.200-Frame-Retail-Bot-Replay. Gameplay-Zähler blieben
+in allen A/B-Läufen identisch. Die Verbesserung ist klein; Botkampf und
+Portalbilder bleiben deutlich unter dem Ziel einer durchgehend flüssigen
+Ausgabe. A/B-Rohdaten: `build/reports/vertex_index_scratch_ab.json`.
