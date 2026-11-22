@@ -26,7 +26,7 @@ function sourceVertexId(triangle,corner as int,fallback as int) returns int
   if triangle.vertexIds!=void and len(triangle.vertexIds)==3 and triangle.vertexIds[corner]>=0 then return triangle.vertexIds[corner] end if
   return fallback
 end function
-function depthHack(triangle) returns bool return (triangle.renderfx&RF_DEPTHHACK)!=0 end function
+function inline depthHack(triangle) returns bool return (triangle.renderfx&RF_DEPTHHACK)!=0 end function
 function renderable(resolved) returns bool return resolved.materialIndex>=0 or resolved.triangle.shaderName!=PROJECTION_SHADOW_SHADER end function
 function selectedCount(catalog,wantDepthHack)
   count=0;for each resolved in catalog.triangles if renderable(resolved) and depthHack(resolved.triangle)==wantDepthHack then count=count+1 end if end for;return count

@@ -21,7 +21,7 @@ struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriang
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
-function isSky(triangle,flags as array) returns bool return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
+function inline isSky(triangle,flags as array) returns bool return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
 const MAX_BSP_LIGHTMAPS=256
 function resolvedLightmapSlot(triangle) slot=triangle.lightmapIndex;if slot<0 or slot>=MAX_BSP_LIGHTMAPS then return -1 end if;return slot end function
 function appendResolved(commands,triangle,baseSlot,useLightmap)

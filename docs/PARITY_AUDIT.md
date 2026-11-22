@@ -35,6 +35,11 @@ aktualisiert und mit Retail-Daten separat bestanden. Der komplette Rest der
 Suite ist noch nicht grün nachgewiesen; die fortgesetzten Läufe und Grenzen
 stehen im dritten Evaluationsprotokoll. Der Windows-Produktbuild erreicht mit
 lokalem Retail-`baseq3` das Originalmenü in 0,52 Sekunden.
+Eine [vierte Hotpath-Runde](verification/2026-11-22-function-contract-wave4.md)
+setzt `isSky` und `depthHack` gezielt inline. Ihre isolierten Schleifen wurden
+schneller; drei abwechselnde Retail-Spielpaare zeigten nur 0,52 FPS
+Medianunterschied innerhalb der Laufstreuung. Ein Gesamtspielgewinn ist damit
+weiter nicht nachgewiesen.
 
 ## Film- und Menüwechsel-Audit, 22. November 2026
 
