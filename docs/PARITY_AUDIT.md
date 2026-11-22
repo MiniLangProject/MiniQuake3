@@ -4,6 +4,14 @@ Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Renderer und Shaderzeiten, 22. November 2026
+
+Der Renderer verwendet bei gleicher Entity-Zeit die berechnete Shaderzeit
+innerhalb eines Durchlaufs erneut. Für konstante Shaderstufen berechnet er
+die Farbe einmal. Der Vergleich mit der vorherigen Version ergab auf je
+einem Hardware-Frame von q3dm0 und q3dm1 identische RGB-Werte.
+[Kampf-Replay und Differentialtests](verification/2026-11-22-renderer-stage-work.md)
+
 ## Compiler-Typverträge und Inlining, 22. November 2026
 
 Die 12.618 internen MiniLang-Funktionen wurden inventarisiert und mit einem

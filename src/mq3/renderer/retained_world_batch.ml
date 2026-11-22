@@ -24,9 +24,9 @@ function stageView(full,commands)
   count=full.commands.count;vertexCache=void
   if full.vertexCache!=void then
     original=full.vertexCache
-    vertexCache=batches.VertexCache(array(count,void),original.frames,original.positions,original.normals,original.uvs,original.colors)
+    vertexCache=batches.VertexCache(array(count,void),original.frames,original.positions,original.uvs,original.colors)
   end if
-  return batches.StagePass(commands,array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),[],full.fogAdjustment,full.stage,full.textureIndex,full.deforms,full.normalNoise,vertexCache,0,full.primary,full.depthEqual,full.sort,full.polygonOffset,full.timeOffset,full.clampTime,false)
+  return batches.StagePass(commands,array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),[],full.fogAdjustment,full.stage,full.textureIndex,full.deforms,full.normalNoise,vertexCache,0,full.primary,full.depthEqual,full.sort,full.polygonOffset,full.timeOffset,full.clampTime,false)
 end function
 function makeStream(state,data,commands,pass,mode,lookup)
   faceCount=len(state.world.trianglesByFace);firsts=array(faceCount,0);counts=array(faceCount,0);runs=bytes(faceCount*8,0);record=0
@@ -109,7 +109,7 @@ function stageSources(stream,faces,fogCatalog)
   for each face in faces
     first=stream.firsts[face];count=stream.counts[face]
     if count>0 then for index=first to first+count-1
-      active.sourceUvs[outputIndex]=full.sourceUvs[index];active.sourceDeformUvs[outputIndex]=full.sourceDeformUvs[index];active.sourcePositions[outputIndex]=full.sourcePositions[index];active.sourceIndexes[outputIndex]=full.sourceIndexes[index];active.sourceNormals[outputIndex]=full.sourceNormals[index];active.sourceLights[outputIndex]=full.sourceLights[index];active.sourceColors[outputIndex]=full.sourceColors[index];active.sourceEntityColors[outputIndex]=full.sourceEntityColors[index];active.sourceEntityTexCoords[outputIndex]=full.sourceEntityTexCoords[index];active.sourceShaderTimes[outputIndex]=full.sourceShaderTimes[index]
+      active.sourceUvs[outputIndex]=full.sourceUvs[index];active.sourceDeformUvs[outputIndex]=full.sourceDeformUvs[index];active.sourcePositions[outputIndex]=full.sourcePositions[index];active.sourceIndexes[outputIndex]=full.sourceIndexes[index];active.sourceNormals[outputIndex]=full.sourceNormals[index];active.sourceColors[outputIndex]=full.sourceColors[index];active.sourceEntityColors[outputIndex]=full.sourceEntityColors[index];active.sourceEntityTexCoords[outputIndex]=full.sourceEntityTexCoords[index];active.sourceShaderTimes[outputIndex]=full.sourceShaderTimes[index]
       if active.vertexCache!=void then active.vertexCache.slots[outputIndex]=full.vertexCache.slots[index] end if
       if fogCatalog!=void then active.fogIndexes[outputIndex]=full.fogIndexes[index] end if
       outputIndex=outputIndex+1
