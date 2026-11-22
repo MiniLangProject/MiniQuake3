@@ -16,10 +16,14 @@ generierten Code und einen isolierten A/B-Vergleich tatsächlich verbessert.
 Die vollständige Typisierung des Ports ist **nicht** abgeschlossen. Inventur,
 Aufrufzahlen, Differentialtests und Messgrenzen stehen im
 [Evaluationsprotokoll](verification/2026-11-22-function-contract-evaluation.md).
-Der aktuelle breite `verify.py`-Lauf stoppt unter dem gepinnten Compiler
-an einem auch mit unverändertem `HEAD` reproduzierten Compilerfehler in
-älteren Oracle-Fixtures; die gezielten Retail- und Differentialtests
-des Pakets sind separat bestanden.
+Eine zweite Messrunde typisierte Float-Rückgaben, drei Renderer-Writer und
+`DotProduct` mit gezielten Fehler- und C-Differentialtests. Die beiden
+dichten Trajectory-Switches wurden semantisch äquivalent umgeschrieben;
+damit bestehen die vorher blockierten Message-State- und Snapshot-Build-Gates
+mit dem gepinnten Compiler. Der breite `verify.py`-Lauf und der erneute
+Retail-Replay sind im [zweiten Evaluationsprotokoll](verification/2026-11-22-function-contract-wave2.md)
+belegt. Die verbleibenden Funktionen sind weiter auf konkrete Aufruftypen,
+Fehlerpfade und A/B-Leistung zu prüfen.
 
 ## Film- und Menüwechsel-Audit, 22. November 2026
 

@@ -313,15 +313,15 @@ function writeBatchVertex(data,offset,point,baseUV,lightmapUV,light)
   if writeBatchVertexNative(nativeBytesPtr(data),len(data),offset,point.x,point.y,point.depth,baseUV[0],baseUV[1],lightmapUV[0],lightmapUV[1],light)!=1 then return error(7487,"native batch vertex rejected") end if
   return void
 end function
-function writeBatchPositionVertex(data,offset,position,baseUV,lightmapUV,light)
+function writeBatchPositionVertex(data as bytes,offset as int,position as array,baseUV as array,lightmapUV as array,light)
   if writeBatchVertexNative(nativeBytesPtr(data),len(data),offset,position[0],position[1],position[2],baseUV[0],baseUV[1],lightmapUV[0],lightmapUV[1],light)!=1 then return error(7487,"native batch position vertex rejected") end if
   return void
 end function
-function updateStageVertex(batch,triangle,vertex,position,uv,color)
+function updateStageVertex(batch as TriangleBatch,triangle as int,vertex as int,position as array,uv as array,color as array)
   if updateStageVertexNative(nativeBytesPtr(batch.data),len(batch.data),triangle,vertex,position[0],position[1],position[2],uv[0],uv[1],color[0],color[1],color[2],color[3])!=1 then return error(7487,"native stage vertex rejected") end if
   return void
 end function
-function writeBatchColor(data,offset,color)
+function writeBatchColor(data as bytes,offset as int,color as array)
   for channel=0 to 3 value=color[channel];if value<0 then value=0 end if;if value>255 then value=255 end if;data[offset+channel]=value end for;return void
 end function
 function appendTriangleBatchColored(batch,baseSlot,lightmapSlot,a,baseA,lightmapA,lightA,colorA,b,baseB,lightmapB,lightB,colorB,c,baseC,lightmapC,lightC,colorC,red,green,blue)

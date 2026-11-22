@@ -18,59 +18,55 @@ function phaseAngle(tr,atTime)
   delta = n.fdiv(n.i32(atTime-tr.trTime),tr.trDuration)
   return n.fmul(n.fmul(delta,n.f32(3.14159265358979323846)),2.0)
 end function
+// Every branch returns. A dense switch here emits unresolved jump-table data
+// when this package is imported by the published MiniLang 1.3.9 compiler.
 function evaluate(tr,atTime)
-  switch tr.trType
-    case 0,1
+  kind=tr.trType
+  if kind==0 or kind==1 then
       return movement.copy(tr.trBase)
-    end case
-    case 2
+  end if
+  if kind==2 then
       return q.VectorMA(tr.trBase,n.f32(n.i32(atTime-tr.trTime)*0.001),tr.trDelta)
-    end case
-    case 3
+  end if
+  if kind==3 then
       endTime = n.add32(tr.trTime,tr.trDuration)
       if atTime > endTime then atTime = endTime end if
       delta = n.f32(n.i32(atTime-tr.trTime)*0.001)
       if delta < 0 then delta = 0.0 end if
       return q.VectorMA(tr.trBase,delta,tr.trDelta)
-    end case
-    case 4
+  end if
+  if kind==4 then
       return q.VectorMA(tr.trBase,n.f32(crt.sin(phaseAngle(tr,atTime))),tr.trDelta)
-    end case
-    case 5
+  end if
+  if kind==5 then
       delta = n.f32(n.i32(atTime-tr.trTime)*0.001)
       result = q.VectorMA(tr.trBase,delta,tr.trDelta)
       result[2] = n.f32(result[2]-0.5*800*delta*delta)
       return result
-    end case
-    case default
-      return error(481,"Unknown trajectory type")
-    end case
-  end switch
+  end if
+  return error(481,"Unknown trajectory type")
 end function
 function evaluateDelta(tr,atTime)
-  switch tr.trType
-    case 0,1
+  kind=tr.trType
+  if kind==0 or kind==1 then
       return [0.0,0.0,0.0]
-    end case
-    case 2
+  end if
+  if kind==2 then
       return movement.copy(tr.trDelta)
-    end case
-    case 3
+  end if
+  if kind==3 then
       if atTime > n.add32(tr.trTime,tr.trDuration) then return [0.0,0.0,0.0] end if
       return movement.copy(tr.trDelta)
-    end case
-    case 4
+  end if
+  if kind==4 then
       phase = n.f32(n.f32(crt.cos(phaseAngle(tr,atTime)))*0.5)
       return q.VectorScale(tr.trDelta,phase)
-    end case
-    case 5
+  end if
+  if kind==5 then
       delta = n.f32(n.i32(atTime-tr.trTime)*0.001); result = movement.copy(tr.trDelta)
       result[2] = n.fsub(result[2],n.fmul(800,delta)); return result
-    end case
-    case default
-      return error(481,"Unknown trajectory type")
-    end case
-  end switch
+  end if
+  return error(481,"Unknown trajectory type")
 end function
 function playerTouchesItem(ps,trajectory,atTime)
   origin = evaluate(trajectory,atTime)

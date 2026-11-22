@@ -60,25 +60,25 @@ function sar32(a as int, b as int) returns int
   return i32(a) >> (b & 31)
 end function
 
-function f32(value)
+function f32(value) returns float
   // Passing an existing float through toFloat() in the frozen compiler can
   // incorrectly narrow integral magnitudes above the tagged integer range.
   return mq3_f32(value)
 end function
 
-function floatBits(value)
+function floatBits(value) returns int
   return mq3_float_bits(value)
 end function
 
-function bitsFloat(value)
+function bitsFloat(value) returns float
   return mq3_bits_float(u32(value))
 end function
 
-function fadd(a, b)
+function fadd(a, b) returns float
   return mq3_fadd(a,b)
 end function
 
-function fsub(a, b)
+function inline fsub(a, b) returns float
   return mq3_fsub(a,b)
 end function
 function subBits(a,b)
@@ -88,23 +88,23 @@ function subBits(a,b)
   return addBits(a,b ^ 0x80000000)
 end function
 
-function fmul(a, b)
+function inline fmul(a, b) returns float
   return mq3_fmul(a,b)
 end function
 
-function dot3(ax,ay,az,bx,by,bz)
+function dot3(ax,ay,az,bx,by,bz) returns float
   return mq3_dot3(ax,ay,az,bx,by,bz)
 end function
 
-function fdiv(a, b)
+function fdiv(a, b) returns float
   return mq3_fdiv(a,b)
 end function
 
-function fsqrt(value)
+function fsqrt(value) returns float
   return mq3_fsqrt(value)
 end function
 
-function fneg(value)
+function fneg(value) returns float
   return bitsFloat(floatBits(value)^0x80000000)
 end function
 

@@ -119,7 +119,7 @@ function Q_fabs(value)
   return n.bitsFloat(n.floatBits(value) & 0x7fffffff)
 end function
 
-function DotProduct(a, b)
+function DotProduct(a as array, b as array) returns float
   return n.dot3(a[0],a[1],a[2],b[0],b[1],b[2])
 end function
 
