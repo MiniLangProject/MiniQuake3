@@ -3,6 +3,10 @@
 package mq3.renderer.qvm_scene_materials
 
 import mq3.renderer.playable_materials as materials
+import mq3.renderer.qvm_scene_geometry as sceneGeometry
+import mq3.game.bg_public as bg
+import mq3.shared.q_shared_header as qSharedLimits
+import std.ds.hashmap as maps
 import mq3.renderer.player_skins as playerSkins
 import mq3.renderer.shader_parser as shaderParser
 import mq3.renderer.shader_remap as shaderRemap
@@ -64,6 +68,43 @@ function warmRegisteredPlayerSkins(catalog,archive,assets,kinds)
       ignored=materials.runtimeStagesCached(archive,catalog.scriptIndex,strippedName(mapping.shaderName),0,32768,catalog.imageCache)
     end for
     warmed=warmed+1
+  end for
+  return warmed
+end function
+// CG_RegisterGraphics registers the server's CS_MODELS before play. Decode
+// their MD3 stage images at this point, including alternate LOD surfaces.
+// Texture slots and sampler settings still belong to the first actual binding.
+function warmServerModelImages(catalog,archive,assets,kinds,modelAssets,configstrings)
+  names=maps.HashMap.new()
+  for modelIndex=1 to qSharedLimits.MAX_MODELS-1
+    slot=bg.CS_MODELS+modelIndex
+    if slot>=len(configstrings) then break end if
+    path=configstrings[slot]
+    if path==void or path=="" then break end if
+    lower=strings.toLowerAscii(path)
+    if strings.endsWith(lower,".md3") then names.set(lower,true) end if
+  end for
+  shaders=maps.HashMap.new();warmed=0
+  for handle=1 to len(assets)
+    if handle>len(modelAssets) then break end if
+    if kinds[handle-1]!="model" then continue end if
+    path=strings.toLowerAscii(assets[handle-1])
+    if names.get(path)!=true then continue end if
+    model=modelAssets[handle-1]
+    if model==void or typeof(model)=="string" or sceneGeometry.isInlineModel(model) then continue end if
+    levels=[model];if sceneGeometry.isLodModel(model) then levels=model[1] end if
+    for each level in levels
+      if level==void then continue end if
+      for each surface in level.surfaces
+        for each shader in surface.shaders
+          name=strippedName(shader);key=strings.toLowerAscii(name)
+          if name=="" or shaders.get(key)==true then continue end if
+          shaders.set(key,true)
+          ignored=materials.runtimeStagesCached(archive,catalog.scriptIndex,name,0,32768,catalog.imageCache)
+          warmed=warmed+1
+        end for
+      end for
+    end for
   end for
   return warmed
 end function

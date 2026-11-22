@@ -99,6 +99,7 @@ CPU_START = """    replayCpuPrevious=replayCycles(replayThread,replayCycleBuffer
     replayPortalBefore=portalPrepareMs
     replayRebuildBefore=worldRebuildMs
     replayTexturesBefore=len(qvmCatalog.textures)
+    replaySceneDecodesBefore=qvmCatalog.imageCache.misses
 """
 
 CPU_FINISH = """    replayCpuFrame=0
@@ -107,7 +108,7 @@ CPU_FINISH = """    replayCpuFrame=0
       replayCpuFrame=replayCpuFrame+replayCpuDeltas[replayStage]
     end for
     replayPresentTotal=replayPresentTotal+audioStartedAt-replayPresentAt
-    if elapsedFrameMs>=PROFILE_MIN_MS then print "CPU_FRAME frame="+str(frames)+" wall_ms="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cgame="+str(afterCgame-afterGame)+" expand="+str(pipelineProfile.expansion-replayExpandBefore)+" materials="+str(pipelineProfile.material-replayMaterialBefore)+" scene_batch="+str(pipelineProfile.batch-replayBatchBefore)+" portals="+str(portalPrepareMs-replayPortalBefore)+" world_rebuild="+str(worldRebuildMs-replayRebuildBefore)+" draw="+str(replayPresentAt-afterBatch)+" present="+str(audioStartedAt-replayPresentAt)+" new_scene_textures="+str(len(qvmCatalog.textures)-replayTexturesBefore)+" gc_delta="+str(gc_stat(0)-replayGcBefore)+" background_gc_delta="+str(gc_stat(16)-replayBackgroundBefore)+" cycles="+str(replayCpuFrame)+" geometry_cycles="+str(replayCpuDeltas[3])+" present_cycles="+str(replayCpuDeltas[6]) end if
+    if elapsedFrameMs>=PROFILE_MIN_MS then print "CPU_FRAME frame="+str(frames)+" wall_ms="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cgame="+str(afterCgame-afterGame)+" expand="+str(pipelineProfile.expansion-replayExpandBefore)+" materials="+str(pipelineProfile.material-replayMaterialBefore)+" scene_batch="+str(pipelineProfile.batch-replayBatchBefore)+" portals="+str(portalPrepareMs-replayPortalBefore)+" world_rebuild="+str(worldRebuildMs-replayRebuildBefore)+" draw="+str(replayPresentAt-afterBatch)+" present="+str(audioStartedAt-replayPresentAt)+" new_scene_textures="+str(len(qvmCatalog.textures)-replayTexturesBefore)+" gc_delta="+str(gc_stat(0)-replayGcBefore)+" background_gc_delta="+str(gc_stat(16)-replayBackgroundBefore)+" cycles="+str(replayCpuFrame)+" geometry_cycles="+str(replayCpuDeltas[3])+" present_cycles="+str(replayCpuDeltas[6])+" scene_image_decodes="+str(qvmCatalog.imageCache.misses-replaySceneDecodesBefore) end if
     if elapsedFrameMs>=PROFILE_MIN_MS then
       replayTextureIndex=replayTexturesBefore
       while replayTextureIndex<len(qvmCatalog.textures)

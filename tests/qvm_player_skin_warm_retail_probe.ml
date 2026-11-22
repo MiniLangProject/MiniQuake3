@@ -1,4 +1,7 @@
 import mq3.format.pk3 as pk3
+import mq3.format.md3 as md3
+import mq3.game.bg_public as bg
+import mq3.renderer.qvm_scene_geometry as sceneGeometry
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.qvm_scene_materials as sceneMaterials
 
@@ -21,5 +24,18 @@ function main(args)
   torso=materials.loadImageCached(archive,"models/players/crash/crash_t.tga",catalog.imageCache)
   count=count+require(base!=void and torso!=void and base[1]!=void and torso[1]!=void and catalog.imageCache.misses==before,"subsequent scene load reuses warm images")
   count=count+require(sceneMaterials.warmRegisteredPlayerSkins(catalog,archive,assets,kinds)==0 and catalog.imageCache.misses==before,"repeat warmup skips processed skins")
-  print("PASS: "+str(count)+" QVM player skin warm retail contracts");return 0
+  hologram="models/mapobjects/bitch/fembotbig.md3";xray="models/mapobjects/skel/xray.md3"
+  model=md3.loadPacked(pk3.read(archive,hologram));if model is error then return model end if
+  other=md3.loadPacked(pk3.read(archive,xray));if other is error then return other end if
+  registry=[hologram,xray,"*1"];modelKinds=["model","model","model"]
+  loadedModels=[sceneGeometry.md3Lods([model,model]),other,void];config=array(bg.CS_MODELS+4,"")
+  config[bg.CS_MODELS+1]="*1";config[bg.CS_MODELS+2]="MODELS/MAPOBJECTS/BITCH/FEMBOTBIG.MD3"
+  nextSlot=catalog.nextTextureSlot;textureCount=len(catalog.textures)
+  warmed=sceneMaterials.warmServerModelImages(catalog,archive,registry,modelKinds,loadedModels,config)
+  count=count+require(warmed==1 and catalog.imageCache.images.get("models/mapobjects/bitch/hologirl.tga")!=void and catalog.imageCache.images.get("models/mapobjects/bitch/hologirl2.jpg")!=void,"registered MD3 stages decoded once across repeated LODs")
+  count=count+require(catalog.imageCache.images.get("models/mapobjects/skel/xray.tga")==void and catalog.nextTextureSlot==nextSlot and len(catalog.textures)==textureCount,"unlisted model and runtime texture slots stay untouched")
+  before=catalog.imageCache.misses
+  ignored=materials.runtimeStagesCached(archive,catalog.scriptIndex,"models/mapobjects/bitch/hologirl",nextSlot,nextSlot+32,catalog.imageCache)
+  count=count+require(catalog.imageCache.misses==before and len(ignored[0])>0,"visible hologram shader reuses its decoded stage images")
+  print("PASS: "+str(count)+" QVM skin and server model warm retail contracts");return 0
 end function

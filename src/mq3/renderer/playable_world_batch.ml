@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Retained world-space commands for native projection and rasterization.
 package mq3.renderer.playable_world_batch
+import std.ds.list as lists
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.playable_materials as materials
@@ -150,30 +151,45 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   return buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
 end function
 
+// BSP and MD3 triangles typically arrive in material runs. Resolve the
+// opaque primary once per run and keep the original submission order.
+function fillMaterialBase(base,renderData,lookup,skyTextureFlags)
+  skippedSky=0;haveMaterial=false;lastTexture=-1;emit=true;slot=-1;useLightmap=true
+  for each triangle in renderData.triangles
+    if isSky(triangle,skyTextureFlags) then skippedSky=skippedSky+1;continue end if
+    texture=triangle.textureIndex
+    if not haveMaterial or texture!=lastTexture then
+      haveMaterial=true;lastTexture=texture;emit=true;slot=-1;useLightmap=true
+      material=void;if texture>=0 and texture<len(lookup) then material=lookup[texture] end if
+      if material!=void and len(material.stages)>0 then
+        stage=material.stages[0];emit=not dynamicMaterialStage(material,stage)
+        if emit then slot=stage.slots[0];useLightmap=not materialUsesBspLightmap(material) end if
+      end if
+    end if
+    if emit then written=appendResolved(base,triangle,slot,useLightmap);if written is error then return written end if end if
+  end for
+  return skippedSky
+end function
+
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
 // supported blended stages become retained passes with their source UVs.
 function buildMaterials(renderData,catalog,skyTextureFlags)
   if renderData==void or renderData.triangles==void or catalog==void or catalog.materials==void or skyTextureFlags==void then return fail("missing material batch inputs") end if
   lookup=materialTable(renderData,catalog);groups=groupedTriangles(renderData,skyTextureFlags,len(lookup))
   capacity=len(renderData.triangles);if capacity<1 then capacity=1 end if
-  base=window.createTriangleBatch(capacity);if base is error then return base end if;skippedSky=0;drawable=0
-  for each triangle in renderData.triangles
-    if isSky(triangle,skyTextureFlags) then skippedSky=skippedSky+1;continue end if
-    drawable=drawable+1;material=void;if triangle.textureIndex>=0 and triangle.textureIndex<len(lookup) then material=lookup[triangle.textureIndex] end if
-    if material==void or len(material.stages)==0 then base=appendResolved(base,triangle,-1,true)
-    else if not dynamicMaterialStage(material,material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],not materialUsesBspLightmap(material)) end if
-    if base is error then return base end if
-  end for
-  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;polygonOffsetCount=0;emitted=base.count
+  base=window.createTriangleBatch(capacity);if base is error then return base end if
+  skippedSky=fillMaterialBase(base,renderData,lookup,skyTextureFlags);if skippedSky is error then return skippedSky end if
+  drawable=len(renderData.triangles)-skippedSky
+  passes=lists.List.withCapacity(len(catalog.materials));animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;polygonOffsetCount=0;emitted=base.count
   for each material in sortedMaterials(catalog.materials)
-    if len(material.stages)==0 then continue end if
+    if len(material.stages)==0 or material.textureIndex<0 or material.textureIndex>=len(groups) then continue end if
+    triangles=groups[material.textureIndex];if len(triangles)==0 then continue end if
     primaryWrites=material.stages[0].depthWrite
     for stageIndex=0 to len(material.stages)-1
       stage=material.stages[stageIndex];if stageIndex==0 and not dynamicMaterialStage(material,stage) then continue end if
-      triangles=[];if material.textureIndex>=0 and material.textureIndex<len(groups) then triangles=groups[material.textureIndex] end if
       pass=buildStagePassTriangles(triangles,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites));if pass is error then return pass end if
       if pass!=void then
-        passes=passes+[pass];emitted=emitted+pass.commands.count
+        passes.add(pass);emitted=emitted+pass.commands.count
         if len(stage.slots)>1 then animated=animated+1 end if;if len(stage.uvMods)>0 then modified=modified+1 end if;if stage.blend!=materials.BLEND_OPAQUE then blended=blended+1 end if
         if stage.rgbGen=="wave" then generated=generated+1 end if
         if stage.alphaTest!=materials.ALPHA_TEST_NONE then alphaTested=alphaTested+1 end if
@@ -188,7 +204,7 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
       end if
     end for
   end for
-  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount,polygonOffsetCount,void,void,void,void)
+  return MaterialBatch(base,passes.toArray(),len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount,polygonOffsetCount,void,void,void,void)
 end function
 
 // Refreshes a retained material batch when triangle/material topology is
@@ -234,14 +250,9 @@ function refreshMaterials(batch,renderData,catalog,skyTextureFlags)
     end if
   end for
   if expectedPasses!=len(batch.passes) then return false end if
-  oldBaseCount=batch.base.count;batch.base=window.resetTriangleBatch(batch.base);skippedSky=0;drawable=0
-  for each triangle in renderData.triangles
-    if isSky(triangle,skyTextureFlags) then skippedSky=skippedSky+1;continue end if
-    drawable=drawable+1;material=void;if triangle.textureIndex>=0 and triangle.textureIndex<len(lookup) then material=lookup[triangle.textureIndex] end if
-    if material==void or len(material.stages)==0 then batch.base=appendResolved(batch.base,triangle,-1,true)
-    else if not dynamicMaterialStage(material,material.stages[0]) then batch.base=appendResolved(batch.base,triangle,material.stages[0].slots[0],not materialUsesBspLightmap(material)) end if
-    if batch.base is error then return batch.base end if
-  end for
+  oldBaseCount=batch.base.count;batch.base=window.resetTriangleBatch(batch.base)
+  skippedSky=fillMaterialBase(batch.base,renderData,lookup,skyTextureFlags);if skippedSky is error then return skippedSky end if
+  drawable=len(renderData.triangles)-skippedSky
   if batch.base.count!=oldBaseCount then return false end if
   emitted=batch.base.count
   for each pass in batch.passes

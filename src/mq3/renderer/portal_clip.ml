@@ -89,7 +89,23 @@ end function
 function clipScene(source,normal,dist)
   if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("scene geometry and plane are required") end if
   triangles=lists.List.withCapacity(len(source.triangles)*2)
-  for each triangle in source.triangles polygon=clipSceneVertices([sceneVertex(triangle,0),sceneVertex(triangle,1),sceneVertex(triangle,2)],normal,dist);if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles.add(sceneTriangle(triangle,polygon[0],polygon[corner],polygon[corner+1])) end for end if end for
+  for each triangle in source.triangles
+    a=distance(triangle.positions[0],normal,dist)>=0.0
+    b=distance(triangle.positions[1],normal,dist)>=0.0
+    c=distance(triangle.positions[2],normal,dist)>=0.0
+    if a and b and c then
+      // A clipped scene uses its own vertex IDs. Its unmodified vertex attributes
+      // may be shared with the source until the portal batch consumes them.
+      kept=triangle
+      if triangle.vertexIds!=void then
+        kept=sceneGeometry.Triangle(triangle.positions,triangle.texCoords,triangle.normals,triangle.colors,triangle.entityColor,triangle.entityTexCoord,triangle.shaderTime,triangle.modelHandle,triangle.customSkin,triangle.shaderHandle,triangle.shaderName,triangle.surfaceName,triangle.entityIndex,triangle.surfaceIndex,triangle.renderfx,triangle.lightmapCoords,triangle.lightmapIndex,triangle.fogIndex,triangle.dynamicLight,triangle.dynamicLightOrigin,triangle.dynamicLightAxis,triangle.dynamicLightBounds,void)
+      end if
+      triangles.add(kept)
+    else if a or b or c then
+      polygon=clipSceneVertices([sceneVertex(triangle,0),sceneVertex(triangle,1),sceneVertex(triangle,2)],normal,dist)
+      for corner=1 to len(polygon)-2 triangles.add(sceneTriangle(triangle,polygon[0],polygon[corner],polygon[corner+1])) end for
+    end if
+  end for
   // Stencil volumes are depth-tested against the already clipped portal
   // scene and constrained again by its viewport. Preserve their closed side
   // topology here: clipping individual volume sides would open the volume and

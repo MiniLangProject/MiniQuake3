@@ -15,9 +15,9 @@ def main():
         cwd=ROOT,
         check=True,
     )
-    pak = args.data_root / "baseq3" / "pak0.pk3"
+    pak = args.data_root.resolve() / "baseq3" / "pak0.pk3"
     value = run([ROOT / "build/qvm_player_skin_warm_retail_probe.exe", pak], ROOT / "build", timeout=240).strip()
-    if value != "PASS: 6 QVM player skin warm retail contracts":
+    if value != "PASS: 9 QVM skin and server model warm retail contracts":
         raise RuntimeError(value)
     print(value)
 

@@ -241,6 +241,52 @@ PLAYABLE_API int playable_window_write_batch_vertex(unsigned char *data,int byte
     values[4]=(float)v;values[5]=(float)lu;values[6]=(float)lv;values[7]=(float)light;
     memcpy(data+offset,values,sizeof(values));return 1;
 }
+static unsigned char batchColorByte(int64_t value) {
+    return (unsigned char)(value < 0 ? 0 : value > 255 ? 255 : value);
+}
+
+static void writePositionCorner(playableTriangleBatchRecord *record, int corner,
+        double x, double y, double z, double u, double v, double lu, double lv, double light,
+        int64_t red, int64_t green, int64_t blue, int64_t alpha) {
+    float *vertex = record->vertex[corner];
+    unsigned char *color = record->vertexColor[corner];
+    vertex[0] = (float)x;
+    vertex[1] = (float)y;
+    vertex[2] = (float)z;
+    vertex[3] = (float)u;
+    vertex[4] = (float)v;
+    vertex[5] = (float)lu;
+    vertex[6] = (float)lv;
+    vertex[7] = (float)light;
+    color[0] = batchColorByte(red);
+    color[1] = batchColorByte(green);
+    color[2] = batchColorByte(blue);
+    color[3] = batchColorByte(alpha);
+}
+
+PLAYABLE_API int playable_window_write_position_triangle(unsigned char *data, int bytes,
+        int triangle, int baseSlot, int lightmapSlot, int red, int green, int blue,
+        double x0, double y0, double z0, double u0, double v0, double lu0, double lv0, double light0,
+        int64_t r0, int64_t g0, int64_t b0, int64_t a0,
+        double x1, double y1, double z1, double u1, double v1, double lu1, double lv1, double light1,
+        int64_t r1, int64_t g1, int64_t b1, int64_t a1,
+        double x2, double y2, double z2, double u2, double v2, double lu2, double lv2, double light2,
+        int64_t r2, int64_t g2, int64_t b2, int64_t a2) {
+    playableTriangleBatchRecord *record;
+    if (!data || bytes < PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES || triangle < 0 ||
+            triangle >= bytes / PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES) return 0;
+    record = (playableTriangleBatchRecord *)(data + (SIZE_T)triangle * sizeof(*record));
+    record->baseTextureSlot = baseSlot;
+    record->lightmapTextureSlot = lightmapSlot;
+    record->fallbackRed = red;
+    record->fallbackGreen = green;
+    record->fallbackBlue = blue;
+    writePositionCorner(record, 0, x0, y0, z0, u0, v0, lu0, lv0, light0, r0, g0, b0, a0);
+    writePositionCorner(record, 1, x1, y1, z1, u1, v1, lu1, lv1, light1, r1, g1, b1, a1);
+    writePositionCorner(record, 2, x2, y2, z2, u2, v2, lu2, lv2, light2, r2, g2, b2, a2);
+    return 1;
+}
+
 PLAYABLE_API int playable_window_update_stage_vertex(unsigned char *data,int bytes,int triangle,int vertex,
         double x,double y,double z,double u,double v,int red,int green,int blue,int alpha) {
     playableTriangleBatchRecord *record;

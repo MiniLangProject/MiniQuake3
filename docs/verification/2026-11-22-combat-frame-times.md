@@ -148,3 +148,76 @@ Speicherstände, Simulationszähler und den Namen des OpenGL-Geräts.
 python scripts/test_ingame_controls_render.py --published-compiler --data-root build --map q3dm0 --singleplayer --mode moving --frames 6600 --fixed-step-ms 20 --label frame_tail_portal
 python scripts/benchmark_function_contract_game.py --baseline build/reference/frame_tail_old_runtime/controls_render_replay_sim_host_reuse.exe --candidate build/controls_render_replay_frame_tail_portal.exe --frames 6600 --repeat 2 --output build/reports/trace_portal_combat_ab.json
 ```
+
+## Spiegel und erstes Auftauchen des Hologramms
+
+Ausgangspunkt für diesen Vergleich ist `9466c94`. Eine separat instrumentierte
+Kopie des Renderers zerlegte die Portalvorbereitung beim Abspielen des
+Retail-Kampfs. Unter den ersten 3.000 Frames hatten 172 Portalansichten eine
+nichtleere BSP-Auswahl. In den 80 Ansichten zwischen 51.900 und 53.500 ms
+Spielzeit kostete das Zusammenstellen des Welt-Batches im Schnitt 5,67 ms
+(Maximum 21 ms), das Beschneiden seiner BSP-Flächen 0,07 ms (Maximum 1 ms).
+Die Portalansicht enthielt in diesem Fenster im Schnitt 1.503 Szenendreiecke.
+
+In Frame 2540 kamen die Texturen des Hologramms und des Röntgenmodells erstmals
+ins Bild. Beide MD3-Dateien sind in der Retail-BSP von `q3dm0` als `model2`
+für rotierende Objekte eingetragen. Beim Kartenstart dekodiert der Port jetzt
+die Shaderbilder der vom Server angekündigten und von Cgame registrierten
+MD3-Modelle. Der erste sichtbare Materialdurchlauf vergibt die Textur-Slots
+und lädt die Bilder in den Grafikspeicher. Ein Retail-Test prüft beide
+Hologramm-Texturen, die Wiederverwendung bei mehreren Modell-LODs, einen
+unregistrierten Modellpfad und die Slotbelegung.
+
+Bei aufeinanderfolgenden Welt- oder Modelldreiecken mit demselben Material
+bestimmt der Renderer die erste Shaderstufe einmal. Ein nativer Aufruf
+schreibt die drei Eckpunkte, beide UV-Sätze und die Farben in den bestehenden
+128-Byte-Zeichenbefehl. Ein Bytevergleich mit dem bisherigen Feldschreiber
+deckt auch vorzeichenbehaftete Slotnummern und die Farbgrenzen ab.
+Beim Portal-Clipping vergleicht der Port zuerst alle drei Eckpunkte mit der
+Spiegelebene. Nur Dreiecke, die sie schneiden, benötigen eine Interpolation.
+
+### Sechs Läufe über je 6.600 Frames
+
+Ausgangs- und Messversion liefen in wechselnder Reihenfolge auf derselben
+RTX 5080 mit Hardware-OpenGL, 1280 × 720 und festem 20-ms-Simulationsschritt.
+Alle sechs Läufe meldeten 1.440 Positionsänderungen, 3.300 Angriffsframes
+und 297 Munitionsabnahmen. Die Framezeiten messen die Arbeit der Spielschleife,
+die FPS ergeben sich aus der gesamten abgelaufenen Zeit.
+
+| Laufpaar | FPS vorher → nachher | P95 (ms) | P99 (ms) | Langsamster Frame (ms) |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 68,32 → 67,50 | 32 → 32 | 51 → 49 | 75 → 71 |
+| 2 | 66,49 → 81,10 | 33 → 27 | 53 → 43 | 80 → 67 |
+| 3 | 69,59 → 81,37 | 31 → 28 | 52 → 43 | 91 → 82 |
+| Median | **68,32 → 81,10** | **32 → 28** | **52 → 43** | **80 → 71** |
+
+Das Vorbereiten der Szenen-Batches sank im Median von 2,25 auf 1,51 ms
+pro Frame, die Portalvorbereitung von 0,358 auf 0,261 ms. Das erste Paar
+zeigte einen leichten FPS-Rückgang. Auch die Simulationszeiten schwankten.
+Die gemessene Startphase der Karte einschließlich Weltaufbau, Modellbildern
+und initialem Upload dauerte im Median 3.089 ms vorher und 3.145 ms danach.
+Der langsamste einzelne Frame der neuen Version dauerte 82 ms.
+
+Die vollständigen Zahlen und Prüfsummen schreibt der folgende Vergleich nach
+`build/reports/portal_command_warm_long.json`. Die Ausgangs-EXE lief mit den
+im vorherigen Replay erfassten Windows-, QVM- und ABI-DLLs.
+
+```powershell
+python scripts/test_ingame_controls_render.py --published-compiler --data-root build --map q3dm0 --singleplayer --mode moving --frames 3200 --fixed-step-ms 20 --label portal_command_warm
+python scripts/benchmark_function_contract_game.py --baseline build/reference/portal_pack_baseline/controls_render_replay_frame_tail_portal.exe --candidate build/controls_render_replay_portal_command_warm.exe --frames 6600 --repeat 3 --output build/reports/portal_command_warm_long.json
+```
+
+Ein zweites Replay mit demselben CPU-Profiler auf beiden Ständen isolierte
+Frame 2540. Gegenüber 98 ms vorher dauerte er danach 50 ms. Die
+Materialauflösung sank von 20 auf 1 ms, die Portalvorbereitung von 31 auf
+10 ms. Der neue Zähler für Bilddekodierungen sank von drei auf null. Vier
+Textur-Slots wurden in beiden Versionen beim ersten Sichtkontakt belegt.
+Diese Einzelmessung enthält Profilerkosten und ging nicht in die Tabelle ein.
+
+Der Vergleich von Frame 2545 ergab denselben RGB-SHA-256 wie beim
+Ausgangsbild (`2332c95f18cb9c7d5aaf785b846e852cb09a3bc46a446cf7aea4d1b1b89abda8`).
+Die 432 Retail-Differentialfälle des Welt-Renderers, 40 Portalverträge,
+64 Welt-Batch- und 28 Szenen-Batch-Verträge sowie neun Retail-Tests für
+Modell- und Skinbilder bestanden. Die gebaute Windows-EXE erreichte das
+Originalmenü aus einem anderen Arbeitsverzeichnis mit benachbartem
+`baseq3` in 0,44 s.

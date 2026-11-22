@@ -411,6 +411,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   worldCatalog=materials.loadIndexed(archive,map,QVM_TEXTURE_FIRST_SLOT-WORLD_TEXTURE_FIRST_SLOT-16,WORLD_TEXTURE_FIRST_SLOT,scripts[0],scripts[1]);if worldCatalog is error then window.shutdown();match.shutdown(state);return worldCatalog end if
   materials.seedImageCacheFromCatalog(qvmCatalog.imageCache,worldCatalog)
   sceneMaterials.warmRegisteredPlayerSkins(qvmCatalog,archive,state.context.assets,state.context.assetKinds)
+  sceneMaterials.warmServerModelImages(qvmCatalog,archive,state.context.assets,state.context.assetKinds,state.context.modelAssets,state.context.configstrings)
   boundVideo=qvmVideo.bindCatalog(videoManager,worldCatalog,state.context.now);if boundVideo is error then window.shutdown();match.shutdown(state);return boundVideo end if
   nextWorldTextureSlot=WORLD_TEXTURE_FIRST_SLOT+worldCatalog.textureCount
   skyCatalog=void;availableWorldTextureSlots=QVM_TEXTURE_FIRST_SLOT-nextWorldTextureSlot

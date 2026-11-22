@@ -60,6 +60,11 @@ function main(args)
   count=count+req(sceneClipped.triangles[0].renderfx==8 and sceneClipped.triangles[1].renderfx==8,"scene renderfx retained across clipping")
   count=count+req(sceneClipped.triangles[0].lightmapIndex==4 and sceneClipped.triangles[0].fogIndex==3 and sceneClipped.triangles[0].lightmapCoords[0][0]==0.25 and sceneClipped.triangles[0].dynamicLight and sceneClipped.triangles[0].dynamicLightOrigin==[4.0,5.0,6.0] and sceneClipped.triangles[0].dynamicLightAxis[0]==[0.0,1.0,0.0] and sceneClipped.triangles[0].dynamicLightBounds[1]==[8.0,4.0,2.0],"scene lightmap, fog and oriented dynamic-light state retained across clipping")
   count=count+req(sceneClipped.sourceVertices==3 and sceneClipped.vertexTransforms==3,"scene counters retained")
+  sceneTriangle.vertexIds=[10,11,12]
+  kept=clip.clipScene(sceneSource,[1.0,0.0,0.0],-1.0)
+  count=count+req(kept.triangleCount==1 and kept.triangles[0].positions==sceneTriangle.positions and kept.triangles[0].vertexIds==void and sceneTriangle.vertexIds==[10,11,12],"fully visible scene triangle includes its on-plane corner and preserves source IDs")
+  hidden=clip.clipScene(sceneSource,[1.0,0.0,0.0],2.0)
+  count=count+req(hidden.triangleCount==0 and len(hidden.triangles)==0,"fully hidden scene triangle is discarded")
   axis=[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
   marker=Marker(7,[0.0,0.0,0.0],[0.0,0.0,0.0],axis,0,0,0)
   geometry=scene.Geometry([],0,0,0,0,0,0,0,0,[marker],0,[],0)

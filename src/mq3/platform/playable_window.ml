@@ -38,6 +38,10 @@ extern function hardwareRendererNative() from "playable_window.dll" symbol "play
 extern function hardwareTrianglesNative() from "playable_window.dll" symbol "playable_window_hardware_triangles" returns u32
 extern function hardwareDrawCallsNative() from "playable_window.dll" symbol "playable_window_hardware_draw_calls" returns u32
 extern function writeBatchVertexNative(data as ptr,count as i32,offset as i32,x as double,y as double,z as double,u as double,v as double,lu as double,lv as double,light as double) from "playable_window.dll" symbol "playable_window_write_batch_vertex" returns i32
+extern function writePositionTriangleNative(data as ptr,count as i32,triangle as i32,baseSlot as i32,lightmapSlot as i32,red as i32,green as i32,blue as i32,
+    x0 as double,y0 as double,z0 as double,u0 as double,v0 as double,lu0 as double,lv0 as double,light0 as double,r0 as i64,g0 as i64,b0 as i64,a0 as i64,
+    x1 as double,y1 as double,z1 as double,u1 as double,v1 as double,lu1 as double,lv1 as double,light1 as double,r1 as i64,g1 as i64,b1 as i64,a1 as i64,
+    x2 as double,y2 as double,z2 as double,u2 as double,v2 as double,lu2 as double,lv2 as double,light2 as double,r2 as i64,g2 as i64,b2 as i64,a2 as i64) from "playable_window.dll" symbol "playable_window_write_position_triangle" returns i32
 extern function updateStageVertexNative(data as ptr,count as i32,triangle as i32,vertex as i32,x as double,y as double,z as double,u as double,v as double,red as i32,green as i32,blue as i32,alpha as i32) from "playable_window.dll" symbol "playable_window_update_stage_vertex" returns i32
 extern function takeVideoRestartNative() from "playable_window.dll" symbol "playable_window_take_video_restart" returns i32
 extern function windowStateNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_window_state" returns i32
@@ -335,10 +339,11 @@ function appendTriangleBatchColored(batch,baseSlot,lightmapSlot,a,baseA,lightmap
 end function
 function appendTriangleBatchPositionColored(batch,baseSlot,lightmapSlot,a,baseA,lightmapA,lightA,colorA,b,baseB,lightmapB,lightB,colorB,c,baseC,lightmapC,lightC,colorC,red,green,blue)
   if batch.count>=batch.capacity then return error(7487,"triangle batch is full") end if
-  offset=batch.count*TRIANGLE_BATCH_RECORD_BYTES
-  writeBatchI32(batch.data,offset,baseSlot);writeBatchI32(batch.data,offset+4,lightmapSlot);writeBatchI32(batch.data,offset+8,red);writeBatchI32(batch.data,offset+12,green);writeBatchI32(batch.data,offset+16,blue)
-  writeBatchPositionVertex(batch.data,offset+20,a,baseA,lightmapA,lightA);writeBatchPositionVertex(batch.data,offset+52,b,baseB,lightmapB,lightB);writeBatchPositionVertex(batch.data,offset+84,c,baseC,lightmapC,lightC)
-  writeBatchColor(batch.data,offset+116,colorA);writeBatchColor(batch.data,offset+120,colorB);writeBatchColor(batch.data,offset+124,colorC)
+  written=writePositionTriangleNative(nativeBytesPtr(batch.data),len(batch.data),batch.count,baseSlot,lightmapSlot,red,green,blue,
+    a[0],a[1],a[2],baseA[0],baseA[1],lightmapA[0],lightmapA[1],lightA,colorA[0],colorA[1],colorA[2],colorA[3],
+    b[0],b[1],b[2],baseB[0],baseB[1],lightmapB[0],lightmapB[1],lightB,colorB[0],colorB[1],colorB[2],colorB[3],
+    c[0],c[1],c[2],baseC[0],baseC[1],lightmapC[0],lightmapC[1],lightC,colorC[0],colorC[1],colorC[2],colorC[3])
+  if written!=1 then return error(7487,"native position triangle rejected") end if
   batch.count=batch.count+1;return batch
 end function
 function appendTriangleBatch(batch,baseSlot,lightmapSlot,a,baseA,lightmapA,lightA,b,baseB,lightmapB,lightB,c,baseC,lightmapC,lightC,red,green,blue)

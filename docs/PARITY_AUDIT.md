@@ -4,6 +4,17 @@ Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Spiegelportal und Modelltexturen im Retail-Kampf
+
+Im Einzelspieler-Replay auf `q3dm0` stieg die Bildrate auf der RTX 5080
+gegenüber `9466c94` im Median von **68,32 auf 81,10 FPS**. Die P99-Framezeit
+sank von **52 auf 43 ms**. Der Renderer packt Welt- und Modelldreiecke
+in einem nativen Aufruf und übernimmt vollständig sichtbare Dreiecke in die
+Spiegelansicht. Die Shaderbilder der vom Server angekündigten MD3-Modelle
+werden beim Kartenstart dekodiert. Die drei Läufe der neuen Version hatten
+Maxima von 71, 67 und 82 ms. Die Ladephase der Karte stieg im Median um
+56 ms. [Laufpaare, Frameprofil und Vergleichsbedingungen](verification/2026-11-22-combat-frame-times.md#spiegel-und-erstes-auftauchen-des-hologramms)
+
 ## Ruckler im Retail-Kampf, 22. November 2026
 
 Die BSP-Kollision berechnet die Endpunkte geteilter Bewegungssegmente in

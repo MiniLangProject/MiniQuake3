@@ -56284,7 +56284,7 @@
             "src/mq3/platform/playable_window.ml"
           ],
           "status": "tested_subset",
-          "scope": "The default Windows path consumes the retained 128-byte ABI through actual hardware OpenGL world transforms, near clipping, perspective interpolation, depth/depthhack, two texture units, mipmaps, alpha, all 72 source/destination RGBA blend combinations, polygon offset, viewport/scissor, stencil shadows and 2D HUD. Actual GPU pixel/state tests run on the RTX 5080. Alpha thresholds compare full buffers against the original GL calls on the same driver; lazy texture upload preserves both TMU bindings. The software reference remains selectable with MQ3_RENDERER=software, clips near-plane-crossing triangles with exact serial/parallel pixels and depth, and uses half-open shared-edge coverage. Ordinary per-shader front/back/mirror cull propagation remains open in this retained ABI; front-end BSP and model culling remains active. Retail evidence is documented in PARITY_AUDIT; full original-renderer visual parity is not inferred from these subset tests."
+          "scope": "The default Windows path consumes the retained 128-byte ABI through actual hardware OpenGL world transforms, near clipping, perspective interpolation, depth/depthhack, two texture units, mipmaps, alpha, all 72 source/destination RGBA blend combinations, polygon offset, viewport/scissor, stencil shadows and 2D HUD. Actual GPU pixel/state tests run on the RTX 5080. Alpha thresholds compare full buffers against the original GL calls on the same driver; lazy texture upload preserves both TMU bindings. The software reference remains selectable with MQ3_RENDERER=software, clips near-plane-crossing triangles with exact serial/parallel pixels and depth, and uses half-open shared-edge coverage. Ordinary per-shader front/back/mirror cull propagation remains open in this retained ABI; front-end BSP and model culling remains active. Retail evidence is documented in PARITY_AUDIT; full original-renderer visual parity is not inferred from these subset tests. A byte differential covers the complete native 128-byte position-triangle writer, including lightmap coordinates, signed slots and clamped per-corner RGBA."
         },
         {
           "original": "RE_UploadCinematic",
@@ -56379,7 +56379,9 @@
         "tests/tr_backend_retail_probe.ml",
         "tests/reference/tr_backend_complete_oracle.c",
         "scripts/test_hardware_renderer.py",
-        "scripts/test_ingame_controls_render.py"
+        "scripts/test_ingame_controls_render.py",
+        "scripts/test_playable_window_contracts.py",
+        "tests/playable_window_contract_errors.ml"
       ]
     },
     {
@@ -57452,6 +57454,16 @@
           "scope": "Model tags plus R_ModelBounds frame-zero behavior are implemented; other model registration/render paths remain partial."
         },
         {
+          "original": "R_LoadMD3 surface shader registration",
+          "target_files": [
+            "src/mq3/renderer/qvm_scene_materials.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "target_symbol": "mq3.renderer.qvm_scene_materials.warmServerModelImages",
+          "status": "tested_subset",
+          "scope": "Images for shader stages on server-listed, registered MD3 models are decoded during map loading, including alternate LOD surfaces. Material slots, overrides and GPU uploads are resolved on use. The Retail hologram test checks cache reuse and slot allocation."
+        },
+        {
           "original": "Complete original source surface",
           "target_files": [
             "src/mq3/renderer/tr_model_runtime.ml"
@@ -57464,7 +57476,9 @@
         "src/mq3/renderer/model_tags.ml",
         "src/mq3/renderer/model_bounds.ml",
         "src/mq3/renderer/tr_model_runtime.ml",
-        "src/mq3/format/md3.ml"
+        "src/mq3/format/md3.ml",
+        "src/mq3/renderer/qvm_scene_materials.ml",
+        "src/mq3/client/qvm_preview_app.ml"
       ],
       "status": "ported",
       "tests": [
@@ -57475,7 +57489,9 @@
         "tests/tr_model_complete_contracts.ml",
         "tests/tr_model_retail_probe.ml",
         "scripts/test_md3_packed.py",
-        "tests/qvm_frame_lifecycle_retail_probe.ml"
+        "tests/qvm_frame_lifecycle_retail_probe.ml",
+        "scripts/test_qvm_player_skin_warm.py",
+        "tests/qvm_player_skin_warm_retail_probe.ml"
       ]
     },
     {
