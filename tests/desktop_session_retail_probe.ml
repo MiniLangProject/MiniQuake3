@@ -58,8 +58,12 @@ function main(args)
   if cinematics.run(movie,clip,1000)!=cinematics.FMV_PLAY or cinematics.draw(movie,clip)==void then return fail("Retail tier video produced no frame") end if
   if cinematics.run(movie,clip,14000)!=cinematics.FMV_EOF then return fail("Retail tier video did not finish") end if
   cinematics.closeAll(movie)
+  desktop.capture(game,original)
   if desktop.finishCinematic(original)!="levelselect" then return fail("finished tier video did not open the level selection") end if
-  desktop.capture(game,original);match.shutdown(game)
+  postMovie=match.bootUiShellSettings(archive,void,1000,qvms,original.settings)
+  if postMovie is error then return postMovie end if
+  if cvar.variableString(postMovie.context.cvars,"nextmap")!="" then return fail("finished film retained stale nextmap in the next UI") end if
+  match.shutdown(postMovie);match.shutdown(game)
 
   // Fresh registry, command buffer and VM. None of the previous session's
   // in-memory state can make these checks pass.

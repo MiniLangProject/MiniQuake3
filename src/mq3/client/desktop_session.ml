@@ -155,6 +155,13 @@ end function
 
 function finishCinematic(session)
   next=session.cinematicNext;session.cinematicNext=""
+  // CL_HandleCinEnd consumes nextmap. The disconnected host has already
+  // captured its Cvars, so clear the saved copy before booting the next UI.
+  if session.settings!=void then
+    for each saved in session.settings.cvars
+      if stringEqualsIgnoreCaseAscii(saved[0],"nextmap") then saved[1]="";saved[3]=void;break end if
+    end for
+  end if
   if next=="levelselect" then session.action="levelselect"
   else session.action="menu";if next!="" then session.transitionCommands=next+"\n" end if end if
   return session.action

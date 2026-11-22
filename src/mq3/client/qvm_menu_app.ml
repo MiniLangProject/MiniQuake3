@@ -116,28 +116,31 @@ function runCinematic(archive,session,measurePixels)
   if name=="end.roq" or name=="demoend.roq" then bits=bits|cinematics.CIN_HOLD end if
   startedAt=window.milliseconds()
   handle=try(cinematics.play(movie,session.target,0,0,640,480,bits,startedAt))
-  if handle is error then return handle end if
-  if handle<0 then desktopSession.finishCinematic(session);return 0 end if
-  catalog=try(qvmSoundAssets.load(archive,[],[]));if catalog is error then return catalog end if
-  audio=try(qvmPlayback.create(catalog,22050,qvmSoundAssets.CHUNK_FRAMES));if audio is error then return audio end if
+  if handle is error then cinematics.closeAll(movie);return handle end if
+  if handle<0 then cinematics.closeAll(movie);desktopSession.finishCinematic(session);return 0 end if
+  catalog=try(qvmSoundAssets.load(archive,[],[]));if catalog is error then cinematics.closeAll(movie);return catalog end if
+  audio=try(qvmPlayback.create(catalog,22050,qvmSoundAssets.CHUNK_FRAMES));if audio is error then cinematics.closeAll(movie);return audio end if
   soundReady=not (audioOutput.init(22050) is error)
   window.setTitle("MiniQuake3 | "+session.target)
-  window.inputClear();window.inputEvents(256);brightest=0
+  window.inputClear();window.inputEvents(256);brightest=0;failure=void
   while not window.shouldClose()
     frameAt=window.milliseconds();window.poll()
-    events=try(window.inputEvents(256));if events is error then audioOutput.shutdown();return events end if
+    events=try(window.inputEvents(256));if events is error then failure=events;break end if
     skip=false;for each event in events if event.type==window.INPUT_KEY and event.value2!=0 then skip=true;break end if end for
     if skip then break end if
     status=cinematics.run(movie,handle,frameAt)
     if status==cinematics.FMV_EOF then break end if
     draw=cinematics.draw(movie,handle)
+    // This frame is presented directly; retaining the QVM draw command would
+    // keep every decoded RGBA frame alive until the whole film had finished.
+    cinematics.discardDraws(movie)
     window.beginFrame(0,0,0)
     if draw!=void then
-      image=try(cinematics.presentation(draw,640,480,session.videoWidth,session.videoHeight));if image is error then audioOutput.shutdown();return image end if
-      if image.dirty and not window.uploadTextureNoMip(CINEMATIC_TEXTURE_SLOT,image.pixels,image.sourceWidth,image.sourceHeight) then audioOutput.shutdown();return fail("could not upload cinematic frame") end if
+      image=try(cinematics.presentation(draw,640,480,session.videoWidth,session.videoHeight));if image is error then failure=image;break end if
+      if image.dirty and not window.uploadTextureNoMip(CINEMATIC_TEXTURE_SLOT,image.pixels,image.sourceWidth,image.sourceHeight) then failure=fail("could not upload cinematic frame");break end if
       x=image.x;y=image.y;w=image.width;h=image.height;depth=0.001
       a=ScreenPoint(x,y,depth);b=ScreenPoint(x+w,y,depth);c=ScreenPoint(x+w,y+h,depth);d=ScreenPoint(x,y+h,depth)
-      stateValue=multitexture.setState(multitexture.BLEND_OPAQUE,false,false);if stateValue is error then audioOutput.shutdown();return stateValue end if
+      stateValue=multitexture.setState(multitexture.BLEND_OPAQUE,false,false);if stateValue is error then failure=stateValue;break end if
       multitexture.setTextureClamp(true)
       window.drawTriangle(CINEMATIC_TEXTURE_SLOT,a,[0.0,0.0],1.0,b,[1.0,0.0],1.0,c,[1.0,1.0],1.0,255,255,255)
       window.drawTriangle(CINEMATIC_TEXTURE_SLOT,c,[1.0,1.0],1.0,d,[0.0,1.0],1.0,a,[0.0,0.0],1.0,255,255,255)
@@ -147,15 +150,18 @@ function runCinematic(archive,session,measurePixels)
     if measurePixels then lit=window.presentedNonBlack();if lit>brightest then brightest=lit end if end if
     chunks=cinematics.takeAudio(movie,handle)
     if soundReady then
-      for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0);if queued is error then audioOutput.shutdown();return queued end if end for
+      for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0);if queued is error then failure=queued;break end if end for
+      if failure is error then break end if
       submitted=0;while submitted<3 and audioOutput.canSubmit()
-        rendered=try(qvmPlayback.renderFast(audio));if rendered is error then audioOutput.shutdown();return rendered end if
-        accepted=try(audioOutput.submit(rendered.samples));if accepted is error then audioOutput.shutdown();return accepted end if;if not accepted then break end if;submitted=submitted+1
+        rendered=try(qvmPlayback.renderFast(audio));if rendered is error then failure=rendered;break end if
+        accepted=try(audioOutput.submit(rendered.samples));if accepted is error then failure=accepted;break end if;if not accepted then break end if;submitted=submitted+1
       end while
+      if failure is error then break end if
     end if
     sleepMs=frameTiming.remaining(frameAt,window.milliseconds(),16);if sleepMs>0 then time.sleep(sleepMs) end if
   end while
   audioOutput.shutdown();cinematics.closeAll(movie);window.releaseTexture(CINEMATIC_TEXTURE_SLOT)
+  if failure is error then return failure end if
   desktopSession.finishCinematic(session)
   return brightest
 end function

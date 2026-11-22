@@ -20251,8 +20251,8 @@
             "src/mq3/audio/snd_raw_stream.ml",
             "src/mq3/audio/qvm_playback.ml"
           ],
-          "status": "tested_complete",
-          "scope": "Handle lifecycle, screen commands, RoQ parsing/VQ/motion/YUV decode, mono/stereo DPCM, extents, looping, draw and upload are connected to the productive cinematic, video-material and audio paths and verified with the Retail idlogo RoQ."
+          "status": "tested_subset",
+          "scope": "Handle lifecycle, screen commands, RoQ parsing/VQ/motion/YUV decode, mono/stereo DPCM, extents, looping, draw and upload are connected to productive cinematic, video-material and audio paths. Retail idlogo and tier1 playback are tested. The desktop host clears nextmap after the film and drops already-presented frame references. JPEG/packet chunks and broader movie/error-path acceptance remain open."
         }
       ],
       "target": [

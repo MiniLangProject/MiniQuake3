@@ -3,6 +3,7 @@
 package mq3.format.roq
 
 import mq3.compat.numeric as numeric
+import std.ds.list as lists
 
 const MAGIC=0x1084
 const QUAD_INFO=0x1001
@@ -27,16 +28,16 @@ function parse(data)
   if data==void or typeof(data)!="bytes" or len(data)<8 then return fail("truncated header") end if
   if u16(data,0)!=MAGIC then return fail("invalid signature") end if
   fps=u16(data,6);if fps==0 then fps=30 end if;if fps<1 or fps>120 then return fail("invalid frame rate") end if
-  offset=8;chunks=[];videoFrames=0;audioChunks=0
+  offset=8;chunks=lists.List.withCapacity(256);videoFrames=0;audioChunks=0
   while offset<len(data)
     if len(data)-offset<8 then return fail("truncated chunk header") end if
     id=u16(data,offset);size=u32(data,offset+2);flags=u16(data,offset+6)
     if size<0 or size>MAX_CHUNK_SIZE then return fail("invalid chunk size") end if
     if size>len(data)-offset-8 then return fail("truncated chunk payload") end if
-    chunks=chunks+[Chunk(id,size,flags,offset+8)];if id==QUAD_VQ then videoFrames=videoFrames+1 end if;if id==SOUND_MONO or id==SOUND_STEREO then audioChunks=audioChunks+1 end if
+    chunks.add(Chunk(id,size,flags,offset+8));if id==QUAD_VQ then videoFrames=videoFrames+1 end if;if id==SOUND_MONO or id==SOUND_STEREO then audioChunks=audioChunks+1 end if
     offset=offset+8+size
   end while
-  return Movie(data,fps,chunks,videoFrames,audioChunks)
+  return Movie(data,fps,chunks.toArray(),videoFrames,audioChunks)
 end function
 
 function signed16(value) value=value&65535;if value>=32768 then value=value-65536 end if;return value end function

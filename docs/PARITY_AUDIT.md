@@ -1,8 +1,26 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
+Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Film- und Menüwechsel-Audit, 22. November 2026
+
+Der Desktop-Filmpfad hielt bisher jeden bereits präsentierten `Draw`-Auftrag
+bis zum Filmende fest; jeder Auftrag referenziert einen dekodierten RGBA-Frame.
+Das konnte den Speicherbedarf während längerer RoQ-Videos fortlaufend erhöhen.
+Der direkte Fensterpfad verwirft diese Aufträge nun pro Frame. RoQ-Chunkindex,
+Audio- und Draw-Queue verwenden `std.ds.list` statt quadratischer
+Array-Konkatenation. Frühe Fehler im Filmfenster laufen jetzt durch denselben
+Audio-/Textur-/Film-Cleanup wie ein normaler Filmabschluss.
+
+Im Original leert `CL_HandleCinEnd` nach dem Film die Cvar `nextmap`. Der
+Desktop-Host hatte den vor dem Film erfassten Wert beim nächsten UI-Start erneut
+eingespielt. Er löscht ihn jetzt in den gesicherten Einstellungen, nachdem der
+Folgebefehl übernommen wurde. Der Retail-QVM-Test prüft den Wert in einer neu
+gestarteten UI-Shell. Das Ledger kennzeichnet die RoQ-Abdeckung nun genauer als
+Teilmenge: JPEG-/Packet-Chunks und längere Fehlerszenarien bleiben offen.
+[Prüfbericht](verification/2026-11-22-cinematic-lifecycle-audit.md).
 
 ## Singleplayer-Abschluss und Tier-Film, 21. November 2026
 
