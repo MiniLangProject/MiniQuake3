@@ -24,6 +24,7 @@ TIMING = re.compile(
     r"workP95=(\S+)ms workP99=(\S+)ms workMax=(\S+)ms"
 )
 MOVEMENT = re.compile(r"REPLAY movement positions=(\d+) attacks=(\d+) ammoDecreases=(\d+)")
+SIMULATION = re.compile(r"QVM frame profile: simulation=(\S+)ms \(game=(\S+) cgame=(\S+) ui=")
 
 
 def sha256(path: Path) -> str:
@@ -48,12 +49,16 @@ def run(exe: Path, archive: Path, qvms: Path, frames: int, folder: Path, tag: st
             or f"frames={frames}" not in log or "Error occured:" in log):
         raise RuntimeError(f"{tag} failed; see {folder / (tag + '.log')}")
     values = [float(item) for item in timing.groups()]
-    return {
+    sample = {
         "elapsed_ms": values[0], "fps": values[1], "p50_ms": values[2],
         "p95_ms": values[3], "p99_ms": values[4], "max_ms": values[5],
         "movement": tuple(int(value) for value in movement.groups()),
         "log_sha256": sha256(folder / f"{tag}.log"),
     }
+    simulation = SIMULATION.search(log)
+    if simulation:
+        sample.update(zip(("simulation_ms", "game_ms", "cgame_ms"), map(float, simulation.groups())))
+    return sample
 
 
 def main() -> None:
@@ -108,7 +113,9 @@ def main() -> None:
                                    ("ui.qvm", "cgame.qvm", "qagame.qvm")}},
         "samples": samples,
         "median": {name: {metric: statistics.median(sample[metric] for sample in values)
-                          for metric in ("elapsed_ms", "fps", "p50_ms", "p95_ms", "p99_ms", "max_ms")}
+                          for metric in ("elapsed_ms", "fps", "p50_ms", "p95_ms", "p99_ms", "max_ms",
+                                         "simulation_ms", "game_ms", "cgame_ms")
+                          if all(metric in sample for sample in values)}
                    for name, values in samples.items()},
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

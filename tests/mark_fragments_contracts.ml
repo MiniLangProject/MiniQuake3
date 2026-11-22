@@ -34,6 +34,17 @@ function main(args)
   valid=true;for each point in result.points if point[0]< -1.01 or point[0]>1.01 or point[1]< -1.01 or point[1]>1.01 or point[2]!=0.0 then valid=false end if end for
   count=count+require(valid,"fragment points lie in projection prism on face")
   count=count+require(result.fragments[0].firstPoint==0 and result.fragments[1].firstPoint==result.fragments[0].numPoints,"fragment point offsets are contiguous")
+  cache=marks.geometryCache();first=marks.markTriangles(map,[0],cache);again=marks.markTriangles(map,[0],cache)
+  count=count+require(again[0]==first[0],"equal face lists reuse decoded triangle records")
+  count=count+require(try(marks.markTriangles(map,[32],cache)) is error,"a colliding cache slot still validates the new face list")
+  moved=square();for each point in moved point[0]=point[0]+1.25 end for
+  cached=marks.projectWithCache(map,world,moved,[0.0,0.0,-20.0],64,16,cache)
+  uncached=marks.project(map,world,moved,[0.0,0.0,-20.0],64,16)
+  count=count+require(cached.points==uncached.points and cached.points!=result.points and len(cached.fragments)==len(uncached.fragments),"moving marks clip cached geometry against the new planes")
+  map.data=slice(map.data,0,len(map.data));putF32(map.data,176,-6.0)
+  fresh=marks.markTriangles(map,[0],cache)
+  count=count+require(fresh[0].vertices[0].position[0]==-6.0 and first[0].vertices[0].position[0]==-4.0,"replacing BSP storage invalidates prepared faces")
+  putF32(map.data,176,-4.0)
   world.leaves[0].surfaces=[0,0,0]
   duplicate=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16)
   count=count+require(duplicate.candidateSurfaces==1 and duplicate.testedTriangles==2 and duplicate.points==result.points and len(duplicate.fragments)==2,"repeated face references emit fragments only once")

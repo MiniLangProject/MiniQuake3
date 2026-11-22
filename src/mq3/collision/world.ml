@@ -472,20 +472,18 @@ function throughLeaf(work, leaf, positionTest)
 end function
 
 function boxSide(mins, maxs, plane)
-  near = array(3,0.0)
-  far = array(3,0.0)
-  for axis = 0 to 2
-    if plane.normal[axis] < 0 then
-      near[axis] = maxs[axis]; far[axis] = mins[axis]
-    else
-      near[axis] = mins[axis]; far[axis] = maxs[axis]
-    end if
-  end for
   // Win32's original BoxOnPlaneSide is x87 assembly. Its sums remain extended
   // until comparison, with no intermediate binary32 stores. Map coordinates
   // have enough precision here in the host double to preserve this comparison.
-  a = plane.normal[0]*far[0]+plane.normal[1]*far[1]+plane.normal[2]*far[2]
-  b = plane.normal[0]*near[0]+plane.normal[1]*near[1]+plane.normal[2]*near[2]
+  a=0.0;b=0.0
+  for axis=0 to 2
+    normal=plane.normal[axis]
+    if normal<0 then
+      a=a+normal*mins[axis];b=b+normal*maxs[axis]
+    else
+      a=a+normal*maxs[axis];b=b+normal*mins[axis]
+    end if
+  end for
   result = 0
   if a >= plane.distance then result = 1 end if
   if b < plane.distance then result = result | 2 end if

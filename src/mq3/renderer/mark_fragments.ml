@@ -20,6 +20,32 @@ const SHADER_STRIDE=72
 struct Plane normal distance end struct
 struct Fragment firstPoint numPoints end struct
 struct Result points fragments candidateSurfaces testedTriangles end struct
+struct GeometryCache map data dataPointer slots end struct
+struct FaceBatch faces triangles end struct
+
+function geometryCache() return GeometryCache(void,void,0,array(32,void)) end function
+
+// A moving impact can hit the same ordered set of static faces with different
+// clip planes. Keep only small batches. Projection bounds, clipping and output
+// limits are still evaluated for each impact.
+function markTriangles(map,faces,cache)
+  if len(faces)==0 then return [] end if
+  slot=0
+  if cache!=void then
+    pointer=nativeBytesPtr(map.data)
+    if cache.map!=map or cache.dataPointer!=pointer then
+      cache.slots=array(len(cache.slots),void)
+      cache.map=map;cache.data=map.data;cache.dataPointer=pointer
+    end if
+    for each face in faces slot=(slot*31+face+1)%len(cache.slots) end for
+    batch=cache.slots[slot]
+    if batch!=void and batch.faces==faces then return batch.triangles end if
+  end if
+  geometry=renderData.extractRetainedWithPatchError(map,faces,131072,renderData.DEFAULT_PATCH_ERROR)
+  if geometry is error then return geometry end if
+  if cache!=void and len(geometry.triangles)<=256 then cache.slots[slot]=FaceBatch(faces,geometry.triangles) end if
+  return geometry.triangles
+end function
 
 function fail(message) return error(7693,"mark fragments: "+message) end function
 function dot(a,b) return a[0]*b[0]+a[1]*b[1]+a[2]*b[2] end function
@@ -131,6 +157,9 @@ function candidateFaces(map,world,mins,maxs,direction)
 end function
 
 function project(map,world,sourcePoints,projection,maxPoints,maxFragments)
+  return projectWithCache(map,world,sourcePoints,projection,maxPoints,maxFragments,void)
+end function
+function projectWithCache(map,world,sourcePoints,projection,maxPoints,maxFragments,cache)
   if map==void or world==void or sourcePoints==void or len(sourcePoints)<3 or projection==void or len(projection)!=3 then return fail("invalid projection input") end if
   if maxPoints<0 or maxFragments<0 or maxPoints>131072 or maxFragments>131072 then return fail("invalid output capacity") end if
   for each point in sourcePoints if point==void or len(point)!=3 then return fail("mark point needs three coordinates") end if end for
@@ -139,11 +168,11 @@ function project(map,world,sourcePoints,projection,maxPoints,maxFragments)
   bounds=projectionBounds(sourcePoints,projection,direction);planes=projectionPlanes(points,projection);faces=candidateFaces(map,world,bounds[0],bounds[1],direction)
   // The clipper reads source positions without mutating them. Decode shared
   // mesh vertices once per face, as in the retained world renderer.
-  geometry=renderData.extractRetainedWithPatchError(map,faces,131072,renderData.DEFAULT_PATCH_ERROR)
-  if geometry is error then return geometry end if
+  triangles=markTriangles(map,faces,cache)
+  if triangles is error then return triangles end if
   outputPoints=lists.List.new();fragments=lists.List.new();tested=0
   previousFace=-1;kind=0
-  for each triangle in geometry.triangles
+  for each triangle in triangles
     if triangle.faceIndex!=previousFace then
       previousFace=triangle.faceIndex
       kind=faceValue(map,previousFace,8)

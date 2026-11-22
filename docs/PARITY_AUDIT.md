@@ -4,6 +4,15 @@ Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Cgame im Retail-Kampf, 22. November 2026
+
+Die Messung trennt die Ausführung der Original-Cgame-QVM von den
+Engine-Aufrufen für Kollision, Trefferflächen, Modelle und HUD. Ein
+Abgleich mit der ursprünglichen C-Engine deckt 2.684 Kollisionsfälle auf
+q3dm0 und q3dm1 mit aktivierter Kurvenkollision ab. Der Zeitvergleich
+verwendet denselben Einzelspieler-Kampf auf der RTX 5080.
+[Framezeiten, langsame Einzelbilder und Testumfang](verification/2026-11-22-cgame-simulation.md)
+
 ## Renderer und Shaderzeiten, 22. November 2026
 
 Der Renderer verwendet bei gleicher Entity-Zeit die berechnete Shaderzeit

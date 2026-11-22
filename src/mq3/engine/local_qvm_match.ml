@@ -168,7 +168,7 @@ struct FileCursor data offset writePath end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands cgameSnapshotScratch serverStream end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets markGeometry soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands cgameSnapshotScratch serverStream end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities areaBits end struct
 // The original engine keeps one cvar/key/userinfo store alive while moving
@@ -921,7 +921,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8),bytes(cgameSyscall.SNAPSHOT_SIZE,0),void)
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],markFragments.geometryCache(),[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8),bytes(cgameSyscall.SNAPSHOT_SIZE,0),void)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -1440,11 +1440,10 @@ function sendClientCommand(context,name)
 end function
 function updateScreen(context) return void end function
 function loadWorld(context,name)
-  context.renderCommands=context.renderCommands+[[36,name]]
   reset=cgameMisc.resetEntityTokens(context.rendererEntityTokens);if reset is error then return reset end if
   return void
 end function
-function clearScene(context) context.renderCommands=[];sceneQueue.clearScene(context.scene);return void end function
+function clearScene(context) sceneQueue.clearScene(context.scene);return void end function
 function commandConfigstring(context,index,value) if index>=0 and index<len(context.configstrings) then context.configstrings[index]=value end if;return void end function
 function commandClearNotify(context) context.prints=[];return void end function
 function commandClearUsercmds(context) return matchCommandRing.clear(context.usercmdHistory) end function
@@ -1513,8 +1512,10 @@ function addCgamePolys(context,vm,base,multiple)
   shader=common.argument(vm,base,1);numVerts=common.argument(vm,base,2);numPolys=1;if multiple then numPolys=common.argument(vm,base,4) end if
   if numVerts<=0 or numPolys<0 then return fail("invalid cgame polygon counts") end if
   if numPolys==0 then return 0 end if
+  // The VM byte length is a 32-bit quantity. All fitting byte counts are
+  // exact in binary64, and oversized products are rejected before allocation.
+  if numVerts*(24.0*numPolys)>len(vm.data) then return fail("invalid cgame polygon storage count") end if
   total=numVerts*numPolys
-  if total>n.quotient(len(vm.data),24) then return fail("invalid cgame polygon storage count") end if
   at=common.pointer(vm,common.argument(vm,base,3),total*24,"polyVert array");vertices=array(total,void)
   for index=0 to total-1
     offset=at+index*24;vertices[index]=sceneQueue.PolyVert(readVector(vm.data,offset),[n.bitsFloat(n.readI32(vm.data,offset+12)),n.bitsFloat(n.readI32(vm.data,offset+16))],[vm.data[offset+20],vm.data[offset+21],vm.data[offset+22],vm.data[offset+23]])
@@ -1551,19 +1552,24 @@ end function
 function captureRenderView(context,vm,address)
   refdef=decodeRefdef(vm,address);context.latestRefdef=refdef;view=sceneQueue.finishScene(context.scene);context.renderViews=context.renderViews+[RenderView(refdef,view)];return 0
 end function
-function cgameMarkFragmentsReference(context,vm,base)
+function cgameMarkFragmentsReference(context,vm,base) return writeCgameMarks(context,vm,base,void) end function
+function cgameMarkFragmentsPrepared(context,vm,base) return writeCgameMarks(context,vm,base,context.markGeometry) end function
+function writeCgameMarks(context,vm,base,cache)
   numPoints=common.argument(vm,base,1);maxPoints=common.argument(vm,base,4);maxFragments=common.argument(vm,base,6)
   if numPoints<3 or numPoints>1024 or maxPoints<0 or maxPoints>131072 or maxFragments<0 or maxFragments>131072 then return fail("invalid cgame mark-fragment counts") end if
   pointsAt=common.pointer(vm,common.argument(vm,base,2),numPoints*12,"mark source points");points=array(numPoints,void)
   for index=0 to numPoints-1 points[index]=readVector(vm.data,pointsAt+index*12) end for
   projection=common.readFloatVector(vm,common.argument(vm,base,3),3,"mark projection")
-  result=markFragments.project(context.markMap,context.collisionWorld,points,projection,maxPoints,maxFragments);if result is error then return result end if
+  result=markFragments.projectWithCache(context.markMap,context.collisionWorld,points,projection,maxPoints,maxFragments,cache);if result is error then return result end if
   if len(result.points)>0 then outputAt=common.pointer(vm,common.argument(vm,base,5),maxPoints*12,"mark point output");for index=0 to len(result.points)-1 writeVector(vm.data,outputAt+index*12,result.points[index]) end for end if
   if len(result.fragments)>0 then fragmentsAt=common.pointer(vm,common.argument(vm,base,7),maxFragments*8,"mark fragment output");for index=0 to len(result.fragments)-1 fragment=result.fragments[index];n.writeU32(vm.data,fragmentsAt+index*8,fragment.firstPoint);n.writeU32(vm.data,fragmentsAt+index*8+4,fragment.numPoints) end for end if
   return len(result.fragments)
 end function
 function cgameMarkFragments(context,vm,base) return cgameMarkFragmentsReference(context,vm,base) end function
-function cgameMarkFragmentsCached(context,vm,base) return cgameCollisionCache.markFragments(context.cgameQueryMemo,context,vm,base,cgameMarkFragmentsReference) end function
+function cgameMarkFragmentsCached(context,vm,base)
+  if context.cgameQueryMemo==void or not context.cgameQueryMemo.enabled then return cgameMarkFragmentsReference(context,vm,base) end if
+  return cgameCollisionCache.markFragments(context.cgameQueryMemo,context,vm,base,cgameMarkFragmentsPrepared)
+end function
 
 function registerQvmFont(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));pointSize=common.argument(vm,base,2);address=common.argument(vm,base,3)
@@ -1676,7 +1682,6 @@ function extendedCgameHost(context,vm,base,op)
   // wrapper outside the renderer implementation lets focused trap fixtures use
   // the minimal fields required by the trap they exercise.
   if op>=0 and op<len(context.cgameTrapCounts) then context.cgameTrapCounts[op]=context.cgameTrapCounts[op]+1 end if
-  if op>=41 and op<=48 or op==59 or op==73 or op==79 or op==85 or op==87 or op==88 then context.renderCommands=context.renderCommands+[[op,context.now]] end if
   if op==25 or op==83 then return cgameBoxTraceCached(context,vm,base,op==83,false) end if
   if op==27 then return cgameMarkFragmentsCached(context,vm,base) end if
   return extendedCgame(context,vm,base,op)
@@ -1722,7 +1727,7 @@ end function
 function beginRendererFrame(value)
   if value==void or value.context==void then return fail("match renderer context is required") end if
   sceneQueue.toggleFrame(value.context.scene);renderQueue.reset(value.context.renderQueue)
-  value.context.renderViews=[];value.context.renderCommands=[];return void
+  value.context.renderViews=[];return void
 end function
 
 function drawCgame(value,serverTime)

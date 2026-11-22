@@ -37,12 +37,12 @@ function CM_DrawDebugSurface(state)
   return result
 end function
 
-function corner(work,signbits)
-  result = array(3,0.0)
-  for axis = 0 to 2
-    if (signbits & (1 << axis)) != 0 then result[axis] = work.maxs[axis] else result[axis] = work.mins[axis] end if
-  end for
-  return result
+function cornerDot(work,signbits as int,normal as array) returns float
+  x=work.mins[0];y=work.mins[1];z=work.mins[2]
+  if (signbits&1)!=0 then x=work.maxs[0] end if
+  if (signbits&2)!=0 then y=work.maxs[1] end if
+  if (signbits&4)!=0 then z=work.maxs[2] end if
+  return n.dot3(x,y,z,normal[0],normal[1],normal[2])
 end function
 
 function adjusted(work,original,inward,border)
@@ -57,10 +57,10 @@ function adjusted(work,original,inward,border)
       a = w.add(a,work.capsuleOffset);b = w.add(b,work.capsuleOffset)
     end if
   else
-    offset = q.DotProduct(corner(work,original.signbits),normal)
+    offset = cornerDot(work,original.signbits,normal)
     if border then distance = n.fadd(distance,q.Q_fabs(offset)) else distance = n.fsub(distance,offset) end if
   end if
-  return Adjusted(mesh.plane(normal,distance),a,b)
+  return Adjusted(mesh.Plane(normal,distance,p.signbits),a,b)
 end function
 
 function checkPlane(adjusted,clip)
@@ -89,7 +89,7 @@ function tracePoint(work,patch,playerCurveClip)
   i = 0
   while i < len(patch.planes)
     p = patch.planes[i]
-    offset = q.DotProduct(corner(work,p.signbits),p.normal)
+    offset = cornerDot(work,p.signbits,p.normal)
     d1 = n.fadd(n.fsub(q.DotProduct(work.start,p.normal),p.distance),offset)
     d2 = n.fadd(n.fsub(q.DotProduct(work.finish,p.normal),p.distance),offset)
     front[i] = d1 > 0
@@ -116,7 +116,7 @@ function tracePoint(work,patch,playerCurveClip)
     end while
     if valid then
       p = patch.planes[facet.surface]
-      offset = q.DotProduct(corner(work,p.signbits),p.normal)
+      offset = cornerDot(work,p.signbits,p.normal)
       d1 = n.fadd(n.fsub(q.DotProduct(work.start,p.normal),p.distance),offset)
       d2 = n.fadd(n.fsub(q.DotProduct(work.finish,p.normal),p.distance),offset)
       fraction = n.f32((d1-qcommonHeaders.SURFACE_CLIP_EPSILON)/n.fsub(d1,d2))
@@ -131,8 +131,9 @@ function CM_TracePointThroughPatchCollide(work,patch,playerCurveClip) return tra
 
 function trace(work,patch,playerCurveClip)
   if work.isPoint then return CM_TracePointThroughPatchCollide(work,patch,playerCurveClip) end if
+  clip=Clip(-1.0,1.0,false)
   for each facet in patch.facets
-    clip = Clip(n.f32(-1),n.f32(1),false)
+    clip.enter=-1.0;clip.leave=1.0;clip.hit=false
     hitnum = -1;best = void
     candidate = adjusted(work,patch.planes[facet.surface],false,false)
     if not CM_CheckFacetPlane(candidate,clip) then continue end if
