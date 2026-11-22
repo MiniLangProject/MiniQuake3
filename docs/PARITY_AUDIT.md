@@ -40,6 +40,11 @@ setzt `isSky` und `depthHack` gezielt inline. Ihre isolierten Schleifen wurden
 schneller; drei abwechselnde Retail-Spielpaare zeigten nur 0,52 FPS
 Medianunterschied innerhalb der Laufstreuung. Ein Gesamtspielgewinn ist damit
 weiter nicht nachgewiesen.
+Eine [fünfte Hotpath-Runde](verification/2026-11-22-function-contract-wave5.md)
+typisiert `isNaNBits` und setzt vier häufige, kleine Binary32-Helfer inline.
+Die isolierten Schleifen gewinnen, während drei Retail-Spielpaare nur 0,40 FPS
+Medianunterschied innerhalb der Streuung zeigen. Verträge für `mantissa`
+und `exponent` wurden nach langsameren A/B-Messungen verworfen.
 
 ## Film- und Menüwechsel-Audit, 22. November 2026
 

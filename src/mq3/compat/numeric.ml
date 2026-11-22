@@ -66,15 +66,15 @@ function f32(value) returns float
   return mq3_f32(value)
 end function
 
-function floatBits(value) returns int
+function inline floatBits(value) returns int
   return mq3_float_bits(value)
 end function
 
-function bitsFloat(value) returns float
+function inline bitsFloat(value) returns float
   return mq3_bits_float(u32(value))
 end function
 
-function fadd(a, b) returns float
+function inline fadd(a, b) returns float
   return mq3_fadd(a,b)
 end function
 
@@ -199,7 +199,7 @@ function packFloat(sign, significand, power)
   return sign | ((target + 150) << 23) | (significand & 0x7fffff)
 end function
 
-function isNaNBits(value)
+function inline isNaNBits(value as int) returns bool
   return (value & 0x7fffffff) > 0x7f800000
 end function
 
