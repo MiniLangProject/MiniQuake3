@@ -64,6 +64,21 @@ function main(args)
   depthRefreshed=sceneBatch.refresh(depthPrepared,depthCatalog);if depthRefreshed is error then return depthRefreshed end if
   count=count+require(depthRefreshed.geometry.triangles[0].vertices[0].position[0]==13.0 and depthRefreshed.depthHackGeometry.triangles[0].vertices[0].position[0]==12.0,"refresh follows renderfx changes without mixing depth ranges")
 
+  // Changing weapon topology must leave the independently drawable world group reusable.
+  retainedBase=depthRefreshed.batch.base;retainedVertex=depthRefreshed.geometry.triangles[0].vertices[0]
+  extraWeapon=sourceTriangleFx(18.0,white,white,0,8);extraWeapon.vertexIds=[91,-1,93]
+  grownCatalog=catalogFor([extraWeapon,sourceTriangle(17.0,white,white,0),sourceTriangleFx(16.0,red,white,0,8)],[])
+  grown=sceneBatch.refresh(depthRefreshed,grownCatalog);if grown is error then return grown end if
+  grownFresh=sceneBatch.build(grownCatalog);if grownFresh is error then return grownFresh end if
+  count=count+require(retainedVertex.position[0]==17.0 and retainedBase.data==grownFresh.batch.base.data,"regular vertex and draw commands are updated in place when only weapon topology grows")
+  count=count+require(grown.geometry.triangles[0].vertices[0].sourceIndex==94 and grown.depthHackGeometry.triangles[0].vertices[1].sourceIndex==95 and grown.depthHackBatch.base.data==grownFresh.depthHackBatch.base.data,"fresh and retained depth geometry use stable fallback IDs and identical commands")
+  grownCatalog.triangles=[grownCatalog.triangles[2]]
+  shrunk=sceneBatch.refresh(grown,grownCatalog);if shrunk is error then return shrunk end if
+  shrunkFresh=sceneBatch.build(grownCatalog);if shrunkFresh is error then return shrunkFresh end if
+  count=count+require(shrunk.batch.base.count==0 and shrunk.depthHackBatch.base.count==1 and shrunk.depthHackBatch.base.data==shrunkFresh.depthHackBatch.base.data,"removed geometry and stale commands disappear when regular and weapon groups shrink")
+  movedBrush.dynamicLight=false;unlit=sceneBatch.refresh(brushPrepared,brushCatalog);if unlit is error then return unlit end if
+  attached=sceneBatch.attachDynamicLights(unlit,brushCatalog,lightCatalog)
+  count=count+require(attached==0 and unlit.dynamicGeometry.triangleCount==0 and len(unlit.batch.dlightBatch.triangles)==0,"removing the last light receiver clears its oriented overlay")
   rejectedShadow=sourceTriangle(14.0,white,white,0);rejectedShadow.shaderName=sceneBatch.PROJECTION_SHADOW_SHADER;shadowPolicy=catalogFor([sourceTriangle(13.0,white,white,0),rejectedShadow],[]);shadowPrepared=sceneBatch.build(shadowPolicy);if shadowPrepared is error then return shadowPrepared end if
   count=count+require(shadowPrepared.geometry.triangleCount==1 and shadowPrepared.geometry.triangles[0].vertices[0].position[0]==13.0,"material-rejected projection shadow is omitted instead of rendered as fallback geometry")
 
@@ -81,6 +96,6 @@ function main(args)
   count=count+require(mixedPrepared.shadowCount==1 and mixedPrepared.shadowBatch.count==1,"shadow policy lookup keeps opaque and fogged entities with the same surface number distinct")
 
   larger=catalogFor([sourceTriangle(3.0,white,white,0),sourceTriangle(4.0,white,white,0)],[]);rebuilt=sceneBatch.refresh(refreshed,larger);if rebuilt is error then return rebuilt end if
-  count=count+require(rebuilt.batch.base.capacity==2 and rebuilt.batch.base.count==2,"topology growth falls back to a full build")
+  count=count+require(rebuilt.batch.base.capacity==2 and rebuilt.batch.base.count==2,"topology growth allocates a large enough draw buffer")
   print("PASS: "+str(count)+" QVM scene batch contracts");return 0
 end function

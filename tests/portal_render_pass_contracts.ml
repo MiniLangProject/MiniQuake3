@@ -1,10 +1,13 @@
 import mq3.renderer.portal_render_pass as pass
 import mq3.renderer.portal_clip as clip
+import mq3.renderer.world_surface_selection as selection
 import mq3.renderer.bsp_render_data as render
 import mq3.renderer.qvm_scene_geometry as scene
 
 struct PortalTestMaterial textureIndex sort end struct
 struct PortalTestCatalog materials end struct
+struct ClipWorld trianglesByFace faceKinds end struct
+struct ClipSelection faceIndexes selectedSurfaceCount end struct
 struct Marker reType origin oldorigin axis oldframe frame skinNum end struct
 struct Context events end struct
 function req(value,label) if not value then return error(7704,"portal render contract: "+label) end if;return 1 end function
@@ -13,6 +16,22 @@ function makeRenderTriangle(a,b,c,texture,face) return render.RenderTriangle([a,
 function drawPortal(context,value) context.events=context.events+["portal"];return 2 end function
 function clearDepth(context) context.events=context.events+["clear"] end function
 function drawMain(context) context.events=context.events+["main"];return 3 end function
+function compareClip(cache,world,faces,normal,dist)
+  chosen=ClipSelection(faces,len(faces))
+  cached=clip.clipSelection(cache,chosen,normal,dist);if cached is error then return cached end if
+  input=selection.cachedRenderData(world,chosen);reference=clip.clipRenderData(input,normal,dist)
+  if cached.surfaceCount!=reference.surfaceCount or cached.triangleCount!=reference.triangleCount or cached.patchSurfaceCount!=reference.patchSurfaceCount then return false end if
+  index=0
+  for each a in cached.triangles
+    b=reference.triangles[index];index=index+1
+    if a.faceIndex!=b.faceIndex or a.triangleIndex!=b.triangleIndex or a.textureIndex!=b.textureIndex or a.lightmapIndex!=b.lightmapIndex or a.fogIndex!=b.fogIndex then return false end if
+    for corner=0 to 2
+      x=a.vertices[corner];y=b.vertices[corner]
+      if x.position!=y.position or x.normal!=y.normal or x.color!=y.color or x.baseUV!=y.baseUV or x.lightmapUV!=y.lightmapUV or x.sourceIndex!=y.sourceIndex then return false end if
+    end for
+  end for
+  return true
+end function
 function main(args)
   count=0;white=[255,255,255,255]
   crossing=makeRenderTriangle(makeRenderVertex(-1.0,0.0,[0,0,0,0]),makeRenderVertex(1.0,1.0,white),render.RenderVertex([1.0,1.0,0.0],[1.0,1.0],[1.0,1.0],[1.0,0.0,0.0],white,white,[0.0,0.0],0.0,2),4,11)
@@ -26,6 +45,13 @@ function main(args)
   outside=clip.clipRenderData(render.RenderData([makeRenderTriangle(makeRenderVertex(-3.0,0.0,white),makeRenderVertex(-2.0,0.0,white),makeRenderVertex(-1.0,0.0,white),4,1)],1,1,0,false,0),[1.0,0.0,0.0],0.0)
   count=count+req(len(inside.triangles)==1,"inside world triangle retained")
   count=count+req(len(outside.triangles)==0,"outside world triangle rejected")
+  faceWorld=ClipWorld([[crossing],[],inside.triangles],[render.MST_PATCH,0,1]);faceCache=clip.createFaceCache(faceWorld);faceNormal=[1.0,0.0,0.0]
+  count=count+req(compareClip(faceCache,faceWorld,[0,1,2],faceNormal,0.0),"cold faces match clipping the flattened selection")
+  count=count+req(compareClip(faceCache,faceWorld,[2,0,1,0],faceNormal,0.0),"cached faces retain selection order, repeats and patch metadata")
+  count=count+req(compareClip(faceCache,faceWorld,[1],faceNormal,0.0) and compareClip(faceCache,faceWorld,[],faceNormal,0.0),"cached empty faces and empty selection")
+  count=count+req(compareClip(faceCache,faceWorld,[0,2],faceNormal,2.0),"plane distance invalidates cached intersections")
+  faceNormal[0]= -1.0
+  count=count+req(compareClip(faceCache,faceWorld,[0,2],faceNormal,2.0),"mutating the caller's normal invalidates the plane")
   sceneTriangle=scene.Triangle([[-1.0,0.0,0.0],[1.0,0.0,0.0],[1.0,1.0,0.0]],[[0.0,0.0],[1.0,0.0],[1.0,1.0]],[[1.0,0.0,0.0],[1.0,0.0,0.0],[1.0,0.0,0.0]],[[0,0,0,0],white,white],[11,22,33,44],[0.25,-0.5],2.0,9,8,7,"shader","surface",6,5,8,[[0.0,0.0],[0.5,0.0],[0.5,0.5]],4,3,true,[4.0,5.0,6.0],[[0.0,1.0,0.0],[-1.0,0.0,0.0],[0.0,0.0,1.0]],[[-8.0,-4.0,-2.0],[8.0,4.0,2.0]],void)
   sceneSource=scene.Geometry([sceneTriangle],1,1,0,0,0,0,3,3,[],0,[],0);sceneClipped=clip.clipScene(sceneSource,[1.0,0.0,0.0],0.0)
   count=count+req(len(sceneClipped.triangles)==2 and sceneClipped.triangleCount==2,"scene triangle clipped")

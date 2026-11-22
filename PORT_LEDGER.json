@@ -52213,11 +52213,11 @@
         {
           "original": "CM_TraceThroughTree",
           "target_files": [
-            "src/mq3/collision/brush.ml",
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "native/qvm_exec.c"
           ],
           "status": "tested_exact",
-          "scope": "The productive trace retains coherent near-child order and only allocates entries for deferred far children."
+          "scope": "MiniLang visits near and far children in original order and prunes against the current hit fraction. The native segment step writes packed binary32 endpoints. Frontier, segment-byte and Retail original-C differentials cover the traversal."
         },
         {
           "original": "CM_TraceThroughVerticalCylinder",

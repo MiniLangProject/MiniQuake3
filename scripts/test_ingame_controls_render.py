@@ -107,8 +107,8 @@ CPU_FINISH = """    replayCpuFrame=0
       replayCpuFrame=replayCpuFrame+replayCpuDeltas[replayStage]
     end for
     replayPresentTotal=replayPresentTotal+audioStartedAt-replayPresentAt
-    if elapsedFrameMs>=50 then print "CPU_FRAME frame="+str(frames)+" wall_ms="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cgame="+str(afterCgame-afterGame)+" expand="+str(pipelineProfile.expansion-replayExpandBefore)+" materials="+str(pipelineProfile.material-replayMaterialBefore)+" scene_batch="+str(pipelineProfile.batch-replayBatchBefore)+" portals="+str(portalPrepareMs-replayPortalBefore)+" world_rebuild="+str(worldRebuildMs-replayRebuildBefore)+" draw="+str(replayPresentAt-afterBatch)+" present="+str(audioStartedAt-replayPresentAt)+" new_scene_textures="+str(len(qvmCatalog.textures)-replayTexturesBefore)+" gc_delta="+str(gc_stat(0)-replayGcBefore)+" background_gc_delta="+str(gc_stat(16)-replayBackgroundBefore)+" cycles="+str(replayCpuFrame)+" geometry_cycles="+str(replayCpuDeltas[3])+" present_cycles="+str(replayCpuDeltas[6]) end if
-    if elapsedFrameMs>=50 then
+    if elapsedFrameMs>=PROFILE_MIN_MS then print "CPU_FRAME frame="+str(frames)+" wall_ms="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cgame="+str(afterCgame-afterGame)+" expand="+str(pipelineProfile.expansion-replayExpandBefore)+" materials="+str(pipelineProfile.material-replayMaterialBefore)+" scene_batch="+str(pipelineProfile.batch-replayBatchBefore)+" portals="+str(portalPrepareMs-replayPortalBefore)+" world_rebuild="+str(worldRebuildMs-replayRebuildBefore)+" draw="+str(replayPresentAt-afterBatch)+" present="+str(audioStartedAt-replayPresentAt)+" new_scene_textures="+str(len(qvmCatalog.textures)-replayTexturesBefore)+" gc_delta="+str(gc_stat(0)-replayGcBefore)+" background_gc_delta="+str(gc_stat(16)-replayBackgroundBefore)+" cycles="+str(replayCpuFrame)+" geometry_cycles="+str(replayCpuDeltas[3])+" present_cycles="+str(replayCpuDeltas[6]) end if
+    if elapsedFrameMs>=PROFILE_MIN_MS then
       replayTextureIndex=replayTexturesBefore
       while replayTextureIndex<len(qvmCatalog.textures)
         print "CPU_SCENE_TEXTURE frame="+str(frames)+" image="+qvmCatalog.textures[replayTextureIndex].imageName
@@ -124,7 +124,7 @@ def replace_boundary(text: str, anchor: str, replacement: str) -> str:
     return text.replace(anchor, replacement)
 
 
-def add_cpu_profile(text: str, loop: str, finish: str, slow: str) -> str:
+def add_cpu_profile(text: str, loop: str, finish: str, slow: str, profile_min_ms: int) -> str:
     text = replace_boundary(text, "function fail(message)", CPU_HELPERS + "function fail(message)")
     initialization = """  replayThread=replayCurrentThread();replayCycleBuffer=bytes(8,0)
   replayCpuTotals=array(8,0);replayCpuDeltas=array(8,0);replayPresentTotal=0
@@ -138,25 +138,25 @@ def add_cpu_profile(text: str, loop: str, finish: str, slow: str) -> str:
         if name == "submit":
             mark += "    replayPresentAt=window.milliseconds()\n"
         if name == "audio":
-            mark += CPU_FINISH
+            mark += CPU_FINISH.replace("PROFILE_MIN_MS", str(profile_min_ms))
         text = replace_boundary(text, anchor, mark + anchor)
     fields = "".join(f'+" {name}="+str(replayCpuTotals[{i}]/frames)' for i, (name, _) in enumerate(CPU_STAGES))
     result = '  if frames>0 then print "CPU_MEAN cycles_per_frame"' + fields + '+" present_wall_ms="+str(replayPresentTotal/frames) end if\n'
     return replace_boundary(text, finish, finish + result)
 
 
-def add_qvm_profile(text: str, loop: str, finish: str, slow: str, profile_frame: int) -> str:
+def add_qvm_profile(text: str, loop: str, finish: str, slow: str, profile_frame: int, profile_min_ms: int) -> str:
     declaration = ('extern function replayQvmProfileFrame(frame as i32,workMs as i32,minimumWorkMs as i32) '
                    'from "miniquake3_qvm.dll" symbol "mq3_qvm_profile_frame" returns i32\n\n')
     text = replace_boundary(text, "function fail(message)", declaration + "function fail(message)")
     text = replace_boundary(text, loop, "  replayProfiled=replayQvmProfileFrame(0,0,0)\n" + loop)
-    threshold = f"    replayProfileMinimum=50;if frames=={profile_frame} then replayProfileMinimum=0 end if\n"
+    threshold = f"    replayProfileMinimum={profile_min_ms};if frames=={profile_frame} then replayProfileMinimum=0 end if\n"
     frame = "    replayProfiled=replayQvmProfileFrame(frames,elapsedFrameMs,replayProfileMinimum)\n"
     text = replace_boundary(text, slow, threshold + frame + slow)
     return replace_boundary(text, finish, finish + "  replayProfiled=replayQvmProfileFrame(-1,0,0)\n")
 
 
-def generate(out: Path, app: Path, trace_cpu: bool, trace_qvm: bool, profile_frame: int) -> Path:
+def generate(out: Path, app: Path, trace_cpu: bool, trace_qvm: bool, profile_frame: int, profile_min_ms: int = 50) -> Path:
     source = app.read_text(encoding="utf-8")
     before = "    inputCommands.execute(state.context.commandState)\n"
     after = "    window.present();renderMs=renderMs+window.milliseconds()-afterBatch;frames=frames+1\n"
@@ -178,9 +178,9 @@ def generate(out: Path, app: Path, trace_cpu: bool, trace_qvm: bool, profile_fra
     text = replace_boundary(text, loop, '  replayFixedStep=cvar.variableIntegerValue(state.context.cvars,"mq3_regression_fixed_step")\n' + loop)
     text = replace_boundary(text, step, "    if replayFixedStep>0 then frameMsec=replayFixedStep end if\n" + step)
     if trace_cpu:
-        text = add_cpu_profile(text, loop, finish, slow)
+        text = add_cpu_profile(text, loop, finish, slow, profile_min_ms)
     if trace_qvm:
-        text = add_qvm_profile(text, loop, finish, slow, profile_frame)
+        text = add_qvm_profile(text, loop, finish, slow, profile_frame, profile_min_ms)
     target = out / "modules/mq3/tests/controls_render_app.ml"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(text, encoding="utf-8", newline="\n")
@@ -210,6 +210,8 @@ def main() -> None:
                         help="Sample main-thread cycles by phase and print slow-frame breakdowns")
     parser.add_argument("--qvm-profile", action="store_true",
                         help="Measure each VM entry and trap during the playable loop")
+    parser.add_argument("--profile-min-ms", type=int, default=50,
+                        help="Minimum frame time for detailed CPU and QVM diagnostics (default: 50 ms)")
     parser.add_argument("--profile-frame", type=int, default=0,
                         help="Also capture this frame in --qvm-profile regardless of its duration")
     parser.add_argument("--source-root", type=Path, default=ROOT / "src",
@@ -221,6 +223,8 @@ def main() -> None:
         parser.error("--fixed-step-ms must be between 0 and 50")
     if args.label and not re.fullmatch(r"[a-zA-Z0-9_-]+", args.label):
         parser.error("--label must contain only letters, digits, hyphens or underscores")
+    if args.profile_min_ms < 1:
+        parser.error("--profile-min-ms must be positive")
     if args.profile_frame and (not args.qvm_profile or not 1 <= args.profile_frame <= args.frames):
         parser.error("--profile-frame requires --qvm-profile and a frame within the replay")
     if args.frames < 20:
@@ -231,7 +235,7 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
     source_root = args.source_root.resolve()
     app = source_root / "mq3/client/qvm_preview_app.ml"
-    generated = generate(out, app, args.cpu_profile, args.qvm_profile, args.profile_frame)
+    generated = generate(out, app, args.cpu_profile, args.qvm_profile, args.profile_frame, args.profile_min_ms)
     app_hash = sha(app)
     qvms = ROOT / "build/reference/qvms"
     if not all((qvms / name).is_file() for name in ("ui.qvm", "qagame.qvm", "cgame.qvm")):
@@ -316,7 +320,7 @@ def main() -> None:
         passed = passed and movement is not None and all(int(value) > 0 for value in movement.groups())
     report = {"passed": passed, "mode": args.mode, "map": args.map, "singleplayer": args.singleplayer, "frames": args.frames,
               "fixed_step_ms": args.fixed_step_ms, "cpu_profile": args.cpu_profile,
-              "qvm_profile": args.qvm_profile, "profile_frame": args.profile_frame,
+              "qvm_profile": args.qvm_profile, "profile_frame": args.profile_frame, "profile_min_ms": args.profile_min_ms,
               "qvm_log_sha256": sha(qvm_path) if args.qvm_profile and qvm_path.is_file() else None,
               "frame_timing": metrics, "main_thread_cycles": {key: float(value) for key, value in cpu_means.items() if key != "present_wall_ms"},
               "present_wall_ms": float(cpu_means["present_wall_ms"]) if cpu_means else None,

@@ -120,14 +120,15 @@ function main(args)
     if previousBuffers!=void and len(previousBuffers)==len(buffers) then for index=0 to len(buffers)-1 comparedBuffers=comparedBuffers+1;if buffers[index]==previousBuffers[index] then unchangedBuffers=unchangedBuffers+1 end if end for end if
     previousBuffers=buffers;state.context.soundCommands=[]
   end for
-  checked=hotRequire(models==5 and triangles==524 and cache.transformCount==256,"complete 524-triangle productive Retail view retained");if checked is error then return checked end if
+  // Frame 120 against q3dm1 and the baseq3 QVMs built from the original source.
+  checked=hotRequire(models==9 and triangles==1408 and cache.transformCount==256,"complete Retail view retained: models="+str(models)+" triangles="+str(triangles)+" transformEntries="+str(cache.transformCount));if checked is error then return checked end if
   print("PROFILE realFrames=120 models="+str(models)+" triangles="+str(triangles)+" sourceVertices="+str(sourceVertices)+" emitted="+str(emitted)+" expandMs="+str(expandedMs/120.0)+" materialMs="+str(materialMs/120.0)+" sceneBatchMs="+str(batchMs/120.0)+" buffers="+str(comparedBuffers)+" unchanged="+str(unchangedBuffers))
   print("CACHE frameHits="+str(cache.hits)+" frameMisses="+str(cache.misses)+" frameEntries="+str(cache.entryCount)+" frameVisits="+str(frameRing.visits)+" transformHits="+str(cache.transformHits)+" transformMisses="+str(cache.transformMisses)+" transformEntries="+str(cache.transformCount)+" transformVisits="+str(transformRing.visits)+" sameFrameNonzeroBacklerp="+str(sameFrameNonzero))
   // Isolate unchanged-topology conversion versus stage packing, then repack
   // only the already selected vertex records without rebuilding source maps.
   started=hotWindow.milliseconds()
   for repeat=1 to 120 for each view in prepared
-    hotBatch.refreshGeometry(view.batch.geometry,view.catalog);hotBatch.refreshGeometryMode(view.batch.depthHackGeometry,view.catalog,true);hotBatch.refreshDynamicGeometry(view.batch.dynamicGeometry,view.catalog)
+    hotBatch.prepareGeometry(view.batch,view.catalog)
   end for end for
   convertMs=hotWindow.milliseconds()-started
   started=hotWindow.milliseconds()

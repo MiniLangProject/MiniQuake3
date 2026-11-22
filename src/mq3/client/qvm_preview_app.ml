@@ -272,8 +272,8 @@ function preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,
   planeNormal=plan.view.planeNormal;planeDist=plan.view.planeDist
   world=portalPass.cachedWorldBatch(portalCache,chosen.faceIndexes,planeNormal,planeDist)
   if world==void then
-    worldData=worldSelection.cachedRenderData(worldCache,chosen);if worldData is error then return worldData end if
-    clippedWorld=portalClip.clipRenderData(worldData,planeNormal,planeDist);if clippedWorld is error then return clippedWorld end if
+    if portalCache.clippedFaces==void then portalCache.clippedFaces=portalClip.createFaceCache(worldCache) end if
+    clippedWorld=portalClip.clipSelection(portalCache.clippedFaces,chosen,planeNormal,planeDist);if clippedWorld is error then return clippedWorld end if
     world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags);if world is error then return world end if
     attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then return attached end if
     portalPass.storeWorldBatch(portalCache,chosen.faceIndexes,planeNormal,planeDist,world)

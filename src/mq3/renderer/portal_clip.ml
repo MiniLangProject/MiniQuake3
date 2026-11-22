@@ -28,16 +28,50 @@ function clipVertices(vertices,normal,dist)
   if count==0 then return [] end if
   result=array(count,void);copyArray(result,0,output,0,count);return result
 end function
-function clipRenderData(source,normal,dist)
-  if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("render data and plane are required") end if
+function clipTriangles(input,normal,dist)
   // A portal can expose thousands of BSP triangles. Appending to an immutable
   // array copied the entire prefix for every emitted triangle each frame.
-  triangles=lists.List.withCapacity(len(source.triangles)*2)
-  for each triangle in source.triangles
+  triangles=lists.List.withCapacity(len(input)*2)
+  for each triangle in input
     polygon=clipVertices(triangle.vertices,normal,dist)
     if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles.add(renderData.RenderTriangle([polygon[0],polygon[corner],polygon[corner+1]],triangle.textureIndex,triangle.lightmapIndex,triangle.fogIndex,triangle.faceIndex,triangle.triangleIndex)) end for end if
   end for
-  return renderData.RenderData(triangles.toArray(),source.surfaceCount,triangles.len(),source.skippedSurfaceCount,source.truncated,source.patchSurfaceCount)
+  return triangles.toArray()
+end function
+function clipRenderData(source,normal,dist)
+  if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("render data and plane are required") end if
+  triangles=clipTriangles(source.triangles,normal,dist)
+  return renderData.RenderData(triangles,source.surfaceCount,len(triangles),source.skippedSurfaceCount,source.truncated,source.patchSurfaceCount)
+end function
+
+// A face's vertices, including each patch LOD variant, are immutable within
+// its world. Only the selection and the portal plane vary between views.
+struct FaceCache world normal dist byFace end struct
+function createFaceCache(world) return FaceCache(world,void,0.0,void) end function
+function clipSelection(cache,chosen,normal,dist)
+  if cache==void or chosen==void or normal==void or len(normal)!=3 then return fail("selection and portal plane are required") end if
+  world=cache.world
+  if cache.normal==void or cache.dist!=dist or cache.normal[0]!=normal[0] or cache.normal[1]!=normal[1] or cache.normal[2]!=normal[2] or len(cache.byFace)!=len(world.trianglesByFace) then
+    cache.byFace=array(len(world.trianglesByFace),void)
+    cache.normal=[normal[0],normal[1],normal[2]];cache.dist=dist
+  end if
+  total=0;patches=0
+  for each face in chosen.faceIndexes
+    if face<0 or face>=len(cache.byFace) then return fail("selected face outside portal cache") end if
+    clipped=cache.byFace[face]
+    if clipped==void then
+      clipped=clipTriangles(world.trianglesByFace[face],normal,dist)
+      cache.byFace[face]=clipped
+    end if
+    total=total+len(clipped)
+    if world.faceKinds[face]==renderData.MST_PATCH then patches=patches+1 end if
+  end for
+  triangles=array(total,void);offset=0
+  for each face in chosen.faceIndexes
+    clipped=cache.byFace[face];count=len(clipped)
+    if count>0 then copyArray(triangles,offset,clipped,0,count);offset=offset+count end if
+  end for
+  return renderData.RenderData(triangles,chosen.selectedSurfaceCount,total,0,false,patches)
 end function
 
 struct SceneVertex position texCoord lightmapCoord normal color entityColor end struct

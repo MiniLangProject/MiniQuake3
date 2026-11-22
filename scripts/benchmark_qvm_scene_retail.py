@@ -1,4 +1,4 @@
-"""Profile real 524-triangle QVM weapon/HUD scenes without opening a window."""
+"""Profile the productive q3dm1 weapon and HUD views without opening a window."""
 import argparse
 from pathlib import Path
 import subprocess

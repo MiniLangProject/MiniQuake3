@@ -704,6 +704,64 @@ static float collision_dot(const float a[3], const float b[3]) {
     return (a[0] * b[0] + a[1] * b[1]) + a[2] * b[2];
 }
 
+/* Numerical step from CM_TraceThroughTree. MiniLang visits nodes and leaves
+ * and clips the live trace. On a split, replace the current record with the
+ * deferred far interval and write the near interval in the next record.
+ * The fourth coordinate is the fraction along the original sweep. */
+API int mq3_trace_segment_step(unsigned char *records, int capacity, int offset,
+                               int axis, double nx, double ny, double nz,
+                               double plane_distance, double box_extent) {
+    if (!records || offset < 0 || capacity < 64 || offset > capacity - 64 ||
+        axis < 0 || axis > 3) return -1;
+    unsigned int saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float start[4], end[4];
+    memcpy(start, records + offset, sizeof(start));
+    memcpy(end, records + offset + sizeof(start), sizeof(end));
+    float distance = (float)plane_distance, extent = (float)box_extent;
+    float d1, d2;
+    if (axis < 3) {
+        d1 = start[axis] - distance;
+        d2 = end[axis] - distance;
+    } else {
+        float x = (float)nx, y = (float)ny, z = (float)nz;
+        d1 = (x * start[0] + y * start[1]) + z * start[2] - distance;
+        d2 = (x * end[0] + y * end[1]) + z * end[2] - distance;
+    }
+    int side;
+    if (d1 >= extent + 1.0f && d2 >= extent + 1.0f) side = 0;
+    else if (d1 < -extent - 1.0f && d2 < -extent - 1.0f) side = 1;
+    else {
+        float near_fraction = 1.0f, far_fraction = 0.0f;
+        side = 2;
+        /* The reference narrows the signed distances and reciprocal before
+         * applying the double-precision epsilon expression. */
+        if (d1 < d2) {
+            float inverse = (float)(1.0 / (double)(d1 - d2));
+            near_fraction = (float)(((double)(d1 - extent) + 0.125) * inverse);
+            far_fraction = (float)(((double)(d1 + extent) + 0.125) * inverse);
+            side = 3;
+        } else if (d1 > d2) {
+            float inverse = (float)(1.0 / (double)(d1 - d2));
+            near_fraction = (float)(((double)(d1 + extent) + 0.125) * inverse);
+            far_fraction = (float)(((double)(d1 - extent) - 0.125) * inverse);
+        }
+        if (near_fraction < 0) near_fraction = 0;
+        if (near_fraction > 1) near_fraction = 1;
+        if (far_fraction < 0) far_fraction = 0;
+        if (far_fraction > 1) far_fraction = 1;
+        __m128 a = _mm_loadu_ps(start);
+        __m128 delta = _mm_sub_ps(_mm_loadu_ps(end), a);
+        __m128 near_end = _mm_add_ps(a, _mm_mul_ps(delta, _mm_set1_ps(near_fraction)));
+        __m128 far_start = _mm_add_ps(a, _mm_mul_ps(delta, _mm_set1_ps(far_fraction)));
+        memcpy(records + offset, &far_start, 16);
+        memcpy(records + offset + 32, start, 16);
+        memcpy(records + offset + 48, &near_end, 16);
+    }
+    _mm_setcsr(saved);
+    return side;
+}
+
 /* Return the matching side with the earliest opposing plane, or the
  * startsolid/allsolid status. BSP order, masks and patches stay in MiniLang. */
 static int trace_convex_brush(const unsigned char *planes, int plane_bytes,

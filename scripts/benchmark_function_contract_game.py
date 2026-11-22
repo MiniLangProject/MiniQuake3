@@ -25,6 +25,8 @@ TIMING = re.compile(
 )
 MOVEMENT = re.compile(r"REPLAY movement positions=(\d+) attacks=(\d+) ammoDecreases=(\d+)")
 SIMULATION = re.compile(r"QVM frame profile: simulation=(\S+)ms \(game=(\S+) cgame=(\S+) ui=")
+GEOMETRY = re.compile(r"geometry=(\S+)ms \(expand=(\S+) material=(\S+) sceneBatch=(\S+)\)")
+PORTALS = re.compile(r"QVM world profile: .*?portals=(\S+)ms .*?portalBatchBuilds=(\d+) portalBatchHits=(\d+)")
 
 
 def sha256(path: Path) -> str:
@@ -58,6 +60,13 @@ def run(exe: Path, archive: Path, qvms: Path, frames: int, folder: Path, tag: st
     simulation = SIMULATION.search(log)
     if simulation:
         sample.update(zip(("simulation_ms", "game_ms", "cgame_ms"), map(float, simulation.groups())))
+    geometry = GEOMETRY.search(log)
+    if geometry:
+        sample.update(zip(("geometry_ms", "expand_ms", "material_ms", "scene_batch_ms"),
+                          map(float, geometry.groups())))
+    portals = PORTALS.search(log)
+    if portals:
+        sample.update(portal_ms=float(portals[1]), portal_builds=int(portals[2]), portal_hits=int(portals[3]))
     return sample
 
 
@@ -114,7 +123,8 @@ def main() -> None:
         "samples": samples,
         "median": {name: {metric: statistics.median(sample[metric] for sample in values)
                           for metric in ("elapsed_ms", "fps", "p50_ms", "p95_ms", "p99_ms", "max_ms",
-                                         "simulation_ms", "game_ms", "cgame_ms")
+                                         "simulation_ms", "game_ms", "cgame_ms", "geometry_ms",
+                                         "expand_ms", "material_ms", "scene_batch_ms", "portal_ms")
                           if all(metric in sample for sample in values)}
                    for name, values in samples.items()},
     }

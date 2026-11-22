@@ -4,6 +4,17 @@ Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Ruckler im Retail-Kampf, 22. November 2026
+
+Die BSP-Kollision berechnet die Endpunkte geteilter Bewegungssegmente in
+einem Puffer. Der Renderer kann die Zeichendaten einer Ansicht weiterverwenden,
+wenn sich die Dreieckszahl des Waffenmodells ändert. Bei gleichen
+Speichereinstellungen stieg die Bildrate auf der RTX 5080 im Median von
+83,06 auf 90,02 FPS. Die P99-Framezeit sank von 31 auf 28,5 ms.
+Im längeren Kampf mit Spiegelportal stieg die Bildrate von 73,54 auf
+77,97 FPS. Dort blieben einzelne Frames bis 76 ms und P99 bei 48 ms.
+[Einzelmessungen und Testumfang](verification/2026-11-22-combat-frame-times.md)
+
 ## Cgame im Retail-Kampf, 22. November 2026
 
 Die Messung trennt die Ausführung der Original-Cgame-QVM von den

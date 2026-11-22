@@ -15,6 +15,7 @@ import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
 import std.ds.list as worldTraceLists
 
+extern function traceSegmentStep(records as ptr,capacity as i32,offset as i32,axis as i32,nx as double,ny as double,nz as double,planeDistance as double,extent as double) from "miniquake3_qvm.dll" symbol "mq3_trace_segment_step" returns i32
 extern function traceTransformedBoxNative(ax as double,ay as double,az as double,bx as double,by as double,bz as double,lx as double,ly as double,lz as double,hx as double,hy as double,hz as double,ox as double,oy as double,oz as double,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double,matchesMask as i32,output as bytes) from "miniquake3_qvm.dll" symbol "mq3_trace_transformed_box" returns i32
 extern function writeVmBoxTraceNative(data as bytes,capacity as i32,mask as u32,base as i32,model as i32,contents as u32,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double) from "miniquake3_qvm.dll" symbol "mq3_cgame_transformed_box_trace" returns i32
 
@@ -532,47 +533,40 @@ function interpolate(a,b,fraction)
 end function
 
 function throughTree(work)
-  // Keep only deferred far branches. Descending a near child or traversing an
-  // unsplit node needs no list entry or five-element traversal record.
+  // Each pending far child owns two (x,y,z,fraction) tuples. Descending an
+  // unsplit node keeps the same interval; only a split grows the frontier.
   stack=worldTraceLists.List.withCapacity(32)
-  num=0;p1f=0.0;p2f=1.0;p1=work.start;p2=work.finish
+  segments=bytes(33*32,0);offset=0
+  for axis=0 to 2
+    n.writeU32(segments,axis*4,n.floatBits(work.start[axis]))
+    n.writeU32(segments,16+axis*4,n.floatBits(work.finish[axis]))
+  end for
+  n.writeU32(segments,28,0x3f800000)
+  num=0;startFraction=0.0
   while true
-    while not (work.trace.fraction<=p1f)
-      if num<0 then
-        throughLeaf(work,work.world.leaves[-1-num],false);break
-      end if
-      node=work.world.nodes[num];plane=node.plane;axis=node.axis
-      t1=0.0;t2=0.0;offset=0.0
-      if axis<3 then
-        t1=n.fsub(p1[axis],plane.distance);t2=n.fsub(p2[axis],plane.distance)
-        if not work.isPoint then offset=work.maxs[axis] end if
-      else
-        t1=n.fsub(q.DotProduct(plane.normal,p1),plane.distance);t2=n.fsub(q.DotProduct(plane.normal,p2),plane.distance)
-        if not work.isPoint then offset=2048.0 end if
-      end if
-      positiveCut=n.fadd(offset,1.0)
-      if t1>=positiveCut and t2>=positiveCut then num=node.children[0];continue end if
-      negativeCut=n.fsub(-offset,1.0)
-      if t1<negativeCut and t2<negativeCut then num=node.children[1];continue end if
-      side=0;fraction=1.0;fraction2=0.0
-      if t1<t2 then
-        inverse=n.f32(1.0/n.fsub(t1,t2));side=1
-        fraction2=n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-        fraction=n.f32((n.fsub(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-      else if t1>t2 then
-        inverse=n.f32(1.0/n.fsub(t1,t2))
-        fraction2=n.f32((n.fsub(t1,offset)-qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-        fraction=n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-      end if
-      fraction=max(0.0,min(1.0,fraction));fraction2=max(0.0,min(1.0,fraction2))
-      span=n.fsub(p2f,p1f)
-      farStart=n.fadd(p1f,n.fmul(span,fraction2))
-      stack.add([node.children[side^1],farStart,p2f,interpolate(p1,p2,fraction2),p2])
-      num=node.children[side];p2f=n.fadd(p1f,n.fmul(span,fraction));p2=interpolate(p1,p2,fraction)
-    end while
+    if not (work.trace.fraction<=startFraction) then
+      while num>=0
+        node=work.world.nodes[num];plane=node.plane;axis=node.axis
+        extent=0.0
+        if not work.isPoint then
+          if axis<3 then extent=work.maxs[axis] else extent=2048.0 end if
+        end if
+        if offset+64>len(segments) then
+          grown=bytes(len(segments)*2,0);copyBytes(grown,0,segments,0,offset+32);segments=grown
+        end if
+        direction=traceSegmentStep(nativeBytesPtr(segments),len(segments),offset,axis,plane.normal[0],plane.normal[1],plane.normal[2],plane.distance,extent)
+        if direction<0 then return error(3503,"Collision: invalid BSP trace interval") end if
+        side=direction&1
+        if direction>=2 then
+          stack.add(node.children[side^1]);offset=offset+32
+        end if
+        num=node.children[side]
+      end while
+      throughLeaf(work,work.world.leaves[-1-num],false)
+    end if
     if stack.isEmpty() then break end if
-    item=stack.pop()
-    num=item[0];p1f=item[1];p2f=item[2];p1=item[3];p2=item[4]
+    num=stack.pop();offset=offset-32
+    startFraction=n.bitsFloat(n.readU32(segments,offset+12))
   end while
   return void
 end function

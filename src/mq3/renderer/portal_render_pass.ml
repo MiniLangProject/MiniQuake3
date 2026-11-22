@@ -12,9 +12,9 @@ import mq3.renderer.world_surface_selection as worldSelection
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct Surface normal dist faceIndex textureIndex distanceSquared end struct
 struct Plan surface view refdef end struct
-struct WorldBatchCache faces normal dist batch builds hits end struct
+struct WorldBatchCache faces normal dist batch builds hits clippedFaces end struct
 
-function worldBatchCache() return WorldBatchCache(void,void,0.0,void,0,0) end function
+function worldBatchCache() return WorldBatchCache(void,void,0.0,void,0,0,void) end function
 function cachedWorldBatch(cache,faces,normal,dist)
   if cache.batch==void or cache.dist!=dist or cache.normal[0]!=normal[0] or cache.normal[1]!=normal[1] or cache.normal[2]!=normal[2] then return void end if
   if not worldSelection.sameFaces(cache.faces,faces) then return void end if
