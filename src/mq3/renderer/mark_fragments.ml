@@ -20,10 +20,10 @@ const SHADER_STRIDE=72
 struct Plane normal distance end struct
 struct Fragment firstPoint numPoints end struct
 struct Result points fragments candidateSurfaces testedTriangles end struct
-struct GeometryCache map data dataPointer slots end struct
+struct GeometryCache map data dataPointer slots faceVisits faceSerial faceMap faceDataPointer end struct
 struct FaceBatch faces triangles end struct
 
-function geometryCache() return GeometryCache(void,void,0,array(32,void)) end function
+function geometryCache() return GeometryCache(void,void,0,array(32,void),void,0,void,0) end function
 
 // A moving impact can hit the same ordered set of static faces with different
 // clip planes. Keep only small batches. Projection bounds, clipping and output
@@ -139,14 +139,28 @@ function eligibleFace(map,faceIndex,direction,mins,maxs)
   end if
   return true
 end function
-function candidateFaces(map,world,mins,maxs,direction)
+function candidateFaces(map,world,mins,maxs,direction,cache)
   leaves=collision.enumerateLeaves(world,mins,maxs)
-  seen=sets.HashSet.new()
+  seen=void
+  if cache!=void then
+    pointer=nativeBytesPtr(map.data)
+    if cache.faceMap!=map or cache.faceDataPointer!=pointer or cache.faceVisits==void or len(cache.faceVisits)!=map.counts[13] or cache.faceSerial>=254 then
+      cache.faceVisits=bytes(map.counts[13],0);cache.faceSerial=0;cache.faceMap=map;cache.faceDataPointer=pointer
+    end if
+    cache.faceSerial=cache.faceSerial+1
+  else
+    seen=sets.HashSet.new()
+  end if
   result=lists.List.withCapacity(MAX_MARK_SURFACES)
   for each leafIndex in leaves
     for each faceIndex in world.leaves[leafIndex].surfaces
-      if seen.has(faceIndex) then continue end if
-      seen.add(faceIndex)
+      if cache!=void then
+        if cache.faceVisits[faceIndex]==cache.faceSerial then continue end if
+        cache.faceVisits[faceIndex]=cache.faceSerial
+      else
+        if seen.has(faceIndex) then continue end if
+        seen.add(faceIndex)
+      end if
       if eligibleFace(map,faceIndex,direction,mins,maxs) then
         result.add(faceIndex)
         if result.size>=MAX_MARK_SURFACES then return result.toArray() end if
@@ -165,7 +179,7 @@ function projectWithCache(map,world,sourcePoints,projection,maxPoints,maxFragmen
   for each point in sourcePoints if point==void or len(point)!=3 then return fail("mark point needs three coordinates") end if end for
   points=sourcePoints;if len(points)>MAX_VERTS_ON_POLY then points=slice(points,0,MAX_VERTS_ON_POLY) end if
   direction=normalize(projection);if direction==[0.0,0.0,0.0] then return Result([],[],0,0) end if
-  bounds=projectionBounds(sourcePoints,projection,direction);planes=projectionPlanes(points,projection);faces=candidateFaces(map,world,bounds[0],bounds[1],direction)
+  bounds=projectionBounds(sourcePoints,projection,direction);planes=projectionPlanes(points,projection);faces=candidateFaces(map,world,bounds[0],bounds[1],direction,cache)
   // The clipper reads source positions without mutating them. Decode shared
   // mesh vertices once per face, as in the retained world renderer.
   triangles=markTriangles(map,faces,cache)

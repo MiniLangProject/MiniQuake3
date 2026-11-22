@@ -58,6 +58,15 @@ q3dm0 und q3dm1 mit aktivierter Kurvenkollision ab. Der Zeitvergleich
 verwendet denselben Einzelspieler-Kampf auf der RTX 5080.
 [Framezeiten, langsame Einzelbilder und Testumfang](verification/2026-11-22-cgame-simulation.md)
 
+Die Flächensuche für Cgame-Einschlagmarken verwendet jetzt einen
+wiederverwendbaren BSP-Besuchszähler. Im 3.200-Frame-Retailkampf sank die
+Hostzeit der 4.965 `CG_CM_MARKFRAGMENTS`-Aufrufe von 1.096 auf 934 ms.
+Drei abwechselnde A/B-Paare ergaben im Median 78,67 statt 76,87 FPS;
+P99 stieg von 44 auf 46 ms, während die längsten Frames im Median von
+70 auf 61 ms sanken.
+Die P99-Ruckler sind weiterhin offen.
+[Messwerte und Differentialtests](verification/2026-11-22-combat-frame-times.md#einschlagmarken-im-botkampf)
+
 ## Renderer und Shaderzeiten, 22. November 2026
 
 Der Renderer verwendet bei gleicher Entity-Zeit die berechnete Shaderzeit

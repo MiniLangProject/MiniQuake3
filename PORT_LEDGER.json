@@ -57335,7 +57335,7 @@
             "src/mq3/renderer/mark_fragments.ml"
           ],
           "status": "tested",
-          "scope": "BSP traversal, bounds rejection and face/grid candidate collection are covered by native contracts and the q3dm1 Retail probe."
+          "scope": "BSP traversal, bounds rejection and face/grid candidate collection are covered by native contracts and the q3dm1 Retail probe. A reusable per-BSP byte visit table replaces per-mark HashSet allocation; duplicate leaf references and generation rollover have contracts, and the 3200-frame Retail bot replay measures unchanged call count with lower mark-trap host time."
         },
         {
           "original": "R_MarkFragments",

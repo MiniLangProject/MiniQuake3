@@ -23,8 +23,9 @@ def main() -> int:
     require(menu, "nativeEvents=window.inputEvents(256)", "timestamped menu input consumption")
     require(menu, "uiSession.frameQueued(ui,now,nativeEvents)", "ordered native menu input")
     require(menu, "desktopSession.capture(state,session)", "menu settings handoff")
-    match_start = "gameApp.runDesktopMatch(activeArchive,selectedMap,session.mapName,qvmRoot,session.settings,session)"
-    require(menu, match_start, "deferred named full match start")
+    match_start = "result=try(loadLocalMatch(activeArchive,session,qvmRoot))"
+    require(menu, match_start, "deferred local match start")
+    require(menu, "gameApp.runMatchWithLoading(archive,selectedMap,session.mapName", "match loading screen handoff")
     require(menu, "frameTiming.remaining(menuFrameStart,window.milliseconds(),16)", "bounded menu refresh cadence")
     require(menu, "state.context.soundCommands=[];audio.commandCursor=0", "consumed menu sound queue compaction")
     require(desktop, '["spmap",mapCommand]', "single-player map handoff")

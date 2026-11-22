@@ -51,10 +51,15 @@ def main():
     scripts.append(("test_collision_frontier.py",[]))
     scripts.append(("test_trace_query_storage.py",[]))
     scripts.append(("test_snapshot_storage.py",[]))
-    if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport"):
+    # These gates validate the archived compiler's exact installed binary.
+    # The published release toolchain has a separate pinned hash and must not
+    # be compared with docs/reference/toolchain.json's frozen compiler record.
+    frozen_allocator=(child_env.get("MQ3_BUILD_TOOLCHAIN","frozen")=="frozen" and
+                      json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport"))
+    if frozen_allocator:
         scripts.append(("test_allocator_search.py",[]))
         scripts.append(("test_allocator_multisize.py",[]))
-        if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport",{}).get("gc_allocation_boundaries"):
+        if frozen_allocator.get("gc_allocation_boundaries"):
             scripts.append(("test_gc_allocation_boundary.py",[]))
         scripts.append(("test_allocator_legacy.py",[]))
     if args.data_root: scripts.append(("test_ingame_controls_render.py",["--data-root",str(args.data_root)]))

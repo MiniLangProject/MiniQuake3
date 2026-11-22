@@ -221,3 +221,52 @@ Die 432 Retail-Differentialfälle des Welt-Renderers, 40 Portalverträge,
 Modell- und Skinbilder bestanden. Die gebaute Windows-EXE erreichte das
 Originalmenü aus einem anderen Arbeitsverzeichnis mit benachbartem
 `baseq3` in 0,44 s.
+
+### Einschlagmarken im Botkampf
+
+Ein weiterer 3.200-Frame-Replay auf `q3dm0` mit Original-QVMs und Retail-PK3
+zählte 4.965 Aufrufe von `CG_CM_MARKFRAGMENTS`. Die Fläche eines BSP-Blatts
+kann mehrfach referenziert sein. Die bisherige Flächensuche legte für jede
+Projektion eine neue Hash-Menge an. Sie verwendet nun pro geladenem BSP einen
+wiederverwendbaren Byte-Zähler für bereits besuchte Flächen; beim Wechsel des
+BSP-Bytepuffers und beim Zählerüberlauf wird er neu angelegt. Die Reihenfolge
+der Flächen und die Original-Clipping-Regeln bleiben erhalten.
+
+Die gemessene Hostzeit dieser Trap sank bei identischer Aufrufzahl von
+1.095,57 auf 933,80 ms (220,66 auf 188,08 µs/Aufruf). Drei abwechselnde
+A/B-Paare auf der RTX 5080, Hardware-OpenGL und 1280 × 720 ergaben:
+
+| Paar | FPS vorher → nachher | P99 vorher → nachher | Längster Frame vorher → nachher |
+| --- | ---: | ---: | ---: |
+| 1 | 77,03 → 78,42 | 44 → 48 ms | 74 → 64 ms |
+| 2 | 76,87 → 80,98 | 44 → 46 ms | 60 → 61 ms |
+| 3 | 76,30 → 78,67 | 50 → 46 ms | 70 → 59 ms |
+| Median | **76,87 → 78,67** | **44 → 46 ms** | **70 → 61 ms** |
+
+Jeder Lauf enthielt 752 Positionsänderungen, 1.650 Angriffseingaben und
+160 Munitionsabnahmen. Die 24 Mark-Fragment-Verträge einschließlich
+Cache-Überlauf, fünf bitgenaue Original-C-Vergleiche und der Retail-Test auf
+`q3dm1` bestanden. Der mittlere Durchsatz verbessert sich geringfügig; die
+P99-Framezeit ist weiterhin nicht stabil verbessert. Die Ruckler bei Bots
+bleiben offen. Rohlogs liegen unter `build/reports/mark_visit_cache_ab/`.
+
+Der gleich lange Replay ohne Bot lag bei 138,20 FPS und P99 19 ms; mit Bot
+waren es vor dieser Änderung 71,73 FPS und P99 47 ms. Im Botlauf benötigten
+Simulation, Geometrie und Rendern im Mittel 4,67, 4,59 und 4,28 ms pro
+Frame, ohne Bot 3,12, 2,05 und 1,79 ms. Von 51 Bot-Frames ab 45 ms
+überlappten 47 mit einem GC-Ereignis, 30 enthielten mindestens 10 ms
+Portalvorbereitung und 39 mindestens 15 ms Zeichenausgabe. Diese Zähler
+zeigen eine Korrelation; sie beweisen keine einzelne Ursache der Pausen.
+
+Ein separater Lauf mit dem nativen Render-Zeitmesser erfasste 3.200
+Spielbilder nach sieben Startbildern. Im Mittel lagen 1,24 ms im nativen
+OpenGL-Zeichnen und 3,06 ms zwischen Frame-Beginn, Zeichnen und Swap;
+`SwapBuffers` selbst lag unter 0,05 ms. Bei den 17 Renderbildern ab 25 ms
+lagen im Mittel 5,02 ms im nativen Zeichnen und 26,19 ms außerhalb von
+Zeichnen und Swap, mit durchschnittlich 379 Draw-Calls. Ein Spitzenbild
+bei Index 2566 benötigte 37,13 ms im Renderpfad, davon 5,58 ms native
+Zeichenausgabe und 31,50 ms übrige Arbeit. Damit ist der OpenGL-Aufruf
+allein keine Erklärung für die Ruckler; Portal-/Geometrieaufbau und
+Simulation müssen getrennt weiter optimiert werden. Rohdaten:
+`build/reports/mark_native_profile.txt` und
+`build/reports/mark_native_profile_replay.log`.

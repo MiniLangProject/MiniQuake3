@@ -48,6 +48,15 @@ function main(args)
   world.leaves[0].surfaces=[0,0,0]
   duplicate=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16)
   count=count+require(duplicate.candidateSurfaces==1 and duplicate.testedTriangles==2 and duplicate.points==result.points and len(duplicate.fragments)==2,"repeated face references emit fragments only once")
+  cache=marks.geometryCache()
+  cachedDuplicate=marks.projectWithCache(map,world,square(),[0.0,0.0,-20.0],64,16,cache)
+  count=count+require(cachedDuplicate.candidateSurfaces==1 and cachedDuplicate.testedTriangles==2 and cachedDuplicate.points==duplicate.points,"cached face visits deduplicate repeated leaf references")
+  wrapped=true
+  for index=0 to 260
+    repeated=marks.projectWithCache(map,world,square(),[0.0,0.0,-20.0],64,16,cache)
+    if repeated.candidateSurfaces!=1 or repeated.points!=duplicate.points then wrapped=false end if
+  end for
+  count=count+require(wrapped,"cached face visit generation wraps without dropping surfaces")
   limited=marks.project(map,world,square(),[0.0,0.0,-20.0],64,1);count=count+require(len(limited.fragments)==1,"fragment capacity stops output")
   cramped=marks.project(map,world,square(),[0.0,0.0,-20.0],2,16);count=count+require(len(cramped.fragments)==0 and len(cramped.points)==0,"point capacity rejects whole polygons")
   putI32(map.data,64,marks.SURF_NOMARKS);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"nomarks shader surface rejected")
