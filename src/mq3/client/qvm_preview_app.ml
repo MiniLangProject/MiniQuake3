@@ -7,6 +7,7 @@ import mq3.engine.local_qvm_ui as localQvmUi
 import mq3.client.original_ui_session as uiSession
 import mq3.client.desktop_session as desktopSession
 import mq3.client.desktop_video as desktopVideo
+import mq3.client.map_loading as mapLoading
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
 import mq3.client.demo_playback as demos
@@ -381,11 +382,31 @@ end function
 function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if
   opened=window.open(SOURCE_WIDTH,SOURCE_HEIGHT);if opened is error then return opened end if
-  startupAt=window.milliseconds();loading=window.showLoading(3,"Booting original game and cgame QVMs");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  serverName="localhost";if source!=void then serverName=source.name end if
+  screen=mapLoading.create(archive,mapName,serverName,source==void);if screen is error then window.shutdown();return screen end if
+  loaded=try(runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,SOURCE_WIDTH,SOURCE_HEIGHT))
+  mapLoading.release(screen);return loaded
+end function
+
+function stopLoading(screen,state,session,result)
+  mapLoading.release(screen)
+  if state!=void then match.shutdown(state) end if
+  window.shutdown()
+  if result is error then return result end if
+  if session!=void then session.action="quit" end if
+  return 0
+end function
+
+function runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,initialWidth,initialHeight)
+  startupAt=screen.startedAt
+  if screen.catalog==void then
+    loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)
+    if loading is error or not loading then return stopLoading(screen,void,session,loading) end if
+  end if
   state=try(bootMatch(archive,map,mapName,qvmRoot,settings,source));if state is error then return state end if
   mode=desktopVideo.open(state.context.cvars);if mode is error then window.shutdown();match.shutdown(state);return mode end if
   if session!=void then session.videoWidth=mode.width;session.videoHeight=mode.height end if
-  qvmBootAt=window.milliseconds();loading=window.showLoading(24,"Booting original UI QVM");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  qvmBootAt=window.milliseconds();loading=mapLoading.show(screen,"maps/"+mapName+".bsp",mode.width,mode.height,state.context.configstrings,true);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
   if session==void then ensurePlayableBindings(state) end if
   clientClock=cgameClock.create(state.context.now,state.context.snapshotNumber,state.context.latestSnapshot.serverTime);if clientClock is error then window.shutdown();match.shutdown(state);return clientClock end if
   bootedUi=match.bootUi(state);if bootedUi is error then window.shutdown();match.shutdown(state);return bootedUi end if
@@ -393,9 +414,9 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   videoManager=qvmVideo.create(state.context.cinematics,CINEMATIC_TEXTURE_FIRST_SLOT,cinematics.MAX_HANDLES);if videoManager is error then window.shutdown();match.shutdown(state);return videoManager end if
   frameCache=sceneGeometry.createFrameCache(void,MD3_FRAME_CACHE_ENTRIES);if frameCache is error then window.shutdown();match.shutdown(state);return frameCache end if
   view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame submitted no render view") end if
-  uiBootAt=window.milliseconds();loading=window.showLoading(32,"Indexing retail shaders");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
-  scripts=materials.buildScriptIndex(archive);if scripts is error then window.shutdown();match.shutdown(state);return scripts end if
-  scriptIndexAt=window.milliseconds();loading=window.showLoading(48,"Resolving scene and HUD materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  uiBootAt=window.milliseconds();loading=mapLoading.show(screen,"graphics",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
+  scripts=screen.scripts
+  scriptIndexAt=window.milliseconds();loading=mapLoading.show(screen,"game media",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
   qvmCatalog=sceneMaterials.buildIndexed(archive,[],state.context.assets,state.context.assetKinds,QVM_TEXTURE_FIRST_SLOT,MAX_QVM_TEXTURE_SLOTS,state.context.shaderRemaps,scripts);if qvmCatalog is error then window.shutdown();match.shutdown(state);return qvmCatalog end if
   shadowVariable=cvar.get(state.context.cvars,"cg_shadows","1",cvar.ARCHIVE);lodScaleVariable=cvar.get(state.context.cvars,"r_lodscale","5",cvar.CHEAT);lodBiasVariable=cvar.get(state.context.cvars,"r_lodbias","0",cvar.ARCHIVE)
   preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void,void,void,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer,mode);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
@@ -403,11 +424,11 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   consoleBackgroundMedia=consoleBackground.load(archive,CONSOLE_BACKGROUND_TEXTURE_SLOT);if consoleBackgroundMedia is error then window.shutdown();match.shutdown(state);return consoleBackgroundMedia end if
   consoleMedia=baseMatchDisplay.load(archive,CONSOLE_FONT_TEXTURE_SLOT);if consoleMedia is error then window.shutdown();match.shutdown(state);return consoleMedia end if
   boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,state.context.now);if boundVideo is error then window.shutdown();match.shutdown(state);return boundVideo end if
-  sceneAt=window.milliseconds();loading=window.showLoading(64,"Decoding registered sounds");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  sceneAt=window.milliseconds();loading=mapLoading.show(screen,"sounds",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
   soundCatalog=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if soundCatalog is error then window.shutdown();match.shutdown(state);return soundCatalog end if
   audio=qvmPlayback.create(soundCatalog,22050,qvmSoundAssets.CHUNK_FRAMES);if audio is error then window.shutdown();match.shutdown(state);return audio end if
   applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then window.shutdown();match.shutdown(state);return applied end if
-  soundAt=window.milliseconds();loading=window.showLoading(78,"Building "+mapName+" world materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  soundAt=window.milliseconds();loading=mapLoading.show(screen,"maps/"+mapName+".bsp",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
   worldCatalog=materials.loadIndexed(archive,map,QVM_TEXTURE_FIRST_SLOT-WORLD_TEXTURE_FIRST_SLOT-16,WORLD_TEXTURE_FIRST_SLOT,scripts[0],scripts[1]);if worldCatalog is error then window.shutdown();match.shutdown(state);return worldCatalog end if
   materials.seedImageCacheFromCatalog(qvmCatalog.imageCache,worldCatalog)
   sceneMaterials.warmRegisteredPlayerSkins(qvmCatalog,archive,state.context.assets,state.context.assetKinds)
@@ -437,7 +458,10 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   for each material in worldCatalog.materials if material.textureIndex>=0 and material.textureIndex<len(dlightReceiveFlags) and material.sort>3.0 then dlightReceiveFlags[material.textureIndex]=false end if end for
   retainedWorldCache=retainedWorld.create(worldCache,worldCatalog,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags);if retainedWorldCache is error then window.shutdown();match.shutdown(state);return retainedWorldCache end if
   worldPrepared=retainedWorld.select(retainedWorldCache,selected);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if;selectedFaces=selected.selection.faceIndexes
-  worldAt=window.milliseconds();loading=window.showLoading(90,"Uploading textures and starting audio");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  loadClient=0;if source!=void then loadClient=state.context.serverStream.protocol.gamestateState.clientNum end if
+  mapLoading.collectIcons(screen,state.context.configstrings,state.context.assets,state.context.assetKinds,loadClient)
+  worldAt=window.milliseconds();loading=mapLoading.show(screen,"clients",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
+  mapLoading.release(screen)
   keys=inputLatch.create(256);if keys is error then window.shutdown();match.shutdown(state);return keys end if;nativeInput=NativeInput([0,0],keys);ui=localQvmUi.attach(state,nativeInput,nativeKeyDown,nativeMouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
   uploaded=worldBatch.uploadMaterials(worldCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
@@ -450,7 +474,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   if flareCatalog!=void then uploaded=flares.upload(flareCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
-  readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
+  readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt-screen.indexMillis)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(screen.indexMillis+scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
   print "QVM retained world: enabled="+str(retainedWorldCache.enabled)+" staticPrimes="+str(retainedWorldCache.staticPrimes)+" (worldRebuild timing includes selected effects)"
   rendererName="software";if window.hardwareRenderer() then rendererName="hardware OpenGL" end if;print "QVM renderer: "+rendererName+" / "+str(window.glInfo(1))
   titleState=fpsTitle.create("Original QVM "+mapName,window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))

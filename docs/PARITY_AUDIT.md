@@ -4,6 +4,29 @@ Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Ladescreen beim Kartenstart
+
+Beim Wechsel vom Hauptmenü in ein lokales Match erscheint der Levelshot der
+ausgewählten Karte schon vor dem Einlesen der BSP-Datei. Cgame zeichnet die
+Retail-Detailtextur, den Ladestatus und die Spielregeln aus den
+Server-Configstrings. Darüber zeichnet die UI den Kartennamen und das
+Verbindungsziel. Der letzte Ladeschritt zeigt die registrierten Spieler- und
+Item-Symbole. Der Shaderindex wird beim Eintritt ins Match weiterverwendet.
+Die Zwischenbilder folgen den Arbeitsschritten des Ports. Der Zeitpunkt jeder
+einzelnen Registrierung kann vom Original abweichen.
+
+`python scripts/test_map_loading_retail.py --data-root build` rendert zwei
+OpenGL-Bilder mit der Retail-PK3. Für Arena Gate prüft der Test alle sechs
+Textzeilen samt Schatten, die Detailtextur und die nachgeladenen Icons.
+Mit `--desktop-exe build/MiniQuake3.exe` startet derselbe Test das fertige
+Windows-Spiel mit eigener Konfiguration, führt `spmap q3dm1` aus und
+vergleicht den sichtbaren Levelshot samt Beschriftung mit dem Referenzbild.
+Der auf der RTX 5080 aufgenommene Frame liegt unter
+`build/reference/map_loading/desktop-q3dm1-loading.png`. Ein separater
+Retail-Replay auf `q3dm1` durchlief 1.800 Spielframes mit Bewegung und
+Munitionsverbrauch. Die Vergleiche mit unverändertem C-Code laufen in
+`test_cgame_info.py`, `test_ui_connect.py` und `test_cgame_drawtools.py`.
+
 ## Spiegelportal und Modelltexturen im Retail-Kampf
 
 Im Einzelspieler-Replay auf `q3dm0` stieg die Bildrate auf der RTX 5080

@@ -390,6 +390,7 @@ def main():
     scripts.append(("test_baseq3_match_display.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_cgame_scoreboard.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_cgame_info.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    if args.data_root: scripts.append(("test_map_loading_retail.py",["--data-root",str(args.data_root),"--desktop-exe",str(ROOT / "build/MiniQuake3.exe")]))
     scripts.append(("test_playable_menu.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("playable_window_build_test.py",[]))
     scripts.append(("test_playable_window_startup.py",[]))

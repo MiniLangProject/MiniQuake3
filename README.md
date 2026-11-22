@@ -62,7 +62,7 @@ complete behavioral parity.
 | Area | What has been demonstrated |
 | --- | --- |
 | Windows build | Native EXE, Windows bridge DLLs and the three original QVM modules build with the published MiniLang 1.3.9 compiler. |
-| Normal startup | Starting `MiniQuake3.exe` without arguments opens the original main menu using data beside the executable. |
+| Normal startup | Starting `MiniQuake3.exe` without arguments opens the original main menu using data beside the executable. Selecting an arena shows its Retail levelshot, connection status and match rules while the map loads. |
 | Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. All 30 Retail arena BSPs complete a 30-frame Windows/QVM smoke test; all 32 named Retail bots pass a 120-frame command probe on `q3dm1`. [Scope and limits](docs/verification/2026-11-21-all-arenas-bots-performance.md) |
 | Graphical execution | The 6,000-frame Retail `q3dm0` combat replay on the RTX 5080 reached 83.6 FPS. The longest frame fell from 107 to 54 ms. [Frame-time and CPU profile](docs/verification/2026-11-21-bot-cgame-frame-profile.md) |
 | Collision query performance | A Retail `q3dm15` QVM profile observed `trap_LinkEntity` host time fall from 2,099 to 110 microseconds per call after BSP query storage changes. The run's average frame work fell from 27.85 to 18.87 ms; real-time simulation trajectories can differ. [Measurements](docs/verification/2026-11-21-all-arenas-bots-performance.md) |

@@ -34,10 +34,26 @@ end function
 function splitModel(value)
   parts=strings.split(value,"/");if len(parts)>1 then return [parts[0],parts[len(parts)-1]] end if;return [value,"default"]
 end function
+function playerIconCandidates(playerInfo)
+  modelSkin=splitModel(info.value(playerInfo,"model"));model=modelSkin[0];skin=modelSkin[1]
+  return ["models/players/"+model+"/icon_"+skin+".tga","models/players/characters/"+model+"/icon_"+skin+".tga","models/players/sarge/icon_default.tga"]
+end function
 function loadingClient(state,playerInfo,gametype,availableAssets)
-  modelSkin=splitModel(info.value(playerInfo,"model"));model=modelSkin[0];skin=modelSkin[1];chosen="";candidates=["models/players/"+model+"/icon_"+skin+".tga","models/players/characters/"+model+"/icon_"+skin+".tga","models/players/sarge/icon_default.tga"]
+  chosen="";candidates=playerIconCandidates(playerInfo)
   if len(state.playerIcons)<MAX_LOADING_PLAYER_ICONS then for each path in candidates if chosen=="" and availableAssets(path) then chosen=path end if end for;if chosen!="" then state.playerIcons=state.playerIcons+[chosen];state.registeredShaders=state.registeredShaders+[chosen] end if end if
   personality=clean(commandBuffer.copyString(info.value(playerInfo,"n"),64));if gametype==GT_SINGLE_PLAYER then state.registeredSounds=state.registeredSounds+["sound/player/announce/"+personality+".wav"] end if;loadingString(state,personality);return chosen
+end function
+// Baseq3 bg_itemlist order is the bit order of CS_ITEMS.
+function baseItemIcons()
+  return ["","icons/iconr_shard","icons/iconr_yellow","icons/iconr_red",
+    "icons/iconh_green","icons/iconh_yellow","icons/iconh_red","icons/iconh_mega",
+    "icons/iconw_gauntlet","icons/iconw_shotgun","icons/iconw_machinegun","icons/iconw_grenade",
+    "icons/iconw_rocket","icons/iconw_lightning","icons/iconw_railgun","icons/iconw_plasma",
+    "icons/iconw_bfg","icons/iconw_grapple","icons/icona_shotgun","icons/icona_machinegun",
+    "icons/icona_grenade","icons/icona_plasma","icons/icona_lightning","icons/icona_rocket",
+    "icons/icona_railgun","icons/icona_bfg","icons/teleporter","icons/medkit",
+    "icons/quad","icons/envirosuit","icons/haste","icons/invis",
+    "icons/regen","icons/flight","icons/iconf_red1","icons/iconf_blu1"]
 end function
 // CG_DrawLoadingIcons
 function drawLoadingIcons(state)
@@ -50,7 +66,12 @@ end function
 function line(result,y,text) result.commands=result.commands+[Draw("text",320,y,0,0,text,"")];return y+27 end function
 // CG_DrawInformation
 function drawInformation(state,serverInfo,systemInfo,motd,message,gametype,svRunning,availableAssets)
-  result=Information([],[]);map=info.value(serverInfo,"mapname");levelshot="levelshots/"+map+".tga";if not availableAssets(levelshot) then levelshot="menu/art/unknownmap" end if
+  levelshot="levelshots/"+info.value(serverInfo,"mapname")+".tga"
+  if not availableAssets(levelshot) then levelshot="menu/art/unknownmap" end if
+  return drawInformationWithShot(state,serverInfo,systemInfo,motd,message,gametype,svRunning,levelshot)
+end function
+function drawInformationWithShot(state,serverInfo,systemInfo,motd,message,gametype,svRunning,levelshot)
+  result=Information([],[])
   result.requestedShaders=[levelshot,"levelShotDetail"];result.commands=[Draw("pic",0,0,640,480,"",levelshot),Draw("detail",0,0,640,480,"","levelShotDetail")]+drawLoadingIcons(state)
   text="Awaiting snapshot...";if state.infoScreenText!="" then text="Loading... "+state.infoScreenText end if;result.commands=result.commands+[Draw("text",320,96,0,0,text,"")];y=148
   if not svRunning then host=clean(commandBuffer.copyString(info.value(serverInfo,"sv_hostname"),1024));y=line(result,y,host);if info.value(systemInfo,"sv_pure")!="" and bytes(info.value(systemInfo,"sv_pure"))[0]==49 then y=line(result,y,"Pure Server") end if;if motd!="" then y=line(result,y,motd) end if;y=y+10 end if

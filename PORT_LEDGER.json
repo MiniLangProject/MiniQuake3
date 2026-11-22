@@ -14799,51 +14799,57 @@
           "original": "CG_DrawInformation",
           "target_files": [
             "src/mq3/client/cgame_info.ml",
-            "src/mq3/client/playable_app.ml"
+            "src/mq3/client/playable_app.ml",
+            "src/mq3/client/map_loading.ml"
           ],
           "status": "tested",
-          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+          "scope": "Retail levelshot, detail, status text and server rules presented during QVM map startup. Compared against cg_info contracts and a captured hardware frame."
         },
         {
           "original": "CG_DrawLoadingIcons",
           "target_files": [
             "src/mq3/client/cgame_info.ml",
-            "src/mq3/client/playable_app.ml"
+            "src/mq3/client/playable_app.ml",
+            "src/mq3/client/map_loading.ml"
           ],
           "status": "tested_exact",
-          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+          "scope": "The original icon coordinates and size limits are compared against unchanged C and checked again in two Retail frame captures."
         },
         {
           "original": "CG_LoadingClient",
           "target_files": [
             "src/mq3/client/cgame_info.ml",
-            "src/mq3/client/playable_app.ml"
+            "src/mq3/client/playable_app.ml",
+            "src/mq3/client/map_loading.ml"
           ],
           "status": "tested",
-          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+          "scope": "Player info, portrait fallback and single-player sound registration in the native port. The match loader shows registered portraits with the local player first."
         },
         {
           "original": "CG_LoadingItem",
           "target_files": [
             "src/mq3/client/cgame_info.ml",
-            "src/mq3/client/playable_app.ml"
+            "src/mq3/client/playable_app.ml",
+            "src/mq3/client/map_loading.ml"
           ],
           "status": "tested",
-          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+          "scope": "Item names and registrations in the native loading-state port. The match loader selects baseq3 icons using CS_ITEMS and registered QVM shaders at the host loading milestone."
         },
         {
           "original": "CG_LoadingString",
           "target_files": [
             "src/mq3/client/cgame_info.ml",
-            "src/mq3/client/playable_app.ml"
+            "src/mq3/client/playable_app.ml",
+            "src/mq3/client/map_loading.ml"
           ],
           "status": "tested",
-          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+          "scope": "Loading state and text updates during host map-load milestones. The timing of individual QVM update-screen calls is not reproduced."
         }
       ],
       "target": [
         "src/mq3/client/cgame_info.ml",
-        "src/mq3/client/playable_app.ml"
+        "src/mq3/client/playable_app.ml",
+        "src/mq3/client/map_loading.ml"
       ],
       "status": "ported",
       "tests": [
@@ -14851,7 +14857,9 @@
         "tests/reference/cgame_info_oracle.c",
         "tests/cgame_info_oracle.ml",
         "tests/cgame_info_contracts.ml",
-        "scripts/test_playable_loading.py"
+        "scripts/test_playable_loading.py",
+        "scripts/test_map_loading_retail.py",
+        "tests/map_loading_retail_probe.ml"
       ]
     },
     {
@@ -46725,11 +46733,12 @@
         {
           "original": "UI_DrawConnectScreen",
           "target_files": [
-            "src/mq3/client/ui_connect.ml"
+            "src/mq3/client/ui_connect.ml",
+            "src/mq3/client/map_loading.ml"
           ],
           "target_symbol": "mq3.client.ui_connect.drawConnectScreen",
           "status": "tested_exact",
-          "scope": "Baseq3 connection/download UI semantics and typed host actions"
+          "scope": "Baseq3 connection/download UI semantics and typed host actions; the productive map loader renders the CA_LOADING overlay over Cgame's levelshot."
         },
         {
           "original": "UI_KeyConnect",
@@ -46760,14 +46769,17 @@
         }
       ],
       "target": [
-        "src/mq3/client/ui_connect.ml"
+        "src/mq3/client/ui_connect.ml",
+        "src/mq3/client/map_loading.ml"
       ],
       "status": "ported",
       "tests": [
         "scripts/test_ui_connect.py",
         "tests/ui_connect_contracts.ml",
         "tests/ui_connect_oracle.ml",
-        "tests/reference/ui_connect_oracle.c"
+        "tests/reference/ui_connect_oracle.c",
+        "scripts/test_map_loading_retail.py",
+        "tests/map_loading_retail_probe.ml"
       ]
     },
     {

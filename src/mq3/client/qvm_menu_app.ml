@@ -7,6 +7,7 @@ import mq3.engine.local_qvm_match as match
 import mq3.engine.local_qvm_ui as localQvmUi
 import mq3.client.original_ui_session as uiSession
 import mq3.client.qvm_preview_app as gameApp
+import mq3.client.map_loading as mapLoading
 import mq3.client.desktop_session as desktopSession
 import mq3.client.desktop_video as desktopVideo
 import mq3.client.demo_playback as demos
@@ -174,6 +175,17 @@ function loadMap(archive,dataRoot,name)
   return bsp.load(mapData)
 end function
 
+function loadLocalMatch(archive,session,qvmRoot)
+  opened=window.open(session.videoWidth,session.videoHeight);if opened is error then return opened end if
+  screen=mapLoading.create(archive,session.mapName,"localhost",true);if screen is error then return screen end if
+  progress=try(mapLoading.show(screen,"maps/"+session.mapName+".bsp",session.videoWidth,session.videoHeight,void,false))
+  if progress is error or not progress then mapLoading.release(screen);if progress is error then return progress end if;session.action="quit";return 0 end if
+  selectedMap=try(loadMap(archive,session.dataRoot,session.mapName))
+  if selectedMap is error then mapLoading.release(screen);return selectedMap end if
+  result=try(gameApp.runMatchWithLoading(archive,selectedMap,session.mapName,qvmRoot,-1,session.settings,session,void,screen,session.videoWidth,session.videoHeight))
+  mapLoading.release(screen);return result
+end function
+
 function switchGame(session,mounted)
   changed=not stringEqualsIgnoreCaseAscii(session.activeGame,mounted.game)
   session.activeGame=mounted.game;session.dataRoot=mounted.dataRoot
@@ -252,9 +264,7 @@ function run(archive,bootstrapMap,qvmRoot)
     session.action=""
     result=0
     if request=="map" or request=="restart" then
-      selectedMap=try(loadMap(activeArchive,session.dataRoot,session.mapName))
-      if selectedMap is error then result=selectedMap
-      else result=try(gameApp.runDesktopMatch(activeArchive,selectedMap,session.mapName,qvmRoot,session.settings,session)) end if
+      result=try(loadLocalMatch(activeArchive,session,qvmRoot))
       if result is error then
         session.notice=result.message
         print "MiniQuake3: "+session.notice
