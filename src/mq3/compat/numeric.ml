@@ -13,33 +13,33 @@ extern function mq3_fdiv(a as double,b as double) from "miniquake3_abi.dll" retu
 extern function mq3_dot3(ax as double,ay as double,az as double,bx as double,by as double,bz as double) from "miniquake3_abi.dll" returns double
 extern function mq3_fsqrt(value as double) from "miniquake3_abi.dll" returns double
 
-function u32(value)
+function u32(value as int) returns int
   return value & 0xffffffff
 end function
 
-function i32(value)
+function inline i32(value as int) returns int
   v = value & 0xffffffff
   if v >= 0x80000000 then return v - 0x100000000 end if
   return v
 end function
 
-function i16(value)
+function i16(value as int) returns int
   v = value & 0xffff
   if v >= 0x8000 then return v - 0x10000 end if
   return v
 end function
 
-function i8(value)
+function i8(value as int) returns int
   v = value & 0xff
   if v >= 0x80 then return v - 0x100 end if
   return v
 end function
 
-function add32(a, b)
+function add32(a as int, b as int) returns int
   return i32(i32(a) + i32(b))
 end function
 
-function mul32(a, b)
+function mul32(a as int, b as int) returns int
   // Split products so the tagged MiniLang integer never needs a full uint64.
   x = u32(a)
   y = u32(b)
@@ -48,15 +48,15 @@ function mul32(a, b)
   return i32(low + (high << 16))
 end function
 
-function shl32(a, b)
+function shl32(a as int, b as int) returns int
   return i32(u32(a) << (b & 31))
 end function
 
-function shr32(a, b)
+function shr32(a as int, b as int) returns int
   return u32(a) >> (b & 31)
 end function
 
-function sar32(a, b)
+function sar32(a as int, b as int) returns int
   return i32(a) >> (b & 31)
 end function
 
@@ -292,16 +292,16 @@ function divBits(a, b)
   return packFloat(sign, result, ea - eb - 28)
 end function
 
-function readU32(data, offset)
+function readU32(data, offset as int)
   if offset < 0 or offset + 4 > len(data) then return error(3001, "readU32 out of range") end if
   return data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24)
 end function
 
-function readI32(data, offset)
+function inline readI32(data, offset as int)
   return i32(readU32(data, offset))
 end function
 
-function writeU32(data, offset, value)
+function writeU32(data, offset as int, value as int)
   if offset < 0 or offset + 4 > len(data) then return error(3001, "writeU32 out of range") end if
   v = u32(value)
   data[offset] = v & 255

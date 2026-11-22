@@ -67,7 +67,7 @@ end function
 
 // Hot PVS tests need one bit, not a freshly copied visibility row.
 // Match clusterPVS's first-row fallback for invalid source clusters.
-function clusterVisible(state,sourceCluster,targetCluster)
+function clusterVisible(state as Visibility,sourceCluster as int,targetCluster as int) returns bool
   if targetCluster<0 or (targetCluster>>3)>=state.clusterBytes then return false end if
   offset=0
   if sourceCluster>=0 and sourceCluster<state.numClusters and state.vised then offset=sourceCluster*state.clusterBytes end if

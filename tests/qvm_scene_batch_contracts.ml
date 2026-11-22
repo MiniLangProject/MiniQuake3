@@ -21,6 +21,11 @@ end function
 
 function main(args)
   count=0;white=[255,255,255,255];red=[255,32,16,255]
+  vertexSource=sourceTriangle(0.0,white,white,0)
+  count=count+require(sceneBatch.sourceVertexId(vertexSource,1,99)==99,"missing QVM vertex IDs use the fallback index")
+  vertexSource.vertexIds=[11,-1,13]
+  count=count+require(sceneBatch.sourceVertexId(vertexSource,0,99)==11 and sceneBatch.sourceVertexId(vertexSource,1,99)==99,"QVM vertex IDs preserve valid slots and replace negative slots")
+  count=count+require(not sceneBatch.depthHack(vertexSource) and sceneBatch.renderable(sceneMaterials.ResolvedTriangle(vertexSource,-1)),"default scene triangle remains visible outside the weapon depth range")
   catalog=catalogFor([sourceTriangle(1.0,white,white,0)],[]);prepared=sceneBatch.build(catalog);if prepared is error then return prepared end if
   firstBinding=catalog.triangles[0];sceneMaterials.refresh(catalog,1,[sourceTriangle(3.0,red,white,0)],[],[],336)
   count=count+require(firstBinding.triangle.positions[0][0]==3.0 and prepared.geometry.triangles[0].vertices[0].position[0]==1.0,"mutable material wrappers do not mutate a previously prepared view geometry")

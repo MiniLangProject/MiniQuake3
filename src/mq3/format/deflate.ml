@@ -19,7 +19,7 @@ function fail(message)
   return error(3500, "DEFLATE: " + message)
 end function
 
-function readBits(reader, count)
+function readBits(reader as Bits, count as int)
   while reader.available < count
     if reader.offset >= len(reader.data) then return fail("truncated bitstream") end if
     reader.value = reader.value | (reader.data[reader.offset] << reader.available)

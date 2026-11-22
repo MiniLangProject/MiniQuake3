@@ -40,7 +40,7 @@ end function
 
 function fail(message) return error(3420,"QVM syscall: "+message) end function
 
-function argument(vm,address,index)
+function argument(vm,address as int,index as int)
   at=address+index*4
   if address<0 or index<0 or at<address or at+4>len(vm.data) then return fail("argument vector outside VM memory") end if
   return n.readI32(vm.data,at)

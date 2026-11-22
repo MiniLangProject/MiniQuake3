@@ -74,7 +74,7 @@ function SquareRootFloat(number) return squareRootFloat(number) end function
 
 // The support point is consumed by one dot product. Keep the coordinates
 // scalar so clipping a brush does not allocate a corner for every plane.
-function boxSupportDot(normal,mins,maxs)
+function boxSupportDot(normal as array,mins as array,maxs as array)
   x=mins[0];y=mins[1];z=mins[2]
   if normal[0]<0.0 then x=maxs[0] end if
   if normal[1]<0.0 then y=maxs[1] end if

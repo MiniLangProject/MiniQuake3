@@ -19,8 +19,9 @@ function main(args)
   textured=Triangle([a,b,c],1,7)
   fallback=Triangle([a,c,b],0,9)
   sky=Triangle([a,b,c],2,11)
-  batch=worldBatch.build(RenderData([textured,fallback,sky]),[-1,81,-1],[false,false,true]);if batch is error then return batch end if
   count=0
+  count=count+require(worldBatch.isSky(sky,[false,false,true]) and not worldBatch.isSky(Triangle([a,b,c],-1,0),[false]) and not worldBatch.isSky(Triangle([a,b,c],3,0),[false]),"sky lookup preserves positive, negative and out-of-range texture cases")
+  batch=worldBatch.build(RenderData([textured,fallback,sky]),[-1,81,-1],[false,false,true]);if batch is error then return batch end if
   count=count+require(batch.sourceTriangles==3 and batch.drawableTriangles==2 and batch.skippedSky==1,"world filtering counts")
   count=count+require(batch.commands.count==2 and len(batch.commands.data)==384,"retained command capacity")
   count=count+require(numeric.readI32(batch.commands.data,0)==81 and numeric.readI32(batch.commands.data,4)==7,"base and lightmap slots retained")

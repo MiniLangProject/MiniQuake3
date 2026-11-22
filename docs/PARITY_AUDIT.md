@@ -4,6 +4,23 @@ Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Compiler-Typverträge und Inlining, 22. November 2026
+
+Die 12.618 internen MiniLang-Funktionen wurden inventarisiert und mit einem
+instrumentierten 2.200-Frame-Retail-Replay priorisiert. Die häufigen Integer-,
+Bytezugriffs-, DEFLATE-, Kollisions-, Renderer- und VM-Helfer werden einzeln auf
+sichere Parameter- und Rückgabetypen geprüft. Dynamische Fehler- und
+`void`-Rückgaben bleiben erhalten; blind gesetzte Typen könnten die
+Quake-Fehlersemantik ändern. Explizites Inlining bleibt nur dort, wo es den
+generierten Code und einen isolierten A/B-Vergleich tatsächlich verbessert.
+Die vollständige Typisierung des Ports ist **nicht** abgeschlossen. Inventur,
+Aufrufzahlen, Differentialtests und Messgrenzen stehen im
+[Evaluationsprotokoll](verification/2026-11-22-function-contract-evaluation.md).
+Der aktuelle breite `verify.py`-Lauf stoppt unter dem gepinnten Compiler
+an einem auch mit unverändertem `HEAD` reproduzierten Compilerfehler in
+älteren Oracle-Fixtures; die gezielten Retail- und Differentialtests
+des Pakets sind separat bestanden.
+
 ## Film- und Menüwechsel-Audit, 22. November 2026
 
 Der Desktop-Filmpfad hielt bisher jeden bereits präsentierten `Draw`-Auftrag

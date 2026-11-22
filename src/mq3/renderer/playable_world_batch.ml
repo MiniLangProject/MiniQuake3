@@ -21,7 +21,7 @@ struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriang
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
-function isSky(triangle,flags) return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
+function isSky(triangle,flags as array) returns bool return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
 const MAX_BSP_LIGHTMAPS=256
 function resolvedLightmapSlot(triangle) slot=triangle.lightmapIndex;if slot<0 or slot>=MAX_BSP_LIGHTMAPS then return -1 end if;return slot end function
 function appendResolved(commands,triangle,baseSlot,useLightmap)
@@ -49,7 +49,7 @@ function materialFor(catalog,textureIndex) if catalog==void then return void end
 function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or not stage.depthWrite or stage.depthEqual or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or stage.tcGen=="vector" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
 function dynamicMaterialStage(material,stage) return material.polygonOffset or len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
-function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
+function contains(values as array,wanted as int) returns bool for each value in values if value==wanted then return true end if end for;return false end function
 function materialBefore(left,right) return left.sort<right.sort or (left.sort==right.sort and left.textureIndex<right.textureIndex) end function
 function sortedMaterials(values)
   result=array(len(values),void);if len(values)>0 then copyArray(result,0,values,0,len(values));sorting.sortBy(result,materialBefore) end if
@@ -273,7 +273,7 @@ function attachDynamicLightsOriented(batch,renderData,receiveFlags,catalog,origi
   lightBatch=dynamicLights.buildOriented(renderData,receiveFlags,origins,axes,bounds);if lightBatch is error then return lightBatch end if;batch.dlightBatch=lightBatch;batch.dlightCatalog=catalog;return len(lightBatch.triangles)
 end function
 
-function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
+function identityAffine() returns UvAffine return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
 function affineFor(stage,nowMilliseconds)
   result=identityAffine();seconds=nowMilliseconds*0.001
   for each mod in stage.uvMods
@@ -290,10 +290,10 @@ function affineFor(stage,nowMilliseconds)
   end for
   return result
 end function
-function applyAffine(transform,uv) return [uv[0]*transform.m00+uv[1]*transform.m01+transform.tx,uv[0]*transform.m10+uv[1]*transform.m11+transform.ty] end function
+function applyAffine(transform as UvAffine,uv as array) returns array return [uv[0]*transform.m00+uv[1]*transform.m01+transform.tx,uv[0]*transform.m10+uv[1]*transform.m11+transform.ty] end function
 function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" then return true end if end for;return false end function
 function hasEntityTranslate(stage) for each mod in stage.uvMods if mod.kind=="entitytranslate" then return true end if end for;return false end function
-function hasDeform(deforms,kind) for each deform in deforms if deform.kind==kind then return true end if end for;return false end function
+function hasDeform(deforms as array,kind as string) returns bool for each deform in deforms if deform.kind==kind then return true end if end for;return false end function
 function containsPosition(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 function passHasFog(pass)
   if pass.fogAdjustment=="none" then return false end if
@@ -332,7 +332,7 @@ function autospriteQuad(pass,triangleIndex,leftDir,upDir)
   left=[leftDir[0]*radius,leftDir[1]*radius,leftDir[2]*radius];up=[upDir[0]*radius,upDir[1]*radius,upDir[2]*radius]
   return [[mid[0]+left[0]+up[0],mid[1]+left[1]+up[1],mid[2]+left[2]+up[2]],[mid[0]-left[0]+up[0],mid[1]-left[1]+up[1],mid[2]-left[2]+up[2]],[mid[0]-left[0]-up[0],mid[1]-left[1]-up[1],mid[2]-left[2]-up[2]],[mid[0]+left[0]-up[0],mid[1]+left[1]-up[1],mid[2]+left[2]-up[2]]]
 end function
-function autospriteCorner(triangleIndex,vertex)
+function autospriteCorner(triangleIndex as int,vertex as int) returns int
   if triangleIndex%2==0 then if vertex==0 then return 0 else if vertex==1 then return 1 else return 3 end if end if
   if vertex==0 then return 3 else if vertex==1 then return 1 else return 2 end if
 end function
