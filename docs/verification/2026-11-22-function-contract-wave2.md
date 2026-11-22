@@ -87,9 +87,12 @@ unveränderten Typisierungs-EXE ergaben identische Spielzähler:
 
 Die Abweichung von 0,27 FPS liegt klar in der Laufstreuung. Ein
 Gesamtspielgewinn ist damit **nicht nachgewiesen**. EXE-, PK3- und QVM-SHA-256,
-alle sechs Rohlogs und die Spielzähler sind unter
-`build/reports/function_contract_wave2_game_ab.json` und
-`build/reports/function_contract_wave2_game_ab_logs/` aufgezeichnet. Der
+die Spielzähler und die sechs Log-SHA-256 sind unter
+`build/reports/function_contract_wave2_game_ab.json` aufgezeichnet. Der
+damalige Benchmarktreiber schrieb die Rohlogs in einen gemeinsam genutzten
+Ordner; die dritte Messrunde überschrieb sie. Die ursprünglichen sechs
+Wave-2-Rohlogs sind daher nicht mehr verfügbar. Der Treiber verwendet
+inzwischen pro Ergebnisdatei einen eigenen Log-Ordner. Der
 einzelne produktive Replay liegt unter
 `build/reference/controls_render_replay/types_wave2_2200/moving.json`.
 

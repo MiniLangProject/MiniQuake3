@@ -300,12 +300,12 @@ function slotAt(stage,nowMilliseconds) if stage==void or len(stage.slots)==0 the
 // tr_backend.c subtracts refEntity_t.shaderTime before every shader-time
 // consumer runs. Keep that conversion in one place so animated images,
 // waves, deforms and tcMods all observe the same per-entity clock.
-function shaderSeconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime)
+function shaderSeconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime) returns float
   value=n.fsub(n.fsub(n.f32(nowMilliseconds*0.001),n.f32(entityShaderTime)),n.f32(timeOffset))
   if clampTime!=0.0 and value>=clampTime then return n.f32(clampTime) end if
   return value
 end function
-function shaderMilliseconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime) return n.fmul(shaderSeconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime),1000.0) end function
+function inline shaderMilliseconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime) returns float return n.fmul(shaderSeconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime),1000.0) end function
 function entityMilliseconds(nowMilliseconds,shaderTime) return shaderMilliseconds(nowMilliseconds,shaderTime,0.0,0.0) end function
 function frameIndexEntity(stage,nowMilliseconds,shaderTime) return frameIndex(stage,entityMilliseconds(nowMilliseconds,shaderTime)) end function
 function slotAtEntity(stage,nowMilliseconds,shaderTime) if stage==void or len(stage.slots)==0 then return -1 end if;return stage.slots[frameIndexEntity(stage,nowMilliseconds,shaderTime)] end function

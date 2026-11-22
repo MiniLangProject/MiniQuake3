@@ -43,9 +43,11 @@ end function
     prod=(ROOT/FILES[0]).read_text();body=prod.split("function buildClientSnapshot(",1)[1].split("\nend function",1)[0]
     if "numbers=EntityNumbers(void,0);builder=snapshotLists.List.withCapacity(32)" not in body or "numbers=entityNumbers()" in body or "selected=builder.toArray()" not in body:raise RuntimeError("Production snapshot must use bounded builder")
     match=(ROOT/FILES[1]).read_text()
+    input_body=match.split("function snapshotInput(",1)[1].split("\nend function",1)[0]
+    if "ringCapacity=context.entityCount" not in input_body or "ringCapacity<1" not in input_body or "ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES" not in input_body or ",1024)" in input_body:raise RuntimeError("Shared snapshot ring policy missing")
     for name in ["snapshotCore","publishBotSnapshots"]:
         body=match.split("function "+name+"(",1)[1].split("\nend function",1)[0]
-        if "ringCapacity=context.entityCount" not in body or "ringCapacity<1" not in body or "ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES" not in body or ",1024)" in body:raise RuntimeError("Local fresh ring policy missing: "+name)
+        if "input=snapshotInput(value)" not in body or ",1024)" in body:raise RuntimeError("Snapshot consumer bypasses shared input policy: "+name)
     negatives=[]
     for label,bad in [("legacy1024factory",prod.replace("numbers=EntityNumbers(void,0);builder=snapshotLists.List.withCapacity(32)","numbers=entityNumbers();builder=snapshotLists.List.withCapacity(32)")),("unboundedInitialBuilder",prod.replace("snapshotLists.List.withCapacity(32)","snapshotLists.List.withCapacity(1024)"))]:
         badbody=bad.split("function buildClientSnapshot(",1)[1].split("\nend function",1)[0]

@@ -1,8 +1,8 @@
-import mq3.renderer.tr_public as public
+import mq3.renderer.tr_public as trPublic
 import mq3.renderer.qgl as qgl
 import mq3.renderer.tr_local as local
 function main(args)
-  print "api="+str(public.REF_API_VERSION)
+  print "api="+str(trPublic.REF_API_VERSION)
   print "pub=116,0,60,112"
   print "imp=104,0,68,100"
   print "qgl=84e0,84c0,83a0,83a1"

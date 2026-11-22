@@ -24,6 +24,17 @@ mit dem gepinnten Compiler. Der breite `verify.py`-Lauf und der erneute
 Retail-Replay sind im [zweiten Evaluationsprotokoll](verification/2026-11-22-function-contract-wave2.md)
 belegt. Die verbleibenden Funktionen sind weiter auf konkrete Aufruftypen,
 Fehlerpfade und A/B-Leistung zu prüfen.
+Die [dritte Profilrunde](verification/2026-11-22-function-contract-wave3.md)
+trennte Lade- von Match-Aufrufen, typisierte Shader-Zeit und PCM-Lesen und
+prüfte ein gezieltes Inline. Ein isolierter Shader-Benchmark gewann etwa 7 %;
+der abwechselnde Retail-Spielvergleich zeigte keinen belastbaren FPS-Gewinn.
+Der breite Verifikationslauf stoppte nach 115 erfolgreichen Gates an einem
+veralteten Client-Frame-Testanker. Dieser und weitere überholte Prüfanker für
+MD3, BSP-Patches, Kollisions-Frontier, Trace-Speicher und Snapshot-Ring sind
+aktualisiert und mit Retail-Daten separat bestanden. Der komplette Rest der
+Suite ist noch nicht grün nachgewiesen; die fortgesetzten Läufe und Grenzen
+stehen im dritten Evaluationsprotokoll. Der Windows-Produktbuild erreicht mit
+lokalem Retail-`baseq3` das Originalmenü in 0,52 Sekunden.
 
 ## Film- und Menüwechsel-Audit, 22. November 2026
 

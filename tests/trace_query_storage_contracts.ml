@@ -5,7 +5,7 @@ import mq3.server.world as querySpatial
 struct QueryShape contents end struct
 struct QueryWorld brushes surfaces end struct
 struct QueryTrace fraction end struct
-struct QueryWork world trace seen seenPatches mask curves end struct
+struct QueryWork world trace seen seenPatches visitSerial mask curves end struct
 struct QueryLeaf brushes surfaces end struct
 struct QueryEntity number absmin absmax nextEntity end struct
 struct QueryScene entities sectors end struct
@@ -23,7 +23,7 @@ function main(args)
   checked=checked+queryRequire(typeof(flags[0])=="bytes" and typeof(flags[1])=="bytes" and len(flags[0])==987 and len(flags[1])==2097,"productive Work constructor uses exact-length byte flags")
   checked=checked+queryRequire(newFlagBytes>0 and newFlagBytes<4096 and oldFlagBytes>=24000 and newFlagBytes<oldFlagBytes/4,"per-trace seen allocation shrinks below4KiB and quarter of legacy")
   checked=checked+queryRequire(flags[0][986]==0 and flags[1][2096]==0,"byte flags start clear at boundary indices")
-  second=queryProbe.productiveSeenFlags(world);work=QueryWork(world,QueryTrace(1.0),flags[0],flags[1],1,true)
+  second=queryProbe.productiveSeenFlags(world);work=QueryWork(world,QueryTrace(1.0),flags[0],flags[1],flags[2],1,true)
   visited=queryCollision.throughLeaf(work,QueryLeaf([2,2,986],[0,1,1,2096]),false);if visited is error then return visited end if
   checked=checked+queryRequire(flags[0][2]==1 and flags[0][986]==1 and flags[1][1]==1 and flags[1][2096]==1 and flags[1][0]==0,"real throughLeaf suppresses duplicate brush/patch indices and skips null surface")
   checked=checked+queryRequire(second[0][2]==0 and second[1][1]==0,"separate traces own separate seen storage")

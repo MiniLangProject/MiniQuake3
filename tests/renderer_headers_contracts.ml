@@ -1,15 +1,15 @@
-import mq3.renderer.tr_public as public
+import mq3.renderer.tr_public as trPublic
 import mq3.renderer.qgl as qgl
 import mq3.renderer.qgl_linked as linked
 import mq3.renderer.tr_local as local
 function req(ok,message) if not ok then return error(7961,"renderer headers: "+message) end if;return 1 end function
 function main(args)
   count=0
-  count=count+req(public.compatible(8) and not public.compatible(7),"REF API")
-  count=count+req(len(public.declaredExportNames())==30 and len(public.exportNames())==29 and len(public.importNames())==27,"public table counts")
-  count=count+req(public.exportNames()[0]=="Shutdown" and public.exportNames()[28]=="inPVS","export order")
-  count=count+req(public.importNames()[0]=="Printf" and public.importNames()[26]=="CIN_RunCinematic","import order")
-  count=count+req(public.entrypointName()=="GetRefAPI","entrypoint")
+  count=count+req(trPublic.compatible(8) and not trPublic.compatible(7),"REF API")
+  count=count+req(len(trPublic.declaredExportNames())==30 and len(trPublic.exportNames())==29 and len(trPublic.importNames())==27,"public table counts")
+  count=count+req(trPublic.exportNames()[0]=="Shutdown" and trPublic.exportNames()[28]=="inPVS","export order")
+  count=count+req(trPublic.importNames()[0]=="Printf" and trPublic.importNames()[26]=="CIN_RunCinematic","import order")
+  count=count+req(trPublic.entrypointName()=="GetRefAPI","entrypoint")
   count=count+req(len(qgl.coreEntryPoints())==341,"qgl core count")
   count=count+req(len(qgl.wglEntryPoints())==24,"WGL count")
   count=count+req(len(qgl.platformEntryPoints())==12,"platform GL count")

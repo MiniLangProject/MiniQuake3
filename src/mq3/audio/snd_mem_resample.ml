@@ -12,7 +12,7 @@ const MAX_OUTPUT_SAMPLES=67108864
 
 function fail(message) return error(7660,"S_LoadSound: "+message) end function
 
-function signed16(data,offset)
+function signed16(data as bytes,offset as int) returns int
   value=data[offset]|(data[offset+1]<<8)
   if value>=32768 then value=value-65536 end if
   return value

@@ -34,6 +34,7 @@ def main():
              ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_info.py",[]),("test_client_connect.py",[]),("test_ip_filters.py",[]),("test_team_changes.py",[]),("test_follow_tournament.py",[]),("test_intermission.py",[]),("test_client_commands.py",[]),("test_server_commands.py",[]),("test_weapons.py",[]),("test_client_frame.py",[]),("test_client_main_frame.py",[]),("test_client_think.py",[]),
              ("test_tournament.py",[]),("test_votes.py",[]),("test_vote_commands.py",[]),("test_team_status.py",[]),("test_game_cvars.py",[]),("test_full_frame.py",[])]
     scripts.insert(1,("test_native_build_lock.py",[]))
+    scripts.insert(2,("test_release_toolchain_cache.py",[]))
     scripts.insert(2,("test_audit_function_contracts.py",[]))
     scripts.insert(4,("test_numeric_native.py",[]))
     math_gate=next(index for index,(name,_) in enumerate(scripts) if name=="test_math.py")

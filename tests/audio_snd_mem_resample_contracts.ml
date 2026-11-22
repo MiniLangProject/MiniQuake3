@@ -35,5 +35,8 @@ function main(args)
   count=count+req(try(sndmem.resampleRaw(bytes([0]),3999,1,1,22050)) is error,"low input rate rejected")
   count=count+req(try(sndmem.resampleRaw(bytes([0]),22050,1,1,192001)) is error,"high output rate rejected")
   count=count+req(try(sndmem.resampleRaw(bytes([0]),22050,1,2,22050)) is error,"truncated PCM rejected")
+  count=count+req(typeof(sndmem.signed16(pcm16([-32768]),0))=="int","signed16 result retains integer tag")
+  count=count+req(try(sndmem.signed16(bytes([0]),0)) is error,"signed16 preserves bounds error")
+  count=count+req(try(sndmem.signed16("bad",0)) is error,"signed16 rejects non-PCM data")
   print("PASS: "+str(count)+" snd_mem resample contracts");return 0
 end function

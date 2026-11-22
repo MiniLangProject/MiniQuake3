@@ -79,7 +79,7 @@ def main() -> None:
             parser.error(f"missing input: {path}")
     if sha256(baseline) == sha256(candidate):
         parser.error("baseline and candidate binaries are identical")
-    folder = args.output.resolve().parent / "function_contract_game_ab_logs"
+    folder = args.output.resolve().parent / (args.output.stem + "_logs")
     folder.mkdir(parents=True, exist_ok=True)
     executables = {"baseline": baseline, "candidate": candidate}
     samples = {name: [] for name in executables}

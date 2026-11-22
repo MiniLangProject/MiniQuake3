@@ -34,7 +34,10 @@ def main():
         if name == "throughTree":
             # Observe local capacity/frontier only; all branches and leaf order
             # remain the exact productive source rather than a copied engine.
-            function = function.replace("item = stack.pop()", "if stack.len()>work.peakPending then work.peakPending=stack.len() end if\n    item = stack.pop()")
+            pop = "item=stack.pop()"
+            if function.count(pop) != 1:
+                raise RuntimeError("productive DFS pop changed; update instrumentation")
+            function = function.replace(pop, "if stack.len()>work.peakPending then work.peakPending=stack.len() end if\n    " + pop, 1)
             function = function.replace("  return void\nend function", "  work.peakCapacity=stack.cap\n  return void\nend function")
             if "work.peakCapacity=stack.cap" not in function:
                 raise RuntimeError("productive DFS shape changed; update instrumentation")
@@ -63,7 +66,7 @@ def main():
         raise RuntimeError(result)
     report = {"passed": True, "contracts": 35, "result": result,
               "allocation_probe": {"new_trace_bytes": int(measured[1]), "legacy_trace_bytes": int(measured[2])},
-              "scope": "Exact productive DFS leaf order/pruning against frozen legacy, depth80 frontier grows beyond32, BSP4096 nodes with narrow frontier retains32 slots, popped references cleared and per-call ownership.",
+              "scope": "Exact productive DFS leaf order/pruning against frozen legacy, depth80 frontier grows beyond32, BSP4096 nodes with narrow frontier retains32 slots and no pending branch, popped references cleared and per-call ownership.",
               "sources": {str(p.relative_to(ROOT)).replace("\\", "/"): sha(p) for p in (source, legacy, test, Path(__file__).resolve())},
               "binary_sha256": sha(executable)}
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n")

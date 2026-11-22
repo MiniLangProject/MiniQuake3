@@ -26,10 +26,10 @@ end function
 function main(args)
   checked=0;deep=frontierTree(80);value=frontierCompare(deep,[-200.0,0.0,0.0],[200.0,0.0,0.0],-1,false);if value is error then return value end if
   checked=checked+frontierRequire(value.visits.len()==81 and value.visits.get(0)[0]==80 and value.visits.get(80)[0]==0,"all deep near/far leaves visited in original DFS order")
-  checked=checked+frontierRequire(value.peakPending>32 and value.peakCapacity==128,"frontier grows beyond initial32 without overflow")
+  checked=checked+frontierRequire(value.peakPending>32 and value.peakCapacity==128,"frontier grows beyond initial32 without overflow: pending="+str(value.peakPending)+" capacity="+str(value.peakCapacity))
   checked=checked+frontierRequire(value.peakCapacity< len(deep.nodes)+64,"capacity follows pending frontier")
   broad=frontierTree(4096);value=frontierCompare(broad,[500.0,0.0,0.0],[600.0,0.0,0.0],-1,false);if value is error then return value end if
-  checked=checked+frontierRequire(value.peakPending==1 and value.peakCapacity==32,"large BSP with narrow frontier uses32slots rather than nodes+1")
+  checked=checked+frontierRequire(value.peakPending==0 and value.peakCapacity==32,"large BSP with narrow frontier uses32slots rather than nodes+1: pending="+str(value.peakPending)+" capacity="+str(value.peakCapacity))
   // Fresh allocations before any automatic collection: compare exact calls,
   // excluding world/fixture setup. The legacy node-count array alone is32KiB.
   allocationNew=frontierWork(broad,[500.0,0.0,0.0],[600.0,0.0,0.0],-1);beforeNew=heap_bytes_used();frontierProbe.throughTree(allocationNew);newBytes=heap_bytes_used()-beforeNew

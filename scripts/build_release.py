@@ -46,6 +46,34 @@ def unpack_checked(package: Path, destination: Path) -> None:
         archive.extractall(root)
 
 
+def extraction_matches(package: Path, destination: Path) -> bool:
+    """Reuse a published compiler only when every unpacked byte matches the ZIP."""
+    if not destination.is_dir():
+        return False
+    root = destination.resolve()
+    expected: set[str] = set()
+    with zipfile.ZipFile(package) as archive:
+        for item in archive.infolist():
+            target = (root / item.filename).resolve()
+            if not target.is_relative_to(root):
+                raise RuntimeError("Unsafe compiler archive path: " + item.filename)
+            if (item.external_attr >> 16) & 0o170000 == 0o120000:
+                raise RuntimeError("Symbolic links are not allowed in compiler packages")
+            if item.is_dir():
+                continue
+            expected.add(item.filename)
+            if not target.is_file() or target.stat().st_size != item.file_size:
+                return False
+            digest = hashlib.sha256()
+            with archive.open(item) as source:
+                for chunk in iter(lambda: source.read(1024 * 1024), b""):
+                    digest.update(chunk)
+            if sha(target) != digest.hexdigest():
+                return False
+    actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
+    return actual == expected
+
+
 def prepare_compiler() -> tuple[Path, Path]:
     cache = ROOT / "build/toolchains"
     cache.mkdir(parents=True, exist_ok=True)
@@ -63,11 +91,13 @@ def prepare_compiler() -> tuple[Path, Path]:
                 partial.replace(package)
             finally:
                 partial.unlink(missing_ok=True)
-        # Re-extract the verified package so a locally edited compiler or stdlib
-        # cannot silently masquerade as the pinned published toolchain.
-        if extracted.exists():
-            shutil.rmtree(extracted)
-        unpack_checked(package, extracted)
+        # A second build may start while Windows is executing this compiler.
+        # Validate the whole extraction before reusing it; never delete a
+        # healthy in-use mlc.exe just to repeat the same extraction.
+        if not extraction_matches(package, extracted):
+            if extracted.exists():
+                shutil.rmtree(extracted)
+            unpack_checked(package, extracted)
         compilers = [p for p in extracted.rglob("*.exe") if p.name in ("mlc.exe", "mlc_win64.exe")]
         libraries = [p.parent for p in extracted.rglob("std/fs.ml")]
         if len(compilers) != 1 or len(libraries) != 1:

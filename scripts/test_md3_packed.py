@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import struct
@@ -80,7 +81,7 @@ def corpus(out, archive):
     return manifest,retail_count,asset_hashes,len([kind for kind,_ in entries if kind=="bad"])
 
 
-def negative_eager_control(out, retail_count, compiler):
+def negative_eager_control(out, retail_count, compiler, library_root):
     """A silent fallback to eager load must fail the representation invariant."""
     source=(ROOT/"src/mq3/format/md3.ml").read_text()
     needle="function loadPacked(data) return loadMode(data,true) end function"
@@ -92,7 +93,7 @@ def negative_eager_control(out, retail_count, compiler):
     test.write_text((ROOT/"tests/md3_packed_retail_probe.ml").read_text().replace("mq3.format.md3 as packedReader","mq3.tests.eager_md3 as packedReader"),encoding="utf-8",newline="\n")
     manifest=negative/"manifest.txt";manifest.write_text("ok|"+str(out/(str(retail_count)+"-fixture.md3"))+"\n",encoding="utf-8",newline="\n")
     executable=negative/"eager_probe.exe"
-    run([compiler,test,executable,"-I",out/"modules","-I",ROOT/"src","-I",ROOT/"artifacts/toolchain"],ROOT/"build",log=negative/"build.log",timeout=900)
+    run([compiler,test,executable,"-I",out/"modules","-I",ROOT/"src","-I",library_root],ROOT/"build",log=negative/"build.log",timeout=900)
     result=subprocess.run([str(executable),str(manifest)],cwd=ROOT/"build",text=True,capture_output=True,timeout=60)
     output=result.stdout+result.stderr;(negative/"result.log").write_text(output,encoding="utf-8")
     if result.returncode==0 or "packed loader eagerly allocated decoded vertex frames" not in output:
@@ -106,12 +107,21 @@ def main():
     if archive is None: raise RuntimeError("Retail pak0.pk3 missing")
     out=ROOT/"build/reference/md3-packed";out.mkdir(parents=True,exist_ok=True)
     commit,baseline_sources=frozen_modules(out);manifest,retail_count,assets,malformed=corpus(out,archive)
-    compiler=ROOT/"artifacts/toolchain/build/mlc_win64.exe";executable=out/"probe.exe"
+    mode=os.environ.get("MQ3_BUILD_TOOLCHAIN","frozen")
+    if mode=="release":
+        from build_release import prepare_compiler
+        compiler,library_root=prepare_compiler()
+    elif mode=="frozen":
+        compiler=ROOT/"artifacts/toolchain/build/mlc_win64.exe"
+        library_root=ROOT/"artifacts/toolchain"
+    else:
+        raise RuntimeError("Unknown MQ3_BUILD_TOOLCHAIN: "+mode)
+    executable=out/"probe.exe"
     source=ROOT/"tests/md3_packed_retail_probe.ml"
-    run([compiler,source,executable,"-I",out/"modules","-I",ROOT/"src","-I",ROOT/"artifacts/toolchain","--heap-reserve","1g","--heap-commit","32m","--gc-limit","256m"],ROOT/"build",log=out/"build.log",timeout=900)
+    run([compiler,source,executable,"-I",out/"modules","-I",ROOT/"src","-I",library_root,"--heap-reserve","1g","--heap-commit","32m","--gc-limit","256m"],ROOT/"build",log=out/"build.log",timeout=900)
     output=run([executable,manifest],ROOT/"build",log=out/"probe.log",timeout=1200).strip()
     if not output.startswith("PASS: packed MD3 files=") or "eagerVertexFrames=0 inputIndependent=true temporaryReferenceFrames=true publicLoadPreserved=true" not in output: raise RuntimeError(output)
-    negative=negative_eager_control(out,retail_count,compiler)
+    negative=negative_eager_control(out,retail_count,compiler,library_root)
     registry=(ROOT/"src/mq3/engine/local_qvm_match.ml").read_text();body=registry.split("function registerModel(context,name)",1)[1].split("\nend function",1)[0]
     if body.count("md3.loadPacked(")!=2 or "md3.load(" in body: raise RuntimeError("Productive base/LOD model registration must use packed load")
     files=["src/mq3/format/md3.ml","src/mq3/renderer/surface_md3.ml","src/mq3/engine/local_qvm_match.ml","src/mq3/engine/local_qvm_ui.ml","src/mq3/client/qvm_menu_app.ml","tests/md3_packed_retail_probe.ml","scripts/test_md3_packed.py"]
