@@ -79,6 +79,9 @@ Drei zusätzliche A/B-Paare gegen die 4.096er-Version ergaben auf `q3dm1`
 96,31 statt 92,71 FPS, P99 33 statt 41 ms und maximale Framezeit 47 statt
 66 ms im Median. Auf `q3dm0` blieb P99 im Median bei 44 ms; die FPS lagen
 bei 82,00 statt 81,58. Dort trat ein einzelner 77-ms-Kandidatenframe auf.
+Ein instrumentierter q3dm0-Kampf ordnet die verbliebenen langsamen Frames
+vor allem Spiegelportal-Vorbereitung und Zeichnen zu; beide Pfade bleiben
+eine messbare Leistungsgrenze.
 Langzeit- und andere Botkombinationen bleiben offen.
 [Ursache, Tests und A/B-Läufe](verification/2026-11-23-mark-cache.md)
 

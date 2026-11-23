@@ -52,7 +52,11 @@ function markTriangles(map,faces,cache)
     if cache!=void then
       if len(triangles)>MIN_FACE_CACHE_TRIANGLES and not geometry.truncated then
         cache.faceCacheEnabled=true;offset=0
-        for each face in faces
+        for index=0 to len(faces)-1
+          face=faces[index]
+          duplicate=false
+          if index>0 then for previous=0 to index-1 if faces[previous]==face then duplicate=true;break end if end for end if
+          if duplicate then continue end if
           if cache.faceTriangles[face]!=void then continue end if
           first=offset
           while offset<len(triangles) and triangles[offset].faceIndex==face offset=offset+1 end while

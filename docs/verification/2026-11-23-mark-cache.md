@@ -97,9 +97,29 @@ Spielereignissen (752 Positionswechsel, 1.650 Angriffskommandos,
 77-ms-Maximalframe statt 62 ms in der entsprechenden Baseline; diese
 Einzelspitze ist nicht beseitigt. Die Median-Maxima waren 62→64 ms.
 
-Fünf Original-C-Datensätze, 29 Verträge einschließlich Duplikaten und
-einer 900-Dreiecke-BSP-Fläche sowie die Retail-Projektion bestanden.
+Fünf Original-C-Datensätze, 30 Verträge einschließlich Duplikaten, einer
+900-Dreiecke-BSP-Fläche und einer 16.385-Dreiecke-Fläche über dem
+Cache-Limit sowie die Retail-Projektion bestanden.
 Der produktive Hardware-Replay mit 3.200 Frames lief mit 98,05 FPS,
 P99 32 ms und maximal 45 ms durch. Rohdaten:
 `build/reports/mark_face_cache_conditional_q3dm1_ab.json` und
 `build/reports/mark_face_cache_conditional_q3dm0_ab.json`.
+
+Nach einem zusätzlichen Grenzfallfix für doppelte Flächen über dem
+16.384-Dreiecke-Limit liefen beide produktiven Replays erneut durch:
+`q3dm1` mit 95,98 FPS, P99 34 ms, Maximum 47 ms und `q3dm0` mit
+80,02 FPS, P99 44 ms, Maximum 62 ms. Die Spielereigniszähler blieben
+in beiden Fällen identisch. Das sind Einzelkontrollen, keine neuen
+A/B-Messungen.
+
+## Verbleibende Spitzen auf q3dm0
+
+Ein gesonderter instrumentierter 3.200-Frame-Retail-Lauf mit Bot und
+Spiegelportal erfasste 100 Frames ab 35 ms. In diesen Frames entfielen im
+Mittel 16,6 ms auf das Zeichnen und 9,2 ms auf die Portal-Vorbereitung;
+Cgame benötigte 3,3 ms. Um Frame 2.550 erreichten einzelne Portal- und
+Draw-Phasen 23 beziehungsweise 35 ms. 29 der 100 Frames hatten einen
+GC-Zyklus, die übrigen nicht. Dieser Diagnosebuild erreichte P99 46 ms
+und maximal 72 ms. Instrumentierung beeinflusst die Bildrate; die Werte
+beschreiben die verbleibenden Zeitanteile, keine neue FPS-Abnahme.
+Rohdaten: `build/reference/controls_render_replay/q3dm0_after_face_cache_profile/`.
