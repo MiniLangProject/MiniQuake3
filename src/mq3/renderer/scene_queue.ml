@@ -25,7 +25,7 @@ struct State registered hardwareType worldLoaded fogBounds maxPolys maxPolyVerts
 function create(maxPolys,maxPolyVerts)
   if maxPolys<0 or maxPolyVerts<0 then return error(3470,"scene queue: negative capacity") end if
   initialPolys=maxPolys;if initialPolys>64 then initialPolys=64 end if
-  return State(false,0,false,[],maxPolys,maxPolyVerts,[],[],lists.List.withCapacity(initialPolys),0,0,0,0,void,void)
+  return State(false,0,false,[],maxPolys,maxPolyVerts,lists.List.withCapacity(128),lists.List.withCapacity(MAX_DLIGHTS),lists.List.withCapacity(initialPolys),0,0,0,0,void,void)
 end function
 function diagnostic(state,text) if state.diagnosticFn!=void then context=state.context;state.diagnosticFn(context,text) end if;return void end function
 function vector3(value,label) if value==void or len(value)!=3 then return error(3471,"scene queue: invalid "+label) end if;return [value[0],value[1],value[2]] end function
@@ -34,11 +34,11 @@ function tex2(value) if value==void or len(value)!=2 then return error(3471,"sce
 function vertex(value) return PolyVert(vector3(value.xyz,"vertex"),tex2(value.st),color4(value.modulate)) end function
 
 function toggleFrame(state)
-  state.entities=[];state.dlights=[];state.polys.clear();state.numPolyVerts=0
+  state.entities.clear();state.dlights.clear();state.polys.clear();state.numPolyVerts=0
   state.firstSceneEntity=0;state.firstSceneDlight=0;state.firstScenePoly=0;return void
 end function
 function clearScene(state)
-  state.firstSceneDlight=len(state.dlights);state.firstSceneEntity=len(state.entities);state.firstScenePoly=state.polys.len();return void
+  state.firstSceneDlight=state.dlights.len();state.firstSceneEntity=state.entities.len();state.firstScenePoly=state.polys.len();return void
 end function
 
 function fogForVertices(state,vertices)
@@ -80,9 +80,9 @@ function addPolysDecoded(state,hShader,numVerts,vertices,numPolys) return addPol
 
 function addEntity(state,reType,payload)
   if not state.registered then return false end if
-  if len(state.entities)>=ENTITYNUM_WORLD then return false end if
+  if state.entities.len()>=ENTITYNUM_WORLD then return false end if
   if not trtypes.validRefEntityType(reType) then return error(3471,"scene queue: bad reType "+str(reType)) end if
-  state.entities=state.entities+[RefEntity(reType,payload,false)];return true
+  state.entities.add(RefEntity(reType,payload,false));return true
 end function
 
 // QVM refEntity_t is a fixed 140-byte 32-bit ABI record from tr_types.h.
@@ -96,17 +96,17 @@ function decodeEntity(value)
 end function
 
 function addDynamicLight(state,origin,intensity,r,g,b,additive)
-  if not state.registered or len(state.dlights)>=MAX_DLIGHTS or intensity<=0 then return false end if
+  if not state.registered or state.dlights.len()>=MAX_DLIGHTS or intensity<=0 then return false end if
   if state.hardwareType==GLHW_RIVA128 or state.hardwareType==GLHW_PERMEDIA2 then return false end if
-  state.dlights=state.dlights+[DLight(vector3(origin,"light origin"),intensity,[r,g,b],additive)];return true
+  state.dlights.add(DLight(vector3(origin,"light origin"),intensity,[r,g,b],additive));return true
 end function
 function addLight(state,origin,intensity,r,g,b) return addDynamicLight(state,origin,intensity,r,g,b,false) end function
 function addAdditiveLight(state,origin,intensity,r,g,b) return addDynamicLight(state,origin,intensity,r,g,b,true) end function
 
-function sceneEntities(state) return arrays.slice(state.entities,state.firstSceneEntity,len(state.entities)-state.firstSceneEntity) end function
-function sceneLights(state) return arrays.slice(state.dlights,state.firstSceneDlight,len(state.dlights)-state.firstSceneDlight) end function
+function sceneEntities(state) return arrays.slice(state.entities.buf,state.firstSceneEntity,state.entities.len()-state.firstSceneEntity) end function
+function sceneLights(state) return arrays.slice(state.dlights.buf,state.firstSceneDlight,state.dlights.len()-state.firstSceneDlight) end function
 function scenePolys(state) return arrays.slice(state.polys.buf,state.firstScenePoly,state.polys.len()-state.firstScenePoly) end function
 function finishScene(state)
   value=View(sceneEntities(state),sceneLights(state),scenePolys(state))
-  state.firstSceneEntity=len(state.entities);state.firstSceneDlight=len(state.dlights);state.firstScenePoly=state.polys.len();return value
+  state.firstSceneEntity=state.entities.len();state.firstSceneDlight=state.dlights.len();state.firstScenePoly=state.polys.len();return value
 end function

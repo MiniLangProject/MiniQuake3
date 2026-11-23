@@ -57624,7 +57624,7 @@
             "src/mq3/renderer/scene_queue.ml"
           ],
           "status": "tested_subset",
-          "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 24 contracts pass. The live QVM polygon queue uses growing storage and transfers freshly decoded vertex ownership. Render-view snapshots survive clearing and reusing the producer."
+          "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 42 scene-queue contracts pass. The live QVM polygon, entity and light queues retain growable storage across frames and transfer freshly decoded vertex ownership. Render-view snapshots survive clearing and reusing the producer."
         },
         {
           "original": "Complete original source surface",

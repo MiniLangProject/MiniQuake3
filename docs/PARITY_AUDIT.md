@@ -4,6 +4,23 @@ Stand: 2026-11-23. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Wiederkehrende Botkampf-Ruckler und Speicherprofil, 23. November 2026
+
+Ein 6.000-Frame-Retail-Botkampf auf q3dm1 zeigte nach dem Asset-Aufbau
+einen stabilen committed Heap von 368 MiB bei der produktiven
+128-MiB-GC-Schwelle. Die GC-Zyklen laufen jedoch weiter; 39 von 39
+langsamen Frames im ersten Profil und 49 von 50 im direkten Gegenlauf
+trafen mit einem Zyklus zusammen. Cgame-, Geometrie- und Draw-Arbeit
+wechselten ebenfalls stark. Ein stetiger Speicheranstieg ist in dieser
+Probe nicht zu sehen, Ruckelfreiheit ist nicht erreicht.
+
+Entitäts- und Lichtsubmission verwenden nun Kapazität behaltende Listen
+statt wiederholter Arraykopien; 42 Szenenverträge bestehen. Zwei komplette
+Vergleichsläufe zeigten keinen belastbaren FPS-Gewinn. Eine experimentelle
+256-MiB-GC-Schwelle halbierte die Zyklen, erhöhte den committed Heap um
+128 MiB und brachte keinen verlässlichen Gesamtgewinn; produktiv bleiben
+128 MiB. [Profil, Gegenproben und Grenzen](verification/2026-11-23-bot-combat-memory-profile.md)
+
 ## Himmel am Zenit und Botkampf-Ruckler, 23. November 2026
 
 Die Wolken-UVs folgen jetzt der Kugelprojektion aus `R_InitSkyTexCoords`
