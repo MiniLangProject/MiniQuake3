@@ -8,6 +8,7 @@
 #include <limits.h>
 #include <float.h>
 #include <math.h>
+#include <emmintrin.h>
 #ifndef GL_BGRA_EXT
 #define GL_BGRA_EXT 0x80E1
 #endif
@@ -300,6 +301,60 @@ PLAYABLE_API int playable_window_update_stage_vertex(unsigned char *data,int byt
     record->vertexColor[vertex][2]=(unsigned char)(blue<0 ? 0 : blue>255 ? 255 : blue);
     record->vertexColor[vertex][3]=(unsigned char)(alpha<0 ? 0 : alpha>255 ? 255 : alpha);
     return 1;
+}
+
+/* The static lightingSpecular stage changes only vertex alpha with the view.
+ * Normals are packed once by MiniLang; retain Quake's binary32 operation order
+ * and fast inverse square root instead of making 3*N interpreted FFI calls. */
+static float specularMul(float a,float b) { volatile float result=a*b;return result; }
+static float specularAdd(float a,float b) { volatile float result=a+b;return result; }
+static float specularSub(float a,float b) { volatile float result=a-b;return result; }
+static float specularDot(const float *a,const float *b) {
+    return specularAdd(specularAdd(specularMul(a[0],b[0]),specularMul(a[1],b[1])),specularMul(a[2],b[2]));
+}
+static float specularRsqrt(float value) {
+    uint32_t bits;float y,x2=specularMul(value,0.5f);
+    memcpy(&bits,&value,4);bits=0x5f3759dfU-((uint32_t)((int32_t)bits>>1));memcpy(&y,&bits,4);
+    return specularMul(y,specularSub(1.5f,specularMul(specularMul(x2,y),y)));
+}
+static unsigned char specularByte(const float *position,const float *normal,const float *eye) {
+    const float origin[3]={-960.0f,1980.0f,96.0f};
+    float light[3],reflected[3],viewer[3],scale,dot,value;
+    int axis;
+    for(axis=0;axis<3;++axis) light[axis]=specularSub(origin[axis],position[axis]);
+    scale=specularRsqrt(specularDot(light,light));
+    for(axis=0;axis<3;++axis) light[axis]=specularMul(light[axis],scale);
+    dot=specularDot(normal,light);
+    for(axis=0;axis<3;++axis) reflected[axis]=specularSub(specularMul(specularMul(normal[axis],2.0f),dot),light[axis]);
+    for(axis=0;axis<3;++axis) viewer[axis]=specularSub(eye[axis],position[axis]);
+    scale=specularRsqrt(specularDot(viewer,viewer));value=specularMul(specularDot(reflected,viewer),scale);
+    if(value<0.0f) return 0;
+    value=specularMul(value,value);value=specularMul(value,value);
+    value=specularMul(value,255.0f);
+    if(value>=255.0f) return 255;
+    if(value<=0.0f) return 0;
+    return (unsigned char)(int)value;
+}
+PLAYABLE_API int playable_window_update_specular_pass(unsigned char *records,int recordBytes,
+        const unsigned char *normalBytes,int normalLength,int triangleCount,
+        double eyeX,double eyeY,double eyeZ) {
+    float eye[3];int triangle,vertex;unsigned int savedControl;
+    if(!records || !normalBytes || triangleCount<0 || triangleCount>PLAYABLE_TRIANGLE_BATCH_MAX_COUNT ||
+            recordBytes<0 || normalLength<0 || triangleCount>recordBytes/PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES ||
+            triangleCount>normalLength/36) return 0;
+    savedControl=_mm_getcsr();_mm_setcsr((savedControl & ~0xe07fU) | 0x1f80U);
+    eye[0]=(float)eyeX;eye[1]=(float)eyeY;eye[2]=(float)eyeZ;
+    for(triangle=0;triangle<triangleCount;++triangle) {
+        playableTriangleBatchRecord *record=(playableTriangleBatchRecord *)(records+(SIZE_T)triangle*PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES);
+        for(vertex=0;vertex<3;++vertex) {
+            float normal[3];unsigned char *color=record->vertexColor[vertex];
+            memcpy(normal,normalBytes+(SIZE_T)triangle*36+(SIZE_T)vertex*12,12);
+            color[0]=color[1]=color[2]=255;
+            color[3]=specularByte(record->vertex[vertex],normal,eye);
+            record->vertex[vertex][7]=1.0f;
+        }
+    }
+    _mm_setcsr(savedControl);return 1;
 }
 
 static void writeScreenQuadVertex(playableTriangleBatchRecord *record, int vertex,

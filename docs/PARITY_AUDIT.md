@@ -4,6 +4,19 @@ Stand: 2026-11-23. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Gebündelte Specular-Shaderpasses, 23. November 2026
+
+Unverformte `lightingSpecular`-Passes mit festen UVs aktualisieren ihre
+kameraabhängigen Alphas jetzt in einem nativen Batchaufruf. Der Bytevergleich
+gegen den vorherigen Vertexpfad, 432 Retail-Auswahlfälle und zwei direkte
+3.200-Frame-Botkampfpaare sind grün. In der isolierten q3dm0-Probe sanken
+die drei größten Passes von zusammen 178 auf 7 ms für 20 Updates.
+Beim endgültigen Code sank die mittlere Renderphase in zwei weiteren
+Paaren von 3,95/3,93 auf 3,24/2,99 ms und P99 von 46/44 auf 42/41 ms;
+die Gesamt-FPS schwankten und waren in einem Paar geringer. Andere
+Shaderpasses und sporadische Ruckler bleiben offen.
+[Messung und Grenzen](verification/2026-11-23-specular-batch.md)
+
 ## Portal-Sichtprüfung im Botkampf, 23. November 2026
 
 Der produktive Renderer verwirft nun Portalflächen, deren Dreiecke vollständig

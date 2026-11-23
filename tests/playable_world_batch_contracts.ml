@@ -129,6 +129,42 @@ function main(args)
   specularStage=materials.RuntimeStage(["specular"],[image],[99],0.0,[],materials.BLEND_ALPHA,materials.ALPHA_TEST_NONE,"texture","identity",shaderParser.blankWave(),"lightingspecular",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
   specularMaterial=materials.Material(1,"specular","specular",image,99,[specularStage],[],false,9.0,false,false,0.0,0.0,false);specularBatch=worldBatch.buildMaterials(RenderData([textured]),materials.Catalog([specularMaterial],0,1,1,1,0,1),[false,false,false]);specularPass=specularBatch.passes[0];worldBatch.updatePassView(specularPass,[100.0,100.0,100.0],0)
   count=count+require(worldBatch.dynamicStage(specularStage) and specularPass.commands.data[119]==81,"lightingSpecular stage writes its view-dependent alpha into the retained pass")
+  // Compare every byte of the native whole-pass update with the original
+  // per-vertex path across varied world coordinates, normals and viewpoints.
+  specularTriangles=array(128,void)
+  for sample=0 to 127
+    x=(sample%17-8)*37.125;y=(sample%23-11)*19.75;z=(sample%13-6)*8.5
+    p0=v(x,y,z,0.125,0.25,0.0,0.0,255,255,255);p1=v(x+11.0,y-3.0,z+4.0,0.75,0.125,0.0,0.0,255,255,255);p2=v(x-7.0,y+8.0,z-2.0,0.5,0.875,0.0,0.0,255,255,255)
+    if sample==0 then p0.position=[-960.0,1980.0,96.0] end if
+    p0.normal=[(sample%7-3)*0.31,(sample%11-5)*0.22,(sample%5-2)*0.48]
+    p1.normal=[(sample%9-4)*0.27,(sample%13-6)*0.16,(sample%7-3)*0.39]
+    p2.normal=[(sample%5-2)*0.43,(sample%17-8)*0.12,(sample%11-5)*0.24]
+    specularTriangles[sample]=Triangle([p0,p1,p2],1,-1)
+  end for
+  specularSamples=worldBatch.buildMaterials(RenderData(specularTriangles),materials.Catalog([specularMaterial],0,1,1,1,0,1),[false,false,false]);if specularSamples is error then return specularSamples end if
+  samplePass=specularSamples.passes[0];packedNormals=samplePass.specularNormals
+  count=count+require(packedNormals!=void and len(packedNormals)==128*36,"static specular stage packs immutable normals once")
+  for each eye in [[100.0,100.0,100.0],[-960.0,1980.0,96.0],[0.125,-127.5,4096.0]]
+    samplePass.specularNormals=void;slow=worldBatch.updatePassView(samplePass,eye,0);if slow is error then return slow end if
+    expected=slice(samplePass.commands.data,0,len(samplePass.commands.data))
+    samplePass.specularNormals=packedNormals;fast=worldBatch.updatePassView(samplePass,eye,0);if fast is error then return fast end if
+    for byteIndex=0 to len(expected)-1
+      if expected[byteIndex]!=samplePass.commands.data[byteIndex] then return error(7491,"batched specular differs from Quake per-vertex path at byte "+str(byteIndex)) end if
+    end for
+  end for
+  count=count+1
+  oldNormalBits=numeric.readU32(packedNormals,0)
+  specularTriangles[0].vertices[0].normal=[0.9,-0.3,0.7]
+  refreshed=worldBatch.refreshStagePass(samplePass,RenderData(specularTriangles));if refreshed is error then return refreshed end if
+  count=count+require(refreshed and numeric.readU32(samplePass.specularNormals,0)!=oldNormalBits,"specular normals refresh with changed scene geometry")
+  packedNormals=samplePass.specularNormals;samplePass.specularNormals=void
+  slow=worldBatch.updatePassView(samplePass,[48.0,-93.0,512.0],20);if slow is error then return slow end if
+  expected=slice(samplePass.commands.data,0,len(samplePass.commands.data));samplePass.specularNormals=packedNormals
+  fast=worldBatch.updatePassView(samplePass,[48.0,-93.0,512.0],20);if fast is error then return fast end if
+  for byteIndex=0 to len(expected)-1
+    if expected[byteIndex]!=samplePass.commands.data[byteIndex] then return error(7491,"refreshed specular batch differs at byte "+str(byteIndex)) end if
+  end for
+  count=count+1
   vectorStage=materials.RuntimeStage(["vector"],[image],[98],0.0,[],materials.BLEND_OPAQUE,materials.ALPHA_TEST_NONE,"vector","identity",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,true,false,256.0,[[0.25,0.0,1.0],[0.0,-0.5,2.0]])
   vectorMaterial=materials.Material(1,"vector","vector",image,98,[vectorStage],[],false,3.0,false,false,0.0,0.0,false);vectorBatch=worldBatch.buildMaterials(RenderData([textured]),materials.Catalog([vectorMaterial],0,1,1,1,0,1),[false,false,false]);vectorPass=vectorBatch.passes[0];worldBatch.updatePass(vectorPass,0)
   count=count+require(worldBatch.dynamicStage(vectorStage) and numeric.bitsFloat(numeric.readU32(vectorPass.commands.data,32))==3.5 and numeric.bitsFloat(numeric.readU32(vectorPass.commands.data,36))==3.0,"vector tcGen receives a retained pass and replaces BSP UVs")

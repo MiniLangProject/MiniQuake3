@@ -31,8 +31,16 @@ function main(args)
   flags=array(map.counts[1],false)
   for index=0 to map.counts[1]-1 name=materials.shaderName(map,index);if name is error then return name end if;flags[index]=sky.isSkyShaderIndexed(scripts[0],name) end for
   batch=worldBatch.buildMaterials(data,catalog,flags);if batch is error then return batch end if
-  autospritePasses=0;autospriteQuads=0;autosprite2Passes=0;autosprite2Quads=0;invalidAutospritePairs=0
+  autospritePasses=0;autospriteQuads=0;autosprite2Passes=0;autosprite2Quads=0;invalidAutospritePairs=0;checkedSpecular=0;checkedSpecularTriangles=0
   for each pass in batch.passes
+    if pass.specularNormals!=void then
+      packed=pass.specularNormals;pass.specularNormals=void
+      baseline=worldBatch.updatePassView(pass,[96.0,128.0,64.0],1000);if baseline is error then return baseline end if
+      expected=slice(pass.commands.data,0,len(pass.commands.data));pass.specularNormals=packed
+      updated=worldBatch.updatePassView(pass,[96.0,128.0,64.0],1000);if updated is error then return updated end if
+      for byteIndex=0 to len(expected)-1 if expected[byteIndex]!=pass.commands.data[byteIndex] then return error(7492,"retail specular batch differs from per-vertex output at byte "+str(byteIndex)) end if end for
+      checkedSpecular=checkedSpecular+1;checkedSpecularTriangles=checkedSpecularTriangles+pass.commands.count
+    end if
     if worldBatch.hasDeform(pass.deforms,"autosprite") then
       autospritePasses=autospritePasses+1;if pass.commands.count%2!=0 then invalidAutospritePairs=invalidAutospritePairs+1 end if
       pair=0;while pair+1<pass.commands.count quad=worldBatch.autospriteQuad(pass,pair,[0.0,1.0,0.0],[0.0,0.0,1.0]);if quad==void then invalidAutospritePairs=invalidAutospritePairs+1 else autospriteQuads=autospriteQuads+1 end if;pair=pair+2 end while
@@ -50,6 +58,6 @@ function main(args)
   if invalidPortalRange>0 then return error(7492,"portal range was not retained in runtime material stages") end if
   if (autospritePasses>0 and autospriteQuads<1) or (autosprite2Passes>0 and autosprite2Quads<1) or invalidAutospritePairs>0 then return error(7492,"retail autosprite triangle pairs could not be reconstructed") end if
   print(args[1]+" generators: rgbVertex="+str(rgbVertex)+" rgbEntity="+str(rgbEntity)+" alphaPortal="+str(alphaPortal)+" alphaEntity="+str(alphaEntity)+" alphaSpecular="+str(alphaSpecular)+" tcVector="+str(tcVector)+" tcTransform="+str(transformMods)+" deformWave="+str(deformWave)+" deformMove="+str(deformMove)+" deformBulge="+str(deformBulge)+" deformNormal="+str(deformNormal)+" deformAutosprite="+str(deformAutosprite)+" autospriteQuads="+str(autospriteQuads)+" deformAutosprite2="+str(deformAutosprite2)+" autosprite2Quads="+str(autosprite2Quads)+" deformOther="+str(deformOther)+" opaqueSort="+str(opaqueSort)+" transparentSort="+str(transparentSort)+" depthWrite="+str(depthWriteStages)+" depthEqual="+str(depthEqualStages)+" polygonOffset="+str(polygonOffset)+" noMipMaps="+str(noMipMaps))
-  print("PASS: "+args[1]+" materials="+str(catalog.loaded)+" textures="+str(catalog.textureCount)+" twoSided="+str(twoSided)+" sourceTriangles="+str(batch.sourceTriangles)+" drawableTriangles="+str(batch.drawableTriangles)+" emittedTriangles="+str(batch.emittedTriangles)+" passes="+str(len(batch.passes))+" animated="+str(batch.animatedPasses)+" tcMod="+str(batch.uvModifiedPasses)+" blended="+str(batch.blendedPasses)+" rgbGenWave="+str(batch.generatorPasses)+" alphaTest="+str(batch.alphaTestPasses)+" turb="+str(batch.turbulentPasses)+" stretch="+str(batch.stretchPasses)+" environment="+str(batch.environmentPasses)+" filter="+str(batch.filterPasses)+" destinationAlpha="+str(batch.destinationAlphaPasses)+" clamped="+str(batch.clampedPasses)+" deformed="+str(batch.deformedPasses)+" skySkipped="+str(batch.skippedSky))
+  print("PASS: "+args[1]+" materials="+str(catalog.loaded)+" textures="+str(catalog.textureCount)+" twoSided="+str(twoSided)+" sourceTriangles="+str(batch.sourceTriangles)+" drawableTriangles="+str(batch.drawableTriangles)+" emittedTriangles="+str(batch.emittedTriangles)+" passes="+str(len(batch.passes))+" animated="+str(batch.animatedPasses)+" tcMod="+str(batch.uvModifiedPasses)+" blended="+str(batch.blendedPasses)+" rgbGenWave="+str(batch.generatorPasses)+" alphaTest="+str(batch.alphaTestPasses)+" turb="+str(batch.turbulentPasses)+" stretch="+str(batch.stretchPasses)+" environment="+str(batch.environmentPasses)+" filter="+str(batch.filterPasses)+" destinationAlpha="+str(batch.destinationAlphaPasses)+" clamped="+str(batch.clampedPasses)+" deformed="+str(batch.deformedPasses)+" specularByteMatched="+str(checkedSpecular)+" specularTriangles="+str(checkedSpecularTriangles)+" skySkipped="+str(batch.skippedSky))
   return 0
 end function

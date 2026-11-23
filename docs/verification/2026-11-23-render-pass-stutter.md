@@ -136,3 +136,8 @@ Vertex-Updates insgesamt reduzieren und seine Bildausgabe mit Retail-
 Differentialfällen absichern. Die vorhandene OpenGL-Hardwareausgabe
 beschleunigt die gezeichneten Dreiecke, aber diese vorgelagerten
 MiniLang-Berechnungen noch nicht.
+
+**Nachtrag:** Der inzwischen integrierte [gebündelte Specular-Pfad](2026-11-23-specular-batch.md)
+reduziert einen Teil dieser Vertex-Updates und besteht Byte- sowie
+Retail-Differentialvergleiche. Die oben beschriebenen verworfenen Versuche
+bleiben verworfen; andere Shaderpasses und Ruckler bleiben offen.

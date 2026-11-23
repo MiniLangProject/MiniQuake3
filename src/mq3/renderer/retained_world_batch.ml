@@ -11,6 +11,7 @@ import mq3.renderer.playable_dynamic_lights as lights
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as n
 extern function gatherNative(source as ptr,sourceBytes as i32,sourceCount as i32,target as ptr,targetBytes as i32,runs as ptr,runBytes as i32,selected as ptr,selectedBytes as i32,selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_world_records" returns i32
+extern function gatherSpecularNative(source as ptr,sourceBytes as i32,sourceCount as i32,target as ptr,targetBytes as i32,runs as ptr,runBytes as i32,selected as ptr,selectedBytes as i32,selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_specular_normals" returns i32
 struct Stream source count runs firsts counts draw fullPass activePass primed end struct
 struct Cache world catalog skyFlags fogCatalog lightCatalog receiveFlags full base streams fogStream dlightCommands fallbackFaces faces active last enabled reason selections fallbacks staticPrimes end struct
 function fail(text) return error(7494,"retained world batch: "+text) end function
@@ -26,7 +27,8 @@ function stageView(full,commands)
     original=full.vertexCache
     vertexCache=batches.VertexCache(array(count,void),original.frames,original.positions,original.uvs,original.colors)
   end if
-  return batches.StagePass(commands,array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),[],full.fogAdjustment,full.stage,full.textureIndex,full.deforms,full.normalNoise,vertexCache,0,full.primary,full.depthEqual,full.sort,full.polygonOffset,full.timeOffset,full.clampTime,false)
+  specularNormals=void;if full.specularNormals!=void then specularNormals=bytes(count*36,0) end if
+  return batches.StagePass(commands,array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),[],full.fogAdjustment,full.stage,full.textureIndex,full.deforms,full.normalNoise,vertexCache,0,full.primary,full.depthEqual,full.sort,full.polygonOffset,full.timeOffset,full.clampTime,false,specularNormals)
 end function
 function makeStream(state,data,commands,pass,mode,lookup)
   faceCount=len(state.world.trianglesByFace);firsts=array(faceCount,0);counts=array(faceCount,0);runs=bytes(faceCount*8,0);record=0
@@ -98,6 +100,11 @@ end function
 function gather(stream,packed,count)
   written=gatherNative(nativeBytesPtr(stream.source),len(stream.source),stream.count,nativeBytesPtr(stream.draw.data),len(stream.draw.data),nativeBytesPtr(stream.runs),len(stream.runs),nativeBytesPtr(packed),len(packed),count)
   if written<0 then return fail("native record gather rejected input code="+str(written)) end if
+  if stream.fullPass!=void and stream.fullPass.specularNormals!=void then
+    full=stream.fullPass;active=stream.activePass
+    gathered=gatherSpecularNative(nativeBytesPtr(full.specularNormals),len(full.specularNormals),stream.count,nativeBytesPtr(active.specularNormals),len(active.specularNormals),nativeBytesPtr(stream.runs),len(stream.runs),nativeBytesPtr(packed),len(packed),count)
+    if gathered!=written then return fail("native specular normal gather differs from records") end if
+  end if
   stream.draw.count=written;return written
 end function
 function stageSources(stream,faces,fogCatalog)

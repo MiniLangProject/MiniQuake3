@@ -19,7 +19,7 @@ struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct VertexCache slots frames positions uvs colors end struct
 struct VertexIndexScratch visited slots serial end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime initialized end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime initialized specularNormals end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog dlightBatch dlightCatalog end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -148,6 +148,16 @@ function createVertexCacheWithScratch(sourceIndexes,scratch)
   return VertexCache(slots,array(count,-1),array(count,void),array(count,void),array(count,void))
 end function
 function createVertexCache(sourceIndexes) return createVertexCacheWithScratch(sourceIndexes,vertexIndexScratch()) end function
+function packSpecularNormalsInto(sourceNormals,packed)
+  for triangle=0 to len(sourceNormals)-1
+    for vertex=0 to 2
+      normal=sourceNormals[triangle][vertex];offset=triangle*36+vertex*12
+      for axis=0 to 2 window.writeBatchF32(packed,offset+axis*4,normal[axis]) end for
+    end for
+  end for
+  return packed
+end function
+function packedSpecularNormals(sourceNormals) return packSpecularNormalsInto(sourceNormals,bytes(len(sourceNormals)*36,0)) end function
 function buildStagePassTriangles(triangles,material,stage,primary,depthEqual,indexScratch)
   count=len(triangles);if count<1 then return void end if
   commands=window.createTriangleBatch(count);sourceUvs=array(count,void);sourceDeformUvs=array(count,void);sourcePositions=array(count,void);sourceIndexes=array(count,void);sourceNormals=array(count,void);sourceColors=array(count,void);sourceEntityColors=array(count,void);sourceEntityTexCoords=array(count,void);sourceShaderTimes=array(count,void);outputIndex=0
@@ -176,7 +186,9 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual,ind
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
   vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCacheWithScratch(sourceIndexes,indexScratch) end if
   firstStage=void;if len(material.stages)>0 then firstStage=material.stages[0] end if
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceColors,sourceEntityColors,sourceEntityTexCoords,sourceShaderTimes,[],materials.fogAdjustment(firstStage,stage),stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset,material.timeOffset,material.clampTime,false)
+  specularNormals=void
+  if stage.tcGen=="texture" and stage.rgbGen=="identity" and stage.alphaGen=="lightingspecular" and len(stage.uvMods)==0 and len(stage.slots)==1 and len(material.deforms)==0 and not stage.bspLightmap then specularNormals=packedSpecularNormals(sourceNormals) end if
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceColors,sourceEntityColors,sourceEntityTexCoords,sourceShaderTimes,[],materials.fogAdjustment(firstStage,stage),stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset,material.timeOffset,material.clampTime,false,specularNormals)
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   triangles=[];for each triangle in renderData.triangles if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then triangles=triangles+[triangle] end if end for
@@ -266,6 +278,7 @@ function refreshStagePass(pass,renderData)
   // Equal triangle counts do not imply equal indexed topology (LOD/model or
   // portal clipping may change sharing). Old cache slots must never survive.
   if indexTopologyChanged and not hasDeform(pass.deforms,"autosprite") and not hasDeform(pass.deforms,"autosprite2") then pass.vertexCache=createVertexCache(pass.sourceIndexes) end if
+  if pass.specularNormals!=void then packSpecularNormalsInto(pass.sourceNormals,pass.specularNormals) end if
   return true
 end function
 function refreshMaterials(batch,renderData,catalog,skyTextureFlags)
@@ -457,6 +470,10 @@ function specularAlpha(position,normal,viewOrigin)
 end function
 function updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,fogCatalog)
   slot=materials.slotAt(pass.stage,nowMilliseconds);if pass.initialized and not passChanges(pass,fogCatalog) then return slot end if
+  if pass.specularNormals!=void and (fogCatalog==void or not passHasFog(pass)) then
+    updated=window.updateSpecularPass(pass.commands,pass.specularNormals,viewOrigin);if updated is error then return updated end if
+    pass.initialized=true;return slot
+  end if
   transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);entityTranslate=hasEntityTranslate(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
   cacheEpoch=0;if pass.vertexCache!=void then pass.cacheSerial=pass.cacheSerial+1;cacheEpoch=pass.cacheSerial end if
   forward=[leftDir[1]*upDir[2]-leftDir[2]*upDir[1],leftDir[2]*upDir[0]-leftDir[0]*upDir[2],leftDir[0]*upDir[1]-leftDir[1]*upDir[0]];spriteNormal=[0.0-forward[0],0.0-forward[1],0.0-forward[2]]

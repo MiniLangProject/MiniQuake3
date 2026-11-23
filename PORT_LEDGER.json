@@ -57789,10 +57789,14 @@
         {
           "original": "RB_CalcSpecularAlpha",
           "target_files": [
-            "src/mq3/renderer/playable_world_batch.ml"
+            "src/mq3/renderer/playable_world_batch.ml",
+            "src/mq3/renderer/retained_world_batch.ml",
+            "src/mq3/platform/playable_window.ml",
+            "native/playable_win32.c",
+            "native/playable_world_gather.h"
           ],
           "status": "tested_exact",
-          "scope": "The retained world/QVM stage path evaluates lightingSpecular from the deformed vertex position and normal, using Baseq3's fixed light origin, Q_rsqrt normalization, reflected viewer coefficient, fourth-power falloff and byte clamp. Six unchanged-C coefficient records, the unchanged ComputeColors dispatch record, fourteen focused color contracts and sixty retained-world contracts pass; the q3dm1 Retail material probe also passes."
+          "scope": "The retained world/QVM stage path evaluates lightingSpecular from the vertex position and normal using Baseq3's fixed light origin, Q_rsqrt normalization, reflected viewer coefficient, fourth-power falloff and byte clamp. Static, unmodulated passes update all alpha bytes in one native batch; deformed and fogged passes retain the general MiniLang path. Byte-exact comparisons cover 128 synthetic triangles from three views and refresh, eight q3dm0 Retail passes/4265 triangles, three q3ctf1 Retail passes/108 triangles, 21 unchanged-C ComputeColors/specular records, 14 focused contracts, 54 retained-world contracts and 432 Retail selection cases. In two final 3200-frame q3dm0 bot-combat pairs on the RTX 5080, the mean render phase fell from 3.95/3.93 to 3.24/2.99 ms and P99 from 46/44 to 42/41 ms. Total FPS improved in only one pair; other stutter sources remain open."
         },
         {
           "original": "RB_CalcColorFromEntity / RB_CalcColorFromOneMinusEntity / RB_CalcAlphaFromEntity / RB_CalcAlphaFromOneMinusEntity",

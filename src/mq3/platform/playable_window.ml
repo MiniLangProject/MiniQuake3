@@ -43,6 +43,7 @@ extern function writePositionTriangleNative(data as ptr,count as i32,triangle as
     x1 as double,y1 as double,z1 as double,u1 as double,v1 as double,lu1 as double,lv1 as double,light1 as double,r1 as i64,g1 as i64,b1 as i64,a1 as i64,
     x2 as double,y2 as double,z2 as double,u2 as double,v2 as double,lu2 as double,lv2 as double,light2 as double,r2 as i64,g2 as i64,b2 as i64,a2 as i64) from "playable_window.dll" symbol "playable_window_write_position_triangle" returns i32
 extern function updateStageVertexNative(data as ptr,count as i32,triangle as i32,vertex as i32,x as double,y as double,z as double,u as double,v as double,red as i32,green as i32,blue as i32,alpha as i32) from "playable_window.dll" symbol "playable_window_update_stage_vertex" returns i32
+extern function updateSpecularPassNative(data as ptr,byteCount as i32,normals as ptr,normalBytes as i32,triangles as i32,eyeX as double,eyeY as double,eyeZ as double) from "playable_window.dll" symbol "playable_window_update_specular_pass" returns i32
 extern function takeVideoRestartNative() from "playable_window.dll" symbol "playable_window_take_video_restart" returns i32
 extern function windowStateNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_window_state" returns i32
 extern function currentUserNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_current_user" returns i32
@@ -323,6 +324,10 @@ function writeBatchPositionVertex(data as bytes,offset as int,position as array,
 end function
 function updateStageVertex(batch as TriangleBatch,triangle as int,vertex as int,position as array,uv as array,color as array)
   if updateStageVertexNative(nativeBytesPtr(batch.data),len(batch.data),triangle,vertex,position[0],position[1],position[2],uv[0],uv[1],color[0],color[1],color[2],color[3])!=1 then return error(7487,"native stage vertex rejected") end if
+  return void
+end function
+function updateSpecularPass(batch as TriangleBatch,normals as bytes,eye as array)
+  if updateSpecularPassNative(nativeBytesPtr(batch.data),len(batch.data),nativeBytesPtr(normals),len(normals),batch.count,eye[0],eye[1],eye[2])!=1 then return error(7487,"native specular pass rejected") end if
   return void
 end function
 function writeBatchColor(data as bytes,offset as int,color as array)
