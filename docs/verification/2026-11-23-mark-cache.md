@@ -55,3 +55,51 @@ Rohdaten: `build/reports/mark_geometry_4096_q3dm0_ab.json`.
 
 Diese Messung beweist keine konstante Bildrate in jeder Karte oder jedem
 Kampfzustand; weitere Bot- und Render-Spitzen bleiben zu untersuchen.
+
+## Wiederverwendung einzelner BSP-Flächen
+
+Nach der ersten Änderung sank die Zahl der mindestens 35 ms langen
+instrumentierten `q3dm1`-Frames von 229 auf 57. Ein neuer Satz von
+Einschlagflächen verursachte weiterhin einzelne Mark-Traps bis 33 ms.
+Der Cache aktiviert die zusätzliche Wiederverwendung erst, wenn eine
+vollständige, nicht abgeschnittene Flächenliste mehr als 768 Dreiecke
+liefert. Danach dekodiert er jede unveränderte BSP-Fläche bei Bedarf einmal
+und stellt neue geordnete Listen aus diesen Dreiecken zusammen. Er hält
+höchstens 16.384 solcher Dreiecke pro BSP und verwirft sie bei Karten-
+oder Datenpufferwechsel. Die bestehenden 32 Slots für vollständige Listen
+bleiben erhalten. Doppelte Flächen werden wie im Original nur einmal
+ausgegeben; Polygon-Clipping bleibt pro Einschlag neu.
+
+Ein erster Versuch aktivierte den Flächencache auf allen Karten. Drei
+abwechselnde `q3dm1`-Paare ergaben 78,43→79,31 FPS und P99 45→37 ms im
+Median. Auf `q3dm0` sank aber in drei weiteren Paaren der FPS-Median von
+79,31 auf 74,68. Daraufhin wurde die Aktivierung auf große Listen begrenzt.
+Rohdaten der verworfenen Variante:
+`build/reports/mark_face_geometry_q3dm1_ab.json` und
+`build/reports/mark_face_geometry_q3dm0_ab3.json`.
+
+Drei neue abwechselnde 3.200-Frame-`q3dm1`-Paare verglichen die bedingte
+Variante mit der schon veröffentlichten 4.096-Dreiecke-Version:
+
+| Paar | Vorher FPS / P99 / Maximum | Nachher FPS / P99 / Maximum |
+| --- | ---: | ---: |
+| 1 | 91,27 / 41 / 66 ms | 97,45 / 32 / 46 ms |
+| 2 | 96,13 / 40 / 66 ms | 92,42 / 34 / 47 ms |
+| 3 | 92,71 / 41 / 64 ms | 96,31 / 33 / 50 ms |
+| Median | **92,71 / 41 / 66 ms** | **96,31 / 33 / 47 ms** |
+
+Der Kandidat hatte in allen Paaren dieselben 759 Positionswechsel,
+1.650 Angriffskommandos und 159 Munitionsabnahmen. Cgame sank im Median
+von 2,64 auf 2,41 ms pro Frame. Auf `q3dm0` ergaben drei Kontrollpaare
+81,58→82,00 FPS und unverändert P99 44 ms im Median bei ebenfalls gleichen
+Spielereignissen (752 Positionswechsel, 1.650 Angriffskommandos,
+160 Munitionsabnahmen). Ein einzelner Kandidatenlauf hatte dort einen
+77-ms-Maximalframe statt 62 ms in der entsprechenden Baseline; diese
+Einzelspitze ist nicht beseitigt. Die Median-Maxima waren 62→64 ms.
+
+Fünf Original-C-Datensätze, 29 Verträge einschließlich Duplikaten und
+einer 900-Dreiecke-BSP-Fläche sowie die Retail-Projektion bestanden.
+Der produktive Hardware-Replay mit 3.200 Frames lief mit 98,05 FPS,
+P99 32 ms und maximal 45 ms durch. Rohdaten:
+`build/reports/mark_face_cache_conditional_q3dm1_ab.json` und
+`build/reports/mark_face_cache_conditional_q3dm0_ab.json`.

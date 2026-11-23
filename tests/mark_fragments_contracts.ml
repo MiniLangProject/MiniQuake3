@@ -26,7 +26,7 @@ function fixture()
   return [map,world]
 end function
 function manyTriangleFace(map)
-  triangleCount=300;data=bytes(352+triangleCount*12,0)
+  triangleCount=900;data=bytes(352+triangleCount*12,0)
   for index=0 to 351 data[index]=map.data[index] end for
   offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
   copyArray(offsets,0,map.offsets,0,17);copyArray(lengths,0,map.lengths,0,17);copyArray(counts,0,map.counts,0,17)
@@ -47,10 +47,16 @@ function main(args)
   count=count+require(result.fragments[0].firstPoint==0 and result.fragments[1].firstPoint==result.fragments[0].numPoints,"fragment point offsets are contiguous")
   cache=marks.geometryCache();first=marks.markTriangles(map,[0],cache);again=marks.markTriangles(map,[0],cache)
   count=count+require(again[0]==first[0],"equal face lists reuse decoded triangle records")
+  doubled=marks.markTriangles(map,[0,0],cache)
+  count=count+require(len(doubled)==len(first) and doubled[0].triangleIndex==first[0].triangleIndex and doubled[1].triangleIndex==first[1].triangleIndex,"overlapping face lists preserve original deduplication and face order")
   large=manyTriangleFace(map);largeCache=marks.geometryCache();largeFirst=marks.markTriangles(large,[0],largeCache);largeAgain=marks.markTriangles(large,[0],largeCache)
   if largeFirst is error then return largeFirst end if;if largeAgain is error then return largeAgain end if
-  count=count+require(len(largeFirst)==300 and len(largeAgain)==300,"large face fixture extracts 300 triangles")
+  count=count+require(len(largeFirst)==900 and len(largeAgain)==900 and largeCache.faceCacheEnabled,"large face fixture activates retained face decoding")
   count=count+require(largeAgain[0]==largeFirst[0],"retail-sized face batches above 256 triangles reuse decoded geometry")
+  largeVariant=marks.markTriangles(large,[0,0],largeCache)
+  count=count+require(len(largeVariant)==900 and largeVariant[0]==largeFirst[0],"different large face lists reuse retained per-face geometry")
+  largeProjected=marks.project(large,world,square(),[0.0,0.0,-20.0],64,16);largeCached=marks.projectWithCache(large,world,square(),[0.0,0.0,-20.0],64,16,largeCache)
+  count=count+require(largeCached.points==largeProjected.points and len(largeCached.fragments)==len(largeProjected.fragments),"large cached face keeps exact projection output")
   count=count+require(try(marks.markTriangles(map,[32],cache)) is error,"a colliding cache slot still validates the new face list")
   moved=square();for each point in moved point[0]=point[0]+1.25 end for
   cached=marks.projectWithCache(map,world,moved,[0.0,0.0,-20.0],64,16,cache)

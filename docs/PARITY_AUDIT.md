@@ -73,6 +73,12 @@ Dreiecken. Der begrenzte Geometrie-Cache erfasst jetzt bis zu 4.096 pro
 Flächenliste. Drei abwechselnde 3.200-Frame-Retail-Paare ergaben im Median
 84,59 statt 66,96 FPS und P99 43 statt 68 ms; Cgame sank von 5,64 auf
 2,81 ms/Frame. Auf `q3dm0` zeigten zwei Paare keinen klaren Nachteil.
+Für weitere überlappende Flächenlisten aktiviert sich jetzt ein begrenzter
+Cache einzelner BSP-Flächen erst nach einer großen, vollständigen Liste.
+Drei zusätzliche A/B-Paare gegen die 4.096er-Version ergaben auf `q3dm1`
+96,31 statt 92,71 FPS, P99 33 statt 41 ms und maximale Framezeit 47 statt
+66 ms im Median. Auf `q3dm0` blieb P99 im Median bei 44 ms; die FPS lagen
+bei 82,00 statt 81,58. Dort trat ein einzelner 77-ms-Kandidatenframe auf.
 Langzeit- und andere Botkombinationen bleiben offen.
 [Ursache, Tests und A/B-Läufe](verification/2026-11-23-mark-cache.md)
 

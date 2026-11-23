@@ -12,6 +12,8 @@ import std.ds.set as sets
 const MAX_VERTS_ON_POLY=64
 const MAX_MARK_SURFACES=64
 const MAX_CACHED_MARK_TRIANGLES=4096
+const MAX_CACHED_FACE_TRIANGLES=16384
+const MIN_FACE_CACHE_TRIANGLES=768
 const SURF_NOIMPACT=0x10
 const SURF_NOMARKS=0x20
 const CONTENTS_FOG=0x40
@@ -21,10 +23,10 @@ const SHADER_STRIDE=72
 struct Plane normal distance end struct
 struct Fragment firstPoint numPoints end struct
 struct Result points fragments candidateSurfaces testedTriangles end struct
-struct GeometryCache map data dataPointer slots faceVisits faceSerial faceMap faceDataPointer end struct
+struct GeometryCache map data dataPointer slots faceVisits faceSerial faceMap faceDataPointer faceTriangles faceTriangleCount faceCacheEnabled end struct
 struct FaceBatch faces triangles end struct
 
-function geometryCache() return GeometryCache(void,void,0,array(32,void),void,0,void,0) end function
+function geometryCache() return GeometryCache(void,void,0,array(32,void),void,0,void,0,void,0,false) end function
 
 // A moving impact can hit the same ordered set of static faces with different
 // clip planes. Keep only small batches. Projection bounds, clipping and output
@@ -36,16 +38,63 @@ function markTriangles(map,faces,cache)
     pointer=nativeBytesPtr(map.data)
     if cache.map!=map or cache.dataPointer!=pointer then
       cache.slots=array(len(cache.slots),void)
+      cache.faceTriangles=array(map.counts[13],void);cache.faceTriangleCount=0;cache.faceCacheEnabled=false
       cache.map=map;cache.data=map.data;cache.dataPointer=pointer
     end if
     for each face in faces slot=(slot*31+face+1)%len(cache.slots) end for
     batch=cache.slots[slot]
     if batch!=void and batch.faces==faces then return batch.triangles end if
   end if
-  geometry=renderData.extractRetainedWithPatchError(map,faces,131072,renderData.DEFAULT_PATCH_ERROR)
-  if geometry is error then return geometry end if
-  if cache!=void and len(geometry.triangles)<=MAX_CACHED_MARK_TRIANGLES then cache.slots[slot]=FaceBatch(faces,geometry.triangles) end if
-  return geometry.triangles
+  if cache==void or not cache.faceCacheEnabled then
+    geometry=renderData.extractRetainedWithPatchError(map,faces,131072,renderData.DEFAULT_PATCH_ERROR)
+    if geometry is error then return geometry end if
+    triangles=geometry.triangles
+    if cache!=void then
+      if len(triangles)>MIN_FACE_CACHE_TRIANGLES and not geometry.truncated then
+        cache.faceCacheEnabled=true;offset=0
+        for each face in faces
+          if cache.faceTriangles[face]!=void then continue end if
+          first=offset
+          while offset<len(triangles) and triangles[offset].faceIndex==face offset=offset+1 end while
+          count=offset-first
+          if cache.faceTriangleCount+count<=MAX_CACHED_FACE_TRIANGLES then
+            part=array(count,void)
+            if count>0 then copyArray(part,0,triangles,first,count) end if
+            cache.faceTriangles[face]=part;cache.faceTriangleCount=cache.faceTriangleCount+count
+          end if
+        end for
+      end if
+      if len(triangles)<=MAX_CACHED_MARK_TRIANGLES then cache.slots[slot]=FaceBatch(faces,triangles) end if
+    end if
+    return triangles
+  end if
+  // Different impact bounds often produce overlapping ordered face lists.
+  // Decode each immutable face once, then assemble the exact selected order.
+  parts=array(len(faces),void);total=0
+  for index=0 to len(faces)-1
+    face=faces[index]
+    if face<0 or face>=len(cache.faceTriangles) then return renderData.extractRetainedWithPatchError(map,[face],131072,renderData.DEFAULT_PATCH_ERROR) end if
+    duplicate=false
+    if index>0 then for previous=0 to index-1 if faces[previous]==face then duplicate=true;break end if end for end if
+    if duplicate then continue end if
+    part=cache.faceTriangles[face]
+    if part==void then
+      geometry=renderData.extractRetainedWithPatchError(map,[face],131072,renderData.DEFAULT_PATCH_ERROR)
+      if geometry is error then return geometry end if
+      part=geometry.triangles
+      if cache.faceTriangleCount+len(part)<=MAX_CACHED_FACE_TRIANGLES then cache.faceTriangles[face]=part;cache.faceTriangleCount=cache.faceTriangleCount+len(part) end if
+    end if
+    parts[index]=part;total=total+len(part)
+  end for
+  if total>131072 then total=131072 end if
+  triangles=array(total,void);offset=0
+  for each part in parts
+    if part==void or offset>=total then continue end if
+    count=len(part);if offset+count>total then count=total-offset end if
+    if count>0 then copyArray(triangles,offset,part,0,count);offset=offset+count end if
+  end for
+  if len(triangles)<=MAX_CACHED_MARK_TRIANGLES then cache.slots[slot]=FaceBatch(faces,triangles) end if
+  return triangles
 end function
 
 function fail(message) return error(7693,"mark fragments: "+message) end function
