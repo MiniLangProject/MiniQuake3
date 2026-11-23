@@ -1,6 +1,6 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-22. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
+Stand: 2026-11-23. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
@@ -66,6 +66,15 @@ P99 stieg von 44 auf 46 ms, während die längsten Frames im Median von
 70 auf 61 ms sanken.
 Die P99-Ruckler sind weiterhin offen.
 [Messwerte und Differentialtests](verification/2026-11-22-combat-frame-times.md#einschlagmarken-im-botkampf)
+
+Auf `q3dm1` verursachte ein anderer Teil derselben Einschlagspur-Verarbeitung
+nach längerem Botkampf wiederholte Dekodierungen von bis zu 3.552 BSP-
+Dreiecken. Der begrenzte Geometrie-Cache erfasst jetzt bis zu 4.096 pro
+Flächenliste. Drei abwechselnde 3.200-Frame-Retail-Paare ergaben im Median
+84,59 statt 66,96 FPS und P99 43 statt 68 ms; Cgame sank von 5,64 auf
+2,81 ms/Frame. Auf `q3dm0` zeigten zwei Paare keinen klaren Nachteil.
+Langzeit- und andere Botkombinationen bleiben offen.
+[Ursache, Tests und A/B-Läufe](verification/2026-11-23-mark-cache.md)
 
 Der Material-Batch-Aufbau für Portalansichten verwendet nun einen
 wiederverwendeten Vertex-ID-Besuchszähler statt einer großen neuen Tabelle

@@ -25,6 +25,17 @@ function fixture()
   split=brush.Plane([1.0,0.0,0.0],0.0,0);world=collision.World([],[collision.Node(split,0,[-1,-1])],[collision.Leaf([],[0])],[],[],false,true,[],void,void,"",[],0,"")
   return [map,world]
 end function
+function manyTriangleFace(map)
+  triangleCount=300;data=bytes(352+triangleCount*12,0)
+  for index=0 to 351 data[index]=map.data[index] end for
+  offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
+  copyArray(offsets,0,map.offsets,0,17);copyArray(lengths,0,map.lengths,0,17);copyArray(counts,0,map.counts,0,17)
+  lengths[11]=triangleCount*12;counts[11]=triangleCount*3;putI32(data,96,triangleCount*3)
+  for index=0 to triangleCount-1
+    putI32(data,352+index*12,0);putI32(data,356+index*12,1);putI32(data,360+index*12,2)
+  end for
+  return bsp.BSP(data,offsets,lengths,counts)
+end function
 function square() return [[-1.0,-1.0,4.0],[-1.0,1.0,4.0],[1.0,1.0,4.0],[1.0,-1.0,4.0]] end function
 function main(args)
   count=0;value=fixture();map=value[0];world=value[1]
@@ -36,6 +47,10 @@ function main(args)
   count=count+require(result.fragments[0].firstPoint==0 and result.fragments[1].firstPoint==result.fragments[0].numPoints,"fragment point offsets are contiguous")
   cache=marks.geometryCache();first=marks.markTriangles(map,[0],cache);again=marks.markTriangles(map,[0],cache)
   count=count+require(again[0]==first[0],"equal face lists reuse decoded triangle records")
+  large=manyTriangleFace(map);largeCache=marks.geometryCache();largeFirst=marks.markTriangles(large,[0],largeCache);largeAgain=marks.markTriangles(large,[0],largeCache)
+  if largeFirst is error then return largeFirst end if;if largeAgain is error then return largeAgain end if
+  count=count+require(len(largeFirst)==300 and len(largeAgain)==300,"large face fixture extracts 300 triangles")
+  count=count+require(largeAgain[0]==largeFirst[0],"retail-sized face batches above 256 triangles reuse decoded geometry")
   count=count+require(try(marks.markTriangles(map,[32],cache)) is error,"a colliding cache slot still validates the new face list")
   moved=square();for each point in moved point[0]=point[0]+1.25 end for
   cached=marks.projectWithCache(map,world,moved,[0.0,0.0,-20.0],64,16,cache)

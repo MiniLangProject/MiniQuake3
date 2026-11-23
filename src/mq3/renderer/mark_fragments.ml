@@ -11,6 +11,7 @@ import std.ds.set as sets
 
 const MAX_VERTS_ON_POLY=64
 const MAX_MARK_SURFACES=64
+const MAX_CACHED_MARK_TRIANGLES=4096
 const SURF_NOIMPACT=0x10
 const SURF_NOMARKS=0x20
 const CONTENTS_FOG=0x40
@@ -43,7 +44,7 @@ function markTriangles(map,faces,cache)
   end if
   geometry=renderData.extractRetainedWithPatchError(map,faces,131072,renderData.DEFAULT_PATCH_ERROR)
   if geometry is error then return geometry end if
-  if cache!=void and len(geometry.triangles)<=256 then cache.slots[slot]=FaceBatch(faces,geometry.triangles) end if
+  if cache!=void and len(geometry.triangles)<=MAX_CACHED_MARK_TRIANGLES then cache.slots[slot]=FaceBatch(faces,geometry.triangles) end if
   return geometry.triangles
 end function
 

@@ -57344,7 +57344,7 @@
             "src/mq3/engine/local_qvm_match.ml"
           ],
           "status": "tested",
-          "scope": "The complete mark projection path, surface filtering and CG_R_MARKFRAGMENTS trap ABI are integrated and exercised with Retail q3dm1 geometry."
+          "scope": "The complete mark projection path, surface filtering and CG_CM_MARKFRAGMENTS trap ABI are integrated and exercised with Retail q3dm1 geometry. A 4096-triangle bounded face-batch cache avoids repeated BSP decoding for large impact sets; a 300-triangle fixture verifies identity reuse, five unchanged-C records and 26 contracts pass, and three alternating 3200-frame q3dm1 Retail bot pairs measure 66.96 to 84.59 FPS median with P99 68 to 43 ms."
         }
       ],
       "target": [

@@ -36,10 +36,10 @@ def main():
         [sys.executable, ROOT / "scripts/build.py", "--source", "tests/mark_fragments_contracts.ml",
          "--output", "mark_fragments_contracts.exe"], cwd=ROOT, check=True)
     value = run([ROOT / "build/mark_fragments_contracts.exe"], ROOT / "build").strip()
-    expected = "PASS: 24 mark-fragment contracts"
+    expected = "PASS: 26 mark-fragment contracts"
     if value != expected:
         raise RuntimeError(value)
-    print(f"PASS: {len(native.splitlines())} exact Baseq3 mark-fragment records + 24 contracts")
+    print(f"PASS: {len(native.splitlines())} exact Baseq3 mark-fragment records + 26 contracts")
     if args.pak:
         subprocess.run(
             [sys.executable, ROOT / "scripts/build.py", "--source", "tests/mark_fragments_retail_probe.ml",
@@ -50,9 +50,9 @@ def main():
         print(value)
     files = [original, harness, ROOT / "src/mq3/renderer/mark_fragments.ml",
              ROOT / "tests/mark_fragments_oracle.ml", ROOT / "tests/mark_fragments_contracts.ml"]
-    result = {"passed": True, "records": len(native.splitlines()), "contracts": 24,
+    result = {"passed": True, "records": len(native.splitlines()), "contracts": 26,
               "functions": ["R_ChopPolyBehindPlane", "R_AddMarkFragments", "R_BoxSurfaces_r", "R_MarkFragments"],
-              "scope": "Exact clipping/fragment packing plus productive BSP surface discovery, face/grid filtering, QVM ABI and retail q3dm1 projection.",
+              "scope": "Exact clipping/fragment packing plus productive BSP surface discovery, face/grid filtering, bounded large-face geometry reuse, QVM ABI and retail q3dm1 projection.",
               "sources": {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in files}}
     (out / "result.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
 

@@ -33,13 +33,13 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def run(exe: Path, archive: Path, qvms: Path, frames: int, folder: Path, tag: str) -> dict:
+def run(exe: Path, archive: Path, qvms: Path, frames: int, map_name: str, folder: Path, tag: str) -> dict:
     env = os.environ.copy()
     env["MQ3_RENDERER"] = "hardware"
     env.pop("MQ3_QVM_PROFILE", None)
     env.pop("MQ3_QVM_PROFILE_FILE", None)
     result = subprocess.run(
-        [str(exe), str(archive), str(qvms), "moving", str(frames), "q3dm0", "1", "20"],
+        [str(exe), str(archive), str(qvms), "moving", str(frames), map_name, "1", "20"],
         cwd=ROOT / "build", env=env, capture_output=True, text=True,
         errors="replace", timeout=900,
     )
@@ -77,6 +77,7 @@ def main() -> None:
     parser.add_argument("--archive", type=Path, default=ROOT / "build/baseq3/pak0.pk3")
     parser.add_argument("--qvms", type=Path, default=ROOT / "build/reference/qvms")
     parser.add_argument("--frames", type=int, default=2200)
+    parser.add_argument("--map", choices=("q3dm0", "q3dm1"), default="q3dm0")
     parser.add_argument("--repeat", type=int, default=3)
     parser.add_argument("--output", type=Path,
                         default=ROOT / "build/reports/function_contract_game_ab.json")
@@ -101,7 +102,7 @@ def main() -> None:
     for iteration in range(args.repeat):
         order = ("baseline", "candidate") if iteration % 2 == 0 else ("candidate", "baseline")
         for name in order:
-            sample = run(executables[name], archive, qvms, args.frames, folder,
+            sample = run(executables[name], archive, qvms, args.frames, args.map, folder,
                          f"{iteration + 1:02d}_{name}")
             if reference_movement is None:
                 reference_movement = sample["movement"]
@@ -111,8 +112,8 @@ def main() -> None:
             print(f"{iteration + 1}/{args.repeat} {name}: {sample['fps']:.2f} FPS, "
                   f"p99 {sample['p99_ms']:.0f} ms, max {sample['max_ms']:.0f} ms", flush=True)
     report = {
-        "scope": "frozen productive Retail QVM q3dm0 moving replay; no compile in measurement loop",
-        "frames": args.frames, "fixed_step_ms": 20, "singleplayer": True,
+        "scope": f"frozen productive Retail QVM {args.map} moving replay; no compile in measurement loop",
+        "map": args.map, "frames": args.frames, "fixed_step_ms": 20, "singleplayer": True,
         "movement": reference_movement,
         "binaries": {name: {"path": str(path), "sha256": sha256(path),
                              "size_bytes": path.stat().st_size}
