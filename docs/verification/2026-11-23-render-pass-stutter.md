@@ -105,3 +105,34 @@ Ausgangsfassung. Beide Änderungen sind nicht im Quellcode enthalten.
 Die verbleibende Arbeit betrifft vor allem Shaderpass-Vorbereitung und
 zusätzliche Portalansichten in langen Botkämpfen. Der Port hat hier noch
 keine 1:1-Performanceparität mit Quake III Arena.
+
+## Nachmessung der Specular-Passes
+
+Eine zusätzliche q3dm0-Retailprobe führte 20 Updates auf allen 107
+dynamischen Shaderpasses mit zusammen 8.607 Dreiecken aus. Sie benötigte
+317 ms. Allein drei große `lightingspecular`-Passes mit 1.709, 1.635 und
+664 Dreiecken beanspruchten zusammen 178 ms. Der CPU-Hotspot ist damit
+konkreter als die allgemeine Zeichenphase eingegrenzt.
+
+Eine skalare Berechnung ohne temporäre Vektor-Arrays traf 18.144
+Differentialfälle exakt, senkte die isolierte Probe aber nur von 317 auf
+313 ms und verlor im direkten 3.200-Frame-Gegenlauf FPS. Sie wurde
+zurückgenommen. Auch das einmalige Vorberechnen der festen
+Lichtreflexionsrichtung auf unverformten Weltvertices traf diese 18.144
+Fälle und 432 bytegenaue Retail-Auswahlfälle exakt. Die isolierte Probe
+sank damit auf 250 ms; die drei großen Specular-Passes auf zusammen
+115 ms. Drei abwechselnde vollständige Botkampf-Paare ergaben jedoch
+im Median **81,88 statt 81,79 FPS**, P99 **44 statt 43 ms** und einen
+maximalen Frame von **61 statt 62 ms** (jeweils Ausgangsfassung vor
+Kandidat). Der Median der gemessenen Startzeit stieg von 3.169 auf
+3.207 ms. Diese Cache-Variante ist ebenfalls **nicht im Port enthalten**.
+
+Die Einzelwerte stehen in den ignorierten Logs
+`build/reports/specular_cache_{baseline,candidate}_{b,c}.log`,
+`build/reports/specular_baseline_d.log` und
+`build/reference/controls_render_replay/specular_cached_cpu_profile/moving.log`.
+Der nächste Performanceeingriff muss die wiederholten Shaderpass- und
+Vertex-Updates insgesamt reduzieren und seine Bildausgabe mit Retail-
+Differentialfällen absichern. Die vorhandene OpenGL-Hardwareausgabe
+beschleunigt die gezeichneten Dreiecke, aber diese vorgelagerten
+MiniLang-Berechnungen noch nicht.

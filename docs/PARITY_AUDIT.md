@@ -28,6 +28,10 @@ zwar die bytegenauen Retail-Vergleiche, verschlechterten aber die
 3.200-Frame-Messungen. Diese Experimente wurden zurückgenommen. Eine
 einzelne 849-ms-Spitze war im direkten Folgelauf nicht reproduzierbar;
 weitere lange Zeichenphasen bleiben offen. Die Ruckler sind nicht behoben.
+Eine q3dm0-Materialprobe isolierte drei große Specular-Passes mit 178 von
+317 ms in 20 Updates. Das Vorberechnen der statischen Reflexionsrichtung
+senkte die isolierte Zeit auf 250 ms, brachte im vollständigen Botkampf
+aber keinen FPS-Vorteil und wurde ebenfalls zurückgenommen.
 [Profil, Gegenproben und Grenzen](verification/2026-11-23-render-pass-stutter.md)
 
 ## Ladescreen beim Kartenstart
