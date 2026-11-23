@@ -38,7 +38,7 @@ struct Wave func base amplitude phase frequency end struct
 struct TexMod kind values wave end struct
 struct Deform kind spread wave vector bulgeWidth bulgeHeight bulgeSpeed end struct
 struct Stage active mapMode images animationSpeed isLightmap blendSrc blendDst rgbGen alphaGen rgbWave alphaWave constantColor portalRange tcGen tcGenVectors texMods depthWrite depthExplicit alphaFunc depthFunc detail stateBits end struct
-struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime deforms fogColor fogDepth warnings end struct
+struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime deforms fogColor fogDepth warnings cloudHeight end struct
 
 function lower(text) return strings.toLowerAscii(text) end function
 function number(text) return n.f32(numbers.atof(text)) end function
@@ -249,7 +249,7 @@ function skipLine(state) restOfLine(state);return 1 end function
 
 function parse(state,name)
   if parser.parseExt(state,true)!="{" then return error(7139,"shader definition must begin with {") end if
-  shader=Shader(name,[],0.0,"front",[],false,false,false,false,0.0,0.0,[],[0.0,0.0,0.0],0.0,[])
+  shader=Shader(name,[],0.0,"front",[],false,false,false,false,0.0,0.0,[],[0.0,0.0,0.0],0.0,[],512.0)
   while true
     token=parser.parseExt(state,true);if token=="" then return error(7140,"unterminated shader definition: "+name) end if
     if token=="}" then break end if
@@ -258,7 +258,10 @@ function parse(state,name)
       stage=parseStage(state);shader.stages=shader.stages+[stage];if stage.portalRange>0.0 then shader.portalRange=stage.portalRange end if
     else
       command=lower(token)
-      if strings.startsWith(command,"qer") or strings.startsWith(command,"q3map") or command=="tesssize" or command=="skyparms" or command=="cloudparms" or command=="lightning" then skipLine(state)
+      if command=="skyparms" then
+        values=restOfLine(state)
+        if len(values)>=2 then shader.cloudHeight=number(values[1]);if shader.cloudHeight==0.0 then shader.cloudHeight=512.0 end if end if
+      else if strings.startsWith(command,"qer") or strings.startsWith(command,"q3map") or command=="tesssize" or command=="cloudparms" or command=="lightning" then skipLine(state)
       else if command=="surfaceparm" then value=parser.parseExt(state,false);if value!="" then shader.surfaceParms=shader.surfaceParms+[lower(value)] end if
       else if command=="nomipmaps" then shader.noMipMaps=true;shader.noPicMip=true
       else if command=="nopicmip" then shader.noPicMip=true

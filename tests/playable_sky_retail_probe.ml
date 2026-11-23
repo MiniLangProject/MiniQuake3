@@ -13,13 +13,14 @@ function main(args)
   shaderNames=["textures/skies/tim_hell","textures/skies/toxicskytim_blue","textures/skies/xtoxicsky_dm9"]
   firstNames=["textures/skies/killsky_1.jpg","textures/skies/bluedimclouds.jpg","textures/skies/inteldimclouds.jpg"]
   secondNames=["textures/skies/killsky_2.jpg","textures/skies/topclouds.jpg","textures/skies/intelredclouds.jpg"]
-  firstScaleU=[2.0,3.0,3.0];firstScaleV=[2.0,2.0,2.0];firstScroll=[0.1,0.15,0.3];layers=0
+  firstScaleU=[2.0,3.0,3.0];firstScaleV=[2.0,2.0,2.0];firstScroll=[0.1,0.15,0.3];cloudHeights=[384.0,512.0,512.0];layers=0
   for index=0 to len(maps)-1
     map=bsp.load(pk3.read(archive,maps[index]));if map is error then return map end if
     catalog=sky.loadMap(archive,map,scripts[0],150,2);if catalog is error then return catalog end if
     if catalog==void or catalog.shaderName!=shaderNames[index] or len(catalog.layers)!=2 or catalog.textureCount!=2 then return error(7612,"retail map sky layers incomplete") end if
     if catalog.layers[0].imageName!=firstNames[index] or catalog.layers[1].imageName!=secondNames[index] then return error(7613,"retail map sky image mismatch") end if
     if not near(catalog.layers[0].scaleU,firstScaleU[index]) or not near(catalog.layers[0].scaleV,firstScaleV[index]) or not near(catalog.layers[0].scrollU,firstScroll[index]) or not catalog.layers[1].additive then return error(7614,"retail map sky shader transform mismatch") end if
+    if not near(catalog.cloudHeight,cloudHeights[index]) then return error(7615,"retail sky cloud height mismatch") end if
     layers=layers+len(catalog.layers)
   end for
   print("PASS: retail map skies="+str(len(maps))+" layers="+str(layers));return 0

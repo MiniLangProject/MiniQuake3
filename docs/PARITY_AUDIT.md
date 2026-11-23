@@ -4,6 +4,25 @@ Stand: 2026-11-23. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Himmel am Zenit und Botkampf-Ruckler, 23. November 2026
+
+Die Wolken-UVs folgen jetzt der Kugelprojektion aus `R_InitSkyTexCoords`
+und dem `skyparms`-Höhenwert. Eine Retail-Aufnahme von `tim_hell` beim
+senkrechten Blick nach oben zeigt den gemeldeten quadratischen Fleck nicht
+mehr. 405 Originalwert-Vergleiche und drei Retail-Himmel bestehen; die
+übrige Sky-Geometrie bleibt vereinfacht. Der direkte Ausbau von
+Cgame-Polygondreiecken sank isoliert von 78 auf 16 ms für 250.000
+Dreiecke. Vollständige Botkampf-Proben auf q3dm1 und q3dm0 bestehen,
+belegen aber keinen allgemeinen FPS-Gewinn des Polygonpfads. Eine
+anschließende Erhöhung der nebenläufigen GC-Schwelle auf 128 MiB senkte
+in q3dm0 P99 von 39/44 auf 37 ms und die Zahl der Frames ab 35 ms von
+65/78 auf 50; der längste Frame dauerte 62 ms. q3dm1 blieb bei P99
+33 ms. Ein späteres Paar unter höherer Systemlast lag bei P99 43/44 ms
+(128/64 MiB). Der höhere Speicherbedarf und weitere Ruckler bleiben offen.
+Ein vollständig außerhalb der Zeichenfläche liegender World-Batch meldet
+jetzt korrekt null sichtbare Dreiecke; die native Viewport-Testgruppe besteht.
+[Messungen, Tests und Grenzen](verification/2026-11-23-sky-pole-and-poly-expansion.md)
+
 ## Gebündelte Specular-Shaderpasses, 23. November 2026
 
 Unverformte `lightingSpecular`-Passes mit festen UVs aktualisieren ihre

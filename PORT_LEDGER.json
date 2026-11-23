@@ -58054,11 +58054,12 @@
         {
           "original": "ParseSkyParms",
           "target_files": [
+            "src/mq3/renderer/shader_parser.ml",
             "src/mq3/renderer/shader_runtime.ml"
           ],
-          "target_symbol": "mq3.renderer.shader_runtime.ParseSkyParms",
-          "status": "tested_exact",
-          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+          "target_symbol": "mq3.renderer.shader_parser.parse",
+          "status": "tested_subset",
+          "scope": "The productive shader parser retains the skyparms cloud height (384 for Retail tim_hell, 512 for two other checked skies) and the cloud renderer uses it. Original outer/inner skybox rendering and full sky visual parity remain open."
         },
         {
           "original": "ParseSort",
@@ -58438,7 +58439,7 @@
             "native/playable_sky_math.h"
           ],
           "status": "tested_subset",
-          "scope": "A bounded eight-view cache retains double camera-grid UVs and final batch storage; native layer updates preserve the managed scale/scroll/seam-unwrapping bytes. Opaque and original ONE+ONE stages submit separately without depth writes and restore raster state. Twenty-seven contracts, three Retail maps with six cloud layers and an exact shared-edge native colour probe pass. This acceleration does not claim complete sky visual acceptance."
+          "scope": "A bounded eight-view cache retains camera-grid UVs and final batch storage. Productive cloud UVs use the original radius-4096 sphere intersection and acos mapping with parsed skyparms height; the old U unwrap is removed from submission. Opaque and original ONE+ONE stages submit separately without depth writes and restore raster state. Thirty-five contracts include 405 original-value comparisons; three Retail maps with six cloud layers and a zenith hardware capture pass. Full sky geometry and visual parity remain open."
         }
       ],
       "target": [

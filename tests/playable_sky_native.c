@@ -34,5 +34,9 @@ int main(void) {
     playable_window_draw_sky_layer((unsigned char *)records,sizeof(records),2,2,1);
     if (pixels[3*8+2]!=UINT32_C(0xff070b0d) || depthPixels[3*8+2]!=before) return 7;
     if (playable_window_draw_sky_layer((unsigned char *)records,0,0,2,0)!=0) return 8;
+    grid[1].u = 2.5;
+    if (playable_window_update_sky_layer((unsigned char *)records,sizeof(records),0,
+            (unsigned char *)grid,sizeof(grid),1,1,0,1,1,0,0,1000,1000000)!=2 ||
+            records[0].vertex[1][3] != 2.5f) return 9;
     playable_window_shutdown();puts("playable sky native blend: PASS");return 0;
 }

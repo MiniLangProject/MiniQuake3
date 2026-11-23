@@ -140,6 +140,32 @@ function appendTriangle(output,value)
   end if
   output.triangleCount=output.triangleCount+1;return void
 end function
+
+// Persistent Cgame decals revisit the same triangle slots each frame. Fill
+// their retained records directly instead of constructing a temporary
+// Triangle plus its nested arrays only for appendTriangle to copy them.
+function appendPolyTriangle(output,poly,a,b,c)
+  if output.triangleCount>=len(output.triangles) then return fail("triangle capacity exceeded") end if
+  slot=output.triangleCount;target=output.triangles[slot]
+  if target==void then
+    target=triangle([a.xyz,b.xyz,c.xyz],[a.st,b.st,c.st],[normal(),normal(),normal()],[a.modulate,b.modulate,c.modulate],[255,255,255,255],[0.0,0.0],0.0,0,0,poly.hShader,"","",-1,output.polySurfaces,0)
+    output.triangles[slot]=target
+  else
+    wasPoly=target.modelHandle==0 and target.entityIndex==-1 and target.shaderName=="" and target.surfaceName==""
+    target.positions[0]=a.xyz;target.positions[1]=b.xyz;target.positions[2]=c.xyz
+    target.texCoords[0]=a.st;target.texCoords[1]=b.st;target.texCoords[2]=c.st
+    target.colors[0]=a.modulate;target.colors[1]=b.modulate;target.colors[2]=c.modulate
+    if not wasPoly then
+      target.normals=[normal(),normal(),normal()];target.entityColor=[255,255,255,255];target.entityTexCoord=[0.0,0.0]
+      target.lightmapCoords=[[0.0,0.0],[0.0,0.0],[0.0,0.0]]
+    end if
+    target.shaderTime=0.0;target.modelHandle=0;target.customSkin=0;target.shaderHandle=poly.hShader
+    target.shaderName="";target.surfaceName="";target.entityIndex=-1;target.surfaceIndex=output.polySurfaces;target.renderfx=0
+    target.lightmapIndex=-1;target.fogIndex=-1;target.dynamicLight=false;target.dynamicLightOrigin=void
+    target.dynamicLightAxis=void;target.dynamicLightBounds=void;target.vertexIds=void
+  end if
+  output.triangleCount=slot+1;return void
+end function
 function appendIndexedModelTriangle(output,worldPositions,texCoords,worldNormals,vertexColors,defaultColor,entityTexCoord,shaderTime,a,b,c,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,fogIndex,vertexBase)
   if output.triangleCount>=len(output.triangles) then return fail("triangle capacity exceeded") end if
   target=output.triangles[output.triangleCount]
@@ -418,7 +444,7 @@ function addPolys(output,polys)
     if len(poly.verts)>=3 then
       for index=1 to len(poly.verts)-2
         a=poly.verts[0];b=poly.verts[index];c=poly.verts[index+1]
-        stored=appendTriangle(output,triangle([a.xyz,b.xyz,c.xyz],[a.st,b.st,c.st],[normal(),normal(),normal()],[a.modulate,b.modulate,c.modulate],[255,255,255,255],[0.0,0.0],0.0,0,0,poly.hShader,"","",-1,output.polySurfaces,0));if stored is error then return stored end if
+        stored=appendPolyTriangle(output,poly,a,b,c);if stored is error then return stored end if
       end for
     end if
     output.polySurfaces=output.polySurfaces+1

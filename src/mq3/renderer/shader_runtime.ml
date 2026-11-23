@@ -150,7 +150,7 @@ function findLoaded(state,name,lightmapIndex)
 end function
 function loadImage(state,name,mipRawImage) if state==void or state.loadImageFn==void then return void end if;return state.loadImageFn(state.context,name,mipRawImage) end function
 function implicitShader(name,lightmapIndex,image)
-  shader=shaderParser.Shader(stripExtension(name),[],0.0,"front",[],false,false,false,false,0.0,0.0,[],[0.0,0.0,0.0],0.0,[]);stage=shaderParser.blankStage();stage.images=[image]
+  shader=shaderParser.Shader(stripExtension(name),[],0.0,"front",[],false,false,false,false,0.0,0.0,[],[0.0,0.0,0.0],0.0,[],512.0);stage=shaderParser.blankStage();stage.images=[image]
   if lightmapIndex==LIGHTMAP_NONE then stage.rgbGen="lightingdiffuse"
   else if lightmapIndex==LIGHTMAP_BY_VERTEX then stage.rgbGen="exactvertex";stage.alphaGen="skip"
   else if lightmapIndex==LIGHTMAP_2D then stage.rgbGen="vertex";stage.alphaGen="vertex";stage.depthWrite=false;stage.blendSrc=shaderParser.GLS_SRCBLEND_SRC_ALPHA;stage.blendDst=shaderParser.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA;stage.stateBits=stage.blendSrc|stage.blendDst

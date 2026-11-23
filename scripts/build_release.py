@@ -27,7 +27,7 @@ TEST_RUNTIME_FLAGS = ("--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limi
 # The real-time app collects in the background to avoid multi-second pauses
 # when the game and renderer allocate during combat.
 PLAYABLE_RUNTIME_FLAGS = ("--heap-reserve", "2g", "--heap-commit", "128m",
-                          "--gc-limit", "64m", "--gc-concurrent")
+                          "--gc-limit", "128m", "--gc-concurrent")
 PACKAGE_URL = ("https://github.com/MiniLangProject/MiniLangCompilerML/releases/download/"
                "v1.3.9/MiniLangCompilerML-1.3.9-windows-x64.zip")
 

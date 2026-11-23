@@ -22,18 +22,11 @@ PLAYABLE_API int playable_window_store_sky_vertex(unsigned char *source, int byt
     return 1;
 }
 
-static double playableSkyUnwrap(double reference, double value) {
-    while (value - reference > 1.0) value -= 2.0;
-    while (value - reference < -1.0) value += 2.0;
-    return value;
-}
-
 static void playableSkyWriteTriangle(playableTriangleBatchRecord *record, int slot,
         const playableSkySourceVertex *a, const playableSkySourceVertex *b,
         const playableSkySourceVertex *c, double scaleU, double scaleV,
         double scrollU, double scrollV, double depth) {
     const playableSkySourceVertex *points[3];
-    double reference = a->u * scaleU + scrollU;
     int corner;
     points[0] = a; points[1] = b; points[2] = c;
     memset(record, 0, sizeof(*record));
@@ -42,7 +35,6 @@ static void playableSkyWriteTriangle(playableTriangleBatchRecord *record, int sl
     memset(record->vertexColor, 255, sizeof(record->vertexColor));
     for (corner = 0; corner < 3; ++corner) {
         double u = points[corner]->u * scaleU + scrollU;
-        if (corner) u = playableSkyUnwrap(reference, u);
         record->vertex[corner][0] = (float)points[corner]->x;
         record->vertex[corner][1] = (float)points[corner]->y;
         record->vertex[corner][2] = (float)depth;

@@ -2,6 +2,9 @@ import mq3.client.playable_sky as sky
 import mq3.client.playable_viewer as viewer
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.shader_index as shaderIndex
+import mq3.renderer.shader_parser as shaderParser
+import mq3.renderer.tr_sky as originalSky
+import mq3.shared.math as qmath
 
 function require(ok,text) if not ok then return error(7611,text) end if;return 1 end function
 function near(a,b) d=a-b;if d<0 then d=0-d end if;return d<0.002 end function
@@ -15,32 +18,57 @@ function main(args)
   count=count+require(sky.isSkyShaderIndexed(index,"textures/skies/cloudy"),"surfaceparm sky recognized from shader index")
   count=count+require(not sky.isSkyShaderIndexed(index,"textures/wall"),"ordinary indexed material is not a sky")
   source=materials.Image(1,1,bytes([20,40,30,255]))
+  parsed=shaderParser.parseIndexed(index,"textures/skies/cloudy")
+  count=count+require(parsed.cloudHeight==512.0,"original skyparms cloud height retained")
   firstLayer=sky.Layer("first",source,4,2.0,2.0,0.05,0.10,false)
   secondLayer=sky.Layer("second",source,5,3.0,2.0,0.05,0.06,true)
   count=count+require(firstLayer.scaleU==2.0 and firstLayer.scrollV==0.10,"first retail shader stage")
   count=count+require(secondLayer.additive and secondLayer.scaleU==3.0 and secondLayer.scrollV==0.06,"additive retail shader stage")
   camera=viewer.camera([10.0,20.0,30.0],0.0,0.0,320.0,0.1)
+  original=originalSky.rInitSkyTexCoords(512.0)
+  sphereExact=true
+  for face=0 to 4
+    for row=0 to 8
+      for column=0 to 8
+        ray=originalSky.makeSkyVec((column-4)/4.0,(row-4)/4.0,face,1024.0,0.0,1.0).xyz
+        qmath.VectorNormalize(ray)
+        mapped=sky.baseUvPrepared([ray,[0.0,1.0,0.0],[0.0,0.0,1.0]],320.0,640,480,320.0,240.0)
+        expected=original.coords[face][row][column]
+        if not near(mapped[0],expected[0]) or not near(mapped[1],expected[1]) then sphereExact=false end if
+      end for
+    end for
+  end for
+  count=count+require(sphereExact,"405 cloud vertices match original five visible sky faces")
+  original384=originalSky.rInitSkyTexCoords(384.0)
+  retail384=sky.cloudUvPrepared([[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],320.0,640,480,320.0,240.0,384.0)
+  count=count+require(near(retail384[0],original384.coords[0][4][4][0]) and near(retail384[1],original384.coords[0][4][4][1]),"q3dm1 cloud height follows original sky table")
   uv=sky.baseUv(camera,640,480,320.0,240.0)
-  count=count+require(near(uv[0],0.0) and near(uv[1],0.5),"center ray follows camera")
+  count=count+require(near(uv[0],original.coords[0][4][4][0]) and near(uv[1],original.coords[0][4][4][1]),"center ray follows original cloud sphere")
   camera.yaw=90.0;uv=sky.baseUv(camera,640,480,320.0,240.0)
-  count=count+require(near(uv[0],0.25),"yaw anchors sky")
-  camera.yaw=0.0;camera.pitch=30.0;uv=sky.baseUv(camera,640,480,320.0,240.0)
-  count=count+require(near(uv[1],0.6666667),"pitch anchors cloud sphere")
+  count=count+require(near(uv[0],original.coords[2][4][4][0]) and near(uv[1],original.coords[2][4][4][1]),"yaw anchors original sky face")
+  camera.yaw=0.0;camera.pitch=-30.0;uv=sky.baseUv(camera,640,480,320.0,240.0)
+  count=count+require(uv[0]>1.1 and uv[0]<1.57 and near(uv[1],original.coords[0][4][4][1]),"pitch anchors cloud sphere")
+  camera.pitch=-90.0;zenith=sky.baseUv(camera,640,480,320.0,240.0);nearZenith=sky.baseUv(camera,640,480,321.0,240.0)
+  count=count+require(near(zenith[0],original.coords[4][4][4][0]) and near(zenith[1],original.coords[4][4][4][1]) and near(zenith[0],nearZenith[0]),"zenith has no yaw singularity")
+  camera.pitch=-30.0
   grid=sky.baseGrid(camera,640,480)
   complete=true;for each gridVertex in grid if gridVertex==void then complete=false end if end for
   referenceUv=sky.baseUv(camera,640,480,320.0,0.0)
   count=count+require(len(grid)==(sky.GRID_ROWS+1)*(sky.GRID_COLUMNS+1) and complete and near(grid[6].uv[0],referenceUv[0]) and near(grid[6].uv[1],referenceUv[1]),"prepared grid preserves every camera sample")
   viewportGrid=sky.baseGridPrepared(viewer.cameraBasis(camera),100,50,320,240)
   count=count+require(viewportGrid[0].point.x==100 and viewportGrid[0].point.y==50 and viewportGrid[len(viewportGrid)-1].point.x==420 and viewportGrid[len(viewportGrid)-1].point.y==290,"viewport grid is offset and bounded")
-  count=count+require(near(sky.unwrap(1.95,0.02),2.02),"positive seam unwrap")
-  count=count+require(near(sky.unwrap(-1.95,-0.02),-2.02),"negative seam unwrap")
+  grid384=sky.cloudGridPrepared(viewer.cameraBasis(camera),0,0,640,480,384.0)
+  expected384=sky.cloudUvPrepared(viewer.cameraBasis(camera),320.0,640,480,320.0,240.0,384.0)
+  centerIndex=(sky.GRID_ROWS/2)*(sky.GRID_COLUMNS+1)+sky.GRID_COLUMNS/2
+  count=count+require(near(grid384[centerIndex].uv[0],expected384[0]) and near(grid384[centerIndex].uv[1],expected384[1]),"productive grid uses parsed sky height")
+  count=count+require(not near(grid384[centerIndex].uv[0],grid[centerIndex].uv[0]),"retail cloud height changes sphere projection")
   layer=firstLayer
   camera.yaw=0.0;camera.pitch=0.0
   value=sky.vertex(camera,640,480,320.0,240.0,layer,1000,sky.SKY_DEPTH)
-  count=count+require(near(value.uv[0],0.05) and near(value.uv[1],1.10),"tim_hell scale and scroll")
+  count=count+require(near(value.uv[0],original.coords[0][4][4][0]*2.0+0.05) and near(value.uv[1],original.coords[0][4][4][1]*2.0+0.10),"cloud sphere scale and scroll")
   count=count+require(value.point.depth==sky.SKY_DEPTH,"sky stays behind world")
   count=count+require(sky.GRID_COLUMNS*sky.GRID_ROWS*2==192,"bounded layer triangle count")
-  catalog=sky.Catalog([firstLayer,secondLayer],4,2,"textures/skies/test",void)
+  catalog=sky.Catalog([firstLayer,secondLayer],4,2,"textures/skies/test",512.0,void)
   batch=sky.buildBatch(catalog,camera,640,480,1000)
   count=count+require(batch.count==384 and batch.capacity==384,"two layers share one native batch")
   count=count+require(len(batch.data)==384*128,"fixed batch allocation")

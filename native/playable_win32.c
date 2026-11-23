@@ -3431,7 +3431,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     if (triangleCount == 0 || !records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
-    if (!clippedWidth || !clippedHeight) return triangleCount; /* valid, entirely offscreen */
+    if (!clippedWidth || !clippedHeight) return 0; /* no visible submission */
     if (hardwareRenderer) return hardwareDrawWorld(records,triangleCount,viewportX,viewportY,viewportWidth,viewportHeight,
         positionX,positionY,positionZ,rightX,rightY,rightZ,upX,upY,upZ,forwardX,forwardY,forwardZ,focal,nearDistance);
     if (drawWorldBatchParallel(records, byteCount, triangleCount,

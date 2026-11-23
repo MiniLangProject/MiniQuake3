@@ -13,6 +13,7 @@ import std.string as strings
 extern function storeSkyVertexNative(source as ptr,capacity as i32,index as i32,x as double,y as double,u as double,v as double) from "playable_window.dll" symbol "playable_window_store_sky_vertex" returns i32
 extern function updateSkyLayerNative(records as ptr,capacity as i32,firstTriangle as i32,source as ptr,sourceBytes as i32,columns as i32,rows as i32,slot as i32,scaleU as double,scaleV as double,scrollU as double,scrollV as double,nowMilliseconds as double,depth as double) from "playable_window.dll" symbol "playable_window_update_sky_layer" returns i32
 extern function drawSkyLayerNative(records as ptr,capacity as i32,firstTriangle as i32,triangleCount as i32,additive as i32) from "playable_window.dll" symbol "playable_window_draw_sky_layer" returns i32
+extern function acos(value as double) from "ucrtbase.dll" returns double
 
 const SHADER_NAME="textures/skies/tim_hell"
 const REQUIRED_TEXTURES=2
@@ -23,7 +24,7 @@ const MAX_CACHED_VIEWS=8
 const SOURCE_VERTEX_BYTES=32
 
 struct Layer imageName image slot scaleU scaleV scrollU scrollV additive end struct
-struct Catalog layers firstTextureSlot textureCount shaderName cache end struct
+struct Catalog layers firstTextureSlot textureCount shaderName cloudHeight cache end struct
 struct Vertex point uv end struct
 struct CachedView basis left top width height source batch end struct
 struct ViewCache entries next end struct
@@ -78,7 +79,7 @@ function loadIndexed(archive,index,shaderName,firstTextureSlot,maxTextureSlots)
     layer=layerFromStage(archive,stage,firstTextureSlot+len(layers));if layer!=void then layers=layers+[layer] end if
   end for
   if len(layers)==0 then return fail("sky has no supported retail cloud stages: "+shaderName) end if
-  return Catalog(layers,firstTextureSlot,len(layers),strings.toLowerAscii(shaderName),void)
+  return Catalog(layers,firstTextureSlot,len(layers),strings.toLowerAscii(shaderName),parsed.cloudHeight,void)
 end function
 
 function loadMap(archive,map,index,firstTextureSlot,maxTextureSlots)
@@ -118,11 +119,17 @@ function direction(camera,width,height,x,y)
   return directionPrepared(viewer.cameraBasis(camera),focal,width,height,x,y)
 end function
 
-function baseUvPrepared(basis,focal,width,height,x,y)
+// Quake III's R_InitSkyTexCoords intersects each ray with a cloud sphere
+// centered 4096 units below the viewer, then uses acos of its X/Y normal.
+// Unlike yaw/pitch, this is continuous at the zenith.
+function cloudUvPrepared(basis,focal,width,height,x,y,cloudHeight)
   ray=directionPrepared(basis,focal,width,height,x,y)
-  yaw=qmath.atanDegrees(ray[1],ray[0]);horizontal=trans.sqrt(ray[0]*ray[0]+ray[1]*ray[1]);pitch=qmath.atanDegrees(ray[2],horizontal)
-  return [yaw/360.0,0.5-pitch/180.0]
+  radius=4096.0
+  distance=0.0-radius*ray[2]+trans.sqrt(radius*radius*ray[2]*ray[2]+2.0*radius*cloudHeight+cloudHeight*cloudHeight)
+  sphereRadius=radius+cloudHeight
+  return [acos(ray[0]*distance/sphereRadius),acos(ray[1]*distance/sphereRadius)]
 end function
+function baseUvPrepared(basis,focal,width,height,x,y) return cloudUvPrepared(basis,focal,width,height,x,y,512.0) end function
 
 function baseUv(camera,width,height,x,y)
   focal=viewer.focalLength(width,90.0);if focal is error then return focal end if
@@ -136,19 +143,20 @@ function vertex(camera,width,height,x,y,layer,nowMilliseconds,depth)
   return Vertex(viewer.ScreenPoint(x,y,depth),mapped)
 end function
 
-function baseGridPrepared(basis,left,top,width,height)
+function cloudGridPrepared(basis,left,top,width,height,cloudHeight)
   focal=viewer.focalLength(width,90.0);if focal is error then return focal end if
   vertices=array((GRID_ROWS+1)*(GRID_COLUMNS+1),void);index=0
   for row=0 to GRID_ROWS
     y=height*row/GRID_ROWS
     for column=0 to GRID_COLUMNS
       x=width*column/GRID_COLUMNS
-      uv=baseUvPrepared(basis,focal,width,height,x,y)
+      uv=cloudUvPrepared(basis,focal,width,height,x,y,cloudHeight)
       vertices[index]=Vertex(viewer.ScreenPoint(left+x,top+y,SKY_DEPTH),uv);index=index+1
     end for
   end for
   return vertices
 end function
+function baseGridPrepared(basis,left,top,width,height) return cloudGridPrepared(basis,left,top,width,height,512.0) end function
 function baseGrid(camera,width,height) return baseGridPrepared(viewer.cameraBasis(camera),0,0,width,height) end function
 
 function mappedVertex(source,layer,seconds,depth)
@@ -156,22 +164,17 @@ function mappedVertex(source,layer,seconds,depth)
   return Vertex(viewer.ScreenPoint(source.point.x,source.point.y,depth),uv)
 end function
 
-function unwrap(reference,value)
-  result=value;while result-reference>1.0 result=result-2.0 end while;while result-reference<0.0-1.0 result=result+2.0 end while;return result
-end function
-
 function drawTriangle(layer,a,b,c)
-  b.uv[0]=unwrap(a.uv[0],b.uv[0]);c.uv[0]=unwrap(a.uv[0],c.uv[0])
   window.drawTriangle(layer.slot,a.point,a.uv,1.0,b.point,b.uv,1.0,c.point,c.uv,1.0,255,255,255);return 1
 end function
 
 function appendTriangle(batch,layer,a,b,c)
-  uvA=[a.uv[0],a.uv[1]];uvB=[unwrap(a.uv[0],b.uv[0]),b.uv[1]];uvC=[unwrap(a.uv[0],c.uv[0]),c.uv[1]]
+  uvA=[a.uv[0],a.uv[1]];uvB=[b.uv[0],b.uv[1]];uvC=[c.uv[0],c.uv[1]]
   return window.appendSingleTextureTriangle(batch,layer.slot,a.point,uvA,1.0,b.point,uvB,1.0,c.point,uvC,1.0,255,255,255)
 end function
 
 function buildBatchPrepared(catalog,basis,left,top,width,height,nowMilliseconds)
-  grid=baseGridPrepared(basis,left,top,width,height);if grid is error then return grid end if
+  grid=cloudGridPrepared(basis,left,top,width,height,catalog.cloudHeight);if grid is error then return grid end if
   batch=window.createTriangleBatch(len(catalog.layers)*GRID_COLUMNS*GRID_ROWS*2);if batch is error then return batch end if
   seconds=nowMilliseconds/1000.0
   for layerIndex=0 to len(catalog.layers)-1
@@ -213,7 +216,7 @@ function retainedBatchPrepared(catalog,basis,left,top,width,height,nowMillisecon
     if candidate!=void and candidate.left==left and candidate.top==top and candidate.width==width and candidate.height==height and sameBasis(candidate.basis,basis) then entry=candidate;break end if
   end for
   if entry==void then
-    grid=baseGridPrepared(basis,left,top,width,height);if grid is error then return grid end if
+    grid=cloudGridPrepared(basis,left,top,width,height,catalog.cloudHeight);if grid is error then return grid end if
     slot=cache.next;cache.next=(cache.next+1)%MAX_CACHED_VIEWS;entry=cache.entries[slot]
     if entry==void then
       batch=window.createTriangleBatch(count);if batch is error then return batch end if
