@@ -307,3 +307,24 @@ Verträge sowie den 3.200-Frame-Retail-Bot-Replay. Gameplay-Zähler blieben
 in allen A/B-Läufen identisch. Die Verbesserung ist klein; Botkampf und
 Portalbilder bleiben deutlich unter dem Ziel einer durchgehend flüssigen
 Ausgabe. A/B-Rohdaten: `build/reports/vertex_index_scratch_ab.json`.
+
+### UV-Quellen und Portal-Cache
+
+Bei normalen Shader-Pässen hatten Quell-UVs und Deformations-UVs denselben
+Basiswert, wurden aber als zwei Dreier-Arrays abgelegt. Sie teilen jetzt
+dieses unveränderte Quell-Array. Lightmap-Pässe behalten getrennte Basis- und
+Lightmap-UVs. 64 World-Batch-, 19 Vertex-Identitäts- und 54 Retained-World-
+Verträge sowie ein 3.200-Frame-Botreplay mit Retail-`pak0.pk3` bestanden.
+Auf der RTX 5080 ergaben drei abwechselnde Paare gegenüber der vorherigen
+EXE einen FPS-Median von 73,13 auf 74,90. Die P99-Framezeit stieg von 45 auf
+46 ms, die längste Framezeit im Median sank von 67 auf 64 ms. Die gepaarten
+FPS-Differenzen waren +0,70, +3,57 und -0,21; ein stabiler Ruckler-Gewinn
+ist daraus nicht ableitbar. Rohdaten: `build/reports/shared_deform_uv_ab.json`.
+
+Ein separat getesteter Vier-Eintrag-LRU für Portal-World-Batches erzielte
+im gleichen Replay nur einen zusätzlichen Treffer (253 statt 252) und
+einen Neubau weniger (160 statt 161). Der Einzellauf war langsamer
+(71,99 statt 74,46 FPS, P99 47 statt 44 ms); die Änderung wurde verworfen.
+Die gewählten Portalflächen wechseln überwiegend tatsächlich. Der weitere
+Engpass ist der Aufbau neuer Material-Batches und der zusätzliche Renderpfad,
+nicht die Kapazität des letzten-Batch-Caches.

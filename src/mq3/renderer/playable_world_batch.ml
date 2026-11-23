@@ -163,7 +163,10 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual,ind
       if commands is error then return commands end if
       sourcePositions[outputIndex]=[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]
       sourceIndexes[outputIndex]=[triangle.vertices[0].sourceIndex,triangle.vertices[1].sourceIndex,triangle.vertices[2].sourceIndex]
-      sourceDeformUvs[outputIndex]=[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]
+      // A regular pass reads the same immutable base UVs for shading and
+      // deforms. Lightmap stages need their own lightmap UV triplet above.
+      if stage.bspLightmap then sourceDeformUvs[outputIndex]=[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]
+      else sourceDeformUvs[outputIndex]=sourceUvs[outputIndex] end if
       sourceNormals[outputIndex]=[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]
       sourceColors[outputIndex]=[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]
       sourceEntityColors[outputIndex]=[triangle.vertices[0].entityColor,triangle.vertices[1].entityColor,triangle.vertices[2].entityColor]

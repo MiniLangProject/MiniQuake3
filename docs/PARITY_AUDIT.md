@@ -76,6 +76,13 @@ ohne Portalansicht bestätigte den Einfluss dieses Renderpfads, gehört aber
 nicht zum Spiel.
 [A/B-Messung und Grenzen](verification/2026-11-22-combat-frame-times.md#portal-batch-und-vertex-indizes)
 
+Nicht-Lightmap-Pässe teilen inzwischen ihre identischen Quell- und
+Deformations-UV-Dreier-Arrays. Drei abwechselnde Retail-Botkampf-Paare
+ergaben 74,90 statt 73,13 FPS im Median, aber P99 46 statt 45 ms. Ein
+Vier-Eintrag-Portal-Cache brachte nur einen zusätzlichen Treffer in 3.200
+Frames und wurde verworfen. Die Ruckler bleiben offen.
+[Messung und verworfene Cache-Variante](verification/2026-11-22-combat-frame-times.md#uv-quellen-und-portal-cache)
+
 ## Renderer und Shaderzeiten, 22. November 2026
 
 Der Renderer verwendet bei gleicher Entity-Zeit die berechnete Shaderzeit
