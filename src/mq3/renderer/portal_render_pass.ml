@@ -3,6 +3,7 @@
 package mq3.renderer.portal_render_pass
 
 import mq3.shared.math as qmath
+import mq3.client.playable_viewer as viewer
 import mq3.renderer.portal_view as portalView
 import std.ds.set as sets
 import std.ds.list as lists
@@ -42,6 +43,24 @@ function before(left,right)
   return left.distanceSquared<right.distanceSquared or (left.distanceSquared==right.distanceSquared and left.faceIndex<right.faceIndex)
 end function
 
+// tr_main.c:SurfIsOffscreen rejects a portal surface when every vertex is
+// outside the same clip plane.  The draw-surface selection alone is coarser:
+// its face bounds can intersect the frustum while the portal triangle does not.
+function triangleInFrustum(triangle,refdef,slopeX,slopeY)
+  common=127
+  for each vertex in triangle.vertices
+    point=vertex.position;delta=[point[0]-refdef.vieworg[0],point[1]-refdef.vieworg[1],point[2]-refdef.vieworg[2]]
+    depth=qmath.DotProduct(delta,refdef.viewaxis[0]);side=qmath.DotProduct(delta,refdef.viewaxis[1]);up=qmath.DotProduct(delta,refdef.viewaxis[2]);flags=0
+    if side>=depth*slopeX then flags=flags|1 end if
+    if side<= -depth*slopeX then flags=flags|2 end if
+    if up>=depth*slopeY then flags=flags|4 end if
+    if up<= -depth*slopeY then flags=flags|8 end if
+    if depth<1.0 then flags=flags|64 end if
+    common=common&flags
+  end for
+  return common==0
+end function
+
 // Baseq3 renders at most the first viable portal view in a main view and
 // refuses recursion.  Here distance provides deterministic draw-surface
 // ordering when several selected portal faces share sort == SS_PORTAL.
@@ -56,9 +75,13 @@ function prepare(renderData,catalog,geometry,sourceRefdef,isPortal)
     for each material in catalog.materials if material.sort==1.0 then textures.add(material.textureIndex) end if end for
   end if
   if textures.isEmpty() then return void end if
+  focalX=viewer.focalLength(sourceRefdef.width,sourceRefdef.fovX);if focalX is error then return focalX end if
+  focalY=viewer.focalLength(sourceRefdef.height,sourceRefdef.fovY);if focalY is error then return focalY end if
+  slopeX=sourceRefdef.width/(2.0*focalX);slopeY=sourceRefdef.height/(2.0*focalY)
   candidates=lists.List.new();faces=sets.HashSet.new()
   for each triangle in renderData.triangles
     if not textures.has(triangle.textureIndex) or faces.has(triangle.faceIndex) then continue end if
+    if not triangleInFrustum(triangle,sourceRefdef,slopeX,slopeY) then continue end if
     surface=planeFor(triangle,sourceRefdef.vieworg);if surface!=void then candidates.add(surface);faces.add(triangle.faceIndex) end if
   end for
   ordered=candidates.toArray();sorting.sortBy(ordered,before)

@@ -4,6 +4,19 @@ Stand: 2026-11-23. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Portal-Sichtprüfung im Botkampf, 23. November 2026
+
+Der produktive Renderer verwirft nun Portalflächen, deren Dreiecke vollständig
+außerhalb einer gemeinsamen Kamera-Clip-Ebene liegen. Das folgt dem
+Frustum-Teil von `SurfIsOffscreen` im Original. Auf `q3dm0` mit Retail-Daten
+entfielen dadurch in jedem von drei 3.200-Frame-Vergleichspaaren 30
+Portalansichten. Die mediane Bildrate stieg auf der RTX 5080 von 78,12 auf
+79,76 FPS; P99 blieb bei 44 ms und das Median-Maximum stieg von 63 auf
+64 ms. Die verbleibenden Ruckler sind offen. Ein größerer Portal-Cache
+wurde anhand 160 unterschiedlicher Schlüssel verworfen. Originale
+Backface- und Entfernungsprüfung fehlen weiterhin im produktiven Portalpfad.
+[Diagnose, Einzelwerte und Testumfang](verification/2026-11-23-portal-frustum.md)
+
 ## Ladescreen beim Kartenstart
 
 Beim Wechsel vom Hauptmenü in ein lokales Match erscheint der Levelshot der

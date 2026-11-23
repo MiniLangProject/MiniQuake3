@@ -57255,7 +57255,7 @@
             "src/mq3/renderer/world_surface_selection.ml"
           ],
           "status": "tested_exact",
-          "scope": "RT_PORTALSURFACE markers drive mirror or remote-camera origin/axes, PVS, rotation and clip-plane calculation; main/portal views apply RF_FIRST_PERSON and RF_THIRD_PERSON filtering. The productive software renderer builds the portal world and portal-visible Cgame entities from that camera, clips BSP/QVM triangles to the destination plane, composes portal then depth-clear then main view, and limits recursion to one level. Three exact records, 17 view contracts, 21 render-pass contracts and 32 geometry contracts pass; retail visual acceptance awaits mounted assets."
+          "scope": "RT_PORTALSURFACE markers drive mirror or remote-camera origin/axes, PVS, rotation and clip-plane calculation; main/portal views apply RF_FIRST_PERSON and RF_THIRD_PERSON filtering. The productive renderer builds the portal world and portal-visible Cgame entities from that camera, clips BSP/QVM triangles to the destination plane, composes portal then depth-clear then main view, and limits recursion to one level. It rejects portal triangles wholly outside a common camera clip plane, matching the frustum portion of SurfIsOffscreen; the original backface and portalRange checks remain open. Three exact records, 17 view contracts, 42 render-pass contracts and 32 geometry contracts pass; a 3,200-frame q3dm0 Retail A/B replay confirms 30 fewer portal views while P99 remains 44 ms."
         },
         {
           "original": "Complete original source surface",
