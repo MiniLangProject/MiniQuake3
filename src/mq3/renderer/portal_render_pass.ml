@@ -61,6 +61,13 @@ function triangleInFrustum(triangle,refdef,slopeX,slopeY)
   return common==0
 end function
 
+// SurfIsOffscreen counts only triangles whose first vertex faces the eye.
+// A surface with every triangle backfaced cannot contribute a portal view.
+function triangleFacesView(triangle,viewOrigin)
+  vertex=triangle.vertices[0];point=vertex.position;normal=vertex.normal
+  return (point[0]-viewOrigin[0])*normal[0]+(point[1]-viewOrigin[1])*normal[1]+(point[2]-viewOrigin[2])*normal[2]<0.0
+end function
+
 // Baseq3 renders at most the first viable portal view in a main view and
 // refuses recursion.  Here distance provides deterministic draw-surface
 // ordering when several selected portal faces share sort == SS_PORTAL.
@@ -82,6 +89,7 @@ function prepare(renderData,catalog,geometry,sourceRefdef,isPortal)
   for each triangle in renderData.triangles
     if not textures.has(triangle.textureIndex) or faces.has(triangle.faceIndex) then continue end if
     if not triangleInFrustum(triangle,sourceRefdef,slopeX,slopeY) then continue end if
+    if not triangleFacesView(triangle,sourceRefdef.vieworg) then continue end if
     surface=planeFor(triangle,sourceRefdef.vieworg);if surface!=void then candidates.add(surface);faces.add(triangle.faceIndex) end if
   end for
   ordered=candidates.toArray();sorting.sortBy(ordered,before)

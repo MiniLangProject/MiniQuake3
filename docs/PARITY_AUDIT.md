@@ -13,9 +13,22 @@ entfielen dadurch in jedem von drei 3.200-Frame-Vergleichspaaren 30
 Portalansichten. Die mediane Bildrate stieg auf der RTX 5080 von 78,12 auf
 79,76 FPS; P99 blieb bei 44 ms und das Median-Maximum stieg von 63 auf
 64 ms. Die verbleibenden Ruckler sind offen. Ein größerer Portal-Cache
-wurde anhand 160 unterschiedlicher Schlüssel verworfen. Originale
-Backface- und Entfernungsprüfung fehlen weiterhin im produktiven Portalpfad.
+wurde anhand 160 unterschiedlicher Schlüssel verworfen. Die originale
+Backface-Prüfung ist danach ergänzt und durch 43 Verträge geprüft; sie
+änderte die Portalanzahl im q3dm0-Retail-Kampf nicht. Die Entfernungsprüfung
+fehlt weiterhin im produktiven Portalpfad.
 [Diagnose, Einzelwerte und Testumfang](verification/2026-11-23-portal-frustum.md)
+
+## Weitere CPU-Ruckler im Botkampf, 23. November 2026
+
+Ein natives Rendererprofil ordnet die wiederholten langsamen Kampfframes
+vorwiegend der CPU-Vorbereitung von Shaderpasses und Portalansichten zu.
+Bedarfsgesteuerte Lichtquellen und wiederverwendete Nebelindizes bestanden
+zwar die bytegenauen Retail-Vergleiche, verschlechterten aber die
+3.200-Frame-Messungen. Diese Experimente wurden zurückgenommen. Eine
+einzelne 849-ms-Spitze war im direkten Folgelauf nicht reproduzierbar;
+weitere lange Zeichenphasen bleiben offen. Die Ruckler sind nicht behoben.
+[Profil, Gegenproben und Grenzen](verification/2026-11-23-render-pass-stutter.md)
 
 ## Ladescreen beim Kartenstart
 
