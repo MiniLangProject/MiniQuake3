@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L29)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-entitiesinboxfn-entitiesinboxfn-src-mq3-vm-syscall-qagame-world-ml-372378253"></a>
 ### entitiesInBoxFn
@@ -32,7 +32,7 @@ entitiesInBoxFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L30)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L32)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-entitycontactfn-entitycontactfn-src-mq3-vm-syscall-qagame-world-ml-1228834425"></a>
 ### entityContactFn
@@ -42,7 +42,7 @@ entityContactFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L31)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L33)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-getusercmdfn-getusercmdfn-src-mq3-vm-syscall-qagame-world-ml-55524859"></a>
 ### getUsercmdFn
@@ -52,7 +52,7 @@ getUsercmdFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L34)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-pointcontentsfn-pointcontentsfn-src-mq3-vm-syscall-qagame-world-ml-1555090777"></a>
 ### pointContentsFn
@@ -62,7 +62,7 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L31)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-tracefn-tracefn-src-mq3-vm-syscall-qagame-world-ml-1116410145"></a>
 ### traceFn
@@ -72,4 +72,4 @@ traceFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L28)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L30)

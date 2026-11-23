@@ -10,7 +10,7 @@ struct RenderData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ patchSurfaceCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-skippedsurfacecount-skippedsurfacecount-src-mq3-renderer-bsp-render-data-ml-10855685"></a>
 ### skippedSurfaceCount
@@ -32,7 +32,7 @@ skippedSurfaceCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-surfacecount-surfacecount-src-mq3-renderer-bsp-render-data-ml-1835575181"></a>
 ### surfaceCount
@@ -42,7 +42,7 @@ surfaceCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-trianglecount-trianglecount-src-mq3-renderer-bsp-render-data-ml-1576479497"></a>
 ### triangleCount
@@ -52,7 +52,7 @@ triangleCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-triangles-triangles-src-mq3-renderer-bsp-render-data-ml-1969169549"></a>
 ### triangles
@@ -62,7 +62,7 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-truncated-truncated-src-mq3-renderer-bsp-render-data-ml-1964929429"></a>
 ### truncated
@@ -72,4 +72,4 @@ truncated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L22)

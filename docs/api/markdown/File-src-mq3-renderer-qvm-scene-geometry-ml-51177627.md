@@ -12,7 +12,9 @@ Reachable from entry: **yes**
 - `mq3/format/md3.ml` as `md3` → [src/mq3/format/md3.ml](File-src-mq3-format-md3-ml-2098563759.md)
 - `mq3/renderer/bsp_render_data.ml` as `bspRender` → [src/mq3/renderer/bsp_render_data.ml](File-src-mq3-renderer-bsp-render-data-ml-926244912.md)
 - `mq3/renderer/entity_surface_policy.ml` as `entityPolicy` → [src/mq3/renderer/entity_surface_policy.ml](File-src-mq3-renderer-entity-surface-policy-ml-628328091.md)
+- `mq3/renderer/md3_cache_index.ml` as `md3CacheIndex` → [src/mq3/renderer/md3_cache_index.ml](File-src-mq3-renderer-md3-cache-index-ml-212366937.md)
 - `mq3/renderer/md3_entity.ml` as `md3Entity` → [src/mq3/renderer/md3_entity.ml](File-src-mq3-renderer-md3-entity-ml-1460630353.md)
+- `mq3/renderer/native_md3.ml` as `nativeMd3` → [src/mq3/renderer/native_md3.ml](File-src-mq3-renderer-native-md3-ml-1567005747.md)
 - `mq3/renderer/playable_light_grid.ml` as `lightGrid` → [src/mq3/renderer/playable_light_grid.ml](File-src-mq3-renderer-playable-light-grid-ml-1846122219.md)
 - `mq3/renderer/portal_view.ml` as `portalView` → [src/mq3/renderer/portal_view.ml](File-src-mq3-renderer-portal-view-ml-1859210863.md)
 - `mq3/renderer/scene_queue.ml` as `sceneQueue` → [src/mq3/renderer/scene_queue.ml](File-src-mq3-renderer-scene-queue-ml-703423413.md)
@@ -40,7 +42,7 @@ function addBeam(output, decoded, entityIndex)
 | `entityIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L362)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L407)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-addinlinemodel-function-addinlinemodel-output-decoded-wrapped-entityindex-src-mq3-renderer-qvm-scene-geometry-ml-160790983"></a>
 ### addInlineModel
@@ -57,7 +59,7 @@ function addInlineModel(output, decoded, wrapped, entityIndex)
 | `entityIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L317)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L362)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-addmodeloptimized-function-addmodeloptimized-output-decoded-selection-entityindex-maxtrianglespersurface-cache-normaltable-grid-refdef-shadowmode-fogcatalog-noworldmodel-src-mq3-renderer-qvm-scene-geometry-ml-1537608420"></a>
 ### addModelOptimized
@@ -82,7 +84,7 @@ function addModelOptimized(output, decoded, selection, entityIndex, maxTriangles
 | `noWorldModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L279)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L320)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-addpolys-function-addpolys-output-polys-src-mq3-renderer-qvm-scene-geometry-ml-353083036"></a>
 ### addPolys
@@ -97,7 +99,7 @@ function addPolys(output, polys)
 | `polys` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L371)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L416)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-addsprite-function-addsprite-output-decoded-refdef-entityindex-src-mq3-renderer-qvm-scene-geometry-ml-1404186748"></a>
 ### addSprite
@@ -114,7 +116,7 @@ function addSprite(output, decoded, refdef, entityIndex)
 | `entityIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L332)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L377)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-addtrail-function-addtrail-output-decoded-refdef-entityindex-src-mq3-renderer-qvm-scene-geometry-ml-1842387144"></a>
 ### addTrail
@@ -131,7 +133,7 @@ function addTrail(output, decoded, refdef, entityIndex)
 | `entityIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L354)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L399)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-addtrailsubmission-function-addtrailsubmission-output-decoded-submission-entityindex-src-mq3-renderer-qvm-scene-geometry-ml-1442380216"></a>
 ### addTrailSubmission
@@ -148,13 +150,13 @@ function addTrailSubmission(output, decoded, submission, entityIndex)
 | `entityIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L345)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L390)
 
-<a id="function-function-mq3-renderer-qvm-scene-geometry-appendindexedmodeltriangle-function-appendindexedmodeltriangle-output-worldpositions-texcoords-worldnormals-vertexcolors-defaultcolor-entitytexcoord-shadertime-a-b-c-modelhandle-customskin-shaderhandle-shadername-surfacename-entityindex-surfaceindex-renderfx-fogindex-src-mq3-renderer-qvm-scene-geometry-ml-995054729"></a>
+<a id="function-function-mq3-renderer-qvm-scene-geometry-appendindexedmodeltriangle-function-appendindexedmodeltriangle-output-worldpositions-texcoords-worldnormals-vertexcolors-defaultcolor-entitytexcoord-shadertime-a-b-c-modelhandle-customskin-shaderhandle-shadername-surfacename-entityindex-surfaceindex-renderfx-fogindex-vertexbase-src-mq3-renderer-qvm-scene-geometry-ml-2051328754"></a>
 ### appendIndexedModelTriangle
 
 ```ml
-function appendIndexedModelTriangle(output, worldPositions, texCoords, worldNormals, vertexColors, defaultColor, entityTexCoord, shaderTime, a, b, c, modelHandle, customSkin, shaderHandle, shaderName, surfaceName, entityIndex, surfaceIndex, renderfx, fogIndex)
+function appendIndexedModelTriangle(output, worldPositions, texCoords, worldNormals, vertexColors, defaultColor, entityTexCoord, shaderTime, a, b, c, modelHandle, customSkin, shaderHandle, shaderName, surfaceName, entityIndex, surfaceIndex, renderfx, fogIndex, vertexBase)
 ```
 
 | Parameter | Type | Default | Description |
@@ -179,9 +181,10 @@ function appendIndexedModelTriangle(output, worldPositions, texCoords, worldNorm
 | `surfaceIndex` | `dynamic` | — |  |
 | `renderfx` | `dynamic` | — |  |
 | `fogIndex` | `dynamic` | — |  |
+| `vertexBase` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L141)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L143)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-appendshadowtriangle-function-appendshadowtriangle-output-positions-entityindex-surfaceindex-src-mq3-renderer-qvm-scene-geometry-ml-712231299"></a>
 ### appendShadowTriangle
@@ -198,7 +201,7 @@ function appendShadowTriangle(output, positions, entityIndex, surfaceIndex)
 | `surfaceIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L96)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L98)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-appendtriangle-function-appendtriangle-output-value-src-mq3-renderer-qvm-scene-geometry-ml-2028707254"></a>
 ### appendTriangle
@@ -213,7 +216,7 @@ function appendTriangle(output, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L131)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L133)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-build-function-build-scene-assetkinds-modelassets-refdef-maxtrianglespersurface-src-mq3-renderer-qvm-scene-geometry-ml-1603782838"></a>
 ### build
@@ -231,7 +234,7 @@ function build(scene, assetKinds, modelAssets, refdef, maxTrianglesPerSurface)
 | `maxTrianglesPerSurface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L476)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L522)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildportalrecords-function-buildportalrecords-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-src-mq3-renderer-qvm-scene-geometry-ml-956548383"></a>
 ### buildPortalRecords
@@ -253,7 +256,7 @@ function buildPortalRecords(entities, polys, assetKinds, modelAssets, refdef, ma
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L427)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L473)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildportalrecordsculled-function-buildportalrecordsculled-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-src-mq3-renderer-qvm-scene-geometry-ml-1904958659"></a>
 ### buildPortalRecordsCulled
@@ -275,7 +278,7 @@ function buildPortalRecordsCulled(entities, polys, assetKinds, modelAssets, refd
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L448)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L494)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildportalrecordsculledshadows-function-buildportalrecordsculledshadows-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-shadowmode-src-mq3-renderer-qvm-scene-geometry-ml-396435900"></a>
 ### buildPortalRecordsCulledShadows
@@ -298,7 +301,7 @@ function buildPortalRecordsCulledShadows(entities, polys, assetKinds, modelAsset
 | `shadowMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L452)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L498)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildportalrecordsculledshadowsfog-function-buildportalrecordsculledshadowsfog-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-shadowmode-fogcatalog-src-mq3-renderer-qvm-scene-geometry-ml-681336447"></a>
 ### buildPortalRecordsCulledShadowsFog
@@ -322,7 +325,7 @@ function buildPortalRecordsCulledShadowsFog(entities, polys, assetKinds, modelAs
 | `fogCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L456)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L502)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildportalrecordsculledshadowsfoglod-function-buildportalrecordsculledshadowsfoglod-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-shadowmode-fogcatalog-lodscale-lodbias-src-mq3-renderer-qvm-scene-geometry-ml-382407726"></a>
 ### buildPortalRecordsCulledShadowsFogLod
@@ -348,7 +351,7 @@ function buildPortalRecordsCulledShadowsFogLod(entities, polys, assetKinds, mode
 | `lodBias` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L460)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L506)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecords-function-buildrecords-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-src-mq3-renderer-qvm-scene-geometry-ml-470850544"></a>
 ### buildRecords
@@ -367,7 +370,7 @@ function buildRecords(entities, polys, assetKinds, modelAssets, refdef, maxTrian
 | `maxTrianglesPerSurface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L475)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L521)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordscached-function-buildrecordscached-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-normaltable-src-mq3-renderer-qvm-scene-geometry-ml-1575825383"></a>
 ### buildRecordsCached
@@ -387,7 +390,7 @@ function buildRecordsCached(entities, polys, assetKinds, modelAssets, refdef, ma
 | `normalTable` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L474)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L520)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordscachedlit-function-buildrecordscachedlit-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-normaltable-grid-src-mq3-renderer-qvm-scene-geometry-ml-700980473"></a>
 ### buildRecordsCachedLit
@@ -408,7 +411,7 @@ function buildRecordsCachedLit(entities, polys, assetKinds, modelAssets, refdef,
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L465)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L511)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordsframecachedlit-function-buildrecordsframecachedlit-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-src-mq3-renderer-qvm-scene-geometry-ml-919173571"></a>
 ### buildRecordsFrameCachedLit
@@ -430,7 +433,7 @@ function buildRecordsFrameCachedLit(entities, polys, assetKinds, modelAssets, re
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L464)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L510)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordsframecachedlitreuse-function-buildrecordsframecachedlitreuse-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-previous-src-mq3-renderer-qvm-scene-geometry-ml-1001436942"></a>
 ### buildRecordsFrameCachedLitReuse
@@ -453,7 +456,7 @@ function buildRecordsFrameCachedLitReuse(entities, polys, assetKinds, modelAsset
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L426)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L472)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordsframecachedlitreusemode-function-buildrecordsframecachedlitreusemode-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-previous-isportal-frustum-src-mq3-renderer-qvm-scene-geometry-ml-638268542"></a>
 ### buildRecordsFrameCachedLitReuseMode
@@ -478,7 +481,7 @@ function buildRecordsFrameCachedLitReuseMode(entities, polys, assetKinds, modelA
 | `frustum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L425)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L471)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordsframecachedlitreusemodeshadow-function-buildrecordsframecachedlitreusemodeshadow-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-previous-isportal-frustum-shadowmode-src-mq3-renderer-qvm-scene-geometry-ml-1130255989"></a>
 ### buildRecordsFrameCachedLitReuseModeShadow
@@ -504,7 +507,7 @@ function buildRecordsFrameCachedLitReuseModeShadow(entities, polys, assetKinds, 
 | `shadowMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L424)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L470)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordsframecachedlitreusemodeshadowfog-function-buildrecordsframecachedlitreusemodeshadowfog-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-previous-isportal-frustum-shadowmode-fogcatalog-noworldmodel-src-mq3-renderer-qvm-scene-geometry-ml-257955802"></a>
 ### buildRecordsFrameCachedLitReuseModeShadowFog
@@ -532,7 +535,7 @@ function buildRecordsFrameCachedLitReuseModeShadowFog(entities, polys, assetKind
 | `noWorldModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L423)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L469)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordsframecachedlitreusemodeshadowfoglod-function-buildrecordsframecachedlitreusemodeshadowfoglod-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-normaltable-grid-previous-isportal-frustum-shadowmode-fogcatalog-noworldmodel-lodscale-lodbias-src-mq3-renderer-qvm-scene-geometry-ml-717888543"></a>
 ### buildRecordsFrameCachedLitReuseModeShadowFogLod
@@ -562,7 +565,7 @@ function buildRecordsFrameCachedLitReuseModeShadowFogLod(entities, polys, assetK
 | `lodBias` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L394)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L439)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordswithframecache-function-buildrecordswithframecache-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-grid-src-mq3-renderer-qvm-scene-geometry-ml-410922264"></a>
 ### buildRecordsWithFrameCache
@@ -583,7 +586,7 @@ function buildRecordsWithFrameCache(entities, polys, assetKinds, modelAssets, re
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L466)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L512)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordswithframecachereuse-function-buildrecordswithframecachereuse-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-grid-previous-src-mq3-renderer-qvm-scene-geometry-ml-576965047"></a>
 ### buildRecordsWithFrameCacheReuse
@@ -605,7 +608,7 @@ function buildRecordsWithFrameCacheReuse(entities, polys, assetKinds, modelAsset
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L470)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L516)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordswithframecachereuseculled-function-buildrecordswithframecachereuseculled-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-grid-previous-src-mq3-renderer-qvm-scene-geometry-ml-887566241"></a>
 ### buildRecordsWithFrameCacheReuseCulled
@@ -627,7 +630,7 @@ function buildRecordsWithFrameCacheReuseCulled(entities, polys, assetKinds, mode
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L432)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L478)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordswithframecachereuseculledshadows-function-buildrecordswithframecachereuseculledshadows-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-grid-previous-shadowmode-src-mq3-renderer-qvm-scene-geometry-ml-487268706"></a>
 ### buildRecordsWithFrameCacheReuseCulledShadows
@@ -650,7 +653,7 @@ function buildRecordsWithFrameCacheReuseCulledShadows(entities, polys, assetKind
 | `shadowMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L436)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L482)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordswithframecachereuseculledshadowsfog-function-buildrecordswithframecachereuseculledshadowsfog-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-grid-previous-shadowmode-fogcatalog-src-mq3-renderer-qvm-scene-geometry-ml-426911927"></a>
 ### buildRecordsWithFrameCacheReuseCulledShadowsFog
@@ -674,7 +677,7 @@ function buildRecordsWithFrameCacheReuseCulledShadowsFog(entities, polys, assetK
 | `fogCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L440)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L486)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-buildrecordswithframecachereuseculledshadowsfoglod-function-buildrecordswithframecachereuseculledshadowsfoglod-entities-polys-assetkinds-modelassets-refdef-maxtrianglespersurface-cache-grid-previous-shadowmode-fogcatalog-lodscale-lodbias-src-mq3-renderer-qvm-scene-geometry-ml-846530150"></a>
 ### buildRecordsWithFrameCacheReuseCulledShadowsFogLod
@@ -700,7 +703,7 @@ function buildRecordsWithFrameCacheReuseCulledShadowsFogLod(entities, polys, ass
 | `lodBias` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L444)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L490)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-cachedframe-function-cachedframe-cache-modelhandle-model-surfaceindex-frame-oldframe-backlerp-normaltable-src-mq3-renderer-qvm-scene-geometry-ml-1739507159"></a>
 ### cachedFrame
@@ -721,7 +724,7 @@ function cachedFrame(cache, modelHandle, model, surfaceIndex, frame, oldFrame, b
 | `normalTable` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L241)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L256)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-cachedtransform-function-cachedtransform-cache-decoded-modelcachekey-surfaceindex-framedata-src-mq3-renderer-qvm-scene-geometry-ml-1802128700"></a>
 ### cachedTransform
@@ -739,7 +742,7 @@ function cachedTransform(cache, decoded, modelCacheKey, surfaceIndex, frameData)
 | `frameData` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L255)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L283)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-cachedvertexcolors-function-cachedvertexcolors-entry-lighting-alpha-src-mq3-renderer-qvm-scene-geometry-ml-321933454"></a>
 ### cachedVertexColors
@@ -755,7 +758,7 @@ function cachedVertexColors(entry, lighting, alpha)
 | `alpha` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L273)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L311)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-createframecache-function-createframecache-normaltable-maxentries-src-mq3-renderer-qvm-scene-geometry-ml-52792963"></a>
 ### createFrameCache
@@ -770,7 +773,7 @@ function createFrameCache(normalTable, maxEntries)
 | `maxEntries` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L236)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L250)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-createnormaltable-function-createnormaltable-src-mq3-renderer-qvm-scene-geometry-ml-390105140"></a>
 ### createNormalTable
@@ -780,7 +783,7 @@ function createNormalTable()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L235)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L249)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-decodeentities-function-decodeentities-entities-src-mq3-renderer-qvm-scene-geometry-ml-2003747013"></a>
 ### decodeEntities
@@ -794,7 +797,7 @@ function decodeEntities(entities)
 | `entities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L192)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L202)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-expecteddecodedtriangles-function-expecteddecodedtriangles-decodedentities-polys-assetkinds-modelassets-maxtrianglespersurface-src-mq3-renderer-qvm-scene-geometry-ml-2013359956"></a>
 ### expectedDecodedTriangles
@@ -812,7 +815,7 @@ function expectedDecodedTriangles(decodedEntities, polys, assetKinds, modelAsset
 | `maxTrianglesPerSurface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L223)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L237)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-expecteddecodedtrianglesmode-function-expecteddecodedtrianglesmode-decodedentities-polys-assetkinds-modelassets-maxtrianglespersurface-isportal-frustum-src-mq3-renderer-qvm-scene-geometry-ml-925012858"></a>
 ### expectedDecodedTrianglesMode
@@ -832,7 +835,7 @@ function expectedDecodedTrianglesMode(decodedEntities, polys, assetKinds, modelA
 | `frustum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L222)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L236)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-expecteddecodedtrianglesmodefog-function-expecteddecodedtrianglesmodefog-decodedentities-polys-assetkinds-modelassets-maxtrianglespersurface-isportal-frustum-fogcatalog-noworldmodel-src-mq3-renderer-qvm-scene-geometry-ml-1221373651"></a>
 ### expectedDecodedTrianglesModeFog
@@ -854,7 +857,7 @@ function expectedDecodedTrianglesModeFog(decodedEntities, polys, assetKinds, mod
 | `noWorldModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L221)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L235)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-expecteddecodedtrianglesmodefoglod-function-expecteddecodedtrianglesmodefoglod-decodedentities-polys-assetkinds-modelassets-maxtrianglespersurface-isportal-frustum-fogcatalog-noworldmodel-refdef-lodscale-lodbias-shadowmode-src-mq3-renderer-qvm-scene-geometry-ml-1376709223"></a>
 ### expectedDecodedTrianglesModeFogLod
@@ -880,7 +883,7 @@ function expectedDecodedTrianglesModeFogLod(decodedEntities, polys, assetKinds, 
 | `shadowMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L201)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L232)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-expectedtriangles-function-expectedtriangles-entities-polys-assetkinds-modelassets-maxtrianglespersurface-src-mq3-renderer-qvm-scene-geometry-ml-916215878"></a>
 ### expectedTriangles
@@ -898,7 +901,7 @@ function expectedTriangles(entities, polys, assetKinds, modelAssets, maxTriangle
 | `maxTrianglesPerSurface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L178)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L188)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-fail-function-fail-message-src-mq3-renderer-qvm-scene-geometry-ml-1950264191"></a>
 ### fail
@@ -912,7 +915,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L46)
 
 - [mq3.renderer.qvm_scene_geometry.FrameCache](Type-mq3-renderer-qvm-scene-geometry-framecache-2005265354.md) — struct
 - [mq3.renderer.qvm_scene_geometry.FrameEntry](Type-mq3-renderer-qvm-scene-geometry-frameentry-810044996.md) — struct
@@ -931,7 +934,7 @@ function inlineCulled(decoded, model, frustum)
 | `frustum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L197)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L207)
 
 - [mq3.renderer.qvm_scene_geometry.InlineModel](Type-mq3-renderer-qvm-scene-geometry-inlinemodel-1638604735.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-geometry-inlineshadername-function-inlineshadername-map-textureindex-src-mq3-renderer-qvm-scene-geometry-ml-1386356815"></a>
@@ -947,7 +950,7 @@ function inlineShaderName(map, textureIndex)
 | `textureIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L106)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L108)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-isinlinemodel-function-isinlinemodel-model-src-mq3-renderer-qvm-scene-geometry-ml-705360061"></a>
 ### isInlineModel
@@ -961,7 +964,7 @@ function isInlineModel(model)
 | `model` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L123)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L125)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-islodmodel-function-islodmodel-model-src-mq3-renderer-qvm-scene-geometry-ml-1138971501"></a>
 ### isLodModel
@@ -975,7 +978,7 @@ function isLodModel(model)
 | `model` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L125)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L127)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-loadinlinemodel-function-loadinlinemodel-map-index-maxtriangles-src-mq3-renderer-qvm-scene-geometry-ml-760708095"></a>
 ### loadInlineModel
@@ -991,7 +994,7 @@ function loadInlineModel(map, index, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L113)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-locallightdirection-function-locallightdirection-lightdirection-axis-src-mq3-renderer-qvm-scene-geometry-ml-1050557950"></a>
 ### localLightDirection
@@ -1006,7 +1009,7 @@ function localLightDirection(lightDirection, axis)
 | `axis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L70)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L72)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-mappedtriangle-function-mappedtriangle-positions-coords-lightmapcoords-normals-colors-entitycolor-entitytexcoord-shadertime-modelhandle-customskin-shaderhandle-shadername-surfacename-entityindex-surfaceindex-renderfx-lightmapindex-fogindex-dynamiclight-dynamiclightorigin-dynamiclightaxis-dynamiclightbounds-src-mq3-renderer-qvm-scene-geometry-ml-1012114579"></a>
 ### mappedTriangle
@@ -1041,7 +1044,21 @@ function mappedTriangle(positions, coords, lightmapCoords, normals, colors, enti
 | `dynamicLightBounds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L103)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L105)
+
+<a id="function-function-mq3-renderer-qvm-scene-geometry-materializeframe-function-materializeframe-entry-src-mq3-renderer-qvm-scene-geometry-ml-269832388"></a>
+### materializeFrame
+
+```ml
+function materializeFrame(entry)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `entry` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L280)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-max-shadow-edge-defs-const-max-shadow-edge-defs-32-src-mq3-renderer-qvm-scene-geometry-ml-665989806"></a>
 ### MAX_SHADOW_EDGE_DEFS
@@ -1051,7 +1068,7 @@ const MAX_SHADOW_EDGE_DEFS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L34)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-md3lods-function-md3lods-levels-src-mq3-renderer-qvm-scene-geometry-ml-587748545"></a>
 ### md3Lods
@@ -1065,7 +1082,7 @@ function md3Lods(levels)
 | `levels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L124)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L126)
 
 - [mq3.renderer.qvm_scene_geometry.Md3Selection](Type-mq3-renderer-qvm-scene-geometry-md3selection-1893054183.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-geometry-modelat-function-modelat-assetkinds-modelassets-handle-src-mq3-renderer-qvm-scene-geometry-ml-647464931"></a>
@@ -1082,7 +1099,7 @@ function modelAt(assetKinds, modelAssets, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L127)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L129)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-modelfognum-function-modelfognum-decoded-model-fogcatalog-noworldmodel-src-mq3-renderer-qvm-scene-geometry-ml-1923314846"></a>
 ### modelFogNum
@@ -1099,7 +1116,7 @@ function modelFogNum(decoded, model, fogCatalog, noWorldModel)
 | `noWorldModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L159)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L169)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-modeltrianglecount-function-modeltrianglecount-model-maxtrianglespersurface-src-mq3-renderer-qvm-scene-geometry-ml-1947258400"></a>
 ### modelTriangleCount
@@ -1114,7 +1131,7 @@ function modelTriangleCount(model, maxTrianglesPerSurface)
 | `maxTrianglesPerSurface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L153)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L163)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-normal-function-normal-src-mq3-renderer-qvm-scene-geometry-ml-2010563862"></a>
 ### normal
@@ -1124,7 +1141,34 @@ function normal()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L45)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L47)
+
+<a id="function-function-mq3-renderer-qvm-scene-geometry-planneddecodedtrianglesmodefoglod-function-planneddecodedtrianglesmodefoglod-decodedentities-polys-assetkinds-modelassets-maxtrianglespersurface-isportal-frustum-fogcatalog-noworldmodel-refdef-lodscale-lodbias-shadowmode-plans-src-mq3-renderer-qvm-scene-geometry-ml-2035729245"></a>
+### plannedDecodedTrianglesModeFogLod
+
+```ml
+function plannedDecodedTrianglesModeFogLod(decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel, refdef, lodScale, lodBias, shadowMode, plans)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `decodedEntities` | `dynamic` | — |  |
+| `polys` | `dynamic` | — |  |
+| `assetKinds` | `dynamic` | — |  |
+| `modelAssets` | `dynamic` | — |  |
+| `maxTrianglesPerSurface` | `dynamic` | — |  |
+| `isPortal` | `dynamic` | — |  |
+| `frustum` | `dynamic` | — |  |
+| `fogCatalog` | `dynamic` | — |  |
+| `noWorldModel` | `dynamic` | — |  |
+| `refdef` | `dynamic` | — |  |
+| `lodScale` | `dynamic` | — |  |
+| `lodBias` | `dynamic` | — |  |
+| `shadowMode` | `dynamic` | — |  |
+| `plans` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L211)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-portalviewforplane-function-portalviewforplane-geometry-normal-dist-refdef-src-mq3-renderer-qvm-scene-geometry-ml-582646861"></a>
 ### portalViewForPlane
@@ -1141,7 +1185,7 @@ function portalViewForPlane(geometry, normal, dist, refdef)
 | `refdef` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L480)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L526)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-primarymd3-function-primarymd3-model-src-mq3-renderer-qvm-scene-geometry-ml-1464340229"></a>
 ### primaryMd3
@@ -1155,7 +1199,7 @@ function primaryMd3(model)
 | `model` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L126)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L128)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-projection-shadow-shader-const-projection-shadow-shader-mq3-projectionshadow-src-mq3-renderer-qvm-scene-geometry-ml-1820046822"></a>
 ### PROJECTION_SHADOW_SHADER
@@ -1165,7 +1209,7 @@ const PROJECTION_SHADOW_SHADER = "$mq3/projectionShadow"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L31)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L33)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-projectionshadowpoint-function-projectionshadowpoint-position-shadowplane-lightdirection-src-mq3-renderer-qvm-scene-geometry-ml-1380152296"></a>
 ### projectionShadowPoint
@@ -1181,7 +1225,7 @@ function projectionShadowPoint(position, shadowPlane, lightDirection)
 | `lightDirection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L67)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L69)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-projectionshadowpointoriented-function-projectionshadowpointoriented-position-shadowplane-lightdirection-origin-axis-src-mq3-renderer-qvm-scene-geometry-ml-1142303503"></a>
 ### projectionShadowPointOriented
@@ -1201,7 +1245,7 @@ RB_ProjectionShadowDeform in tr_shadows.c projects model vertices onto the entit
 | `axis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L50)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L52)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-refdeffrustum-function-refdeffrustum-refdef-src-mq3-renderer-qvm-scene-geometry-ml-2068301298"></a>
 ### refdefFrustum
@@ -1215,7 +1259,7 @@ function refdefFrustum(refdef)
 | `refdef` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L428)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L474)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rf-depthhack-const-rf-depthhack-8-src-mq3-renderer-qvm-scene-geometry-ml-379588973"></a>
 ### RF_DEPTHHACK
@@ -1225,7 +1269,7 @@ const RF_DEPTHHACK = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L28)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L30)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rf-noshadow-const-rf-noshadow-64-src-mq3-renderer-qvm-scene-geometry-ml-1734906989"></a>
 ### RF_NOSHADOW
@@ -1235,7 +1279,7 @@ const RF_NOSHADOW = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L31)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rf-shadow-plane-const-rf-shadow-plane-256-src-mq3-renderer-qvm-scene-geometry-ml-1543535186"></a>
 ### RF_SHADOW_PLANE
@@ -1245,7 +1289,7 @@ const RF_SHADOW_PLANE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L30)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L32)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rt-beam-const-rt-beam-3-src-mq3-renderer-qvm-scene-geometry-ml-753962898"></a>
 ### RT_BEAM
@@ -1255,7 +1299,7 @@ const RT_BEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L26)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rt-lightning-const-rt-lightning-6-src-mq3-renderer-qvm-scene-geometry-ml-92763083"></a>
 ### RT_LIGHTNING
@@ -1265,7 +1309,7 @@ const RT_LIGHTNING = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L29)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rt-model-const-rt-model-0-src-mq3-renderer-qvm-scene-geometry-ml-17209395"></a>
 ### RT_MODEL
@@ -1275,7 +1319,7 @@ const RT_MODEL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L24)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rt-rail-core-const-rt-rail-core-4-src-mq3-renderer-qvm-scene-geometry-ml-500759457"></a>
 ### RT_RAIL_CORE
@@ -1285,7 +1329,7 @@ const RT_RAIL_CORE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L27)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rt-rail-rings-const-rt-rail-rings-5-src-mq3-renderer-qvm-scene-geometry-ml-1185568004"></a>
 ### RT_RAIL_RINGS
@@ -1295,7 +1339,7 @@ const RT_RAIL_RINGS = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L28)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-geometry-rt-sprite-const-rt-sprite-2-src-mq3-renderer-qvm-scene-geometry-ml-942595087"></a>
 ### RT_SPRITE
@@ -1305,7 +1349,7 @@ const RT_SPRITE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L25)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-selectmd3-function-selectmd3-decoded-asset-refdef-frustum-lodscale-lodbias-src-mq3-renderer-qvm-scene-geometry-ml-1399542753"></a>
 ### selectMd3
@@ -1324,7 +1368,7 @@ function selectMd3(decoded, asset, refdef, frustum, lodScale, lodBias)
 | `lodBias` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L164)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L174)
 
 - [mq3.renderer.qvm_scene_geometry.ShadowEdge](Type-mq3-renderer-qvm-scene-geometry-shadowedge-1206710918.md) — struct
 - [mq3.renderer.qvm_scene_geometry.ShadowTriangle](Type-mq3-renderer-qvm-scene-geometry-shadowtriangle-1287111975.md) — struct
@@ -1345,7 +1389,7 @@ R_AddEdgeDef/R_RenderShadowEdges/RB_ShadowTessEnd. Every returned item is the fo
 | `lightDirection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L76)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L78)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-stencilshadowcapacity-function-stencilshadowcapacity-decodedentities-assetkinds-modelassets-maxtrianglespersurface-isportal-frustum-shadowmode-fogcatalog-noworldmodel-refdef-lodscale-lodbias-src-mq3-renderer-qvm-scene-geometry-ml-1583210040"></a>
 ### stencilShadowCapacity
@@ -1370,7 +1414,7 @@ function stencilShadowCapacity(decodedEntities, assetKinds, modelAssets, maxTria
 | `lodBias` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L383)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L428)
 
 - [mq3.renderer.qvm_scene_geometry.TransformEntry](Type-mq3-renderer-qvm-scene-geometry-transformentry-1468067707.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-geometry-transformtriangle-function-transformtriangle-source-orientation-color-modelhandle-customskin-shaderhandle-surfacename-entityindex-lighting-renderfx-src-mq3-renderer-qvm-scene-geometry-ml-83671773"></a>
@@ -1394,7 +1438,7 @@ function transformTriangle(source, orientation, color, modelHandle, customSkin, 
 | `renderfx` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L224)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L238)
 
 <a id="function-function-mq3-renderer-qvm-scene-geometry-triangle-function-triangle-positions-coords-normals-colors-entitycolor-entitytexcoord-shadertime-modelhandle-customskin-shaderhandle-shadername-surfacename-entityindex-surfaceindex-renderfx-src-mq3-renderer-qvm-scene-geometry-ml-1256987599"></a>
 ### triangle
@@ -1422,6 +1466,6 @@ function triangle(positions, coords, normals, colors, entityColor, entityTexCoor
 | `renderfx` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L100)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L102)
 
 - [mq3.renderer.qvm_scene_geometry.Triangle](Type-mq3-renderer-qvm-scene-geometry-triangle-2145392759.md) — struct

@@ -73,7 +73,7 @@ function angleVectors(vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L252)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L256)
 
 <a id="function-function-mq3-vm-syscall-common-argc-function-argc-host-src-mq3-vm-syscall-common-ml-1904164954"></a>
 ### argc
@@ -105,18 +105,18 @@ function argsText(vm, base, host)
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L156)
 
-<a id="function-function-mq3-vm-syscall-common-argument-function-argument-vm-address-index-src-mq3-vm-syscall-common-ml-754191725"></a>
+<a id="function-function-mq3-vm-syscall-common-argument-function-argument-vm-address-as-int-index-as-int-src-mq3-vm-syscall-common-ml-1813552869"></a>
 ### argument
 
 ```ml
-function argument(vm, address, index)
+function argument(vm, address as int, index as int)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `address` | `int` | — |  |
+| `index` | `int` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L43)
@@ -150,7 +150,7 @@ function callback(abi, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L358)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L362)
 
 <a id="extern_function-extern-function-mq3-vm-syscall-common-ceil-extern-function-ceil-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-vm-syscall-common-ml-1256415774"></a>
 ### ceil
@@ -309,7 +309,7 @@ function dispatch(abi, host, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L348)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L352)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchcgame-function-dispatchcgame-vm-base-host-op-src-mq3-vm-syscall-common-ml-925060171"></a>
 ### dispatchCgame
@@ -326,7 +326,7 @@ function dispatchCgame(vm, base, host, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L307)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L311)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchlibc-function-dispatchlibc-abi-vm-base-op-src-mq3-vm-syscall-common-ml-1088994921"></a>
 ### dispatchLibc
@@ -343,7 +343,7 @@ function dispatchLibc(abi, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L264)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L268)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchqagame-function-dispatchqagame-vm-base-host-op-src-mq3-vm-syscall-common-ml-461021241"></a>
 ### dispatchQagame
@@ -360,7 +360,7 @@ function dispatchQagame(vm, base, host, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L286)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L290)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchui-function-dispatchui-vm-base-host-op-src-mq3-vm-syscall-common-ml-44064469"></a>
 ### dispatchUi
@@ -377,7 +377,7 @@ function dispatchUi(vm, base, host, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L323)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L327)
 
 <a id="function-function-mq3-vm-syscall-common-emitprint-function-emitprint-vm-base-host-iserror-src-mq3-vm-syscall-common-ml-1206086400"></a>
 ### emitPrint
@@ -576,7 +576,7 @@ function matrixMultiply(vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L245)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L249)
 
 <a id="constant-constant-mq3-vm-syscall-common-max-vm-string-const-max-vm-string-8192-src-mq3-vm-syscall-common-ml-1787193685"></a>
 ### MAX_VM_STRING
@@ -602,7 +602,7 @@ function perpendicularVector(vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L256)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L260)
 
 <a id="function-function-mq3-vm-syscall-common-pointer-function-pointer-vm-value-size-label-src-mq3-vm-syscall-common-ml-1609263377"></a>
 ### pointer
@@ -759,7 +759,7 @@ function writeFloatVector(vm, address, values, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L240)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L244)
 
 <a id="function-function-mq3-vm-syscall-common-writeraw-function-writeraw-vm-value-data-count-label-src-mq3-vm-syscall-common-ml-1927750217"></a>
 ### writeRaw

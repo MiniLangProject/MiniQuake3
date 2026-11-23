@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ externalVisData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L36)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-sundirection-sundirection-src-mq3-renderer-tr-bsp-runtime-ml-366881884"></a>
 ### sunDirection
@@ -32,7 +32,7 @@ sunDirection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L36)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-world-world-src-mq3-renderer-tr-bsp-runtime-ml-1578605082"></a>
 ### world
@@ -42,7 +42,7 @@ world
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L36)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-worldmaploaded-worldmaploaded-src-mq3-renderer-tr-bsp-runtime-ml-858755264"></a>
 ### worldMapLoaded
@@ -52,4 +52,4 @@ worldMapLoaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L36)

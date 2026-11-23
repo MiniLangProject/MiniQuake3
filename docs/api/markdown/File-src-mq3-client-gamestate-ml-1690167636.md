@@ -106,7 +106,7 @@ function parse(state, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/gamestate.ml#L53)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/gamestate.ml#L56)
 
 - [mq3.client.gamestate.State](Type-mq3-client-gamestate-state-156757087.md) — struct
 <a id="constant-constant-mq3-client-gamestate-svc-baseline-const-svc-baseline-4-src-mq3-client-gamestate-ml-1221981739"></a>

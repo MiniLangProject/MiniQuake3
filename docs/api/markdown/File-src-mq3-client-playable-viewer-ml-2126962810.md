@@ -91,7 +91,7 @@ function clipNear(a, b, nearDistance)
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L177)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L184)
 
 <a id="function-function-mq3-client-playable-viewer-clipnearpolygon-function-clipnearpolygon-vertices-neardistance-src-mq3-client-playable-viewer-ml-560245140"></a>
 ### clipNearPolygon
@@ -108,7 +108,7 @@ Sutherland-Hodgman clipping for a camera-space polygon. Components after xyz are
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L159)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L166)
 
 <a id="function-function-mq3-client-playable-viewer-clipnearvertex-function-clipnearvertex-a-b-neardistance-src-mq3-client-playable-viewer-ml-907094672"></a>
 ### clipNearVertex
@@ -124,7 +124,7 @@ function clipNearVertex(a, b, nearDistance)
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L149)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L156)
 
 <a id="function-function-mq3-client-playable-viewer-controls-function-controls-forward-back-left-right-up-down-mousex-mousey-src-mq3-client-playable-viewer-ml-315472053"></a>
 ### controls
@@ -171,7 +171,7 @@ function focalLength(width, horizontalFovDegrees)
 | `horizontalFovDegrees` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L100)
 
 <a id="function-function-mq3-client-playable-viewer-idlecontrols-function-idlecontrols-src-mq3-client-playable-viewer-ml-270992054"></a>
 ### idleControls
@@ -225,7 +225,7 @@ function movementBasis(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L60)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L67)
 
 <a id="function-function-mq3-client-playable-viewer-normalizeangles-function-normalizeangles-state-src-mq3-client-playable-viewer-ml-969201339"></a>
 ### normalizeAngles
@@ -254,7 +254,7 @@ function preparedViewPoint(projection, world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L127)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L134)
 
 <a id="function-function-mq3-client-playable-viewer-prepareprojection-function-prepareprojection-state-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-76386857"></a>
 ### prepareProjection
@@ -274,7 +274,7 @@ Frame-local projection state avoids recalculating camera trigonometry and field-
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L120)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L127)
 
 - [mq3.client.playable_viewer.Projection](Type-mq3-client-playable-viewer-projection-67447881.md) — struct
 <a id="function-function-mq3-client-playable-viewer-projectline-function-projectline-state-startpoint-endpoint-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-1404191992"></a>
@@ -295,7 +295,7 @@ function projectLine(state, startPoint, endPoint, width, height, horizontalFovDe
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L185)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L192)
 
 <a id="function-function-mq3-client-playable-viewer-projectpoint-function-projectpoint-state-world-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-1371433083"></a>
 ### projectPoint
@@ -314,7 +314,7 @@ function projectPoint(state, world, width, height, horizontalFovDegrees, nearDis
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L113)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L120)
 
 <a id="function-function-mq3-client-playable-viewer-projectprepared-function-projectprepared-projection-world-src-mq3-client-playable-viewer-ml-492908915"></a>
 ### projectPrepared
@@ -329,7 +329,7 @@ function projectPrepared(projection, world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L144)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L151)
 
 <a id="function-function-mq3-client-playable-viewer-projectpreparedview-function-projectpreparedview-projection-point-src-mq3-client-playable-viewer-ml-1019666543"></a>
 ### projectPreparedView
@@ -344,7 +344,7 @@ function projectPreparedView(projection, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L136)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L143)
 
 <a id="function-function-mq3-client-playable-viewer-projectviewpoint-function-projectviewpoint-point-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-261434682"></a>
 ### projectViewPoint
@@ -362,7 +362,23 @@ function projectViewPoint(point, width, height, horizontalFovDegrees, nearDistan
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L101)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L108)
+
+<a id="function-function-mq3-client-playable-viewer-refdefbasis-function-refdefbasis-axes-src-mq3-client-playable-viewer-ml-602341249"></a>
+### refdefBasis
+
+```ml
+function refdefBasis(axes)
+```
+
+Original refdef_t/AnglesToAxis stores forward, LEFT, up. Screen-space projection and cloud-ray generation use forward, RIGHT, up instead.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `axes` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L62)
 
 - [mq3.client.playable_viewer.ScreenLine](Type-mq3-client-playable-viewer-screenline-1193169834.md) — struct
 - [mq3.client.playable_viewer.ScreenPoint](Type-mq3-client-playable-viewer-screenpoint-679483974.md) — struct
@@ -380,7 +396,7 @@ function step(state, command, deltaMilliseconds)
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L65)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L72)
 
 <a id="function-function-mq3-client-playable-viewer-viewpoint-function-viewpoint-state-world-src-mq3-client-playable-viewer-ml-538362457"></a>
 ### viewPoint
@@ -395,4 +411,4 @@ function viewPoint(state, world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L86)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L93)

@@ -10,7 +10,7 @@ struct InitMove
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 ## Members
 
@@ -22,7 +22,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-entitynum-entitynum-src-mq3-botlib-ai-move-runtime-ml-271067526"></a>
 ### entityNum
@@ -32,7 +32,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-origin-origin-src-mq3-botlib-ai-move-runtime-ml-501039346"></a>
 ### origin
@@ -42,7 +42,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-ormoveflags-ormoveflags-src-mq3-botlib-ai-move-runtime-ml-141698962"></a>
 ### orMoveFlags
@@ -52,7 +52,7 @@ orMoveFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-presencetype-presencetype-src-mq3-botlib-ai-move-runtime-ml-1948577876"></a>
 ### presenceType
@@ -62,7 +62,7 @@ presenceType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-thinktime-thinktime-src-mq3-botlib-ai-move-runtime-ml-524778006"></a>
 ### thinkTime
@@ -72,7 +72,7 @@ thinkTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-velocity-velocity-src-mq3-botlib-ai-move-runtime-ml-114067124"></a>
 ### velocity
@@ -82,7 +82,7 @@ velocity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-viewangles-viewangles-src-mq3-botlib-ai-move-runtime-ml-1292114456"></a>
 ### viewAngles
@@ -92,7 +92,7 @@ viewAngles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-initmove-viewoffset-viewoffset-src-mq3-botlib-ai-move-runtime-ml-358676082"></a>
 ### viewOffset
@@ -102,4 +102,4 @@ viewOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L58)

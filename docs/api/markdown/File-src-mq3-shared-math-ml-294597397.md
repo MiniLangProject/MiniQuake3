@@ -464,17 +464,17 @@ function DistanceSquared(a, b)
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/math.ml#L173)
 
-<a id="function-function-mq3-shared-math-dotproduct-function-dotproduct-a-b-src-mq3-shared-math-ml-680440325"></a>
+<a id="function-function-mq3-shared-math-dotproduct-function-dotproduct-a-as-array-b-as-array-returns-float-src-mq3-shared-math-ml-1312321842"></a>
 ### DotProduct
 
 ```ml
-function DotProduct(a, b)
+function DotProduct(a as array, b as array) returns float
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `array` | — |  |
+| `b` | `array` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/math.ml#L122)

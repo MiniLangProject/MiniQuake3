@@ -114,6 +114,16 @@ monoCache
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L28)
 
+<a id="field-field-mq3-audio-qvm-playback-state-monohandles-monohandles-src-mq3-audio-qvm-playback-ml-271051158"></a>
+### monoHandles
+
+```ml
+monoHandles
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L28)
+
 <a id="field-field-mq3-audio-qvm-playback-state-music-music-src-mq3-audio-qvm-playback-ml-70239922"></a>
 ### music
 

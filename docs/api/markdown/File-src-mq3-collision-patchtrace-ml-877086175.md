@@ -102,7 +102,7 @@ function CM_PositionTestInPatchCollide(work, patch)
 | `patch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L171)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L172)
 
 <a id="function-function-mq3-collision-patchtrace-cm-tracepointthroughpatchcollide-function-cm-tracepointthroughpatchcollide-work-patch-playercurveclip-src-mq3-collision-patchtrace-ml-757991167"></a>
 ### CM_TracePointThroughPatchCollide
@@ -134,19 +134,20 @@ function CM_TraceThroughPatchCollide(work, patch, playerCurveClip)
 | `playerCurveClip` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L154)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L155)
 
-<a id="function-function-mq3-collision-patchtrace-corner-function-corner-work-signbits-src-mq3-collision-patchtrace-ml-1014555836"></a>
-### corner
+<a id="function-function-mq3-collision-patchtrace-cornerdot-function-cornerdot-work-signbits-as-int-normal-as-array-returns-float-src-mq3-collision-patchtrace-ml-734604248"></a>
+### cornerDot
 
 ```ml
-function corner(work, signbits)
+function cornerDot(work, signbits as int, normal as array) returns float
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `work` | `dynamic` | — |  |
-| `signbits` | `dynamic` | — |  |
+| `signbits` | `int` | — |  |
+| `normal` | `array` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L40)
@@ -165,7 +166,7 @@ function positionTest(work, patch)
 | `patch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L156)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L157)
 
 <a id="function-function-mq3-collision-patchtrace-trace-function-trace-work-patch-playercurveclip-src-mq3-collision-patchtrace-ml-844192801"></a>
 ### trace

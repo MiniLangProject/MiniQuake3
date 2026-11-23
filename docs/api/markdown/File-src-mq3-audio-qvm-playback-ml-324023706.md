@@ -37,7 +37,7 @@ function addLoop(state, command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L90)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L105)
 
 <a id="function-function-mq3-audio-qvm-playback-addvoice-function-addvoice-state-command-localsound-src-mq3-audio-qvm-playback-ml-1758157648"></a>
 ### addVoice
@@ -53,7 +53,7 @@ function addVoice(state, command, localSound)
 | `localSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L78)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L93)
 
 <a id="function-function-mq3-audio-qvm-playback-apply-function-apply-state-commands-src-mq3-audio-qvm-playback-ml-461914009"></a>
 ### apply
@@ -68,7 +68,7 @@ function apply(state, commands)
 | `commands` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L176)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L191)
 
 <a id="function-function-mq3-audio-qvm-playback-applyfrom-function-applyfrom-state-commands-start-src-mq3-audio-qvm-playback-ml-638805327"></a>
 ### applyFrom
@@ -84,7 +84,7 @@ function applyFrom(state, commands, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L148)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L163)
 
 - [mq3.audio.qvm_playback.ApplyResult](Type-mq3-audio-qvm-playback-applyresult-735207379.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-cachedmono-function-cachedmono-state-clip-src-mq3-audio-qvm-playback-ml-1134498517"></a>
@@ -116,7 +116,7 @@ function clearLoops(state, killAll)
 | `killAll` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L126)
 
 <a id="function-function-mq3-audio-qvm-playback-clipforhandle-function-clipforhandle-state-handle-src-mq3-audio-qvm-playback-ml-1323685387"></a>
 ### clipForHandle
@@ -146,7 +146,7 @@ function consume(state, commands)
 | `commands` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L178)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L193)
 
 <a id="function-function-mq3-audio-qvm-playback-copyorigin-function-copyorigin-origin-src-mq3-audio-qvm-playback-ml-89678826"></a>
 ### copyOrigin
@@ -201,7 +201,7 @@ function entityOrigin(state, entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L73)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L88)
 
 <a id="function-function-mq3-audio-qvm-playback-fail-function-fail-message-src-mq3-audio-qvm-playback-ml-1645920433"></a>
 ### fail
@@ -229,7 +229,7 @@ function hasCompressedSources(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L323)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L338)
 
 - [mq3.audio.qvm_playback.Listener](Type-mq3-audio-qvm-playback-listener-1057660462.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-loopbyentity-function-loopbyentity-state-entity-src-mq3-audio-qvm-playback-ml-1896973342"></a>
@@ -245,7 +245,7 @@ function loopByEntity(state, entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L199)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L214)
 
 - [mq3.audio.qvm_playback.LoopSource](Type-mq3-audio-qvm-playback-loopsource-1361245797.md) — struct
 <a id="constant-constant-mq3-audio-qvm-playback-max-entities-const-max-entities-1024-src-mq3-audio-qvm-playback-ml-1314032354"></a>
@@ -293,7 +293,7 @@ function mixMusic(state, music, leftMix, rightMix)
 | `rightMix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L227)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L242)
 
 <a id="function-function-mq3-audio-qvm-playback-mixsource-function-mixsource-state-sound-cursor-looping-gains-leftmix-rightmix-src-mq3-audio-qvm-playback-ml-1176732825"></a>
 ### mixSource
@@ -313,7 +313,7 @@ function mixSource(state, sound, cursor, looping, gains, leftMix, rightMix)
 | `rightMix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L204)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L219)
 
 - [mq3.audio.qvm_playback.Music](Type-mq3-audio-qvm-playback-music-237700753.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-musicsample-function-musicsample-sound-frame-channel-src-mq3-audio-qvm-playback-ml-442861751"></a>
@@ -330,7 +330,7 @@ function musicSample(sound, frame, channel)
 | `channel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L216)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L231)
 
 <a id="function-function-mq3-audio-qvm-playback-paintmusic-function-paintmusic-state-music-paint-src-mq3-audio-qvm-playback-ml-388702800"></a>
 ### paintMusic
@@ -346,7 +346,7 @@ function paintMusic(state, music, paint)
 | `paint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L257)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L272)
 
 <a id="function-function-mq3-audio-qvm-playback-paintmusicfast-function-paintmusicfast-state-music-paint-src-mq3-audio-qvm-playback-ml-1007080332"></a>
 ### paintMusicFast
@@ -362,7 +362,7 @@ function paintMusicFast(state, music, paint)
 | `paint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L329)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L344)
 
 <a id="function-function-mq3-audio-qvm-playback-queueraw-function-queueraw-state-audio-volume-src-mq3-audio-qvm-playback-ml-1716616169"></a>
 ### queueRaw
@@ -392,7 +392,7 @@ function render(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L283)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L298)
 
 <a id="function-function-mq3-audio-qvm-playback-renderfast-function-renderfast-state-src-mq3-audio-qvm-playback-ml-1369910823"></a>
 ### renderFast
@@ -408,7 +408,7 @@ Production Windows fast path. It is deliberately additive: the exact, reference-
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L352)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L367)
 
 <a id="function-function-mq3-audio-qvm-playback-setlistener-function-setlistener-state-command-src-mq3-audio-qvm-playback-ml-1733859714"></a>
 ### setListener
@@ -423,7 +423,7 @@ function setListener(state, command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L130)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L145)
 
 <a id="function-function-mq3-audio-qvm-playback-setposition-function-setposition-state-entity-origin-src-mq3-audio-qvm-playback-ml-1784495770"></a>
 ### setPosition
@@ -439,7 +439,7 @@ function setPosition(state, entity, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L123)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L138)
 
 <a id="function-function-mq3-audio-qvm-playback-sourcegains-function-sourcegains-state-entity-origin-localsound-src-mq3-audio-qvm-playback-ml-1413147048"></a>
 ### sourceGains
@@ -456,7 +456,7 @@ function sourceGains(state, entity, origin, localSound)
 | `localSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L187)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L202)
 
 <a id="function-function-mq3-audio-qvm-playback-sourcevolumes-function-sourcevolumes-state-entity-origin-localsound-src-mq3-audio-qvm-playback-ml-1231283674"></a>
 ### sourceVolumes
@@ -473,7 +473,7 @@ function sourceVolumes(state, entity, origin, localSound)
 | `localSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L193)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L208)
 
 <a id="function-function-mq3-audio-qvm-playback-startmusic-function-startmusic-state-intro-trackloop-src-mq3-audio-qvm-playback-ml-1513180938"></a>
 ### startMusic
@@ -489,7 +489,7 @@ function startMusic(state, intro, trackLoop)
 | `trackLoop` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L137)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L152)
 
 - [mq3.audio.qvm_playback.State](Type-mq3-audio-qvm-playback-state-887669543.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-stoploop-function-stoploop-state-entity-src-mq3-audio-qvm-playback-ml-815501138"></a>
@@ -505,7 +505,7 @@ function stopLoop(state, entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L117)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L132)
 
 <a id="function-function-mq3-audio-qvm-playback-validorigin-function-validorigin-origin-src-mq3-audio-qvm-playback-ml-335252890"></a>
 ### validOrigin

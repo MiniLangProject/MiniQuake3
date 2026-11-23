@@ -10,7 +10,7 @@ struct TriangleBatch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L124)
 
 ## Members
 
@@ -22,7 +22,7 @@ capacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L124)
 
 <a id="field-field-mq3-platform-playable-window-trianglebatch-count-count-src-mq3-platform-playable-window-ml-908131661"></a>
 ### count
@@ -32,7 +32,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L124)
 
 <a id="field-field-mq3-platform-playable-window-trianglebatch-data-data-src-mq3-platform-playable-window-ml-1954034701"></a>
 ### data
@@ -42,4 +42,4 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L124)

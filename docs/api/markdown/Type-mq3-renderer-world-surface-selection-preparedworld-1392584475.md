@@ -10,7 +10,7 @@ struct PreparedWorld
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ renderData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L33)
 
 <a id="field-field-mq3-renderer-world-surface-selection-preparedworld-selection-selection-src-mq3-renderer-world-surface-selection-ml-1305328450"></a>
 ### selection
@@ -32,4 +32,4 @@ selection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L33)

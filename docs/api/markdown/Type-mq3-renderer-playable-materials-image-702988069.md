@@ -10,7 +10,7 @@ struct Image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L38)
 
 <a id="field-field-mq3-renderer-playable-materials-image-pixels-pixels-src-mq3-renderer-playable-materials-ml-37201180"></a>
 ### pixels
@@ -32,7 +32,7 @@ pixels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L38)
 
 <a id="field-field-mq3-renderer-playable-materials-image-width-width-src-mq3-renderer-playable-materials-ml-1458953798"></a>
 ### width
@@ -42,4 +42,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L38)

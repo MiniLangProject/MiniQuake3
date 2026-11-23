@@ -60,7 +60,7 @@ function prepare(refdef, sourceWidth, sourceHeight, targetWidth, targetHeight)
 | `targetHeight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L15)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L19)
 
 - [mq3.renderer.qvm_viewport.Prepared](Type-mq3-renderer-qvm-viewport-prepared-444055731.md) — struct
 <a id="function-function-mq3-renderer-qvm-viewport-validvector-function-validvector-value-src-mq3-renderer-qvm-viewport-ml-1724720243"></a>
@@ -75,4 +75,4 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L13)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L17)

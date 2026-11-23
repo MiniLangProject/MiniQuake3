@@ -18,6 +18,9 @@ Reachable from entry: **yes**
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
 - `mq3/renderer/shader_parser.ml` as `shaderParser` → [src/mq3/renderer/shader_parser.ml](File-src-mq3-renderer-shader-parser-ml-2114769074.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
+- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/sort.ml` as `sorting` → `../MiniLangCompilerML/std/sort.ml` — external dependency
 
 ## Declarations
 
@@ -34,7 +37,7 @@ function affineFor(stage, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L270)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L319)
 
 <a id="function-function-mq3-renderer-playable-world-batch-appendresolved-function-appendresolved-commands-triangle-baseslot-uselightmap-src-mq3-renderer-playable-world-batch-ml-925146760"></a>
 ### appendResolved
@@ -51,22 +54,22 @@ function appendResolved(commands, triangle, baseSlot, useLightmap)
 | `useLightmap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L30)
 
-<a id="function-function-mq3-renderer-playable-world-batch-applyaffine-function-applyaffine-transform-uv-src-mq3-renderer-playable-world-batch-ml-1308538849"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-applyaffine-function-applyaffine-transform-as-uvaffine-uv-as-array-returns-array-src-mq3-renderer-playable-world-batch-ml-1875383722"></a>
 ### applyAffine
 
 ```ml
-function applyAffine(transform, uv)
+function applyAffine(transform as UvAffine, uv as array) returns array
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `transform` | `dynamic` | — |  |
-| `uv` | `dynamic` | — |  |
+| `transform` | `UvAffine` | — |  |
+| `uv` | `array` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L286)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L335)
 
 <a id="function-function-mq3-renderer-playable-world-batch-attachdynamiclights-function-attachdynamiclights-batch-renderdata-receiveflags-catalog-src-mq3-renderer-playable-world-batch-ml-142044639"></a>
 ### attachDynamicLights
@@ -83,7 +86,7 @@ function attachDynamicLights(batch, renderData, receiveFlags, catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L260)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L309)
 
 <a id="function-function-mq3-renderer-playable-world-batch-attachdynamiclightsoriented-function-attachdynamiclightsoriented-batch-renderdata-receiveflags-catalog-origins-axes-bounds-src-mq3-renderer-playable-world-batch-ml-1774947484"></a>
 ### attachDynamicLightsOriented
@@ -103,7 +106,7 @@ function attachDynamicLightsOriented(batch, renderData, receiveFlags, catalog, o
 | `bounds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L264)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L313)
 
 <a id="function-function-mq3-renderer-playable-world-batch-attachfog-function-attachfog-batch-renderdata-catalog-src-mq3-renderer-playable-world-batch-ml-1408784339"></a>
 ### attachFog
@@ -119,7 +122,7 @@ function attachFog(batch, renderData, catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L251)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L300)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autosprite2quad-function-autosprite2quad-pass-triangleindex-forward-src-mq3-renderer-playable-world-batch-ml-1887203224"></a>
 ### autosprite2Quad
@@ -137,22 +140,22 @@ Autosprite2Deform keeps the long axis fixed and rotates only the two short edges
 | `forward` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L339)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L388)
 
-<a id="function-function-mq3-renderer-playable-world-batch-autospritecorner-function-autospritecorner-triangleindex-vertex-src-mq3-renderer-playable-world-batch-ml-2072326998"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-autospritecorner-function-autospritecorner-triangleindex-as-int-vertex-as-int-returns-int-src-mq3-renderer-playable-world-batch-ml-803813818"></a>
 ### autospriteCorner
 
 ```ml
-function autospriteCorner(triangleIndex, vertex)
+function autospriteCorner(triangleIndex as int, vertex as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `triangleIndex` | `dynamic` | — |  |
-| `vertex` | `dynamic` | — |  |
+| `triangleIndex` | `int` | — |  |
+| `vertex` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L328)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L377)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autospritequad-function-autospritequad-pass-triangleindex-leftdir-updir-src-mq3-renderer-playable-world-batch-ml-1377053455"></a>
 ### autospriteQuad
@@ -171,7 +174,7 @@ AutospriteDeform rebuilds each independent pair of triangles as one square whose
 | `upDir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L316)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L365)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autospriteuv-function-autospriteuv-triangleindex-vertex-src-mq3-renderer-playable-world-batch-ml-1964574270"></a>
 ### autospriteUV
@@ -186,7 +189,7 @@ function autospriteUV(triangleIndex, vertex)
 | `vertex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L332)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L381)
 
 - [mq3.renderer.playable_world_batch.Batch](Type-mq3-renderer-playable-world-batch-batch-1905366517.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-build-function-build-renderdata-materialslots-skytextureflags-src-mq3-renderer-playable-world-batch-ml-13370115"></a>
@@ -205,7 +208,7 @@ Compatibility builder: byte layout and single submission remain unchanged.
 | `skyTextureFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L33)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L38)
 
 <a id="function-function-mq3-renderer-playable-world-batch-buildmaterials-function-buildmaterials-renderdata-catalog-skytextureflags-src-mq3-renderer-playable-world-batch-ml-930560880"></a>
 ### buildMaterials
@@ -223,7 +226,7 @@ Static opaque primaries stay in the bit-identical base stream. Dynamic and suppo
 | `skyTextureFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L159)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L208)
 
 <a id="function-function-mq3-renderer-playable-world-batch-buildstagepass-function-buildstagepass-renderdata-material-stage-primary-depthequal-flags-src-mq3-renderer-playable-world-batch-ml-395295605"></a>
 ### buildStagePass
@@ -242,13 +245,13 @@ function buildStagePass(renderData, material, stage, primary, depthEqual, flags)
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L152)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L181)
 
-<a id="function-function-mq3-renderer-playable-world-batch-buildstagepasstriangles-function-buildstagepasstriangles-triangles-material-stage-primary-depthequal-src-mq3-renderer-playable-world-batch-ml-803340179"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-buildstagepasstriangles-function-buildstagepasstriangles-triangles-material-stage-primary-depthequal-indexscratch-src-mq3-renderer-playable-world-batch-ml-1988558213"></a>
 ### buildStagePassTriangles
 
 ```ml
-function buildStagePassTriangles(triangles, material, stage, primary, depthEqual)
+function buildStagePassTriangles(triangles, material, stage, primary, depthEqual, indexScratch)
 ```
 
 | Parameter | Type | Default | Description |
@@ -258,24 +261,25 @@ function buildStagePassTriangles(triangles, material, stage, primary, depthEqual
 | `stage` | `dynamic` | — |  |
 | `primary` | `dynamic` | — |  |
 | `depthEqual` | `dynamic` | — |  |
+| `indexScratch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L124)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L151)
 
-<a id="function-function-mq3-renderer-playable-world-batch-contains-function-contains-values-wanted-src-mq3-renderer-playable-world-batch-ml-1460987507"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-contains-function-contains-values-as-array-wanted-as-int-returns-bool-src-mq3-renderer-playable-world-batch-ml-1927507642"></a>
 ### contains
 
 ```ml
-function contains(values, wanted)
+function contains(values as array, wanted as int) returns bool
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `wanted` | `dynamic` | — |  |
+| `values` | `array` | — |  |
+| `wanted` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L50)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L55)
 
 <a id="function-function-mq3-renderer-playable-world-batch-containsposition-function-containsposition-values-wanted-src-mq3-renderer-playable-world-batch-ml-679283887"></a>
 ### containsPosition
@@ -290,7 +294,7 @@ function containsPosition(values, wanted)
 | `wanted` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L290)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L339)
 
 <a id="function-function-mq3-renderer-playable-world-batch-countstagetriangles-function-countstagetriangles-renderdata-textureindex-flags-src-mq3-renderer-playable-world-batch-ml-52229624"></a>
 ### countStageTriangles
@@ -320,7 +324,22 @@ function createVertexCache(sourceIndexes)
 | `sourceIndexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L108)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L150)
+
+<a id="function-function-mq3-renderer-playable-world-batch-createvertexcachewithscratch-function-createvertexcachewithscratch-sourceindexes-scratch-src-mq3-renderer-playable-world-batch-ml-553697777"></a>
+### createVertexCacheWithScratch
+
+```ml
+function createVertexCacheWithScratch(sourceIndexes, scratch)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `sourceIndexes` | `dynamic` | — |  |
+| `scratch` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L109)
 
 <a id="function-function-mq3-renderer-playable-world-batch-deformednormal-function-deformednormal-position-normal-deforms-nowmilliseconds-noise-src-mq3-renderer-playable-world-batch-ml-564800094"></a>
 ### deformedNormal
@@ -338,7 +357,7 @@ function deformedNormal(position, normal, deforms, nowMilliseconds, noise)
 | `noise` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L387)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L436)
 
 <a id="function-function-mq3-renderer-playable-world-batch-deformedposition-function-deformedposition-position-normal-uv-deforms-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-1390023845"></a>
 ### deformedPosition
@@ -356,7 +375,7 @@ function deformedPosition(position, normal, uv, deforms, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L371)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L420)
 
 <a id="function-function-mq3-renderer-playable-world-batch-draw-function-draw-batch-projection-src-mq3-renderer-playable-world-batch-ml-1848115505"></a>
 ### draw
@@ -371,7 +390,7 @@ function draw(batch, projection)
 | `projection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L49)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterials-function-drawmaterials-batch-projection-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-1192077807"></a>
 ### drawMaterials
@@ -387,7 +406,7 @@ function drawMaterials(batch, projection, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L464)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L565)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialslit-function-drawmaterialslit-batch-projection-nowmilliseconds-lights-src-mq3-renderer-playable-world-batch-ml-1546989170"></a>
 ### drawMaterialsLit
@@ -404,7 +423,7 @@ function drawMaterialsLit(batch, projection, nowMilliseconds, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L463)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L564)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialslittarget-function-drawmaterialslittarget-batch-projection-nowmilliseconds-lights-area-src-mq3-renderer-playable-world-batch-ml-776668523"></a>
 ### drawMaterialsLitTarget
@@ -422,7 +441,7 @@ function drawMaterialsLitTarget(batch, projection, nowMilliseconds, lights, area
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L449)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L550)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialslitviewport-function-drawmaterialslitviewport-batch-projection-nowmilliseconds-lights-area-src-mq3-renderer-playable-world-batch-ml-1054479403"></a>
 ### drawMaterialsLitViewport
@@ -440,7 +459,7 @@ function drawMaterialsLitViewport(batch, projection, nowMilliseconds, lights, ar
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L465)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L566)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialsviewport-function-drawmaterialsviewport-batch-projection-nowmilliseconds-area-src-mq3-renderer-playable-world-batch-ml-1463560006"></a>
 ### drawMaterialsViewport
@@ -457,7 +476,7 @@ function drawMaterialsViewport(batch, projection, nowMilliseconds, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L466)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L567)
 
 <a id="function-function-mq3-renderer-playable-world-batch-dynamicmaterialstage-function-dynamicmaterialstage-material-stage-src-mq3-renderer-playable-world-batch-ml-1912916429"></a>
 ### dynamicMaterialStage
@@ -472,7 +491,7 @@ function dynamicMaterialStage(material, stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L48)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L53)
 
 <a id="function-function-mq3-renderer-playable-world-batch-dynamicstage-function-dynamicstage-stage-src-mq3-renderer-playable-world-batch-ml-1065626246"></a>
 ### dynamicStage
@@ -486,7 +505,7 @@ function dynamicStage(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L47)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L52)
 
 <a id="function-function-mq3-renderer-playable-world-batch-edgevertices-function-edgevertices-index-src-mq3-renderer-playable-world-batch-ml-1571333844"></a>
 ### edgeVertices
@@ -500,7 +519,7 @@ function edgeVertices(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L333)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L382)
 
 <a id="function-function-mq3-renderer-playable-world-batch-fail-function-fail-text-src-mq3-renderer-playable-world-batch-ml-1564841641"></a>
 ### fail
@@ -514,7 +533,26 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L21)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L25)
+
+<a id="function-function-mq3-renderer-playable-world-batch-fillmaterialbase-function-fillmaterialbase-base-renderdata-lookup-skytextureflags-src-mq3-renderer-playable-world-batch-ml-125989610"></a>
+### fillMaterialBase
+
+```ml
+function fillMaterialBase(base, renderData, lookup, skyTextureFlags)
+```
+
+BSP and MD3 triangles typically arrive in material runs. Resolve the opaque primary once per run and keep the original submission order.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `base` | `dynamic` | — |  |
+| `renderData` | `dynamic` | — |  |
+| `lookup` | `dynamic` | — |  |
+| `skyTextureFlags` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L188)
 
 <a id="function-function-mq3-renderer-playable-world-batch-groupedtriangles-function-groupedtriangles-renderdata-flags-count-src-mq3-renderer-playable-world-batch-ml-1779176292"></a>
 ### groupedTriangles
@@ -532,20 +570,20 @@ function groupedTriangles(renderData, flags, count)
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L100)
 
-<a id="function-function-mq3-renderer-playable-world-batch-hasdeform-function-hasdeform-deforms-kind-src-mq3-renderer-playable-world-batch-ml-1106879382"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-hasdeform-function-hasdeform-deforms-as-array-kind-as-string-returns-bool-src-mq3-renderer-playable-world-batch-ml-705133687"></a>
 ### hasDeform
 
 ```ml
-function hasDeform(deforms, kind)
+function hasDeform(deforms as array, kind as string) returns bool
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `deforms` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
+| `deforms` | `array` | — |  |
+| `kind` | `string` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L289)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L338)
 
 <a id="function-function-mq3-renderer-playable-world-batch-hasentitytranslate-function-hasentitytranslate-stage-src-mq3-renderer-playable-world-batch-ml-1921778762"></a>
 ### hasEntityTranslate
@@ -559,7 +597,7 @@ function hasEntityTranslate(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L288)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L337)
 
 <a id="function-function-mq3-renderer-playable-world-batch-hasturbulence-function-hasturbulence-stage-src-mq3-renderer-playable-world-batch-ml-1090867404"></a>
 ### hasTurbulence
@@ -573,34 +611,49 @@ function hasTurbulence(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L287)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L336)
 
-<a id="function-function-mq3-renderer-playable-world-batch-identityaffine-function-identityaffine-src-mq3-renderer-playable-world-batch-ml-296001038"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-identityaffine-function-identityaffine-returns-uvaffine-src-mq3-renderer-playable-world-batch-ml-500823941"></a>
 ### identityAffine
 
 ```ml
-function identityAffine()
+function identityAffine() returns UvAffine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L269)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L318)
 
-<a id="function-function-mq3-renderer-playable-world-batch-issky-function-issky-triangle-flags-src-mq3-renderer-playable-world-batch-ml-382614641"></a>
+<a id="function-function-mq3-renderer-playable-world-batch-issky-inline-function-issky-triangle-flags-as-array-returns-bool-src-mq3-renderer-playable-world-batch-ml-2043046492"></a>
 ### isSky
 
 ```ml
-function isSky(triangle, flags)
+inline function isSky(triangle, flags as array) returns bool
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `triangle` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `flags` | `array` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L27)
 
 - [mq3.renderer.playable_world_batch.MaterialBatch](Type-mq3-renderer-playable-world-batch-materialbatch-2042443654.md) — struct
+<a id="function-function-mq3-renderer-playable-world-batch-materialbefore-function-materialbefore-left-right-src-mq3-renderer-playable-world-batch-ml-1805883409"></a>
+### materialBefore
+
+```ml
+function materialBefore(left, right)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `left` | `dynamic` | — |  |
+| `right` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L56)
+
 <a id="function-function-mq3-renderer-playable-world-batch-materialfor-function-materialfor-catalog-textureindex-src-mq3-renderer-playable-world-batch-ml-1077792682"></a>
 ### materialFor
 
@@ -614,7 +667,7 @@ function materialFor(catalog, textureIndex)
 | `textureIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L46)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L51)
 
 <a id="function-function-mq3-renderer-playable-world-batch-materialtable-function-materialtable-renderdata-catalog-src-mq3-renderer-playable-world-batch-ml-53648789"></a>
 ### materialTable
@@ -643,7 +696,17 @@ function materialUsesBspLightmap(material)
 | `material` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L49)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L54)
+
+<a id="constant-constant-mq3-renderer-playable-world-batch-max-bsp-lightmaps-const-max-bsp-lightmaps-256-src-mq3-renderer-playable-world-batch-ml-508877450"></a>
+### MAX_BSP_LIGHTMAPS
+
+```ml
+const MAX_BSP_LIGHTMAPS = 256
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L28)
 
 <a id="function-function-mq3-renderer-playable-world-batch-passchanges-function-passchanges-pass-fogcatalog-src-mq3-renderer-playable-world-batch-ml-1493992092"></a>
 ### passChanges
@@ -660,7 +723,7 @@ A retained pass exists for render-state reasons as well as for changing vertex d
 | `fogCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L301)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L350)
 
 <a id="function-function-mq3-renderer-playable-world-batch-passhasfog-function-passhasfog-pass-src-mq3-renderer-playable-world-batch-ml-516851215"></a>
 ### passHasFog
@@ -674,7 +737,7 @@ function passHasFog(pass)
 | `pass` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L291)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L340)
 
 <a id="function-function-mq3-renderer-playable-world-batch-refreshmaterials-function-refreshmaterials-batch-renderdata-catalog-skytextureflags-src-mq3-renderer-playable-world-batch-ml-1495440422"></a>
 ### refreshMaterials
@@ -691,7 +754,7 @@ function refreshMaterials(batch, renderData, catalog, skyTextureFlags)
 | `skyTextureFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L221)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L271)
 
 <a id="function-function-mq3-renderer-playable-world-batch-refreshstagepass-function-refreshstagepass-pass-renderdata-src-mq3-renderer-playable-world-batch-ml-2061349663"></a>
 ### refreshStagePass
@@ -708,7 +771,7 @@ Refreshes a retained material batch when triangle/material topology is unchanged
 | `renderData` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L200)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L245)
 
 <a id="function-function-mq3-renderer-playable-world-batch-releasematerials-function-releasematerials-catalog-src-mq3-renderer-playable-world-batch-ml-1958158671"></a>
 ### releaseMaterials
@@ -736,7 +799,7 @@ function resolvedLightmapSlot(triangle)
 | `triangle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L29)
 
 <a id="function-function-mq3-renderer-playable-world-batch-sortedmaterials-function-sortedmaterials-values-src-mq3-renderer-playable-world-batch-ml-1548489570"></a>
 ### sortedMaterials
@@ -750,7 +813,7 @@ function sortedMaterials(values)
 | `values` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L51)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L57)
 
 <a id="function-function-mq3-renderer-playable-world-batch-specularalpha-function-specularalpha-position-normal-vieworigin-src-mq3-renderer-playable-world-batch-ml-514220667"></a>
 ### specularAlpha
@@ -768,7 +831,7 @@ RB_CalcSpecularAlpha keeps this hard-coded light origin in the original renderer
 | `viewOrigin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L403)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L452)
 
 - [mq3.renderer.playable_world_batch.StagePass](Type-mq3-renderer-playable-world-batch-stagepass-972420306.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-updatepass-function-updatepass-pass-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-1332761149"></a>
@@ -784,7 +847,7 @@ function updatePass(pass, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L448)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L549)
 
 <a id="function-function-mq3-renderer-playable-world-batch-updatepassaxes-function-updatepassaxes-pass-vieworigin-leftdir-updir-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-609918520"></a>
 ### updatePassAxes
@@ -802,7 +865,7 @@ function updatePassAxes(pass, viewOrigin, leftDir, upDir, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L446)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L547)
 
 <a id="function-function-mq3-renderer-playable-world-batch-updatepassaxesfog-function-updatepassaxesfog-pass-vieworigin-leftdir-updir-nowmilliseconds-fogcatalog-src-mq3-renderer-playable-world-batch-ml-2048888017"></a>
 ### updatePassAxesFog
@@ -821,7 +884,7 @@ function updatePassAxesFog(pass, viewOrigin, leftDir, upDir, nowMilliseconds, fo
 | `fogCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L409)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L458)
 
 <a id="function-function-mq3-renderer-playable-world-batch-updatepassview-function-updatepassview-pass-vieworigin-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-64007940"></a>
 ### updatePassView
@@ -837,7 +900,7 @@ function updatePassView(pass, viewOrigin, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L447)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L548)
 
 <a id="function-function-mq3-renderer-playable-world-batch-uploadmaterials-function-uploadmaterials-catalog-src-mq3-renderer-playable-world-batch-ml-1474389197"></a>
 ### uploadMaterials
@@ -851,10 +914,36 @@ function uploadMaterials(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L63)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L81)
+
+<a id="function-function-mq3-renderer-playable-world-batch-uploadmaterialsfrom-function-uploadmaterialsfrom-catalog-firstslot-src-mq3-renderer-playable-world-batch-ml-1062060427"></a>
+### uploadMaterialsFrom
+
+```ml
+function uploadMaterialsFrom(catalog, firstSlot)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `catalog` | `dynamic` | — |  |
+| `firstSlot` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L61)
 
 - [mq3.renderer.playable_world_batch.UvAffine](Type-mq3-renderer-playable-world-batch-uvaffine-1068578019.md) — struct
 - [mq3.renderer.playable_world_batch.VertexCache](Type-mq3-renderer-playable-world-batch-vertexcache-993990901.md) — struct
+<a id="function-function-mq3-renderer-playable-world-batch-vertexindexscratch-function-vertexindexscratch-src-mq3-renderer-playable-world-batch-ml-746454538"></a>
+### vertexIndexScratch
+
+```ml
+function vertexIndexScratch()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L108)
+
+- [mq3.renderer.playable_world_batch.VertexIndexScratch](Type-mq3-renderer-playable-world-batch-vertexindexscratch-849012407.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-vertexlight-function-vertexlight-vertex-src-mq3-renderer-playable-world-batch-ml-21699612"></a>
 ### vertexLight
 
@@ -867,4 +956,4 @@ function vertexLight(vertex)
 | `vertex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L26)

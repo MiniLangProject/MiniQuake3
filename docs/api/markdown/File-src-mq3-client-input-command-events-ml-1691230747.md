@@ -40,7 +40,7 @@ function anyDown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L96)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L103)
 
 <a id="function-function-mq3-client-input-command-events-apply-function-apply-state-time-type-value-value2-src-mq3-client-input-command-events-ml-668559986"></a>
 ### apply
@@ -58,7 +58,7 @@ function apply(state, time, type, value, value2)
 | `value2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L79)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L86)
 
 <a id="function-function-mq3-client-input-command-events-applybound-function-applybound-state-time-type-value-value2-binding-src-mq3-client-input-command-events-ml-512177545"></a>
 ### applyBound
@@ -66,6 +66,8 @@ function apply(state, time, type, value, value2)
 ```ml
 function applyBound(state, time, type, value, value2, binding)
 ```
+
+Preserve the virtual-key input API used by offline probes and older hosts.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -77,7 +79,28 @@ function applyBound(state, time, type, value, value2, binding)
 | `binding` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L71)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L82)
+
+<a id="function-function-mq3-client-input-command-events-applyboundquake-function-applyboundquake-state-time-type-value-value2-binding-src-mq3-client-input-command-events-ml-224138839"></a>
+### applyBoundQuake
+
+```ml
+function applyBoundQuake(state, time, type, value, value2, binding)
+```
+
+Productive Sys_QueEvent records already contain Quake keynums. Do not map them through Win32 again: lowercase p..z overlap the VK_F1..VK_F11 range.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `time` | `dynamic` | — |  |
+| `type` | `dynamic` | — |  |
+| `value` | `dynamic` | — |  |
+| `value2` | `dynamic` | — |  |
+| `binding` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L73)
 
 <a id="function-function-mq3-client-input-command-events-defaultbinding-function-defaultbinding-key-src-mq3-client-input-command-events-ml-615826531"></a>
 ### defaultBinding
@@ -155,7 +178,7 @@ function release(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L89)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L96)
 
 <a id="function-function-mq3-client-input-command-events-releasebutton-function-releasebutton-value-time-src-mq3-client-input-command-events-ml-873026542"></a>
 ### releaseButton
@@ -170,7 +193,7 @@ function releaseButton(value, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L84)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command_events.ml#L91)
 
 <a id="constant-constant-mq3-client-input-command-events-vk-a-const-vk-a-65-src-mq3-client-input-command-events-ml-1474302064"></a>
 ### VK_A

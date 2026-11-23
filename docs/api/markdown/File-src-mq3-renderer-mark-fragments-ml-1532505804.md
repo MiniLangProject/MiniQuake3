@@ -11,6 +11,8 @@ Reachable from entry: **yes**
 - `mq3/collision/world.ml` as `collision` → [src/mq3/collision/world.ml](File-src-mq3-collision-world-ml-863162236.md)
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/renderer/bsp_render_data.ml` as `renderData` → [src/mq3/renderer/bsp_render_data.ml](File-src-mq3-renderer-bsp-render-data-ml-926244912.md)
+- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/ds/set.ml` as `sets` → `../MiniLangCompilerML/std/ds/set.ml` — external dependency
 
 ## Declarations
 
@@ -28,13 +30,13 @@ function boundsOverlap(vertices, mins, maxs)
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L87)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L172)
 
-<a id="function-function-mq3-renderer-mark-fragments-candidatefaces-function-candidatefaces-map-world-mins-maxs-direction-src-mq3-renderer-mark-fragments-ml-1990333465"></a>
+<a id="function-function-mq3-renderer-mark-fragments-candidatefaces-function-candidatefaces-map-world-mins-maxs-direction-cache-src-mq3-renderer-mark-fragments-ml-2087073193"></a>
 ### candidateFaces
 
 ```ml
-function candidateFaces(map, world, mins, maxs, direction)
+function candidateFaces(map, world, mins, maxs, direction, cache)
 ```
 
 | Parameter | Type | Default | Description |
@@ -44,9 +46,10 @@ function candidateFaces(map, world, mins, maxs, direction)
 | `mins` | `dynamic` | — |  |
 | `maxs` | `dynamic` | — |  |
 | `direction` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L196)
 
 <a id="function-function-mq3-renderer-mark-fragments-clipplane-function-clipplane-points-plane-src-mq3-renderer-mark-fragments-ml-1669374251"></a>
 ### clipPlane
@@ -63,7 +66,7 @@ R_ChopPolyBehindPlane keeps front/on points and uses a 0.5 unit epsilon.
 | `plane` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L61)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L146)
 
 <a id="function-function-mq3-renderer-mark-fragments-cliptriangle-function-cliptriangle-vertices-planes-src-mq3-renderer-mark-fragments-ml-408955316"></a>
 ### clipTriangle
@@ -78,22 +81,7 @@ function clipTriangle(vertices, planes)
 | `planes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L81)
-
-<a id="function-function-mq3-renderer-mark-fragments-contains-function-contains-values-wanted-src-mq3-renderer-mark-fragments-ml-1553853325"></a>
-### contains
-
-```ml
-function contains(values, wanted)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `wanted` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L33)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L166)
 
 <a id="constant-constant-mq3-renderer-mark-fragments-contents-fog-const-contents-fog-64-src-mq3-renderer-mark-fragments-ml-735915775"></a>
 ### CONTENTS_FOG
@@ -103,7 +91,7 @@ const CONTENTS_FOG = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L19)
 
 <a id="function-function-mq3-renderer-mark-fragments-cross-function-cross-a-b-src-mq3-renderer-mark-fragments-ml-1313990819"></a>
 ### cross
@@ -118,7 +106,7 @@ function cross(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L107)
 
 <a id="function-function-mq3-renderer-mark-fragments-dot-function-dot-a-b-src-mq3-renderer-mark-fragments-ml-195844801"></a>
 ### dot
@@ -133,7 +121,7 @@ function dot(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L105)
 
 <a id="function-function-mq3-renderer-mark-fragments-eligibleface-function-eligibleface-map-faceindex-direction-mins-maxs-src-mq3-renderer-mark-fragments-ml-676192736"></a>
 ### eligibleFace
@@ -151,7 +139,7 @@ function eligibleFace(map, faceIndex, direction, mins, maxs)
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L101)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L186)
 
 <a id="constant-constant-mq3-renderer-mark-fragments-face-stride-const-face-stride-104-src-mq3-renderer-mark-fragments-ml-1524828296"></a>
 ### FACE_STRIDE
@@ -161,8 +149,9 @@ const FACE_STRIDE = 104
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L15)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L20)
 
+- [mq3.renderer.mark_fragments.FaceBatch](Type-mq3-renderer-mark-fragments-facebatch-1150879571.md) — struct
 <a id="function-function-mq3-renderer-mark-fragments-facefloat-function-facefloat-map-faceindex-relative-src-mq3-renderer-mark-fragments-ml-211819031"></a>
 ### faceFloat
 
@@ -177,7 +166,7 @@ function faceFloat(map, faceIndex, relative)
 | `relative` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L31)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L113)
 
 <a id="function-function-mq3-renderer-mark-fragments-facenormal-function-facenormal-map-faceindex-src-mq3-renderer-mark-fragments-ml-1270502013"></a>
 ### faceNormal
@@ -192,7 +181,7 @@ function faceNormal(map, faceIndex)
 | `faceIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L100)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L185)
 
 <a id="function-function-mq3-renderer-mark-fragments-facevalue-function-facevalue-map-faceindex-relative-src-mq3-renderer-mark-fragments-ml-1286569481"></a>
 ### faceValue
@@ -208,7 +197,7 @@ function faceValue(map, faceIndex, relative)
 | `relative` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L30)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L112)
 
 <a id="function-function-mq3-renderer-mark-fragments-fail-function-fail-message-src-mq3-renderer-mark-fragments-ml-621826379"></a>
 ### fail
@@ -222,9 +211,58 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L104)
 
 - [mq3.renderer.mark_fragments.Fragment](Type-mq3-renderer-mark-fragments-fragment-826987100.md) — struct
+<a id="function-function-mq3-renderer-mark-fragments-geometrycache-function-geometrycache-src-mq3-renderer-mark-fragments-ml-2071727500"></a>
+### geometryCache
+
+```ml
+function geometryCache()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L29)
+
+- [mq3.renderer.mark_fragments.GeometryCache](Type-mq3-renderer-mark-fragments-geometrycache-256064278.md) — struct
+<a id="function-function-mq3-renderer-mark-fragments-marktriangles-function-marktriangles-map-faces-cache-src-mq3-renderer-mark-fragments-ml-1446378902"></a>
+### markTriangles
+
+```ml
+function markTriangles(map, faces, cache)
+```
+
+A moving impact can hit the same ordered set of static faces with different clip planes. Keep only small batches. Projection bounds, clipping and output limits are still evaluated for each impact.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `map` | `dynamic` | — |  |
+| `faces` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L34)
+
+<a id="constant-constant-mq3-renderer-mark-fragments-max-cached-face-triangles-const-max-cached-face-triangles-16384-src-mq3-renderer-mark-fragments-ml-747506333"></a>
+### MAX_CACHED_FACE_TRIANGLES
+
+```ml
+const MAX_CACHED_FACE_TRIANGLES = 16384
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L15)
+
+<a id="constant-constant-mq3-renderer-mark-fragments-max-cached-mark-triangles-const-max-cached-mark-triangles-4096-src-mq3-renderer-mark-fragments-ml-1328678024"></a>
+### MAX_CACHED_MARK_TRIANGLES
+
+```ml
+const MAX_CACHED_MARK_TRIANGLES = 4096
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L14)
+
 <a id="constant-constant-mq3-renderer-mark-fragments-max-mark-surfaces-const-max-mark-surfaces-64-src-mq3-renderer-mark-fragments-ml-1489522323"></a>
 ### MAX_MARK_SURFACES
 
@@ -233,7 +271,7 @@ const MAX_MARK_SURFACES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L11)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L13)
 
 <a id="constant-constant-mq3-renderer-mark-fragments-max-verts-on-poly-const-max-verts-on-poly-64-src-mq3-renderer-mark-fragments-ml-432563015"></a>
 ### MAX_VERTS_ON_POLY
@@ -243,7 +281,17 @@ const MAX_VERTS_ON_POLY = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L10)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L12)
+
+<a id="constant-constant-mq3-renderer-mark-fragments-min-face-cache-triangles-const-min-face-cache-triangles-768-src-mq3-renderer-mark-fragments-ml-242591396"></a>
+### MIN_FACE_CACHE_TRIANGLES
+
+```ml
+const MIN_FACE_CACHE_TRIANGLES = 768
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L16)
 
 <a id="function-function-mq3-renderer-mark-fragments-normalize-function-normalize-value-src-mq3-renderer-mark-fragments-ml-1380230127"></a>
 ### normalize
@@ -257,7 +305,7 @@ function normalize(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L108)
 
 - [mq3.renderer.mark_fragments.Plane](Type-mq3-renderer-mark-fragments-plane-1548008174.md) — struct
 <a id="function-function-mq3-renderer-mark-fragments-planecrossesbounds-function-planecrossesbounds-normal-distance-mins-maxs-src-mq3-renderer-mark-fragments-ml-1927977514"></a>
@@ -275,7 +323,7 @@ function planeCrossesBounds(normal, distance, mins, maxs)
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L95)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L180)
 
 <a id="function-function-mq3-renderer-mark-fragments-project-function-project-map-world-sourcepoints-projection-maxpoints-maxfragments-src-mq3-renderer-mark-fragments-ml-1113630363"></a>
 ### project
@@ -294,7 +342,7 @@ function project(map, world, sourcePoints, projection, maxPoints, maxFragments)
 | `maxFragments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L122)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L227)
 
 <a id="function-function-mq3-renderer-mark-fragments-projectionbounds-function-projectionbounds-points-projection-direction-src-mq3-renderer-mark-fragments-ml-2064698943"></a>
 ### projectionBounds
@@ -310,7 +358,7 @@ function projectionBounds(points, projection, direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L116)
 
 <a id="function-function-mq3-renderer-mark-fragments-projectionplanes-function-projectionplanes-points-projection-src-mq3-renderer-mark-fragments-ml-271653410"></a>
 ### projectionPlanes
@@ -325,7 +373,27 @@ function projectionPlanes(points, projection)
 | `projection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L49)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L130)
+
+<a id="function-function-mq3-renderer-mark-fragments-projectwithcache-function-projectwithcache-map-world-sourcepoints-projection-maxpoints-maxfragments-cache-src-mq3-renderer-mark-fragments-ml-1962546917"></a>
+### projectWithCache
+
+```ml
+function projectWithCache(map, world, sourcePoints, projection, maxPoints, maxFragments, cache)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `map` | `dynamic` | — |  |
+| `world` | `dynamic` | — |  |
+| `sourcePoints` | `dynamic` | — |  |
+| `projection` | `dynamic` | — |  |
+| `maxPoints` | `dynamic` | — |  |
+| `maxFragments` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L230)
 
 - [mq3.renderer.mark_fragments.Result](Type-mq3-renderer-mark-fragments-result-420395893.md) — struct
 <a id="constant-constant-mq3-renderer-mark-fragments-shader-stride-const-shader-stride-72-src-mq3-renderer-mark-fragments-ml-2143648010"></a>
@@ -336,7 +404,7 @@ const SHADER_STRIDE = 72
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L16)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L21)
 
 <a id="function-function-mq3-renderer-mark-fragments-shadervalue-function-shadervalue-map-shaderindex-relative-src-mq3-renderer-mark-fragments-ml-1729356617"></a>
 ### shaderValue
@@ -352,7 +420,7 @@ function shaderValue(map, shaderIndex, relative)
 | `relative` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L114)
 
 <a id="function-function-mq3-renderer-mark-fragments-subtract-function-subtract-a-b-src-mq3-renderer-mark-fragments-ml-1058408139"></a>
 ### subtract
@@ -367,7 +435,7 @@ function subtract(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L106)
 
 <a id="constant-constant-mq3-renderer-mark-fragments-surf-noimpact-const-surf-noimpact-16-src-mq3-renderer-mark-fragments-ml-155536980"></a>
 ### SURF_NOIMPACT
@@ -377,7 +445,7 @@ const SURF_NOIMPACT = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L12)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L17)
 
 <a id="constant-constant-mq3-renderer-mark-fragments-surf-nomarks-const-surf-nomarks-32-src-mq3-renderer-mark-fragments-ml-1121708804"></a>
 ### SURF_NOMARKS
@@ -387,4 +455,4 @@ const SURF_NOMARKS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L13)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L18)

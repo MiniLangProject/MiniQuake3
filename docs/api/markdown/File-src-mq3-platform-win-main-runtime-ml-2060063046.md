@@ -4,7 +4,7 @@
 
 Package: [`mq3.platform.win_main_runtime`](Package-mq3-platform-win-main-runtime-1472400096.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Imports
 

@@ -10,7 +10,7 @@ struct AlternativeRouteGoal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-extratraveltime-extratraveltime-src-mq3-botlib-aas-route-extras-ml-1809885614"></a>
 ### extraTravelTime
@@ -32,7 +32,7 @@ extraTravelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-goaltraveltime-goaltraveltime-src-mq3-botlib-aas-route-extras-ml-1995148726"></a>
 ### goalTravelTime
@@ -42,7 +42,7 @@ goalTravelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-origin-origin-src-mq3-botlib-aas-route-extras-ml-1986267366"></a>
 ### origin
@@ -52,7 +52,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-starttraveltime-starttraveltime-src-mq3-botlib-aas-route-extras-ml-449785946"></a>
 ### startTravelTime
@@ -62,4 +62,4 @@ startTravelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)

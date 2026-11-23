@@ -54,6 +54,16 @@ items
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L27)
 
+<a id="field-field-mq3-botlib-ai-item-weights-runtime-qvminventory-qvminventory-src-mq3-botlib-ai-item-weights-ml-2108753069"></a>
+### qvmInventory
+
+```ml
+qvmInventory
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L27)
+
 <a id="field-field-mq3-botlib-ai-item-weights-runtime-readfn-readfn-src-mq3-botlib-ai-item-weights-ml-806074725"></a>
 ### readFn
 

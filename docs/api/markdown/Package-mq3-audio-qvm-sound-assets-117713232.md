@@ -10,6 +10,7 @@
 
 - [`mq3.audio.qvm_sound_assets.canonicalPath`](File-src-mq3-audio-qvm-sound-assets-ml-1587569282.md#function-function-mq3-audio-qvm-sound-assets-canonicalpath-function-canonicalpath-name-src-mq3-audio-qvm-sound-assets-ml-2131205299) — function
 - [`mq3.audio.qvm_sound_assets.Catalog`](Type-mq3-audio-qvm-sound-assets-catalog-1374778137.md) — struct
+- [`mq3.audio.qvm_sound_assets.CHUNK_FRAMES`](File-src-mq3-audio-qvm-sound-assets-ml-1587569282.md#constant-constant-mq3-audio-qvm-sound-assets-chunk-frames-const-chunk-frames-1024-src-mq3-audio-qvm-sound-assets-ml-1138393406) — constant
 - [`mq3.audio.qvm_sound_assets.Clip`](Type-mq3-audio-qvm-sound-assets-clip-741452940.md) — struct
 - [`mq3.audio.qvm_sound_assets.clipForHandle`](File-src-mq3-audio-qvm-sound-assets-ml-1587569282.md#function-function-mq3-audio-qvm-sound-assets-clipforhandle-function-clipforhandle-catalog-handle-src-mq3-audio-qvm-sound-assets-ml-296920641) — function
 - [`mq3.audio.qvm_sound_assets.clipForPath`](File-src-mq3-audio-qvm-sound-assets-ml-1587569282.md#function-function-mq3-audio-qvm-sound-assets-clipforpath-function-clipforpath-catalog-path-src-mq3-audio-qvm-sound-assets-ml-839609208) — function

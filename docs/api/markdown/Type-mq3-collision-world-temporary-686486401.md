@@ -10,7 +10,7 @@ struct Temporary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L57)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L58)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L64)
 
 <a id="field-field-mq3-collision-world-temporary-brush-brush-src-mq3-collision-world-ml-997814114"></a>
 ### brush
@@ -32,7 +32,17 @@ brush
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L59)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L65)
+
+<a id="field-field-mq3-collision-world-temporary-brushvisits-brushvisits-src-mq3-collision-world-ml-904806182"></a>
+### brushVisits
+
+```ml
+brushVisits
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L67)
 
 <a id="field-field-mq3-collision-world-temporary-capsuleready-capsuleready-src-mq3-collision-world-ml-576067038"></a>
 ### capsuleReady
@@ -42,4 +52,24 @@ capsuleReady
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L60)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L66)
+
+<a id="field-field-mq3-collision-world-temporary-patchvisits-patchvisits-src-mq3-collision-world-ml-1357595974"></a>
+### patchVisits
+
+```ml
+patchVisits
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L68)
+
+<a id="field-field-mq3-collision-world-temporary-visitserial-visitserial-src-mq3-collision-world-ml-2107638858"></a>
+### visitSerial
+
+```ml
+visitSerial
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L69)

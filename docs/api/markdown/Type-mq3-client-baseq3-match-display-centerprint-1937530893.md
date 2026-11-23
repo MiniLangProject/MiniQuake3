@@ -10,7 +10,7 @@ struct CenterPrint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ charWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)
 
 <a id="field-field-mq3-client-baseq3-match-display-centerprint-duration-duration-src-mq3-client-baseq3-match-display-ml-1792925481"></a>
 ### duration
@@ -32,7 +32,7 @@ duration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)
 
 <a id="field-field-mq3-client-baseq3-match-display-centerprint-lines-lines-src-mq3-client-baseq3-match-display-ml-430475765"></a>
 ### lines
@@ -42,7 +42,7 @@ lines
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)
 
 <a id="field-field-mq3-client-baseq3-match-display-centerprint-startedat-startedat-src-mq3-client-baseq3-match-display-ml-34214065"></a>
 ### startedAt
@@ -52,7 +52,7 @@ startedAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)
 
 <a id="field-field-mq3-client-baseq3-match-display-centerprint-text-text-src-mq3-client-baseq3-match-display-ml-85700995"></a>
 ### text
@@ -62,7 +62,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)
 
 <a id="field-field-mq3-client-baseq3-match-display-centerprint-y-y-src-mq3-client-baseq3-match-display-ml-736256957"></a>
 ### y
@@ -72,4 +72,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L25)

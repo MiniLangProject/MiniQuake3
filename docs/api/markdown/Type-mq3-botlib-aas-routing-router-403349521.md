@@ -10,9 +10,19 @@ struct Router
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L72)
 
 ## Members
+
+<a id="field-field-mq3-botlib-aas-routing-router-areaflags-areaflags-src-mq3-botlib-aas-routing-ml-24796152"></a>
+### areaFlags
+
+```ml
+areaFlags
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L72)
 
 <a id="field-field-mq3-botlib-aas-routing-router-reaches-reaches-src-mq3-botlib-aas-routing-ml-1535762088"></a>
 ### reaches
@@ -22,7 +32,7 @@ reaches
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L72)
 
 <a id="field-field-mq3-botlib-aas-routing-router-runtime-runtime-src-mq3-botlib-aas-routing-ml-115257400"></a>
 ### runtime
@@ -32,7 +42,7 @@ runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L72)
 
 <a id="field-field-mq3-botlib-aas-routing-router-settings-settings-src-mq3-botlib-aas-routing-ml-678992710"></a>
 ### settings
@@ -42,4 +52,14 @@ settings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L72)
+
+<a id="field-field-mq3-botlib-aas-routing-router-traveltypeflags-traveltypeflags-src-mq3-botlib-aas-routing-ml-510596488"></a>
+### travelTypeFlags
+
+```ml
+travelTypeFlags
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L72)

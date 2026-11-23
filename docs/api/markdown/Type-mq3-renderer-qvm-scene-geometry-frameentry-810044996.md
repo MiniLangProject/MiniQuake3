@@ -10,7 +10,7 @@ struct FrameEntry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 ## Members
 
@@ -22,7 +22,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-frame-frame-src-mq3-renderer-qvm-scene-geometry-ml-810474518"></a>
 ### frame
@@ -32,7 +32,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-modelhandle-modelhandle-src-mq3-renderer-qvm-scene-geometry-ml-2110615350"></a>
 ### modelHandle
@@ -42,7 +42,7 @@ modelHandle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-normals-normals-src-mq3-renderer-qvm-scene-geometry-ml-1785060506"></a>
 ### normals
@@ -52,7 +52,7 @@ normals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-oldframe-oldframe-src-mq3-renderer-qvm-scene-geometry-ml-1063495322"></a>
 ### oldFrame
@@ -62,7 +62,17 @@ oldFrame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
+
+<a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-packed-packed-src-mq3-renderer-qvm-scene-geometry-ml-670639070"></a>
+### packed
+
+```ml
+packed
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-surfaceindex-surfaceindex-src-mq3-renderer-qvm-scene-geometry-ml-1701064488"></a>
 ### surfaceIndex
@@ -72,7 +82,17 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
+
+<a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-vertexcount-vertexcount-src-mq3-renderer-qvm-scene-geometry-ml-422723598"></a>
+### vertexCount
+
+```ml
+vertexCount
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-frameentry-xyz-xyz-src-mq3-renderer-qvm-scene-geometry-ml-710178246"></a>
 ### xyz
@@ -82,4 +102,4 @@ xyz
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L42)

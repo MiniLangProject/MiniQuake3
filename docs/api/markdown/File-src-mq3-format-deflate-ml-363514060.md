@@ -9,6 +9,23 @@ Reachable from entry: **yes**
 ## Declarations
 
 - [mq3.format.deflate.Bits](Type-mq3-format-deflate-bits-2050002282.md) — struct
+<a id="function-function-mq3-format-deflate-buildprefix-function-buildprefix-counts-symbols-src-mq3-format-deflate-ml-999937985"></a>
+### buildPrefix
+
+```ml
+function buildPrefix(counts, symbols)
+```
+
+Short canonical codes have one entry at every possible eight-bit suffix. DEFLATE transmits their high bit first inside the low-bit-first byte stream.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `counts` | `dynamic` | — |  |
+| `symbols` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L37)
+
 <a id="function-function-mq3-format-deflate-decodesymbol-function-decodesymbol-reader-codes-src-mq3-format-deflate-ml-784818855"></a>
 ### decodeSymbol
 
@@ -22,7 +39,7 @@ function decodeSymbol(reader, codes)
 | `codes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L60)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L88)
 
 <a id="function-function-mq3-format-deflate-dynamictrees-function-dynamictrees-reader-src-mq3-format-deflate-ml-1383757355"></a>
 ### dynamicTrees
@@ -36,7 +53,7 @@ function dynamicTrees(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L86)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L134)
 
 <a id="function-function-mq3-format-deflate-fail-function-fail-message-src-mq3-format-deflate-ml-293057215"></a>
 ### fail
@@ -50,7 +67,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L18)
 
 <a id="function-function-mq3-format-deflate-fixedtrees-function-fixedtrees-src-mq3-format-deflate-ml-1262350762"></a>
 ### fixedTrees
@@ -60,7 +77,7 @@ function fixedTrees()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L75)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L123)
 
 - [mq3.format.deflate.Huffman](Type-mq3-format-deflate-huffman-1324627979.md) — struct
 <a id="function-function-mq3-format-deflate-inflate-function-inflate-data-expectedsize-src-mq3-format-deflate-ml-1726441759"></a>
@@ -76,22 +93,22 @@ function inflate(data, expectedSize)
 | `expectedSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L132)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L180)
 
-<a id="function-function-mq3-format-deflate-readbits-function-readbits-reader-count-src-mq3-format-deflate-ml-750129564"></a>
+<a id="function-function-mq3-format-deflate-readbits-function-readbits-reader-as-bits-count-as-int-src-mq3-format-deflate-ml-395759967"></a>
 ### readBits
 
 ```ml
-function readBits(reader, count)
+function readBits(reader as Bits, count as int)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `reader` | `Bits` | — |  |
+| `count` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L21)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L22)
 
 <a id="function-function-mq3-format-deflate-tree-function-tree-lengths-src-mq3-format-deflate-ml-524636917"></a>
 ### tree
@@ -105,4 +122,4 @@ function tree(lengths)
 | `lengths` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L62)

@@ -10,7 +10,7 @@ struct Clip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ compressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L16)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-clip-handle-handle-src-mq3-audio-qvm-sound-assets-ml-1865530353"></a>
 ### handle
@@ -32,7 +32,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L16)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-clip-path-path-src-mq3-audio-qvm-sound-assets-ml-1464112483"></a>
 ### path
@@ -42,7 +42,7 @@ path
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L16)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-clip-sound-sound-src-mq3-audio-qvm-sound-assets-ml-701279741"></a>
 ### sound
@@ -52,4 +52,4 @@ sound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L16)

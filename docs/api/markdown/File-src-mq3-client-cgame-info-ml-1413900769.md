@@ -28,6 +28,18 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L8)
 
+<a id="function-function-mq3-client-cgame-info-baseitemicons-function-baseitemicons-src-mq3-client-cgame-info-ml-104683526"></a>
+### baseItemIcons
+
+```ml
+function baseItemIcons()
+```
+
+Baseq3 bg_itemlist order is the bit order of CS_ITEMS.
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L47)
+
 <a id="function-function-mq3-client-cgame-info-clean-function-clean-text-src-mq3-client-cgame-info-ml-1408830407"></a>
 ### clean
 
@@ -74,7 +86,28 @@ CG_DrawInformation
 | `availableAssets` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L52)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L68)
+
+<a id="function-function-mq3-client-cgame-info-drawinformationwithshot-function-drawinformationwithshot-state-serverinfo-systeminfo-motd-message-gametype-svrunning-levelshot-src-mq3-client-cgame-info-ml-1449181912"></a>
+### drawInformationWithShot
+
+```ml
+function drawInformationWithShot(state, serverInfo, systemInfo, motd, message, gametype, svRunning, levelshot)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `serverInfo` | `dynamic` | — |  |
+| `systemInfo` | `dynamic` | — |  |
+| `motd` | `dynamic` | — |  |
+| `message` | `dynamic` | — |  |
+| `gametype` | `dynamic` | — |  |
+| `svRunning` | `dynamic` | — |  |
+| `levelshot` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L73)
 
 <a id="function-function-mq3-client-cgame-info-drawloadingicons-function-drawloadingicons-state-src-mq3-client-cgame-info-ml-757835433"></a>
 ### drawLoadingIcons
@@ -90,7 +123,7 @@ CG_DrawLoadingIcons
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L43)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L59)
 
 <a id="function-function-mq3-client-cgame-info-gametypename-function-gametypename-gametype-src-mq3-client-cgame-info-ml-524560352"></a>
 ### gametypeName
@@ -104,7 +137,7 @@ function gametypeName(gametype)
 | `gametype` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L47)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L63)
 
 <a id="constant-constant-mq3-client-cgame-info-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-info-ml-300612385"></a>
 ### GT_CTF
@@ -171,7 +204,7 @@ function line(result, y, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L50)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L66)
 
 <a id="function-function-mq3-client-cgame-info-loadingclient-function-loadingclient-state-playerinfo-gametype-availableassets-src-mq3-client-cgame-info-ml-2147050968"></a>
 ### loadingClient
@@ -188,7 +221,7 @@ function loadingClient(state, playerInfo, gametype, availableAssets)
 | `availableAssets` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L37)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L41)
 
 <a id="function-function-mq3-client-cgame-info-loadingitem-function-loadingitem-state-icon-pickupname-handle-src-mq3-client-cgame-info-ml-914388139"></a>
 ### loadingItem
@@ -241,6 +274,20 @@ const MAX_LOADING_PLAYER_ICONS = 16
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L9)
+
+<a id="function-function-mq3-client-cgame-info-playericoncandidates-function-playericoncandidates-playerinfo-src-mq3-client-cgame-info-ml-1464278091"></a>
+### playerIconCandidates
+
+```ml
+function playerIconCandidates(playerInfo)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `playerInfo` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L37)
 
 <a id="function-function-mq3-client-cgame-info-splitmodel-function-splitmodel-value-src-mq3-client-cgame-info-ml-1401948745"></a>
 ### splitModel

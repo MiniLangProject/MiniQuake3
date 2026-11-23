@@ -10,7 +10,7 @@ struct World
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
 
 <a id="field-field-mq3-server-snapshot-build-world-entities-entities-src-mq3-server-snapshot-build-ml-299091115"></a>
 ### entities
@@ -32,7 +32,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
 
 <a id="field-field-mq3-server-snapshot-build-world-nextsnapshotentities-nextsnapshotentities-src-mq3-server-snapshot-build-ml-1670057821"></a>
 ### nextSnapshotEntities
@@ -42,7 +42,7 @@ nextSnapshotEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
 
 <a id="field-field-mq3-server-snapshot-build-world-ring-ring-src-mq3-server-snapshot-build-ml-314733749"></a>
 ### ring
@@ -52,7 +52,7 @@ ring
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
 
 <a id="field-field-mq3-server-snapshot-build-world-ringcapacity-ringcapacity-src-mq3-server-snapshot-build-ml-1366379389"></a>
 ### ringCapacity
@@ -62,7 +62,7 @@ ringCapacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
 
 <a id="field-field-mq3-server-snapshot-build-world-snapshotcounter-snapshotcounter-src-mq3-server-snapshot-build-ml-1948865013"></a>
 ### snapshotCounter
@@ -72,4 +72,4 @@ snapshotCounter
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)

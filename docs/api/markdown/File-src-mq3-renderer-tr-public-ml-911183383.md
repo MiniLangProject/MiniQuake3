@@ -4,7 +4,7 @@
 
 Package: [`mq3.renderer.tr_public`](Package-mq3-renderer-tr-public-1664155533.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Declarations
 

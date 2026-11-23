@@ -10,7 +10,7 @@ struct SceneVertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)
 
 <a id="field-field-mq3-renderer-portal-clip-scenevertex-entitycolor-entitycolor-src-mq3-renderer-portal-clip-ml-250720727"></a>
 ### entityColor
@@ -32,7 +32,7 @@ entityColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)
 
 <a id="field-field-mq3-renderer-portal-clip-scenevertex-lightmapcoord-lightmapcoord-src-mq3-renderer-portal-clip-ml-1012499027"></a>
 ### lightmapCoord
@@ -42,7 +42,7 @@ lightmapCoord
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)
 
 <a id="field-field-mq3-renderer-portal-clip-scenevertex-normal-normal-src-mq3-renderer-portal-clip-ml-1871390117"></a>
 ### normal
@@ -52,7 +52,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)
 
 <a id="field-field-mq3-renderer-portal-clip-scenevertex-position-position-src-mq3-renderer-portal-clip-ml-882731353"></a>
 ### position
@@ -62,7 +62,7 @@ position
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)
 
 <a id="field-field-mq3-renderer-portal-clip-scenevertex-texcoord-texcoord-src-mq3-renderer-portal-clip-ml-1673878839"></a>
 ### texCoord
@@ -72,4 +72,4 @@ texCoord
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L77)

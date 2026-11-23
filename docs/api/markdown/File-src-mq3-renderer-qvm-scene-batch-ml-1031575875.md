@@ -12,7 +12,7 @@ Reachable from entry: **yes**
 - `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/bsp_render_data.ml` as `renderData` → [src/mq3/renderer/bsp_render_data.ml](File-src-mq3-renderer-bsp-render-data-ml-926244912.md)
 - `mq3/renderer/playable_world_batch.ml` as `worldBatch` → [src/mq3/renderer/playable_world_batch.ml](File-src-mq3-renderer-playable-world-batch-ml-1411140007.md)
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ function attachDynamicLights(prepared, catalog, lightCatalog)
 | `lightCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L141)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L159)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-attachfog-function-attachfog-prepared-catalog-src-mq3-renderer-qvm-scene-batch-ml-796632042"></a>
 ### attachFog
@@ -45,7 +45,7 @@ function attachFog(prepared, catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L134)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L152)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-build-function-build-catalog-src-mq3-renderer-qvm-scene-batch-ml-1897744505"></a>
 ### build
@@ -59,7 +59,7 @@ function build(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L118)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L150)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-buildshadowbatch-function-buildshadowbatch-catalog-scenegeometry-existing-src-mq3-renderer-qvm-scene-batch-ml-262391222"></a>
 ### buildShadowBatch
@@ -75,7 +75,7 @@ function buildShadowBatch(catalog, sceneGeometry, existing)
 | `existing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L48)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L50)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-buildwithgeometry-function-buildwithgeometry-catalog-scenegeometry-src-mq3-renderer-qvm-scene-batch-ml-2077358701"></a>
 ### buildWithGeometry
@@ -90,7 +90,7 @@ function buildWithGeometry(catalog, sceneGeometry)
 | `sceneGeometry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L147)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-convert-function-convert-catalog-src-mq3-renderer-qvm-scene-batch-ml-761945963"></a>
 ### convert
@@ -104,21 +104,7 @@ function convert(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L71)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-convertdynamic-function-convertdynamic-catalog-src-mq3-renderer-qvm-scene-batch-ml-258688425"></a>
-### convertDynamic
-
-```ml
-function convertDynamic(catalog)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L72)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L122)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-convertedvertex-function-convertedvertex-triangle-corner-sourceindex-src-mq3-renderer-qvm-scene-batch-ml-878015248"></a>
 ### convertedVertex
@@ -134,28 +120,13 @@ function convertedVertex(triangle, corner, sourceIndex)
 | `sourceIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L17)
 
-<a id="function-function-mq3-renderer-qvm-scene-batch-convertmode-function-convertmode-catalog-wantdepthhack-src-mq3-renderer-qvm-scene-batch-ml-1262090463"></a>
-### convertMode
-
-```ml
-function convertMode(catalog, wantDepthHack)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `wantDepthHack` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L60)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-depthhack-function-depthhack-triangle-src-mq3-renderer-qvm-scene-batch-ml-545584714"></a>
+<a id="function-function-mq3-renderer-qvm-scene-batch-depthhack-inline-function-depthhack-triangle-returns-bool-src-mq3-renderer-qvm-scene-batch-ml-1905490860"></a>
 ### depthHack
 
 ```ml
-function depthHack(triangle)
+inline function depthHack(triangle) returns bool
 ```
 
 | Parameter | Type | Default | Description |
@@ -163,7 +134,7 @@ function depthHack(triangle)
 | `triangle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L21)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L24)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-draw-function-draw-prepared-projection-nowmilliseconds-src-mq3-renderer-qvm-scene-batch-ml-862212894"></a>
 ### draw
@@ -179,7 +150,7 @@ function draw(prepared, projection, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L150)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L168)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawlit-function-drawlit-prepared-projection-nowmilliseconds-lights-src-mq3-renderer-qvm-scene-batch-ml-253185767"></a>
 ### drawLit
@@ -196,7 +167,7 @@ function drawLit(prepared, projection, nowMilliseconds, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L166)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L184)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawlitviewport-function-drawlitviewport-prepared-projection-area-nowmilliseconds-lights-src-mq3-renderer-qvm-scene-batch-ml-1712990510"></a>
 ### drawLitViewport
@@ -214,7 +185,7 @@ function drawLitViewport(prepared, projection, area, nowMilliseconds, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L174)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L192)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawlitviewportshadows-function-drawlitviewportshadows-prepared-projection-area-nowmilliseconds-lights-mirror-src-mq3-renderer-qvm-scene-batch-ml-476187121"></a>
 ### drawLitViewportShadows
@@ -233,7 +204,7 @@ function drawLitViewportShadows(prepared, projection, area, nowMilliseconds, lig
 | `mirror` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L201)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L219)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawstencilshadows-function-drawstencilshadows-prepared-projection-area-mirror-src-mq3-renderer-qvm-scene-batch-ml-1125882752"></a>
 ### drawStencilShadows
@@ -252,7 +223,7 @@ RB_ShadowTessEnd increments front-facing volume sides and decrements back sides;
 | `mirror` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L185)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L203)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawviewport-function-drawviewport-prepared-projection-area-nowmilliseconds-src-mq3-renderer-qvm-scene-batch-ml-752104675"></a>
 ### drawViewport
@@ -269,36 +240,7 @@ function drawViewport(prepared, projection, area, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L158)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-dynamiccount-function-dynamiccount-catalog-src-mq3-renderer-qvm-scene-batch-ml-1527740537"></a>
-### dynamicCount
-
-```ml
-function dynamicCount(catalog)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L29)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-dynamicselected-function-dynamicselected-catalog-resolved-src-mq3-renderer-qvm-scene-batch-ml-1000596181"></a>
-### dynamicSelected
-
-```ml
-function dynamicSelected(catalog, resolved)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `resolved` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L176)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-fail-function-fail-message-src-mq3-renderer-qvm-scene-batch-ml-313133781"></a>
 ### fail
@@ -312,7 +254,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L16)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-policyopaque-function-policyopaque-policies-entityindex-surfaceindex-src-mq3-renderer-qvm-scene-batch-ml-1360262994"></a>
 ### policyOpaque
@@ -328,9 +270,43 @@ function policyOpaque(policies, entityIndex, surfaceIndex)
 | `surfaceIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L45)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L47)
 
 - [mq3.renderer.qvm_scene_batch.Prepared](Type-mq3-renderer-qvm-scene-batch-prepared-1944088064.md) — struct
+<a id="function-function-mq3-renderer-qvm-scene-batch-preparegeometry-function-preparegeometry-prepared-catalog-src-mq3-renderer-qvm-scene-batch-ml-528132954"></a>
+### prepareGeometry
+
+```ml
+function prepareGeometry(prepared, catalog)
+```
+
+Each view owns its vertex records. Preserve catalog order within each pass and allocate fallback IDs above every source ID, including filtered surfaces.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `prepared` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L92)
+
+<a id="function-function-mq3-renderer-qvm-scene-batch-preparematerials-function-preparematerials-previous-geometry-catalog-skyflags-src-mq3-renderer-qvm-scene-batch-ml-1292875292"></a>
+### prepareMaterials
+
+```ml
+function prepareMaterials(previous, geometry, catalog, skyFlags)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `previous` | `dynamic` | — |  |
+| `geometry` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — |  |
+| `skyFlags` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L127)
+
 <a id="constant-constant-mq3-renderer-qvm-scene-batch-projection-shadow-shader-const-projection-shadow-shader-mq3-projectionshadow-src-mq3-renderer-qvm-scene-batch-ml-1453794458"></a>
 ### PROJECTION_SHADOW_SHADER
 
@@ -340,6 +316,21 @@ const PROJECTION_SHADOW_SHADER = "$mq3/projectionShadow"
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L12)
+
+<a id="function-function-mq3-renderer-qvm-scene-batch-receivesdynamiclight-inline-function-receivesdynamiclight-catalog-resolved-returns-bool-src-mq3-renderer-qvm-scene-batch-ml-127327499"></a>
+### receivesDynamicLight
+
+```ml
+inline function receivesDynamicLight(catalog, resolved) returns bool
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `catalog` | `dynamic` | — |  |
+| `resolved` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L26)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-refresh-function-refresh-prepared-catalog-src-mq3-renderer-qvm-scene-batch-ml-669271742"></a>
 ### refresh
@@ -354,53 +345,7 @@ function refresh(prepared, catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L133)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-refreshdynamicgeometry-function-refreshdynamicgeometry-geometry-catalog-src-mq3-renderer-qvm-scene-batch-ml-583193065"></a>
-### refreshDynamicGeometry
-
-```ml
-function refreshDynamicGeometry(geometry, catalog)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `geometry` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L98)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-refreshgeometry-function-refreshgeometry-geometry-catalog-src-mq3-renderer-qvm-scene-batch-ml-954418151"></a>
-### refreshGeometry
-
-```ml
-function refreshGeometry(geometry, catalog)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `geometry` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L97)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-refreshgeometrymode-function-refreshgeometrymode-geometry-catalog-wantdepthhack-src-mq3-renderer-qvm-scene-batch-ml-771695711"></a>
-### refreshGeometryMode
-
-```ml
-function refreshGeometryMode(geometry, catalog, wantDepthHack)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `geometry` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-| `wantDepthHack` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L84)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L151)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-refreshwithgeometry-function-refreshwithgeometry-prepared-catalog-scenegeometry-src-mq3-renderer-qvm-scene-batch-ml-713365208"></a>
 ### refreshWithGeometry
@@ -416,7 +361,7 @@ function refreshWithGeometry(prepared, catalog, sceneGeometry)
 | `sceneGeometry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L119)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L136)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-release-function-release-catalog-src-mq3-renderer-qvm-scene-batch-ml-1740659479"></a>
 ### release
@@ -430,13 +375,13 @@ function release(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L149)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L167)
 
-<a id="function-function-mq3-renderer-qvm-scene-batch-renderable-function-renderable-resolved-src-mq3-renderer-qvm-scene-batch-ml-2054613822"></a>
+<a id="function-function-mq3-renderer-qvm-scene-batch-renderable-function-renderable-resolved-returns-bool-src-mq3-renderer-qvm-scene-batch-ml-2006936455"></a>
 ### renderable
 
 ```ml
-function renderable(resolved)
+function renderable(resolved) returns bool
 ```
 
 | Parameter | Type | Default | Description |
@@ -444,7 +389,7 @@ function renderable(resolved)
 | `resolved` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L25)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-batch-rf-depthhack-const-rf-depthhack-8-src-mq3-renderer-qvm-scene-batch-ml-429110291"></a>
 ### RF_DEPTHHACK
@@ -455,21 +400,6 @@ const RF_DEPTHHACK = 8
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L11)
-
-<a id="function-function-mq3-renderer-qvm-scene-batch-selectedcount-function-selectedcount-catalog-wantdepthhack-src-mq3-renderer-qvm-scene-batch-ml-2123478215"></a>
-### selectedCount
-
-```ml
-function selectedCount(catalog, wantDepthHack)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `wantDepthHack` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L23)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-shadowpolicies-function-shadowpolicies-catalog-src-mq3-renderer-qvm-scene-batch-ml-1650763977"></a>
 ### shadowPolicies
@@ -485,25 +415,70 @@ RB_ShadowTessEnd only receives opaque surfaces (SS_OPAQUE) outside fog. Cache th
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L35)
 
-- [mq3.renderer.qvm_scene_batch.ShadowPolicy](Type-mq3-renderer-qvm-scene-batch-shadowpolicy-800601043.md) — struct
-<a id="function-function-mq3-renderer-qvm-scene-batch-updateconvertedvertex-function-updateconvertedvertex-target-triangle-corner-sourceindex-src-mq3-renderer-qvm-scene-batch-ml-456761759"></a>
+<a id="function-function-mq3-renderer-qvm-scene-batch-shadowpolicykey-function-shadowpolicykey-entityindex-surfaceindex-src-mq3-renderer-qvm-scene-batch-ml-1338077182"></a>
+### shadowPolicyKey
+
+```ml
+function shadowPolicyKey(entityIndex, surfaceIndex)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `entityIndex` | `dynamic` | — |  |
+| `surfaceIndex` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L30)
+
+<a id="function-function-mq3-renderer-qvm-scene-batch-sizegeometry-function-sizegeometry-previous-count-as-int-src-mq3-renderer-qvm-scene-batch-ml-147975257"></a>
+### sizeGeometry
+
+```ml
+function sizeGeometry(previous, count as int)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `previous` | `dynamic` | — |  |
+| `count` | `int` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L62)
+
+<a id="function-function-mq3-renderer-qvm-scene-batch-sourcevertexid-function-sourcevertexid-triangle-corner-as-int-fallback-as-int-returns-int-src-mq3-renderer-qvm-scene-batch-ml-747956651"></a>
+### sourceVertexId
+
+```ml
+function sourceVertexId(triangle, corner as int, fallback as int) returns int
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `triangle` | `dynamic` | — |  |
+| `corner` | `int` | — |  |
+| `fallback` | `int` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L20)
+
+<a id="function-function-mq3-renderer-qvm-scene-batch-updateconvertedvertex-function-updateconvertedvertex-target-triangle-corner-as-int-sourceindex-as-int-src-mq3-renderer-qvm-scene-batch-ml-433793717"></a>
 ### updateConvertedVertex
 
 ```ml
-function updateConvertedVertex(target, triangle, corner, sourceIndex)
+function updateConvertedVertex(target, triangle, corner as int, sourceIndex as int)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `target` | `dynamic` | — |  |
 | `triangle` | `dynamic` | — |  |
-| `corner` | `dynamic` | — |  |
-| `sourceIndex` | `dynamic` | — |  |
+| `corner` | `int` | — |  |
+| `sourceIndex` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L81)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L74)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-upload-function-upload-catalog-src-mq3-renderer-qvm-scene-batch-ml-2011520225"></a>
 ### upload
@@ -517,4 +492,21 @@ function upload(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L148)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L166)
+
+<a id="function-function-mq3-renderer-qvm-scene-batch-writetriangle-function-writetriangle-geometry-index-as-int-resolved-fallbackbase-as-int-src-mq3-renderer-qvm-scene-batch-ml-1594069203"></a>
+### writeTriangle
+
+```ml
+function writeTriangle(geometry, index as int, resolved, fallbackBase as int)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `geometry` | `dynamic` | — |  |
+| `index` | `int` | — |  |
+| `resolved` | `dynamic` | — |  |
+| `fallbackBase` | `int` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L78)

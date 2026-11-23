@@ -10,7 +10,7 @@ struct Plane
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L23)
 
 <a id="field-field-mq3-renderer-mark-fragments-plane-normal-normal-src-mq3-renderer-mark-fragments-ml-1945613149"></a>
 ### normal
@@ -32,4 +32,4 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L23)

@@ -11,6 +11,7 @@ Reachable from entry: **no**
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/format/bsp.ml` as `bsp` → [src/mq3/format/bsp.ml](File-src-mq3-format-bsp-ml-526613882.md)
 - `mq3/renderer/bsp_render_data.ml` as `render` → [src/mq3/renderer/bsp_render_data.ml](File-src-mq3-renderer-bsp-render-data-ml-926244912.md)
+- `mq3/renderer/patch_stitch.ml` as `patchStitch` → [src/mq3/renderer/patch_stitch.ml](File-src-mq3-renderer-patch-stitch-ml-2036325899.md)
 - `mq3/renderer/playable_flares.ml` as `playableFlares` → [src/mq3/renderer/playable_flares.ml](File-src-mq3-renderer-playable-flares-ml-2125885383.md)
 - `mq3/renderer/playable_fog.ml` as `playableFog` → [src/mq3/renderer/playable_fog.ml](File-src-mq3-renderer-playable-fog-ml-140703890.md)
 - `mq3/renderer/playable_light_grid.ml` as `lightGrid` → [src/mq3/renderer/playable_light_grid.ml](File-src-mq3-renderer-playable-light-grid-ml-1846122219.md)
@@ -32,22 +33,7 @@ function abs(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L42)
-
-<a id="function-function-mq3-renderer-tr-bsp-runtime-atposition-function-atposition-vertex-position-src-mq3-renderer-tr-bsp-runtime-ml-911680397"></a>
-### atPosition
-
-```ml
-function atPosition(vertex, position)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `vertex` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L204)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L43)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-basename-function-basename-path-src-mq3-renderer-tr-bsp-runtime-ml-748872135"></a>
 ### basename
@@ -61,7 +47,7 @@ function basename(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L45)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L46)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-contents-node-const-contents-node-1-src-mq3-renderer-tr-bsp-runtime-ml-448751015"></a>
 ### CONTENTS_NODE
@@ -71,22 +57,7 @@ const CONTENTS_NODE = -1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L21)
-
-<a id="function-function-mq3-renderer-tr-bsp-runtime-copyloderrors-function-copyloderrors-source-target-src-mq3-renderer-tr-bsp-runtime-ml-1664137370"></a>
-### copyLodErrors
-
-```ml
-function copyLodErrors(source, target)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L179)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L22)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-createstate-function-createstate-src-mq3-renderer-tr-bsp-runtime-ml-549652534"></a>
 ### createState
@@ -96,38 +67,7 @@ function createState()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L38)
-
-<a id="function-function-mq3-renderer-tr-bsp-runtime-edgecount-function-edgecount-grid-side-src-mq3-renderer-tr-bsp-runtime-ml-645199267"></a>
-### edgeCount
-
-```ml
-function edgeCount(grid, side)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `grid` | `dynamic` | — |  |
-| `side` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L224)
-
-<a id="function-function-mq3-renderer-tr-bsp-runtime-edgepoint-function-edgepoint-grid-side-index-src-mq3-renderer-tr-bsp-runtime-ml-586601615"></a>
-### edgePoint
-
-```ml
-function edgePoint(grid, side, index)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `grid` | `dynamic` | — |  |
-| `side` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L223)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L39)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-f32-function-f32-map-offset-src-mq3-renderer-tr-bsp-runtime-ml-806715183"></a>
 ### f32
@@ -142,7 +82,7 @@ function f32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-fail-function-fail-text-src-mq3-renderer-tr-bsp-runtime-ml-861428431"></a>
 ### fail
@@ -156,7 +96,7 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L37)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L38)
 
 - [mq3.renderer.tr_bsp_runtime.Grid](Type-mq3-renderer-tr-bsp-runtime-grid-406766564.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-hsvtorgb-function-hsvtorgb-h-s-v-src-mq3-renderer-tr-bsp-runtime-ml-1405745009"></a>
@@ -175,7 +115,7 @@ Exact tr_bsp.c six-sector HSV development-lightmap conversion.
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L58)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L59)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-i32-function-i32-map-offset-src-mq3-renderer-tr-bsp-runtime-ml-671524025"></a>
 ### i32
@@ -190,43 +130,7 @@ function i32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L39)
-
-<a id="function-function-mq3-renderer-tr-bsp-runtime-insertcolumn-function-insertcolumn-grid-column-row-vertex-errorvalue-src-mq3-renderer-tr-bsp-runtime-ml-426910747"></a>
-### insertColumn
-
-```ml
-function insertColumn(grid, column, row, vertex, errorValue)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `grid` | `dynamic` | — |  |
-| `column` | `dynamic` | — |  |
-| `row` | `dynamic` | — |  |
-| `vertex` | `dynamic` | — |  |
-| `errorValue` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L205)
-
-<a id="function-function-mq3-renderer-tr-bsp-runtime-insertrow-function-insertrow-grid-row-column-vertex-errorvalue-src-mq3-renderer-tr-bsp-runtime-ml-141541965"></a>
-### insertRow
-
-```ml
-function insertRow(grid, row, column, vertex, errorValue)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `grid` | `dynamic` | — |  |
-| `row` | `dynamic` | — |  |
-| `column` | `dynamic` | — |  |
-| `vertex` | `dynamic` | — |  |
-| `errorValue` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L215)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L40)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-lightmap-by-vertex-const-lightmap-by-vertex-3-src-mq3-renderer-tr-bsp-runtime-ml-2140124617"></a>
 ### LIGHTMAP_BY_VERTEX
@@ -236,7 +140,7 @@ const LIGHTMAP_BY_VERTEX = -3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L23)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-lightmap-none-const-lightmap-none-1-src-mq3-renderer-tr-bsp-runtime-ml-613235079"></a>
 ### LIGHTMAP_NONE
@@ -246,7 +150,7 @@ const LIGHTMAP_NONE = -1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L25)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-lightmap-whiteimage-const-lightmap-whiteimage-2-src-mq3-renderer-tr-bsp-runtime-ml-1442244292"></a>
 ### LIGHTMAP_WHITEIMAGE
@@ -256,7 +160,7 @@ const LIGHTMAP_WHITEIMAGE = -2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L24)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-max-grid-size-const-max-grid-size-65-src-mq3-renderer-tr-bsp-runtime-ml-939646118"></a>
 ### MAX_GRID_SIZE
@@ -266,7 +170,7 @@ const MAX_GRID_SIZE = 65
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L26)
 
 - [mq3.renderer.tr_bsp_runtime.Model](Type-mq3-renderer-tr-bsp-runtime-model-2135241169.md) — struct
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-flare-const-mst-flare-4-src-mq3-renderer-tr-bsp-runtime-ml-1318233097"></a>
@@ -277,7 +181,7 @@ const MST_FLARE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L21)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-patch-const-mst-patch-2-src-mq3-renderer-tr-bsp-runtime-ml-373143915"></a>
 ### MST_PATCH
@@ -287,7 +191,7 @@ const MST_PATCH = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L19)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-planar-const-mst-planar-1-src-mq3-renderer-tr-bsp-runtime-ml-266375840"></a>
 ### MST_PLANAR
@@ -297,7 +201,7 @@ const MST_PLANAR = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L18)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-triangle-soup-const-mst-triangle-soup-3-src-mq3-renderer-tr-bsp-runtime-ml-856686262"></a>
 ### MST_TRIANGLE_SOUP
@@ -307,7 +211,7 @@ const MST_TRIANGLE_SOUP = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L20)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-nameat-function-nameat-map-offset-capacity-src-mq3-renderer-tr-bsp-runtime-ml-451389057"></a>
 ### nameAt
@@ -323,7 +227,7 @@ function nameAt(map, offset, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L41)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L42)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-nearpoint-function-nearpoint-a-b-tolerance-src-mq3-renderer-tr-bsp-runtime-ml-1628391854"></a>
 ### nearPoint
@@ -339,7 +243,7 @@ function nearPoint(a, b, tolerance)
 | `tolerance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L43)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L44)
 
 - [mq3.renderer.tr_bsp_runtime.Node](Type-mq3-renderer-tr-bsp-runtime-node-223640768.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parseface-function-parseface-world-index-src-mq3-renderer-tr-bsp-runtime-ml-926190248"></a>
@@ -355,7 +259,7 @@ function ParseFace(world, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L110)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parseflare-function-parseflare-world-index-src-mq3-renderer-tr-bsp-runtime-ml-62053284"></a>
 ### ParseFlare
@@ -370,7 +274,7 @@ function ParseFlare(world, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L113)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parsegeometry-function-parsegeometry-world-index-expectedkind-lightmapoverride-src-mq3-renderer-tr-bsp-runtime-ml-1308587542"></a>
 ### parseGeometry
@@ -387,7 +291,7 @@ function parseGeometry(world, index, expectedKind, lightmapOverride)
 | `lightmapOverride` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L103)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L104)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parsemesh-function-parsemesh-world-index-src-mq3-renderer-tr-bsp-runtime-ml-1756951264"></a>
 ### ParseMesh
@@ -402,7 +306,7 @@ function ParseMesh(world, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L110)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L111)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parsetrisurf-function-parsetrisurf-world-index-src-mq3-renderer-tr-bsp-runtime-ml-134026484"></a>
 ### ParseTriSurf
@@ -417,7 +321,7 @@ function ParseTriSurf(world, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L112)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-patch-function-patch-world-index-src-mq3-renderer-tr-bsp-runtime-ml-1500667416"></a>
 ### patch
@@ -432,7 +336,7 @@ function patch(world, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L117)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L118)
 
 - [mq3.renderer.tr_bsp_runtime.Plane](Type-mq3-renderer-tr-bsp-runtime-plane-1475956598.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-planetype-function-planetype-normal-src-mq3-renderer-tr-bsp-runtime-ml-455208807"></a>
@@ -447,7 +351,7 @@ function planeType(normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L45)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-colorshiftlightingbytes-function-r-colorshiftlightingbytes-input-shift-src-mq3-renderer-tr-bsp-runtime-ml-765324234"></a>
 ### R_ColorShiftLightingBytes
@@ -462,7 +366,7 @@ function R_ColorShiftLightingBytes(input, shift)
 | `shift` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L63)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L64)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-fixsharedvertexloderror-function-r-fixsharedvertexloderror-grids-src-mq3-renderer-tr-bsp-runtime-ml-215881697"></a>
 ### R_FixSharedVertexLodError
@@ -476,7 +380,7 @@ function R_FixSharedVertexLodError(grids)
 | `grids` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L202)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L181)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-fixsharedvertexloderror-r-function-r-fixsharedvertexloderror-r-grids-start-grid-src-mq3-renderer-tr-bsp-runtime-ml-1201443437"></a>
 ### R_FixSharedVertexLodError_r
@@ -492,7 +396,7 @@ function R_FixSharedVertexLodError_r(grids, start, grid)
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L199)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L180)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-getentitytoken-function-r-getentitytoken-world-size-src-mq3-renderer-tr-bsp-runtime-ml-139238013"></a>
 ### R_GetEntityToken
@@ -507,7 +411,7 @@ function R_GetEntityToken(world, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L167)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L168)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadentities-function-r-loadentities-world-src-mq3-renderer-tr-bsp-runtime-ml-226588296"></a>
 ### R_LoadEntities
@@ -521,7 +425,7 @@ function R_LoadEntities(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L164)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L165)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadfogs-function-r-loadfogs-map-shaderindex-src-mq3-renderer-tr-bsp-runtime-ml-736638437"></a>
 ### R_LoadFogs
@@ -536,7 +440,7 @@ function R_LoadFogs(map, shaderIndex)
 | `shaderIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L161)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L162)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadlightgrid-function-r-loadlightgrid-map-src-mq3-renderer-tr-bsp-runtime-ml-355707300"></a>
 ### R_LoadLightGrid
@@ -550,7 +454,7 @@ function R_LoadLightGrid(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L162)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L163)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadlightmaps-function-r-loadlightmaps-map-mapoverbrightbits-rendereroverbrightbits-debugintensity-src-mq3-renderer-tr-bsp-runtime-ml-781094683"></a>
 ### R_LoadLightmaps
@@ -567,7 +471,7 @@ function R_LoadLightmaps(map, mapOverbrightBits, rendererOverbrightBits, debugIn
 | `debugIntensity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L67)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L68)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadmarksurfaces-function-r-loadmarksurfaces-map-src-mq3-renderer-tr-bsp-runtime-ml-1822229846"></a>
 ### R_LoadMarksurfaces
@@ -581,7 +485,7 @@ function R_LoadMarksurfaces(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L143)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L144)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadnodesandleafs-function-r-loadnodesandleafs-map-src-mq3-renderer-tr-bsp-runtime-ml-148686958"></a>
 ### R_LoadNodesAndLeafs
@@ -595,7 +499,7 @@ function R_LoadNodesAndLeafs(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L150)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L151)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadplanes-function-r-loadplanes-map-src-mq3-renderer-tr-bsp-runtime-ml-1004254614"></a>
 ### R_LoadPlanes
@@ -609,7 +513,7 @@ function R_LoadPlanes(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L138)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L139)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadshaders-function-r-loadshaders-map-src-mq3-renderer-tr-bsp-runtime-ml-1093697096"></a>
 ### R_LoadShaders
@@ -623,7 +527,7 @@ function R_LoadShaders(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L89)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L90)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadsubmodels-function-r-loadsubmodels-world-src-mq3-renderer-tr-bsp-runtime-ml-904621630"></a>
 ### R_LoadSubmodels
@@ -637,7 +541,7 @@ function R_LoadSubmodels(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L156)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L157)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadsurfaces-function-r-loadsurfaces-world-src-mq3-renderer-tr-bsp-runtime-ml-2138941328"></a>
 ### R_LoadSurfaces
@@ -651,7 +555,7 @@ function R_LoadSurfaces(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L118)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L119)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadvisibility-function-r-loadvisibility-map-numclusters-externalvisdata-src-mq3-renderer-tr-bsp-runtime-ml-860882360"></a>
 ### R_LoadVisibility
@@ -667,7 +571,7 @@ function R_LoadVisibility(map, numClusters, externalVisData)
 | `externalVisData` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L82)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L83)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-mergedheightpoints-function-r-mergedheightpoints-grid-offset-src-mq3-renderer-tr-bsp-runtime-ml-347344115"></a>
 ### R_MergedHeightPoints
@@ -682,7 +586,7 @@ function R_MergedHeightPoints(grid, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L176)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L177)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-mergedwidthpoints-function-r-mergedwidthpoints-grid-offset-src-mq3-renderer-tr-bsp-runtime-ml-177230375"></a>
 ### R_MergedWidthPoints
@@ -697,7 +601,7 @@ function R_MergedWidthPoints(grid, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L173)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L174)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-movepatchsurfacestohunk-function-r-movepatchsurfacestohunk-grids-src-mq3-renderer-tr-bsp-runtime-ml-1457952159"></a>
 ### R_MovePatchSurfacesToHunk
@@ -711,7 +615,7 @@ function R_MovePatchSurfacesToHunk(grids)
 | `grids` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L242)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L184)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-setparent-function-r-setparent-nodes-index-parent-src-mq3-renderer-tr-bsp-runtime-ml-1883934453"></a>
 ### R_SetParent
@@ -727,7 +631,7 @@ function R_SetParent(nodes, index, parent)
 | `parent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L146)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L147)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-stitchallpatches-function-r-stitchallpatches-grids-src-mq3-renderer-tr-bsp-runtime-ml-2041408005"></a>
 ### R_StitchAllPatches
@@ -741,7 +645,7 @@ function R_StitchAllPatches(grids)
 | `grids` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L239)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L183)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-stitchpatches-function-r-stitchpatches-grid1-grid2-src-mq3-renderer-tr-bsp-runtime-ml-595612687"></a>
 ### R_StitchPatches
@@ -756,7 +660,7 @@ function R_StitchPatches(grid1, grid2)
 | `grid2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L225)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L182)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-re-loadworldmap-function-re-loadworldmap-state-name-data-shaderindex-src-mq3-renderer-tr-bsp-runtime-ml-1060394389"></a>
 ### RE_LoadWorldMap
@@ -773,7 +677,7 @@ function RE_LoadWorldMap(state, name, data, shaderIndex)
 | `shaderIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L244)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L186)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-re-setworldvisdata-function-re-setworldvisdata-state-vis-src-mq3-renderer-tr-bsp-runtime-ml-1578561549"></a>
 ### RE_SetWorldVisData
@@ -788,7 +692,7 @@ function RE_SetWorldVisData(state, vis)
 | `vis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L81)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L82)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-samelodgroup-function-samelodgroup-a-b-src-mq3-renderer-tr-bsp-runtime-ml-70825987"></a>
 ### sameLodGroup
@@ -803,7 +707,7 @@ function sameLodGroup(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L172)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L173)
 
 - [mq3.renderer.tr_bsp_runtime.Shader](Type-mq3-renderer-tr-bsp-runtime-shader-1371725973.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-shaderforshadernum-function-shaderforshadernum-world-shadernum-lightmapnum-src-mq3-renderer-tr-bsp-runtime-ml-886658415"></a>
@@ -820,7 +724,7 @@ function ShaderForShaderNum(world, shaderNum, lightmapNum)
 | `lightmapNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L94)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L95)
 
 - [mq3.renderer.tr_bsp_runtime.State](Type-mq3-renderer-tr-bsp-runtime-state-1447583673.md) — struct
 - [mq3.renderer.tr_bsp_runtime.Surface](Type-mq3-renderer-tr-bsp-runtime-surface-696433887.md) — struct
@@ -837,7 +741,7 @@ function surfaceInfo(world, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L99)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L100)
 
 - [mq3.renderer.tr_bsp_runtime.Visibility](Type-mq3-renderer-tr-bsp-runtime-visibility-987638648.md) — struct
 - [mq3.renderer.tr_bsp_runtime.World](Type-mq3-renderer-tr-bsp-runtime-world-292307360.md) — struct

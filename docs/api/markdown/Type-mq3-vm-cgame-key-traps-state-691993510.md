@@ -24,6 +24,16 @@ bindings
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L15)
 
+<a id="field-field-mq3-vm-cgame-key-traps-state-bindingserial-bindingserial-src-mq3-vm-cgame-key-traps-ml-823392158"></a>
+### bindingSerial
+
+```ml
+bindingSerial
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L15)
+
 <a id="field-field-mq3-vm-cgame-key-traps-state-catcher-catcher-src-mq3-vm-cgame-key-traps-ml-1075746702"></a>
 ### catcher
 

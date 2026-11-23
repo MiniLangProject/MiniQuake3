@@ -27,7 +27,7 @@ function adjustAreaPortalState(state, area1, area2, open)
 | `open` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L97)
 
 <a id="function-function-mq3-collision-visibility-areasconnected-function-areasconnected-state-area1-area2-src-mq3-collision-visibility-ml-495394468"></a>
 ### areasConnected
@@ -43,7 +43,7 @@ function areasConnected(state, area1, area2)
 | `area2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L104)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L113)
 
 <a id="function-function-mq3-collision-visibility-clusterpvs-function-clusterpvs-state-cluster-src-mq3-collision-visibility-ml-297880431"></a>
 ### clusterPVS
@@ -59,6 +59,24 @@ function clusterPVS(state, cluster)
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L61)
+
+<a id="function-function-mq3-collision-visibility-clustervisible-function-clustervisible-state-as-visibility-sourcecluster-as-int-targetcluster-as-int-returns-bool-src-mq3-collision-visibility-ml-1939401254"></a>
+### clusterVisible
+
+```ml
+function clusterVisible(state as Visibility, sourceCluster as int, targetCluster as int) returns bool
+```
+
+Hot PVS tests need one bit, not a freshly copied visibility row. Match clusterPVS's first-row fallback for invalid source clusters.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `Visibility` | — |  |
+| `sourceCluster` | `int` | — |  |
+| `targetCluster` | `int` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L70)
 
 <a id="function-function-mq3-collision-visibility-fail-function-fail-message-src-mq3-collision-visibility-ml-2127380473"></a>
 ### fail
@@ -86,7 +104,7 @@ function floodConnections(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L68)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L77)
 
 <a id="function-function-mq3-collision-visibility-leafarea-function-leafarea-state-leaf-src-mq3-collision-visibility-ml-1772597767"></a>
 ### leafArea
@@ -147,4 +165,4 @@ function writeAreaBits(state, buffer, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L120)

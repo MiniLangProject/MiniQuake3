@@ -10,7 +10,7 @@ struct Surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L33)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L39)
 
 ## Members
 
@@ -22,7 +22,7 @@ contents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L41)
 
 <a id="field-field-mq3-collision-world-surface-flags-flags-src-mq3-collision-world-ml-1969847770"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L36)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L42)
 
 <a id="field-field-mq3-collision-world-surface-patch-patch-src-mq3-collision-world-ml-211908322"></a>
 ### patch
@@ -42,4 +42,4 @@ patch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L40)

@@ -85,7 +85,7 @@ function animatedPlayerTriangles(assets, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L514)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L515)
 
 <a id="function-function-mq3-client-playable-app-appendskintextures-function-appendskintextures-textures-skin-part-src-mq3-client-playable-app-ml-603126326"></a>
 ### appendSkinTextures
@@ -101,7 +101,7 @@ function appendSkinTextures(textures, skin, part)
 | `part` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L459)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L460)
 
 <a id="function-function-mq3-client-playable-app-applyselectedweapon-function-applyselectedweapon-inventorystate-weaponstate-playerstate-itemstate-combatstate-src-mq3-client-playable-app-ml-2101830405"></a>
 ### applySelectedWeapon
@@ -119,7 +119,7 @@ function applySelectedWeapon(inventoryState, weaponState, playerState, itemState
 | `combatState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L302)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L303)
 
 <a id="function-function-mq3-client-playable-app-archivebytes-function-archivebytes-archive-name-src-mq3-client-playable-app-ml-106071433"></a>
 ### archiveBytes
@@ -134,7 +134,7 @@ function archiveBytes(archive, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L215)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L216)
 
 <a id="function-function-mq3-client-playable-app-archivemodel-function-archivemodel-archive-name-maxtriangles-src-mq3-client-playable-app-ml-50455986"></a>
 ### archiveModel
@@ -150,7 +150,7 @@ function archiveModel(archive, name, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L207)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L208)
 
 <a id="function-function-mq3-client-playable-app-archiveplayerassets-function-archiveplayerassets-archive-shaderscripts-src-mq3-client-playable-app-ml-1439517895"></a>
 ### archivePlayerAssets
@@ -165,7 +165,7 @@ function archivePlayerAssets(archive, shaderScripts)
 | `shaderScripts` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L468)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L469)
 
 <a id="function-function-mq3-client-playable-app-archivesound-function-archivesound-archive-name-src-mq3-client-playable-app-ml-231957685"></a>
 ### archiveSound
@@ -180,7 +180,7 @@ function archiveSound(archive, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L153)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L154)
 
 <a id="function-function-mq3-client-playable-app-captureenemypositions-function-captureenemypositions-targetstate-src-mq3-client-playable-app-ml-1992751466"></a>
 ### captureEnemyPositions
@@ -194,7 +194,7 @@ function captureEnemyPositions(targetState)
 | `targetState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L97)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L98)
 
 <a id="function-function-mq3-client-playable-app-collideenemypositions-function-collideenemypositions-world-targetstate-previous-src-mq3-client-playable-app-ml-1639791781"></a>
 ### collideEnemyPositions
@@ -210,7 +210,7 @@ function collideEnemyPositions(world, targetState, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L113)
 
 <a id="function-function-mq3-client-playable-app-createrendertargets-function-createrendertargets-targetstate-src-mq3-client-playable-app-ml-2026235866"></a>
 ### createRenderTargets
@@ -224,7 +224,7 @@ function createRenderTargets(targetState)
 | `targetState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L612)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L613)
 
 <a id="function-function-mq3-client-playable-app-detailedplayertextureslot-function-detailedplayertextureslot-assets-triangle-src-mq3-client-playable-app-ml-1182518443"></a>
 ### detailedPlayerTextureSlot
@@ -239,7 +239,7 @@ function detailedPlayerTextureSlot(assets, triangle)
 | `triangle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L501)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L502)
 
 <a id="function-function-mq3-client-playable-app-digitweapondown-function-digitweapondown-src-mq3-client-playable-app-ml-1540387160"></a>
 ### digitWeaponDown
@@ -249,7 +249,7 @@ function digitWeaponDown()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L289)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L290)
 
 <a id="function-function-mq3-client-playable-app-drawclippeditemtriangles-function-drawclippeditemtriangles-projection-triangles-lightgrid-src-mq3-client-playable-app-ml-2041707728"></a>
 ### drawClippedItemTriangles
@@ -265,7 +265,7 @@ function drawClippedItemTriangles(projection, triangles, lightGrid)
 | `lightGrid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L383)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L384)
 
 <a id="function-function-mq3-client-playable-app-drawitemtriangles-function-drawitemtriangles-projection-triangles-lightgrid-src-mq3-client-playable-app-ml-1351745200"></a>
 ### drawItemTriangles
@@ -281,7 +281,7 @@ function drawItemTriangles(projection, triangles, lightGrid)
 | `lightGrid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L371)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L372)
 
 <a id="function-function-mq3-client-playable-app-drawmodeltriangle-function-drawmodeltriangle-projection-triangle-red-green-blue-lit-sampled-src-mq3-client-playable-app-ml-458220958"></a>
 ### drawModelTriangle
@@ -301,7 +301,7 @@ function drawModelTriangle(projection, triangle, red, green, blue, lit, sampled)
 | `sampled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L350)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L351)
 
 <a id="function-function-mq3-client-playable-app-drawprojectiletriangles-function-drawprojectiletriangles-projection-triangles-lightgrid-src-mq3-client-playable-app-ml-1168234008"></a>
 ### drawProjectileTriangles
@@ -317,7 +317,7 @@ function drawProjectileTriangles(projection, triangles, lightGrid)
 | `lightGrid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L392)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L393)
 
 <a id="function-function-mq3-client-playable-app-drawtargetweapon-function-drawtargetweapon-projection-itemcatalog-modelassets-index-input-lower-upper-root-show-now-lightgrid-src-mq3-client-playable-app-ml-1894653815"></a>
 ### drawTargetWeapon
@@ -341,7 +341,7 @@ function drawTargetWeapon(projection, itemCatalog, modelAssets, index, input, lo
 | `lightGrid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L534)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L535)
 
 <a id="function-function-mq3-client-playable-app-drawtinteditemtriangles-function-drawtinteditemtriangles-projection-triangles-red-green-blue-src-mq3-client-playable-app-ml-1244049584"></a>
 ### drawTintedItemTriangles
@@ -359,7 +359,7 @@ function drawTintedItemTriangles(projection, triangles, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L428)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L429)
 
 <a id="function-function-mq3-client-playable-app-enemyattackmuzzles-function-enemyattackmuzzles-camera-targetstate-modelassets-itemcatalog-enemystate-src-mq3-client-playable-app-ml-1251370192"></a>
 ### enemyAttackMuzzles
@@ -377,7 +377,7 @@ function enemyAttackMuzzles(camera, targetState, modelAssets, itemCatalog, enemy
 | `enemyState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L565)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L566)
 
 <a id="function-function-mq3-client-playable-app-fallbackmodellight-function-fallbackmodellight-normal-src-mq3-client-playable-app-ml-1044856901"></a>
 ### fallbackModelLight
@@ -391,7 +391,7 @@ function fallbackModelLight(normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L337)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L338)
 
 <a id="function-function-mq3-client-playable-app-field-function-field-fields-key-src-mq3-client-playable-app-ml-492997800"></a>
 ### field
@@ -406,7 +406,7 @@ function field(fields, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L126)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L127)
 
 <a id="function-function-mq3-client-playable-app-firstfreehudtexture-function-firstfreehudtexture-modelassets-itemcatalog-src-mq3-client-playable-app-ml-560772144"></a>
 ### firstFreeHudTexture
@@ -421,7 +421,7 @@ function firstFreeHudTexture(modelAssets, itemCatalog)
 | `itemCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L259)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L260)
 
 <a id="function-function-mq3-client-playable-app-firstfreemenutexture-function-firstfreemenutexture-modelassets-itemcatalog-basehudcatalog-src-mq3-client-playable-app-ml-1119881569"></a>
 ### firstFreeMenuTexture
@@ -437,7 +437,7 @@ function firstFreeMenuTexture(modelAssets, itemCatalog, baseHudCatalog)
 | `baseHudCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L265)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L266)
 
 <a id="function-function-mq3-client-playable-app-firstfreemodeltexture-function-firstfreemodeltexture-modelassets-src-mq3-client-playable-app-ml-865218468"></a>
 ### firstFreeModelTexture
@@ -451,7 +451,7 @@ function firstFreeModelTexture(modelAssets)
 | `modelAssets` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L253)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L254)
 
 <a id="function-function-mq3-client-playable-app-frameloop-function-frameloop-camera-geometry-triangles-worldbatchstate-materialcatalog-fogcatalog-dlightcatalog-markcatalog-markstate-explosioncatalog-worldcache-worldconfig-selectedfaceindexes-materialslots-skytextureflags-dlightreceiveflags-skycatalog-itemcatalog-projectilecatalog-projectilefxstate-hudstate-basehudcatalog-basehudstate-menucatalog-menustate-matchmedia-itemstate-inventorystate-weaponstate-targetstate-rendertargets-modelassets-combatstate-matchstate-playerstate-enemystate-eventstate-playerprojectilestate-controller-fpsstate-viewmodeltracker-viewmodelsettings-viewmodelcatalog-viewmodelanimation-barrelstate-spatialruntime-maxframes-matchsounds-firesound-weaponsoundcatalog-enemyfiresound-enemyimpactsound-pickupsound-jumpsound-painsound-deathsound-src-mq3-client-playable-app-ml-1951504146"></a>
 ### frameLoop
@@ -520,7 +520,7 @@ function frameLoop(camera, geometry, triangles, worldBatchState, materialCatalog
 | `deathSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L722)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L723)
 
 <a id="function-function-mq3-client-playable-app-gauntlethastarget-function-gauntlethastarget-weaponstate-camera-targetstate-src-mq3-client-playable-app-ml-1589280488"></a>
 ### gauntletHasTarget
@@ -536,7 +536,7 @@ function gauntletHasTarget(weaponState, camera, targetState)
 | `targetState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L327)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L328)
 
 <a id="constant-constant-mq3-client-playable-app-height-const-height-480-src-mq3-client-playable-app-ml-152321181"></a>
 ### HEIGHT
@@ -570,7 +570,7 @@ function isPlayerProjectile(classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L203)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L204)
 
 <a id="constant-constant-mq3-client-playable-app-item-pose-interval-const-item-pose-interval-1-src-mq3-client-playable-app-ml-1903574164"></a>
 ### ITEM_POSE_INTERVAL
@@ -582,7 +582,7 @@ const ITEM_POSE_INTERVAL = 1
 The optimized indexed-MD3 path keeps stock bob/spin transforms affordable at render cadence instead of visibly stepping the pickup animation.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L87)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L88)
 
 <a id="function-function-mq3-client-playable-app-itemclassnames-function-itemclassnames-items-src-mq3-client-playable-app-ml-8280500"></a>
 ### itemClassnames
@@ -596,7 +596,17 @@ function itemClassnames(items)
 | `items` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L232)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L233)
+
+<a id="constant-constant-mq3-client-playable-app-lightmap-slots-const-lightmap-slots-playableworldbatch-max-bsp-lightmaps-src-mq3-client-playable-app-ml-1946271365"></a>
+### LIGHTMAP_SLOTS
+
+```ml
+const LIGHTMAP_SLOTS = playableWorldBatch.MAX_BSP_LIGHTMAPS
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L74)
 
 <a id="constant-constant-mq3-client-playable-app-max-detailed-player-models-const-max-detailed-player-models-5-src-mq3-client-playable-app-ml-1085198510"></a>
 ### MAX_DETAILED_PLAYER_MODELS
@@ -606,7 +616,7 @@ const MAX_DETAILED_PLAYER_MODELS = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L76)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L77)
 
 <a id="constant-constant-mq3-client-playable-app-max-item-models-const-max-item-models-48-src-mq3-client-playable-app-ml-1754453139"></a>
 ### MAX_ITEM_MODELS
@@ -616,7 +626,7 @@ const MAX_ITEM_MODELS = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L79)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L80)
 
 <a id="constant-constant-mq3-client-playable-app-max-item-textures-const-max-item-textures-64-src-mq3-client-playable-app-ml-1687092561"></a>
 ### MAX_ITEM_TEXTURES
@@ -626,7 +636,7 @@ const MAX_ITEM_TEXTURES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L80)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L81)
 
 <a id="constant-constant-mq3-client-playable-app-max-item-triangles-const-max-item-triangles-5000-src-mq3-client-playable-app-ml-703866166"></a>
 ### MAX_ITEM_TRIANGLES
@@ -636,7 +646,7 @@ const MAX_ITEM_TRIANGLES = 5000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L82)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L83)
 
 <a id="constant-constant-mq3-client-playable-app-max-lines-const-max-lines-0-src-mq3-client-playable-app-ml-1724585825"></a>
 ### MAX_LINES
@@ -648,15 +658,15 @@ const MAX_LINES = 0
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L72)
 
-<a id="constant-constant-mq3-client-playable-app-max-native-texture-slots-const-max-native-texture-slots-512-src-mq3-client-playable-app-ml-1137846135"></a>
+<a id="constant-constant-mq3-client-playable-app-max-native-texture-slots-const-max-native-texture-slots-player-texture-first-slot-176-src-mq3-client-playable-app-ml-834837129"></a>
 ### MAX_NATIVE_TEXTURE_SLOTS
 
 ```ml
-const MAX_NATIVE_TEXTURE_SLOTS = 512
+const MAX_NATIVE_TEXTURE_SLOTS = PLAYER_TEXTURE_FIRST_SLOT + 176
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L78)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L79)
 
 <a id="constant-constant-mq3-client-playable-app-max-projectile-textures-const-max-projectile-textures-8-src-mq3-client-playable-app-ml-515965121"></a>
 ### MAX_PROJECTILE_TEXTURES
@@ -666,7 +676,7 @@ const MAX_PROJECTILE_TEXTURES = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L89)
 
 <a id="constant-constant-mq3-client-playable-app-max-projectile-triangles-const-max-projectile-triangles-1024-src-mq3-client-playable-app-ml-1779096696"></a>
 ### MAX_PROJECTILE_TRIANGLES
@@ -676,7 +686,7 @@ const MAX_PROJECTILE_TRIANGLES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L89)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L90)
 
 <a id="constant-constant-mq3-client-playable-app-max-target-weapon-triangles-const-max-target-weapon-triangles-512-src-mq3-client-playable-app-ml-53578509"></a>
 ### MAX_TARGET_WEAPON_TRIANGLES
@@ -686,7 +696,7 @@ const MAX_TARGET_WEAPON_TRIANGLES = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L77)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L78)
 
 <a id="constant-constant-mq3-client-playable-app-max-triangles-per-item-const-max-triangles-per-item-512-src-mq3-client-playable-app-ml-1341697715"></a>
 ### MAX_TRIANGLES_PER_ITEM
@@ -696,7 +706,7 @@ const MAX_TRIANGLES_PER_ITEM = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L83)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L84)
 
 <a id="constant-constant-mq3-client-playable-app-max-triangles-per-projectile-const-max-triangles-per-projectile-256-src-mq3-client-playable-app-ml-2052194728"></a>
 ### MAX_TRIANGLES_PER_PROJECTILE
@@ -706,7 +716,7 @@ const MAX_TRIANGLES_PER_PROJECTILE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L90)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L91)
 
 <a id="constant-constant-mq3-client-playable-app-max-viewmodel-triangles-const-max-viewmodel-triangles-2048-src-mq3-client-playable-app-ml-373326581"></a>
 ### MAX_VIEWMODEL_TRIANGLES
@@ -716,7 +726,7 @@ const MAX_VIEWMODEL_TRIANGLES = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L84)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L85)
 
 <a id="constant-constant-mq3-client-playable-app-max-visible-items-const-max-visible-items-24-src-mq3-client-playable-app-ml-2036586065"></a>
 ### MAX_VISIBLE_ITEMS
@@ -726,7 +736,7 @@ const MAX_VISIBLE_ITEMS = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L81)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L82)
 
 <a id="function-function-mq3-client-playable-app-modelcolor-function-modelcolor-sampled-normal-src-mq3-client-playable-app-ml-1900989541"></a>
 ### modelColor
@@ -741,7 +751,7 @@ function modelColor(sampled, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L345)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L346)
 
 <a id="function-function-mq3-client-playable-app-nextplayertextureslot-function-nextplayertextureslot-textures-src-mq3-client-playable-app-ml-762116828"></a>
 ### nextPlayerTextureSlot
@@ -755,7 +765,7 @@ function nextPlayerTextureSlot(textures)
 | `textures` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L226)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L227)
 
 <a id="function-function-mq3-client-playable-app-pickupmodeltriangles-function-pickupmodeltriangles-camera-catalog-items-now-src-mq3-client-playable-app-ml-943209906"></a>
 ### pickupModelTriangles
@@ -772,7 +782,7 @@ function pickupModelTriangles(camera, catalog, items, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L408)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L409)
 
 <a id="function-function-mq3-client-playable-app-pickupname-function-pickupname-classname-src-mq3-client-playable-app-ml-144514743"></a>
 ### pickupName
@@ -786,17 +796,17 @@ function pickupName(classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L271)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L272)
 
-<a id="constant-constant-mq3-client-playable-app-player-texture-first-slot-const-player-texture-first-slot-336-src-mq3-client-playable-app-ml-241961"></a>
+<a id="constant-constant-mq3-client-playable-app-player-texture-first-slot-const-player-texture-first-slot-lightmap-slots-272-src-mq3-client-playable-app-ml-431845817"></a>
 ### PLAYER_TEXTURE_FIRST_SLOT
 
 ```ml
-const PLAYER_TEXTURE_FIRST_SLOT = 336
+const PLAYER_TEXTURE_FIRST_SLOT = LIGHTMAP_SLOTS + 272
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L74)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L75)
 
 <a id="constant-constant-mq3-client-playable-app-player-triangles-per-surface-const-player-triangles-per-surface-8192-src-mq3-client-playable-app-ml-1431231187"></a>
 ### PLAYER_TRIANGLES_PER_SURFACE
@@ -806,7 +816,7 @@ const PLAYER_TRIANGLES_PER_SURFACE = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L75)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L76)
 
 - [mq3.client.playable_app.PlayerModelAssets](Type-mq3-client-playable-app-playermodelassets-1156371250.md) — struct
 <a id="function-function-mq3-client-playable-app-playerprojectilesnapshots-function-playerprojectilesnapshots-previous-state-now-src-mq3-client-playable-app-ml-1928999950"></a>
@@ -823,7 +833,7 @@ function playerProjectileSnapshots(previous, state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L184)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L185)
 
 - [mq3.client.playable_app.PlayerSkinSet](Type-mq3-client-playable-app-playerskinset-615689265.md) — struct
 - [mq3.client.playable_app.PlayerTexture](Type-mq3-client-playable-app-playertexture-686084825.md) — struct
@@ -840,7 +850,7 @@ function playerTextureSlot(assets, triangle)
 | `triangle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L490)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L491)
 
 <a id="function-function-mq3-client-playable-app-projectilesnapshots-function-projectilesnapshots-previous-state-now-src-mq3-client-playable-app-ml-156823640"></a>
 ### projectileSnapshots
@@ -856,7 +866,7 @@ function projectileSnapshots(previous, state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L165)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L166)
 
 <a id="function-function-mq3-client-playable-app-render-function-render-camera-geometry-worldbatchstate-materialcatalog-skycatalog-itemcatalog-projectilecatalog-projectilefxstate-markstate-markcatalog-explosioncatalog-runtime-pickuptriangles-hudstate-basehudcatalog-basehudstate-menucatalog-menustate-matchmedia-itemstate-playerstate-shoteffects-projectileeffects-rendertargets-visibletargets-modelassets-eventstate-enemystate-weaponstate-combatstate-matchstate-matchview-matchcenter-viewmodeltransform-viewmodelclassname-viewmodelbarrelangle-viewmodelswitching-now-menuopen-src-mq3-client-playable-app-ml-251908520"></a>
 ### render
@@ -908,7 +918,7 @@ function render(camera, geometry, worldBatchState, materialCatalog, skyCatalog, 
 | `menuOpen` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L657)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L658)
 
 - [mq3.client.playable_app.RenderRuntime](Type-mq3-client-playable-app-renderruntime-1103072733.md) — struct
 <a id="function-function-mq3-client-playable-app-rendertargetmodels-function-rendertargetmodels-camera-projection-rendertargets-modelassets-itemcatalog-eventstate-enemystate-now-lightgrid-src-mq3-client-playable-app-ml-1022884198"></a>
@@ -931,7 +941,7 @@ function renderTargetModels(camera, projection, renderTargets, modelAssets, item
 | `lightGrid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L578)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L579)
 
 <a id="function-function-mq3-client-playable-app-rendertargetshadows-function-rendertargetshadows-projection-targets-eventstate-enemystate-now-runtime-src-mq3-client-playable-app-ml-1208090429"></a>
 ### renderTargetShadows
@@ -950,7 +960,7 @@ function renderTargetShadows(projection, targets, eventState, enemyState, now, r
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L650)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L651)
 
 <a id="function-function-mq3-client-playable-app-renderviewmodel-function-renderviewmodel-projection-catalog-weaponstate-combatstate-now-transform-weaponclass-barrelangle-showflash-lightgrid-src-mq3-client-playable-app-ml-676274938"></a>
 ### renderViewModel
@@ -973,7 +983,7 @@ function renderViewModel(projection, catalog, weaponState, combatState, now, tra
 | `lightGrid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L436)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L437)
 
 <a id="function-function-mq3-client-playable-app-reserveplayerspawn-function-reserveplayerspawn-targetstate-playerstate-spawnindex-src-mq3-client-playable-app-ml-874209143"></a>
 ### reservePlayerSpawn
@@ -989,7 +999,7 @@ function reservePlayerSpawn(targetState, playerState, spawnIndex)
 | `spawnIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L637)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L638)
 
 <a id="function-function-mq3-client-playable-app-restoreenemypositions-function-restoreenemypositions-targetstate-previous-src-mq3-client-playable-app-ml-1732109207"></a>
 ### restoreEnemyPositions
@@ -1004,7 +1014,7 @@ function restoreEnemyPositions(targetState, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L103)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L104)
 
 <a id="function-function-mq3-client-playable-app-run-function-run-map-sound-archive-src-mq3-client-playable-app-ml-1453089955"></a>
 ### run
@@ -1037,7 +1047,7 @@ function runLimited(map, maxFrames, sound, archive)
 | `archive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L943)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L944)
 
 <a id="function-function-mq3-client-playable-app-shownativeloading-function-shownativeloading-state-progress-text-src-mq3-client-playable-app-ml-1096467889"></a>
 ### showNativeLoading
@@ -1053,7 +1063,7 @@ function showNativeLoading(state, progress, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L939)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L940)
 
 <a id="function-function-mq3-client-playable-app-smoke-function-smoke-map-frames-src-mq3-client-playable-app-ml-949639806"></a>
 ### smoke
@@ -1098,7 +1108,7 @@ function startPose(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L133)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L134)
 
 <a id="function-function-mq3-client-playable-app-synchudweaponselection-function-synchudweaponselection-hudstate-inventorystate-now-src-mq3-client-playable-app-ml-695184161"></a>
 ### syncHudWeaponSelection
@@ -1114,7 +1124,7 @@ function syncHudWeaponSelection(hudState, inventoryState, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L314)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L315)
 
 <a id="function-function-mq3-client-playable-app-syncrendertargets-function-syncrendertargets-targetstate-rendertargets-combathit-now-src-mq3-client-playable-app-ml-79980475"></a>
 ### syncRenderTargets
@@ -1131,7 +1141,7 @@ function syncRenderTargets(targetState, renderTargets, combatHit, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L618)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L619)
 
 <a id="function-function-mq3-client-playable-app-targetmuzzlelights-function-targetmuzzlelights-camera-rendertargets-modelassets-itemcatalog-eventstate-enemystate-now-src-mq3-client-playable-app-ml-662391757"></a>
 ### targetMuzzleLights
@@ -1151,7 +1161,7 @@ function targetMuzzleLights(camera, renderTargets, modelAssets, itemCatalog, eve
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L550)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L551)
 
 <a id="function-function-mq3-client-playable-app-targettransform-function-targettransform-target-camera-src-mq3-client-playable-app-ml-1412105482"></a>
 ### targetTransform
@@ -1166,7 +1176,7 @@ function targetTransform(target, camera)
 | `camera` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L506)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L507)
 
 <a id="function-function-mq3-client-playable-app-targetweapontransform-function-targetweapontransform-modelassets-lowersample-uppersample-root-src-mq3-client-playable-app-ml-1451392849"></a>
 ### targetWeaponTransform
@@ -1183,7 +1193,7 @@ function targetWeaponTransform(modelAssets, lowerSample, upperSample, root)
 | `root` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L525)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L526)
 
 <a id="function-function-mq3-client-playable-app-textureslotforname-function-textureslotforname-textures-name-src-mq3-client-playable-app-ml-1065015509"></a>
 ### textureSlotForName
@@ -1198,7 +1208,7 @@ function textureSlotForName(textures, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L221)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L222)
 
 <a id="function-function-mq3-client-playable-app-trailfor-function-trailfor-trails-projectileid-src-mq3-client-playable-app-ml-1686190637"></a>
 ### trailFor
@@ -1213,7 +1223,7 @@ function trailFor(trails, projectileId)
 | `projectileId` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L160)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L161)
 
 <a id="function-function-mq3-client-playable-app-vertexlight-function-vertexlight-vertex-src-mq3-client-playable-app-ml-2043307020"></a>
 ### vertexLight
@@ -1227,7 +1237,7 @@ function vertexLight(vertex)
 | `vertex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L149)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L150)
 
 <a id="function-function-mq3-client-playable-app-visibletargetviews-function-visibletargetviews-enemystate-rendertargets-now-src-mq3-client-playable-app-ml-45553605"></a>
 ### visibleTargetViews
@@ -1243,7 +1253,7 @@ function visibleTargetViews(enemyState, renderTargets, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L628)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L629)
 
 <a id="constant-constant-mq3-client-playable-app-width-const-width-640-src-mq3-client-playable-app-ml-1512300219"></a>
 ### WIDTH

@@ -4,7 +4,7 @@
 
 Package: [`mq3.shared.q_shared_header`](Package-mq3-shared-q-shared-header-2067110.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Imports
 

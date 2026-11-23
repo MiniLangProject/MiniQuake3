@@ -106,17 +106,17 @@ function resampleRaw(data, inputRate, inputWidth, samples, outputRate)
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_resample.ml#L31)
 
-<a id="function-function-mq3-audio-snd-mem-resample-signed16-function-signed16-data-offset-src-mq3-audio-snd-mem-resample-ml-1065292033"></a>
+<a id="function-function-mq3-audio-snd-mem-resample-signed16-function-signed16-data-as-bytes-offset-as-int-returns-int-src-mq3-audio-snd-mem-resample-ml-1369403677"></a>
 ### signed16
 
 ```ml
-function signed16(data, offset)
+function signed16(data as bytes, offset as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `bytes` | — |  |
+| `offset` | `int` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_resample.ml#L15)

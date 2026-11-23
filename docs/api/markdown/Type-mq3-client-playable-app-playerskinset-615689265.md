@@ -10,7 +10,7 @@ struct PlayerSkinSet
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
 
 ## Members
 
@@ -22,7 +22,7 @@ head
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
 
 <a id="field-field-mq3-client-playable-app-playerskinset-lower-lower-src-mq3-client-playable-app-ml-1836989385"></a>
 ### lower
@@ -32,7 +32,7 @@ lower
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
 
 <a id="field-field-mq3-client-playable-app-playerskinset-upper-upper-src-mq3-client-playable-app-ml-362546693"></a>
 ### upper
@@ -42,4 +42,4 @@ upper
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)

@@ -10,7 +10,7 @@ struct LeafList
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L86)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L97)
 
 ## Members
 
@@ -22,7 +22,7 @@ entries
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L87)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L98)
 
 <a id="field-field-mq3-collision-world-leaflist-lastleaf-lastleaf-src-mq3-collision-world-ml-484572023"></a>
 ### lastLeaf
@@ -32,7 +32,7 @@ lastLeaf
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L99)
 
 <a id="field-field-mq3-collision-world-leaflist-overflowed-overflowed-src-mq3-collision-world-ml-971373029"></a>
 ### overflowed
@@ -42,4 +42,4 @@ overflowed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L89)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L100)

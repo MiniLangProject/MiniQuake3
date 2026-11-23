@@ -10,7 +10,7 @@ struct ReachabilityAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ firstArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-route-reachabilityareas-numareas-numareas-src-mq3-botlib-be-aas-route-ml-1999749032"></a>
 ### numAreas
@@ -32,4 +32,4 @@ numAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L18)

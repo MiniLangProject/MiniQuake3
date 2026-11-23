@@ -29,7 +29,7 @@ function appendScreenQuad(batch, textureSlot, positions, texCoords, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L261)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L301)
 
 <a id="function-function-mq3-platform-playable-window-appendsingletexturetriangle-function-appendsingletexturetriangle-batch-textureslot-a-uva-lighta-b-uvb-lightb-c-uvc-lightc-red-green-blue-src-mq3-platform-playable-window-ml-1421759216"></a>
 ### appendSingleTextureTriangle
@@ -56,7 +56,7 @@ function appendSingleTextureTriangle(batch, textureSlot, a, uvA, lightA, b, uvB,
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L318)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L361)
 
 <a id="function-function-mq3-platform-playable-window-appendsingletexturetrianglecolored-function-appendsingletexturetrianglecolored-batch-textureslot-a-uva-lighta-colora-b-uvb-lightb-colorb-c-uvc-lightc-colorc-red-green-blue-src-mq3-platform-playable-window-ml-421342993"></a>
 ### appendSingleTextureTriangleColored
@@ -86,7 +86,7 @@ function appendSingleTextureTriangleColored(batch, textureSlot, a, uvA, lightA, 
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L309)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L352)
 
 <a id="function-function-mq3-platform-playable-window-appendsingletexturetriangleposition-function-appendsingletexturetriangleposition-batch-textureslot-a-uva-lighta-b-uvb-lightb-c-uvc-lightc-red-green-blue-src-mq3-platform-playable-window-ml-1405207142"></a>
 ### appendSingleTextureTrianglePosition
@@ -113,7 +113,7 @@ function appendSingleTextureTrianglePosition(batch, textureSlot, a, uvA, lightA,
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L315)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L358)
 
 <a id="function-function-mq3-platform-playable-window-appendsingletexturetrianglepositioncolored-function-appendsingletexturetrianglepositioncolored-batch-textureslot-a-uva-lighta-colora-b-uvb-lightb-colorb-c-uvc-lightc-colorc-red-green-blue-src-mq3-platform-playable-window-ml-1766193841"></a>
 ### appendSingleTextureTrianglePositionColored
@@ -143,7 +143,7 @@ function appendSingleTextureTrianglePositionColored(batch, textureSlot, a, uvA, 
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L312)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L355)
 
 <a id="function-function-mq3-platform-playable-window-appendtrianglebatch-function-appendtrianglebatch-batch-baseslot-lightmapslot-a-basea-lightmapa-lighta-b-baseb-lightmapb-lightb-c-basec-lightmapc-lightc-red-green-blue-src-mq3-platform-playable-window-ml-1178100572"></a>
 ### appendTriangleBatch
@@ -174,7 +174,7 @@ function appendTriangleBatch(batch, baseSlot, lightmapSlot, a, baseA, lightmapA,
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L306)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L349)
 
 <a id="function-function-mq3-platform-playable-window-appendtrianglebatchcolored-function-appendtrianglebatchcolored-batch-baseslot-lightmapslot-a-basea-lightmapa-lighta-colora-b-baseb-lightmapb-lightb-colorb-c-basec-lightmapc-lightc-colorc-red-green-blue-src-mq3-platform-playable-window-ml-2108897305"></a>
 ### appendTriangleBatchColored
@@ -208,7 +208,7 @@ function appendTriangleBatchColored(batch, baseSlot, lightmapSlot, a, baseA, lig
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L289)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L331)
 
 <a id="function-function-mq3-platform-playable-window-appendtrianglebatchpositioncolored-function-appendtrianglebatchpositioncolored-batch-baseslot-lightmapslot-a-basea-lightmapa-lighta-colora-b-baseb-lightmapb-lightb-colorb-c-basec-lightmapc-lightc-colorc-red-green-blue-src-mq3-platform-playable-window-ml-1435171049"></a>
 ### appendTriangleBatchPositionColored
@@ -242,7 +242,7 @@ function appendTriangleBatchPositionColored(batch, baseSlot, lightmapSlot, a, ba
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L298)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L340)
 
 <a id="function-function-mq3-platform-playable-window-beginframe-function-beginframe-red-green-blue-src-mq3-platform-playable-window-ml-956363996"></a>
 ### beginFrame
@@ -258,7 +258,7 @@ function beginFrame(red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L222)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L250)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-beginnative-extern-function-beginnative-red-as-i32-green-as-i32-blue-as-i32-from-playable-window-dll-symbol-playable-window-begin-frame-returns-void-src-mq3-platform-playable-window-ml-661196612"></a>
 ### beginNative
@@ -274,7 +274,7 @@ extern function beginNative(red as i32, green as i32, blue as i32) from "playabl
 | `blue` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L49)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L60)
 
 <a id="function-function-mq3-platform-playable-window-cleardepth-function-cleardepth-depth-src-mq3-platform-playable-window-ml-1176117361"></a>
 ### clearDepth
@@ -288,7 +288,7 @@ function clearDepth(depth)
 | `depth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L230)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L258)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-cleardepthnative-extern-function-cleardepthnative-depth-as-double-from-playable-window-dll-symbol-playable-window-clear-depth-returns-void-src-mq3-platform-playable-window-ml-1792671676"></a>
 ### clearDepthNative
@@ -302,7 +302,7 @@ extern function clearDepthNative(depth as double) from "playable_window.dll" sym
 | `depth` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L54)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L65)
 
 <a id="function-function-mq3-platform-playable-window-clearstencil-function-clearstencil-area-src-mq3-platform-playable-window-ml-1367628373"></a>
 ### clearStencil
@@ -316,7 +316,7 @@ function clearStencil(area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L233)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L261)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-clearstencilnative-extern-function-clearstencilnative-x-as-i32-y-as-i32-width-as-i32-height-as-i32-from-playable-window-dll-symbol-playable-window-clear-stencil-returns-i32-src-mq3-platform-playable-window-ml-1010906373"></a>
 ### clearStencilNative
@@ -333,7 +333,7 @@ extern function clearStencilNative(x as i32, y as i32, width as i32, height as i
 | `height` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L57)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L68)
 
 <a id="function-function-mq3-platform-playable-window-configurejoystick-function-configurejoystick-enabled-threshold-ballscale-src-mq3-platform-playable-window-ml-298514001"></a>
 ### configureJoystick
@@ -349,7 +349,7 @@ function configureJoystick(enabled, threshold, ballScale)
 | `ballScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L199)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L224)
 
 <a id="function-function-mq3-platform-playable-window-configuremidi-function-configuremidi-enabled-device-channel-src-mq3-platform-playable-window-ml-1590219138"></a>
 ### configureMidi
@@ -365,7 +365,7 @@ function configureMidi(enabled, device, channel)
 | `channel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L206)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L231)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-create-extern-function-create-width-as-i32-height-as-i32-from-playable-window-dll-symbol-playable-window-create-returns-i32-src-mq3-platform-playable-window-ml-139752994"></a>
 ### create
@@ -394,7 +394,7 @@ function createTriangleBatch(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L256)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L296)
 
 <a id="function-function-mq3-platform-playable-window-currentdirectory-function-currentdirectory-src-mq3-platform-playable-window-ml-1960591630"></a>
 ### currentDirectory
@@ -404,7 +404,7 @@ function currentDirectory()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L219)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L247)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-currentdirectorynative-extern-function-currentdirectorynative-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-system-current-directory-returns-i32-src-mq3-platform-playable-window-ml-895469215"></a>
 ### currentDirectoryNative
@@ -419,7 +419,7 @@ extern function currentDirectoryNative(output as bytes, capacity as i32) from "p
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L38)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L49)
 
 <a id="function-function-mq3-platform-playable-window-currentuser-function-currentuser-src-mq3-platform-playable-window-ml-1530007242"></a>
 ### currentUser
@@ -429,7 +429,7 @@ function currentUser()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L218)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L246)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-currentusernative-extern-function-currentusernative-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-system-current-user-returns-i32-src-mq3-platform-playable-window-ml-949748037"></a>
 ### currentUserNative
@@ -444,7 +444,7 @@ extern function currentUserNative(output as bytes, capacity as i32) from "playab
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L37)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L48)
 
 <a id="function-function-mq3-platform-playable-window-decodeinputevent-function-decodeinputevent-data-src-mq3-platform-playable-window-ml-141507170"></a>
 ### decodeInputEvent
@@ -458,8 +458,9 @@ function decodeInputEvent(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L185)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L210)
 
+- [mq3.platform.playable_window.DisplayMode](Type-mq3-platform-playable-window-displaymode-2000521863.md) — struct
 <a id="function-function-mq3-platform-playable-window-drawline-function-drawline-a-b-red-green-blue-src-mq3-platform-playable-window-ml-242342777"></a>
 ### drawLine
 
@@ -476,7 +477,7 @@ function drawLine(a, b, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L223)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L251)
 
 <a id="function-function-mq3-platform-playable-window-drawtriangle-function-drawtriangle-textureslot-a-uva-lighta-b-uvb-lightb-c-uvc-lightc-red-green-blue-src-mq3-platform-playable-window-ml-182816578"></a>
 ### drawTriangle
@@ -502,7 +503,7 @@ function drawTriangle(textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, light
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L247)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L287)
 
 <a id="function-function-mq3-platform-playable-window-drawtrianglecolored-function-drawtrianglecolored-textureslot-a-uva-colora-b-uvb-colorb-c-uvc-colorc-red-green-blue-src-mq3-platform-playable-window-ml-2031714553"></a>
 ### drawTriangleColored
@@ -528,7 +529,7 @@ function drawTriangleColored(textureSlot, a, uvA, colorA, b, uvB, colorB, c, uvC
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L251)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L291)
 
 <a id="function-function-mq3-platform-playable-window-endframe-function-endframe-src-mq3-platform-playable-window-ml-1385904682"></a>
 ### endFrame
@@ -538,7 +539,7 @@ function endFrame()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L228)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L256)
 
 <a id="function-function-mq3-platform-playable-window-executabledirectory-function-executabledirectory-src-mq3-platform-playable-window-ml-1985665692"></a>
 ### executableDirectory
@@ -548,7 +549,7 @@ function executableDirectory()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L220)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L248)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-executabledirectorynative-extern-function-executabledirectorynative-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-system-executable-directory-returns-i32-src-mq3-platform-playable-window-ml-532801474"></a>
 ### executableDirectoryNative
@@ -563,7 +564,7 @@ extern function executableDirectoryNative(output as bytes, capacity as i32) from
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L50)
 
 <a id="function-function-mq3-platform-playable-window-finishstencilshadow-function-finishstencilshadow-area-src-mq3-platform-playable-window-ml-1231361199"></a>
 ### finishStencilShadow
@@ -577,7 +578,7 @@ function finishStencilShadow(area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L235)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L263)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-finishstencilshadownative-extern-function-finishstencilshadownative-x-as-i32-y-as-i32-width-as-i32-height-as-i32-from-playable-window-dll-symbol-playable-window-finish-stencil-shadow-returns-i32-src-mq3-platform-playable-window-ml-852367844"></a>
 ### finishStencilShadowNative
@@ -594,7 +595,7 @@ extern function finishStencilShadowNative(x as i32, y as i32, width as i32, heig
 | `height` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L59)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L70)
 
 <a id="function-function-mq3-platform-playable-window-glactivate-function-glactivate-active-src-mq3-platform-playable-window-ml-188819456"></a>
 ### glActivate
@@ -608,7 +609,7 @@ function glActivate(active)
 | `active` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L148)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L170)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glactivatenative-extern-function-glactivatenative-active-as-i32-from-playable-window-dll-symbol-playable-window-gl-activate-returns-void-src-mq3-platform-playable-window-ml-1413591198"></a>
 ### glActivateNative
@@ -622,7 +623,7 @@ extern function glActivateNative(active as i32) from "playable_window.dll" symbo
 | `active` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L25)
 
 <a id="function-function-mq3-platform-playable-window-glavailable-function-glavailable-src-mq3-platform-playable-window-ml-139135802"></a>
 ### glAvailable
@@ -632,7 +633,7 @@ function glAvailable()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L135)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L157)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glavailablenative-extern-function-glavailablenative-from-playable-window-dll-symbol-playable-window-gl-available-returns-i32-src-mq3-platform-playable-window-ml-189342940"></a>
 ### glAvailableNative
@@ -642,7 +643,7 @@ extern function glAvailableNative() from "playable_window.dll" symbol "playable_
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L12)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L13)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glcolorbitsnative-extern-function-glcolorbitsnative-from-playable-window-dll-symbol-playable-window-gl-color-bits-returns-i32-src-mq3-platform-playable-window-ml-222118299"></a>
 ### glColorBitsNative
@@ -652,7 +653,7 @@ extern function glColorBitsNative() from "playable_window.dll" symbol "playable_
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L14)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L15)
 
 <a id="function-function-mq3-platform-playable-window-glconfiguration-function-glconfiguration-src-mq3-platform-playable-window-ml-1129057568"></a>
 ### glConfiguration
@@ -662,7 +663,7 @@ function glConfiguration()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L136)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L158)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glconfiguredisplaynative-extern-function-glconfiguredisplaynative-fullscreen-as-i32-frequency-as-i32-swapinterval-as-i32-from-playable-window-dll-symbol-playable-window-gl-configure-display-returns-i32-src-mq3-platform-playable-window-ml-1770549501"></a>
 ### glConfigureDisplayNative
@@ -678,7 +679,7 @@ extern function glConfigureDisplayNative(fullscreen as i32, frequency as i32, sw
 | `swapInterval` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L11)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L12)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glconfiguredrivernative-extern-function-glconfiguredrivernative-driver-as-ptr-driverlength-as-i32-from-playable-window-dll-symbol-playable-window-gl-configure-driver-returns-i32-src-mq3-platform-playable-window-ml-1020238202"></a>
 ### glConfigureDriverNative
@@ -693,7 +694,7 @@ extern function glConfigureDriverNative(driver as ptr, driverLength as i32) from
 | `driverLength` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L9)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L10)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glconfigurenative-extern-function-glconfigurenative-driver-as-ptr-driverlength-as-i32-colorbits-as-i32-depthbits-as-i32-stencilbits-as-i32-stereo-as-i32-fullscreen-as-i32-frequency-as-i32-swapinterval-as-i32-from-playable-window-dll-symbol-playable-window-gl-configure-returns-i32-src-mq3-platform-playable-window-ml-2063077854"></a>
 ### glConfigureNative
@@ -715,7 +716,7 @@ extern function glConfigureNative(driver as ptr, driverLength as i32, colorBits 
 | `swapInterval` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L8)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L9)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glconfigurepixelformatnative-extern-function-glconfigurepixelformatnative-colorbits-as-i32-depthbits-as-i32-stencilbits-as-i32-stereo-as-i32-from-playable-window-dll-symbol-playable-window-gl-configure-pixel-format-returns-i32-src-mq3-platform-playable-window-ml-2137394600"></a>
 ### glConfigurePixelFormatNative
@@ -732,7 +733,7 @@ extern function glConfigurePixelFormatNative(colorBits as i32, depthBits as i32,
 | `stereo` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L10)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L11)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-gldepthbitsnative-extern-function-gldepthbitsnative-from-playable-window-dll-symbol-playable-window-gl-depth-bits-returns-i32-src-mq3-platform-playable-window-ml-1796591153"></a>
 ### glDepthBitsNative
@@ -742,7 +743,7 @@ extern function glDepthBitsNative() from "playable_window.dll" symbol "playable_
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L15)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L16)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glendframenative-extern-function-glendframenative-from-playable-window-dll-symbol-playable-window-gl-end-frame-returns-void-src-mq3-platform-playable-window-ml-1697805802"></a>
 ### glEndFrameNative
@@ -752,7 +753,7 @@ extern function glEndFrameNative() from "playable_window.dll" symbol "playable_w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L26)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glfullscreennative-extern-function-glfullscreennative-from-playable-window-dll-symbol-playable-window-gl-fullscreen-returns-i32-src-mq3-platform-playable-window-ml-1820404202"></a>
 ### glFullscreenNative
@@ -762,7 +763,7 @@ extern function glFullscreenNative() from "playable_window.dll" symbol "playable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L19)
 
 <a id="function-function-mq3-platform-playable-window-glhasextension-function-glhasextension-name-src-mq3-platform-playable-window-ml-1631899235"></a>
 ### glHasExtension
@@ -776,7 +777,7 @@ function glHasExtension(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L141)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L163)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glhasextensionnative-extern-function-glhasextensionnative-name-as-ptr-length-as-i32-from-playable-window-dll-symbol-playable-window-gl-has-extension-returns-i32-src-mq3-platform-playable-window-ml-1208515674"></a>
 ### glHasExtensionNative
@@ -791,7 +792,7 @@ extern function glHasExtensionNative(name as ptr, length as i32) from "playable_
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L21)
 
 <a id="function-function-mq3-platform-playable-window-glinfo-function-glinfo-which-src-mq3-platform-playable-window-ml-866832449"></a>
 ### glInfo
@@ -805,7 +806,7 @@ function glInfo(which)
 | `which` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L137)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L159)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glinfonative-extern-function-glinfonative-which-as-i32-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-window-gl-info-returns-i32-src-mq3-platform-playable-window-ml-1307330102"></a>
 ### glInfoNative
@@ -821,7 +822,7 @@ extern function glInfoNative(which as i32, output as bytes, capacity as i32) fro
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L20)
 
 <a id="function-function-mq3-platform-playable-window-gllogcomment-function-gllogcomment-comment-src-mq3-platform-playable-window-ml-952223453"></a>
 ### glLogComment
@@ -835,7 +836,7 @@ function glLogComment(comment)
 | `comment` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L149)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L171)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-gllogcommentnative-extern-function-gllogcommentnative-comment-as-ptr-length-as-i32-from-playable-window-dll-symbol-playable-window-gl-log-comment-returns-void-src-mq3-platform-playable-window-ml-913254630"></a>
 ### glLogCommentNative
@@ -850,7 +851,7 @@ extern function glLogCommentNative(comment as ptr, length as i32) from "playable
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L27)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glpixelformatnative-extern-function-glpixelformatnative-from-playable-window-dll-symbol-playable-window-gl-pixel-format-returns-i32-src-mq3-platform-playable-window-ml-711409309"></a>
 ### glPixelFormatNative
@@ -860,7 +861,7 @@ extern function glPixelFormatNative() from "playable_window.dll" symbol "playabl
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L13)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L14)
 
 <a id="function-function-mq3-platform-playable-window-glrestoregamma-function-glrestoregamma-src-mq3-platform-playable-window-ml-781035014"></a>
 ### glRestoreGamma
@@ -870,7 +871,7 @@ function glRestoreGamma()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L147)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L169)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glrestoregammanative-extern-function-glrestoregammanative-from-playable-window-dll-symbol-playable-window-gl-restore-gamma-returns-void-src-mq3-platform-playable-window-ml-917573859"></a>
 ### glRestoreGammaNative
@@ -880,7 +881,7 @@ extern function glRestoreGammaNative() from "playable_window.dll" symbol "playab
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L24)
 
 <a id="function-function-mq3-platform-playable-window-glsetgamma-function-glsetgamma-red-green-blue-src-mq3-platform-playable-window-ml-867163020"></a>
 ### glSetGamma
@@ -896,7 +897,7 @@ function glSetGamma(red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L143)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L165)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glsetgammanative-extern-function-glsetgammanative-red-as-ptr-green-as-ptr-blue-as-ptr-count-as-i32-from-playable-window-dll-symbol-playable-window-gl-set-gamma-returns-i32-src-mq3-platform-playable-window-ml-1105535118"></a>
 ### glSetGammaNative
@@ -913,7 +914,7 @@ extern function glSetGammaNative(red as ptr, green as ptr, blue as ptr, count as
 | `count` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L23)
 
 <a id="function-function-mq3-platform-playable-window-glsetswapinterval-function-glsetswapinterval-interval-src-mq3-platform-playable-window-ml-1497410187"></a>
 ### glSetSwapInterval
@@ -927,7 +928,7 @@ function glSetSwapInterval(interval)
 | `interval` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L142)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L164)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glstencilbitsnative-extern-function-glstencilbitsnative-from-playable-window-dll-symbol-playable-window-gl-stencil-bits-returns-i32-src-mq3-platform-playable-window-ml-252426504"></a>
 ### glStencilBitsNative
@@ -937,7 +938,7 @@ extern function glStencilBitsNative() from "playable_window.dll" symbol "playabl
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L16)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L17)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glstereonative-extern-function-glstereonative-from-playable-window-dll-symbol-playable-window-gl-stereo-returns-i32-src-mq3-platform-playable-window-ml-942044879"></a>
 ### glStereoNative
@@ -947,7 +948,7 @@ extern function glStereoNative() from "playable_window.dll" symbol "playable_win
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L18)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-glswapintervalnative-extern-function-glswapintervalnative-interval-as-i32-from-playable-window-dll-symbol-playable-window-gl-set-swap-interval-returns-i32-src-mq3-platform-playable-window-ml-546286852"></a>
 ### glSwapIntervalNative
@@ -961,7 +962,67 @@ extern function glSwapIntervalNative(interval as i32) from "playable_window.dll"
 | `interval` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L21)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L22)
+
+<a id="function-function-mq3-platform-playable-window-hardwaredrawcalls-function-hardwaredrawcalls-src-mq3-platform-playable-window-ml-93168020"></a>
+### hardwareDrawCalls
+
+```ml
+function hardwareDrawCalls()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L240)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-hardwaredrawcallsnative-extern-function-hardwaredrawcallsnative-from-playable-window-dll-symbol-playable-window-hardware-draw-calls-returns-u32-src-mq3-platform-playable-window-ml-1119658376"></a>
+### hardwareDrawCallsNative
+
+```ml
+extern function hardwareDrawCallsNative() from "playable_window.dll" symbol "playable_window_hardware_draw_calls" returns u32
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L39)
+
+<a id="function-function-mq3-platform-playable-window-hardwarerenderer-function-hardwarerenderer-src-mq3-platform-playable-window-ml-1321273354"></a>
+### hardwareRenderer
+
+```ml
+function hardwareRenderer()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L238)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-hardwarerenderernative-extern-function-hardwarerenderernative-from-playable-window-dll-symbol-playable-window-hardware-renderer-returns-i32-src-mq3-platform-playable-window-ml-1018465581"></a>
+### hardwareRendererNative
+
+```ml
+extern function hardwareRendererNative() from "playable_window.dll" symbol "playable_window_hardware_renderer" returns i32
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L37)
+
+<a id="function-function-mq3-platform-playable-window-hardwaretriangles-function-hardwaretriangles-src-mq3-platform-playable-window-ml-604094932"></a>
+### hardwareTriangles
+
+```ml
+function hardwareTriangles()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L239)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-hardwaretrianglesnative-extern-function-hardwaretrianglesnative-from-playable-window-dll-symbol-playable-window-hardware-triangles-returns-u32-src-mq3-platform-playable-window-ml-2117495383"></a>
+### hardwareTrianglesNative
+
+```ml
+extern function hardwareTrianglesNative() from "playable_window.dll" symbol "playable_window_hardware_triangles" returns u32
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L38)
 
 <a id="constant-constant-mq3-platform-playable-window-input-char-const-input-char-2-src-mq3-platform-playable-window-ml-1872657919"></a>
 ### INPUT_CHAR
@@ -971,7 +1032,7 @@ const INPUT_CHAR = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L104)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L119)
 
 <a id="constant-constant-mq3-platform-playable-window-input-key-const-input-key-1-src-mq3-platform-playable-window-ml-1271197402"></a>
 ### INPUT_KEY
@@ -981,7 +1042,7 @@ const INPUT_KEY = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L103)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L118)
 
 <a id="constant-constant-mq3-platform-playable-window-input-mouse-const-input-mouse-3-src-mq3-platform-playable-window-ml-1661702192"></a>
 ### INPUT_MOUSE
@@ -991,7 +1052,7 @@ const INPUT_MOUSE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L105)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L120)
 
 <a id="function-function-mq3-platform-playable-window-inputactivate-function-inputactivate-active-src-mq3-platform-playable-window-ml-1783174170"></a>
 ### inputActivate
@@ -1005,7 +1066,7 @@ function inputActivate(active)
 | `active` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L197)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L222)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-inputactivatenative-extern-function-inputactivatenative-active-as-i32-from-playable-window-dll-symbol-playable-window-input-activate-returns-void-src-mq3-platform-playable-window-ml-1935629015"></a>
 ### inputActivateNative
@@ -1019,7 +1080,7 @@ extern function inputActivateNative(active as i32) from "playable_window.dll" sy
 | `active` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L42)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L53)
 
 <a id="function-function-mq3-platform-playable-window-inputclear-function-inputclear-src-mq3-platform-playable-window-ml-2143596402"></a>
 ### inputClear
@@ -1029,7 +1090,7 @@ function inputClear()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L198)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L223)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-inputclearnative-extern-function-inputclearnative-from-playable-window-dll-symbol-playable-window-input-clear-states-returns-void-src-mq3-platform-playable-window-ml-1864012916"></a>
 ### inputClearNative
@@ -1039,7 +1100,7 @@ extern function inputClearNative() from "playable_window.dll" symbol "playable_w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L55)
 
 - [mq3.platform.playable_window.InputEvent](Type-mq3-platform-playable-window-inputevent-591730886.md) — struct
 <a id="function-function-mq3-platform-playable-window-inputevents-function-inputevents-maxevents-src-mq3-platform-playable-window-ml-237166257"></a>
@@ -1054,7 +1115,7 @@ function inputEvents(maxEvents)
 | `maxEvents` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L192)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L217)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-inputframenative-extern-function-inputframenative-from-playable-window-dll-symbol-playable-window-input-frame-returns-void-src-mq3-platform-playable-window-ml-1357265257"></a>
 ### inputFrameNative
@@ -1064,7 +1125,7 @@ extern function inputFrameNative() from "playable_window.dll" symbol "playable_w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L43)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L54)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-inputinitnative-extern-function-inputinitnative-from-playable-window-dll-symbol-playable-window-input-init-returns-i32-src-mq3-platform-playable-window-ml-1423645416"></a>
 ### inputInitNative
@@ -1074,7 +1135,37 @@ extern function inputInitNative() from "playable_window.dll" symbol "playable_wi
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L41)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L52)
+
+<a id="function-function-mq3-platform-playable-window-inputkeydown-function-inputkeydown-key-src-mq3-platform-playable-window-ml-609053807"></a>
+### inputKeyDown
+
+```ml
+function inputKeyDown(key)
+```
+
+The native Sys_QueEvent key-state table uses Quake keynums, including mouse and keypad keys. Keep legacy keyDown's Win32 virtual-key API separate.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `key` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L209)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-inputkeydownnative-extern-function-inputkeydownnative-key-as-i32-from-playable-window-dll-symbol-playable-window-input-key-down-returns-i32-src-mq3-platform-playable-window-ml-1227115757"></a>
+### inputKeyDownNative
+
+```ml
+extern function inputKeyDownNative(key as i32) from "playable_window.dll" symbol "playable_window_input_key_down" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `key` | `i32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L32)
 
 <a id="function-function-mq3-platform-playable-window-joystickavailable-function-joystickavailable-src-mq3-platform-playable-window-ml-601026500"></a>
 ### joystickAvailable
@@ -1084,7 +1175,7 @@ function joystickAvailable()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L205)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L230)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-joystickavailablenative-extern-function-joystickavailablenative-from-playable-window-dll-symbol-playable-window-input-joystick-available-returns-i32-src-mq3-platform-playable-window-ml-1565860208"></a>
 ### joystickAvailableNative
@@ -1094,7 +1185,7 @@ extern function joystickAvailableNative() from "playable_window.dll" symbol "pla
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L47)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L58)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-joystickconfigurenative-extern-function-joystickconfigurenative-enabled-as-i32-threshold-as-double-ballscale-as-double-from-playable-window-dll-symbol-playable-window-input-configure-joystick-returns-i32-src-mq3-platform-playable-window-ml-899387052"></a>
 ### joystickConfigureNative
@@ -1110,7 +1201,7 @@ extern function joystickConfigureNative(enabled as i32, threshold as double, bal
 | `ballScale` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L45)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L56)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mouse1-const-k-mouse1-178-src-mq3-platform-playable-window-ml-1528143451"></a>
 ### K_MOUSE1
@@ -1120,7 +1211,7 @@ const K_MOUSE1 = 178
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L76)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L91)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mouse2-const-k-mouse2-179-src-mq3-platform-playable-window-ml-640916586"></a>
 ### K_MOUSE2
@@ -1130,7 +1221,7 @@ const K_MOUSE2 = 179
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L77)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L92)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mouse3-const-k-mouse3-180-src-mq3-platform-playable-window-ml-1593607880"></a>
 ### K_MOUSE3
@@ -1140,7 +1231,7 @@ const K_MOUSE3 = 180
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L78)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L93)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mouse4-const-k-mouse4-181-src-mq3-platform-playable-window-ml-2058743229"></a>
 ### K_MOUSE4
@@ -1150,7 +1241,7 @@ const K_MOUSE4 = 181
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L79)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L94)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mouse5-const-k-mouse5-182-src-mq3-platform-playable-window-ml-10688034"></a>
 ### K_MOUSE5
@@ -1160,7 +1251,7 @@ const K_MOUSE5 = 182
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L80)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L95)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mwheeldown-const-k-mwheeldown-183-src-mq3-platform-playable-window-ml-882956441"></a>
 ### K_MWHEELDOWN
@@ -1170,7 +1261,7 @@ const K_MWHEELDOWN = 183
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L81)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L96)
 
 <a id="constant-constant-mq3-platform-playable-window-k-mwheelup-const-k-mwheelup-184-src-mq3-platform-playable-window-ml-309301978"></a>
 ### K_MWHEELUP
@@ -1180,7 +1271,7 @@ const K_MWHEELUP = 184
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L82)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L97)
 
 <a id="function-function-mq3-platform-playable-window-keydown-function-keydown-key-src-mq3-platform-playable-window-ml-656679121"></a>
 ### keyDown
@@ -1194,7 +1285,7 @@ function keyDown(key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L184)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L206)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-keydownnative-extern-function-keydownnative-key-as-i32-from-playable-window-dll-symbol-playable-window-key-down-returns-i32-src-mq3-platform-playable-window-ml-540220634"></a>
 ### keyDownNative
@@ -1208,7 +1299,7 @@ extern function keyDownNative(key as i32) from "playable_window.dll" symbol "pla
 | `key` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L30)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L31)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-linenative-extern-function-linenative-x0-as-i32-y0-as-i32-x1-as-i32-y1-as-i32-red-as-i32-green-as-i32-blue-as-i32-from-playable-window-dll-symbol-playable-window-draw-line-returns-void-src-mq3-platform-playable-window-ml-1501879190"></a>
 ### lineNative
@@ -1228,7 +1319,7 @@ extern function lineNative(x0 as i32, y0 as i32, x1 as i32, y1 as i32, red as i3
 | `blue` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L50)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L61)
 
 - [mq3.platform.playable_window.LoadingPoint](Type-mq3-platform-playable-window-loadingpoint-395317548.md) — struct
 <a id="function-function-mq3-platform-playable-window-loadingtitle-function-loadingtitle-progress-status-src-mq3-platform-playable-window-ml-1553333445"></a>
@@ -1244,7 +1335,7 @@ function loadingTitle(progress, status)
 | `status` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L158)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L180)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-midiconfigurenative-extern-function-midiconfigurenative-enabled-as-i32-device-as-i32-channel-as-i32-from-playable-window-dll-symbol-playable-window-input-configure-midi-returns-i32-src-mq3-platform-playable-window-ml-1825871092"></a>
 ### midiConfigureNative
@@ -1260,7 +1351,7 @@ extern function midiConfigureNative(enabled as i32, device as i32, channel as i3
 | `channel` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L46)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L57)
 
 <a id="function-function-mq3-platform-playable-window-mididevicecount-function-mididevicecount-src-mq3-platform-playable-window-ml-1234069370"></a>
 ### midiDeviceCount
@@ -1270,7 +1361,7 @@ function midiDeviceCount()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L211)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L236)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-mididevicecountnative-extern-function-mididevicecountnative-from-playable-window-dll-symbol-playable-window-input-midi-device-count-returns-i32-src-mq3-platform-playable-window-ml-2032552218"></a>
 ### midiDeviceCountNative
@@ -1280,7 +1371,7 @@ extern function midiDeviceCountNative() from "playable_window.dll" symbol "playa
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L48)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L59)
 
 <a id="function-function-mq3-platform-playable-window-milliseconds-function-milliseconds-src-mq3-platform-playable-window-ml-1415510138"></a>
 ### milliseconds
@@ -1290,7 +1381,7 @@ function milliseconds()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L212)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L237)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-millisecondsnative-extern-function-millisecondsnative-from-playable-window-dll-symbol-playable-window-milliseconds-returns-i32-src-mq3-platform-playable-window-ml-909369177"></a>
 ### millisecondsNative
@@ -1300,7 +1391,7 @@ extern function millisecondsNative() from "playable_window.dll" symbol "playable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L36)
 
 <a id="function-function-mq3-platform-playable-window-mousedelta-function-mousedelta-src-mq3-platform-playable-window-ml-388419990"></a>
 ### mouseDelta
@@ -1310,7 +1401,7 @@ function mouseDelta()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L196)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L221)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-mousexnative-extern-function-mousexnative-from-playable-window-dll-symbol-playable-window-consume-mouse-dx-returns-i32-src-mq3-platform-playable-window-ml-655389808"></a>
 ### mouseXNative
@@ -1320,7 +1411,7 @@ extern function mouseXNative() from "playable_window.dll" symbol "playable_windo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L34)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-mouseynative-extern-function-mouseynative-from-playable-window-dll-symbol-playable-window-consume-mouse-dy-returns-i32-src-mq3-platform-playable-window-ml-1924332727"></a>
 ### mouseYNative
@@ -1330,7 +1421,19 @@ extern function mouseYNative() from "playable_window.dll" symbol "playable_windo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L33)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L35)
+
+<a id="constant-constant-mq3-platform-playable-window-native-texture-slots-const-native-texture-slots-4096-src-mq3-platform-playable-window-ml-1614148238"></a>
+### NATIVE_TEXTURE_SLOTS
+
+```ml
+const NATIVE_TEXTURE_SLOTS = 4096
+```
+
+Matches PLAYABLE_TEXTURE_SLOTS in native/playable_win32.c.
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L84)
 
 <a id="function-function-mq3-platform-playable-window-nextinputevent-function-nextinputevent-src-mq3-platform-playable-window-ml-1794407954"></a>
 ### nextInputEvent
@@ -1340,7 +1443,7 @@ function nextInputEvent()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L189)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L214)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-nextinputeventnative-extern-function-nextinputeventnative-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-window-next-input-event-returns-i32-src-mq3-platform-playable-window-ml-1680741248"></a>
 ### nextInputEventNative
@@ -1355,7 +1458,7 @@ extern function nextInputEventNative(output as bytes, capacity as i32) from "pla
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L31)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L33)
 
 <a id="function-function-mq3-platform-playable-window-open-function-open-width-height-src-mq3-platform-playable-window-ml-1833026823"></a>
 ### open
@@ -1370,7 +1473,7 @@ function open(width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L115)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L137)
 
 <a id="function-function-mq3-platform-playable-window-openconfigured-function-openconfigured-width-height-drivername-colorbits-depthbits-stencilbits-stereo-fullscreen-frequency-swapinterval-src-mq3-platform-playable-window-ml-240403241"></a>
 ### openConfigured
@@ -1393,7 +1496,7 @@ function openConfigured(width, height, driverName, colorBits, depthBits, stencil
 | `swapInterval` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L123)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L145)
 
 <a id="function-function-mq3-platform-playable-window-poll-function-poll-src-mq3-platform-playable-window-ml-632154482"></a>
 ### poll
@@ -1403,7 +1506,7 @@ function poll()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L150)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L172)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-pollnative-extern-function-pollnative-from-playable-window-dll-symbol-playable-window-poll-returns-void-src-mq3-platform-playable-window-ml-1383932472"></a>
 ### pollNative
@@ -1413,7 +1516,7 @@ extern function pollNative() from "playable_window.dll" symbol "playable_window_
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L28)
 
 <a id="function-function-mq3-platform-playable-window-present-function-present-src-mq3-platform-playable-window-ml-1795214248"></a>
 ### present
@@ -1423,7 +1526,7 @@ function present()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L226)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L254)
 
 <a id="function-function-mq3-platform-playable-window-presentednonblack-function-presentednonblack-src-mq3-platform-playable-window-ml-1796306606"></a>
 ### presentedNonBlack
@@ -1433,7 +1536,7 @@ function presentedNonBlack()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L227)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L255)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-presentednonblacknative-extern-function-presentednonblacknative-from-playable-window-dll-symbol-playable-window-presented-non-black-returns-i32-src-mq3-platform-playable-window-ml-616415493"></a>
 ### presentedNonBlackNative
@@ -1443,7 +1546,7 @@ extern function presentedNonBlackNative() from "playable_window.dll" symbol "pla
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L52)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L63)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-presentnative-extern-function-presentnative-from-playable-window-dll-symbol-playable-window-present-returns-void-src-mq3-platform-playable-window-ml-955642860"></a>
 ### presentNative
@@ -1453,7 +1556,7 @@ extern function presentNative() from "playable_window.dll" symbol "playable_wind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L51)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L62)
 
 <a id="function-function-mq3-platform-playable-window-processorid-function-processorid-src-mq3-platform-playable-window-ml-394440620"></a>
 ### processorId
@@ -1463,7 +1566,7 @@ function processorId()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L221)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L249)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-processoridnative-extern-function-processoridnative-from-playable-window-dll-symbol-playable-system-processor-id-returns-i32-src-mq3-platform-playable-window-ml-1859186948"></a>
 ### processorIdNative
@@ -1473,7 +1576,7 @@ extern function processorIdNative() from "playable_window.dll" symbol "playable_
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L51)
 
 <a id="function-function-mq3-platform-playable-window-releasetexture-function-releasetexture-slot-src-mq3-platform-playable-window-ml-539136030"></a>
 ### releaseTexture
@@ -1487,7 +1590,7 @@ function releaseTexture(slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L246)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L286)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-releasetexturenative-extern-function-releasetexturenative-slot-as-i32-from-playable-window-dll-symbol-playable-window-release-texture-returns-void-src-mq3-platform-playable-window-ml-657460172"></a>
 ### releaseTextureNative
@@ -1501,7 +1604,7 @@ extern function releaseTextureNative(slot as i32) from "playable_window.dll" sym
 | `slot` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L62)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L75)
 
 <a id="function-function-mq3-platform-playable-window-resettrianglebatch-function-resettrianglebatch-batch-src-mq3-platform-playable-window-ml-841705430"></a>
 ### resetTriangleBatch
@@ -1515,7 +1618,7 @@ function resetTriangleBatch(batch)
 | `batch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L260)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L300)
 
 <a id="function-function-mq3-platform-playable-window-sampledepth-function-sampledepth-x-y-src-mq3-platform-playable-window-ml-333356729"></a>
 ### sampleDepth
@@ -1530,7 +1633,7 @@ function sampleDepth(x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L231)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L259)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-sampledepthnative-extern-function-sampledepthnative-x-as-i32-y-as-i32-from-playable-window-dll-symbol-playable-window-sample-depth-returns-double-src-mq3-platform-playable-window-ml-1772650221"></a>
 ### sampleDepthNative
@@ -1545,7 +1648,7 @@ extern function sampleDepthNative(x as i32, y as i32) from "playable_window.dll"
 | `y` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L55)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L66)
 
 <a id="function-function-mq3-platform-playable-window-setdepthrange-function-setdepthrange-scale-neardistance-src-mq3-platform-playable-window-ml-890709395"></a>
 ### setDepthRange
@@ -1560,7 +1663,7 @@ function setDepthRange(scale, nearDistance)
 | `nearDistance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L232)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L260)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-setdepthrangenative-extern-function-setdepthrangenative-scale-as-double-neardistance-as-double-from-playable-window-dll-symbol-playable-window-set-depth-range-returns-i32-src-mq3-platform-playable-window-ml-1917269416"></a>
 ### setDepthRangeNative
@@ -1575,7 +1678,43 @@ extern function setDepthRangeNative(scale as double, nearDistance as double) fro
 | `nearDistance` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L67)
+
+<a id="function-function-mq3-platform-playable-window-setmode-function-setmode-width-height-fullscreen-frequency-src-mq3-platform-playable-window-ml-1960927360"></a>
+### setMode
+
+```ml
+function setMode(width, height, fullscreen, frequency)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `width` | `dynamic` | — |  |
+| `height` | `dynamic` | — |  |
+| `fullscreen` | `dynamic` | — |  |
+| `frequency` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L131)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-setmodenative-extern-function-setmodenative-width-as-i32-height-as-i32-fullscreen-as-i32-frequency-as-i32-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-window-set-mode-returns-i32-src-mq3-platform-playable-window-ml-1843405907"></a>
+### setModeNative
+
+```ml
+extern function setModeNative(width as i32, height as i32, fullscreen as i32, frequency as i32, output as bytes, capacity as i32) from "playable_window.dll" symbol "playable_window_set_mode" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `width` | `i32` | — |  |
+| `height` | `i32` | — |  |
+| `fullscreen` | `i32` | — |  |
+| `frequency` | `i32` | — |  |
+| `output` | `bytes` | — |  |
+| `capacity` | `i32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L8)
 
 <a id="function-function-mq3-platform-playable-window-setstencilpass-function-setstencilpass-pass-src-mq3-platform-playable-window-ml-1274830549"></a>
 ### setStencilPass
@@ -1589,7 +1728,7 @@ function setStencilPass(pass)
 | `pass` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L234)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L262)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-setstencilpassnative-extern-function-setstencilpassnative-pass-as-i32-from-playable-window-dll-symbol-playable-window-set-stencil-pass-returns-i32-src-mq3-platform-playable-window-ml-728239421"></a>
 ### setStencilPassNative
@@ -1603,7 +1742,37 @@ extern function setStencilPassNative(pass as i32) from "playable_window.dll" sym
 | `pass` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L58)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L69)
+
+<a id="function-function-mq3-platform-playable-window-settexturesettings-function-settexturesettings-picmip-texturemode-src-mq3-platform-playable-window-ml-2106997232"></a>
+### setTextureSettings
+
+```ml
+function setTextureSettings(picmip, textureMode)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `picmip` | `dynamic` | — |  |
+| `textureMode` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L280)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-settexturesettingsnative-extern-function-settexturesettingsnative-picmip-as-i32-mode-as-i32-from-playable-window-dll-symbol-playable-window-set-texture-settings-returns-void-src-mq3-platform-playable-window-ml-1791776138"></a>
+### setTextureSettingsNative
+
+```ml
+extern function setTextureSettingsNative(picmip as i32, mode as i32) from "playable_window.dll" symbol "playable_window_set_texture_settings" returns void
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `picmip` | `i32` | — |  |
+| `mode` | `i32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L74)
 
 <a id="function-function-mq3-platform-playable-window-settitle-function-settitle-title-src-mq3-platform-playable-window-ml-1251264284"></a>
 ### setTitle
@@ -1617,7 +1786,7 @@ function setTitle(title)
 | `title` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L152)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L174)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-settitlenative-extern-function-settitlenative-title-as-ptr-length-as-i32-from-playable-window-dll-symbol-playable-window-set-title-utf8-returns-i32-src-mq3-platform-playable-window-ml-789368744"></a>
 ### setTitleNative
@@ -1632,7 +1801,7 @@ extern function setTitleNative(title as ptr, length as i32) from "playable_windo
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L30)
 
 <a id="function-function-mq3-platform-playable-window-shouldclose-function-shouldclose-src-mq3-platform-playable-window-ml-2097839008"></a>
 ### shouldClose
@@ -1642,7 +1811,7 @@ function shouldClose()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L151)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L173)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-shouldclosenative-extern-function-shouldclosenative-from-playable-window-dll-symbol-playable-window-should-close-returns-i32-src-mq3-platform-playable-window-ml-163775701"></a>
 ### shouldCloseNative
@@ -1652,7 +1821,7 @@ extern function shouldCloseNative() from "playable_window.dll" symbol "playable_
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L28)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L29)
 
 <a id="function-function-mq3-platform-playable-window-showloading-function-showloading-progress-status-src-mq3-platform-playable-window-ml-1871681295"></a>
 ### showLoading
@@ -1667,7 +1836,7 @@ function showLoading(progress, status)
 | `status` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L165)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L187)
 
 <a id="function-function-mq3-platform-playable-window-shutdown-function-shutdown-src-mq3-platform-playable-window-ml-1657913210"></a>
 ### shutdown
@@ -1677,7 +1846,7 @@ function shutdown()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L229)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L257)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-shutdownnative-extern-function-shutdownnative-from-playable-window-dll-symbol-playable-window-shutdown-returns-void-src-mq3-platform-playable-window-ml-1716055113"></a>
 ### shutdownNative
@@ -1687,7 +1856,7 @@ extern function shutdownNative() from "playable_window.dll" symbol "playable_win
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L53)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L64)
 
 <a id="function-function-mq3-platform-playable-window-submittrianglebatch-function-submittrianglebatch-batch-src-mq3-platform-playable-window-ml-1690429166"></a>
 ### submitTriangleBatch
@@ -1701,7 +1870,7 @@ function submitTriangleBatch(batch)
 | `batch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L322)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L365)
 
 <a id="function-function-mq3-platform-playable-window-submitworldtrianglebatch-function-submitworldtrianglebatch-batch-projection-src-mq3-platform-playable-window-ml-1176095633"></a>
 ### submitWorldTriangleBatch
@@ -1716,7 +1885,7 @@ function submitWorldTriangleBatch(batch, projection)
 | `projection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L328)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L371)
 
 <a id="function-function-mq3-platform-playable-window-submitworldtrianglebatchviewport-function-submitworldtrianglebatchviewport-batch-projection-area-src-mq3-platform-playable-window-ml-1065097078"></a>
 ### submitWorldTriangleBatchViewport
@@ -1732,7 +1901,7 @@ function submitWorldTriangleBatchViewport(batch, projection, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L339)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L386)
 
 <a id="function-function-mq3-platform-playable-window-takevideorestart-function-takevideorestart-src-mq3-platform-playable-window-ml-822407430"></a>
 ### takeVideoRestart
@@ -1742,7 +1911,7 @@ function takeVideoRestart()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L213)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L241)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-takevideorestartnative-extern-function-takevideorestartnative-from-playable-window-dll-symbol-playable-window-take-video-restart-returns-i32-src-mq3-platform-playable-window-ml-630631836"></a>
 ### takeVideoRestartNative
@@ -1752,7 +1921,7 @@ extern function takeVideoRestartNative() from "playable_window.dll" symbol "play
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L46)
 
 <a id="constant-constant-mq3-platform-playable-window-triangle-batch-max-count-const-triangle-batch-max-count-65536-src-mq3-platform-playable-window-ml-989129662"></a>
 ### TRIANGLE_BATCH_MAX_COUNT
@@ -1762,7 +1931,7 @@ const TRIANGLE_BATCH_MAX_COUNT = 65536
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L107)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L122)
 
 <a id="constant-constant-mq3-platform-playable-window-triangle-batch-record-bytes-const-triangle-batch-record-bytes-128-src-mq3-platform-playable-window-ml-1395760788"></a>
 ### TRIANGLE_BATCH_RECORD_BYTES
@@ -1772,7 +1941,7 @@ const TRIANGLE_BATCH_RECORD_BYTES = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L106)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L121)
 
 - [mq3.platform.playable_window.TriangleBatch](Type-mq3-platform-playable-window-trianglebatch-647964754.md) — struct
 <a id="extern_function-extern-function-mq3-platform-playable-window-trianglebatchnative-extern-function-trianglebatchnative-records-as-ptr-bytecount-as-i32-trianglecount-as-i32-from-playable-window-dll-symbol-playable-window-draw-triangle-batch-returns-i32-src-mq3-platform-playable-window-ml-1886429961"></a>
@@ -1789,7 +1958,7 @@ extern function triangleBatchNative(records as ptr, byteCount as i32, triangleCo
 | `triangleCount` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L65)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L78)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-trianglecolorednative-extern-function-trianglecolorednative-textureslot-as-i32-x0-as-double-y0-as-double-depth0-as-double-u0-as-double-v0-as-double-x1-as-double-y1-as-double-depth1-as-double-u1-as-double-v1-as-double-x2-as-double-y2-as-double-depth2-as-double-u2-as-double-v2-as-double-red0-as-i32-green0-as-i32-blue0-as-i32-alpha0-as-i32-red1-as-i32-green1-as-i32-blue1-as-i32-alpha1-as-i32-red2-as-i32-green2-as-i32-blue2-as-i32-alpha2-as-i32-red-as-i32-green-as-i32-blue-as-i32-from-playable-window-dll-symbol-playable-window-draw-triangle-colored-returns-void-src-mq3-platform-playable-window-ml-1818432715"></a>
 ### triangleColoredNative
@@ -1833,7 +2002,7 @@ extern function triangleColoredNative(textureSlot as i32, x0 as double, y0 as do
 | `blue` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L64)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L77)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-trianglenative-extern-function-trianglenative-textureslot-as-i32-x0-as-double-y0-as-double-depth0-as-double-u0-as-double-v0-as-double-light0-as-double-x1-as-double-y1-as-double-depth1-as-double-u1-as-double-v1-as-double-light1-as-double-x2-as-double-y2-as-double-depth2-as-double-u2-as-double-v2-as-double-light2-as-double-red-as-i32-green-as-i32-blue-as-i32-from-playable-window-dll-symbol-playable-window-draw-triangle-returns-void-src-mq3-platform-playable-window-ml-1819333212"></a>
 ### triangleNative
@@ -1868,7 +2037,90 @@ extern function triangleNative(textureSlot as i32, x0 as double, y0 as double, d
 | `blue` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L63)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L76)
+
+<a id="function-function-mq3-platform-playable-window-updatestagevertex-function-updatestagevertex-batch-as-trianglebatch-triangle-as-int-vertex-as-int-position-as-array-uv-as-array-color-as-array-src-mq3-platform-playable-window-ml-508093948"></a>
+### updateStageVertex
+
+```ml
+function updateStageVertex(batch as TriangleBatch, triangle as int, vertex as int, position as array, uv as array, color as array)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `batch` | `TriangleBatch` | — |  |
+| `triangle` | `int` | — |  |
+| `vertex` | `int` | — |  |
+| `position` | `array` | — |  |
+| `uv` | `array` | — |  |
+| `color` | `array` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L324)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-updatestagevertexnative-extern-function-updatestagevertexnative-data-as-ptr-count-as-i32-triangle-as-i32-vertex-as-i32-x-as-double-y-as-double-z-as-double-u-as-double-v-as-double-red-as-i32-green-as-i32-blue-as-i32-alpha-as-i32-from-playable-window-dll-symbol-playable-window-update-stage-vertex-returns-i32-src-mq3-platform-playable-window-ml-43722136"></a>
+### updateStageVertexNative
+
+```ml
+extern function updateStageVertexNative(data as ptr, count as i32, triangle as i32, vertex as i32, x as double, y as double, z as double, u as double, v as double, red as i32, green as i32, blue as i32, alpha as i32) from "playable_window.dll" symbol "playable_window_update_stage_vertex" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `ptr` | — |  |
+| `count` | `i32` | — |  |
+| `triangle` | `i32` | — |  |
+| `vertex` | `i32` | — |  |
+| `x` | `double` | — |  |
+| `y` | `double` | — |  |
+| `z` | `double` | — |  |
+| `u` | `double` | — |  |
+| `v` | `double` | — |  |
+| `red` | `i32` | — |  |
+| `green` | `i32` | — |  |
+| `blue` | `i32` | — |  |
+| `alpha` | `i32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L45)
+
+<a id="function-function-mq3-platform-playable-window-uploadmaterialtexture-function-uploadmaterialtexture-slot-rgba-width-height-mipmapped-allowpicmip-src-mq3-platform-playable-window-ml-199329563"></a>
+### uploadMaterialTexture
+
+```ml
+function uploadMaterialTexture(slot, rgba, width, height, mipmapped, allowPicmip)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `slot` | `dynamic` | — |  |
+| `rgba` | `dynamic` | — |  |
+| `width` | `dynamic` | — |  |
+| `height` | `dynamic` | — |  |
+| `mipmapped` | `dynamic` | — |  |
+| `allowPicmip` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L274)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-uploadmaterialtexturenative-extern-function-uploadmaterialtexturenative-slot-as-i32-rgba-as-ptr-width-as-i32-height-as-i32-mipmapped-as-i32-allowpicmip-as-i32-from-playable-window-dll-symbol-playable-window-upload-material-texture-returns-i32-src-mq3-platform-playable-window-ml-651090063"></a>
+### uploadMaterialTextureNative
+
+```ml
+extern function uploadMaterialTextureNative(slot as i32, rgba as ptr, width as i32, height as i32, mipmapped as i32, allowPicmip as i32) from "playable_window.dll" symbol "playable_window_upload_material_texture" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `slot` | `i32` | — |  |
+| `rgba` | `ptr` | — |  |
+| `width` | `i32` | — |  |
+| `height` | `i32` | — |  |
+| `mipmapped` | `i32` | — |  |
+| `allowPicmip` | `i32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L73)
 
 <a id="function-function-mq3-platform-playable-window-uploadtexture-function-uploadtexture-slot-rgba-width-height-src-mq3-platform-playable-window-ml-1617092781"></a>
 ### uploadTexture
@@ -1885,7 +2137,7 @@ function uploadTexture(slot, rgba, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L236)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L264)
 
 <a id="function-function-mq3-platform-playable-window-uploadtexturemipmapped-function-uploadtexturemipmapped-slot-rgba-width-height-mipmapped-src-mq3-platform-playable-window-ml-558754384"></a>
 ### uploadTextureMipmapped
@@ -1903,7 +2155,7 @@ function uploadTextureMipmapped(slot, rgba, width, height, mipmapped)
 | `mipmapped` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L240)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L268)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-uploadtexturemipmappednative-extern-function-uploadtexturemipmappednative-slot-as-i32-rgba-as-ptr-width-as-i32-height-as-i32-mipmapped-as-i32-from-playable-window-dll-symbol-playable-window-upload-texture-mipmapped-returns-i32-src-mq3-platform-playable-window-ml-579418564"></a>
 ### uploadTextureMipmappedNative
@@ -1921,7 +2173,7 @@ extern function uploadTextureMipmappedNative(slot as i32, rgba as ptr, width as 
 | `mipmapped` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L61)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L72)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-uploadtexturenative-extern-function-uploadtexturenative-slot-as-i32-rgba-as-ptr-width-as-i32-height-as-i32-from-playable-window-dll-symbol-playable-window-upload-texture-returns-i32-src-mq3-platform-playable-window-ml-800287083"></a>
 ### uploadTextureNative
@@ -1938,7 +2190,7 @@ extern function uploadTextureNative(slot as i32, rgba as ptr, width as i32, heig
 | `height` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L60)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L71)
 
 <a id="function-function-mq3-platform-playable-window-uploadtexturenomip-function-uploadtexturenomip-slot-rgba-width-height-src-mq3-platform-playable-window-ml-556825245"></a>
 ### uploadTextureNoMip
@@ -1955,7 +2207,24 @@ function uploadTextureNoMip(slot, rgba, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L245)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L273)
+
+<a id="function-function-mq3-platform-playable-window-validviewportrectangle-function-validviewportrectangle-x-y-width-height-src-mq3-platform-playable-window-ml-1228611676"></a>
+### validViewportRectangle
+
+```ml
+function validViewportRectangle(x, y, width, height)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `x` | `dynamic` | — |  |
+| `y` | `dynamic` | — |  |
+| `width` | `dynamic` | — |  |
+| `height` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L379)
 
 <a id="function-function-mq3-platform-playable-window-viewport-function-viewport-x-y-width-height-src-mq3-platform-playable-window-ml-979740628"></a>
 ### viewport
@@ -1972,7 +2241,7 @@ function viewport(x, y, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L335)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L382)
 
 - [mq3.platform.playable_window.Viewport](Type-mq3-platform-playable-window-viewport-170347776.md) — struct
 <a id="constant-constant-mq3-platform-playable-window-vk-1-const-vk-1-49-src-mq3-platform-playable-window-ml-135874554"></a>
@@ -1983,7 +2252,7 @@ const VK_1 = 49
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L94)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-2-const-vk-2-50-src-mq3-platform-playable-window-ml-1944671586"></a>
 ### VK_2
@@ -1993,7 +2262,7 @@ const VK_2 = 50
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L95)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L110)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-3-const-vk-3-51-src-mq3-platform-playable-window-ml-1315080067"></a>
 ### VK_3
@@ -2003,7 +2272,7 @@ const VK_3 = 51
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L96)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L111)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-4-const-vk-4-52-src-mq3-platform-playable-window-ml-702669996"></a>
 ### VK_4
@@ -2013,7 +2282,7 @@ const VK_4 = 52
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L97)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-5-const-vk-5-53-src-mq3-platform-playable-window-ml-633772509"></a>
 ### VK_5
@@ -2023,7 +2292,7 @@ const VK_5 = 53
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L98)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L113)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-6-const-vk-6-54-src-mq3-platform-playable-window-ml-1324889350"></a>
 ### VK_6
@@ -2033,7 +2302,7 @@ const VK_6 = 54
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L99)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L114)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-7-const-vk-7-55-src-mq3-platform-playable-window-ml-20839543"></a>
 ### VK_7
@@ -2043,7 +2312,7 @@ const VK_7 = 55
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L100)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L115)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-8-const-vk-8-56-src-mq3-platform-playable-window-ml-693376464"></a>
 ### VK_8
@@ -2053,7 +2322,7 @@ const VK_8 = 56
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L101)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L116)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-9-const-vk-9-57-src-mq3-platform-playable-window-ml-130175377"></a>
 ### VK_9
@@ -2063,7 +2332,7 @@ const VK_9 = 57
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L102)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L117)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-a-const-vk-a-65-src-mq3-platform-playable-window-ml-1135225328"></a>
 ### VK_A
@@ -2073,7 +2342,7 @@ const VK_A = 65
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L87)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L102)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-d-const-vk-d-68-src-mq3-platform-playable-window-ml-237251081"></a>
 ### VK_D
@@ -2083,7 +2352,7 @@ const VK_D = 68
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L103)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-down-const-vk-down-40-src-mq3-platform-playable-window-ml-29903945"></a>
 ### VK_DOWN
@@ -2093,7 +2362,7 @@ const VK_DOWN = 40
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L86)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L101)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-e-const-vk-e-69-src-mq3-platform-playable-window-ml-578565452"></a>
 ### VK_E
@@ -2103,7 +2372,7 @@ const VK_E = 69
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L89)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L104)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-escape-const-vk-escape-27-src-mq3-platform-playable-window-ml-215516386"></a>
 ### VK_ESCAPE
@@ -2113,7 +2382,7 @@ const VK_ESCAPE = 27
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L70)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L85)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-lbutton-const-vk-lbutton-1-src-mq3-platform-playable-window-ml-758947988"></a>
 ### VK_LBUTTON
@@ -2123,7 +2392,7 @@ const VK_LBUTTON = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L71)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L86)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-mbutton-const-vk-mbutton-4-src-mq3-platform-playable-window-ml-639602633"></a>
 ### VK_MBUTTON
@@ -2133,7 +2402,7 @@ const VK_MBUTTON = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L73)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L88)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-q-const-vk-q-81-src-mq3-platform-playable-window-ml-459947422"></a>
 ### VK_Q
@@ -2143,7 +2412,7 @@ const VK_Q = 81
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L90)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L105)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-rbutton-const-vk-rbutton-2-src-mq3-platform-playable-window-ml-361660889"></a>
 ### VK_RBUTTON
@@ -2153,7 +2422,7 @@ const VK_RBUTTON = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L72)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L87)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-return-const-vk-return-13-src-mq3-platform-playable-window-ml-172514413"></a>
 ### VK_RETURN
@@ -2163,7 +2432,7 @@ const VK_RETURN = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L83)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L98)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-s-const-vk-s-83-src-mq3-platform-playable-window-ml-916277196"></a>
 ### VK_S
@@ -2173,7 +2442,7 @@ const VK_S = 83
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L91)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L106)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-shift-const-vk-shift-16-src-mq3-platform-playable-window-ml-916958736"></a>
 ### VK_SHIFT
@@ -2183,7 +2452,7 @@ const VK_SHIFT = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L108)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-space-const-vk-space-32-src-mq3-platform-playable-window-ml-221536986"></a>
 ### VK_SPACE
@@ -2193,7 +2462,7 @@ const VK_SPACE = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L84)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L99)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-up-const-vk-up-38-src-mq3-platform-playable-window-ml-1146138406"></a>
 ### VK_UP
@@ -2203,7 +2472,7 @@ const VK_UP = 38
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L85)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L100)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-w-const-vk-w-87-src-mq3-platform-playable-window-ml-1386868648"></a>
 ### VK_W
@@ -2213,7 +2482,7 @@ const VK_W = 87
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L92)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L107)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-xbutton1-const-vk-xbutton1-5-src-mq3-platform-playable-window-ml-760277378"></a>
 ### VK_XBUTTON1
@@ -2223,7 +2492,7 @@ const VK_XBUTTON1 = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L74)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L89)
 
 <a id="constant-constant-mq3-platform-playable-window-vk-xbutton2-const-vk-xbutton2-6-src-mq3-platform-playable-window-ml-1422864375"></a>
 ### VK_XBUTTON2
@@ -2233,7 +2502,7 @@ const VK_XBUTTON2 = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L75)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L90)
 
 <a id="function-function-mq3-platform-playable-window-windowstate-function-windowstate-src-mq3-platform-playable-window-ml-1955323936"></a>
 ### windowState
@@ -2243,7 +2512,7 @@ function windowState()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L214)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L242)
 
 - [mq3.platform.playable_window.WindowState](Type-mq3-platform-playable-window-windowstate-1074205599.md) — struct
 <a id="extern_function-extern-function-mq3-platform-playable-window-windowstatenative-extern-function-windowstatenative-output-as-bytes-capacity-as-i32-from-playable-window-dll-symbol-playable-window-window-state-returns-i32-src-mq3-platform-playable-window-ml-1833374613"></a>
@@ -2259,7 +2528,7 @@ extern function windowStateNative(output as bytes, capacity as i32) from "playab
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L36)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L47)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-worldtrianglebatchnative-extern-function-worldtrianglebatchnative-records-as-ptr-bytecount-as-i32-trianglecount-as-i32-positionx-as-double-positiony-as-double-positionz-as-double-rightx-as-double-righty-as-double-rightz-as-double-upx-as-double-upy-as-double-upz-as-double-forwardx-as-double-forwardy-as-double-forwardz-as-double-halfwidth-as-double-halfheight-as-double-focal-as-double-neardistance-as-double-from-playable-window-dll-symbol-playable-window-draw-world-triangle-batch-returns-i32-src-mq3-platform-playable-window-ml-132647626"></a>
 ### worldTriangleBatchNative
@@ -2291,7 +2560,7 @@ extern function worldTriangleBatchNative(records as ptr, byteCount as i32, trian
 | `nearDistance` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L67)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L80)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-worldtrianglebatchviewportnative-extern-function-worldtrianglebatchviewportnative-records-as-ptr-bytecount-as-i32-trianglecount-as-i32-viewportx-as-i32-viewporty-as-i32-viewportwidth-as-i32-viewportheight-as-i32-positionx-as-double-positiony-as-double-positionz-as-double-rightx-as-double-righty-as-double-rightz-as-double-upx-as-double-upy-as-double-upz-as-double-forwardx-as-double-forwardy-as-double-forwardz-as-double-focal-as-double-neardistance-as-double-from-playable-window-dll-symbol-playable-window-draw-world-triangle-batch-viewport-returns-i32-src-mq3-platform-playable-window-ml-1329438064"></a>
 ### worldTriangleBatchViewportNative
@@ -2325,23 +2594,23 @@ extern function worldTriangleBatchViewportNative(records as ptr, byteCount as i3
 | `nearDistance` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L68)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L81)
 
-<a id="function-function-mq3-platform-playable-window-writebatchcolor-function-writebatchcolor-data-offset-color-src-mq3-platform-playable-window-ml-2042225640"></a>
+<a id="function-function-mq3-platform-playable-window-writebatchcolor-function-writebatchcolor-data-as-bytes-offset-as-int-color-as-array-src-mq3-platform-playable-window-ml-597248269"></a>
 ### writeBatchColor
 
 ```ml
-function writeBatchColor(data, offset, color)
+function writeBatchColor(data as bytes, offset as int, color as array)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `data` | `bytes` | — |  |
+| `offset` | `int` | — |  |
+| `color` | `array` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L286)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L328)
 
 <a id="function-function-mq3-platform-playable-window-writebatchf32-function-writebatchf32-data-offset-value-src-mq3-platform-playable-window-ml-1944898670"></a>
 ### writeBatchF32
@@ -2357,7 +2626,7 @@ function writeBatchF32(data, offset, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L275)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L315)
 
 <a id="function-function-mq3-platform-playable-window-writebatchi32-function-writebatchi32-data-offset-value-src-mq3-platform-playable-window-ml-1921342464"></a>
 ### writeBatchI32
@@ -2373,26 +2642,26 @@ function writeBatchI32(data, offset, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L274)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L314)
 
-<a id="function-function-mq3-platform-playable-window-writebatchpositionvertex-function-writebatchpositionvertex-data-offset-position-baseuv-lightmapuv-light-src-mq3-platform-playable-window-ml-581163841"></a>
+<a id="function-function-mq3-platform-playable-window-writebatchpositionvertex-function-writebatchpositionvertex-data-as-bytes-offset-as-int-position-as-array-baseuv-as-array-lightmapuv-as-array-light-src-mq3-platform-playable-window-ml-85667454"></a>
 ### writeBatchPositionVertex
 
 ```ml
-function writeBatchPositionVertex(data, offset, position, baseUV, lightmapUV, light)
+function writeBatchPositionVertex(data as bytes, offset as int, position as array, baseUV as array, lightmapUV as array, light)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `baseUV` | `dynamic` | — |  |
-| `lightmapUV` | `dynamic` | — |  |
+| `data` | `bytes` | — |  |
+| `offset` | `int` | — |  |
+| `position` | `array` | — |  |
+| `baseUV` | `array` | — |  |
+| `lightmapUV` | `array` | — |  |
 | `light` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L281)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L320)
 
 <a id="function-function-mq3-platform-playable-window-writebatchvertex-function-writebatchvertex-data-offset-point-baseuv-lightmapuv-light-src-mq3-platform-playable-window-ml-763296878"></a>
 ### writeBatchVertex
@@ -2411,7 +2680,88 @@ function writeBatchVertex(data, offset, point, baseUV, lightmapUV, light)
 | `light` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L276)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L316)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-writebatchvertexnative-extern-function-writebatchvertexnative-data-as-ptr-count-as-i32-offset-as-i32-x-as-double-y-as-double-z-as-double-u-as-double-v-as-double-lu-as-double-lv-as-double-light-as-double-from-playable-window-dll-symbol-playable-window-write-batch-vertex-returns-i32-src-mq3-platform-playable-window-ml-1991944481"></a>
+### writeBatchVertexNative
+
+```ml
+extern function writeBatchVertexNative(data as ptr, count as i32, offset as i32, x as double, y as double, z as double, u as double, v as double, lu as double, lv as double, light as double) from "playable_window.dll" symbol "playable_window_write_batch_vertex" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `ptr` | — |  |
+| `count` | `i32` | — |  |
+| `offset` | `i32` | — |  |
+| `x` | `double` | — |  |
+| `y` | `double` | — |  |
+| `z` | `double` | — |  |
+| `u` | `double` | — |  |
+| `v` | `double` | — |  |
+| `lu` | `double` | — |  |
+| `lv` | `double` | — |  |
+| `light` | `double` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L40)
+
+<a id="extern_function-extern-function-mq3-platform-playable-window-writepositiontrianglenative-extern-function-writepositiontrianglenative-data-as-ptr-count-as-i32-triangle-as-i32-baseslot-as-i32-lightmapslot-as-i32-red-as-i32-green-as-i32-blue-as-i32-x0-as-double-y0-as-double-z0-as-double-u0-as-double-v0-as-double-lu0-as-double-lv0-as-double-light0-as-double-r0-as-i64-g0-as-i64-b0-as-i64-a0-as-i64-x1-as-double-y1-as-double-z1-as-double-u1-as-double-v1-as-double-lu1-as-double-lv1-as-double-light1-as-double-r1-as-i64-g1-as-i64-b1-as-i64-a1-as-i64-x2-as-double-y2-as-double-z2-as-double-u2-as-double-v2-as-double-lu2-as-double-lv2-as-double-light2-as-double-r2-as-i64-g2-as-i64-b2-as-i64-a2-as-i64-from-playable-window-dll-symbol-playable-window-write-position-triangle-returns-i32-src-mq3-platform-playable-window-ml-2058768400"></a>
+### writePositionTriangleNative
+
+```ml
+extern function writePositionTriangleNative(data as ptr, count as i32, triangle as i32, baseSlot as i32, lightmapSlot as i32, red as i32, green as i32, blue as i32, x0 as double, y0 as double, z0 as double, u0 as double, v0 as double, lu0 as double, lv0 as double, light0 as double, r0 as i64, g0 as i64, b0 as i64, a0 as i64, x1 as double, y1 as double, z1 as double, u1 as double, v1 as double, lu1 as double, lv1 as double, light1 as double, r1 as i64, g1 as i64, b1 as i64, a1 as i64, x2 as double, y2 as double, z2 as double, u2 as double, v2 as double, lu2 as double, lv2 as double, light2 as double, r2 as i64, g2 as i64, b2 as i64, a2 as i64) from "playable_window.dll" symbol "playable_window_write_position_triangle" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `ptr` | — |  |
+| `count` | `i32` | — |  |
+| `triangle` | `i32` | — |  |
+| `baseSlot` | `i32` | — |  |
+| `lightmapSlot` | `i32` | — |  |
+| `red` | `i32` | — |  |
+| `green` | `i32` | — |  |
+| `blue` | `i32` | — |  |
+| `x0` | `double` | — |  |
+| `y0` | `double` | — |  |
+| `z0` | `double` | — |  |
+| `u0` | `double` | — |  |
+| `v0` | `double` | — |  |
+| `lu0` | `double` | — |  |
+| `lv0` | `double` | — |  |
+| `light0` | `double` | — |  |
+| `r0` | `i64` | — |  |
+| `g0` | `i64` | — |  |
+| `b0` | `i64` | — |  |
+| `a0` | `i64` | — |  |
+| `x1` | `double` | — |  |
+| `y1` | `double` | — |  |
+| `z1` | `double` | — |  |
+| `u1` | `double` | — |  |
+| `v1` | `double` | — |  |
+| `lu1` | `double` | — |  |
+| `lv1` | `double` | — |  |
+| `light1` | `double` | — |  |
+| `r1` | `i64` | — |  |
+| `g1` | `i64` | — |  |
+| `b1` | `i64` | — |  |
+| `a1` | `i64` | — |  |
+| `x2` | `double` | — |  |
+| `y2` | `double` | — |  |
+| `z2` | `double` | — |  |
+| `u2` | `double` | — |  |
+| `v2` | `double` | — |  |
+| `lu2` | `double` | — |  |
+| `lv2` | `double` | — |  |
+| `light2` | `double` | — |  |
+| `r2` | `i64` | — |  |
+| `g2` | `i64` | — |  |
+| `b2` | `i64` | — |  |
+| `a2` | `i64` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L41)
 
 <a id="extern_function-extern-function-mq3-platform-playable-window-writescreenquadnative-extern-function-writescreenquadnative-records-as-ptr-bytecount-as-i32-triangleindex-as-i32-textureslot-as-i32-x0-as-double-y0-as-double-d0-as-double-u0-as-double-v0-as-double-x1-as-double-y1-as-double-d1-as-double-u1-as-double-v1-as-double-x2-as-double-y2-as-double-d2-as-double-u2-as-double-v2-as-double-x3-as-double-y3-as-double-d3-as-double-u3-as-double-v3-as-double-red-as-i32-green-as-i32-blue-as-i32-alpha-as-i32-from-playable-window-dll-symbol-playable-window-write-screen-quad-returns-i32-src-mq3-platform-playable-window-ml-1372235619"></a>
 ### writeScreenQuadNative
@@ -2452,7 +2802,7 @@ extern function writeScreenQuadNative(records as ptr, byteCount as i32, triangle
 | `alpha` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L66)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L79)
 
 <a id="function-function-mq3-platform-playable-window-writescreenrect-function-writescreenrect-batch-triangleindex-textureslot-x-y-width-height-s1-t1-s2-t2-scalex-scaley-color-src-mq3-platform-playable-window-ml-1268726077"></a>
 ### writeScreenRect
@@ -2479,4 +2829,4 @@ function writeScreenRect(batch, triangleIndex, textureSlot, x, y, width, height,
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L268)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L308)

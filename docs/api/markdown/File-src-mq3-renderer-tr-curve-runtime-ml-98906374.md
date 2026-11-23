@@ -178,7 +178,7 @@ function R_GridInsertColumn(grid, column, row, point, loderror)
 | `loderror` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L76)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L68)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-gridinsertrow-function-r-gridinsertrow-grid-row-column-point-loderror-src-mq3-renderer-tr-curve-runtime-ml-990341639"></a>
 ### R_GridInsertRow
@@ -196,7 +196,7 @@ function R_GridInsertRow(grid, row, column, point, loderror)
 | `loderror` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L91)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L83)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-subdividepatchtogrid-function-r-subdividepatchtogrid-width-height-points-subdivisions-src-mq3-renderer-tr-curve-runtime-ml-1160009970"></a>
 ### R_SubdividePatchToGrid
@@ -211,22 +211,6 @@ function R_SubdividePatchToGrid(width, height, points, subdivisions)
 | `height` | `dynamic` | — |  |
 | `points` | `dynamic` | — |  |
 | `subdivisions` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L58)
-
-<a id="function-function-mq3-renderer-tr-curve-runtime-removeerror-function-removeerror-value-index-count-src-mq3-renderer-tr-curve-runtime-ml-1732857770"></a>
-### removeError
-
-```ml
-function removeError(value, index, count)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L55)

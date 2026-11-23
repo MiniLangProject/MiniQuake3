@@ -15,6 +15,7 @@ Reachable from entry: **yes**
 - `mq3/client/cgame_vm.ml` as `clientCgameVm` → [src/mq3/client/cgame_vm.ml](File-src-mq3-client-cgame-vm-ml-1871886258.md)
 - `mq3/client/connectionless.ml` as `clientConnectionless` → [src/mq3/client/connectionless.ml](File-src-mq3-client-connectionless-ml-1561502254.md)
 - `mq3/client/demo.ml` as `clientDemo` → [src/mq3/client/demo.ml](File-src-mq3-client-demo-ml-1236155596.md)
+- `mq3/client/desktop_session.ml` as `desktopSession` → [src/mq3/client/desktop_session.ml](File-src-mq3-client-desktop-session-ml-419426432.md)
 - `mq3/client/download.ml` as `clientDownload` → [src/mq3/client/download.ml](File-src-mq3-client-download-ml-170988721.md)
 - `mq3/client/frame.ml` as `clientMainFrame` → [src/mq3/client/frame.ml](File-src-mq3-client-frame-ml-2110176474.md)
 - `mq3/client/gamestate.ml` as `clientGamestate` → [src/mq3/client/gamestate.ml](File-src-mq3-client-gamestate-ml-1690167636.md)
@@ -111,6 +112,7 @@ Reachable from entry: **yes**
 - `mq3/vm/syscall_ui.ml` as `vmSyscallUi` → [src/mq3/vm/syscall_ui.ml](File-src-mq3-vm-syscall-ui-ml-839264043.md)
 - `mq3/vm/syscall_ui_media.ml` as `vmSyscallUiMedia` → [src/mq3/vm/syscall_ui_media.ml](File-src-mq3-vm-syscall-ui-media-ml-1111712958.md)
 - `std/fs.ml` as `fs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -126,7 +128,7 @@ function formatVector(vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L106)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L108)
 
 <a id="function-function-main-function-main-args-src-main-ml-776500952"></a>
 ### main
@@ -140,7 +142,21 @@ function main(args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L119)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L129)
+
+<a id="function-function-mapnamefrompath-function-mapnamefrompath-path-src-main-ml-1759387674"></a>
+### mapNameFromPath
+
+```ml
+function mapNameFromPath(path)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `path` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L121)
 
 <a id="function-function-printtrace-function-printtrace-result-src-main-ml-1040741020"></a>
 ### printTrace
@@ -154,4 +170,4 @@ function printTrace(result)
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L110)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L112)

@@ -54,6 +54,26 @@ map
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
 
+<a id="field-field-mq3-botlib-aas-runtime-runtime-nodecache-nodecache-src-mq3-botlib-aas-runtime-ml-489173481"></a>
+### nodeCache
+
+```ml
+nodeCache
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+
+<a id="field-field-mq3-botlib-aas-runtime-runtime-planecache-planecache-src-mq3-botlib-aas-runtime-ml-1994228937"></a>
+### planeCache
+
+```ml
+planeCache
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+
 <a id="field-field-mq3-botlib-aas-runtime-runtime-time-time-src-mq3-botlib-aas-runtime-ml-1027724231"></a>
 ### time
 

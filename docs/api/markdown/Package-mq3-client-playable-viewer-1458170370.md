@@ -34,6 +34,7 @@
 - [`mq3.client.playable_viewer.projectPrepared`](File-src-mq3-client-playable-viewer-ml-2126962810.md#function-function-mq3-client-playable-viewer-projectprepared-function-projectprepared-projection-world-src-mq3-client-playable-viewer-ml-492908915) — function
 - [`mq3.client.playable_viewer.projectPreparedView`](File-src-mq3-client-playable-viewer-ml-2126962810.md#function-function-mq3-client-playable-viewer-projectpreparedview-function-projectpreparedview-projection-point-src-mq3-client-playable-viewer-ml-1019666543) — function
 - [`mq3.client.playable_viewer.projectViewPoint`](File-src-mq3-client-playable-viewer-ml-2126962810.md#function-function-mq3-client-playable-viewer-projectviewpoint-function-projectviewpoint-point-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-261434682) — function
+- [`mq3.client.playable_viewer.refdefBasis`](File-src-mq3-client-playable-viewer-ml-2126962810.md#function-function-mq3-client-playable-viewer-refdefbasis-function-refdefbasis-axes-src-mq3-client-playable-viewer-ml-602341249) — function
 - [`mq3.client.playable_viewer.ScreenLine`](Type-mq3-client-playable-viewer-screenline-1193169834.md) — struct
 - [`mq3.client.playable_viewer.ScreenPoint`](Type-mq3-client-playable-viewer-screenpoint-679483974.md) — struct
 - [`mq3.client.playable_viewer.step`](File-src-mq3-client-playable-viewer-ml-2126962810.md#function-function-mq3-client-playable-viewer-step-function-step-state-command-deltamilliseconds-src-mq3-client-playable-viewer-ml-1782052208) — function

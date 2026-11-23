@@ -132,7 +132,7 @@ function drawBuffer(queue, buffer)
 | `buffer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L83)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L85)
 
 <a id="function-function-mq3-renderer-command-queue-emit-function-emit-state-kind-value-src-mq3-renderer-command-queue-ml-323395506"></a>
 ### emit
@@ -148,7 +148,7 @@ function emit(state, kind, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L95)
 
 <a id="constant-constant-mq3-renderer-command-queue-end-command-bytes-const-end-command-bytes-4-src-mq3-renderer-command-queue-ml-940191513"></a>
 ### END_COMMAND_BYTES
@@ -173,7 +173,7 @@ function execute(state, queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L136)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L138)
 
 <a id="function-function-mq3-renderer-command-queue-executedrawbuffer-function-executedrawbuffer-state-command-src-mq3-renderer-command-queue-ml-223697910"></a>
 ### executeDrawBuffer
@@ -188,7 +188,7 @@ function executeDrawBuffer(state, command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L123)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L125)
 
 <a id="function-function-mq3-renderer-command-queue-executesetcolor-function-executesetcolor-state-command-src-mq3-renderer-command-queue-ml-475578156"></a>
 ### executeSetColor
@@ -203,7 +203,7 @@ function executeSetColor(state, command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L97)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L99)
 
 <a id="function-function-mq3-renderer-command-queue-executestretchpic-function-executestretchpic-state-command-src-mq3-renderer-command-queue-ml-1262215776"></a>
 ### executeStretchPic
@@ -218,7 +218,7 @@ function executeStretchPic(state, command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L103)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L105)
 
 <a id="function-function-mq3-renderer-command-queue-executeswapbuffers-function-executeswapbuffers-state-src-mq3-renderer-command-queue-ml-2079252621"></a>
 ### executeSwapBuffers
@@ -232,7 +232,7 @@ function executeSwapBuffers(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L128)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L130)
 
 <a id="function-function-mq3-renderer-command-queue-fail-function-fail-message-src-mq3-renderer-command-queue-ml-949867487"></a>
 ### fail
@@ -341,7 +341,7 @@ function reset(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L152)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L154)
 
 <a id="function-function-mq3-renderer-command-queue-services-function-services-src-mq3-renderer-command-queue-ml-1844326686"></a>
 ### services
@@ -424,6 +424,22 @@ function stretchPic(queue, x, y, w, h, s1, t1, s2, t2, shaderHandle)
 | `shaderHandle` | `dynamic` | — |  |
 
 
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L83)
+
+<a id="function-function-mq3-renderer-command-queue-stretchpicvalues-function-stretchpicvalues-queue-values-shaderhandle-src-mq3-renderer-command-queue-ml-1368773788"></a>
+### stretchPicValues
+
+```ml
+function stretchPicValues(queue, values, shaderHandle)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `queue` | `dynamic` | — |  |
+| `values` | `dynamic` | — |  |
+| `shaderHandle` | `dynamic` | — |  |
+
+
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L76)
 
 <a id="constant-constant-mq3-renderer-command-queue-swap-buffers-bytes-const-swap-buffers-bytes-4-src-mq3-renderer-command-queue-ml-2030612633"></a>
@@ -448,4 +464,4 @@ function swapBuffers(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L90)

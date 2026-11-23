@@ -4,7 +4,7 @@
 
 Package: [`mq3.qcommon.filesystem`](Package-mq3-qcommon-filesystem-1950557029.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Imports
 

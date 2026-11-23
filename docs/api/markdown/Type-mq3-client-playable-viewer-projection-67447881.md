@@ -93,3 +93,13 @@ up
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L18)
+
+<a id="field-field-mq3-client-playable-viewer-projection-verticalfocal-verticalfocal-src-mq3-client-playable-viewer-ml-2136311600"></a>
+### verticalFocal
+
+```ml
+verticalFocal
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L18)

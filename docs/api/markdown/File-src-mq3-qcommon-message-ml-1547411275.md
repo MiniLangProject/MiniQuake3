@@ -25,7 +25,7 @@ function beginReading(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L43)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L48)
 
 <a id="function-function-mq3-qcommon-message-beginreadingoob-function-beginreadingoob-msg-src-mq3-qcommon-message-ml-429375801"></a>
 ### beginReadingOob
@@ -39,7 +39,7 @@ function beginReadingOob(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L48)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L53)
 
 <a id="constant-constant-mq3-qcommon-message-big-info-string-const-big-info-string-8192-src-mq3-qcommon-message-ml-1127145753"></a>
 ### BIG_INFO_STRING
@@ -63,7 +63,7 @@ function bitstream(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L44)
 
 <a id="function-function-mq3-qcommon-message-clear-function-clear-msg-src-mq3-qcommon-message-ml-1873558913"></a>
 ### clear
@@ -77,7 +77,7 @@ function clear(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L39)
 
 <a id="function-function-mq3-qcommon-message-copy-function-copy-source-length-src-mq3-qcommon-message-ml-615010105"></a>
 ### copy
@@ -94,7 +94,7 @@ MSG_Copy preserves all source cursor/state fields and installs independent stora
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L61)
 
 <a id="function-function-mq3-qcommon-message-init-function-init-length-src-mq3-qcommon-message-ml-136413964"></a>
 ### init
@@ -108,7 +108,7 @@ function init(length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L31)
 
 <a id="function-function-mq3-qcommon-message-initoob-function-initoob-length-src-mq3-qcommon-message-ml-2033628292"></a>
 ### initOob
@@ -122,7 +122,7 @@ function initOob(length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L30)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L35)
 
 <a id="function-function-mq3-qcommon-message-initstorage-function-initstorage-data-length-oob-src-mq3-qcommon-message-ml-1993176884"></a>
 ### initStorage
@@ -136,6 +136,23 @@ function initStorage(data, length, oob)
 | `data` | `dynamic` | — |  |
 | `length` | `dynamic` | — |  |
 | `oob` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L27)
+
+<a id="function-function-mq3-qcommon-message-initstoragewithcodec-function-initstoragewithcodec-data-length-oob-codec-src-mq3-qcommon-message-ml-2140469862"></a>
+### initStorageWithCodec
+
+```ml
+function initStorageWithCodec(data, length, oob, codec)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `dynamic` | — |  |
+| `length` | `dynamic` | — |  |
+| `oob` | `dynamic` | — |  |
+| `codec` | `dynamic` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L22)
@@ -163,7 +180,7 @@ function readAngle16(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L226)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L231)
 
 <a id="function-function-mq3-qcommon-message-readbigcstring-function-readbigcstring-msg-src-mq3-qcommon-message-ml-513024435"></a>
 ### readBigCString
@@ -177,7 +194,7 @@ function readBigCString(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L242)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L247)
 
 <a id="function-function-mq3-qcommon-message-readbits-function-readbits-msg-bits-src-mq3-qcommon-message-ml-542616279"></a>
 ### readBits
@@ -192,7 +209,7 @@ function readBits(msg, bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L149)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L154)
 
 <a id="function-function-mq3-qcommon-message-readcstring-function-readcstring-msg-src-mq3-qcommon-message-ml-1352700011"></a>
 ### readCString
@@ -206,7 +223,7 @@ function readCString(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L239)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L244)
 
 <a id="function-function-mq3-qcommon-message-readcstringline-function-readcstringline-msg-src-mq3-qcommon-message-ml-1159414479"></a>
 ### readCStringLine
@@ -220,7 +237,7 @@ function readCStringLine(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L240)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L245)
 
 <a id="function-function-mq3-qcommon-message-readdata-function-readdata-msg-length-src-mq3-qcommon-message-ml-1624599635"></a>
 ### readData
@@ -235,7 +252,7 @@ function readData(msg, length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L253)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L258)
 
 <a id="function-function-mq3-qcommon-message-readfloat-function-readfloat-msg-src-mq3-qcommon-message-ml-115238527"></a>
 ### readFloat
@@ -249,7 +266,7 @@ function readFloat(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L220)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L225)
 
 <a id="function-function-mq3-qcommon-message-readi16-function-readi16-msg-src-mq3-qcommon-message-ml-548491275"></a>
 ### readI16
@@ -263,7 +280,7 @@ function readI16(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L208)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L213)
 
 <a id="function-function-mq3-qcommon-message-readi32-function-readi32-msg-src-mq3-qcommon-message-ml-1118255319"></a>
 ### readI32
@@ -277,7 +294,7 @@ function readI32(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L214)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L219)
 
 <a id="function-function-mq3-qcommon-message-readi8-function-readi8-msg-src-mq3-qcommon-message-ml-449279623"></a>
 ### readI8
@@ -291,7 +308,7 @@ function readI8(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L196)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L201)
 
 <a id="function-function-mq3-qcommon-message-readtext-function-readtext-msg-lineonly-src-mq3-qcommon-message-ml-882163815"></a>
 ### readText
@@ -306,7 +323,7 @@ function readText(msg, lineOnly)
 | `lineOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L228)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L233)
 
 <a id="function-function-mq3-qcommon-message-readu8-function-readu8-msg-src-mq3-qcommon-message-ml-93008623"></a>
 ### readU8
@@ -320,7 +337,7 @@ function readU8(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L202)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L207)
 
 <a id="function-function-mq3-qcommon-message-writeangle-function-writeangle-msg-value-src-mq3-qcommon-message-ml-1944940614"></a>
 ### writeAngle
@@ -335,7 +352,7 @@ function writeAngle(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L117)
 
 <a id="function-function-mq3-qcommon-message-writeangle16-function-writeangle16-msg-value-src-mq3-qcommon-message-ml-1763776446"></a>
 ### writeAngle16
@@ -350,7 +367,7 @@ function writeAngle16(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L113)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L118)
 
 <a id="function-function-mq3-qcommon-message-writebigstring-function-writebigstring-msg-text-src-mq3-qcommon-message-ml-785629708"></a>
 ### writeBigString
@@ -365,7 +382,7 @@ function writeBigString(msg, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L136)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L141)
 
 <a id="function-function-mq3-qcommon-message-writebits-function-writebits-msg-value-bits-src-mq3-qcommon-message-ml-1400369584"></a>
 ### writeBits
@@ -381,7 +398,7 @@ function writeBits(msg, value, bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L63)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L68)
 
 <a id="function-function-mq3-qcommon-message-writebyte-function-writebyte-msg-value-src-mq3-qcommon-message-ml-254135048"></a>
 ### writeByte
@@ -396,7 +413,7 @@ function writeByte(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L108)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L113)
 
 <a id="function-function-mq3-qcommon-message-writechar-function-writechar-msg-value-src-mq3-qcommon-message-ml-1085344504"></a>
 ### writeChar
@@ -411,7 +428,7 @@ function writeChar(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L107)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L112)
 
 <a id="function-function-mq3-qcommon-message-writedata-function-writedata-msg-data-src-mq3-qcommon-message-ml-1946625525"></a>
 ### writeData
@@ -426,7 +443,7 @@ function writeData(msg, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L115)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L120)
 
 <a id="function-function-mq3-qcommon-message-writefloat-function-writefloat-msg-value-src-mq3-qcommon-message-ml-566884686"></a>
 ### writeFloat
@@ -441,7 +458,7 @@ function writeFloat(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L116)
 
 <a id="function-function-mq3-qcommon-message-writelong-function-writelong-msg-value-src-mq3-qcommon-message-ml-1887971848"></a>
 ### writeLong
@@ -456,7 +473,7 @@ function writeLong(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L110)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L115)
 
 <a id="function-function-mq3-qcommon-message-writeshort-function-writeshort-msg-value-src-mq3-qcommon-message-ml-2019316306"></a>
 ### writeShort
@@ -471,7 +488,7 @@ function writeShort(msg, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L109)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L114)
 
 <a id="function-function-mq3-qcommon-message-writestring-function-writestring-msg-text-src-mq3-qcommon-message-ml-259781476"></a>
 ### writeString
@@ -486,4 +503,4 @@ function writeString(msg, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L120)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message.ml#L125)

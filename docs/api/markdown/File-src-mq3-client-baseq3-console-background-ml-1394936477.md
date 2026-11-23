@@ -31,7 +31,7 @@ function draw(media, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L51)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L53)
 
 <a id="function-function-mq3-client-baseq3-console-background-drawlayer-function-drawlayer-layer-width-height-now-src-mq3-client-baseq3-console-background-ml-1499912194"></a>
 ### drawLayer
@@ -48,7 +48,7 @@ function drawLayer(layer, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L42)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L44)
 
 <a id="function-function-mq3-client-baseq3-console-background-fail-function-fail-message-src-mq3-client-baseq3-console-background-ml-1320637069"></a>
 ### fail
@@ -94,7 +94,7 @@ function point(x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L41)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L43)
 
 - [mq3.client.baseq3_console_background.Point](Type-mq3-client-baseq3-console-background-point-1935872503.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-release-function-release-media-src-mq3-client-baseq3-console-background-ml-1858720838"></a>
@@ -109,7 +109,7 @@ function release(media)
 | `media` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L42)
 
 <a id="constant-constant-mq3-client-baseq3-console-background-required-textures-const-required-textures-2-src-mq3-client-baseq3-console-background-ml-2127943845"></a>
 ### REQUIRED_TEXTURES
@@ -143,4 +143,4 @@ function upload(media)
 | `media` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L37)

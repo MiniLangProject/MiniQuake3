@@ -22,13 +22,15 @@ Reachable from entry: **yes**
 function evaluate(tr, atTime)
 ```
 
+Every branch returns. A dense switch here emits unresolved jump-table data when this package is imported by the published MiniLang 1.3.9 compiler.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `tr` | `dynamic` | — |  |
 | `atTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L21)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L23)
 
 <a id="function-function-mq3-game-trajectory-evaluatedelta-function-evaluatedelta-tr-attime-src-mq3-game-trajectory-ml-332497278"></a>
 ### evaluateDelta
@@ -43,7 +45,7 @@ function evaluateDelta(tr, atTime)
 | `atTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L50)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L49)
 
 <a id="function-function-mq3-game-trajectory-phaseangle-function-phaseangle-tr-attime-src-mq3-game-trajectory-ml-959890316"></a>
 ### phaseAngle
@@ -74,6 +76,6 @@ function playerTouchesItem(ps, trajectory, atTime)
 | `atTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L75)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L71)
 
 - [mq3.game.trajectory.Trajectory](Type-mq3-game-trajectory-trajectory-1628072410.md) — struct

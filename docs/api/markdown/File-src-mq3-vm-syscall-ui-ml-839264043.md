@@ -30,6 +30,24 @@ function arg(vm, base, index)
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L24)
 
+<a id="function-function-mq3-vm-syscall-ui-bindingoutput-function-bindingoutput-vm-base-host-src-mq3-vm-syscall-ui-ml-1714533564"></a>
+### bindingOutput
+
+```ml
+function bindingOutput(vm, base, host)
+```
+
+cl_ui.c Key_GetBindingBuf explicitly converts an unbound key's NULL Key_GetBinding result into an empty, NUL-terminated output buffer. Keep nullable key storage: Key_GetKey must not match never-bound keys.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `vm` | `dynamic` | — |  |
+| `base` | `dynamic` | — |  |
+| `host` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L48)
+
 <a id="function-function-mq3-vm-syscall-ui-callback-function-callback-host-src-mq3-vm-syscall-ui-ml-1055542084"></a>
 ### callback
 
@@ -42,7 +60,7 @@ function callback(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L174)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L194)
 
 <a id="constant-constant-mq3-vm-syscall-ui-client-state-size-const-client-state-size-3084-src-mq3-vm-syscall-ui-ml-364908230"></a>
 ### CLIENT_STATE_SIZE
@@ -79,7 +97,7 @@ function dispatch(host, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L167)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L187)
 
 <a id="function-function-mq3-vm-syscall-ui-dispatchspecific-function-dispatchspecific-vm-base-host-op-src-mq3-vm-syscall-ui-ml-876277307"></a>
 ### dispatchSpecific
@@ -96,7 +114,7 @@ function dispatchSpecific(vm, base, host, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L116)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L136)
 
 <a id="function-function-mq3-vm-syscall-ui-drawstretchpic-function-drawstretchpic-vm-base-host-src-mq3-vm-syscall-ui-ml-1614569712"></a>
 ### drawStretchPic
@@ -112,7 +130,7 @@ function drawStretchPic(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L60)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L69)
 
 <a id="function-function-mq3-vm-syscall-ui-fixedoutput-function-fixedoutput-vm-address-data-size-label-src-mq3-vm-syscall-ui-ml-176404268"></a>
 ### fixedOutput
@@ -146,7 +164,7 @@ function getClientState(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L67)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L76)
 
 <a id="function-function-mq3-vm-syscall-ui-getconfigstring-function-getconfigstring-vm-base-host-src-mq3-vm-syscall-ui-ml-1932400354"></a>
 ### getConfigString
@@ -162,7 +180,7 @@ function getConfigString(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L72)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L81)
 
 <a id="function-function-mq3-vm-syscall-ui-getfilelist-function-getfilelist-vm-base-host-src-mq3-vm-syscall-ui-ml-1481949456"></a>
 ### getFileList
@@ -178,7 +196,7 @@ function getFileList(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L87)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L96)
 
 <a id="function-function-mq3-vm-syscall-ui-getping-function-getping-vm-base-host-src-mq3-vm-syscall-ui-ml-1060258476"></a>
 ### getPing
@@ -194,7 +212,7 @@ function getPing(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L79)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L88)
 
 <a id="constant-constant-mq3-vm-syscall-ui-glconfig-size-const-glconfig-size-11332-src-mq3-vm-syscall-ui-ml-1691936003"></a>
 ### GLCONFIG_SIZE
@@ -244,7 +262,7 @@ function lanString(vm, base, host, callback, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L102)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L122)
 
 <a id="function-function-mq3-vm-syscall-ui-output-function-output-vm-address-capacity-text-label-src-mq3-vm-syscall-ui-ml-1566044108"></a>
 ### output
@@ -307,7 +325,7 @@ function serverStatus(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L108)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L128)
 
 <a id="function-function-mq3-vm-syscall-ui-services-function-services-shared-context-src-mq3-vm-syscall-ui-ml-1541956680"></a>
 ### services
@@ -339,7 +357,7 @@ function setBinding(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L45)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L54)
 
 <a id="function-function-mq3-vm-syscall-ui-setcolor-function-setcolor-vm-base-host-src-mq3-vm-syscall-ui-ml-808792588"></a>
 ### setColor
@@ -355,7 +373,7 @@ function setColor(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L50)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L59)
 
 <a id="function-function-mq3-vm-syscall-ui-stringoutput-function-stringoutput-vm-base-host-callback-name-src-mq3-vm-syscall-ui-ml-1827977940"></a>
 ### stringOutput

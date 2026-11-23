@@ -4,7 +4,7 @@
 
 Package: [`mq3.renderer.tr_init`](Package-mq3-renderer-tr-init-98503614.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Imports
 

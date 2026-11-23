@@ -12,10 +12,13 @@ Reachable from entry: **yes**
 - `mq3/compat/transcendental.ml` as `trans` → [src/mq3/compat/transcendental.ml](File-src-mq3-compat-transcendental-ml-1855454184.md)
 - `mq3/format/pk3.ml` as `pk3` → [src/mq3/format/pk3.ml](File-src-mq3-format-pk3-ml-2106134675.md)
 - `mq3/platform/playable_jpeg.ml` as `jpeg` → [src/mq3/platform/playable_jpeg.ml](File-src-mq3-platform-playable-jpeg-ml-1311517486.md)
+- `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/shader_index.ml` as `shaderIndex` → [src/mq3/renderer/shader_index.ml](File-src-mq3-renderer-shader-index-ml-492021135.md)
 - `mq3/renderer/shader_parser.ml` as `shaderParser` → [src/mq3/renderer/shader_parser.ml](File-src-mq3-renderer-shader-parser-ml-2114769074.md)
 - `mq3/renderer/tga.ml` as `tga` → [src/mq3/renderer/tga.ml](File-src-mq3-renderer-tga-ml-193567265.md)
 - `mq3/shared/parser.ml` as `tokenParser` → [src/mq3/shared/parser.ml](File-src-mq3-shared-parser-ml-1977832534.md)
+- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
 - `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
 - `std/string_builder.ml` as `stringBuilder` → `../MiniLangCompilerML/std/string_builder.ml` — external dependency
 
@@ -29,7 +32,7 @@ const ALPHA_TEST_GE128 = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L36)
 
 <a id="constant-constant-mq3-renderer-playable-materials-alpha-test-gt0-const-alpha-test-gt0-1-src-mq3-renderer-playable-materials-ml-1738260136"></a>
 ### ALPHA_TEST_GT0
@@ -39,7 +42,7 @@ const ALPHA_TEST_GT0 = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L30)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L34)
 
 <a id="constant-constant-mq3-renderer-playable-materials-alpha-test-lt128-const-alpha-test-lt128-2-src-mq3-renderer-playable-materials-ml-1409525851"></a>
 ### ALPHA_TEST_LT128
@@ -49,7 +52,7 @@ const ALPHA_TEST_LT128 = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L31)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L35)
 
 <a id="constant-constant-mq3-renderer-playable-materials-alpha-test-none-const-alpha-test-none-0-src-mq3-renderer-playable-materials-ml-807383069"></a>
 ### ALPHA_TEST_NONE
@@ -59,7 +62,7 @@ const ALPHA_TEST_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L29)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L33)
 
 <a id="constant-constant-mq3-renderer-playable-materials-base-texture-first-slot-const-base-texture-first-slot-64-src-mq3-renderer-playable-materials-ml-841813383"></a>
 ### BASE_TEXTURE_FIRST_SLOT
@@ -69,7 +72,7 @@ const BASE_TEXTURE_FIRST_SLOT = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L20)
 
 <a id="constant-constant-mq3-renderer-playable-materials-base-texture-slot-count-const-base-texture-slot-count-256-src-mq3-renderer-playable-materials-ml-429894598"></a>
 ### BASE_TEXTURE_SLOT_COUNT
@@ -79,7 +82,7 @@ const BASE_TEXTURE_SLOT_COUNT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L18)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L21)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-add-const-blend-add-2-src-mq3-renderer-playable-materials-ml-702441923"></a>
 ### BLEND_ADD
@@ -89,7 +92,7 @@ const BLEND_ADD = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L23)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L27)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-alpha-const-blend-alpha-1-src-mq3-renderer-playable-materials-ml-1954974232"></a>
 ### BLEND_ALPHA
@@ -99,7 +102,7 @@ const BLEND_ALPHA = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L22)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L26)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-dst-color-one-minus-dst-alpha-const-blend-dst-color-one-minus-dst-alpha-4-src-mq3-renderer-playable-materials-ml-953270237"></a>
 ### BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA
@@ -109,7 +112,7 @@ const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L29)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-filter-const-blend-filter-3-src-mq3-renderer-playable-materials-ml-230384704"></a>
 ### BLEND_FILTER
@@ -119,7 +122,7 @@ const BLEND_FILTER = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L28)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-gl-state-const-blend-gl-state-256-src-mq3-renderer-playable-materials-ml-1670682390"></a>
 ### BLEND_GL_STATE
@@ -129,7 +132,7 @@ const BLEND_GL_STATE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L28)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L32)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-mark-const-blend-mark-6-src-mq3-renderer-playable-materials-ml-1187377611"></a>
 ### BLEND_MARK
@@ -139,7 +142,7 @@ const BLEND_MARK = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L26)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L30)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-opaque-const-blend-opaque-0-src-mq3-renderer-playable-materials-ml-1964183937"></a>
 ### BLEND_OPAQUE
@@ -149,7 +152,7 @@ const BLEND_OPAQUE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L21)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L25)
 
 <a id="constant-constant-mq3-renderer-playable-materials-blend-premultiplied-alpha-const-blend-premultiplied-alpha-7-src-mq3-renderer-playable-materials-ml-1004335126"></a>
 ### BLEND_PREMULTIPLIED_ALPHA
@@ -159,7 +162,7 @@ const BLEND_PREMULTIPLIED_ALPHA = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L31)
 
 <a id="function-function-mq3-renderer-playable-materials-buildscriptindex-function-buildscriptindex-archive-src-mq3-renderer-playable-materials-ml-697053838"></a>
 ### buildScriptIndex
@@ -173,7 +176,23 @@ function buildScriptIndex(archive)
 | `archive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L69)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L94)
+
+<a id="function-function-mq3-renderer-playable-materials-cacheimage-function-cacheimage-cache-name-image-src-mq3-renderer-playable-materials-ml-900258650"></a>
+### cacheImage
+
+```ml
+function cacheImage(cache, name, image)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cache` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+| `image` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L46)
 
 <a id="function-function-mq3-renderer-playable-materials-candidates-function-candidates-name-src-mq3-renderer-playable-materials-ml-1671793603"></a>
 ### candidates
@@ -187,7 +206,7 @@ function candidates(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L61)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L86)
 
 - [mq3.renderer.playable_materials.Catalog](Type-mq3-renderer-playable-materials-catalog-111238727.md) — struct
 <a id="function-function-mq3-renderer-playable-materials-colorbyte-function-colorbyte-value-src-mq3-renderer-playable-materials-ml-261469847"></a>
@@ -202,7 +221,7 @@ function colorByte(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L306)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L346)
 
 <a id="function-function-mq3-renderer-playable-materials-containsindex-function-containsindex-materials-index-src-mq3-renderer-playable-materials-ml-342281844"></a>
 ### containsIndex
@@ -217,7 +236,7 @@ function containsIndex(materials, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L137)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L172)
 
 <a id="function-function-mq3-renderer-playable-materials-decodeasset-function-decodeasset-name-data-src-mq3-renderer-playable-materials-ml-53274047"></a>
 ### decodeAsset
@@ -232,7 +251,7 @@ function decodeAsset(name, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L114)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L139)
 
 <a id="function-function-mq3-renderer-playable-materials-directruntimestage-function-directruntimestage-archive-name-nextslot-endslot-src-mq3-renderer-playable-materials-ml-1133168049"></a>
 ### directRuntimeStage
@@ -249,7 +268,25 @@ function directRuntimeStage(archive, name, nextSlot, endSlot)
 | `endSlot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L216)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L259)
+
+<a id="function-function-mq3-renderer-playable-materials-directruntimestagecached-function-directruntimestagecached-archive-name-nextslot-endslot-cache-src-mq3-renderer-playable-materials-ml-2075684481"></a>
+### directRuntimeStageCached
+
+```ml
+function directRuntimeStageCached(archive, name, nextSlot, endSlot, cache)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `archive` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+| `nextSlot` | `dynamic` | — |  |
+| `endSlot` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L254)
 
 <a id="function-function-mq3-renderer-playable-materials-endsignorecase-function-endsignorecase-value-suffix-src-mq3-renderer-playable-materials-ml-605590476"></a>
 ### endsIgnoreCase
@@ -264,7 +301,7 @@ function endsIgnoreCase(value, suffix)
 | `suffix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L57)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L82)
 
 <a id="function-function-mq3-renderer-playable-materials-entitymilliseconds-function-entitymilliseconds-nowmilliseconds-shadertime-src-mq3-renderer-playable-materials-ml-297837354"></a>
 ### entityMilliseconds
@@ -279,7 +316,7 @@ function entityMilliseconds(nowMilliseconds, shaderTime)
 | `shaderTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L269)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L309)
 
 <a id="function-function-mq3-renderer-playable-materials-environmentuv-function-environmentuv-position-normal-vieworigin-src-mq3-renderer-playable-materials-ml-771363215"></a>
 ### environmentUV
@@ -297,7 +334,7 @@ RB_CalcEnvironmentTexCoords: reflect the normalized eye vector around the BSP ve
 | `viewOrigin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L421)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L461)
 
 <a id="function-function-mq3-renderer-playable-materials-fail-function-fail-message-src-mq3-renderer-playable-materials-ml-1900783979"></a>
 ### fail
@@ -311,7 +348,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L65)
 
 <a id="function-function-mq3-renderer-playable-materials-floornumber-function-floornumber-value-src-mq3-renderer-playable-materials-ml-1695661163"></a>
 ### floorNumber
@@ -325,7 +362,7 @@ function floorNumber(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L253)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L293)
 
 <a id="function-function-mq3-renderer-playable-materials-fogadjustment-function-fogadjustment-firststage-stage-src-mq3-renderer-playable-materials-ml-1404336916"></a>
 ### fogAdjustment
@@ -342,7 +379,7 @@ FinishShader assigns fog modulation only when the shader's first stage is blende
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L314)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L354)
 
 <a id="function-function-mq3-renderer-playable-materials-frameindex-function-frameindex-stage-nowmilliseconds-src-mq3-renderer-playable-materials-ml-141691288"></a>
 ### frameIndex
@@ -357,7 +394,7 @@ function frameIndex(stage, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L254)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L294)
 
 <a id="function-function-mq3-renderer-playable-materials-frameindexentity-function-frameindexentity-stage-nowmilliseconds-shadertime-src-mq3-renderer-playable-materials-ml-77414116"></a>
 ### frameIndexEntity
@@ -373,9 +410,24 @@ function frameIndexEntity(stage, nowMilliseconds, shaderTime)
 | `shaderTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L270)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L310)
 
 - [mq3.renderer.playable_materials.Image](Type-mq3-renderer-playable-materials-image-702988069.md) — struct
+<a id="function-function-mq3-renderer-playable-materials-imagecache-function-imagecache-archive-src-mq3-renderer-playable-materials-ml-1700693986"></a>
+### imageCache
+
+```ml
+function imageCache(archive)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `archive` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L45)
+
+- [mq3.renderer.playable_materials.ImageCache](Type-mq3-renderer-playable-materials-imagecache-1412327461.md) — struct
 <a id="function-function-mq3-renderer-playable-materials-isvideostage-function-isvideostage-stage-src-mq3-renderer-playable-materials-ml-895741702"></a>
 ### isVideoStage
 
@@ -388,7 +440,7 @@ function isVideoStage(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L210)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L248)
 
 <a id="function-function-mq3-renderer-playable-materials-lightmapruntimestage-function-lightmapruntimestage-stage-src-mq3-renderer-playable-materials-ml-1517081246"></a>
 ### lightmapRuntimeStage
@@ -402,7 +454,7 @@ function lightmapRuntimeStage(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L212)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L250)
 
 <a id="function-function-mq3-renderer-playable-materials-load-function-load-archive-map-maxmaterials-firstslot-src-mq3-renderer-playable-materials-ml-2086909302"></a>
 ### load
@@ -419,7 +471,7 @@ function load(archive, map, maxMaterials, firstSlot)
 | `firstSlot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L455)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L494)
 
 <a id="function-function-mq3-renderer-playable-materials-loadimage-function-loadimage-archive-name-src-mq3-renderer-playable-materials-ml-39310699"></a>
 ### loadImage
@@ -434,7 +486,23 @@ function loadImage(archive, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L126)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L170)
+
+<a id="function-function-mq3-renderer-playable-materials-loadimagecached-function-loadimagecached-archive-name-cache-src-mq3-renderer-playable-materials-ml-155959691"></a>
+### loadImageCached
+
+```ml
+function loadImageCached(archive, name, cache)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `archive` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L151)
 
 <a id="function-function-mq3-renderer-playable-materials-loadindexed-function-loadindexed-archive-map-maxmaterials-firstslot-index-scriptcount-src-mq3-renderer-playable-materials-ml-345043106"></a>
 ### loadIndexed
@@ -453,7 +521,7 @@ function loadIndexed(archive, map, maxMaterials, firstSlot, index, scriptCount)
 | `scriptCount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L430)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L470)
 
 <a id="function-function-mq3-renderer-playable-materials-loadruntimestage-function-loadruntimestage-archive-stage-nextslot-endslot-src-mq3-renderer-playable-materials-ml-1246094182"></a>
 ### loadRuntimeStage
@@ -470,7 +538,25 @@ function loadRuntimeStage(archive, stage, nextSlot, endSlot)
 | `endSlot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L187)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L241)
+
+<a id="function-function-mq3-renderer-playable-materials-loadruntimestagecached-function-loadruntimestagecached-archive-stage-nextslot-endslot-cache-src-mq3-renderer-playable-materials-ml-1860572392"></a>
+### loadRuntimeStageCached
+
+```ml
+function loadRuntimeStageCached(archive, stage, nextSlot, endSlot, cache)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `archive` | `dynamic` | — |  |
+| `stage` | `dynamic` | — |  |
+| `nextSlot` | `dynamic` | — |  |
+| `endSlot` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L222)
 
 <a id="function-function-mq3-renderer-playable-materials-mappedimagename-function-mappedimagename-index-name-src-mq3-renderer-playable-materials-ml-525897581"></a>
 ### mappedImageName
@@ -487,7 +573,7 @@ Select the first actual image of a shader stage. This intentionally ignores blen
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L113)
 
 - [mq3.renderer.playable_materials.Material](Type-mq3-renderer-playable-materials-material-621328033.md) — struct
 <a id="constant-constant-mq3-renderer-playable-materials-max-animation-frames-const-max-animation-frames-8-src-mq3-renderer-playable-materials-ml-1693500259"></a>
@@ -498,7 +584,17 @@ const MAX_ANIMATION_FRAMES = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L20)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L23)
+
+<a id="constant-constant-mq3-renderer-playable-materials-max-cached-images-const-max-cached-images-2048-src-mq3-renderer-playable-materials-ml-1494801835"></a>
+### MAX_CACHED_IMAGES
+
+```ml
+const MAX_CACHED_IMAGES = 2048
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L24)
 
 <a id="constant-constant-mq3-renderer-playable-materials-max-runtime-stages-const-max-runtime-stages-8-src-mq3-renderer-playable-materials-ml-1733655469"></a>
 ### MAX_RUNTIME_STAGES
@@ -508,7 +604,7 @@ const MAX_RUNTIME_STAGES = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L22)
 
 <a id="function-function-mq3-renderer-playable-materials-modulateforfog-function-modulateforfog-color-density-adjustment-src-mq3-renderer-playable-materials-ml-1684029290"></a>
 ### modulateForFog
@@ -524,7 +620,7 @@ function modulateForFog(color, density, adjustment)
 | `adjustment` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L321)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L361)
 
 <a id="function-function-mq3-renderer-playable-materials-resolvedshadersort-function-resolvedshadersort-shader-src-mq3-renderer-playable-materials-ml-1531405165"></a>
 ### resolvedShaderSort
@@ -538,7 +634,7 @@ function resolvedShaderSort(shader)
 | `shader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L222)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L261)
 
 - [mq3.renderer.playable_materials.RuntimeStage](Type-mq3-renderer-playable-materials-runtimestage-1687637930.md) — struct
 <a id="function-function-mq3-renderer-playable-materials-runtimestages-function-runtimestages-archive-index-name-nextslot-endslot-src-mq3-renderer-playable-materials-ml-815457943"></a>
@@ -557,7 +653,41 @@ function runtimeStages(archive, index, name, nextSlot, endSlot)
 | `endSlot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L230)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L291)
+
+<a id="function-function-mq3-renderer-playable-materials-runtimestagescached-function-runtimestagescached-archive-index-name-nextslot-endslot-cache-src-mq3-renderer-playable-materials-ml-1620140435"></a>
+### runtimeStagesCached
+
+```ml
+function runtimeStagesCached(archive, index, name, nextSlot, endSlot, cache)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `archive` | `dynamic` | — |  |
+| `index` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+| `nextSlot` | `dynamic` | — |  |
+| `endSlot` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L269)
+
+<a id="function-function-mq3-renderer-playable-materials-seedimagecachefromcatalog-function-seedimagecachefromcatalog-cache-catalog-src-mq3-renderer-playable-materials-ml-1224769511"></a>
+### seedImageCacheFromCatalog
+
+```ml
+function seedImageCacheFromCatalog(cache, catalog)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cache` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L52)
 
 <a id="constant-constant-mq3-renderer-playable-materials-shader-name-bytes-const-shader-name-bytes-64-src-mq3-renderer-playable-materials-ml-1842096759"></a>
 ### SHADER_NAME_BYTES
@@ -567,7 +697,7 @@ const SHADER_NAME_BYTES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L16)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L19)
 
 <a id="constant-constant-mq3-renderer-playable-materials-shader-stride-const-shader-stride-72-src-mq3-renderer-playable-materials-ml-2139626030"></a>
 ### SHADER_STRIDE
@@ -577,13 +707,13 @@ const SHADER_STRIDE = 72
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L15)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L18)
 
-<a id="function-function-mq3-renderer-playable-materials-shadermilliseconds-function-shadermilliseconds-nowmilliseconds-entityshadertime-timeoffset-clamptime-src-mq3-renderer-playable-materials-ml-2098724655"></a>
+<a id="function-function-mq3-renderer-playable-materials-shadermilliseconds-inline-function-shadermilliseconds-nowmilliseconds-entityshadertime-timeoffset-clamptime-returns-float-src-mq3-renderer-playable-materials-ml-1408693057"></a>
 ### shaderMilliseconds
 
 ```ml
-function shaderMilliseconds(nowMilliseconds, entityShaderTime, timeOffset, clampTime)
+inline function shaderMilliseconds(nowMilliseconds, entityShaderTime, timeOffset, clampTime) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -594,7 +724,7 @@ function shaderMilliseconds(nowMilliseconds, entityShaderTime, timeOffset, clamp
 | `clampTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L268)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L308)
 
 <a id="function-function-mq3-renderer-playable-materials-shadername-function-shadername-map-index-src-mq3-renderer-playable-materials-ml-1273478062"></a>
 ### shaderName
@@ -609,13 +739,13 @@ function shaderName(map, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L68)
 
-<a id="function-function-mq3-renderer-playable-materials-shaderseconds-function-shaderseconds-nowmilliseconds-entityshadertime-timeoffset-clamptime-src-mq3-renderer-playable-materials-ml-1695823675"></a>
+<a id="function-function-mq3-renderer-playable-materials-shaderseconds-function-shaderseconds-nowmilliseconds-entityshadertime-timeoffset-clamptime-returns-float-src-mq3-renderer-playable-materials-ml-1060998412"></a>
 ### shaderSeconds
 
 ```ml
-function shaderSeconds(nowMilliseconds, entityShaderTime, timeOffset, clampTime)
+function shaderSeconds(nowMilliseconds, entityShaderTime, timeOffset, clampTime) returns float
 ```
 
 tr_backend.c subtracts refEntity_t.shaderTime before every shader-time consumer runs. Keep that conversion in one place so animated images, waves, deforms and tcMods all observe the same per-entity clock.
@@ -628,7 +758,7 @@ tr_backend.c subtracts refEntity_t.shaderTime before every shader-time consumer 
 | `clampTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L263)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L303)
 
 <a id="function-function-mq3-renderer-playable-materials-shadersurfaceflags-function-shadersurfaceflags-map-index-src-mq3-renderer-playable-materials-ml-1299998890"></a>
 ### shaderSurfaceFlags
@@ -643,7 +773,7 @@ function shaderSurfaceFlags(map, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L51)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L76)
 
 <a id="function-function-mq3-renderer-playable-materials-slotat-function-slotat-stage-nowmilliseconds-src-mq3-renderer-playable-materials-ml-744687280"></a>
 ### slotAt
@@ -658,7 +788,7 @@ function slotAt(stage, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L259)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L299)
 
 <a id="function-function-mq3-renderer-playable-materials-slotatentity-function-slotatentity-stage-nowmilliseconds-shadertime-src-mq3-renderer-playable-materials-ml-1088725080"></a>
 ### slotAtEntity
@@ -674,7 +804,7 @@ function slotAtEntity(stage, nowMilliseconds, shaderTime)
 | `shaderTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L271)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L311)
 
 <a id="function-function-mq3-renderer-playable-materials-slotfor-function-slotfor-catalog-textureindex-src-mq3-renderer-playable-materials-ml-1566447832"></a>
 ### slotFor
@@ -689,7 +819,7 @@ function slotFor(catalog, textureIndex)
 | `textureIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L460)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L499)
 
 <a id="function-function-mq3-renderer-playable-materials-stagealphatest-function-stagealphatest-stage-src-mq3-renderer-playable-materials-ml-1967274078"></a>
 ### stageAlphaTest
@@ -703,7 +833,7 @@ function stageAlphaTest(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L160)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L195)
 
 <a id="function-function-mq3-renderer-playable-materials-stageblend-function-stageblend-stage-src-mq3-renderer-playable-materials-ml-631919634"></a>
 ### stageBlend
@@ -717,7 +847,7 @@ function stageBlend(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L142)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L177)
 
 <a id="function-function-mq3-renderer-playable-materials-stageclamp-function-stageclamp-stage-src-mq3-renderer-playable-materials-ml-1441599178"></a>
 ### stageClamp
@@ -733,7 +863,7 @@ RE_UploadCinematic configures scratch images with GL_CLAMP too.
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L158)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L193)
 
 <a id="function-function-mq3-renderer-playable-materials-stagecolor-function-stagecolor-stage-vertexcolor-nowmilliseconds-src-mq3-renderer-playable-materials-ml-2120936299"></a>
 ### stageColor
@@ -749,7 +879,7 @@ function stageColor(stage, vertexColor, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L358)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L398)
 
 <a id="function-function-mq3-renderer-playable-materials-stagecolorat-function-stagecolorat-stage-vertexcolor-position-vieworigin-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1539928191"></a>
 ### stageColorAt
@@ -767,7 +897,7 @@ function stageColorAt(stage, vertexColor, position, viewOrigin, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L373)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L413)
 
 <a id="function-function-mq3-renderer-playable-materials-stagecoloratentity-function-stagecoloratentity-stage-vertexcolor-entitycolor-position-vieworigin-nowmilliseconds-src-mq3-renderer-playable-materials-ml-266540735"></a>
 ### stageColorAtEntity
@@ -788,7 +918,7 @@ AGEN_PORTAL from tr_shade.c fades each deformed vertex according to its camera d
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L363)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L403)
 
 <a id="function-function-mq3-renderer-playable-materials-stagecolorentity-function-stagecolorentity-stage-vertexcolor-entitycolor-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1351007911"></a>
 ### stageColorEntity
@@ -805,7 +935,7 @@ function stageColorEntity(stage, vertexColor, entityColor, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L357)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L397)
 
 <a id="function-function-mq3-renderer-playable-materials-stagecolorentityidentity-function-stagecolorentityidentity-stage-vertexcolor-entitycolor-nowmilliseconds-identitylight-src-mq3-renderer-playable-materials-ml-1402088967"></a>
 ### stageColorEntityIdentity
@@ -825,7 +955,7 @@ Complete ComputeColors ordering from tr_shade.c. RGB generation may seed alpha, 
 | `identityLight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L332)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L372)
 
 <a id="function-function-mq3-renderer-playable-materials-stagelight-function-stagelight-stage-vertexlight-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1153776666"></a>
 ### stageLight
@@ -841,7 +971,7 @@ function stageLight(stage, vertexLight, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L299)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L339)
 
 <a id="function-function-mq3-renderer-playable-materials-stagemods-function-stagemods-stage-src-mq3-renderer-playable-materials-ml-723517532"></a>
 ### stageMods
@@ -855,7 +985,7 @@ function stageMods(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L167)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L202)
 
 <a id="function-function-mq3-renderer-playable-materials-stagetcgen-function-stagetcgen-stage-src-mq3-renderer-playable-materials-ml-1398630362"></a>
 ### stageTcGen
@@ -869,7 +999,7 @@ function stageTcGen(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L156)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L191)
 
 <a id="function-function-mq3-renderer-playable-materials-transformuv-function-transformuv-stage-uv-nowmilliseconds-src-mq3-renderer-playable-materials-ml-851239715"></a>
 ### transformUV
@@ -885,7 +1015,7 @@ function transformUV(stage, uv, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L415)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L455)
 
 <a id="function-function-mq3-renderer-playable-materials-transformuvat-function-transformuvat-stage-uv-position-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1219308508"></a>
 ### transformUVAt
@@ -902,7 +1032,7 @@ function transformUVAt(stage, uv, position, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L411)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L451)
 
 <a id="function-function-mq3-renderer-playable-materials-transformuventityat-function-transformuventityat-stage-uv-position-entitytexcoord-shadertime-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1092899805"></a>
 ### transformUVEntityAt
@@ -923,7 +1053,7 @@ Baseq3 applies tcMods in declaration order. Turbulence additionally uses the unm
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L390)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L430)
 
 <a id="function-function-mq3-renderer-playable-materials-turbulentoffset-function-turbulentoffset-coordinate-mod-nowmilliseconds-src-mq3-renderer-playable-materials-ml-662379912"></a>
 ### turbulentOffset
@@ -939,7 +1069,7 @@ function turbulentOffset(coordinate, mod, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L381)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L421)
 
 <a id="function-function-mq3-renderer-playable-materials-usablestage-function-usablestage-stage-src-mq3-renderer-playable-materials-ml-1582002526"></a>
 ### usableStage
@@ -953,7 +1083,7 @@ function usableStage(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L182)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L217)
 
 - [mq3.renderer.playable_materials.UvMod](Type-mq3-renderer-playable-materials-uvmod-1845582321.md) — struct
 <a id="function-function-mq3-renderer-playable-materials-validmap-function-validmap-map-src-mq3-renderer-playable-materials-ml-456218678"></a>
@@ -968,7 +1098,7 @@ function validMap(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L66)
 
 <a id="function-function-mq3-renderer-playable-materials-vectoruv-function-vectoruv-stage-position-src-mq3-renderer-playable-materials-ml-555134361"></a>
 ### vectorUV
@@ -983,7 +1113,7 @@ function vectorUV(stage, position)
 | `position` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L375)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L415)
 
 <a id="function-function-mq3-renderer-playable-materials-videoname-function-videoname-stage-src-mq3-renderer-playable-materials-ml-331812898"></a>
 ### videoName
@@ -997,7 +1127,7 @@ function videoName(stage)
 | `stage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L205)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L243)
 
 <a id="function-function-mq3-renderer-playable-materials-wavesample-function-wavesample-wave-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1834153989"></a>
 ### waveSample
@@ -1012,7 +1142,7 @@ function waveSample(wave, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L290)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L330)
 
 <a id="function-function-mq3-renderer-playable-materials-wavesampleoffset-function-wavesampleoffset-wave-nowmilliseconds-phaseoffset-src-mq3-renderer-playable-materials-ml-1436295043"></a>
 ### waveSampleOffset
@@ -1028,7 +1158,7 @@ function waveSampleOffset(wave, nowMilliseconds, phaseOffset)
 | `phaseOffset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L291)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L331)
 
 <a id="function-function-mq3-renderer-playable-materials-wavesignal-function-wavesignal-wave-nowmilliseconds-src-mq3-renderer-playable-materials-ml-28856749"></a>
 ### waveSignal
@@ -1043,7 +1173,7 @@ function waveSignal(wave, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L273)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L313)
 
 <a id="function-function-mq3-renderer-playable-materials-wavevalue-function-wavevalue-wave-nowmilliseconds-src-mq3-renderer-playable-materials-ml-1671303997"></a>
 ### waveValue
@@ -1058,4 +1188,4 @@ function waveValue(wave, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L295)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L335)

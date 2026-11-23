@@ -4,7 +4,7 @@
 
 Package: [`mq3.game.bg_public`](Package-mq3-game-bg-public-1889719263.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Declarations
 

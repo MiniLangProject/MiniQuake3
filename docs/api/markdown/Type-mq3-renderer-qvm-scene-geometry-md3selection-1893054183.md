@@ -10,7 +10,7 @@ struct Md3Selection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ cull
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L41)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-md3selection-frames-frames-src-mq3-renderer-qvm-scene-geometry-ml-1690536243"></a>
 ### frames
@@ -32,7 +32,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L41)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-md3selection-lod-lod-src-mq3-renderer-qvm-scene-geometry-ml-1308152883"></a>
 ### lod
@@ -42,7 +42,7 @@ lod
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L41)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-md3selection-model-model-src-mq3-renderer-qvm-scene-geometry-ml-30556171"></a>
 ### model
@@ -52,4 +52,4 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L41)

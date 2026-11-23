@@ -10,7 +10,7 @@ struct VertexCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ colors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexcache-frames-frames-src-mq3-renderer-playable-world-batch-ml-249205769"></a>
 ### frames
@@ -32,17 +32,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
-
-<a id="field-field-mq3-renderer-playable-world-batch-vertexcache-normals-normals-src-mq3-renderer-playable-world-batch-ml-659277049"></a>
-### normals
-
-```ml
-normals
-```
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexcache-positions-positions-src-mq3-renderer-playable-world-batch-ml-1699730869"></a>
 ### positions
@@ -52,7 +42,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexcache-slots-slots-src-mq3-renderer-playable-world-batch-ml-637937813"></a>
 ### slots
@@ -62,7 +52,7 @@ slots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexcache-uvs-uvs-src-mq3-renderer-playable-world-batch-ml-621980665"></a>
 ### uvs
@@ -72,4 +62,4 @@ uvs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L20)

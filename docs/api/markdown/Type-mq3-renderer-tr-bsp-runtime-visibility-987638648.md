@@ -10,7 +10,7 @@ struct Visibility
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ clusterBytes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-data-data-src-mq3-renderer-tr-bsp-runtime-ml-1500402121"></a>
 ### data
@@ -32,7 +32,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-external-external-src-mq3-renderer-tr-bsp-runtime-ml-2116161883"></a>
 ### external
@@ -42,7 +42,7 @@ external
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-novis-novis-src-mq3-renderer-tr-bsp-runtime-ml-938863925"></a>
 ### novis
@@ -52,7 +52,7 @@ novis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-numclusters-numclusters-src-mq3-renderer-tr-bsp-runtime-ml-1250188817"></a>
 ### numClusters
@@ -62,4 +62,4 @@ numClusters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L33)

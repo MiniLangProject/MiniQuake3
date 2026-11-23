@@ -8,20 +8,20 @@ Reachable from entry: **yes**
 
 ## Declarations
 
-<a id="function-function-mq3-compat-numeric-add32-function-add32-a-b-src-mq3-compat-numeric-ml-825857103"></a>
+<a id="function-function-mq3-compat-numeric-add32-function-add32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-1614174425"></a>
 ### add32
 
 ```ml
-function add32(a, b)
+function add32(a as int, b as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `int` | — |  |
+| `b` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L31)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L38)
 
 <a id="function-function-mq3-compat-numeric-addbits-function-addbits-a-b-src-mq3-compat-numeric-ml-128044929"></a>
 ### addBits
@@ -36,13 +36,13 @@ function addBits(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L195)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L206)
 
-<a id="function-function-mq3-compat-numeric-bitsfloat-function-bitsfloat-value-src-mq3-compat-numeric-ml-1072600963"></a>
+<a id="function-function-mq3-compat-numeric-bitsfloat-inline-function-bitsfloat-value-returns-float-src-mq3-compat-numeric-ml-84583969"></a>
 ### bitsFloat
 
 ```ml
-function bitsFloat(value)
+inline function bitsFloat(value) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -50,7 +50,7 @@ function bitsFloat(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L66)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L73)
 
 <a id="function-function-mq3-compat-numeric-divbits-function-divbits-a-b-src-mq3-compat-numeric-ml-1918849153"></a>
 ### divBits
@@ -65,7 +65,26 @@ function divBits(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L257)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L268)
+
+<a id="function-function-mq3-compat-numeric-dot3-function-dot3-ax-ay-az-bx-by-bz-returns-float-src-mq3-compat-numeric-ml-978491790"></a>
+### dot3
+
+```ml
+function dot3(ax, ay, az, bx, by, bz) returns float
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `ax` | `dynamic` | — |  |
+| `ay` | `dynamic` | — |  |
+| `az` | `dynamic` | — |  |
+| `bx` | `dynamic` | — |  |
+| `by` | `dynamic` | — |  |
+| `bz` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L95)
 
 <a id="function-function-mq3-compat-numeric-exponent-function-exponent-bits-src-mq3-compat-numeric-ml-119393466"></a>
 ### exponent
@@ -79,13 +98,13 @@ function exponent(bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L140)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L151)
 
-<a id="function-function-mq3-compat-numeric-f32-function-f32-value-src-mq3-compat-numeric-ml-862494337"></a>
+<a id="function-function-mq3-compat-numeric-f32-function-f32-value-returns-float-src-mq3-compat-numeric-ml-50800476"></a>
 ### f32
 
 ```ml
-function f32(value)
+function f32(value) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -93,13 +112,13 @@ function f32(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L56)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L63)
 
-<a id="function-function-mq3-compat-numeric-fadd-function-fadd-a-b-src-mq3-compat-numeric-ml-1829876179"></a>
+<a id="function-function-mq3-compat-numeric-fadd-inline-function-fadd-a-b-returns-float-src-mq3-compat-numeric-ml-1511952267"></a>
 ### fadd
 
 ```ml
-function fadd(a, b)
+inline function fadd(a, b) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -108,13 +127,13 @@ function fadd(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L70)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L77)
 
-<a id="function-function-mq3-compat-numeric-fdiv-function-fdiv-a-b-src-mq3-compat-numeric-ml-1382256687"></a>
+<a id="function-function-mq3-compat-numeric-fdiv-function-fdiv-a-b-returns-float-src-mq3-compat-numeric-ml-1069362746"></a>
 ### fdiv
 
 ```ml
-function fdiv(a, b)
+function fdiv(a, b) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -123,13 +142,13 @@ function fdiv(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L88)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L99)
 
-<a id="function-function-mq3-compat-numeric-floatbits-function-floatbits-value-src-mq3-compat-numeric-ml-787424571"></a>
+<a id="function-function-mq3-compat-numeric-floatbits-inline-function-floatbits-value-returns-int-src-mq3-compat-numeric-ml-1527303266"></a>
 ### floatBits
 
 ```ml
-function floatBits(value)
+inline function floatBits(value) returns int
 ```
 
 | Parameter | Type | Default | Description |
@@ -137,13 +156,13 @@ function floatBits(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L62)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L69)
 
-<a id="function-function-mq3-compat-numeric-fmul-function-fmul-a-b-src-mq3-compat-numeric-ml-421975927"></a>
+<a id="function-function-mq3-compat-numeric-fmul-inline-function-fmul-a-b-returns-float-src-mq3-compat-numeric-ml-1727347409"></a>
 ### fmul
 
 ```ml
-function fmul(a, b)
+inline function fmul(a, b) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -152,13 +171,13 @@ function fmul(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L84)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L91)
 
-<a id="function-function-mq3-compat-numeric-fneg-function-fneg-value-src-mq3-compat-numeric-ml-1202458099"></a>
+<a id="function-function-mq3-compat-numeric-fneg-function-fneg-value-returns-float-src-mq3-compat-numeric-ml-1788435838"></a>
 ### fneg
 
 ```ml
-function fneg(value)
+function fneg(value) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -166,13 +185,13 @@ function fneg(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L96)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L107)
 
-<a id="function-function-mq3-compat-numeric-fsqrt-function-fsqrt-value-src-mq3-compat-numeric-ml-1224056635"></a>
+<a id="function-function-mq3-compat-numeric-fsqrt-function-fsqrt-value-returns-float-src-mq3-compat-numeric-ml-850296950"></a>
 ### fsqrt
 
 ```ml
-function fsqrt(value)
+function fsqrt(value) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -180,13 +199,13 @@ function fsqrt(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L92)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L103)
 
-<a id="function-function-mq3-compat-numeric-fsub-function-fsub-a-b-src-mq3-compat-numeric-ml-1747959135"></a>
+<a id="function-function-mq3-compat-numeric-fsub-inline-function-fsub-a-b-returns-float-src-mq3-compat-numeric-ml-1754441521"></a>
 ### fsub
 
 ```ml
-function fsub(a, b)
+inline function fsub(a, b) returns float
 ```
 
 | Parameter | Type | Default | Description |
@@ -195,63 +214,63 @@ function fsub(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L74)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L81)
 
-<a id="function-function-mq3-compat-numeric-i16-function-i16-value-src-mq3-compat-numeric-ml-863254579"></a>
+<a id="function-function-mq3-compat-numeric-i16-function-i16-value-as-int-returns-int-src-mq3-compat-numeric-ml-915248514"></a>
 ### i16
 
 ```ml
-function i16(value)
+function i16(value as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L26)
 
-<a id="function-function-mq3-compat-numeric-i32-function-i32-value-src-mq3-compat-numeric-ml-849207619"></a>
+<a id="function-function-mq3-compat-numeric-i32-inline-function-i32-value-as-int-returns-int-src-mq3-compat-numeric-ml-1242513899"></a>
 ### i32
 
 ```ml
-function i32(value)
+inline function i32(value as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L13)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L20)
 
-<a id="function-function-mq3-compat-numeric-i8-function-i8-value-src-mq3-compat-numeric-ml-915208207"></a>
+<a id="function-function-mq3-compat-numeric-i8-function-i8-value-as-int-returns-int-src-mq3-compat-numeric-ml-44760694"></a>
 ### i8
 
 ```ml
-function i8(value)
+function i8(value as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L25)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L32)
 
-<a id="function-function-mq3-compat-numeric-isnanbits-function-isnanbits-value-src-mq3-compat-numeric-ml-1585080397"></a>
+<a id="function-function-mq3-compat-numeric-isnanbits-inline-function-isnanbits-value-as-int-returns-bool-src-mq3-compat-numeric-ml-387624950"></a>
 ### isNaNBits
 
 ```ml
-function isNaNBits(value)
+inline function isNaNBits(value as int) returns bool
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L191)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L202)
 
 <a id="function-function-mq3-compat-numeric-jam-function-jam-value-shift-src-mq3-compat-numeric-ml-1337836023"></a>
 ### jam
@@ -266,7 +285,7 @@ function jam(value, shift)
 | `shift` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L146)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L157)
 
 <a id="function-function-mq3-compat-numeric-mantissa-function-mantissa-bits-src-mq3-compat-numeric-ml-1070147254"></a>
 ### mantissa
@@ -280,7 +299,7 @@ function mantissa(bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L134)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L145)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-bits-float-extern-function-mq3-bits-float-value-as-u32-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1152099730"></a>
 ### mq3_bits_float
@@ -294,7 +313,26 @@ extern function mq3_bits_float(value as u32) from "miniquake3_abi.dll" returns d
 | `value` | `u32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L7)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L8)
+
+<a id="extern_function-extern-function-mq3-compat-numeric-mq3-dot3-extern-function-mq3-dot3-ax-as-double-ay-as-double-az-as-double-bx-as-double-by-as-double-bz-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1500050510"></a>
+### mq3_dot3
+
+```ml
+extern function mq3_dot3(ax as double, ay as double, az as double, bx as double, by as double, bz as double) from "miniquake3_abi.dll" returns double
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `ax` | `double` | — |  |
+| `ay` | `double` | — |  |
+| `az` | `double` | — |  |
+| `bx` | `double` | — |  |
+| `by` | `double` | — |  |
+| `bz` | `double` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L13)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-f32-extern-function-mq3-f32-value-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-431069333"></a>
 ### mq3_f32
@@ -308,7 +346,37 @@ extern function mq3_f32(value as double) from "miniquake3_abi.dll" returns doubl
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L5)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L6)
+
+<a id="extern_function-extern-function-mq3-compat-numeric-mq3-fadd-extern-function-mq3-fadd-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1908597462"></a>
+### mq3_fadd
+
+```ml
+extern function mq3_fadd(a as double, b as double) from "miniquake3_abi.dll" returns double
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `a` | `double` | — |  |
+| `b` | `double` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L9)
+
+<a id="extern_function-extern-function-mq3-compat-numeric-mq3-fdiv-extern-function-mq3-fdiv-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-65874490"></a>
+### mq3_fdiv
+
+```ml
+extern function mq3_fdiv(a as double, b as double) from "miniquake3_abi.dll" returns double
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `a` | `double` | — |  |
+| `b` | `double` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L12)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-float-bits-extern-function-mq3-float-bits-value-as-double-from-miniquake3-abi-dll-returns-u32-src-mq3-compat-numeric-ml-1713572452"></a>
 ### mq3_float_bits
@@ -322,22 +390,66 @@ extern function mq3_float_bits(value as double) from "miniquake3_abi.dll" return
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L6)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L7)
 
-<a id="function-function-mq3-compat-numeric-mul32-function-mul32-a-b-src-mq3-compat-numeric-ml-1337388209"></a>
-### mul32
+<a id="extern_function-extern-function-mq3-compat-numeric-mq3-fmul-extern-function-mq3-fmul-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-685655624"></a>
+### mq3_fmul
 
 ```ml
-function mul32(a, b)
+extern function mq3_fmul(a as double, b as double) from "miniquake3_abi.dll" returns double
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `double` | — |  |
+| `b` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L11)
+
+<a id="extern_function-extern-function-mq3-compat-numeric-mq3-fsqrt-extern-function-mq3-fsqrt-value-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-38913125"></a>
+### mq3_fsqrt
+
+```ml
+extern function mq3_fsqrt(value as double) from "miniquake3_abi.dll" returns double
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `double` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L14)
+
+<a id="extern_function-extern-function-mq3-compat-numeric-mq3-fsub-extern-function-mq3-fsub-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1881110056"></a>
+### mq3_fsub
+
+```ml
+extern function mq3_fsub(a as double, b as double) from "miniquake3_abi.dll" returns double
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `a` | `double` | — |  |
+| `b` | `double` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L10)
+
+<a id="function-function-mq3-compat-numeric-mul32-function-mul32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-1360046207"></a>
+### mul32
+
+```ml
+function mul32(a as int, b as int) returns int
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `a` | `int` | — |  |
+| `b` | `int` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L42)
 
 <a id="function-function-mq3-compat-numeric-mulbits-function-mulbits-a-b-src-mq3-compat-numeric-ml-703990999"></a>
 ### mulBits
@@ -352,7 +464,7 @@ function mulBits(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L223)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L234)
 
 <a id="function-function-mq3-compat-numeric-packfloat-function-packfloat-sign-significand-power-src-mq3-compat-numeric-ml-38213243"></a>
 ### packFloat
@@ -370,7 +482,7 @@ Round an exact integer significand times 2^power to binary32 (nearest-even).
 | `power` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L159)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L170)
 
 <a id="function-function-mq3-compat-numeric-quotient-function-quotient-a-b-src-mq3-compat-numeric-ml-1337281667"></a>
 ### quotient
@@ -385,82 +497,82 @@ function quotient(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L236)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L247)
 
-<a id="function-function-mq3-compat-numeric-readi32-function-readi32-data-offset-src-mq3-compat-numeric-ml-644083331"></a>
+<a id="function-function-mq3-compat-numeric-readi32-inline-function-readi32-data-offset-as-int-src-mq3-compat-numeric-ml-701295519"></a>
 ### readI32
 
 ```ml
-function readI32(data, offset)
+inline function readI32(data, offset as int)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `offset` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L289)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L300)
 
-<a id="function-function-mq3-compat-numeric-readu32-function-readu32-data-offset-src-mq3-compat-numeric-ml-2107455883"></a>
+<a id="function-function-mq3-compat-numeric-readu32-function-readu32-data-offset-as-int-src-mq3-compat-numeric-ml-2038765784"></a>
 ### readU32
 
 ```ml
-function readU32(data, offset)
+function readU32(data, offset as int)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `offset` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L284)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L295)
 
-<a id="function-function-mq3-compat-numeric-sar32-function-sar32-a-b-src-mq3-compat-numeric-ml-1565797025"></a>
+<a id="function-function-mq3-compat-numeric-sar32-function-sar32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-1992573103"></a>
 ### sar32
 
 ```ml
-function sar32(a, b)
+function sar32(a as int, b as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `int` | — |  |
+| `b` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L52)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L59)
 
-<a id="function-function-mq3-compat-numeric-shl32-function-shl32-a-b-src-mq3-compat-numeric-ml-85232383"></a>
+<a id="function-function-mq3-compat-numeric-shl32-function-shl32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-28240201"></a>
 ### shl32
 
 ```ml
-function shl32(a, b)
+function shl32(a as int, b as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `int` | — |  |
+| `b` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L51)
 
-<a id="function-function-mq3-compat-numeric-shr32-function-shr32-a-b-src-mq3-compat-numeric-ml-525740487"></a>
+<a id="function-function-mq3-compat-numeric-shr32-function-shr32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-113964033"></a>
 ### shr32
 
 ```ml
-function shr32(a, b)
+function shr32(a as int, b as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `int` | — |  |
+| `b` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L48)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L55)
 
 <a id="function-function-mq3-compat-numeric-sqrtbits-function-sqrtbits-value-src-mq3-compat-numeric-ml-1668291363"></a>
 ### sqrtBits
@@ -474,7 +586,7 @@ function sqrtBits(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L111)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L122)
 
 <a id="function-function-mq3-compat-numeric-subbits-function-subbits-a-b-src-mq3-compat-numeric-ml-1610695063"></a>
 ### subBits
@@ -489,7 +601,7 @@ function subBits(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L77)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L84)
 
 <a id="function-function-mq3-compat-numeric-trunc32-function-trunc32-value-src-mq3-compat-numeric-ml-144812385"></a>
 ### trunc32
@@ -503,34 +615,34 @@ function trunc32(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L100)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L111)
 
-<a id="function-function-mq3-compat-numeric-u32-function-u32-value-src-mq3-compat-numeric-ml-1198243155"></a>
+<a id="function-function-mq3-compat-numeric-u32-function-u32-value-as-int-returns-int-src-mq3-compat-numeric-ml-1299631906"></a>
 ### u32
 
 ```ml
-function u32(value)
+function u32(value as int) returns int
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L9)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L16)
 
-<a id="function-function-mq3-compat-numeric-writeu32-function-writeu32-data-offset-value-src-mq3-compat-numeric-ml-680787664"></a>
+<a id="function-function-mq3-compat-numeric-writeu32-function-writeu32-data-offset-as-int-value-as-int-src-mq3-compat-numeric-ml-1014296534"></a>
 ### writeU32
 
 ```ml
-function writeU32(data, offset, value)
+function writeU32(data, offset as int, value as int)
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `offset` | `int` | — |  |
+| `value` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L293)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L304)

@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 ## Members
 
@@ -22,7 +22,17 @@ bindings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
+
+<a id="field-field-mq3-renderer-qvm-scene-materials-catalog-imagecache-imagecache-src-mq3-renderer-qvm-scene-materials-ml-1570021970"></a>
+### imageCache
+
+```ml
+imageCache
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-loadedskins-loadedskins-src-mq3-renderer-qvm-scene-materials-ml-1396745432"></a>
 ### loadedSkins
@@ -32,7 +42,7 @@ loadedSkins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-materials-materials-src-mq3-renderer-qvm-scene-materials-ml-1462230568"></a>
 ### materials
@@ -42,7 +52,7 @@ materials
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-nexttextureslot-nexttextureslot-src-mq3-renderer-qvm-scene-materials-ml-314645576"></a>
 ### nextTextureSlot
@@ -52,7 +62,7 @@ nextTextureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-recentbinding-recentbinding-src-mq3-renderer-qvm-scene-materials-ml-910108508"></a>
 ### recentBinding
@@ -62,7 +72,7 @@ recentBinding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-resolvedtriangles-resolvedtriangles-src-mq3-renderer-qvm-scene-materials-ml-1566449528"></a>
 ### resolvedTriangles
@@ -72,7 +82,7 @@ resolvedTriangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-scriptcount-scriptcount-src-mq3-renderer-qvm-scene-materials-ml-1586296616"></a>
 ### scriptCount
@@ -82,7 +92,7 @@ scriptCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-scriptindex-scriptindex-src-mq3-renderer-qvm-scene-materials-ml-2039103376"></a>
 ### scriptIndex
@@ -92,7 +102,7 @@ scriptIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-shaderremaps-shaderremaps-src-mq3-renderer-qvm-scene-materials-ml-584648370"></a>
 ### shaderRemaps
@@ -102,7 +112,7 @@ shaderRemaps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-textures-textures-src-mq3-renderer-qvm-scene-materials-ml-1810144436"></a>
 ### textures
@@ -112,7 +122,7 @@ textures
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-triangles-triangles-src-mq3-renderer-qvm-scene-materials-ml-860844640"></a>
 ### triangles
@@ -122,7 +132,7 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-catalog-unresolvedtriangles-unresolvedtriangles-src-mq3-renderer-qvm-scene-materials-ml-1588625596"></a>
 ### unresolvedTriangles
@@ -132,4 +142,4 @@ unresolvedTriangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L22)

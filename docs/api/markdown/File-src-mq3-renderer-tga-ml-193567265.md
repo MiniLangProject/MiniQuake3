@@ -6,10 +6,6 @@ Package: [`mq3.renderer.tga`](Package-mq3-renderer-tga-1586292799.md)
 
 Reachable from entry: **yes**
 
-## Imports
-
-- `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
-
 ## Declarations
 
 <a id="function-function-mq3-renderer-tga-decode-function-decode-data-src-mq3-renderer-tga-ml-603447122"></a>
@@ -24,7 +20,29 @@ function decode(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L37)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L30)
+
+<a id="extern_function-extern-function-mq3-renderer-tga-decodepixels-extern-function-decodepixels-input-as-bytes-inputbytes-as-i32-offset-as-i32-width-as-i32-height-as-i32-pixelbytes-as-i32-rle-as-i32-output-as-bytes-outputbytes-as-i32-from-playable-window-dll-symbol-playable-decode-tga-pixels-returns-i32-src-mq3-renderer-tga-ml-612882663"></a>
+### decodePixels
+
+```ml
+extern function decodePixels(input as bytes, inputBytes as i32, offset as i32, width as i32, height as i32, pixelBytes as i32, rle as i32, output as bytes, outputBytes as i32) from "playable_window.dll" symbol "playable_decode_tga_pixels" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `input` | `bytes` | — |  |
+| `inputBytes` | `i32` | — |  |
+| `offset` | `i32` | — |  |
+| `width` | `i32` | — |  |
+| `height` | `i32` | — |  |
+| `pixelBytes` | `i32` | — |  |
+| `rle` | `i32` | — |  |
+| `output` | `bytes` | — |  |
+| `outputBytes` | `i32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L5)
 
 <a id="function-function-mq3-renderer-tga-fail-function-fail-message-src-mq3-renderer-tga-ml-1950089021"></a>
 ### fail
@@ -74,27 +92,6 @@ function pixelBytes(pixelSize)
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L23)
-
-<a id="function-function-mq3-renderer-tga-putsourcepixel-function-putsourcepixel-output-sourceindex-width-height-red-green-blue-alpha-src-mq3-renderer-tga-ml-825253085"></a>
-### putSourcePixel
-
-```ml
-function putSourcePixel(output, sourceIndex, width, height, red, green, blue, alpha)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `output` | `dynamic` | — |  |
-| `sourceIndex` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
-| `alpha` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L30)
 
 <a id="constant-constant-mq3-renderer-tga-type-grayscale-const-type-grayscale-3-src-mq3-renderer-tga-ml-1643245032"></a>
 ### TYPE_GRAYSCALE

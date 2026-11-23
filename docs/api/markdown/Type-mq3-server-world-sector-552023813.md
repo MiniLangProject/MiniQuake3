@@ -10,7 +10,7 @@ struct Sector
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L40)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L41)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L42)
 
 <a id="field-field-mq3-server-world-sector-children-children-src-mq3-server-world-ml-399861345"></a>
 ### children
@@ -32,7 +32,7 @@ children
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L43)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L44)
 
 <a id="field-field-mq3-server-world-sector-distance-distance-src-mq3-server-world-ml-662497629"></a>
 ### distance
@@ -42,7 +42,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L42)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L43)
 
 <a id="field-field-mq3-server-world-sector-head-head-src-mq3-server-world-ml-1957710387"></a>
 ### head
@@ -52,4 +52,4 @@ head
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L45)

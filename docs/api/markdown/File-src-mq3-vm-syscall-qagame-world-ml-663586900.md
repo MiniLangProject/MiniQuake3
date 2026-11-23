@@ -28,7 +28,7 @@ function arg(vm, base, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L37)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L39)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-dispatch-function-dispatch-host-vm-base-op-src-mq3-vm-syscall-qagame-world-ml-1798047605"></a>
 ### dispatch
@@ -110,7 +110,7 @@ function nullableVector(vm, address, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L44)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L46)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-pointcontents-function-pointcontents-vm-base-host-src-mq3-vm-syscall-qagame-world-ml-1324183006"></a>
 ### pointContents
@@ -141,7 +141,7 @@ function requireVector(value, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L49)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L51)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-services-function-services-context-src-mq3-vm-syscall-qagame-world-ml-1390337559"></a>
 ### services
@@ -155,7 +155,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L35)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L37)
 
 - [mq3.vm.syscall_qagame_world.Services](Type-mq3-vm-syscall-qagame-world-services-285424344.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-world-trace-function-trace-vm-base-host-capsule-src-mq3-vm-syscall-qagame-world-ml-793153915"></a>
@@ -183,7 +183,7 @@ const TRACE_SIZE = 56
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L9)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L11)
 
 - [mq3.vm.syscall_qagame_world.TraceResult](Type-mq3-vm-syscall-qagame-world-traceresult-1924788560.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-world-unavailable-function-unavailable-name-src-mq3-vm-syscall-qagame-world-ml-1545991691"></a>
@@ -198,7 +198,7 @@ function unavailable(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L36)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L38)
 
 <a id="constant-constant-mq3-vm-syscall-qagame-world-usercmd-size-const-usercmd-size-24-src-mq3-vm-syscall-qagame-world-ml-394438831"></a>
 ### USERCMD_SIZE
@@ -208,7 +208,7 @@ const USERCMD_SIZE = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L10)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L12)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-usercommand-function-usercommand-servertime-angles-buttons-weapon-forwardmove-rightmove-upmove-src-mq3-vm-syscall-qagame-world-ml-913347976"></a>
 ### userCommand
@@ -244,7 +244,7 @@ function vector(vm, address, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L39)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L41)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-writetrace-function-writetrace-vm-address-result-src-mq3-vm-syscall-qagame-world-ml-353747750"></a>
 ### writeTrace
@@ -260,7 +260,37 @@ function writeTrace(vm, address, result)
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L54)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L56)
+
+<a id="extern_function-extern-function-mq3-vm-syscall-qagame-world-writetracenative-extern-function-writetracenative-data-as-bytes-capacity-as-i32-offset-as-i32-allsolid-as-u32-startsolid-as-u32-fraction-as-double-x-as-double-y-as-double-z-as-double-nx-as-double-ny-as-double-nz-as-double-distance-as-double-planemetadata-as-u32-flags-as-u32-contents-as-u32-entity-as-u32-from-miniquake3-abi-dll-symbol-mq3-write-qvm-trace-returns-i32-src-mq3-vm-syscall-qagame-world-ml-401817385"></a>
+### writeTraceNative
+
+```ml
+extern function writeTraceNative(data as bytes, capacity as i32, offset as i32, allsolid as u32, startsolid as u32, fraction as double, x as double, y as double, z as double, nx as double, ny as double, nz as double, distance as double, planeMetadata as u32, flags as u32, contents as u32, entity as u32) from "miniquake3_abi.dll" symbol "mq3_write_qvm_trace" returns i32
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `bytes` | — |  |
+| `capacity` | `i32` | — |  |
+| `offset` | `i32` | — |  |
+| `allsolid` | `u32` | — |  |
+| `startsolid` | `u32` | — |  |
+| `fraction` | `double` | — |  |
+| `x` | `double` | — |  |
+| `y` | `double` | — |  |
+| `z` | `double` | — |  |
+| `nx` | `double` | — |  |
+| `ny` | `double` | — |  |
+| `nz` | `double` | — |  |
+| `distance` | `double` | — |  |
+| `planeMetadata` | `u32` | — |  |
+| `flags` | `u32` | — |  |
+| `contents` | `u32` | — |  |
+| `entity` | `u32` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L9)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-writeusercmd-function-writeusercmd-vm-address-command-src-mq3-vm-syscall-qagame-world-ml-1155101428"></a>
 ### writeUsercmd

@@ -34,6 +34,16 @@ portalMaxTravelTimes
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L12)
 
+<a id="field-field-mq3-botlib-aas-routing-tables-tables-reachsources-reachsources-src-mq3-botlib-aas-routing-tables-ml-1535388280"></a>
+### reachSources
+
+```ml
+reachSources
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L12)
+
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-reversed-reversed-src-mq3-botlib-aas-routing-tables-ml-861629146"></a>
 ### reversed
 

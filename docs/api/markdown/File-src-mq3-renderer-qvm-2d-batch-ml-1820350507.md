@@ -210,7 +210,7 @@ function draw(catalog, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L262)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L268)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-dynamicstage-function-dynamicstage-stage-src-mq3-renderer-qvm-2d-batch-ml-1505002230"></a>
 ### dynamicStage
@@ -366,7 +366,7 @@ function release(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L248)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L254)
 
 - [mq3.renderer.qvm_2d_batch.Run](Type-mq3-renderer-qvm-2d-batch-run-1128412860.md) — struct
 <a id="function-function-mq3-renderer-qvm-2d-batch-samecommands-function-samecommands-left-right-src-mq3-renderer-qvm-2d-batch-ml-541404109"></a>
@@ -503,7 +503,7 @@ function updatePass(pass, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L250)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L256)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-upload-function-upload-catalog-src-mq3-renderer-qvm-2d-batch-ml-1964842803"></a>
 ### upload
@@ -515,6 +515,21 @@ function upload(catalog)
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `catalog` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L253)
+
+<a id="function-function-mq3-renderer-qvm-2d-batch-uploadfrom-function-uploadfrom-catalog-first-src-mq3-renderer-qvm-2d-batch-ml-2060906149"></a>
+### uploadFrom
+
+```ml
+function uploadFrom(catalog, first)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `catalog` | `dynamic` | — |  |
+| `first` | `dynamic` | — |  |
 
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L243)

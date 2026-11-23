@@ -10,7 +10,7 @@ struct NotifyView
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ chat
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
 
 <a id="field-field-mq3-client-cl-console-notifyview-lines-lines-src-mq3-client-cl-console-ml-723733069"></a>
 ### lines
@@ -32,4 +32,4 @@ lines
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)

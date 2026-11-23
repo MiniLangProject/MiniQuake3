@@ -10,7 +10,7 @@ struct Fragment
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ firstPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L24)
 
 <a id="field-field-mq3-renderer-mark-fragments-fragment-numpoints-numpoints-src-mq3-renderer-mark-fragments-ml-1956333621"></a>
 ### numPoints
@@ -32,4 +32,4 @@ numPoints
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L19)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L24)

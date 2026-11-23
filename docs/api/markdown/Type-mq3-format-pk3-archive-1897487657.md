@@ -74,6 +74,16 @@ entries
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L36)
 
+<a id="field-field-mq3-format-pk3-archive-modarchive-modarchive-src-mq3-format-pk3-ml-1090508289"></a>
+### modArchive
+
+```ml
+modArchive
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L43)
+
 <a id="field-field-mq3-format-pk3-archive-namebuckets-namebuckets-src-mq3-format-pk3-ml-1343017397"></a>
 ### nameBuckets
 

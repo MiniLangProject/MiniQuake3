@@ -10,9 +10,29 @@ struct WorldCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 ## Members
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-areamask-areamask-src-mq3-renderer-world-surface-selection-ml-818028349"></a>
+### areaMask
+
+```ml
+areaMask
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-cullmodes-cullmodes-src-mq3-renderer-world-surface-selection-ml-2063468463"></a>
+### cullModes
+
+```ml
+cullModes
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facecenters-facecenters-src-mq3-renderer-world-surface-selection-ml-887004719"></a>
 ### faceCenters
@@ -22,7 +42,7 @@ faceCenters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facekinds-facekinds-src-mq3-renderer-world-surface-selection-ml-444916047"></a>
 ### faceKinds
@@ -32,7 +52,7 @@ faceKinds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facenormals-facenormals-src-mq3-renderer-world-surface-selection-ml-1422472803"></a>
 ### faceNormals
@@ -42,7 +62,7 @@ faceNormals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-faceradii-faceradii-src-mq3-renderer-world-surface-selection-ml-1479071075"></a>
 ### faceRadii
@@ -52,7 +72,7 @@ faceRadii
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facetextureindexes-facetextureindexes-src-mq3-renderer-world-surface-selection-ml-2081506011"></a>
 ### faceTextureIndexes
@@ -62,7 +82,7 @@ faceTextureIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facetrianglecounts-facetrianglecounts-src-mq3-renderer-world-surface-selection-ml-1353956521"></a>
 ### faceTriangleCounts
@@ -72,7 +92,7 @@ faceTriangleCounts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-map-map-src-mq3-renderer-world-surface-selection-ml-496776915"></a>
 ### map
@@ -82,7 +102,57 @@ map
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativefaces-nativefaces-src-mq3-renderer-world-surface-selection-ml-388038791"></a>
+### nativeFaces
+
+```ml
+nativeFaces
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativeoutput-nativeoutput-src-mq3-renderer-world-surface-selection-ml-1526441859"></a>
+### nativeOutput
+
+```ml
+nativeOutput
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativeprevious-nativeprevious-src-mq3-renderer-world-surface-selection-ml-1941901395"></a>
+### nativePrevious
+
+```ml
+nativePrevious
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativeselected-nativeselected-src-mq3-renderer-world-surface-selection-ml-1919492771"></a>
+### nativeSelected
+
+```ml
+nativeSelected
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativevisible-nativevisible-src-mq3-renderer-world-surface-selection-ml-1826166367"></a>
+### nativeVisible
+
+```ml
+nativeVisible
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-patcherror-patcherror-src-mq3-renderer-world-surface-selection-ml-881132579"></a>
 ### patchError
@@ -92,7 +162,17 @@ patchError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
+
+<a id="field-field-mq3-renderer-world-surface-selection-worldcache-patches-patches-src-mq3-renderer-world-surface-selection-ml-1620611075"></a>
+### patches
+
+```ml
+patches
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-pvsclustercount-pvsclustercount-src-mq3-renderer-world-surface-selection-ml-255371267"></a>
 ### pvsClusterCount
@@ -102,7 +182,7 @@ pvsClusterCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-pvsfaces-pvsfaces-src-mq3-renderer-world-surface-selection-ml-87053337"></a>
 ### pvsFaces
@@ -112,7 +192,7 @@ pvsFaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-pvsrejected-pvsrejected-src-mq3-renderer-world-surface-selection-ml-1302994383"></a>
 ### pvsRejected
@@ -122,7 +202,7 @@ pvsRejected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-totaltrianglecount-totaltrianglecount-src-mq3-renderer-world-surface-selection-ml-1737036257"></a>
 ### totalTriangleCount
@@ -132,7 +212,7 @@ totalTriangleCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-trianglesbyface-trianglesbyface-src-mq3-renderer-world-surface-selection-ml-256942667"></a>
 ### trianglesByFace
@@ -142,14 +222,4 @@ trianglesByFace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
-
-<a id="field-field-mq3-renderer-world-surface-selection-worldcache-twosidedtextureflags-twosidedtextureflags-src-mq3-renderer-world-surface-selection-ml-1948255545"></a>
-### twoSidedTextureFlags
-
-```ml
-twoSidedTextureFlags
-```
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L24)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L35)

@@ -28,7 +28,7 @@ function areaTravelTime(tables, areaNum, outgoingOffset, incomingOffset)
 | `incomingOffset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L34)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L51)
 
 <a id="function-function-mq3-botlib-aas-routing-tables-create-function-create-router-src-mq3-botlib-aas-routing-tables-ml-645791741"></a>
 ### create
@@ -71,7 +71,7 @@ function incoming(tables, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L33)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L50)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tables-max-area-reachabilities-const-max-area-reachabilities-128-src-mq3-botlib-aas-routing-tables-ml-693402598"></a>
 ### MAX_AREA_REACHABILITIES
@@ -96,7 +96,7 @@ function portalMaxTravelTime(tables, portalNum)
 | `portalNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L37)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L54)
 
 - [mq3.botlib.aas_routing_tables.ReverseLink](Type-mq3-botlib-aas-routing-tables-reverselink-216415502.md) — struct
 - [mq3.botlib.aas_routing_tables.Tables](Type-mq3-botlib-aas-routing-tables-tables-348828821.md) — struct

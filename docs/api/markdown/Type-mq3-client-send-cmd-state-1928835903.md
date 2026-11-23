@@ -44,6 +44,16 @@ cmdNumber
 
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L34)
 
+<a id="field-field-mq3-client-send-cmd-state-codec-codec-src-mq3-client-send-cmd-ml-872554514"></a>
+### codec
+
+```ml
+codec
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L34)
+
 <a id="field-field-mq3-client-send-cmd-state-commands-commands-src-mq3-client-send-cmd-ml-899282342"></a>
 ### commands
 

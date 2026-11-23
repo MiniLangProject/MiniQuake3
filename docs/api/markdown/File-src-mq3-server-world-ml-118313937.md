@@ -15,6 +15,7 @@ Reachable from entry: **yes**
 - `mq3/game/movement.ml` as `movement` → [src/mq3/game/movement.ml](File-src-mq3-game-movement-ml-621504687.md)
 - `mq3/shared/math.ml` as `q` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
 - `std/array.ml` as `arrays` → `../MiniLangCompilerML/std/array.ml` — external dependency
+- `std/ds/list.ml` as `spatialAreaLists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
 
 ## Declarations
 
@@ -33,7 +34,7 @@ function areaEntities(scene, mins, maxs, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L191)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L190)
 
 <a id="function-function-mq3-server-world-cliphandleforentity-function-cliphandleforentity-scene-ent-src-mq3-server-world-ml-627773269"></a>
 ### clipHandleForEntity
@@ -48,7 +49,7 @@ function clipHandleForEntity(scene, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L217)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L219)
 
 <a id="function-function-mq3-server-world-cliptoentity-function-cliptoentity-scene-start-finish-mins-maxs-number-mask-capsule-src-mq3-server-world-ml-1301694165"></a>
 ### clipToEntity
@@ -69,7 +70,7 @@ function clipToEntity(scene, start, finish, mins, maxs, number, mask, capsule)
 | `capsule` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L221)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L223)
 
 <a id="function-function-mq3-server-world-create-function-create-world-src-mq3-server-world-ml-79069600"></a>
 ### create
@@ -83,7 +84,7 @@ function create(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L83)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L82)
 
 <a id="function-function-mq3-server-world-createsector-function-createsector-scene-depth-mins-maxs-src-mq3-server-world-ml-412428779"></a>
 ### createSector
@@ -100,7 +101,7 @@ function createSector(scene, depth, mins, maxs)
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L70)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L69)
 
 <a id="function-function-mq3-server-world-entity-function-entity-number-src-mq3-server-world-ml-597149977"></a>
 ### entity
@@ -114,7 +115,7 @@ function entity(number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L52)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L53)
 
 - [mq3.server.world.Entity](Type-mq3-server-world-entity-81524084.md) — struct
 <a id="function-function-mq3-server-world-entitycontact-function-entitycontact-scene-mins-maxs-number-capsule-src-mq3-server-world-ml-765350366"></a>
@@ -133,7 +134,7 @@ function entityContact(scene, mins, maxs, number, capsule)
 | `capsule` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L285)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L287)
 
 <a id="function-function-mq3-server-world-getentity-function-getentity-scene-number-src-mq3-server-world-ml-998856317"></a>
 ### getEntity
@@ -148,7 +149,7 @@ function getEntity(scene, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L55)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L56)
 
 <a id="function-function-mq3-server-world-inpvs-function-inpvs-scene-p1-p2-src-mq3-server-world-ml-573800115"></a>
 ### inPVS
@@ -164,7 +165,7 @@ function inPVS(scene, p1, p2)
 | `p2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L59)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L60)
 
 <a id="function-function-mq3-server-world-linkentity-function-linkentity-scene-number-src-mq3-server-world-ml-1777207911"></a>
 ### linkEntity
@@ -179,7 +180,7 @@ function linkEntity(scene, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L129)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L128)
 
 <a id="function-function-mq3-server-world-packedextent-function-packedextent-value-src-mq3-server-world-ml-1831734143"></a>
 ### packedExtent
@@ -193,7 +194,7 @@ function packedExtent(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L126)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L125)
 
 <a id="function-function-mq3-server-world-pmovecontents-function-pmovecontents-p-point-src-mq3-server-world-ml-761886690"></a>
 ### pmoveContents
@@ -208,7 +209,7 @@ function pmoveContents(p, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L282)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L284)
 
 <a id="function-function-mq3-server-world-pmovetrace-function-pmovetrace-p-start-finish-src-mq3-server-world-ml-1865127243"></a>
 ### pmoveTrace
@@ -224,7 +225,7 @@ function pmoveTrace(p, start, finish)
 | `finish` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L279)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L281)
 
 <a id="function-function-mq3-server-world-pointcontents-function-pointcontents-scene-point-passentity-src-mq3-server-world-ml-30362442"></a>
 ### pointContents
@@ -240,7 +241,7 @@ function pointContents(scene, point, passEntity)
 | `passEntity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L269)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L271)
 
 - [mq3.server.world.Scene](Type-mq3-server-world-scene-1257075529.md) — struct
 - [mq3.server.world.Sector](Type-mq3-server-world-sector-552023813.md) — struct
@@ -258,7 +259,7 @@ SV_SectorList_f is a diagnostic command, but it deliberately walks the same intr
 | `scene` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L93)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L92)
 
 <a id="function-function-mq3-server-world-sv-sectorlist-f-function-sv-sectorlist-f-scene-printfn-context-src-mq3-server-world-ml-576195340"></a>
 ### SV_SectorList_f
@@ -274,7 +275,7 @@ function SV_SectorList_f(scene, printFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L108)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L107)
 
 <a id="function-function-mq3-server-world-trace-function-trace-scene-start-finish-mins-maxs-passentity-mask-capsule-src-mq3-server-world-ml-995559152"></a>
 ### trace
@@ -295,7 +296,7 @@ function trace(scene, start, finish, mins, maxs, passEntity, mask, capsule)
 | `capsule` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L231)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L233)
 
 <a id="function-function-mq3-server-world-unlinkentity-function-unlinkentity-scene-number-src-mq3-server-world-ml-900267787"></a>
 ### unlinkEntity
@@ -310,4 +311,4 @@ function unlinkEntity(scene, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L113)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L112)

@@ -4,7 +4,7 @@
 
 Package: [`mq3.client.ui_connect`](Package-mq3-client-ui-connect-1313299274.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Imports
 

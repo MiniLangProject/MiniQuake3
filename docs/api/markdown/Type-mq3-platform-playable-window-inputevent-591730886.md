@@ -10,7 +10,7 @@ struct InputEvent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L127)
 
 ## Members
 
@@ -22,7 +22,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L127)
 
 <a id="field-field-mq3-platform-playable-window-inputevent-type-type-src-mq3-platform-playable-window-ml-761968413"></a>
 ### type
@@ -32,7 +32,7 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L127)
 
 <a id="field-field-mq3-platform-playable-window-inputevent-value-value-src-mq3-platform-playable-window-ml-1483325453"></a>
 ### value
@@ -42,7 +42,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L127)
 
 <a id="field-field-mq3-platform-playable-window-inputevent-value2-value2-src-mq3-platform-playable-window-ml-146917267"></a>
 ### value2
@@ -52,4 +52,4 @@ value2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L127)

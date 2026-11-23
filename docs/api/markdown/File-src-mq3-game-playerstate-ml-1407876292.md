@@ -59,7 +59,7 @@ function load(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L89)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L110)
 
 - [mq3.game.playerstate.PlayerState](Type-mq3-game-playerstate-playerstate-825163064.md) — struct
 <a id="function-function-mq3-game-playerstate-words-function-words-ps-src-mq3-game-playerstate-ml-1763832683"></a>
@@ -74,4 +74,4 @@ function words(ps)
 | `ps` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L140)
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L161)

@@ -40,6 +40,25 @@ function dispatch(state, router, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L39)
+
+<a id="function-function-mq3-botlib-aas-route-extra-syscalls-dispatchcached-function-dispatchcached-state-router-cache-vm-base-op-src-mq3-botlib-aas-route-extra-syscalls-ml-1263350555"></a>
+### dispatchCached
+
+```ml
+function dispatchCached(state, router, cache, vm, base, op)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `router` | `dynamic` | — |  |
+| `cache` | `dynamic` | — |  |
+| `vm` | `dynamic` | — |  |
+| `base` | `dynamic` | — |  |
+| `op` | `dynamic` | — |  |
+
+
 [View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L26)
 
 <a id="constant-constant-mq3-botlib-aas-route-extra-syscalls-predict-route-size-const-predict-route-size-36-src-mq3-botlib-aas-route-extra-syscalls-ml-1655132544"></a>
