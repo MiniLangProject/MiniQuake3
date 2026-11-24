@@ -1,4 +1,5 @@
 import mq3.renderer.mark_fragments as marks
+import mq3.renderer.bsp_render_data as renderData
 import mq3.format.bsp as bsp
 import mq3.collision.world as collision
 import mq3.collision.brush as brush
@@ -37,6 +38,18 @@ function manyTriangleFace(map,triangleCount)
   return bsp.BSP(data,offsets,lengths,counts)
 end function
 function square() return [[-1.0,-1.0,4.0],[-1.0,1.0,4.0],[1.0,1.0,4.0],[1.0,-1.0,4.0]] end function
+function patchFaceMap(map)
+  data=bytes(176+9*44,0)
+  for index=0 to 175 data[index]=map.data[index] end for
+  offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
+  copyArray(offsets,0,map.offsets,0,17);copyArray(lengths,0,map.lengths,0,17);copyArray(counts,0,map.counts,0,17)
+  lengths[10]=9*44;counts[10]=9;lengths[11]=0;counts[11]=0
+  putI32(data,80,renderData.MST_PATCH);putI32(data,84,0);putI32(data,88,9);putI32(data,92,0);putI32(data,96,0);putI32(data,100,-1)
+  putI32(data,168,3);putI32(data,172,3)
+  control=[[-4.0,-4.0,0.0],[0.0,-4.0,0.0],[4.0,-4.0,0.0],[-4.0,0.0,0.0],[0.0,0.0,0.0],[4.0,0.0,0.0],[-4.0,4.0,0.0],[0.0,4.0,0.0],[4.0,4.0,0.0]]
+  for index=0 to 8 at=176+index*44;putF32(data,at,control[index][0]);putF32(data,at+4,control[index][1]);putF32(data,at+8,control[index][2]);putF32(data,at+36,1.0) end for
+  return bsp.BSP(data,offsets,lengths,counts)
+end function
 function main(args)
   count=0;value=fixture();map=value[0];world=value[1]
   result=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);if result is error then return result end if
@@ -87,6 +100,14 @@ function main(args)
   putI32(map.data,64,0);putI32(map.data,68,marks.CONTENTS_FOG);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"fog surface rejected")
   putI32(map.data,68,0);putI32(map.data,80,3);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"triangle soup surface rejected")
   putI32(map.data,80,1);reversed=marks.project(map,world,square(),[0.0,0.0,20.0],64,16);count=count+require(len(reversed.fragments)==0,"back-facing planar surface rejected")
+  distant=square();for each point in distant point[0]=point[0]+40.0 end for
+  far=marks.project(map,world,distant,[0.0,0.0,-20.0],64,16)
+  count=count+require(len(far.fragments)==0 and far.testedTriangles==0,"triangles outside the projection prism are rejected before clipping")
+  patchMap=patchFaceMap(map)
+  patchFacing=marks.project(patchMap,world,square(),[0.0,0.0,-20.0],64,16)
+  count=count+require(len(patchFacing.fragments)>0 and patchFacing.testedTriangles>0,"patch triangles facing the projection are clipped")
+  patchAway=marks.project(patchMap,world,square(),[0.0,0.0,20.0],64,16)
+  count=count+require(len(patchAway.fragments)==0 and patchAway.testedTriangles==0,"patch triangles facing away from the projection are rejected before clipping")
   zero=marks.project(map,world,square(),[0.0,0.0,0.0],64,16);count=count+require(len(zero.fragments)==0,"zero projection is empty")
   count=count+require(try(marks.project(map,world,[[0.0,0.0,0.0],[1.0,0.0,0.0]],[0.0,0.0,-1.0],64,16)) is error,"at least three source points required")
   vm=Vm(bytes(4096,0),4095);sourceAt=128;projectionAt=256;outputAt=512;fragmentsAt=2048;source=square()

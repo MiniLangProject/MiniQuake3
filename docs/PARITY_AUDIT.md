@@ -1,8 +1,30 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-23. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
+Stand: 2026-11-24. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Mark-Fragment-Ablehnprüfungen ohne Scratch-Arrays, 24. November 2026
+
+Die frühen Ablehnprüfungen des Host-Pfads von `CG_CM_MARKFRAGMENTS` arbeiten
+im Botkampf ohne Zwischenarrays: die Dreiecks-Bounds-Prüfung liest die drei
+Positionen direkt, das Eingabe-Array des Clippers entsteht erst nach den
+billigen Ablehnungen, und Projektions-Bounds, Projektionsebenen und
+Flächenprüfung rechnen inline mit identischer Gleitkomma-Arithmetik und
+Reihenfolge. Akzeptierte Dreiecke erzeugen weiterhin ihre Clip- und
+Fragment-Arrays; die clipPlane des Benutzers bleibt unverändert übernommen.
+Fünf exakte Baseq3-Datensätze, 33 Verträge einschließlich einer neuen
+Patch-Fixture, die Retail-q3dm1-Projektion sowie die Collision- und
+Mark-Verträge bestehen; sie stützen die bit-gleichen Ausgaben dieser Fälle,
+beweisen sie nicht global. Sechs alternierende 6.000-Frame-Botkampfläufe mit
+identischen Spielereignissen (1.327 Positionswechsel, 3.000 Angriffe,
+265 Munitionsabnahmen) ergaben im Median 97,40→98,09 FPS bei P99 31/32 ms —
+beide innerhalb der Streuung, keine belegte Bildratenverbesserung. Die
+Cgame-Phase sank im Median von 2,19 auf 2,15 ms pro Frame und die
+Cgame-CPU-Zyklen in zwei von drei Paaren um 2,1 % (der dritte Kandidatenlauf
+war global langsamer). GC-Zyklen (91) und Heap blieben unverändert; Draw- und
+Expand-Spitzen bleiben offen.
+[Bericht, Messwerte und Grenzen](verification/2026-11-24-mark-bounds-allocation.md)
 
 ## Wiederkehrende Botkampf-Ruckler und Speicherprofil, 23. November 2026
 
