@@ -2,24 +2,68 @@
 // Checked RIFF/WAVE PCM reader for sound assets loaded through the PK3 filesystem.
 package mq3.audio.wav
 
+/// Maximum PCM payload size accepted by the WAVE loader, in bytes.
 const MAX_PCM_BYTES=67108864
+/// Lowest WAVE sample rate accepted by the loader, in hertz.
 const MIN_SAMPLE_RATE=4000
+/// Highest WAVE sample rate accepted by the loader, in hertz.
 const MAX_SAMPLE_RATE=192000
 
-struct Sound sampleRate channels bitsPerSample blockAlign byteRate samples end struct
+/// Decoded integer PCM sound with interleaved sample data and its validated WAVE format.
+struct Sound
+  /// Source sample rate in hertz.
+  sampleRate
+  /// Number of interleaved PCM channels.
+  channels
+  /// Number of bits used for each sample in one channel.
+  bitsPerSample
+  /// Bytes occupied by one complete interleaved sample frame.
+  blockAlign
+  /// PCM byte rate computed from sample rate and block alignment.
+  byteRate
+  /// Independent copy of the first WAVE data chunk; unsigned 8-bit or little-endian signed 16-bit PCM.
+  samples
+end struct
 
+/// Create the audio.wav error for `fail` with 7490 and the supplied diagnostic text.
+/// @param message Message used in `("WAV: " + message)` and `error(7490, ("WAV: " + message))`.
 function fail(message) return error(7490,"WAV: "+message) end function
+/// Compute audio.wav.u16 as `(data[offset] | (data[(offset + 1)] << 8))`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
 function u16(data,offset) return data[offset]|(data[offset+1]<<8) end function
+/// Compute audio.wav.u32 as `(((data[offset] | (data[(offset + 1)] << 8)) | (data[(offset + 2)] << 16)) | (data[(offset + 3)] << 24))`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
 function u32(data,offset) return data[offset]|(data[offset+1]<<8)|(data[offset+2]<<16)|(data[offset+3]<<24) end function
+/// Compute audio.wav.tag as `((((data[offset] == a) and (data[(offset + 1)] == b)) and (data[(offset + 2)] == c)) and (data[(offset + 3)] == d))`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
+/// @param a A used in `(data[offset] == a)` and `((data[offset] == a) and (data[(offset + 1)] == b))`.
+/// @param b B used in `(data[(offset + 1)] == b)` and `((data[offset] == a) and (data[(offset + 1)] == b))`.
+/// @param c C used in `(data[(offset + 2)] == c)` and `(((data[offset] == a) and (data[(offset + 1)] == b)) and (data[(offset + 2)] == c))`.
+/// @param d D used in `(data[(offset + 3)] == d)`.
 function tag(data,offset,a,b,c,d)
   return data[offset]==a and data[offset+1]==b and data[offset+2]==c and data[offset+3]==d
 end function
+/// Copy wav in audio.wav; the normal completion returns `output`.
+/// @param data Data used in `data[(offset + index)]`.
+/// @param offset Offset used in `(offset + index)` and `data[(offset + index)]`.
+/// @param count Count used in `(count > 0)` and `(count - 1)`.
 function copy(data,offset,count)
   output=bytes(count,0)
   if count>0 then for index=0 to count-1 output[index]=data[offset+index] end for end if
   return output
 end function
 
+/// Decode a RIFF/WAVE asset into an independently owned PCM Sound.
+/// Accepts integer PCM only: one or two channels, 8 or 16 bits per channel,
+/// and sample rates from 4,000 through 192,000 Hz. Validates RIFF/chunk bounds,
+/// odd-byte padding, block alignment, byte rate, and complete sample frames.
+/// Uses the first fmt and data chunks, rejects empty data or payloads above
+/// MAX_PCM_BYTES, and reports malformed or unsupported input as error 7490.
+/// Bytes following the declared RIFF payload are not part of the decoded sound.
+/// @param data Complete WAVE file bytes; the returned sample buffer does not alias this input.
 function decode(data)
   if data==void or len(data)<12 then return fail("truncated RIFF header") end if
   if not tag(data,0,82,73,70,70) then return fail("missing RIFF signature") end if

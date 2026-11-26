@@ -20,13 +20,15 @@ Reachable from entry: **yes**
 function bindCommand(commandState, state)
 ```
 
+Calls `mq3.qcommon.command_buffer.argc`, `mq3.client.key_bindings_config.emit`, `mq3.qcommon.command_buffer.argv` and additional helpers from key bindings config `bindCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandState` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `commandState` | `dynamic` | — | commandState record passed to the key bindings config helper calls. |
+| `state` | `dynamic` | — | Record read through `state.keys`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L37)
 
 <a id="function-function-mq3-client-key-bindings-config-bindingtext-function-bindingtext-state-src-mq3-client-key-bindings-config-ml-1637938541"></a>
 ### bindingText
@@ -35,12 +37,14 @@ function bindCommand(commandState, state)
 function bindingText(state)
 ```
 
+Calls `mq3.vm.cgame_key_traps.getBinding`, `mq3.vm.cgame_key_traps.keynumToString` from key bindings config `bindingText`. The final path returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.keys`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L29)
 
 <a id="function-function-mq3-client-key-bindings-config-bindlistcommand-function-bindlistcommand-commandstate-state-src-mq3-client-key-bindings-config-ml-1343701727"></a>
 ### bindListCommand
@@ -49,13 +53,15 @@ function bindingText(state)
 function bindListCommand(commandState, state)
 ```
 
+Calls `mq3.vm.cgame_key_traps.getBinding`, `mq3.client.key_bindings_config.emit`, `mq3.vm.cgame_key_traps.keynumToString` from key bindings config `bindListCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandState` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `commandState` | `dynamic` | — | Accepted for compatibility with `bindListCommand`; the current implementation does not read it. |
+| `state` | `dynamic` | — | Record read through `state.keys`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L58)
 
 <a id="function-function-mq3-client-key-bindings-config-create-function-create-keystate-src-mq3-client-key-bindings-config-ml-248479834"></a>
 ### create
@@ -64,12 +70,14 @@ function bindListCommand(commandState, state)
 function create(keyState)
 ```
 
+Creates a `mq3.client.key_bindings_config.State` record. Assigns `keys` from `keyState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `keyState` | `dynamic` | — |  |
+| `keyState` | `dynamic` | — | Value used to initialize `State.keys`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L22)
 
 <a id="function-function-mq3-client-key-bindings-config-emit-function-emit-state-text-src-mq3-client-key-bindings-config-ml-996470888"></a>
 ### emit
@@ -78,13 +86,15 @@ function create(keyState)
 function emit(state, text)
 ```
 
+Calls `state.printFn` from key bindings config `emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.printFn`, `state.printContext`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the key bindings config path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L26)
 
 <a id="function-function-mq3-client-key-bindings-config-install-function-install-state-commandstate-src-mq3-client-key-bindings-config-ml-1141463753"></a>
 ### install
@@ -93,13 +103,15 @@ function emit(state, text)
 function install(state, commandState)
 ```
 
+Calls `mq3.qcommon.command_buffer.addContextCommand` from key bindings config `install`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `commandState` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.keys`. |
+| `commandState` | `dynamic` | — | commandState record passed to the key bindings config helper calls. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L62)
 
 <a id="function-function-mq3-client-key-bindings-config-loadtext-function-loadtext-state-commandstate-text-src-mq3-client-key-bindings-config-ml-211702170"></a>
 ### loadText
@@ -108,14 +120,16 @@ function install(state, commandState)
 function loadText(state, commandState, text)
 ```
 
+Calls `mq3.qcommon.command_buffer.insertText`, `mq3.qcommon.command_buffer.execute` from key bindings config `loadText`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `commandState` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared key bindings config state passed to the helper calls in `loadText`. |
+| `commandState` | `dynamic` | — | commandState record passed to the key bindings config helper calls. |
+| `text` | `dynamic` | — | Text consumed or emitted by `loadText` in the key bindings config path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L74)
 
 - [mq3.client.key_bindings_config.State](Type-mq3-client-key-bindings-config-state-863210453.md) — struct
 <a id="function-function-mq3-client-key-bindings-config-unbindallcommand-function-unbindallcommand-commandstate-state-src-mq3-client-key-bindings-config-ml-533885235"></a>
@@ -125,13 +139,15 @@ function loadText(state, commandState, text)
 function unbindAllCommand(commandState, state)
 ```
 
+Calls `mq3.vm.cgame_key_traps.getBinding`, `mq3.vm.cgame_key_traps.setBinding` from key bindings config `unbindAllCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandState` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `commandState` | `dynamic` | — | Accepted for compatibility with `unbindAllCommand`; the current implementation does not read it. |
+| `state` | `dynamic` | — | Record read through `state.keys`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L54)
 
 <a id="function-function-mq3-client-key-bindings-config-unbindcommand-function-unbindcommand-commandstate-state-src-mq3-client-key-bindings-config-ml-1663979853"></a>
 ### unbindCommand
@@ -140,10 +156,12 @@ function unbindAllCommand(commandState, state)
 function unbindCommand(commandState, state)
 ```
 
+Calls `mq3.qcommon.command_buffer.argc`, `mq3.client.key_bindings_config.emit`, `mq3.qcommon.command_buffer.argv` and additional helpers from key bindings config `unbindCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandState` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `commandState` | `dynamic` | — | commandState record passed to the key bindings config helper calls. |
+| `state` | `dynamic` | — | Record read through `state.keys`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L46)

@@ -4,7 +4,7 @@
 
 Package: [`mq3.client.ui_connect`](Package-mq3-client-ui-connect-1313299274.md)
 
-Reachable from entry: **no**
+Reachable from entry: **yes**
 
 ## Imports
 
@@ -21,8 +21,10 @@ Reachable from entry: **no**
 const CA_ACTIVE = 8
 ```
 
+Native connection-state value for fully active gameplay, retained alongside the connection screen's loading-state definitions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-authorizing-const-ca-authorizing-2-src-mq3-client-ui-connect-ml-1709788335"></a>
 ### CA_AUTHORIZING
@@ -31,8 +33,10 @@ const CA_ACTIVE = 8
 const CA_AUTHORIZING = 2
 ```
 
+Client connection state while waiting for authorization to contact the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-challenging-const-ca-challenging-4-src-mq3-client-ui-connect-ml-1351343729"></a>
 ### CA_CHALLENGING
@@ -41,8 +45,10 @@ const CA_AUTHORIZING = 2
 const CA_CHALLENGING = 4
 ```
 
+Client connection state while replying to the server challenge and requesting connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-cinematic-const-ca-cinematic-9-src-mq3-client-ui-connect-ml-982015678"></a>
 ### CA_CINEMATIC
@@ -51,8 +57,10 @@ const CA_CHALLENGING = 4
 const CA_CINEMATIC = 9
 ```
 
+Client connection state used for fullscreen cinematic playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-connected-const-ca-connected-5-src-mq3-client-ui-connect-ml-1690203786"></a>
 ### CA_CONNECTED
@@ -61,8 +69,10 @@ const CA_CINEMATIC = 9
 const CA_CONNECTED = 5
 ```
 
+Connection-state value for a completed handshake before game-state loading, defined for displaying the current connection and loading stage.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-connecting-const-ca-connecting-3-src-mq3-client-ui-connect-ml-2139275574"></a>
 ### CA_CONNECTING
@@ -71,8 +81,10 @@ const CA_CONNECTED = 5
 const CA_CONNECTING = 3
 ```
 
+Client connection state while requesting a challenge from the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-disconnected-const-ca-disconnected-1-src-mq3-client-ui-connect-ml-1330630896"></a>
 ### CA_DISCONNECTED
@@ -81,8 +93,10 @@ const CA_CONNECTING = 3
 const CA_DISCONNECTED = 1
 ```
 
+Client connection state with no active server connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-loading-const-ca-loading-6-src-mq3-client-ui-connect-ml-1046266219"></a>
 ### CA_LOADING
@@ -91,8 +105,10 @@ const CA_DISCONNECTED = 1
 const CA_LOADING = 6
 ```
 
+Client connection state while level media and game state are being loaded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-primed-const-ca-primed-7-src-mq3-client-ui-connect-ml-1491007330"></a>
 ### CA_PRIMED
@@ -101,8 +117,10 @@ const CA_LOADING = 6
 const CA_PRIMED = 7
 ```
 
+Client connection state with game state loaded, awaiting a playable snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-uninitialized-const-ca-uninitialized-0-src-mq3-client-ui-connect-ml-567287199"></a>
 ### CA_UNINITIALIZED
@@ -111,8 +129,10 @@ const CA_PRIMED = 7
 const CA_UNINITIALIZED = 0
 ```
 
+Client connection state before the client subsystem has been initialized.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L10)
 
 <a id="function-function-mq3-client-ui-connect-clientstate-function-clientstate-connstate-connectpacketcount-servername-updateinfostring-messagestring-serverinfo-src-mq3-client-ui-connect-ml-957383471"></a>
 ### clientState
@@ -121,17 +141,19 @@ const CA_UNINITIALIZED = 0
 function clientState(connState, connectPacketCount, servername, updateInfoString, messageString, serverInfo)
 ```
 
+Creates a `mq3.client.ui_connect.ClientState` record. Assigns `connState` from `connState`, `connectPacketCount` from `connectPacketCount`, `servername` from `servername`, `updateInfoString` from `updateInfoString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `connState` | `dynamic` | — |  |
-| `connectPacketCount` | `dynamic` | — |  |
-| `servername` | `dynamic` | — |  |
-| `updateInfoString` | `dynamic` | — |  |
-| `messageString` | `dynamic` | — |  |
-| `serverInfo` | `dynamic` | — |  |
+| `connState` | `dynamic` | — | Value used to initialize `ClientState.connState`. |
+| `connectPacketCount` | `dynamic` | — | Value used to initialize `ClientState.connectPacketCount`. |
+| `servername` | `dynamic` | — | Value used to initialize `ClientState.servername`. |
+| `updateInfoString` | `dynamic` | — | Value used to initialize `ClientState.updateInfoString`. |
+| `messageString` | `dynamic` | — | Value used to initialize `ClientState.messageString`. |
+| `serverInfo` | `dynamic` | — | Value used to initialize `ClientState.serverInfo`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L148)
 
 - [mq3.client.ui_connect.ClientState](Type-mq3-client-ui-connect-clientstate-1978890188.md) — struct
 <a id="function-function-mq3-client-ui-connect-configure-function-configure-state-client-realtime-downloadname-downloadsize-downloadcount-downloadtime-src-mq3-client-ui-connect-ml-1650606181"></a>
@@ -141,18 +163,20 @@ function clientState(connState, connectPacketCount, servername, updateInfoString
 function configure(state, client, realtime, downloadName, downloadSize, downloadCount, downloadTime)
 ```
 
+Updates `state.client`, `state.realtime`, `state.downloadName`, `state.downloadSize` and additional values during UI connect `configure`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
-| `downloadName` | `dynamic` | — |  |
-| `downloadSize` | `dynamic` | — |  |
-| `downloadCount` | `dynamic` | — |  |
-| `downloadTime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI connect record/storage; this routine assigns `state.client`, `state.realtime`, `state.downloadName`, `state.downloadSize` and additional values. |
+| `client` | `dynamic` | — | Value assigned to `state.client`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
+| `downloadName` | `dynamic` | — | Value assigned to `state.downloadName`. |
+| `downloadSize` | `dynamic` | — | Value assigned to `state.downloadSize`. |
+| `downloadCount` | `dynamic` | — | Value assigned to `state.downloadCount`. |
+| `downloadTime` | `dynamic` | — | Value assigned to `state.downloadTime`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L225)
 
 <a id="function-function-mq3-client-ui-connect-create-function-create-retailactive-src-mq3-client-ui-connect-ml-1496739353"></a>
 ### create
@@ -161,12 +185,14 @@ function configure(state, client, realtime, downloadName, downloadSize, download
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_connect.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L151)
 
 <a id="function-function-mq3-client-ui-connect-displaydownloadinfo-function-displaydownloadinfo-state-downloadname-src-mq3-client-ui-connect-ml-1102411562"></a>
 ### displayDownloadInfo
@@ -179,11 +205,11 @@ UI_DisplayDownloadInfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `downloadName` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.downloadSize`, `state.downloadCount`, `state.downloadTime`, `state.realtime`. |
+| `downloadName` | `dynamic` | — | Value used by `nameText=downloadName`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L209)
 
 <a id="constant-constant-mq3-client-ui-connect-download-left-const-download-left-262-src-mq3-client-ui-connect-ml-1755349219"></a>
 ### DOWNLOAD_LEFT
@@ -192,8 +218,10 @@ UI_DisplayDownloadInfo
 const DOWNLOAD_LEFT = 262
 ```
 
+Horizontal anchor used to position the download-progress text.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L36)
 
 - [mq3.client.ui_connect.DownloadInfo](Type-mq3-client-ui-connect-downloadinfo-2065230024.md) — struct
 <a id="function-function-mq3-client-ui-connect-drawconnectscreen-function-drawconnectscreen-state-overlay-src-mq3-client-ui-connect-ml-961893839"></a>
@@ -207,11 +235,11 @@ UI_DrawConnectScreen
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `overlay` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI connect record/storage; this routine assigns `state.actions`, `state.cacheCalls`, `state.lastLoadingText`, `state.lastConnState`. |
+| `overlay` | `dynamic` | — | Value used by `if not overlay then emit(state,"background",0,0,640,480,"","white","white","menuback",0) end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L230)
 
 <a id="function-function-mq3-client-ui-connect-drawtext-function-drawtext-state-x-y-text-style-color-src-mq3-client-ui-connect-ml-445524993"></a>
 ### drawText
@@ -220,17 +248,19 @@ UI_DrawConnectScreen
 function drawText(state, x, y, text, style, color)
 ```
 
+Calls `mq3.client.ui_connect.emit` from UI connect `drawText`. The final path returns `text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI connect state passed to the helper calls in `drawText`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawText`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawText`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawText` in the UI connect path. |
+| `style` | `dynamic` | — | Value used by `emit(state,"text",x,y,0,0,text,style,color,"",0)`. |
+| `color` | `dynamic` | — | Color value used by the UI connect drawing or interpolation operation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L194)
 
 <a id="function-function-mq3-client-ui-connect-drawwrapped-function-drawwrapped-state-x-y-width-height-text-style-color-src-mq3-client-ui-connect-ml-1283487048"></a>
 ### drawWrapped
@@ -239,19 +269,21 @@ function drawText(state, x, y, text, style, color)
 function drawWrapped(state, x, y, width, height, text, style, color)
 ```
 
+Calls `mq3.client.ui_connect.emit` from UI connect `drawWrapped`. The final path returns `text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI connect state passed to the helper calls in `drawWrapped`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawWrapped`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawWrapped`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawWrapped`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawWrapped`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawWrapped` in the UI connect path. |
+| `style` | `dynamic` | — | Value used by `emit(state,"wrapped-text",x,y,width,height,text,style,color,"",0)`. |
+| `color` | `dynamic` | — | Color value used by the UI connect drawing or interpolation operation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L204)
 
 <a id="function-function-mq3-client-ui-connect-emit-function-emit-state-kind-x-y-width-height-text-style-color-asset-value-src-mq3-client-ui-connect-ml-1358673393"></a>
 ### emit
@@ -260,22 +292,24 @@ function drawWrapped(state, x, y, width, height, text, style, color)
 function emit(state, kind, x, y, width, height, text, style, color, asset, value)
 ```
 
+Appends a UI connect action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `asset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI connect record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `emit`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `emit`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `emit`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `emit`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI connect path. |
+| `style` | `dynamic` | — | Value used by `item=Action("ui-connect",kind,x,y,width,height,text,style,color,asset,value,not state.retailActive)`. |
+| `color` | `dynamic` | — | Color value used by the UI connect drawing or interpolation operation. |
+| `asset` | `dynamic` | — | Value used by `item=Action("ui-connect",kind,x,y,width,height,text,style,color,asset,value,not state.retailActive)`. |
+| `value` | `dynamic` | — | Value used by `item=Action("ui-connect",kind,x,y,width,height,text,style,color,asset,value,not state.retailActive)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L164)
 
 <a id="constant-constant-mq3-client-ui-connect-exec-append-const-exec-append-2-src-mq3-client-ui-connect-ml-121945955"></a>
 ### EXEC_APPEND
@@ -284,8 +318,10 @@ function emit(state, kind, x, y, width, height, text, style, color, asset, value
 const EXEC_APPEND = 2
 ```
 
+Console execution mode that appends text to the pending command buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L34)
 
 <a id="function-function-mq3-client-ui-connect-idiv-function-idiv-a-b-src-mq3-client-ui-connect-ml-1838657535"></a>
 ### idiv
@@ -294,13 +330,15 @@ const EXEC_APPEND = 2
 function idiv(a, b)
 ```
 
+Computes signed integer division through the MiniLang numeric compatibility helper.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Value used by `negative=(a<0)!=(b<0)`. |
+| `b` | `dynamic` | — | Value tested by `b==0` before the calculation continues. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L168)
 
 <a id="constant-constant-mq3-client-ui-connect-k-escape-const-k-escape-27-src-mq3-client-ui-connect-ml-356760220"></a>
 ### K_ESCAPE
@@ -309,8 +347,10 @@ function idiv(a, b)
 const K_ESCAPE = 27
 ```
 
+Engine key code for the escape input, used by menu and client key-event handling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L32)
 
 <a id="function-function-mq3-client-ui-connect-keyconnect-function-keyconnect-state-key-src-mq3-client-ui-connect-ml-2027778272"></a>
 ### keyConnect
@@ -323,11 +363,11 @@ UI_KeyConnect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI connect state passed to the helper calls in `keyConnect`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI connect entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L244)
 
 <a id="function-function-mq3-client-ui-connect-printtime-function-printtime-time-src-mq3-client-ui-connect-ml-1341022905"></a>
 ### printTime
@@ -340,10 +380,10 @@ UI_PrintTime
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `time` | `dynamic` | — |  |
+| `time` | `dynamic` | — | Value used by `seconds=idiv(time,1000)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L183)
 
 <a id="function-function-mq3-client-ui-connect-readablesize-function-readablesize-value-src-mq3-client-ui-connect-ml-135015465"></a>
 ### readableSize
@@ -356,10 +396,10 @@ UI_ReadableSize
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value>gb`, `value>mb` and additional values before the calculation continues. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L177)
 
 <a id="function-function-mq3-client-ui-connect-sessiondrawconnectscreen-function-sessiondrawconnectscreen-context-overlay-src-mq3-client-ui-connect-ml-969316329"></a>
 ### sessionDrawConnectScreen
@@ -372,11 +412,11 @@ Adapter for original_ui_session.Services.connectFn when the shared host context 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `overlay` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Record read through `context.connectScreen`. |
+| `overlay` | `dynamic` | — | Value used by `return drawConnectScreen(context.connectScreen,overlay)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L239)
 
 - [mq3.client.ui_connect.State](Type-mq3-client-ui-connect-state-1587894641.md) — struct
 <a id="function-function-mq3-client-ui-connect-twodigits-function-twodigits-value-src-mq3-client-ui-connect-ml-1162759193"></a>
@@ -386,9 +426,11 @@ Adapter for original_ui_session.Services.connectFn when the shared host context 
 function twoDigits(value)
 ```
 
+Evaluates UI connect `twoDigits` and returns `"0"+str(value)`, `str(value)` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value>=0 and value<10` before the calculation continues. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L173)

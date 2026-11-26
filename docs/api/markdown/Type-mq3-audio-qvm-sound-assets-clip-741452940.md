@@ -9,8 +9,10 @@
 struct Clip
 ```
 
+Clip record for audio.qvm_sound_assets, containing `handle`, `path`, `sound`, `compressed`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L18)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Clip
 compressed
 ```
 
+Compressed sound descriptor when playback uses encoded sample blocks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L26)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-clip-handle-handle-src-mq3-audio-qvm-sound-assets-ml-1865530353"></a>
 ### handle
@@ -31,8 +35,10 @@ compressed
 handle
 ```
 
+Registered sound handle used to resolve the sound asset.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L20)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-clip-path-path-src-mq3-audio-qvm-sound-assets-ml-1464112483"></a>
 ### path
@@ -41,8 +47,10 @@ handle
 path
 ```
 
+Asset path used to find the sound inside the archive.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L22)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-clip-sound-sound-src-mq3-audio-qvm-sound-assets-ml-701279741"></a>
 ### sound
@@ -51,5 +59,7 @@ path
 sound
 ```
 
+Decoded WAVE sound descriptor supplying the source PCM data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L24)

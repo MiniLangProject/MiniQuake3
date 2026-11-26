@@ -48,7 +48,13 @@ function main(args)
     compare(reader,[vis.leafCluster(state,index),vis.leafArea(state,index)],"leaf"); index = index+1
   end while
   for cluster = -2 to state.numClusters+1
-    compareBytes(reader,vis.clusterPVS(state,cluster),"PVS "+str(cluster))
+    row=vis.clusterPVS(state,cluster)
+    compareBytes(reader,row,"PVS "+str(cluster))
+    for target=-2 to state.clusterBytes*8+1
+      expected=false
+      if target>=0 and (target>>3)<len(row) then expected=(row[target>>3]&(1<<(target&7)))!=0 end if
+      if vis.clusterVisible(state,cluster,target)!=expected then return error(3600,"FAIL PVS bit "+str(cluster)+":"+str(target)) end if
+    end for
   end for
   index = 0
   while index < len(world.models)

@@ -9,8 +9,10 @@
 struct Md3Triangle
 ```
 
+Md3Triangle record for format.qfiles, containing `indexes`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L293)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct Md3Triangle
 indexes
 ```
 
+Three vertex indexes defining the triangle.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L295)

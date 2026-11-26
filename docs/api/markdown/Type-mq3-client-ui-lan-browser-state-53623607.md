@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI LAN browser state, including `local`, `mplayer`, `globalServers`, `favorites`, `pings`, `cachedMplayer` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L73)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 cachedFavorites
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `save` and `load` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L97)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-cachedglobal-cachedglobal-src-mq3-client-ui-lan-browser-ml-350455084"></a>
 ### cachedGlobal
@@ -31,8 +35,10 @@ cachedFavorites
 cachedGlobal
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `save` and `load` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L94)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-cachedmplayer-cachedmplayer-src-mq3-client-ui-lan-browser-ml-1087075330"></a>
 ### cachedMplayer
@@ -41,8 +47,10 @@ cachedGlobal
 cachedMplayer
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `save` and `load` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L91)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-favorites-favorites-src-mq3-client-ui-lan-browser-ml-1273054294"></a>
 ### favorites
@@ -51,8 +59,10 @@ cachedMplayer
 favorites
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `list` and `setList` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L85)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-globalservers-globalservers-src-mq3-client-ui-lan-browser-ml-1722518594"></a>
 ### globalServers
@@ -61,8 +71,10 @@ favorites
 globalServers
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `list` and `setList` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L82)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-local-local-src-mq3-client-ui-lan-browser-ml-2019780790"></a>
 ### local
@@ -71,8 +83,10 @@ globalServers
 local
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `list` and `setList` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L76)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-mplayer-mplayer-src-mq3-client-ui-lan-browser-ml-213542758"></a>
 ### mplayer
@@ -81,8 +95,10 @@ local
 mplayer
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `list` and `setList` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L79)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-pings-pings-src-mq3-client-ui-lan-browser-ml-1070427694"></a>
 ### pings
@@ -91,5 +107,7 @@ mplayer
 pings
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `queuePing` and `pingCount` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L88)

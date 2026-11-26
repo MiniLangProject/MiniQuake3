@@ -13,29 +13,130 @@ import mq3.game.movement as movement
 import mq3.game.trajectory as trajectory
 import mq3.game.jumppad as jumppad
 
+/// Number of recent user commands retained in the command-history ring.
 const CMD_BACKUP=64
+/// Encoded solid value indicating that the entity uses an inline brush collision model.
 const SOLID_BMODEL=0xffffff
+/// Combined collision-content mask used by player movement traces.
 const MASK_PLAYERSOLID=0x2010001
+/// Collision-content bit identifying body volumes or surfaces during client traces.
 const CONTENTS_BODY=0x2000000
+/// Player-movement state flag indicating follow.
 const PMF_FOLLOW=0x1000
+/// Entity-state flag selecting nodraw behavior in client presentation.
 const EF_NODRAW=0x80
 
-struct Entity state lerpOrigin lerpAngles miscTime end struct
-struct Services worldTraceFn entityTraceFn worldPointFn entityPointFn triggerTouchFn moverAdjustFn context end struct
-struct State predicted valid solidEntities triggerEntities physicsTime hyperspace predictedError predictedErrorTime moved traceCount pointCount predictions transitions lastMode packetBackupExceeded warnings end struct
-struct RunContext observer services end struct
+/// Stores client game predict entity record, including `state`, `lerpOrigin`, `lerpAngles`, `miscTime`.
+struct Entity
+  /// When constructing this record, `entity` supplies `source` for this member.
+  state
+  /// Entity position after snapshot interpolation and smoothing.
+  lerpOrigin
+  /// Entity orientation after snapshot interpolation and smoothing.
+  lerpAngles
+  /// When constructing this record, `entity` supplies `-1` for this member.
+  miscTime
+end struct
+/// Stores client game predict host-service callbacks, including `worldTraceFn`, `entityTraceFn`, `worldPointFn`, `entityPointFn`, `triggerTouchFn`, `moverAdjustFn` and additional values.
+struct Services
+  /// Host callback for the world trace operation; an unset callback leaves that host operation
+  /// unavailable.
+  worldTraceFn
+  /// Host callback for the entity trace operation; an unset callback leaves that host operation
+  /// unavailable.
+  entityTraceFn
+  /// Host callback for the world point operation; an unset callback leaves that host operation
+  /// unavailable.
+  worldPointFn
+  /// Host callback for the entity point operation; an unset callback leaves that host operation
+  /// unavailable.
+  entityPointFn
+  /// Host callback for the trigger touch operation; an unset callback leaves that host operation
+  /// unavailable.
+  triggerTouchFn
+  /// Host callback for the mover adjust operation; an unset callback leaves that host operation
+  /// unavailable.
+  moverAdjustFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for local player-movement
+  /// prediction.
+  context
+end struct
+/// Stores client game predict state, including `predicted`, `valid`, `solidEntities`, `triggerEntities`, `physicsTime`, `hyperspace` and additional values.
+struct State
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `touchItem` and `touchTriggerPrediction` during subsequent processing.
+  predicted
+  /// True when the stored data passed the validation required by its consumer.
+  valid
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `buildSolidList` and `trace` during subsequent processing.
+  solidEntities
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `buildSolidList` and `touchTriggerPrediction` during subsequent processing.
+  triggerEntities
+  /// Snapshot time selected as the basis for player-state prediction.
+  physicsTime
+  /// True when prediction has entered a teleport trigger requiring the hyperspace view effect.
+  hyperspace
+  /// Positional discrepancy between predicted and authoritative player state.
+  predictedError
+  /// Timestamp from which the stored player-prediction error is smoothed away.
+  predictedErrorTime
+  /// When constructing this record, `create` supplies `false` for this member. Used by `predict` during
+  /// subsequent processing.
+  moved
+  /// When constructing this record, `create` supplies `0` for this member. Used by `trace` during
+  /// subsequent processing.
+  traceCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by `pointContents`
+  /// during subsequent processing.
+  pointCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by `predict` during
+  /// subsequent processing.
+  predictions
+  /// When constructing this record, `create` supplies `0` for this member. Used by `predict` during
+  /// subsequent processing.
+  transitions
+  /// When constructing this record, `create` supplies `"none"` for this member. Used by `predict`
+  /// during subsequent processing.
+  lastMode
+  /// When constructing this record, `create` supplies `false` for this member. Used by `predict` during
+  /// subsequent processing.
+  packetBackupExceeded
+  /// Nonfatal diagnostic messages collected while processing the input.
+  warnings
+end struct
+/// Stores client game predict run context record, including `observer`, `services`.
+struct RunContext
+  /// When constructing this record, `predict` supplies `state` for this member.
+  observer
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+end struct
 
+/// Creates a `mq3.client.cgame_predict.State` record. Initializes the record with the defaults written in this constructor.
 function create()
   return State(void,false,[],[],0,false,[0.0,0.0,0.0],0,false,0,0,0,0,"none",false,[])
 end function
+/// Creates a `mq3.client.cgame_predict.Services` record. Assigns `context` from `context`.
+/// @param context Value used to initialize `Services.context`.
 function services(context) return Services(void,void,void,void,void,void,context) end function
+/// Creates a `mq3.client.cgame_predict.Entity` record. Assigns `state` from `source`.
+/// @param source Record read through `source.origin`, `source.angles`.
 function entity(source)
   return Entity(source,[source.origin[0],source.origin[1],source.origin[2]],[source.angles[0],source.angles[1],source.angles[2]],-1)
 end function
+/// Copies the X, Y and Z components into a fresh client game predict vector.
+/// @param value Sequence read at `value[0]`, `value[1]`, `value[2]`.
 function copy3(value) return [value[0],value[1],value[2]] end function
 
 // CG_BuildSolidList.  Snapshot entities already carry the state selected by
 // CG_SetNextSnap, so the native observer can classify them directly.
+/// @param state Mutable client game predict record/storage; this routine assigns `state.solidEntities`, `state.triggerEntities`.
+/// @param current Value used by `chosen=current`.
+/// @param next Value used by `if next!=void and not nextFrameTeleport and not thisFrameTeleport then chosen=next end if`.
+/// @param nextFrameTeleport Value used by `if next!=void and not nextFrameTeleport and not thisFrameTeleport then chosen=next end if`.
+/// @param thisFrameTeleport Value used by `if next!=void and not nextFrameTeleport and not thisFrameTeleport then chosen=next end if`.
 function buildSolidList(state,current,next,nextFrameTeleport,thisFrameTeleport)
   state.solidEntities=[];state.triggerEntities=[];chosen=current
   if next!=void and not nextFrameTeleport and not thisFrameTeleport then chosen=next end if
@@ -50,6 +151,14 @@ end function
 
 // CG_ClipMoveToEntities / CG_Trace.  Collision details stay owned by the
 // engine callback; the original nearest/allsolid/startsolid merge is here.
+/// @param state Mutable client game predict record/storage; this routine assigns `state.traceCount`.
+/// @param host Record read through `host.worldTraceFn`, `host.entityTraceFn`.
+/// @param start Value used by `result=host.worldTraceFn(host,start,mins,maxs,finish,mask)`.
+/// @param mins Minimum X, Y and Z coordinates of the axis-aligned bounds.
+/// @param maxs Maximum X, Y and Z coordinates of the axis-aligned bounds.
+/// @param finish Value used by `result=host.worldTraceFn(host,start,mins,maxs,finish,mask)`.
+/// @param skipNumber Value used by `if value.state.number==skipNumber then continue end if`.
+/// @param mask Value used by `result=host.worldTraceFn(host,start,mins,maxs,finish,mask)`.
 function trace(state,host,start,mins,maxs,finish,skipNumber,mask)
   if host==void or host.worldTraceFn==void then return error(7740,"CG_Trace: missing world collision") end if
   result=host.worldTraceFn(host,start,mins,maxs,finish,mask);state.traceCount=state.traceCount+1
@@ -67,6 +176,10 @@ function trace(state,host,start,mins,maxs,finish,skipNumber,mask)
 end function
 
 // CG_PointContents.
+/// @param state Mutable client game predict record/storage; this routine assigns `state.pointCount`.
+/// @param host Record read through `host.worldPointFn`, `host.entityPointFn`.
+/// @param point Value used by `contents=host.worldPointFn(host,point)`.
+/// @param passEntityNum Value used by `if value.state.number==passEntityNum or value.state.solid!=SOLID_BMODEL then continue end if`.
 function pointContents(state,host,point,passEntityNum)
   if host==void or host.worldPointFn==void then return error(7740,"CG_PointContents: missing world collision") end if
   contents=host.worldPointFn(host,point);state.pointCount=state.pointCount+1
@@ -80,12 +193,22 @@ function pointContents(state,host,point,passEntityNum)
   return contents
 end function
 
+/// Calls `mq3.compat.numeric.f32` from client game predict `lerpAngle`. The final path returns `n.f32(first+fraction*delta)`.
+/// @param first Value used by `delta=second-first`.
+/// @param second Value used by `delta=second-first`.
+/// @param fraction Interpolation or blend fraction between the endpoint values.
 function lerpAngle(first,second,fraction)
   delta=second-first;if delta>180.0 then delta=delta-360.0 else if delta< -180.0 then delta=delta+360.0 end if
   return n.f32(first+fraction*delta)
 end function
 
 // CG_InterpolatePlayerState.
+/// @param current Record read through `current.playerState`, `current.serverTime`, `current.playerState.bobCycle`, `current.playerState.origin` and additional values.
+/// @param next Record read through `next.serverTime`, `next.playerState.bobCycle`, `next.playerState.origin`, `next.playerState.viewangles` and additional values.
+/// @param time Value used by `fraction=n.f32((time-current.serverTime)*1.0/(next.serverTime-current.serverTime))`.
+/// @param grabAngles Value used by `if grabAngles and latestCommand!=void then pmove.updateViewAngles(output,latestCommand) end if`.
+/// @param latestCommand Value used by `if grabAngles and latestCommand!=void then pmove.updateViewAngles(output,latestCommand) end if`.
+/// @param nextFrameTeleport Value used by `if nextFrameTeleport or next==void or next.serverTime<=current.serverTime then return output end if`.
 function interpolatePlayerState(current,next,time,grabAngles,latestCommand,nextFrameTeleport)
   if current==void then return error(7740,"CG_InterpolatePlayerState: NULL snapshot") end if
   output=playerstate.copy(current.playerState)
@@ -102,11 +225,21 @@ function interpolatePlayerState(current,next,time,grabAngles,latestCommand,nextF
   return output
 end function
 
+/// Updates `ps.events[slot]`, `ps.eventParms[slot]`, `ps.eventSequence` during client game predict `addPredictableEvent`.
+/// @param ps Mutable client game predict record/storage; this routine assigns `ps.events[slot]`, `ps.eventParms[slot]`, `ps.eventSequence`.
+/// @param event Event identifier compared with the supported activation/input events.
+/// @param parm Value used by `ps.eventParms[slot]=parm`.
 function addPredictableEvent(ps,event,parm)
   slot=ps.eventSequence&1;ps.events[slot]=event;ps.eventParms[slot]=parm;ps.eventSequence=n.add32(ps.eventSequence,1);return void
 end function
 
+/// Computes `typeof(index)=="int" and index>0 and index<36` for client game predict `validItem`.
+/// @param index Value used by `return typeof(index)=="int" and index>0 and index<36`.
 function validItem(index) return typeof(index)=="int" and index>0 and index<36 end function
+/// Calls `mq3.client.cgame_predict.validItem`, `mq3.game.constants.itemType`, `mq3.game.constants.itemTag` and additional helpers from client game predict `canGrabItem`.
+/// @param gametype Quake III game-type identifier.
+/// @param ent Record read through `ent.modelindex`, `ent.modelindex2`.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.ammo`, `ps.stats`, `ps.persistant`, `ps.powerups`.
 function canGrabItem(gametype,ent,ps)
   index=ent.modelindex;if not validItem(index) then return error(7740,"CG_TouchItem: invalid baseq3 item") end if;type=c.itemType(index);tag=c.itemTag(index)
   if type==c.IT_WEAPON then return true end if
@@ -125,6 +258,11 @@ end function
 
 // CG_TouchItem.  The shared trajectory and item rules are the same native
 // BG_PlayerTouchesItem/BG_CanItemBeGrabbed ports used by qagame.
+/// @param state Mutable client game predict record/storage; this routine assigns `state.eFlags`, `state.predicted.stats[c.STAT_WEAPONS]`, `state.predicted.ammo[tag]`.
+/// @param value Mutable client game predict record/storage; this routine assigns `value.state.eFlags`, `value.miscTime`.
+/// @param time Value assigned to `value.miscTime`.
+/// @param gametype Quake III game-type identifier.
+/// @param predictItems Value used by `if not predictItems then return false end if`.
 function touchItem(state,value,time,gametype,predictItems)
   if not predictItems then return false end if
   if not trajectory.playerTouchesItem(state.predicted,value.state.pos,time) then return false end if
@@ -138,6 +276,13 @@ end function
 
 // CG_TouchTriggerPrediction.  Contact against inline trigger models remains an
 // engine callback, while item, teleport and jump-pad effects are native here.
+/// @param state Mutable client game predict record/storage; this routine assigns `state.hyperspace`.
+/// @param host Record read through `host.triggerTouchFn`.
+/// @param time Value used by `if ent.eType==c.ET_ITEM and not spectator then picked=touchItem(state,value,time,gametype,predictItems)`.
+/// @param gametype Quake III game-type identifier.
+/// @param predictItems Value used by `if ent.eType==c.ET_ITEM and not spectator then picked=touchItem(state,value,time,gametype,predictItems)`.
+/// @param mins Minimum X, Y and Z coordinates of the axis-aligned bounds.
+/// @param maxs Maximum X, Y and Z coordinates of the axis-aligned bounds.
 function touchTriggerPrediction(state,host,time,gametype,predictItems,mins,maxs)
   ps=state.predicted;if ps.stats[c.STAT_HEALTH]<=0 then return 0 end if;spectator=ps.pm_type==c.PM_SPECTATOR
   if ps.pm_type!=c.PM_NORMAL and not spectator then return 0 end if;touched=0
@@ -153,13 +298,28 @@ function touchTriggerPrediction(state,host,time,gametype,predictItems,mins,maxs)
   return touched
 end function
 
+/// Calls `mq3.client.cgame_predict.trace` from client game predict `predictionTrace`. The final path returns `trace(run.observer,run.services,start,p.k.mins,p.k.maxs,finish,p.ps.clientNum,p.k.mask)`.
+/// @param p Record read through `p.context`, `p.k.mins`, `p.k.maxs`, `p.ps.clientNum` and additional values.
+/// @param start Value used by `return trace(run.observer,run.services,start,p.k.mins,p.k.maxs,finish,p.ps.clientNum,p.k.mask)`.
+/// @param finish Value used by `return trace(run.observer,run.services,start,p.k.mins,p.k.maxs,finish,p.ps.clientNum,p.k.mask)`.
 function predictionTrace(p,start,finish)
   run=p.context;return trace(run.observer,run.services,start,p.k.mins,p.k.maxs,finish,p.ps.clientNum,p.k.mask)
 end function
+/// Calls `mq3.client.cgame_predict.pointContents` from client game predict `predictionPoint`. The final path returns `pointContents(run.observer,run.services,point,p.ps.clientNum)`.
+/// @param p Record read through `p.context`, `p.ps.clientNum`.
+/// @param point Value used by `return pointContents(run.observer,run.services,point,p.ps.clientNum)`.
 function predictionPoint(p,point)
   run=p.context;return pointContents(run.observer,run.services,point,p.ps.clientNum)
 end function
+/// Evaluates client game predict `latest` and returns `void`, `commands[len(commands)-1]` according to its guard/selection conditions.
+/// @param commands Sequence read at `commands[len(commands)-1]`.
 function latest(commands) if commands==void or len(commands)==0 then return void end if;return commands[len(commands)-1] end function
+/// Calls `mq3.client.cgame_predict.copy3`, `host.moverAdjustFn` from client game predict `adjusted`. The final path returns `host.moverAdjustFn(host,origin,ground,fromTime,toTime)`.
+/// @param host Record read through `host.moverAdjustFn`.
+/// @param origin World-space origin of the entity, sound or rendered effect.
+/// @param ground Value used by `return host.moverAdjustFn(host,origin,ground,fromTime,toTime)`.
+/// @param fromTime Value used by `return host.moverAdjustFn(host,origin,ground,fromTime,toTime)`.
+/// @param toTime Value used by `return host.moverAdjustFn(host,origin,ground,fromTime,toTime)`.
 function adjusted(host,origin,ground,fromTime,toTime)
   if host.moverAdjustFn==void then return copy3(origin) end if;return host.moverAdjustFn(host,origin,ground,fromTime,toTime)
 end function
@@ -167,6 +327,22 @@ end function
 // CG_PredictPlayerState.  This is deliberately an observer: all state is a
 // deep copy and transition delivery is counted rather than emitted.  Retail
 // cgame.qvm continues to own visible gameplay and event dispatch.
+/// @param state Mutable client game predict record/storage; this routine assigns `state.hyperspace`, `state.packetBackupExceeded`, `state.valid`, `state.predicted` and additional values.
+/// @param current Record read through `current.playerState`, `current.playerState.pm_flags`, `current.playerState.commandTime`, `current.playerState.persistant`.
+/// @param next Value used by `build=buildSolidList(state,current,next,nextFrameTeleport,thisFrameTeleport)`.
+/// @param time Value used by `if demoPlayback or (current.playerState.pm_flags&PMF_FOLLOW)!=0 then state.predicted=interpolatePlayerState(current,next,time,false,command,ne...`.
+/// @param oldTime Value assigned to `state.predictedErrorTime`.
+/// @param commands Sequence read at `commands[0]`.
+/// @param demoPlayback Value used by `if demoPlayback or (current.playerState.pm_flags&PMF_FOLLOW)!=0 then state.predicted=interpolatePlayerState(current,next,time,false,command,ne...`.
+/// @param noPredict Value used by `if noPredict or synchronousClients then state.predicted=interpolatePlayerState(current,next,time,true,command,nextFrameTeleport)`.
+/// @param synchronousClients Value used by `if noPredict or synchronousClients then state.predicted=interpolatePlayerState(current,next,time,true,command,nextFrameTeleport)`.
+/// @param nextFrameTeleport Value used by `build=buildSolidList(state,current,next,nextFrameTeleport,thisFrameTeleport)`.
+/// @param thisFrameTeleport Value used by `build=buildSolidList(state,current,next,nextFrameTeleport,thisFrameTeleport)`.
+/// @param gametype Quake III game-type identifier.
+/// @param predictItems Value used by `triggers=touchTriggerPrediction(state,host,time,gametype,predictItems,move.k.mins,move.k.maxs)`.
+/// @param pmoveFixed Value assigned to `move.fixed`.
+/// @param pmoveMsec Value used by `interval=pmoveMsec`.
+/// @param host host record passed to the client game predict helper calls.
 function predict(state,current,next,time,oldTime,commands,demoPlayback,noPredict,synchronousClients,nextFrameTeleport,thisFrameTeleport,gametype,predictItems,pmoveFixed,pmoveMsec,host)
   if state==void or current==void or host==void then return error(7740,"CG_PredictPlayerState: missing state") end if
   state.hyperspace=false;state.packetBackupExceeded=false;build=buildSolidList(state,current,next,nextFrameTeleport,thisFrameTeleport);if build is error then return build end if

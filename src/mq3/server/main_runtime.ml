@@ -9,41 +9,170 @@ import mq3.compat.numeric as numeric
 import mq3.server.connectionless as connectionless
 import std.string as strings
 
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Max length of a string passed to Cmd_TokenizeString.
 const MAX_STRING_CHARS=1024
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN=16384
+/// Maximum length of a backslash-delimited server or client information string.
 const MAX_INFO_STRING=1024
+/// Client-state value identifying a vacant client entry ignored by server connection services.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying an active player reported by the server runtime and status handlers.
 const CS_ACTIVE=4
+/// Game-mode identifier for single-player progression.
 const GT_SINGLE_PLAYER=2
+/// Interval between master-server heartbeats, in milliseconds.
 const HEARTBEAT_MSEC=300000
+/// Game name advertised in master-server heartbeat messages.
 const HEARTBEAT_GAME="QuakeArena-1"
+/// Default UDP port used by the master-server directory.
 const PORT_MASTER=27950
 
-struct Client state name ping score reliableAcknowledge reliableSequence reliableSent reliableCommands end struct
+/// Client record for server.main_runtime, containing `state`, `name`, `ping`, `score`, `reliableAcknowledge`, `reliableSequence`, and 2 further fields.
+struct Client
+  /// Connection lifecycle value that drives connection, status, and client-command handling in the
+  /// server runtime.
+  state
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Estimated round-trip client latency in milliseconds.
+  ping
+  /// Client score advertised by server-status responses.
+  score
+  /// Reliable acknowledgment cursor available to the assembled server connection runtime.
+  reliableAcknowledge
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Sequence number of the newest reliable command transmitted to the peer.
+  reliableSent
+  /// Reliable command entries retained until the peer acknowledges them.
+  reliableCommands
+end struct
+/// Create `mq3.server.main_runtime.Client` with state=state; name=name; ping=ping; score=score; reliableAcknowledge=0; reliableSequence=0; reliableSent=0; reliableCommands=array(MAX_RELIABLE_COMMANDS, "").
+/// @param state Initial `state` field stored in the returned or constructed `mq3.server.main_runtime.Client` record.
+/// @param name Initial `name` field stored in the returned or constructed `mq3.server.main_runtime.Client` record.
+/// @param ping Initial `ping` field stored in the returned or constructed `mq3.server.main_runtime.Client` record.
+/// @param score Initial `score` field stored in the returned or constructed `mq3.server.main_runtime.Client` record.
 function client(state,name,ping,score)
   return Client(state,name,ping,score,0,0,0,array(MAX_RELIABLE_COMMANDS,""))
 end function
 
-struct Master name value modified address end struct
+/// Master record for server.main_runtime, containing `name`, `value`, `modified`, `address`.
+struct Master
+  /// Configuration-variable name for this master-server entry.
+  name
+  /// Configured textual address of this master-server endpoint.
+  value
+  /// True when the configured address needs to be resolved again.
+  modified
+  /// Network address associated with the client or packet.
+  address
+end struct
+/// Create `mq3.server.main_runtime.Master` with name=name; value=value; modified=true; address=void.
+/// @param name Initial `name` field stored in the returned or constructed `mq3.server.main_runtime.Master` record.
+/// @param value Initial `value` field stored in the returned or constructed `mq3.server.main_runtime.Master` record.
 function master(name,value) return Master(name,value,true,void) end function
 
-struct Runtime time nextHeartbeatTime dedicated masters clients maxClients privateClients gametype uiSinglePlayerActive restricted serverInfo hostname mapname protocol gametypeValue pure minPing maxPing game lastRconTime rconPassword redirectAddress end struct
+/// Runtime record for server.main_runtime, containing `time`, `nextHeartbeatTime`, `dedicated`, `masters`, `clients`, `maxClients`, and 16 further fields.
+struct Runtime
+  /// Server clock shared by connectionless requests and connection runtime services, in milliseconds.
+  time
+  /// Server time at which the next master heartbeat should be sent.
+  nextHeartbeatTime
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// Master-server endpoints receiving heartbeat and shutdown notifications.
+  masters
+  /// Client records shared by server status, connection, and console services.
+  clients
+  /// Configured connection capacity used by server status and admission services.
+  maxClients
+  /// Number of client slots reserved for clients with the private password.
+  privateClients
+  /// Game-mode identifier used when applying mode-specific rules.
+  gametype
+  /// True when the local UI is running a single-player session.
+  uiSinglePlayerActive
+  /// True when discovery or client access is restricted by server policy.
+  restricted
+  /// Backslash-delimited information string advertised by the server.
+  serverInfo
+  /// Server display name advertised to clients and directory services.
+  hostname
+  /// Name of the current game map.
+  mapname
+  /// Network protocol version advertised in discovery responses.
+  protocol
+  /// Game-mode value advertised in server information.
+  gametypeValue
+  /// True when clients must use the server-approved package checksums.
+  pure
+  /// Minimum client latency accepted by the connection policy.
+  minPing
+  /// Maximum client latency accepted by the connection policy.
+  maxPing
+  /// Game name advertised in master-server heartbeats.
+  game
+  /// Timestamp of the most recently accepted remote-console request.
+  lastRconTime
+  /// Password required to accept a remote-console command.
+  rconPassword
+  /// For rcon return messages.
+  redirectAddress
+end struct
+/// Create `mq3.server.main_runtime.Runtime` with time=0; nextHeartbeatTime=0; dedicated=0; masters=[]; 18 further fields.
 function runtime()
   return Runtime(0,0,0,[],[],0,0,0,false,false,"","","",68,0,0,0,0,"",0,"",void)
 end function
 
-struct Services sendFn resolveFn printFn dropFn executeFn millisecondsFn authorizeFn decompressFn diagnosticFn context end struct
+/// Services record for server.main_runtime, containing `sendFn`, `resolveFn`, `printFn`, `dropFn`, `executeFn`, `millisecondsFn`, and 4 further fields.
+struct Services
+  /// Host callback that transmits the supplied message through the host network interface.
+  sendFn
+  /// Host callback that resolves a textual network address or host name.
+  resolveFn
+  /// Host callback that prints server runtime status, command output, and connection diagnostics.
+  printFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that executes a routed command or operation on the host.
+  executeFn
+  /// Host callback that supplies the current host clock in milliseconds.
+  millisecondsFn
+  /// Host callback that performs the host-side client authorization exchange.
+  authorizeFn
+  /// Host callback that decompresses a received packet payload.
+  decompressFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with server address resolution, outgoing messages, console
+  /// commands, and diagnostics.
+  context
+end struct
+/// Create `mq3.server.main_runtime.Services` with sendFn=void; resolveFn=void; printFn=void; dropFn=void; executeFn=void; millisecondsFn=void; authorizeFn=void; decompressFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void,void,void,void,void,void,void,void) end function
 
+/// Send main runtime in server.main_runtime.
+/// @param host Record exposing `sendFn`.
+/// @param address Address used in `host.sendFn(host, address, text)`.
+/// @param text Text used in `host.sendFn(host, address, text)`.
 function send(host,address,text) if host.sendFn!=void then return host.sendFn(host,address,text) end if;return void end function
+/// Compute say in server.main_runtime.
+/// @param host Record exposing `printFn`.
+/// @param text Text used in `host.printFn(host, text)`.
 function say(host,text) if host.printFn!=void then host.printFn(host,text) end if;return void end function
 
 // SV_ExpandNewlines uses a 1024-byte static buffer and stops with three bytes
 // left, because a final input newline needs two output bytes plus NUL.
+/// @param value Value used in `bytes(value)` and `(value == void)`.
 function SV_ExpandNewlines(value)
   if value==void then return "" end if
   input=bytes(value);output=bytes(1023,0);at=0;index=0
@@ -54,6 +183,8 @@ function SV_ExpandNewlines(value)
   return decode(slice(output,0,at))
 end function
 
+/// Compute config number in server.main_runtime; the normal completion returns `numbers.atoi(decode(slice(data, index, (len(data) - index))))`.
+/// @param text Text used in `bytes(text)` and `(text == void)`.
 function configNumber(text)
   if text==void or not strings.startsWith(text,"cs") then return void end if
   data=bytes(text);index=2;while index<len(data) and data[index]<=32 index=index+1 end while
@@ -61,15 +192,25 @@ function configNumber(text)
   return numbers.atoi(decode(slice(data,index,len(data)-index)))
 end function
 
+/// Compute require client in server.main_runtime.
+///
+/// Validation failures include `sv_main: invalid reliable client`.
+/// @param value Record exposing `reliableCommands`.
 function requireClient(value)
   if value==void or value.reliableCommands==void or len(value.reliableCommands)!=MAX_RELIABLE_COMMANDS then return error(7340,"sv_main: invalid reliable client") end if
   return void
 end function
 
+/// Compute bounded in server.main_runtime; the normal completion returns `decode(slice(data, 0, (capacity - 1)))`.
+/// @param text Text used in `bytes(text)`.
+/// @param capacity Capacity used in `(capacity - 1)` and `(len(data) < capacity)`.
 function bounded(text,capacity)
   data=bytes(text);if len(data)<capacity then return text end if;return decode(slice(data,0,capacity-1))
 end function
 
+/// Test replace pending server commands in server.main_runtime; the normal completion returns `false`.
+/// @param value Record exposing `reliableSent`, `reliableSequence`, `reliableCommands`.
+/// @param cmd Text passed as `text` to `mq3.server.main_runtime.configNumber`.
 function SV_ReplacePendingServerCommands(value,cmd)
   requireClient(value);wanted=configNumber(cmd);if wanted==void then return false end if
   sequence=value.reliableSent+1
@@ -81,6 +222,12 @@ function SV_ReplacePendingServerCommands(value,cmd)
   return false
 end function
 
+/// Add server command in server.main_runtime; the normal completion returns `true`.
+///
+/// Direct state writes: `value.reliableSequence`.
+/// @param host Record exposing `dropFn`.
+/// @param value Record exposing `reliableSequence`, `reliableAcknowledge`, `reliableCommands`. Updated in place: `reliableSequence`.
+/// @param cmd Text passed as `text` to `mq3.server.main_runtime.bounded`.
 function SV_AddServerCommand(host,value,cmd)
   requireClient(value);value.reliableSequence=value.reliableSequence+1
   if value.reliableSequence-value.reliableAcknowledge==MAX_RELIABLE_COMMANDS+1 then
@@ -97,6 +244,13 @@ function SV_AddServerCommand(host,value,cmd)
   return true
 end function
 
+/// Send server command in server.main_runtime; the normal completion returns `count`.
+///
+/// Validation failures include `sv_main: missing command runtime`.
+/// @param state Record exposing `dedicated`, `clients`.
+/// @param host Host passed as `host` to `mq3.server.main_runtime.SV_AddServerCommand`.
+/// @param target Value passed as `value` to `mq3.server.main_runtime.SV_AddServerCommand`.
+/// @param cmd Text passed as `text` to `mq3.server.main_runtime.bounded`.
 function SV_SendServerCommand(state,host,target,cmd)
   if state==void or host==void then return error(7341,"sv_main: missing command runtime") end if
   cmd=bounded(cmd,MAX_MSGLEN)
@@ -107,6 +261,12 @@ function SV_SendServerCommand(state,host,target,cmd)
   return count
 end function
 
+/// Update `state.nextHeartbeatTime` in server.main_runtime; the normal completion returns `count`.
+///
+/// Validation failures include `sv_main: missing heartbeat runtime`.
+/// Direct state writes: `state.nextHeartbeatTime`.
+/// @param state Record exposing `dedicated`, `time`, `nextHeartbeatTime`, `masters`. Updated in place: `nextHeartbeatTime`.
+/// @param host Record exposing `resolveFn`.
 function SV_MasterHeartbeat(state,host)
   if state==void or host==void then return error(7342,"sv_main: missing heartbeat runtime") end if
   if state.dedicated!=2 or state.time<state.nextHeartbeatTime then return 0 end if
@@ -127,16 +287,28 @@ function SV_MasterHeartbeat(state,host)
   return count
 end function
 
+/// Update `state.nextHeartbeatTime` in server.main_runtime; the normal completion returns `(first + second)`.
+///
+/// Direct state writes: `state.nextHeartbeatTime`.
+/// @param state Updated in place: `nextHeartbeatTime`.
+/// @param host Host passed as `host` to `mq3.server.main_runtime.SV_MasterHeartbeat`.
 function SV_MasterShutdown(state,host)
   state.nextHeartbeatTime=-9999;first=SV_MasterHeartbeat(state,host)
   state.nextHeartbeatTime=-9999;second=SV_MasterHeartbeat(state,host)
   return first+second
 end function
 
+/// Return `mq3.server.main_runtime.bounded((((((str(value.score) + " ") + str(value.ping)) + " \"") + value.name) + "\"\n"), 1024)` from `server.main_runtime.statusLine`.
+/// @param value Record exposing `score`, `ping`, `name`.
 function statusLine(value)
   return bounded(str(value.score)+" "+str(value.ping)+" \""+value.name+"\"\n",1024)
 end function
 
+/// Compute svc status in server.main_runtime; the normal completion returns `response`.
+/// @param state Record exposing `gametype`, `serverInfo`, `restricted`, `clients`.
+/// @param host Host passed as `host` to `mq3.server.main_runtime.send`.
+/// @param address Address passed as `address` to `mq3.server.main_runtime.send`.
+/// @param challenge New value passed as `newValue` to `mq3.shared.info.setValue`.
 function SVC_Status(state,host,address,challenge)
   if state.gametype==GT_SINGLE_PLAYER then return "" end if
   text=info.setValue(state.serverInfo,"challenge",challenge,void,void)
@@ -148,6 +320,11 @@ function SVC_Status(state,host,address,challenge)
   response="statusResponse\n"+text+"\n"+players;send(host,address,response);return response
 end function
 
+/// Compute svc info in server.main_runtime; the normal completion returns `response`.
+/// @param state Record exposing `gametype`, `uiSinglePlayerActive`, `maxClients`, `clients`, `privateClients`, `protocol`, `hostname` and further fields.
+/// @param host Host passed as `host` to `mq3.server.main_runtime.send`.
+/// @param address Address passed as `address` to `mq3.server.main_runtime.send`.
+/// @param challenge New value passed as `newValue` to `mq3.shared.info.setValue`.
 function SVC_Info(state,host,address,challenge)
   if state.gametype==GT_SINGLE_PLAYER or state.uiSinglePlayerActive then return "" end if
   connected=0;limit=state.maxClients;if limit>len(state.clients) then limit=len(state.clients) end if
@@ -162,11 +339,19 @@ function SVC_Info(state,host,address,challenge)
   response="infoResponse\n"+text;send(host,address,response);return response
 end function
 
+/// Compute flush redirect in server.main_runtime; the normal completion returns `text`.
+///
+/// Validation failures include `sv_main: missing redirect address`.
+/// @param state Record exposing `redirectAddress`.
+/// @param host Host passed as `host` to `mq3.server.main_runtime.send`.
+/// @param output Output used in `("print\n" + output)`.
 function SV_FlushRedirect(state,host,output)
   if state.redirectAddress==void then return error(7343,"sv_main: missing redirect address") end if
   text="print\n"+output;send(host,state.redirectAddress,text);return text
 end function
 
+/// Compute remote tail in server.main_runtime; the normal completion returns `decode(slice(data, index, (len(data) - index)))`.
+/// @param text Text used in `bytes(text)`.
 function remoteTail(text)
   data=bytes(text);index=0
   while index<len(data) and data[index]!=32 index=index+1 end while
@@ -176,6 +361,14 @@ function remoteTail(text)
   return decode(slice(data,index,len(data)-index))
 end function
 
+/// Update `state.lastRconTime`, `state.redirectAddress` in server.main_runtime; the normal completion returns `output`.
+///
+/// Direct state writes: `state.lastRconTime`, `state.redirectAddress`.
+/// @param state Record exposing `time`, `lastRconTime`, `rconPassword`. Updated in place: `lastRconTime`, `redirectAddress`.
+/// @param host Record exposing `millisecondsFn`, `executeFn`.
+/// @param address Address operand used by `SVC_RemoteCommand`; its reads are shown in the implementation.
+/// @param raw Text passed as `text` to `mq3.server.main_runtime.remoteTail`.
+/// @param args Args used in `args[1]` and `len(args)`.
 function SVC_RemoteCommand(state,host,address,raw,args)
   now=state.time;if host.millisecondsFn!=void then now=host.millisecondsFn(host) end if;now=numeric.u32(now)
   if now<numeric.u32(state.lastRconTime+500) then return "throttled" end if;state.lastRconTime=now
@@ -187,13 +380,48 @@ function SVC_RemoteCommand(state,host,address,raw,args)
   SV_FlushRedirect(state,host,output);return output
 end function
 
-struct Binding state services end struct
+/// Binding record for server.main_runtime, containing `state`, `services`.
+struct Binding
+  /// Managed server runtime passed to the bound host callbacks.
+  state
+  /// Server host services retained by the bound connectionless and runtime adapters.
+  services
+end struct
+/// Compute status callback in server.main_runtime; the normal completion returns `SVC_Status(host.context.state, host.context.services, address, challenge)`.
+/// @param host Record exposing `context`.
+/// @param address Address passed as `address` to `mq3.server.main_runtime.SVC_Status`.
+/// @param args Args used in `args[1]` and `len(args)`.
 function statusCallback(host,address,args) challenge="";if len(args)>1 then challenge=args[1] end if;return SVC_Status(host.context.state,host.context.services,address,challenge) end function
+/// Compute info callback in server.main_runtime; the normal completion returns `SVC_Info(host.context.state, host.context.services, address, challenge)`.
+/// @param host Record exposing `context`.
+/// @param address Address passed as `address` to `mq3.server.main_runtime.SVC_Info`.
+/// @param args Args used in `args[1]` and `len(args)`.
 function infoCallback(host,address,args) challenge="";if len(args)>1 then challenge=args[1] end if;return SVC_Info(host.context.state,host.context.services,address,challenge) end function
+/// Return `mq3.server.main_runtime.SVC_RemoteCommand(host.context.state, host.context.services, address, text, args)` from `server.main_runtime.rconCallback`.
+/// @param host Record exposing `context`.
+/// @param address Address passed as `address` to `mq3.server.main_runtime.SVC_RemoteCommand`.
+/// @param msg Reserved argument; this implementation does not read its value.
+/// @param text Raw passed as `raw` to `mq3.server.main_runtime.SVC_RemoteCommand`.
+/// @param args Args passed as `args` to `mq3.server.main_runtime.SVC_RemoteCommand`.
 function rconCallback(host,address,msg,text,args) return SVC_RemoteCommand(host.context.state,host.context.services,address,text,args) end function
+/// Compute authorize callback in server.main_runtime.
+/// @param host Record exposing `context`.
+/// @param address Address used in `host.context.services.authorizeFn(host.context.services, address, args)`.
+/// @param args Args used in `host.context.services.authorizeFn(host.context.services, address, args)`.
 function authorizeCallback(host,address,args) if host.context.services.authorizeFn!=void then return host.context.services.authorizeFn(host.context.services,address,args) end if;return void end function
+/// Decompress callback in server.main_runtime.
+/// @param host Record exposing `context`.
+/// @param msg Msg used in `host.context.services.decompressFn(host.context.services, msg, offset)`.
+/// @param offset Offset used in `host.context.services.decompressFn(host.context.services, msg, offset)`.
 function decompressCallback(host,msg,offset) if host.context.services.decompressFn!=void then return host.context.services.decompressFn(host.context.services,msg,offset) end if;return void end function
+/// Compute diagnostic callback in server.main_runtime.
+/// @param host Record exposing `context`.
+/// @param address Address used in `host.context.services.diagnosticFn(host.context.services, address, text)`.
+/// @param text Text used in `host.context.services.diagnosticFn(host.context.services, address, text)`.
 function diagnosticCallback(host,address,text) if host.context.services.diagnosticFn!=void then return host.context.services.diagnosticFn(host.context.services,address,text) end if;return void end function
+/// Compute connectionless services in server.main_runtime; the normal completion returns `result`.
+/// @param state Initial `state` field stored in the returned or constructed `mq3.server.main_runtime.Binding` record.
+/// @param host Initial `services` field stored in the returned or constructed `mq3.server.main_runtime.Binding` record.
 function connectionlessServices(state,host)
   result=connectionless.services();result.context=Binding(state,host);result.statusFn=statusCallback;result.infoFn=infoCallback;result.rconFn=rconCallback;result.authorizeFn=authorizeCallback;result.decompressFn=decompressCallback;result.diagnosticFn=diagnosticCallback;return result
 end function

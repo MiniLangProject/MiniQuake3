@@ -9,8 +9,10 @@
 struct VoiceList
 ```
 
+Stores client game servercmds voice list record, including `name`, `gender`, `chats`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L181)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct VoiceList
 chats
 ```
 
+When constructing this record, `parseVoiceChats` supplies an empty list for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L187)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicelist-gender-gender-src-mq3-client-cgame-servercmds-ml-188061201"></a>
 ### gender
@@ -31,8 +35,10 @@ chats
 gender
 ```
 
+Model gender used when selecting gender-specific player sounds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L185)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicelist-name-name-src-mq3-client-cgame-servercmds-ml-667763329"></a>
 ### name
@@ -41,5 +47,7 @@ gender
 name
 ```
 
+Voice-script list name used to select the matching voice-chat definitions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L183)

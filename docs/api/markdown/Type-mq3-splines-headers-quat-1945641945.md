@@ -9,8 +9,10 @@
 struct Quat
 ```
 
+Quat record for splines.headers, containing `x`, `y`, `z`, `w`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L36)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Quat
 w
 ```
 
+Fourth component of the homogeneous vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L44)
 
 <a id="field-field-mq3-splines-headers-quat-x-x-src-mq3-splines-headers-ml-1179477842"></a>
 ### x
@@ -31,8 +35,10 @@ w
 x
 ```
 
+X component of the spatial vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L38)
 
 <a id="field-field-mq3-splines-headers-quat-y-y-src-mq3-splines-headers-ml-378268534"></a>
 ### y
@@ -41,8 +47,10 @@ x
 y
 ```
 
+Y component of the spatial vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L40)
 
 <a id="field-field-mq3-splines-headers-quat-z-z-src-mq3-splines-headers-ml-126238530"></a>
 ### z
@@ -51,5 +59,7 @@ y
 z
 ```
 
+Z component of the spatial vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L42)

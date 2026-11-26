@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores client game vm host-service callbacks, including `machineRuntime`, `syscall`, `loadFn`, `callFn`, `freeFn`, `context` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L36)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 callFn
 ```
 
+Host callback for the call operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L44)
 
 <a id="field-field-mq3-client-cgame-vm-services-clearnotifyfn-clearnotifyfn-src-mq3-client-cgame-vm-ml-1018486321"></a>
 ### clearNotifyFn
@@ -31,8 +35,10 @@ callFn
 clearNotifyFn
 ```
 
+Host callback for the clear notify operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L70)
 
 <a id="field-field-mq3-client-cgame-vm-services-closeconsolefn-closeconsolefn-src-mq3-client-cgame-vm-ml-1199431063"></a>
 ### closeConsoleFn
@@ -41,8 +47,10 @@ clearNotifyFn
 closeConsoleFn
 ```
 
+Host callback for the close console operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L55)
 
 <a id="field-field-mq3-client-cgame-vm-services-context-context-src-mq3-client-cgame-vm-ml-2056725061"></a>
 ### context
@@ -51,8 +59,10 @@ closeConsoleFn
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for CGame virtual-machine execution.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L49)
 
 <a id="field-field-mq3-client-cgame-vm-services-endregistrationfn-endregistrationfn-src-mq3-client-cgame-vm-ml-404314689"></a>
 ### endRegistrationFn
@@ -61,8 +71,10 @@ context
 endRegistrationFn
 ```
 
+Host callback for the end registration operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L61)
 
 <a id="field-field-mq3-client-cgame-vm-services-freefn-freefn-src-mq3-client-cgame-vm-ml-358699461"></a>
 ### freeFn
@@ -71,8 +83,10 @@ endRegistrationFn
 freeFn
 ```
 
+Host callback for the free operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L46)
 
 <a id="field-field-mq3-client-cgame-vm-services-loadfn-loadfn-src-mq3-client-cgame-vm-ml-2122464413"></a>
 ### loadFn
@@ -81,8 +95,10 @@ freeFn
 loadFn
 ```
 
+Host callback for the load operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L42)
 
 <a id="field-field-mq3-client-cgame-vm-services-lowmemoryfn-lowmemoryfn-src-mq3-client-cgame-vm-ml-720053001"></a>
 ### lowMemoryFn
@@ -91,8 +107,10 @@ loadFn
 lowMemoryFn
 ```
 
+Host callback for the low memory operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L64)
 
 <a id="field-field-mq3-client-cgame-vm-services-machineruntime-machineruntime-src-mq3-client-cgame-vm-ml-158483335"></a>
 ### machineRuntime
@@ -101,8 +119,10 @@ lowMemoryFn
 machineRuntime
 ```
 
+When constructing this record, `services` supplies `machineRuntime` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L38)
 
 <a id="field-field-mq3-client-cgame-vm-services-millisecondsfn-millisecondsfn-src-mq3-client-cgame-vm-ml-738501261"></a>
 ### millisecondsFn
@@ -111,8 +131,10 @@ machineRuntime
 millisecondsFn
 ```
 
+Host callback for the milliseconds operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L52)
 
 <a id="field-field-mq3-client-cgame-vm-services-serverinfofn-serverinfofn-src-mq3-client-cgame-vm-ml-1528602247"></a>
 ### serverInfoFn
@@ -121,8 +143,10 @@ millisecondsFn
 serverInfoFn
 ```
 
+Host callback for the server info operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L58)
 
 <a id="field-field-mq3-client-cgame-vm-services-syscall-syscall-src-mq3-client-cgame-vm-ml-1977079805"></a>
 ### syscall
@@ -131,8 +155,10 @@ serverInfoFn
 syscall
 ```
 
+When constructing this record, `services` supplies `syscall` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L40)
 
 <a id="field-field-mq3-client-cgame-vm-services-touchmemoryfn-touchmemoryfn-src-mq3-client-cgame-vm-ml-1114631109"></a>
 ### touchMemoryFn
@@ -141,5 +167,7 @@ syscall
 touchMemoryFn
 ```
 
+Host callback for the touch memory operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L67)

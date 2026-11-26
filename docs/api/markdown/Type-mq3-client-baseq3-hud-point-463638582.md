@@ -9,8 +9,10 @@
 struct Point
 ```
 
+Stores base Quake III HUD point record, including `x`, `y`, `depth`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L93)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Point
 depth
 ```
 
+When constructing this record, `point` supplies `0.001` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L99)
 
 <a id="field-field-mq3-client-baseq3-hud-point-x-x-src-mq3-client-baseq3-hud-ml-155384451"></a>
 ### x
@@ -31,8 +35,10 @@ depth
 x
 ```
 
+Horizontal coordinate of a status-HUD image vertex in the target window.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L95)
 
 <a id="field-field-mq3-client-baseq3-hud-point-y-y-src-mq3-client-baseq3-hud-ml-1535352687"></a>
 ### y
@@ -41,5 +47,7 @@ x
 y
 ```
 
+Vertical coordinate of a status-HUD image vertex in the target window.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L97)

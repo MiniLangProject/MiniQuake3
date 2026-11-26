@@ -5,6 +5,8 @@ package mq3.game.snapshot
 import mq3.game.constants as c
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
+/// Round vector components to the integer coordinates used by network entity snapshots.
+/// @param v Array or byte sequence accessed at `axis`. Entries are written in place.
 function snapVector(v)
   // The game macro casts to int (truncates); trap_SnapVector rounds nearest.
   for axis = 0 to 2
@@ -12,6 +14,12 @@ function snapVector(v)
   end for
   return void
 end function
+/// Update `s.eType`, `s.number`, `s.pos.trType` and `s.pos.trBase` and related state during `convert`.
+/// @param ps Player movement state; accesses `pm_type`, `stats`, `clientNum`, `origin` and `velocity` and related fields. May update `ps.entityEventSequence` in place.
+/// @param s S record; accesses `eType`, `number`, `pos`, `apos` and `angles2` and related fields. May update `s.eType`, `s.number` and `s.pos.trType` and additional fields in place.
+/// @param snap Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`.
+/// @param extrapolate Value used by `convert` in `if extrapolate then s.pos.trType = c.TR_LINEAR_STOP end if`.
+/// @param time Time value in the units expected by this module.
 function convert(ps,s,snap,extrapolate,time)
   s.eType = c.ET_PLAYER
   if ps.pm_type == c.PM_INTERMISSION or ps.pm_type == c.PM_SPECTATOR or ps.stats[c.STAT_HEALTH] <= -40 then s.eType = c.ET_INVISIBLE end if
@@ -40,9 +48,18 @@ function convert(ps,s,snap,extrapolate,time)
   s.loopSound = ps.loopSound; s.generic1 = ps.generic1
   return void
 end function
+/// Forward `fromPlayer` to `mq3.game.snapshot.convert` and return the delegated result.
+/// @param ps Player movement state; accesses `pm_type`, `stats`, `clientNum`, `origin` and `velocity` and related fields. May update `ps.entityEventSequence` in place.
+/// @param s S record; accesses `eType`, `number`, `pos`, `apos` and `angles2` and related fields. May update `s.eType`, `s.number` and `s.pos.trType` and additional fields in place.
+/// @param snap Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`.
 function fromPlayer(ps,s,snap)
   return convert(ps,s,snap,false,0)
 end function
+/// Forward `extrapolate` to `mq3.game.snapshot.convert` and return the delegated result.
+/// @param ps Player movement state; accesses `pm_type`, `stats`, `clientNum`, `origin` and `velocity` and related fields. May update `ps.entityEventSequence` in place.
+/// @param s S record; accesses `eType`, `number`, `pos`, `apos` and `angles2` and related fields. May update `s.eType`, `s.number` and `s.pos.trType` and additional fields in place.
+/// @param time Time value in the units expected by this module.
+/// @param snap Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`.
 function extrapolate(ps,s,time,snap)
   return convert(ps,s,snap,true,time)
 end function

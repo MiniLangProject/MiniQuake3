@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Stores engine client parse runtime runtime wiring and state, including `protocol`, `systemState`, `systemServices`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L14)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 protocol
 ```
 
+Client protocol parser runtime, including server-message dispatch, gamestate, and download state.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-parse-runtime-runtime-systemservices-systemservices-src-mq3-client-cl-parse-runtime-ml-412284291"></a>
 ### systemServices
@@ -31,8 +35,10 @@ protocol
 systemServices
 ```
 
+When constructing this record, `create` supplies `systemServices` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L20)
 
 <a id="field-field-mq3-client-cl-parse-runtime-runtime-systemstate-systemstate-src-mq3-client-cl-parse-runtime-ml-1803577069"></a>
 ### systemState
@@ -41,5 +47,7 @@ systemServices
 systemState
 ```
 
+When constructing this record, `create` supplies `systemState` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L18)

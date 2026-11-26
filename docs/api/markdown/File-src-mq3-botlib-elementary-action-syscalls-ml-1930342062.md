@@ -21,15 +21,17 @@ Reachable from entry: **yes**
 function dispatch(state, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.elementary_actions.say` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/elementary_action_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_action_syscalls.ml#L19)
 
 <a id="function-function-mq3-botlib-elementary-action-syscalls-farg-function-farg-vm-base-index-src-mq3-botlib-elementary-action-syscalls-ml-2130824560"></a>
 ### farg
@@ -38,11 +40,13 @@ function dispatch(state, vm, base, op)
 function farg(vm, base, index)
 ```
 
+Return the result of `n.bitsFloat(common.argument(vm,base,index))` for `farg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/elementary_action_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_action_syscalls.ml#L13)

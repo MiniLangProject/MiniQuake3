@@ -9,8 +9,10 @@
 struct Tag
 ```
 
+Tag record for format.md3, containing `name`, `origin`, `axis`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L58)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Tag
 axis
 ```
 
+Three orientation axes defining the local coordinate frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L64)
 
 <a id="field-field-mq3-format-md3-tag-name-name-src-mq3-format-md3-ml-1108343585"></a>
 ### name
@@ -31,8 +35,10 @@ axis
 name
 ```
 
+Attachment-tag name used to connect player-model parts.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L60)
 
 <a id="field-field-mq3-format-md3-tag-origin-origin-src-mq3-format-md3-ml-1614997927"></a>
 ### origin
@@ -41,5 +47,7 @@ name
 origin
 ```
 
+Model-space position of this attachment tag.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L62)

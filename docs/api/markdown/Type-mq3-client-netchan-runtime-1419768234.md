@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Stores netchan runtime wiring and state, including `transport`, `connection`, `newsize`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L28)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 connection
 ```
 
+When constructing this record, `create` supplies `connection` for this member. Used by `transmit` and `process` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L34)
 
 <a id="field-field-mq3-client-netchan-runtime-newsize-newsize-src-mq3-client-netchan-ml-1142455853"></a>
 ### newsize
@@ -31,8 +35,10 @@ connection
 newsize
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `process` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L37)
 
 <a id="field-field-mq3-client-netchan-runtime-transport-transport-src-mq3-client-netchan-ml-357620193"></a>
 ### transport
@@ -41,5 +47,7 @@ newsize
 transport
 ```
 
+When constructing this record, `create` supplies `transport` for this member. Used by `transmitNextFragment` and `transmit` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L31)

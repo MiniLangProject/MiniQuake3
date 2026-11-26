@@ -9,8 +9,10 @@
 struct Fog
 ```
 
+Data record for `mq3.renderer.playable_fog.Fog`; groups `shaderName`, `color`, `depth`, `tcScale`, `bounds`, `surface`, and 1 further field.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L27)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Fog
 bounds
 ```
 
+Minimum and maximum corners enclosing the object or surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L37)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-color-color-src-mq3-renderer-playable-fog-ml-918260977"></a>
 ### color
@@ -31,8 +35,10 @@ bounds
 color
 ```
 
+RGB fog color obtained from the volume's material shader.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L31)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-depth-depth-src-mq3-renderer-playable-fog-ml-873115149"></a>
 ### depth
@@ -41,8 +47,10 @@ color
 depth
 ```
 
+Material fog-depth parameter used to scale the fog texture coordinates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L33)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-hassurface-hassurface-src-mq3-renderer-playable-fog-ml-310184303"></a>
 ### hasSurface
@@ -51,8 +59,10 @@ depth
 hasSurface
 ```
 
+Whether the fog volume has a clipping surface at its boundary.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-shadername-shadername-src-mq3-renderer-playable-fog-ml-1157273045"></a>
 ### shaderName
@@ -61,8 +71,10 @@ hasSurface
 shaderName
 ```
 
+Shader defining the fog volume's color and depth parameters.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L29)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-surface-surface-src-mq3-renderer-playable-fog-ml-950886713"></a>
 ### surface
@@ -71,8 +83,10 @@ shaderName
 surface
 ```
 
+Plane defining the visible boundary of the fog volume, when present.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L39)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-tcscale-tcscale-src-mq3-renderer-playable-fog-ml-1774927273"></a>
 ### tcScale
@@ -81,5 +95,7 @@ surface
 tcScale
 ```
 
+Scale used to convert distance into fog texture coordinates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L35)

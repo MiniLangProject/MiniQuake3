@@ -4,6 +4,8 @@
 package mq3.game.initialization
 import mq3.shared.info as initializationInfo
 
+/// Use `level.gamePrintFn` to perform `findTeams`.
+/// @param level Game-level state; accesses `num_entities`, `entities` and `gamePrintFn`.
 function findTeams(level)
   if level.num_entities < 0 or level.num_entities > 1024 then return error(485,"FindTeams entity range exceeds original storage") end if
   teams = 0; members = 0; index = 1

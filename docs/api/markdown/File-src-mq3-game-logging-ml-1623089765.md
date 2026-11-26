@@ -19,13 +19,15 @@ Reachable from entry: **no**
 function logDivide(value, divisor)
 ```
 
+Perform signed integer division with truncation toward zero for game log timestamps.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `divisor` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.quotient`. |
+| `divisor` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.quotient`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/logging.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/logging.ml#L10)
 
 <a id="function-function-mq3-game-logging-write-function-write-level-payload-src-mq3-game-logging-ml-833326284"></a>
 ### write
@@ -34,10 +36,12 @@ function logDivide(value, divisor)
 function write(level, payload)
 ```
 
+Use `level.gamePrintFn` and `level.logWriteFn` to perform `write`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `payload` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`, `dedicated`, `gamePrintFn`, `logFile` and `logWriteFn`. |
+| `payload` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/logging.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/logging.ml#L17)

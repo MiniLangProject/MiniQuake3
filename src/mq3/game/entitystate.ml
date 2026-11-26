@@ -4,42 +4,77 @@
 package mq3.game.entitystate
 import mq3.compat.numeric as n
 import mq3.game.trajectory as tr
+/// Byte size used for byte storage or binary layout in mq3.game.entitystate.
 const BYTE_SIZE = 208
+/// `EntityState` record for entitystate, containing `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 struct EntityState
+  /// Network entity slot number.
   number
+  /// Network entity category selected from the ET_* constants.
   eType
+  /// Network-visible entity flags selected from the EF_* constants.
   eFlags
+  /// Position trajectory carried by the network entity state.
   pos
+  /// Angular trajectory carried by the network entity state.
   apos
+  /// Primary game timestamp carried by the network entity state.
   time
+  /// Secondary game timestamp carried by the entity state.
   time2
+  /// Entity origin carried by the networked entity-state record.
   origin
+  /// Secondary position/vector channel carried by the entity state.
   origin2
+  /// Orientation angles used by the entity or movement operation.
   angles
+  /// Secondary angular channel carried by the entity state.
   angles2
+  /// Primary related entity number carried by an entity event or snapshot.
   otherEntityNum
+  /// Secondary related entity number carried by an entity event or snapshot.
   otherEntityNum2
+  /// Entity number supporting the player, or ENTITYNUM_NONE while airborne.
   groundEntityNum
+  /// Packed constant-light color and intensity associated with the entity.
   constantLight
+  /// Continuously playing sound identifier associated with the entity state.
   loopSound
+  /// Primary model index referenced by the entity snapshot.
   modelindex
+  /// Secondary model index referenced by the entity snapshot.
   modelindex2
+  /// Client slot number represented by this player state.
   clientNum
+  /// Model animation frame carried by the entity state.
   frame
+  /// Encoded collision representation advertised by the entity state.
   solid
+  /// Transient event identifier associated with the entity or snapshot.
   event
+  /// Parameter accompanying the current entity event.
   eventParm
+  /// Powerup state or expiration values indexed by PW_* identifiers.
   powerups
+  /// Selected or reported weapon identifier.
   weapon
+  /// Leg-animation identifier including its restart toggle bit.
   legsAnim
+  /// Torso-animation identifier including its restart toggle bit.
   torsoAnim
+  /// Protocol-defined auxiliary entity/player value whose interpretation depends on the game object
+  /// type.
   generic1
 end struct
 
+/// Create a `mq3.game.entitystate.EntityState` record, initializing `pos` as `tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0])`, `apos` as `tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0])` and `origin` as `[0.0,0.0,0.0]`.
 function create()
   return EntityState(0,0,0,tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0]),tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0]),0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 end function
 
+/// Populate an entity state from its ordered snapshot-word representation.
+/// @param data Sequence whose length bounds the iteration or lookup in `load`.
+/// @param offset Offset into the buffer or sequence used by this operation.
 function load(data,offset)
   if offset < 0 or offset+BYTE_SIZE > len(data) then return error(482,"Truncated entityState") end if
   state = create()
@@ -82,47 +117,51 @@ function load(data,offset)
   return state
 end function
 
+/// Serialize an entity state into the ordered 32-bit words used by Quake III snapshot fields.
+/// @param state Entitystate state; accesses `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 function words(state)
-  result = []
-  result = result+[n.u32(state.number)]
-  result = result+[n.u32(state.eType)]
-  result = result+[n.u32(state.eFlags)]
-  result = result+[n.u32(state.pos.trType)]
-  result = result+[n.u32(state.pos.trTime)]
-  result = result+[n.u32(state.pos.trDuration)]
-  result = result+[n.floatBits(state.pos.trBase[0]),n.floatBits(state.pos.trBase[1]),n.floatBits(state.pos.trBase[2])]
-  result = result+[n.floatBits(state.pos.trDelta[0]),n.floatBits(state.pos.trDelta[1]),n.floatBits(state.pos.trDelta[2])]
-  result = result+[n.u32(state.apos.trType)]
-  result = result+[n.u32(state.apos.trTime)]
-  result = result+[n.u32(state.apos.trDuration)]
-  result = result+[n.floatBits(state.apos.trBase[0]),n.floatBits(state.apos.trBase[1]),n.floatBits(state.apos.trBase[2])]
-  result = result+[n.floatBits(state.apos.trDelta[0]),n.floatBits(state.apos.trDelta[1]),n.floatBits(state.apos.trDelta[2])]
-  result = result+[n.u32(state.time)]
-  result = result+[n.u32(state.time2)]
-  result = result+[n.floatBits(state.origin[0]),n.floatBits(state.origin[1]),n.floatBits(state.origin[2])]
-  result = result+[n.floatBits(state.origin2[0]),n.floatBits(state.origin2[1]),n.floatBits(state.origin2[2])]
-  result = result+[n.floatBits(state.angles[0]),n.floatBits(state.angles[1]),n.floatBits(state.angles[2])]
-  result = result+[n.floatBits(state.angles2[0]),n.floatBits(state.angles2[1]),n.floatBits(state.angles2[2])]
-  result = result+[n.u32(state.otherEntityNum)]
-  result = result+[n.u32(state.otherEntityNum2)]
-  result = result+[n.u32(state.groundEntityNum)]
-  result = result+[n.u32(state.constantLight)]
-  result = result+[n.u32(state.loopSound)]
-  result = result+[n.u32(state.modelindex)]
-  result = result+[n.u32(state.modelindex2)]
-  result = result+[n.u32(state.clientNum)]
-  result = result+[n.u32(state.frame)]
-  result = result+[n.u32(state.solid)]
-  result = result+[n.u32(state.event)]
-  result = result+[n.u32(state.eventParm)]
-  result = result+[n.u32(state.powerups)]
-  result = result+[n.u32(state.weapon)]
-  result = result+[n.u32(state.legsAnim)]
-  result = result+[n.u32(state.torsoAnim)]
-  result = result+[n.u32(state.generic1)]
-  return result
+  return [
+    n.u32(state.number),
+    n.u32(state.eType),
+    n.u32(state.eFlags),
+    n.u32(state.pos.trType),
+    n.u32(state.pos.trTime),
+    n.u32(state.pos.trDuration),
+    n.floatBits(state.pos.trBase[0]),n.floatBits(state.pos.trBase[1]),n.floatBits(state.pos.trBase[2]),
+    n.floatBits(state.pos.trDelta[0]),n.floatBits(state.pos.trDelta[1]),n.floatBits(state.pos.trDelta[2]),
+    n.u32(state.apos.trType),
+    n.u32(state.apos.trTime),
+    n.u32(state.apos.trDuration),
+    n.floatBits(state.apos.trBase[0]),n.floatBits(state.apos.trBase[1]),n.floatBits(state.apos.trBase[2]),
+    n.floatBits(state.apos.trDelta[0]),n.floatBits(state.apos.trDelta[1]),n.floatBits(state.apos.trDelta[2]),
+    n.u32(state.time),
+    n.u32(state.time2),
+    n.floatBits(state.origin[0]),n.floatBits(state.origin[1]),n.floatBits(state.origin[2]),
+    n.floatBits(state.origin2[0]),n.floatBits(state.origin2[1]),n.floatBits(state.origin2[2]),
+    n.floatBits(state.angles[0]),n.floatBits(state.angles[1]),n.floatBits(state.angles[2]),
+    n.floatBits(state.angles2[0]),n.floatBits(state.angles2[1]),n.floatBits(state.angles2[2]),
+    n.u32(state.otherEntityNum),
+    n.u32(state.otherEntityNum2),
+    n.u32(state.groundEntityNum),
+    n.u32(state.constantLight),
+    n.u32(state.loopSound),
+    n.u32(state.modelindex),
+    n.u32(state.modelindex2),
+    n.u32(state.clientNum),
+    n.u32(state.frame),
+    n.u32(state.solid),
+    n.u32(state.event),
+    n.u32(state.eventParm),
+    n.u32(state.powerups),
+    n.u32(state.weapon),
+    n.u32(state.legsAnim),
+    n.u32(state.torsoAnim),
+    n.u32(state.generic1)
+  ]
 end function
 
+/// Apply `mq3.game.entitystate.create` while evaluating `copy`. Return paths include `state`.
+/// @param source Parser source state; accesses `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 function copy(source)
   state = create()
   state.number = source.number

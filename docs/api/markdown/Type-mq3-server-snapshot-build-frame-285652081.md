@@ -9,8 +9,10 @@
 struct Frame
 ```
 
+Frame record for server.snapshot_build, containing `areaBytes`, `areaBits`, `playerState`, `numEntities`, `firstEntity`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L85)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Frame
 areaBits
 ```
 
+Bitset of map areas visible in this snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L89)
 
 <a id="field-field-mq3-server-snapshot-build-frame-areabytes-areabytes-src-mq3-server-snapshot-build-ml-701915518"></a>
 ### areaBytes
@@ -31,8 +35,10 @@ areaBits
 areaBytes
 ```
 
+Number of valid bytes in the snapshot's area-visibility mask.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L87)
 
 <a id="field-field-mq3-server-snapshot-build-frame-firstentity-firstentity-src-mq3-server-snapshot-build-ml-1276696406"></a>
 ### firstEntity
@@ -41,8 +47,10 @@ areaBytes
 firstEntity
 ```
 
+First entity-state position for this snapshot in the shared circular snapshot buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L95)
 
 <a id="field-field-mq3-server-snapshot-build-frame-numentities-numentities-src-mq3-server-snapshot-build-ml-2044293774"></a>
 ### numEntities
@@ -51,8 +59,10 @@ firstEntity
 numEntities
 ```
 
+Number of entity records currently represented by this state or snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L93)
 
 <a id="field-field-mq3-server-snapshot-build-frame-playerstate-playerstate-src-mq3-server-snapshot-build-ml-220371738"></a>
 ### playerState
@@ -61,5 +71,7 @@ numEntities
 playerState
 ```
 
+Authoritative player-state record used for snapshots and game simulation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L91)

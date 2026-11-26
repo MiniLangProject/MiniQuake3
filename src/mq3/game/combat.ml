@@ -10,19 +10,39 @@ import mq3.server.world as sv
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
+/// Round a floating-point value upward through the native C runtime ceiling function.
+/// @param value Floating-point value to round toward positive infinity.
+/// @returns The least integer-valued double greater than or equal to value.
 extern function ceil(value as double) from "ucrtbase.dll" returns double
+/// Damage-processing flag enabling radius.
 const DAMAGE_RADIUS = 1
+/// Damage-processing flag enabling no armor.
 const DAMAGE_NO_ARMOR = 2
+/// Damage-processing flag enabling no knockback.
 const DAMAGE_NO_KNOCKBACK = 4
+/// Damage-processing flag enabling no protection.
 const DAMAGE_NO_PROTECTION = 8
+/// Game entity-flag bit enabling or marking godmode.
 const FL_GODMODE = 0x10
+/// Game entity-flag bit enabling or marking no knockback.
 const FL_NO_KNOCKBACK = 0x800
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE = 26
+/// Cause-of-death identifier attributing damage or a kill to juiced.
 const MOD_JUICED = 28
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
+/// Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.
+/// @param level Game-level state; accesses `spawner`.
 function missionpack(level)
   return level.spawner != void and level.spawner.missionpack
 end function
+/// Update `intersections[0]` and `intersections[1]` during `raySphereIntersections`.
+/// @param origin World-space position as three coordinates.
+/// @param radius Radius used by the spatial or damage query.
+/// @param point Three-component point used by the geometric query.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
+/// @param intersections Array or byte sequence accessed at `0` and `1`. Entries are written in place.
 function raySphereIntersections(origin,radius,point,dir,intersections)
   q.VectorNormalize(dir)
   offset = [n.fsub(point[0],origin[0]),n.fsub(point[1],origin[1]),n.fsub(point[2],origin[2])]
@@ -40,6 +60,13 @@ function raySphereIntersections(origin,radius,point,dir,intersections)
   end if
   return 0
 end function
+/// Set `impactpoint[axis]` to `intersections[0][axis]` and `bouncedir[axis]` to `normal[axis]` in `mq3.game.combat.invulnerabilityEffect`.
+/// @param level Game-level state; accesses `time`.
+/// @param targ Targ record; accesses `client`.
+/// @param dir Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param point Three-component point used by the geometric query.
+/// @param impactpoint Array or byte sequence accessed at `axis`. Entries are written in place.
+/// @param bouncedir Array or byte sequence accessed at `axis`. Entries are written in place.
 function invulnerabilityEffect(level,targ,dir,point,impactpoint,bouncedir)
   if targ.client == void then return false end if
   ray = [n.fneg(dir[0]),n.fneg(dir[1]),n.fneg(dir[2])]
@@ -54,21 +81,38 @@ function invulnerabilityEffect(level,targ,dir,point,impactpoint,bouncedir)
   if bouncedir != void then q.VectorNormalize(normal); for axis = 0 to 2 bouncedir[axis] = normal[axis] end for end if
   return true
 end function
+/// Apply `mq3.game.combat.missionpack` and `mq3.game.constants.missionpackItemTag` while evaluating `persistentTag`. Return paths include `c.missionpackItemTag(index)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param client Client state; accesses `ps`.
 function persistentTag(level,client)
   if not missionpack(level) then return c.PW_NONE end if
   index = client.ps.stats[STAT_PERSISTANT_POWERUP]
   if index < 0 or index >= 52 then return c.PW_NONE end if
   return c.missionpackItemTag(index)
 end function
+/// Read the game type used by combat rules, returning zero when no spawner exists.
+/// @param level Game-level state; accesses `spawner`.
 function gametype(level)
   if level.spawner == void then return 0 end if
   return level.spawner.gametype
 end function
+/// Use `level.traceObserveFn` to perform `shotTrace`. Return paths include `hit`.
+/// @param level Game-level state; accesses `scene` and `traceObserveFn`.
+/// @param start Array or byte sequence accessed at `axis`.
+/// @param finish Array or byte sequence accessed at `axis`.
+/// @param mins Minimum coordinates of the axis-aligned bounds.
+/// @param maxs Maximum coordinates of the axis-aligned bounds.
+/// @param passEntity Value passed as argument 1 to `typeof`.
+/// @param mask Initial value stored in `mq3.collision.world.Work.mask`.
 function shotTrace(level,start,finish,mins,maxs,passEntity,mask)
   hit = sv.trace(level.scene,start,finish,mins,maxs,passEntity,mask,false)
   if level.traceObserveFn != void then level.traceObserveFn(level,start,finish,mins,maxs,passEntity,mask,hit) end if
   return hit
 end function
+/// Trace from the damage origin toward the target to determine whether world geometry blocks damage.
+/// @param level Game-level state; accesses `scene` and `traceObserveFn`.
+/// @param targ Targ record; accesses `r` and `s`.
+/// @param origin World-space position as three coordinates.
 function canDamage(level,targ,origin)
   midpoint = [0.0,0.0,0.0]
   for axis = 0 to 2
@@ -84,12 +128,24 @@ function canDamage(level,targ,origin)
   end for
   return false
 end function
+/// Apply `mq3.game.combat.onSameTeam` while evaluating `logAccuracyHit`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param target Target record; accesses `takedamage` and `client`.
+/// @param attacker Attacking entity; accesses `client`.
 function logAccuracyHit(level,target,attacker)
   if not target.takedamage or target == attacker or target.client == void then return false end if
   if attacker == void then return error(491,"LogAccuracyHit requires an attacker") end if
   if attacker.client == void or target.client.ps.stats[c.STAT_HEALTH] <= 0 or onSameTeam(level,target,attacker) then return false end if
   return true
 end function
+/// Apply `mq3.server.world.areaEntities`, `mq3.game.combat.canDamage` and `mq3.game.combat.logAccuracyHit` while evaluating `radiusDamage`. Return paths include `hitClient`.
+/// @param level Game-level state; accesses `scene` and `entities`.
+/// @param origin World-space position as three coordinates.
+/// @param attacker Entity credited with the attack.
+/// @param amount Value passed as argument 1 to `mq3.compat.numeric.f32`.
+/// @param radius Radius used by the spatial or damage query.
+/// @param ignore Value used by `radiusDamage` in `if ent == ignore or not ent.takedamage then continue end if`.
+/// @param mod Means-of-death code used for damage attribution.
 function radiusDamage(level,origin,attacker,amount,radius,ignore,mod)
   amount = n.f32(amount); radius = n.f32(radius)
   if radius < 1 then radius = 1.0 end if
@@ -118,11 +174,19 @@ function radiusDamage(level,origin,attacker,amount,radius,ignore,mod)
   end for
   return hitClient
 end function
+/// Apply `mq3.game.combat.gametype` while evaluating `onSameTeam`. Return paths include `first.client.team == second.client.team`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param first First record; accesses `client`.
+/// @param second Second record; accesses `client`.
 function onSameTeam(level,first,second)
   if first.client == void or second.client == void then return false end if
   if gametype(level) < 3 then return false end if
   return first.client.team == second.client.team
 end function
+/// Set `attacker.client.lasthurtcarrier` to `n.f32(level.time)` in `mq3.game.combat.checkHurtCarrier`.
+/// @param level Game-level state; accesses `time`.
+/// @param targ Targ record; accesses `client`.
+/// @param attacker Attacking entity; accesses `client`. May update `attacker.client.lasthurtcarrier` in place.
 function checkHurtCarrier(level,targ,attacker)
   if targ.client == void or attacker.client == void then return void end if
   flag = c.PW_REDFLAG
@@ -131,6 +195,10 @@ function checkHurtCarrier(level,targ,attacker)
   if targ.client.ps.generic1 != 0 and targ.client.team != attacker.client.team then attacker.client.lasthurtcarrier = n.f32(level.time) end if
   return void
 end function
+/// Set `ent.client.ps.stats[c.STAT_ARMOR]` to `n.i32(count-saved)` in `mq3.game.combat.checkArmor`. Return paths include `saved`.
+/// @param ent Game entity; accesses `client`. May update `ent.client.ps.stats[c.STAT_ARMOR]` in place.
+/// @param amount Value used by `checkArmor` in `if amount == 0 or ent.client == void or (dflags & DAMAGE_NO_ARMOR) != 0 then return 0 end if`.
+/// @param dflags Value used by `checkArmor` in `if amount == 0 or ent.client == void or (dflags & DAMAGE_NO_ARMOR) != 0 then return 0 end if`.
 function checkArmor(ent,amount,dflags)
   if amount == 0 or ent.client == void or (dflags & DAMAGE_NO_ARMOR) != 0 then return 0 end if
   count = ent.client.ps.stats[c.STAT_ARMOR]
@@ -141,6 +209,16 @@ function checkArmor(ent,amount,dflags)
   ent.client.ps.stats[c.STAT_ARMOR] = n.i32(count-saved)
   return saved
 end function
+/// Update `attacker.client.ps.persistant[c.PERS_HITS]`, `attacker.client.ps.persistant[c.PERS_ATTACKEE_ARMOR]`, `targ.client.lasthurt_client` and `targ.client.lasthurt_mod` and related state during `damage`.
+/// @param level Game-level state; accesses `intermissionQueued`, `time`, `entities`, `obeliskAttackFn` and `knockback` and related fields.
+/// @param targ Targ record; accesses `takedamage`, `client`, `s`, `use` and `moverState` and related fields. May update `targ.client.lasthurt_client`, `targ.client.lasthurt_mod` and `targ.health` and additional fields in place.
+/// @param inflictor Damage-delivering entity; accesses `parent`.
+/// @param attacker Attacking entity; accesses `client` and `s`. May update `attacker.client.ps.persistant[c.PERS_HITS]` and `attacker.client.ps.persistant[c.PERS_ATTACKEE_ARMOR]` in place.
+/// @param dir Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param point Three-component point used by the geometric query.
+/// @param amount Value used by `checkArmor` in `if amount == 0 or ent.client == void or (dflags & DAMAGE_NO_ARMOR) != 0 then return 0 end if`.
+/// @param dflags Value used by `checkArmor` in `if amount == 0 or ent.client == void or (dflags & DAMAGE_NO_ARMOR) != 0 then return 0 end if`.
+/// @param mod Means-of-death code used for damage attribution.
 function damage(level,targ,inflictor,attacker,dir,point,amount,dflags,mod)
   if not targ.takedamage or level.intermissionQueued != 0 then return void end if
   if missionpack(level) and targ.client != void and mod != MOD_JUICED and targ.client.invulnerabilityTime > level.time then

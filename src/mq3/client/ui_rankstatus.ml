@@ -4,25 +4,92 @@
 package mq3.client.ui_rankstatus
 import mq3.client.ui_qmenu as q
 import mq3.client.ui_rankings as rankings
+/// Virtual asset path used to load the rankstatus frame renderer or menu resource.
 const RANKSTATUS_FRAME="menu/art/cut_frame"
+/// Menu control identifier routed to the message action by the menu event handler.
 const ID_MESSAGE=100
+/// Menu control identifier routed to the ok action by the menu event handler.
 const ID_OK=101
-struct Action boundary kind name text dispatched end struct
-struct State menu frame message ok status messageText actions pushed popped forcedOff retailActive end struct
+/// Stores UI rankstatus queued engine action, including `boundary`, `kind`, `name`, `text`, `dispatched`.
+struct Action
+  /// Host service category recorded with a request emitted while displaying ranked-account status and
+  /// dismissing its message.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while displaying
+  /// ranked-account status and dismissing its message.
+  kind
+  /// Menu destination or status-frame artwork resource selected by the rankings-status workflow.
+  name
+  /// Optional text argument reserved for ranking-status host actions; current menu operations pass an
+  /// empty string.
+  text
+  /// True when this request is marked for native dispatch while displaying ranked-account status and
+  /// dismissing its message; false when its native effect is suppressed.
+  dispatched
+end struct
+/// Stores UI rankstatus state, including `menu`, `frame`, `message`, `ok`, `status`, `messageText` and additional values.
+struct State
+  /// When constructing this record, `create` supplies `q.menu(true,false)` for this member. Used by
+  /// `RankStatus_MenuEvent` and `RankStatus_MenuInit` during subsequent processing.
+  menu
+  /// Decorative bitmap widget drawing the border around the ranking-status menu.
+  frame
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `RankStatus_MenuInit` during subsequent processing.
+  message
+  /// True when the operation completed successfully and its result can be consumed.
+  ok
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `RankStatus_MenuEvent` and `UI_RankStatusMenu` during subsequent processing.
+  status
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `RankStatus_MenuInit` and `UI_RankStatusMenu` during subsequent processing.
+  messageText
+  /// Host requests queued while displaying ranked-account status and dismissing its message, retained
+  /// in request order.
+  actions
+  /// Records that the ranked-play status dialog has been opened on the active menu stack.
+  pushed
+  /// Records a request to remove the ranked-play status dialog from the active menu stack.
+  popped
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `UI_RankStatusMenu` during subsequent processing.
+  forcedOff
+  /// True when the retail QVM owns the ranked-play status dialog, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
+/// Creates a `mq3.client.ui_rankstatus.State` record. Assigns `retailActive` from `retailActive`.
+/// @param retailActive Value used to initialize `State.retailActive`.
 function create(retailActive) return State(q.menu(true,false),void,void,void,0,"",[],false,false,false,retailActive) end function
+/// Appends a UI rankstatus action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+/// @param state Mutable UI rankstatus record/storage; this routine assigns `state.actions`.
+/// @param boundary Engine service boundary recorded on the queued action, such as renderer, audio or cvar.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param name Name used to select or register the corresponding UI rankstatus resource.
+/// @param text Text consumed or emitted by `emit` in the UI rankstatus path.
 function emit(state,boundary,kind,name,text) a=Action(boundary,kind,name,text,not state.retailActive);state.actions=state.actions+[a];return a end function
 // RankStatus_MenuEvent
+/// @param state Mutable UI rankstatus record/storage; this routine assigns `state.popped`, `state.menu.popped`.
+/// @param id Value used by `if event!=q.QM_ACTIVATED or id!=ID_OK then return false end if`.
+/// @param event Event identifier compared with the supported activation/input events.
 function RankStatus_MenuEvent(state,id,event)
   if event!=q.QM_ACTIVATED or id!=ID_OK then return false end if;state.popped=true;state.menu.popped=true;emit(state,"ui","pop-menu","rank-status","");if state.status==rankings.QGR_STATUS_NO_USER or state.status==rankings.QGR_STATUS_NO_MEMBERSHIP or state.status==rankings.QGR_STATUS_TIMEOUT or state.status==rankings.QGR_STATUS_INVALIDUSER or state.status==rankings.QGR_STATUS_ERROR then emit(state,"ui","open-menu","rankings","") else if state.status==rankings.QGR_STATUS_BAD_PASSWORD then emit(state,"ui","open-menu","rankings","");emit(state,"ui","open-menu","login","") else if state.status==rankings.QGR_STATUS_USER_EXISTS then emit(state,"ui","open-menu","rankings","");emit(state,"ui","open-menu","signup","") end if;return true
 end function
 // RankStatus_Cache
+/// @param state Shared UI rankstatus state passed to the helper calls in `RankStatus_Cache`.
 function RankStatus_Cache(state) emit(state,"renderer","register-shader",RANKSTATUS_FRAME,"");return 1 end function
 // RankStatus_MenuInit
+/// @param state Mutable UI rankstatus record/storage; this routine assigns `state.menu`, `state.actions`, `state.frame`, `state.frame.width` and additional values.
 function RankStatus_MenuInit(state)
   state.menu=q.menu(true,false);keep=state.actions;state.actions=[];RankStatus_Cache(state);state.frame=q.item(q.MTYPE_BITMAP,RANKSTATUS_FRAME,-1,142,118,q.QMF_INACTIVE);state.frame.width=359;state.frame.height=256;state.message=q.item(q.MTYPE_PTEXT,"",ID_MESSAGE,320,214,q.QMF_CENTER_JUSTIFY|q.QMF_INACTIVE);state.message.string=state.messageText;state.message.style=q.UI_CENTER|q.UI_SMALLFONT;state.message.color=[1.0,0.43,0.0,1.0];state.ok=q.item(q.MTYPE_PTEXT,"",ID_OK,320,254,q.QMF_CENTER_JUSTIFY|q.QMF_PULSEIFFOCUS);state.ok.string="OK";state.ok.style=q.UI_CENTER|q.UI_SMALLFONT;state.ok.color=[1.0,0.0,0.0,1.0];for each item in [state.frame,state.message,state.ok] state.menu=q.Menu_AddItem(state.menu,item) end for;return state
 end function
+/// Maps a rankings service error status to its user-facing message; unhandled statuses yield an empty string.
+/// @param status Value used by `if status==rankings.QGR_STATUS_NO_USER then return "Username unavailable" end if`.
 function statusMessage(status) if status==rankings.QGR_STATUS_NO_USER then return "Username unavailable" end if;if status==rankings.QGR_STATUS_BAD_PASSWORD then return "Invalid password" end if;if status==rankings.QGR_STATUS_TIMEOUT then return "Timed out" end if;if status==rankings.QGR_STATUS_NO_MEMBERSHIP then return "No membership" end if;if status==rankings.QGR_STATUS_INVALIDUSER then return "Validation failed" end if;if status==rankings.QGR_STATUS_ERROR then return "Error" end if;return "" end function
 // UI_RankStatusMenu
+/// @param state Mutable UI rankstatus record/storage; this routine assigns `state.status`, `state.messageText`, `state.forcedOff`, `state.pushed`.
+/// @param status Value assigned to `state.status`.
 function UI_RankStatusMenu(state,status)
   state.status=status;state.messageText=statusMessage(status);if status==rankings.QGR_STATUS_NEW or status==rankings.QGR_STATUS_PENDING then return false end if;if status==rankings.QGR_STATUS_SPECTATOR or status==rankings.QGR_STATUS_ACTIVE then state.forcedOff=true;emit(state,"ui","force-menu-off","rank-status","");return false end if;if state.messageText=="" then return false end if;RankStatus_MenuInit(state);emit(state,"rank","reset-user","","");state.pushed=true;emit(state,"ui","push-menu","rank-status","");return true
 end function

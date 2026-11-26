@@ -9,8 +9,10 @@
 struct Md3Frame
 ```
 
+Md3Frame record for format.qfiles, containing `bounds`, `localOrigin`, `radius`, `name`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L239)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Md3Frame
 bounds
 ```
 
+Model-local minimum and maximum corners enclosing every surface in this frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L241)
 
 <a id="field-field-mq3-format-qfiles-md3frame-localorigin-localorigin-src-mq3-format-qfiles-ml-1353718394"></a>
 ### localOrigin
@@ -31,8 +35,10 @@ bounds
 localOrigin
 ```
 
+Model-local center used for the frame bounding sphere.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L243)
 
 <a id="field-field-mq3-format-qfiles-md3frame-name-name-src-mq3-format-qfiles-ml-1743867860"></a>
 ### name
@@ -41,8 +47,10 @@ localOrigin
 name
 ```
 
+Frame name stored in the MD3 animation record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L247)
 
 <a id="field-field-mq3-format-qfiles-md3frame-radius-radius-src-mq3-format-qfiles-ml-1945903746"></a>
 ### radius
@@ -51,5 +59,7 @@ name
 radius
 ```
 
+Radius of the represented sphere or capsule.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L245)

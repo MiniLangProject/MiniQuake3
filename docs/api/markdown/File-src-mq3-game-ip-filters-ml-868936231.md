@@ -22,13 +22,15 @@ Reachable from entry: **no**
 function addCommand(level, argv)
 ```
 
+Apply `mq3.game.ip_filters.filterPrint`, `mq3.game.ip_filters.addIP` and `mq3.game.command_args.argument` while evaluating `addCommand`. Return paths include `addIP(level,commandArgs.argument(argv,1,1024))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L243)
 
 <a id="function-function-mq3-game-ip-filters-addip-function-addip-level-text-src-mq3-game-ip-filters-ml-322498025"></a>
 ### addIP
@@ -37,13 +39,15 @@ function addCommand(level, argv)
 function addIP(level, text)
 ```
 
+Apply `mq3.game.ip_filters.get`, `mq3.game.ip_filters.filterCount` and `mq3.game.ip_filters.filterPrint` while evaluating `addIP`. Return paths include `updateBans(level)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L151)
 
 <a id="function-function-mq3-game-ip-filters-banbytes-function-banbytes-level-src-mq3-game-ip-filters-ml-1400601874"></a>
 ### banBytes
@@ -52,12 +56,14 @@ function addIP(level, text)
 function banBytes(level)
 ```
 
+Apply `mq3.game.ip_filters.get`, `mq3.game.ip_filters.filterVm` and `mq3.shared.info.textBytes` while evaluating `banBytes`. Return paths include `state.banBuffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L196)
 
 <a id="function-function-mq3-game-ip-filters-bindvm-function-bindvm-level-banvm-filterbanvm-src-mq3-game-ip-filters-ml-611841668"></a>
 ### bindVm
@@ -66,14 +72,16 @@ function banBytes(level)
 function bindVm(level, banVm, filterBanVm)
 ```
 
+Apply `mq3.game.ip_filters.get` while evaluating `bindVm`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `banVm` | `dynamic` | — |  |
-| `filterBanVm` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place. |
+| `banVm` | `dynamic` | — | Value used by `bindVm` in `state.banVm = banVm`. |
+| `filterBanVm` | `dynamic` | — | Value used by `bindVm` in `state.filterBanVm = filterBanVm`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L54)
 
 - [mq3.game.ip_filters.Filter](Type-mq3-game-ip-filters-filter-581928805.md) — struct
 <a id="function-function-mq3-game-ip-filters-filterbyte-function-filterbyte-data-index-src-mq3-game-ip-filters-ml-1005770952"></a>
@@ -83,13 +91,15 @@ function bindVm(level, banVm, filterBanVm)
 function filterByte(data, index)
 ```
 
+Read an IP-filter byte, using zero when the requested index lies beyond the supplied data.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Array or byte sequence accessed at `index`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L92)
 
 <a id="function-function-mq3-game-ip-filters-filtercount-function-filtercount-state-src-mq3-game-ip-filters-ml-1698448311"></a>
 ### filterCount
@@ -98,12 +108,14 @@ function filterByte(data, index)
 function filterCount(state)
 ```
 
+Validate and return the number of active IP-filter entries within the fixed filter capacity.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Ip filters state; accesses `count`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L85)
 
 <a id="function-function-mq3-game-ip-filters-filterpacket-function-filterpacket-level-address-src-mq3-game-ip-filters-ml-1951513808"></a>
 ### filterPacket
@@ -112,13 +124,15 @@ function filterCount(state)
 function filterPacket(level, address)
 ```
 
+Apply `mq3.shared.info.textBytes`, `mq3.game.ip_filters.filterByte` and `mq3.game.ip_filters.get` while evaluating `filterPacket`. Return paths include `filterVm(level,"g_filterBan").integer == 0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L167)
 
 <a id="function-function-mq3-game-ip-filters-filterprint-function-filterprint-level-text-src-mq3-game-ip-filters-ml-1325422087"></a>
 ### filterPrint
@@ -127,13 +141,15 @@ function filterPacket(level, address)
 function filterPrint(level, text)
 ```
 
+Use `level.gamePrintFn` to perform `filterPrint`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L76)
 
 <a id="function-function-mq3-game-ip-filters-filtervm-function-filtervm-level-name-src-mq3-game-ip-filters-ml-668665249"></a>
 ### filterVm
@@ -142,13 +158,15 @@ function filterPrint(level, text)
 function filterVm(level, name)
 ```
 
+Apply `mq3.game.ip_filters.get` while evaluating `filterVm`. Return paths include `vm`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gameCvars`. |
+| `name` | `dynamic` | — | Lookup text matched against `row.vmName`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L61)
 
 <a id="function-function-mq3-game-ip-filters-get-function-get-level-src-mq3-game-ip-filters-ml-1746379526"></a>
 ### get
@@ -157,12 +175,14 @@ function filterVm(level, name)
 function get(level)
 ```
 
+Set `level.ipFilters` to `State(filters,0,bytes(256,0),void,void,void,0,"",0)` in `mq3.game.ip_filters.get`. Return paths include `level.ipFilters`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L40)
 
 <a id="function-function-mq3-game-ip-filters-processbans-function-processbans-level-src-mq3-game-ip-filters-ml-931168808"></a>
 ### processBans
@@ -171,12 +191,14 @@ function get(level)
 function processBans(level)
 ```
 
+Apply `mq3.game.ip_filters.get`, `mq3.game.ip_filters.banBytes` and `mq3.game.ip_filters.filterVm` while evaluating `processBans`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L213)
 
 <a id="function-function-mq3-game-ip-filters-removecommand-function-removecommand-level-argv-src-mq3-game-ip-filters-ml-881617334"></a>
 ### removeCommand
@@ -185,13 +207,15 @@ function processBans(level)
 function removeCommand(level, argv)
 ```
 
+Apply `mq3.game.ip_filters.filterPrint`, `mq3.game.command_args.argument` and `mq3.game.ip_filters.stringToFilter` while evaluating `removeCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L250)
 
 - [mq3.game.ip_filters.State](Type-mq3-game-ip-filters-state-1800235932.md) — struct
 <a id="function-function-mq3-game-ip-filters-stringtofilter-function-stringtofilter-level-text-filter-src-mq3-game-ip-filters-ml-1744175447"></a>
@@ -201,14 +225,16 @@ function removeCommand(level, argv)
 function stringToFilter(level, text, filter)
 ```
 
+Set `filter.mask` to `n.u32(mask)` and `filter.compare` to `n.u32(compare)` in `mq3.game.ip_filters.stringToFilter`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `filter` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `filter` | `dynamic` | — | Filter record; accesses `mask` and `compare`. May update `filter.mask` and `filter.compare` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L100)
 
 <a id="function-function-mq3-game-ip-filters-updatebans-function-updatebans-level-src-mq3-game-ip-filters-ml-2112014634"></a>
 ### updateBans
@@ -217,9 +243,11 @@ function stringToFilter(level, text, filter)
 function updateBans(level)
 ```
 
+Use `level.cvarSetFn` to perform `updateBans`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `cvarSetFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L130)

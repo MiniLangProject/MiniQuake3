@@ -9,8 +9,10 @@
 struct KeyServices
 ```
 
+KeyServices record for vm.syscall_ui, containing `keyNameFn`, `bindingFn`, `setBindingFn`, `isDownFn`, `getOverstrikeFn`, `setOverstrikeFn`, and 3 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L26)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct KeyServices
 bindingFn
 ```
 
+Injected callback for binding; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L30)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-clearfn-clearfn-src-mq3-vm-syscall-ui-ml-721773624"></a>
 ### clearFn
@@ -31,8 +35,10 @@ bindingFn
 clearFn
 ```
 
+Injected callback for clear; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L40)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-getcatcherfn-getcatcherfn-src-mq3-vm-syscall-ui-ml-1986004352"></a>
 ### getCatcherFn
@@ -41,8 +47,10 @@ clearFn
 getCatcherFn
 ```
 
+Injected callback for get catcher; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L42)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-getoverstrikefn-getoverstrikefn-src-mq3-vm-syscall-ui-ml-560195432"></a>
 ### getOverstrikeFn
@@ -51,8 +59,10 @@ getCatcherFn
 getOverstrikeFn
 ```
 
+Injected callback for get overstrike; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L36)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-isdownfn-isdownfn-src-mq3-vm-syscall-ui-ml-1363116232"></a>
 ### isDownFn
@@ -61,8 +71,10 @@ getOverstrikeFn
 isDownFn
 ```
 
+Injected callback for is down; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L34)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-keynamefn-keynamefn-src-mq3-vm-syscall-ui-ml-521413924"></a>
 ### keyNameFn
@@ -71,8 +83,10 @@ isDownFn
 keyNameFn
 ```
 
+Injected callback for key name; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L28)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-setbindingfn-setbindingfn-src-mq3-vm-syscall-ui-ml-1366495490"></a>
 ### setBindingFn
@@ -81,8 +95,10 @@ keyNameFn
 setBindingFn
 ```
 
+Injected callback for set binding; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L32)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-setcatcherfn-setcatcherfn-src-mq3-vm-syscall-ui-ml-1189286376"></a>
 ### setCatcherFn
@@ -91,8 +107,10 @@ setBindingFn
 setCatcherFn
 ```
 
+Injected callback for set catcher; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L44)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-setoverstrikefn-setoverstrikefn-src-mq3-vm-syscall-ui-ml-2017445816"></a>
 ### setOverstrikeFn
@@ -101,5 +119,7 @@ setCatcherFn
 setOverstrikeFn
 ```
 
+Injected callback for set overstrike; invoked through the KeyServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L38)

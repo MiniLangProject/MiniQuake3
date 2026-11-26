@@ -5,41 +5,88 @@ package mq3.collision.brush
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
+/// Clip a swept box against packed convex-brush planes using strict binary32 arithmetic.
+/// @param planes Read-only normal/distance records, four binary32 values per plane.
+/// @param planeBytes Packed-plane byte length, divisible by 16.
+/// @param ax X component of the sweep start.
+/// @param ay Y component of the sweep start.
+/// @param az Z component of the sweep start.
+/// @param bx X component of the sweep end.
+/// @param by Y component of the sweep end.
+/// @param bz Z component of the sweep end.
+/// @param lx X component of the moving box minimum.
+/// @param ly Y component of the moving box minimum.
+/// @param lz Z component of the moving box minimum.
+/// @param hx X component of the moving box maximum.
+/// @param hy Y component of the moving box maximum.
+/// @param hz Z component of the moving box maximum.
+/// @param limit Current nearest-hit fraction limiting the sweep.
+/// @param output Writable buffer for the binary32 collision fraction when a hit is reported.
+/// @returns The native brush-classification status; a negative result rejects invalid input, and statuses at least 3 also write the hit fraction.
+extern function clipConvexNative(planes as ptr,planeBytes as i32,ax as double,ay as double,az as double,bx as double,by as double,bz as double,lx as double,ly as double,lz as double,hx as double,hy as double,hz as double,limit as double,output as bytes) from "miniquake3_qvm.dll" symbol "mq3_trace_convex_brush" returns i32
+
+/// Plane record for collision.brush, containing `normal`, `distance`, `flags`.
 struct Plane
+  /// Outward normal of the brush boundary plane used by convex clipping.
   normal
+  /// Signed plane distance from the coordinate origin.
   distance
+  /// Surface flags associated with this clipping plane.
   flags
 end struct
 
+/// Trace record for collision.brush, containing `fraction`, `normal`, `distance`, `surfaceFlags`, `contents`, `startsolid`, and 2 further fields.
 struct Trace
+  /// Fraction of the requested trace segment completed before the first collision.
   fraction
+  /// Normal of the brush plane hit by the swept collision test.
   normal
+  /// Distance term of the impact plane.
   distance
+  /// Surface-property flags reported for the intersected surface.
   surfaceFlags
+  /// Collision or AAS contents flags describing the represented volume.
   contents
+  /// True when the initial trace position lies inside solid geometry.
   startsolid
+  /// True when the entire trace begins and remains within solid geometry.
   allsolid
+  /// Packed impact-plane type in the low byte (0..2 axial, 3 nonaxial) and normal sign bits starting at bit 8.
   planeMetadata
 end struct
 
+/// Create `mq3.collision.brush.Trace` with fraction=n.f32(1); normal=[0.0, 0.0, 0.0]; distance=0.0; surfaceFlags=0; contents=0; startsolid=false; allsolid=false; planeMetadata=0.
 function emptyTrace()
   return Trace(n.f32(1), [0.0,0.0,0.0], 0.0, 0, 0, false, false,0)
 end function
 
-// BASIC MATH from cm_trace.c.  These stay here beside the brush kernel so
-// capsule primitives and their differential tests share the exact binary32
-// operation ordering of the original C translation unit.
+/// Project a point onto the infinite line through start along a unit direction.
+/// Uses the original collision kernel's binary32 operation order; it does not
+/// normalize direction or clamp the result to a line segment.
+/// @param point Three-component point in world coordinates.
+/// @param start Three-component origin of the projection line.
+/// @param direction Unit-length three-component line direction, supplied by the caller.
 function projectPointOntoVector(point, start, direction)
   delta = [n.fsub(point[0],start[0]),n.fsub(point[1],start[1]),n.fsub(point[2],start[2])]
   scale = q.DotProduct(delta,direction)
   return q.VectorMA(start,scale,direction)
 end function
 
+/// Compute vector distance squared in collision.brush; the normal completion returns `q.DotProduct(delta, delta)`.
+/// @param a A used in `a[0]` and `a[1]`.
+/// @param b B used in `b[0]` and `b[1]`.
 function vectorDistanceSquared(a,b)
   delta = [n.fsub(b[0],a[0]),n.fsub(b[1],a[1]),n.fsub(b[2],a[2])]
   return q.DotProduct(delta,delta)
 end function
 
+/// Return squared distance from a point to the finite segment between lineStart and lineEnd.
+/// Projects onto the line, then selects the nearer endpoint when the projection
+/// lies outside the segment. The caller supplies its matching unit direction.
+/// @param point Three-component query position in world units.
+/// @param lineStart Three-component start of the segment.
+/// @param lineEnd Three-component end of the segment.
+/// @param direction Normalized direction of the segment, used without renormalization.
 function distanceFromLineSquared(point,lineStart,lineEnd,direction)
   projected = projectPointOntoVector(point,lineStart,direction)
   outside = -1
@@ -54,6 +101,8 @@ function distanceFromLineSquared(point,lineStart,lineEnd,direction)
   return q.DotProduct(delta,delta)
 end function
 
+/// Compute square root float in collision.brush; the normal completion returns `n.fmul(number, y)`.
+/// @param number Left floating-point operand.
 function squareRootFloat(number)
   x = n.fmul(number,0.5)
   y = n.f32(number)
@@ -65,11 +114,108 @@ function squareRootFloat(number)
   return n.fmul(number,y)
 end function
 
+/// Return `mq3.collision.brush.projectPointOntoVector(point, start, direction)` from `collision.brush.CM_ProjectPointOntoVector`.
+/// @param point Point passed as `point` to `mq3.collision.brush.projectPointOntoVector`.
+/// @param start Start passed as `start` to `mq3.collision.brush.projectPointOntoVector`.
+/// @param direction Direction passed as `direction` to `mq3.collision.brush.projectPointOntoVector`.
 function CM_ProjectPointOntoVector(point,start,direction) return projectPointOntoVector(point,start,direction) end function
+/// Return `mq3.collision.brush.distanceFromLineSquared(point, lineStart, lineEnd, direction)` from `collision.brush.CM_DistanceFromLineSquared`.
+/// @param point Point passed as `point` to `mq3.collision.brush.distanceFromLineSquared`.
+/// @param lineStart Line start passed as `lineStart` to `mq3.collision.brush.distanceFromLineSquared`.
+/// @param lineEnd Line end passed as `lineEnd` to `mq3.collision.brush.distanceFromLineSquared`.
+/// @param direction Direction passed as `direction` to `mq3.collision.brush.distanceFromLineSquared`.
 function CM_DistanceFromLineSquared(point,lineStart,lineEnd,direction) return distanceFromLineSquared(point,lineStart,lineEnd,direction) end function
+/// Return `mq3.collision.brush.vectorDistanceSquared(a, b)` from `collision.brush.CM_VectorDistanceSquared`.
+/// @param a A passed as `a` to `mq3.collision.brush.vectorDistanceSquared`.
+/// @param b B passed as `b` to `mq3.collision.brush.vectorDistanceSquared`.
 function CM_VectorDistanceSquared(a,b) return vectorDistanceSquared(a,b) end function
+/// Return `mq3.collision.brush.squareRootFloat(number)` from `collision.brush.SquareRootFloat`.
+/// @param number Number passed as `number` to `mq3.collision.brush.squareRootFloat`.
 function SquareRootFloat(number) return squareRootFloat(number) end function
 
+// The support point is consumed by one dot product. Keep the coordinates
+// scalar so clipping a brush does not allocate a corner for every plane.
+/// @param normal Normal used in `normal[0]` and `normal[1]`.
+/// @param mins Mins used in `mins[0]` and `mins[1]`.
+/// @param maxs Maxs used in `maxs[0]` and `maxs[1]`.
+function boxSupportDot(normal as array,mins as array,maxs as array)
+  x=mins[0];y=mins[1];z=mins[2]
+  if normal[0]<0.0 then x=maxs[0] end if
+  if normal[1]<0.0 then y=maxs[1] end if
+  if normal[2]<0.0 then z=maxs[2] end if
+  return n.dot3(x,y,z,normal[0],normal[1],normal[2])
+end function
+
+/// Store an impact plane and its packed classification in a mutable trace.
+/// Retains the plane's normal vector by reference, copies distance and surface
+/// flags, and encodes axial type plus three negative-component sign bits.
+/// @param trace Trace whose normal, distance, surfaceFlags, and planeMetadata are replaced.
+/// @param plane Brush Plane supplying the normal, signed distance, and surface flags.
+function setTracePlane(trace,plane)
+  trace.normal=plane.normal;trace.distance=plane.distance;trace.surfaceFlags=plane.flags
+  kind=3;signbits=0
+  for axis=0 to 2
+    if plane.normal[axis]==1 and kind==3 then kind=axis end if
+    if plane.normal[axis]<0 then signbits=signbits|(1<<axis) end if
+  end for
+  trace.planeMetadata=kind|(signbits<<8)
+  return void
+end function
+
+/// Compute pack planes in collision.brush; the normal completion returns `result`.
+/// @param planes Planes used in `len(planes)` and `(len(planes) * 16)`.
+function packPlanes(planes)
+  result=bytes(len(planes)*16,0);at=0
+  for each plane in planes
+    for axis=0 to 2
+      n.writeU32(result,at+axis*4,n.floatBits(plane.normal[axis]))
+    end for
+    n.writeU32(result,at+12,n.floatBits(plane.distance));at=at+16
+  end for
+  return result
+end function
+
+/// Trace packed in collision.brush; the normal completion returns `trace`.
+///
+/// Direct state writes: `trace.startsolid`, `trace.allsolid`, `trace.fraction`, `trace.contents`.
+/// @param trace Record exposing `fraction`. Updated in place: `startsolid`, `allsolid`, `fraction`, `contents`.
+/// @param planes Planes passed as `planes` to `mq3.collision.brush.traceThroughBrush`.
+/// @param packed Packed used in `len(packed)` and `nativeBytesPtr(packed)`.
+/// @param contents Contents passed as `contents` to `mq3.collision.brush.traceThroughBrush`.
+/// @param start Start passed as `start` to `mq3.collision.brush.traceThroughBrush`.
+/// @param finish Finish passed as `finish` to `mq3.collision.brush.traceThroughBrush`.
+/// @param mins Mins passed as `mins` to `mq3.collision.brush.traceThroughBrush`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.brush.traceThroughBrush`.
+/// @param scratch Writable buffer for the binary32 collision fraction when a hit is reported.
+function tracePacked(trace,planes,packed,contents,start,finish,mins,maxs,scratch)
+  if len(planes)==0 then return trace end if
+  hit=clipConvexNative(nativeBytesPtr(packed),len(packed),start[0],start[1],start[2],finish[0],finish[1],finish[2],mins[0],mins[1],mins[2],maxs[0],maxs[1],maxs[2],trace.fraction,scratch)
+  if hit<0 then return traceThroughBrush(trace,planes,contents,start,finish,mins,maxs,false,0.0,void) end if
+  if hit==1 or hit==2 then
+    trace.startsolid=true
+    if hit==2 then trace.allsolid=true;trace.fraction=0.0;trace.contents=contents end if
+  else if hit>=3 then
+    trace.fraction=n.bitsFloat(n.readU32(scratch,0));trace.contents=contents
+    setTracePlane(trace,planes[hit-3])
+  end if
+  return trace
+end function
+
+/// Sweep a box or capsule against a convex brush, updating and returning the existing trace.
+/// A nearer entering hit replaces the fraction, contents, and impact plane.
+/// Starting inside sets startsolid; remaining inside also sets allsolid and a
+/// zero fraction. Starting inside but exiting does not replace the hit fraction.
+/// Empty brushes and separating planes leave the trace unchanged.
+/// @param trace Accumulated nearest-hit result, mutated in place; its fraction limits new entering hits.
+/// @param planes Brush boundary Plane records with outward unit normals in the sweep coordinate system.
+/// @param contents Brush contents bitmask reported on an entering hit or an allsolid result.
+/// @param start Three-component sweep start position in world units.
+/// @param finish Three-component sweep end position in the same coordinate system.
+/// @param mins Box minimum corner relative to the moving origin; used only when capsule is false.
+/// @param maxs Box maximum corner relative to the moving origin; used only when capsule is false.
+/// @param capsule True selects capsule support; false selects axis-aligned box support.
+/// @param radius Capsule end-sphere radius in world units; used only for capsule sweeps.
+/// @param capsuleOffset Vector from the capsule center to one end-sphere center; used only for capsule sweeps.
 function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)
   if len(planes) == 0 then return trace end if
   enterFraction = n.f32(-1)
@@ -98,11 +244,7 @@ function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, c
       d1 = n.fsub(q.DotProduct(startPoint, plane.normal), distance)
       d2 = n.fsub(q.DotProduct(endPoint, plane.normal), distance)
     else
-      corner = array(3, 0.0)
-      for axis = 0 to 2
-        if plane.normal[axis] < 0.0 then corner[axis] = maxs[axis] else corner[axis] = mins[axis] end if
-      end for
-      distance = n.fsub(distance, q.DotProduct(corner, plane.normal))
+      distance = n.fsub(distance,boxSupportDot(plane.normal,mins,maxs))
       d1 = n.fsub(q.DotProduct(start, plane.normal), distance)
       d2 = n.fsub(q.DotProduct(finish, plane.normal), distance)
     end if
@@ -130,20 +272,23 @@ function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, c
   if enterFraction < leaveFraction and enterFraction > -1.0 and enterFraction < trace.fraction then
     if enterFraction < 0.0 then enterFraction = n.f32(0) end if
     trace.fraction = enterFraction
-    trace.normal = lead.normal
-    trace.distance = lead.distance
-    trace.surfaceFlags = lead.flags
     trace.contents = contents
-    kind = 3;signbits = 0
-    for axis = 0 to 2
-      if lead.normal[axis] == 1 and kind == 3 then kind = axis end if
-      if lead.normal[axis] < 0 then signbits = signbits | (1 << axis) end if
-    end for
-    trace.planeMetadata = kind | (signbits << 8)
+    setTracePlane(trace,lead)
   end if
   return trace
 end function
 
+/// Return `mq3.collision.brush.traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)` from `collision.brush.CM_TraceThroughBrush`.
+/// @param trace Trace passed as `trace` to `mq3.collision.brush.traceThroughBrush`.
+/// @param planes Planes passed as `planes` to `mq3.collision.brush.traceThroughBrush`.
+/// @param contents Contents passed as `contents` to `mq3.collision.brush.traceThroughBrush`.
+/// @param start Start passed as `start` to `mq3.collision.brush.traceThroughBrush`.
+/// @param finish Finish passed as `finish` to `mq3.collision.brush.traceThroughBrush`.
+/// @param mins Mins passed as `mins` to `mq3.collision.brush.traceThroughBrush`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.brush.traceThroughBrush`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.brush.traceThroughBrush`.
+/// @param radius Radius passed as `radius` to `mq3.collision.brush.traceThroughBrush`.
+/// @param capsuleOffset Capsule offset passed as `capsuleOffset` to `mq3.collision.brush.traceThroughBrush`.
 function CM_TraceThroughBrush(trace,planes,contents,start,finish,mins,maxs,capsule,radius,capsuleOffset)
   return traceThroughBrush(trace,planes,contents,start,finish,mins,maxs,capsule,radius,capsuleOffset)
 end function

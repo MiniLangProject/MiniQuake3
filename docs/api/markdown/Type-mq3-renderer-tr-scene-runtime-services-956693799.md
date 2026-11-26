@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Callback table for `mq3.renderer.tr_scene_runtime.Services`; exposes `timeFn`, `renderViewFn`, `drawSurfFn`, `shaderFn`, `eventFn`, `context`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L103)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Scene-host state supplied to clock, view-rendering, draw-surface, shader, and event callbacks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L115)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-drawsurffn-drawsurffn-src-mq3-renderer-tr-scene-runtime-ml-34364611"></a>
 ### drawSurfFn
@@ -31,8 +35,10 @@ context
 drawSurfFn
 ```
 
+Host callback used to perform draw surf operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L109)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-eventfn-eventfn-src-mq3-renderer-tr-scene-runtime-ml-1964204579"></a>
 ### eventFn
@@ -41,8 +47,10 @@ drawSurfFn
 eventFn
 ```
 
+Host callback used to perform event operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L113)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-renderviewfn-renderviewfn-src-mq3-renderer-tr-scene-runtime-ml-1949429349"></a>
 ### renderViewFn
@@ -51,8 +59,10 @@ eventFn
 renderViewFn
 ```
 
+Host callback used to perform render view operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L107)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-shaderfn-shaderfn-src-mq3-renderer-tr-scene-runtime-ml-1350422977"></a>
 ### shaderFn
@@ -61,8 +71,10 @@ renderViewFn
 shaderFn
 ```
 
+Host callback used to perform shader operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L111)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-timefn-timefn-src-mq3-renderer-tr-scene-runtime-ml-948572469"></a>
 ### timeFn
@@ -71,5 +83,7 @@ shaderFn
 timeFn
 ```
 
+Host callback used to perform time operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L105)

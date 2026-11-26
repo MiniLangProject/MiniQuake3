@@ -9,8 +9,10 @@
 struct Md4Lod
 ```
 
+Data record for `mq3.renderer.tr_model_runtime.Md4Lod`; groups `surfaces`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L40)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct Md4Lod
 surfaces
 ```
 
+Surface records owned by the world, model, or drawing group.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L42)

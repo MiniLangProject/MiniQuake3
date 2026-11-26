@@ -6,43 +6,84 @@ import mq3.compat.numeric as n
 import mq3.shared.math as q
 import mq3.qcommon.headers as qcommonHeaders
 
+/// Plane-classification result for geometry in front of the plane.
 const SIDE_FRONT=qcommonHeaders.SIDE_FRONT
+/// Plane-classification result for geometry behind the plane.
 const SIDE_BACK=qcommonHeaders.SIDE_BACK
+/// Plane-classification result for geometry within the plane tolerance.
 const SIDE_ON=qcommonHeaders.SIDE_ON
+/// Plane-classification result for geometry crossing the plane.
 const SIDE_CROSS=qcommonHeaders.SIDE_CROSS
+/// Distance tolerance for classifying a point as lying on a plane.
 const ON_EPSILON=qcommonHeaders.ON_EPSILON
+/// Largest accepted absolute coordinate in a collision winding.
 const MAX_MAP_BOUNDS=qcommonHeaders.MAX_MAP_BOUNDS
+/// Maximum number of vertices in a clipped winding polygon.
 const MAX_POINTS_ON_WINDING=qcommonHeaders.MAX_POINTS_ON_WINDING
+/// Maximum number of points collected for a debug collision hull.
 const MAX_HULL_POINTS=128
 
-struct ManagedWinding points capacity freed end struct
+/// ManagedWinding record for collision.winding, containing `points`, `capacity`, `freed`.
+struct ManagedWinding
+  /// XYZ points defining the debug shape, polygon, or winding.
+  points
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+  /// True after this managed resource has been released.
+  freed
+end struct
 
+/// Compute collision.winding.clonePoint as `[value[0], value[1], value[2]]`.
+/// @param value Value used in `value[0]` and `value[1]`.
 function clonePoint(value) return [value[0],value[1],value[2]] end function
+/// Compute clone points in collision.winding; the normal completion returns `result`.
+/// @param points Sequence traversed as `point` by the loop in `clonePoints`.
 function clonePoints(points) result=[];for each point in points result=result+[clonePoint(point)] end for;return result end function
 
 // Managed equivalents of the original zone-allocation helpers. Productive
 // collision code uses plain point arrays; these retain the original lifetime
 // errors for callers that need the explicit AllocWinding/FreeWinding surface.
+/// @param points Initial `capacity` field stored in the returned or constructed `mq3.collision.winding.ManagedWinding` record.
 function AllocWinding(points)
   if points<0 or points>MAX_POINTS_ON_WINDING then return error(3504,"AllocWinding: invalid point capacity") end if
   return ManagedWinding([],points,false)
 end function
+/// Update `value.freed`, `value.points` in collision.winding.
+///
+/// Validation failures include `FreeWinding: freed a freed winding`.
+/// Direct state writes: `value.freed`, `value.points`.
+/// @param value Record exposing `freed`. Updated in place: `freed`, `points`.
 function FreeWinding(value)
   if value==void or value.freed then return error(3504,"FreeWinding: freed a freed winding") end if
   value.freed=true;value.points=[];return void
 end function
+/// Compute pw in collision.winding; the normal completion returns `lines`.
+/// @param points Sequence traversed as `point` by the loop in `pw`.
 function pw(points) lines=[];for each point in points lines=lines+[str(point[0])+","+str(point[1])+","+str(point[2])] end for;return lines end function
 
+/// Compute collision.winding.add as `[n.fadd(a[0], b[0]), n.fadd(a[1], b[1]), n.fadd(a[2], b[2])]`.
+/// @param a A used in `a[0]` and `a[1]`.
+/// @param b B used in `b[0]` and `b[1]`.
 function add(a,b)
   return [n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])]
 end function
+/// Compute collision.winding.subtract as `[n.fsub(a[0], b[0]), n.fsub(a[1], b[1]), n.fsub(a[2], b[2])]`.
+/// @param a A used in `a[0]` and `a[1]`.
+/// @param b B used in `b[0]` and `b[1]`.
 function subtract(a,b)
   return [n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])]
 end function
+/// Compute collision.winding.negate as `[n.bitsFloat((n.floatBits(a[0]) ^ 2147483648)), n.bitsFloat((n.floatBits(a[1]) ^ 2147483648)), n.bitsFloat((n.floatBits(a[2]) ^ 2147483648))]`.
+/// @param a A used in `a[0]` and `a[1]`.
 function negate(a)
   return [n.bitsFloat(n.floatBits(a[0])^0x80000000),n.bitsFloat(n.floatBits(a[1])^0x80000000),n.bitsFloat(n.floatBits(a[2])^0x80000000)]
 end function
 
+/// Apply `mq3.shared.math.Q_fabs`, `mq3.shared.math.VectorNormalize2`, `mq3.shared.math.VectorMA` for base in collision.winding.
+///
+/// Validation failures include `Winding: no plane axis`.
+/// @param normal B passed as `b` to `mq3.shared.math.VectorMA`.
+/// @param distance Scale passed as `scale` to `mq3.shared.math.VectorScale`.
 function base(normal, distance)
   largest = -65535.0; axis = -1
   for i = 0 to 2
@@ -59,6 +100,8 @@ function base(normal, distance)
   return [add(subtract(origin,right),up),add(add(origin,right),up),subtract(add(origin,right),up),subtract(subtract(origin,right),up)]
 end function
 
+/// Compute bounds in collision.winding; the normal completion returns `[mins, maxs]`.
+/// @param points Sequence traversed as `point` by the loop in `bounds`.
 function bounds(points)
   mins = [99999.0,99999.0,99999.0]; maxs = [-99999.0,-99999.0,-99999.0]
   for each point in points
@@ -70,6 +113,8 @@ function bounds(points)
   return [mins,maxs]
 end function
 
+/// Remove colinear points in collision.winding; the normal completion returns `result`.
+/// @param points Points passed as `points` to `mq3.collision.winding.clonePoints`.
 function RemoveColinearPoints(points)
   if len(points)<3 then return clonePoints(points) end if
   result=[]
@@ -81,12 +126,18 @@ function RemoveColinearPoints(points)
   return result
 end function
 
+/// Compute winding plane in collision.winding; the normal completion returns `[normal, q.DotProduct(points[0], normal)]`.
+///
+/// Validation failures include `WindingPlane: fewer than three points`.
+/// @param points Points used in `points[1]` and `points[0]`.
 function WindingPlane(points)
   if len(points)<3 then return error(3504,"WindingPlane: fewer than three points") end if
   v1=subtract(points[1],points[0]);v2=subtract(points[2],points[0]);normal=q.VectorNormalize2(q.CrossProduct(v2,v1))
   return [normal,q.DotProduct(points[0],normal)]
 end function
 
+/// Compute winding area in collision.winding; the normal completion returns `total`.
+/// @param points Points used in `points[0]` and `points[i]`.
 function WindingArea(points)
   if len(points)<3 then return 0.0 end if
   total=0.0
@@ -96,15 +147,33 @@ function WindingArea(points)
   return total
 end function
 
+/// Return `mq3.collision.winding.bounds(points)` from `collision.winding.WindingBounds`.
+/// @param points Points passed as `points` to `mq3.collision.winding.bounds`.
 function WindingBounds(points) return bounds(points) end function
+/// Compute winding center in collision.winding; the normal completion returns `q.VectorScale(center, n.fdiv(1.0, n.f32(len(points))))`.
+///
+/// Validation failures include `WindingCenter: empty winding`.
+/// @param points Points used in `len(points)` and `(len(points) == 0)`.
 function WindingCenter(points)
   if len(points)==0 then return error(3504,"WindingCenter: empty winding") end if
   center=[0.0,0.0,0.0];for each point in points center=add(point,center) end for;return q.VectorScale(center,n.fdiv(1.0,n.f32(len(points))))
 end function
+/// Return `mq3.collision.winding.base(normal, distance)` from `collision.winding.BaseWindingForPlane`.
+/// @param normal Normal passed as `normal` to `mq3.collision.winding.base`.
+/// @param distance Distance passed as `distance` to `mq3.collision.winding.base`.
 function BaseWindingForPlane(normal,distance) return base(normal,distance) end function
+/// Return `mq3.collision.winding.clonePoints(points)` from `collision.winding.CopyWinding`.
+/// @param points Points passed as `points` to `mq3.collision.winding.clonePoints`.
 function CopyWinding(points) return clonePoints(points) end function
+/// Compute reverse winding in collision.winding; the normal completion returns `result`.
+/// @param points Points used in `len(points)` and `(len(points) - 1)`.
 function ReverseWinding(points) result=[];for i=0 to len(points)-1 result=result+[clonePoint(points[len(points)-1-i])] end for;return result end function
 
+/// Compute classify in collision.winding; the normal completion returns `[dists, sides, counts]`.
+/// @param points Sequence traversed as `point` by the loop in `classify`.
+/// @param normal Right three-element vector.
+/// @param distance Right floating-point operand.
+/// @param epsilon Floating-point value whose binary32 sign is toggled.
 function classify(points,normal,distance,epsilon)
   dists=[];sides=[];counts=[0,0,0]
   for each point in points
@@ -115,6 +184,13 @@ function classify(points,normal,distance,epsilon)
   return [dists,sides,counts]
 end function
 
+/// Compute split point in collision.winding; the normal completion returns `mid`.
+/// @param p1 P 1 used in `p1[axis]` and `n.fsub(p2[axis], p1[axis])`.
+/// @param p2 P 2 used in `p2[axis]` and `n.fsub(p2[axis], p1[axis])`.
+/// @param d1 Left floating-point operand.
+/// @param d2 Right floating-point operand.
+/// @param normal Normal used in `normal[axis]` and `(normal[axis] == 1.0)`.
+/// @param distance Floating-point value whose binary32 sign is toggled.
 function splitPoint(p1,p2,d1,d2,normal,distance)
   fraction=n.fdiv(d1,n.fsub(d1,d2));mid=array(3,0.0)
   for axis=0 to 2
@@ -125,6 +201,13 @@ function splitPoint(p1,p2,d1,d2,normal,distance)
   return mid
 end function
 
+/// Compute clip winding epsilon in collision.winding; the normal completion returns `[front, back]`.
+///
+/// Validation failures include `ClipWinding: point limit exceeded`.
+/// @param points Points passed as `points` to `mq3.collision.winding.classify`.
+/// @param normal Normal passed as `normal` to `mq3.collision.winding.classify`.
+/// @param distance Distance passed as `distance` to `mq3.collision.winding.classify`.
+/// @param epsilon Epsilon passed as `epsilon` to `mq3.collision.winding.classify`.
 function ClipWindingEpsilon(points,normal,distance,epsilon)
   if len(points)==0 then return [void,void] end if
   classified=classify(points,normal,distance,epsilon);dists=classified[0];sides=classified[1];counts=classified[2]
@@ -143,11 +226,24 @@ function ClipWindingEpsilon(points,normal,distance,epsilon)
   return [front,back]
 end function
 
+/// Compute chop winding in place in collision.winding; the normal completion returns `split[0]`.
+/// @param points Points passed as `points` to `mq3.collision.winding.ClipWindingEpsilon`.
+/// @param normal Normal passed as `normal` to `mq3.collision.winding.ClipWindingEpsilon`.
+/// @param distance Distance passed as `distance` to `mq3.collision.winding.ClipWindingEpsilon`.
+/// @param epsilon Epsilon passed as `epsilon` to `mq3.collision.winding.ClipWindingEpsilon`.
 function ChopWindingInPlace(points,normal,distance,epsilon)
   split=ClipWindingEpsilon(points,normal,distance,epsilon);if split is error then return split end if;return split[0]
 end function
+/// Return `mq3.collision.winding.ChopWindingInPlace(points, normal, distance, ON_EPSILON)` from `collision.winding.ChopWinding`.
+/// @param points Points passed as `points` to `mq3.collision.winding.ChopWindingInPlace`.
+/// @param normal Normal passed as `normal` to `mq3.collision.winding.ChopWindingInPlace`.
+/// @param distance Distance passed as `distance` to `mq3.collision.winding.ChopWindingInPlace`.
 function ChopWinding(points,normal,distance) return ChopWindingInPlace(points,normal,distance,ON_EPSILON) end function
 
+/// Check winding in collision.winding; the normal completion returns `true`.
+///
+/// Validation failures include `CheckWinding: fewer than three points`; `CheckWinding: area below one`; `CheckWinding: bogus range`.
+/// @param points Points passed as `points` to `mq3.collision.winding.WindingArea`.
 function CheckWinding(points)
   if len(points)<3 then return error(3504,"CheckWinding: fewer than three points") end if
   area=WindingArea(points);if area<1.0 then return error(3504,"CheckWinding: area below one") end if
@@ -163,6 +259,10 @@ function CheckWinding(points)
   return true
 end function
 
+/// Compute winding on plane side in collision.winding; the normal completion returns `SIDE_ON`.
+/// @param points Sequence traversed as `point` by the loop in `WindingOnPlaneSide`.
+/// @param normal Right three-element vector.
+/// @param distance Right floating-point operand.
 function WindingOnPlaneSide(points,normal,distance)
   front=false;back=false
   for each point in points
@@ -173,6 +273,12 @@ function WindingOnPlaneSide(points,normal,distance)
   if back then return SIDE_BACK end if;if front then return SIDE_FRONT end if;return SIDE_ON
 end function
 
+/// Add winding to convex hull in collision.winding; the normal completion returns `hullPoints`.
+///
+/// Validation failures include `AddWindingToConvexHull: point limit`.
+/// @param points Points passed as `points` to `mq3.collision.winding.CopyWinding`.
+/// @param hull Points passed as `points` to `mq3.collision.winding.CopyWinding`.
+/// @param normal A passed as `a` to `mq3.shared.math.CrossProduct`.
 function AddWindingToConvexHull(points,hull,normal)
   if hull==void or len(hull)==0 then return CopyWinding(points) end if
   hullPoints=CopyWinding(hull)
@@ -200,6 +306,12 @@ function AddWindingToConvexHull(points,hull,normal)
   return hullPoints
 end function
 
+/// Compute chop in collision.winding; the normal completion returns `result`.
+///
+/// Validation failures include `Winding: point limit exceeded`.
+/// @param points Points used in `points[i]` and `len(points)`.
+/// @param normal Right three-element vector.
+/// @param distance Right floating-point operand.
 function chop(points, normal, distance)
   if len(points) == 0 then return [] end if
   dists = array(len(points)+1,0.0); sides = array(len(points)+1,0)

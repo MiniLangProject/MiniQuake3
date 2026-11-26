@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for cvar maintenance, containing `password`, `passwordModificationCount` and `lastPasswordModificationCount`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L8)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 lastPasswordModificationCount
 ```
 
+Password revision already propagated to the dependent setting.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L14)
 
 <a id="field-field-mq3-game-cvar-maintenance-state-password-password-src-mq3-game-cvar-maintenance-ml-692577884"></a>
 ### password
@@ -31,8 +35,10 @@ lastPasswordModificationCount
 password
 ```
 
+Current server password used by connection checks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L10)
 
 <a id="field-field-mq3-game-cvar-maintenance-state-passwordmodificationcount-passwordmodificationcount-src-mq3-game-cvar-maintenance-ml-135527614"></a>
 ### passwordModificationCount
@@ -41,5 +47,7 @@ password
 passwordModificationCount
 ```
 
+Revision counter of the password console variable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L12)

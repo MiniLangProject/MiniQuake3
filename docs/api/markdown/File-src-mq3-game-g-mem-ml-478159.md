@@ -19,13 +19,15 @@ Reachable from entry: **no**
 function G_Alloc(level, size)
 ```
 
+Forward `G_Alloc` to `mq3.game.memory.allocate` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `memoryState`. May update `level.memoryState` in place. |
+| `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L13)
 
 <a id="function-function-mq3-game-g-mem-g-initmemory-function-g-initmemory-level-src-mq3-game-g-mem-ml-1103109070"></a>
 ### G_InitMemory
@@ -34,12 +36,14 @@ function G_Alloc(level, size)
 function G_InitMemory(level)
 ```
 
+Forward `G_InitMemory` to `mq3.game.memory.init` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `memoryState`. May update `level.memoryState` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L16)
 
 <a id="constant-constant-mq3-game-g-mem-poolsize-const-poolsize-262144-src-mq3-game-g-mem-ml-978704872"></a>
 ### POOLSIZE
@@ -48,8 +52,10 @@ function G_InitMemory(level)
 const POOLSIZE = 262144
 ```
 
+Byte capacity of the fixed game-module allocation pool.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L8)
 
 <a id="function-function-mq3-game-g-mem-svcmd-gamemem-f-function-svcmd-gamemem-f-level-src-mq3-game-g-mem-ml-1222398686"></a>
 ### Svcmd_GameMem_f
@@ -58,9 +64,11 @@ const POOLSIZE = 262144
 function Svcmd_GameMem_f(level)
 ```
 
+Forward `Svcmd_GameMem_f` to `mq3.game.memory.status` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `memoryState`. May update `level.memoryState` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L19)

@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for server.game_vm, containing `machineRuntime`, `syscall`, `loadFn`, `callFn`, `restartFn`, `freeFn`, and 5 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L31)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 botEnableFn
 ```
 
+Host callback that reports whether server bot processing is enabled.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L53)
 
 <a id="field-field-mq3-server-game-vm-services-callfn-callfn-src-mq3-server-game-vm-ml-880801745"></a>
 ### callFn
@@ -31,8 +35,10 @@ botEnableFn
 callFn
 ```
 
+Host callback that invokes a game-VM export with the supplied arguments.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L39)
 
 <a id="field-field-mq3-server-game-vm-services-clearcliententityfn-clearcliententityfn-src-mq3-server-game-vm-ml-44245945"></a>
 ### clearClientEntityFn
@@ -41,8 +47,10 @@ callFn
 clearClientEntityFn
 ```
 
+Host callback that clears the game-entity association for a client slot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L51)
 
 <a id="field-field-mq3-server-game-vm-services-context-context-src-mq3-server-game-vm-ml-1162939993"></a>
 ### context
@@ -51,8 +59,10 @@ clearClientEntityFn
 context
 ```
 
+Caller-supplied data associated with game VM loading, invocation, restart, and release.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L45)
 
 <a id="field-field-mq3-server-game-vm-services-entitystringfn-entitystringfn-src-mq3-server-game-vm-ml-1354145721"></a>
 ### entityStringFn
@@ -61,8 +71,10 @@ context
 entityStringFn
 ```
 
+Host callback that returns the textual BSP entity definitions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L49)
 
 <a id="field-field-mq3-server-game-vm-services-freefn-freefn-src-mq3-server-game-vm-ml-904353613"></a>
 ### freeFn
@@ -71,8 +83,10 @@ entityStringFn
 freeFn
 ```
 
+Host callback that releases host-managed memory.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L43)
 
 <a id="field-field-mq3-server-game-vm-services-loadfn-loadfn-src-mq3-server-game-vm-ml-1032982097"></a>
 ### loadFn
@@ -81,8 +95,10 @@ freeFn
 loadFn
 ```
 
+Host callback that loads the requested resource through the host interface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L37)
 
 <a id="field-field-mq3-server-game-vm-services-machineruntime-machineruntime-src-mq3-server-game-vm-ml-2060479187"></a>
 ### machineRuntime
@@ -91,8 +107,10 @@ loadFn
 machineRuntime
 ```
 
+Runtime used to load and execute the game VM.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L33)
 
 <a id="field-field-mq3-server-game-vm-services-millisecondsfn-millisecondsfn-src-mq3-server-game-vm-ml-380404657"></a>
 ### millisecondsFn
@@ -101,8 +119,10 @@ machineRuntime
 millisecondsFn
 ```
 
+Host callback that supplies the current host clock in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L47)
 
 <a id="field-field-mq3-server-game-vm-services-restartfn-restartfn-src-mq3-server-game-vm-ml-1815502749"></a>
 ### restartFn
@@ -111,8 +131,10 @@ millisecondsFn
 restartFn
 ```
 
+Host callback that restarts the game VM for a map restart.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L41)
 
 <a id="field-field-mq3-server-game-vm-services-syscall-syscall-src-mq3-server-game-vm-ml-511078761"></a>
 ### syscall
@@ -121,5 +143,7 @@ restartFn
 syscall
 ```
 
+Dispatcher handling game-VM calls back into the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L35)

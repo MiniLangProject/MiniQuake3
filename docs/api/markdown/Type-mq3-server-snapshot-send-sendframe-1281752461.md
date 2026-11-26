@@ -9,8 +9,10 @@
 struct SendFrame
 ```
 
+SendFrame record for server.snapshot_send, containing `firstEntity`, `numEntities`, `areaBits`, `playerState`, `messageSent`, `messageAcked`, and 1 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L30)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct SendFrame
 areaBits
 ```
 
+Bitset of map areas visible in this snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L36)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-firstentity-firstentity-src-mq3-server-snapshot-send-ml-32103494"></a>
 ### firstEntity
@@ -31,8 +35,10 @@ areaBits
 firstEntity
 ```
 
+First entity-state position for this snapshot in the shared circular snapshot buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L32)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-messageacked-messageacked-src-mq3-server-snapshot-send-ml-1452646924"></a>
 ### messageAcked
@@ -41,8 +47,10 @@ firstEntity
 messageAcked
 ```
 
+Server timestamp when this snapshot message was acknowledged, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L42)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-messagesent-messagesent-src-mq3-server-snapshot-send-ml-147951374"></a>
 ### messageSent
@@ -51,8 +59,10 @@ messageAcked
 messageSent
 ```
 
+Server timestamp when this snapshot message was transmitted, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L40)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-messagesize-messagesize-src-mq3-server-snapshot-send-ml-1974506130"></a>
 ### messageSize
@@ -61,8 +71,10 @@ messageSent
 messageSize
 ```
 
+Transmitted snapshot-message size in bytes, used for rate limiting.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L44)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-numentities-numentities-src-mq3-server-snapshot-send-ml-2100619758"></a>
 ### numEntities
@@ -71,8 +83,10 @@ messageSize
 numEntities
 ```
 
+Number of entity records currently represented by this state or snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L34)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-playerstate-playerstate-src-mq3-server-snapshot-send-ml-571404690"></a>
 ### playerState
@@ -81,5 +95,7 @@ numEntities
 playerState
 ```
 
+Authoritative player-state record used for snapshots and game simulation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L38)

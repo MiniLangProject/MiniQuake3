@@ -9,8 +9,10 @@
 struct Vertex
 ```
 
+Data record for `mq3.renderer.surface_mesh.Vertex`; groups `xyz`, `normal`, `st`, `lightmap`, `color`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L7)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Vertex
 color
 ```
 
+Authored vertex color retained with the static mesh position and texture coordinates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L17)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-lightmap-lightmap-src-mq3-renderer-surface-mesh-ml-2100535523"></a>
 ### lightmap
@@ -31,8 +35,10 @@ color
 lightmap
 ```
 
+Baked-lighting texture coordinates or resource associated with this vertex or patch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L15)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-normal-normal-src-mq3-renderer-surface-mesh-ml-438813421"></a>
 ### normal
@@ -41,8 +47,10 @@ lightmap
 normal
 ```
 
+Static mesh vertex normal used by lighting and material coordinate generation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-st-st-src-mq3-renderer-surface-mesh-ml-229953417"></a>
 ### st
@@ -51,8 +59,10 @@ normal
 st
 ```
 
+Two-dimensional texture coordinates associated with the vertex.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L13)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-xyz-xyz-src-mq3-renderer-surface-mesh-ml-2147196263"></a>
 ### xyz
@@ -61,5 +71,7 @@ st
 xyz
 ```
 
+Three-dimensional position of this vertex.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L9)

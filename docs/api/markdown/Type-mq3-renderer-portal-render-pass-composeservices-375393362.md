@@ -9,8 +9,10 @@
 struct ComposeServices
 ```
 
+Callback table for `mq3.renderer.portal_render_pass.ComposeServices`; exposes `drawPortalFn`, `clearDepthFn`, `drawMainFn`, `context`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L202)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ComposeServices
 clearDepthFn
 ```
 
+Host callback used to perform clear depth operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L206)
 
 <a id="field-field-mq3-renderer-portal-render-pass-composeservices-context-context-src-mq3-renderer-portal-render-pass-ml-1023634569"></a>
 ### context
@@ -31,8 +35,10 @@ clearDepthFn
 context
 ```
 
+Drawing-host state shared by portal rendering, depth clearing, and main-view composition callbacks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L211)
 
 <a id="field-field-mq3-renderer-portal-render-pass-composeservices-drawmainfn-drawmainfn-src-mq3-renderer-portal-render-pass-ml-1825383867"></a>
 ### drawMainFn
@@ -41,8 +47,10 @@ context
 drawMainFn
 ```
 
+Host callback used to perform draw main operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L208)
 
 <a id="field-field-mq3-renderer-portal-render-pass-composeservices-drawportalfn-drawportalfn-src-mq3-renderer-portal-render-pass-ml-415000685"></a>
 ### drawPortalFn
@@ -51,5 +59,7 @@ drawMainFn
 drawPortalFn
 ```
 
+Host callback used to perform draw portal operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L204)

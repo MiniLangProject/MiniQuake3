@@ -9,8 +9,10 @@
 struct Command
 ```
 
+Stores playable projectile fx command data, including `kind`, `center`, `radius`, `red`, `green`, `blue`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L101)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Command
 blue
 ```
 
+Blue color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L114)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-center-center-src-mq3-client-playable-projectile-fx-ml-1409276672"></a>
 ### center
@@ -31,8 +35,10 @@ blue
 center
 ```
 
+When constructing this record, `command` supplies `center` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L106)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-green-green-src-mq3-client-playable-projectile-fx-ml-171230670"></a>
 ### green
@@ -41,8 +47,10 @@ center
 green
 ```
 
+Green color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L112)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-kind-kind-src-mq3-client-playable-projectile-fx-ml-1172664370"></a>
 ### kind
@@ -51,8 +59,10 @@ green
 kind
 ```
 
+Smoke-effect drawing selector; puff commands are rendered as four-line diamonds around their projected center.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L104)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-radius-radius-src-mq3-client-playable-projectile-fx-ml-42088474"></a>
 ### radius
@@ -61,8 +71,10 @@ kind
 radius
 ```
 
+Projected pixel radius used to draw the trail-puff or impact diamond.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L108)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-red-red-src-mq3-client-playable-projectile-fx-ml-1224440282"></a>
 ### red
@@ -71,5 +83,7 @@ radius
 red
 ```
 
+Red color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L110)

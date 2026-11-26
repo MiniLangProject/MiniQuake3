@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Data record for `mq3.platform.desktop_frame_host.Runtime`; groups `config`, `services`, `clientSocket`, `serverSocket`, `clientEndpoint`, `serverEndpoint`, and 6 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L64)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 active
 ```
 
+Whether this object is currently active and accepts processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L86)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-clientendpoint-clientendpoint-src-mq3-platform-desktop-frame-host-ml-1889451625"></a>
 ### clientEndpoint
@@ -31,8 +35,10 @@ active
 clientEndpoint
 ```
 
+Local or remote endpoint used by the client transport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L74)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-clientsocket-clientsocket-src-mq3-platform-desktop-frame-host-ml-1062178737"></a>
 ### clientSocket
@@ -41,8 +47,10 @@ clientEndpoint
 clientSocket
 ```
 
+Socket used for the client side of the local host.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L70)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-config-config-src-mq3-platform-desktop-frame-host-ml-1888198041"></a>
 ### config
@@ -51,8 +59,10 @@ clientSocket
 config
 ```
 
+Configuration values used to initialize or drive this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L66)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-framenumber-framenumber-src-mq3-platform-desktop-frame-host-ml-1935964269"></a>
 ### frameNumber
@@ -61,8 +71,10 @@ config
 frameNumber
 ```
 
+Sequence number identifying the current host frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L82)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-packetcount-packetcount-src-mq3-platform-desktop-frame-host-ml-1486756921"></a>
 ### packetCount
@@ -71,8 +83,10 @@ frameNumber
 packetCount
 ```
 
+Number of packets processed by the frame host.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L84)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-pump-pump-src-mq3-platform-desktop-frame-host-ml-837793369"></a>
 ### pump
@@ -81,8 +95,10 @@ packetCount
 pump
 ```
 
+Packet pump used to drain transport events into the engine.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L78)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-serverendpoint-serverendpoint-src-mq3-platform-desktop-frame-host-ml-2063455321"></a>
 ### serverEndpoint
@@ -91,8 +107,10 @@ pump
 serverEndpoint
 ```
 
+Local or remote endpoint used by the server transport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L76)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-serversocket-serversocket-src-mq3-platform-desktop-frame-host-ml-818647049"></a>
 ### serverSocket
@@ -101,8 +119,10 @@ serverEndpoint
 serverSocket
 ```
 
+Socket used for the server side of the local host.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L72)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-services-services-src-mq3-platform-desktop-frame-host-ml-1713200033"></a>
 ### services
@@ -111,8 +131,10 @@ serverSocket
 services
 ```
 
+Injected host operations used by this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L68)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-time-time-src-mq3-platform-desktop-frame-host-ml-5525447"></a>
 ### time
@@ -121,8 +143,10 @@ services
 time
 ```
 
+Current host clock in milliseconds, advanced before packet draining and engine frame callbacks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L80)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-udpstarted-udpstarted-src-mq3-platform-desktop-frame-host-ml-746778341"></a>
 ### udpStarted
@@ -131,5 +155,7 @@ time
 udpStarted
 ```
 
+Whether the UDP transport has completed startup.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L88)

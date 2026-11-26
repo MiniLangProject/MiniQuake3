@@ -8,29 +8,121 @@ import mq3.platform.playable_window as window
 import mq3.client.playable_hud as textHud
 import std.string as strings
 
+/// Width of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_WIDTH=640.0
+/// Height of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_HEIGHT=480.0
+/// Width of a standard character in virtual screen coordinates.
 const CHAR_WIDTH=32.0
+/// Height of a standard character in virtual screen coordinates.
 const CHAR_HEIGHT=48.0
+/// Default square HUD icon size in virtual screen coordinates.
 const ICON_SIZE=48.0
+/// Horizontal gap between text and its adjacent HUD icon.
 const TEXT_ICON_SPACE=4.0
 // CG_DrawStatusBarHead uses ICON_SIZE * 1.25 and anchors it to y=480-size.
 const STATUS_HEAD_SIZE=60.0
+/// Virtual-screen Y coordinate used to place the HUD status-head model.
 const STATUS_HEAD_Y=420.0
+/// Number of texture slots required by the module's fixed media layout.
 const REQUIRED_TEXTURES=39
+/// Duration in milliseconds of temporary HUD feedback emphasis.
 const FEEDBACK_TIME=3000
+/// Milliseconds for which the weapon-selection HUD remains visible.
 const WEAPON_SELECT_TIME=1400
+/// Normal weapon-icon size in virtual HUD coordinates.
 const WEAPON_ICON_SIZE=40.0
+/// Enlarged icon size used to emphasize the currently selected weapon.
 const SELECTED_WEAPON_ICON_SIZE=48.0
 
-struct Asset key imageName image slot end struct
-struct Catalog assets firstTextureSlot textureCount end struct
-struct State health armor ammo weapon score kills deaths pickupClass pickupName pickupTime fragTime ownedWeapons weaponAmmo weaponSelectTime end struct
-struct Point x y depth end struct
-struct Layout scaleX scaleY ammoX healthX armorX statusY iconY end struct
+/// Stores base Quake III HUD asset record, including `key`, `imageName`, `image`, `slot`.
+struct Asset
+  /// When constructing this record, `load` supplies `item[0]` for this member. Used by `find` during
+  /// subsequent processing.
+  key
+  /// Resolved artwork path for a status-bar digit, icon, or other base-game HUD asset.
+  imageName
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
+/// Stores base Quake III HUD catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
+struct Catalog
+  /// Loaded base-game HUD artwork indexed for status digits, icons, and other status-bar drawing.
+  assets
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// Number of texture resources or texture-cache slots represented by this media record.
+  textureCount
+end struct
+/// Stores base Quake III HUD state, including `health`, `armor`, `ammo`, `weapon`, `score`, `kills` and additional values.
+struct State
+  /// Player health supplied to the base-game-style numeric status display.
+  health
+  /// Player armor supplied to the base-game-style armor icon and numeric display.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Selected weapon classname used to highlight the base-game-style weapon selection strip.
+  weapon
+  /// Player score displayed by the base-game HUD.
+  score
+  /// When constructing this record, `state` supplies `kills` for this member.
+  kills
+  /// When constructing this record, `state` supplies `deaths` for this member.
+  deaths
+  /// When constructing this record, `state` supplies an empty string for this member.
+  pickupClass
+  /// Human-readable item name shown by pickup notifications and item-selection UI.
+  pickupName
+  /// Timestamp of the last item pickup, used with the feedback lifetime to hide its temporary HUD
+  /// notification.
+  pickupTime
+  /// Timestamp of the last frag notification, used to expire the HUD's kill feedback.
+  fragTime
+  /// When constructing this record, `state` supplies an empty list for this member.
+  ownedWeapons
+  /// When constructing this record, `state` supplies an empty list for this member.
+  weaponAmmo
+  /// Timestamp at which the weapon-selection display was last refreshed.
+  weaponSelectTime
+end struct
+/// Stores base Quake III HUD point record, including `x`, `y`, `depth`.
+struct Point
+  /// Horizontal coordinate of a status-HUD image vertex in the target window.
+  x
+  /// Vertical coordinate of a status-HUD image vertex in the target window.
+  y
+  /// When constructing this record, `point` supplies `0.001` for this member.
+  depth
+end struct
+/// Stores base Quake III HUD layout record, including `scaleX`, `scaleY`, `ammoX`, `healthX`, `armorX`, `statusY` and additional values.
+struct Layout
+  /// Horizontal scale used to transform virtual UI coordinates to the actual display.
+  scaleX
+  /// Vertical scale used to transform virtual UI coordinates to the actual display.
+  scaleY
+  /// When constructing this record, `layout` supplies `0.0` for this member.
+  ammoX
+  /// When constructing this record, `layout` supplies `185.0` for this member.
+  healthX
+  /// When constructing this record, `layout` supplies `370.0` for this member.
+  armorX
+  /// When constructing this record, `layout` supplies `432.0` for this member.
+  statusY
+  /// When constructing this record, `layout` supplies `432.0` for this member.
+  iconY
+end struct
 
+/// Creates the base Quake III HUD error `7580` with diagnostic text `"Baseq3 HUD: "+message`.
+/// @param message Argument 2 of `error`; passed as `"Baseq3 HUD: "+message`.
 function fail(message) return error(7580,"Baseq3 HUD: "+message) end function
 
+/// Builds the base Quake III HUD `descriptor` sequence from `[key,name]`.
+/// @param key Key or control identifier used to select the corresponding base Quake III HUD entry.
+/// @param name Name used to select or register the corresponding base Quake III HUD resource.
 function descriptor(key,name) return [key,name] end function
 
 // The first eleven entries match cgs.media.numberShaders[0..STAT_MINUS].
@@ -60,6 +152,10 @@ function descriptors()
     descriptor("medal_impressive","medal_impressive"),descriptor("medal_excellent","medal_excellent")]
 end function
 
+/// Calls `mq3.client.baseq3_hud.descriptors`, `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.playable_materials.mappedImageName` and additional helpers from base Quake III HUD `load`. The final path returns `Catalog(assets,firstTextureSlot,len(assets))`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param firstTextureSlot First texture slot reserved for this asset collection.
+/// @param maxTextureSlots Maximum number of texture slots available to the renderer.
 function load(archive,firstTextureSlot,maxTextureSlots)
   if archive==void then return fail("PK3 archive is required") end if
   if firstTextureSlot<0 or firstTextureSlot>=512 then return fail("first texture slot outside native range") end if
@@ -78,6 +174,9 @@ function load(archive,firstTextureSlot,maxTextureSlots)
   return Catalog(assets,firstTextureSlot,len(assets))
 end function
 
+/// Searches the base Quake III HUD collection for find, returning `void` when no entry matches.
+/// @param catalog Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`.
+/// @param key Key or control identifier used to select the corresponding base Quake III HUD entry.
 function find(catalog,key)
   if catalog==void then return void end if
   wanted=strings.toLowerAscii(key)
@@ -85,6 +184,8 @@ function find(catalog,key)
   return void
 end function
 
+/// Calls `mq3.platform.playable_window.uploadTextureNoMip`, `mq3.client.baseq3_hud.release` from base Quake III HUD `upload`.
+/// @param catalog Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`.
 function upload(catalog)
   if catalog==void then return fail("catalog is required") end if
   for each asset in catalog.assets
@@ -95,12 +196,17 @@ function upload(catalog)
   return true
 end function
 
+/// Calls `mq3.platform.playable_window.releaseTexture` from base Quake III HUD `release`.
+/// @param catalog Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`.
 function release(catalog)
   if catalog==void then return void end if
   for each asset in catalog.assets window.releaseTexture(asset.slot) end for
   return void
 end function
 
+/// Evaluates base Quake III HUD `clampField` and returns `0`, `maximum`, `minimum` and additional values according to its guard/selection conditions.
+/// @param value Value tested by `value>maximum`, `if value<minimum` before the calculation continues.
+/// @param width Width in the coordinate space used by `clampField`.
 function clampField(value,width)
   if width<=0 then return 0 end if
   maximum=9
@@ -111,6 +217,14 @@ function clampField(value,width)
   return value
 end function
 
+/// Creates a `mq3.client.baseq3_hud.State` record. Assigns `health` from `health`, `armor` from `armor`, `ammo` from `ammo`, `weapon` from `weapon`.
+/// @param health Value used to initialize `State.health`.
+/// @param armor Value used to initialize `State.armor`.
+/// @param ammo Value used to initialize `State.ammo`.
+/// @param weapon Value used to initialize `State.weapon`.
+/// @param score Value used to initialize `State.score`.
+/// @param kills Value used to initialize `State.kills`.
+/// @param deaths Value used to initialize `State.deaths`.
 function state(health,armor,ammo,weapon,score,kills,deaths)
   return State(health,armor,ammo,weapon,score,kills,deaths,"","",0,0,[],[],0)
 end function
@@ -118,33 +232,64 @@ end function
 // Mirrors CG_Weapon_f/CG_NextWeapon_f feedback: the selection strip is only
 // visible briefly after a real selection change. Callers pass owned weapon
 // classnames in weapon-id order and the matching ammo counts.
+/// @param value Mutable base Quake III HUD record/storage; this routine assigns `value.ownedWeapons`, `value.weaponAmmo`, `value.weapon`, `value.weaponSelectTime`.
+/// @param weapons Sequence whose length/content is inspected by `selectWeapons`.
+/// @param ammo Sequence whose length/content is inspected by `selectWeapons`.
+/// @param selected Value assigned to `value.weapon`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function selectWeapons(value,weapons,ammo,selected,now)
   if value==void or typeof(weapons)!="array" or typeof(ammo)!="array" or len(weapons)!=len(ammo) then return fail("invalid weapon selection") end if
   value.ownedWeapons=weapons;value.weaponAmmo=ammo;value.weapon=selected;value.weaponSelectTime=now
   return len(weapons)
 end function
 
+/// Updates `value.pickupClass`, `value.pickupName`, `value.pickupTime` during base Quake III HUD `pickup`.
+/// @param value Mutable base Quake III HUD record/storage; this routine assigns `value.pickupClass`, `value.pickupName`, `value.pickupTime`.
+/// @param classname Value assigned to `value.pickupClass`.
+/// @param name Value assigned to `value.pickupName`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function pickup(value,classname,name,now)
   if value==void then return fail("state is required") end if
   value.pickupClass=classname;value.pickupName=name;value.pickupTime=now;return void
 end function
 
+/// Updates `value.fragTime` during base Quake III HUD `frag`.
+/// @param value Mutable base Quake III HUD record/storage; this routine assigns `value.fragTime`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function frag(value,now)
   if value==void then return fail("state is required") end if
   value.fragTime=now;return void
 end function
 
+/// Calls `mq3.client.baseq3_hud.Layout` from base Quake III HUD `layout`. The final path returns `Layout(width/VIRTUAL_WIDTH,height/VIRTUAL_HEIGHT,0.0,185.0,370.0,432.0,432.0)`.
+/// @param width Width in the coordinate space used by `layout`.
+/// @param height Height in the coordinate space used by `layout`.
 function layout(width,height)
   if width<320 or height<240 then return fail("surface is too small") end if
   return Layout(width/VIRTUAL_WIDTH,height/VIRTUAL_HEIGHT,0.0,185.0,370.0,432.0,432.0)
 end function
 
+/// Computes `placement.healthX+CHAR_WIDTH*3.0+TEXT_ICON_SPACE` for base Quake III HUD `statusHeadX`.
+/// @param placement Record read through `placement.healthX`.
 function statusHeadX(placement)
   return placement.healthX+CHAR_WIDTH*3.0+TEXT_ICON_SPACE
 end function
 
+/// Creates a `mq3.client.baseq3_hud.Point` record. Assigns `x` from `x`, `y` from `y`.
+/// @param x Value used to initialize `Point.x`.
+/// @param y Value used to initialize `Point.y`.
 function point(x,y) return Point(x,y,0.001) end function
 
+/// Calls `mq3.client.baseq3_hud.point`, `mq3.platform.playable_window.drawTriangle` from base Quake III HUD `drawAsset`.
+/// @param asset Record read through `asset.slot`.
+/// @param x Horizontal coordinate in the coordinate space used by `drawAsset`.
+/// @param y Vertical coordinate in the coordinate space used by `drawAsset`.
+/// @param w Width in the coordinate space used by `drawAsset`.
+/// @param h Height in the coordinate space used by `drawAsset`.
+/// @param placement Record read through `placement.scaleX`, `placement.scaleY`.
+/// @param red Red color component.
+/// @param green Green color component.
+/// @param blue Blue color component.
 function drawAsset(asset,x,y,w,h,placement,red,green,blue)
   if asset==void then return false end if
   left=x*placement.scaleX;top=y*placement.scaleY;right=(x+w)*placement.scaleX;bottom=(y+h)*placement.scaleY
@@ -154,16 +299,32 @@ function drawAsset(asset,x,y,w,h,placement,red,green,blue)
   return true
 end function
 
+/// Evaluates base Quake III HUD `numberKey` and returns `"number_minus"`, `"number_"+character` according to its guard/selection conditions.
+/// @param character Value used by `if character=="-" then return "number_minus" end if`.
 function numberKey(character)
   if character=="-" then return "number_minus" end if
   return "number_"+character
 end function
 
+/// Calls `mq3.client.baseq3_hud.clampField` from base Quake III HUD `fieldStart`. The final path returns `x+2.0+CHAR_WIDTH*(width-length)`.
+/// @param x Horizontal coordinate in the coordinate space used by `fieldStart`.
+/// @param width Width in the coordinate space used by `fieldStart`.
+/// @param value Value used by `text=str(clampField(value,width))`.
 function fieldStart(x,width,value)
   text=str(clampField(value,width));length=len(text);if length>width then length=width end if
   return x+2.0+CHAR_WIDTH*(width-length)
 end function
 
+/// Calls `mq3.client.baseq3_hud.clampField`, `slice`, `mq3.client.baseq3_hud.fieldStart` and additional helpers from base Quake III HUD `drawField`.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param x Horizontal coordinate in the coordinate space used by `drawField`.
+/// @param y Vertical coordinate in the coordinate space used by `drawField`.
+/// @param width Width in the coordinate space used by `drawField`.
+/// @param value Value used by `text=str(clampField(value,width))`.
+/// @param placement Value used by `drawAsset(find(catalog,numberKey(text[index])),cursor,y,CHAR_WIDTH,CHAR_HEIGHT,placement,red,green,blue)`.
+/// @param red Red color component.
+/// @param green Green color component.
+/// @param blue Blue color component.
 function drawField(catalog,x,y,width,value,placement,red,green,blue)
   if width<1 then return void end if
   if width>5 then width=5 end if
@@ -176,6 +337,8 @@ function drawField(catalog,x,y,width,value,placement,red,green,blue)
   return void
 end function
 
+/// Calls `std.string.toLowerAscii`, `std.string.startsWith` from base Quake III HUD `weaponIconKey`. The final path returns `"weapon_bfg"`.
+/// @param weapon Value used by `name=strings.toLowerAscii(weapon)`.
 function weaponIconKey(weapon)
   name=strings.toLowerAscii(weapon)
   if strings.startsWith(name,"weapon_") then return name end if
@@ -190,6 +353,8 @@ function weaponIconKey(weapon)
   return "weapon_machinegun"
 end function
 
+/// Calls `mq3.client.baseq3_hud.weaponIconKey` from base Quake III HUD `ammoIconKey`. The final path returns `"ammo_machinegun"`.
+/// @param weapon Value used by `icon=weaponIconKey(weapon)`.
 function ammoIconKey(weapon)
   icon=weaponIconKey(weapon)
   if icon=="weapon_shotgun" then return "ammo_shotgun" end if
@@ -202,6 +367,8 @@ function ammoIconKey(weapon)
   return "ammo_machinegun"
 end function
 
+/// Calls `std.string.toLowerAscii`, `mq3.client.baseq3_hud.findKey`, `std.string.startsWith` and additional helpers from base Quake III HUD `pickupIconKey`. The final path returns `weaponIconKey(name)`.
+/// @param classname Value used by `name=strings.toLowerAscii(classname)`.
 function pickupIconKey(classname)
   name=strings.toLowerAscii(classname)
   if findKey(name,["item_health_small","item_health","item_health_large","item_health_mega","item_armor_shard","item_armor_body"]) then return name end if
@@ -210,11 +377,16 @@ function pickupIconKey(classname)
   return weaponIconKey(name)
 end function
 
+/// Evaluates base Quake III HUD `findKey` and returns `true`, `false` according to its guard/selection conditions.
+/// @param value Value tested by `value==item` before the calculation continues.
+/// @param values Value used by `for each item in values if value==item then return true end if end for`.
 function findKey(value,values)
   for each item in values if value==item then return true end if end for
   return false
 end function
 
+/// Calls `mq3.client.baseq3_hud.weaponIconKey` from base Quake III HUD `weaponDisplayName`. The final path returns `"MACHINEGUN"`.
+/// @param weapon Value used by `key=weaponIconKey(weapon)`.
 function weaponDisplayName(weapon)
   key=weaponIconKey(weapon)
   if key=="weapon_gauntlet" then return "GAUNTLET" end if
@@ -228,6 +400,11 @@ function weaponDisplayName(weapon)
   return "MACHINEGUN"
 end function
 
+/// Calls `std.string.toLowerAscii`, `mq3.client.baseq3_hud.drawAsset`, `mq3.client.baseq3_hud.find` and additional helpers from base Quake III HUD `drawWeaponSelect`. The final path returns `drawn`.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param value Record read through `value.weaponSelectTime`, `value.ownedWeapons`, `value.weaponAmmo`, `value.weapon`.
+/// @param placement Record read through `placement.scaleX`, `placement.scaleY`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function drawWeaponSelect(catalog,value,placement,now)
   if value.weaponSelectTime<=0 or now-value.weaponSelectTime<0 or now-value.weaponSelectTime>=WEAPON_SELECT_TIME then return 0 end if
   count=len(value.ownedWeapons);if count==0 or count!=len(value.weaponAmmo) then return 0 end if
@@ -243,6 +420,12 @@ function drawWeaponSelect(catalog,value,placement,now)
   return drawn
 end function
 
+/// Calls `mq3.client.baseq3_hud.layout`, `mq3.client.baseq3_hud.drawAsset`, `mq3.client.baseq3_hud.find` and additional helpers from base Quake III HUD `draw`.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param value Record read through `value.ammo`, `value.weapon`, `value.health`, `value.armor` and additional values.
+/// @param width Width in the coordinate space used by `draw`.
+/// @param height Height in the coordinate space used by `draw`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function draw(catalog,value,width,height,now)
   if catalog==void or value==void then return fail("catalog and state are required") end if
   placement=layout(width,height);if placement is error then return placement end if

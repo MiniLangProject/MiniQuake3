@@ -9,8 +9,10 @@
 struct SetColorCommand
 ```
 
+Data record for `mq3.renderer.tr_local.SetColorCommand`; groups `commandId`, `color`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L117)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct SetColorCommand
 color
 ```
 
+RGBA modulation value installed for subsequent two-dimensional renderer commands.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L121)
 
 <a id="field-field-mq3-renderer-tr-local-setcolorcommand-commandid-commandid-src-mq3-renderer-tr-local-ml-479998925"></a>
 ### commandId
@@ -31,5 +35,7 @@ color
 commandId
 ```
 
+Renderer command identifier selecting the backend operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L119)

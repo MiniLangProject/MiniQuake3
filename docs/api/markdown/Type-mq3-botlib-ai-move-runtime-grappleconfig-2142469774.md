@@ -9,8 +9,10 @@
 struct GrappleConfig
 ```
 
+`GrappleConfig` record for ai move runtime, containing `offhand`, `weaponIndex`, `onCommand` and `offCommand`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L235)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct GrappleConfig
 offCommand
 ```
 
+Console command used to release the grappling hook.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L243)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-grappleconfig-offhand-offhand-src-mq3-botlib-ai-move-runtime-ml-854452278"></a>
 ### offhand
@@ -31,8 +35,10 @@ offCommand
 offhand
 ```
 
+True when the grappling hook uses an off-hand command instead of a selected weapon.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L237)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-grappleconfig-oncommand-oncommand-src-mq3-botlib-ai-move-runtime-ml-1900221982"></a>
 ### onCommand
@@ -41,8 +47,10 @@ offhand
 onCommand
 ```
 
+Console command used to activate the grappling hook.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L241)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-grappleconfig-weaponindex-weaponindex-src-mq3-botlib-ai-move-runtime-ml-1060131350"></a>
 ### weaponIndex
@@ -51,5 +59,7 @@ onCommand
 weaponIndex
 ```
 
+Inventory or weapon-table index associated with the weapon.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L239)

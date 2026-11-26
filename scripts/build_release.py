@@ -23,6 +23,11 @@ from inventory import sha
 RELEASE = "1.3.9"
 PACKAGE_SHA256 = "46cbe327d0b42085045ba4f5e1a71bfb395ebc7b10bb3956285db6e469fbfc70"
 COMPILER_SHA256 = "269aecaa2232b634809edd80be95eda52f837ad4be022f9a778633bd47d9ba62"
+TEST_RUNTIME_FLAGS = ("--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m")
+# The real-time app collects in the background to avoid multi-second pauses
+# when the game and renderer allocate during combat.
+PLAYABLE_RUNTIME_FLAGS = ("--heap-reserve", "2g", "--heap-commit", "128m",
+                          "--gc-limit", "128m", "--gc-concurrent")
 PACKAGE_URL = ("https://github.com/MiniLangProject/MiniLangCompilerML/releases/download/"
                "v1.3.9/MiniLangCompilerML-1.3.9-windows-x64.zip")
 
@@ -39,6 +44,34 @@ def unpack_checked(package: Path, destination: Path) -> None:
             if (item.external_attr >> 16) & 0o170000 == 0o120000:
                 raise RuntimeError("Symbolic links are not allowed in compiler packages")
         archive.extractall(root)
+
+
+def extraction_matches(package: Path, destination: Path) -> bool:
+    """Reuse a published compiler only when every unpacked byte matches the ZIP."""
+    if not destination.is_dir():
+        return False
+    root = destination.resolve()
+    expected: set[str] = set()
+    with zipfile.ZipFile(package) as archive:
+        for item in archive.infolist():
+            target = (root / item.filename).resolve()
+            if not target.is_relative_to(root):
+                raise RuntimeError("Unsafe compiler archive path: " + item.filename)
+            if (item.external_attr >> 16) & 0o170000 == 0o120000:
+                raise RuntimeError("Symbolic links are not allowed in compiler packages")
+            if item.is_dir():
+                continue
+            expected.add(item.filename)
+            if not target.is_file() or target.stat().st_size != item.file_size:
+                return False
+            digest = hashlib.sha256()
+            with archive.open(item) as source:
+                for chunk in iter(lambda: source.read(1024 * 1024), b""):
+                    digest.update(chunk)
+            if sha(target) != digest.hexdigest():
+                return False
+    actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
+    return actual == expected
 
 
 def prepare_compiler() -> tuple[Path, Path]:
@@ -58,11 +91,13 @@ def prepare_compiler() -> tuple[Path, Path]:
                 partial.replace(package)
             finally:
                 partial.unlink(missing_ok=True)
-        # Re-extract the verified package so a locally edited compiler or stdlib
-        # cannot silently masquerade as the pinned published toolchain.
-        if extracted.exists():
-            shutil.rmtree(extracted)
-        unpack_checked(package, extracted)
+        # A second build may start while Windows is executing this compiler.
+        # Validate the whole extraction before reusing it; never delete a
+        # healthy in-use mlc.exe just to repeat the same extraction.
+        if not extraction_matches(package, extracted):
+            if extracted.exists():
+                shutil.rmtree(extracted)
+            unpack_checked(package, extracted)
         compilers = [p for p in extracted.rglob("*.exe") if p.name in ("mlc.exe", "mlc_win64.exe")]
         libraries = [p.parent for p in extracted.rglob("std/fs.ml")]
         if len(compilers) != 1 or len(libraries) != 1:
@@ -100,7 +135,7 @@ def main() -> int:
         with native_build_lock(output):
             build_native(output, msvc_env("x64"))
         flags = ["-I", str(ROOT / "src"), "-I", str(library_root),
-                 "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"]
+                 *(PLAYABLE_RUNTIME_FLAGS if gui else TEST_RUNTIME_FLAGS)]
         inputs = {"mode": "published-release", "release": RELEASE,
                   "package_sha256": PACKAGE_SHA256, "compiler": sha(compiler),
                   "subsystem": "windows" if gui else "console", "flags": flags,

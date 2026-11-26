@@ -9,8 +9,10 @@
 struct Quad
 ```
 
+Data record for `mq3.renderer.tr_flares_runtime.Quad`; groups `fogNum`, `positions`, `texCoords`, `color`, `indexes`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L55)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Quad
 color
 ```
 
+Final flare-quad modulation after intensity and fog adjustments.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L63)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-fognum-fognum-src-mq3-renderer-tr-flares-runtime-ml-373230990"></a>
 ### fogNum
@@ -31,8 +35,10 @@ color
 fogNum
 ```
 
+Fog volume number encoded or used by the draw surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L57)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-indexes-indexes-src-mq3-renderer-tr-flares-runtime-ml-1373150358"></a>
 ### indexes
@@ -41,8 +47,10 @@ fogNum
 indexes
 ```
 
+Indices splitting the four flare vertices into drawable triangles.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L65)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-positions-positions-src-mq3-renderer-tr-flares-runtime-ml-453397794"></a>
 ### positions
@@ -51,8 +59,10 @@ indexes
 positions
 ```
 
+Screen-facing corners constructed around the projected flare center.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L59)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-texcoords-texcoords-src-mq3-renderer-tr-flares-runtime-ml-1836347378"></a>
 ### texCoords
@@ -61,5 +71,7 @@ positions
 texCoords
 ```
 
+Texture corners used to map the flare image onto its screen-facing quad.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L61)

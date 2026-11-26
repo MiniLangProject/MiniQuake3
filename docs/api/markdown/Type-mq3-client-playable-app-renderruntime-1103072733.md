@@ -9,8 +9,10 @@
 struct RenderRuntime
 ```
 
+Stores playable app render runtime record, including `lightGrid`, `collisionWorld`, `shadowCatalog`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L95)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L153)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct RenderRuntime
 collisionWorld
 ```
 
+When constructing this record, `runLimited` supplies `world` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L95)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L157)
 
 <a id="field-field-mq3-client-playable-app-renderruntime-lightgrid-lightgrid-src-mq3-client-playable-app-ml-81858233"></a>
 ### lightGrid
@@ -31,8 +35,10 @@ collisionWorld
 lightGrid
 ```
 
+When constructing this record, `runLimited` supplies `lightGrid` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L95)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L155)
 
 <a id="field-field-mq3-client-playable-app-renderruntime-shadowcatalog-shadowcatalog-src-mq3-client-playable-app-ml-1176041769"></a>
 ### shadowCatalog
@@ -41,5 +47,7 @@ lightGrid
 shadowCatalog
 ```
 
+When constructing this record, `runLimited` supplies an absent (`void`) value for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L95)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L159)

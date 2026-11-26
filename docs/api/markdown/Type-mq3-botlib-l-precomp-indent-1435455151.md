@@ -9,8 +9,10 @@
 struct Indent
 ```
 
+`Indent` record for l precomp, containing `type` and `skip`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L129)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Indent
 skip
 ```
 
+True when tokens in this conditional-preprocessor branch should be skipped.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L133)
 
 <a id="field-field-mq3-botlib-l-precomp-indent-type-type-src-mq3-botlib-l-precomp-ml-1448522439"></a>
 ### type
@@ -31,5 +35,7 @@ skip
 type
 ```
 
+Conditional-directive kind represented by this nesting level.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L131)

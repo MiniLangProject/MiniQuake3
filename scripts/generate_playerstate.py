@@ -29,7 +29,13 @@ def main():
     for f in fields:
         zero='0.0' if f['type']=='float' else '0'
         defaults.append(zero if f['count']==1 else '['+','.join([zero]*f['count'])+']')
-    lines+=['  return PlayerState('+','.join(defaults)+')','end function','','function load(data, offset)',
+    lines+=['  return PlayerState('+','.join(defaults)+')','end function','','function copy(source)','  return PlayerState(']
+    for f in fields:
+        value='source.'+f['name']
+        if f['count']>1: value='['+','.join(value+f'[{i}]' for i in range(f['count']))+']'
+        lines+=['    '+value+',']
+    lines[-1]=lines[-1][:-1]
+    lines+=['  )','end function','','function load(data, offset)',
             '  if offset < 0 or offset+BYTE_SIZE > len(data) then return error(470,"Truncated playerState") end if',
             '  ps = create()']
     for f in fields:
@@ -39,12 +45,13 @@ def main():
             if f['type']=='float': v='n.bitsFloat('+v+')'
             values.append(v)
         lines+=['  ps.'+f['name']+' = '+(values[0] if len(values)==1 else '['+','.join(values)+']')]
-    lines+=['  return ps','end function','','function words(ps)','  result = []']
+    lines+=['  return ps','end function','','function words(ps)','  return [']
     for f in fields:
         values=['ps.'+f['name']+(f'[{i}]' if f['count']>1 else '') for i in range(f['count'])]
         values=[('n.floatBits('+v+')') if f['type']=='float' else 'n.u32('+v+')' for v in values]
-        lines+=['  result = result+['+','.join(values)+']']
-    lines+=['  return result','end function','']
+        lines+=['    '+','.join(values)+',']
+    lines[-1]=lines[-1][:-1]
+    lines+=['  ]','end function','']
     (ROOT / 'src/mq3/game/playerstate.ml').write_text('\n'.join(lines))
     (ROOT / 'docs/reference/playerstate.json').write_text(json.dumps({'source_sha256':sha(source),'size':offset,'fields':fields},indent=2)+'\n')
     print(f'Generated {len(fields)} fields / {offset} bytes')

@@ -9,8 +9,10 @@
 struct Conditional
 ```
 
+Conditional record for vm.pc_parser, containing `parentActive`, `branchTaken`, `active`, `elseSeen`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L79)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Conditional
 active
 ```
 
+Whether tokens in the current preprocessor branch should be emitted.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L85)
 
 <a id="field-field-mq3-vm-pc-parser-conditional-branchtaken-branchtaken-src-mq3-vm-pc-parser-ml-1155402369"></a>
 ### branchTaken
@@ -31,8 +35,10 @@ active
 branchTaken
 ```
 
+Whether an earlier branch of this conditional group was selected.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L83)
 
 <a id="field-field-mq3-vm-pc-parser-conditional-elseseen-elseseen-src-mq3-vm-pc-parser-ml-37273677"></a>
 ### elseSeen
@@ -41,8 +47,10 @@ branchTaken
 elseSeen
 ```
 
+Whether this conditional group has encountered its else branch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L87)
 
 <a id="field-field-mq3-vm-pc-parser-conditional-parentactive-parentactive-src-mq3-vm-pc-parser-ml-1241779533"></a>
 ### parentActive
@@ -51,5 +59,7 @@ elseSeen
 parentActive
 ```
 
+Whether the enclosing preprocessor conditional branch is active.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L81)

@@ -9,8 +9,10 @@
 struct ResolvedTriangle
 ```
 
+Data record for `mq3.renderer.qvm_scene_materials.ResolvedTriangle`; groups `triangle`, `materialIndex`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L77)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ResolvedTriangle
 materialIndex
 ```
 
+Index of the resolved material in the material catalog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L81)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-resolvedtriangle-triangle-triangle-src-mq3-renderer-qvm-scene-materials-ml-395494345"></a>
 ### triangle
@@ -31,5 +35,7 @@ materialIndex
 triangle
 ```
 
+Source triangle paired with its resolved material.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L79)

@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Data record for `mq3.renderer.playable_fog.Catalog`; groups `fogs`, `textureSlot`, `texture`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L44)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Catalog
 fogs
 ```
 
+Fog volumes loaded from the world map.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L46)
 
 <a id="field-field-mq3-renderer-playable-fog-catalog-texture-texture-src-mq3-renderer-playable-fog-ml-446142676"></a>
 ### texture
@@ -31,8 +35,10 @@ fogs
 texture
 ```
 
+Texture resource associated with the rendering effect.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L50)
 
 <a id="field-field-mq3-renderer-playable-fog-catalog-textureslot-textureslot-src-mq3-renderer-playable-fog-ml-1676939476"></a>
 ### textureSlot
@@ -41,5 +47,7 @@ texture
 textureSlot
 ```
 
+Texture slot reserved for this effect's image.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L48)

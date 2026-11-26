@@ -15,5 +15,7 @@ Reachable from entry: **yes**
 function values()
 ```
 
+Provide the values lookup table in shared.bytedirs.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/bytedirs.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/bytedirs.ml#L6)

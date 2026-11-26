@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game scoreboard score record, including `client`, `score`, `ping`, `time`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L53)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Score
 client
 ```
 
+Player slot associated with this score or client-side record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L55)
 
 <a id="field-field-mq3-client-cgame-scoreboard-score-ping-ping-src-mq3-client-cgame-scoreboard-ml-912821431"></a>
 ### ping
@@ -31,8 +35,10 @@ client
 ping
 ```
 
+Player latency displayed in the scoreboard, in milliseconds; -1 displays the connecting label.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L59)
 
 <a id="field-field-mq3-client-cgame-scoreboard-score-score-score-src-mq3-client-cgame-scoreboard-ml-1037827975"></a>
 ### score
@@ -41,8 +47,10 @@ ping
 score
 ```
 
+Numeric player score rendered in this scoreboard entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L57)
 
 <a id="field-field-mq3-client-cgame-scoreboard-score-time-time-src-mq3-client-cgame-scoreboard-ml-355629173"></a>
 ### time
@@ -51,5 +59,7 @@ score
 time
 ```
 
+Elapsed player connection time reported by the server for scoreboard presentation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L61)

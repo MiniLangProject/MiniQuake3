@@ -9,8 +9,10 @@
 struct Facet
 ```
 
+Facet record for collision.patchmesh, containing `surface`, `borders`, `inward`, `noAdjust`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L22)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Facet
 borders
 ```
 
+Plane indexes forming the edges of the collision facet.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L26)
 
 <a id="field-field-mq3-collision-patchmesh-facet-inward-inward-src-mq3-collision-patchmesh-ml-123677868"></a>
 ### inward
@@ -31,8 +35,10 @@ borders
 inward
 ```
 
+Flags indicating which border planes face inward.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L28)
 
 <a id="field-field-mq3-collision-patchmesh-facet-noadjust-noadjust-src-mq3-collision-patchmesh-ml-1067677246"></a>
 ### noAdjust
@@ -41,8 +47,10 @@ inward
 noAdjust
 ```
 
+Flags preventing selected border planes from being expanded for trace bounds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L30)
 
 <a id="field-field-mq3-collision-patchmesh-facet-surface-surface-src-mq3-collision-patchmesh-ml-1644434350"></a>
 ### surface
@@ -51,5 +59,7 @@ noAdjust
 surface
 ```
 
+Index of the facet's primary surface plane.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L24)

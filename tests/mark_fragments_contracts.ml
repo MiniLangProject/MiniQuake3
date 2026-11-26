@@ -1,4 +1,5 @@
 import mq3.renderer.mark_fragments as marks
+import mq3.renderer.bsp_render_data as renderData
 import mq3.format.bsp as bsp
 import mq3.collision.world as collision
 import mq3.collision.brush as brush
@@ -25,7 +26,30 @@ function fixture()
   split=brush.Plane([1.0,0.0,0.0],0.0,0);world=collision.World([],[collision.Node(split,0,[-1,-1])],[collision.Leaf([],[0])],[],[],false,true,[],void,void,"",[],0,"")
   return [map,world]
 end function
+function manyTriangleFace(map,triangleCount)
+  data=bytes(352+triangleCount*12,0)
+  for index=0 to 351 data[index]=map.data[index] end for
+  offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
+  copyArray(offsets,0,map.offsets,0,17);copyArray(lengths,0,map.lengths,0,17);copyArray(counts,0,map.counts,0,17)
+  lengths[11]=triangleCount*12;counts[11]=triangleCount*3;putI32(data,96,triangleCount*3)
+  for index=0 to triangleCount-1
+    putI32(data,352+index*12,0);putI32(data,356+index*12,1);putI32(data,360+index*12,2)
+  end for
+  return bsp.BSP(data,offsets,lengths,counts)
+end function
 function square() return [[-1.0,-1.0,4.0],[-1.0,1.0,4.0],[1.0,1.0,4.0],[1.0,-1.0,4.0]] end function
+function patchFaceMap(map)
+  data=bytes(176+9*44,0)
+  for index=0 to 175 data[index]=map.data[index] end for
+  offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
+  copyArray(offsets,0,map.offsets,0,17);copyArray(lengths,0,map.lengths,0,17);copyArray(counts,0,map.counts,0,17)
+  lengths[10]=9*44;counts[10]=9;lengths[11]=0;counts[11]=0
+  putI32(data,80,renderData.MST_PATCH);putI32(data,84,0);putI32(data,88,9);putI32(data,92,0);putI32(data,96,0);putI32(data,100,-1)
+  putI32(data,168,3);putI32(data,172,3)
+  control=[[-4.0,-4.0,0.0],[0.0,-4.0,0.0],[4.0,-4.0,0.0],[-4.0,0.0,0.0],[0.0,0.0,0.0],[4.0,0.0,0.0],[-4.0,4.0,0.0],[0.0,4.0,0.0],[4.0,4.0,0.0]]
+  for index=0 to 8 at=176+index*44;putF32(data,at,control[index][0]);putF32(data,at+4,control[index][1]);putF32(data,at+8,control[index][2]);putF32(data,at+36,1.0) end for
+  return bsp.BSP(data,offsets,lengths,counts)
+end function
 function main(args)
   count=0;value=fixture();map=value[0];world=value[1]
   result=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);if result is error then return result end if
@@ -34,6 +58,41 @@ function main(args)
   valid=true;for each point in result.points if point[0]< -1.01 or point[0]>1.01 or point[1]< -1.01 or point[1]>1.01 or point[2]!=0.0 then valid=false end if end for
   count=count+require(valid,"fragment points lie in projection prism on face")
   count=count+require(result.fragments[0].firstPoint==0 and result.fragments[1].firstPoint==result.fragments[0].numPoints,"fragment point offsets are contiguous")
+  cache=marks.geometryCache();first=marks.markTriangles(map,[0],cache);again=marks.markTriangles(map,[0],cache)
+  count=count+require(again[0]==first[0],"equal face lists reuse decoded triangle records")
+  doubled=marks.markTriangles(map,[0,0],cache)
+  count=count+require(len(doubled)==len(first) and doubled[0].triangleIndex==first[0].triangleIndex and doubled[1].triangleIndex==first[1].triangleIndex,"overlapping face lists preserve original deduplication and face order")
+  large=manyTriangleFace(map,900);largeCache=marks.geometryCache();largeFirst=marks.markTriangles(large,[0],largeCache);largeAgain=marks.markTriangles(large,[0],largeCache)
+  if largeFirst is error then return largeFirst end if;if largeAgain is error then return largeAgain end if
+  count=count+require(len(largeFirst)==900 and len(largeAgain)==900 and largeCache.faceCacheEnabled,"large face fixture activates retained face decoding")
+  count=count+require(largeAgain[0]==largeFirst[0],"retail-sized face batches above 256 triangles reuse decoded geometry")
+  largeVariant=marks.markTriangles(large,[0,0],largeCache)
+  count=count+require(len(largeVariant)==900 and largeVariant[0]==largeFirst[0],"different large face lists reuse retained per-face geometry")
+  overBudget=manyTriangleFace(map,16385);overCache=marks.geometryCache();overFirst=marks.markTriangles(overBudget,[0,0],overCache);overAgain=marks.markTriangles(overBudget,[0],overCache)
+  count=count+require(len(overFirst)==16385 and len(overAgain)==16385 and overCache.faceTriangles[0]==void,"duplicate over-budget face remains uncached rather than becoming empty")
+  largeProjected=marks.project(large,world,square(),[0.0,0.0,-20.0],64,16);largeCached=marks.projectWithCache(large,world,square(),[0.0,0.0,-20.0],64,16,largeCache)
+  count=count+require(largeCached.points==largeProjected.points and len(largeCached.fragments)==len(largeProjected.fragments),"large cached face keeps exact projection output")
+  count=count+require(try(marks.markTriangles(map,[32],cache)) is error,"a colliding cache slot still validates the new face list")
+  moved=square();for each point in moved point[0]=point[0]+1.25 end for
+  cached=marks.projectWithCache(map,world,moved,[0.0,0.0,-20.0],64,16,cache)
+  uncached=marks.project(map,world,moved,[0.0,0.0,-20.0],64,16)
+  count=count+require(cached.points==uncached.points and cached.points!=result.points and len(cached.fragments)==len(uncached.fragments),"moving marks clip cached geometry against the new planes")
+  map.data=slice(map.data,0,len(map.data));putF32(map.data,176,-6.0)
+  fresh=marks.markTriangles(map,[0],cache)
+  count=count+require(fresh[0].vertices[0].position[0]==-6.0 and first[0].vertices[0].position[0]==-4.0,"replacing BSP storage invalidates prepared faces")
+  putF32(map.data,176,-4.0)
+  world.leaves[0].surfaces=[0,0,0]
+  duplicate=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16)
+  count=count+require(duplicate.candidateSurfaces==1 and duplicate.testedTriangles==2 and duplicate.points==result.points and len(duplicate.fragments)==2,"repeated face references emit fragments only once")
+  cache=marks.geometryCache()
+  cachedDuplicate=marks.projectWithCache(map,world,square(),[0.0,0.0,-20.0],64,16,cache)
+  count=count+require(cachedDuplicate.candidateSurfaces==1 and cachedDuplicate.testedTriangles==2 and cachedDuplicate.points==duplicate.points,"cached face visits deduplicate repeated leaf references")
+  wrapped=true
+  for index=0 to 260
+    repeated=marks.projectWithCache(map,world,square(),[0.0,0.0,-20.0],64,16,cache)
+    if repeated.candidateSurfaces!=1 or repeated.points!=duplicate.points then wrapped=false end if
+  end for
+  count=count+require(wrapped,"cached face visit generation wraps without dropping surfaces")
   limited=marks.project(map,world,square(),[0.0,0.0,-20.0],64,1);count=count+require(len(limited.fragments)==1,"fragment capacity stops output")
   cramped=marks.project(map,world,square(),[0.0,0.0,-20.0],2,16);count=count+require(len(cramped.fragments)==0 and len(cramped.points)==0,"point capacity rejects whole polygons")
   putI32(map.data,64,marks.SURF_NOMARKS);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"nomarks shader surface rejected")
@@ -41,6 +100,14 @@ function main(args)
   putI32(map.data,64,0);putI32(map.data,68,marks.CONTENTS_FOG);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"fog surface rejected")
   putI32(map.data,68,0);putI32(map.data,80,3);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"triangle soup surface rejected")
   putI32(map.data,80,1);reversed=marks.project(map,world,square(),[0.0,0.0,20.0],64,16);count=count+require(len(reversed.fragments)==0,"back-facing planar surface rejected")
+  distant=square();for each point in distant point[0]=point[0]+40.0 end for
+  far=marks.project(map,world,distant,[0.0,0.0,-20.0],64,16)
+  count=count+require(len(far.fragments)==0 and far.testedTriangles==0,"triangles outside the projection prism are rejected before clipping")
+  patchMap=patchFaceMap(map)
+  patchFacing=marks.project(patchMap,world,square(),[0.0,0.0,-20.0],64,16)
+  count=count+require(len(patchFacing.fragments)>0 and patchFacing.testedTriangles>0,"patch triangles facing the projection are clipped")
+  patchAway=marks.project(patchMap,world,square(),[0.0,0.0,20.0],64,16)
+  count=count+require(len(patchAway.fragments)==0 and patchAway.testedTriangles==0,"patch triangles facing away from the projection are rejected before clipping")
   zero=marks.project(map,world,square(),[0.0,0.0,0.0],64,16);count=count+require(len(zero.fragments)==0,"zero projection is empty")
   count=count+require(try(marks.project(map,world,[[0.0,0.0,0.0],[1.0,0.0,0.0]],[0.0,0.0,-1.0],64,16)) is error,"at least three source points required")
   vm=Vm(bytes(4096,0),4095);sourceAt=128;projectionAt=256;outputAt=512;fragmentsAt=2048;source=square()

@@ -9,8 +9,10 @@
 struct VideoCvars
 ```
 
+Stores UI video video cvars record, including `mode`, `fullscreen`, `allowExtensions`, `picmip`, `vertexLight`, `textureBits` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L120)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct VideoCvars
 allowExtensions
 ```
 
+Nonzero when the renderer is allowed to use optional graphics-driver extensions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L126)
 
 <a id="field-field-mq3-client-ui-video-videocvars-colorbits-colorbits-src-mq3-client-ui-video-ml-1788891629"></a>
 ### colorBits
@@ -31,8 +35,10 @@ allowExtensions
 colorBits
 ```
 
+Number of bits requested or provided for the framebuffer's color channels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L140)
 
 <a id="field-field-mq3-client-ui-video-videocvars-fullscreen-fullscreen-src-mq3-client-ui-video-ml-185412607"></a>
 ### fullscreen
@@ -41,8 +47,10 @@ colorBits
 fullscreen
 ```
 
+Fullscreen video setting supplied by the renderer configuration variables.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L124)
 
 <a id="field-field-mq3-client-ui-video-videocvars-gldriver-gldriver-src-mq3-client-ui-video-ml-400600419"></a>
 ### glDriver
@@ -51,8 +59,10 @@ fullscreen
 glDriver
 ```
 
+Configured OpenGL driver name or path selected by the video-settings UI.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L142)
 
 <a id="field-field-mq3-client-ui-video-videocvars-lodbias-lodbias-src-mq3-client-ui-video-ml-1004510693"></a>
 ### lodBias
@@ -61,8 +71,10 @@ glDriver
 lodBias
 ```
 
+Bias applied when choosing lower-detail model geometry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L136)
 
 <a id="field-field-mq3-client-ui-video-videocvars-mode-mode-src-mq3-client-ui-video-ml-1556341711"></a>
 ### mode
@@ -71,8 +83,10 @@ lodBias
 mode
 ```
 
+Renderer video-mode index read from the engine's mode configuration variable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L122)
 
 <a id="field-field-mq3-client-ui-video-videocvars-picmip-picmip-src-mq3-client-ui-video-ml-360401525"></a>
 ### picmip
@@ -81,8 +95,10 @@ mode
 picmip
 ```
 
+Texture mip-level reduction setting; larger values select lower-resolution texture data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L128)
 
 <a id="field-field-mq3-client-ui-video-videocvars-subdivisions-subdivisions-src-mq3-client-ui-video-ml-1492599261"></a>
 ### subdivisions
@@ -91,8 +107,10 @@ picmip
 subdivisions
 ```
 
+Renderer subdivision setting used to control curved-surface geometry detail.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L138)
 
 <a id="field-field-mq3-client-ui-video-videocvars-texturebits-texturebits-src-mq3-client-ui-video-ml-248281097"></a>
 ### textureBits
@@ -101,8 +119,10 @@ subdivisions
 textureBits
 ```
 
+Requested color precision for texture storage.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L132)
 
 <a id="field-field-mq3-client-ui-video-videocvars-texturemode-texturemode-src-mq3-client-ui-video-ml-125576405"></a>
 ### textureMode
@@ -111,8 +131,10 @@ textureBits
 textureMode
 ```
 
+Texture-filtering mode name used to select bilinear or trilinear sampling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L134)
 
 <a id="field-field-mq3-client-ui-video-videocvars-vertexlight-vertexlight-src-mq3-client-ui-video-ml-257850581"></a>
 ### vertexLight
@@ -121,5 +143,7 @@ textureMode
 vertexLight
 ```
 
+Nonzero when lighting is computed from vertex colors instead of lightmap sampling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L130)

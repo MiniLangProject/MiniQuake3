@@ -9,8 +9,10 @@
 struct Config
 ```
 
+Data record for `mq3.platform.desktop_frame_host.Config`; groups `clientEndpoint`, `serverEndpoint`, `packetCapacity`, `packetBudget`, `maxFrameMsec`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L10)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Config
 clientEndpoint
 ```
 
+Local or remote endpoint used by the client transport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L12)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-maxframemsec-maxframemsec-src-mq3-platform-desktop-frame-host-ml-52330373"></a>
 ### maxFrameMsec
@@ -31,8 +35,10 @@ clientEndpoint
 maxFrameMsec
 ```
 
+Upper bound on the elapsed milliseconds passed to one frame step.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L20)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-packetbudget-packetbudget-src-mq3-platform-desktop-frame-host-ml-853859569"></a>
 ### packetBudget
@@ -41,8 +47,10 @@ maxFrameMsec
 packetBudget
 ```
 
+Maximum number of packets drained during one host frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L18)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-packetcapacity-packetcapacity-src-mq3-platform-desktop-frame-host-ml-1024152023"></a>
 ### packetCapacity
@@ -51,8 +59,10 @@ packetBudget
 packetCapacity
 ```
 
+Maximum payload size accepted by the frame host's packet buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L16)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-serverendpoint-serverendpoint-src-mq3-platform-desktop-frame-host-ml-30977955"></a>
 ### serverEndpoint
@@ -61,5 +71,7 @@ packetCapacity
 serverEndpoint
 ```
 
+Local or remote endpoint used by the server transport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L14)

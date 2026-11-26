@@ -9,32 +9,54 @@ import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
 import mq3.collision.native_planes as nativePlanes
 
+/// Plane record for collision.patchmesh, containing `normal`, `distance`, `signbits`.
 struct Plane
+  /// Normal of a generated patch facet or bevel clipping plane.
   normal
+  /// Signed distance defining the patch clipping plane.
   distance
+  /// Signx + (signy<<1) + (signz<<2), used as lookup during collision.
   signbits
 end struct
+/// Facet record for collision.patchmesh, containing `surface`, `borders`, `inward`, `noAdjust`.
 struct Facet
+  /// Index of the facet's primary surface plane.
   surface
+  /// Plane indexes forming the edges of the collision facet.
   borders
+  /// Flags indicating which border planes face inward.
   inward
+  /// Flags preventing selected border planes from being expanded for trace bounds.
   noAdjust
 end struct
+/// Patch record for collision.patchmesh, containing `planes`, `facets`, `bounds`, `planeCache`.
 struct Patch
+  /// Plane records used to classify or clip the represented geometry.
   planes
+  /// Collision facets generated from the curved patch.
   facets
+  /// Minimum and maximum corners enclosing the patch, expanded for collision tolerance.
   bounds
+  /// Lookup cache used to reuse equivalent patch clipping planes.
   planeCache
 end struct
+/// Grid record for collision.patchmesh, containing `columns`, `wrapWidth`, `wrapHeight`.
 struct Grid
+  /// Control-point columns of the subdivided patch grid.
   columns
+  /// True when the horizontal grid endpoints form a closed seam.
   wrapWidth
+  /// True when the vertical grid endpoints form a closed seam.
   wrapHeight
 end struct
 
+/// Create the collision.patchmesh error for `fail` with 3505 and the supplied diagnostic text.
+/// @param message Message used in `("Patch: " + message)` and `error(3505, ("Patch: " + message))`.
 function fail(message)
   return error(3505,"Patch: "+message)
 end function
+/// Compute signbits in collision.patchmesh; the normal completion returns `result`.
+/// @param normal Normal used in `normal[axis]` and `(normal[axis] < 0)`.
 function signbits(normal)
   result = 0
   for axis = 0 to 2
@@ -42,20 +64,35 @@ function signbits(normal)
   end for
   return result
 end function
+/// Return `mq3.collision.patchmesh.signbits(normal)` from `collision.patchmesh.CM_SignbitsForNormal`.
+/// @param normal Normal passed as `normal` to `mq3.collision.patchmesh.signbits`.
 function CM_SignbitsForNormal(normal) return signbits(normal) end function
+/// Create `mq3.collision.patchmesh.Plane` with normal=normal; distance=distance; signbits=CM_SignbitsForNormal(normal).
+/// @param normal Initial `normal` field stored in the returned or constructed `mq3.collision.patchmesh.Plane` record.
+/// @param distance Initial `distance` field stored in the returned or constructed `mq3.collision.patchmesh.Plane` record.
 function plane(normal,distance)
   return Plane(normal,distance,CM_SignbitsForNormal(normal))
 end function
+/// Compute plane from points in collision.patchmesh; the normal completion returns `plane(normal, q.DotProduct(a, normal))`.
+/// @param a B passed as `b` to `mq3.collision.winding.subtract`.
+/// @param b A passed as `a` to `mq3.collision.winding.subtract`.
+/// @param c A passed as `a` to `mq3.collision.winding.subtract`.
 function CM_PlaneFromPoints(a,b,c)
   normal=q.CrossProduct(w.subtract(c,a),w.subtract(b,a))
   if q.VectorNormalize(normal)==0 then return void end if
   return plane(normal,q.DotProduct(a,normal))
 end function
+/// Compute inverted in collision.patchmesh; the normal completion returns `plane(normal, n.bitsFloat((n.floatBits(p.distance) ^ 2147483648)))`.
+/// @param p Record exposing `normal`, `distance`.
+/// @param subtractZero Subtract zero operand used by `inverted`; its reads are shown in the implementation.
 function inverted(p, subtractZero)
   normal = w.negate(p.normal)
   if subtractZero then normal = w.subtract([0.0,0.0,0.0],p.normal) end if
   return plane(normal,n.bitsFloat(n.floatBits(p.distance)^0x80000000))
 end function
+/// Close points in collision.patchmesh; the normal completion returns `true`.
+/// @param a A used in `a[axis]` and `n.fsub(a[axis], b[axis])`.
+/// @param b B used in `b[axis]` and `n.fsub(a[axis], b[axis])`.
 function closePoints(a,b)
   for axis = 0 to 2
     d = n.fsub(a[axis],b[axis])
@@ -63,7 +100,14 @@ function closePoints(a,b)
   end for
   return true
 end function
+/// Return `mq3.collision.patchmesh.closePoints(a, b)` from `collision.patchmesh.CM_ComparePoints`.
+/// @param a A passed as `a` to `mq3.collision.patchmesh.closePoints`.
+/// @param b B passed as `b` to `mq3.collision.patchmesh.closePoints`.
 function CM_ComparePoints(a,b) return closePoints(a,b) end function
+/// Compute needs subdivision in collision.patchmesh; the normal completion returns `(q.VectorLength(delta) >= 16)`.
+/// @param a A used in `a[axis]` and `n.fadd(a[axis], c[axis])`.
+/// @param b B used in `b[axis]` and `n.fadd(a[axis], b[axis])`.
+/// @param c C used in `c[axis]` and `n.fadd(a[axis], c[axis])`.
 function needsSubdivision(a,b,c)
   delta = array(3,0.0)
   for axis = 0 to 2
@@ -73,12 +117,24 @@ function needsSubdivision(a,b,c)
   end for
   return q.VectorLength(delta) >= 16
 end function
+/// Return `mq3.collision.patchmesh.needsSubdivision(a, b, c)` from `collision.patchmesh.CM_NeedsSubdivision`.
+/// @param a A passed as `a` to `mq3.collision.patchmesh.needsSubdivision`.
+/// @param b B passed as `b` to `mq3.collision.patchmesh.needsSubdivision`.
+/// @param c C passed as `c` to `mq3.collision.patchmesh.needsSubdivision`.
 function CM_NeedsSubdivision(a,b,c) return needsSubdivision(a,b,c) end function
+/// Compute subdivide in collision.patchmesh; the normal completion returns `[first, middle, last]`.
+/// @param a A used in `a[axis]` and `n.fadd(a[axis], b[axis])`.
+/// @param b B used in `b[axis]` and `n.fadd(a[axis], b[axis])`.
+/// @param c C used in `c[axis]` and `n.fadd(b[axis], c[axis])`.
 function CM_Subdivide(a,b,c)
   first=array(3,0.0);middle=array(3,0.0);last=array(3,0.0)
   for axis=0 to 2 first[axis]=n.f32(0.5*n.fadd(a[axis],b[axis]));last[axis]=n.f32(0.5*n.fadd(b[axis],c[axis]));middle[axis]=n.f32(0.5*n.fadd(first[axis],last[axis])) end for
   return [first,middle,last]
 end function
+/// Set grid wrap width in collision.patchmesh; updates `grid.wrapWidth`.
+///
+/// Direct state writes: `grid.wrapWidth`.
+/// @param grid Record exposing `columns`. Updated in place: `wrapWidth`.
 function CM_SetGridWrapWidth(grid)
   columns = grid.columns
   height = len(columns[0])
@@ -90,6 +146,10 @@ function CM_SetGridWrapWidth(grid)
   end while
   return void
 end function
+/// Update `grid.columns` in collision.patchmesh.
+///
+/// Direct state writes: `grid.columns`.
+/// @param grid Record exposing `columns`. Updated in place: `columns`.
 function CM_SubdivideGridColumns(grid)
   columns=grid.columns;height=len(columns[0])
   i = 0
@@ -114,6 +174,10 @@ function CM_SubdivideGridColumns(grid)
   end while
   grid.columns=columns;return void
 end function
+/// Remove degenerate columns in collision.patchmesh; updates `grid.columns`.
+///
+/// Direct state writes: `grid.columns`.
+/// @param grid Record exposing `columns`. Updated in place: `columns`.
 function CM_RemoveDegenerateColumns(grid)
   columns=grid.columns;height=len(columns[0])
   i = 0
@@ -132,9 +196,15 @@ function CM_RemoveDegenerateColumns(grid)
   grid.columns = columns
   return void
 end function
+/// Compute subdivide columns in collision.patchmesh.
+/// @param grid Grid passed as `grid` to `mq3.collision.patchmesh.CM_SetGridWrapWidth`.
 function subdivideColumns(grid)
   CM_SetGridWrapWidth(grid);CM_SubdivideGridColumns(grid);CM_RemoveDegenerateColumns(grid);return void
 end function
+/// Update `grid.columns`, `grid.wrapWidth`, `grid.wrapHeight` in collision.patchmesh.
+///
+/// Direct state writes: `grid.columns`, `grid.wrapWidth`, `grid.wrapHeight`.
+/// @param grid Record exposing `columns`, `wrapWidth`, `wrapHeight`. Updated in place: `columns`, `wrapWidth`, `wrapHeight`.
 function CM_TransposeGrid(grid)
   width = len(grid.columns);height = len(grid.columns[0])
   columns = array(height,void)
@@ -150,13 +220,23 @@ function CM_TransposeGrid(grid)
   previous = grid.wrapWidth;grid.wrapWidth = grid.wrapHeight;grid.wrapHeight = previous
   return void
 end function
+/// Return `mq3.collision.patchmesh.CM_TransposeGrid(grid)` from `collision.patchmesh.transpose`.
+/// @param grid Grid passed as `grid` to `mq3.collision.patchmesh.CM_TransposeGrid`.
 function transpose(grid) return CM_TransposeGrid(grid) end function
+/// Append plane in collision.patchmesh; the normal completion returns `(len(patch.planes) - 1)`.
+///
+/// Direct state writes: `patch.planes`.
+/// @param patch Record exposing `planes`, `planeCache`. Updated in place: `planes`.
+/// @param p Plane record with a three-component normal and distance.
 function appendPlane(patch, p)
   if len(patch.planes) >= 2048 then return fail("plane limit exceeded") end if
   if patch.planeCache!=void then stored=nativePlanes.store(patch.planeCache,len(patch.planes),p);if stored!=1 then return fail("plane cache rejected insertion") end if end if
   patch.planes = patch.planes+[p]
   return len(patch.planes)-1
 end function
+/// Compute equal plane in collision.patchmesh; the normal completion returns `- 1`.
+/// @param a Record exposing `distance`, `normal`.
+/// @param b P passed as `p` to `mq3.collision.patchmesh.inverted`.
 function equalPlane(a,b)
   for flip = 0 to 1
     candidate = b
@@ -169,7 +249,13 @@ function equalPlane(a,b)
   end for
   return -1
 end function
+/// Return `mq3.collision.patchmesh.equalPlane(a, b)` from `collision.patchmesh.CM_PlaneEqual`.
+/// @param a A passed as `a` to `mq3.collision.patchmesh.equalPlane`.
+/// @param b B passed as `b` to `mq3.collision.patchmesh.equalPlane`.
 function CM_PlaneEqual(a,b) return equalPlane(a,b) end function
+/// Find plane 2 in collision.patchmesh; the normal completion returns `[appendPlane(patch, p), 0]`.
+/// @param patch Record exposing `planeCache`, `planes`.
+/// @param p Plane record supplying the normal and distance to match; negative results denote no match or invalid bounds.
 function findPlane2(patch,p)
   if patch.planeCache!=void then found=nativePlanes.find2(patch.planeCache,len(patch.planes),p);if found>=0 then return [found>>1,found&1] end if;return [appendPlane(patch,p),0] end if
   index = 0
@@ -180,7 +266,15 @@ function findPlane2(patch,p)
   end while
   return [appendPlane(patch,p),0]
 end function
+/// Return `mq3.collision.patchmesh.findPlane2(patch, p)` from `collision.patchmesh.CM_FindPlane2`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.findPlane2`.
+/// @param p P passed as `p` to `mq3.collision.patchmesh.findPlane2`.
 function CM_FindPlane2(patch,p) return findPlane2(patch,p) end function
+/// Find plane in collision.patchmesh; the normal completion returns `appendPlane(patch, candidate)`.
+/// @param patch Record exposing `planeCache`, `planes`.
+/// @param a A passed as `a` to `mq3.collision.patchmesh.CM_PlaneFromPoints`.
+/// @param b B passed as `b` to `mq3.collision.patchmesh.CM_PlaneFromPoints`.
+/// @param c C passed as `c` to `mq3.collision.patchmesh.CM_PlaneFromPoints`.
 function findPlane(patch,a,b,c)
   candidate=CM_PlaneFromPoints(a,b,c);if candidate==void then return -1 end if;normal=candidate.normal
   if patch.planeCache!=void then found=nativePlanes.find(patch.planeCache,len(patch.planes),normal,a,b,c);if found>=0 then return found end if;return appendPlane(patch,candidate) end if
@@ -198,13 +292,35 @@ function findPlane(patch,a,b,c)
   end while
   return appendPlane(patch,candidate)
 end function
+/// Return `mq3.collision.patchmesh.findPlane(patch, a, b, c)` from `collision.patchmesh.CM_FindPlane`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.findPlane`.
+/// @param a A passed as `a` to `mq3.collision.patchmesh.findPlane`.
+/// @param b B passed as `b` to `mq3.collision.patchmesh.findPlane`.
+/// @param c C passed as `c` to `mq3.collision.patchmesh.findPlane`.
 function CM_FindPlane(patch,a,b,c) return findPlane(patch,a,b,c) end function
+/// Compute grid plane in collision.patchmesh; the normal completion returns `index`.
+/// @param gridPlanes Grid planes used in `gridPlanes[i]` and `gridPlanes[i][j]`.
+/// @param i Zero-based index into `gridPlanes`.
+/// @param j Zero-based index into `gridPlanes[i]`.
+/// @param tri Zero-based index into `gridPlanes[i][j]`.
 function gridPlane(gridPlanes,i,j,tri)
   index = gridPlanes[i][j][tri]
   if index == -1 then index = gridPlanes[i][j][tri^1] end if
   return index
 end function
+/// Return `mq3.collision.patchmesh.gridPlane(gridPlanes, i, j, tri)` from `collision.patchmesh.CM_GridPlane`.
+/// @param gridPlanes Grid planes passed as `gridPlanes` to `mq3.collision.patchmesh.gridPlane`.
+/// @param i I passed as `i` to `mq3.collision.patchmesh.gridPlane`.
+/// @param j J passed as `j` to `mq3.collision.patchmesh.gridPlane`.
+/// @param tri Tri passed as `tri` to `mq3.collision.patchmesh.gridPlane`.
 function CM_GridPlane(gridPlanes,i,j,tri) return gridPlane(gridPlanes,i,j,tri) end function
+/// Compute edge plane in collision.patchmesh; the normal completion returns `findPlane(patch, a, b, up)`.
+/// @param patch Record exposing `planes`.
+/// @param grid Record exposing `columns`.
+/// @param gridPlanes Grid planes passed as `gridPlanes` to `mq3.collision.patchmesh.gridPlane`.
+/// @param i I passed as `i` to `mq3.collision.patchmesh.gridPlane`.
+/// @param j J passed as `j` to `mq3.collision.patchmesh.gridPlane`.
+/// @param k K operand used by `edgePlane`; its reads are shown in the implementation.
 function edgePlane(patch,grid,gridPlanes,i,j,k)
   points = grid.columns
   a = void;b = void;p = -1;reverse = false
@@ -235,7 +351,18 @@ function edgePlane(patch,grid,gridPlanes,i,j,k)
   if reverse then return findPlane(patch,b,a,up) end if
   return findPlane(patch,a,b,up)
 end function
+/// Return `mq3.collision.patchmesh.edgePlane(patch, grid, gridPlanes, i, j, k)` from `collision.patchmesh.CM_EdgePlaneNum`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.edgePlane`.
+/// @param grid Grid passed as `grid` to `mq3.collision.patchmesh.edgePlane`.
+/// @param gridPlanes Grid planes passed as `gridPlanes` to `mq3.collision.patchmesh.edgePlane`.
+/// @param i I passed as `i` to `mq3.collision.patchmesh.edgePlane`.
+/// @param j J passed as `j` to `mq3.collision.patchmesh.edgePlane`.
+/// @param k K passed as `k` to `mq3.collision.patchmesh.edgePlane`.
 function CM_EdgePlaneNum(patch,grid,gridPlanes,i,j,k) return edgePlane(patch,grid,gridPlanes,i,j,k) end function
+/// Set inward in collision.patchmesh.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.CM_PointOnPlaneSide`.
+/// @param facet Record exposing `borders`, `inward`.
+/// @param points Sequence traversed as `point` by the loop in `setInward`.
 function setInward(patch,facet,points)
   k = 0
   while k < len(facet.borders)
@@ -252,7 +379,15 @@ function setInward(patch,facet,points)
   end while
   return void
 end function
+/// Return `mq3.collision.patchmesh.setInward(patch, facet, points)` from `collision.patchmesh.CM_SetBorderInward`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.setInward`.
+/// @param facet Facet passed as `facet` to `mq3.collision.patchmesh.setInward`.
+/// @param points Points passed as `points` to `mq3.collision.patchmesh.setInward`.
 function CM_SetBorderInward(patch,facet,points) return setInward(patch,facet,points) end function
+/// Compute facet winding in collision.patchmesh; the normal completion returns `points`.
+/// @param patch Record exposing `planes`.
+/// @param facet Record exposing `surface`, `borders`, `inward`.
+/// @param skipSurface Skip surface used in `(skipSurface and (index == facet.surface))`.
 function facetWinding(patch,facet,skipSurface)
   if facet.surface < 0 then return [] end if
   p = patch.planes[facet.surface]
@@ -269,7 +404,13 @@ function facetWinding(patch,facet,skipSurface)
   end while
   return points
 end function
+/// Return `mq3.collision.patchmesh.validFacet(patch, facet)` from `collision.patchmesh.CM_ValidateFacet`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.validFacet`.
+/// @param facet Facet passed as `facet` to `mq3.collision.patchmesh.validFacet`.
 function CM_ValidateFacet(patch,facet) return validFacet(patch,facet) end function
+/// Validate facet in collision.patchmesh; the normal completion returns `true`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.facetWinding`.
+/// @param facet Facet passed as `facet` to `mq3.collision.patchmesh.facetWinding`.
 function validFacet(patch,facet)
   points = facetWinding(patch,facet,false)
   if len(points) == 0 then return false end if
@@ -279,6 +420,10 @@ function validFacet(patch,facet)
   end for
   return true
 end function
+/// Test plane in collision.patchmesh; the normal completion returns `false`.
+/// @param patch Record exposing `planes`.
+/// @param facet Record exposing `surface`, `borders`.
+/// @param p B passed as `b` to `mq3.collision.patchmesh.CM_PlaneEqual`.
 function hasPlane(patch,facet,p)
   if CM_PlaneEqual(patch.planes[facet.surface],p) >= 0 then return true end if
   for each index in facet.borders
@@ -286,6 +431,13 @@ function hasPlane(patch,facet,p)
   end for
   return false
 end function
+/// Add border in collision.patchmesh; updates `facet.borders`, `facet.inward`, `facet.noAdjust`.
+///
+/// Direct state writes: `facet.borders`, `facet.inward`, `facet.noAdjust`.
+/// @param facet Record exposing `borders`, `inward`, `noAdjust`. Updated in place: `borders`, `inward`, `noAdjust`.
+/// @param index Index used in `(facet.borders + [index])`.
+/// @param inward Inward used in `(facet.inward + [inward])`.
+/// @param noAdjust No adjust used in `(facet.noAdjust + [noAdjust])`.
 function addBorder(facet,index,inward,noAdjust)
   if len(facet.borders) >= 26 then return fail("facet border limit exceeded") end if
   facet.borders = facet.borders+[index]
@@ -293,6 +445,8 @@ function addBorder(facet,index,inward,noAdjust)
   facet.noAdjust = facet.noAdjust+[noAdjust]
   return void
 end function
+/// Compute snap in collision.patchmesh; the normal completion returns `normal`.
+/// @param normal Normal used in `normal[axis]` and `n.fsub(normal[axis], direction)`.
 function snap(normal)
   for axis = 0 to 2
     for each direction in [-1.0,1.0]
@@ -303,7 +457,12 @@ function snap(normal)
   end for
   return normal
 end function
+/// Return `mq3.collision.patchmesh.snap(normal)` from `collision.patchmesh.CM_SnapVector`.
+/// @param normal Normal passed as `normal` to `mq3.collision.patchmesh.snap`.
 function CM_SnapVector(normal) return snap(normal) end function
+/// Add bevels in collision.patchmesh.
+/// @param patch Record exposing `planes`.
+/// @param facet Record exposing `surface`.
 function addBevels(patch,facet)
   points = facetWinding(patch,facet,true)
   if len(points) == 0 then return void end if
@@ -352,7 +511,18 @@ function addBevels(patch,facet)
   addBorder(facet,facet.surface,1,0)
   return void
 end function
+/// Return `mq3.collision.patchmesh.addBevels(patch, facet)` from `collision.patchmesh.CM_AddFacetBevels`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.addBevels`.
+/// @param facet Facet passed as `facet` to `mq3.collision.patchmesh.addBevels`.
 function CM_AddFacetBevels(patch,facet) return addBevels(patch,facet) end function
+/// Add facet in collision.patchmesh; updates `patch.facets`.
+///
+/// Direct state writes: `patch.facets`.
+/// @param patch Record exposing `facets`. Updated in place: `facets`.
+/// @param surface Initial `surface` field stored in the returned or constructed `mq3.collision.patchmesh.Facet` record.
+/// @param borders Initial `borders` field stored in the returned or constructed `mq3.collision.patchmesh.Facet` record.
+/// @param noAdjust Initial `noAdjust` field stored in the returned or constructed `mq3.collision.patchmesh.Facet` record.
+/// @param points Points passed as `points` to `mq3.collision.patchmesh.CM_SetBorderInward`.
 function addFacet(patch,surface,borders,noAdjust,points)
   if len(patch.facets) >= 1024 then return fail("facet limit exceeded") end if
   facet = Facet(surface,borders,array(len(borders),0),noAdjust)
@@ -363,6 +533,9 @@ function addFacet(patch,surface,borders,noAdjust,points)
   end if
   return void
 end function
+/// Compute from grid in collision.patchmesh.
+/// @param grid Record exposing `columns`, `wrapHeight`, `wrapWidth`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.CM_FindPlane`.
 function fromGrid(grid,patch)
   columns = grid.columns;width = len(columns);height = len(columns[0])
   gridPlanes = array(width,void);i = 0
@@ -422,12 +595,23 @@ function fromGrid(grid,patch)
   end while
   return void
 end function
+/// Return `mq3.collision.patchmesh.fromGrid(grid, patch)` from `collision.patchmesh.CM_PatchCollideFromGrid`.
+/// @param grid Grid passed as `grid` to `mq3.collision.patchmesh.fromGrid`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchmesh.fromGrid`.
 function CM_PatchCollideFromGrid(grid,patch) return fromGrid(grid,patch) end function
+/// Compute point on plane side in collision.patchmesh; the normal completion returns `2`.
+/// @param patch Record exposing `planes`.
+/// @param point Left three-element vector.
+/// @param index Zero-based index into `patch.planes`.
 function CM_PointOnPlaneSide(patch,point,index)
   if index==-1 then return 2 end if
   p=patch.planes[index];distance=n.fsub(q.DotProduct(point,p.normal),p.distance)
   if distance>0.1 then return 0 end if;if distance< -0.1 then return 1 end if;return 2
 end function
+/// Compute generate in collision.patchmesh; the normal completion returns `patch`.
+/// @param width Width used in `(width & 1)` and `(i < width)`.
+/// @param height Height used in `(height & 1)` and `(j < height)`.
+/// @param points Points used in `len(points)` and `points[((j * width) + i)]`.
 function generate(width,height,points)
   if width <= 2 or height <= 2 or width > qcommonHeaders.MAX_GRID_SIZE or height > qcommonHeaders.MAX_GRID_SIZE or (width & 1) == 0 or (height & 1) == 0 or len(points) != width*height then return fail("invalid quadratic grid dimensions") end if
   columns = array(width,void);i = 0
@@ -454,4 +638,8 @@ function generate(width,height,points)
   end for
   return patch
 end function
+/// Return `mq3.collision.patchmesh.generate(width, height, points)` from `collision.patchmesh.CM_GeneratePatchCollide`.
+/// @param width Width passed as `width` to `mq3.collision.patchmesh.generate`.
+/// @param height Height passed as `height` to `mq3.collision.patchmesh.generate`.
+/// @param points Points passed as `points` to `mq3.collision.patchmesh.generate`.
 function CM_GeneratePatchCollide(width,height,points) return generate(width,height,points) end function

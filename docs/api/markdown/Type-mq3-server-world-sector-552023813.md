@@ -9,8 +9,10 @@
 struct Sector
 ```
 
+Sector record for server.world, containing `axis`, `distance`, `children`, `head`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L67)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Sector
 axis
 ```
 
+Coordinate-axis index along which this spatial sector is split.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L69)
 
 <a id="field-field-mq3-server-world-sector-children-children-src-mq3-server-world-ml-399861345"></a>
 ### children
@@ -31,8 +35,10 @@ axis
 children
 ```
 
+Child sector indexes on either side of the split.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L73)
 
 <a id="field-field-mq3-server-world-sector-distance-distance-src-mq3-server-world-ml-662497629"></a>
 ### distance
@@ -41,8 +47,10 @@ children
 distance
 ```
 
+Coordinate value of the sector's splitting plane.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L71)
 
 <a id="field-field-mq3-server-world-sector-head-head-src-mq3-server-world-ml-1957710387"></a>
 ### head
@@ -51,5 +59,7 @@ distance
 head
 ```
 
+First entity linked into this sector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L75)

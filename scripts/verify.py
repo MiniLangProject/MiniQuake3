@@ -34,7 +34,11 @@ def main():
              ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_info.py",[]),("test_client_connect.py",[]),("test_ip_filters.py",[]),("test_team_changes.py",[]),("test_follow_tournament.py",[]),("test_intermission.py",[]),("test_client_commands.py",[]),("test_server_commands.py",[]),("test_weapons.py",[]),("test_client_frame.py",[]),("test_client_main_frame.py",[]),("test_client_think.py",[]),
              ("test_tournament.py",[]),("test_votes.py",[]),("test_vote_commands.py",[]),("test_team_status.py",[]),("test_game_cvars.py",[]),("test_full_frame.py",[])]
     scripts.insert(1,("test_native_build_lock.py",[]))
+    scripts.insert(2,("test_release_toolchain_cache.py",[]))
+    scripts.insert(2,("test_audit_function_contracts.py",[]))
     scripts.insert(4,("test_numeric_native.py",[]))
+    math_gate=next(index for index,(name,_) in enumerate(scripts) if name=="test_math.py")
+    scripts.insert(math_gate+1,("test_math_contracts.py",[]))
     scripts.append(("test_vm_native.py",[]))
     scripts.append(("test_native_md3.py",[]))
     scripts.append(("test_md3_vertex_identity.py",[]))
@@ -47,10 +51,15 @@ def main():
     scripts.append(("test_collision_frontier.py",[]))
     scripts.append(("test_trace_query_storage.py",[]))
     scripts.append(("test_snapshot_storage.py",[]))
-    if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport"):
+    # These gates validate the archived compiler's exact installed binary.
+    # The published release toolchain has a separate pinned hash and must not
+    # be compared with docs/reference/toolchain.json's frozen compiler record.
+    frozen_allocator=(child_env.get("MQ3_BUILD_TOOLCHAIN","frozen")=="frozen" and
+                      json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport"))
+    if frozen_allocator:
         scripts.append(("test_allocator_search.py",[]))
         scripts.append(("test_allocator_multisize.py",[]))
-        if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport",{}).get("gc_allocation_boundaries"):
+        if frozen_allocator.get("gc_allocation_boundaries"):
             scripts.append(("test_gc_allocation_boundary.py",[]))
         scripts.append(("test_allocator_legacy.py",[]))
     if args.data_root: scripts.append(("test_ingame_controls_render.py",["--data-root",str(args.data_root)]))
@@ -69,6 +78,9 @@ def main():
     scripts.append(("test_default_launcher.py",[]))
     scripts.append(("test_default_exe_startup.py",[]))
     scripts.append(("test_qvm_menu_startup.py",[]))
+    if args.data_root: scripts.append(("test_desktop_session_retail.py",["--data-root",str(args.data_root)]))
+    if args.data_root: scripts.append(("test_desktop_cinematic_retail.py",["--data-root",str(args.data_root)]))
+    if args.data_root: scripts.append(("test_singleplayer_console_window.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_common_complete.py",[]))
     scripts.append(("test_cmd_complete.py",[]))
     scripts.append(("test_q_shared_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
@@ -285,6 +297,7 @@ def main():
     scripts.append(("test_ai_map_goals.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_ai_weapon_weights.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_ai_weapon_combat.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    if args.data_root: scripts.append(("test_retail_inventory_layout.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_be_ai_weap_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_ai_avoid_spots.py",[]))
     scripts.append(("test_bot_server_bridge.py",[]))
@@ -306,6 +319,8 @@ def main():
     scripts.append(("test_surface_beam.py",[]))
     scripts.append(("test_portal_view.py",[]))
     scripts.append(("test_portal_render_pass.py",[]))
+    scripts.append(("test_portal_clip_large.py",[]))
+    if args.data_root: scripts.append(("test_qvm_player_skin_warm.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_qvm_scene_materials.py",[]))
     scripts.append(("test_qvm_scene_batch.py",[]))
     scripts.append(("test_mark_fragments.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
@@ -358,6 +373,7 @@ def main():
     scripts.append(("test_player_render_quality.py",[]))
     scripts.append(("test_playable_item_models.py",[]))
     scripts.append(("test_world_surface_selection.py",[]))
+    if args.data_root: scripts.append(("test_retail_door_world.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_playable_enemy_animation.py",[]))
     scripts.append(("test_playable_enemy_movement.py",[]))
     scripts.append(("test_playable_enemy_projectiles.py",[]))
@@ -379,9 +395,11 @@ def main():
     scripts.append(("test_baseq3_match_display.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_cgame_scoreboard.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_cgame_info.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    if args.data_root: scripts.append(("test_map_loading_retail.py",["--data-root",str(args.data_root),"--desktop-exe",str(ROOT / "build/MiniQuake3.exe")]))
     scripts.append(("test_playable_menu.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("playable_window_build_test.py",[]))
     scripts.append(("test_playable_window_startup.py",[]))
+    scripts.append(("test_playable_window_contracts.py",[]))
     scripts.append(("test_win_glimp_complete.py",[]))
     scripts.append(("test_win32_headers_qgl_complete.py",[]))
     scripts.append(("test_win_input_complete.py",[]))
@@ -457,6 +475,8 @@ def main():
         scripts.append(("test_botlib_retail_qagame.py",["--data-root",str(args.data_root),"--qvm-root",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_bot_spawn_retail.py",["--data-root",str(args.data_root),"--qvm-root",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_singleplayer_bot_retail.py",["--data-root",str(args.data_root)]))
+        scripts.append(("test_all_retail_levels.py",["--data-root",str(args.data_root)]))
+        scripts.append(("test_all_retail_bots.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_jump_pad_items_retail.py",["--data-root",str(args.data_root),"--qvm-root",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_aas_trace_areas.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")]))
         scripts.append(("test_maps.py",[str(args.data_root)]))

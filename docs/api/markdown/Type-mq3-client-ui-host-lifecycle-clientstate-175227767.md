@@ -9,8 +9,10 @@
 struct ClientState
 ```
 
+Stores UI host lifecycle client state record, including `connState`, `connectPacketCount`, `clientNum`, `servername`, `updateInfoString`, `messageString`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L40)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ClientState
 clientNum
 ```
 
+Local client slot serialized into the UI client-state ABI record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L46)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-connectpacketcount-connectpacketcount-src-mq3-client-ui-host-lifecycle-ml-422026777"></a>
 ### connectPacketCount
@@ -31,8 +35,10 @@ clientNum
 connectPacketCount
 ```
 
+Number of connection-handshake packets sent, also used by progress displays.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L44)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-connstate-connstate-src-mq3-client-ui-host-lifecycle-ml-1487978403"></a>
 ### connState
@@ -41,8 +47,10 @@ connectPacketCount
 connState
 ```
 
+When constructing this record, `createClientState` supplies `connState` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L42)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-messagestring-messagestring-src-mq3-client-ui-host-lifecycle-ml-1873605999"></a>
 ### messageString
@@ -51,8 +59,10 @@ connState
 messageString
 ```
 
+When constructing this record, `createClientState` supplies `messageString` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L52)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-servername-servername-src-mq3-client-ui-host-lifecycle-ml-1672216703"></a>
 ### servername
@@ -61,8 +71,10 @@ messageString
 servername
 ```
 
+When constructing this record, `createClientState` supplies `servername` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L48)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-updateinfostring-updateinfostring-src-mq3-client-ui-host-lifecycle-ml-1673501487"></a>
 ### updateInfoString
@@ -71,5 +83,7 @@ servername
 updateInfoString
 ```
 
+When constructing this record, `createClientState` supplies `updateInfoString` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L50)

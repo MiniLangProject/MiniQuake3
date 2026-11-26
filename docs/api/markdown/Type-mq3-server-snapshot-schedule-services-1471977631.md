@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for server.snapshot_schedule, containing `sendClientSnapshotFn`, `transmitNextFragmentFn`, `context`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L41)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Caller-supplied data associated with scheduled snapshot sends and pending-fragment transmission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L47)
 
 <a id="field-field-mq3-server-snapshot-schedule-services-sendclientsnapshotfn-sendclientsnapshotfn-src-mq3-server-snapshot-schedule-ml-700994255"></a>
 ### sendClientSnapshotFn
@@ -31,8 +35,10 @@ context
 sendClientSnapshotFn
 ```
 
+Host callback that sends the next snapshot to a client.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L43)
 
 <a id="field-field-mq3-server-snapshot-schedule-services-transmitnextfragmentfn-transmitnextfragmentfn-src-mq3-server-snapshot-schedule-ml-1852591963"></a>
 ### transmitNextFragmentFn
@@ -41,5 +47,7 @@ sendClientSnapshotFn
 transmitNextFragmentFn
 ```
 
+Host callback that sends the next pending fragment of a large network message.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L45)

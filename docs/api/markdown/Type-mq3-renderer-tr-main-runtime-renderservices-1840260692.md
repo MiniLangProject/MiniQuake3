@@ -9,8 +9,10 @@
 struct RenderServices
 ```
 
+Callback table for `mq3.renderer.tr_main_runtime.RenderServices`; exposes `addWorldFn`, `addPolygonsFn`, `setupProjectionFn`, `addEntitiesFn`, `addCommandFn`, `debugFn`, and 1 further field.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L91)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct RenderServices
 addCommandFn
 ```
 
+Host callback used to perform add command operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L101)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-addentitiesfn-addentitiesfn-src-mq3-renderer-tr-main-runtime-ml-2073092637"></a>
 ### addEntitiesFn
@@ -31,8 +35,10 @@ addCommandFn
 addEntitiesFn
 ```
 
+Host callback used to perform add entities operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L99)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-addpolygonsfn-addpolygonsfn-src-mq3-renderer-tr-main-runtime-ml-545982537"></a>
 ### addPolygonsFn
@@ -41,8 +47,10 @@ addEntitiesFn
 addPolygonsFn
 ```
 
+Host callback used to perform add polygons operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L95)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-addworldfn-addworldfn-src-mq3-renderer-tr-main-runtime-ml-202836871"></a>
 ### addWorldFn
@@ -51,8 +59,10 @@ addPolygonsFn
 addWorldFn
 ```
 
+Host callback used to perform add world operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L93)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-context-context-src-mq3-renderer-tr-main-runtime-ml-837560629"></a>
 ### context
@@ -61,8 +71,10 @@ addWorldFn
 context
 ```
 
+Frontend host state passed while collecting world, polygon, entity, and debug drawing commands.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L105)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-debugfn-debugfn-src-mq3-renderer-tr-main-runtime-ml-1154484845"></a>
 ### debugFn
@@ -71,8 +83,10 @@ context
 debugFn
 ```
 
+Host callback used to perform debug operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L103)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-setupprojectionfn-setupprojectionfn-src-mq3-renderer-tr-main-runtime-ml-429503073"></a>
 ### setupProjectionFn
@@ -81,5 +95,7 @@ debugFn
 setupProjectionFn
 ```
 
+Host callback used to perform setup projection operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L97)

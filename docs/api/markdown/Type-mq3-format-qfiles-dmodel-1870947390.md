@@ -9,8 +9,10 @@
 struct Dmodel
 ```
 
+Dmodel record for format.qfiles, containing `mins`, `maxs`, `firstSurface`, `numSurfaces`, `firstBrush`, `numBrushes`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L453)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Dmodel
 firstBrush
 ```
 
+Index of the first collision brush belonging to this map model.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L463)
 
 <a id="field-field-mq3-format-qfiles-dmodel-firstsurface-firstsurface-src-mq3-format-qfiles-ml-573291298"></a>
 ### firstSurface
@@ -31,8 +35,10 @@ firstBrush
 firstSurface
 ```
 
+Index of the first surface belonging to this map model.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L459)
 
 <a id="field-field-mq3-format-qfiles-dmodel-maxs-maxs-src-mq3-format-qfiles-ml-854760278"></a>
 ### maxs
@@ -41,8 +47,10 @@ firstSurface
 maxs
 ```
 
+Maximum XYZ corner of the inline model described by this serialized BSP record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L457)
 
 <a id="field-field-mq3-format-qfiles-dmodel-mins-mins-src-mq3-format-qfiles-ml-1598819182"></a>
 ### mins
@@ -51,8 +59,10 @@ maxs
 mins
 ```
 
+Minimum XYZ corner of the inline model described by this serialized BSP record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L455)
 
 <a id="field-field-mq3-format-qfiles-dmodel-numbrushes-numbrushes-src-mq3-format-qfiles-ml-1451870528"></a>
 ### numBrushes
@@ -61,8 +71,10 @@ mins
 numBrushes
 ```
 
+Number of collision brushes referenced by this map element.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L465)
 
 <a id="field-field-mq3-format-qfiles-dmodel-numsurfaces-numsurfaces-src-mq3-format-qfiles-ml-740000888"></a>
 ### numSurfaces
@@ -71,5 +83,7 @@ numBrushes
 numSurfaces
 ```
 
+Number of surfaces described by this model or file record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L461)

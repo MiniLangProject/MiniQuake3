@@ -28,8 +28,10 @@ Reachable from entry: **no**
 const CHAN_VOICE = 2
 ```
 
+Audio channel identifier selecting voice playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L40)
 
 <a id="constant-constant-mq3-game-client-frame-contents-lava-const-contents-lava-headers-contents-lava-src-mq3-game-client-frame-ml-759461446"></a>
 ### CONTENTS_LAVA
@@ -38,8 +40,10 @@ const CHAN_VOICE = 2
 const CONTENTS_LAVA = headers.CONTENTS_LAVA
 ```
 
+Collision-contents bit identifying lava space or objects.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L32)
 
 <a id="constant-constant-mq3-game-client-frame-contents-slime-const-contents-slime-headers-contents-slime-src-mq3-game-client-frame-ml-1177690656"></a>
 ### CONTENTS_SLIME
@@ -48,8 +52,10 @@ const CONTENTS_LAVA = headers.CONTENTS_LAVA
 const CONTENTS_SLIME = headers.CONTENTS_SLIME
 ```
 
+Collision-contents bit identifying slime space or objects.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L34)
 
 <a id="constant-constant-mq3-game-client-frame-damage-no-armor-const-damage-no-armor-2-src-mq3-game-client-frame-ml-856943767"></a>
 ### DAMAGE_NO_ARMOR
@@ -58,8 +64,10 @@ const CONTENTS_SLIME = headers.CONTENTS_SLIME
 const DAMAGE_NO_ARMOR = 2
 ```
 
+Damage-processing flag enabling no armor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L38)
 
 <a id="function-function-mq3-game-client-frame-damagefeedback-function-damagefeedback-level-player-src-mq3-game-client-frame-ml-509921203"></a>
 ### damageFeedback
@@ -68,13 +76,15 @@ const DAMAGE_NO_ARMOR = 2
 function damageFeedback(level, player)
 ```
 
+Set `player.pain_debounce_time` to `n.add32(level.time,700)` in `mq3.game.client_frame.damageFeedback`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `player` | `dynamic` | — | Player entity; accesses `client`, `pain_debounce_time`, `flags` and `health`. May update `player.pain_debounce_time` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L69)
 
 <a id="constant-constant-mq3-game-client-frame-ef-connection-const-ef-connection-8192-src-mq3-game-client-frame-ml-945114799"></a>
 ### EF_CONNECTION
@@ -83,8 +93,10 @@ function damageFeedback(level, player)
 const EF_CONNECTION = 8192
 ```
 
+Network entity-flag bit indicating connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L24)
 
 <a id="constant-constant-mq3-game-client-frame-ef-player-event-const-ef-player-event-16-src-mq3-game-client-frame-ml-374640138"></a>
 ### EF_PLAYER_EVENT
@@ -93,8 +105,10 @@ const EF_CONNECTION = 8192
 const EF_PLAYER_EVENT = 16
 ```
 
+Network entity-flag bit indicating player event.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L22)
 
 <a id="constant-constant-mq3-game-client-frame-ef-teamvoted-const-ef-teamvoted-524288-src-mq3-game-client-frame-ml-181765600"></a>
 ### EF_TEAMVOTED
@@ -103,8 +117,10 @@ const EF_PLAYER_EVENT = 16
 const EF_TEAMVOTED = 524288
 ```
 
+Network entity-flag bit indicating teamvoted.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L28)
 
 <a id="constant-constant-mq3-game-client-frame-ef-voted-const-ef-voted-16384-src-mq3-game-client-frame-ml-494443275"></a>
 ### EF_VOTED
@@ -113,8 +129,10 @@ const EF_TEAMVOTED = 524288
 const EF_VOTED = 16384
 ```
 
+Network entity-flag bit indicating voted.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L26)
 
 <a id="function-function-mq3-game-client-frame-endframe-function-endframe-level-ent-src-mq3-game-client-frame-ml-1151010997"></a>
 ### endFrame
@@ -123,13 +141,15 @@ const EF_VOTED = 16384
 function endFrame(level, ent)
 ```
 
+Set `ent.s.eFlags` to `ent.s.eFlags | EF_CONNECTION` and `ent.s.eFlags` to `ent.s.eFlags & ~EF_CONNECTION` in `mq3.game.client_frame.endFrame`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`, `intermissiontime` and `smoothClients`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `health`. May update `ent.s.eFlags` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L186)
 
 <a id="constant-constant-mq3-game-client-frame-fl-godmode-const-fl-godmode-16-src-mq3-game-client-frame-ml-1342006948"></a>
 ### FL_GODMODE
@@ -138,8 +158,10 @@ function endFrame(level, ent)
 const FL_GODMODE = 16
 ```
 
+Game entity-flag bit enabling or marking godmode.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L30)
 
 <a id="function-function-mq3-game-client-frame-missionpack-function-missionpack-level-src-mq3-game-client-frame-ml-1431044140"></a>
 ### missionpack
@@ -148,12 +170,14 @@ const FL_GODMODE = 16
 function missionpack(level)
 ```
 
+Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L52)
 
 <a id="function-function-mq3-game-client-frame-persistenttag-function-persistenttag-level-client-src-mq3-game-client-frame-ml-336570875"></a>
 ### persistentTag
@@ -162,13 +186,15 @@ function missionpack(level)
 function persistentTag(level, client)
 ```
 
+Apply `mq3.game.client_frame.missionpack` and `mq3.game.constants.missionpackItemTag` while evaluating `persistentTag`. Return paths include `c.missionpackItemTag(index)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `client` | `dynamic` | — | Client state; accesses `ps`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L59)
 
 <a id="constant-constant-mq3-game-client-frame-pmf-follow-const-pmf-follow-4096-src-mq3-game-client-frame-ml-1245208154"></a>
 ### PMF_FOLLOW
@@ -177,8 +203,10 @@ function persistentTag(level, client)
 const PMF_FOLLOW = 4096
 ```
 
+Player movement-state bit indicating follow.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L18)
 
 <a id="constant-constant-mq3-game-client-frame-pmf-scoreboard-const-pmf-scoreboard-8192-src-mq3-game-client-frame-ml-1231367473"></a>
 ### PMF_SCOREBOARD
@@ -187,8 +215,10 @@ const PMF_FOLLOW = 4096
 const PMF_SCOREBOARD = 8192
 ```
 
+Player movement-state bit indicating scoreboard.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L20)
 
 <a id="function-function-mq3-game-client-frame-sendpendingpredictableevents-function-sendpendingpredictableevents-level-ps-src-mq3-game-client-frame-ml-342203915"></a>
 ### sendPendingPredictableEvents
@@ -197,13 +227,15 @@ const PMF_SCOREBOARD = 8192
 function sendPendingPredictableEvents(level, ps)
 ```
 
+Set `ps.externalEvent` to `0` and `ps.externalEvent` to `external` in `mq3.game.client_frame.sendPendingPredictableEvents`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ps` | `dynamic` | — | Player movement state; accesses `entityEventSequence`, `eventSequence`, `events`, `externalEvent` and `origin` and related fields. May update `ps.externalEvent` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L145)
 
 <a id="function-function-mq3-game-client-frame-setclientsound-function-setclientsound-level-ent-src-mq3-game-client-frame-ml-258781757"></a>
 ### setClientSound
@@ -212,13 +244,15 @@ function sendPendingPredictableEvents(level, ps)
 function setClientSound(level, ent)
 ```
 
+Set `ent.client.ps.loopSound` to `level.sndFry` and `ent.client.ps.loopSound` to `0` in `mq3.game.client_frame.setClientSound`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `sndFry`. |
+| `ent` | `dynamic` | — | Game entity; accesses `waterlevel`, `watertype` and `client`. May update `ent.client.ps.loopSound` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L136)
 
 <a id="function-function-mq3-game-client-frame-soundindex-function-soundindex-level-name-src-mq3-game-client-frame-ml-806078913"></a>
 ### soundIndex
@@ -227,13 +261,15 @@ function setClientSound(level, ent)
 function soundIndex(level, name)
 ```
 
+Apply `mq3.game.spawn_values.soundIndex` while evaluating `soundIndex`. Return paths include `values.soundIndex(level.spawner,name)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L94)
 
 <a id="constant-constant-mq3-game-client-frame-spectator-follow-const-spectator-follow-2-src-mq3-game-client-frame-ml-951532615"></a>
 ### SPECTATOR_FOLLOW
@@ -242,8 +278,10 @@ function soundIndex(level, name)
 const SPECTATOR_FOLLOW = 2
 ```
 
+Spectator-state identifier selecting follow.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L44)
 
 <a id="constant-constant-mq3-game-client-frame-spectator-free-const-spectator-free-1-src-mq3-game-client-frame-ml-177597202"></a>
 ### SPECTATOR_FREE
@@ -252,8 +290,10 @@ const SPECTATOR_FOLLOW = 2
 const SPECTATOR_FREE = 1
 ```
 
+Spectator-state identifier selecting free.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L42)
 
 <a id="constant-constant-mq3-game-client-frame-spectator-scoreboard-const-spectator-scoreboard-3-src-mq3-game-client-frame-ml-276654880"></a>
 ### SPECTATOR_SCOREBOARD
@@ -262,8 +302,10 @@ const SPECTATOR_FREE = 1
 const SPECTATOR_SCOREBOARD = 3
 ```
 
+Spectator-state identifier selecting scoreboard.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L46)
 
 <a id="function-function-mq3-game-client-frame-spectatorendframe-function-spectatorendframe-level-ent-src-mq3-game-client-frame-ml-9531299"></a>
 ### spectatorEndFrame
@@ -272,13 +314,15 @@ const SPECTATOR_SCOREBOARD = 3
 function spectatorEndFrame(level, ent)
 ```
 
+Use `level.clientBeginFn` to perform `spectatorEndFrame`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `follow1`, `follow2`, `clients` and `clientBeginFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client` and `slot`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L160)
 
 <a id="constant-constant-mq3-game-client-frame-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-client-frame-ml-293818394"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -287,8 +331,10 @@ function spectatorEndFrame(level, ent)
 const STAT_PERSISTANT_POWERUP = 7
 ```
 
+Player-state statistics index storing persistant powerup.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L48)
 
 <a id="constant-constant-mq3-game-client-frame-svf-notsingleclient-const-svf-notsingleclient-2048-src-mq3-game-client-frame-ml-977819437"></a>
 ### SVF_NOTSINGLECLIENT
@@ -297,8 +343,10 @@ const STAT_PERSISTANT_POWERUP = 7
 const SVF_NOTSINGLECLIENT = 2048
 ```
 
+Server entity-flag bit controlling notsingleclient.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L36)
 
 <a id="function-function-mq3-game-client-frame-worldeffects-function-worldeffects-level-ent-src-mq3-game-client-frame-ml-2076799157"></a>
 ### worldEffects
@@ -307,10 +355,12 @@ const SVF_NOTSINGLECLIENT = 2048
 function worldEffects(level, ent)
 ```
 
+Update `ent.damage` and `ent.pain_debounce_time` during `worldEffects`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `waterlevel`, `health`, `damage` and `pain_debounce_time` and related fields. May update `ent.damage` and `ent.pain_debounce_time` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L102)

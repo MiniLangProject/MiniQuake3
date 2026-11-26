@@ -18,43 +18,143 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 import mq3.server.world as sv
 
+/// Weapon identifier selecting nailgun.
 const WP_NAILGUN = 11
+/// Weapon identifier selecting prox launcher.
 const WP_PROX_LAUNCHER = 12
+/// Weapon identifier selecting chaingun.
 const WP_CHAINGUN = 13
+/// Cause-of-death identifier attributing damage or a kill to nail.
 const MOD_NAIL = 24
+/// Cause-of-death identifier attributing damage or a kill to chaingun.
 const MOD_CHAINGUN = 25
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE = 26
+/// Cause-of-death identifier attributing damage or a kill to kamikaze.
 const MOD_KAMIKAZE = 27
+/// Network entity-flag bit indicating kamikaze.
 const EF_KAMIKAZE = 0x200
+/// Damage-processing flag enabling radius.
 const DAMAGE_RADIUS = 1
+/// Damage-processing flag enabling no protection.
 const DAMAGE_NO_PROTECTION = 8
+/// Damage-processing flag enabling no team protection.
 const DAMAGE_NO_TEAM_PROTECTION = 16
+/// Combined CONTENTS_* mask used for shot collision queries.
 const MASK_SHOT = 0x06000001
 
+/// Forward `G_BounceProjectile` to `mq3.game.weapons.bounceProjectile` and return the delegated result.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param impact Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 2 to `mq3.shared.math.DotProduct`.
+/// @param endout Array or byte sequence accessed at `axis`. Entries are written in place.
 function G_BounceProjectile(start,impact,dir,endout) return base.bounceProjectile(start,impact,dir,endout) end function
+/// Forward `Weapon_Gauntlet` to `mq3.game.weapons.gauntlet` and return the delegated result.
+/// @param level Value passed as argument 1 to `mq3.game.weapons.gauntlet`.
+/// @param ent Value passed as argument 2 to `mq3.game.weapons.gauntlet`.
 function Weapon_Gauntlet(level,ent) return base.gauntlet(level,ent) end function
+/// Forward `CheckGauntletAttack` to `mq3.game.weapons.checkGauntlet` and return the delegated result.
+/// @param level Game-level state; accesses `entities` and `quadfactor`.
+/// @param ent Game entity; accesses `s`.
 function CheckGauntletAttack(level,ent) return base.checkGauntlet(level,ent) end function
+/// Forward `SnapVectorTowards` to `mq3.game.missiles.snapTowards` and return the delegated result.
+/// @param value Array or byte sequence accessed at `axis`. Entries are written in place.
+/// @param towards Array or byte sequence accessed at `axis`.
 function SnapVectorTowards(value,towards) return missiles.snapTowards(value,towards) end function
+/// Forward `Bullet_Fire` to `mq3.game.weapon_hitscan.bullet` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place.
+/// @param spread Value passed as argument 1 to `mq3.compat.numeric.f32`.
+/// @param damage Damage amount before the current operation applies its rules.
 function Bullet_Fire(level,ent,spread,damage) return hitscan.bullet(level,ent,spread,damage) end function
+/// Forward `BFG_Fire` to `mq3.game.weapons.bfg` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function BFG_Fire(level,ent) return base.bfg(level,ent) end function
+/// Forward `ShotgunPellet` to `mq3.game.weapon_hitscan.shotgunPellet` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param finish Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param ent Game entity; accesses `s`.
 function ShotgunPellet(level,start,finish,ent) return hitscan.shotgunPellet(level,start,finish,ent) end function
+/// Forward `ShotgunPattern` to `mq3.game.weapon_hitscan.shotgunPattern` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param origin World-space position as three coordinates.
+/// @param origin2 Value passed as argument 1 to `mq3.shared.math.VectorNormalize2`.
+/// @param seed State used to initialize the deterministic random sequence.
+/// @param ent Game entity; accesses `client`. May update `ent.client.accuracy_hits` in place.
 function ShotgunPattern(level,origin,origin2,seed,ent) return hitscan.shotgunPattern(level,origin,origin2,seed,ent) end function
+/// Forward `weapon_supershotgun_fire` to `mq3.game.weapon_hitscan.shotgun` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `s`.
 function weapon_supershotgun_fire(level,ent) return hitscan.shotgun(level,ent) end function
+/// Forward `weapon_grenadelauncher_fire` to `mq3.game.weapons.grenade` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function weapon_grenadelauncher_fire(level,ent) return base.grenade(level,ent) end function
+/// Forward `Weapon_RocketLauncher_Fire` to `mq3.game.weapons.rocket` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function Weapon_RocketLauncher_Fire(level,ent) return base.rocket(level,ent) end function
+/// Forward `Weapon_Plasmagun_Fire` to `mq3.game.weapons.plasma` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function Weapon_Plasmagun_Fire(level,ent) return base.plasma(level,ent) end function
+/// Forward `weapon_railgun_fire` to `mq3.game.weapon_hitscan.rail` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`.
 function weapon_railgun_fire(level,ent) return hitscan.rail(level,ent) end function
+/// Forward `Weapon_GrapplingHook_Fire` to `mq3.game.weapons.grapple` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `client`.
 function Weapon_GrapplingHook_Fire(level,ent) return base.grapple(level,ent) end function
+/// Forward `Weapon_HookFree` to `mq3.game.missiles.hookFree` and return the delegated result.
+/// @param level Game-level state; accesses `scene` and `time`. May update `level.scene.entities[ent.slot]` in place.
+/// @param ent Game entity; accesses `parent`.
 function Weapon_HookFree(level,ent) return missiles.hookFree(level,ent) end function
+/// Forward `Weapon_HookThink` to `mq3.game.missiles.hookThink` and return the delegated result.
+/// @param level Value passed as argument 1 to `mq3.game.missiles.hookThink`.
+/// @param ent Game entity; accesses `enemy` and `r`.
 function Weapon_HookThink(level,ent) return missiles.hookThink(level,ent) end function
+/// Forward `Weapon_LightningFire` to `mq3.game.weapon_hitscan.lightning` and return the delegated result.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place.
 function Weapon_LightningFire(level,ent) return hitscan.lightning(level,ent) end function
+/// Forward `LogAccuracyHit` to `mq3.game.combat.logAccuracyHit` and return the delegated result.
+/// @param level Game-level state; accesses `spawner`.
+/// @param target Target record; accesses `takedamage` and `client`.
+/// @param attacker Entity credited with the attack.
 function LogAccuracyHit(level,target,attacker) return combat.logAccuracyHit(level,target,attacker) end function
+/// Forward `CalcMuzzlePoint` to `mq3.game.weapons.calcMuzzlePoint` and return the delegated result.
+/// @param ent Game entity; accesses `s`.
+/// @param forward Array or byte sequence accessed at `axis`.
+/// @param right Value passed as argument 3 to `mq3.game.weapons.calcMuzzlePoint`.
+/// @param up Value passed as argument 4 to `mq3.game.weapons.calcMuzzlePoint`.
+/// @param muzzlePoint Array or byte sequence accessed at `axis`. Entries are written in place.
 function CalcMuzzlePoint(ent,forward,right,up,muzzlePoint) return base.calcMuzzlePoint(ent,forward,right,up,muzzlePoint) end function
+/// Forward `CalcMuzzlePointOrigin` to `mq3.game.weapons.calcMuzzlePointOrigin` and return the delegated result.
+/// @param ent Game entity; accesses `s`.
+/// @param origin World-space position as three coordinates.
+/// @param forward Array or byte sequence accessed at `axis`.
+/// @param right Value passed as argument 3 to `mq3.game.weapons.calcMuzzlePoint`.
+/// @param up Value passed as argument 4 to `mq3.game.weapons.calcMuzzlePoint`.
+/// @param muzzlePoint Array or byte sequence accessed at `axis`. Entries are written in place.
 function CalcMuzzlePointOrigin(ent,origin,forward,right,up,muzzlePoint) return base.calcMuzzlePointOrigin(ent,origin,forward,right,up,muzzlePoint) end function
 
+/// Forward `randomFloat` to `mq3.compat.numeric.fdiv` and return the delegated result.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
 function randomFloat(level) return n.fdiv(game.random(level),32767.0) end function
+/// Return `2.0*(randomFloat(level)-0.5)` for `centeredRandom`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
 function centeredRandom(level) return 2.0*(randomFloat(level)-0.5) end function
 
+/// Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.g_weapon.randomFloat` while evaluating `fireNail`. Return paths include `bolt`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param forward Value passed as argument 3 to `mq3.shared.math.VectorMA`.
+/// @param right Value passed as argument 3 to `mq3.shared.math.VectorMA`.
+/// @param up Value passed as argument 3 to `mq3.shared.math.VectorMA`.
 function fireNail(level,self,start,forward,right,up)
   bolt = game.spawn(level); bolt.classname = "nail"; bolt.nextthink = n.add32(level.time,10000); bolt.think = missiles.explode
   bolt.s.eType = c.ET_MISSILE; bolt.r.svFlags = 128; bolt.s.weapon = WP_NAILGUN; bolt.r.ownerNum = self.s.number; bolt.parent = self
@@ -69,6 +169,11 @@ function fireNail(level,self,start,forward,right,up)
   bolt.r.currentOrigin = movement.copy(start); return bolt
 end function
 
+/// Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.snapshot.snapVector` while evaluating `fireProx`. Return paths include `bolt`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s` and `client`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param direction Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fireProx(level,self,start,direction)
   q.VectorNormalize(direction); bolt = game.spawn(level); bolt.classname = "prox mine"; bolt.nextthink = n.add32(level.time,3000); bolt.think = missiles.explode
   bolt.s.eType = c.ET_MISSILE; bolt.r.svFlags = 128; bolt.s.weapon = WP_PROX_LAUNCHER; bolt.s.eFlags = 0
@@ -78,6 +183,9 @@ function fireProx(level,self,start,direction)
   bolt.s.pos.trDelta = q.VectorScale(direction,700.0); snapshot.snapVector(bolt.s.pos.trDelta); bolt.r.currentOrigin = movement.copy(start); return bolt
 end function
 
+/// Apply `mq3.game.weapon_state.get` and `mq3.game.g_weapon.fireNail` while evaluating `Weapon_Nailgun_Fire`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function Weapon_Nailgun_Fire(level,ent)
   state = weaponState.get(level); result = void
   for count = 0 to 14
@@ -86,11 +194,19 @@ function Weapon_Nailgun_Fire(level,ent)
   return result
 end function
 
+/// Apply `mq3.game.weapon_state.get` and `mq3.game.g_weapon.fireProx` while evaluating `weapon_proxlauncher_fire`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s` and `client`.
 function weapon_proxlauncher_fire(level,ent)
   state = weaponState.get(level); state.forward[2] = n.fadd(state.forward[2],n.f32(0.2)); q.VectorNormalize(state.forward)
   result = fireProx(level,ent,state.muzzle,state.forward); result.damage = n.trunc32(n.fmul(result.damage,state.quadFactor)); result.splashDamage = n.trunc32(n.fmul(result.splashDamage,state.quadFactor)); return result
 end function
 
+/// Apply `mq3.game.weapons.fire`, `mq3.game.weapons.weaponClient` and `mq3.game.weapon_state.get` while evaluating `FireWeapon`.
+/// @param level Game-level state; accesses `quadfactor` and `spawner`.
+/// @param ent Game entity; accesses `s`.
+/// @param missionpack Whether Team Arena rules and definitions are active.
+/// @param doubler Value used by `FireWeapon` in `if doubler then state.quadFactor = n.fmul(state.quadFactor,2.0) end if`.
 function FireWeapon(level,ent,missionpack,doubler)
   if not missionpack then return base.fire(level,ent) end if
   client = base.weaponClient(ent); state = weaponState.get(level)
@@ -119,6 +235,9 @@ function FireWeapon(level,ent,missionpack,doubler)
   return void
 end function
 
+/// Calculate the shortest distance from an origin to an entity's axis-aligned absolute bounds.
+/// @param origin World-space position as three coordinates.
+/// @param ent Game entity; accesses `r`.
 function edgeDistance(origin,ent)
   delta = [0.0,0.0,0.0]
   for axis = 0 to 2
@@ -128,6 +247,12 @@ function edgeDistance(origin,ent)
   return q.VectorLength(delta)
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.server.world.areaEntities` and `mq3.game.g_weapon.edgeDistance` while evaluating `KamikazeRadiusDamage`. Return paths include `hits`.
+/// @param level Game-level state; accesses `scene`, `entities` and `time`.
+/// @param origin World-space position as three coordinates.
+/// @param attacker Entity credited with the attack.
+/// @param damage Damage amount before the current operation applies its rules.
+/// @param radius Radius used by the spatial or damage query.
 function KamikazeRadiusDamage(level,origin,attacker,damage,radius)
   state = weaponState.get(level); if radius < 1 then radius = 1.0 end if
   mins=[origin[0]-radius,origin[1]-radius,origin[2]-radius];maxs=[origin[0]+radius,origin[1]+radius,origin[2]+radius]
@@ -142,6 +267,13 @@ function KamikazeRadiusDamage(level,origin,attacker,damage,radius)
   return hits
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.server.world.areaEntities` and `mq3.game.g_weapon.edgeDistance` while evaluating `KamikazeShockWave`. Return paths include `hits`.
+/// @param level Game-level state; accesses `scene`, `entities` and `time`.
+/// @param origin World-space position as three coordinates.
+/// @param attacker Entity credited with the attack.
+/// @param damage Damage amount before the current operation applies its rules.
+/// @param push Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param radius Radius used by the spatial or damage query.
 function KamikazeShockWave(level,origin,attacker,damage,push,radius)
   state=weaponState.get(level);if radius<1 then radius=1.0 end if
   mins=[origin[0]-radius,origin[1]-radius,origin[2]-radius];maxs=[origin[0]+radius,origin[1]+radius,origin[2]+radius];hits=0
@@ -157,7 +289,12 @@ function KamikazeShockWave(level,origin,attacker,damage,push,radius)
   return hits
 end function
 
+/// Return `n.trunc32(value*(65536.0/360.0))&65535` for `angleToShort`.
+/// @param value Operand used to evaluate the returned expression `n.trunc32(value*(65536.0/360.0))&65535`.
 function angleToShort(value) return n.trunc32(value*(65536.0/360.0))&65535 end function
+/// Update `self.count`, `self.nextthink` and `self.movedir` during `KamikazeDamage`.
+/// @param level Game-level state; accesses `time`, `maxclients` and `entities`.
+/// @param self Entity receiving the callback; accesses `count`, `s`, `activator`, `nextthink` and `movedir`. May update `self.count`, `self.nextthink` and `self.movedir` in place.
 function KamikazeDamage(level,self)
   self.count=n.add32(self.count,100)
   shockRadius=n.trunc32(n.fdiv(n.fmul(n.i32(self.count),1320.0),2000.0));KamikazeShockWave(level,self.s.pos.trBase,self.activator,25.0,400.0,shockRadius)
@@ -172,6 +309,9 @@ function KamikazeDamage(level,self)
   self.movedir=movement.copy(newangles);return void
 end function
 
+/// Set `ent.s.eFlags` to `ent.s.eFlags&~EF_KAMIKAZE` in `mq3.game.g_weapon.G_StartKamikaze`. Return paths include `explosion`.
+/// @param level Game-level state; accesses `time` and `entities`.
+/// @param ent Game entity; accesses `client`, `activator` and `s`. May update `ent.s.eFlags` in place.
 function G_StartKamikaze(level,ent)
   explosion=game.spawn(level);explosion.s.eType=c.ET_EVENTS+c.EV_KAMIKAZE;explosion.eventTime=level.time
   source=ent;if ent.client==void then source=ent.activator end if;snapped=movement.copy(source.s.pos.trBase);snapshot.snapVector(snapped);game.setOrigin(explosion,snapped)

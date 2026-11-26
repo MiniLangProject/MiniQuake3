@@ -9,8 +9,10 @@
 struct ProcessResult
 ```
 
+ProcessResult record for qcommon.netchan, containing `accepted`, `data`, `cursize`, `readcount`, `bit`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L76)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ProcessResult
 accepted
 ```
 
+True when validation accepted the requested operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L78)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-bit-bit-src-mq3-qcommon-netchan-ml-1215759115"></a>
 ### bit
@@ -31,8 +35,10 @@ accepted
 bit
 ```
 
+Bit offset at which the accepted packet payload begins.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L86)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-cursize-cursize-src-mq3-qcommon-netchan-ml-658652291"></a>
 ### cursize
@@ -41,8 +47,10 @@ bit
 cursize
 ```
 
+Number of valid bytes currently stored in the message buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L82)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-data-data-src-mq3-qcommon-netchan-ml-1077289335"></a>
 ### data
@@ -51,8 +59,10 @@ cursize
 data
 ```
 
+Accepted message payload after sequence and fragment processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L80)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-readcount-readcount-src-mq3-qcommon-netchan-ml-1624128059"></a>
 ### readcount
@@ -61,5 +71,7 @@ data
 readcount
 ```
 
+Byte position reached while consuming the message.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L84)

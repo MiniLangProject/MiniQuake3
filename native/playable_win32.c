@@ -8,6 +8,7 @@
 #include <limits.h>
 #include <float.h>
 #include <math.h>
+#include <emmintrin.h>
 #ifndef GL_BGRA_EXT
 #define GL_BGRA_EXT 0x80E1
 #endif
@@ -56,6 +57,9 @@ static int openGLSwapInterval;
 static int requestedFullscreen;
 static int requestedDisplayFrequency;
 static int displayModeChanged;
+static int highResolutionTimer;
+static int liveModeWidth;
+static int liveModeHeight;
 static wchar_t requestedOpenGLDriver[MAX_PATH];
 static int gammaRampAvailable;
 static int gammaRampChanged;
@@ -142,7 +146,7 @@ static int inputMidiEnabled;
 static int inputMidiDevice;
 static int inputMidiChannel = 1;
 
-#define PLAYABLE_TEXTURE_SLOTS 512
+#define PLAYABLE_TEXTURE_SLOTS 4096
 #define PLAYABLE_MAX_TEXTURE_SIZE 4096
 #define PLAYABLE_MAX_MIP_LEVELS 13
 
@@ -156,9 +160,11 @@ typedef struct playableTexture_s {
     int mipWidths[PLAYABLE_MAX_MIP_LEVELS - 1];
     int mipHeights[PLAYABLE_MAX_MIP_LEVELS - 1];
     int mipLevelCount;
+    int mipmapped;
 } playableTexture;
 
 static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
+static int texturePicmip;
 static int rasterBlendMode;
 static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
@@ -236,6 +242,52 @@ PLAYABLE_API int playable_window_write_batch_vertex(unsigned char *data,int byte
     values[4]=(float)v;values[5]=(float)lu;values[6]=(float)lv;values[7]=(float)light;
     memcpy(data+offset,values,sizeof(values));return 1;
 }
+static unsigned char batchColorByte(int64_t value) {
+    return (unsigned char)(value < 0 ? 0 : value > 255 ? 255 : value);
+}
+
+static void writePositionCorner(playableTriangleBatchRecord *record, int corner,
+        double x, double y, double z, double u, double v, double lu, double lv, double light,
+        int64_t red, int64_t green, int64_t blue, int64_t alpha) {
+    float *vertex = record->vertex[corner];
+    unsigned char *color = record->vertexColor[corner];
+    vertex[0] = (float)x;
+    vertex[1] = (float)y;
+    vertex[2] = (float)z;
+    vertex[3] = (float)u;
+    vertex[4] = (float)v;
+    vertex[5] = (float)lu;
+    vertex[6] = (float)lv;
+    vertex[7] = (float)light;
+    color[0] = batchColorByte(red);
+    color[1] = batchColorByte(green);
+    color[2] = batchColorByte(blue);
+    color[3] = batchColorByte(alpha);
+}
+
+PLAYABLE_API int playable_window_write_position_triangle(unsigned char *data, int bytes,
+        int triangle, int baseSlot, int lightmapSlot, int red, int green, int blue,
+        double x0, double y0, double z0, double u0, double v0, double lu0, double lv0, double light0,
+        int64_t r0, int64_t g0, int64_t b0, int64_t a0,
+        double x1, double y1, double z1, double u1, double v1, double lu1, double lv1, double light1,
+        int64_t r1, int64_t g1, int64_t b1, int64_t a1,
+        double x2, double y2, double z2, double u2, double v2, double lu2, double lv2, double light2,
+        int64_t r2, int64_t g2, int64_t b2, int64_t a2) {
+    playableTriangleBatchRecord *record;
+    if (!data || bytes < PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES || triangle < 0 ||
+            triangle >= bytes / PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES) return 0;
+    record = (playableTriangleBatchRecord *)(data + (SIZE_T)triangle * sizeof(*record));
+    record->baseTextureSlot = baseSlot;
+    record->lightmapTextureSlot = lightmapSlot;
+    record->fallbackRed = red;
+    record->fallbackGreen = green;
+    record->fallbackBlue = blue;
+    writePositionCorner(record, 0, x0, y0, z0, u0, v0, lu0, lv0, light0, r0, g0, b0, a0);
+    writePositionCorner(record, 1, x1, y1, z1, u1, v1, lu1, lv1, light1, r1, g1, b1, a1);
+    writePositionCorner(record, 2, x2, y2, z2, u2, v2, lu2, lv2, light2, r2, g2, b2, a2);
+    return 1;
+}
+
 PLAYABLE_API int playable_window_update_stage_vertex(unsigned char *data,int bytes,int triangle,int vertex,
         double x,double y,double z,double u,double v,int red,int green,int blue,int alpha) {
     playableTriangleBatchRecord *record;
@@ -249,6 +301,60 @@ PLAYABLE_API int playable_window_update_stage_vertex(unsigned char *data,int byt
     record->vertexColor[vertex][2]=(unsigned char)(blue<0 ? 0 : blue>255 ? 255 : blue);
     record->vertexColor[vertex][3]=(unsigned char)(alpha<0 ? 0 : alpha>255 ? 255 : alpha);
     return 1;
+}
+
+/* The static lightingSpecular stage changes only vertex alpha with the view.
+ * Normals are packed once by MiniLang; retain Quake's binary32 operation order
+ * and fast inverse square root instead of making 3*N interpreted FFI calls. */
+static float specularMul(float a,float b) { volatile float result=a*b;return result; }
+static float specularAdd(float a,float b) { volatile float result=a+b;return result; }
+static float specularSub(float a,float b) { volatile float result=a-b;return result; }
+static float specularDot(const float *a,const float *b) {
+    return specularAdd(specularAdd(specularMul(a[0],b[0]),specularMul(a[1],b[1])),specularMul(a[2],b[2]));
+}
+static float specularRsqrt(float value) {
+    uint32_t bits;float y,x2=specularMul(value,0.5f);
+    memcpy(&bits,&value,4);bits=0x5f3759dfU-((uint32_t)((int32_t)bits>>1));memcpy(&y,&bits,4);
+    return specularMul(y,specularSub(1.5f,specularMul(specularMul(x2,y),y)));
+}
+static unsigned char specularByte(const float *position,const float *normal,const float *eye) {
+    const float origin[3]={-960.0f,1980.0f,96.0f};
+    float light[3],reflected[3],viewer[3],scale,dot,value;
+    int axis;
+    for(axis=0;axis<3;++axis) light[axis]=specularSub(origin[axis],position[axis]);
+    scale=specularRsqrt(specularDot(light,light));
+    for(axis=0;axis<3;++axis) light[axis]=specularMul(light[axis],scale);
+    dot=specularDot(normal,light);
+    for(axis=0;axis<3;++axis) reflected[axis]=specularSub(specularMul(specularMul(normal[axis],2.0f),dot),light[axis]);
+    for(axis=0;axis<3;++axis) viewer[axis]=specularSub(eye[axis],position[axis]);
+    scale=specularRsqrt(specularDot(viewer,viewer));value=specularMul(specularDot(reflected,viewer),scale);
+    if(value<0.0f) return 0;
+    value=specularMul(value,value);value=specularMul(value,value);
+    value=specularMul(value,255.0f);
+    if(value>=255.0f) return 255;
+    if(value<=0.0f) return 0;
+    return (unsigned char)(int)value;
+}
+PLAYABLE_API int playable_window_update_specular_pass(unsigned char *records,int recordBytes,
+        const unsigned char *normalBytes,int normalLength,int triangleCount,
+        double eyeX,double eyeY,double eyeZ) {
+    float eye[3];int triangle,vertex;unsigned int savedControl;
+    if(!records || !normalBytes || triangleCount<0 || triangleCount>PLAYABLE_TRIANGLE_BATCH_MAX_COUNT ||
+            recordBytes<0 || normalLength<0 || triangleCount>recordBytes/PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES ||
+            triangleCount>normalLength/36) return 0;
+    savedControl=_mm_getcsr();_mm_setcsr((savedControl & ~0xe07fU) | 0x1f80U);
+    eye[0]=(float)eyeX;eye[1]=(float)eyeY;eye[2]=(float)eyeZ;
+    for(triangle=0;triangle<triangleCount;++triangle) {
+        playableTriangleBatchRecord *record=(playableTriangleBatchRecord *)(records+(SIZE_T)triangle*PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES);
+        for(vertex=0;vertex<3;++vertex) {
+            float normal[3];unsigned char *color=record->vertexColor[vertex];
+            memcpy(normal,normalBytes+(SIZE_T)triangle*36+(SIZE_T)vertex*12,12);
+            color[0]=color[1]=color[2]=255;
+            color[3]=specularByte(record->vertex[vertex],normal,eye);
+            record->vertex[vertex][7]=1.0f;
+        }
+    }
+    _mm_setcsr(savedControl);return 1;
 }
 
 static void writeScreenQuadVertex(playableTriangleBatchRecord *record, int vertex,
@@ -497,6 +603,10 @@ static int translateVirtualKey(WPARAM key, LPARAM flags) {
 /* Baseq3 translates physical keys from the scan code stored in lParam.  The
  * virtual-key fallback keeps synthetic host events useful when no scan code
  * is present, while real window messages take the exact original path. */
+static int consoleScanKey(LPARAM flags) {
+    return (((unsigned int)flags >> 16) & 255u) == 0x29u;
+}
+
 static int mapScanKey(WPARAM virtualKey, LPARAM flags) {
     static const unsigned char scanToKey[128] = {
         0,27,'1','2','3','4','5','6','7','8','9','0','-','=',127,9,
@@ -872,36 +982,24 @@ static void releaseSurface(void) {
 
 static int allocateSurface(int width, int height) {
     SIZE_T byteCount;
-    releaseSurface();
+    void *next[4] = {0};
+    int i;
     if (width < 1 || height < 1 || width > 16384 || height > 16384) return 0;
+    if (width == surfaceWidth && height == surfaceHeight) return 1;
     byteCount = (SIZE_T)width * (SIZE_T)height * 4u;
-    if (byteCount / 4u != (SIZE_T)width * (SIZE_T)height) return 0;
-    pixels = (uint32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!pixels) return 0;
-    presentedPixels = (uint32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!presentedPixels) {
-        VirtualFree(pixels, 0, MEM_RELEASE);
-        pixels = 0;
-        return 0;
+    for (i = 0; i < 4; ++i) {
+        next[i] = VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+        if (!next[i]) {
+            while (i > 0) VirtualFree(next[--i], 0, MEM_RELEASE);
+            return 0;
+        }
     }
-    depthPixels = (float *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!depthPixels) {
-        VirtualFree(pixels, 0, MEM_RELEASE);
-        VirtualFree(presentedPixels, 0, MEM_RELEASE);
-        pixels = 0;
-        presentedPixels = 0;
-        return 0;
-    }
-    stencilPixels = (int32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    if (!stencilPixels) {
-        VirtualFree(pixels, 0, MEM_RELEASE);
-        VirtualFree(presentedPixels, 0, MEM_RELEASE);
-        VirtualFree(depthPixels, 0, MEM_RELEASE);
-        pixels = 0;
-        presentedPixels = 0;
-        depthPixels = 0;
-        return 0;
-    }
+    AcquireSRWLockExclusive(&presentationLock);
+    releaseSurface();
+    pixels = (uint32_t *)next[0];
+    presentedPixels = (uint32_t *)next[1];
+    depthPixels = (float *)next[2];
+    stencilPixels = (int32_t *)next[3];
     surfaceWidth = width;
     surfaceHeight = height;
     ZeroMemory(&bitmapInfo, sizeof(bitmapInfo));
@@ -911,6 +1009,75 @@ static int allocateSurface(int width, int height) {
     bitmapInfo.bmiHeader.biPlanes = 1;
     bitmapInfo.bmiHeader.biBitCount = 32;
     bitmapInfo.bmiHeader.biCompression = BI_RGB;
+    ReleaseSRWLockExclusive(&presentationLock);
+    return 1;
+}
+
+typedef struct playableDisplayMode_s {
+    int width, height, fullscreen, frequency;
+} playableDisplayMode;
+
+static int setExclusiveDisplay(int width, int height, int frequency) {
+    DEVMODEW mode;
+    ZeroMemory(&mode, sizeof(mode)); mode.dmSize = sizeof(mode);
+    mode.dmPelsWidth = (DWORD)width; mode.dmPelsHeight = (DWORD)height;
+    mode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
+    if (frequency > 0) {
+        mode.dmDisplayFrequency = (DWORD)frequency;
+        mode.dmFields |= DM_DISPLAYFREQUENCY;
+    }
+    if (ChangeDisplaySettingsW(&mode, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) return 0;
+    displayModeChanged = 1;
+    return 1;
+}
+
+/* Run on the HWND thread between frames. Keep the DC and GL context alive so
+ * a mode change does not reload the map or invalidate texture handles. */
+static int changeWindowMode(HWND hwnd, const playableDisplayMode *mode) {
+    int width = mode->width, height = mode->height;
+    int left, top, exclusive = displayModeChanged;
+    DWORD style = WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_THICKFRAME);
+    RECT rect = {0};
+    RECT work = {0};
+    if (liveModeWidth == width && liveModeHeight == height &&
+            requestedFullscreen == mode->fullscreen &&
+            requestedDisplayFrequency == mode->frequency) return 1;
+    restoreDisplayMode();
+    if (mode->fullscreen) {
+        style = WS_POPUP;
+        if (!setExclusiveDisplay(width, height, mode->frequency)) {
+            /* Drivers need not expose every original Quake mode. Use the
+             * desktop geometry when exclusive switching is unavailable. */
+            width = GetSystemMetrics(SM_CXSCREEN);
+            height = GetSystemMetrics(SM_CYSCREEN);
+        }
+        left = top = 0;
+    } else {
+        SystemParametersInfoW(SPI_GETWORKAREA, 0, &work, 0);
+        left = work.left + (work.right - work.left - width) / 2;
+        top = work.top + (work.bottom - work.top - height) / 2;
+        if (left < work.left) left = work.left;
+        if (top < work.top) top = work.top;
+    }
+    if (!allocateSurface(width, height)) {
+        restoreDisplayMode();
+        if (exclusive) setExclusiveDisplay(surfaceWidth, surfaceHeight, requestedDisplayFrequency);
+        return 0;
+    }
+    requestedFullscreen = mode->fullscreen;
+    requestedDisplayFrequency = mode->frequency;
+    liveModeWidth = mode->width;
+    liveModeHeight = mode->height;
+    rect.right = width; rect.bottom = height;
+    if (!requestedFullscreen) AdjustWindowRect(&rect, style, FALSE);
+    ShowWindow(hwnd, SW_RESTORE);
+    SetWindowLongPtrW(hwnd, GWL_STYLE, style | WS_VISIBLE);
+    SetWindowPos(hwnd, HWND_TOP, left, top, rect.right - rect.left,
+        rect.bottom - rect.top, SWP_FRAMECHANGED | SWP_SHOWWINDOW);
+    if (InterlockedCompareExchange(&inputAppActive, 0, 0)) {
+        deactivateMouseOnWindow();
+        activateMouseOnWindow(hwnd);
+    }
     return 1;
 }
 
@@ -930,6 +1097,11 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
         case WM_APP + 2:
             if (wParam) activateMouseOnWindow(hwnd); else deactivateMouseOnWindow();
             return 0;
+        case WM_APP + 3: {
+            playableDisplayMode mode = { LOWORD(lParam), HIWORD(lParam), LOWORD(wParam) != 0, HIWORD(wParam) };
+            if (mode.width < 160 || mode.height < 120 || mode.width > 4096 || mode.height > 4096) return 0;
+            return changeWindowMode(hwnd, &mode);
+        }
         case WM_DESTROY:
             setAltTabDisabled(hwnd, 0);
             if (windowDC) ReleaseDC(hwnd, windowDC);
@@ -986,10 +1158,10 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             return 0;
         case WM_SYSKEYDOWN:
             if (wParam == VK_RETURN) {
-                requestedFullscreen = !requestedFullscreen;
-                InterlockedExchange(&videoRestartRequested, 1);
+                if (!(lParam & (1L << 30))) InterlockedExchange(&videoRestartRequested, 1);
                 return 0;
             }
+            if (wParam == VK_F4) return DefWindowProcW(hwnd, message, wParam, lParam);
             queueKeyboardEvent(mapScanKey(wParam, lParam), 1, currentMilliseconds());
             return 0;
         case WM_KEYUP:
@@ -999,7 +1171,9 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
         /* win_wndproc.c queues WM_CHAR separately from the physical key so
          * TranslateMessage has already applied layout, Shift and Caps Lock. */
         case WM_CHAR:
-            if ((unsigned int)wParam <= 255u)
+            /* MapKey treats scan 0x29 as the console key on every layout.
+             * It must not insert its translated character into the field. */
+            if (!consoleScanKey(lParam) && (unsigned int)wParam <= 255u)
                 queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_CHAR, (int)wParam, 0);
             return 0;
         case WM_LBUTTONDOWN:
@@ -1172,7 +1346,9 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
     windowCreateSucceeded = 1;
     SetEvent(windowCreatedEvent);
     while (GetMessageW(&message, 0, 0, 0) > 0) {
-        TranslateMessage(&message);
+        /* Do not arm a Windows dead key when ^ is the console toggle. */
+        if (!((message.message == WM_KEYDOWN || message.message == WM_SYSKEYDOWN) && consoleScanKey(message.lParam)))
+            TranslateMessage(&message);
         DispatchMessageW(&message);
     }
     mouse.dwFlags = RIDEV_REMOVE;
@@ -1229,6 +1405,7 @@ PLAYABLE_API int playable_window_create(int width, int height) {
     if (!openGLDepthBits) openGLDepthBits = 24;
     if (!openGLStencilBits) openGLStencilBits = 8;
     initializeOpenGL(requestedOpenGLDriver[0] ? requestedOpenGLDriver : L"opengl32.dll");
+    highResolutionTimer = timeBeginPeriod(1) == TIMERR_NOERROR;
     return 1;
 }
 
@@ -1279,7 +1456,18 @@ PLAYABLE_API int playable_window_gl_color_bits(void) { return openGLColorBits; }
 PLAYABLE_API int playable_window_gl_depth_bits(void) { return openGLDepthBits; }
 PLAYABLE_API int playable_window_gl_stencil_bits(void) { return openGLStencilBits; }
 PLAYABLE_API int playable_window_gl_stereo(void) { return openGLStereo; }
-PLAYABLE_API int playable_window_gl_fullscreen(void) { return requestedFullscreen && displayModeChanged; }
+PLAYABLE_API int playable_window_gl_fullscreen(void) { return requestedFullscreen; }
+
+PLAYABLE_API int playable_window_set_mode(int width, int height, int fullscreen,
+        int frequency, int *output, int capacity) {
+    if (!windowHandle || !output || capacity < 3 || width < 160 || height < 120 ||
+            width > 4096 || height > 4096 || frequency < 0 || frequency > 65535) return 0;
+    if (!SendMessageW(windowHandle, WM_APP + 3, MAKEWPARAM(fullscreen != 0, frequency),
+            MAKELPARAM(width, height))) return 0;
+    output[0] = surfaceWidth; output[1] = surfaceHeight;
+    output[2] = requestedFullscreen;
+    return 1;
+}
 
 PLAYABLE_API int playable_window_gl_info(int which, unsigned char *output, int capacity) {
     const char *source = "";
@@ -1696,7 +1884,7 @@ PLAYABLE_API double playable_window_sample_depth(int x, int y) {
 }
 
 static int uploadTexture(int slot, const unsigned char *rgba,
-        int width, int height, int mipmapped) {
+        int width, int height, int mipmapped, int picmip) {
     playableTexture *texture;
     SIZE_T pixelCount;
     SIZE_T byteCount;
@@ -1723,7 +1911,7 @@ static int uploadTexture(int slot, const unsigned char *rgba,
         uint32_t *previous = copy;
         int previousWidth = width;
         int previousHeight = height;
-        while (mipmapped && (previousWidth > 1 || previousHeight > 1) &&
+        while ((mipmapped || mipCount < picmip) && (previousWidth > 1 || previousHeight > 1) &&
                 mipCount < PLAYABLE_MAX_MIP_LEVELS - 1) {
             int nextWidth = previousWidth > 1 ? previousWidth / 2 : 1;
             int nextHeight = previousHeight > 1 ? previousHeight / 2 : 1;
@@ -1767,6 +1955,18 @@ static int uploadTexture(int slot, const unsigned char *rgba,
             previous = next;previousWidth = nextWidth;previousHeight = nextHeight;
         }
     }
+    if (picmip > mipCount) picmip = mipCount;
+    if (picmip > 0) {
+        int level;
+        VirtualFree(copy, 0, MEM_RELEASE);
+        for (level = 0; level < picmip-1; ++level) VirtualFree(mipPixels[level], 0, MEM_RELEASE);
+        copy = mipPixels[picmip-1];width = mipWidths[picmip-1];height = mipHeights[picmip-1];
+        mipCount -= picmip;
+        for (level = 0; level < mipCount; ++level) {
+            mipPixels[level] = mipPixels[level+picmip];mipWidths[level] = mipWidths[level+picmip];
+            mipHeights[level] = mipHeights[level+picmip];
+        }
+    }
     texture = &textures[slot];
     if (texture->pixels) {
         int level;
@@ -1783,6 +1983,7 @@ static int uploadTexture(int slot, const unsigned char *rgba,
     texture->widthMask = (width & (width - 1)) == 0 ? width - 1 : -1;
     texture->heightMask = (height & (height - 1)) == 0 ? height - 1 : -1;
     texture->mipLevelCount = mipCount + 1;
+    texture->mipmapped = mipmapped;
     for (i = 0; i < (SIZE_T)mipCount; ++i) {
         texture->mipPixels[i] = mipPixels[i];texture->mipWidths[i] = mipWidths[i];
         texture->mipHeights[i] = mipHeights[i];
@@ -1793,13 +1994,23 @@ static int uploadTexture(int slot, const unsigned char *rgba,
 
 PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *rgba,
         int width, int height) {
-    return uploadTexture(slot, rgba, width, height, 1);
+    return uploadTexture(slot, rgba, width, height, 1, 0);
 }
 
 PLAYABLE_API int playable_window_upload_texture_mipmapped(int slot,
         const unsigned char *rgba, int width, int height, int mipmapped) {
     if (mipmapped != 0 && mipmapped != 1) return 0;
-    return uploadTexture(slot, rgba, width, height, mipmapped);
+    return uploadTexture(slot, rgba, width, height, mipmapped, 0);
+}
+
+PLAYABLE_API int playable_window_upload_material_texture(int slot,
+        const unsigned char *rgba, int width, int height, int mipmapped, int allowPicmip) {
+    return uploadTexture(slot, rgba, width, height, mipmapped != 0, allowPicmip ? texturePicmip : 0);
+}
+
+PLAYABLE_API void playable_window_set_texture_settings(int picmip, int mode) {
+    texturePicmip = picmip < 0 ? 0 : picmip > 16 ? 16 : picmip;
+    hardwareSetTextureMode(mode);
 }
 
 PLAYABLE_API void playable_window_release_texture(int slot) {
@@ -3220,7 +3431,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     if (triangleCount == 0 || !records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
-    if (!clippedWidth || !clippedHeight) return 0;
+    if (!clippedWidth || !clippedHeight) return 0; /* no visible submission */
     if (hardwareRenderer) return hardwareDrawWorld(records,triangleCount,viewportX,viewportY,viewportWidth,viewportHeight,
         positionX,positionY,positionZ,rightX,rightY,rightZ,upX,upY,upZ,forwardX,forwardY,forwardZ,focal,nearDistance);
     if (drawWorldBatchParallel(records, byteCount, triangleCount,
@@ -3375,6 +3586,58 @@ PLAYABLE_API void playable_window_draw_line(int x0, int y0, int x1, int y1,
     }
 }
 
+/* Convert the checked TGA payload directly to the original bottom-up RGBA
+ * layout. RLE packets can span multiple rows. The engine validates the image
+ * header and the bridge checks both buffers before using any offsets. */
+PLAYABLE_API int playable_decode_tga_pixels(const unsigned char *data, int dataBytes, int offset,
+                                           int width, int height, int pixelBytes, int rle,
+                                           unsigned char *output, int outputBytes) {
+    SIZE_T count, remaining, source, rowBytes, row, column = 0;
+    if (!data || !output || offset < 0 || offset > dataBytes ||
+        width < 1 || width > 16384 || height < 1 || height > 16384 ||
+        (pixelBytes != 1 && pixelBytes != 3 && pixelBytes != 4)) return -1;
+    count = (SIZE_T)width * (SIZE_T)height;
+    if (outputBytes < 0 || count * 4u != (SIZE_T)outputBytes) return -1;
+    source = (SIZE_T)offset;
+    rowBytes = (SIZE_T)width * 4u;
+    row = (SIZE_T)(height - 1) * rowBytes;
+    remaining = count;
+    while (remaining) {
+        SIZE_T packet = remaining;
+        int repeated = 0;
+        if (rle) {
+            unsigned int header;
+            if (source == (SIZE_T)dataBytes) return -2;
+            header = data[source++];
+            packet = (header & 127u) + 1u;
+            if (packet > remaining) return -3;
+            repeated = (header & 128u) != 0u;
+        }
+        if ((!repeated ? packet : 1u) * (SIZE_T)pixelBytes > (SIZE_T)dataBytes - source)
+            return repeated ? -4 : (rle ? -5 : -6);
+        remaining -= packet;
+        while (packet--) {
+            unsigned char *pixel = output + row + column;
+            if (pixelBytes == 1) {
+                pixel[0] = pixel[1] = pixel[2] = data[source];
+            } else {
+                pixel[0] = data[source + 2];
+                pixel[1] = data[source + 1];
+                pixel[2] = data[source];
+            }
+            pixel[3] = pixelBytes == 4 ? data[source + 3] : 255;
+            if (!repeated) source += (SIZE_T)pixelBytes;
+            column += 4u;
+            if (column == rowBytes) {
+                column = 0;
+                if (row) row -= rowBytes;
+            }
+        }
+        if (repeated) source += (SIZE_T)pixelBytes;
+    }
+    return 1;
+}
+
 PLAYABLE_API void playable_window_present(void) {
     RECT client;
     if (!windowHandle || !windowDC || !pixels) return;
@@ -3460,6 +3723,11 @@ PLAYABLE_API void playable_window_shutdown(void) {
     inputJoystickAvailable = 0;
     ZeroMemory(&inputJoystickCaps, sizeof(inputJoystickCaps));
     restoreDisplayMode();
+    requestedFullscreen = 0;
+    requestedDisplayFrequency = 0;
+    liveModeWidth = liveModeHeight = 0;
+    if (highResolutionTimer) timeEndPeriod(1);
+    highResolutionTimer = 0;
     resetInputEvents();
     releaseSurface();
     for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) playable_window_release_texture(slot);

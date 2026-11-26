@@ -5,6 +5,11 @@ package mq3.botlib.ai_chat_syscalls
 import mq3.botlib.ai_chat_profiles as chat
 import mq3.vm.syscall_common as common
 
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_chat_profiles.loadChatFile` while evaluating `dispatch`.
+/// @param state AI chat profiles state; accesses `pools`, `reload` and `cache`. May update `state.cache` in place.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(state,vm,base,op)
   handle=common.argument(vm,base,1)
   if op==chat.OP_LOAD_CHAT_FILE then

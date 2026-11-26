@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for bot population, containing `registry`, `clients`, `checkTime`, `minimumPlayers` and `minimumVm` and related fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L32)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 allocateClientFn
 ```
 
+Injected callback for allocate client; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L50)
 
 <a id="field-field-mq3-game-bot-population-state-botenable-botenable-src-mq3-game-bot-population-ml-860624838"></a>
 ### botEnable
@@ -31,8 +35,10 @@ allocateClientFn
 botEnable
 ```
 
+Setting controlling bot creation and bot-AI processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L46)
 
 <a id="field-field-mq3-game-bot-population-state-checktime-checktime-src-mq3-game-bot-population-ml-132082926"></a>
 ### checkTime
@@ -41,8 +47,10 @@ botEnable
 checkTime
 ```
 
+Deadline for the next periodic condition check.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L38)
 
 <a id="field-field-mq3-game-bot-population-state-clients-clients-src-mq3-game-bot-population-ml-326444450"></a>
 ### clients
@@ -51,8 +59,10 @@ checkTime
 clients
 ```
 
+Client records indexed by client slot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L36)
 
 <a id="field-field-mq3-game-bot-population-state-clrunning-clrunning-src-mq3-game-bot-population-ml-2140786998"></a>
 ### clRunning
@@ -61,8 +71,10 @@ clients
 clRunning
 ```
 
+Setting indicating whether a local client is running.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L48)
 
 <a id="field-field-mq3-game-bot-population-state-connectclientfn-connectclientfn-src-mq3-game-bot-population-ml-547609122"></a>
 ### connectClientFn
@@ -71,8 +83,10 @@ clRunning
 connectClientFn
 ```
 
+Injected callback for connect client; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L52)
 
 <a id="field-field-mq3-game-bot-population-state-consolefn-consolefn-src-mq3-game-bot-population-ml-608354070"></a>
 ### consoleFn
@@ -81,8 +95,10 @@ connectClientFn
 consoleFn
 ```
 
+Injected callback for console; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L56)
 
 <a id="field-field-mq3-game-bot-population-state-cvarsetfn-cvarsetfn-src-mq3-game-bot-population-ml-1321379262"></a>
 ### cvarSetFn
@@ -91,8 +107,10 @@ consoleFn
 cvarSetFn
 ```
 
+Injected callback for console variable set; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L62)
 
 <a id="field-field-mq3-game-bot-population-state-minimumplayers-minimumplayers-src-mq3-game-bot-population-ml-1085524198"></a>
 ### minimumPlayers
@@ -101,8 +119,10 @@ cvarSetFn
 minimumPlayers
 ```
 
+Target minimum player count maintained by bot population logic.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L40)
 
 <a id="field-field-mq3-game-bot-population-state-minimumvm-minimumvm-src-mq3-game-bot-population-ml-504172402"></a>
 ### minimumVm
@@ -111,8 +131,10 @@ minimumPlayers
 minimumVm
 ```
 
+VM console-variable record controlling the minimum-player target.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L42)
 
 <a id="field-field-mq3-game-bot-population-state-printfn-printfn-src-mq3-game-bot-population-ml-1735405702"></a>
 ### printFn
@@ -121,8 +143,10 @@ minimumVm
 printFn
 ```
 
+Injected callback for print; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L60)
 
 <a id="field-field-mq3-game-bot-population-state-registry-registry-src-mq3-game-bot-population-ml-650954208"></a>
 ### registry
@@ -131,8 +155,10 @@ printFn
 registry
 ```
 
+Registry of currently loaded preprocessor/token sources.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L34)
 
 <a id="field-field-mq3-game-bot-population-state-servercommandfn-servercommandfn-src-mq3-game-bot-population-ml-1873044106"></a>
 ### serverCommandFn
@@ -141,8 +167,10 @@ registry
 serverCommandFn
 ```
 
+Injected callback for server command; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L58)
 
 <a id="field-field-mq3-game-bot-population-state-setuserinfofn-setuserinfofn-src-mq3-game-bot-population-ml-618932442"></a>
 ### setUserinfoFn
@@ -151,8 +179,10 @@ serverCommandFn
 setUserinfoFn
 ```
 
+Injected callback for set user information; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L54)
 
 <a id="field-field-mq3-game-bot-population-state-spskill-spskill-src-mq3-game-bot-population-ml-915670594"></a>
 ### spSkill
@@ -161,5 +191,7 @@ setUserinfoFn
 spSkill
 ```
 
+Single-player bot skill setting.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L44)

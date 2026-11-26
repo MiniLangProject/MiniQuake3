@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for audio.spatial_mixer, containing `outputRate`, `chunkFrames`, `sources`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L39)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 chunkFrames
 ```
 
+Number of stereo sample frames produced by one mixing pass.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L43)
 
 <a id="field-field-mq3-audio-spatial-mixer-state-outputrate-outputrate-src-mq3-audio-spatial-mixer-ml-76856374"></a>
 ### outputRate
@@ -31,8 +35,10 @@ chunkFrames
 outputRate
 ```
 
+Output sample rate in hertz.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L41)
 
 <a id="field-field-mq3-audio-spatial-mixer-state-sources-sources-src-mq3-audio-spatial-mixer-ml-1838582072"></a>
 ### sources
@@ -41,5 +47,7 @@ outputRate
 sources
 ```
 
+Registered loop sources and their independent enable states.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L45)

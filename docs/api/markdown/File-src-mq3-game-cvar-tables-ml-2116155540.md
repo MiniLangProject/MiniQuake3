@@ -15,9 +15,11 @@ Reachable from entry: **no**
 function entries(buildDate)
 ```
 
+Return the ordered entries table for cvar tables: 46 entries beginning with `["g_cheats","sv_cheats","",0,0,false,false]` and `["","gamename","baseq3",68,0,false,false]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `buildDate` | `dynamic` | — |  |
+| `buildDate` | `dynamic` | — | Value used by `entries` in `["","gamedate",buildDate,64,0,false,false],`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_tables.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_tables.ml#L7)

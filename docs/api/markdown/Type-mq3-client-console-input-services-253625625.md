@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores console input host-service callbacks, including `context`, `commandFn`, `reliableFn`, `printFn`, `completeFn`, `clipboardFn` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L74)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 clipboardFn
 ```
 
+Host callback for the clipboard operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L90)
 
 <a id="field-field-mq3-client-console-input-services-commandfn-commandfn-src-mq3-client-console-input-ml-1705980693"></a>
 ### commandFn
@@ -31,8 +35,10 @@ clipboardFn
 commandFn
 ```
 
+Host callback for the command operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L79)
 
 <a id="field-field-mq3-client-console-input-services-completefn-completefn-src-mq3-client-console-input-ml-50322347"></a>
 ### completeFn
@@ -41,8 +47,10 @@ commandFn
 completeFn
 ```
 
+Host callback for the complete operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L87)
 
 <a id="field-field-mq3-client-console-input-services-context-context-src-mq3-client-console-input-ml-621193021"></a>
 ### context
@@ -51,8 +59,10 @@ completeFn
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for console editing and command submission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L77)
 
 <a id="field-field-mq3-client-console-input-services-printfn-printfn-src-mq3-client-console-input-ml-827671741"></a>
 ### printFn
@@ -61,8 +71,10 @@ context
 printFn
 ```
 
+Host callback for the print operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L84)
 
 <a id="field-field-mq3-client-console-input-services-reliablefn-reliablefn-src-mq3-client-console-input-ml-1775557249"></a>
 ### reliableFn
@@ -71,8 +83,10 @@ printFn
 reliableFn
 ```
 
+Host callback for the reliable operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L82)
 
 <a id="field-field-mq3-client-console-input-services-scrollfn-scrollfn-src-mq3-client-console-input-ml-789966607"></a>
 ### scrollFn
@@ -81,5 +95,7 @@ reliableFn
 scrollFn
 ```
 
+Host callback for the scroll operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L92)

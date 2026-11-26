@@ -9,8 +9,10 @@
 struct Wave
 ```
 
+Data record for `mq3.renderer.shader_parser.Wave`; groups `func`, `base`, `amplitude`, `phase`, `frequency`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L65)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Wave
 amplitude
 ```
 
+Magnitude by which the waveform varies around its base value.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L71)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-base-base-src-mq3-renderer-shader-parser-ml-957843442"></a>
 ### base
@@ -31,8 +35,10 @@ amplitude
 base
 ```
 
+Constant value around which the waveform oscillates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L69)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-frequency-frequency-src-mq3-renderer-shader-parser-ml-2012708784"></a>
 ### frequency
@@ -41,8 +47,10 @@ base
 frequency
 ```
 
+Number of waveform cycles per second.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L75)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-func-func-src-mq3-renderer-shader-parser-ml-1308089640"></a>
 ### func
@@ -51,8 +59,10 @@ frequency
 func
 ```
 
+Waveform function selected for the shader effect.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L67)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-phase-phase-src-mq3-renderer-shader-parser-ml-1627913240"></a>
 ### phase
@@ -61,5 +71,7 @@ func
 phase
 ```
 
+Offset applied to the waveform's periodic phase.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L73)

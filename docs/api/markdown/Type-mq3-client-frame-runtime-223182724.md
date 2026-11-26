@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Stores frame runtime wiring and state, including `running`, `cdDialog`, `state`, `keyCatchers`, `serverRunning`, `aviDemo` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L31)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 aviDemo
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L47)
 
 <a id="field-field-mq3-client-frame-runtime-cddialog-cddialog-src-mq3-client-frame-ml-2103340699"></a>
 ### cdDialog
@@ -31,8 +35,10 @@ aviDemo
 cdDialog
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L37)
 
 <a id="field-field-mq3-client-frame-runtime-forceavidemo-forceavidemo-src-mq3-client-frame-ml-1875475033"></a>
 ### forceAviDemo
@@ -41,8 +47,10 @@ cdDialog
 forceAviDemo
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L50)
 
 <a id="field-field-mq3-client-frame-runtime-framecount-framecount-src-mq3-client-frame-ml-2009934693"></a>
 ### framecount
@@ -51,8 +59,10 @@ forceAviDemo
 framecount
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L67)
 
 <a id="field-field-mq3-client-frame-runtime-frametime-frametime-src-mq3-client-frame-ml-1457084413"></a>
 ### frametime
@@ -61,8 +71,10 @@ framecount
 frametime
 ```
 
+Elapsed client time in milliseconds since the preceding frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L61)
 
 <a id="field-field-mq3-client-frame-runtime-keycatchers-keycatchers-src-mq3-client-frame-ml-1633504877"></a>
 ### keyCatchers
@@ -71,8 +83,10 @@ frametime
 keyCatchers
 ```
 
+Bitmask selecting which subsystems currently intercept keyboard input.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L42)
 
 <a id="field-field-mq3-client-frame-runtime-lastpackettime-lastpackettime-src-mq3-client-frame-ml-1852449823"></a>
 ### lastPacketTime
@@ -81,8 +95,10 @@ keyCatchers
 lastPacketTime
 ```
 
+Client timestamp of the latest received server packet, used to detect timeouts.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L78)
 
 <a id="field-field-mq3-client-frame-runtime-modifiedflags-modifiedflags-src-mq3-client-frame-ml-1390720957"></a>
 ### modifiedFlags
@@ -91,8 +107,10 @@ lastPacketTime
 modifiedFlags
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `checkUserinfo` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L76)
 
 <a id="field-field-mq3-client-frame-runtime-paused-paused-src-mq3-client-frame-ml-1285963581"></a>
 ### paused
@@ -101,8 +119,10 @@ modifiedFlags
 paused
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `checkUserinfo` and `checkTimeout` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L70)
 
 <a id="field-field-mq3-client-frame-runtime-realframetime-realframetime-src-mq3-client-frame-ml-1125961297"></a>
 ### realFrametime
@@ -111,8 +131,10 @@ paused
 realFrametime
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L59)
 
 <a id="field-field-mq3-client-frame-runtime-realtime-realtime-src-mq3-client-frame-ml-1144298339"></a>
 ### realtime
@@ -121,8 +143,10 @@ realFrametime
 realtime
 ```
 
+Accumulated client runtime clock in milliseconds, advanced by each frame duration and used for networking and timeouts.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L64)
 
 <a id="field-field-mq3-client-frame-runtime-running-running-src-mq3-client-frame-ml-1784556097"></a>
 ### running
@@ -131,8 +155,10 @@ realtime
 running
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-runtime-serverpaused-serverpaused-src-mq3-client-frame-ml-1827023199"></a>
 ### serverPaused
@@ -141,8 +167,10 @@ running
 serverPaused
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `checkTimeout` and `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L73)
 
 <a id="field-field-mq3-client-frame-runtime-serverrunning-serverrunning-src-mq3-client-frame-ml-1448503661"></a>
 ### serverRunning
@@ -151,8 +179,10 @@ serverPaused
 serverRunning
 ```
 
+True when a local game server is running in the same engine instance.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L44)
 
 <a id="field-field-mq3-client-frame-runtime-state-state-src-mq3-client-frame-ml-179187009"></a>
 ### state
@@ -161,8 +191,10 @@ serverRunning
 state
 ```
 
+When constructing this record, `runtime` supplies `CA_DISCONNECTED` for this member. Used by `checkUserinfo` and `checkTimeout` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L40)
 
 <a id="field-field-mq3-client-frame-runtime-timegraph-timegraph-src-mq3-client-frame-ml-245379893"></a>
 ### timeGraph
@@ -171,8 +203,10 @@ state
 timeGraph
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L56)
 
 <a id="field-field-mq3-client-frame-runtime-timeoutcount-timeoutcount-src-mq3-client-frame-ml-371866061"></a>
 ### timeoutCount
@@ -181,8 +215,10 @@ timeGraph
 timeoutCount
 ```
 
+When constructing this record, `runtime` supplies `0` for this member. Used by `checkTimeout` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L84)
 
 <a id="field-field-mq3-client-frame-runtime-timeoutseconds-timeoutseconds-src-mq3-client-frame-ml-1863885537"></a>
 ### timeoutSeconds
@@ -191,8 +227,10 @@ timeoutCount
 timeoutSeconds
 ```
 
+When constructing this record, `runtime` supplies `30.0` for this member. Used by `checkTimeout` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L81)
 
 <a id="field-field-mq3-client-frame-runtime-timescale-timescale-src-mq3-client-frame-ml-46034033"></a>
 ### timeScale
@@ -201,5 +239,7 @@ timeoutSeconds
 timeScale
 ```
 
+When constructing this record, `runtime` supplies `1.0` for this member. Used by `run` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L53)

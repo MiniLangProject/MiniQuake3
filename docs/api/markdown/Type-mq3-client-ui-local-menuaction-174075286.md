@@ -9,8 +9,10 @@
 struct MenuAction
 ```
 
+Stores UI local menu action record, including `generic`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L247)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct MenuAction
 generic
 ```
 
+Common menu-item record containing the shared identity, layout, and callback data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L249)

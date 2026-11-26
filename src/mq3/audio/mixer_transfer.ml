@@ -4,14 +4,20 @@
 package mq3.audio.mixer_transfer
 import mq3.compat.numeric as n
 
+/// Create the audio.mixer_transfer error for `fail` with 7240 and the supplied diagnostic text.
+/// @param message Message used in `("audio mixer transfer: " + message)` and `error(7240, ("audio mixer transfer: " + message))`.
 function fail(message)
   return error(7240,"audio mixer transfer: "+message)
 end function
 
+/// Compute audio.mixer_transfer.powerOfTwo as `((value > 0) and ((value & (value - 1)) == 0))`.
+/// @param value Value used in `(value > 0)` and `(value - 1)`.
 function powerOfTwo(value)
   return value>0 and (value&(value-1))==0
 end function
 
+/// Saturate an integer sample to the signed 16-bit PCM range.
+/// @param value Value used in `(value > 32767)` and `(value < - 32768)`.
 function clamp16(value)
   if value>32767 then return 32767 end if
   if value<(-32768) then return -32768 end if
@@ -21,6 +27,13 @@ end function
 // The paint array is interleaved [left,right,...], in the original 24.8 mix scale.
 // output contains logical DMA samples: signed integers for 16-bit and bytes 0..255
 // for 8-bit. It is modified in place, matching the DMA ring buffer.
+/// @param paint Paint used in `len(paint)` and `paint[source]`.
+/// @param paintedTime Painted time used in `(paintedTime < 0)` and `(endTime < paintedTime)`.
+/// @param endTime End time used in `(endTime < paintedTime)` and `(endTime - paintedTime)`.
+/// @param sampleBits Sample bits used in `(sampleBits != 8)` and `(sampleBits == 8)`.
+/// @param channels Channels used in `(channels != 1)` and `(channels != 2)`.
+/// @param dmaSamples Value passed as `value` to `mq3.audio.mixer_transfer.powerOfTwo`.
+/// @param output Mutable sequence written at `outIndex`.
 function transfer(paint,paintedTime,endTime,sampleBits,channels,dmaSamples,output)
   if sampleBits!=8 and sampleBits!=16 then return fail("sample width must be 8 or 16") end if
   if channels!=1 and channels!=2 then return fail("channel count must be 1 or 2") end if

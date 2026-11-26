@@ -9,8 +9,10 @@
 struct ScreenPoint
 ```
 
+Stores QVM preview app screen point record, including `x`, `y`, `depth`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L138)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ScreenPoint
 depth
 ```
 
+When constructing this record, `drawCinematics` supplies `depth` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L144)
 
 <a id="field-field-mq3-client-qvm-preview-app-screenpoint-x-x-src-mq3-client-qvm-preview-app-ml-1829869343"></a>
 ### x
@@ -31,8 +35,10 @@ depth
 x
 ```
 
+Horizontal coordinate of a textured quad vertex in the QVM gameplay preview's output coordinates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L140)
 
 <a id="field-field-mq3-client-qvm-preview-app-screenpoint-y-y-src-mq3-client-qvm-preview-app-ml-1150620787"></a>
 ### y
@@ -41,5 +47,7 @@ x
 y
 ```
 
+Vertical coordinate of a textured quad vertex in the QVM gameplay preview's output coordinates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L142)

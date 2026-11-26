@@ -9,8 +9,10 @@
 struct Rendered
 ```
 
+Data record for `mq3.renderer.tr_font_runtime.Rendered`; groups `bitmap`, `glyph`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L101)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Rendered
 bitmap
 ```
 
+Rasterized glyph bitmap containing coverage samples.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L103)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-rendered-glyph-glyph-src-mq3-renderer-tr-font-runtime-ml-1166136980"></a>
 ### glyph
@@ -31,5 +35,7 @@ bitmap
 glyph
 ```
 
+Glyph metadata produced by rasterization before atlas placement.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L105)

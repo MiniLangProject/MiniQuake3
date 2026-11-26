@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Stores playable spatial ambient runtime wiring and state, including `mix`, `submitted`, `dropped`, `started`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L14)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 dropped
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `pump` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L23)
 
 <a id="field-field-mq3-client-playable-spatial-ambient-runtime-mix-mix-src-mq3-client-playable-spatial-ambient-ml-85360981"></a>
 ### mix
@@ -31,8 +35,10 @@ dropped
 mix
 ```
 
+When constructing this record, `create` supplies `state` for this member. Used by `start` and `pump` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L17)
 
 <a id="field-field-mq3-client-playable-spatial-ambient-runtime-started-started-src-mq3-client-playable-spatial-ambient-ml-43473737"></a>
 ### started
@@ -41,8 +47,10 @@ mix
 started
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `start` and `pump` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L26)
 
 <a id="field-field-mq3-client-playable-spatial-ambient-runtime-submitted-submitted-src-mq3-client-playable-spatial-ambient-ml-244049285"></a>
 ### submitted
@@ -51,5 +59,7 @@ started
 submitted
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `pump` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L20)

@@ -20,13 +20,15 @@ Reachable from entry: **yes**
 function dispatch(runtime, pools, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.readString`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_weapon_weights.loadWeaponWeights` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `pools` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon weights runtime; accesses `fuzzyRuntime`. |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weight_syscalls.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weight_syscalls.ml#L11)

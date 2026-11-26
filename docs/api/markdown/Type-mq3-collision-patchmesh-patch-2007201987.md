@@ -9,8 +9,10 @@
 struct Patch
 ```
 
+Patch record for collision.patchmesh, containing `planes`, `facets`, `bounds`, `planeCache`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L33)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Patch
 bounds
 ```
 
+Minimum and maximum corners enclosing the patch, expanded for collision tolerance.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L39)
 
 <a id="field-field-mq3-collision-patchmesh-patch-facets-facets-src-mq3-collision-patchmesh-ml-1942888197"></a>
 ### facets
@@ -31,8 +35,22 @@ bounds
 facets
 ```
 
+Collision facets generated from the curved patch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L37)
+
+<a id="field-field-mq3-collision-patchmesh-patch-planecache-planecache-src-mq3-collision-patchmesh-ml-527427453"></a>
+### planeCache
+
+```ml
+planeCache
+```
+
+Lookup cache used to reuse equivalent patch clipping planes.
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L41)
 
 <a id="field-field-mq3-collision-patchmesh-patch-planes-planes-src-mq3-collision-patchmesh-ml-1493809119"></a>
 ### planes
@@ -41,5 +59,7 @@ facets
 planes
 ```
 
+Plane records used to classify or clip the represented geometry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L35)

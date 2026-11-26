@@ -9,8 +9,10 @@
 struct AreaTrace
 ```
 
+`AreaTrace` record for aas client movement, containing `areas` and `points`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L112)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct AreaTrace
 areas
 ```
 
+Area records or area assignments used by navigation and visibility queries.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L114)
 
 <a id="field-field-mq3-botlib-aas-client-movement-areatrace-points-points-src-mq3-botlib-aas-client-movement-ml-889010919"></a>
 ### points
@@ -31,5 +35,7 @@ areas
 points
 ```
 
+XYZ points defining the debug shape, polygon, or winding.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L116)

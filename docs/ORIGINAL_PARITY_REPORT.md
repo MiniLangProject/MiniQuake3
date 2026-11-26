@@ -32,7 +32,7 @@ Descriptions and blanket covers-all flags do not replace explicit identities.
 | `win32` | 13 | 12 | 1 | 0 | 0 | 0 |
 | **Total** | **360** | 212 | 69 | 25 | 0 | 54 |
 
-Unresolved symbol identities: **1630**.
+Unresolved symbol identities: **1628**.
 Empty symbol inventories: **71**.
 Effective status corrections: **123**.
 
@@ -319,11 +319,11 @@ Effective status corrections: **123**.
 | `code/renderer/tr_main.c` | `partial` | `ported` | 32 | 15 | 17 | legacy_unclassified |
 | `code/renderer/tr_marks.c` | `ported` | `ported` | 4 | 4 | 0 | legacy_unclassified |
 | `code/renderer/tr_mesh.c` | `ported` | `ported` | 5 | 5 | 0 | legacy_unclassified |
-| `code/renderer/tr_model.c` | `partial` | `ported` | 11 | 0 | 11 | legacy_unclassified |
+| `code/renderer/tr_model.c` | `partial` | `ported` | 11 | 1 | 10 | legacy_unclassified |
 | `code/renderer/tr_noise.c` | `ported` | `ported` | 3 | 3 | 0 | legacy_unclassified |
 | `code/renderer/tr_public.h` | `unassessed` | `ported` | 0 | 0 | 0 | legacy_unclassified |
 | `code/renderer/tr_scene.c` | `partial` | `ported` | 9 | 4 | 5 | legacy_unclassified |
-| `code/renderer/tr_shade.c` | `partial` | `ported` | 17 | 3 | 14 | legacy_unclassified |
+| `code/renderer/tr_shade.c` | `partial` | `ported` | 17 | 4 | 13 | legacy_unclassified |
 | `code/renderer/tr_shade_calc.c` | `partial` | `ported` | 32 | 9 | 23 | legacy_unclassified |
 | `code/renderer/tr_shader.c` | `ported` | `ported` | 34 | 34 | 0 | legacy_unclassified |
 | `code/renderer/tr_shadows.c` | `ported` | `ported` | 5 | 5 | 0 | legacy_unclassified |
@@ -575,7 +575,7 @@ These are mapping gaps, not automatically missing runtime functions.
 
 ### `code/renderer/tr_model.c`
 
-`RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
+`RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
 
 ### `code/renderer/tr_scene.c`
 
@@ -583,7 +583,7 @@ These are mapping gaps, not automatically missing runtime functions.
 
 ### `code/renderer/tr_shade.c`
 
-`ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
+`ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 
 ### `code/renderer/tr_shade_calc.c`
 

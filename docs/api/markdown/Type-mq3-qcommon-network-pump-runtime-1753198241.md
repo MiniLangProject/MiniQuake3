@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Nonblocking UDP pump with independent receive buffers and alternating client/server polling priority.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L12)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 capacity
 ```
 
+Receive-buffer capacity in bytes for each socket, from 1 through 65,535.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L18)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientbuffer-clientbuffer-src-mq3-qcommon-network-pump-ml-316107607"></a>
 ### clientBuffer
@@ -31,8 +35,10 @@ capacity
 clientBuffer
 ```
 
+Reusable receive buffer for client-side datagrams.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L31)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientmetadata-clientmetadata-src-mq3-qcommon-network-pump-ml-1700826113"></a>
 ### clientMetadata
@@ -41,8 +47,10 @@ clientBuffer
 clientMetadata
 ```
 
+Reusable address and length metadata for client receives.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L35)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientpacketfn-clientpacketfn-src-mq3-qcommon-network-pump-ml-497272527"></a>
 ### clientPacketFn
@@ -51,8 +59,10 @@ clientMetadata
 clientPacketFn
 ```
 
+Optional callback `(context, address, data)` for a received client-side datagram; returned errors are propagated by `receiveSide`, while other return values are ignored.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L26)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientsocket-clientsocket-src-mq3-qcommon-network-pump-ml-552722585"></a>
 ### clientSocket
@@ -61,8 +71,10 @@ clientPacketFn
 clientSocket
 ```
 
+Host UDP socket assigned to the client network endpoint.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L14)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-context-context-src-mq3-qcommon-network-pump-ml-1094328565"></a>
 ### context
@@ -71,8 +83,10 @@ clientSocket
 context
 ```
 
+Caller-supplied data associated with delivery of received packets to the client and server handlers.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L23)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-nextside-nextside-src-mq3-qcommon-network-pump-ml-1929075377"></a>
 ### nextSide
@@ -81,8 +95,10 @@ context
 nextSide
 ```
 
+Endpoint selected first by the next fair packet-pump iteration.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L20)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-serverbuffer-serverbuffer-src-mq3-qcommon-network-pump-ml-6477111"></a>
 ### serverBuffer
@@ -91,8 +107,10 @@ nextSide
 serverBuffer
 ```
 
+Reusable receive buffer for server-side datagrams.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L33)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-servermetadata-servermetadata-src-mq3-qcommon-network-pump-ml-274173825"></a>
 ### serverMetadata
@@ -101,8 +119,10 @@ serverBuffer
 serverMetadata
 ```
 
+Reusable address and length metadata for server receives.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L37)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-serverpacketfn-serverpacketfn-src-mq3-qcommon-network-pump-ml-637602071"></a>
 ### serverPacketFn
@@ -111,8 +131,10 @@ serverMetadata
 serverPacketFn
 ```
 
+Optional callback `(context, address, data)` for a received server-side datagram; returned errors are propagated by `receiveSide`, while other return values are ignored.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L29)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-serversocket-serversocket-src-mq3-qcommon-network-pump-ml-970752577"></a>
 ### serverSocket
@@ -121,5 +143,7 @@ serverPacketFn
 serverSocket
 ```
 
+Host UDP socket assigned to the server network endpoint.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L16)

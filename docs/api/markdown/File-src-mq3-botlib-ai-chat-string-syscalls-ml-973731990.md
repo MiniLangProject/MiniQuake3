@@ -22,16 +22,18 @@ Reachable from entry: **yes**
 function dispatch(stringsState, profileState, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_chat_string_syscalls.mutate` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stringsState` | `dynamic` | — |  |
-| `profileState` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `stringsState` | `dynamic` | — | AI chat strings state; accesses `groups`. |
+| `profileState` | `dynamic` | — | AI chat profiles state; accesses `pools`, `reload` and `cache`. May update `profileState.cache` in place. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_string_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_string_syscalls.ml#L25)
 
 <a id="function-function-mq3-botlib-ai-chat-string-syscalls-mutate-function-mutate-vm-address-value-label-src-mq3-botlib-ai-chat-string-syscalls-ml-319469836"></a>
 ### mutate
@@ -40,12 +42,14 @@ function dispatch(stringsState, profileState, vm, base, op)
 function mutate(vm, address, value, label)
 ```
 
+Apply `mq3.vm.syscall_common.pointer` and `mq3.vm.syscall_common.writeBuffer` while evaluating `mutate`. Return paths include `common.writeBuffer(vm,address,chatStrings.MAX_MESSAGE_SIZE,value,label)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `value` | `dynamic` | — | Array or byte sequence accessed at `at+count`. Entries are written in place. |
+| `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_string_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_string_syscalls.ml#L15)

@@ -9,8 +9,10 @@
 struct Static
 ```
 
+Static record for server.init_runtime, containing `initialized`, `clients`, `numSnapshotEntities`, `snapshotEntities`, `nextSnapshotEntities`, `snapFlagServerBit`, and 1 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L127)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Static
 clients
 ```
 
+Persistent client records allocated at server startup and retained across map changes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L131)
 
 <a id="field-field-mq3-server-init-runtime-static-initialized-initialized-src-mq3-server-init-runtime-ml-1542305779"></a>
 ### initialized
@@ -31,8 +35,10 @@ clients
 initialized
 ```
 
+True after persistent server client and snapshot storage has been allocated.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L129)
 
 <a id="field-field-mq3-server-init-runtime-static-nextsnapshotentities-nextsnapshotentities-src-mq3-server-init-runtime-ml-1375935835"></a>
 ### nextSnapshotEntities
@@ -41,8 +47,10 @@ initialized
 nextSnapshotEntities
 ```
 
+Next absolute insertion position in the circular snapshot-entity buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L137)
 
 <a id="field-field-mq3-server-init-runtime-static-numsnapshotentities-numsnapshotentities-src-mq3-server-init-runtime-ml-1696753323"></a>
 ### numSnapshotEntities
@@ -51,8 +59,10 @@ nextSnapshotEntities
 numSnapshotEntities
 ```
 
+Number of entity-state slots reserved in the snapshot ring.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L133)
 
 <a id="field-field-mq3-server-init-runtime-static-snapflagserverbit-snapflagserverbit-src-mq3-server-init-runtime-ml-1718528279"></a>
 ### snapFlagServerBit
@@ -61,8 +71,10 @@ numSnapshotEntities
 snapFlagServerBit
 ```
 
+Snapshot server-count bit toggled when a new server level is spawned.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L139)
 
 <a id="field-field-mq3-server-init-runtime-static-snapshotentities-snapshotentities-src-mq3-server-init-runtime-ml-876367109"></a>
 ### snapshotEntities
@@ -71,8 +83,10 @@ snapFlagServerBit
 snapshotEntities
 ```
 
+Entity states retained in the server snapshot ring.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L135)
 
 <a id="field-field-mq3-server-init-runtime-static-time-time-src-mq3-server-init-runtime-ml-1684806625"></a>
 ### time
@@ -81,5 +95,7 @@ snapshotEntities
 time
 ```
 
+Persistent server clock retained across level startup and restart, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L141)

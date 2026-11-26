@@ -9,8 +9,10 @@
 struct Clip
 ```
 
+Stores playable weapon sounds clip record, including `path`, `sound`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L26)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Clip
 path
 ```
 
+When constructing this record, `decodeClip` supplies `path` for this member. Used by `findClip` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L29)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-clip-sound-sound-src-mq3-client-playable-weapon-sounds-ml-1178753901"></a>
 ### sound
@@ -31,5 +35,7 @@ path
 sound
 ```
 
+Decoded WAV sound data associated with this weapon audio asset.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L31)

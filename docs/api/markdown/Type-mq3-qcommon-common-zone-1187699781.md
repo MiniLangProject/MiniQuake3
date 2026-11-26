@@ -9,8 +9,10 @@
 struct Zone
 ```
 
+Zone record for qcommon.common, containing `capacity`, `used`, `nextHandle`, `allocations`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L141)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Zone
 allocations
 ```
 
+Managed allocations owned by this memory zone.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L149)
 
 <a id="field-field-mq3-qcommon-common-zone-capacity-capacity-src-mq3-qcommon-common-ml-1989971565"></a>
 ### capacity
@@ -31,8 +35,10 @@ allocations
 capacity
 ```
 
+Maximum number of entries allowed in the managed collection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L143)
 
 <a id="field-field-mq3-qcommon-common-zone-nexthandle-nexthandle-src-mq3-qcommon-common-ml-949425543"></a>
 ### nextHandle
@@ -41,8 +47,10 @@ capacity
 nextHandle
 ```
 
+Handle to assign to the next allocated managed resource.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L147)
 
 <a id="field-field-mq3-qcommon-common-zone-used-used-src-mq3-qcommon-common-ml-1433523123"></a>
 ### used
@@ -51,5 +59,7 @@ nextHandle
 used
 ```
 
+Bytes currently charged to active allocations in this zone.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L145)

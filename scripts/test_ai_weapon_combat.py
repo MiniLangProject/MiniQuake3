@@ -53,7 +53,7 @@ def main() -> None:
 
     if args.pak:
         retail = run([build("tests/ai_weapon_combat_retail_probe.ml", "ai_weapon_combat_retail_probe.exe"), args.pak.resolve()], ROOT / "build").strip()
-        if retail != "PASS: retail Sarge weapon combat checks=8 best=3 abi=552":
+        if retail != "PASS: retail Sarge and Crash weapon combat checks=10 best=3 abi=552":
             raise SystemExit(retail)
         print(retail)
 

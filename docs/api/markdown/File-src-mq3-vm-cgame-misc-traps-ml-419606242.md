@@ -23,12 +23,14 @@ Reachable from entry: **yes**
 function createEntityTokens(source)
 ```
 
+Create entity tokens in vm.cgame_misc_traps; the normal completion returns `EntityTokens(retained, parser.create(retained))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Source used in `len(source)` and `bytes(source)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L91)
 
 <a id="function-function-mq3-vm-cgame-misc-traps-encodeqtime-function-encodeqtime-value-isdst-src-mq3-vm-cgame-misc-traps-ml-178341652"></a>
 ### encodeQtime
@@ -41,11 +43,11 @@ qtime_t is nine consecutive native-QVM ints. Its month and year retain the C lib
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `isDst` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record exposing `date`, `time`. |
+| `isDst` | `dynamic` | — | Is dst operand used by `encodeQtime`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L45)
 
 <a id="function-function-mq3-vm-cgame-misc-traps-entitytoken-function-entitytoken-vm-address-capacity-state-src-mq3-vm-cgame-misc-traps-ml-1774267768"></a>
 ### entityToken
@@ -54,15 +56,17 @@ qtime_t is nine consecutive native-QVM ints. Its month and year retain the C lib
 function entityToken(vm, address, capacity, state)
 ```
 
+Compute entity token in vm.cgame_misc_traps; the normal completion returns `0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.pointer`. |
+| `address` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
+| `capacity` | `dynamic` | — | Size passed as `size` to `mq3.vm.syscall_common.pointer`. |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.vm.cgame_misc_traps.nextEntityToken`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L123)
 
 - [mq3.vm.cgame_misc_traps.EntityTokens](Type-mq3-vm-cgame-misc-traps-entitytokens-1592594087.md) — struct
 <a id="function-function-mq3-vm-cgame-misc-traps-fail-function-fail-message-src-mq3-vm-cgame-misc-traps-ml-1634157975"></a>
@@ -72,12 +76,14 @@ function entityToken(vm, address, capacity, state)
 function fail(message)
 ```
 
+Create the vm.cgame_misc_traps error for `fail` with 7484 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("cgame misc traps: " + message)` and `error(7484, ("cgame misc traps: " + message))`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L39)
 
 <a id="function-function-mq3-vm-cgame-misc-traps-nextentitytoken-function-nextentitytoken-state-src-mq3-vm-cgame-misc-traps-ml-127692459"></a>
 ### nextEntityToken
@@ -86,12 +92,14 @@ function fail(message)
 function nextEntityToken(state)
 ```
 
+Compute next entity token in vm.cgame_misc_traps; the normal completion returns `TokenResult(true, token)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `parser`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L108)
 
 <a id="constant-constant-mq3-vm-cgame-misc-traps-qtime-size-const-qtime-size-36-src-mq3-vm-cgame-misc-traps-ml-1671013500"></a>
 ### QTIME_SIZE
@@ -100,8 +108,10 @@ function nextEntityToken(state)
 const QTIME_SIZE = 36
 ```
 
+Byte size used for qtime storage or binary layout in mq3.vm.cgame_misc_traps.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L13)
 
 <a id="function-function-mq3-vm-cgame-misc-traps-realtime-function-realtime-vm-address-value-src-mq3-vm-cgame-misc-traps-ml-402755248"></a>
 ### realTime
@@ -110,14 +120,16 @@ const QTIME_SIZE = 36
 function realTime(vm, address, value)
 ```
 
+Compute real time in vm.cgame_misc_traps; the normal completion returns `value.epoch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.writeRaw`. |
+| `address` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.writeRaw`. |
+| `value` | `dynamic` | — | Record exposing `data`, `epoch`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L71)
 
 - [mq3.vm.cgame_misc_traps.RealTimeValue](Type-mq3-vm-cgame-misc-traps-realtimevalue-764669160.md) — struct
 <a id="function-function-mq3-vm-cgame-misc-traps-resetentitytokens-function-resetentitytokens-state-src-mq3-vm-cgame-misc-traps-ml-870151357"></a>
@@ -127,12 +139,16 @@ function realTime(vm, address, value)
 function resetEntityTokens(state)
 ```
 
+Reset entity tokens in vm.cgame_misc_traps; updates `state.parser`.
+
+Direct state writes: `state.parser`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `source`. Updated in place: `parser`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L101)
 
 <a id="function-function-mq3-vm-cgame-misc-traps-samplerealtime-function-samplerealtime-src-mq3-vm-cgame-misc-traps-ml-1714640160"></a>
 ### sampleRealTime
@@ -144,7 +160,7 @@ function sampleRealTime()
 The standard library exposes portable UTC/local wall clocks but not the platform DST flag. -1 is the C tm value for "unknown" and preserves the ABI without claiming a wrong daylight-saving state.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L59)
 
 <a id="function-function-mq3-vm-cgame-misc-traps-snapvector-function-snapvector-vm-address-src-mq3-vm-cgame-misc-traps-ml-1507398043"></a>
 ### snapVector
@@ -153,12 +169,14 @@ The standard library exposes portable UTC/local wall clocks but not the platform
 function snapVector(vm, address)
 ```
 
+Compute snap vector in vm.cgame_misc_traps; the normal completion returns `0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.readFloatVector`. |
+| `address` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.readFloatVector`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L82)
 
 - [mq3.vm.cgame_misc_traps.TokenResult](Type-mq3-vm-cgame-misc-traps-tokenresult-839842278.md) — struct

@@ -9,8 +9,10 @@
 struct TriangleBatch
 ```
 
+Data record for `mq3.platform.playable_window.TriangleBatch`; groups `data`, `capacity`, `count`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L595)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TriangleBatch
 capacity
 ```
 
+Maximum number of packed triangle records that fit in the batch buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L599)
 
 <a id="field-field-mq3-platform-playable-window-trianglebatch-count-count-src-mq3-platform-playable-window-ml-908131661"></a>
 ### count
@@ -31,8 +35,10 @@ capacity
 count
 ```
 
+Number of initialized triangle records in the native batch buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L601)
 
 <a id="field-field-mq3-platform-playable-window-trianglebatch-data-data-src-mq3-platform-playable-window-ml-1954034701"></a>
 ### data
@@ -41,5 +47,7 @@ count
 data
 ```
 
+Packed triangle records passed directly to the native graphics backend.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L109)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L597)

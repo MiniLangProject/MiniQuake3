@@ -9,8 +9,10 @@
 struct Mat3
 ```
 
+Mat3 record for splines.headers, containing `rows`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L47)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct Mat3
 rows
 ```
 
+Console-variable table rows managed by the cvar subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L49)

@@ -9,8 +9,10 @@
 struct AxisSurface
 ```
 
+Data record for `mq3.renderer.tr_surface_runtime.AxisSurface`; groups `lines`, `lineWidth`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L39)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct AxisSurface
 lines
 ```
 
+Line segments generated for the wireframe or debug drawing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-axissurface-linewidth-linewidth-src-mq3-renderer-tr-surface-runtime-ml-219158293"></a>
 ### lineWidth
@@ -31,5 +35,7 @@ lines
 lineWidth
 ```
 
+Width used when drawing the debug axis lines.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L43)

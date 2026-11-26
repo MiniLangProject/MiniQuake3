@@ -10,10 +10,20 @@ import mq3.game.movement as movement
 import mq3.collision.brush as brush
 import mq3.server.world as sv
 import mq3.compat.numeric as n
+/// Apply `mq3.game.jumppad.touch` while evaluating `pushTouch`.
+/// @param level Not read by this implementation; retained in the `pushTouch` signature.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param other Other record; accesses `client`.
+/// @param trace Not read by this implementation; retained in the `pushTouch` signature.
 function pushTouch(level,self,other,trace)
   if other.client != void then pad.touch(other.client.ps,self.s.number,self.s.origin2) end if
   return void
 end function
+/// Apply `mq3.game.entities.pickTarget`, `mq3.game.teleport.player` and `mq3.game.entities.diagnostic` while evaluating `teleporterTouch`.
+/// @param level Game-level state; accesses `gamePrintFn`, `num_entities` and `entities`.
+/// @param self Entity receiving the callback; accesses `spawnflags` and `target`.
+/// @param other Other record; accesses `client`.
+/// @param trace Not read by this implementation; retained in the `teleporterTouch` signature.
 function teleporterTouch(level,self,other,trace)
   if other.client == void or other.client.ps.pm_type == c.PM_DEAD then return void end if
   if (self.spawnflags & 1) != 0 and other.client.team != c.TEAM_SPECTATOR then return void end if
@@ -22,6 +32,9 @@ function teleporterTouch(level,self,other,trace)
   else entities.diagnostic(level,"Couldn't find teleporter destination\n") end if
   return void
 end function
+/// Set `ent.client.ps.jumppad_frame` to `0` and `ent.client.ps.jumppad_ent` to `0` in `mq3.game.triggers.touch`.
+/// @param level Game-level state; accesses `scene`, `entities`, `doorTouch` and `time`.
+/// @param ent Game entity; accesses `client`, `r` and `touch`. May update `ent.client.ps.jumppad_frame` and `ent.client.ps.jumppad_ent` in place.
 function touch(level,ent)
   if ent.client == void or ent.client.ps.stats[c.STAT_HEALTH] <= 0 then return void end if
   state = ent.client.ps; range = [40,40,52]; mins = array(3,0.0); maxs = array(3,0.0)

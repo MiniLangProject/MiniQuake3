@@ -9,8 +9,10 @@
 struct Traversal
 ```
 
+Data record for `mq3.renderer.tr_world_runtime.Traversal`; groups `draws`, `leafs`, `visBounds`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L113)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Traversal
 draws
 ```
 
+Draw-surface records emitted while traversing the world.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L115)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-traversal-leafs-leafs-src-mq3-renderer-tr-world-runtime-ml-997203967"></a>
 ### leafs
@@ -31,8 +35,10 @@ draws
 leafs
 ```
 
+BSP leaves visited or retained by world traversal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L117)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-traversal-visbounds-visbounds-src-mq3-renderer-tr-world-runtime-ml-1045107995"></a>
 ### visBounds
@@ -41,5 +47,7 @@ leafs
 visBounds
 ```
 
+Bounds accumulated over the visible BSP leaves.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L119)

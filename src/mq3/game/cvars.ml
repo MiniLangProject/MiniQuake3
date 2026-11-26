@@ -5,24 +5,43 @@ package mq3.game.cvars
 import mq3.game.cvar_tables as cvarTables
 import mq3.qcommon.cvar as cv
 
+/// `Row` record for cvars, containing `vmName`, `name`, `defaultString`, `flags` and `modificationCount` and related fields.
 struct Row
+  /// Name used for the console variable in the VM-facing cvar table.
   vmName
+  /// Engine console-variable name registered by this row.
   name
+  /// Default textual value registered for the console variable.
   defaultString
+  /// Console-variable registration flags supplied to the host.
   flags
+  /// Revision counter incremented when the console variable changes.
   modificationCount
+  /// Nonzero when changes to this console variable need processing or announcement.
   trackChange
+  /// Nonzero when changing this console variable requires refreshing team shaders.
   teamShader
+  /// VM instance or VM-facing console-variable record associated with this adapter.
   vm
 end struct
+/// `State` record for cvars, containing `level`, `registry`, `rows`, `effectFn` and `registered` and related fields.
 struct State
+  /// Game-level state shared with the operation or runtime.
   level
+  /// Registry of currently loaded preprocessor/token sources.
   registry
+  /// Console-variable table rows managed by the cvar subsystem.
   rows
+  /// Injected callback for effect; invoked through the State service/state record.
   effectFn
+  /// Nonzero after the relevant cvars or resources are registered.
   registered
+  /// State tracking password changes and dependent connection settings.
   passwordState
 end struct
+/// Set `level.gameCvars` to `state` and `level.cvarSetFn` to `set` in `mq3.game.cvars.attach`. Return paths include `state`.
+/// @param level Game-level state; accesses `spawner`, `cvarMaintenance`, `gameCvars` and `cvarSetFn`. May update `level.gameCvars` and `level.cvarSetFn` in place.
+/// @param buildDate Value used by `entries` in `["","gamedate",buildDate,64,0,false,false],`.
 function attach(level,buildDate)
   if level.spawner == void then return error(491,"Game Cvars require spawn state") end if
   state = State(level,level.spawner.cvars,[],void,false,level.cvarMaintenance)
@@ -35,6 +54,9 @@ function attach(level,buildDate)
   if level.cvarSetFn == void then level.cvarSetFn = set end if
   return state
 end function
+/// Update `state.level`, `level.gameCvars`, `level.spawner.cvars` and `level.cvarMaintenance` and related state during `rebind`.
+/// @param level Game-level state; accesses `spawner`, `gameCvars`, `cvarMaintenance` and `cvarSetFn`. May update `level.gameCvars`, `level.spawner.cvars` and `level.cvarMaintenance` and additional fields in place.
+/// @param state Cvars state; accesses `level`, `registry`, `passwordState` and `rows`. May update `state.level` in place.
 function rebind(level,state)
   if level.spawner == void then return error(491,"Game Cvars require spawn state") end if
   state.level = level; level.gameCvars = state; level.spawner.cvars = state.registry
@@ -45,18 +67,33 @@ function rebind(level,state)
   end for
   return void
 end function
+/// Require and return the game cvar module state attached to the level.
+/// @param level Game-level state; accesses `gameCvars`.
 function moduleState(level)
   if level.gameCvars == void then return error(491,"Game Cvars require module state") end if
   return level.gameCvars
 end function
+/// Use `state.effectFn` to perform `observeCvar`.
+/// @param state Cvars state; accesses `effectFn`.
+/// @param kind Value passed as argument 2 to `state.effectFn`.
+/// @param index Index of the entry to access.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 5 to `state.effectFn`.
 function observeCvar(state,kind,index,key,value)
   if state.effectFn != void then state.effectFn(state,kind,index,key,value) end if
   return void
 end function
+/// Apply `mq3.game.cvars.moduleState`, `mq3.game.cvars.observeCvar` and `mq3.qcommon.cvar.set2` while evaluating `set`.
+/// @param level Game-level state; accesses `gameCvars`.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 5 to `state.effectFn`.
 function set(level,key,value)
   state = moduleState(level); observeCvar(state,3,-1,key,value)
   cv.set2(state.registry,key,value,true); return void
 end function
+/// Update `level.cheats`, `level.dedicated`, `level.spawner.gametype` and `level.spawner.restarted` and related state during `syncValue`.
+/// @param level Game-level state; accesses `cheats`, `dedicated`, `spawner`, `maxclientsCvar` and `dmflags` and related fields. May update `level.cheats`, `level.dedicated` and `level.spawner.gametype` and additional fields in place.
+/// @param row Row record; accesses `vm` and `vmName`.
 function syncValue(level,row)
   v = row.vm
   if v == void then return void end if
@@ -160,10 +197,14 @@ function syncValue(level,row)
   end switch
   return void
 end function
+/// Return `void` for `remapTeamShaders`.
+/// @param level Not read by this implementation; retained in the `remapTeamShaders` signature.
 function remapTeamShaders(level)
   // The entire original body is guarded by MISSIONPACK; Baseq3 is empty.
   return void
 end function
+/// Set `level.warmupModificationCount` to `level.warmupCvarModificationCount` in `mq3.game.cvars.register`.
+/// @param level Game-level state; accesses `spawner`, `cvarSetFn`, `warmupModificationCount` and `warmupCvarModificationCount`. May update `level.warmupModificationCount` in place.
 function register(level)
   state = moduleState(level); remapped = false; index = 0
   for each row in state.rows
@@ -182,6 +223,8 @@ function register(level)
   level.warmupModificationCount = level.warmupCvarModificationCount
   state.registered = true; return void
 end function
+/// Use `level.serverCommandFn` to perform `update`.
+/// @param level Game-level state; accesses `serverCommandFn`.
 function update(level)
   state = moduleState(level)
   if not state.registered then return error(491,"Game Cvars must be registered before update") end if

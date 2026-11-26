@@ -9,8 +9,10 @@
 struct Light
 ```
 
+Data record for `mq3.renderer.tr_flares_runtime.Light`; groups `origin`, `color`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L48)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Light
 color
 ```
 
+Dynamic-light RGB value used when creating its flare contribution.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L52)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-light-origin-origin-src-mq3-renderer-tr-flares-runtime-ml-1754371873"></a>
 ### origin
@@ -31,5 +35,7 @@ color
 origin
 ```
 
+Dynamic-light position used when adding a flare for the current view.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L50)

@@ -9,8 +9,10 @@
 struct GlyphBounds
 ```
 
+Data record for `mq3.renderer.tr_font_runtime.GlyphBounds`; groups `left`, `right`, `width`, `top`, `bottom`, `height`, and 1 further field.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L40)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct GlyphBounds
 bottom
 ```
 
+Bottom glyph boundary rounded down to a 26.6 fixed-point pixel boundary.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L50)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-glyphbounds-height-height-src-mq3-renderer-tr-font-runtime-ml-898679972"></a>
 ### height
@@ -31,8 +35,10 @@ bottom
 height
 ```
 
+Height of the rounded glyph bounds, in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L52)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-glyphbounds-left-left-src-mq3-renderer-tr-font-runtime-ml-900077500"></a>
 ### left
@@ -41,8 +47,10 @@ height
 left
 ```
 
+Left glyph boundary rounded down to a 26.6 fixed-point pixel boundary.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L42)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-glyphbounds-pitch-pitch-src-mq3-renderer-tr-font-runtime-ml-1005216658"></a>
 ### pitch
@@ -51,8 +59,10 @@ left
 pitch
 ```
 
+Signed number of bytes between successive bitmap scanlines.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L54)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-glyphbounds-right-right-src-mq3-renderer-tr-font-runtime-ml-472547074"></a>
 ### right
@@ -61,8 +71,10 @@ pitch
 right
 ```
 
+Right glyph boundary rounded up to a 26.6 fixed-point pixel boundary.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L44)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-glyphbounds-top-top-src-mq3-renderer-tr-font-runtime-ml-85713946"></a>
 ### top
@@ -71,8 +83,10 @@ right
 top
 ```
 
+Top glyph boundary rounded up to a 26.6 fixed-point pixel boundary.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L48)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-glyphbounds-width-width-src-mq3-renderer-tr-font-runtime-ml-4656390"></a>
 ### width
@@ -81,5 +95,7 @@ top
 width
 ```
 
+Width of the rounded glyph bounds, in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L46)

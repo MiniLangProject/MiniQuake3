@@ -1,0 +1,453 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Desktop protocol-68 UDP connection and the server-driven gameplay stream.
+package mq3.client.remote_play
+import mq3.client.command_ring as remoteCommands
+import mq3.client.connectionless as remoteConnectionless
+import mq3.client.gamestate as remoteGamestate
+import mq3.client.netchan as remoteClientNetchan
+import mq3.client.network_ingress as remoteIngress
+import mq3.client.protocol_runtime as remoteProtocolRuntime
+import mq3.client.remote_pure as remotePure
+import mq3.client.send_cmd as remoteSend
+import mq3.compat.textnumbers as remoteNumbers
+import mq3.platform.udp as remoteUdp
+import mq3.qcommon.command_buffer as remoteCommandBuffer
+import mq3.qcommon.net_transport as remoteTransport
+import mq3.qcommon.netchan as remoteNetchan
+import mq3.shared.info as remoteInfo
+import std.string as remoteStrings
+
+/// Server configuration-string index for serverinfo; shared by the client and game protocol.
+const CS_SERVERINFO=0
+/// Server configuration-string index for systeminfo; shared by the client and game protocol.
+const CS_SYSTEMINFO=1
+/// Snapshot flag indicating that the server state is not yet active for normal gameplay.
+const SNAPFLAG_NOT_ACTIVE=2
+/// Duration or timeout in milliseconds controlling connect timeout.
+const CONNECT_TIMEOUT_MS=12000
+/// Duration or timeout in milliseconds controlling server timeout.
+const SERVER_TIMEOUT_MS=30000
+
+/// Stores remote play server endpoint record, including `host`, `port`.
+struct ServerEndpoint
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
+  host
+  /// When constructing this record, `parseEndpoint` supplies `port` for this member.
+  port
+end struct
+/// Stores remote play connection host record, including `socket`, `userinfo`.
+struct ConnectionHost
+  /// When constructing this record, `create` supplies `socket` for this member.
+  socket
+  /// When constructing this record, `create` supplies `userinfo` for this member.
+  userinfo
+end struct
+/// Stores remote play live record, including `socket`, `connection`, `connectionHost`, `ingress`, `protocol`, `outgoing` and additional values.
+struct Live
+  /// When constructing this record, `create` supplies `socket` for this member.
+  socket
+  /// When constructing this record, `create` supplies `state` for this member. Used by `primed` and
+  /// `status` during subsequent processing.
+  connection
+  /// When constructing this record, `create` supplies `host` for this member. Used by `pump` and
+  /// `updateUserinfo` during subsequent processing.
+  connectionHost
+  /// When constructing this record, `create` supplies `input` for this member. Used by
+  /// `updateSendState` and `acceptPacket` during subsequent processing.
+  ingress
+  /// Parser runtime for this live connection; supplies decoded gamestate, snapshots, and server commands.
+  protocol
+  /// When constructing this record, `create` supplies `outgoing` for this member. Used by
+  /// `updateSendState` and `appendCommand` during subsequent processing.
+  outgoing
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `status` and `writePacket` during subsequent processing.
+  sendHost
+  /// When constructing this record, `create` supplies `bytes(65535,0)` for this member. Used by `pump`
+  /// during subsequent processing.
+  receiveBytes
+  /// When constructing this record, `create` supplies `bytes(8,0)` for this member. Used by `pump`
+  /// during subsequent processing.
+  receiveMetadata
+  /// When constructing this record, `create` supplies `protocol.dispatcher.snapshotState` for this
+  /// member. Used by `enterGamestate` and `acceptPacket` during subsequent processing.
+  epoch
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `mapName` and `status` during subsequent processing.
+  map
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `gameDirectory` and `enterGamestate` during subsequent processing.
+  game
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `setBasePackages` and `enterGamestate` during subsequent processing.
+  baseDirectory
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `approvedArchive` and `enterGamestate` during subsequent processing.
+  verifiedArchive
+  /// When constructing this record, `create` supplies `now` for this member. Used by `pump` during
+  /// subsequent processing.
+  connectStarted
+  /// When constructing this record, `create` supplies `now` for this member. Used by `enterGamestate`
+  /// and `pump` during subsequent processing.
+  gamestateStarted
+  /// When constructing this record, `create` supplies `now` for this member. Used by `acceptPacket` and
+  /// `pump` during subsequent processing.
+  lastAccepted
+  /// When constructing this record, `create` supplies `0` for this member. Used by `enterGamestate` and
+  /// `checkServerCommands` during subsequent processing.
+  lastCommandSequence
+end struct
+
+/// Calls `std.string.indexOf`, `std.string.substr`, `mq3.client.remote_play.ServerEndpoint` from remote play `parseEndpoint`. The final path returns `ServerEndpoint(host,port)`.
+/// @param address Sequence whose length/content is inspected by `parseEndpoint`.
+function parseEndpoint(address)
+  if address==void then return error(7820,"Specify a Quake III server address") end if
+  colon=remoteStrings.indexOf(address,":",0)
+  host=address
+  port=remoteTransport.PORT_SERVER
+  if colon>=0 then
+    host=remoteStrings.substr(address,0,colon)
+    rawPort=bytes(remoteStrings.substr(address,colon+1,len(address)-colon-1))
+    if len(rawPort)<1 or len(rawPort)>5 then return error(7820,"Invalid Quake III server port") end if
+    port=0
+    for each value in rawPort
+      if value<48 or value>57 then return error(7820,"Invalid Quake III server port") end if
+      port=port*10+value-48
+    end for
+    if port<1 or port>65535 then return error(7820,"Invalid Quake III server port") end if
+  end if
+  rawHost=bytes(host)
+  if len(rawHost)<1 or len(rawHost)>253 then return error(7820,"Invalid Quake III server hostname") end if
+  for each value in rawHost
+    if not ((value>=48 and value<=57) or (value>=65 and value<=90) or (value>=97 and value<=122) or value==45 or value==46) then
+      return error(7820,"Expected an IPv4 address or hostname, optionally followed by :port")
+    end if
+  end for
+  if host=="localhost" then host="127.0.0.1" end if
+  return ServerEndpoint(host,port)
+end function
+
+/// Adapts `mq3.qcommon.net_transport.outOfBandPrint` to remote play `sendOob`, returning its result for `host.context.socket, address, text`.
+/// @param host Record read through `host.context.socket`.
+/// @param state Accepted for compatibility with `sendOob`; the current implementation does not read it.
+/// @param address Argument 2 of `mq3.qcommon.net_transport.outOfBandPrint`.
+/// @param text Argument 3 of `mq3.qcommon.net_transport.outOfBandPrint`.
+function sendOob(host,state,address,text)
+  return remoteTransport.outOfBandPrint(host.context.socket,address,text)
+end function
+
+/// Adapts `mq3.qcommon.net_transport.outOfBandData` to remote play `sendOobData`, returning its result for `host.context.socket, address, data`.
+/// @param host Record read through `host.context.socket`.
+/// @param state Accepted for compatibility with `sendOobData`; the current implementation does not read it.
+/// @param address Argument 2 of `mq3.qcommon.net_transport.outOfBandData`.
+/// @param data Argument 3 of `mq3.qcommon.net_transport.outOfBandData`.
+function sendOobData(host,state,address,data)
+  return remoteTransport.outOfBandData(host.context.socket,address,data)
+end function
+
+/// Reads `host.context.userinfo` for remote play `readUserinfo`.
+/// @param host Record read through `host.context.userinfo`.
+/// @param state Accepted for compatibility with `readUserinfo`; the current implementation does not read it.
+function readUserinfo(host,state) return host.context.userinfo end function
+
+/// Calls `mq3.platform.udp.close`, `mq3.platform.udp.cleanup` from remote play `closeSocket`. The final path returns `remoteUdp.cleanup()`.
+/// @param socket Value used by `if socket!=void then ignored=try(remoteUdp.close(socket)) end if`.
+function closeSocket(socket)
+  if socket!=void then ignored=try(remoteUdp.close(socket)) end if
+  return remoteUdp.cleanup()
+end function
+
+/// Calls `mq3.client.remote_play.parseEndpoint`, `mq3.platform.udp.startup`, `mq3.qcommon.net_transport.resolveIPv4` and additional helpers from remote play `create`.
+/// @param serverAddress Value used by `endpoint=try(parseEndpoint(serverAddress))`.
+/// @param userinfo Value used by `if userinfo==void or userinfo=="" then userinfo="\\name\\UnnamedPlayer\\rate\\25000\\snaps\\40" end if`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function create(serverAddress,userinfo,now)
+  endpoint=try(parseEndpoint(serverAddress))
+  if endpoint is error then return endpoint end if
+  remoteUdp.startup()
+  address=try(remoteTransport.resolveIPv4(endpoint.host,endpoint.port))
+  if address is error then cleanup=try(closeSocket(void));return address end if
+  socket=try(remoteUdp.open())
+  if socket is error then cleanup=try(closeSocket(void));return socket end if
+  local=try(remoteUdp.bind(socket,remoteUdp.Endpoint(0,0)))
+  if local is error then cleanup=try(closeSocket(socket));return local end if
+
+  state=remoteConnectionless.create(address)
+  state.qport=local.port
+  state.connectionState=remoteConnectionless.CA_CONNECTING
+  state.connectTime=now-remoteConnectionless.RETRANSMIT_TIMEOUT
+  state.realtime=now
+  host=remoteConnectionless.services()
+  if userinfo==void or userinfo=="" then userinfo="\\name\\UnnamedPlayer\\rate\\25000\\snaps\\40" end if
+  host.context=ConnectionHost(socket,userinfo)
+  host.outOfBandFn=sendOob
+  host.outOfBandDataFn=sendOobData
+  host.userinfoFn=readUserinfo
+
+  protocol=remoteProtocolRuntime.create(void)
+  outgoing=remoteSend.create()
+  outgoing.remoteAddressType=remoteTransport.NA_IP
+  outgoing.serverCommands=protocol.dispatcher.serverCommands
+  wire=remoteClientNetchan.createConnection()
+  wire.reliableCommands=outgoing.reliableCommands
+  wire.serverCommands=outgoing.serverCommands
+  channel=remoteClientNetchan.create(remoteTransport.attach(remoteNetchan.init(local.port),socket),wire)
+  input=remoteIngress.create(state,channel,protocol,remoteIngress.services(host))
+  return Live(socket,state,host,input,protocol,outgoing,void,bytes(65535,0),bytes(8,0),protocol.dispatcher.snapshotState,"","","",void,now,now,now,0)
+end function
+
+/// Computes `live!=void and live.connection.connectionState==remoteConnectionless.CA_ACTIVE` for remote play `primed`.
+/// @param live Record read through `live.connection.connectionState`.
+function primed(live)
+  return live!=void and live.connection.connectionState==remoteConnectionless.CA_ACTIVE
+end function
+
+/// Reads `live.map` for remote play `mapName`.
+/// @param live Record read through `live.map`.
+function mapName(live) return live.map end function
+/// Reads `live.game` for remote play `gameDirectory`.
+/// @param live Record read through `live.game`.
+function gameDirectory(live) return live.game end function
+/// Reads `live.verifiedArchive` for remote play `approvedArchive`.
+/// @param live Record read through `live.verifiedArchive`.
+function approvedArchive(live) return live.verifiedArchive end function
+/// Updates `live.baseDirectory` during remote play `setBasePackages`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.baseDirectory`.
+/// @param baseDirectory Value assigned to `live.baseDirectory`.
+function setBasePackages(live,baseDirectory)
+  live.baseDirectory=baseDirectory
+  return void
+end function
+
+/// Evaluates remote play `status` and returns `"Receiving " + live.map`, `"Awaiting gamestate"`, `"Awaiting connection"` and additional values according to its guard/selection conditions.
+/// @param live Record read through `live.map`, `live.sendHost`, `live.connection.connectionState`.
+function status(live)
+  if live.map!="" then return "Receiving " + live.map end if
+  if live.sendHost!=void then return "Awaiting gamestate" end if
+  if live.connection.connectionState==remoteConnectionless.CA_CHALLENGING then return "Awaiting connection" end if
+  return "Awaiting challenge"
+end function
+
+/// Evaluates remote play `updateSendState` and returns `void` according to its guard/selection conditions.
+/// @param live Record read through `live.outgoing`, `live.protocol.dispatcher`, `live.connection.connectionState`, `live.ingress.packetState.serverMessageSequence`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function updateSendState(live,now)
+  outgoing=live.outgoing
+  dispatcher=live.protocol.dispatcher
+  snapshots=dispatcher.snapshotState
+  outgoing.connectionState=live.connection.connectionState
+  outgoing.realtime=now
+  outgoing.serverMessageSequence=live.ingress.packetState.serverMessageSequence
+  outgoing.serverCommandSequence=dispatcher.serverCommandSequence
+  outgoing.reliableAcknowledge=dispatcher.reliableAcknowledge
+  outgoing.snapValid=snapshots.snap.valid
+  outgoing.snapMessageNum=snapshots.snap.messageNum
+  snapshots.outPackets=outgoing.outPackets
+  snapshots.outgoingSequence=outgoing.outgoingSequence
+  return void
+end function
+
+/// Calls `mq3.client.command_ring.store`, `mq3.client.send_cmd.commandCopy` from remote play `appendCommand`.
+/// @param live Record read through `live.outgoing`.
+/// @param command Value used by `remoteCommands.store(outgoing.commands,outgoing.cmdNumber,remoteSend.commandCopy(command))`.
+function appendCommand(live,command)
+  outgoing=live.outgoing
+  outgoing.cmdNumber=outgoing.cmdNumber+1
+  remoteCommands.store(outgoing.commands,outgoing.cmdNumber,remoteSend.commandCopy(command))
+  return void
+end function
+
+/// Calls `mq3.client.remote_play.updateSendState`, `mq3.client.send_cmd.ready`, `mq3.client.send_cmd.writePacket` from remote play `writePacket`. The final path returns `result.sent`.
+/// @param live Record read through `live.sendHost`, `live.outgoing`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param force Value used by `if not force and not remoteSend.ready(live.outgoing,live.sendHost) then return false end if`.
+function writePacket(live,now,force)
+  if live.sendHost==void then return false end if
+  updateSendState(live,now)
+  if not force and not remoteSend.ready(live.outgoing,live.sendHost) then return false end if
+  result=try(remoteSend.writePacket(live.outgoing,live.sendHost))
+  if result is error then return result end if
+  return result.sent
+end function
+
+/// Updates `live.verifiedArchive`, `live.epoch`, `live.map`, `live.game` and additional values during remote play `enterGamestate`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.verifiedArchive`, `live.epoch`, `live.map`, `live.game` and additional values.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function enterGamestate(live,now)
+  state=live.protocol.gamestateState
+  serverInfo=remoteGamestate.configString(state,CS_SERVERINFO)
+  systemInfo=remoteGamestate.configString(state,CS_SYSTEMINFO)
+  map=remoteInfo.value(serverInfo,"mapname")
+  serverId=remoteInfo.value(systemInfo,"sv_serverid")
+  if map=="" or serverId=="" or state.clientNum<0 or state.clientNum>=64 then
+    return error(7821,"The server sent an incomplete Quake III gamestate")
+  end if
+  game=remoteInfo.value(systemInfo,"fs_game")
+  serverId=remoteNumbers.atoi(serverId)
+  live.verifiedArchive=void
+  if remoteNumbers.atoi(remoteInfo.value(systemInfo,"sv_pure"))!=0 then
+    if game!="" and game!="baseq3" then return error(7821,"Pure PK3 verification currently supports the Baseq3 game only") end if
+    verified=remotePure.verify(live.baseDirectory,systemInfo,state.checksumFeed,serverId,map)
+    queueReliable(live,verified.command)
+    live.verifiedArchive=verified.archive
+  end if
+  live.epoch=live.protocol.dispatcher.snapshotState
+  live.map=map
+  live.game=game
+  live.gamestateStarted=now
+  live.lastCommandSequence=state.serverCommandSequence
+  live.outgoing.serverId=serverId
+  live.outgoing.checksumFeed=state.checksumFeed
+  live.connection.connectionState=remoteConnectionless.CA_PRIMED
+  appendCommand(live,remoteSend.zeroCommand())
+  return writePacket(live,now,true)
+end function
+
+/// Updates `live.outgoing.serverId` during remote play `updateServerSystemInfo`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.outgoing.serverId`.
+/// @param systemInfo Value used by `serverId=remoteInfo.value(systemInfo,"sv_serverid")`.
+function updateServerSystemInfo(live,systemInfo)
+  serverId=remoteInfo.value(systemInfo,"sv_serverid")
+  if serverId!="" then live.outgoing.serverId=remoteNumbers.atoi(serverId) end if
+  return void
+end function
+
+/// Updates `live.lastCommandSequence` during remote play `checkServerCommands`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.lastCommandSequence`.
+function checkServerCommands(live)
+  dispatcher=live.protocol.dispatcher
+  highest=dispatcher.serverCommandSequence
+  first=live.lastCommandSequence+1
+  if first<highest-remoteSend.MAX_RELIABLE_COMMANDS+1 then first=highest-remoteSend.MAX_RELIABLE_COMMANDS+1 end if
+  if first<=highest then
+    argv=remoteCommandBuffer.create()
+    for sequence=first to highest
+      command=dispatcher.serverCommands[sequence&(remoteSend.MAX_RELIABLE_COMMANDS-1)]
+      if remoteConnectionless.startsWith(command,"disconnect") or remoteConnectionless.startsWith(command,"cs ") then
+        remoteCommandBuffer.tokenizeString(argv,command)
+        name=remoteCommandBuffer.argv(argv,0)
+        if name=="disconnect" then
+          reason=remoteCommandBuffer.argsFrom(argv,1)
+          if reason=="" then reason="The server disconnected" end if
+          return error(7822,reason)
+        end if
+        if name=="cs" and remoteCommandBuffer.argv(argv,1)=="1" then
+          updateServerSystemInfo(live,remoteCommandBuffer.argv(argv,2))
+        end if
+      end if
+    end for
+  end if
+  live.lastCommandSequence=highest
+  return void
+end function
+
+/// Updates `live.lastAccepted`, `live.outgoing.lastPacketSentTime`, `live.sendHost` during remote play `acceptPacket`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.lastAccepted`, `live.outgoing.lastPacketSentTime`, `live.sendHost`.
+/// @param packet Record read through `packet.address`, `packet.data`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function acceptPacket(live,packet,now)
+  input=live.ingress
+  state=live.connection
+  oldPhase=state.connectionState
+  result=try(remoteIngress.clientPacket(input,packet.address,packet.data))
+  if result is error then return result end if
+  if state.connectionState!=oldPhase then live.lastAccepted=now end if
+  if state.channel!=void and live.sendHost==void then
+    input.netchanRuntime.connection.challenge=state.challenge
+    live.outgoing.lastPacketSentTime=now-1000
+    live.sendHost=remoteSend.liveServices(input.netchanRuntime,state.channel)
+    return writePacket(live,now,true)
+  end if
+  if result!="sequenced" then return false end if
+  if input.lastParseResult is error then return input.lastParseResult end if
+  live.lastAccepted=now
+  if live.protocol.dispatcher.snapshotState!=live.epoch then enterGamestate(live,now) end if
+  checkServerCommands(live)
+  snap=live.epoch.snap
+  if snap.valid and (snap.snapFlags&SNAPFLAG_NOT_ACTIVE)==0 then state.connectionState=remoteConnectionless.CA_ACTIVE end if
+  return true
+end function
+
+/// Calls `mq3.client.network_ingress.setRealtime`, `mq3.qcommon.net_transport.receiveBuffered`, `mq3.qcommon.net_transport.compareAddress` and additional helpers from remote play `pump`. The final path returns `primed(live)`.
+/// @param live Record read through `live.socket`, `live.connection`, `live.ingress`, `live.receiveBytes` and additional values.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param budget Value used by `if budget<1 or budget>64 then return error(7822,"Invalid UDP receive budget") end if`.
+function pump(live,now,budget)
+  if live==void or live.socket==void then return error(7822,"The server connection is closed") end if
+  if budget<1 or budget>64 then return error(7822,"Invalid UDP receive budget") end if
+  state=live.connection
+  state.realtime=now
+  remoteIngress.setRealtime(live.ingress,now)
+  for index=1 to budget
+    packet=remoteTransport.receiveBuffered(live.socket,live.receiveBytes,live.receiveMetadata,len(live.receiveBytes))
+    if not packet.received then break end if
+    if remoteTransport.compareAddress(packet.address,state.serverAddress) then acceptPacket(live,packet,now) end if
+  end for
+  if live.map=="" and now-live.connectStarted>=CONNECT_TIMEOUT_MS then
+    reason=state.serverMessage
+    if reason=="" then reason="Timed out joining the Quake III server" end if
+    return error(7822,reason)
+  end if
+  if live.map!="" and not primed(live) and now-live.gamestateStarted>=CONNECT_TIMEOUT_MS then
+    return error(7822,"The server did not send an active snapshot")
+  end if
+  if now-live.lastAccepted>=SERVER_TIMEOUT_MS then return error(7822,"Lost connection to the Quake III server") end if
+  remoteConnectionless.checkForResend(state,live.connectionHost)
+  if not primed(live) then writePacket(live,now,false) end if
+  return primed(live)
+end function
+
+/// Evaluates remote play `queueReliable` and returns `error(7823,"There is no server connection")`, `error(7823,"Invalid client command length")`, `error(7823,"The server has not acknowledged pending client commands")` and additional values according to its guard/selection conditions.
+/// @param live Record read through `live.sendHost`, `live.outgoing`, `live.protocol.dispatcher`.
+/// @param text Text consumed or emitted by `queueReliable` in the remote play path.
+function queueReliable(live,text)
+  if live==void or live.sendHost==void then return error(7823,"There is no server connection") end if
+  if text==void or text=="" or len(bytes(text))>=1024 then return error(7823,"Invalid client command length") end if
+  outgoing=live.outgoing
+  dispatcher=live.protocol.dispatcher
+  if outgoing.reliableSequence-dispatcher.reliableAcknowledge>=remoteSend.MAX_RELIABLE_COMMANDS then
+    return error(7823,"The server has not acknowledged pending client commands")
+  end if
+  outgoing.reliableSequence=outgoing.reliableSequence+1
+  outgoing.reliableCommands[outgoing.reliableSequence&(remoteSend.MAX_RELIABLE_COMMANDS-1)]=text
+  dispatcher.reliableSequence=outgoing.reliableSequence
+  return void
+end function
+
+/// Updates `live.connectionHost.context.userinfo` during remote play `updateUserinfo`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.connectionHost.context.userinfo`.
+/// @param userinfo Value assigned to `live.connectionHost.context.userinfo`.
+function updateUserinfo(live,userinfo)
+  if not primed(live) then return false end if
+  if userinfo==live.connectionHost.context.userinfo then return false end if
+  if userinfo=="" or not remoteInfo.valid(userinfo) then return error(7823,"Invalid client userinfo") end if
+  queueReliable(live,"userinfo \""+userinfo+"\"")
+  live.connectionHost.context.userinfo=userinfo
+  return true
+end function
+
+/// Calls `mq3.client.remote_play.primed`, `mq3.client.remote_play.appendCommand`, `mq3.client.remote_play.writePacket` from remote play `writeFrame`. The final path returns `writePacket(live,now,false)`.
+/// @param live Value used by `if not primed(live) then return false end if`.
+/// @param command Value used by `appendCommand(live,command)`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function writeFrame(live,command,now)
+  if not primed(live) then return false end if
+  appendCommand(live,command)
+  return writePacket(live,now,false)
+end function
+
+/// Updates `live.socket`, `live.sendHost`, `live.connection.connectionState` during remote play `close`.
+/// @param live Mutable remote play record/storage; this routine assigns `live.socket`, `live.sendHost`, `live.connection.connectionState`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function close(live,now)
+  if live==void or live.socket==void then return void end if
+  if live.sendHost!=void then
+    queued=try(queueReliable(live,"disconnect"))
+    if not (queued is error) then ignored=try(writePacket(live,now,true)) end if
+  end if
+  socket=live.socket
+  live.socket=void
+  live.sendHost=void
+  live.connection.connectionState=remoteConnectionless.CA_DISCONNECTED
+  return closeSocket(socket)
+end function

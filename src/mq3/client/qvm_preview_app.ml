@@ -5,8 +5,13 @@ package mq3.client.qvm_preview_app
 import mq3.engine.local_qvm_match as match
 import mq3.engine.local_qvm_ui as localQvmUi
 import mq3.client.original_ui_session as uiSession
+import mq3.client.desktop_session as desktopSession
+import mq3.client.desktop_video as desktopVideo
+import mq3.client.map_loading as mapLoading
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
+import mq3.client.demo_playback as demos
+import mq3.client.remote_play as remote
 import mq3.client.qvm_frame_input as frameInput
 import mq3.client.cgame_vm as cgameVm
 import mq3.qcommon.command_buffer as inputCommands
@@ -41,7 +46,6 @@ import mq3.client.playable_fps_title as fpsTitle
 import mq3.platform.playable_window as window
 import mq3.platform.playable_ambient as audioOutput
 import mq3.platform.playable_multitexture as multitexture
-import mq3.renderer.command_queue as renderCommands
 import mq3.audio.qvm_sound_assets as qvmSoundAssets
 import mq3.audio.qvm_playback as qvmPlayback
 import mq3.compat.numeric as numeric
@@ -50,34 +54,121 @@ import mq3.qcommon.cvar as cvar
 import std.ds.list as lists
 import mq3.client.frame_timing as frameTiming
 import std.time as time
-import std.ds.queue as queues
 import std.string as strings
 
-const WIDTH=1280
-const HEIGHT=720
-const QVM_TEXTURE_FIRST_SLOT=336
-const MAX_QVM_TEXTURE_SLOTS=64
-const QVM_2D_TEXTURE_FIRST_SLOT=400
-const MAX_QVM_2D_TEXTURE_SLOTS=93
-const CONSOLE_BACKGROUND_TEXTURE_SLOT=493
-const CONSOLE_FONT_TEXTURE_SLOT=495
-const CINEMATIC_TEXTURE_FIRST_SLOT=496
+/// Texture-cache slot or starting slot reserved for the world rendering resources.
+const WORLD_TEXTURE_FIRST_SLOT=256
+/// Texture-cache slot or starting slot reserved for the qvm rendering resources.
+const QVM_TEXTURE_FIRST_SLOT=2048
+/// Capacity limit for the qvm texture slots collection or bounded storage used by this client module.
+const MAX_QVM_TEXTURE_SLOTS=1024
+/// Texture-cache slot or starting slot reserved for the qvm 2 d rendering resources.
+const QVM_2D_TEXTURE_FIRST_SLOT=3072
+/// Capacity limit for the qvm 2 d texture slots collection or bounded storage used by this client
+/// module.
+const MAX_QVM_2D_TEXTURE_SLOTS=980
+/// Texture-cache slot or starting slot reserved for the console background rendering resources.
+const CONSOLE_BACKGROUND_TEXTURE_SLOT=4052
+/// Texture-cache slot or starting slot reserved for the console font rendering resources.
+const CONSOLE_FONT_TEXTURE_SLOT=4054
+/// Texture-cache slot or starting slot reserved for the cinematic rendering resources.
+const CINEMATIC_TEXTURE_FIRST_SLOT=4055
+/// Nominal source-view width used when scaling QVM presentation into the preview target.
 const SOURCE_WIDTH=1280
+/// Nominal source-view height used when scaling QVM presentation into the preview target.
 const SOURCE_HEIGHT=720
 // Retention bound, not a scene/triangle budget: evicted poses are recomputed.
 const MD3_FRAME_CACHE_ENTRIES=32
 
-struct PreparedView source geometry batch target end struct
-struct PreparedPortal plan world batch target source end struct
-struct NativeInput mouse keys end struct
-struct ClientInputBridge frame plan ui matchState end struct
-struct PipelineProfile expansion material batch end struct
-struct ScreenPoint x y depth end struct
+/// Stores QVM preview app prepared view record, including `source`, `geometry`, `batch`, `target`.
+struct PreparedView
+  /// When constructing this record, `prepareViews` supplies `view` for this member.
+  source
+  /// When constructing this record, `prepareViews` supplies `expanded` for this member. Used by
+  /// `runMatchWithLoading` during subsequent processing.
+  geometry
+  /// When constructing this record, `prepareViews` supplies `batch` for this member.
+  batch
+  /// When constructing this record, `prepareViews` supplies `target` for this member.
+  target
+end struct
+/// Stores QVM preview app prepared portal record, including `plan`, `world`, `batch`, `target`, `source`.
+struct PreparedPortal
+  /// When constructing this record, `preparePortal` supplies `plan` for this member.
+  plan
+  /// When constructing this record, `preparePortal` supplies `world` for this member. Used by
+  /// `runMatchWithLoading` during subsequent processing.
+  world
+  /// When constructing this record, `preparePortal` supplies `batch` for this member.
+  batch
+  /// When constructing this record, `preparePortal` supplies `target` for this member.
+  target
+  /// When constructing this record, `preparePortal` supplies `source.source` for this member.
+  source
+end struct
+/// Stores QVM preview app native input record, including `mouse`, `keys`.
+struct NativeInput
+  /// When constructing this record, `runMatchWithLoading` supplies `[0,0]` for this member.
+  mouse
+  /// When constructing this record, `runMatchWithLoading` supplies `keys` for this member.
+  keys
+end struct
+/// Stores QVM preview app client input bridge record, including `frame`, `plan`, `ui`, `matchState`.
+struct ClientInputBridge
+  /// Client frame-input state retaining held controls, view angles, and command sequencing for event
+  /// translation.
+  frame
+  /// When constructing this record, `runMatchWithLoading` supplies `initialPlan` for this member.
+  plan
+  /// When constructing this record, `runMatchWithLoading` supplies `ui` for this member.
+  ui
+  /// When constructing this record, `runMatchWithLoading` supplies `state` for this member.
+  matchState
+end struct
+/// Stores QVM preview app pipeline profile record, including `expansion`, `material`, `batch`.
+struct PipelineProfile
+  /// When constructing this record, `runMatchWithLoading` supplies `0` for this member.
+  expansion
+  /// When constructing this record, `runMatchWithLoading` supplies `0` for this member.
+  material
+  /// When constructing this record, `runMatchWithLoading` supplies `0` for this member.
+  batch
+end struct
+/// Stores QVM preview app screen point record, including `x`, `y`, `depth`.
+struct ScreenPoint
+  /// Horizontal coordinate of a textured quad vertex in the QVM gameplay preview's output coordinates.
+  x
+  /// Vertical coordinate of a textured quad vertex in the QVM gameplay preview's output coordinates.
+  y
+  /// When constructing this record, `drawCinematics` supplies `depth` for this member.
+  depth
+end struct
+/// Stores QVM preview app stream source record, including `transport`, `protocol`, `demo`, `name`, `systemInfo`.
+struct StreamSource
+  /// Transport state passed to the live-network pump or the timed demo-advancement path.
+  transport
+  /// Client protocol parser runtime shared with the live connection or demo playback source.
+  protocol
+  /// True when this source advances a recorded demo instead of pumping a live server connection.
+  demo
+  /// Virtual resource or definition name used to locate this entry in the client asset catalog.
+  name
+  /// Cached server system-info string used to detect changes that must be applied to the transport.
+  systemInfo
+end struct
 
+/// Creates the QVM preview app error `7682` with diagnostic text `"QVM preview: "+message`.
+/// @param message Argument 2 of `error`; passed as `"QVM preview: "+message`.
 function fail(message) return error(7682,"QVM preview: "+message) end function
+/// Adapts `mq3.client.frame_timing.percentile` to QVM preview app `framePercentile`, returning its result for `histogram, count, percent`.
+/// @param histogram Argument 1 of `mq3.client.frame_timing.percentile`.
+/// @param count Argument 2 of `mq3.client.frame_timing.percentile`.
+/// @param percent Argument 3 of `mq3.client.frame_timing.percentile`.
 function framePercentile(histogram,count,percent)
   return frameTiming.percentile(histogram,count,percent)
 end function
+/// Calls `std.string.toLowerAscii`, `std.string.replaceAll`, `std.string.split` and additional helpers from QVM preview app `requestedQuit`.
+/// @param state Record read through `state.context`, `state.context.console`.
 function requestedQuit(state)
   if state==void or state.context==void then return false end if
   for each entry in state.context.console
@@ -86,19 +177,43 @@ function requestedQuit(state)
   end for
   return false
 end function
+/// Evaluates QVM preview app `largestView` and returns `void`, `result` according to its guard/selection conditions.
+/// @param views Sequence read at `views[0]`.
 function largestView(views)
   if views==void or len(views)==0 then return void end if
   result=views[0];area=result.refdef.width*result.refdef.height
   for each view in views nextArea=view.refdef.width*view.refdef.height;if nextArea>area then result=view;area=nextArea end if end for
   return result
 end function
+/// Calls `mq3.shared.math.vectoangles`, `mq3.client.playable_viewer.camera` from QVM preview app `selectionCamera`. The final path returns `viewer.camera(view.refdef.vieworg,angles[1],angles[0],0.0,0.0)`.
+/// @param view Record read through `view.refdef.viewaxis`, `view.refdef.vieworg`.
 function selectionCamera(view)
   angles=qmath.vectoangles(view.refdef.viewaxis[0]);return viewer.camera(view.refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
+/// Calls `mq3.shared.math.vectoangles`, `mq3.client.playable_viewer.camera` from QVM preview app `refdefCamera`. The final path returns `viewer.camera(refdef.vieworg,angles[1],angles[0],0.0,0.0)`.
+/// @param refdef Record read through `refdef.viewaxis`, `refdef.vieworg`.
 function refdefCamera(refdef)
   angles=qmath.vectoangles(refdef.viewaxis[0]);return viewer.camera(refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
-function prepareViews(views,catalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,previousViews,profile,fogCatalog,dlightCatalog,shadowMode,lodScale,lodBias)
+/// Updates `profile.expansion`, `profile.material`, `profile.batch` during QVM preview app `prepareViews`.
+/// @param views Sequence whose length/content is inspected by `prepareViews`.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param assetNames Value used by `refreshed=sceneMaterials.refresh(catalog,archive,expanded.triangles,assetNames,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS)`.
+/// @param kinds Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param frameCache Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param grid Value used by `if grid!=void then ignored=lightGrid.setDynamicLights(grid,view.scene.dlights) end if`.
+/// @param videoManager Value used by `boundVideo=qvmVideo.bindCatalog(videoManager,catalog,view.refdef.time)`.
+/// @param previousViews Sequence read at `previousViews[viewIndex]`.
+/// @param profile Mutable QVM preview app record/storage; this routine assigns `profile.expansion`, `profile.material`, `profile.batch`.
+/// @param fogCatalog Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param dlightCatalog Value used by `if len(view.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,catalog,dlightCatalog)`.
+/// @param shadowMode Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param lodScale Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param lodBias Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param mode Record read through `mode.width`, `mode.height`.
+function prepareViews(views,catalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,previousViews,profile,fogCatalog,dlightCatalog,shadowMode,lodScale,lodBias,mode)
   result=lists.List.withCapacity(len(views));viewIndex=0
   for each view in views
     started=0;if profile!=void then started=window.milliseconds() end if
@@ -112,31 +227,50 @@ function prepareViews(views,catalog,archive,modelAssets,assetNames,kinds,frameCa
     previous=void;if previousViews!=void and viewIndex<len(previousViews) then previous=previousViews[viewIndex].batch end if;batch=void
     if previous==void then batch=sceneBatch.buildWithGeometry(catalog,expanded) else batch=sceneBatch.refreshWithGeometry(previous,catalog,expanded) end if;if batch is error then return batch end if
     attached=sceneBatch.attachFog(batch,fogCatalog);if attached is error then return attached end if
-    attached=sceneBatch.attachDynamicLights(batch,catalog,dlightCatalog);if attached is error then return attached end if
+    if len(view.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,catalog,dlightCatalog);if attached is error then return attached end if end if
     if profile!=void then profile.batch=profile.batch+window.milliseconds()-afterMaterial end if
-    target=qvmViewport.prepare(view.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if target is error then return target end if
+    target=qvmViewport.prepare(view.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,mode.width,mode.height);if target is error then return target end if
     result.add(PreparedView(view,expanded,batch,target));viewIndex=viewIndex+1
   end for
   return result.toArray()
 end function
+/// Evaluates QVM preview app `movementAxis` and returns `127`, `-127`, `0` according to its guard/selection conditions.
+/// @param positive Value used by `if positive and not negative then return 127 end if`.
+/// @param negative Value used by `if positive and not negative then return 127 end if`.
 function movementAxis(positive,negative)
   if positive and not negative then return 127 end if
   if negative and not positive then return -127 end if
   return 0
 end function
+/// Calls `mq3.client.ui_input_latch.keyDown`, `mq3.platform.playable_window.inputKeyDown` from QVM preview app `nativeKeyDown`. The final path returns `window.inputKeyDown(key)`.
+/// @param input Record read through `input.keys`.
+/// @param key Key or control identifier used to select the corresponding QVM preview app entry.
 function nativeKeyDown(input,key)
   if input!=void and inputLatch.keyDown(input.keys,key) then return true end if
   return window.inputKeyDown(key)
 end function
+/// Reads `input.mouse` for QVM preview app `nativeMouseDelta`.
+/// @param input Record read through `input.mouse`.
 function nativeMouseDelta(input) return input.mouse end function
+/// Calls `mq3.client.ui_input_latch.observe` from QVM preview app `observeNativeInputEvents`.
+/// @param input Record read through `input.keys`.
+/// @param events Value used by `for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2)`.
 function observeNativeInputEvents(input,events)
   for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2);if observed is error then return observed end if end for
   return void
 end function
+/// Calls `mq3.client.qvm_frame_input.handlesAction`, `mq3.engine.local_qvm_match.queueInputCommand` from QVM preview app `queueExpandedInput`. The final path returns `expanded`.
+/// @param matchState Value used by `for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(mat...`.
+/// @param frameState Value used by `for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(mat...`.
+/// @param expanded Value used by `if expanded is error then return expanded end if`.
 function queueExpandedInput(matchState,frameState,expanded)
   if expanded is error then return expanded end if
   for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(matchState,command.text) end if end for;return expanded
 end function
+/// Calls `mq3.engine.local_qvm_match.keyCatcher`, `mq3.engine.local_qvm_match.clientTextChar`, `bridge.ui.services.keyEventFn` and additional helpers from QVM preview app `applyInputEvent`. The final path returns `expanded`.
+/// @param bridge Record read through `bridge.ui.services.keyEventFn`, `bridge.ui.services.context`, `bridge.ui.services.mouseEventFn`, `bridge.frame` and additional values.
+/// @param matchState Record read through `matchState.cgame`, `matchState.context`.
+/// @param event Record read through `event.type`, `event.value`, `event.value2`, `event.time`.
 function applyInputEvent(bridge,matchState,event)
   catcher=match.keyCatcher(matchState)
   if event.type==window.INPUT_CHAR then
@@ -174,12 +308,18 @@ function applyInputEvent(bridge,matchState,event)
   else if (catcher&consoleInput.KEYCATCH_MESSAGE)!=0 and down then match.clientTextKey(matchState,key,match.keyIsDown(matchState,consoleInput.K_SHIFT),match.keyIsDown(matchState,consoleInput.K_CTRL)) end if
   return expanded
 end function
+/// Updates `ui.frameCount` during QVM preview app `refreshUiFrame`.
+/// @param ui Mutable QVM preview app record/storage; this routine assigns `ui.frameCount`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
 function refreshUiFrame(ui,serverTime)
   // Input has already been delivered once, in native-event order. Keep UI
   // refresh after beginRendererFrame/CG draw so its real commands survive.
   if uiSession.active(ui) then refreshed=ui.services.refreshFn(ui.services.context,serverTime);if refreshed is error then return refreshed end if;ui.frameCount=ui.frameCount+1 end if
   return true
 end function
+/// Calls `mq3.engine.local_qvm_match.keyIsDown`, `mq3.client.qvm_frame_input.applyBound`, `mq3.engine.local_qvm_match.keyBinding` and additional helpers from QVM preview app `releaseGameInput`. The final path returns `frameInput.releaseAll(bridge.frame,bridge.plan,time)`.
+/// @param bridge Record read through `bridge.matchState`, `bridge.frame`, `bridge.plan`.
+/// @param time Value used by `expanded=frameInput.applyBound(bridge.frame,bridge.plan,time,window.INPUT_KEY,key,0,match.keyBinding(bridge.matchState,key),match.keyCatcher(b...`.
 function releaseGameInput(bridge,time)
   // Key_ClearStates must also release delegated +commands such as +zoom.
   // Use the current binding, just like CL_KeyEvent(false), before keys clear.
@@ -190,17 +330,38 @@ function releaseGameInput(bridge,time)
   end for
   return frameInput.releaseAll(bridge.frame,bridge.plan,time)
 end function
+/// Adapts `mq3.client.qvm_preview_app.releaseGameInput` to QVM preview app `clearClientInput`, returning its result for `bridge, 0`.
+/// @param bridge Argument 1 of `mq3.client.qvm_preview_app.releaseGameInput`.
 function clearClientInput(bridge) return releaseGameInput(bridge,0) end function
+/// Evaluates QVM preview app `consoleColor` and returns `[0,0,0]`, `[255,0,0]`, `[0,255,0]` and additional values according to its guard/selection conditions.
+/// @param index Value tested by `index==0`, `index==1` and additional values before the calculation continues.
 function consoleColor(index)
   if index==0 then return [0,0,0] end if;if index==1 then return [255,0,0] end if;if index==2 then return [0,255,0] end if;if index==3 then return [255,255,0] end if
   if index==4 then return [0,0,255] end if;if index==5 then return [0,255,255] end if;if index==6 then return [255,0,255] end if;return [255,255,255]
 end function
+/// Calls `mq3.client.qvm_preview_app.consoleColor`, `mq3.client.baseq3_match_display.appendGlyphCode` from QVM preview app `drawConsoleGlyph`.
+/// @param media Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`.
+/// @param glyph Record read through `glyph.color`, `glyph.ch`, `glyph.x`, `glyph.y`.
+/// @param scaleX Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`.
+/// @param scaleY Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`.
 function drawConsoleGlyph(media,glyph,scaleX,scaleY)
   color=consoleColor(glyph.color);return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])
 end function
+/// Calls `mq3.client.baseq3_match_display.appendString` from QVM preview app `drawConsoleField`.
+/// @param media Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`.
+/// @param field Record read through `field.active`, `field.text`, `field.x`, `field.y`.
+/// @param scaleX Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`.
+/// @param scaleY Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`.
 function drawConsoleField(media,field,scaleX,scaleY)
   if field==void or not field.active then return true end if;return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)
 end function
+/// Calls `mq3.engine.local_qvm_match.clientConsoleState`, `mq3.client.console_input_display.draw`, `mq3.engine.local_qvm_match.clientTextState` and additional helpers from QVM preview app `drawProductiveConsole`.
+/// @param media Value used by `if runtime==void then return consoleDisplay.draw(media,match.clientTextState(matchState),width,height,now) end if`.
+/// @param background Value used by `if bottom>=0 then painted=consoleBackground.draw(background,width,bottom+1,now)`.
+/// @param matchState Value used by `runtime=match.clientConsoleState(matchState)`.
+/// @param width Width in the coordinate space used by `drawProductiveConsole`.
+/// @param height Height in the coordinate space used by `drawProductiveConsole`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function drawProductiveConsole(media,background,matchState,width,height,now)
   runtime=match.clientConsoleState(matchState);if runtime==void then return consoleDisplay.draw(media,match.clientTextState(matchState),width,height,now) end if
   view=match.clientConsoleView(matchState,now,16,"MiniQuake3");scaleX=width/640.0;scaleY=height/480.0
@@ -217,41 +378,86 @@ function drawProductiveConsole(media,background,matchState,width,height,now)
   end if
   return true
 end function
+/// Calls `mq3.engine.local_qvm_match.keyBinding`, `mq3.engine.local_qvm_match.setKeyBinding` from QVM preview app `ensurePlayableBindings`.
+/// @param state Shared QVM preview app state passed to the helper calls in `ensurePlayableBindings`.
 function ensurePlayableBindings(state)
   for each pair in [[119,"+forward"],[115,"+back"],[100,"+moveright"],[97,"+moveleft"],[32,"+moveup"],[178,"+attack"]]
     if match.keyBinding(state,pair[0])=="" then match.setKeyBinding(state,pair[0],pair[1]) end if
   end for
   return void
 end function
+/// Calls `mq3.engine.local_qvm_match.runServerTick`, `mq3.engine.local_qvm_match.snapshotProductive`, `mq3.client.cgame_clock.publishSnapshot` from QVM preview app `advanceGameTick`. The final path returns `published`.
+/// @param state Record read through `state.context.snapshotNumber`.
+/// @param clientClock Value used by `published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0)`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
 function advanceGameTick(state,clientClock,serverTime)
   // Human ClientThink already runs exactly once when each fresh cmd arrives.
-  advanced=match.runServerFrame(state,serverTime);if advanced is error then return advanced end if
+  advanced=match.runServerTick(state,serverTime);if advanced is error then return advanced end if
   snapshot=match.snapshotProductive(state,0);if snapshot is error then return snapshot end if
   published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0);if published is error then return published end if
   return snapshot
 end function
-function drawFrame(state,clientClock,realtime)
+/// Calls `mq3.engine.local_qvm_match.beginRendererFrame`, `mq3.client.cgame_clock.frame`, `mq3.engine.local_qvm_match.drawCgameProductiveInFrame` from QVM preview app `drawFrame`.
+/// @param state Record read through `state.serverPaused`, `state.connectionState`, `state.context.errors`.
+/// @param clientClock Record read through `clientClock.state.serverPaused`, `clientClock.state.connectionState`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param demoTime Value used by `drawTime=demoTime`.
+function drawFrame(state,clientClock,realtime,demoTime)
   begun=match.beginRendererFrame(state);if begun is error then return begun end if
-  frameTime=cgameClock.frame(clientClock,realtime);if frameTime is error then return frameTime end if
-  if not frameTime.draw then return false end if
-  drawn=match.drawCgameProductiveInFrame(state,frameTime.serverTime);if drawn is error then return drawn end if
+  drawTime=demoTime
+  if drawTime==void then
+    frameTime=cgameClock.frame(clientClock,realtime);if frameTime is error then return frameTime end if
+    if not frameTime.draw and not (clientClock.state.serverPaused and clientClock.state.connectionState==8) then return false end if
+    drawTime=frameTime.serverTime
+  end if
+  drawn=match.drawCgameProductiveInFrame(state,drawTime);if drawn is error then return drawn end if
   if len(state.context.errors)>0 then return fail(state.context.errors[0]) end if
   return drawn
 end function
+/// Calls `mq3.renderer.bsp_render_data.lightmapRgba`, `mq3.platform.playable_window.uploadTexture` from QVM preview app `uploadLightmaps`. The final path returns `count`.
+/// @param map Record read through `map.counts`.
 function uploadLightmaps(map)
-  count=map.counts[14];if count>64 then count=64 end if
+  count=map.counts[14];if count>WORLD_TEXTURE_FIRST_SLOT then count=WORLD_TEXTURE_FIRST_SLOT end if
   if count>0 then for index=0 to count-1
     pixels=renderData.lightmapRgba(map,index);if pixels is error then return pixels end if
     if not window.uploadTexture(index,pixels,128,128) then return fail("could not upload BSP lightmap") end if
   end for end if
   return count
 end function
+/// Calls `mq3.renderer.playable_world_batch.attachFog`, `mq3.renderer.playable_world_batch.attachDynamicLights` from QVM preview app `attachWorldEffects`. The final path returns `batch`.
+/// @param batch Value used by `if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog)`.
+/// @param triangles Value used by `if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog)`.
+/// @param fogCatalog Value used by `if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog)`.
+/// @param dlightCatalog Value used by `if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog)`.
+/// @param dlightReceiveFlags Value used by `if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog)`.
 function attachWorldEffects(batch,triangles,fogCatalog,dlightCatalog,dlightReceiveFlags)
   if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog);if attached is error then return attached end if end if
   if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog);if attached is error then return attached end if end if
   return batch
 end function
-function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
+/// Updates `portalCache.clippedFaces` during QVM preview app `preparePortal`.
+/// @param source Record read through `source.geometry`, `source.source.refdef`, `source.source.scene.dlights`, `source.source.scene.entities` and additional values.
+/// @param selectedWorld Value used by `plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false)`.
+/// @param portalCache Mutable QVM preview app record/storage; this routine assigns `portalCache.clippedFaces`.
+/// @param worldCatalog Value used by `plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false)`.
+/// @param qvmCatalog Value used by `refreshed=sceneMaterials.refresh(qvmCatalog,archive,geometry.triangles,assetNames,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS)`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param assetNames Value used by `refreshed=sceneMaterials.refresh(qvmCatalog,archive,geometry.triangles,assetNames,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS)`.
+/// @param kinds Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param frameCache Record read through `frameCache.normalTable`.
+/// @param grid Value used by `if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if`.
+/// @param videoManager Value used by `boundVideo=qvmVideo.bindCatalog(videoManager,qvmCatalog,plan.refdef.time)`.
+/// @param worldCache Value used by `chosen=worldSelection.selectPortalCached(worldCache,refdefCamera(plan.refdef),plan.view.pvsOrigin,portalConfig)`.
+/// @param worldConfig Record read through `worldConfig.width`, `worldConfig.height`.
+/// @param skyFlags Value used by `world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags)`.
+/// @param fogCatalog Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param dlightCatalog Value used by `if len(source.source.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,qvmCatalog,dlightCatalog)`.
+/// @param dlightReceiveFlags Value used by `attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags)`.
+/// @param shadowMode Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param lodScale Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param lodBias Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+function preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
   plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false);if plan is error or plan==void then return plan end if
   if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if
   geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.refdef,8192,frameCache,frameCache.normalTable,grid,shadowMode,fogCatalog,lodScale,lodBias);if geometry is error then return geometry end if
@@ -260,23 +466,53 @@ function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,mode
   boundVideo=qvmVideo.bindCatalog(videoManager,qvmCatalog,plan.refdef.time);if boundVideo is error then return boundVideo end if
   batch=sceneBatch.buildWithGeometry(qvmCatalog,geometry);if batch is error then return batch end if
   attached=sceneBatch.attachFog(batch,fogCatalog);if attached is error then return attached end if
-  attached=sceneBatch.attachDynamicLights(batch,qvmCatalog,dlightCatalog);if attached is error then return attached end if
-  portalConfig=worldSelection.config(worldConfig.width,worldConfig.height,plan.refdef.fovX,worldConfig.nearDistance,worldConfig.farDistance,worldConfig.triangleBudget,worldConfig.backfaceCull,worldConfig.patchError);if portalConfig is error then return portalConfig end if
-  portalConfig.runtime=plan.refdef.viewaxis
-  portalWorld=worldSelection.preparePortalCached(worldCache,refdefCamera(plan.refdef),plan.view.pvsOrigin,portalConfig);if portalWorld is error then return portalWorld end if
-  clippedWorld=portalClip.clipRenderData(portalWorld.renderData,plan.view.planeNormal,plan.view.planeDist);if clippedWorld is error then return clippedWorld end if
-  world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags);if world is error then return world end if
-  attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then return attached end if
-  target=qvmViewport.prepare(plan.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if target is error then return target end if
+  if len(source.source.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,qvmCatalog,dlightCatalog);if attached is error then return attached end if end if
+  portalConfig=worldSelection.forView(worldConfig,plan.refdef);if portalConfig is error then return portalConfig end if
+  chosen=worldSelection.selectPortalCached(worldCache,refdefCamera(plan.refdef),plan.view.pvsOrigin,portalConfig);if chosen is error then return chosen end if
+  planeNormal=plan.view.planeNormal;planeDist=plan.view.planeDist
+  world=portalPass.cachedWorldBatch(portalCache,chosen.faceIndexes,planeNormal,planeDist)
+  if world==void then
+    if portalCache.clippedFaces==void then portalCache.clippedFaces=portalClip.createFaceCache(worldCache) end if
+    clippedWorld=portalClip.clipSelection(portalCache.clippedFaces,chosen,planeNormal,planeDist);if clippedWorld is error then return clippedWorld end if
+    world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags);if world is error then return world end if
+    attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then return attached end if
+    portalPass.storeWorldBatch(portalCache,chosen.faceIndexes,planeNormal,planeDist,world)
+  end if
+  target=qvmViewport.prepare(plan.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,worldConfig.width,worldConfig.height);if target is error then return target end if
   return PreparedPortal(plan,world,batch,target,source.source)
 end function
-function preparePortals(preparedViews,selectedWorld,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
-  result=lists.List.withCapacity(len(preparedViews));for each source in preparedViews portal=preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result.add(portal) end for;return result.toArray()
+/// Calls `std.ds.list.List.withCapacity`, `mq3.client.qvm_preview_app.preparePortal`, `result.add` and additional helpers from QVM preview app `preparePortals`. The final path returns `result.toArray()`.
+/// @param preparedViews Sequence whose length/content is inspected by `preparePortals`.
+/// @param selectedWorld Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param portalCache Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param worldCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param qvmCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param assetNames Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param kinds Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param frameCache Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param grid Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param videoManager Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param worldCache Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param worldConfig Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param skyFlags Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param fogCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param dlightCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param dlightReceiveFlags Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param shadowMode Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param lodScale Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param lodBias Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+function preparePortals(preparedViews,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
+  result=lists.List.withCapacity(len(preparedViews));for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result.add(portal) end for;return result.toArray()
 end function
-function drawCinematics(state)
+/// Calls `mq3.client.cinematic_runtime.takeDraws`, `mq3.client.cinematic_runtime.presentation`, `mq3.platform.playable_window.uploadTextureNoMip` and additional helpers from QVM preview app `drawCinematics`. The final path returns `drawn`.
+/// @param state Record read through `state.context.cinematics`.
+/// @param mode Record read through `mode.width`, `mode.height`.
+function drawCinematics(state,mode)
   draws=cinematics.takeDraws(state.context.cinematics);drawn=0
   for each draw in draws
-    presentation=cinematics.presentation(draw,640,480,WIDTH,HEIGHT);if presentation is error then return presentation end if
+    presentation=cinematics.presentation(draw,640,480,mode.width,mode.height);if presentation is error then return presentation end if
     slot=CINEMATIC_TEXTURE_FIRST_SLOT+draw.handle
     if presentation.dirty and not window.uploadTextureNoMip(slot,presentation.pixels,presentation.sourceWidth,presentation.sourceHeight) then return fail("could not upload cinematic frame") end if
     x=presentation.x;y=presentation.y;w=presentation.width;h=presentation.height;depth=0.001
@@ -288,6 +524,9 @@ function drawCinematics(state)
   end for
   multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return drawn
 end function
+/// Calls `mq3.client.cinematic_runtime.takeAudio`, `mq3.audio.qvm_playback.queueRaw` from QVM preview app `collectCinematicAudio`. The final path returns `count`.
+/// @param state Record read through `state.context.cinematics`.
+/// @param audio Value used by `for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0)`.
 function collectCinematicAudio(state,audio)
   count=0
   for handle=0 to cinematics.MAX_HANDLES-1
@@ -296,9 +535,16 @@ function collectCinematicAudio(state,audio)
   end for
   return count
 end function
+/// Calls `mq3.platform.playable_window.releaseTexture` from QVM preview app `releaseCinematics`.
 function releaseCinematics()
   for handle=0 to cinematics.MAX_HANDLES-1 window.releaseTexture(CINEMATIC_TEXTURE_FIRST_SLOT+handle) end for;return void
 end function
+/// Calls `mq3.engine.local_qvm_match.bootWithQvmsSettingsNamed`, `mq3.engine.local_qvm_match.connectLocal`, `mq3.vm.syscall_qagame_world.userCommand` and additional helpers from QVM preview app `bootFrameSettingsNamed`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map map record passed to the QVM preview app helper calls.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param settings Value used by `state=match.bootWithQvmsSettingsNamed(archive,map,mapName,1000,qvmRoot,settings)`.
 function bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings)
   state=match.bootWithQvmsSettingsNamed(archive,map,mapName,1000,qvmRoot,settings);if state is error then return state end if
   joined=match.connectLocal(state,0);if joined is error then return joined end if
@@ -318,39 +564,164 @@ function bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings)
   end for
   return state
 end function
+/// Adapts `mq3.client.qvm_preview_app.bootFrameSettingsNamed` to QVM preview app `bootFrameSettings`, returning its result for `archive, map, "q3dm1", qvmRoot, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
+/// @param settings Argument 5 of `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
 function bootFrameSettings(archive,map,qvmRoot,settings) return bootFrameSettingsNamed(archive,map,"q3dm1",qvmRoot,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.bootFrameSettings` to QVM preview app `bootFrame`, returning its result for `archive, map, qvmRoot, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettings`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.bootFrameSettings`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettings`.
 function bootFrame(archive,map,qvmRoot) return bootFrameSettings(archive,map,qvmRoot,void) end function
 
-function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
+/// Calls `mq3.client.qvm_preview_app.bootFrameSettingsNamed`, `mq3.engine.local_qvm_match.bootServerStream`, `mq3.engine.local_qvm_match.drawCgameProductive` and additional helpers from QVM preview app `bootMatch`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map map record passed to the QVM preview app helper calls.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param settings Value used by `if source==void then return bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings) end if`.
+/// @param source Record read through `source.protocol`, `source.demo`, `source.name`.
+function bootMatch(archive,map,mapName,qvmRoot,settings,source)
+  if source==void then return bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings) end if
+  state=try(match.bootServerStream(archive,map,mapName,qvmRoot,settings,source.protocol,source.demo,source.name,1000))
+  if state is error then return state end if
+  drawn=try(match.drawCgameProductive(state,state.context.latestSnapshot.serverTime))
+  if drawn is error then match.shutdown(state);return drawn end if
+  if len(state.context.errors)>0 then
+    reason=state.context.errors[0];match.shutdown(state);return fail(reason)
+  end if
+  state.context.now=1000
+  return state
+end function
+
+/// Calls `mq3.client.demo_playback.advance`, `mq3.client.remote_play.pump`, `mq3.engine.local_qvm_match.refreshServerStream` and additional helpers from QVM preview app `updateStream`.
+/// @param state Record read through `state.context.snapshotNumber`.
+/// @param source Record read through `source.demo`, `source.transport`, `source.protocol.dispatcher.snapshotState.snap`.
+/// @param clientClock Record read through `clientClock.snapshotNumber`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
+/// @param demoTime Value used by `read=try(demos.advance(source.transport,demoTime,serverTime))`.
+function updateStream(state,source,clientClock,serverTime,demoTime)
+  if source.demo then
+    read=try(demos.advance(source.transport,demoTime,serverTime));if read is error then return read end if
+  else
+    received=try(remote.pump(source.transport,serverTime,64));if received is error then return received end if
+  end if
+  synced=try(match.refreshServerStream(state,serverTime));if synced is error or not synced then return synced end if
+  if not source.demo and state.context.snapshotNumber!=clientClock.snapshotNumber then
+    snap=source.protocol.dispatcher.snapshotState.snap
+    cgameClock.publishSnapshot(clientClock,snap.messageNum,snap.serverTime,snap.snapFlags)
+  end if
+  return true
+end function
+
+/// Updates `source.systemInfo` during QVM preview app `sendStreamFrame`.
+/// @param state Record read through `state.context.configstrings`, `state.context.cvars`, `state.context`.
+/// @param source Mutable QVM preview app record/storage; this routine assigns `source.systemInfo`.
+/// @param created Value used by `if created==void then return false end if`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+function sendStreamFrame(state,source,created,now)
+  systemInfo=state.context.configstrings[1]
+  if systemInfo!=source.systemInfo then
+    remote.updateServerSystemInfo(source.transport,systemInfo);source.systemInfo=systemInfo
+  end if
+  registry=state.context.cvars
+  if (registry.modifiedFlags&cvar.USERINFO)!=0 then
+    updated=try(remote.updateUserinfo(source.transport,cvar.infoString(registry,cvar.USERINFO)))
+    if updated is error then return updated end if
+    registry.modifiedFlags=registry.modifiedFlags&(~cvar.USERINFO)
+  end if
+  for each command in match.takeStreamCommands(state)
+    queued=try(remote.queueReliable(source.transport,command));if queued is error then return queued end if
+  end for
+  if created==void then return false end if
+  recorded=try(match.recordLocalUsercmd(state.context,0,created));if recorded is error then return recorded end if
+  return remote.writeFrame(source.transport,created,now)
+end function
+
+/// Calls `mq3.platform.playable_window.open`, `mq3.client.map_loading.create`, `mq3.platform.playable_window.shutdown` and additional helpers from QVM preview app `runMatch`. The final path returns `loaded`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map map record passed to the QVM preview app helper calls.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param maxFrames Value used by `if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if`.
+/// @param settings Value used by `loaded=try(runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,SOURCE_WIDTH,SOURCE_HEIGHT))`.
+/// @param session session record passed to the QVM preview app helper calls.
+/// @param source Record read through `source.name`.
+function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if
-  opened=window.open(WIDTH,HEIGHT);if opened is error then return opened end if
-  startupAt=window.milliseconds();loading=window.showLoading(3,"Booting original game and cgame QVMs");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
-  state=bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings);if state is error then window.shutdown();return state end if
-  qvmBootAt=window.milliseconds();loading=window.showLoading(24,"Booting original UI QVM");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
-  ensurePlayableBindings(state)
+  opened=window.open(SOURCE_WIDTH,SOURCE_HEIGHT);if opened is error then return opened end if
+  serverName="localhost";if source!=void then serverName=source.name end if
+  screen=mapLoading.create(archive,mapName,serverName,source==void);if screen is error then window.shutdown();return screen end if
+  loaded=try(runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,SOURCE_WIDTH,SOURCE_HEIGHT))
+  mapLoading.release(screen);return loaded
+end function
+
+/// Updates `session.action` during QVM preview app `stopLoading`.
+/// @param screen Value used by `mapLoading.release(screen)`.
+/// @param state Shared QVM preview app state passed to the helper calls in `stopLoading`.
+/// @param session Mutable QVM preview app record/storage; this routine assigns `session.action`.
+/// @param result Value used by `if result is error then return result end if`.
+function stopLoading(screen,state,session,result)
+  mapLoading.release(screen)
+  if state!=void then match.shutdown(state) end if
+  window.shutdown()
+  if result is error then return result end if
+  if session!=void then session.action="quit" end if
+  return 0
+end function
+
+/// Updates `session.videoWidth`, `session.videoHeight`, `session.action`, `session.videoRestart` during QVM preview app `runMatchWithLoading`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map Record read through `map.counts`.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param maxFrames Value used by `interactiveInput=maxFrames<0`.
+/// @param settings Value used by `state=try(bootMatch(archive,map,mapName,qvmRoot,settings,source))`.
+/// @param session Mutable QVM preview app record/storage; this routine assigns `session.videoWidth`, `session.videoHeight`, `session.action`, `session.videoRestart`.
+/// @param source Record read through `source.demo`, `source.transport.completed`, `source.scene.dlights`, `source.refdef.flags` and additional values.
+/// @param screen Record read through `screen.startedAt`, `screen.catalog`, `screen.scripts`, `screen.indexMillis`.
+/// @param initialWidth Value used by `loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)`.
+/// @param initialHeight Value used by `loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)`.
+function runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,initialWidth,initialHeight)
+  startupAt=screen.startedAt
+  if screen.catalog==void then
+    loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)
+    if loading is error or not loading then return stopLoading(screen,void,session,loading) end if
+  end if
+  state=try(bootMatch(archive,map,mapName,qvmRoot,settings,source));if state is error then return state end if
+  mode=desktopVideo.open(state.context.cvars);if mode is error then window.shutdown();match.shutdown(state);return mode end if
+  if session!=void then session.videoWidth=mode.width;session.videoHeight=mode.height end if
+  qvmBootAt=window.milliseconds();loading=mapLoading.show(screen,"maps/"+mapName+".bsp",mode.width,mode.height,state.context.configstrings,true);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
+  if session==void then ensurePlayableBindings(state) end if
   clientClock=cgameClock.create(state.context.now,state.context.snapshotNumber,state.context.latestSnapshot.serverTime);if clientClock is error then window.shutdown();match.shutdown(state);return clientClock end if
   bootedUi=match.bootUi(state);if bootedUi is error then window.shutdown();match.shutdown(state);return bootedUi end if
+  if session!=void then attached=desktopSession.attach(state,session);if attached is error then window.shutdown();match.shutdown(state);return attached end if end if
   videoManager=qvmVideo.create(state.context.cinematics,CINEMATIC_TEXTURE_FIRST_SLOT,cinematics.MAX_HANDLES);if videoManager is error then window.shutdown();match.shutdown(state);return videoManager end if
   frameCache=sceneGeometry.createFrameCache(void,MD3_FRAME_CACHE_ENTRIES);if frameCache is error then window.shutdown();match.shutdown(state);return frameCache end if
   view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame submitted no render view") end if
-  uiBootAt=window.milliseconds();loading=window.showLoading(32,"Indexing retail shaders");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
-  scripts=materials.buildScriptIndex(archive);if scripts is error then window.shutdown();match.shutdown(state);return scripts end if
-  scriptIndexAt=window.milliseconds();loading=window.showLoading(48,"Resolving scene and HUD materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  uiBootAt=window.milliseconds();loading=mapLoading.show(screen,"graphics",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
+  scripts=screen.scripts
+  scriptIndexAt=window.milliseconds();loading=mapLoading.show(screen,"game media",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
   qvmCatalog=sceneMaterials.buildIndexed(archive,[],state.context.assets,state.context.assetKinds,QVM_TEXTURE_FIRST_SLOT,MAX_QVM_TEXTURE_SLOTS,state.context.shaderRemaps,scripts);if qvmCatalog is error then window.shutdown();match.shutdown(state);return qvmCatalog end if
   shadowVariable=cvar.get(state.context.cvars,"cg_shadows","1",cvar.ARCHIVE);lodScaleVariable=cvar.get(state.context.cvars,"r_lodscale","5",cvar.CHEAT);lodBiasVariable=cvar.get(state.context.cvars,"r_lodbias","0",cvar.ARCHIVE)
-  preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void,void,void,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
-  hudCatalog=qvm2d.buildIndexed(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,QVM_2D_TEXTURE_FIRST_SLOT,MAX_QVM_2D_TEXTURE_SLOTS,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT,state.context.shaderRemaps,scripts);if hudCatalog is error then window.shutdown();match.shutdown(state);return hudCatalog end if
+  preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void,void,void,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer,mode);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
+  hudCatalog=qvm2d.buildIndexed(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,QVM_2D_TEXTURE_FIRST_SLOT,MAX_QVM_2D_TEXTURE_SLOTS,SOURCE_WIDTH,SOURCE_HEIGHT,mode.width,mode.height,state.context.shaderRemaps,scripts);if hudCatalog is error then window.shutdown();match.shutdown(state);return hudCatalog end if
   consoleBackgroundMedia=consoleBackground.load(archive,CONSOLE_BACKGROUND_TEXTURE_SLOT);if consoleBackgroundMedia is error then window.shutdown();match.shutdown(state);return consoleBackgroundMedia end if
   consoleMedia=baseMatchDisplay.load(archive,CONSOLE_FONT_TEXTURE_SLOT);if consoleMedia is error then window.shutdown();match.shutdown(state);return consoleMedia end if
   boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,state.context.now);if boundVideo is error then window.shutdown();match.shutdown(state);return boundVideo end if
-  sceneAt=window.milliseconds();loading=window.showLoading(64,"Decoding registered sounds");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  sceneAt=window.milliseconds();loading=mapLoading.show(screen,"sounds",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
   soundCatalog=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if soundCatalog is error then window.shutdown();match.shutdown(state);return soundCatalog end if
-  audio=qvmPlayback.create(soundCatalog,22050,4096);if audio is error then window.shutdown();match.shutdown(state);return audio end if
+  audio=qvmPlayback.create(soundCatalog,22050,qvmSoundAssets.CHUNK_FRAMES);if audio is error then window.shutdown();match.shutdown(state);return audio end if
   applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then window.shutdown();match.shutdown(state);return applied end if
-  soundAt=window.milliseconds();loading=window.showLoading(78,"Building "+mapName+" world materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
-  worldCatalog=materials.loadIndexed(archive,map,256,64,scripts[0],scripts[1]);if worldCatalog is error then window.shutdown();match.shutdown(state);return worldCatalog end if
+  soundAt=window.milliseconds();loading=mapLoading.show(screen,"maps/"+mapName+".bsp",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
+  worldCatalog=materials.loadIndexed(archive,map,QVM_TEXTURE_FIRST_SLOT-WORLD_TEXTURE_FIRST_SLOT-16,WORLD_TEXTURE_FIRST_SLOT,scripts[0],scripts[1]);if worldCatalog is error then window.shutdown();match.shutdown(state);return worldCatalog end if
+  materials.seedImageCacheFromCatalog(qvmCatalog.imageCache,worldCatalog)
+  sceneMaterials.warmRegisteredPlayerSkins(qvmCatalog,archive,state.context.assets,state.context.assetKinds)
+  sceneMaterials.warmServerModelImages(qvmCatalog,archive,state.context.assets,state.context.assetKinds,state.context.modelAssets,state.context.configstrings)
   boundVideo=qvmVideo.bindCatalog(videoManager,worldCatalog,state.context.now);if boundVideo is error then window.shutdown();match.shutdown(state);return boundVideo end if
-  nextWorldTextureSlot=64+worldCatalog.textureCount
+  nextWorldTextureSlot=WORLD_TEXTURE_FIRST_SLOT+worldCatalog.textureCount
   skyCatalog=void;availableWorldTextureSlots=QVM_TEXTURE_FIRST_SLOT-nextWorldTextureSlot
   if availableWorldTextureSlots>=playableSky.REQUIRED_TEXTURES then loadedSky=try(playableSky.loadMap(archive,map,scripts[0],nextWorldTextureSlot,availableWorldTextureSlots));if not (loadedSky is error) and loadedSky!=void then skyCatalog=loadedSky;nextWorldTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if end if
   fogCatalog=void
@@ -359,19 +730,25 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   if nextWorldTextureSlot<QVM_TEXTURE_FIRST_SLOT then loadedDlights=try(dynamicLights.createCatalog(nextWorldTextureSlot));if not (loadedDlights is error) then dlightCatalog=loadedDlights;nextWorldTextureSlot=nextWorldTextureSlot+1 end if end if
   flareCatalog=void;flareVariable=cvar.get(state.context.cvars,"r_flares","0",cvar.ARCHIVE)
   if nextWorldTextureSlot<QVM_TEXTURE_FIRST_SLOT then loadedFlares=try(flares.load(archive,map,scripts[0],nextWorldTextureSlot,flareVariable.integer!=0));if not (loadedFlares is error) then flareCatalog=loadedFlares;if flareCatalog.image!=void then nextWorldTextureSlot=nextWorldTextureSlot+1 end if end if end if
-  worldConfig=worldSelection.defaults(WIDTH,HEIGHT);if worldConfig is error then window.shutdown();match.shutdown(state);return worldConfig end if;worldConfig.horizontalFov=view.refdef.fovX;worldConfig.runtime=view.refdef.viewaxis
-  worldCache=worldSelection.buildCache(map,worldConfig.patchError);if worldCache is error then window.shutdown();match.shutdown(state);return worldCache end if
+  worldConfig=worldSelection.defaults(mode.width,mode.height);if worldConfig is error then window.shutdown();match.shutdown(state);return worldConfig end if
+  lodCurveError=cvar.get(state.context.cvars,"r_lodCurveError","250",cvar.ARCHIVE|cvar.CHEAT)
+  worldConfig.lodCurveError=lodCurveError.value
+  worldSelection.setView(worldConfig,view.refdef)
+  worldCache=worldSelection.buildCacheForPatches(map,worldConfig.patchError,true);if worldCache is error then window.shutdown();match.shutdown(state);return worldCache end if
   // Visible world surfaces are occluders, not an expendable performance
   // budget. Keep every selected surface even on maps larger than q3dm1.
   worldConfig.triangleBudget=worldCache.totalTriangleCount
-  twoSided=array(map.counts[1],false);for each material in worldCatalog.materials if material.textureIndex>=0 and material.textureIndex<len(twoSided) then twoSided[material.textureIndex]=material.twoSided end if end for;configured=worldSelection.setTwoSidedTextures(worldCache,twoSided);if configured is error then window.shutdown();match.shutdown(state);return configured end if
+  configured=worldSelection.setIndexedCulling(worldCache,scripts[0]);if configured is error then window.shutdown();match.shutdown(state);return configured end if
   selected=worldSelection.prepareCached(worldCache,selectionCamera(view),worldConfig);if selected is error then window.shutdown();match.shutdown(state);return selected end if
   skyFlags=array(map.counts[1],false);dlightReceiveFlags=array(map.counts[1],false)
   for textureIndex=0 to map.counts[1]-1 mapShader=materials.shaderName(map,textureIndex);if mapShader is error then window.shutdown();match.shutdown(state);return mapShader end if;skyFlags[textureIndex]=playableSky.isSkyShaderIndexed(scripts[0],mapShader);surfaceFlags=materials.shaderSurfaceFlags(map,textureIndex);if surfaceFlags is error then window.shutdown();match.shutdown(state);return surfaceFlags end if;dlightReceiveFlags[textureIndex]=not skyFlags[textureIndex] and (surfaceFlags&0x20000)==0 end for
   for each material in worldCatalog.materials if material.textureIndex>=0 and material.textureIndex<len(dlightReceiveFlags) and material.sort>3.0 then dlightReceiveFlags[material.textureIndex]=false end if end for
   retainedWorldCache=retainedWorld.create(worldCache,worldCatalog,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags);if retainedWorldCache is error then window.shutdown();match.shutdown(state);return retainedWorldCache end if
   worldPrepared=retainedWorld.select(retainedWorldCache,selected);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if;selectedFaces=selected.selection.faceIndexes
-  worldAt=window.milliseconds();loading=window.showLoading(90,"Uploading textures and starting audio");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  loadClient=0;if source!=void then loadClient=state.context.serverStream.protocol.gamestateState.clientNum end if
+  mapLoading.collectIcons(screen,state.context.configstrings,state.context.assets,state.context.assetKinds,loadClient)
+  worldAt=window.milliseconds();loading=mapLoading.show(screen,"clients",mode.width,mode.height,state.context.configstrings,false);if loading is error or not loading then return stopLoading(screen,state,session,loading) end if
+  mapLoading.release(screen)
   keys=inputLatch.create(256);if keys is error then window.shutdown();match.shutdown(state);return keys end if;nativeInput=NativeInput([0,0],keys);ui=localQvmUi.attach(state,nativeInput,nativeKeyDown,nativeMouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
   uploaded=worldBatch.uploadMaterials(worldCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
@@ -384,7 +761,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   if flareCatalog!=void then uploaded=flares.upload(flareCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
-  readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
+  readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt-screen.indexMillis)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(screen.indexMillis+scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
   print "QVM retained world: enabled="+str(retainedWorldCache.enabled)+" staticPrimes="+str(retainedWorldCache.staticPrimes)+" (worldRebuild timing includes selected effects)"
   rendererName="software";if window.hardwareRenderer() then rendererName="hardware OpenGL" end if;print "QVM renderer: "+rendererName+" / "+str(window.glInfo(1))
   titleState=fpsTitle.create("Original QVM "+mapName,window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
@@ -393,90 +770,146 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   // were loading.  Rebasing those old native timestamps onto the game clock
   // made them negative after a slow cold start and crashed the input bridge.
   window.inputClear();discardedEvents=window.inputEvents(256);if discardedEvents is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return discardedEvents end if
-  state.context.console=[];pendingInputEvents=queues.Queue.withCapacity(256);wasMenuActive=false;quitRequested=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);soundAssetCount=len(state.context.assets);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;audioMs=0;totalMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
-  frameState=frameInput.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,simulationStart,simulationStart);if frameState is error then window.shutdown();match.shutdown(state);return frameState end if
+  state.context.console=[];quitRequested=false;uploadedSceneSlot=qvmCatalog.nextTextureSlot;uploadedHudTextures=len(hudCatalog.textures);soundAssetCount=len(state.context.assets);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;audioMs=0;totalMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  previousWall=realStart;hostTime=simulationStart;wasPaused=false;lastSave=realStart
+  demoPlaying=source!=void and source.demo
+  initialDemoTime=state.context.latestSnapshot.serverTime
+  streamFailure=void
+  pauseRequest=cvar.get(state.context.cvars,"cl_paused","0",0)
+  if source!=void then simulationStart=realStart;hostTime=simulationStart end if
+  frameState=frameInput.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,simulationStart,state.context.latestSnapshot.serverTime);if frameState is error then window.shutdown();match.shutdown(state);return frameState end if
   frameInput.bindConfig(frameState,state.context.cvars)
   initialPlan=frameInput.prepare(frameState,simulationStart,state.context.commandNumber,clientClock.state.connectionState,true,false,false);inputBridge=ClientInputBridge(frameState,initialPlan,ui,state);match.attachInputClear(state,inputBridge,clearClientInput)
+  // The BSP, world catalog and static effect layout are fixed for this match.
+  // Refdef time, camera and current lights still drive every portal draw.
+  portalCache=portalPass.worldBatchCache()
   worldSelectMs=0;worldRebuildMs=0;worldEffectsMs=0;portalPrepareMs=0;worldRebuildCount=0
   frameHistogram=frameTiming.histogram();maximumFrameMs=0;interactiveInput=maxFrames<0
   while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)
-    startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0;state.context.soundCommands=[]
-    begun=inputLatch.beginFrame(nativeInput.keys);if begun is error then window.shutdown();match.shutdown(state);return begun end if;window.poll();menuActive=uiSession.active(ui)
+    startedAt=window.milliseconds();uiTime=simulationStart+frameTiming.elapsed(realStart,startedAt);steps=0;state.context.soundCommands=[]
+    // Com_ModifyMsec caps a local server frame at 200 ms. Discard excess
+    // wall time so a single stall cannot trigger more stalls while catching up.
+    frameMsec=frameTiming.elapsed(previousWall,startedAt);if frameMsec>200 then frameMsec=200 end if;previousWall=startedAt
+    serverTime=hostTime;if not wasPaused then serverTime=serverTime+frameMsec end if
+    if source!=void then serverTime=startedAt end if
+    demoTime=void
+    if demoPlaying then demoTime=initialDemoTime+frameTiming.elapsed(realStart,startedAt) end if
+    begun=inputLatch.beginFrame(nativeInput.keys);if begun is error then window.shutdown();match.shutdown(state);return begun end if;window.poll()
+    state.context.now=serverTime
+    plan=frameInput.prepare(frameState,serverTime,state.context.commandNumber,clientClock.state.connectionState,true,wasPaused,wasPaused);if plan is error then window.shutdown();match.shutdown(state);return plan end if;inputBridge.plan=plan
     // Bounded smoke/performance runs must not depend on physical desktop
     // activity. Continue pumping Win32 lifecycle/close messages, but keep the
     // game commands and the UI's key/mouse callbacks neutral in this mode.
     if interactiveInput then
       nativeInput.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeNativeInputEvents(nativeInput,nativeEvents);if observed is error then window.shutdown();match.shutdown(state);return observed end if
-      for each event in nativeEvents event.time=simulationStart+event.time-realStart;pendingInputEvents.enqueue(event) end for
+      eventNow=window.milliseconds()
+      for each event in nativeEvents
+        if demoPlaying and event.type==window.INPUT_KEY and event.value2!=0 and match.keyCatcher(state)==0 and ((event.value<128 and event.value!=96 and event.value!=126) or event.value==178) then
+          session.action="menu";break
+        end if
+        event.time=serverTime-frameTiming.elapsed(event.time,eventNow)
+        if event.time<frameState.oldFrameTime then event.time=frameState.oldFrameTime end if
+        applied=applyInputEvent(inputBridge,state,event);if applied is error then window.shutdown();match.shutdown(state);return applied end if
+      end for
     else
       window.inputClear()
     end if
-    // Catch up authoritative 20-Hz frames before accepting this frame's cmd.
-    while simulationTime+50<=serverTime and steps<8
-      simulationTime=simulationTime+50;advanced=advanceGameTick(state,clientClock,simulationTime);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
-    end while
-    state.context.now=serverTime
-    plan=frameInput.prepare(frameState,serverTime,state.context.commandNumber,clientClock.state.connectionState,true,clientClock.state.serverPaused,clientClock.state.clientPaused);if plan is error then window.shutdown();match.shutdown(state);return plan end if;inputBridge.plan=plan
-    if interactiveInput then
-      if menuActive and not wasMenuActive then released=releaseGameInput(inputBridge,serverTime);if released is error then window.shutdown();match.shutdown(state);return released end if end if
-      while not pendingInputEvents.isEmpty() and pendingInputEvents.peek().time<=serverTime applied=applyInputEvent(inputBridge,state,pendingInputEvents.dequeue());if applied is error then window.shutdown();match.shutdown(state);return applied end if end while
-    end if
-    wasMenuActive=menuActive
-    // Console/chat/weapon bindings run every client frame, including between
-    // server ticks. UI polling/refresh still occurs after beginRendererFrame.
     inputCommands.execute(state.context.commandState)
+    if session!=void and session.action!="" then break end if
+    toggleFullscreen=window.takeVideoRestart()
+    if toggleFullscreen or (session!=void and session.videoRestart) then
+      if session!=void then session.videoRestart=false end if
+      changedMode=try(desktopVideo.apply(state.context.cvars,toggleFullscreen))
+      if changedMode is error then
+        match.emitPrint(state.context,"Could not apply video settings.\n")
+      else
+        if mode.picmip!=changedMode.picmip then
+          uploaded=worldBatch.uploadMaterials(worldCatalog);if uploaded is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return uploaded end if
+          uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return uploaded end if
+        end if
+        mode=changedMode;worldConfig.width=mode.width;worldConfig.height=mode.height
+        if session!=void then session.videoWidth=mode.width;session.videoHeight=mode.height end if
+      end if
+    end if
+    if session!=void and frameTiming.elapsed(lastSave,startedAt)>=1000 then desktopSession.save(state,session);lastSave=startedAt end if
+    paused=source==void and pauseRequest.integer!=0
+    if paused!=wasPaused then
+      if paused then serverTime=hostTime end if
+      plan=frameInput.prepare(frameState,serverTime,state.context.commandNumber,clientClock.state.connectionState,true,paused,paused);if plan is error then window.shutdown();match.shutdown(state);return plan end if;inputBridge.plan=plan
+      cgameClock.setPaused(clientClock,paused,paused,true)
+    end if
+    wasPaused=paused;hostTime=serverTime
+    if source==void then
+      if not paused then botFrame=match.runBotFrame(state,serverTime);if botFrame is error then window.shutdown();match.shutdown(state);return botFrame end if end if
+      while not paused and simulationTime+50<=serverTime and steps<4
+        simulationTime=simulationTime+50;advanced=advanceGameTick(state,clientClock,simulationTime);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
+      end while
+    else
+      synced=try(updateStream(state,source,clientClock,serverTime,demoTime))
+      if synced is error then streamFailure=synced;break end if
+      if not synced then session.action="stream-reload";break end if
+      if demoPlaying and source.transport.completed and demoTime>state.context.latestSnapshot.serverTime then session.action="menu";break end if
+    end if
+    state.context.now=serverTime
     cmdTime=frameInput.commandTime(frameState,clientClock.state.serverTime,clientClock.state.connectionState==8)
     created=frameInput.finish(frameState,plan,cmdTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),match.keyCatcher(state),match.anyKeyDown(state));if created is error then window.shutdown();match.shutdown(state);return created end if
-    if created!=void then submitted=match.submitUsercmdAtHostTime(state,0,created,serverTime);if submitted is error then window.shutdown();match.shutdown(state);return submitted end if end if
+    if source==void then
+      if created!=void then submitted=match.submitUsercmdAtHostTime(state,0,created,serverTime);if submitted is error then window.shutdown();match.shutdown(state);return submitted end if end if
+    else if not demoPlaying then
+      sent=try(sendStreamFrame(state,source,created,serverTime));if sent is error then streamFailure=sent;break end if
+    end if
     // Original CL_SendCmd precedes CL_SetCGameTime: the command uses the
     // preceding CG server time; drawFrame advances CG time without fabrication.
     afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
-    drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
-    afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
     // Original SCR_DrawScreenField suppresses the game beneath fullscreen UI
     // (Setup/Controls), but keeps it behind the translucent ingame menu.
     uiFullscreen=false
     if uiSession.active(ui) then uiFullscreen=localQvmUi.fullscreen(state);if uiFullscreen is error then window.shutdown();match.shutdown(state);return uiFullscreen end if end if
-    firstUiView=len(state.context.renderViews)
-    if uiFullscreen then renderCommands.reset(state.context.renderQueue) end if
-    uiFrame=refreshUiFrame(ui,serverTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
+    if uiFullscreen then
+      reset=match.beginRendererFrame(state);if reset is error then window.shutdown();match.shutdown(state);return reset end if
+    else
+      drawnFrame=drawFrame(state,clientClock,serverTime,demoTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
+      gameView=largestView(state.context.renderViews);if gameView!=void then view=gameView end if
+    end if
+    afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
+    uiFrame=refreshUiFrame(ui,uiTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
     quitRequested=requestedQuit(state);state.context.console=[];if quitRequested then break end if
     cinematicSamples=collectCinematicAudio(state,audio);if cinematicSamples is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicSamples end if
     afterSimulation=window.milliseconds();uiMs=uiMs+afterSimulation-afterCgame;simulationMs=simulationMs+afterSimulation-startedAt
-    view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame stopped submitting its main view") end if
-    preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,preparedViews,pipelineProfile,fogCatalog,dlightCatalog,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
-    worldStartedAt=window.milliseconds();worldConfig.horizontalFov=view.refdef.fovX;worldConfig.runtime=view.refdef.viewaxis
-    nextWorld=worldSelection.prepareCachedRetained(worldCache,selectionCamera(view),worldConfig,selected);if nextWorld is error then window.shutdown();match.shutdown(state);return nextWorld end if
-    worldSelectMs=worldSelectMs+window.milliseconds()-worldStartedAt
-    if not worldSelection.sameFaces(selectedFaces,nextWorld.selection.faceIndexes) then
-      rebuildStartedAt=window.milliseconds();worldPrepared=retainedWorld.select(retainedWorldCache,nextWorld);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if
-      worldRebuildMs=worldRebuildMs+window.milliseconds()-rebuildStartedAt;worldRebuildCount=worldRebuildCount+1
-      // Gather includes selected fog/dynamic-light metadata. Portal passes
-      // retain the original builder/attachment path in preparePortal.
-      selectedFaces=nextWorld.selection.faceIndexes
+    preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,preparedViews,pipelineProfile,fogCatalog,dlightCatalog,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer,mode);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
+    preparedPortals=void
+    if not uiFullscreen then
+      worldStartedAt=window.milliseconds();worldSelection.setView(worldConfig,view.refdef)
+      worldConfig.lodCurveError=lodCurveError.value
+      nextWorld=worldSelection.prepareCachedRetained(worldCache,selectionCamera(view),worldConfig,selected);if nextWorld is error then window.shutdown();match.shutdown(state);return nextWorld end if
+      worldSelectMs=worldSelectMs+window.milliseconds()-worldStartedAt
+      if not worldSelection.sameFaces(selectedFaces,nextWorld.selection.faceIndexes) then
+        rebuildStartedAt=window.milliseconds();worldPrepared=retainedWorld.select(retainedWorldCache,nextWorld);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if
+        worldRebuildMs=worldRebuildMs+window.milliseconds()-rebuildStartedAt;worldRebuildCount=worldRebuildCount+1
+        selectedFaces=nextWorld.selection.faceIndexes
+      end if
+      selected=nextWorld;portalsStartedAt=window.milliseconds()
+      preparedPortals=preparePortals(preparedViews,selected.renderData,portalCache,worldCatalog,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedPortals is error then window.shutdown();match.shutdown(state);return preparedPortals end if
+      portalPrepareMs=portalPrepareMs+window.milliseconds()-portalsStartedAt
     end if
-    selected=nextWorld;portalsStartedAt=window.milliseconds()
-    preparedPortals=preparePortals(preparedViews,selected.renderData,worldCatalog,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedPortals is error then window.shutdown();match.shutdown(state);return preparedPortals end if
-    portalPrepareMs=portalPrepareMs+window.milliseconds()-portalsStartedAt
     afterGeometry=window.milliseconds();geometryMs=geometryMs+afterGeometry-afterSimulation
-    refreshedHud=qvm2d.refresh(hudCatalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if refreshedHud is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return refreshedHud end if
-    if len(hudCatalog.textures)>uploadedHudTextures then uploaded=qvm2d.upload(hudCatalog);if uploaded is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return uploaded end if;uploadedHudTextures=len(hudCatalog.textures) end if
+    refreshedHud=qvm2d.refresh(hudCatalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,mode.width,mode.height);if refreshedHud is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return refreshedHud end if
+    if len(hudCatalog.textures)>uploadedHudTextures then uploaded=qvm2d.uploadFrom(hudCatalog,uploadedHudTextures);if uploaded is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return uploaded end if;uploadedHudTextures=uploaded end if
     afterHud=window.milliseconds();hudMs=hudMs+afterHud-afterGeometry
-    boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,serverTime);if boundVideo is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return boundVideo end if
+    boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,uiTime);if boundVideo is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return boundVideo end if
     afterVideoBind=window.milliseconds();videoBindMs=videoBindMs+afterVideoBind-afterHud
     if len(state.context.assets)!=soundAssetCount then synced=qvmSoundAssets.sync(soundCatalog,state.context.assets,state.context.assetKinds);if synced is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return synced end if;soundAssetCount=len(state.context.assets) end if
     applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return applied end if
     afterSoundApply=window.milliseconds();soundApplyMs=soundApplyMs+afterSoundApply-afterVideoBind
-    if len(qvmCatalog.textures)>uploadedQvmTextures then uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if;uploadedQvmTextures=len(qvmCatalog.textures) end if
-    videoUploads=qvmVideo.update(videoManager,serverTime);if videoUploads is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return videoUploads end if
+    if qvmCatalog.nextTextureSlot>uploadedSceneSlot then uploaded=worldBatch.uploadMaterialsFrom(qvmCatalog,uploadedSceneSlot);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if;uploadedSceneSlot=qvmCatalog.nextTextureSlot end if
+    videoUploads=qvmVideo.update(videoManager,uiTime);if videoUploads is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return videoUploads end if
     for each videoUpload in videoUploads if not window.uploadTextureNoMip(videoUpload.slot,videoUpload.pixels,videoUpload.width,videoUpload.height) then audioOutput.shutdown();window.shutdown();match.shutdown(state);return fail("could not upload shader cinematic frame") end if end for
     afterBatch=window.milliseconds();textureUploadMs=textureUploadMs+afterBatch-afterSoundApply;batchMs=batchMs+afterBatch-afterGeometry
     window.beginFrame(0,0,0)
     preparedViewIndex=0
     for each preparedView in preparedViews
-      if uiFullscreen and preparedViewIndex<firstUiView then preparedViewIndex=preparedViewIndex+1;continue end if
       window.clearDepth(0.0)
-      preparedPortal=preparedPortals[preparedViewIndex]
+      preparedPortal=void;if preparedPortals!=void then preparedPortal=preparedPortals[preparedViewIndex] end if
       if preparedPortal!=void then
         if (preparedPortal.plan.refdef.flags&1)==0 then
           if skyCatalog!=void then drawn=playableSky.drawViewport(skyCatalog,preparedPortal.plan.refdef.viewaxis,preparedPortal.target.area,preparedPortal.plan.refdef.time);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if end if
@@ -500,9 +933,10 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
       drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedView.source.scene.dlights,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
       preparedViewIndex=preparedViewIndex+1
     end for
-    if not uiFullscreen then cinematicDraws=drawCinematics(state);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if end if
-    drawn=qvm2d.draw(hudCatalog,view.refdef.time);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
-    drawn=drawProductiveConsole(consoleMedia,consoleBackgroundMedia,state,WIDTH,HEIGHT,serverTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
+    if not uiFullscreen then cinematicDraws=drawCinematics(state,mode);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if end if
+    hudTime=view.refdef.time;if uiSession.active(ui) then hudTime=uiTime end if
+    drawn=qvm2d.draw(hudCatalog,hudTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
+    drawn=drawProductiveConsole(consoleMedia,consoleBackgroundMedia,state,mode.width,mode.height,uiTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
     window.present();renderMs=renderMs+window.milliseconds()-afterBatch;frames=frames+1
     audioStartedAt=window.milliseconds();audioChunks=0
     while audioChunks<3 and audioOutput.canSubmit()
@@ -517,20 +951,76 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     // millisecond after every completed frame. Yield only if work was faster.
     if elapsedFrameMs<1 then time.sleep(1-elapsedFrameMs) end if
   end while
-  loopElapsedMs=window.milliseconds()-realStart
+  loopElapsedMs=frameTiming.elapsed(realStart,window.milliseconds())
   print "QVM retained world selections="+str(retainedWorldCache.selections)+" fallbacks="+str(retainedWorldCache.fallbacks)
-  audioOutput.shutdown();qvmVideo.close(videoManager);releaseCinematics();consoleBackground.release(consoleBackgroundMedia);baseMatchDisplay.release(consoleMedia);qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);flares.release(flareCatalog);window.shutdown();match.shutdown(state)
+  saved=void;if session!=void then saved=desktopSession.capture(state,session) end if
+  audioOutput.shutdown();qvmVideo.close(videoManager);releaseCinematics();consoleBackground.release(consoleBackgroundMedia);baseMatchDisplay.release(consoleMedia);qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);flares.release(flareCatalog);if session==void then window.shutdown() end if;match.shutdown(state)
+  if streamFailure is error then return streamFailure end if
+  if saved is error then return saved end if
   modelCount=0;triangleCount=0;for each preparedView in preparedViews modelCount=modelCount+preparedView.geometry.modelEntities;triangleCount=triangleCount+len(preparedView.geometry.triangles) end for
   worldEffects=0;if skyCatalog!=void then worldEffects=worldEffects+1 end if;if fogCatalog!=void then worldEffects=worldEffects+1 end if;if dlightCatalog!=void then worldEffects=worldEffects+1 end if;if flareCatalog!=void and flareCatalog.enabled then worldEffects=worldEffects+1 end if
   print "QVM preview: views="+str(len(state.context.renderViews))+" selected="+str(view.refdef.width)+"x"+str(view.refdef.height)+" models="+str(modelCount)+" triangles="+str(triangleCount)+" textures="+str(len(qvmCatalog.textures))+" hudQuads="+str(hudCatalog.sourceQuads)+" sounds="+str(len(soundCatalog.clips))+" frames="+str(frames)+" worldEffects="+str(worldEffects)
   if frames>0 then print "QVM frame profile: simulation="+str(simulationMs/frames)+"ms (game="+str(gameMs/frames)+" cgame="+str(cgameMs/frames)+" ui="+str(uiMs/frames)+") geometry="+str(geometryMs/frames)+"ms (expand="+str(pipelineProfile.expansion/frames)+" material="+str(pipelineProfile.material/frames)+" sceneBatch="+str(pipelineProfile.batch/frames)+") batch="+str(batchMs/frames)+"ms render="+str(renderMs/frames)+"ms audio="+str(audioMs/frames)+"ms total="+str(totalMs/frames)+"ms ticks="+str(simulationTicks) end if
   if frames>0 then print "QVM batch profile: hud="+str(hudMs/frames)+"ms videoBindings="+str(videoBindMs/frames)+"ms soundApply="+str(soundApplyMs/frames)+"ms textureUploads="+str(textureUploadMs/frames)+"ms" end if
-  if frames>0 then print "QVM world profile: select="+str(worldSelectMs/frames)+"ms rebuild="+str(worldRebuildMs/frames)+"ms effects="+str(worldEffectsMs/frames)+"ms portals="+str(portalPrepareMs/frames)+"ms rebuilds="+str(worldRebuildCount) end if
+  if frames>0 then print "QVM world profile: select="+str(worldSelectMs/frames)+"ms rebuild="+str(worldRebuildMs/frames)+"ms effects="+str(worldEffectsMs/frames)+"ms portals="+str(portalPrepareMs/frames)+"ms rebuilds="+str(worldRebuildCount)+" portalBatchBuilds="+str(portalCache.builds)+" portalBatchHits="+str(portalCache.hits) end if
   if frames>0 and loopElapsedMs>0 then print "QVM loop profile: elapsed="+str(loopElapsedMs)+"ms fps="+str(frames*1000.0/loopElapsedMs)+" workP50="+str(framePercentile(frameHistogram,frames,50))+"ms workP95="+str(framePercentile(frameHistogram,frames,95))+"ms workP99="+str(framePercentile(frameHistogram,frames,99))+"ms workMax="+str(maximumFrameMs)+"ms" end if
   return 0
 end function
+/// Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runDesktopMatch`, returning its result for `archive, map, mapName, qvmRoot, -1, settings, session, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param session Argument 7 of `mq3.client.qvm_preview_app.runMatch`.
+function runDesktopMatch(archive,map,mapName,qvmRoot,settings,session) return runMatch(archive,map,mapName,qvmRoot,-1,settings,session,void) end function
+/// Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runDesktopStream`, returning its result for `archive, map, mapName, qvmRoot, -1, settings, session, source`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param session Argument 7 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param source Argument 8 of `mq3.client.qvm_preview_app.runMatch`.
+function runDesktopStream(archive,map,mapName,qvmRoot,settings,session,source)
+  return runMatch(archive,map,mapName,qvmRoot,-1,settings,session,source)
+end function
+/// Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runLimitedSettingsNamed`, returning its result for `archive, map, mapName, qvmRoot, maxFrames, settings, void, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param maxFrames Argument 5 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runMatch`.
+function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings) return runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,void,void) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettingsNamed` to QVM preview app `runLimitedSettings`, returning its result for `archive, map, "q3dm1", qvmRoot, maxFrames, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param maxFrames Argument 5 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
 function runLimitedSettings(archive,map,qvmRoot,maxFrames,settings) return runLimitedSettingsNamed(archive,map,"q3dm1",qvmRoot,maxFrames,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettings` to QVM preview app `runLimited`, returning its result for `archive, map, qvmRoot, maxFrames, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param maxFrames Argument 4 of `mq3.client.qvm_preview_app.runLimitedSettings`.
 function runLimited(archive,map,qvmRoot,maxFrames) return runLimitedSettings(archive,map,qvmRoot,maxFrames,void) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettings` to QVM preview app `runWithSettings`, returning its result for `archive, map, qvmRoot, -1, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param settings Argument 5 of `mq3.client.qvm_preview_app.runLimitedSettings`.
 function runWithSettings(archive,map,qvmRoot,settings) return runLimitedSettings(archive,map,qvmRoot,-1,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettingsNamed` to QVM preview app `runWithSettingsNamed`, returning its result for `archive, map, mapName, qvmRoot, -1, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
 function runWithSettingsNamed(archive,map,mapName,qvmRoot,settings) return runLimitedSettingsNamed(archive,map,mapName,qvmRoot,-1,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimited` to QVM preview app `run`, returning its result for `archive, map, qvmRoot, -1`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimited`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimited`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimited`.
 function run(archive,map,qvmRoot) return runLimited(archive,map,qvmRoot,-1) end function

@@ -9,8 +9,10 @@
 struct DrawSurf
 ```
 
+Data record for `mq3.renderer.draw_surfs.DrawSurf`; groups `sort`, `surface`, `ordinal`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L32)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct DrawSurf
 ordinal
 ```
 
+Original insertion order used to keep equal sort keys stable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L38)
 
 <a id="field-field-mq3-renderer-draw-surfs-drawsurf-sort-sort-src-mq3-renderer-draw-surfs-ml-21191365"></a>
 ### sort
@@ -31,8 +35,10 @@ ordinal
 sort
 ```
 
+Packed draw-order key containing the shader, entity, fog, and dynamic-light selectors.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L34)
 
 <a id="field-field-mq3-renderer-draw-surfs-drawsurf-surface-surface-src-mq3-renderer-draw-surfs-ml-1280017385"></a>
 ### surface
@@ -41,5 +47,7 @@ sort
 surface
 ```
 
+Surface record, handle, or identifier associated with the drawing operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L36)

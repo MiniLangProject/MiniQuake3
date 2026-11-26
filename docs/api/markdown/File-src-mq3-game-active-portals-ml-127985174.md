@@ -28,8 +28,10 @@ Reachable from entry: **no**
 const CONTENTS_CORPSE = headers.CONTENTS_CORPSE
 ```
 
+Collision-contents bit identifying corpse space or objects.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L20)
 
 <a id="constant-constant-mq3-game-active-portals-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-active-portals-ml-1927564190"></a>
 ### CONTENTS_TRIGGER
@@ -38,8 +40,10 @@ const CONTENTS_CORPSE = headers.CONTENTS_CORPSE
 const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 ```
 
+Collision-contents bit identifying trigger space or objects.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L22)
 
 <a id="constant-constant-mq3-game-active-portals-damage-no-protection-const-damage-no-protection-8-src-mq3-game-active-portals-ml-1511142321"></a>
 ### DAMAGE_NO_PROTECTION
@@ -48,8 +52,10 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 const DAMAGE_NO_PROTECTION = 8
 ```
 
+Damage-processing flag enabling no protection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L24)
 
 <a id="function-function-mq3-game-active-portals-dropcarriedflag-function-dropcarriedflag-level-other-src-mq3-game-active-portals-ml-882308682"></a>
 ### dropCarriedFlag
@@ -58,13 +64,15 @@ const DAMAGE_NO_PROTECTION = 8
 function dropCarriedFlag(level, other)
 ```
 
+Set `other.client.ps.powerups[powerup]` to `0` in `mq3.game.active_portals.dropCarriedFlag`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
+| `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.powerups[powerup]` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L51)
 
 <a id="function-function-mq3-game-active-portals-dropportaldestination-function-dropportaldestination-level-player-src-mq3-game-active-portals-ml-713615113"></a>
 ### DropPortalDestination
@@ -73,13 +81,15 @@ function dropCarriedFlag(level, other)
 function DropPortalDestination(level, player)
 ```
 
+Update `level.spawner.portalSequence`, `player.client.portalID` and `player.client.ps.stats[c.STAT_HOLDABLE_ITEM]` during `DropPortalDestination`. Return paths include `ent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner` and `time`. May update `level.spawner.portalSequence` in place. |
+| `player` | `dynamic` | — | Player entity; accesses `s`, `r` and `client`. May update `player.client.portalID` and `player.client.ps.stats[c.STAT_HOLDABLE_ITEM]` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L89)
 
 <a id="function-function-mq3-game-active-portals-dropportalsource-function-dropportalsource-level-player-src-mq3-game-active-portals-ml-2088431719"></a>
 ### DropPortalSource
@@ -88,13 +98,15 @@ function DropPortalDestination(level, player)
 function DropPortalSource(level, player)
 ```
 
+Set `player.client.portalID` to `0` in `mq3.game.active_portals.DropPortalSource`. Return paths include `ent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner` and `time`. |
+| `player` | `dynamic` | — | Player entity; accesses `s`, `r` and `client`. May update `player.client.portalID` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L105)
 
 <a id="function-function-mq3-game-active-portals-finddestination-function-finddestination-level-id-src-mq3-game-active-portals-ml-435632129"></a>
 ### findDestination
@@ -103,13 +115,15 @@ function DropPortalSource(level, player)
 function findDestination(level, id)
 ```
 
+Find the active personal-portal destination with the matching portal identifier.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `id` | `dynamic` | — | Value used by `findDestination` in `if ent.inuse and ent.classname == "hi_portal destination" and ent.count == id then return ent end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L40)
 
 <a id="function-function-mq3-game-active-portals-portaldie-function-portaldie-level-self-inflictor-attacker-damage-mod-src-mq3-game-active-portals-ml-1478101472"></a>
 ### PortalDie
@@ -118,17 +132,19 @@ function findDestination(level, id)
 function PortalDie(level, self, inflictor, attacker, damage, mod)
 ```
 
+Forward `PortalDie` to `mq3.game.entities.free` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `inflictor` | `dynamic` | — |  |
-| `attacker` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
-| `mod` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene` and `time`. May update `level.scene.entities[ent.slot]` in place. |
+| `self` | `dynamic` | — | Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `self.r`, `self.s` and `self.client` and additional fields in place. |
+| `inflictor` | `dynamic` | — | Not read by this implementation; retained in the `PortalDie` signature. |
+| `attacker` | `dynamic` | — | Not read by this implementation; retained in the `PortalDie` signature. |
+| `damage` | `dynamic` | — | Not read by this implementation; retained in the `PortalDie` signature. |
+| `mod` | `dynamic` | — | Not read by this implementation; retained in the `PortalDie` signature. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L33)
 
 <a id="function-function-mq3-game-active-portals-portalenable-function-portalenable-level-self-src-mq3-game-active-portals-ml-1533715552"></a>
 ### PortalEnable
@@ -137,13 +153,15 @@ function PortalDie(level, self, inflictor, attacker, damage, mod)
 function PortalEnable(level, self)
 ```
 
+Update `self.touch`, `self.think` and `self.nextthink` during `PortalEnable`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `touch`, `think` and `nextthink`. May update `self.touch`, `self.think` and `self.nextthink` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L81)
 
 <a id="function-function-mq3-game-active-portals-portaltouch-function-portaltouch-level-self-other-trace-src-mq3-game-active-portals-ml-610022993"></a>
 ### PortalTouch
@@ -152,15 +170,17 @@ function PortalEnable(level, self)
 function PortalTouch(level, self, other, trace)
 ```
 
+Apply `mq3.game.active_portals.dropCarriedFlag`, `mq3.game.active_portals.findDestination` and `mq3.game.teleport.player` while evaluating `PortalTouch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `count`, `pos1` and `s`. |
+| `other` | `dynamic` | — | Other record; accesses `health` and `client`. |
+| `trace` | `dynamic` | — | Not read by this implementation; retained in the `PortalTouch` signature. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L65)
 
 <a id="function-function-mq3-game-active-portals-use-function-use-level-player-src-mq3-game-active-portals-ml-485060485"></a>
 ### use
@@ -169,10 +189,12 @@ function PortalTouch(level, self, other, trace)
 function use(level, player)
 ```
 
+Apply `mq3.game.active_portals.DropPortalSource` and `mq3.game.active_portals.DropPortalDestination` while evaluating `use`. Return paths include `DropPortalDestination(level,player)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner` and `time`. |
+| `player` | `dynamic` | — | Player entity; accesses `client`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L121)

@@ -29,14 +29,16 @@ Reachable from entry: **no**
 function commandTeam(level, ent, argv)
 ```
 
+Set `ent.client.switchTeamTime` to `n.add32(level.time,5000)` in `mq3.game.team_changes.commandTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time` and `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client` and `slot`. May update `ent.client.switchTeamTime` in place. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L79)
 
 <a id="function-function-mq3-game-team-changes-setteam-function-setteam-level-ent-request-src-mq3-game-team-changes-ml-634986294"></a>
 ### setTeam
@@ -45,14 +47,16 @@ function commandTeam(level, ent, argv)
 function setTeam(level, ent, request)
 ```
 
+Update `ent.flags`, `ent.health` and `level.playerDieFn` during `setTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `request` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `teamForceBalance`, `numNonSpectatorClients`, `maxGameClients` and `time` and related fields. May update `level.playerDieFn` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `flags` and `health`. May update `ent.flags` and `ent.health` in place. |
+| `request` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L21)
 
 <a id="function-function-mq3-game-team-changes-stopfollowing-function-stopfollowing-level-ent-src-mq3-game-team-changes-ml-1375538395"></a>
 ### stopFollowing
@@ -61,10 +65,12 @@ function setTeam(level, ent, request)
 function stopFollowing(level, ent)
 ```
 
+Set `ent.r.svFlags` to `ent.r.svFlags & ~8` in `mq3.game.team_changes.stopFollowing`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Not read by this implementation; retained in the `stopFollowing` signature. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `slot` and `r`. May update `ent.r.svFlags` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L68)

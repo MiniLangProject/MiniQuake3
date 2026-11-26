@@ -9,8 +9,10 @@
 struct Pak
 ```
 
+Pak record for qcommon.filesystem, containing `archive`, `basename`, `gameName`, `checksum`, `pureChecksum`, `referenced`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L21)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Pak
 archive
 ```
 
+Parsed PK3 archive containing the package entries.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L23)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-basename-basename-src-mq3-qcommon-filesystem-ml-590079225"></a>
 ### basename
@@ -31,8 +35,10 @@ archive
 basename
 ```
 
+Package filename without its containing filesystem directory.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L25)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-checksum-checksum-src-mq3-qcommon-filesystem-ml-1051411279"></a>
 ### checksum
@@ -41,8 +47,10 @@ basename
 checksum
 ```
 
+Checksum used to validate or identify the represented data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L29)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-gamename-gamename-src-mq3-qcommon-filesystem-ml-1158258895"></a>
 ### gameName
@@ -51,8 +59,10 @@ checksum
 gameName
 ```
 
+Game directory to which this package belongs.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L27)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-purechecksum-purechecksum-src-mq3-qcommon-filesystem-ml-1775860999"></a>
 ### pureChecksum
@@ -61,8 +71,10 @@ gameName
 pureChecksum
 ```
 
+Feed-dependent checksum used to validate this package in pure mode.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L31)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-referenced-referenced-src-mq3-qcommon-filesystem-ml-896794447"></a>
 ### referenced
@@ -71,5 +83,7 @@ pureChecksum
 referenced
 ```
 
+Combined flags recording which VM or asset subsystem used the package.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L33)

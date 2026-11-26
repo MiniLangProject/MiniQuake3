@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for vm.syscall_qagame_world, containing `context`, `traceFn`, `pointContentsFn`, `entitiesInBoxFn`, `entityContactFn`, `getUsercmdFn`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L62)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Opaque caller-supplied context available to game-VM world tracing, contact tests, and user-command retrieval.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L65)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-entitiesinboxfn-entitiesinboxfn-src-mq3-vm-syscall-qagame-world-ml-372378253"></a>
 ### entitiesInBoxFn
@@ -31,8 +35,10 @@ context
 entitiesInBoxFn
 ```
 
+Injected callback for entities in box; invoked through the Services service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L71)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-entitycontactfn-entitycontactfn-src-mq3-vm-syscall-qagame-world-ml-1228834425"></a>
 ### entityContactFn
@@ -41,8 +47,10 @@ entitiesInBoxFn
 entityContactFn
 ```
 
+Injected callback for entity contact; invoked through the Services service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L73)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-getusercmdfn-getusercmdfn-src-mq3-vm-syscall-qagame-world-ml-55524859"></a>
 ### getUsercmdFn
@@ -51,8 +59,10 @@ entityContactFn
 getUsercmdFn
 ```
 
+Injected callback for get user command; invoked through the Services service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L75)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-pointcontentsfn-pointcontentsfn-src-mq3-vm-syscall-qagame-world-ml-1555090777"></a>
 ### pointContentsFn
@@ -61,8 +71,10 @@ getUsercmdFn
 pointContentsFn
 ```
 
+Injected callback for point contents; invoked through the Services service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L69)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-tracefn-tracefn-src-mq3-vm-syscall-qagame-world-ml-1116410145"></a>
 ### traceFn
@@ -71,5 +83,7 @@ pointContentsFn
 traceFn
 ```
 
+Injected callback for trace; invoked through the Services service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame_world.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L67)

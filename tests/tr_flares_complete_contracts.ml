@@ -5,7 +5,7 @@ struct Area x y width height end struct
 function req(ok,message) if not ok then return error(7741,message) end if;return 1 end function
 function near(a,b) return a-b<0.0002 and b-a<0.0002 end function
 function makeState()
-  projection=viewer.Projection([0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],[1.0,0.0,0.0],320.0,240.0,320.0,1.0);volume=fog.Fog("fog",[0.5,0.5,0.5,1.0],100.0,0.00125,[[-10.0,-10.0,-10.0],[10.0,10.0,10.0]],[0.0,0.0,0.0,0.0],false);return flares.create(projection,Area(0,0,640,480),fog.Catalog([void,volume],-1,void))
+  projection=viewer.Projection([0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],[1.0,0.0,0.0],320.0,240.0,320.0,1.0,320.0);volume=fog.Fog("fog",[0.5,0.5,0.5,1.0],100.0,0.00125,[[-10.0,-10.0,-10.0],[10.0,10.0,10.0]],[0.0,0.0,0.0,0.0],false);return flares.create(projection,Area(0,0,640,480),fog.Catalog([void,volume],-1,void))
 end function
 function main(args)
   count=0;state=makeState();count=count+req(len(state.slots)==flares.MAX_FLARES and len(state.inactive)==128 and state.active==[],"R_ClearFlares pool")

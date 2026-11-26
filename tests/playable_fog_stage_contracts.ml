@@ -10,7 +10,7 @@ function require(ok,text) if not ok then return error(7716,"playable fog stage: 
 function makePointVertex(x,y,z,index) return Vertex([x,y,z],[0.0,0.0],[0.0,0.0],[0.0,1.0,0.0],[255,255,255,255],[255,255,255,255],[0.0,0.0],0.0,index) end function
 function stage(blend) return materials.RuntimeStage(["fog-stage"],[materials.Image(1,1,bytes([255,255,255,255]))],[101],0.0,[],blend,materials.ALPHA_TEST_NONE,"texture","const",shaderParser.blankWave(),"const",shaderParser.blankWave(),[200,150,100,200],false,false,false,false,256.0,[]) end function
 function build(blend,triangle)
-  active=stage(blend);material=materials.Material(1,"fog-stage","fog-stage",active.images[0],101,[active],[],false,9.0,false,false,0.0,0.0)
+  active=stage(blend);material=materials.Material(1,"fog-stage","fog-stage",active.images[0],101,[active],[],false,9.0,false,false,0.0,0.0,false)
   return worldBatch.buildMaterials(RenderData([triangle]),materials.Catalog([material],0,1,1,1,0,1),[false,false])
 end function
 function main(args)
@@ -24,7 +24,7 @@ function main(args)
   count=count+require(alpha.passes[0].commands.data[116]==200 and alpha.passes[0].commands.data[119]==alphaExpected[3],"strict blend fades alpha before the final fog overlay")
   premult=build(materials.BLEND_PREMULTIPLIED_ALPHA,triangle);worldBatch.attachFog(premult,RenderData([triangle]),fogCatalog);worldBatch.updatePassAxesFog(premult.passes[0],[0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],0,fogCatalog);premultExpected=materials.modulateForFog([200,150,100,200],density,"rgba")
   count=count+require(premult.passes[0].commands.data[116]==premultExpected[0] and premult.passes[0].commands.data[117]==premultExpected[1] and premult.passes[0].commands.data[118]==premultExpected[2] and premult.passes[0].commands.data[119]==premultExpected[3],"premultiplied blend fades RGBA before the final fog overlay")
-  opaqueFirst=stage(materials.BLEND_OPAQUE);addSecond=stage(materials.BLEND_ADD);mixedMaterial=materials.Material(1,"mixed","mixed",opaqueFirst.images[0],101,[opaqueFirst,addSecond],[],false,3.0,false,false,0.0,0.0);mixed=worldBatch.buildMaterials(RenderData([triangle]),materials.Catalog([mixedMaterial],0,1,1,1,0,1),[false,false])
+  opaqueFirst=stage(materials.BLEND_OPAQUE);addSecond=stage(materials.BLEND_ADD);mixedMaterial=materials.Material(1,"mixed","mixed",opaqueFirst.images[0],101,[opaqueFirst,addSecond],[],false,3.0,false,false,0.0,0.0,false);mixed=worldBatch.buildMaterials(RenderData([triangle]),materials.Catalog([mixedMaterial],0,1,1,1,0,1),[false,false])
   count=count+require(len(mixed.passes)==2 and mixed.passes[1].fogAdjustment=="none","opaque first stage leaves later stage to the final fog pass")
   noFog=build(materials.BLEND_ADD,triangle);worldBatch.updatePassAxesFog(noFog.passes[0],[0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],0,void);count=count+require(noFog.passes[0].commands.data[116]==200 and noFog.passes[0].commands.data[119]==200,"unattached stages retain their generated color")
   print("PASS: "+str(count)+" playable fog-stage contracts");return 0

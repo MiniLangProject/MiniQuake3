@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+`Runtime` record for ai move runtime, containing `pools`, `aas`, `router` and `services`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L187)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 aas
 ```
 
+AAS navigation runtime used for area and route queries.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L191)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-runtime-pools-pools-src-mq3-botlib-ai-move-runtime-ml-589321279"></a>
 ### pools
@@ -31,8 +35,10 @@ aas
 pools
 ```
 
+Managed pools containing bot chat, goal, movement, and weapon resources.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L189)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-runtime-router-router-src-mq3-botlib-ai-move-runtime-ml-1174718501"></a>
 ### router
@@ -41,8 +47,10 @@ pools
 router
 ```
 
+AAS navigation state supplying area settings and reachabilities for route searches.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L193)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-runtime-services-services-src-mq3-botlib-ai-move-runtime-ml-26271975"></a>
 ### services
@@ -51,5 +59,7 @@ router
 services
 ```
 
+Movement host operations for traces, movers, route selection, and action execution.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L195)

@@ -9,8 +9,10 @@
 struct Missing
 ```
 
+Missing record for audio.qvm_sound_assets, containing `handle`, `path`, `reason`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L29)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Missing
 handle
 ```
 
+Registered sound handle used to resolve the sound asset.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L31)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-missing-path-path-src-mq3-audio-qvm-sound-assets-ml-1157811217"></a>
 ### path
@@ -31,8 +35,10 @@ handle
 path
 ```
 
+Asset path used to find the sound inside the archive.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L33)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-missing-reason-reason-src-mq3-audio-qvm-sound-assets-ml-842771419"></a>
 ### reason
@@ -41,5 +47,7 @@ path
 reason
 ```
 
+Diagnostic explaining why the registered sound could not be loaded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L35)

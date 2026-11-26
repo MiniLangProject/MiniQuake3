@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores packet event state, including `connection`, `realtime`, `serverMessageSequence`, `demoRecording`, `demoWaiting`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L13)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 connection
 ```
 
+When constructing this record, `create` supplies `connectionState` for this member. Used by `packetEvent` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L16)
 
 <a id="field-field-mq3-client-packet-event-state-demorecording-demorecording-src-mq3-client-packet-event-ml-459093186"></a>
 ### demoRecording
@@ -31,8 +35,10 @@ connection
 demoRecording
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `packetEvent` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
 
 <a id="field-field-mq3-client-packet-event-state-demowaiting-demowaiting-src-mq3-client-packet-event-ml-74914890"></a>
 ### demoWaiting
@@ -41,8 +47,10 @@ demoRecording
 demoWaiting
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `packetEvent` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L26)
 
 <a id="field-field-mq3-client-packet-event-state-realtime-realtime-src-mq3-client-packet-event-ml-1144463668"></a>
 ### realtime
@@ -51,8 +59,10 @@ demoWaiting
 realtime
 ```
 
+Local client timestamp in milliseconds associated with incoming packet processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L18)
 
 <a id="field-field-mq3-client-packet-event-state-servermessagesequence-servermessagesequence-src-mq3-client-packet-event-ml-1012700102"></a>
 ### serverMessageSequence
@@ -61,5 +71,7 @@ realtime
 serverMessageSequence
 ```
 
+Highest server network-message sequence observed by the client.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L20)

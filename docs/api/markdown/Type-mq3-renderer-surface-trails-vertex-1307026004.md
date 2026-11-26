@@ -9,8 +9,10 @@
 struct Vertex
 ```
 
+Data record for `mq3.renderer.surface_trails.Vertex`; groups `xyz`, `uv`, `color`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L11)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Vertex
 color
 ```
 
+Modulation color of a generated rail-trail vertex.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L17)
 
 <a id="field-field-mq3-renderer-surface-trails-vertex-uv-uv-src-mq3-renderer-surface-trails-ml-829437061"></a>
 ### uv
@@ -31,8 +35,10 @@ color
 uv
 ```
 
+Texture coordinates associated with this vertex.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L15)
 
 <a id="field-field-mq3-renderer-surface-trails-vertex-xyz-xyz-src-mq3-renderer-surface-trails-ml-1089253363"></a>
 ### xyz
@@ -41,5 +47,7 @@ uv
 xyz
 ```
 
+Three-dimensional position of this vertex.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L13)

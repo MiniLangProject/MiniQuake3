@@ -8,6 +8,9 @@ import mq3.game.constants as c
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 import mq3.game.movement as movement
+/// Update `self.movedir`, `self.s.origin2` and `self.nextthink` during `laserThink`.
+/// @param level Game-level state; accesses `entities` and `time`.
+/// @param self Entity receiving the callback; accesses `enemy`, `movedir`, `s`, `activator` and `damage` and related fields. May update `self.movedir`, `self.s.origin2` and `self.nextthink` in place.
 function laserThink(level,self)
   if self.enemy != void then
     point = [0.0,0.0,0.0]
@@ -26,23 +29,44 @@ function laserThink(level,self)
   self.s.origin2 = movement.copy(hit.endpos); game.link(level,self); self.nextthink = n.add32(level.time,100)
   return void
 end function
+/// Set `self.activator` to `self` in `mq3.game.hazards.laserOn`. Return paths include `laserThink(level,self)`.
+/// @param level Game-level state; accesses `entities` and `time`.
+/// @param self Entity receiving the callback; accesses `activator`. May update `self.activator` in place.
 function laserOn(level,self)
   if self.activator == void then self.activator = self end if
   return laserThink(level,self)
 end function
+/// Set `self.nextthink` to `0` in `mq3.game.hazards.laserOff`.
+/// @param level Game-level state; accesses `scene`.
+/// @param self Entity receiving the callback; accesses `nextthink`. May update `self.nextthink` in place.
 function laserOff(level,self)
   game.unlink(level,self); self.nextthink = 0
   return void
 end function
+/// Set `self.activator` to `activator` in `mq3.game.hazards.laserUse`. Return paths include `laserOn(level,self)`.
+/// @param level Game-level state; accesses `scene`.
+/// @param self Entity receiving the callback; accesses `activator` and `nextthink`. May update `self.activator` in place.
+/// @param other Not read by this implementation; retained in the `laserUse` signature.
+/// @param activator Entity responsible for activating the target.
 function laserUse(level,self,other,activator)
   self.activator = activator
   if self.nextthink > 0 then return laserOff(level,self) end if
   return laserOn(level,self)
 end function
+/// Apply `mq3.game.entities.unlink` and `mq3.game.entities.link` while evaluating `hurtUse`.
+/// @param level Game-level state; accesses `scene`.
+/// @param self Entity receiving the callback; accesses `r`.
+/// @param other Not read by this implementation; retained in the `hurtUse` signature.
+/// @param activator Not read by this implementation; retained in the `hurtUse` signature.
 function hurtUse(level,self,other,activator)
   if self.r.linked then game.unlink(level,self) else game.link(level,self) end if
   return void
 end function
+/// Set `self.timestamp` to `n.add32(level.time,1000)` and `self.timestamp` to `n.add32(level.time,100)` in `mq3.game.hazards.hurtTouch`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `timestamp`, `spawnflags`, `noise_index` and `damage`. May update `self.timestamp` in place.
+/// @param other Other record; accesses `takedamage`.
+/// @param trace Not read by this implementation; retained in the `hurtTouch` signature.
 function hurtTouch(level,self,other,trace)
   if not other.takedamage or self.timestamp > level.time then return void end if
   if (self.spawnflags & 16) != 0 then self.timestamp = n.add32(level.time,1000) else self.timestamp = n.add32(level.time,100) end if
@@ -52,6 +76,11 @@ function hurtTouch(level,self,other,trace)
   combat.damage(level,other,self,self,void,void,self.damage,dflags,c.MOD_TRIGGER_HURT)
   return void
 end function
+/// Forward `killUse` to `mq3.game.combat.damage` and return the delegated result.
+/// @param level Game-level state; accesses `intermissionQueued`, `time`, `entities`, `obeliskAttackFn` and `knockback` and related fields.
+/// @param self Not read by this implementation; retained in the `killUse` signature.
+/// @param other Not read by this implementation; retained in the `killUse` signature.
+/// @param activator Entity responsible for activating the target.
 function killUse(level,self,other,activator)
   return combat.damage(level,activator,void,void,void,void,100000,combat.DAMAGE_NO_PROTECTION,c.MOD_TELEFRAG)
 end function

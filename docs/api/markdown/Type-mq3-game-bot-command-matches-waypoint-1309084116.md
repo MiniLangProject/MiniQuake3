@@ -9,8 +9,10 @@
 struct Waypoint
 ```
 
+`Waypoint` record for bot command matches, containing `name` and `goal`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L121)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L248)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Waypoint
 goal
 ```
 
+Navigation or activation goal associated with the current task.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L121)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L252)
 
 <a id="field-field-mq3-game-bot-command-matches-waypoint-name-name-src-mq3-game-bot-command-matches-ml-1331379612"></a>
 ### name
@@ -31,5 +35,7 @@ goal
 name
 ```
 
+Name used to refer to this navigation goal or waypoint in bot orders.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L121)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L250)

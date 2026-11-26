@@ -9,8 +9,10 @@
 struct Client
 ```
 
+`Client` record for rankings, containing `present`, `inuse`, `bot`, `name` and `team` and related fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L260)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Client
 bot
 ```
 
+Nonzero when the represented client is an AI-controlled bot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L266)
 
 <a id="field-field-mq3-game-rankings-client-entertime-entertime-src-mq3-game-rankings-ml-677697350"></a>
 ### enterTime
@@ -31,8 +35,10 @@ bot
 enterTime
 ```
 
+Game timestamp at which the client entered play.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L276)
 
 <a id="field-field-mq3-game-rankings-client-inuse-inuse-src-mq3-game-rankings-ml-1903705998"></a>
 ### inuse
@@ -41,8 +47,10 @@ enterTime
 inuse
 ```
 
+Nonzero when this entity, client, or bot record currently represents a live allocated object.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L264)
 
 <a id="field-field-mq3-game-rankings-client-matchrating-matchrating-src-mq3-game-rankings-ml-420580054"></a>
 ### matchRating
@@ -51,8 +59,10 @@ inuse
 matchRating
 ```
 
+Rating value retained for the current player/match report.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L280)
 
 <a id="field-field-mq3-game-rankings-client-matchtime-matchtime-src-mq3-game-rankings-ml-352736202"></a>
 ### matchTime
@@ -61,8 +71,10 @@ matchRating
 matchTime
 ```
 
+Time value attributed to the current match in ranking reports.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L282)
 
 <a id="field-field-mq3-game-rankings-client-name-name-src-mq3-game-rankings-ml-829689360"></a>
 ### name
@@ -71,8 +83,10 @@ matchTime
 name
 ```
 
+Player name used by ranking and administrative messages.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L268)
 
 <a id="field-field-mq3-game-rankings-client-present-present-src-mq3-game-rankings-ml-329451310"></a>
 ### present
@@ -81,8 +95,10 @@ name
 present
 ```
 
+Nonzero when the client is present in the ranking/session snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L262)
 
 <a id="field-field-mq3-game-rankings-client-spectatorstate-spectatorstate-src-mq3-game-rankings-ml-100051310"></a>
 ### spectatorState
@@ -91,8 +107,10 @@ present
 spectatorState
 ```
 
+Spectator mode selected from the SPECTATOR_* constants.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L274)
 
 <a id="field-field-mq3-game-rankings-client-status-status-src-mq3-game-rankings-ml-1130480846"></a>
 ### status
@@ -101,8 +119,10 @@ spectatorState
 status
 ```
 
+Current QGR_STATUS_* state returned by the ranking service.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L272)
 
 <a id="field-field-mq3-game-rankings-client-team-team-src-mq3-game-rankings-ml-65559024"></a>
 ### team
@@ -111,8 +131,10 @@ status
 team
 ```
 
+Team assignment associated with the client, bot, or action.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L270)
 
 <a id="field-field-mq3-game-rankings-client-weaponchangetime-weaponchangetime-src-mq3-game-rankings-ml-384295376"></a>
 ### weaponChangeTime
@@ -121,5 +143,7 @@ team
 weaponChangeTime
 ```
 
+Timestamp of the most recent weapon change.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L278)

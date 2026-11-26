@@ -21,12 +21,14 @@ Reachable from entry: **yes**
 function dispatch(state, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_chat_goal_tail.numInitialChats` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat goal tail state; accesses `chatProfiles`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail_syscalls.ml#L14)

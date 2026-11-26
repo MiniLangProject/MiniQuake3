@@ -21,14 +21,16 @@ Reachable from entry: **no**
 function bind(services, vm, base)
 ```
 
+Apply `mq3.game.syscall_qagame_host.context` and `mq3.game.syscalls.dllEntry` while evaluating `bind`. Return paths include `traps.dllEntry(invoke,value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Initial value stored in `mq3.game.syscall_qagame_host.Context.services`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Initial value stored in `mq3.game.syscall_qagame_host.Context.base`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscall_qagame_host.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L49)
 
 <a id="function-function-mq3-game-syscall-qagame-host-context-function-context-services-vm-base-src-mq3-game-syscall-qagame-host-ml-480638576"></a>
 ### context
@@ -37,14 +39,16 @@ function bind(services, vm, base)
 function context(services, vm, base)
 ```
 
+Build the `mq3.game.syscall_qagame_host.Context` result for `context`. Return paths include `Context(services,vm,base)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Initial value stored in `mq3.game.syscall_qagame_host.Context.services`. |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `base` | `dynamic` | — | Initial value stored in `mq3.game.syscall_qagame_host.Context.base`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscall_qagame_host.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L24)
 
 - [mq3.game.syscall_qagame_host.Context](Type-mq3-game-syscall-qagame-host-context-942569630.md) — struct
 <a id="function-function-mq3-game-syscall-qagame-host-invoke-function-invoke-value-opcode-arguments-src-mq3-game-syscall-qagame-host-ml-2096303493"></a>
@@ -54,11 +58,13 @@ function context(services, vm, base)
 function invoke(value, opcode, arguments)
 ```
 
+Apply `mq3.vm.syscall_qagame.dispatch` while evaluating `invoke`. Return paths include `qagame.dispatch(value.services,value.vm,value.base)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `opcode` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `vm`, `base` and `services`. |
+| `opcode` | `dynamic` | — | Numeric qagame or botlib syscall identifier. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscall_qagame_host.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L34)

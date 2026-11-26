@@ -7,30 +7,166 @@ import mq3.botlib.ai_item_weights as fuzzy
 import mq3.botlib.ai_resource_pools as pools
 import mq3.vm.pc_parser as pc
 
+/// Maximum number of weapon definitions in the bot weapon configuration.
 const MAX_WEAPONINFO=32
+/// Maximum number of projectile definitions in the bot weapon configuration.
 const MAX_PROJECTILEINFO=32
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
+/// Bot-library error indicating that weapon weights could not be loaded.
 const BLERR_CANNOTLOADWEAPONWEIGHTS=11
+/// Bot-library error indicating that weapon configuration could not be loaded.
 const BLERR_CANNOTLOADWEAPONCONFIG=12
+/// Bot-library syscall identifier for load weapon weights.
 const OP_LOAD_WEAPON_WEIGHTS=560
 
-struct Projectile name model flags gravity damage radius visibleDamage damageType healthIncrease push detonation bounce bounceFriction bounceStop end struct
-struct Weapon valid number name model level weaponIndex flags projectileName numProjectiles horizontalSpread verticalSpread speed acceleration recoil offset angleOffset extraZVelocity ammoAmount ammoIndex activate reload spinup spindown projectile end struct
-struct WeaponConfig weapons projectiles end struct
-struct Reader registry handle end struct
-struct Runtime context readFn fuzzyRuntime config fileReads end struct
+/// `Projectile` record for ai weapon weights, containing `name`, `model`, `flags`, `gravity` and `damage` and related fields.
+struct Projectile
+  /// Projectile-definition name referenced by weapon configuration.
+  name
+  /// Asset model configured for the projectile.
+  model
+  /// Projectile behavior properties combined from PFL flags.
+  flags
+  /// Gravity magnitude used when predicting movement.
+  gravity
+  /// Base damage caused by the projectile.
+  damage
+  /// Radius of the represented sphere or capsule.
+  radius
+  /// Damage considered when the target has line of sight to the projectile.
+  visibleDamage
+  /// Bit mask describing impact, radial, or visibility-dependent damage.
+  damageType
+  /// Health adjustment associated with the projectile's effect.
+  healthIncrease
+  /// Push force associated with the projectile's impact.
+  push
+  /// Delay or condition value controlling projectile detonation.
+  detonation
+  /// Bounce coefficient used by the projectile simulation.
+  bounce
+  /// Velocity reduction applied when the projectile bounces.
+  bounceFriction
+  /// Speed threshold below which projectile bouncing stops.
+  bounceStop
+end struct
+/// `Weapon` record for ai weapon weights, containing `valid`, `number`, `name`, `model` and `level` and related fields.
+struct Weapon
+  /// True when the represented entry contains usable data.
+  valid
+  /// Game weapon identifier used to index this weapon definition.
+  number
+  /// Weapon-definition name used by fuzzy weight lookup.
+  name
+  /// Asset model configured for the weapon.
+  model
+  /// Configured weapon-selection level or priority classification.
+  level
+  /// Inventory or weapon-table index associated with the weapon.
+  weaponIndex
+  /// Weapon behavior properties combined from WFL flags.
+  flags
+  /// Name of the projectile definition fired by this weapon.
+  projectileName
+  /// Number of projectiles represented by this record.
+  numProjectiles
+  /// Horizontal angular spread of the weapon's projectiles.
+  horizontalSpread
+  /// Vertical angular spread of the weapon's projectiles.
+  verticalSpread
+  /// Initial projectile speed configured for this weapon.
+  speed
+  /// Acceleration applied to the fired projectile.
+  acceleration
+  /// Recoil vector applied when the weapon fires.
+  recoil
+  /// Position offset from the weapon origin at which projectiles are spawned.
+  offset
+  /// Angular offset between the weapon aim and projectile launch direction.
+  angleOffset
+  /// Additional vertical velocity imparted to the projectile.
+  extraZVelocity
+  /// Amount of ammunition consumed by a weapon shot.
+  ammoAmount
+  /// Inventory index of the ammunition consumed by the weapon.
+  ammoIndex
+  /// Delay before the selected weapon becomes ready to fire.
+  activate
+  /// Time required to reload or become ready for the next shot.
+  reload
+  /// Delay while the weapon spins up before firing.
+  spinup
+  /// Delay while the weapon spins down after firing.
+  spindown
+  /// Resolved projectile definition referenced by the weapon.
+  projectile
+end struct
+/// `WeaponConfig` record for ai weapon weights, containing `weapons` and `projectiles`.
+struct WeaponConfig
+  /// Loaded weapon definitions indexed by weapon number.
+  weapons
+  /// Loaded projectile definitions referenced by weapon descriptions.
+  projectiles
+end struct
+/// `Reader` record for ai weapon weights, containing `registry` and `handle`.
+struct Reader
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Preprocessor source handle supplying the weapon configuration.
+  handle
+end struct
+/// `Runtime` record for ai weapon weights, containing `context`, `readFn`, `fuzzyRuntime`, `config` and `fileReads`.
+struct Runtime
+  /// Caller-supplied data associated with loading projectile, weapon, and fuzzy weapon-weight
+  /// definitions.
+  context
+  /// Host callback that reads weapon, projectile, and weapon-weight configuration files.
+  readFn
+  /// Fuzzy-weight evaluator used to score available weapons.
+  fuzzyRuntime
+  /// Configuration object supplying the settings used by this runtime.
+  config
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
+/// Construct error `7580` with diagnostic text `"AI weapon weights: "+message`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(message) return error(7580,"AI weapon weights: "+message) end function
+/// Create a `mq3.botlib.ai_weapon_weights.Projectile` record with the declared empty defaults.
 function emptyProjectile() return Projectile("","",0,0.0,0,0.0,0,0,0,0.0,0.0,0.0,0.0,0.0) end function
+/// Create a `mq3.botlib.ai_weapon_weights.Weapon` record, initializing `recoil` as `[0.0,0.0,0.0]`, `offset` as `[0.0,0.0,0.0]` and `angleOffset` as `[0.0,0.0,0.0]`.
 function emptyWeapon() return Weapon(false,0,"","",0,0,0,"",0,0.0,0.0,0.0,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0.0,0,0,0.0,0.0,0.0,0.0,void) end function
+/// Create a `mq3.botlib.ai_weapon_weights.Runtime` record, initializing `context` from `context`, `readFn` from `readFn` and `fuzzyRuntime` from `fuzzyRuntime`.
+/// @param context Context forwarded to the configured host callbacks.
+/// @param readFn Callback that loads a named resource through the supplied context.
+/// @param fuzzyRuntime Initial value stored in `mq3.botlib.ai_weapon_weights.Runtime.fuzzyRuntime`.
 function create(context,readFn,fuzzyRuntime) return Runtime(context,readFn,fuzzyRuntime,void,0) end function
+/// Set `runtime.fileReads` to `runtime.fileReads+1` in `mq3.botlib.ai_weapon_weights.loadText`. Return paths include `runtime.readFn(runtime.context,fuzzy.botPath(name))`.
+/// @param runtime AI weapon weights runtime; accesses `fileReads`, `readFn` and `context`. May update `runtime.fileReads` in place.
+/// @param name Name used to identify the requested entry.
 function loadText(runtime,name) runtime.fileReads=runtime.fileReads+1;return runtime.readFn(runtime.context,fuzzy.botPath(name)) end function
+/// Build the `mq3.botlib.ai_weapon_weights.Reader` result for `open`. Return paths include `Reader(registry,handle)`.
+/// @param runtime Context forwarded to the configured host callbacks.
+/// @param name Name used to identify the requested entry.
 function open(runtime,name) registry=pc.create(runtime,loadText);handle=pc.load(registry,name);if handle==0 then return fail("cannot load "+name) end if;return Reader(registry,handle) end function
+/// Apply `mq3.vm.pc_parser.free` while evaluating `close`.
+/// @param reader Token-reader state; accesses `registry` and `handle`.
 function close(reader) pc.free(reader.registry,reader.handle);return void end function
+/// Forward `take` to `mq3.vm.pc_parser.read` and return the delegated result.
+/// @param reader Token-reader state; accesses `registry` and `handle`.
 function take(reader) return pc.read(reader.registry,reader.handle) end function
+/// Apply `mq3.botlib.ai_weapon_weights.take` while evaluating `expect`. Return paths include `token`.
+/// @param reader Token-reader state; accesses `registry` and `handle`.
+/// @param text Text to parse, format or deliver.
 function expect(reader,text) token=take(reader);if token==void or token is error or token.text!=text then return fail("expected "+text) end if;return token end function
+/// Apply `mq3.botlib.ai_weapon_weights.take` while evaluating `readString`. Return paths include `token.text`.
+/// @param reader Token-reader state; accesses `registry` and `handle`.
 function readString(reader) token=take(reader);if token==void or token is error or token.type!=pc.TT_STRING then return fail("expected string") end if;return token.text end function
 
+/// Apply `mq3.botlib.ai_weapon_weights.expect`, `mq3.botlib.ai_weapon_weights.emptyProjectile` and `mq3.botlib.ai_weapon_weights.take` while evaluating `parseProjectile`. Return paths include `fail("unknown projectile field "+field.text)`.
+/// @param reader Token-reader state; accesses `registry` and `handle`.
 function parseProjectile(reader)
   if expect(reader,"{") is error then return fail("missing projectile body") end if;value=emptyProjectile()
   while true field=take(reader);if field==void or field is error then return fail("unterminated projectile") end if;if field.text=="}" then return value end if
@@ -51,6 +187,8 @@ function parseProjectile(reader)
     else return fail("unknown projectile field "+field.text) end if
   end while
 end function
+/// Apply `mq3.botlib.ai_weapon_weights.expect`, `mq3.botlib.ai_weapon_weights.emptyWeapon` and `mq3.botlib.ai_weapon_weights.take` while evaluating `parseWeapon`. Return paths include `fail("unknown weapon field "+field.text)`.
+/// @param reader Token-reader state; accesses `registry` and `handle`.
 function parseWeapon(reader)
   if expect(reader,"{") is error then return fail("missing weapon body") end if;value=emptyWeapon()
   while true field=take(reader);if field==void or field is error then return fail("unterminated weapon") end if;if field.text=="}" then return value end if
@@ -79,7 +217,13 @@ function parseWeapon(reader)
     else return fail("unknown weapon field "+field.text) end if
   end while
 end function
+/// Find a projectile definition by its exact name, returning void when absent.
+/// @param projectiles Value used by `projectileNamed` in `for each projectile in projectiles if projectile.name==name then return projectile end if end for`.
+/// @param name Lookup text matched against `projectile.name`.
 function projectileNamed(projectiles,name) for each projectile in projectiles if projectile.name==name then return projectile end if end for;return void end function
+/// Build the `mq3.botlib.ai_weapon_weights.WeaponConfig` result for `parseWeaponConfig`. Return paths include `WeaponConfig(weapons,projectiles)`.
+/// @param runtime Context forwarded to the configured host callbacks.
+/// @param filename Filename supplied to the configured loader or file service.
 function parseWeaponConfig(runtime,filename)
   reader=open(runtime,filename);if reader is error then return reader end if;weapons=array(MAX_WEAPONINFO,void);for i=0 to MAX_WEAPONINFO-1 weapons[i]=emptyWeapon() end for;projectiles=[]
   while true token=take(reader);if token==void then break end if;if token is error then close(reader);return token end if
@@ -90,12 +234,28 @@ function parseWeaponConfig(runtime,filename)
   for i=0 to MAX_WEAPONINFO-1 if weapons[i].valid then projectile=projectileNamed(projectiles,weapons[i].projectileName);if projectile==void or weapons[i].name=="" then return fail("weapon has invalid projectile") end if;weapons[i].projectile=projectile end if end for
   return WeaponConfig(weapons,projectiles)
 end function
+/// Set `runtime.config` to `parseWeaponConfig(runtime,"weapons.c")` in `mq3.botlib.ai_weapon_weights.ensureConfig`. Return paths include `runtime.config`.
+/// @param runtime AI weapon weights runtime; accesses `config`. May update `runtime.config` in place.
 function ensureConfig(runtime) if runtime.config==void then runtime.config=parseWeaponConfig(runtime,"weapons.c") end if;return runtime.config end function
+/// Apply `mq3.botlib.ai_item_weights.findWeight` while evaluating `weaponWeightIndex`.
+/// @param profile Configuration record; accesses `weights`.
+/// @param config Configuration record; accesses `weapons`.
 function weaponWeightIndex(profile,config) result=[];for each weapon in config.weapons if weapon.valid then result=result+[fuzzy.findWeight(profile,weapon.name)] else result=result+[-1] end if end for;return result end function
+/// Apply `mq3.botlib.ai_resource_pools.weaponState` while evaluating `freeWeaponWeights`.
+/// @param runtime Not read by this implementation; retained in the `freeWeaponWeights` signature.
+/// @param statePools Bot resource pools; accesses `weaponStates`.
+/// @param handle Handle identifying the allocated bot weapon state.
 function freeWeaponWeights(runtime,statePools,handle) state=pools.weaponState(statePools,handle);if state==void then return 0 end if;state.weaponWeightConfig=void;state.weaponWeightIndex=void;return 0 end function
+/// Apply `mq3.botlib.ai_resource_pools.weaponState`, `mq3.botlib.ai_weapon_weights.freeWeaponWeights` and `mq3.botlib.ai_item_weights.weightConfig` while evaluating `loadWeaponWeights`. Return paths include `BLERR_NOERROR`.
+/// @param runtime AI weapon weights runtime; accesses `fuzzyRuntime`.
+/// @param statePools Bot resource pools; accesses `weaponStates`.
+/// @param handle Handle identifying the allocated bot weapon state.
+/// @param filename Filename supplied to the configured loader or file service.
 function loadWeaponWeights(runtime,statePools,handle,filename)
   state=pools.weaponState(statePools,handle);if state==void then return BLERR_CANNOTLOADWEAPONWEIGHTS end if;freeWeaponWeights(runtime,statePools,handle)
   profile=fuzzy.weightConfig(runtime.fuzzyRuntime,filename);if profile is error then return BLERR_CANNOTLOADWEAPONWEIGHTS end if;config=ensureConfig(runtime);if config is error then return BLERR_CANNOTLOADWEAPONCONFIG end if
   state.weaponWeightConfig=profile;state.weaponWeightIndex=weaponWeightIndex(profile,config);return BLERR_NOERROR
 end function
+/// Set `runtime.config` to `void` in `mq3.botlib.ai_weapon_weights.shutdown`.
+/// @param runtime AI weapon weights runtime; accesses `config`. May update `runtime.config` in place.
 function shutdown(runtime) if runtime!=void then runtime.config=void end if;return 0 end function

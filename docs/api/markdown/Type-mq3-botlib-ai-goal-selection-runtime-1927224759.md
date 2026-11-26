@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+`Runtime` record for ai goal selection, containing `levelItems`, `goals`, `services`, `droppedWeight` and `randomSeed`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L70)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 droppedWeight
 ```
 
+Additional scoring factor applied to dropped-item goals.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L78)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-goals-goals-src-mq3-botlib-ai-goal-selection-ml-196501823"></a>
 ### goals
@@ -31,8 +35,10 @@ droppedWeight
 goals
 ```
 
+Goal-state runtime supplying active stacks and avoidance policy.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L74)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-levelitems-levelitems-src-mq3-botlib-ai-goal-selection-ml-590724783"></a>
 ### levelItems
@@ -41,8 +47,10 @@ goals
 levelItems
 ```
 
+Current item goals discovered from the map and its dynamic entities.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L72)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-randomseed-randomseed-src-mq3-botlib-ai-goal-selection-ml-1933336543"></a>
 ### randomSeed
@@ -51,8 +59,10 @@ levelItems
 randomSeed
 ```
 
+Seed retained for repeatable bot-goal selection randomness.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L80)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-services-services-src-mq3-botlib-ai-goal-selection-ml-1005937291"></a>
 ### services
@@ -61,5 +71,7 @@ randomSeed
 services
 ```
 
+Route-cost, collision, and entity queries used when comparing item goals.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L76)

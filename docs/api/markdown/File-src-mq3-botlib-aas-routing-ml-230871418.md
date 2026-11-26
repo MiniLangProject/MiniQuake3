@@ -10,7 +10,6 @@ Reachable from entry: **yes**
 
 - `mq3/botlib/aas_runtime.ml` as `rt` → [src/mq3/botlib/aas_runtime.ml](File-src-mq3-botlib-aas-runtime-ml-1322908116.md)
 - `mq3/botlib/public_headers.ml` as `publicHeaders` → [src/mq3/botlib/public_headers.ml](File-src-mq3-botlib-public-headers-ml-206085358.md)
-- `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/format/aas.ml` as `aas` → [src/mq3/format/aas.ml](File-src-mq3-format-aas-ml-835678928.md)
 
 ## Declarations
@@ -22,13 +21,15 @@ Reachable from entry: **yes**
 function allowed(required, travelFlags)
 ```
 
+Test `(required&travelFlags)==required` as the condition for `allowed`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `required` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `required` | `dynamic` | — | Operand used to evaluate the returned expression `(required&travelFlags)==required`. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L213)
 
 <a id="constant-constant-mq3-botlib-aas-routing-area-bridge-const-area-bridge-16-src-mq3-botlib-aas-routing-ml-448874918"></a>
 ### AREA_BRIDGE
@@ -37,8 +38,10 @@ function allowed(required, travelFlags)
 const AREA_BRIDGE = 16
 ```
 
+Area ontop of a bridge.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L129)
 
 <a id="constant-constant-mq3-botlib-aas-routing-area-liquid-const-area-liquid-4-src-mq3-botlib-aas-routing-ml-1205182525"></a>
 ### AREA_LIQUID
@@ -47,8 +50,10 @@ const AREA_BRIDGE = 16
 const AREA_LIQUID = 4
 ```
 
+Area contains a liquid.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L127)
 
 <a id="constant-constant-mq3-botlib-aas-routing-areacontents-donotenter-const-areacontents-donotenter-256-src-mq3-botlib-aas-routing-ml-137735988"></a>
 ### AREACONTENTS_DONOTENTER
@@ -57,8 +62,10 @@ const AREA_LIQUID = 4
 const AREACONTENTS_DONOTENTER = 256
 ```
 
+AAS area-contents bit marking do-not-enter area.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L121)
 
 <a id="constant-constant-mq3-botlib-aas-routing-areacontents-lava-const-areacontents-lava-2-src-mq3-botlib-aas-routing-ml-849791419"></a>
 ### AREACONTENTS_LAVA
@@ -67,8 +74,10 @@ const AREACONTENTS_DONOTENTER = 256
 const AREACONTENTS_LAVA = 2
 ```
 
+AAS area-contents bit marking lava.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L117)
 
 <a id="constant-constant-mq3-botlib-aas-routing-areacontents-notteam1-const-areacontents-notteam1-2048-src-mq3-botlib-aas-routing-ml-1028108591"></a>
 ### AREACONTENTS_NOTTEAM1
@@ -77,8 +86,10 @@ const AREACONTENTS_LAVA = 2
 const AREACONTENTS_NOTTEAM1 = 2048
 ```
 
+AAS area-contents bit marking team-one restriction.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L123)
 
 <a id="constant-constant-mq3-botlib-aas-routing-areacontents-notteam2-const-areacontents-notteam2-4096-src-mq3-botlib-aas-routing-ml-1943024394"></a>
 ### AREACONTENTS_NOTTEAM2
@@ -87,8 +98,10 @@ const AREACONTENTS_NOTTEAM1 = 2048
 const AREACONTENTS_NOTTEAM2 = 4096
 ```
 
+AAS area-contents bit marking team-two restriction.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L125)
 
 <a id="constant-constant-mq3-botlib-aas-routing-areacontents-slime-const-areacontents-slime-4-src-mq3-botlib-aas-routing-ml-266731091"></a>
 ### AREACONTENTS_SLIME
@@ -97,8 +110,10 @@ const AREACONTENTS_NOTTEAM2 = 4096
 const AREACONTENTS_SLIME = 4
 ```
 
+AAS area-contents bit marking slime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L119)
 
 <a id="constant-constant-mq3-botlib-aas-routing-areacontents-water-const-areacontents-water-1-src-mq3-botlib-aas-routing-ml-1132817366"></a>
 ### AREACONTENTS_WATER
@@ -107,8 +122,10 @@ const AREACONTENTS_SLIME = 4
 const AREACONTENTS_WATER = 1
 ```
 
+AAS area-contents bit marking water.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L115)
 
 <a id="function-function-mq3-botlib-aas-routing-areacontentstravelflags-function-areacontentstravelflags-router-areanum-src-mq3-botlib-aas-routing-ml-1540130634"></a>
 ### areaContentsTravelFlags
@@ -117,13 +134,15 @@ const AREACONTENTS_WATER = 1
 function areaContentsTravelFlags(router, areaNum)
 ```
 
+Read the cached contents travel mask for an area, returning TFL_INVALID when the router or area is invalid.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings` and `areaFlags`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L206)
 
 <a id="function-function-mq3-botlib-aas-routing-areareachabilitytogoalarea-function-areareachabilitytogoalarea-router-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-ml-1725085503"></a>
 ### areaReachabilityToGoalArea
@@ -132,16 +151,18 @@ function areaContentsTravelFlags(router, areaNum)
 function areaReachabilityToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 ```
 
+Return `areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags).reachNum` for `areaReachabilityToGoalArea`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L373)
 
 <a id="function-function-mq3-botlib-aas-routing-arearoutetogoalarea-function-arearoutetogoalarea-router-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-ml-736216305"></a>
 ### areaRouteToGoalArea
@@ -150,16 +171,18 @@ function areaReachabilityToGoalArea(router, areaNum, origin, goalAreaNum, travel
 function areaRouteToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 ```
 
+Build the `mq3.botlib.aas_routing.Route` result for `areaRouteToGoalArea`. Return paths include `searchFromArea(router,areaNum,origin,goalAreaNum,travelFlags,void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L303)
 
 <a id="function-function-mq3-botlib-aas-routing-areatraveltime-function-areatraveltime-router-areanum-start-finish-src-mq3-botlib-aas-routing-ml-2143478815"></a>
 ### areaTravelTime
@@ -168,15 +191,17 @@ function areaRouteToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 function areaTravelTime(router, areaNum, start, finish)
 ```
 
+Apply `mq3.botlib.aas_runtime.validArea` and `mq3.botlib.aas_routing.scaledDistanceNative` while evaluating `areaTravelTime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L241)
 
 <a id="function-function-mq3-botlib-aas-routing-areatraveltimetogoalarea-function-areatraveltimetogoalarea-router-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-ml-22880807"></a>
 ### areaTravelTimeToGoalArea
@@ -185,16 +210,34 @@ function areaTravelTime(router, areaNum, start, finish)
 function areaTravelTimeToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 ```
 
+Return `areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags).travelTime` for `areaTravelTimeToGoalArea`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L366)
+
+<a id="function-function-mq3-botlib-aas-routing-contentstravelflags-function-contentstravelflags-value-src-mq3-botlib-aas-routing-ml-419962027"></a>
+### contentsTravelFlags
+
+```ml
+function contentsTravelFlags(value)
+```
+
+Translate AAS area contents into air, liquid, exclusion and team restriction travel flags.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `dynamic` | — | Value record; accesses `contents` and `flags`. |
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L194)
 
 <a id="function-function-mq3-botlib-aas-routing-create-function-create-runtime-src-mq3-botlib-aas-routing-ml-1926952334"></a>
 ### create
@@ -203,12 +246,14 @@ function areaTravelTimeToGoalArea(router, areaNum, origin, goalAreaNum, travelFl
 function create(runtime)
 ```
 
+Build routing settings, reachability records and travel masks from an initialized AAS map.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AAS routing runtime; accesses `initialized` and `map`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L170)
 
 <a id="function-function-mq3-botlib-aas-routing-edgeallowed-function-edgeallowed-router-reach-travelflags-src-mq3-botlib-aas-routing-ml-409389249"></a>
 ### edgeAllowed
@@ -217,14 +262,16 @@ function create(runtime)
 function edgeAllowed(router, reach, travelFlags)
 ```
 
+Apply `mq3.botlib.aas_runtime.validArea` and `mq3.botlib.aas_routing.allowed` while evaluating `edgeAllowed`. Return paths include `allowed(required,travelFlags) and allowed(router.areaFlags[destination],travelFlags)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `reach` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime`, `travelTypeFlags` and `areaFlags`. |
+| `reach` | `dynamic` | — | AAS reachability record; accesses `areaNum` and `travelType`. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L218)
 
 <a id="function-function-mq3-botlib-aas-routing-fail-function-fail-message-src-mq3-botlib-aas-routing-ml-5783867"></a>
 ### fail
@@ -233,12 +280,14 @@ function edgeAllowed(router, reach, travelFlags)
 function fail(message)
 ```
 
+Construct error `7530` with diagnostic text `"AAS routing: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L167)
 
 - [mq3.botlib.aas_routing.Heap](Type-mq3-botlib-aas-routing-heap-1740437250.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-heapcreate-function-heapcreate-capacity-src-mq3-botlib-aas-routing-ml-590680214"></a>
@@ -248,12 +297,14 @@ function fail(message)
 function heapCreate(capacity)
 ```
 
+Create a `mq3.botlib.aas_routing.Heap` record, initializing `times` as `array(capacity+1,0)`, `reaches` as `array(capacity+1,0)` and `firstReaches` as `array(capacity+1,0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `capacity` | `dynamic` | — |  |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L251)
 
 <a id="function-function-mq3-botlib-aas-routing-heapless-function-heapless-heap-left-right-src-mq3-botlib-aas-routing-ml-912131947"></a>
 ### heapLess
@@ -262,14 +313,16 @@ function heapCreate(capacity)
 function heapLess(heap, left, right)
 ```
 
+Order routing heap entries by travel time, breaking ties by reachability number.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `times` and `reaches`. |
+| `left` | `dynamic` | — | Operand used to evaluate the returned expression `heap.times[left]<heap.times[right]`. |
+| `right` | `dynamic` | — | Operand used to evaluate the returned expression `heap.times[left]<heap.times[right]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L256)
 
 <a id="function-function-mq3-botlib-aas-routing-heappop-function-heappop-heap-src-mq3-botlib-aas-routing-ml-321738666"></a>
 ### heapPop
@@ -278,12 +331,14 @@ function heapLess(heap, left, right)
 function heapPop(heap)
 ```
 
+Update `heap.size`, `heap.times[1]`, `heap.reaches[1]` and `heap.firstReaches[1]` during `heapPop`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `size`, `times`, `reaches`, `firstReaches` and `positions`. May update `heap.size`, `heap.times[1]` and `heap.reaches[1]` and additional fields in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L284)
 
 <a id="function-function-mq3-botlib-aas-routing-heapput-function-heapput-heap-reachnum-time-firstreach-src-mq3-botlib-aas-routing-ml-1213586329"></a>
 ### heapPut
@@ -292,15 +347,17 @@ function heapPop(heap)
 function heapPut(heap, reachNum, time, firstReach)
 ```
 
+Update `heap.size`, `heap.reaches[position]`, `heap.positions[reachNum]` and `heap.times[position]` and related state during `heapPut`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
-| `reachNum` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `firstReach` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `positions`, `size`, `reaches`, `times` and `firstReaches`. May update `heap.size`, `heap.reaches[position]` and `heap.positions[reachNum]` and additional fields in place. |
+| `reachNum` | `dynamic` | — | Value used by `heapPut` in `position=heap.positions[reachNum]`. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
+| `firstReach` | `dynamic` | — | Value used by `heapPut` in `heap.firstReaches[position]=firstReach`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L275)
 
 <a id="function-function-mq3-botlib-aas-routing-heapswap-function-heapswap-heap-left-right-src-mq3-botlib-aas-routing-ml-1164695531"></a>
 ### heapSwap
@@ -309,17 +366,64 @@ function heapPut(heap, reachNum, time, firstReach)
 function heapSwap(heap, left, right)
 ```
 
+Update `heap.times[left]`, `heap.times[right]`, `heap.reaches[left]` and `heap.reaches[right]` and related state during `heapSwap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `times`, `reaches`, `firstReaches` and `positions`. May update `heap.times[left]`, `heap.times[right]` and `heap.reaches[left]` and additional fields in place. |
+| `left` | `dynamic` | — | Value used by `heapSwap` in `value=heap.times[left]`. |
+| `right` | `dynamic` | — | Value used by `heapSwap` in `heap.times[left]=heap.times[right]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L264)
 
 - [mq3.botlib.aas_routing.Route](Type-mq3-botlib-aas-routing-route-1884253753.md) — struct
 - [mq3.botlib.aas_routing.Router](Type-mq3-botlib-aas-routing-router-403349521.md) — struct
+<a id="extern_function-extern-function-mq3-botlib-aas-routing-scaleddistancenative-extern-function-scaleddistancenative-ax-as-double-ay-as-double-az-as-double-bx-as-double-by-as-double-bz-as-double-scale-as-double-from-miniquake3-abi-dll-symbol-mq3-scaled-distance3-trunc-returns-i32-src-mq3-botlib-aas-routing-ml-138898908"></a>
+### scaledDistanceNative
+
+```ml
+extern function scaledDistanceNative(ax as double, ay as double, az as double, bx as double, by as double, bz as double, scale as double) from "miniquake3_abi.dll" symbol "mq3_scaled_distance3_trunc" returns i32
+```
+
+Calculate truncated scaled distance between two 3D points through the native routing helper.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `ax` | `double` | — | Native `double` value forwarded in the `ax` argument of `scaledDistanceNative`. |
+| `ay` | `double` | — | Native `double` value forwarded in the `ay` argument of `scaledDistanceNative`. |
+| `az` | `double` | — | Native `double` value forwarded in the `az` argument of `scaledDistanceNative`. |
+| `bx` | `double` | — | Native `double` value forwarded in the `bx` argument of `scaledDistanceNative`. |
+| `by` | `double` | — | Native `double` value forwarded in the `by` argument of `scaledDistanceNative`. |
+| `bz` | `double` | — | Native `double` value forwarded in the `bz` argument of `scaledDistanceNative`. |
+| `scale` | `double` | — | Multiplier applied to the Euclidean distance before conversion to a signed integer. |
+
+
+**Returns:** Scaled Euclidean distance truncated to the helper's signed 32-bit integer result.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L234)
+
+<a id="function-function-mq3-botlib-aas-routing-searchfromarea-function-searchfromarea-router-areanum-origin-goalareanum-travelflags-times-src-mq3-botlib-aas-routing-ml-1945604579"></a>
+### searchFromArea
+
+```ml
+function searchFromArea(router, areaNum, origin, goalAreaNum, travelFlags, times)
+```
+
+Dijkstra's first arrival in an area has the same cost as stopping the point-to-point search at that area. The one-source table needs no tie decision because item scoring reads travel time only.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `router` | `dynamic` | — | AAS routing state; accesses `reaches` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `times` | `dynamic` | — | Array or byte sequence accessed at `currentArea`. Entries are written in place. |
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L333)
+
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-air-const-tfl-air-publicheaders-tfl-air-src-mq3-botlib-aas-routing-ml-1470994639"></a>
 ### TFL_AIR
 
@@ -327,8 +431,10 @@ function heapSwap(heap, left, right)
 const TFL_AIR = publicHeaders.TFL_AIR
 ```
 
+Travel through air.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L92)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-barrierjump-const-tfl-barrierjump-publicheaders-tfl-barrierjump-src-mq3-botlib-aas-routing-ml-87821420"></a>
 ### TFL_BARRIERJUMP
@@ -337,8 +443,10 @@ const TFL_AIR = publicHeaders.TFL_AIR
 const TFL_BARRIERJUMP = publicHeaders.TFL_BARRIERJUMP
 ```
 
+Jumping onto a barrier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L62)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-bfgjump-const-tfl-bfgjump-publicheaders-tfl-bfgjump-src-mq3-botlib-aas-routing-ml-325432546"></a>
 ### TFL_BFGJUMP
@@ -347,8 +455,10 @@ const TFL_BARRIERJUMP = publicHeaders.TFL_BARRIERJUMP
 const TFL_BFGJUMP = publicHeaders.TFL_BFGJUMP
 ```
 
+AAS route-permission bit for BFG jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L80)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-bridge-const-tfl-bridge-publicheaders-tfl-bridge-src-mq3-botlib-aas-routing-ml-160780176"></a>
 ### TFL_BRIDGE
@@ -357,8 +467,10 @@ const TFL_BFGJUMP = publicHeaders.TFL_BFGJUMP
 const TFL_BRIDGE = publicHeaders.TFL_BRIDGE
 ```
 
+Move over a bridge.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L106)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-crouch-const-tfl-crouch-publicheaders-tfl-crouch-src-mq3-botlib-aas-routing-ml-1165261049"></a>
 ### TFL_CROUCH
@@ -367,8 +479,10 @@ const TFL_BRIDGE = publicHeaders.TFL_BRIDGE
 const TFL_CROUCH = publicHeaders.TFL_CROUCH
 ```
 
+AAS route-permission bit for crouch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L60)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-default-const-tfl-default-publicheaders-tfl-default-src-mq3-botlib-aas-routing-ml-1007875490"></a>
 ### TFL_DEFAULT
@@ -377,8 +491,10 @@ const TFL_CROUCH = publicHeaders.TFL_CROUCH
 const TFL_DEFAULT = publicHeaders.TFL_DEFAULT
 ```
 
+Combined mask of the travel permissions enabled for an ordinary bot route.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L112)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-donotenter-const-tfl-donotenter-publicheaders-tfl-donotenter-src-mq3-botlib-aas-routing-ml-340129955"></a>
 ### TFL_DONOTENTER
@@ -387,8 +503,10 @@ const TFL_DEFAULT = publicHeaders.TFL_DEFAULT
 const TFL_DONOTENTER = publicHeaders.TFL_DONOTENTER
 ```
 
+Travel through donotenter area.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L100)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-doublejump-const-tfl-doublejump-publicheaders-tfl-doublejump-src-mq3-botlib-aas-routing-ml-651152156"></a>
 ### TFL_DOUBLEJUMP
@@ -397,8 +515,10 @@ const TFL_DONOTENTER = publicHeaders.TFL_DONOTENTER
 const TFL_DOUBLEJUMP = publicHeaders.TFL_DOUBLEJUMP
 ```
 
+AAS route-permission bit for double jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L84)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-elevator-const-tfl-elevator-publicheaders-tfl-elevator-src-mq3-botlib-aas-routing-ml-656476117"></a>
 ### TFL_ELEVATOR
@@ -407,8 +527,10 @@ const TFL_DOUBLEJUMP = publicHeaders.TFL_DOUBLEJUMP
 const TFL_ELEVATOR = publicHeaders.TFL_ELEVATOR
 ```
 
+AAS route-permission bit for elevator.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L76)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-flight-const-tfl-flight-publicheaders-tfl-flight-src-mq3-botlib-aas-routing-ml-1284308761"></a>
 ### TFL_FLIGHT
@@ -417,8 +539,10 @@ const TFL_ELEVATOR = publicHeaders.TFL_ELEVATOR
 const TFL_FLIGHT = publicHeaders.TFL_FLIGHT
 ```
 
+AAS route-permission bit for flight.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L104)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-funcbob-const-tfl-funcbob-publicheaders-tfl-funcbob-src-mq3-botlib-aas-routing-ml-784769046"></a>
 ### TFL_FUNCBOB
@@ -427,8 +551,10 @@ const TFL_FLIGHT = publicHeaders.TFL_FLIGHT
 const TFL_FUNCBOB = publicHeaders.TFL_FUNCBOB
 ```
 
+AAS route-permission bit for bobbing mover.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L57)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L102)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-grapplehook-const-tfl-grapplehook-publicheaders-tfl-grapplehook-src-mq3-botlib-aas-routing-ml-99428891"></a>
 ### TFL_GRAPPLEHOOK
@@ -437,8 +563,10 @@ const TFL_FUNCBOB = publicHeaders.TFL_FUNCBOB
 const TFL_GRAPPLEHOOK = publicHeaders.TFL_GRAPPLEHOOK
 ```
 
+AAS route-permission bit for grappling hook.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L82)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-invalid-const-tfl-invalid-publicheaders-tfl-invalid-src-mq3-botlib-aas-routing-ml-2096206032"></a>
 ### TFL_INVALID
@@ -447,8 +575,10 @@ const TFL_GRAPPLEHOOK = publicHeaders.TFL_GRAPPLEHOOK
 const TFL_INVALID = publicHeaders.TFL_INVALID
 ```
 
+Traveling temporary not possible.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L56)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-jump-const-tfl-jump-publicheaders-tfl-jump-src-mq3-botlib-aas-routing-ml-1640779159"></a>
 ### TFL_JUMP
@@ -457,8 +587,10 @@ const TFL_INVALID = publicHeaders.TFL_INVALID
 const TFL_JUMP = publicHeaders.TFL_JUMP
 ```
 
+AAS route-permission bit for jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L64)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-jumppad-const-tfl-jumppad-publicheaders-tfl-jumppad-src-mq3-botlib-aas-routing-ml-248037750"></a>
 ### TFL_JUMPPAD
@@ -467,8 +599,10 @@ const TFL_JUMP = publicHeaders.TFL_JUMP
 const TFL_JUMPPAD = publicHeaders.TFL_JUMPPAD
 ```
 
+AAS route-permission bit for jump pad.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L90)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-ladder-const-tfl-ladder-publicheaders-tfl-ladder-src-mq3-botlib-aas-routing-ml-255159559"></a>
 ### TFL_LADDER
@@ -477,8 +611,10 @@ const TFL_JUMPPAD = publicHeaders.TFL_JUMPPAD
 const TFL_LADDER = publicHeaders.TFL_LADDER
 ```
 
+Climbing a ladder.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L66)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-lava-const-tfl-lava-publicheaders-tfl-lava-src-mq3-botlib-aas-routing-ml-1900108505"></a>
 ### TFL_LAVA
@@ -487,8 +623,10 @@ const TFL_LADDER = publicHeaders.TFL_LADDER
 const TFL_LAVA = publicHeaders.TFL_LAVA
 ```
 
+Travel through lava.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L98)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-notteam1-const-tfl-notteam1-publicheaders-tfl-notteam1-src-mq3-botlib-aas-routing-ml-1656434678"></a>
 ### TFL_NOTTEAM1
@@ -497,8 +635,10 @@ const TFL_LAVA = publicHeaders.TFL_LAVA
 const TFL_NOTTEAM1 = publicHeaders.TFL_NOTTEAM1
 ```
 
+AAS travel restriction marking an area or reachability unavailable to team one.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L60)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L108)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-notteam2-const-tfl-notteam2-publicheaders-tfl-notteam2-src-mq3-botlib-aas-routing-ml-751992993"></a>
 ### TFL_NOTTEAM2
@@ -507,8 +647,10 @@ const TFL_NOTTEAM1 = publicHeaders.TFL_NOTTEAM1
 const TFL_NOTTEAM2 = publicHeaders.TFL_NOTTEAM2
 ```
 
+AAS travel restriction marking an area or reachability unavailable to team two.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L110)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-rampjump-const-tfl-rampjump-publicheaders-tfl-rampjump-src-mq3-botlib-aas-routing-ml-1012571435"></a>
 ### TFL_RAMPJUMP
@@ -517,8 +659,10 @@ const TFL_NOTTEAM2 = publicHeaders.TFL_NOTTEAM2
 const TFL_RAMPJUMP = publicHeaders.TFL_RAMPJUMP
 ```
 
+AAS route-permission bit for ramp jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L86)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-rocketjump-const-tfl-rocketjump-publicheaders-tfl-rocketjump-src-mq3-botlib-aas-routing-ml-1355369311"></a>
 ### TFL_ROCKETJUMP
@@ -527,8 +671,10 @@ const TFL_RAMPJUMP = publicHeaders.TFL_RAMPJUMP
 const TFL_ROCKETJUMP = publicHeaders.TFL_ROCKETJUMP
 ```
 
+AAS route-permission bit for rocket jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L78)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-slime-const-tfl-slime-publicheaders-tfl-slime-src-mq3-botlib-aas-routing-ml-178982411"></a>
 ### TFL_SLIME
@@ -537,8 +683,10 @@ const TFL_ROCKETJUMP = publicHeaders.TFL_ROCKETJUMP
 const TFL_SLIME = publicHeaders.TFL_SLIME
 ```
 
+Travel through slime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L96)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-strafejump-const-tfl-strafejump-publicheaders-tfl-strafejump-src-mq3-botlib-aas-routing-ml-920135758"></a>
 ### TFL_STRAFEJUMP
@@ -547,8 +695,10 @@ const TFL_SLIME = publicHeaders.TFL_SLIME
 const TFL_STRAFEJUMP = publicHeaders.TFL_STRAFEJUMP
 ```
 
+AAS route-permission bit for strafe jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L88)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-swim-const-tfl-swim-publicheaders-tfl-swim-src-mq3-botlib-aas-routing-ml-2037641619"></a>
 ### TFL_SWIM
@@ -557,8 +707,10 @@ const TFL_STRAFEJUMP = publicHeaders.TFL_STRAFEJUMP
 const TFL_SWIM = publicHeaders.TFL_SWIM
 ```
 
+AAS route-permission bit for swim.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L70)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-teleport-const-tfl-teleport-publicheaders-tfl-teleport-src-mq3-botlib-aas-routing-ml-1572803990"></a>
 ### TFL_TELEPORT
@@ -567,8 +719,10 @@ const TFL_SWIM = publicHeaders.TFL_SWIM
 const TFL_TELEPORT = publicHeaders.TFL_TELEPORT
 ```
 
+AAS route-permission bit for teleport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-walk-const-tfl-walk-publicheaders-tfl-walk-src-mq3-botlib-aas-routing-ml-1885578268"></a>
 ### TFL_WALK
@@ -577,8 +731,10 @@ const TFL_TELEPORT = publicHeaders.TFL_TELEPORT
 const TFL_WALK = publicHeaders.TFL_WALK
 ```
 
+AAS route-permission bit for walk.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L58)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-walkoffledge-const-tfl-walkoffledge-publicheaders-tfl-walkoffledge-src-mq3-botlib-aas-routing-ml-1465244782"></a>
 ### TFL_WALKOFFLEDGE
@@ -587,8 +743,10 @@ const TFL_WALK = publicHeaders.TFL_WALK
 const TFL_WALKOFFLEDGE = publicHeaders.TFL_WALKOFFLEDGE
 ```
 
+Walking of a ledge.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L68)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-water-const-tfl-water-publicheaders-tfl-water-src-mq3-botlib-aas-routing-ml-1456065632"></a>
 ### TFL_WATER
@@ -597,8 +755,10 @@ const TFL_WALKOFFLEDGE = publicHeaders.TFL_WALKOFFLEDGE
 const TFL_WATER = publicHeaders.TFL_WATER
 ```
 
+Travel through water.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L94)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-waterjump-const-tfl-waterjump-publicheaders-tfl-waterjump-src-mq3-botlib-aas-routing-ml-1000600428"></a>
 ### TFL_WATERJUMP
@@ -607,8 +767,10 @@ const TFL_WATER = publicHeaders.TFL_WATER
 const TFL_WATERJUMP = publicHeaders.TFL_WATERJUMP
 ```
 
+Jumping out of the water.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-barrierjump-const-travel-barrierjump-4-src-mq3-botlib-aas-routing-ml-777618291"></a>
 ### TRAVEL_BARRIERJUMP
@@ -617,8 +779,10 @@ const TFL_WATERJUMP = publicHeaders.TFL_WATERJUMP
 const TRAVEL_BARRIERJUMP = 4
 ```
 
+Jumping onto a barrier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L23)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-bfgjump-const-travel-bfgjump-13-src-mq3-botlib-aas-routing-ml-1806682903"></a>
 ### TRAVEL_BFGJUMP
@@ -627,8 +791,10 @@ const TRAVEL_BARRIERJUMP = 4
 const TRAVEL_BFGJUMP = 13
 ```
 
+Bfg jumping required for travel.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L41)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-crouch-const-travel-crouch-3-src-mq3-botlib-aas-routing-ml-865923732"></a>
 ### TRAVEL_CROUCH
@@ -637,8 +803,10 @@ const TRAVEL_BFGJUMP = 13
 const TRAVEL_CROUCH = 3
 ```
 
+AAS movement-type identifier for crouch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L21)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-doublejump-const-travel-doublejump-15-src-mq3-botlib-aas-routing-ml-960113523"></a>
 ### TRAVEL_DOUBLEJUMP
@@ -647,8 +815,10 @@ const TRAVEL_CROUCH = 3
 const TRAVEL_DOUBLEJUMP = 15
 ```
 
+AAS movement-type identifier for double jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L45)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-elevator-const-travel-elevator-11-src-mq3-botlib-aas-routing-ml-1863529703"></a>
 ### TRAVEL_ELEVATOR
@@ -657,8 +827,10 @@ const TRAVEL_DOUBLEJUMP = 15
 const TRAVEL_ELEVATOR = 11
 ```
 
+Travel by elevator.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L37)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-funcbob-const-travel-funcbob-19-src-mq3-botlib-aas-routing-ml-1511498709"></a>
 ### TRAVEL_FUNCBOB
@@ -667,8 +839,10 @@ const TRAVEL_ELEVATOR = 11
 const TRAVEL_FUNCBOB = 19
 ```
 
+AAS movement-type identifier for bobbing mover.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L53)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-grapplehook-const-travel-grapplehook-14-src-mq3-botlib-aas-routing-ml-952139968"></a>
 ### TRAVEL_GRAPPLEHOOK
@@ -677,8 +851,10 @@ const TRAVEL_FUNCBOB = 19
 const TRAVEL_GRAPPLEHOOK = 14
 ```
 
+Grappling hook required for travel.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L43)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-invalid-const-travel-invalid-1-src-mq3-botlib-aas-routing-ml-1681383472"></a>
 ### TRAVEL_INVALID
@@ -687,8 +863,10 @@ const TRAVEL_GRAPPLEHOOK = 14
 const TRAVEL_INVALID = 1
 ```
 
+AAS travel-type value for a reachability that cannot currently be traversed.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L17)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-jump-const-travel-jump-5-src-mq3-botlib-aas-routing-ml-1268041770"></a>
 ### TRAVEL_JUMP
@@ -697,8 +875,10 @@ const TRAVEL_INVALID = 1
 const TRAVEL_JUMP = 5
 ```
 
+AAS movement-type identifier for jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L25)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-jumppad-const-travel-jumppad-18-src-mq3-botlib-aas-routing-ml-1352496958"></a>
 ### TRAVEL_JUMPPAD
@@ -707,8 +887,10 @@ const TRAVEL_JUMP = 5
 const TRAVEL_JUMPPAD = 18
 ```
 
+AAS movement-type identifier for jump pad.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L51)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-ladder-const-travel-ladder-6-src-mq3-botlib-aas-routing-ml-239958859"></a>
 ### TRAVEL_LADDER
@@ -717,8 +899,10 @@ const TRAVEL_JUMPPAD = 18
 const TRAVEL_LADDER = 6
 ```
 
+Climbing a ladder.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L27)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-rampjump-const-travel-rampjump-16-src-mq3-botlib-aas-routing-ml-1212503746"></a>
 ### TRAVEL_RAMPJUMP
@@ -727,8 +911,10 @@ const TRAVEL_LADDER = 6
 const TRAVEL_RAMPJUMP = 16
 ```
 
+AAS movement-type identifier for ramp jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L47)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-rocketjump-const-travel-rocketjump-12-src-mq3-botlib-aas-routing-ml-1637845670"></a>
 ### TRAVEL_ROCKETJUMP
@@ -737,8 +923,10 @@ const TRAVEL_RAMPJUMP = 16
 const TRAVEL_ROCKETJUMP = 12
 ```
 
+Rocket jumping required for travel.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L39)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-strafejump-const-travel-strafejump-17-src-mq3-botlib-aas-routing-ml-1956056077"></a>
 ### TRAVEL_STRAFEJUMP
@@ -747,8 +935,10 @@ const TRAVEL_ROCKETJUMP = 12
 const TRAVEL_STRAFEJUMP = 17
 ```
 
+AAS movement-type identifier for strafe jump.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L49)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-swim-const-travel-swim-8-src-mq3-botlib-aas-routing-ml-2005224421"></a>
 ### TRAVEL_SWIM
@@ -757,8 +947,10 @@ const TRAVEL_STRAFEJUMP = 17
 const TRAVEL_SWIM = 8
 ```
 
+AAS movement-type identifier for swim.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L31)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-teleport-const-travel-teleport-10-src-mq3-botlib-aas-routing-ml-19382520"></a>
 ### TRAVEL_TELEPORT
@@ -767,8 +959,10 @@ const TRAVEL_SWIM = 8
 const TRAVEL_TELEPORT = 10
 ```
 
+AAS movement-type identifier for teleport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L35)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-walk-const-travel-walk-2-src-mq3-botlib-aas-routing-ml-1403067479"></a>
 ### TRAVEL_WALK
@@ -777,8 +971,10 @@ const TRAVEL_TELEPORT = 10
 const TRAVEL_WALK = 2
 ```
 
+AAS movement-type identifier for walk.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L19)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-walkoffledge-const-travel-walkoffledge-7-src-mq3-botlib-aas-routing-ml-2015903216"></a>
 ### TRAVEL_WALKOFFLEDGE
@@ -787,8 +983,10 @@ const TRAVEL_WALK = 2
 const TRAVEL_WALKOFFLEDGE = 7
 ```
 
+Walking of a ledge.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L29)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travel-waterjump-const-travel-waterjump-9-src-mq3-botlib-aas-routing-ml-762436852"></a>
 ### TRAVEL_WATERJUMP
@@ -797,8 +995,10 @@ const TRAVEL_WALKOFFLEDGE = 7
 const TRAVEL_WATERJUMP = 9
 ```
 
+Jump out of the water.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L33)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travelflag-notteam1-const-travelflag-notteam1-16777216-src-mq3-botlib-aas-routing-ml-1610958686"></a>
 ### TRAVELFLAG_NOTTEAM1
@@ -807,8 +1007,10 @@ const TRAVEL_WATERJUMP = 9
 const TRAVELFLAG_NOTTEAM1 = 16777216
 ```
 
+Additional AAS travel restriction for team-one restriction.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-routing-travelflag-notteam2-const-travelflag-notteam2-33554432-src-mq3-botlib-aas-routing-ml-681532244"></a>
 ### TRAVELFLAG_NOTTEAM2
@@ -817,8 +1019,10 @@ const TRAVELFLAG_NOTTEAM1 = 16777216
 const TRAVELFLAG_NOTTEAM2 = 33554432
 ```
 
+Additional AAS travel restriction for team-two restriction.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L15)
 
 <a id="function-function-mq3-botlib-aas-routing-travelflagfortype-function-travelflagfortype-traveltype-src-mq3-botlib-aas-routing-ml-933331096"></a>
 ### travelFlagForType
@@ -827,12 +1031,33 @@ const TRAVELFLAG_NOTTEAM2 = 33554432
 function travelFlagForType(travelType)
 ```
 
+Map the masked AAS travel type to its travel flag, returning TFL_INVALID for an out-of-range type.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `travelType` | `dynamic` | — |  |
+| `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L184)
+
+<a id="function-function-mq3-botlib-aas-routing-traveltimesfromarea-function-traveltimesfromarea-router-areanum-origin-travelflags-src-mq3-botlib-aas-routing-ml-904575243"></a>
+### travelTimesFromArea
+
+```ml
+function travelTimesFromArea(router, areaNum, origin, travelFlags)
+```
+
+Apply `mq3.botlib.aas_runtime.validArea` and `mq3.botlib.aas_routing.searchFromArea` while evaluating `travelTimesFromArea`. Return paths include `times`.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L317)
 
 <a id="constant-constant-mq3-botlib-aas-routing-traveltype-mask-const-traveltype-mask-16777215-src-mq3-botlib-aas-routing-ml-849578027"></a>
 ### TRAVELTYPE_MASK
@@ -841,5 +1066,7 @@ function travelFlagForType(travelType)
 const TRAVELTYPE_MASK = 16777215
 ```
 
+Mask selecting the movement-type identifier from an encoded AAS travel type.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L11)

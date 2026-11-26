@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Data record for `mq3.renderer.playable_dynamic_lights.Catalog`; groups `textureSlot`, `image`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L14)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Catalog
 image
 ```
 
+Generated radial light texture shared by projected dynamic-light passes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-catalog-textureslot-textureslot-src-mq3-renderer-playable-dynamic-lights-ml-1802688376"></a>
 ### textureSlot
@@ -31,5 +35,7 @@ image
 textureSlot
 ```
 
+Texture slot reserved for this effect's image.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L16)

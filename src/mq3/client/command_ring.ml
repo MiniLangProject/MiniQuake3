@@ -5,14 +5,35 @@ package mq3.client.command_ring
 
 import mq3.compat.numeric as n
 
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Number of recent user commands retained in the command-history ring.
 const CMD_BACKUP=64
+/// Mask that maps a user-command sequence number into the command-history ring.
 const CMD_MASK=63
 
-struct AdvanceResult created frameMsec oldFrameTime commandNumber slot end struct
+/// Stores command ring advance result record, including `created`, `frameMsec`, `oldFrameTime`, `commandNumber`, `slot`.
+struct AdvanceResult
+  /// When constructing this record, `advance` supplies `false` for this member.
+  created
+  /// When constructing this record, `advance` supplies `0` for this member.
+  frameMsec
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// When constructing this record, `advance` supplies `commandNumber` for this member.
+  commandNumber
+  /// Ring-buffer slot selected for the newly advanced command sequence.
+  slot
+end struct
 
+/// Creates an array from `CMD_BACKUP, void` for command ring `create`.
 function create() return array(CMD_BACKUP,void) end function
 
+/// Calls `mq3.client.command_ring.AdvanceResult`, `mq3.compat.numeric.i32` from command ring `advance`. The final path returns `AdvanceResult(true,msec,frameTime,number,number&CMD_MASK)`.
+/// @param connectionState Value used by `if connectionState<CA_PRIMED then return AdvanceResult(false,0,oldFrameTime,commandNumber,-1) end if`.
+/// @param frameTime Value used by `msec=n.i32(frameTime-oldFrameTime)`.
+/// @param oldFrameTime Value used by `if connectionState<CA_PRIMED then return AdvanceResult(false,0,oldFrameTime,commandNumber,-1) end if`.
+/// @param commandNumber Value used by `if connectionState<CA_PRIMED then return AdvanceResult(false,0,oldFrameTime,commandNumber,-1) end if`.
 function advance(connectionState,frameTime,oldFrameTime,commandNumber)
   if connectionState<CA_PRIMED then return AdvanceResult(false,0,oldFrameTime,commandNumber,-1) end if
   msec=n.i32(frameTime-oldFrameTime);if msec>200 then msec=200 end if
@@ -20,6 +41,10 @@ function advance(connectionState,frameTime,oldFrameTime,commandNumber)
   return AdvanceResult(true,msec,frameTime,number,number&CMD_MASK)
 end function
 
+/// Updates `commands[commandNumber&CMD_MASK]` during command ring `store`.
+/// @param commands Mutable sequence; this routine writes `commands[commandNumber&CMD_MASK]`.
+/// @param commandNumber Value used by `commands[commandNumber&CMD_MASK]=command`.
+/// @param command Value used by `commands[commandNumber&CMD_MASK]=command`.
 function store(commands,commandNumber,command)
   if commands==void or len(commands)!=CMD_BACKUP then return error(7730,"client command ring: invalid storage") end if
   commands[commandNumber&CMD_MASK]=command;return command
@@ -27,6 +52,9 @@ end function
 
 // A future command is a protocol/engine error in Baseq3. A command that has
 // already wrapped out of the 64-entry ring is an ordinary cache miss.
+/// @param commands Sequence read at `commands[commandNumber&CMD_MASK]`.
+/// @param currentNumber Value used by `if commandNumber>currentNumber then return error(7730,"client command ring: future command") end if`.
+/// @param commandNumber Value used by `if commandNumber>currentNumber then return error(7730,"client command ring: future command") end if`.
 function get(commands,currentNumber,commandNumber)
   if commands==void or len(commands)!=CMD_BACKUP then return error(7730,"client command ring: invalid storage") end if
   if commandNumber>currentNumber then return error(7730,"client command ring: future command") end if
@@ -34,6 +62,8 @@ function get(commands,currentNumber,commandNumber)
   return commands[commandNumber&CMD_MASK]
 end function
 
+/// Updates `commands[index]` during command ring `clear`.
+/// @param commands Mutable sequence; this routine writes `commands[index]`.
 function clear(commands)
   if commands==void or len(commands)!=CMD_BACKUP then return error(7730,"client command ring: invalid storage") end if
   for index=0 to CMD_BACKUP-1 commands[index]=void end for;return void

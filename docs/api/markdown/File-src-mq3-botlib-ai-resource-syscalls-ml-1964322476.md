@@ -20,12 +20,14 @@ Reachable from entry: **yes**
 function dispatch(pools, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.argument`, `mq3.botlib.ai_resource_pools.allocChatState` and `mq3.botlib.ai_resource_pools.freeChatState` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `chatStates`. May update `pools.chatStates[handle]` in place. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_syscalls.ml#L13)

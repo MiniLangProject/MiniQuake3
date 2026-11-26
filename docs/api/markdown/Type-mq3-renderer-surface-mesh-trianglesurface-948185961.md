@@ -9,8 +9,10 @@
 struct TriangleSurface
 ```
 
+Data record for `mq3.renderer.surface_mesh.TriangleSurface`; groups `verts`, `indexes`, `dlightBits`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L20)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TriangleSurface
 dlightBits
 ```
 
+Bit mask identifying dynamic lights that affect this surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L26)
 
 <a id="field-field-mq3-renderer-surface-mesh-trianglesurface-indexes-indexes-src-mq3-renderer-surface-mesh-ml-561681580"></a>
 ### indexes
@@ -31,8 +35,10 @@ dlightBits
 indexes
 ```
 
+Source triangle index list referencing the static surface's vertex records.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L24)
 
 <a id="field-field-mq3-renderer-surface-mesh-trianglesurface-verts-verts-src-mq3-renderer-surface-mesh-ml-1643168648"></a>
 ### verts
@@ -41,5 +47,7 @@ indexes
 verts
 ```
 
+Source vertex records referenced by the static triangle surface's index list.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L22)

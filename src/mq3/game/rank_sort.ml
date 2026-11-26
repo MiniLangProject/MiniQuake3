@@ -3,10 +3,20 @@
 // reproduce the observed UCRT comparison/partition schedule, including ties.
 // This is not the distinct qsort implementation in the original QVM library.
 package mq3.game.rank_sort
+/// Swap two entries of the rank-index array in place.
+/// @param indices Array or byte sequence accessed at `a` and `b`. Entries are written in place.
+/// @param a Value used by `exchange` in `saved = indices[a]`.
+/// @param b Value used by `exchange` in `indices[a] = indices[b]`.
 function exchange(indices,a,b)
   saved = indices[a]; indices[a] = indices[b]; indices[b] = saved
   return void
 end function
+/// Apply `mq3.game.rank_sort.exchange` and `mq3.game.rank_sort.rangeSort` while evaluating `rangeSort`.
+/// @param level Value passed as argument 1 to `compare`.
+/// @param indices Array or byte sequence accessed at `a` and `b`. Entries are written in place.
+/// @param low Value used by `exchange` in `saved = indices[a]`.
+/// @param high Value used by `exchange` in `indices[a] = indices[b]`.
+/// @param compare Value passed as argument 5 to `mq3.game.rank_sort.rangeSort`.
 function rangeSort(level,indices,low,high,compare)
   if high <= low then return void end if
   count = high-low+1
@@ -69,6 +79,11 @@ function rangeSort(level,indices,low,high,compare)
   end if
   return void
 end function
+/// Sort client indices using the rank comparison callback without moving the underlying client records.
+/// @param level Value passed as argument 1 to `compare`.
+/// @param indices Array or byte sequence accessed at `a` and `b`. Entries are written in place.
+/// @param count Number of entries or bytes processed by this call.
+/// @param compare Value passed as argument 5 to `mq3.game.rank_sort.rangeSort`.
 function sortIndices(level,indices,count,compare)
   if count < 0 or count > 64 or count > len(indices) then return error(495,"Invalid rank sort count") end if
   return rangeSort(level,indices,0,count-1,compare)

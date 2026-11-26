@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Callback table for `mq3.renderer.tr_image_runtime.Services`; exposes `skinLoadFn`, `writeJpegFn`, `deleteTextureFn`, `gammaFn`, `diagnosticFn`, `context`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L24)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Image-service state passed to skin loading, JPEG output, texture deletion, and gamma updates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L36)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-services-deletetexturefn-deletetexturefn-src-mq3-renderer-tr-image-runtime-ml-1434702485"></a>
 ### deleteTextureFn
@@ -31,8 +35,10 @@ context
 deleteTextureFn
 ```
 
+Host callback used to perform delete texture operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-services-diagnosticfn-diagnosticfn-src-mq3-renderer-tr-image-runtime-ml-1927519979"></a>
 ### diagnosticFn
@@ -41,8 +47,10 @@ deleteTextureFn
 diagnosticFn
 ```
 
+Host callback used to perform diagnostic operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-services-gammafn-gammafn-src-mq3-renderer-tr-image-runtime-ml-1109952437"></a>
 ### gammaFn
@@ -51,8 +59,10 @@ diagnosticFn
 gammaFn
 ```
 
+Host callback used to perform gamma operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-services-skinloadfn-skinloadfn-src-mq3-renderer-tr-image-runtime-ml-1125293219"></a>
 ### skinLoadFn
@@ -61,8 +71,10 @@ gammaFn
 skinLoadFn
 ```
 
+Host callback used to perform skin load operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-services-writejpegfn-writejpegfn-src-mq3-renderer-tr-image-runtime-ml-910018537"></a>
 ### writeJpegFn
@@ -71,5 +83,7 @@ skinLoadFn
 writeJpegFn
 ```
 
+Host callback used to perform write jpeg operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L28)

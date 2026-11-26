@@ -66,6 +66,8 @@ RASTER_EXPORTS = (
     "playable_window_finish_stencil_shadow",
     "playable_window_upload_texture",
     "playable_window_upload_texture_mipmapped",
+    "playable_window_upload_material_texture",
+    "playable_window_set_texture_settings",
     "playable_window_release_texture",
     "playable_window_draw_triangle",
     "playable_window_draw_triangle_colored",

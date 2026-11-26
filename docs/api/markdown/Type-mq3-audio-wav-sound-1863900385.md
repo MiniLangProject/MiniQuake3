@@ -9,8 +9,10 @@
 struct Sound
 ```
 
+Decoded integer PCM sound with interleaved sample data and its validated WAVE format.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L13)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Sound
 bitsPerSample
 ```
 
+Number of bits used for each sample in one channel.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L19)
 
 <a id="field-field-mq3-audio-wav-sound-blockalign-blockalign-src-mq3-audio-wav-ml-514442394"></a>
 ### blockAlign
@@ -31,8 +35,10 @@ bitsPerSample
 blockAlign
 ```
 
+Bytes occupied by one complete interleaved sample frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L21)
 
 <a id="field-field-mq3-audio-wav-sound-byterate-byterate-src-mq3-audio-wav-ml-1303925470"></a>
 ### byteRate
@@ -41,8 +47,10 @@ blockAlign
 byteRate
 ```
 
+PCM byte rate computed from sample rate and block alignment.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L23)
 
 <a id="field-field-mq3-audio-wav-sound-channels-channels-src-mq3-audio-wav-ml-874299550"></a>
 ### channels
@@ -51,8 +59,10 @@ byteRate
 channels
 ```
 
+Number of interleaved PCM channels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L17)
 
 <a id="field-field-mq3-audio-wav-sound-samplerate-samplerate-src-mq3-audio-wav-ml-1958476574"></a>
 ### sampleRate
@@ -61,8 +71,10 @@ channels
 sampleRate
 ```
 
+Source sample rate in hertz.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L15)
 
 <a id="field-field-mq3-audio-wav-sound-samples-samples-src-mq3-audio-wav-ml-267445338"></a>
 ### samples
@@ -71,5 +83,7 @@ sampleRate
 samples
 ```
 
+Independent copy of the first WAVE data chunk; unsigned 8-bit or little-endian signed 16-bit PCM.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L25)

@@ -31,6 +31,17 @@ function main(args)
   modelPayload=basePayload([10.0,20.0,30.0]);scene.addEntity(state,0,modelPayload)
   spritePayload=basePayload([2.0,3.0,4.0]);n.writeU32(spritePayload,8,0);n.writeU32(spritePayload,112,9);wf(spritePayload,132,2.0);wf(spritePayload,136,0.0);scene.addEntity(state,2,spritePayload)
   verts=[scene.PolyVert([0.0,0.0,0.0],[0.0,0.0],[255,0,0,255]),scene.PolyVert([1.0,0.0,0.0],[1.0,0.0],[0,255,0,255]),scene.PolyVert([0.0,1.0,0.0],[0.0,1.0],[0,0,255,255])]
+  pooledPoly=scene.Poly(7,verts,0);pooled=geometry.Geometry(array(1,void),0,0,0,0,0,0,0,0,[],0,[],0)
+  firstPoly=geometry.appendPolyTriangle(pooled,pooledPoly,verts[0],verts[1],verts[2]);if firstPoly is error then return firstPoly end if
+  target=pooled.triangles[0]
+  count=count+req(target.positions==[verts[0].xyz,verts[1].xyz,verts[2].xyz] and target.colors==[verts[0].modulate,verts[1].modulate,verts[2].modulate] and target.shaderHandle==7 and target.lightmapIndex==-1,"direct poly append matches new triangle defaults")
+  pooled.triangleCount=0;target.modelHandle=17;target.dynamicLight=true;target.fogIndex=4;target.lightmapIndex=3;target.entityIndex=9
+  replaced=geometry.appendPolyTriangle(pooled,pooledPoly,verts[0],verts[1],verts[2]);if replaced is error then return replaced end if
+  count=count+req(pooled.triangles[0]==target and not target.dynamicLight and target.modelHandle==0 and target.entityIndex==-1 and target.lightmapIndex==-1 and target.fogIndex==-1 and target.normals==[[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]],"reused model triangle resets all poly metadata")
+  count=count+req(target.entityColor==[255,255,255,255] and target.entityTexCoord==[0.0,0.0] and target.lightmapCoords==[[0.0,0.0],[0.0,0.0],[0.0,0.0]] and target.shaderName=="" and target.surfaceName=="" and target.renderfx==0 and target.dynamicLightOrigin==void and target.dynamicLightAxis==void and target.dynamicLightBounds==void and target.vertexIds==void,"direct poly append clears stale entity and light fields")
+  pooled.triangleCount=0;verts[0].xyz[0]=9.0;reused=geometry.appendPolyTriangle(pooled,pooledPoly,verts[0],verts[1],verts[2]);if reused is error then return reused end if
+  count=count+req(pooled.triangles[0]==target and target.positions[0][0]==9.0 and target.colors[1]==[0,255,0,255],"reused poly triangle follows current frame without a temporary record")
+  verts[0].xyz[0]=0.0
   scene.addPolys(state,7,3,verts,1);refdef=Refdef([[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],[-5.0,4.0,2.0],1000)
   output=geometry.build(state,["model"],[fixtureModel()],refdef,8);if output is error then return output end if
   count=count+req(output.modelEntities==1 and output.spriteEntities==1 and output.polySurfaces==1,"submission counts")
@@ -121,6 +132,8 @@ function main(args)
   count=count+req(len(portalPersonal.triangles)==3 and portalPersonal.modelEntities==1 and portalPersonal.spriteEntities==1,"RF_THIRD_PERSON visible in portal view")
   firstPerson=scene.create(1,0);firstPerson.registered=true;firstPayload=basePayload([0.0,0.0,0.0]);n.writeU32(firstPayload,4,4);scene.addEntity(firstPerson,0,firstPayload);portalFirst=geometry.buildPortalRecords(scene.sceneEntities(firstPerson),scene.scenePolys(firstPerson),["model"],[fixtureModel()],refdef,8,void,void,void)
   count=count+req(len(portalFirst.triangles)==0,"RF_FIRST_PERSON hidden from portal view")
+  empty=geometry.buildRecordsWithFrameCache([],[],[],[],refdef,8,geometry.createFrameCache(void,8),void)
+  count=count+req(not (empty is error) and len(empty.triangles)==0,"empty views keep an empty model plan")
   count=count+req(try(geometry.build(state,["model"],[fixtureModel()],refdef,-1)) is error,"negative triangle limit rejected")
   count=count+req(try(geometry.createFrameCache(void,0)) is error,"frame cache capacity validated")
   cachedState=scene.create(2,0);cachedState.registered=true;cachedState.worldLoaded=true;cachedA=basePayload([1.0,2.0,3.0]);cachedB=basePayload([4.0,5.0,6.0]);scene.addEntity(cachedState,0,cachedA);scene.addEntity(cachedState,0,cachedB)

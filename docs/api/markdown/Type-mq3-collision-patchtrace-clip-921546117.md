@@ -9,8 +9,10 @@
 struct Clip
 ```
 
+Clip record for collision.patchtrace, containing `enter`, `leave`, `hit`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L21)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Clip
 enter
 ```
 
+Earliest fraction at which the trace enters the facet volume.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L23)
 
 <a id="field-field-mq3-collision-patchtrace-clip-hit-hit-src-mq3-collision-patchtrace-ml-1306973129"></a>
 ### hit
@@ -31,8 +35,10 @@ enter
 hit
 ```
 
+True when clipping produces a valid intersection interval.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L27)
 
 <a id="field-field-mq3-collision-patchtrace-clip-leave-leave-src-mq3-collision-patchtrace-ml-312090201"></a>
 ### leave
@@ -41,5 +47,7 @@ hit
 leave
 ```
 
+Latest fraction at which the trace leaves the facet volume.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L25)

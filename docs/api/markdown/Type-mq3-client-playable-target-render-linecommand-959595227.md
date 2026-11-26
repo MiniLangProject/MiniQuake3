@@ -9,8 +9,10 @@
 struct LineCommand
 ```
 
+Stores playable target render line command record, including `a`, `b`, `red`, `green`, `blue`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L33)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LineCommand
 a
 ```
 
+Alpha component controlling opacity or blending.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L35)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-b-b-src-mq3-client-playable-target-render-ml-495756728"></a>
 ### b
@@ -31,8 +35,10 @@ a
 b
 ```
 
+Blue component of the stored color.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L37)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-blue-blue-src-mq3-client-playable-target-render-ml-1874829240"></a>
 ### blue
@@ -41,8 +47,10 @@ b
 blue
 ```
 
+Blue color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L43)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-green-green-src-mq3-client-playable-target-render-ml-1647740528"></a>
 ### green
@@ -51,8 +59,10 @@ blue
 green
 ```
 
+Green color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L41)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-red-red-src-mq3-client-playable-target-render-ml-445530660"></a>
 ### red
@@ -61,5 +71,7 @@ green
 red
 ```
 
+Red color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L39)

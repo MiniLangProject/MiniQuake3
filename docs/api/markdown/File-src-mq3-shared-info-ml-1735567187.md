@@ -19,13 +19,17 @@ Reachable from entry: **yes**
 function copy(text, capacity)
 ```
 
+Copy info in shared.info; the normal completion returns `text`.
+
+Validation failures include `Info copy has no native storage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
+| `capacity` | `dynamic` | — | Capacity used in `(capacity < 1)` and `(capacity - 1)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L25)
 
 <a id="function-function-mq3-shared-info-infodiagnostic-function-infodiagnostic-context-diagnosticfn-message-src-mq3-shared-info-ml-1332858825"></a>
 ### infoDiagnostic
@@ -34,14 +38,16 @@ function copy(text, capacity)
 function infoDiagnostic(context, diagnosticFn, message)
 ```
 
+Compute info diagnostic in shared.info.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `diagnosticFn` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Context used in `diagnosticFn(context, message)`. |
+| `diagnosticFn` | `dynamic` | — | Callback invoked for diagnostic; the call sites below define the callback arguments. |
+| `message` | `dynamic` | — | Message used in `diagnosticFn(context, message)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L89)
 
 <a id="function-function-mq3-shared-info-removekey-function-removekey-info-key-src-mq3-shared-info-ml-67983453"></a>
 ### removeKey
@@ -50,13 +56,17 @@ function infoDiagnostic(context, diagnosticFn, message)
 function removeKey(info, key)
 ```
 
+Remove key in shared.info; the normal completion returns `info`.
+
+Validation failures include `Info_RemoveKey: oversize infostring`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
+| `key` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L60)
 
 <a id="function-function-mq3-shared-info-setvalue-function-setvalue-info-key-newvalue-context-diagnosticfn-src-mq3-shared-info-ml-2117446646"></a>
 ### setValue
@@ -65,16 +75,20 @@ function removeKey(info, key)
 function setValue(info, key, newValue, context, diagnosticFn)
 ```
 
+Set value in shared.info; the normal completion returns `(prefix + remaining)`.
+
+Validation failures include `Info_SetValueForKey: oversize infostring`; `Info value would overflow original Com_sprintf scratch storage`; `Info value would write beyond original 1024-byte storage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `newValue` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `diagnosticFn` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
+| `key` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
+| `newValue` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
+| `context` | `dynamic` | — | Context passed as `context` to `mq3.shared.info.infoDiagnostic`. |
+| `diagnosticFn` | `dynamic` | — | Diagnostic fn passed as `diagnosticFn` to `mq3.shared.info.infoDiagnostic`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L102)
 
 <a id="function-function-mq3-shared-info-textbytes-function-textbytes-text-src-mq3-shared-info-ml-986412897"></a>
 ### textBytes
@@ -83,12 +97,16 @@ function setValue(info, key, newValue, context, diagnosticFn)
 function textBytes(text)
 ```
 
+Compute text bytes in shared.info; the normal completion returns `data`.
+
+Validation failures include `NULL info string`; `Info string contains embedded NUL`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text used in `bytes(text)` and `(text == void)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L12)
 
 <a id="function-function-mq3-shared-info-valid-function-valid-info-src-mq3-shared-info-ml-1288371482"></a>
 ### valid
@@ -97,12 +115,14 @@ function textBytes(text)
 function valid(info)
 ```
 
+Validate info in shared.info; the normal completion returns `((strings.indexOf(info, "\"", 0) < 0) and (strings.indexOf(info, ";", 0) < 0))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L49)
 
 <a id="function-function-mq3-shared-info-value-function-value-info-key-src-mq3-shared-info-ml-452499257"></a>
 ### value
@@ -111,10 +131,14 @@ function valid(info)
 function value(info, key)
 ```
 
+Compute value in shared.info; the normal completion returns `""`.
+
+Validation failures include `Info_ValueForKey: oversize infostring`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
+| `key` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.textBytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L36)

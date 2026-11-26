@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for l memory, containing `blocks`, `nextHandle`, `headerSize`, `allocatedmemory` and `totalmemorysize` and related fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L48)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 actions
 ```
 
+Recorded allocation, release, and memory-diagnostic requests for host dispatch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L64)
 
 <a id="field-field-mq3-botlib-l-memory-state-allocatedmemory-allocatedmemory-src-mq3-botlib-l-memory-ml-454727722"></a>
 ### allocatedmemory
@@ -31,8 +35,10 @@ actions
 allocatedmemory
 ```
 
+Bytes currently charged to active botlib allocations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L56)
 
 <a id="field-field-mq3-botlib-l-memory-state-availablebytes-availablebytes-src-mq3-botlib-l-memory-ml-1923020966"></a>
 ### availableBytes
@@ -41,8 +47,10 @@ allocatedmemory
 availableBytes
 ```
 
+Remaining host-memory budget available for botlib allocations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L62)
 
 <a id="field-field-mq3-botlib-l-memory-state-blocks-blocks-src-mq3-botlib-l-memory-ml-742873242"></a>
 ### blocks
@@ -51,8 +59,10 @@ availableBytes
 blocks
 ```
 
+Managed memory blocks currently tracked by the allocator.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L50)
 
 <a id="field-field-mq3-botlib-l-memory-state-diagnostics-diagnostics-src-mq3-botlib-l-memory-ml-1282197666"></a>
 ### diagnostics
@@ -61,8 +71,10 @@ blocks
 diagnostics
 ```
 
+Diagnostics collected while processing the subsystem's requests.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L66)
 
 <a id="field-field-mq3-botlib-l-memory-state-headersize-headersize-src-mq3-botlib-l-memory-ml-76368514"></a>
 ### headerSize
@@ -71,8 +83,10 @@ diagnostics
 headerSize
 ```
 
+Bytes reserved for allocation metadata before the usable payload.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L54)
 
 <a id="field-field-mq3-botlib-l-memory-state-memorymanager-memorymanager-src-mq3-botlib-l-memory-ml-907769218"></a>
 ### memoryManager
@@ -81,8 +95,10 @@ headerSize
 memoryManager
 ```
 
+Host or managed allocator servicing botlib memory requests.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L68)
 
 <a id="field-field-mq3-botlib-l-memory-state-nexthandle-nexthandle-src-mq3-botlib-l-memory-ml-538902344"></a>
 ### nextHandle
@@ -91,8 +107,10 @@ memoryManager
 nextHandle
 ```
 
+Handle to assign to the next allocated managed resource.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L52)
 
 <a id="field-field-mq3-botlib-l-memory-state-numblocks-numblocks-src-mq3-botlib-l-memory-ml-1335538898"></a>
 ### numblocks
@@ -101,8 +119,10 @@ nextHandle
 numblocks
 ```
 
+Number of active memory blocks tracked by the botlib allocator.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L60)
 
 <a id="field-field-mq3-botlib-l-memory-state-totalmemorysize-totalmemorysize-src-mq3-botlib-l-memory-ml-704473390"></a>
 ### totalmemorysize
@@ -111,5 +131,7 @@ numblocks
 totalmemorysize
 ```
 
+Total memory size recorded by the botlib allocator.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L58)

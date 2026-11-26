@@ -9,8 +9,10 @@
 struct Hit
 ```
 
+Stores playable targets hit record, including `targetIndex`, `damage`, `killed`, `point`, `distance`, `awardedScore`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L72)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Hit
 awardedScore
 ```
 
+When constructing this record, `applyShot` supplies `awarded` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L85)
 
 <a id="field-field-mq3-client-playable-targets-hit-damage-damage-src-mq3-client-playable-targets-ml-658832"></a>
 ### damage
@@ -31,8 +35,10 @@ awardedScore
 damage
 ```
 
+Damage amount applied or reported by the weapon, projectile, or hit result.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L76)
 
 <a id="field-field-mq3-client-playable-targets-hit-distance-distance-src-mq3-client-playable-targets-ml-1041548688"></a>
 ### distance
@@ -41,8 +47,10 @@ damage
 distance
 ```
 
+When constructing this record, `applyShot` supplies `qmath.VectorLength(delta)*bestFraction` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L83)
 
 <a id="field-field-mq3-client-playable-targets-hit-killed-killed-src-mq3-client-playable-targets-ml-702127392"></a>
 ### killed
@@ -51,8 +59,10 @@ distance
 killed
 ```
 
+When constructing this record, `applyShot` supplies `killed` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L78)
 
 <a id="field-field-mq3-client-playable-targets-hit-point-point-src-mq3-client-playable-targets-ml-369639318"></a>
 ### point
@@ -61,8 +71,10 @@ killed
 point
 ```
 
+When constructing this record, `applyShot` supplies `point` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L80)
 
 <a id="field-field-mq3-client-playable-targets-hit-targetindex-targetindex-src-mq3-client-playable-targets-ml-549329034"></a>
 ### targetIndex
@@ -71,5 +83,7 @@ point
 targetIndex
 ```
 
+Index identifying the selected target in the owning target collection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L74)

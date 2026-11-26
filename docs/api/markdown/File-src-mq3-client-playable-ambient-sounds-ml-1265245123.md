@@ -23,12 +23,14 @@ Reachable from entry: **yes**
 function fail(message)
 ```
 
+Creates the playable ambient sounds error `7610` with diagnostic text `"preview ambience: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview ambience: "+message`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L38)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-field-function-field-fields-key-src-mq3-client-playable-ambient-sounds-ml-2032794172"></a>
 ### field
@@ -37,13 +39,15 @@ function fail(message)
 function field(fields, key)
 ```
 
+Calls `std.string.toLowerAscii` from playable ambient sounds `field`. The final path returns `""`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fields` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `fields` | `dynamic` | — | Value used by `for each pair in fields if len(pair)>=2 and strings.toLowerAscii(pair[0])==wanted then return pair[1] end if end for`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable ambient sounds entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L43)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-globalloops-function-globalloops-catalog-src-mq3-client-playable-ambient-sounds-ml-1331043441"></a>
 ### globalLoops
@@ -56,10 +60,10 @@ WinMM currently has no listener-relative attenuation. Playing spatial map speake
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.speakers`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L107)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-load-function-load-map-archive-src-mq3-client-playable-ambient-sounds-ml-2142122870"></a>
 ### load
@@ -68,13 +72,15 @@ WinMM currently has no listener-relative attenuation. Playing spatial map speake
 function load(map, archive)
 ```
 
+Calls `mq3.format.bsp.entities`, `mq3.client.playable_ambient_sounds.loopDefinitions`, `mq3.format.pk3.read` and additional helpers from playable ambient sounds `load`. The final path returns `Catalog(loaded,unique,skipped)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `archive` | `dynamic` | — |  |
+| `map` | `dynamic` | — | map record passed to the playable ambient sounds helper calls. |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L80)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-loopdefinitions-function-loopdefinitions-entities-src-mq3-client-playable-ambient-sounds-ml-206537559"></a>
 ### loopDefinitions
@@ -83,12 +89,14 @@ function load(map, archive)
 function loopDefinitions(entities)
 ```
 
+Calls `std.string.toLowerAscii`, `mq3.client.playable_ambient_sounds.field`, `toNumber` and additional helpers from playable ambient sounds `loopDefinitions`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entities` | `dynamic` | — |  |
+| `entities` | `dynamic` | — | Value used by `if entities==void then return fail("entities are required") end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L60)
 
 <a id="constant-constant-mq3-client-playable-ambient-sounds-looped-on-const-looped-on-1-src-mq3-client-playable-ambient-sounds-ml-2037997648"></a>
 ### LOOPED_ON
@@ -97,8 +105,10 @@ function loopDefinitions(entities)
 const LOOPED_ON = 1
 ```
 
+Marker indicating that the looping animation or media path is enabled.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L11)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-soundpath-function-soundpath-noise-src-mq3-client-playable-ambient-sounds-ml-1300492506"></a>
 ### soundPath
@@ -107,11 +117,13 @@ const LOOPED_ON = 1
 function soundPath(noise)
 ```
 
+Calls `std.string.toLowerAscii`, `std.string.startsWith`, `std.string.endsWith` from playable ambient sounds `soundPath`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `noise` | `dynamic` | — |  |
+| `noise` | `dynamic` | — | Value used by `value=strings.toLowerAscii(noise)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L51)
 
 - [mq3.client.playable_ambient_sounds.Speaker](Type-mq3-client-playable-ambient-sounds-speaker-848871510.md) — struct

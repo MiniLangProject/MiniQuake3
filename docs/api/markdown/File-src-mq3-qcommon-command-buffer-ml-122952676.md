@@ -15,14 +15,18 @@ Reachable from entry: **yes**
 function addCommand(state, name, callback)
 ```
 
+Add command in qcommon.command_buffer; the normal completion returns `true`.
+
+Direct state writes: `state.functions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `callback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `functions`. Updated in place: `functions`. |
+| `name` | `dynamic` | — | Initial `name` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record. |
+| `callback` | `dynamic` | — | Initial `callback` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L306)
 
 <a id="function-function-mq3-qcommon-command-buffer-addcontextcommand-function-addcontextcommand-state-name-callback-context-src-mq3-qcommon-command-buffer-ml-797499422"></a>
 ### addContextCommand
@@ -35,13 +39,13 @@ Context-bearing registrations keep subsystem state out of the global command sta
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `callback` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `functions`. Updated in place: `functions`. |
+| `name` | `dynamic` | — | Initial `name` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record. |
+| `callback` | `dynamic` | — | Initial `contextCallback` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record. |
+| `context` | `dynamic` | — | Initial `callbackContext` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L322)
 
 <a id="function-function-mq3-qcommon-command-buffer-addtext-function-addtext-state-text-src-mq3-qcommon-command-buffer-ml-667800362"></a>
 ### addText
@@ -50,13 +54,17 @@ Context-bearing registrations keep subsystem state out of the global command sta
 function addText(state, text)
 ```
 
+Add text in qcommon.command_buffer; the normal completion returns `true`.
+
+Direct state writes: `state.buffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `buffer`. Updated in place: `buffer`. |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L214)
 
 <a id="function-function-mq3-qcommon-command-buffer-argc-function-argc-state-src-mq3-qcommon-command-buffer-ml-585140731"></a>
 ### argc
@@ -65,12 +73,14 @@ function addText(state, text)
 function argc(state)
 ```
 
+Return `len(state.argv)` from `qcommon.command_buffer.argc`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `argv`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L172)
 
 <a id="function-function-mq3-qcommon-command-buffer-args-function-args-state-src-mq3-qcommon-command-buffer-ml-519524251"></a>
 ### args
@@ -79,12 +89,14 @@ function argc(state)
 function args(state)
 ```
 
+Return `mq3.qcommon.command_buffer.argsFrom(state, 1)` from `qcommon.command_buffer.args`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.argsFrom`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L200)
 
 <a id="function-function-mq3-qcommon-command-buffer-argsbuffer-function-argsbuffer-state-capacity-src-mq3-qcommon-command-buffer-ml-1478842727"></a>
 ### argsBuffer
@@ -93,13 +105,15 @@ function args(state)
 function argsBuffer(state, capacity)
 ```
 
+Return `mq3.qcommon.command_buffer.copyString(args(state), capacity)` from `qcommon.command_buffer.argsBuffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.args`. |
+| `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.command_buffer.copyString`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L204)
 
 <a id="function-function-mq3-qcommon-command-buffer-argsfrom-function-argsfrom-state-start-src-mq3-qcommon-command-buffer-ml-1913383473"></a>
 ### argsFrom
@@ -108,13 +122,15 @@ function argsBuffer(state, capacity)
 function argsFrom(state, start)
 ```
 
+Compute args from in qcommon.command_buffer; the normal completion returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `argv`. |
+| `start` | `dynamic` | — | Start used in `(start < 0)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L188)
 
 <a id="function-function-mq3-qcommon-command-buffer-argv-function-argv-state-index-src-mq3-qcommon-command-buffer-ml-210535289"></a>
 ### argv
@@ -123,13 +139,15 @@ function argsFrom(state, start)
 function argv(state, index)
 ```
 
+Compute argv in qcommon.command_buffer; the normal completion returns `state.argv[index]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `argv`. |
+| `index` | `dynamic` | — | Zero-based index into `state.argv`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L176)
 
 <a id="function-function-mq3-qcommon-command-buffer-argvbuffer-function-argvbuffer-state-index-capacity-src-mq3-qcommon-command-buffer-ml-1880629193"></a>
 ### argvBuffer
@@ -138,14 +156,16 @@ function argv(state, index)
 function argvBuffer(state, index, capacity)
 ```
 
+Return `mq3.qcommon.command_buffer.copyString(argv(state, index), capacity)` from `qcommon.command_buffer.argvBuffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.argv`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.qcommon.command_buffer.argv`. |
+| `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.command_buffer.copyString`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L184)
 
 <a id="extern_function-extern-function-mq3-qcommon-command-buffer-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-qcommon-command-buffer-ml-1807021276"></a>
 ### atoi
@@ -154,12 +174,16 @@ function argvBuffer(state, index, capacity)
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 ```
 
+Convert a C-string signed decimal integer prefix for qcommon.command_buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | Null-terminated narrow numeric text accepted by the C runtime. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L370)
+**Returns:** The converted signed integer; zero when no number is recognized.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L523)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-big-info-string-const-big-info-string-8192-src-mq3-qcommon-command-buffer-ml-358108251"></a>
 ### BIG_INFO_STRING
@@ -168,8 +192,10 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 const BIG_INFO_STRING = 8192
 ```
 
+Used for system info key only.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L21)
 
 <a id="function-function-mq3-qcommon-command-buffer-cmd-function-cmd-state-src-mq3-qcommon-command-buffer-ml-665010827"></a>
 ### cmd
@@ -178,12 +204,14 @@ const BIG_INFO_STRING = 8192
 function cmd(state)
 ```
 
+Compute qcommon.command_buffer.cmd as `state.command`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `command`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L207)
 
 - [mq3.qcommon.command_buffer.Command](Type-mq3-qcommon-command-buffer-command-13006865.md) — struct
 <a id="function-function-mq3-qcommon-command-buffer-commandcompletion-function-commandcompletion-state-callback-src-mq3-qcommon-command-buffer-ml-566418760"></a>
@@ -193,13 +221,15 @@ function cmd(state)
 function commandCompletion(state, callback)
 ```
 
+Compute command completion in qcommon.command_buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `callback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `functions`. |
+| `callback` | `dynamic` | — | Callback invoked for callback; the call sites below define the callback arguments. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L348)
 
 <a id="function-function-mq3-qcommon-command-buffer-containsinsensitive-function-containsinsensitive-name-part-start-src-mq3-qcommon-command-buffer-ml-1987573522"></a>
 ### containsInsensitive
@@ -208,14 +238,16 @@ function commandCompletion(state, callback)
 function containsInsensitive(name, part, start)
 ```
 
+Test insensitive in qcommon.command_buffer; the normal completion returns `- 1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `part` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used in `bytes(name)`. |
+| `part` | `dynamic` | — | Part used in `bytes(part)`. |
+| `start` | `dynamic` | — | Start used in `(start + 1)` and `(start + index)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L374)
 
 <a id="function-function-mq3-qcommon-command-buffer-copystring-function-copystring-text-capacity-src-mq3-qcommon-command-buffer-ml-591818733"></a>
 ### copyString
@@ -224,13 +256,15 @@ function containsInsensitive(name, part, start)
 function copyString(text, capacity)
 ```
 
+Copy string in qcommon.command_buffer; the normal completion returns `decode(slice(data, 0, length))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`. |
+| `capacity` | `dynamic` | — | Capacity used in `(capacity < 1)` and `(capacity - 1)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L98)
 
 <a id="function-function-mq3-qcommon-command-buffer-create-function-create-src-mq3-qcommon-command-buffer-ml-1604661332"></a>
 ### create
@@ -239,8 +273,10 @@ function copyString(text, capacity)
 function create()
 ```
 
+Create `mq3.qcommon.command_buffer.State` with buffer=""; argv=[]; command=""; wait=0; 16 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L81)
 
 <a id="function-function-mq3-qcommon-command-buffer-defaultextension-function-defaultextension-path-extension-src-mq3-qcommon-command-buffer-ml-1853616096"></a>
 ### defaultExtension
@@ -249,13 +285,15 @@ function create()
 function defaultExtension(path, extension)
 ```
 
+Compute default extension in qcommon.command_buffer; the normal completion returns `(path + extension)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `path` | `dynamic` | — |  |
-| `extension` | `dynamic` | — |  |
+| `path` | `dynamic` | — | Path used in `bytes(path)` and `(path + extension)`. |
+| `extension` | `dynamic` | — | Extension used in `(path + extension)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L433)
 
 <a id="function-function-mq3-qcommon-command-buffer-echocommand-function-echocommand-state-src-mq3-qcommon-command-buffer-ml-590338919"></a>
 ### echoCommand
@@ -264,12 +302,14 @@ function defaultExtension(path, extension)
 function echoCommand(state)
 ```
 
+Compute echo command in qcommon.command_buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.argc`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L467)
 
 <a id="function-function-mq3-qcommon-command-buffer-emit-function-emit-state-message-src-mq3-qcommon-command-buffer-ml-1400490004"></a>
 ### emit
@@ -278,13 +318,15 @@ function echoCommand(state)
 function emit(state, message)
 ```
 
+Emit command buffer in qcommon.command_buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `printFn`. |
+| `message` | `dynamic` | — | Message used in `state.printFn(state, message)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L108)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-exec-append-const-exec-append-2-src-mq3-qcommon-command-buffer-ml-1882959929"></a>
 ### EXEC_APPEND
@@ -293,8 +335,10 @@ function emit(state, message)
 const EXEC_APPEND = 2
 ```
 
+Command-execution mode that appends text to the end of the command buffer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L11)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-exec-insert-const-exec-insert-1-src-mq3-qcommon-command-buffer-ml-393893560"></a>
 ### EXEC_INSERT
@@ -303,8 +347,10 @@ const EXEC_APPEND = 2
 const EXEC_INSERT = 1
 ```
 
+Command-execution mode that inserts text before pending commands.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L9)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-exec-now-const-exec-now-0-src-mq3-qcommon-command-buffer-ml-56342201"></a>
 ### EXEC_NOW
@@ -313,8 +359,10 @@ const EXEC_INSERT = 1
 const EXEC_NOW = 0
 ```
 
+Command-execution mode that runs the supplied command immediately.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L7)
 
 <a id="function-function-mq3-qcommon-command-buffer-execcommand-function-execcommand-state-src-mq3-qcommon-command-buffer-ml-606078423"></a>
 ### execCommand
@@ -323,12 +371,16 @@ const EXEC_NOW = 0
 function execCommand(state)
 ```
 
+Compute exec command in qcommon.command_buffer.
+
+Validation failures include `exec requires FS_ReadFile service`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `readFileFn`, `freeFileFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L446)
 
 <a id="function-function-mq3-qcommon-command-buffer-execute-function-execute-state-src-mq3-qcommon-command-buffer-ml-1021694185"></a>
 ### execute
@@ -337,12 +389,16 @@ function execCommand(state)
 function execute(state)
 ```
 
+Execute command buffer in qcommon.command_buffer; updates `state.wait`, `state.buffer`.
+
+Direct state writes: `state.wait`, `state.buffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `buffer`, `wait`. Updated in place: `wait`, `buffer`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L247)
 
 <a id="function-function-mq3-qcommon-command-buffer-executeline-function-executeline-state-line-src-mq3-qcommon-command-buffer-ml-842075219"></a>
 ### executeLine
@@ -351,13 +407,15 @@ function execute(state)
 function executeLine(state, line)
 ```
 
+Execute line in qcommon.command_buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `line` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `executeFn`. |
+| `line` | `dynamic` | — | Line used in `state.executeFn(state, line)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L238)
 
 <a id="function-function-mq3-qcommon-command-buffer-executestring-function-executestring-state-text-src-mq3-qcommon-command-buffer-ml-855123162"></a>
 ### executeString
@@ -366,13 +424,17 @@ function executeLine(state, line)
 function executeString(state, text)
 ```
 
+Execute string in qcommon.command_buffer; updates `state.functions`.
+
+Direct state writes: `state.functions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `functions`, `cvarCommandFn`, `cvarContextCommandFn`, `cvarCommandContext`, `clientRunning`, `clientGameCommandFn`, `serverRunning` and further fields. Updated in place: `functions`. |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L488)
 
 <a id="function-function-mq3-qcommon-command-buffer-executetext-function-executetext-state-when-text-src-mq3-qcommon-command-buffer-ml-349540358"></a>
 ### executeText
@@ -381,14 +443,18 @@ function executeString(state, text)
 function executeText(state, when, text)
 ```
 
+Execute text in qcommon.command_buffer; the normal completion returns `error(3511, "Cbuf_ExecuteText: bad exec_when")`.
+
+Validation failures include `Cbuf_ExecuteText: bad exec_when`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `when` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.executeLine`. |
+| `when` | `dynamic` | — | When used in `(when == EXEC_NOW)` and `(when == EXEC_INSERT)`. |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L276)
 
 <a id="function-function-mq3-qcommon-command-buffer-filtername-function-filtername-pattern-name-src-mq3-qcommon-command-buffer-ml-402828895"></a>
 ### filterName
@@ -401,11 +467,11 @@ Case-insensitive Com_Filter subset used by Cmd_List_f, including Baseq3's *, ?, 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pattern` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `pattern` | `dynamic` | — | Pattern used in `bytes(pattern)`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.command_buffer.containsInsensitive`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L392)
 
 <a id="function-function-mq3-qcommon-command-buffer-initcommands-function-initcommands-state-src-mq3-qcommon-command-buffer-ml-1372419855"></a>
 ### initCommands
@@ -414,12 +480,16 @@ Case-insensitive Com_Filter subset used by Cmd_List_f, including Baseq3's *, ?, 
 function initCommands(state)
 ```
 
+Update `state.executeFn` in qcommon.command_buffer.
+
+Direct state writes: `state.executeFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Updated in place: `executeFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L514)
 
 <a id="function-function-mq3-qcommon-command-buffer-inserttext-function-inserttext-state-text-src-mq3-qcommon-command-buffer-ml-50508242"></a>
 ### insertText
@@ -428,13 +498,17 @@ function initCommands(state)
 function insertText(state, text)
 ```
 
+Update `state.buffer` in qcommon.command_buffer; the normal completion returns `true`.
+
+Direct state writes: `state.buffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `buffer`. Updated in place: `buffer`. |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L227)
 
 <a id="function-function-mq3-qcommon-command-buffer-isunquotedwhitespace-function-isunquotedwhitespace-value-src-mq3-qcommon-command-buffer-ml-359862731"></a>
 ### isUnquotedWhitespace
@@ -443,12 +517,14 @@ function insertText(state, text)
 function isUnquotedWhitespace(value)
 ```
 
+Compute qcommon.command_buffer.isUnquotedWhitespace as `((value <= 32) or (value >= 128))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value <= 32)` and `(value >= 128)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L115)
 
 <a id="function-function-mq3-qcommon-command-buffer-listcommand-function-listcommand-state-src-mq3-qcommon-command-buffer-ml-1832446941"></a>
 ### listCommand
@@ -457,12 +533,14 @@ function isUnquotedWhitespace(value)
 function listCommand(state)
 ```
 
+Compute list command in qcommon.command_buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `functions`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L474)
 
 <a id="function-function-mq3-qcommon-command-buffer-lowerascii-function-lowerascii-value-src-mq3-qcommon-command-buffer-ml-633175467"></a>
 ### lowerAscii
@@ -471,12 +549,14 @@ function listCommand(state)
 function lowerAscii(value)
 ```
 
+Compute lower ascii in qcommon.command_buffer; the normal completion returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value + 32)` and `(value >= 65)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L355)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-cmd-buffer-const-max-cmd-buffer-16384-src-mq3-qcommon-command-buffer-ml-232078153"></a>
 ### MAX_CMD_BUFFER
@@ -485,8 +565,10 @@ function lowerAscii(value)
 const MAX_CMD_BUFFER = 16384
 ```
 
+Maximum byte capacity of the queued console command text.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L13)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-cmd-line-const-max-cmd-line-1024-src-mq3-qcommon-command-buffer-ml-1845780034"></a>
 ### MAX_CMD_LINE
@@ -495,8 +577,10 @@ const MAX_CMD_BUFFER = 16384
 const MAX_CMD_LINE = 1024
 ```
 
+Maximum length of one console command line.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L15)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-string-chars-const-max-string-chars-1024-src-mq3-qcommon-command-buffer-ml-2141882602"></a>
 ### MAX_STRING_CHARS
@@ -505,8 +589,10 @@ const MAX_CMD_LINE = 1024
 const MAX_STRING_CHARS = 1024
 ```
 
+Max length of a string passed to Cmd_TokenizeString.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L19)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-string-tokens-const-max-string-tokens-1024-src-mq3-qcommon-command-buffer-ml-954706296"></a>
 ### MAX_STRING_TOKENS
@@ -515,8 +601,10 @@ const MAX_STRING_CHARS = 1024
 const MAX_STRING_TOKENS = 1024
 ```
 
+Max tokens resulting from Cmd_TokenizeString.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L17)
 
 <a id="function-function-mq3-qcommon-command-buffer-removecommand-function-removecommand-state-name-src-mq3-qcommon-command-buffer-ml-1302124260"></a>
 ### removeCommand
@@ -525,13 +613,17 @@ const MAX_STRING_TOKENS = 1024
 function removeCommand(state, name)
 ```
 
+Remove command in qcommon.command_buffer; the normal completion returns `found`.
+
+Direct state writes: `state.functions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `functions`. Updated in place: `functions`. |
+| `name` | `dynamic` | — | Name used in `(entry.name == name)` and `(not found and (entry.name == name))`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L337)
 
 <a id="function-function-mq3-qcommon-command-buffer-sameinsensitive-function-sameinsensitive-left-right-src-mq3-qcommon-command-buffer-ml-291042357"></a>
 ### sameInsensitive
@@ -540,13 +632,15 @@ function removeCommand(state, name)
 function sameInsensitive(left, right)
 ```
 
+Test same insensitive in qcommon.command_buffer; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `left` | `dynamic` | — | Left used in `bytes(left)`. |
+| `right` | `dynamic` | — | Right used in `bytes(right)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L362)
 
 - [mq3.qcommon.command_buffer.State](Type-mq3-qcommon-command-buffer-state-1582591869.md) — struct
 <a id="function-function-mq3-qcommon-command-buffer-tokenizestring-function-tokenizestring-state-text-src-mq3-qcommon-command-buffer-ml-1543350726"></a>
@@ -556,13 +650,17 @@ function sameInsensitive(left, right)
 function tokenizeString(state, text)
 ```
 
+Update `state.argv`, `state.command` in qcommon.command_buffer.
+
+Direct state writes: `state.argv`, `state.command`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `argv`. Updated in place: `argv`, `command`. |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.copyString`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L125)
 
 <a id="function-function-mq3-qcommon-command-buffer-visiblebytes-function-visiblebytes-text-src-mq3-qcommon-command-buffer-ml-1602140573"></a>
 ### visibleBytes
@@ -571,12 +669,14 @@ function tokenizeString(state, text)
 function visibleBytes(text)
 ```
 
+Compute visible bytes in qcommon.command_buffer; the normal completion returns `slice(data, 0, length)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text used in `bytes(text)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L87)
 
 <a id="function-function-mq3-qcommon-command-buffer-vstrcommand-function-vstrcommand-state-src-mq3-qcommon-command-buffer-ml-1517172703"></a>
 ### vstrCommand
@@ -585,12 +685,16 @@ function visibleBytes(text)
 function vstrCommand(state)
 ```
 
+Compute vstr command in qcommon.command_buffer; the normal completion returns `insertText(state, (state.cvarStringFn(state, argv(state, 1)) + "\n"))`.
+
+Validation failures include `vstr requires Cvar_VariableString service`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `cvarStringFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L460)
 
 <a id="function-function-mq3-qcommon-command-buffer-waitcommand-function-waitcommand-state-src-mq3-qcommon-command-buffer-ml-699674359"></a>
 ### waitCommand
@@ -599,9 +703,13 @@ function vstrCommand(state)
 function waitCommand(state)
 ```
 
+Update `state.wait` in qcommon.command_buffer.
+
+Direct state writes: `state.wait`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Updated in place: `wait`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L290)

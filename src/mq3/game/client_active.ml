@@ -25,30 +25,54 @@ import mq3.server.world as sv
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 
+/// User-command button-mask bit requesting attack.
 const BUTTON_ATTACK = 1
+/// User-command button-mask bit requesting talk.
 const BUTTON_TALK = 2
+/// User-command button-mask bit requesting use holdable.
 const BUTTON_USE_HOLDABLE = 4
+/// User-command button-mask bit requesting gesture.
 const BUTTON_GESTURE = 8
+/// Network entity-flag bit indicating firing.
 const EF_FIRING = 0x00000100
+/// Network entity-flag bit indicating talk.
 const EF_TALK = 0x00001000
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x00038848
+/// Game entity-flag bit enabling or marking force gesture.
 const FL_FORCE_GESTURE = 0x00008000
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 0x00000008
+/// Collision-contents bit identifying body space or objects.
 const CONTENTS_BODY=headers.CONTENTS_BODY
+/// Collision-contents bit identifying botclip space or objects.
 const CONTENTS_BOTCLIP=headers.CONTENTS_BOTCLIP
+/// Combined CONTENTS_* mask used for playersolid collision queries.
 const MASK_PLAYERSOLID = 0x02010001
+/// Deathmatch-option bit enabling no falling.
 const DF_NO_FALLING = 8
+/// Deathmatch-option bit enabling no footsteps.
 const DF_NO_FOOTSTEPS = 32
+/// Spectator-state identifier selecting follow.
 const SPECTATOR_FOLLOW = 2
+/// Spectator-state identifier selecting scoreboard.
 const SPECTATOR_SCOREBOARD = 3
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
+/// Player movement-state bit indicating invulexpand.
 const PMF_INVULEXPAND = 0x00004000
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER = 7
 
+/// Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.
+/// @param level Game-level state; accesses `spawner`.
 function missionpack(level)
   return level.spawner != void and level.spawner.missionpack
 end function
 
+/// Apply `mq3.game.client_active.missionpack` and `mq3.game.constants.missionpackItemTag` while evaluating `persistentTag`. Return paths include `c.missionpackItemTag(index)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param client Client state; accesses `ps`.
 function persistentTag(level,client)
   if not missionpack(level) then return c.PW_NONE end if
   index = client.ps.stats[STAT_PERSISTANT_POWERUP]
@@ -56,10 +80,14 @@ function persistentTag(level,client)
   return c.missionpackItemTag(index)
 end function
 
+/// Create a `mq3.game.pmove.Command` record, initializing `serverTime` as `client.cmdServerTime`, `angles` as `[client.cmdAngles[0],client.cmdAngles[1],client.cmdAngles[2]]` and `buttons` as `client.cmdButtons`.
+/// @param client Client state; accesses `cmdServerTime`, `cmdAngles`, `cmdButtons`, `cmdWeapon` and `cmdForwardmove` and related fields.
 function command(client)
   return pmove.Command(client.cmdServerTime,[client.cmdAngles[0],client.cmdAngles[1],client.cmdAngles[2]],client.cmdButtons,client.cmdWeapon,client.cmdForwardmove,client.cmdRightmove,client.cmdUpmove)
 end function
 
+/// Update `client.ps.eFlags`, `client.oldbuttons`, `client.buttons` and `client.readyToExit` during `intermissionThink`.
+/// @param client Client state; accesses `ps`, `oldbuttons`, `buttons`, `cmdButtons` and `readyToExit`. May update `client.ps.eFlags`, `client.oldbuttons` and `client.buttons` and additional fields in place.
 function intermissionThink(client)
   client.ps.eFlags = client.ps.eFlags & ~EF_TALK; client.ps.eFlags = client.ps.eFlags & ~EF_FIRING
   client.oldbuttons = client.buttons; client.buttons = client.cmdButtons
@@ -67,6 +95,10 @@ function intermissionThink(client)
   return void
 end function
 
+/// Update `client.inactivityTime` and `client.inactivityWarning` during `inactivityTimer`.
+/// @param level Game-level state; accesses `inactivity`, `time`, `dropClientFn` and `serverCommandFn`.
+/// @param client Client state; accesses `inactivityTime`, `inactivityWarning`, `cmdForwardmove`, `cmdRightmove` and `cmdUpmove` and related fields. May update `client.inactivityTime` and `client.inactivityWarning` in place.
+/// @param slot Slot in the owning table or pool.
 function inactivityTimer(level,client,slot)
   if level.inactivity == 0 then
     client.inactivityTime = n.add32(level.time,60000); client.inactivityWarning = false
@@ -86,6 +118,10 @@ function inactivityTimer(level,client,slot)
   return true
 end function
 
+/// Update `ent.health` during `timerActions`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `client` and `health`. May update `ent.health` in place.
+/// @param msec Elapsed time in milliseconds.
 function timerActions(level,ent,msec)
   client = ent.client; client.timeResidual = n.add32(client.timeResidual,msec)
   while client.timeResidual >= 1000
@@ -122,6 +158,10 @@ function timerActions(level,ent,msec)
   return void
 end function
 
+/// Use `ent.touch` to perform `impacts`.
+/// @param level Game-level state; accesses `entities`.
+/// @param ent Game entity; accesses `r` and `touch`.
+/// @param p Player movement context; accesses `k`.
 function impacts(level,ent,p)
   trace = movement.Collision(brush.Trace(0.0,[0.0,0.0,0.0],0.0,0,0,false,false,0),[0.0,0.0,0.0],0)
   seen = []
@@ -139,6 +179,11 @@ function impacts(level,ent,p)
   return void
 end function
 
+/// Set `ent.client.ps.powerups[powerup]` to `0` in `mq3.game.client_active.droppedFlag`.
+/// @param level Game-level state; accesses `itemDropFn` and `time`.
+/// @param ent Game entity; accesses `client`. May update `ent.client.ps.powerups[powerup]` in place.
+/// @param powerup Value used by `droppedFlag` in `drop.count = n.quotient(n.i32(ent.client.ps.powerups[powerup]-level.time),1000)`.
+/// @param item Index of the entry to access.
 function droppedFlag(level,ent,powerup,item)
   if item < 0 then return void end if
   drop = void
@@ -149,6 +194,10 @@ function droppedFlag(level,ent,powerup,item)
   return void
 end function
 
+/// Set `ent.pain_debounce_time` to `n.add32(level.time,200)` and `ent.health` to `n.add32(client.ps.stats[c.STAT_MAX_HEALTH],25)` in `mq3.game.client_active.clientEvents`.
+/// @param level Game-level state; accesses `dmflags`, `time`, `fireWeaponFn`, `spawner` and `itemDropFn`.
+/// @param ent Game entity; accesses `client`, `s`, `pain_debounce_time` and `health`. May update `ent.pain_debounce_time` and `ent.health` in place.
+/// @param oldEventSequence Player event sequence value before processing the current command.
 function clientEvents(level,ent,oldEventSequence)
   client = ent.client
   if oldEventSequence < client.ps.eventSequence-2 then oldEventSequence = client.ps.eventSequence-2 end if
@@ -188,6 +237,10 @@ function clientEvents(level,ent,oldEventSequence)
   return void
 end function
 
+/// Apply `mq3.game.pmove.create` and `mq3.game.client_active.missionpack` while evaluating `configureMove`. Return paths include `p`.
+/// @param level Game-level state; accesses `scene`, `dmflags`, `pmoveFixed` and `pmoveMsec`.
+/// @param ent Game entity; accesses `client` and `r`.
+/// @param cmd Input user command; accesses `serverTime`, `angles`, `buttons`, `weapon` and `forwardmove` and related fields.
 function configureMove(level,ent,cmd)
   client = ent.client; p = pmove.create(client.ps,sv.pmoveTrace,sv.pmoveContents,level.scene)
   // C copies *ucmd into pm.cmd. Pmove can clear attack/movement while talking;
@@ -204,6 +257,9 @@ function configureMove(level,ent,cmd)
   return p
 end function
 
+/// Test whether the entity overlaps a different live client using their absolute collision bounds.
+/// @param level Game-level state; accesses `maxclients` and `entities`.
+/// @param ent Game entity; accesses `r`.
 function stuckInOtherClient(level,ent)
   limit = level.maxclients; if limit <= 0 or limit > 64 then limit = 64 end if
   for index = 0 to limit-1
@@ -216,6 +272,10 @@ function stuckInOtherClient(level,ent)
   return false
 end function
 
+/// Set `ent.s.origin` to `movement.copy(client.ps.origin)` in `mq3.game.client_active.spectatorThink`.
+/// @param level Game-level state; accesses `followCycleFn`.
+/// @param ent Game entity; accesses `client` and `s`. May update `ent.s.origin` in place.
+/// @param cmd Input user command; accesses `buttons`.
 function spectatorThink(level,ent,cmd)
   client = ent.client
   if client.spectatorState != SPECTATOR_FOLLOW then
@@ -231,6 +291,9 @@ function spectatorThink(level,ent,cmd)
   return void
 end function
 
+/// Update `ent.flags`, `ent.r.mins`, `ent.r.maxs` and `ent.eventTime` and related state during `realThink`.
+/// @param level Game-level state; accesses `time`, `pmoveMsec`, `cvarSetFn`, `pmoveFixed` and `intermissiontime` and related fields.
+/// @param ent Game entity; accesses `client`, `slot`, `flags`, `r` and `eventTime` and related fields. May update `ent.flags`, `ent.r.mins` and `ent.r.maxs` and additional fields in place.
 function realThink(level,ent)
   client = ent.client
   if client.connected != 2 then return void end if
@@ -311,6 +374,9 @@ function realThink(level,ent)
   return void
 end function
 
+/// Use `level.usercmdFn` to perform `think`.
+/// @param level Game-level state; accesses `entities`, `usercmdFn`, `time` and `synchronousClients`.
+/// @param clientNum Client slot number.
 function think(level,clientNum)
   ent = level.entities[clientNum]
   if level.usercmdFn == void then return error(499,"ClientThink requires user-command delivery") end if
@@ -319,6 +385,9 @@ function think(level,clientNum)
   return void
 end function
 
+/// Set `ent.client.cmdServerTime` to `level.time` in `mq3.game.client_active.runClient`. Return paths include `realThink(level,ent)`.
+/// @param level Game-level state; accesses `synchronousClients` and `time`.
+/// @param ent Game entity; accesses `r` and `client`. May update `ent.client.cmdServerTime` in place.
 function runClient(level,ent)
   if (ent.r.svFlags & SVF_BOT) == 0 and not level.synchronousClients then return void end if
   ent.client.cmdServerTime = level.time; return realThink(level,ent)

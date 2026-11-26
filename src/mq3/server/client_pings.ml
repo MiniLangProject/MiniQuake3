@@ -4,26 +4,63 @@
 package mq3.server.client_pings
 import mq3.compat.numeric as numeric
 
+/// Number of old messages that must be kept on client and.
 const PACKET_BACKUP=32
+/// Client-state value identifying a client whose acknowledged snapshots contribute to ping calculation.
 const CS_ACTIVE=4
+/// Set if the entity is a bot.
 const SVF_BOT=8
 
-struct PingFrame messageSent messageAcked end struct
+/// PingFrame record for server.client_pings, containing `messageSent`, `messageAcked`.
+struct PingFrame
+  /// Server timestamp when this snapshot message was transmitted, in milliseconds.
+  messageSent
+  /// Server timestamp when this snapshot message was acknowledged, in milliseconds.
+  messageAcked
+end struct
+/// Create `mq3.server.client_pings.PingFrame` with messageSent=sent; messageAcked=acked.
+/// @param sent Initial `messageSent` field stored in the returned or constructed `mq3.server.client_pings.PingFrame` record.
+/// @param acked Initial `messageAcked` field stored in the returned or constructed `mq3.server.client_pings.PingFrame` record.
 function frame(sent,acked) return PingFrame(sent,acked) end function
 
-struct GameEntity svFlags end struct
+/// GameEntity record for server.client_pings, containing `svFlags`.
+struct GameEntity
+  /// Server-side visibility and entity-behavior flags.
+  svFlags
+end struct
+/// Create `mq3.server.client_pings.GameEntity` with svFlags=flags.
+/// @param flags Initial `svFlags` field stored in the returned or constructed `mq3.server.client_pings.GameEntity` record.
 function gameEntity(flags) return GameEntity(flags) end function
 
-struct PlayerState ping end struct
+/// PlayerState record for server.client_pings, containing `ping`.
+struct PlayerState
+  /// Estimated round-trip client latency in milliseconds.
+  ping
+end struct
+/// Create `mq3.server.client_pings.PlayerState` with ping=0.
 function playerState() return PlayerState(0) end function
 
-struct Client state ping gentity frames end struct
+/// Client record for server.client_pings, containing `state`, `ping`, `gentity`, `frames`.
+struct Client
+  /// Connection lifecycle value that determines whether snapshot acknowledgments can produce a player
+  /// ping.
+  state
+  /// Estimated round-trip client latency in milliseconds.
+  ping
+  /// Game-VM entity associated with this client.
+  gentity
+  /// Updates can be delta'd from here.
+  frames
+end struct
+/// Create `mq3.server.client_pings.Client` with state=0; ping=0; gentity=void; frames=array(PACKET_BACKUP, void).
 function client()
   return Client(0,0,void,array(PACKET_BACKUP,void))
 end function
 
 // Updates each engine client's ping and mirrors active, non-bot values into the
 // corresponding game playerState, preserving the original early-continue rules.
+/// @param clients Clients used in `clients[i]` and `len(clients)`.
+/// @param playerStates Player states used in `playerStates[i]` and `len(playerStates)`.
 function calculate(clients,playerStates)
   if clients==void or playerStates==void then return error(7240,"server pings: missing client or player-state array") end if
   if len(playerStates)<len(clients) then return error(7241,"server pings: player-state array too short") end if

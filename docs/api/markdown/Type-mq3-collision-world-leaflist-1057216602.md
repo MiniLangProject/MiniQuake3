@@ -9,8 +9,10 @@
 struct LeafList
 ```
 
+LeafList record for collision.world, containing `entries`, `lastLeaf`, `overflowed`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L86)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L245)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LeafList
 entries
 ```
 
+BSP leaf indexes intersected by the requested bounds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L247)
 
 <a id="field-field-mq3-collision-world-leaflist-lastleaf-lastleaf-src-mq3-collision-world-ml-484572023"></a>
 ### lastLeaf
@@ -31,8 +35,10 @@ entries
 lastLeaf
 ```
 
+Last non-opaque leaf visited, retained when the bounded leaf list overflows.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L249)
 
 <a id="field-field-mq3-collision-world-leaflist-overflowed-overflowed-src-mq3-collision-world-ml-971373029"></a>
 ### overflowed
@@ -41,5 +47,7 @@ lastLeaf
 overflowed
 ```
 
+True when more leaves were found than the result capacity allows.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L89)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L251)

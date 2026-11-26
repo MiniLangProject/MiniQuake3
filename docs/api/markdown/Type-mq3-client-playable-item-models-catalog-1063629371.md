@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable item models catalog record, including `assets`, `textures`, `shaderIndex`, `scriptCount`, `firstTextureSlot`, `maxTextureSlots` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L113)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Catalog
 assets
 ```
 
+Loaded world-item render assets, looked up by the item's native classname.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L115)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-firsttextureslot-firsttextureslot-src-mq3-client-playable-item-models-ml-1174341722"></a>
 ### firstTextureSlot
@@ -31,8 +35,10 @@ assets
 firstTextureSlot
 ```
 
+First texture-cache slot reserved for this module's media resources.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L125)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-maxtextureslots-maxtextureslots-src-mq3-client-playable-item-models-ml-609731716"></a>
 ### maxTextureSlots
@@ -41,8 +47,10 @@ firstTextureSlot
 maxTextureSlots
 ```
 
+When constructing this record, `loadCatalog` supplies `maxTextureSlots` for this member. Used by `resolveBinding` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L128)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-scriptcount-scriptcount-src-mq3-client-playable-item-models-ml-384147492"></a>
 ### scriptCount
@@ -51,8 +59,10 @@ maxTextureSlots
 scriptCount
 ```
 
+When constructing this record, `loadCatalog` supplies `scripts[1]` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L123)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-shaderindex-shaderindex-src-mq3-client-playable-item-models-ml-646720168"></a>
 ### shaderIndex
@@ -61,8 +71,10 @@ scriptCount
 shaderIndex
 ```
 
+When constructing this record, `loadCatalog` supplies `scripts[0]` for this member. Used by `resolveBinding` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L121)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-skipped-skipped-src-mq3-client-playable-item-models-ml-1851845420"></a>
 ### skipped
@@ -71,8 +83,10 @@ shaderIndex
 skipped
 ```
 
+When constructing this record, `loadCatalog` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L130)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-textures-textures-src-mq3-client-playable-item-models-ml-1342773044"></a>
 ### textures
@@ -81,5 +95,7 @@ skipped
 textures
 ```
 
+When constructing this record, `loadCatalog` supplies an empty list for this member. Used by `textureByName` and `resolveBinding` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L118)

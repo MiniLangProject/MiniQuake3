@@ -18,6 +18,14 @@ def main():
     if not output.startswith("PASS: q3dm1 AAS runtime checks="):
         raise RuntimeError(output)
     print(output)
+    subprocess.run(
+        [sys.executable, ROOT / "scripts/build.py", "--source", "tests/aas_runtime_cache_retail_probe.ml", "--output", "aas_runtime_cache_retail_probe.exe"],
+        cwd=ROOT, check=True,
+    )
+    output = run([ROOT / "build/aas_runtime_cache_retail_probe.exe", args.data_root / "baseq3/pak0.pk3"], ROOT / "build").strip()
+    if not output.startswith("PASS: Retail AAS node/plane cache differential checks=3072"):
+        raise RuntimeError(output)
+    print(output)
 
 
 if __name__ == "__main__":

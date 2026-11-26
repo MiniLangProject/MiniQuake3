@@ -9,8 +9,10 @@
 struct Message
 ```
 
+`Message` record for ai chat profiles, containing `encoded`, `components` and `recentTime`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L49)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Message
 components
 ```
 
+Parsed literal, variable, and random-list components of the message.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L53)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-message-encoded-encoded-src-mq3-botlib-ai-chat-profiles-ml-1323646920"></a>
 ### encoded
@@ -31,8 +35,10 @@ components
 encoded
 ```
 
+Encoded chat-message template retained for expansion.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L51)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-message-recenttime-recenttime-src-mq3-botlib-ai-chat-profiles-ml-584061480"></a>
 ### recentTime
@@ -41,5 +47,7 @@ encoded
 recentTime
 ```
 
+Next time at which the chat message may be selected again.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L55)

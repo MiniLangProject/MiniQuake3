@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game main score record, including `client`, `team`, `score`, `time`, `ping`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L165)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Score
 client
 ```
 
+Player slot associated with this score or client-side record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L167)
 
 <a id="field-field-mq3-client-cgame-main-score-ping-ping-src-mq3-client-cgame-main-ml-564003419"></a>
 ### ping
@@ -31,8 +35,10 @@ client
 ping
 ```
 
+Player latency value retained in the client-game score entry, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L175)
 
 <a id="field-field-mq3-client-cgame-main-score-score-score-src-mq3-client-cgame-main-ml-7550343"></a>
 ### score
@@ -41,8 +47,10 @@ ping
 score
 ```
 
+Player score retained in the client-game scoreboard entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L171)
 
 <a id="field-field-mq3-client-cgame-main-score-team-team-src-mq3-client-cgame-main-ml-1875830637"></a>
 ### team
@@ -51,8 +59,10 @@ score
 team
 ```
 
+Team grouping associated with this score row in the client-game UI feeder.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L169)
 
 <a id="field-field-mq3-client-cgame-main-score-time-time-src-mq3-client-cgame-main-ml-1672034053"></a>
 ### time
@@ -61,5 +71,7 @@ team
 time
 ```
 
+Elapsed player connection time reported by the server for scoreboard presentation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L173)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for audio.snd_adpcm_runtime, containing `sample`, `index`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L14)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 index
 ```
 
+Index into the ADPCM step-size table.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L18)
 
 <a id="field-field-mq3-audio-snd-adpcm-runtime-state-sample-sample-src-mq3-audio-snd-adpcm-runtime-ml-1178492428"></a>
 ### sample
@@ -31,5 +35,7 @@ index
 sample
 ```
 
+Previous reconstructed sample used as the ADPCM predictor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L16)

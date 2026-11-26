@@ -9,8 +9,10 @@
 struct InputEvent
 ```
 
+Data record for `mq3.platform.playable_window.InputEvent`; groups `time`, `type`, `value`, `value2`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L622)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct InputEvent
 time
 ```
 
+Timestamp in milliseconds attached to a native window input record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L624)
 
 <a id="field-field-mq3-platform-playable-window-inputevent-type-type-src-mq3-platform-playable-window-ml-761968413"></a>
 ### type
@@ -31,8 +35,10 @@ time
 type
 ```
 
+System-event category selecting how the accompanying values are interpreted.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L626)
 
 <a id="field-field-mq3-platform-playable-window-inputevent-value-value-src-mq3-platform-playable-window-ml-1483325453"></a>
 ### value
@@ -41,8 +47,10 @@ type
 value
 ```
 
+Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L628)
 
 <a id="field-field-mq3-platform-playable-window-inputevent-value2-value2-src-mq3-platform-playable-window-ml-146917267"></a>
 ### value2
@@ -51,5 +59,7 @@ value
 value2
 ```
 
+Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L630)

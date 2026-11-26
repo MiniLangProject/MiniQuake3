@@ -9,8 +9,10 @@
 struct Source
 ```
 
+`Source` record for l precomp, containing `runtime`, `handle`, `includePath`, `punctuations` and `lastToken` and related fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L112)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Source
 handle
 ```
 
+Registry handle identifying this loaded preprocessor source.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L116)
 
 <a id="field-field-mq3-botlib-l-precomp-source-includepath-includepath-src-mq3-botlib-l-precomp-ml-848479300"></a>
 ### includePath
@@ -31,8 +35,10 @@ handle
 includePath
 ```
 
+Path to include files.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L118)
 
 <a id="field-field-mq3-botlib-l-precomp-source-indents-indents-src-mq3-botlib-l-precomp-ml-958931076"></a>
 ### indents
@@ -41,8 +47,10 @@ includePath
 indents
 ```
 
+Active stack of conditional-preprocessor nesting records.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L124)
 
 <a id="field-field-mq3-botlib-l-precomp-source-lasttoken-lasttoken-src-mq3-botlib-l-precomp-ml-805760"></a>
 ### lastToken
@@ -51,8 +59,10 @@ indents
 lastToken
 ```
 
+Most recently returned preprocessor token.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L122)
 
 <a id="field-field-mq3-botlib-l-precomp-source-punctuations-punctuations-src-mq3-botlib-l-precomp-ml-1934734922"></a>
 ### punctuations
@@ -61,8 +71,10 @@ lastToken
 punctuations
 ```
 
+Punctuations to use.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L120)
 
 <a id="field-field-mq3-botlib-l-precomp-source-runtime-runtime-src-mq3-botlib-l-precomp-ml-1201162868"></a>
 ### runtime
@@ -71,8 +83,10 @@ punctuations
 runtime
 ```
 
+Owning preprocessor runtime containing the source registry and diagnostic actions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L114)
 
 <a id="field-field-mq3-botlib-l-precomp-source-scripts-scripts-src-mq3-botlib-l-precomp-ml-1412905404"></a>
 ### scripts
@@ -81,5 +95,7 @@ runtime
 scripts
 ```
 
+Script inputs currently stacked by include processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L126)

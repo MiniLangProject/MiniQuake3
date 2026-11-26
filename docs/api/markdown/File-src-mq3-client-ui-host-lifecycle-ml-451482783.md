@@ -19,8 +19,10 @@ Reachable from entry: **yes**
 const CA_ACTIVE = 8
 ```
 
+Connection-state value for normal gameplay after game-state loading, defined for coordinating UI lifecycle callbacks with connection progress.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-authorizing-const-ca-authorizing-2-src-mq3-client-ui-host-lifecycle-ml-1594483797"></a>
 ### CA_AUTHORIZING
@@ -29,8 +31,10 @@ const CA_ACTIVE = 8
 const CA_AUTHORIZING = 2
 ```
 
+Client connection state while waiting for authorization to contact the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-challenging-const-ca-challenging-4-src-mq3-client-ui-host-lifecycle-ml-1563881807"></a>
 ### CA_CHALLENGING
@@ -39,8 +43,10 @@ const CA_AUTHORIZING = 2
 const CA_CHALLENGING = 4
 ```
 
+Client connection state while replying to the server challenge and requesting connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-cinematic-const-ca-cinematic-9-src-mq3-client-ui-host-lifecycle-ml-1389203706"></a>
 ### CA_CINEMATIC
@@ -49,8 +55,10 @@ const CA_CHALLENGING = 4
 const CA_CINEMATIC = 9
 ```
 
+Client connection state used for fullscreen cinematic playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-connected-const-ca-connected-5-src-mq3-client-ui-host-lifecycle-ml-973872774"></a>
 ### CA_CONNECTED
@@ -59,8 +67,10 @@ const CA_CINEMATIC = 9
 const CA_CONNECTED = 5
 ```
 
+Connection-state value for a completed handshake before game-state loading, defined for coordinating UI lifecycle callbacks with connection progress.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-connecting-const-ca-connecting-3-src-mq3-client-ui-host-lifecycle-ml-533758526"></a>
 ### CA_CONNECTING
@@ -69,8 +79,10 @@ const CA_CONNECTED = 5
 const CA_CONNECTING = 3
 ```
 
+Client connection state while requesting a challenge from the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-disconnected-const-ca-disconnected-1-src-mq3-client-ui-host-lifecycle-ml-591674184"></a>
 ### CA_DISCONNECTED
@@ -79,8 +91,10 @@ const CA_CONNECTING = 3
 const CA_DISCONNECTED = 1
 ```
 
+Client connection state with no active server connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-loading-const-ca-loading-6-src-mq3-client-ui-host-lifecycle-ml-974194521"></a>
 ### CA_LOADING
@@ -89,8 +103,10 @@ const CA_DISCONNECTED = 1
 const CA_LOADING = 6
 ```
 
+Client connection state while level media and game state are being loaded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-primed-const-ca-primed-7-src-mq3-client-ui-host-lifecycle-ml-753468058"></a>
 ### CA_PRIMED
@@ -99,8 +115,10 @@ const CA_LOADING = 6
 const CA_PRIMED = 7
 ```
 
+Client connection state with game state loaded, awaiting a playable snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-ca-uninitialized-const-ca-uninitialized-0-src-mq3-client-ui-host-lifecycle-ml-1169931529"></a>
 ### CA_UNINITIALIZED
@@ -109,8 +127,10 @@ const CA_PRIMED = 7
 const CA_UNINITIALIZED = 0
 ```
 
+Client connection state before the client subsystem has been initialized.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L9)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-clearuicatcher-function-clearuicatcher-context-getfn-setfn-src-mq3-client-ui-host-lifecycle-ml-889883121"></a>
 ### clearUiCatcher
@@ -119,14 +139,16 @@ const CA_UNINITIALIZED = 0
 function clearUiCatcher(context, getFn, setFn)
 ```
 
+Calls `getFn`, `setFn` from UI host lifecycle `clearUiCatcher`. The final path returns `setFn(context,value&(~KEYCATCH_UI))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `getFn` | `dynamic` | — |  |
-| `setFn` | `dynamic` | — |  |
+| `context` | `dynamic` | — | context record passed to the UI host lifecycle helper calls. |
+| `getFn` | `dynamic` | — | Callback invoked by `clearUiCatcher` for get. |
+| `setFn` | `dynamic` | — | Callback invoked by `clearUiCatcher` for set. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L201)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-client-state-size-const-client-state-size-3084-src-mq3-client-ui-host-lifecycle-ml-1905050778"></a>
 ### CLIENT_STATE_SIZE
@@ -135,8 +157,10 @@ function clearUiCatcher(context, getFn, setFn)
 const CLIENT_STATE_SIZE = 3084
 ```
 
+Size in bytes reserved for the native client-state structure during ABI marshalling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L37)
 
 - [mq3.client.ui_host_lifecycle.ClientState](Type-mq3-client-ui-host-lifecycle-clientstate-175227767.md) — struct
 <a id="function-function-mq3-client-ui-host-lifecycle-connecting-function-connecting-state-src-mq3-client-ui-host-lifecycle-ml-2099600855"></a>
@@ -146,12 +170,14 @@ const CLIENT_STATE_SIZE = 3084
 function connecting(state)
 ```
 
+Evaluates UI host lifecycle `connecting` and returns `1`, `0` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI host lifecycle state passed to the helper calls in `connecting`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L142)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-createclientstate-function-createclientstate-connstate-connectpacketcount-clientnum-servername-updateinfostring-messagestring-src-mq3-client-ui-host-lifecycle-ml-926109293"></a>
 ### createClientState
@@ -160,17 +186,19 @@ function connecting(state)
 function createClientState(connState, connectPacketCount, clientNum, servername, updateInfoString, messageString)
 ```
 
+Calls `mq3.client.ui_host_lifecycle.ClientState`, `mq3.client.ui_host_lifecycle.validateClientState` from UI host lifecycle `createClientState`. The final path returns `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `connState` | `dynamic` | — |  |
-| `connectPacketCount` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `servername` | `dynamic` | — |  |
-| `updateInfoString` | `dynamic` | — |  |
-| `messageString` | `dynamic` | — |  |
+| `connState` | `dynamic` | — | Value used by `state=ClientState(connState,connectPacketCount,clientNum,servername,updateInfoString,messageString)`. |
+| `connectPacketCount` | `dynamic` | — | Value used by `state=ClientState(connState,connectPacketCount,clientNum,servername,updateInfoString,messageString)`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `servername` | `dynamic` | — | Value used by `state=ClientState(connState,connectPacketCount,clientNum,servername,updateInfoString,messageString)`. |
+| `updateInfoString` | `dynamic` | — | Value used by `state=ClientState(connState,connectPacketCount,clientNum,servername,updateInfoString,messageString)`. |
+| `messageString` | `dynamic` | — | Value used by `state=ClientState(connState,connectPacketCount,clientNum,servername,updateInfoString,messageString)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L106)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-drawscreen-function-drawscreen-host-connstate-realtime-src-mq3-client-ui-host-lifecycle-ml-2095120000"></a>
 ### drawScreen
@@ -179,14 +207,16 @@ function createClientState(connState, connectPacketCount, clientNum, servername,
 function drawScreen(host, connState, realtime)
 ```
 
+Calls `mq3.client.ui_host_lifecycle.requireServices`, `host.fullscreenFn`, `host.cinematicFn` and additional helpers from UI host lifecycle `drawScreen`. The final path returns `Frame(full,cgameFrames,cinematicFrames,menuCalls,refreshCalls,connectCalls,overlay)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `connState` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.fullscreenFn`, `host.context`, `host.cinematicFn`, `host.menuFn` and additional values. |
+| `connState` | `dynamic` | — | Value used by `if connState<CA_DISCONNECTED or connState>CA_CINEMATIC or connState==CA_AUTHORIZING then return fail("connection state cannot be drawn") end if`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L170)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-encodeclientstate-function-encodeclientstate-state-src-mq3-client-ui-host-lifecycle-ml-1863866791"></a>
 ### encodeClientState
@@ -195,12 +225,14 @@ function drawScreen(host, connState, realtime)
 function encodeClientState(state)
 ```
 
+Calls `mq3.client.ui_host_lifecycle.validateClientState`, `mq3.compat.numeric.writeU32`, `mq3.client.ui_host_lifecycle.writeFixedString` from UI host lifecycle `encodeClientState`. The final path returns `data`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.connState`, `state.connectPacketCount`, `state.clientNum`, `state.servername` and additional values. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L132)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-fail-function-fail-message-src-mq3-client-ui-host-lifecycle-ml-1108561369"></a>
 ### fail
@@ -209,12 +241,14 @@ function encodeClientState(state)
 function fail(message)
 ```
 
+Creates the UI host lifecycle error `3460` with diagnostic text `"UI host lifecycle: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"UI host lifecycle: "+message`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L97)
 
 - [mq3.client.ui_host_lifecycle.Frame](Type-mq3-client-ui-host-lifecycle-frame-1297113514.md) — struct
 <a id="constant-constant-mq3-client-ui-host-lifecycle-keycatch-ui-const-keycatch-ui-2-src-mq3-client-ui-host-lifecycle-ml-714717589"></a>
@@ -224,8 +258,10 @@ function fail(message)
 const KEYCATCH_UI = 2
 ```
 
+UI keyboard-capture mask used when coordinating menu activation and UI keyboard-event dispatch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-host-lifecycle-max-string-chars-const-max-string-chars-1024-src-mq3-client-ui-host-lifecycle-ml-991430720"></a>
 ### MAX_STRING_CHARS
@@ -234,8 +270,10 @@ const KEYCATCH_UI = 2
 const MAX_STRING_CHARS = 1024
 ```
 
+Maximum length of a protocol, command, or configuration string.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L35)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-requireservices-function-requireservices-host-src-mq3-client-ui-host-lifecycle-ml-1561420562"></a>
 ### requireServices
@@ -244,12 +282,14 @@ const MAX_STRING_CHARS = 1024
 function requireServices(host)
 ```
 
+Evaluates UI host lifecycle `requireServices` and returns `fail("complete screen services are required")`, `void` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.fullscreenFn`, `host.refreshFn`, `host.menuFn`, `host.connectFn` and additional values. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L161)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-services-function-services-context-fullscreenfn-refreshfn-menufn-connectfn-cgamefn-cinematicfn-catcherfn-src-mq3-client-ui-host-lifecycle-ml-2117803758"></a>
 ### services
@@ -258,19 +298,21 @@ function requireServices(host)
 function services(context, fullscreenFn, refreshFn, menuFn, connectFn, cgameFn, cinematicFn, catcherFn)
 ```
 
+Creates a `mq3.client.ui_host_lifecycle.Services` record. Assigns `context` from `context`, `fullscreenFn` from `fullscreenFn`, `refreshFn` from `refreshFn`, `menuFn` from `menuFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `fullscreenFn` | `dynamic` | — |  |
-| `refreshFn` | `dynamic` | — |  |
-| `menuFn` | `dynamic` | — |  |
-| `connectFn` | `dynamic` | — |  |
-| `cgameFn` | `dynamic` | — |  |
-| `cinematicFn` | `dynamic` | — |  |
-| `catcherFn` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Value used to initialize `Services.context`. |
+| `fullscreenFn` | `dynamic` | — | Value used to initialize `Services.fullscreenFn`. |
+| `refreshFn` | `dynamic` | — | Value used to initialize `Services.refreshFn`. |
+| `menuFn` | `dynamic` | — | Value used to initialize `Services.menuFn`. |
+| `connectFn` | `dynamic` | — | Value used to initialize `Services.connectFn`. |
+| `cgameFn` | `dynamic` | — | Value used to initialize `Services.cgameFn`. |
+| `cinematicFn` | `dynamic` | — | Value used to initialize `Services.cinematicFn`. |
+| `catcherFn` | `dynamic` | — | Value used to initialize `Services.catcherFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L155)
 
 - [mq3.client.ui_host_lifecycle.Services](Type-mq3-client-ui-host-lifecycle-services-152448193.md) — struct
 <a id="constant-constant-mq3-client-ui-host-lifecycle-uimenu-main-const-uimenu-main-1-src-mq3-client-ui-host-lifecycle-ml-1594123532"></a>
@@ -280,8 +322,10 @@ function services(context, fullscreenFn, refreshFn, menuFn, connectFn, cgameFn, 
 const UIMENU_MAIN = 1
 ```
 
+Engine-to-UI menu selector for the main screen or menu state.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L33)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-validateclientstate-function-validateclientstate-state-src-mq3-client-ui-host-lifecycle-ml-2051628975"></a>
 ### validateClientState
@@ -290,12 +334,14 @@ const UIMENU_MAIN = 1
 function validateClientState(state)
 ```
 
+Evaluates UI host lifecycle `validateClientState` and returns `fail("invalid connection state")`, `fail("packet count and client number must be integers")`, `fail("client-state text must be strings")` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.connState`, `state.connectPacketCount`, `state.clientNum`, `state.servername` and additional values. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L113)
 
 <a id="function-function-mq3-client-ui-host-lifecycle-writefixedstring-function-writefixedstring-data-offset-text-src-mq3-client-ui-host-lifecycle-ml-1118556074"></a>
 ### writeFixedString
@@ -304,11 +350,13 @@ function validateClientState(state)
 function writeFixedString(data, offset, text)
 ```
 
+Calls `copyBytes` from UI host lifecycle `writeFixedString`. The final path returns `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Value used by `if count>0 then copyBytes(data,offset,encoded,0,count) end if`. |
+| `offset` | `dynamic` | — | Value used by `if count>0 then copyBytes(data,offset,encoded,0,count) end if`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `writeFixedString` in the UI host lifecycle path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L124)

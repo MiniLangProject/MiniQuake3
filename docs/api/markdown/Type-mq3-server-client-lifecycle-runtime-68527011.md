@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.client_lifecycle, containing `server`, `host`, `clientNum`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L388)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 clientNum
 ```
 
+Server client-slot number associated with this runtime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L394)
 
 <a id="field-field-mq3-server-client-lifecycle-runtime-host-host-src-mq3-server-client-lifecycle-ml-760992877"></a>
 ### host
@@ -31,8 +35,10 @@ clientNum
 host
 ```
 
+Host callback interface supplying external services to this runtime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L392)
 
 <a id="field-field-mq3-server-client-lifecycle-runtime-server-server-src-mq3-server-client-lifecycle-ml-231671599"></a>
 ### server
@@ -41,5 +47,7 @@ host
 server
 ```
 
+Server policy and package-checksum state used by client lifecycle operations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L390)

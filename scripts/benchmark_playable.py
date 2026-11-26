@@ -16,6 +16,7 @@ def main():
     parser.add_argument("--data-root", type=Path, default=ROOT / "build")
     parser.add_argument("--renderer", choices=("hardware", "software"), default="hardware")
     parser.add_argument("--frames", type=int, default=120)
+    parser.add_argument("--map", default="q3dm1", help="Retail arena BSP name without maps/ or .bsp")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--capture", action="store_true")
     parser.add_argument("--qvm-profile", action="store_true", help="diagnostic trap timings; disables FPS acceptance")
@@ -25,6 +26,8 @@ def main():
     args = parser.parse_args()
     if args.frames < 1:
         parser.error("--frames must be positive")
+    if not re.fullmatch(r"[A-Za-z0-9_]+", args.map):
+        parser.error("--map must be a simple BSP name")
     diagnostic = args.capture or args.qvm_profile or args.render_profile
     if diagnostic and (args.min_fps is not None or args.max_work_p95_ms is not None):
         parser.error("capture/profiling cannot be used for performance acceptance")
@@ -47,7 +50,7 @@ def main():
     if args.capture:
         env["MQ3_CAPTURE"] = str(out / "frame.bmp")
     command = [str(binary), "--play-qvm-smoke", str(args.data_root.resolve() / "baseq3/pak0.pk3"),
-               "maps/q3dm1.bsp", str(ROOT / "build/reference/qvms"), str(args.frames)]
+               f"maps/{args.map}.bsp", str(ROOT / "build/reference/qvms"), str(args.frames)]
     started = time.perf_counter()
     result = subprocess.run(command, cwd=ROOT, env=env, capture_output=True, text=True, timeout=240)
     wall = time.perf_counter() - started
@@ -64,7 +67,7 @@ def main():
     if not scene:
         raise RuntimeError("missing actual scene submission counts")
     record = {"passed": True, "binary_sha256": sha(binary), "renderer": args.renderer,
-              "map": "q3dm1", "frames": args.frames, "wall_seconds": wall, "startup_ms": float(startup[1]),
+              "map": args.map, "frames": args.frames, "wall_seconds": wall, "startup_ms": float(startup[1]),
               "frame_ms": float(frame[1]), "capture_enabled": args.capture,
               "diagnostic_only": diagnostic, "profile_files": profile_files,
               "native": {name: sha(binary.parent / name) for name in
@@ -83,7 +86,7 @@ def main():
         record["passed"] = record["passed"] and record["acceptance"]["passed"]
     (out / "result.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     if not record["passed"]:
-        raise RuntimeError("q3dm1 scene or performance acceptance failed; inspect result.json and the complete render counters")
+        raise RuntimeError(f"{args.map} scene or performance acceptance failed; inspect result.json and the complete render counters")
     print(f"PASS: {args.renderer}, start {record['startup_ms']} ms, frame {record['frame_ms']} ms")
 
 

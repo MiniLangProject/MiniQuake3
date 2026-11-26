@@ -9,8 +9,10 @@
 struct Bounds
 ```
 
+Bounds record for splines.headers, containing `mins`, `maxs`, `cleared`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L52)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Bounds
 cleared
 ```
 
+Nonzero when the bounds are empty and the next added point must initialize them.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L58)
 
 <a id="field-field-mq3-splines-headers-bounds-maxs-maxs-src-mq3-splines-headers-ml-1927518258"></a>
 ### maxs
@@ -31,8 +35,10 @@ cleared
 maxs
 ```
 
+Upper XYZ corner of the accumulated spline bounds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L56)
 
 <a id="field-field-mq3-splines-headers-bounds-mins-mins-src-mq3-splines-headers-ml-1718615862"></a>
 ### mins
@@ -41,5 +47,7 @@ maxs
 mins
 ```
 
+Lower XYZ corner of the accumulated spline bounds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L54)

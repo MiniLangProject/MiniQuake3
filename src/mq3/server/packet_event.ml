@@ -8,22 +8,69 @@ import mq3.server.netchan as serverNetchan
 import mq3.qcommon.netchan as netchan
 import mq3.compat.numeric as numeric
 
+/// Client-state value identifying an unused slot excluded from sequenced-packet matching.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Network-address kind for local loopback delivery.
 const NA_LOOPBACK=2
+/// Network-address kind for an IPv4 endpoint.
 const NA_IP=4
 
-struct Client state netchan lastPacketTime end struct
+/// Client record for server.packet_event, containing `state`, `netchan`, `lastPacketTime`.
+struct Client
+  /// Connection lifecycle value that determines whether a sequenced packet may belong to this
+  /// connection.
+  state
+  /// Sequenced network channel used to exchange this client's packets.
+  netchan
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+end struct
+/// Create `mq3.server.packet_event.Client` with state=state; netchan=serverNetchanState; lastPacketTime=0.
+/// @param state Initial `state` field stored in the returned or constructed `mq3.server.packet_event.Client` record.
+/// @param serverNetchanState Initial `netchan` field stored in the returned or constructed `mq3.server.packet_event.Client` record.
 function client(state,serverNetchanState) return Client(state,serverNetchanState,0) end function
 
-struct Runtime time clients end struct
+/// Runtime record for server.packet_event, containing `time`, `clients`.
+struct Runtime
+  /// Server timestamp attached to accepted client packets for activity tracking, in milliseconds.
+  time
+  /// Client slots matched against source addresses and packet channel identifiers.
+  clients
+end struct
+/// Create `mq3.server.packet_event.Runtime` with time=0; clients=clients.
+/// @param clients Initial `clients` field stored in the returned or constructed `mq3.server.packet_event.Runtime` record.
 function runtime(clients) return Runtime(0,clients) end function
 
-struct Services connectionlessRuntime connectionlessHost processFn executeFn disconnectFn diagnosticFn context end struct
+/// Services record for server.packet_event, containing `connectionlessRuntime`, `connectionlessHost`, `processFn`, `executeFn`, `disconnectFn`, `diagnosticFn`, and 1 further fields.
+struct Services
+  /// Runtime used to dispatch out-of-band packets.
+  connectionlessRuntime
+  /// Host services used by the connectionless packet dispatcher.
+  connectionlessHost
+  /// Host callback that processes a sequenced incoming client packet.
+  processFn
+  /// Host callback that executes a routed command or operation on the host.
+  executeFn
+  /// Host callback that processes a client disconnection through the host network lifecycle.
+  disconnectFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with sequenced packet processing, message execution, and
+  /// disconnect handling.
+  context
+end struct
+/// Create `mq3.server.packet_event.Services` with connectionlessRuntime=connectionlessRuntime; connectionlessHost=connectionlessHost; processFn=processNetchan; executeFn=void; disconnectFn=void; diagnosticFn=void; context=void.
+/// @param connectionlessRuntime Initial `connectionlessRuntime` field stored in the returned or constructed `mq3.server.packet_event.Services` record.
+/// @param connectionlessHost Initial `connectionlessHost` field stored in the returned or constructed `mq3.server.packet_event.Services` record.
 function services(connectionlessRuntime,connectionlessHost)
   return Services(connectionlessRuntime,connectionlessHost,processNetchan,void,void,void,void)
 end function
 
+/// Test same base in server.packet_event; the normal completion returns `false`.
+/// @param left Record exposing `type`, `ip`.
+/// @param right Record exposing `type`, `ip`.
 function sameBase(left,right)
   if left==void or right==void or left.type!=right.type then return false end if
   if left.type==NA_LOOPBACK then return true end if
@@ -31,10 +78,14 @@ function sameBase(left,right)
   return false
 end function
 
+/// Compute server.packet_event.isOob as `((msg.cursize >= 4) and (numeric.readI32(msg.data, 0) == - 1))`.
+/// @param msg Record exposing `cursize`, `data`.
 function isOob(msg)
   return msg.cursize>=4 and numeric.readI32(msg.data,0)==-1
 end function
 
+/// Compute message bytes in server.packet_event; the normal completion returns `result`.
+/// @param msg Record exposing `cursize`, `data`.
 function messageBytes(msg)
   result=bytes(msg.cursize,0)
   if msg.cursize>0 then for index=0 to msg.cursize-1 result[index]=msg.data[index] end for end if
@@ -43,6 +94,9 @@ end function
 
 // Concrete SV_Netchan_Process adapter. Tests can replace processFn with the
 // deterministic host callback used by the unchanged-C transition oracle.
+/// @param host Reserved argument; this implementation does not read its value.
+/// @param clientState Record exposing `netchan`.
+/// @param msg Record exposing `maxsize`. Updated in place: `data`, `cursize`, `readcount`, `bit`.
 function processNetchan(host,clientState,msg)
   result=serverNetchan.process(clientState.netchan,messageBytes(msg),msg.maxsize)
   if not result.accepted then return false end if
@@ -50,6 +104,13 @@ function processNetchan(host,clientState,msg)
   return true
 end function
 
+/// Compute packet event in server.packet_event; the normal completion returns `"unknown"`.
+///
+/// Validation failures include `server packet event: missing input`; `server packet event: missing connectionless service`; `server packet event: missing netchan process`.
+/// @param state Record exposing `clients`, `time`.
+/// @param host Record exposing `connectionlessRuntime`, `connectionlessHost`, `diagnosticFn`, `processFn`, `executeFn`, `disconnectFn`.
+/// @param source Record exposing `port`.
+/// @param msg Msg passed as `msg` to `mq3.server.packet_event.isOob`.
 function packetEvent(state,host,source,msg)
   if state==void or state.clients==void or host==void or source==void or msg==void then return error(6991,"server packet event: missing input") end if
   if isOob(msg) then

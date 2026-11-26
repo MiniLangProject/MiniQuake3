@@ -10,6 +10,9 @@ import mq3.shared.math as q
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 
+/// Update `ent.r.ownerNum`, `ent.s.frame`, `ent.s.powerups` and `ent.s.clientNum` and related state during `locateCamera`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param ent Game entity; accesses `target`, `r` and `s`. May update `ent.r.ownerNum`, `ent.s.frame` and `ent.s.powerups` and additional fields in place.
 function locateCamera(level,ent)
   owner = game.pickTarget(level,ent.target)
   if owner == void then
@@ -39,6 +42,9 @@ function locateCamera(level,ent)
   return void
 end function
 
+/// Update `ent.r.mins[axis]`, `ent.r.maxs[axis]`, `ent.r.svFlags` and `ent.s.eType` and related state during `surface`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `r`, `s`, `target`, `think` and `nextthink`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.r.svFlags` and additional fields in place.
 function surface(level,ent)
   for axis = 0 to 2
     ent.r.mins[axis] = 0.0; ent.r.maxs[axis] = 0.0
@@ -56,6 +62,9 @@ function surface(level,ent)
   return void
 end function
 
+/// Update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` during `camera`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `r` and `s`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` in place.
 function camera(level,ent)
   for axis = 0 to 2
     ent.r.mins[axis] = 0.0; ent.r.maxs[axis] = 0.0

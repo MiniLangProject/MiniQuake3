@@ -9,8 +9,10 @@
 struct Datagram
 ```
 
+Data record for `mq3.platform.udp.Datagram`; groups `received`, `endpoint`, `data`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L95)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Datagram
 data
 ```
 
+Payload bytes returned by the UDP receive operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L101)
 
 <a id="field-field-mq3-platform-udp-datagram-endpoint-endpoint-src-mq3-platform-udp-ml-576944124"></a>
 ### endpoint
@@ -31,8 +35,10 @@ data
 endpoint
 ```
 
+Network endpoint from which the datagram was received.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L99)
 
 <a id="field-field-mq3-platform-udp-datagram-received-received-src-mq3-platform-udp-ml-1201836832"></a>
 ### received
@@ -41,5 +47,7 @@ endpoint
 received
 ```
 
+Whether a datagram was successfully received.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L97)

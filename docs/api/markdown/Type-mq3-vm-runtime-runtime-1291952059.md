@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for vm.runtime, containing `slots`, `services`, `current`, `last`, `debugLevel`, `syscallCount`, and 1 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L81)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 current
 ```
 
+VM currently executing a call, or void outside VM execution.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L87)
 
 <a id="field-field-mq3-vm-runtime-runtime-debuglevel-debuglevel-src-mq3-vm-runtime-ml-1576840157"></a>
 ### debugLevel
@@ -31,8 +35,10 @@ current
 debugLevel
 ```
 
+Diagnostic verbosity level used by the module.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L91)
 
 <a id="field-field-mq3-vm-runtime-runtime-last-last-src-mq3-vm-runtime-ml-806810087"></a>
 ### last
@@ -41,8 +47,10 @@ debugLevel
 last
 ```
 
+VM that most recently executed a call.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L89)
 
 <a id="field-field-mq3-vm-runtime-runtime-services-services-src-mq3-vm-runtime-ml-1881776935"></a>
 ### services
@@ -51,8 +59,10 @@ last
 services
 ```
 
+Injected service callbacks and state used to communicate with the surrounding engine.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L85)
 
 <a id="field-field-mq3-vm-runtime-runtime-slots-slots-src-mq3-vm-runtime-ml-956168987"></a>
 ### slots
@@ -61,8 +71,10 @@ services
 slots
 ```
 
+Named VM slots managed by this runtime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L83)
 
 <a id="field-field-mq3-vm-runtime-runtime-syscallcount-syscallcount-src-mq3-vm-runtime-ml-904393607"></a>
 ### syscallCount
@@ -71,8 +83,10 @@ slots
 syscallCount
 ```
 
+Number of system calls observed by the VM runtime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L93)
 
 <a id="field-field-mq3-vm-runtime-runtime-syscalllog-syscalllog-src-mq3-vm-runtime-ml-1320457133"></a>
 ### syscallLog
@@ -81,5 +95,7 @@ syscallCount
 syscallLog
 ```
 
+Recorded VM system-call entries retained for diagnostics.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L95)

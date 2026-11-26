@@ -9,8 +9,10 @@
 struct Face
 ```
 
+`Face` record for aas clustering, containing `planeNum`, `flags`, `numEdges`, `firstEdge` and `frontArea` and related fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L44)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Face
 backArea
 ```
 
+Area at the back of this face.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L56)
 
 <a id="field-field-mq3-botlib-aas-clustering-face-firstedge-firstedge-src-mq3-botlib-aas-clustering-ml-42817142"></a>
 ### firstEdge
@@ -31,8 +35,10 @@ backArea
 firstEdge
 ```
 
+Starting offset of this face in the signed edge-index array.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-clustering-face-flags-flags-src-mq3-botlib-aas-clustering-ml-1676990602"></a>
 ### flags
@@ -41,8 +47,10 @@ firstEdge
 flags
 ```
 
+AAS face properties such as solidity, grounding, or ladder membership.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L48)
 
 <a id="field-field-mq3-botlib-aas-clustering-face-frontarea-frontarea-src-mq3-botlib-aas-clustering-ml-34982450"></a>
 ### frontArea
@@ -51,8 +59,10 @@ flags
 frontArea
 ```
 
+Area at the front of this face.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L54)
 
 <a id="field-field-mq3-botlib-aas-clustering-face-numedges-numedges-src-mq3-botlib-aas-clustering-ml-1842958674"></a>
 ### numEdges
@@ -61,8 +71,10 @@ frontArea
 numEdges
 ```
 
+Number of edge records represented by this face or file inventory.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L50)
 
 <a id="field-field-mq3-botlib-aas-clustering-face-planenum-planenum-src-mq3-botlib-aas-clustering-ml-1563811150"></a>
 ### planeNum
@@ -71,5 +83,7 @@ numEdges
 planeNum
 ```
 
+Navigation plane index used to compare the faces of candidate cluster portals.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L46)

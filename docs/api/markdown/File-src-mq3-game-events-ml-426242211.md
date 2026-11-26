@@ -20,15 +20,17 @@ Reachable from entry: **no**
 function add(level, ent, event, parm)
 ```
 
+Update `ent.s.event`, `ent.s.eventParm` and `ent.eventTime` during `add`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
-| `parm` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `eventTime`. May update `ent.s.event`, `ent.s.eventParm` and `ent.eventTime` in place. |
+| `event` | `dynamic` | — | Player or entity event identifier. |
+| `parm` | `dynamic` | — | Integer parameter stored alongside the emitted event. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/events.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/events.ml#L11)
 
 <a id="function-function-mq3-game-events-sound-function-sound-level-ent-channel-index-src-mq3-game-events-ml-1716547734"></a>
 ### sound
@@ -37,12 +39,14 @@ function add(level, ent, event, parm)
 function sound(level, ent, channel, index)
 ```
 
+Create an entity sound event using the game event-delivery path.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`. |
+| `channel` | `dynamic` | — | Not read by this implementation; retained in the `sound` signature. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/events.ml#L27)

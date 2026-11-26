@@ -6,6 +6,10 @@ import mq3.botlib.ai_avoid_spots as avoidSpots
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_avoid_spots.add` while evaluating `dispatch`.
+/// @param pools Bot resource pools; accesses `moveStates`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
 function dispatch(pools,vm,base)
   origin=common.readFloatVector(vm,common.argument(vm,base,2),3,"BotAddAvoidSpot origin");if origin is error then return origin end if
   return avoidSpots.add(pools,common.argument(vm,base,1),origin,n.bitsFloat(common.argument(vm,base,3)),common.argument(vm,base,4))

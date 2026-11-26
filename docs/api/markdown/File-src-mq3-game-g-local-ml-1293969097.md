@@ -15,8 +15,10 @@ Reachable from entry: **no**
 const BODY_QUEUE_SIZE = 8
 ```
 
+Number of reusable corpse entities kept in the body queue.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L12)
 
 - [mq3.game.g_local.BotSettings](Type-mq3-game-g-local-botsettings-1300308977.md) — struct
 <a id="constant-constant-mq3-game-g-local-carnage-reward-time-const-carnage-reward-time-3000-src-mq3-game-g-local-ml-1275290530"></a>
@@ -26,8 +28,10 @@ const BODY_QUEUE_SIZE = 8
 const CARNAGE_REWARD_TIME = 3000
 ```
 
+Kill-to-kill interval in milliseconds that qualifies for the carnage reward.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L18)
 
 <a id="function-function-mq3-game-g-local-clientfieldnames-function-clientfieldnames-src-mq3-game-g-local-ml-1256232382"></a>
 ### clientFieldNames
@@ -36,8 +40,10 @@ const CARNAGE_REWARD_TIME = 3000
 function clientFieldNames()
 ```
 
+Return the ordered client field names table for g local: 32 entries beginning with `"ps"` and `"pers"`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L189)
 
 - [mq3.game.g_local.ClientPersistant](Type-mq3-game-g-local-clientpersistant-183067153.md) — struct
 - [mq3.game.g_local.ClientSession](Type-mq3-game-g-local-clientsession-83131860.md) — struct
@@ -48,8 +54,10 @@ function clientFieldNames()
 const CON_CONNECTED = 2
 ```
 
+Client connection-state identifier representing connected.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L59)
 
 <a id="constant-constant-mq3-game-g-local-con-connecting-const-con-connecting-1-src-mq3-game-g-local-ml-825794048"></a>
 ### CON_CONNECTING
@@ -58,8 +66,10 @@ const CON_CONNECTED = 2
 const CON_CONNECTING = 1
 ```
 
+Client connection-state identifier representing connecting.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L57)
 
 <a id="constant-constant-mq3-game-g-local-con-disconnected-const-con-disconnected-0-src-mq3-game-g-local-ml-2094094297"></a>
 ### CON_DISCONNECTED
@@ -68,8 +78,10 @@ const CON_CONNECTING = 1
 const CON_DISCONNECTED = 0
 ```
 
+Client connection-state identifier representing disconnected.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L55)
 
 <a id="constant-constant-mq3-game-g-local-damage-no-armor-const-damage-no-armor-2-src-mq3-game-g-local-ml-1165560785"></a>
 ### DAMAGE_NO_ARMOR
@@ -78,8 +90,10 @@ const CON_DISCONNECTED = 0
 const DAMAGE_NO_ARMOR = 2
 ```
 
+Damage-processing flag enabling no armor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L89)
 
 <a id="constant-constant-mq3-game-g-local-damage-no-knockback-const-damage-no-knockback-4-src-mq3-game-g-local-ml-947654431"></a>
 ### DAMAGE_NO_KNOCKBACK
@@ -88,8 +102,10 @@ const DAMAGE_NO_ARMOR = 2
 const DAMAGE_NO_KNOCKBACK = 4
 ```
 
+Damage-processing flag enabling no knockback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L91)
 
 <a id="constant-constant-mq3-game-g-local-damage-no-protection-const-damage-no-protection-8-src-mq3-game-g-local-ml-813464199"></a>
 ### DAMAGE_NO_PROTECTION
@@ -98,8 +114,10 @@ const DAMAGE_NO_KNOCKBACK = 4
 const DAMAGE_NO_PROTECTION = 8
 ```
 
+Damage-processing flag enabling no protection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L93)
 
 <a id="constant-constant-mq3-game-g-local-damage-no-team-protection-const-damage-no-team-protection-16-src-mq3-game-g-local-ml-1225243878"></a>
 ### DAMAGE_NO_TEAM_PROTECTION
@@ -108,8 +126,10 @@ const DAMAGE_NO_PROTECTION = 8
 const DAMAGE_NO_TEAM_PROTECTION = 16
 ```
 
+Damage-processing flag enabling no team protection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L95)
 
 <a id="constant-constant-mq3-game-g-local-damage-radius-const-damage-radius-1-src-mq3-game-g-local-ml-1329778816"></a>
 ### DAMAGE_RADIUS
@@ -118,8 +138,10 @@ const DAMAGE_NO_TEAM_PROTECTION = 16
 const DAMAGE_RADIUS = 1
 ```
 
+Damage-processing flag enabling radius.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L87)
 
 <a id="function-function-mq3-game-g-local-damageusesarmor-function-damageusesarmor-flags-src-mq3-game-g-local-ml-1395784225"></a>
 ### damageUsesArmor
@@ -128,12 +150,14 @@ const DAMAGE_RADIUS = 1
 function damageUsesArmor(flags)
 ```
 
+Test `(flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0` as the condition for `damageUsesArmor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flags` | `dynamic` | — |  |
+| `flags` | `dynamic` | — | Operand used to evaluate the returned expression `(flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L201)
 
 <a id="function-function-mq3-game-g-local-declarationnames-function-declarationnames-src-mq3-game-g-local-ml-423205330"></a>
 ### declarationNames
@@ -145,7 +169,7 @@ function declarationNames()
 Complete declaration inventory for static parity checks. Calls are routed to their owning game, syscall, bot or AAS module rather than duplicated here.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L221)
 
 <a id="function-function-mq3-game-g-local-entityfieldnames-function-entityfieldnames-src-mq3-game-g-local-ml-1456149142"></a>
 ### entityFieldNames
@@ -154,8 +178,10 @@ Complete declaration inventory for static parity checks. Calls are routed to the
 function entityFieldNames()
 ```
 
+Return the ordered entity field names table for g local: 69 entries beginning with `"s"` and `"r"`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L187)
 
 <a id="constant-constant-mq3-game-g-local-fl-dropped-item-const-fl-dropped-item-4096-src-mq3-game-g-local-ml-1686861914"></a>
 ### FL_DROPPED_ITEM
@@ -164,8 +190,10 @@ function entityFieldNames()
 const FL_DROPPED_ITEM = 4096
 ```
 
+Game entity-flag bit enabling or marking dropped item.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L35)
 
 <a id="constant-constant-mq3-game-g-local-fl-force-gesture-const-fl-force-gesture-32768-src-mq3-game-g-local-ml-1372516221"></a>
 ### FL_FORCE_GESTURE
@@ -174,8 +202,10 @@ const FL_DROPPED_ITEM = 4096
 const FL_FORCE_GESTURE = 32768
 ```
 
+Game entity-flag bit enabling or marking force gesture.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L41)
 
 <a id="constant-constant-mq3-game-g-local-fl-godmode-const-fl-godmode-16-src-mq3-game-g-local-ml-647314604"></a>
 ### FL_GODMODE
@@ -184,8 +214,10 @@ const FL_FORCE_GESTURE = 32768
 const FL_GODMODE = 16
 ```
 
+Game entity-flag bit enabling or marking godmode.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L27)
 
 <a id="constant-constant-mq3-game-g-local-fl-no-bots-const-fl-no-bots-8192-src-mq3-game-g-local-ml-1446986965"></a>
 ### FL_NO_BOTS
@@ -194,8 +226,10 @@ const FL_GODMODE = 16
 const FL_NO_BOTS = 8192
 ```
 
+Game entity-flag bit enabling or marking no bots.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L37)
 
 <a id="constant-constant-mq3-game-g-local-fl-no-humans-const-fl-no-humans-16384-src-mq3-game-g-local-ml-1363782711"></a>
 ### FL_NO_HUMANS
@@ -204,8 +238,10 @@ const FL_NO_BOTS = 8192
 const FL_NO_HUMANS = 16384
 ```
 
+Game entity-flag bit enabling or marking no humans.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L39)
 
 <a id="constant-constant-mq3-game-g-local-fl-no-knockback-const-fl-no-knockback-2048-src-mq3-game-g-local-ml-113447747"></a>
 ### FL_NO_KNOCKBACK
@@ -214,8 +250,10 @@ const FL_NO_HUMANS = 16384
 const FL_NO_KNOCKBACK = 2048
 ```
 
+Game entity-flag bit enabling or marking no knockback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L33)
 
 <a id="constant-constant-mq3-game-g-local-fl-notarget-const-fl-notarget-32-src-mq3-game-g-local-ml-815985860"></a>
 ### FL_NOTARGET
@@ -224,8 +262,10 @@ const FL_NO_KNOCKBACK = 2048
 const FL_NOTARGET = 32
 ```
 
+Game entity-flag bit enabling or marking notarget.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L29)
 
 <a id="constant-constant-mq3-game-g-local-fl-teamslave-const-fl-teamslave-1024-src-mq3-game-g-local-ml-1108591482"></a>
 ### FL_TEAMSLAVE
@@ -234,8 +274,10 @@ const FL_NOTARGET = 32
 const FL_TEAMSLAVE = 1024
 ```
 
+Game entity-flag bit enabling or marking teamslave.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L31)
 
 <a id="function-function-mq3-game-g-local-fofs-function-fofs-fieldname-src-mq3-game-g-local-ml-348543097"></a>
 ### FOFS
@@ -244,12 +286,14 @@ const FL_TEAMSLAVE = 1024
 function FOFS(fieldName)
 ```
 
+Apply `mq3.game.g_local.entityFieldNames` while evaluating `FOFS`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fieldName` | `dynamic` | — |  |
+| `fieldName` | `dynamic` | — | Value used by `FOFS` in `if fields[index]==fieldName then return index end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L211)
 
 <a id="constant-constant-mq3-game-g-local-follow-active1-const-follow-active1-1-src-mq3-game-g-local-ml-30522503"></a>
 ### FOLLOW_ACTIVE1
@@ -258,8 +302,10 @@ function FOFS(fieldName)
 const FOLLOW_ACTIVE1 = -1
 ```
 
+Spectator sentinel selecting the first automatically chosen active player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L73)
 
 <a id="constant-constant-mq3-game-g-local-follow-active2-const-follow-active2-2-src-mq3-game-g-local-ml-643173872"></a>
 ### FOLLOW_ACTIVE2
@@ -268,8 +314,10 @@ const FOLLOW_ACTIVE1 = -1
 const FOLLOW_ACTIVE2 = -2
 ```
 
+Spectator sentinel selecting the second automatically chosen active player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L75)
 
 <a id="constant-constant-mq3-game-g-local-frametime-const-frametime-100-src-mq3-game-g-local-ml-1398937552"></a>
 ### FRAMETIME
@@ -278,8 +326,10 @@ const FOLLOW_ACTIVE2 = -2
 const FRAMETIME = 100
 ```
 
+Nominal game frame duration in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L16)
 
 <a id="constant-constant-mq3-game-g-local-gameversion-const-gameversion-baseq3-src-mq3-game-g-local-ml-118836626"></a>
 ### GAMEVERSION
@@ -288,8 +338,10 @@ const FRAMETIME = 100
 const GAMEVERSION = "baseq3"
 ```
 
+Game-module name used for server identification and compatibility checks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L10)
 
 <a id="constant-constant-mq3-game-g-local-infinite-const-infinite-1000000-src-mq3-game-g-local-ml-281346014"></a>
 ### INFINITE
@@ -298,8 +350,10 @@ const GAMEVERSION = "baseq3"
 const INFINITE = 1000000
 ```
 
+Sentinel for a duration or quantity that should not expire through normal counting.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L14)
 
 <a id="constant-constant-mq3-game-g-local-intermission-delay-time-const-intermission-delay-time-1000-src-mq3-game-g-local-ml-1408950624"></a>
 ### INTERMISSION_DELAY_TIME
@@ -308,8 +362,10 @@ const INFINITE = 1000000
 const INTERMISSION_DELAY_TIME = 1000
 ```
 
+Delay in milliseconds before the ordinary match intermission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L22)
 
 <a id="function-function-mq3-game-g-local-isfollowsentinel-function-isfollowsentinel-clientnum-src-mq3-game-g-local-ml-228251659"></a>
 ### isFollowSentinel
@@ -318,12 +374,14 @@ const INTERMISSION_DELAY_TIME = 1000
 function isFollowSentinel(clientNum)
 ```
 
+Test `clientNum==FOLLOW_ACTIVE1 or clientNum==FOLLOW_ACTIVE2` as the condition for `isFollowSentinel`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clientNum` | `dynamic` | — |  |
+| `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L198)
 
 <a id="function-function-mq3-game-g-local-levelfieldnames-function-levelfieldnames-src-mq3-game-g-local-ml-1591622750"></a>
 ### levelFieldNames
@@ -332,8 +390,10 @@ function isFollowSentinel(clientNum)
 function levelFieldNames()
 ```
 
+Return the ordered level field names table for g local: 51 entries beginning with `"clients"` and `"gentities"`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L191)
 
 <a id="constant-constant-mq3-game-g-local-max-filepath-const-max-filepath-144-src-mq3-game-g-local-ml-1462853418"></a>
 ### MAX_FILEPATH
@@ -342,8 +402,10 @@ function levelFieldNames()
 const MAX_FILEPATH = 144
 ```
 
+Upper bound on filepath represented by mq3.game.g_local.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L97)
 
 <a id="constant-constant-mq3-game-g-local-max-netname-const-max-netname-36-src-mq3-game-g-local-ml-931811256"></a>
 ### MAX_NETNAME
@@ -352,8 +414,10 @@ const MAX_FILEPATH = 144
 const MAX_NETNAME = 36
 ```
 
+Upper bound on player name represented by mq3.game.g_local.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L78)
 
 <a id="constant-constant-mq3-game-g-local-max-spawn-vars-const-max-spawn-vars-64-src-mq3-game-g-local-ml-1434929951"></a>
 ### MAX_SPAWN_VARS
@@ -362,8 +426,10 @@ const MAX_NETNAME = 36
 const MAX_SPAWN_VARS = 64
 ```
 
+Upper bound on spawn vars represented by mq3.game.g_local.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L82)
 
 <a id="constant-constant-mq3-game-g-local-max-spawn-vars-chars-const-max-spawn-vars-chars-4096-src-mq3-game-g-local-ml-755094046"></a>
 ### MAX_SPAWN_VARS_CHARS
@@ -372,8 +438,10 @@ const MAX_SPAWN_VARS = 64
 const MAX_SPAWN_VARS_CHARS = 4096
 ```
 
+Upper bound on spawn vars chars represented by mq3.game.g_local.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L84)
 
 <a id="constant-constant-mq3-game-g-local-max-vote-count-const-max-vote-count-3-src-mq3-game-g-local-ml-1663764206"></a>
 ### MAX_VOTE_COUNT
@@ -382,8 +450,10 @@ const MAX_SPAWN_VARS_CHARS = 4096
 const MAX_VOTE_COUNT = 3
 ```
 
+Upper bound on vote count represented by mq3.game.g_local.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L80)
 
 <a id="constant-constant-mq3-game-g-local-mover-1to2-const-mover-1to2-2-src-mq3-game-g-local-ml-1624001159"></a>
 ### MOVER_1TO2
@@ -392,8 +462,10 @@ const MAX_VOTE_COUNT = 3
 const MOVER_1TO2 = 2
 ```
 
+Mover-state identifier representing the 1 to2 position or transition.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L48)
 
 <a id="constant-constant-mq3-game-g-local-mover-2to1-const-mover-2to1-3-src-mq3-game-g-local-ml-1378783336"></a>
 ### MOVER_2TO1
@@ -402,8 +474,10 @@ const MOVER_1TO2 = 2
 const MOVER_2TO1 = 3
 ```
 
+Mover-state identifier representing the 2 to1 position or transition.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L50)
 
 <a id="constant-constant-mq3-game-g-local-mover-pos1-const-mover-pos1-0-src-mq3-game-g-local-ml-1161185067"></a>
 ### MOVER_POS1
@@ -412,8 +486,10 @@ const MOVER_2TO1 = 3
 const MOVER_POS1 = 0
 ```
 
+Mover-state identifier representing the pos1 position or transition.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L44)
 
 <a id="constant-constant-mq3-game-g-local-mover-pos2-const-mover-pos2-1-src-mq3-game-g-local-ml-47350286"></a>
 ### MOVER_POS2
@@ -422,8 +498,10 @@ const MOVER_POS1 = 0
 const MOVER_POS2 = 1
 ```
 
+Mover-state identifier representing the pos2 position or transition.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L46)
 
 <a id="function-function-mq3-game-g-local-nextbodyqueueslot-function-nextbodyqueueslot-slot-src-mq3-game-g-local-ml-1306725498"></a>
 ### nextBodyQueueSlot
@@ -432,12 +510,14 @@ const MOVER_POS2 = 1
 function nextBodyQueueSlot(slot)
 ```
 
+Advance a valid body-queue slot with circular wraparound and reject an out-of-range slot.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `slot` | `dynamic` | — |  |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L208)
 
 - [mq3.game.g_local.PlayerTeamState](Type-mq3-game-g-local-playerteamstate-1913452256.md) — struct
 <a id="constant-constant-mq3-game-g-local-reward-sprite-time-const-reward-sprite-time-2000-src-mq3-game-g-local-ml-17954315"></a>
@@ -447,8 +527,10 @@ function nextBodyQueueSlot(slot)
 const REWARD_SPRITE_TIME = 2000
 ```
 
+Duration in milliseconds for which a player reward sprite remains visible.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L20)
 
 <a id="constant-constant-mq3-game-g-local-sp-intermission-delay-time-const-sp-intermission-delay-time-5000-src-mq3-game-g-local-ml-1146691546"></a>
 ### SP_INTERMISSION_DELAY_TIME
@@ -457,8 +539,10 @@ const REWARD_SPRITE_TIME = 2000
 const SP_INTERMISSION_DELAY_TIME = 5000
 ```
 
+Delay in milliseconds before the single-player intermission presentation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L24)
 
 <a id="constant-constant-mq3-game-g-local-sp-podium-model-const-sp-podium-model-models-mapobjects-podium-podium4-md3-src-mq3-game-g-local-ml-1670433226"></a>
 ### SP_PODIUM_MODEL
@@ -467,8 +551,10 @@ const SP_INTERMISSION_DELAY_TIME = 5000
 const SP_PODIUM_MODEL = "models/mapobjects/podium/podium4.md3"
 ```
 
+Model resource used for the single-player victory podium.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L52)
 
 <a id="constant-constant-mq3-game-g-local-spectator-follow-const-spectator-follow-2-src-mq3-game-g-local-ml-953000033"></a>
 ### SPECTATOR_FOLLOW
@@ -477,8 +563,10 @@ const SP_PODIUM_MODEL = "models/mapobjects/podium/podium4.md3"
 const SPECTATOR_FOLLOW = 2
 ```
 
+Spectator-state identifier selecting follow.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L65)
 
 <a id="constant-constant-mq3-game-g-local-spectator-free-const-spectator-free-1-src-mq3-game-g-local-ml-738475762"></a>
 ### SPECTATOR_FREE
@@ -487,8 +575,10 @@ const SPECTATOR_FOLLOW = 2
 const SPECTATOR_FREE = 1
 ```
 
+Spectator-state identifier selecting free.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L63)
 
 <a id="constant-constant-mq3-game-g-local-spectator-not-const-spectator-not-0-src-mq3-game-g-local-ml-1824504351"></a>
 ### SPECTATOR_NOT
@@ -497,8 +587,10 @@ const SPECTATOR_FREE = 1
 const SPECTATOR_NOT = 0
 ```
 
+Spectator-state identifier selecting not.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="constant-constant-mq3-game-g-local-spectator-scoreboard-const-spectator-scoreboard-3-src-mq3-game-g-local-ml-1359951640"></a>
 ### SPECTATOR_SCOREBOARD
@@ -507,8 +599,10 @@ const SPECTATOR_NOT = 0
 const SPECTATOR_SCOREBOARD = 3
 ```
 
+Spectator-state identifier selecting scoreboard.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L67)
 
 <a id="constant-constant-mq3-game-g-local-team-active-const-team-active-1-src-mq3-game-g-local-ml-1927552664"></a>
 ### TEAM_ACTIVE
@@ -517,8 +611,10 @@ const SPECTATOR_SCOREBOARD = 3
 const TEAM_ACTIVE = 1
 ```
 
+Player team-state value used during normal active team play.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L71)
 
 <a id="constant-constant-mq3-game-g-local-team-begin-const-team-begin-0-src-mq3-game-g-local-ml-1895912435"></a>
 ### TEAM_BEGIN
@@ -527,8 +623,10 @@ const TEAM_ACTIVE = 1
 const TEAM_BEGIN = 0
 ```
 
+Player team-state value used before normal active team play begins.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L69)
 
 <a id="function-function-mq3-game-g-local-typenames-function-typenames-src-mq3-game-g-local-ml-847145790"></a>
 ### typeNames
@@ -537,8 +635,10 @@ const TEAM_BEGIN = 0
 function typeNames()
 ```
 
+Return the ordered type names table for g local: 11 entries beginning with `"moverState_t"` and `"gentity_t"`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L185)
 
 <a id="function-function-mq3-game-g-local-validmoverstate-function-validmoverstate-state-src-mq3-game-g-local-ml-1037133999"></a>
 ### validMoverState
@@ -547,12 +647,14 @@ function typeNames()
 function validMoverState(state)
 ```
 
+Test `state>=MOVER_POS1 and state<=MOVER_2TO1` as the condition for `validMoverState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Operand used to evaluate the returned expression `state>=MOVER_POS1 and state<=MOVER_2TO1`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L195)
 
 <a id="function-function-mq3-game-g-local-validspawnstorage-function-validspawnstorage-paircount-charcount-src-mq3-game-g-local-ml-1263938536"></a>
 ### validSpawnStorage
@@ -561,10 +663,12 @@ function validMoverState(state)
 function validSpawnStorage(pairCount, charCount)
 ```
 
+Test `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS` as the condition for `validSpawnStorage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pairCount` | `dynamic` | — |  |
-| `charCount` | `dynamic` | — |  |
+| `pairCount` | `dynamic` | — | Operand used to evaluate the returned expression `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS`. |
+| `charCount` | `dynamic` | — | Operand used to evaluate the returned expression `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L205)

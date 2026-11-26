@@ -3,17 +3,49 @@
 // Native semantic port of code/q3_ui/ui_saveconfig.c.
 package mq3.client.ui_save_config
 import std.string as strings
+/// Activation callback event accepted by the configuration-file saving menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
-struct SaveConfigMenu wrapAround fullscreen name maxchars widthInChars assets commands actions end struct
+/// Stores UI save config save config menu record, including `wrapAround`, `fullscreen`, `name`, `maxchars`, `widthInChars`, `assets` and additional values.
+struct SaveConfigMenu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the configuration-file
+  /// saving menu.
+  wrapAround
+  /// Whether the configuration-saving menu covers the entire UI instead of appearing over the
+  /// underlying game view.
+  fullscreen
+  /// Editable configuration filename; saving removes an existing extension and appends .cfg.
+  name
+  /// When constructing this record, `init` supplies `20` for this member.
+  maxchars
+  /// Number of character columns visible in the editable text or console field.
+  widthInChars
+  /// Media resources retained for registering and drawing the artwork used by the configuration-file
+  /// saving menu.
+  assets
+  /// When constructing this record, `init` supplies an empty list for this member.
+  commands
+  /// Host requests queued while accepting a filename and writing the current configuration, retained in
+  /// request order.
+  actions
+end struct
+/// Calls `std.string.lastIndexOf`, `std.string.substr` from UI save config `stripExtension`. The final path returns `name`.
+/// @param name Name used to select or register the corresponding UI save config resource.
 function stripExtension(name) at=strings.lastIndexOf(name,".");if at>=0 then return strings.substr(name,0,at) end if;return name end function
 // UI_SaveConfigMenu_BackEvent
+/// @param menu Mutable UI save config record/storage; this routine assigns `menu.actions`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function backEvent(menu,eventCode) if eventCode==QM_ACTIVATED then menu.actions=menu.actions+["pop"] end if;return menu end function
 // UI_SaveConfigMenu_SaveEvent
+/// @param menu Mutable UI save config record/storage; this routine assigns `menu.commands`, `menu.actions`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function saveEvent(menu,eventCode)
   if eventCode!=QM_ACTIVATED or menu.name=="" then return menu end if
   menu.commands=menu.commands+["writeconfig "+stripExtension(menu.name)+".cfg\n"];menu.actions=menu.actions+["pop"];return menu
 end function
 // UI_SaveConfigMenu_SavenameDraw
+/// @param menu Record read through `menu.widthInChars`, `menu.name`.
+/// @param focused Value used by `if focused then style="left+pulse+small"`.
 function drawName(menu,focused) style="left+small";color="red";if focused then style="left+pulse+small";color="highlight" end if;return ["text:320,192:Enter filename:","fill:240,227,"+str(menu.widthInChars*8)+",16","field:"+style+":"+color+":"+menu.name] end function
 // UI_SaveConfigMenu_Cache
 function cache() return ["menu/art/back_0","menu/art/back_1","menu/art/save_0","menu/art/save_1","menu/art/cut_frame"] end function

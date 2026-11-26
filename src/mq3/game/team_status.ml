@@ -6,9 +6,14 @@ import mq3.game.constants as c
 import mq3.server.world as sv
 import mq3.compat.numeric as n
 import mq3.shared.info as infoStrings
+/// Maximum number of players included in a team-overlay message.
 const TEAM_MAXOVERLAY = 32
+/// Interval in milliseconds between team-location information updates.
 const TEAM_LOCATION_UPDATE_TIME = 1000
 
+/// Apply `mq3.server.world.inPVS` while evaluating `getLocation`. Return paths include `best`.
+/// @param level Game-level state; accesses `locationHead` and `scene`.
+/// @param ent Game entity; accesses `r`.
 function getLocation(level,ent)
   best = void; bestlen = 201326592.0; origin = ent.r.currentOrigin
   location = level.locationHead; visited = 0
@@ -24,6 +29,10 @@ function getLocation(level,ent)
   end while
   return best
 end function
+/// Use `level.gamePrintFn` to perform `getLocationMsg`. Return paths include `infoStrings.copy(text,capacity)`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param ent Game entity; accesses `r`.
+/// @param capacity Maximum number of entries to allocate or retain.
 function getLocationMsg(level,ent,capacity)
   best = getLocation(level,ent)
   if best == void then return void end if
@@ -43,17 +52,27 @@ function getLocationMsg(level,ent,capacity)
   end if
   return infoStrings.copy(text,capacity)
 end function
+/// Validate the team-overlay client limit against the native sixty-four-client capacity.
+/// @param level Game-level state; accesses `maxclientsCvar`.
 function overlayLimit(level)
   if level.maxclientsCvar < 0 or level.maxclientsCvar > 64 then return error(490,"Invalid team-status Cvar client limit") end if
   return level.maxclientsCvar
 end function
+/// Require and return the initialized client state of an entity used by team status.
+/// @param ent Game entity; accesses `client`.
 function boundClient(ent)
   if ent.client == void then return error(490,"Team status requires initialized client bindings") end if
   return ent.client
 end function
+/// Return the result of `n.i32(a-b)` for `sortClients`.
+/// @param a Operand used to evaluate the returned expression `n.i32(a-b)`.
+/// @param b Operand used to evaluate the returned expression `n.i32(a-b)`.
 function sortClients(a,b)
   return n.i32(a-b)
 end function
+/// Use `level.serverCommandFn` to perform `sendInfo`.
+/// @param level Game-level state; accesses `sortedClients`, `entities` and `serverCommandFn`.
+/// @param ent Game entity; accesses `slot`.
 function sendInfo(level,ent)
   client = boundClient(ent)
   if not client.teamInfo then return void end if
@@ -90,6 +109,8 @@ function sendInfo(level,ent)
   if level.serverCommandFn == void then return error(490,"Team overlay requires server-command delivery") end if
   level.serverCommandFn(level,ent.slot,"tinfo "+str(count)+" "+text); return void
 end function
+/// Set `level.lastTeamLocationTime` to `level.time` in `mq3.game.team_status.check`.
+/// @param level Game-level state; accesses `time`, `lastTeamLocationTime` and `entities`. May update `level.lastTeamLocationTime` in place.
 function check(level)
   if n.i32(level.time-level.lastTeamLocationTime) <= TEAM_LOCATION_UPDATE_TIME then return void end if
   level.lastTeamLocationTime = level.time; limit = overlayLimit(level); index = 0

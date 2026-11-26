@@ -9,8 +9,10 @@
 struct SolidView
 ```
 
+Stores engine client console solid view record, including `fraction`, `scanlines`, `rows`, `backscrolled`, `version`, `glyphs` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L84)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct SolidView
 backscrolled
 ```
 
+When constructing this record, `Con_DrawSolidConsole` supplies `back` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L92)
 
 <a id="field-field-mq3-client-cl-console-solidview-fraction-fraction-src-mq3-client-cl-console-ml-1254303227"></a>
 ### fraction
@@ -31,8 +35,10 @@ backscrolled
 fraction
 ```
 
+When constructing this record, `Con_DrawSolidConsole` supplies `fraction` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L86)
 
 <a id="field-field-mq3-client-cl-console-solidview-glyphs-glyphs-src-mq3-client-cl-console-ml-833189049"></a>
 ### glyphs
@@ -41,8 +47,10 @@ fraction
 glyphs
 ```
 
+When constructing this record, `Con_DrawSolidConsole` supplies `glyphs.toArray()` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L96)
 
 <a id="field-field-mq3-client-cl-console-solidview-input-input-src-mq3-client-cl-console-ml-763073351"></a>
 ### input
@@ -51,8 +59,10 @@ glyphs
 input
 ```
 
+When constructing this record, `Con_DrawSolidConsole` supplies `Con_DrawInput(state)` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L99)
 
 <a id="field-field-mq3-client-cl-console-solidview-rows-rows-src-mq3-client-cl-console-ml-2066180981"></a>
 ### rows
@@ -61,8 +71,10 @@ input
 rows
 ```
 
+When constructing this record, `Con_DrawSolidConsole` supplies `rows` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L90)
 
 <a id="field-field-mq3-client-cl-console-solidview-scanlines-scanlines-src-mq3-client-cl-console-ml-953708271"></a>
 ### scanlines
@@ -71,8 +83,10 @@ rows
 scanlines
 ```
 
+When constructing this record, `Con_DrawSolidConsole` supplies `lines` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L88)
 
 <a id="field-field-mq3-client-cl-console-solidview-version-version-src-mq3-client-cl-console-ml-1394578311"></a>
 ### version
@@ -81,5 +95,7 @@ scanlines
 version
 ```
 
+Graphics-driver or renderer version string exposed to the video-settings UI.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L94)

@@ -9,8 +9,10 @@
 struct Compressed
 ```
 
+Compressed record for audio.snd_compressed_paint, containing `compression`, `blocks`, `length`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L31)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Compressed
 blocks
 ```
 
+Compressed blocks in playback order.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L35)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-compressed-compression-compression-src-mq3-audio-snd-compressed-paint-ml-915268910"></a>
 ### compression
@@ -31,8 +35,10 @@ blocks
 compression
 ```
 
+Compression-method identifier selecting the block decoder.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L33)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-compressed-length-length-src-mq3-audio-snd-compressed-paint-ml-1784097934"></a>
 ### length
@@ -41,5 +47,7 @@ compression
 length
 ```
 
+Total logical number of mono samples across all compressed blocks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L37)

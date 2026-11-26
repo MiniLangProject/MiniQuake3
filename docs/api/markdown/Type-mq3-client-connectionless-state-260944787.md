@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores connectionless state, including `connectionState`, `realtime`, `serverAddress`, `channel`, `challenge`, `connectPacketCount` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L41)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 challenge
 ```
 
+Server-issued challenge token used to validate the connection handshake.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L52)
 
 <a id="field-field-mq3-client-connectionless-state-channel-channel-src-mq3-client-connectionless-ml-2053323270"></a>
 ### channel
@@ -31,8 +35,10 @@ challenge
 channel
 ```
 
+When constructing this record, `create` supplies an absent (`void`) value for this member. Used by `disconnectPacket` and `dispatch` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L50)
 
 <a id="field-field-mq3-client-connectionless-state-connectionstate-connectionstate-src-mq3-client-connectionless-ml-432612118"></a>
 ### connectionState
@@ -41,8 +47,10 @@ channel
 connectionState
 ```
 
+Client connection-state identifier controlling handshake, loading, and active-play behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L43)
 
 <a id="field-field-mq3-client-connectionless-state-connectpacketcount-connectpacketcount-src-mq3-client-connectionless-ml-1722589684"></a>
 ### connectPacketCount
@@ -51,8 +59,10 @@ connectionState
 connectPacketCount
 ```
 
+Number of connection-handshake packets sent, also used by progress displays.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L54)
 
 <a id="field-field-mq3-client-connectionless-state-connecttime-connecttime-src-mq3-client-connectionless-ml-1432398278"></a>
 ### connectTime
@@ -61,8 +71,10 @@ connectPacketCount
 connectTime
 ```
 
+Timestamp of the most recent connection attempt or handshake retransmission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L56)
 
 <a id="field-field-mq3-client-connectionless-state-demoplaying-demoplaying-src-mq3-client-connectionless-ml-1470856434"></a>
 ### demoplaying
@@ -71,8 +83,10 @@ connectTime
 demoplaying
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `checkForResend` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L68)
 
 <a id="field-field-mq3-client-connectionless-state-lastpacketsenttime-lastpacketsenttime-src-mq3-client-connectionless-ml-1731355384"></a>
 ### lastPacketSentTime
@@ -81,8 +95,10 @@ demoplaying
 lastPacketSentTime
 ```
 
+Client timestamp of the latest outgoing packet, used to schedule retransmission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L58)
 
 <a id="field-field-mq3-client-connectionless-state-lastpackettime-lastpackettime-src-mq3-client-connectionless-ml-1578109412"></a>
 ### lastPacketTime
@@ -91,8 +107,10 @@ lastPacketSentTime
 lastPacketTime
 ```
 
+Client timestamp of the latest received server packet, used to detect timeouts.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L60)
 
 <a id="field-field-mq3-client-connectionless-state-qport-qport-src-mq3-client-connectionless-ml-1821415254"></a>
 ### qport
@@ -101,8 +119,10 @@ lastPacketTime
 qport
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `checkForResend` and `dispatch` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L65)
 
 <a id="field-field-mq3-client-connectionless-state-realtime-realtime-src-mq3-client-connectionless-ml-765132656"></a>
 ### realtime
@@ -111,8 +131,10 @@ qport
 realtime
 ```
 
+Current local client time in milliseconds used to schedule connection attempts and retransmission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L45)
 
 <a id="field-field-mq3-client-connectionless-state-serveraddress-serveraddress-src-mq3-client-connectionless-ml-454759386"></a>
 ### serverAddress
@@ -121,8 +143,10 @@ realtime
 serverAddress
 ```
 
+Network endpoint of the server selected for this connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L47)
 
 <a id="field-field-mq3-client-connectionless-state-servermessage-servermessage-src-mq3-client-connectionless-ml-109654326"></a>
 ### serverMessage
@@ -131,5 +155,7 @@ serverAddress
 serverMessage
 ```
 
+Status or error text received during the server connection handshake.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L62)

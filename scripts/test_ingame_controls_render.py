@@ -6,6 +6,7 @@ statements come directly from qvm_preview_app.ml; no copied engine is checked in
 """
 from __future__ import annotations
 import argparse
+from contextlib import nullcontext
 import json
 import os
 from pathlib import Path
@@ -13,6 +14,7 @@ import re
 import subprocess
 
 from build import build_file_lock, build_native, native_build_lock, minilang_inputs, valid_minilang_cache
+from build_release import PLAYABLE_RUNTIME_FLAGS, TEST_RUNTIME_FLAGS, prepare_compiler
 from inventory import sha
 from toolchain import ROOT, msvc_env, run
 
@@ -21,6 +23,7 @@ REPLAY_INPUT = """    // Test-only native replay: exact productive routing and r
     replayEvents=[]
     if replayMode=="controls" then
       if frames==5 then replayEvents=[window.InputEvent(serverTime,window.INPUT_KEY,27,1),window.InputEvent(serverTime,window.INPUT_KEY,27,0)] end if
+      if frames==6 then replayPausedTime=simulationTime end if
       if frames==10 or frames==15 then
         replayY=202;if frames==15 then replayY=170 end if
         replayEvents=[window.InputEvent(serverTime,window.INPUT_MOUSE,-10000,-10000),window.InputEvent(serverTime,window.INPUT_MOUSE,320,replayY),window.InputEvent(serverTime,window.INPUT_KEY,178,1),window.InputEvent(serverTime,window.INPUT_KEY,178,0)]
@@ -45,9 +48,10 @@ REPLAY_PRESENT = """    if created!=void and (created.buttons&1)!=0 then replayA
     replayPosition=state.context.latestSnapshot.playerState.origin
     if replayPosition!=replayLastPosition then replayPositionChanges=replayPositionChanges+1;replayLastPosition=[replayPosition[0],replayPosition[1],replayPosition[2]] end if
     replayAmmo=state.context.latestSnapshot.playerState.ammo[2];if replayAmmo<replayLastAmmo then replayAmmoDecreases=replayAmmoDecreases+1 end if;replayLastAmmo=replayAmmo
-    if frames==16 or frames%500==0 then print "REPLAY presented frame="+str(frames)+" mode="+replayMode+" views="+str(len(preparedViews))+" textures="+str(len(qvmCatalog.textures))+" hudTextures="+str(len(hudCatalog.textures))+" heap_used="+str(heap_bytes_used())+" heap_committed="+str(heap_bytes_committed())+" simulation_ms="+str(simulationMs)+" geometry_ms="+str(geometryMs)+" render_ms="+str(renderMs) end if
+    if frames==16 or frames%500==0 then print "REPLAY presented frame="+str(frames)+" mode="+replayMode+" views="+str(len(preparedViews))+" textures="+str(len(qvmCatalog.textures))+" hudTextures="+str(len(hudCatalog.textures))+" heap_used="+str(heap_bytes_used())+" heap_committed="+str(heap_bytes_committed())+" gc_cycles="+str(gc_stat(0))+" gc_live="+str(gc_stat(1))+" gc_reclaimed="+str(gc_stat(2))+" gc_background="+str(gc_stat(16))+" simulation_ms="+str(simulationMs)+" geometry_ms="+str(geometryMs)+" render_ms="+str(renderMs) end if
     if replayMode=="controls" and frames==16 then
-      if not uiFullscreen or len(preparedViews)<=firstUiView then return fail("Controls replay did not submit its original fullscreen3D preview") end if
+      if not uiFullscreen or len(preparedViews)<1 then return fail("Controls replay did not submit its original fullscreen 3D preview") end if
+      if not paused or simulationTime!=replayPausedTime then return fail("the local match advanced while the UI requested pause") end if
       replayControl=preparedViews[len(preparedViews)-1];replayControlRect=replayControl.source.refdef
       if replayControl.geometry.modelEntities<1 or replayControlRect.y>=0 then return fail("Controls replay did not render original offscreen player preview") end if
       print "REPLAY Controls3D x="+str(replayControlRect.x)+" y="+str(replayControlRect.y)+" width="+str(replayControlRect.width)+" height="+str(replayControlRect.height)+" models="+str(replayControl.geometry.modelEntities)
@@ -55,15 +59,107 @@ REPLAY_PRESENT = """    if created!=void and (created.buttons&1)!=0 then replayA
 """
 
 REPLAY_SLOW = """    if elapsedFrameMs>100 then
-      print "REPLAY_SLOW frame="+str(frames)+" work="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cg="+str(afterCgame-afterGame)+" ui="+str(afterSimulation-afterCgame)+" geometry="+str(afterGeometry-afterSimulation)+" hud="+str(afterHud-afterGeometry)+" upload="+str(afterBatch-afterHud)+" draw="+str(audioStartedAt-afterBatch)+" audio="+str(elapsedFrameMs-(audioStartedAt-startedAt))+" textures="+str(len(qvmCatalog.textures))+" hudTextures="+str(len(hudCatalog.textures))+" assets="+str(len(state.context.assets))
+      print "REPLAY_SLOW frame="+str(frames)+" work="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cg="+str(afterCgame-afterGame)+" ui="+str(afterSimulation-afterCgame)+" geometry="+str(afterGeometry-afterSimulation)+" hud="+str(afterHud-afterGeometry)+" upload="+str(afterBatch-afterHud)+" draw="+str(audioStartedAt-afterBatch)+" audio="+str(elapsedFrameMs-(audioStartedAt-startedAt))+" textures="+str(len(qvmCatalog.textures))+" hudTextures="+str(len(hudCatalog.textures))+" assets="+str(len(state.context.assets))+" gc_cycles="+str(gc_stat(0))+" gc_live="+str(gc_stat(1))
     end if
 """
 
 
-def generate(out: Path) -> Path:
-    app = ROOT / "src/mq3/client/qvm_preview_app.ml"
+CPU_STAGES = (
+    ("game", "    afterGame=window.milliseconds();"),
+    ("cgame", "    afterCgame=window.milliseconds();"),
+    ("ui", "    afterSimulation=window.milliseconds();"),
+    ("geometry", "    afterGeometry=window.milliseconds();"),
+    ("batch", "    afterBatch=window.milliseconds();"),
+    ("submit", "    window.present();"),
+    ("present", "    audioStartedAt=window.milliseconds();"),
+    ("audio", "    if elapsedFrameMs>maximumFrameMs"),
+)
+
+CPU_HELPERS = """extern function replayCurrentThread() from "kernel32.dll" symbol "GetCurrentThread" returns ptr
+extern function replayThreadCycleTime(thread as ptr,output as bytes) from "kernel32.dll" symbol "QueryThreadCycleTime" returns bool
+
+function replayCycles(thread,buffer)
+  if not replayThreadCycleTime(thread,buffer) then return error(7696,"could not sample replay thread") end if
+  return (numeric.readU32(buffer,4)<<32)|numeric.readU32(buffer,0)
+end function
+
+function replayMark(counters,index,thread,buffer,previous)
+  current=replayCycles(thread,buffer)
+  counters[index]=current-previous
+  return current
+end function
+
+"""
+
+CPU_START = """    replayCpuPrevious=replayCycles(replayThread,replayCycleBuffer)
+    replayGcBefore=gc_stat(0);replayBackgroundBefore=gc_stat(16)
+    replayExpandBefore=pipelineProfile.expansion
+    replayMaterialBefore=pipelineProfile.material
+    replayBatchBefore=pipelineProfile.batch
+    replayPortalBefore=portalPrepareMs
+    replayRebuildBefore=worldRebuildMs
+    replayTexturesBefore=len(qvmCatalog.textures)
+    replaySceneDecodesBefore=qvmCatalog.imageCache.misses
+"""
+
+CPU_FINISH = """    replayCpuFrame=0
+    for replayStage=0 to len(replayCpuDeltas)-1
+      replayCpuTotals[replayStage]=replayCpuTotals[replayStage]+replayCpuDeltas[replayStage]
+      replayCpuFrame=replayCpuFrame+replayCpuDeltas[replayStage]
+    end for
+    replayPresentTotal=replayPresentTotal+audioStartedAt-replayPresentAt
+    if elapsedFrameMs>=PROFILE_MIN_MS then print "CPU_FRAME frame="+str(frames)+" wall_ms="+str(elapsedFrameMs)+" game="+str(afterGame-startedAt)+" cgame="+str(afterCgame-afterGame)+" expand="+str(pipelineProfile.expansion-replayExpandBefore)+" materials="+str(pipelineProfile.material-replayMaterialBefore)+" scene_batch="+str(pipelineProfile.batch-replayBatchBefore)+" portals="+str(portalPrepareMs-replayPortalBefore)+" world_rebuild="+str(worldRebuildMs-replayRebuildBefore)+" draw="+str(replayPresentAt-afterBatch)+" present="+str(audioStartedAt-replayPresentAt)+" new_scene_textures="+str(len(qvmCatalog.textures)-replayTexturesBefore)+" gc_delta="+str(gc_stat(0)-replayGcBefore)+" background_gc_delta="+str(gc_stat(16)-replayBackgroundBefore)+" cycles="+str(replayCpuFrame)+" geometry_cycles="+str(replayCpuDeltas[3])+" present_cycles="+str(replayCpuDeltas[6])+" scene_image_decodes="+str(qvmCatalog.imageCache.misses-replaySceneDecodesBefore) end if
+    if elapsedFrameMs>=PROFILE_MIN_MS then
+      replayTextureIndex=replayTexturesBefore
+      while replayTextureIndex<len(qvmCatalog.textures)
+        print "CPU_SCENE_TEXTURE frame="+str(frames)+" image="+qvmCatalog.textures[replayTextureIndex].imageName
+        replayTextureIndex=replayTextureIndex+1
+      end while
+    end if
+"""
+
+
+def replace_boundary(text: str, anchor: str, replacement: str) -> str:
+    if text.count(anchor) != 1:
+        raise RuntimeError("Replay must find one productive boundary: " + anchor)
+    return text.replace(anchor, replacement)
+
+
+def add_cpu_profile(text: str, loop: str, finish: str, slow: str, profile_min_ms: int) -> str:
+    text = replace_boundary(text, "function fail(message)", CPU_HELPERS + "function fail(message)")
+    initialization = """  replayThread=replayCurrentThread();replayCycleBuffer=bytes(8,0)
+  replayCpuTotals=array(8,0);replayCpuDeltas=array(8,0);replayPresentTotal=0
+"""
+    text = replace_boundary(text, loop, initialization + loop)
+    text = replace_boundary(text, loop, loop + CPU_START)
+    for index, (name, anchor) in enumerate(CPU_STAGES):
+        if name == "audio":
+            anchor = REPLAY_SLOW + slow
+        mark = f"    replayCpuPrevious=replayMark(replayCpuDeltas,{index},replayThread,replayCycleBuffer,replayCpuPrevious)\n"
+        if name == "submit":
+            mark += "    replayPresentAt=window.milliseconds()\n"
+        if name == "audio":
+            mark += CPU_FINISH.replace("PROFILE_MIN_MS", str(profile_min_ms))
+        text = replace_boundary(text, anchor, mark + anchor)
+    fields = "".join(f'+" {name}="+str(replayCpuTotals[{i}]/frames)' for i, (name, _) in enumerate(CPU_STAGES))
+    result = '  if frames>0 then print "CPU_MEAN cycles_per_frame"' + fields + '+" present_wall_ms="+str(replayPresentTotal/frames) end if\n'
+    return replace_boundary(text, finish, finish + result)
+
+
+def add_qvm_profile(text: str, loop: str, finish: str, slow: str, profile_frame: int, profile_min_ms: int) -> str:
+    declaration = ('extern function replayQvmProfileFrame(frame as i32,workMs as i32,minimumWorkMs as i32) '
+                   'from "miniquake3_qvm.dll" symbol "mq3_qvm_profile_frame" returns i32\n\n')
+    text = replace_boundary(text, "function fail(message)", declaration + "function fail(message)")
+    text = replace_boundary(text, loop, "  replayProfiled=replayQvmProfileFrame(0,0,0)\n" + loop)
+    threshold = f"    replayProfileMinimum={profile_min_ms};if frames=={profile_frame} then replayProfileMinimum=0 end if\n"
+    frame = "    replayProfiled=replayQvmProfileFrame(frames,elapsedFrameMs,replayProfileMinimum)\n"
+    text = replace_boundary(text, slow, threshold + frame + slow)
+    return replace_boundary(text, finish, finish + "  replayProfiled=replayQvmProfileFrame(-1,0,0)\n")
+
+
+def generate(out: Path, app: Path, trace_cpu: bool, trace_qvm: bool, profile_frame: int, profile_min_ms: int = 50) -> Path:
     source = app.read_text(encoding="utf-8")
-    before = "    wasMenuActive=menuActive\n"
+    before = "    inputCommands.execute(state.context.commandState)\n"
     after = "    window.present();renderMs=renderMs+window.milliseconds()-afterBatch;frames=frames+1\n"
     if source.count(before) != 1 or source.count(after) != 1:
         raise RuntimeError("Productive input/present boundaries changed; review replay insertion")
@@ -75,10 +171,17 @@ def generate(out: Path) -> Path:
     text = text.replace(slow, REPLAY_SLOW + slow)
     loop = "  while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)\n"
     assert text.count(loop) == 1
-    text = text.replace(loop, "  replayPositionChanges=0;replayAttackCommands=0;replayAmmoDecreases=0;replayLastPosition=state.context.latestSnapshot.playerState.origin;replayLastAmmo=state.context.latestSnapshot.playerState.ammo[2]\n" + loop)
-    finish = "  loopElapsedMs=window.milliseconds()-realStart\n"
+    text = text.replace(loop, "  replayPausedTime=-1;replayPositionChanges=0;replayAttackCommands=0;replayAmmoDecreases=0;replayLastPosition=state.context.latestSnapshot.playerState.origin;replayLastAmmo=state.context.latestSnapshot.playerState.ammo[2]\n" + loop)
+    finish = "  loopElapsedMs=frameTiming.elapsed(realStart,window.milliseconds())\n"
     assert text.count(finish) == 1
     text = text.replace(finish, '  print "REPLAY movement positions="+str(replayPositionChanges)+" attacks="+str(replayAttackCommands)+" ammoDecreases="+str(replayAmmoDecreases)\n' + finish)
+    step = "    serverTime=hostTime;if not wasPaused then serverTime=serverTime+frameMsec end if\n"
+    text = replace_boundary(text, loop, '  replayFixedStep=cvar.variableIntegerValue(state.context.cvars,"mq3_regression_fixed_step")\n' + loop)
+    text = replace_boundary(text, step, "    if replayFixedStep>0 then frameMsec=replayFixedStep end if\n" + step)
+    if trace_cpu:
+        text = add_cpu_profile(text, loop, finish, slow, profile_min_ms)
+    if trace_qvm:
+        text = add_qvm_profile(text, loop, finish, slow, profile_frame, profile_min_ms)
     target = out / "modules/mq3/tests/controls_render_app.ml"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(text, encoding="utf-8", newline="\n")
@@ -98,36 +201,81 @@ def main() -> None:
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--mode", choices=("controls", "moving"), default="controls")
     parser.add_argument("--frames", type=int, default=120)
+    parser.add_argument("--map", choices=("q3dm0", "q3dm1"), default="q3dm1")
+    parser.add_argument("--singleplayer", action="store_true", help="Spawn the original arena bot")
     parser.add_argument("--max-work-ms", type=float, help="Optional latency acceptance for a moving replay")
+    parser.add_argument("--published-compiler", action="store_true", help="Use the verified published compiler package")
+    parser.add_argument("--fixed-step-ms", type=int, default=0,
+                        help="Use a fixed simulation step for reproducible movement/combat")
+    parser.add_argument("--cpu-profile", action="store_true",
+                        help="Sample main-thread cycles by phase and print slow-frame breakdowns")
+    parser.add_argument("--qvm-profile", action="store_true",
+                        help="Measure each VM entry and trap during the playable loop")
+    parser.add_argument("--profile-min-ms", type=int, default=50,
+                        help="Minimum frame time for detailed CPU and QVM diagnostics (default: 50 ms)")
+    parser.add_argument("--profile-frame", type=int, default=0,
+                        help="Also capture this frame in --qvm-profile regardless of its duration")
+    parser.add_argument("--source-root", type=Path, default=ROOT / "src",
+                        help="Use a frozen MiniLang source tree for an A/B baseline")
+    parser.add_argument("--native-dir", type=Path, help="Use a frozen directory of the Windows DLLs for an A/B baseline")
+    parser.add_argument("--label", help="Keep build and logs separate under this label")
     args = parser.parse_args()
+    if not 0 <= args.fixed_step_ms <= 50:
+        parser.error("--fixed-step-ms must be between 0 and 50")
+    if args.label and not re.fullmatch(r"[a-zA-Z0-9_-]+", args.label):
+        parser.error("--label must contain only letters, digits, hyphens or underscores")
+    if args.profile_min_ms < 1:
+        parser.error("--profile-min-ms must be positive")
+    if args.profile_frame and (not args.qvm_profile or not 1 <= args.profile_frame <= args.frames):
+        parser.error("--profile-frame requires --qvm-profile and a frame within the replay")
     if args.frames < 20:
-        raise RuntimeError("Replay needs at least20 frames")
+        raise RuntimeError("Replay needs at least 20 frames")
     out = ROOT / "build/reference/controls_render_replay"
+    if args.label:
+        out /= args.label
     out.mkdir(parents=True, exist_ok=True)
-    app = ROOT / "src/mq3/client/qvm_preview_app.ml"
-    generated = generate(out)
+    source_root = args.source_root.resolve()
+    app = source_root / "mq3/client/qvm_preview_app.ml"
+    generated = generate(out, app, args.cpu_profile, args.qvm_profile, args.profile_frame, args.profile_min_ms)
     app_hash = sha(app)
     qvms = ROOT / "build/reference/qvms"
     if not all((qvms / name).is_file() for name in ("ui.qvm", "qagame.qvm", "cgame.qvm")):
         raise RuntimeError("Build unchanged original QVMs first")
-    with native_build_lock(ROOT / "build"):
-        build_native(ROOT / "build", msvc_env("x64"))
-    compiler = ROOT / "artifacts/toolchain/build/mlc_win64.exe"
-    exe = ROOT / "build/controls_render_replay.exe"
+    native_dir = args.native_dir.resolve() if args.native_dir else ROOT / "build"
+    if not args.native_dir:
+        with native_build_lock(native_dir):
+            build_native(native_dir, msvc_env("x64"))
+    published_compiler = args.published_compiler or os.environ.get("MQ3_BUILD_TOOLCHAIN") == "release"
+    runtime_flags = PLAYABLE_RUNTIME_FLAGS if published_compiler else TEST_RUNTIME_FLAGS
+    exe = native_dir / ("controls_render_replay" + ("_" + args.label if args.label else "") + ".exe")
     stamp = exe.with_suffix(".inputs.json")
-    def build_inputs():
-        inputs = minilang_inputs(ROOT / "tests/ingame_controls_render_probe.ml", compiler)
-        inputs["generated_app"] = sha(generated)
-        inputs["replay_generator"] = sha(Path(__file__))
-        inputs["extra_include"] = "build/reference/controls_render_replay/modules"
-        return inputs
-    with build_file_lock(exe.with_suffix(".build.lock")):
+    compiler_lock = build_file_lock(ROOT / "build/release-build.lock") if published_compiler else nullcontext()
+    with compiler_lock, build_file_lock(exe.with_suffix(".build.lock")):
+        library_root = ROOT / "artifacts/toolchain"
+        compiler = library_root / "build/mlc_win64.exe"
+        if published_compiler:
+            compiler, library_root = prepare_compiler()
+
+        def build_inputs():
+            inputs = minilang_inputs(ROOT / "tests/ingame_controls_render_probe.ml", compiler)
+            if source_root != ROOT / "src":
+                entry = ROOT / "tests/ingame_controls_render_probe.ml"
+                inputs["sources"] = {f"src/{path.relative_to(source_root).as_posix()}": sha(path)
+                                     for path in source_root.rglob("*.ml")}
+                inputs["sources"][entry.relative_to(ROOT).as_posix()] = sha(entry)
+            inputs["generated_app"] = sha(generated)
+            inputs["replay_generator"] = sha(Path(__file__))
+            inputs["library_root"] = str(library_root)
+            inputs["extra_include"] = (out / "modules").relative_to(ROOT).as_posix()
+            inputs["runtime_flags"] = list(runtime_flags)
+            return inputs
+
         inputs = build_inputs()
         if not valid_minilang_cache(exe, stamp, inputs):
             run([compiler, ROOT / "tests/ingame_controls_render_probe.ml", exe,
-                 "-I", out / "modules", "-I", ROOT / "src", "-I", ROOT / "artifacts/toolchain",
-                 "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"],
-                 ROOT / "build", log=out / "compile.log", timeout=900)
+                 "-I", out / "modules", "-I", source_root, "-I", library_root,
+                 *runtime_flags],
+                ROOT / "build", log=out / "compile.log", timeout=900)
             if build_inputs() != inputs:
                 raise RuntimeError("Replay compiler sources changed during build; rerun on frozen source")
             stamp.write_text(json.dumps({"inputs": inputs, "binary": sha(exe)}, indent=2) + "\n", encoding="utf-8")
@@ -136,15 +284,34 @@ def main() -> None:
     archive = archive_path(args.data_root.resolve())
     env = os.environ.copy()
     env["MQ3_RENDERER"] = "hardware"
-    result = subprocess.run([str(exe), str(archive), str(qvms), args.mode, str(args.frames)],
-                            cwd=ROOT / "build", env=env, capture_output=True, text=True, timeout=900)
-    log = result.stdout + result.stderr
-    (out / (args.mode + ".log")).write_text(log, encoding="utf-8")
+    log_path = out / (args.mode + ".log")
+    qvm_path = out / (args.mode + ".qvm-profile.log")
+    if args.qvm_profile:
+        qvm_path.unlink(missing_ok=True)
+        env["MQ3_QVM_PROFILE"] = "frame"
+        env["MQ3_QVM_PROFILE_FILE"] = str(qvm_path)
+    with log_path.open("w", encoding="utf-8") as trace:
+        result = subprocess.run([str(exe), str(archive), str(qvms), args.mode, str(args.frames), args.map, str(int(args.singleplayer)), str(args.fixed_step_ms)],
+                                cwd=native_dir, env=env, stdout=trace, stderr=subprocess.STDOUT, timeout=900)
+    log = log_path.read_text(encoding="utf-8", errors="replace")
     passed = (result.returncode == 0 and "REPLAY presented frame=16" in log and
               re.search(r"QVM preview: .*frames=" + str(args.frames) + r"(?: |$)", log, re.MULTILINE) is not None
               and "Error occured:" not in log)
-    maximum = re.search(r"workMax=(\S+)ms", log)
-    work_max_ms = float(maximum[1]) if maximum else None
+    timing = re.search(r"QVM loop profile: elapsed=(\S+)ms fps=(\S+)"
+                       r" workP50=(\S+)ms workP95=(\S+)ms workP99=(\S+)ms workMax=(\S+)ms", log)
+    timing_names = ("elapsed_ms", "fps", "p50_ms", "p95_ms", "p99_ms", "max_ms")
+    metrics = {name: value if value.startswith(">=") else float(value)
+               for name, value in zip(timing_names, timing.groups())} if timing else {}
+    work_max_ms = metrics.get("max_ms")
+    cpu_line = re.search(r"^CPU_MEAN cycles_per_frame (.+)$", log, re.MULTILINE)
+    cpu_means = dict(item.split("=") for item in cpu_line[1].split()) if cpu_line else {}
+    if args.cpu_profile:
+        passed = passed and bool(cpu_means)
+    if args.qvm_profile:
+        qvm_trace = qvm_path.read_text(encoding="utf-8") if qvm_path.is_file() else ""
+        passed = passed and "[qvm-entry] frame=-1 " in qvm_trace
+        if args.profile_frame:
+            passed = passed and f"[qvm-entry] frame={args.profile_frame} " in qvm_trace
     latency_passed = args.max_work_ms is None or (work_max_ms is not None and work_max_ms <= args.max_work_ms)
     passed = passed and latency_passed
     if args.mode == "controls":
@@ -152,20 +319,27 @@ def main() -> None:
     if args.mode == "moving":
         movement = re.search(r"REPLAY movement positions=(\d+) attacks=(\d+) ammoDecreases=(\d+)", log)
         passed = passed and movement is not None and all(int(value) > 0 for value in movement.groups())
-    report = {"passed": passed, "mode": args.mode, "frames": args.frames,
+    report = {"passed": passed, "mode": args.mode, "map": args.map, "singleplayer": args.singleplayer, "frames": args.frames,
+              "fixed_step_ms": args.fixed_step_ms, "cpu_profile": args.cpu_profile,
+              "qvm_profile": args.qvm_profile, "profile_frame": args.profile_frame, "profile_min_ms": args.profile_min_ms,
+              "qvm_log_sha256": sha(qvm_path) if args.qvm_profile and qvm_path.is_file() else None,
+              "frame_timing": metrics, "main_thread_cycles": {key: float(value) for key, value in cpu_means.items() if key != "present_wall_ms"},
+              "present_wall_ms": float(cpu_means["present_wall_ms"]) if cpu_means else None,
               "scope": "Exact productive game loop with test-only original event replay, real Retail original UI/Cgame/qagame, geometry/material preparation, native texture upload and hardware rendering.",
               "sources": {"src/mq3/client/qvm_preview_app.ml": app_hash,
                           "generated_app": sha(generated), "test_entry": sha(ROOT / "tests/ingame_controls_render_probe.ml"),
-                          "executable": sha(exe), "playable_window.dll": sha(ROOT / "build/playable_window.dll"),
+                          "executable": sha(exe),
+                          **{name: sha(native_dir / name) for name in ("playable_window.dll", "miniquake3_qvm.dll", "miniquake3_abi.dll")},
+                          **{name: sha(qvms / name) for name in ("ui.qvm", "qagame.qvm", "cgame.qvm")},
                           "compile_inputs": sha(stamp),
                           "pak0.pk3": sha(archive)},
-              "returncode": result.returncode, "log_sha256": sha(out / (args.mode + ".log")),
+              "returncode": result.returncode, "log_sha256": sha(log_path),
               "latency_limit_ms": args.max_work_ms, "measured_work_max_ms": work_max_ms,
               "latency_passed": latency_passed}
     (out / (args.mode + ".json")).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(log)
     if not passed:
-        raise RuntimeError("Productive native replay failed; see " + str(out / (args.mode + ".log")))
+        raise RuntimeError("Productive native replay failed; see " + str(log_path))
     print("PASS: " + args.mode + " productive native render replay frames=" + str(args.frames))
 
 

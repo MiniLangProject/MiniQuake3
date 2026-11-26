@@ -23,8 +23,10 @@ Reachable from entry: **yes**
 const CA_ACTIVE = 8
 ```
 
+Connection-state value for normal gameplay after game-state loading, defined for deciding when client user commands and command packets can be sent.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L19)
 
 <a id="constant-constant-mq3-client-send-cmd-ca-cinematic-const-ca-cinematic-9-src-mq3-client-send-cmd-ml-1539124450"></a>
 ### CA_CINEMATIC
@@ -33,8 +35,10 @@ const CA_ACTIVE = 8
 const CA_CINEMATIC = 9
 ```
 
+Client connection state used for fullscreen cinematic playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L21)
 
 <a id="constant-constant-mq3-client-send-cmd-ca-connected-const-ca-connected-5-src-mq3-client-send-cmd-ml-1037436742"></a>
 ### CA_CONNECTED
@@ -43,8 +47,10 @@ const CA_CINEMATIC = 9
 const CA_CONNECTED = 5
 ```
 
+Connection-state value for a completed handshake before game-state loading, defined for deciding when client user commands and command packets can be sent.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L14)
 
 <a id="constant-constant-mq3-client-send-cmd-ca-primed-const-ca-primed-7-src-mq3-client-send-cmd-ml-44252506"></a>
 ### CA_PRIMED
@@ -53,8 +59,10 @@ const CA_CONNECTED = 5
 const CA_PRIMED = 7
 ```
 
+Client connection state with game state loaded, awaiting a playable snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L16)
 
 <a id="constant-constant-mq3-client-send-cmd-clc-client-command-const-clc-client-command-4-src-mq3-client-send-cmd-ml-1994060667"></a>
 ### CLC_CLIENT_COMMAND
@@ -63,8 +71,10 @@ const CA_PRIMED = 7
 const CLC_CLIENT_COMMAND = 4
 ```
 
+Client-message command byte selecting the client command protocol operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
 
 <a id="constant-constant-mq3-client-send-cmd-clc-move-const-clc-move-2-src-mq3-client-send-cmd-ml-2109013033"></a>
 ### CLC_MOVE
@@ -73,8 +83,10 @@ const CLC_CLIENT_COMMAND = 4
 const CLC_MOVE = 2
 ```
 
+Client-message command byte selecting the move protocol operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)
 
 <a id="constant-constant-mq3-client-send-cmd-clc-move-no-delta-const-clc-move-no-delta-3-src-mq3-client-send-cmd-ml-851449422"></a>
 ### CLC_MOVE_NO_DELTA
@@ -83,8 +95,10 @@ const CLC_MOVE = 2
 const CLC_MOVE_NO_DELTA = 3
 ```
 
+Client-message command byte selecting the move no delta protocol operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L39)
 
 <a id="constant-constant-mq3-client-send-cmd-cmd-backup-const-cmd-backup-64-src-mq3-client-send-cmd-ml-1593137739"></a>
 ### CMD_BACKUP
@@ -93,8 +107,10 @@ const CLC_MOVE_NO_DELTA = 3
 const CMD_BACKUP = 64
 ```
 
+Number of recent user commands retained in the command-history ring.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L25)
 
 <a id="constant-constant-mq3-client-send-cmd-cmd-mask-const-cmd-mask-63-src-mq3-client-send-cmd-ml-946363524"></a>
 ### CMD_MASK
@@ -103,8 +119,10 @@ const CMD_BACKUP = 64
 const CMD_MASK = 63
 ```
 
+Mask that maps a user-command sequence number into the command-history ring.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L27)
 
 <a id="function-function-mq3-client-send-cmd-commandcopy-function-commandcopy-value-src-mq3-client-send-cmd-ml-393416185"></a>
 ### commandCopy
@@ -113,12 +131,14 @@ const CMD_MASK = 63
 function commandCopy(value)
 ```
 
+Calls `mq3.client.send_cmd.zeroCommand`, `mq3.qcommon.message_delta.userCommand` from send cmd `commandCopy`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.serverTime`, `value.angles`, `value.buttons`, `value.weapon` and additional values. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L175)
 
 <a id="function-function-mq3-client-send-cmd-create-function-create-src-mq3-client-send-cmd-ml-371260116"></a>
 ### create
@@ -127,8 +147,10 @@ function commandCopy(value)
 function create()
 ```
 
+Calls `mq3.client.command_ring.create`, `mq3.client.send_cmd.zeroCommand`, `mq3.client.send_cmd.OutPacket` and additional helpers from send cmd `create`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L180)
 
 <a id="function-function-mq3-client-send-cmd-createnewcommand-function-createnewcommand-state-frametime-host-src-mq3-client-send-cmd-ml-748147797"></a>
 ### createNewCommand
@@ -137,14 +159,16 @@ function create()
 function createNewCommand(state, frameTime, host)
 ```
 
+Updates `state.frameMsec`, `state.oldFrameTime`, `state.cmdNumber` during send cmd `createNewCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `frameTime` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable send cmd record/storage; this routine assigns `state.frameMsec`, `state.oldFrameTime`, `state.cmdNumber`. |
+| `frameTime` | `dynamic` | — | Value assigned to `command.serverTime`. |
+| `host` | `dynamic` | — | Record read through `host.createCommandFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L214)
 
 <a id="function-function-mq3-client-send-cmd-diagnose-function-diagnose-host-text-src-mq3-client-send-cmd-ml-1198002173"></a>
 ### diagnose
@@ -153,13 +177,15 @@ function createNewCommand(state, frameTime, host)
 function diagnose(host, text)
 ```
 
+Calls `host.diagnosticFn` from send cmd `diagnose`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.diagnosticFn`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `diagnose` in the send cmd path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L208)
 
 <a id="function-function-mq3-client-send-cmd-hashkey-function-hashkey-text-maxlength-src-mq3-client-send-cmd-ml-1267003325"></a>
 ### hashKey
@@ -172,11 +198,11 @@ Com_HashKey uses signed char on the pinned Windows reference build.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `maxLength` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `hashKey` in the send cmd path. |
+| `maxLength` | `dynamic` | — | Value used by `if limit>maxLength then limit=maxLength end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L192)
 
 <a id="function-function-mq3-client-send-cmd-liveservices-function-liveservices-runtime-channel-src-mq3-client-send-cmd-ml-847702331"></a>
 ### liveServices
@@ -185,13 +211,15 @@ Com_HashKey uses signed char on the pinned Windows reference build.
 function liveServices(runtime, channel)
 ```
 
+Calls `mq3.client.send_cmd.services`, `mq3.client.send_cmd.LiveTransport` from send cmd `liveServices`. The final path returns `host`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | runtime record passed to the send cmd helper calls. |
+| `channel` | `dynamic` | — | Value used by `if runtime==void or channel==void then return error(7710,"client send: missing live transport") end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L299)
 
 <a id="function-function-mq3-client-send-cmd-livetransmit-function-livetransmit-host-state-msg-src-mq3-client-send-cmd-ml-1620269776"></a>
 ### liveTransmit
@@ -200,14 +228,16 @@ function liveServices(runtime, channel)
 function liveTransmit(host, state, msg)
 ```
 
+Calls `mq3.client.netchan.transmit`, `mq3.client.netchan.transmitNextFragment` from send cmd `liveTransmit`. The final path returns `transport.channel.outgoingSequence`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.context`. |
+| `state` | `dynamic` | — | Accepted for compatibility with `liveTransmit`; the current implementation does not read it. |
+| `msg` | `dynamic` | — | Value used by `result=clientNetchan.transmit(transport.runtime,transport.channel,msg)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L291)
 
 - [mq3.client.send_cmd.LiveTransport](Type-mq3-client-send-cmd-livetransport-48332773.md) — struct
 <a id="constant-constant-mq3-client-send-cmd-max-packet-usercmds-const-max-packet-usercmds-32-src-mq3-client-send-cmd-ml-1724838990"></a>
@@ -217,8 +247,10 @@ function liveTransmit(host, state, msg)
 const MAX_PACKET_USERCMDS = 32
 ```
 
+Capacity limit for the packet usercmds collection or bounded storage used by this client module.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)
 
 <a id="constant-constant-mq3-client-send-cmd-max-reliable-commands-const-max-reliable-commands-64-src-mq3-client-send-cmd-ml-2060274003"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -227,8 +259,10 @@ const MAX_PACKET_USERCMDS = 32
 const MAX_RELIABLE_COMMANDS = 64
 ```
 
+Capacity limit for the reliable commands collection or bounded storage used by this client module.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L35)
 
 <a id="constant-constant-mq3-client-send-cmd-na-loopback-const-na-loopback-2-src-mq3-client-send-cmd-ml-1855938283"></a>
 ### NA_LOOPBACK
@@ -237,8 +271,10 @@ const MAX_RELIABLE_COMMANDS = 64
 const NA_LOOPBACK = 2
 ```
 
+Network-address kind identifying a loopback destination.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L23)
 
 - [mq3.client.send_cmd.OutPacket](Type-mq3-client-send-cmd-outpacket-1444303254.md) — struct
 <a id="constant-constant-mq3-client-send-cmd-packet-backup-const-packet-backup-32-src-mq3-client-send-cmd-ml-1837351882"></a>
@@ -248,8 +284,10 @@ const NA_LOOPBACK = 2
 const PACKET_BACKUP = 32
 ```
 
+Number of packet records retained in the client packet-history ring.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L29)
 
 <a id="constant-constant-mq3-client-send-cmd-packet-mask-const-packet-mask-31-src-mq3-client-send-cmd-ml-2092627817"></a>
 ### PACKET_MASK
@@ -258,8 +296,10 @@ const PACKET_BACKUP = 32
 const PACKET_MASK = 31
 ```
 
+Mask that maps a packet sequence number into the packet-history ring.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="function-function-mq3-client-send-cmd-ready-function-ready-state-host-src-mq3-client-send-cmd-ml-325190501"></a>
 ### ready
@@ -268,13 +308,15 @@ const PACKET_MASK = 31
 function ready(state, host)
 ```
 
+Updates `state.maxPackets` during send cmd `ready`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable send cmd record/storage; this routine assigns `state.maxPackets`. |
+| `host` | `dynamic` | — | host record passed to the send cmd helper calls. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L226)
 
 <a id="function-function-mq3-client-send-cmd-send-function-send-state-frametime-host-src-mq3-client-send-cmd-ml-937658437"></a>
 ### send
@@ -283,14 +325,16 @@ function ready(state, host)
 function send(state, frameTime, host)
 ```
 
+Calls `mq3.client.send_cmd.createNewCommand`, `mq3.client.send_cmd.ready`, `mq3.client.send_cmd.writePacket` from send cmd `send`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `frameTime` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.connectionState`, `state.serverRunning`, `state.serverPaused`, `state.clientPaused`. |
+| `frameTime` | `dynamic` | — | Value used by `created=createNewCommand(state,frameTime,host)`. |
+| `host` | `dynamic` | — | host record passed to the send cmd helper calls. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L278)
 
 <a id="function-function-mq3-client-send-cmd-services-function-services-src-mq3-client-send-cmd-ml-424593320"></a>
 ### services
@@ -299,8 +343,10 @@ function send(state, frameTime, host)
 function services()
 ```
 
+Creates a `mq3.client.send_cmd.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L187)
 
 - [mq3.client.send_cmd.Services](Type-mq3-client-send-cmd-services-1843866438.md) — struct
 <a id="function-function-mq3-client-send-cmd-setcvar-function-setcvar-host-name-value-src-mq3-client-send-cmd-ml-480295106"></a>
@@ -310,14 +356,16 @@ function services()
 function setCvar(host, name, value)
 ```
 
+Calls `host.cvarFn` from send cmd `setCvar`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.cvarFn`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding send cmd resource. |
+| `value` | `dynamic` | — | Value used by `if host.cvarFn!=void then host.cvarFn(host,name,str(value)) end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L202)
 
 - [mq3.client.send_cmd.State](Type-mq3-client-send-cmd-state-1928835903.md) — struct
 <a id="function-function-mq3-client-send-cmd-writepacket-function-writepacket-state-host-src-mq3-client-send-cmd-ml-1991051129"></a>
@@ -327,13 +375,15 @@ function setCvar(host, name, value)
 function writePacket(state, host)
 ```
 
+Updates `state.codec`, `state.packetDup`, `state.outPackets[packetNum]`, `state.lastPacketSentTime` and additional values during send cmd `writePacket`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable send cmd record/storage; this routine assigns `state.codec`, `state.packetDup`, `state.outPackets[packetNum]`, `state.lastPacketSentTime` and additional values. |
+| `host` | `dynamic` | — | Record read through `host.transmitFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L240)
 
 - [mq3.client.send_cmd.WriteResult](Type-mq3-client-send-cmd-writeresult-2064183540.md) — struct
 <a id="function-function-mq3-client-send-cmd-zerocommand-function-zerocommand-src-mq3-client-send-cmd-ml-10821858"></a>
@@ -343,5 +393,7 @@ function writePacket(state, host)
 function zeroCommand()
 ```
 
+Adapts `mq3.qcommon.message_delta.userCommand` to send cmd `zeroCommand`, returning its result for `0, 0, 0, 0, 0, 0, 0, 0, 0`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L172)

@@ -7,14 +7,30 @@ import mq3.game.syscalls as traps
 import mq3.vm.syscall_qagame as qagame
 import mq3.compat.numeric as n
 
-struct Context services vm base end struct
+/// `Context` record for syscall qagame host, containing `services`, `vm` and `base`.
+struct Context
+  /// Injected service callbacks and state used to communicate with the surrounding engine.
+  services
+  /// VM instance or VM-facing console-variable record associated with this adapter.
+  vm
+  /// Byte offset in QVM data memory where the syscall argument vector is written.
+  base
+end struct
 
+/// Build the `mq3.game.syscall_qagame_host.Context` result for `context`. Return paths include `Context(services,vm,base)`.
+/// @param services Initial value stored in `mq3.game.syscall_qagame_host.Context.services`.
+/// @param vm Vm record; accesses `data`.
+/// @param base Initial value stored in `mq3.game.syscall_qagame_host.Context.base`.
 function context(services,vm,base)
   if services==void or vm==void or typeof(vm.data)!="bytes" then return error(7861,"qagame syscall host requires services and VM memory") end if
   if base<0 or base>len(vm.data) then return error(7861,"qagame syscall argument base outside VM memory") end if
   return Context(services,vm,base)
 end function
 
+/// Apply `mq3.vm.syscall_qagame.dispatch` while evaluating `invoke`. Return paths include `qagame.dispatch(value.services,value.vm,value.base)`.
+/// @param value Value record; accesses `vm`, `base` and `services`.
+/// @param opcode Numeric qagame or botlib syscall identifier.
+/// @param arguments Ordered arguments consumed by the call or formatter.
 function invoke(value,opcode,arguments)
   if value==void or value.vm==void then return error(7861,"qagame syscall host context is missing") end if
   size=(len(arguments)+1)*4;if value.base<0 or size>len(value.vm.data)-value.base then return error(7861,"qagame syscall argument vector outside VM memory") end if
@@ -26,6 +42,10 @@ function invoke(value,opcode,arguments)
   return qagame.dispatch(value.services,value.vm,value.base)
 end function
 
+/// Apply `mq3.game.syscall_qagame_host.context` and `mq3.game.syscalls.dllEntry` while evaluating `bind`. Return paths include `traps.dllEntry(invoke,value)`.
+/// @param services Initial value stored in `mq3.game.syscall_qagame_host.Context.services`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Initial value stored in `mq3.game.syscall_qagame_host.Context.base`.
 function bind(services,vm,base)
   value=context(services,vm,base);if value is error then return value end if
   return traps.dllEntry(invoke,value)

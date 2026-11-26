@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.user_move, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableCommands`, `deltaMessage`, `pureAuthentic`, and 3 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L26)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Client
 deltaMessage
 ```
 
+Acknowledged snapshot message selected as the base for delta compression.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L37)
 
 <a id="field-field-mq3-server-user-move-client-frames-frames-src-mq3-server-user-move-ml-1721311730"></a>
 ### frames
@@ -31,8 +35,10 @@ deltaMessage
 frames
 ```
 
+Updates can be delta'd from here.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L43)
 
 <a id="field-field-mq3-server-user-move-client-gotcp-gotcp-src-mq3-server-user-move-ml-457287990"></a>
 ### gotCP
@@ -41,8 +47,10 @@ frames
 gotCP
 ```
 
+True after the client has sent its pure-server checksum verification command.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L41)
 
 <a id="field-field-mq3-server-user-move-client-lastusercmd-lastusercmd-src-mq3-server-user-move-ml-1977452786"></a>
 ### lastUsercmd
@@ -51,8 +59,10 @@ gotCP
 lastUsercmd
 ```
 
+Most recent user-command record received or processed for this client.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L45)
 
 <a id="field-field-mq3-server-user-move-client-messageacknowledge-messageacknowledge-src-mq3-server-user-move-ml-1151283208"></a>
 ### messageAcknowledge
@@ -61,8 +71,10 @@ lastUsercmd
 messageAcknowledge
 ```
 
+Sequence number of the newest server message acknowledged by the client.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L31)
 
 <a id="field-field-mq3-server-user-move-client-pureauthentic-pureauthentic-src-mq3-server-user-move-ml-303153218"></a>
 ### pureAuthentic
@@ -71,8 +83,10 @@ messageAcknowledge
 pureAuthentic
 ```
 
+True after the client has passed the pure-package authentication check.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L39)
 
 <a id="field-field-mq3-server-user-move-client-reliableacknowledge-reliableacknowledge-src-mq3-server-user-move-ml-1721550922"></a>
 ### reliableAcknowledge
@@ -81,8 +95,10 @@ pureAuthentic
 reliableAcknowledge
 ```
 
+Reliable command acknowledgment used while validating movement-message state.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L33)
 
 <a id="field-field-mq3-server-user-move-client-reliablecommands-reliablecommands-src-mq3-server-user-move-ml-1682578002"></a>
 ### reliableCommands
@@ -91,8 +107,10 @@ reliableAcknowledge
 reliableCommands
 ```
 
+Reliable command entries retained until the peer acknowledges them.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L35)
 
 <a id="field-field-mq3-server-user-move-client-state-state-src-mq3-server-user-move-ml-775778334"></a>
 ### state
@@ -101,5 +119,7 @@ reliableCommands
 state
 ```
 
+Connection lifecycle value that distinguishes entering the world from advancing an already active player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L29)

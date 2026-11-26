@@ -9,8 +9,10 @@
 struct Scene
 ```
 
+Scene record for server.world, containing `world`, `entities`, `sectors`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L78)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Scene
 entities
 ```
 
+Game or BSP entity records tracked by this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L82)
 
 <a id="field-field-mq3-server-world-scene-sectors-sectors-src-mq3-server-world-ml-804508123"></a>
 ### sectors
@@ -31,8 +35,10 @@ entities
 sectors
 ```
 
+Spatial partition sectors used to find linked game entities.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L84)
 
 <a id="field-field-mq3-server-world-scene-world-world-src-mq3-server-world-ml-617615719"></a>
 ### world
@@ -41,5 +47,7 @@ sectors
 world
 ```
 
+Collision or navigation world used by this operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L80)

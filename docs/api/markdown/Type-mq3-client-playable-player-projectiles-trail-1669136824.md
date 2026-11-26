@@ -9,8 +9,10 @@
 struct Trail
 ```
 
+Stores playable player projectiles trail record, including `projectileId`, `style`, `start`, `endPoint`, `fromTime`, `toTime`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L77)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Trail
 endPoint
 ```
 
+World-space endpoint of the trace, beam, or projectile presentation segment.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L86)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-fromtime-fromtime-src-mq3-client-playable-player-projectiles-ml-448324275"></a>
 ### fromTime
@@ -31,8 +35,10 @@ endPoint
 fromTime
 ```
 
+When constructing this record, `updateWithTrace` supplies `cursorTime` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L88)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-projectileid-projectileid-src-mq3-client-playable-player-projectiles-ml-1962667557"></a>
 ### projectileId
@@ -41,8 +47,10 @@ fromTime
 projectileId
 ```
 
+Stable projectile identifier used to associate movement, trails, and impact presentation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L79)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-start-start-src-mq3-client-playable-player-projectiles-ml-1622950757"></a>
 ### start
@@ -51,8 +59,10 @@ projectileId
 start
 ```
 
+When constructing this record, `updateWithTrace` supplies `startPoint` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L84)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-style-style-src-mq3-client-playable-player-projectiles-ml-1856886433"></a>
 ### style
@@ -61,8 +71,10 @@ start
 style
 ```
 
+Projectile style carried by this traveled segment so trail rendering can select the matching effect.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L82)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-totime-totime-src-mq3-client-playable-player-projectiles-ml-2077591573"></a>
 ### toTime
@@ -71,5 +83,7 @@ style
 toTime
 ```
 
+When constructing this record, `updateWithTrace` supplies `hitTime` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L90)

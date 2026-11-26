@@ -31,12 +31,13 @@ def main():
         values=[f'n.readI32(data,offset+{f["offset"]+i*4})' for i in range(f['count'])]
         if f['type']=='float':values=['n.bitsFloat('+v+')' for v in values]
         lines+=['  state.'+f['name']+' = '+(values[0] if f['count']==1 else '['+','.join(values)+']')]
-    lines+=['  return state','end function','','function words(state)','  result = []']
+    lines+=['  return state','end function','','function words(state)','  return [']
     for f in flat:
         values=['state.'+f['name']+(f'[{i}]' if f['count']>1 else '') for i in range(f['count'])]
         values=[('n.floatBits(' if f['type']=='float' else 'n.u32(')+v+')' for v in values]
-        lines+=['  result = result+['+','.join(values)+']']
-    lines+=['  return result','end function','']
+        lines+=['    '+','.join(values)+',']
+    lines[-1]=lines[-1][:-1]
+    lines+=['  ]','end function','']
     lines+=['function copy(source)','  state = create()']
     for f in flat:
         value='source.'+f['name']

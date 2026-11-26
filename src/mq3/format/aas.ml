@@ -5,169 +5,492 @@ package mq3.format.aas
 
 import mq3.compat.numeric as n
 
+/// Magic value identifying the AAS navigation-file format.
 const AAS_ID=0x53414145
+/// Legacy AAS format version accepted by the navigation loader.
 const AAS_VERSION_OLD=4
+/// Serialized format or interface version expected by AAS.
 const AAS_VERSION=5
+/// Serialized byte size of header in this file format.
 const HEADER_SIZE=124
+/// Number of entries in the serialized map's lump directory.
 const LUMP_COUNT=14
+/// Lump-directory index for bboxes in the serialized map.
 const LUMP_BBOXES=0
+/// Lump-directory index for vertexes in the serialized map.
 const LUMP_VERTEXES=1
+/// Lump-directory index for planes in the serialized map.
 const LUMP_PLANES=2
+/// Lump-directory index for edges in the serialized map.
 const LUMP_EDGES=3
+/// Lump-directory index for edgeindex in the serialized map.
 const LUMP_EDGEINDEX=4
+/// Lump-directory index for faces in the serialized map.
 const LUMP_FACES=5
+/// Lump-directory index for faceindex in the serialized map.
 const LUMP_FACEINDEX=6
+/// Lump-directory index for areas in the serialized map.
 const LUMP_AREAS=7
+/// Lump-directory index for areasettings in the serialized map.
 const LUMP_AREASETTINGS=8
+/// Lump-directory index for area reachability in the serialized map.
 const LUMP_REACHABILITY=9
+/// Lump-directory index for nodes in the serialized map.
 const LUMP_NODES=10
+/// Lump-directory index for portals in the serialized map.
 const LUMP_PORTALS=11
+/// Lump-directory index for portalindex in the serialized map.
 const LUMP_PORTALINDEX=12
+/// Lump-directory index for clusters in the serialized map.
 const LUMP_CLUSTERS=13
+/// Magic value identifying the AAS navigation-file format.
 const AASID=AAS_ID
+/// Legacy AAS format version accepted by the navigation loader.
 const AASVERSION_OLD=AAS_VERSION_OLD
+/// Serialized format or interface version expected by AAS.
 const AASVERSION=AAS_VERSION
+/// Number of entries in the AAS file lump directory.
 const AAS_LUMPS=LUMP_COUNT
+/// Lump-directory index for bboxes in the serialized map.
 const AASLUMP_BBOXES=LUMP_BBOXES
+/// Lump-directory index for vertexes in the serialized map.
 const AASLUMP_VERTEXES=LUMP_VERTEXES
+/// Lump-directory index for planes in the serialized map.
 const AASLUMP_PLANES=LUMP_PLANES
+/// Lump-directory index for edges in the serialized map.
 const AASLUMP_EDGES=LUMP_EDGES
+/// Lump-directory index for edgeindex in the serialized map.
 const AASLUMP_EDGEINDEX=LUMP_EDGEINDEX
+/// Lump-directory index for faces in the serialized map.
 const AASLUMP_FACES=LUMP_FACES
+/// Lump-directory index for faceindex in the serialized map.
 const AASLUMP_FACEINDEX=LUMP_FACEINDEX
+/// Lump-directory index for areas in the serialized map.
 const AASLUMP_AREAS=LUMP_AREAS
+/// Lump-directory index for areasettings in the serialized map.
 const AASLUMP_AREASETTINGS=LUMP_AREASETTINGS
+/// Lump-directory index for area reachability in the serialized map.
 const AASLUMP_REACHABILITY=LUMP_REACHABILITY
+/// Lump-directory index for nodes in the serialized map.
 const AASLUMP_NODES=LUMP_NODES
+/// Lump-directory index for portals in the serialized map.
 const AASLUMP_PORTALS=LUMP_PORTALS
+/// Lump-directory index for portalindex in the serialized map.
 const AASLUMP_PORTALINDEX=LUMP_PORTALINDEX
+/// Lump-directory index for clusters in the serialized map.
 const AASLUMP_CLUSTERS=LUMP_CLUSTERS
 
 // Complete code/botlib/aasfile.h public ABI.
 const PRESENCE_NONE=1
+/// AAS presence-mask value selecting normal.
 const PRESENCE_NORMAL=2
+/// AAS presence-mask value selecting crouch.
 const PRESENCE_CROUCH=4
+/// Number of slots reserved for the AAS travel-type lookup table.
 const MAX_TRAVELTYPES=32
+/// AAS travel-type value for a reachability that cannot currently be traversed.
 const TRAVEL_INVALID=1
+/// AAS movement-type identifier for walk.
 const TRAVEL_WALK=2
+/// AAS movement-type identifier for crouch.
 const TRAVEL_CROUCH=3
+/// Jumping onto a barrier.
 const TRAVEL_BARRIERJUMP=4
+/// AAS movement-type identifier for jump.
 const TRAVEL_JUMP=5
+/// Climbing a ladder.
 const TRAVEL_LADDER=6
+/// Walking of a ledge.
 const TRAVEL_WALKOFFLEDGE=7
+/// AAS movement-type identifier for swim.
 const TRAVEL_SWIM=8
+/// Jump out of the water.
 const TRAVEL_WATERJUMP=9
+/// AAS movement-type identifier for teleport.
 const TRAVEL_TELEPORT=10
+/// Travel by elevator.
 const TRAVEL_ELEVATOR=11
+/// Rocket jumping required for travel.
 const TRAVEL_ROCKETJUMP=12
+/// Bfg jumping required for travel.
 const TRAVEL_BFGJUMP=13
+/// Grappling hook required for travel.
 const TRAVEL_GRAPPLEHOOK=14
+/// AAS movement-type identifier for double jump.
 const TRAVEL_DOUBLEJUMP=15
+/// AAS movement-type identifier for ramp jump.
 const TRAVEL_RAMPJUMP=16
+/// AAS movement-type identifier for strafe jump.
 const TRAVEL_STRAFEJUMP=17
+/// AAS movement-type identifier for jump pad.
 const TRAVEL_JUMPPAD=18
+/// AAS movement-type identifier for bobbing mover.
 const TRAVEL_FUNCBOB=19
+/// Mask selecting the movement-type identifier from an encoded AAS travel type.
 const TRAVELTYPE_MASK=0xffffff
+/// Additional AAS travel restriction for team-one restriction.
 const TRAVELFLAG_NOTTEAM1=0x01000000
+/// Additional AAS travel restriction for team-two restriction.
 const TRAVELFLAG_NOTTEAM2=0x02000000
+/// Just solid at the other side.
 const FACE_SOLID=1
+/// AAS face-property bit marking ladder.
 const FACE_LADDER=2
+/// Standing on ground when in this face.
 const FACE_GROUND=4
+/// Gap in the ground.
 const FACE_GAP=8
+/// Face seperating two areas with liquid.
 const FACE_LIQUID=16
+/// Face seperating liquid and air.
 const FACE_LIQUIDSURFACE=32
+/// Can walk over this face if bridge is closed.
 const FACE_BRIDGE=64
+/// AAS area-contents bit marking water.
 const AREACONTENTS_WATER=1
+/// AAS area-contents bit marking lava.
 const AREACONTENTS_LAVA=2
+/// AAS area-contents bit marking slime.
 const AREACONTENTS_SLIME=4
+/// AAS area-contents bit marking cluster portal.
 const AREACONTENTS_CLUSTERPORTAL=8
+/// AAS area-contents bit marking teleportal.
 const AREACONTENTS_TELEPORTAL=16
+/// AAS area-contents bit marking routing portal.
 const AREACONTENTS_ROUTEPORTAL=32
+/// AAS area-contents bit marking teleporter.
 const AREACONTENTS_TELEPORTER=64
+/// AAS area-contents bit marking jump pad.
 const AREACONTENTS_JUMPPAD=128
+/// AAS area-contents bit marking do-not-enter area.
 const AREACONTENTS_DONOTENTER=256
+/// AAS area-contents bit marking view portal.
 const AREACONTENTS_VIEWPORTAL=512
+/// AAS area-contents bit marking mover.
 const AREACONTENTS_MOVER=1024
+/// AAS area-contents bit marking team-one restriction.
 const AREACONTENTS_NOTTEAM1=2048
+/// AAS area-contents bit marking team-two restriction.
 const AREACONTENTS_NOTTEAM2=4096
+/// Bit position at which a mover model number is stored in area contents.
 const AREACONTENTS_MODELNUMSHIFT=24
+/// Largest mover model number representable in area-contents flags.
 const AREACONTENTS_MAXMODELNUM=0xff
+/// Mask selecting the mover model number from area-contents flags.
 const AREACONTENTS_MODELNUM=0xff000000
+/// Bot can stand on the ground.
 const AREA_GROUNDED=1
+/// Area contains one or more ladder faces.
 const AREA_LADDER=2
+/// Area contains a liquid.
 const AREA_LIQUID=4
+/// Area is disabled for routing when set.
 const AREA_DISABLED=8
+/// Area ontop of a bridge.
 const AREA_BRIDGE=16
 
+/// Serialized byte size of bbox in this file format.
 const BBOX_SIZE=32
+/// Serialized byte size of vertex in this file format.
 const VERTEX_SIZE=12
+/// Serialized byte size of plane in this file format.
 const PLANE_SIZE=20
+/// Serialized byte size of edge in this file format.
 const EDGE_SIZE=8
+/// Serialized byte size of index in this file format.
 const INDEX_SIZE=4
+/// Serialized byte size of an AAS face record.
 const FACE_SIZE=24
+/// Serialized byte size of an AAS area record.
 const AREA_SIZE=48
+/// Serialized byte size of an AAS area-settings record.
 const AREA_SETTINGS_SIZE=28
+/// Serialized byte size of area reachability in this file format.
 const REACHABILITY_SIZE=44
+/// Serialized byte size of node in this file format.
 const NODE_SIZE=12
+/// Serialized byte size of portal in this file format.
 const PORTAL_SIZE=20
+/// Serialized byte size of cluster in this file format.
 const CLUSTER_SIZE=16
 
-struct AAS data version bspChecksum offsets lengths counts sequential end struct
-struct BBox presenceType flags mins maxs end struct
-struct Plane normal dist type end struct
-struct Face planeNum flags numEdges firstEdge frontArea backArea end struct
-struct Area areaNum numFaces firstFace mins maxs center end struct
-struct AreaSettings contents flags presenceType cluster clusterAreaNum numReachableAreas firstReachableArea end struct
-struct Reachability areaNum faceNum edgeNum start finish travelType travelTime end struct
-struct Node planeNum children end struct
-struct Portal areaNum frontCluster backCluster clusterAreaNums end struct
-struct Cluster numAreas numReachabilityAreas numPortals firstPortal end struct
-struct Lump fileOffset fileLength end struct
-struct Header ident version bspChecksum lumps end struct
+/// AAS record for format.aas, containing `data`, `version`, `bspChecksum`, `offsets`, `lengths`, `counts`, and 1 further fields.
+struct AAS
+  /// Complete AAS file bytes backing the navigation readers.
+  data
+  /// AAS file-format version selected by the loader.
+  version
+  /// Checksum of the BSP map associated with the navigation data.
+  bspChecksum
+  /// Byte offsets of AAS lump payloads indexed by lump identifier.
+  offsets
+  /// Byte lengths of AAS lump payloads indexed by lump identifier.
+  lengths
+  /// Decoded record counts for each AAS lump.
+  counts
+  /// True when lump data follows the expected sequential file layout.
+  sequential
+end struct
+/// BBox record for format.aas, containing `presenceType`, `flags`, `mins`, `maxs`.
+struct BBox
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Presence-box flags retained from the AAS navigation file.
+  flags
+  /// Minimum XYZ corner of the AAS presence shape relative to the moving entity origin.
+  mins
+  /// Maximum XYZ corner of the AAS presence shape relative to the moving entity origin.
+  maxs
+end struct
+/// Plane record for format.aas, containing `normal`, `dist`, `type`.
+struct Plane
+  /// Unit normal stored with a navigation BSP plane in the AAS file.
+  normal
+  /// Distance of the plane (normal vector * distance = point in plane).
+  dist
+  /// Axis classification used to accelerate AAS plane tests.
+  type
+end struct
+/// Face record for format.aas, containing `planeNum`, `flags`, `numEdges`, `firstEdge`, `frontArea`, `backArea`.
+struct Face
+  /// AAS plane index containing this serialized navigation face.
+  planeNum
+  /// AAS face-property flags, such as solid, ground, ladder, or liquid.
+  flags
+  /// Number of edge records represented by this face or file inventory.
+  numEdges
+  /// Starting offset of this face in the signed edge-index array.
+  firstEdge
+  /// Area at the front of this face.
+  frontArea
+  /// Area at the back of this face.
+  backArea
+end struct
+/// Area record for format.aas, containing `areaNum`, `numFaces`, `firstFace`, `mins`, `maxs`, `center`.
+struct Area
+  /// Area identifier stored in this serialized AAS area record.
+  areaNum
+  /// Number of face records represented by this area or file inventory.
+  numFaces
+  /// Starting offset of this area in the signed face-index array.
+  firstFace
+  /// Minimum XYZ corner of the navigation area stored in the AAS area lump.
+  mins
+  /// Maximum XYZ corner of the navigation area stored in the AAS area lump.
+  maxs
+  /// 'center' of the area.
+  center
+end struct
+/// AreaSettings record for format.aas, containing `contents`, `flags`, `presenceType`, `cluster`, `clusterAreaNum`, `numReachableAreas`, and 1 further fields.
+struct AreaSettings
+  /// Collision or AAS contents flags describing the represented volume.
+  contents
+  /// AAS area-property flags controlling movement and route availability.
+  flags
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Cluster the area belongs to, if negative it's a portal.
+  cluster
+  /// Number of the area in the cluster.
+  clusterAreaNum
+  /// Number of outgoing reachability records belonging to this AAS area.
+  numReachableAreas
+  /// First outgoing reachability index for this area in the shared reachability array.
+  firstReachableArea
+end struct
+/// Reachability record for format.aas, containing `areaNum`, `faceNum`, `edgeNum`, `start`, `finish`, `travelType`, and 1 further fields.
+struct Reachability
+  /// Destination area reached by this serialized navigation connection.
+  areaNum
+  /// Index of the AAS face associated with the movement link.
+  faceNum
+  /// Index of the AAS edge associated with the movement link.
+  edgeNum
+  /// Departure position stored for this serialized area-to-area connection.
+  start
+  /// Arrival position stored for this serialized area-to-area connection.
+  finish
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+  /// AAS travel cost assigned to traversing this movement link.
+  travelTime
+end struct
+/// Node record for format.aas, containing `planeNum`, `children`.
+struct Node
+  /// AAS plane index dividing the child regions of this serialized node.
+  planeNum
+  /// Child nodes of this node, or areas as leaves when negative.
+  children
+end struct
+/// Portal record for format.aas, containing `areaNum`, `frontCluster`, `backCluster`, `clusterAreaNums`.
+struct Portal
+  /// Navigation area forming the portal between two serialized clusters.
+  areaNum
+  /// Cluster at front of portal.
+  frontCluster
+  /// Cluster at back of portal.
+  backCluster
+  /// Area indexes of this portal within its front and back clusters.
+  clusterAreaNums
+end struct
+/// Cluster record for format.aas, containing `numAreas`, `numReachabilityAreas`, `numPortals`, `firstPortal`.
+struct Cluster
+  /// Number of portal or navigation areas represented by the loaded map.
+  numAreas
+  /// Number of areas with reachabilities.
+  numReachabilityAreas
+  /// Number of cluster portals.
+  numPortals
+  /// First cluster portal in the index.
+  firstPortal
+end struct
+/// Lump record for format.aas, containing `fileOffset`, `fileLength`.
+struct Lump
+  /// Byte offset of the lump from the beginning of the file.
+  fileOffset
+  /// Length of the serialized lump in bytes.
+  fileLength
+end struct
+/// Header record for format.aas, containing `ident`, `version`, `bspChecksum`, `lumps`.
+struct Header
+  /// Magic value identifying the AAS navigation file.
+  ident
+  /// AAS navigation-file format version.
+  version
+  /// Checksum of the BSP map associated with the navigation data.
+  bspChecksum
+  /// Directory records locating the AAS navigation sections.
+  lumps
+end struct
 
+/// Create the format.aas error for `fail` with 7510 and the supplied diagnostic text.
+/// @param message Message used in `("AAS: " + message)` and `error(7510, ("AAS: " + message))`.
 function fail(message) return error(7510,"AAS: "+message) end function
+/// Compute format.aas.strides as `[BBOX_SIZE, VERTEX_SIZE, PLANE_SIZE, EDGE_SIZE, INDEX_SIZE, FACE_SIZE, INDEX_SIZE, AREA_SIZE, AREA_SETTINGS_SIZE, REACHABILITY_SIZE, NODE_SIZE, PORTAL_SIZE, INDEX_SIZE, CLUSTER_SIZE]`.
 function strides() return [BBOX_SIZE,VERTEX_SIZE,PLANE_SIZE,EDGE_SIZE,INDEX_SIZE,FACE_SIZE,INDEX_SIZE,AREA_SIZE,AREA_SETTINGS_SIZE,REACHABILITY_SIZE,NODE_SIZE,PORTAL_SIZE,INDEX_SIZE,CLUSTER_SIZE] end function
+/// List the 14 names in format.aas.lumpNames, beginning with `bboxes`, `vertexes`, `planes`, `edges`.
 function lumpNames() return ["bboxes","vertexes","planes","edges","edgeindex","faces","faceindex","areas","areasettings","reachability","nodes","portals","portalindex","clusters"] end function
+/// Test span in format.aas; the normal completion returns `true`.
+/// @param offset Offset used in `(offset < 0)` and `(offset > limit)`.
+/// @param size Size used in `(size < 0)` and `(size > (limit - offset))`.
+/// @param limit Limit used in `(offset > limit)` and `(limit - offset)`.
+/// @param label Label used in `(label + " outside file")` and `fail((label + " outside file"))`.
 function span(offset,size,limit,label)
   if offset<0 or size<0 or offset>limit or size>limit-offset then return fail(label+" outside file") end if;return true
 end function
+/// Compute i 32 in format.aas; the normal completion returns `value`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readI32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readI32`.
+/// @param label Label used in `("truncated " + label)` and `fail(("truncated " + label))`.
 function i32(data,offset,label) value=n.readI32(data,offset);if value is error then return fail("truncated "+label) end if;return value end function
+/// Compute u 16 in format.aas; the normal completion returns `(data[offset] | (data[(offset + 1)] << 8))`.
+/// @param data Data used in `len(data)` and `data[offset]`.
+/// @param offset Zero-based index into `data`.
+/// @param label Label used in `("truncated " + label)` and `fail(("truncated " + label))`.
 function u16(data,offset,label) if offset<0 or offset+2>len(data) then return fail("truncated "+label) end if;return data[offset]|(data[offset+1]<<8) end function
+/// Compute f 32 in format.aas; the normal completion returns `n.bitsFloat(value)`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readU32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readU32`.
+/// @param label Label used in `("truncated " + label)` and `fail(("truncated " + label))`.
 function f32(data,offset,label) value=n.readU32(data,offset);if value is error then return fail("truncated "+label) end if;return n.bitsFloat(value) end function
+/// Compute format.aas.vec3 as `[f32(data, offset, label), f32(data, (offset + 4), label), f32(data, (offset + 8), label)]`.
+/// @param data Data passed as `data` to `mq3.format.aas.f32`.
+/// @param offset Offset passed as `offset` to `mq3.format.aas.f32`.
+/// @param label Label passed as `label` to `mq3.format.aas.f32`.
 function vec3(data,offset,label) return [f32(data,offset,label),f32(data,offset+4,label),f32(data,offset+8,label)] end function
+/// Compute record offset in format.aas; the normal completion returns `(map.offsets[lump] + (index * strides()[lump]))`.
+/// @param map Record exposing `counts`, `offsets`.
+/// @param lump Zero-based index into `map.counts`, `lumpNames()`, `map.offsets`.
+/// @param index Index used in `(index < 0)` and `(index * strides()[lump])`.
 function recordOffset(map,lump,index)
   if map==void then return fail("AAS map is void") end if
   if lump<0 or lump>=LUMP_COUNT then return fail("AAS lump index outside header") end if
   if index<0 or index>=map.counts[lump] then return fail("record index outside "+lumpNames()[lump]) end if
   return map.offsets[lump]+index*strides()[lump]
 end function
+/// Test indexed range in format.aas; the normal completion returns `true`.
+/// @param first First used in `(first < 0)` and `(first > limit)`.
+/// @param count Count used in `(count < 0)` and `(count > (limit - first))`.
+/// @param limit Limit used in `(first > limit)` and `(limit - first)`.
+/// @param label Label used in `("invalid " + label)` and `(("invalid " + label) + " range")`.
 function indexedRange(first,count,limit,label)
   if first<0 or count<0 or first>limit or count>limit-first then return fail("invalid "+label+" range") end if;return true
 end function
+/// Test signed reference in format.aas; the normal completion returns `true`.
+/// @param value Value used in `(value >= count)` and `(value <= (0 - count))`.
+/// @param count Count used in `(0 - count)` and `(value >= count)`.
+/// @param label Label used in `("invalid signed " + label)` and `(("invalid signed " + label) + " reference")`.
 function signedReference(value,count,label)
   if value<=0-count or value>=count then return fail("invalid signed "+label+" reference") end if;return true
 end function
+/// Compute decoded header in format.aas; the normal completion returns `header`.
+/// @param data Data used in `slice(data, 0, HEADER_SIZE)`.
+/// @param version Version used in `(version == AAS_VERSION)`.
 function decodedHeader(data,version)
   header=slice(data,0,HEADER_SIZE)
   if version==AAS_VERSION then for index=0 to HEADER_SIZE-9 header[8+index]=header[8+index]^((index*119)&255) end for end if
   return header
 end function
 
+/// Compute vertex in format.aas; the normal completion returns `vec3(map.data, at, "vertex")`.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function vertex(map,index) at=recordOffset(map,LUMP_VERTEXES,index);if at is error then return at end if;return vec3(map.data,at,"vertex") end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.BBox`, `mq3.format.aas.i32` for bbox in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function bbox(map,index) at=recordOffset(map,LUMP_BBOXES,index);if at is error then return at end if;return BBox(i32(map.data,at,"bbox presence"),i32(map.data,at+4,"bbox flags"),vec3(map.data,at+8,"bbox mins"),vec3(map.data,at+20,"bbox maxs")) end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Plane`, `mq3.format.aas.vec3` for plane in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function plane(map,index) at=recordOffset(map,LUMP_PLANES,index);if at is error then return at end if;return Plane(vec3(map.data,at,"plane normal"),f32(map.data,at+12,"plane distance"),i32(map.data,at+16,"plane type")) end function
+/// Compute edge in format.aas; the normal completion returns `[i32(map.data, at, "edge vertex 0"), i32(map.data, (at + 4), "edge vertex 1")]`.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function edge(map,index) at=recordOffset(map,LUMP_EDGES,index);if at is error then return at end if;return [i32(map.data,at,"edge vertex 0"),i32(map.data,at+4,"edge vertex 1")] end function
+/// Compute edge index in format.aas; the normal completion returns `i32(map.data, at, "edge index")`.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function edgeIndex(map,index) at=recordOffset(map,LUMP_EDGEINDEX,index);if at is error then return at end if;return i32(map.data,at,"edge index") end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Face`, `mq3.format.aas.i32` for face in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function face(map,index) at=recordOffset(map,LUMP_FACES,index);if at is error then return at end if;return Face(i32(map.data,at,"face plane"),i32(map.data,at+4,"face flags"),i32(map.data,at+8,"face edge count"),i32(map.data,at+12,"face first edge"),i32(map.data,at+16,"face front area"),i32(map.data,at+20,"face back area")) end function
+/// Compute face index in format.aas; the normal completion returns `i32(map.data, at, "face index")`.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function faceIndex(map,index) at=recordOffset(map,LUMP_FACEINDEX,index);if at is error then return at end if;return i32(map.data,at,"face index") end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Area`, `mq3.format.aas.i32` for area in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function area(map,index) at=recordOffset(map,LUMP_AREAS,index);if at is error then return at end if;return Area(i32(map.data,at,"area number"),i32(map.data,at+4,"area face count"),i32(map.data,at+8,"area first face"),vec3(map.data,at+12,"area mins"),vec3(map.data,at+24,"area maxs"),vec3(map.data,at+36,"area center")) end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.AreaSettings`, `mq3.format.aas.i32` for area settings in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function areaSettings(map,index) at=recordOffset(map,LUMP_AREASETTINGS,index);if at is error then return at end if;return AreaSettings(i32(map.data,at,"area contents"),i32(map.data,at+4,"area flags"),i32(map.data,at+8,"area presence"),i32(map.data,at+12,"area cluster"),i32(map.data,at+16,"cluster area"),i32(map.data,at+20,"reachable count"),i32(map.data,at+24,"first reachable")) end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Reachability`, `mq3.format.aas.i32` for reachability in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function reachability(map,index) at=recordOffset(map,LUMP_REACHABILITY,index);if at is error then return at end if;return Reachability(i32(map.data,at,"reachable area"),i32(map.data,at+4,"reachable face"),i32(map.data,at+8,"reachable edge"),vec3(map.data,at+12,"reach start"),vec3(map.data,at+24,"reach end"),i32(map.data,at+36,"travel type"),u16(map.data,at+40,"travel time")) end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Node`, `mq3.format.aas.i32` for node in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function node(map,index) at=recordOffset(map,LUMP_NODES,index);if at is error then return at end if;return Node(i32(map.data,at,"node plane"),[i32(map.data,at+4,"node child 0"),i32(map.data,at+8,"node child 1")]) end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Portal`, `mq3.format.aas.i32` for portal in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function portal(map,index) at=recordOffset(map,LUMP_PORTALS,index);if at is error then return at end if;return Portal(i32(map.data,at,"portal area"),i32(map.data,at+4,"front cluster"),i32(map.data,at+8,"back cluster"),[i32(map.data,at+12,"front cluster area"),i32(map.data,at+16,"back cluster area")]) end function
+/// Compute portal index in format.aas; the normal completion returns `i32(map.data, at, "portal index")`.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function portalIndex(map,index) at=recordOffset(map,LUMP_PORTALINDEX,index);if at is error then return at end if;return i32(map.data,at,"portal index") end function
+/// Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Cluster`, `mq3.format.aas.i32` for cluster in format.aas.
+/// @param map Record exposing `data`.
+/// @param index Index passed as `index` to `mq3.format.aas.recordOffset`.
 function cluster(map,index) at=recordOffset(map,LUMP_CLUSTERS,index);if at is error then return at end if;return Cluster(i32(map.data,at,"cluster area count"),i32(map.data,at+4,"cluster reachability count"),i32(map.data,at+8,"cluster portal count"),i32(map.data,at+12,"cluster first portal")) end function
 
+/// Validate topology in format.aas; the normal completion returns `true`.
+/// @param map Record exposing `counts`.
 function validateTopology(map)
   if map.counts[LUMP_AREAS]!=map.counts[LUMP_AREASETTINGS] then return fail("area/settings count mismatch") end if
   if map.counts[LUMP_EDGES]>0 then for index=0 to map.counts[LUMP_EDGES]-1 value=edge(map,index);if value[0]<0 or value[0]>=map.counts[LUMP_VERTEXES] or value[1]<0 or value[1]>=map.counts[LUMP_VERTEXES] then return fail("edge vertex outside vertex lump") end if end for end if
@@ -185,6 +508,8 @@ function validateTopology(map)
   return true
 end function
 
+/// Load aas in format.aas; the normal completion returns `map`.
+/// @param data Data passed as `data` to `mq3.format.aas.i32`.
 function load(data)
   if data==void or typeof(data)!="bytes" or len(data)<HEADER_SIZE then return fail("truncated header") end if
   ident=i32(data,0,"identity");if ident!=AAS_ID then return fail("invalid identity") end if
@@ -200,23 +525,35 @@ function load(data)
   for left=0 to LUMP_COUNT-1 if lengths[left]>0 and left<LUMP_COUNT-1 then for right=left+1 to LUMP_COUNT-1 if lengths[right]>0 and offsets[left]<offsets[right]+lengths[right] and offsets[right]<offsets[left]+lengths[left] then return fail("overlapping lumps") end if end for end if end for
   map=AAS(data,version,checksum,offsets,lengths,counts,sequential);check=validateTopology(map);if check is error then return check end if;return map
 end function
+/// Check bsp checksum in format.aas; the normal completion returns `true`.
+/// @param map Record exposing `bspChecksum`.
+/// @param expected Expected used in `(map.bspChecksum != expected)` and `((map == void) or (map.bspChecksum != expected))`.
 function checkBspChecksum(map,expected) if map==void or map.bspChecksum!=expected then return fail("BSP checksum mismatch") end if;return true end function
 
+/// Compute header in format.aas; the normal completion returns `Header(AAS_ID, map.version, map.bspChecksum, lumps)`.
+/// @param map Record exposing `offsets`, `lengths`, `version`, `bspChecksum`.
 function header(map)
   if map==void then return fail("AAS map is void") end if;lumps=[]
   for index=0 to LUMP_COUNT-1 lumps=lumps+[Lump(map.offsets[index],map.lengths[index])] end for
   return Header(AAS_ID,map.version,map.bspChecksum,lumps)
 end function
+/// Compute lump data in format.aas; the normal completion returns `slice(map.data, map.offsets[lump], map.lengths[lump])`.
+/// @param map Record exposing `data`, `offsets`, `lengths`.
+/// @param lump Zero-based index into `map.offsets`, `map.lengths`.
 function lumpData(map,lump)
   if map==void then return fail("AAS map is void") end if
   if lump<0 or lump>=LUMP_COUNT then return fail("AAS lump index outside header") end if
   return slice(map.data,map.offsets[lump],map.lengths[lump])
 end function
+/// Compute ddata in format.aas; the normal completion returns `result`.
+/// @param data Data used in `len(data)` and `typeof(data)`.
 function ddata(data)
   if data==void or typeof(data)!="bytes" then return fail("DData requires bytes") end if;result=slice(data,0,len(data))
   if len(result)>0 then for index=0 to len(result)-1 result[index]=result[index]^((index*119)&255) end for end if
   return result
 end function
+/// Encode aas in format.aas; the normal completion returns `output`.
+/// @param map Record exposing `bspChecksum`.
 function encode(map)
   if map==void then return fail("AAS map is void") end if;check=validateTopology(map);if check is error then return check end if
   output=bytes(HEADER_SIZE,0);n.writeU32(output,0,AAS_ID);n.writeU32(output,4,AAS_VERSION);n.writeU32(output,8,map.bspChecksum);offset=HEADER_SIZE

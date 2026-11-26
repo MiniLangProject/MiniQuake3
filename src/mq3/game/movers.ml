@@ -22,14 +22,25 @@ import mq3.collision.visibility as vis
 import mq3.server.world as sv
 import std.string as strings
 
+/// Mover-state identifier representing the pos1 position or transition.
 const MOVER_POS1 = 0
+/// Mover-state identifier representing the pos2 position or transition.
 const MOVER_POS2 = 1
+/// Mover-state identifier representing the 1 to2 position or transition.
 const MOVER_1TO2 = 2
+/// Mover-state identifier representing the 2 to1 position or transition.
 const MOVER_2TO1 = 3
+/// Game entity-flag bit enabling or marking teamslave.
 const FL_TEAMSLAVE = 0x400
+/// Server entity-flag bit controlling use current origin.
 const SVF_USE_CURRENT_ORIGIN = 0x80
+/// Network entity-flag bit indicating mover stop.
 const EF_MOVER_STOP = 0x400
 
+/// Update `ent.s.modelindex`, `ent.r.mins`, `ent.r.maxs` and `ent.r.bmodel` and related state during `setBrushModel`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `s`, `r` and `slot`. May update `ent.s.modelindex`, `ent.r.mins` and `ent.r.maxs` and additional fields in place.
+/// @param name Name used to identify the requested entry.
 function setBrushModel(level,ent,name)
   if name == void or len(name) == 0 or name[0] != "*" then return error(485,"SV_SetBrushModel: invalid brush model name") end if
   ent.s.modelindex = textnum.atoi(decode(slice(bytes(name),1,len(bytes(name))-1)))
@@ -39,16 +50,29 @@ function setBrushModel(level,ent,name)
   return void
 end function
 
+/// Apply `mq3.game.events.add` while evaluating `addSound`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `client`, `s` and `eventTime`. May update `ent.s.event`, `ent.s.eventParm` and `ent.eventTime` in place.
+/// @param index Index of the entry to access.
 function addSound(level,ent,index)
   if index != 0 then events.add(level,ent,c.EV_GENERAL_SOUND,index) end if
   return void
 end function
 
+/// Apply `mq3.collision.visibility.adjustAreaPortalState` while evaluating `adjustAreaPortal`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `r`.
+/// @param open Value used by `adjustAreaPortalState` in `if not open then change = -1 end if`.
 function adjustAreaPortal(level,ent,open)
   if ent.r.areanum2 != -1 then vis.adjustAreaPortalState(level.scene.world.visibility,ent.r.areanum,ent.r.areanum2,open) end if
   return void
 end function
 
+/// Update `ent.moverState`, `ent.s.pos.trTime`, `ent.s.pos.trBase` and `ent.s.pos.trType` and related state during `setMoverState`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `moverState`, `s`, `pos1`, `pos2` and `r`. May update `ent.moverState`, `ent.s.pos.trTime` and `ent.s.pos.trBase` and additional fields in place.
+/// @param state Value used by `setMoverState` in `ent.moverState = state`.
+/// @param time Time value in the units expected by this module.
 function setMoverState(level,ent,state,time)
   ent.moverState = state; ent.s.pos.trTime = time
   if state == MOVER_POS1 then
@@ -67,6 +91,11 @@ function setMoverState(level,ent,state,time)
   return void
 end function
 
+/// Apply `mq3.game.movers.setMoverState` while evaluating `matchTeam`.
+/// @param level Game-level state; accesses `time`.
+/// @param leader Value used by `matchTeam` in `part = leader`.
+/// @param state Value used by `setMoverState` in `ent.moverState = state`.
+/// @param time Time value in the units expected by this module.
 function matchTeam(level,leader,state,time)
   part = leader
   while part != void
@@ -75,11 +104,17 @@ function matchTeam(level,leader,state,time)
   return void
 end function
 
+/// Set `ent.s.loopSound` to `ent.soundLoop` in `mq3.game.movers.returnToPos1`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `soundLoop` and `sound2to1`. May update `ent.s.loopSound` in place.
 function returnToPos1(level,ent)
   matchTeam(level,ent,MOVER_2TO1,level.time); ent.s.loopSound = ent.soundLoop; addSound(level,ent,ent.sound2to1)
   return void
 end function
 
+/// Update `ent.s.loopSound`, `ent.think`, `ent.nextthink` and `ent.activator` during `reachedBinary`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `soundLoop`, `moverState`, `soundPos2` and `think` and related fields. May update `ent.s.loopSound`, `ent.think` and `ent.nextthink` and additional fields in place.
 function reachedBinary(level,ent)
   ent.s.loopSound = ent.soundLoop
   if ent.moverState == MOVER_1TO2 then
@@ -94,6 +129,11 @@ function reachedBinary(level,ent)
   return void
 end function
 
+/// Update `ent.activator`, `ent.s.loopSound` and `ent.nextthink` during `useBinary`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `flags`, `teammaster`, `activator`, `moverState` and `sound1to2` and related fields. May update `ent.activator`, `ent.s.loopSound` and `ent.nextthink` in place.
+/// @param other Value passed as argument 3 to `mq3.game.movers.useBinary`.
+/// @param activator Entity responsible for activating the target.
 function useBinary(level,ent,other,activator)
   if (ent.flags & FL_TEAMSLAVE) != 0 then return useBinary(level,ent.teammaster,other,activator) end if
   ent.activator = activator
@@ -114,6 +154,9 @@ function useBinary(level,ent,other,activator)
   return void
 end function
 
+/// Update `ent.s.modelindex2`, `ent.s.loopSound`, `ent.s.constantLight` and `ent.use` and related state during `initMover`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `model2`, `s`, `use`, `reached` and `moverState` and related fields. May update `ent.s.modelindex2`, `ent.s.loopSound` and `ent.s.constantLight` and additional fields in place.
 function initMover(level,ent)
   if ent.model2 != void then ent.s.modelindex2 = values.modelIndex(level.spawner,ent.model2) end if
   noise = values.getString(level.spawner,"noise","100")
@@ -139,6 +182,10 @@ function initMover(level,ent)
   return void
 end function
 
+/// Apply `mq3.game.items.itemType`, `mq3.game.items.droppedFlagThink` and `mq3.game.entities.tempEntity` while evaluating `blockedDoor`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `damage` and `spawnflags`.
+/// @param other Other record; accesses `client`, `s` and `item`.
 function blockedDoor(level,ent,other)
   if other.client == void then
     if other.s.eType == c.ET_ITEM and other.item != void and items.itemType(other.item) == c.IT_TEAM then items.droppedFlagThink(level,other); return void end if
@@ -149,6 +196,11 @@ function blockedDoor(level,ent,other)
   return void
 end function
 
+/// Apply `mq3.game.teleport.player` and `mq3.game.movers.useBinary` while evaluating `touchDoorTrigger`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `parent`, `count` and `r`.
+/// @param other Other record; accesses `client` and `s`.
+/// @param trace Not read by this implementation; retained in the `touchDoorTrigger` signature.
 function touchDoorTrigger(level,ent,other,trace)
   if other.client == void then return void end if
   if other.client.team == c.TEAM_SPECTATOR then
@@ -165,10 +217,16 @@ function touchDoorTrigger(level,ent,other,trace)
   return void
 end function
 
+/// Forward `thinkMatchTeam` to `mq3.game.movers.matchTeam` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `moverState`.
 function thinkMatchTeam(level,ent)
   return matchTeam(level,ent,ent.moverState,level.time)
 end function
 
+/// Apply `mq3.game.movement.copy`, `mq3.game.entities.spawn` and `mq3.game.entities.link` while evaluating `spawnDoorTrigger`. Return paths include `matchTeam(level,ent,ent.moverState,level.time)`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `r` and `moverState`.
 function spawnDoorTrigger(level,ent)
   part = ent; mins = movement.copy(ent.r.absmin); maxs = movement.copy(ent.r.absmax)
   while part != void
@@ -188,6 +246,9 @@ function spawnDoorTrigger(level,ent)
   return matchTeam(level,ent,ent.moverState,level.time)
 end function
 
+/// Update `ent.sound1to2`, `ent.sound2to1`, `ent.soundPos1` and `ent.soundPos2` and related state during `spawnDoor`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param ent Game entity; accesses `sound1to2`, `sound2to1`, `soundPos1`, `soundPos2` and `blocked` and related fields. May update `ent.sound1to2`, `ent.sound2to1` and `ent.soundPos1` and additional fields in place.
 function spawnDoor(level,ent)
   ent.sound1to2 = values.soundIndex(level.spawner,"sound/movers/doors/dr1_strt.wav"); ent.sound2to1 = ent.sound1to2
   ent.soundPos1 = values.soundIndex(level.spawner,"sound/movers/doors/dr1_end.wav"); ent.soundPos2 = ent.soundPos1; ent.blocked = blockedDoor
@@ -206,18 +267,33 @@ function spawnDoor(level,ent)
   return void
 end function
 
+/// Forward `movedirVector` to `mq3.shared.directions.movedirVector` and return the delegated result.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function movedirVector(angles)
   return dirs.movedirVector(angles)
 end function
 
+/// Set `ent.nextthink` to `n.add32(level.time,1000)` in `mq3.game.movers.touchPlat`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `moverState` and `nextthink`. May update `ent.nextthink` in place.
+/// @param other Other record; accesses `client`.
+/// @param trace Not read by this implementation; retained in the `touchPlat` signature.
 function touchPlat(level,ent,other,trace)
   if other.client != void and other.client.ps.stats[c.STAT_HEALTH] > 0 and ent.moverState == MOVER_POS2 then ent.nextthink = n.add32(level.time,1000) end if
   return void
 end function
+/// Apply `mq3.game.movers.useBinary` while evaluating `touchPlatTrigger`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `parent`.
+/// @param other Other record; accesses `client`.
+/// @param trace Not read by this implementation; retained in the `touchPlatTrigger` signature.
 function touchPlatTrigger(level,ent,other,trace)
   if other.client != void and ent.parent.moverState == MOVER_POS1 then useBinary(level,ent.parent,ent,other) end if
   return void
 end function
+/// Apply `mq3.game.entities.spawn` and `mq3.game.entities.link` while evaluating `spawnPlatTrigger`.
+/// @param level Game-level state; accesses `num_entities`, `entities`, `startTime` and `time`. May update `level.num_entities` in place.
+/// @param ent Game entity; accesses `pos1` and `r`.
 function spawnPlatTrigger(level,ent)
   trigger = game.spawn(level); trigger.classname = "plat_trigger"; trigger.touch = touchPlatTrigger; trigger.r.contents = 0x40000000; trigger.parent = ent
   low = ent.pos1; trigger.r.mins = [n.fadd(n.fadd(low[0],ent.r.mins[0]),33),n.fadd(n.fadd(low[1],ent.r.mins[1]),33),n.fadd(low[2],ent.r.mins[2])]
@@ -227,6 +303,9 @@ function spawnPlatTrigger(level,ent)
   end for
   game.link(level,trigger); return void
 end function
+/// Update `ent.sound1to2`, `ent.sound2to1`, `ent.soundPos1` and `ent.soundPos2` and related state during `spawnPlat`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `sound1to2`, `sound2to1`, `soundPos1`, `soundPos2` and `s` and related fields. May update `ent.sound1to2`, `ent.sound2to1` and `ent.soundPos1` and additional fields in place.
 function spawnPlat(level,ent)
   ent.sound1to2 = values.soundIndex(level.spawner,"sound/movers/plats/pt1_strt.wav"); ent.sound2to1 = ent.sound1to2
   ent.soundPos1 = values.soundIndex(level.spawner,"sound/movers/plats/pt1_end.wav"); ent.soundPos2 = ent.soundPos1; ent.s.angles = [0.0,0.0,0.0]
@@ -238,9 +317,17 @@ function spawnPlat(level,ent)
   if ent.targetname == void then spawnPlatTrigger(level,ent) end if; return void
 end function
 
+/// Apply `mq3.game.movers.useBinary` while evaluating `touchButton`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `moverState`.
+/// @param other Other record; accesses `client`.
+/// @param trace Not read by this implementation; retained in the `touchButton` signature.
 function touchButton(level,ent,other,trace)
   if other.client != void and ent.moverState == MOVER_POS1 then useBinary(level,ent,other,other) end if; return void
 end function
+/// Update `ent.sound1to2`, `ent.speed`, `ent.wait` and `ent.pos1` and related state during `spawnButton`. Return paths include `initMover(level,ent)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `sound1to2`, `speed`, `wait`, `pos1` and `s` and related fields. May update `ent.sound1to2`, `ent.speed` and `ent.wait` and additional fields in place.
 function spawnButton(level,ent)
   ent.sound1to2 = values.soundIndex(level.spawner,"sound/movers/switches/butn2.wav")
   if ent.speed == 0 then ent.speed = 40.0 end if; if ent.wait == 0 then ent.wait = 1.0 end if; ent.wait = n.trunc32(n.fmul(ent.wait,1000))
@@ -251,9 +338,16 @@ function spawnButton(level,ent)
   return initMover(level,ent)
 end function
 
+/// Set `ent.s.pos.trTime` to `level.time` and `ent.s.pos.trType` to `c.TR_LINEAR_STOP` in `mq3.game.movers.beginMoving`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`. May update `ent.s.pos.trTime` and `ent.s.pos.trType` in place.
 function beginMoving(level,ent)
   ent.s.pos.trTime = level.time; ent.s.pos.trType = c.TR_LINEAR_STOP; return void
 end function
+/// Find the next active path_corner with a matching target name, beginning at the supplied entity index.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param name Name used to identify the requested entry.
+/// @param start Value used by `findPath` in `i = start`.
 function findPath(level,name,start)
   i = start
   while i < level.num_entities
@@ -262,6 +356,9 @@ function findPath(level,name,start)
   end while
   return void
 end function
+/// Update `ent.nextTrain`, `ent.pos1`, `ent.pos2` and `ent.s.pos.trDuration` and related state during `reachedTrain`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `nextTrain`, `pos1`, `pos2`, `speed` and `s` and related fields. May update `ent.nextTrain`, `ent.pos1` and `ent.pos2` and additional fields in place.
 function reachedTrain(level,ent)
   next = ent.nextTrain; if next == void or next.nextTrain == void then return void end if
   targets.useTargets(level,next,void); ent.nextTrain = next.nextTrain; ent.pos1 = movement.copy(next.s.origin); ent.pos2 = movement.copy(next.nextTrain.s.origin)
@@ -272,6 +369,9 @@ function reachedTrain(level,ent)
   if next.wait != 0 then ent.nextthink = n.add32(level.time,n.trunc32(n.fmul(next.wait,1000))); ent.think = beginMoving; ent.s.pos.trType = c.TR_STATIONARY end if
   return void
 end function
+/// Set `ent.nextTrain` to `findPath(level,ent.target,0)` in `mq3.game.movers.setupTrain`. Return paths include `reachedTrain(level,ent)`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param ent Game entity; accesses `nextTrain`, `target` and `r`. May update `ent.nextTrain` in place.
 function setupTrain(level,ent)
   ent.nextTrain = findPath(level,ent.target,0)
   if ent.nextTrain == void then game.diagnostic(level,"func_train at "+game.vtos(level,ent.r.absmin)+" with an unfound target\n"); return void end if
@@ -284,6 +384,9 @@ function setupTrain(level,ent)
   end while
   return reachedTrain(level,ent)
 end function
+/// Update `ent.s.angles`, `ent.damage`, `ent.speed` and `ent.reached` and related state during `spawnTrain`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `spawnflags`, `damage`, `speed` and `target` and related fields. May update `ent.s.angles`, `ent.damage` and `ent.speed` and additional fields in place.
 function spawnTrain(level,ent)
   ent.s.angles = [0.0,0.0,0.0]
   if (ent.spawnflags & 4) != 0 then ent.damage = 0
@@ -294,14 +397,23 @@ function spawnTrain(level,ent)
   ent.reached = reachedTrain; ent.nextthink = n.add32(level.time,100); ent.think = setupTrain; return void
 end function
 
+/// Set `ent.s.pos.trBase` to `movement.copy(ent.s.origin)` and `ent.r.currentOrigin` to `movement.copy(ent.s.origin)` in `mq3.game.movers.spawnStatic`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `model`, `s` and `r`. May update `ent.s.pos.trBase` and `ent.r.currentOrigin` in place.
 function spawnStatic(level,ent)
   setBrushModel(level,ent,ent.model); initMover(level,ent); ent.s.pos.trBase = movement.copy(ent.s.origin); ent.r.currentOrigin = movement.copy(ent.s.origin); return void
 end function
+/// Update `ent.speed`, `ent.damage`, `ent.s.apos.trType` and `ent.s.apos.trDelta[2]` and related state during `spawnRotating`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `speed`, `damage`, `s`, `spawnflags` and `model` and related fields. May update `ent.speed`, `ent.damage` and `ent.s.apos.trType` and additional fields in place.
 function spawnRotating(level,ent)
   if ent.speed == 0 then ent.speed = 100.0 end if; if ent.damage == 0 then ent.damage = 2 end if
   ent.s.apos.trType = c.TR_LINEAR; if (ent.spawnflags & 4) != 0 then ent.s.apos.trDelta[2] = ent.speed else if (ent.spawnflags & 8) != 0 then ent.s.apos.trDelta[0] = ent.speed else ent.s.apos.trDelta[1] = ent.speed end if
   setBrushModel(level,ent,ent.model); initMover(level,ent); ent.s.pos.trBase = movement.copy(ent.s.origin); ent.r.currentOrigin = movement.copy(ent.s.origin); ent.r.currentAngles = movement.copy(ent.s.apos.trBase); return game.link(level,ent)
 end function
+/// Update `ent.speed`, `ent.damage`, `ent.s.pos.trBase` and `ent.r.currentOrigin` and related state during `spawnBobbing`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `speed`, `damage`, `model`, `s` and `r` and related fields. May update `ent.speed`, `ent.damage` and `ent.s.pos.trBase` and additional fields in place.
 function spawnBobbing(level,ent)
   ent.speed = values.getFloat(level.spawner,"speed","4")[1]; height = values.getFloat(level.spawner,"height","32")[1]; ent.damage = values.getInt(level.spawner,"dmg","2")[1]; phase = values.getFloat(level.spawner,"phase","0")[1]
   setBrushModel(level,ent,ent.model); initMover(level,ent)
@@ -309,6 +421,9 @@ function spawnBobbing(level,ent)
   ent.s.pos.trTime = n.trunc32(n.fmul(ent.s.pos.trDuration,phase)); ent.s.pos.trType = c.TR_SINE; ent.s.pos.trDelta = [0.0,0.0,0.0]
   if (ent.spawnflags & 1) != 0 then ent.s.pos.trDelta[0] = height else if (ent.spawnflags & 2) != 0 then ent.s.pos.trDelta[1] = height else ent.s.pos.trDelta[2] = height end if; return void
 end function
+/// Update `ent.damage`, `ent.s.pos.trDuration`, `ent.s.pos.trBase` and `ent.r.currentOrigin` and related state during `spawnPendulum`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `damage`, `model`, `r` and `s`. May update `ent.damage`, `ent.s.pos.trDuration` and `ent.s.pos.trBase` and additional fields in place.
 function spawnPendulum(level,ent)
   amplitude = values.getFloat(level.spawner,"speed","30")[1]; phase = values.getFloat(level.spawner,"phase","0")[1]; ent.damage = values.getInt(level.spawner,"dmg","2")[1]
   setBrushModel(level,ent,ent.model); length = q.Q_fabs(ent.r.mins[2]); if length < 8 then length = 8.0 end if
@@ -320,6 +435,9 @@ function spawnPendulum(level,ent)
   ent.s.apos.trBase = movement.copy(ent.s.angles); ent.s.apos.trDuration = duration; ent.s.apos.trTime = n.trunc32(n.fmul(duration,phase)); ent.s.apos.trType = c.TR_SINE; ent.s.apos.trDelta = [0.0,0.0,amplitude]; return void
 end function
 
+/// Apply `mq3.game.entities.diagnostic`, `mq3.game.entities.vtos` and `mq3.game.entities.free` while evaluating `spawnPathCorner`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param ent Game entity; accesses `targetname` and `s`.
 function spawnPathCorner(level,ent)
   if ent.targetname == void then
     game.diagnostic(level,"path_corner with no targetname at "+game.vtos(level,ent.s.origin)+"\n")
@@ -328,6 +446,9 @@ function spawnPathCorner(level,ent)
   return void
 end function
 
+/// Apply `mq3.game.movers.spawnDoor`, `mq3.game.movers.spawnPlat` and `mq3.game.movers.spawnButton` while evaluating `dispatch`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param ent Game entity; accesses `classname`.
 function dispatch(level,ent)
   switch ent.classname
     case "func_door"
@@ -361,6 +482,9 @@ function dispatch(level,ent)
   return true
 end function
 
+/// Test strict overlap of two entities' absolute collision bounds on all three axes.
+/// @param first First record; accesses `r`.
+/// @param second Second record; accesses `r`.
 function overlaps(first,second)
   for axis = 0 to 2
     if first.r.absmin[axis] >= second.r.absmax[axis] or first.r.absmax[axis] <= second.r.absmin[axis] then return false end if
@@ -368,10 +492,16 @@ function overlaps(first,second)
   return true
 end function
 
+/// Test `testEntityPosition(level,ent) != void` as the condition for `positionBlocked`.
+/// @param level Game-level state; accesses `scene` and `entities`.
+/// @param ent Game entity; accesses `s`, `client`, `clipmask` and `r`.
 function positionBlocked(level,ent)
   return testEntityPosition(level,ent) != void
 end function
 
+/// Apply `mq3.server.world.trace` while evaluating `testEntityPosition`. Return paths include `level.entities[hit.entityNum]`.
+/// @param level Game-level state; accesses `scene` and `entities`.
+/// @param ent Game entity; accesses `s`, `client`, `clipmask` and `r`.
 function testEntityPosition(level,ent)
   origin = ent.s.pos.trBase
   if ent.client != void then origin = ent.client.ps.origin end if
@@ -383,18 +513,28 @@ function testEntityPosition(level,ent)
   return level.entities[hit.entityNum]
 end function
 
+/// Forward `createRotationMatrix` to `mq3.collision.world.rotationMatrix` and return the delegated result.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function createRotationMatrix(angles)
   return cm.rotationMatrix(angles)
 end function
 
+/// Forward `transposeMatrix` to `mq3.collision.world.transpose` and return the delegated result.
+/// @param matrix Three-component array; components 0, 1 and 2 are used in their stored order.
 function transposeMatrix(matrix)
   return cm.transpose(matrix)
 end function
 
+/// Forward `rotatePoint` to `mq3.collision.world.rotatePoint` and return the delegated result.
+/// @param point Three-component point used by the geometric query.
+/// @param matrix Three-component array; components 0, 1 and 2 are used in their stored order.
 function rotatePoint(point,matrix)
   return cm.rotatePoint(point,matrix)
 end function
 
+/// Apply `mq3.server.world.trace` while evaluating `checkProxMinePosition`. Return paths include `not hit.trace.startsolid and hit.trace.fraction == 1.0`.
+/// @param level Game-level state; accesses `scene`.
+/// @param check Check record; accesses `s` and `movedir`.
 function checkProxMinePosition(level,check)
   start = q.VectorMA(check.s.pos.trBase,0.125,check.movedir)
   finish = q.VectorMA(check.s.pos.trBase,2.0,check.movedir)
@@ -402,6 +542,12 @@ function checkProxMinePosition(level,check)
   return not hit.trace.startsolid and hit.trace.fraction == 1.0
 end function
 
+/// Update `check.s.pos.trBase[axis]` and `check.r.currentOrigin` during `tryPushingProxMine`.
+/// @param level Game-level state; accesses `scene`.
+/// @param check Check record; accesses `s` and `r`. May update `check.s.pos.trBase[axis]` and `check.r.currentOrigin` in place.
+/// @param pusher Pusher record; accesses `r`.
+/// @param move Array or byte sequence accessed at `axis`.
+/// @param angleMove Three-component array; components 0, 1 and 2 are used in their stored order.
 function tryPushingProxMine(level,check,pusher,move,angleMove)
   inverseAngles = [n.fneg(angleMove[0]),n.fneg(angleMove[1]),n.fneg(angleMove[2])]
   axes = q.AngleVectors(inverseAngles)
@@ -417,12 +563,21 @@ function tryPushingProxMine(level,check,pusher,move,angleMove)
   check.r.currentOrigin = movement.copy(check.s.pos.trBase); game.link(level,check); return true
 end function
 
+/// Set `check.s.loopSound` to `0` and `check.activator` to `void` in `mq3.game.movers.explodeProxMine`.
+/// @param level Game-level state; accesses `time`.
+/// @param check Check record; accesses `s` and `activator`. May update `check.s.loopSound` and `check.activator` in place.
 function explodeProxMine(level,check)
   check.s.loopSound = 0; events.add(level,check,c.EV_PROXIMITY_MINE_TRIGGER,0); missiles.explode(level,check)
   if check.activator != void then game.free(level,check.activator); check.activator = void end if
   return void
 end function
 
+/// Update `check.s.pos.trBase[axis]`, `check.client.ps.origin[axis]`, `check.client.ps.delta_angles[1]` and `check.s.groundEntityNum` and related state during `tryPush`. Return paths include `[false,[check,oldOrigin,oldAngles,oldDeltaYaw]]`.
+/// @param level Game-level state; accesses `scene` and `entities`.
+/// @param check Check record; accesses `s`, `client` and `r`. May update `check.s.pos.trBase[axis]`, `check.client.ps.origin[axis]` and `check.client.ps.delta_angles[1]` and additional fields in place.
+/// @param pusher Pusher record; accesses `s` and `r`.
+/// @param move Array or byte sequence accessed at `axis`.
+/// @param angleMove Pitch, yaw and roll angles in degrees.
 function tryPush(level,check,pusher,move,angleMove)
   if (pusher.s.eFlags & EF_MOVER_STOP) != 0 and check.s.groundEntityNum != pusher.s.number then return [false,void] end if
   oldOrigin = movement.copy(check.s.pos.trBase); oldAngles = movement.copy(check.s.apos.trBase); oldDeltaYaw = 0
@@ -455,12 +610,21 @@ function tryPush(level,check,pusher,move,angleMove)
   return [false,[check,oldOrigin,oldAngles,oldDeltaYaw]]
 end function
 
+/// Apply `mq3.game.movement.copy` and `mq3.game.entities.link` while evaluating `restorePush`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `scene`.
+/// @param record Three-component array; components 0, 1 and 2 are used in their stored order.
 function restorePush(level,record)
   ent = record[0]; ent.s.pos.trBase = movement.copy(record[1]); ent.s.apos.trBase = movement.copy(record[2])
   if ent.client != void then ent.client.ps.origin = movement.copy(record[1]); ent.client.ps.delta_angles[1] = record[3] end if
   return game.link(level,ent)
 end function
 
+/// Update `pusher.r.currentOrigin` and `pusher.r.currentAngles` during `pushPart`. Return paths include `[true,void,records]`.
+/// @param level Game-level state; accesses `scene` and `entities`.
+/// @param pusher Pusher record; accesses `r` and `s`. May update `pusher.r.currentOrigin` and `pusher.r.currentAngles` in place.
+/// @param move Array or byte sequence accessed at `axis`.
+/// @param angleMove Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param records Sequence whose length bounds the iteration or lookup in `pushPart`.
 function pushPart(level,pusher,move,angleMove,records)
   oldMins = movement.copy(pusher.r.absmin); oldMaxs = movement.copy(pusher.r.absmax)
   game.unlink(level,pusher)
@@ -512,6 +676,10 @@ function pushPart(level,pusher,move,angleMove,records)
   return [true,void,records]
 end function
 
+/// Apply `mq3.game.movers.restorePush`, `mq3.game.trajectory.evaluate` and `mq3.game.entities.link` while evaluating `rollbackTeam`.
+/// @param level Game-level state; accesses `time` and `previousTime`.
+/// @param leader Value used by `rollbackTeam` in `part = leader`.
+/// @param records Array or byte sequence accessed at `index`.
 function rollbackTeam(level,leader,records)
   index = len(records)-1
   while index >= 0
@@ -525,6 +693,9 @@ function rollbackTeam(level,leader,records)
   return void
 end function
 
+/// Use `leader.blocked` to perform `moveTeam`.
+/// @param level Game-level state; accesses `time`.
+/// @param leader Leader record; accesses `blocked`.
 function moveTeam(level,leader)
   records = []; part = leader; obstacle = void
   while part != void
@@ -548,6 +719,9 @@ function moveTeam(level,leader)
   return void
 end function
 
+/// Apply `mq3.game.movers.moveTeam` and `mq3.game.entities.runThink` while evaluating `run`. Return paths include `game.runThink(level,ent)`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `flags` and `s`.
 function run(level,ent)
   if (ent.flags & FL_TEAMSLAVE) != 0 then return void end if
   if ent.s.pos.trType != c.TR_STATIONARY or ent.s.apos.trType != c.TR_STATIONARY then moveTeam(level,ent) end if

@@ -7,13 +7,53 @@ import mq3.compat.textnumbers as textnumbers
 import mq3.client.gamestate as gamestate
 import std.string as strings
 
-struct State serverId demoPlaying connectedPure end struct
-struct Services cheatResetFn loadedPaksFn referencedPaksFn setCvarFn getCvarFn context end struct
-struct Binding state services end struct
+/// Stores system info state, including `serverId`, `demoPlaying`, `connectedPure`.
+struct State
+  /// Server-instance identifier included in client messages to reject stale connections.
+  serverId
+  /// True while the client receives its game data from a recorded demo.
+  demoPlaying
+  /// When constructing this record, `create` supplies `0` for this member. Used by `apply` during
+  /// subsequent processing.
+  connectedPure
+end struct
+/// Stores system info host-service callbacks, including `cheatResetFn`, `loadedPaksFn`, `referencedPaksFn`, `setCvarFn`, `getCvarFn`, `context`.
+struct Services
+  /// Host callback for the cheat reset operation; an unset callback leaves that host operation
+  /// unavailable.
+  cheatResetFn
+  /// Host callback for the loaded paks operation; an unset callback leaves that host operation
+  /// unavailable.
+  loadedPaksFn
+  /// Host callback for the referenced paks operation; an unset callback leaves that host operation
+  /// unavailable.
+  referencedPaksFn
+  /// Host callback for the set cvar operation; an unset callback leaves that host operation
+  /// unavailable.
+  setCvarFn
+  /// Host callback for the get cvar operation; an unset callback leaves that host operation
+  /// unavailable.
+  getCvarFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for server system-info
+  /// configuration.
+  context
+end struct
+/// Stores system info binding record, including `state`, `services`.
+struct Binding
+  /// When constructing this record, `install` supplies `state` for this member. Used by
+  /// `gamestateChanged` during subsequent processing.
+  state
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+end struct
 
+/// Creates a `mq3.client.system_info.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State(0,false,0) end function
+/// Creates a `mq3.client.system_info.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void,void,void,void) end function
 
+/// Calls `std.string.split` from system info `pairs`. The final path returns `result`.
+/// @param systemInfo Value used by `fields=strings.split(systemInfo,"\\")`.
 function pairs(systemInfo)
   fields=strings.split(systemInfo,"\\");index=0;if len(fields)>0 and fields[0]=="" then index=1 end if
   result=[]
@@ -25,6 +65,10 @@ function pairs(systemInfo)
   return result
 end function
 
+/// Updates `state.serverId`, `state.connectedPure` during system info `apply`.
+/// @param state Mutable system info record/storage; this routine assigns `state.serverId`, `state.connectedPure`.
+/// @param host Record read through `host.cheatResetFn`, `host.loadedPaksFn`, `host.referencedPaksFn`, `host.setCvarFn` and additional values.
+/// @param systemInfo Value used by `state.serverId=textnumbers.atoi(info.value(systemInfo,"sv_serverid"))`.
 function apply(state,host,systemInfo)
   if state==void or host==void then return error(6940,"systeminfo: missing state or services") end if
   state.serverId=textnumbers.atoi(info.value(systemInfo,"sv_serverid"))
@@ -44,12 +88,18 @@ function apply(state,host,systemInfo)
   return len(values)
 end function
 
+/// Calls `mq3.client.system_info.apply`, `mq3.client.gamestate.configString` from system info `gamestateChanged`. The final path returns `apply(binding.state,binding.services,gamestate.configString(gameState,1))`.
+/// @param gameState Record read through `gameState.context`.
 function gamestateChanged(gameState)
   if gameState.context==void or not (gameState.context is Binding) then return error(6941,"systeminfo: missing gamestate binding") end if
   binding=gameState.context
   return apply(binding.state,binding.services,gamestate.configString(gameState,1))
 end function
 
+/// Updates `gameState.context`, `gameState.systemInfoFn` during system info `install`.
+/// @param gameState Mutable system info record/storage; this routine assigns `gameState.context`, `gameState.systemInfoFn`.
+/// @param state Shared system info state passed to the helper calls in `install`.
+/// @param host host record passed to the system info helper calls.
 function install(gameState,state,host)
   if gameState==void then return error(6942,"systeminfo: missing gamestate") end if
   gameState.context=Binding(state,host);gameState.systemInfoFn=gamestateChanged

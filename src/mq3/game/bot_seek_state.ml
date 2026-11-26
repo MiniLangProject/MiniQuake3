@@ -8,111 +8,222 @@ import mq3.game.bot_navigation as navigation
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Bot decision-state identifier for the seek node.
 const NODE_SEEK=3
+/// Bot decision-state identifier for the stand node.
 const NODE_STAND=4
+/// Bot decision-state identifier for the observer node.
 const NODE_OBSERVER=5
+/// Bot decision-state identifier for the intermission node.
 const NODE_INTERMISSION=6
+/// Bot decision-state identifier for the respawn node.
 const NODE_RESPAWN=7
+/// Bot decision-state identifier for the seek nbg node.
 const NODE_SEEK_NBG=10
+/// Bot decision-state identifier for the activate node.
 const NODE_ACTIVATE=11
+/// Bot-state flag marking idealviewset.
 const BFL_IDEALVIEWSET=32
+/// Bot movement-result flag reporting movementview.
 const MOVERESULT_MOVEMENTVIEW=1
+/// Bot movement-result flag reporting swimview.
 const MOVERESULT_SWIMVIEW=2
+/// Bot movement-result flag reporting waiting.
 const MOVERESULT_WAITING=4
+/// Bot movement-result flag reporting movementviewset.
 const MOVERESULT_MOVEMENTVIEWSET=8
+/// Bot movement-result flag reporting movementweapon.
 const MOVERESULT_MOVEMENTWEAPON=16
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=3
+/// Default combination of permitted AAS travel types used by bot movement queries.
 const TFL_DEFAULT=0x11c0fbe
+/// AAS travel-mask bit allowing the rocketjump travel category.
 const TFL_ROCKETJUMP=0x1000
+/// AAS travel-mask bit allowing the grapplehook travel category.
 const TFL_GRAPPLEHOOK=0x4000
+/// AAS travel-mask bit allowing the slime travel category.
 const TFL_SLIME=0x200000
+/// AAS travel-mask bit allowing the lava travel category.
 const TFL_LAVA=0x400000
 
+/// `Services` record for bot seek state, containing `fightServices`, `navigationServices`, `observerFn`, `recordNodeFn` and `enterNodeFn` and related fields.
 struct Services
+  /// Callbacks and shared state used by the bot fight node.
   fightServices
+  /// Callbacks and shared state used for bot navigation decisions.
   navigationServices
+  /// Injected callback for observer; invoked through the Services service/state record.
   observerFn
+  /// Injected callback for record node; invoked through the Services service/state record.
   recordNodeFn
+  /// Injected callback for enter node; invoked through the Services service/state record.
   enterNodeFn
+  /// Injected callback for top goal; invoked through the Services service/state record.
   topGoalFn
+  /// Injected callback for goal name; invoked through the Services service/state record.
   goalNameFn
+  /// Injected callback for random chat; invoked through the Services service/state record.
   randomChatFn
+  /// Injected callback for chat time; invoked through the Services service/state record.
   chatTimeFn
+  /// Injected callback for map scripts; invoked through the Services service/state record.
   mapScriptsFn
+  /// Injected callback for gesture; invoked through the Services service/state record.
   gestureFn
+  /// Injected callback for empty goal stack; invoked through the Services service/state record.
   emptyGoalStackFn
+  /// Injected callback for team goals; invoked through the Services service/state record.
   teamGoalsFn
+  /// Injected callback for long term goal; invoked through the Services service/state record.
   longTermGoalFn
+  /// Injected callback for wants camp; invoked through the Services service/state record.
   wantsCampFn
+  /// Injected callback for nearby goal; invoked through the Services service/state record.
   nearbyGoalFn
+  /// Injected callback for reset last avoid; invoked through the Services service/state record.
   resetLastAvoidFn
+  /// Injected callback for enter seek nbg; invoked through the Services service/state record.
   enterSeekNbgFn
+  /// Injected callback for predict obstacles; invoked through the Services service/state record.
   predictObstaclesFn
+  /// Injected callback for setup movement; invoked through the Services service/state record.
   setupMovementFn
+  /// Injected callback for move to goal; invoked through the Services service/state record.
   moveToGoalFn
+  /// Injected callback for reset avoid; invoked through the Services service/state record.
   resetAvoidFn
+  /// Injected callback for blocked; invoked through the Services service/state record.
   blockedFn
+  /// Injected callback for clear path; invoked through the Services service/state record.
   clearPathFn
+  /// Injected callback for movement view target; invoked through the Services service/state record.
   movementViewTargetFn
+  /// Injected callback for roam goal; invoked through the Services service/state record.
   roamGoalFn
+  /// Grappling-hook movement support supplied to the bot controller.
   grapple
+  /// Injected callback for reached goal; invoked through the Services service/state record.
   reachedGoalFn
+  /// Injected callback for second goal; invoked through the Services service/state record.
   secondGoalFn
+  /// Injected callback for pop goal; invoked through the Services service/state record.
   popGoalFn
+  /// Injected callback for choose weapon; invoked through the Services service/state record.
   chooseWeaponFn
+  /// Injected callback for reset state; invoked through the Services service/state record.
   resetStateFn
+  /// Injected callback for end level chat; invoked through the Services service/state record.
   endLevelChatFn
+  /// Injected callback for start level chat; invoked through the Services service/state record.
   startLevelChatFn
+  /// Injected callback for hit talking chat; invoked through the Services service/state record.
   hitTalkingChatFn
+  /// Injected callback for death chat; invoked through the Services service/state record.
   deathChatFn
+  /// Injected callback for enter chat; invoked through the Services service/state record.
   enterChatFn
+  /// Injected callback for talk; invoked through the Services service/state record.
   talkFn
+  /// Injected callback for respawn; invoked through the Services service/state record.
   respawnFn
+  /// Injected callback for reset move state; invoked through the Services service/state record.
   resetMoveStateFn
+  /// Injected callback for reset goal state; invoked through the Services service/state record.
   resetGoalStateFn
+  /// Injected callback for reset avoid goals; invoked through the Services service/state record.
   resetAvoidGoalsFn
+  /// Injected callback for clear activate; invoked through the Services service/state record.
   clearActivateFn
+  /// Injected callback for activation node; invoked through the Services service/state record.
   activationNodeFn
+  /// Injected callback for activate trace; invoked through the Services service/state record.
   activateTraceFn
+  /// Injected callback for activate touch; invoked through the Services service/state record.
   activateTouchFn
+  /// Injected callback for activate origin; invoked through the Services service/state record.
   activateOriginFn
+  /// Injected callback for attack; invoked through the Services service/state record.
   attackFn
+  /// Injected callback for select activate weapon; invoked through the Services service/state record.
   selectActivateWeaponFn
+  /// Injected callback for mission nearby range; invoked through the Services service/state record.
   missionNearbyRangeFn
+  /// Callbacks used to execute the bot deathmatch decision network.
   dmnetServices
+  /// Opaque caller-supplied context available to bot seek-state transitions, navigation, activation,
+  /// and respawn callbacks.
   context
 end struct
 
+/// Create a `mq3.game.bot_seek_state.Services` record, initializing `fightServices` from `fightServices` and `navigationServices` from `navigationServices`.
+/// @param fightServices Initial value stored in `mq3.game.bot_seek_state.Services.fightServices`.
+/// @param navigationServices Initial value stored in `mq3.game.bot_seek_state.Services.navigationServices`.
 function create(fightServices,navigationServices)
   return Services(fightServices,navigationServices,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,false,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
+/// Set `bot.aiNode` to `node` in `mq3.game.bot_seek_state.transition`.
+/// @param services Host service callbacks; accesses `enterNodeFn`.
+/// @param bot Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place.
+/// @param node Value passed as argument 3 to `services.enterNodeFn`.
+/// @param reason Reason text recorded with the operation.
 function transition(services,bot,node,reason)
   bot.aiNode=node;if services.enterNodeFn!=void then services.enterNodeFn(services,bot,node,reason) end if;return void
 end function
+/// Set `bot.aiNode` to `NODE_SEEK` in `mq3.game.bot_seek_state.enterSeek`.
+/// @param services Host service callbacks; accesses `topGoalFn`, `recordNodeFn` and `goalNameFn`.
+/// @param bot Bot AI state; accesses `gs` and `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterSeek(services,bot,reason)
   pair=services.topGoalFn(services,bot.gs)
   if pair[0] then services.recordNodeFn(services,bot,"seek LTG",services.goalNameFn(services,pair[1].number),reason)
   else services.recordNodeFn(services,bot,"seek LTG","no goal",reason) end if
   bot.aiNode=NODE_SEEK;return void
 end function
+/// Use `services.recordNodeFn` to perform `recordEntry`.
+/// @param services Host service callbacks; accesses `recordNodeFn`.
+/// @param bot Value passed as argument 2 to `services.recordNodeFn`.
+/// @param name Name used to identify the requested entry.
+/// @param goal Value passed as argument 4 to `services.recordNodeFn`.
+/// @param reason Reason text recorded with the operation.
 function recordEntry(services,bot,name,goal,reason)
   if services.recordNodeFn!=void then services.recordNodeFn(services,bot,name,goal,reason) end if;return void
 end function
+/// Set `bot.aiNode` to `NODE_SEEK_NBG` in `mq3.game.bot_seek_state.enterSeekNbg`.
+/// @param services Host service callbacks; accesses `topGoalFn` and `goalNameFn`.
+/// @param bot Bot AI state; accesses `gs` and `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterSeekNbg(services,bot,reason)
   pair=services.topGoalFn(services,bot.gs);name="no goal";if pair[0] then name=services.goalNameFn(services,pair[1].number) end if
   recordEntry(services,bot,"seek NBG",name,reason);bot.aiNode=NODE_SEEK_NBG;return void
 end function
+/// Set `bot.aiNode` to `NODE_OBSERVER` in `mq3.game.bot_seek_state.enterObserver`.
+/// @param services Host service callbacks; accesses `resetStateFn`.
+/// @param bot Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterObserver(services,bot,reason)
   recordEntry(services,bot,"observer","",reason);if services.resetStateFn!=void then services.resetStateFn(services,bot) end if;bot.aiNode=NODE_OBSERVER;return void
 end function
+/// Set `bot.aiNode` to `NODE_INTERMISSION` in `mq3.game.bot_seek_state.enterIntermission`.
+/// @param services Host service callbacks; accesses `resetStateFn`, `endLevelChatFn` and `enterChatFn`.
+/// @param bot Bot AI state; accesses `chatto` and `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterIntermission(services,bot,reason)
   recordEntry(services,bot,"intermission","",reason);if services.resetStateFn!=void then services.resetStateFn(services,bot) end if
   if services.endLevelChatFn!=void and services.endLevelChatFn(services,bot) and services.enterChatFn!=void then services.enterChatFn(services,bot,bot.chatto) end if
   bot.aiNode=NODE_INTERMISSION;return void
 end function
+/// Update `bot.standFindEnemyTime` and `bot.aiNode` during `enterStand`.
+/// @param services Host service callbacks; accesses `fightServices`.
+/// @param bot Bot AI state; accesses `standFindEnemyTime` and `aiNode`. May update `bot.standFindEnemyTime` and `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterStand(services,bot,reason)
   recordEntry(services,bot,"stand","",reason);bot.standFindEnemyTime=n.fadd(seekCombat.now(services.fightServices.combatServices),1.0);bot.aiNode=NODE_STAND;return void
 end function
+/// Update `bot.respawnTime`, `bot.respawnChatTime`, `bot.respawnWait` and `bot.aiNode` during `enterRespawn`.
+/// @param services Host service callbacks; accesses `fightServices`, `resetMoveStateFn`, `resetGoalStateFn`, `resetAvoidGoalsFn` and `resetAvoidFn` and related fields.
+/// @param bot Bot AI state; accesses `ms`, `gs`, `respawnTime`, `respawnChatTime` and `respawnWait` and related fields. May update `bot.respawnTime`, `bot.respawnChatTime` and `bot.respawnWait` and additional fields in place.
+/// @param reason Reason text recorded with the operation.
 function enterRespawn(services,bot,reason)
   cs=services.fightServices.combatServices;time=seekCombat.now(cs);recordEntry(services,bot,"respawn","",reason)
   if services.resetMoveStateFn!=void then services.resetMoveStateFn(services,bot.ms) end if;if services.resetGoalStateFn!=void then services.resetGoalStateFn(services,bot.gs) end if
@@ -121,13 +232,23 @@ function enterRespawn(services,bot,reason)
   else bot.respawnTime=n.fadd(time,n.fadd(1.0,cs.randomFn(cs)));bot.respawnChatTime=0.0 end if
   bot.respawnWait=false;bot.aiNode=NODE_RESPAWN;return void
 end function
+/// Use `services.clearActivateFn` to perform `clearActivation`.
+/// @param services Host service callbacks; accesses `clearActivateFn` and `navigationServices`.
+/// @param bot Bot AI state; accesses `activateStackIndex`.
 function clearActivation(services,bot)
   if services.clearActivateFn!=void then services.clearActivateFn(services,bot) else navigation.clearActivateGoalStack(services.navigationServices,bot) end if;return void
 end function
+/// Set `bot.aiNode` to `NODE_ACTIVATE` in `mq3.game.bot_seek_state.enterActivate`.
+/// @param services Host service callbacks; accesses `recordNodeFn`.
+/// @param bot Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterActivate(services,bot,reason)
   recordEntry(services,bot,"activate entity","",reason);bot.aiNode=NODE_ACTIVATE;return void
 end function
 
+/// Set `bot.standTime` to `n.fadd(time,services.chatTimeFn(services,bot))` and `bot.standTime` to `n.fadd(time,2.0)` in `mq3.game.bot_seek_state.intermissionNode`.
+/// @param services Host service callbacks; accesses `fightServices`, `startLevelChatFn` and `chatTimeFn`.
+/// @param bot Bot AI state; accesses `standTime`. May update `bot.standTime` in place.
 function intermissionNode(services,bot)
   if not seekCombat.intermission(services.fightServices.combatServices,bot) then
     time=seekCombat.now(services.fightServices.combatServices)
@@ -136,9 +257,15 @@ function intermissionNode(services,bot)
   end if
   return true
 end function
+/// Use `services.observerFn` to perform `observerNode`.
+/// @param services Host service callbacks; accesses `observerFn`.
+/// @param bot Bot AI state; accesses `standFindEnemyTime` and `aiNode`. May update `bot.standFindEnemyTime` and `bot.aiNode` in place.
 function observerNode(services,bot)
   if not services.observerFn(services,bot) then enterStand(services,bot,"observer: left observer") end if;return true
 end function
+/// Update `bot.standFindEnemyTime` and `bot.standTime` during `standNode`.
+/// @param services Host service callbacks; accesses `fightServices`, `hitTalkingChatFn`, `chatTimeFn`, `talkFn` and `enterChatFn`.
+/// @param bot Bot AI state; accesses `lastframeHealth`, `inventory`, `standFindEnemyTime`, `standTime` and `client` and related fields. May update `bot.standFindEnemyTime` and `bot.standTime` in place.
 function standNode(services,bot)
   cs=services.fightServices.combatServices;time=seekCombat.now(cs)
   if bot.lastframeHealth>bot.inventory[seekCombat.INVENTORY_HEALTH] and services.hitTalkingChatFn!=void and services.hitTalkingChatFn(services,bot) then
@@ -152,6 +279,9 @@ function standNode(services,bot)
   if bot.standTime<time then if services.enterChatFn!=void then services.enterChatFn(services,bot,bot.chatto) end if;enterSeek(services,bot,"stand: time out");return false end if
   return true
 end function
+/// Set `bot.respawnWait` to `true` and `bot.enemy` to `-1` in `mq3.game.bot_seek_state.respawnNode`.
+/// @param services Host service callbacks; accesses `fightServices`, `respawnFn`, `enterChatFn` and `talkFn`.
+/// @param bot Bot AI state; accesses `respawnWait`, `client`, `respawnTime`, `respawnChatTime` and `chatto` and related fields. May update `bot.respawnWait` and `bot.enemy` in place.
 function respawnNode(services,bot)
   time=seekCombat.now(services.fightServices.combatServices)
   if bot.respawnWait then
@@ -167,6 +297,9 @@ function respawnNode(services,bot)
   if bot.respawnChatTime!=0.0 and bot.respawnChatTime<n.fsub(time,0.5) and services.talkFn!=void then services.talkFn(services,bot.client) end if
   return true
 end function
+/// Update `bot.tfl`, `bot.enemy`, `bot.activateGoalHeap[bot.activateStackIndex].time` and `bot.idealViewangles` and related state during `activateNode`.
+/// @param services Host service callbacks; accesses `fightServices`, `observerFn`, `grapple`, `mapScriptsFn` and `activateTraceFn` and related fields.
+/// @param bot Bot AI state; accesses `tfl`, `enemy`, `activateStackIndex`, `activateGoalHeap` and `curPs` and related fields. May update `bot.tfl`, `bot.enemy` and `bot.activateGoalHeap[bot.activateStackIndex].time` and additional fields in place.
 function activateNode(services,bot)
   fs=services.fightServices;cs=fs.combatServices;time=seekCombat.now(cs)
   if services.observerFn(services,bot) then clearActivation(services,bot);enterObserver(services,bot,"active entity: observer");return false end if
@@ -220,18 +353,32 @@ function activateNode(services,bot)
   end if
   return true
 end function
+/// Use `services.longTermGoalFn` to perform `longTermGoal`. Return paths include `navigation.longTermGoal(services.navigationServices,bot,bot.tfl,false,goal)`.
+/// @param services Host service callbacks; accesses `longTermGoalFn` and `navigationServices`.
+/// @param bot Bot AI state; accesses `tfl`.
+/// @param goal Bot navigation goal; accesses `origin`.
 function longTermGoal(services,bot,goal)
   if services.longTermGoalFn!=void then return services.longTermGoalFn(services,bot,bot.tfl,false,goal) end if
   return navigation.longTermGoal(services.navigationServices,bot,bot.tfl,false,goal)
 end function
+/// Use `services.predictObstaclesFn` to perform `predictObstacles`. Return paths include `navigation.predictObstacles(services.navigationServices,bot,goal,true)`.
+/// @param services Host service callbacks; accesses `predictObstaclesFn` and `navigationServices`.
+/// @param bot Bot AI state; accesses `predictobstaclesGoalareanum`, `predictobstaclesTime`, `areanum`, `origin` and `tfl`. May update `bot.predictobstaclesGoalareanum` and `bot.predictobstaclesTime` in place.
+/// @param goal Bot navigation goal; accesses `areanum` and `entitynum`.
 function predictObstacles(services,bot,goal)
   if services.predictObstaclesFn!=void then return services.predictObstaclesFn(services,bot,goal) end if
   return navigation.predictObstacles(services.navigationServices,bot,goal,true)
 end function
+/// Use `services.setupMovementFn` to perform `setupMovement`. Return paths include `navigation.setupForMovement(services.navigationServices,bot)`.
+/// @param services Host service callbacks; accesses `setupMovementFn` and `navigationServices`.
+/// @param bot Bot AI state; accesses `curPs`, `entitynum`, `client`, `thinktime` and `viewangles` and related fields.
 function setupMovement(services,bot)
   if services.setupMovementFn!=void then return services.setupMovementFn(services,bot) end if
   return navigation.setupForMovement(services.navigationServices,bot)
 end function
+/// Update `bot.standTime`, `bot.tfl`, `bot.enemy` and `bot.checkTime` and related state during `seekNode`.
+/// @param services Host service callbacks; accesses `fightServices`, `observerFn`, `randomChatFn`, `chatTimeFn` and `grapple` and related fields.
+/// @param bot Bot AI state; accesses `standTime`, `tfl`, `enemy`, `killedEnemyTime` and `thinktime` and related fields. May update `bot.standTime`, `bot.tfl` and `bot.enemy` and additional fields in place.
 function seekNode(services,bot)
   fs=services.fightServices;cs=fs.combatServices;time=seekCombat.now(cs)
   if services.observerFn(services,bot) then transition(services,bot,NODE_OBSERVER,"seek ltg: observer");return false end if
@@ -277,6 +424,9 @@ function seekNode(services,bot)
   if (movement.flags&MOVERESULT_MOVEMENTWEAPON)!=0 then bot.weaponnum=movement.weapon end if
   return true
 end function
+/// Update `bot.tfl`, `bot.enemy`, `bot.nbgTime` and `bot.checkTime` and related state during `seekNbgNode`.
+/// @param services Host service callbacks; accesses `fightServices`, `observerFn`, `grapple`, `mapScriptsFn` and `topGoalFn` and related fields.
+/// @param bot Bot AI state; accesses `tfl`, `enemy`, `gs`, `nbgTime` and `checkTime` and related fields. May update `bot.tfl`, `bot.enemy` and `bot.nbgTime` and additional fields in place.
 function seekNbgNode(services,bot)
   fs=services.fightServices;cs=fs.combatServices;time=seekCombat.now(cs)
   if services.observerFn(services,bot) then enterObserver(services,bot,"seek nbg: observer");return false end if
@@ -312,6 +462,9 @@ function seekNbgNode(services,bot)
   end if
   return true
 end function
+/// Use `services.activationNodeFn` to perform `runNode`. Return paths include `fight.runNode(services.fightServices,bot)`.
+/// @param services Host service callbacks; accesses `activationNodeFn` and `fightServices`.
+/// @param bot Bot AI state; accesses `aiNode`.
 function runNode(services,bot)
   if bot.aiNode==0 then enterSeek(services,bot,"BotDeathmatchAI: first frame") end if
   if bot.aiNode==NODE_SEEK then return seekNode(services,bot) end if

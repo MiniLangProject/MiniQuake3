@@ -9,14 +9,22 @@ import mq3.game.spawn_values as values
 import mq3.game.rank_sort as rankSort
 import mq3.game.intermission as matchIntermission
 import mq3.compat.numeric as n
+/// Validate a scoreboard client limit against the native sixty-four-client storage capacity.
+/// @param limit Operand used to evaluate the returned expression `limit`.
 function clientLimit(limit)
   if limit < 0 or limit > 64 then return error(495,"Invalid score client limit") end if
   return limit
 end function
+/// Read the persistent client record for a validated slot from zero through sixty-three.
+/// @param level Game-level state; accesses `clients`.
+/// @param slot Slot in the owning table or pool.
 function clientAt(level,slot)
   if slot < 0 or slot >= 64 then return error(495,"Invalid score client slot") end if
   return level.clients[slot]
 end function
+/// Divide signed 32-bit integers with truncation toward zero, rejecting zero divisors and the minimum-integer overflow case.
+/// @param a Value passed as argument 1 to `mq3.compat.numeric.i32`.
+/// @param b Value passed as argument 1 to `mq3.compat.numeric.i32`.
 function integerDivide(a,b)
   a = n.i32(a); b = n.i32(b)
   if b == 0 or (a == -2147483648 and b == -1) then return error(495,"Undefined score integer division") end if
@@ -27,22 +35,36 @@ function integerDivide(a,b)
   if negative then result = -result end if
   return result
 end function
+/// Use `level.serverCommandFn` to perform `send`.
+/// @param level Game-level state; accesses `serverCommandFn`.
+/// @param slot Slot in the owning table or pool.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function send(level,slot,message)
   if level.serverCommandFn == void then return error(495,"Score message requires a server-command sink") end if
   level.serverCommandFn(level,slot,message)
   return void
 end function
+/// Use `level.gameLogFn` to perform `logLine`.
+/// @param level Game-level state; accesses `gameLogFn`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function logLine(level,message)
   if level.gameLogFn == void then return error(495,"Score log requires a game-log sink") end if
   level.gameLogFn(level,message)
   return void
 end function
+/// Use `level.matchTransitionFn` to perform `matchBoundary`.
+/// @param level Game-level state; accesses `matchTransitionFn`.
+/// @param kind Value passed as argument 2 to `level.matchTransitionFn`.
 function matchBoundary(level,kind)
   if level.matchTransitionFn != void then level.matchTransitionFn(level,kind); return void end if
   if kind == 1 then return matchIntermission.begin(level) end if
   if kind == 2 then return matchIntermission.exitLevel(level) end if
   return error(495,"Invalid match transition kind")
 end function
+/// Apply `mq3.game.scores.clientAt` while evaluating `compareRanks`.
+/// @param level Game-level state; accesses `clients`.
+/// @param a Slot in the owning table or pool.
+/// @param b Slot in the owning table or pool.
 function compareRanks(level,a,b)
   ca = clientAt(level,a); cb = clientAt(level,b)
   if ca.spectatorState == 3 or ca.spectatorClient < 0 then return 1 end if
@@ -60,6 +82,9 @@ function compareRanks(level,a,b)
   if ca.ps.persistant[c.PERS_SCORE] < cb.ps.persistant[c.PERS_SCORE] then return 1 end if
   return 0
 end function
+/// Apply `mq3.game.scores.clientLimit`, `mq3.game.scores.clientAt` and `mq3.game.scores.integerDivide` while evaluating `scoreboard`.
+/// @param level Game-level state; accesses `numConnectedClients`, `sortedClients`, `time`, `entities` and `teamScores`.
+/// @param ent Game entity; accesses `slot`.
 function scoreboard(level,ent)
   count = clientLimit(level.numConnectedClients); message = ""; index = 0
   while index < count
@@ -78,9 +103,14 @@ function scoreboard(level,ent)
   end while
   return send(level,ent.slot,"scores "+str(index)+" "+str(level.teamScores[1])+" "+str(level.teamScores[2])+message)
 end function
+/// Forward `commandScore` to `mq3.game.scores.scoreboard` and return the delegated result.
+/// @param level Game-level state; accesses `numConnectedClients`, `sortedClients`, `time`, `entities` and `teamScores`.
+/// @param ent Game entity; accesses `slot`.
 function commandScore(level,ent)
   return scoreboard(level,ent)
 end function
+/// Apply `mq3.game.scores.clientLimit` and `mq3.game.scores.scoreboard` while evaluating `sendAll`.
+/// @param level Game-level state; accesses `maxclients`, `clients` and `entities`.
 function sendAll(level)
   count = clientLimit(level.maxclients); index = 0
   while index < count
@@ -89,11 +119,16 @@ function sendAll(level)
   end while
   return void
 end function
+/// Apply `mq3.game.scores.clientAt` while evaluating `scoreIsTied`.
+/// @param level Game-level state; accesses `numPlayingClients`, `spawner`, `teamScores` and `sortedClients`.
 function scoreIsTied(level)
   if level.numPlayingClients < 2 then return false end if
   if level.spawner.gametype >= 3 then return level.teamScores[1] == level.teamScores[2] end if
   return clientAt(level,level.sortedClients[0]).ps.persistant[c.PERS_SCORE] == clientAt(level,level.sortedClients[1]).ps.persistant[c.PERS_SCORE]
 end function
+/// Set `level.intermissionQueued` to `level.time` in `mq3.game.scores.logExit`.
+/// @param level Game-level state; accesses `intermissionQueued`, `time`, `spawner`, `numConnectedClients` and `teamScores` and related fields. May update `level.intermissionQueued` in place.
+/// @param reason Reason text recorded with the operation.
 function logExit(level,reason)
   logLine(level,"Exit: "+reason+"\n"); level.intermissionQueued = level.time; values.setConfig(level.spawner,22,"1")
   count = clientLimit(level.numConnectedClients)
@@ -109,6 +144,8 @@ function logExit(level,reason)
   end while
   return void
 end function
+/// Update `level.readyToExit` and `level.exitTime` during `checkIntermissionExit`. Return paths include `matchBoundary(level,2)`.
+/// @param level Game-level state; accesses `spawner`, `maxclientsCvar`, `clients`, `entities` and `time` and related fields. May update `level.readyToExit` and `level.exitTime` in place.
 function checkIntermissionExit(level)
   if level.spawner.gametype == 2 then return void end if
   ready = 0; notReady = 0; readyMask = 0; count = clientLimit(level.maxclientsCvar); index = 0
@@ -134,6 +171,8 @@ function checkIntermissionExit(level)
   if level.time < n.add32(level.exitTime,10000) then return void end if
   return matchBoundary(level,2)
 end function
+/// Set `level.intermissionQueued` to `0` in `mq3.game.scores.checkExitRules`.
+/// @param level Game-level state; accesses `intermissiontime`, `intermissionQueued`, `time`, `timelimit` and `spawner` and related fields. May update `level.intermissionQueued` in place.
 function checkExitRules(level)
   if level.intermissiontime != 0 then return checkIntermissionExit(level) end if
   if level.intermissionQueued != 0 then
@@ -165,6 +204,8 @@ function checkExitRules(level)
   end if
   return void
 end function
+/// Update `level.follow1`, `level.follow2`, `level.numConnectedClients` and `level.numNonSpectatorClients` and related state during `calculateRanks`.
+/// @param level Game-level state; accesses `maxclients`, `follow1`, `follow2`, `numConnectedClients` and `numNonSpectatorClients` and related fields. May update `level.follow1`, `level.follow2` and `level.numConnectedClients` and additional fields in place.
 function calculateRanks(level)
   count = clientLimit(level.maxclients)
   level.follow1 = -1; level.follow2 = -1; level.numConnectedClients = 0; level.numNonSpectatorClients = 0; level.numPlayingClients = 0; level.numVotingClients = 0
@@ -218,12 +259,22 @@ function calculateRanks(level)
   if level.intermissiontime != 0 then sendAll(level) end if
   return void
 end function
+/// Apply `mq3.game.entities.tempEntity` while evaluating `scorePlum`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`.
+/// @param origin World-space position as three coordinates.
+/// @param score Value used by `scorePlum` in `plum.s.time = score`.
 function scorePlum(level,ent,origin,score)
   plum = game.tempEntity(level,origin,c.EV_SCOREPLUM)
   plum.r.svFlags = plum.r.svFlags | 256; plum.r.singleClient = ent.s.number
   plum.s.otherEntityNum = ent.s.number; plum.s.time = score
   return void
 end function
+/// Set `ent.client.ps.persistant[c.PERS_SCORE]` to `n.add32(ent.client.ps.persistant[c.PERS_SCORE],score)` and `level.teamScores[team]` to `n.add32(level.teamScores[team],score)` in `mq3.game.scores.addScore`. Return paths include `calculateRanks(level)`.
+/// @param level Game-level state; accesses `spawner` and `teamScores`. May update `level.teamScores[team]` in place.
+/// @param ent Game entity; accesses `client`. May update `ent.client.ps.persistant[c.PERS_SCORE]` in place.
+/// @param origin World-space position as three coordinates.
+/// @param score Value used by `scorePlum` in `plum.s.time = score`.
 function addScore(level,ent,origin,score)
   if ent.client == void or level.spawner.warmupTime != 0 then return void end if
   scorePlum(level,ent,origin,score); ent.client.ps.persistant[c.PERS_SCORE] = n.add32(ent.client.ps.persistant[c.PERS_SCORE],score)

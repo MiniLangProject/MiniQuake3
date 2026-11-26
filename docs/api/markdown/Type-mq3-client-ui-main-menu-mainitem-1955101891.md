@@ -9,8 +9,10 @@
 struct MainItem
 ```
 
+Stores UI main menu main item record, including `id`, `label`, `y`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L31)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct MainItem
 id
 ```
 
+Event-routing identifier of this selectable control in the base-game main menu.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L33)
 
 <a id="field-field-mq3-client-ui-main-menu-mainitem-label-label-src-mq3-client-ui-main-menu-ml-1341413589"></a>
 ### label
@@ -31,8 +35,10 @@ id
 label
 ```
 
+Human-readable caption painted beside or inside the UI control.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L35)
 
 <a id="field-field-mq3-client-ui-main-menu-mainitem-y-y-src-mq3-client-ui-main-menu-ml-495293817"></a>
 ### y
@@ -41,5 +47,7 @@ label
 y
 ```
 
+Vertical position of this menu control in the virtual layout used by the base-game main menu.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L37)

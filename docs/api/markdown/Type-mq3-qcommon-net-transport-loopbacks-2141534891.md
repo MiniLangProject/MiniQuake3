@@ -9,8 +9,10 @@
 struct Loopbacks
 ```
 
+Loopbacks record for qcommon.net_transport, containing `queues`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L46)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct Loopbacks
 queues
 ```
 
+Separate loopback queues for the client and server endpoints.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L48)

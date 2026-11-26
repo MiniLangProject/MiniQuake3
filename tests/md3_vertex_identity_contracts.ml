@@ -27,7 +27,7 @@ function idModel()
 end function
 function idCatalog(triangles,material)
   resolved=array(len(triangles),void);for index=0 to len(triangles)-1 resolved[index]=idMats.ResolvedTriangle(triangles[index],0) end for
-  return idMats.Catalog(resolved,[material],[],void,0,[],[],len(triangles),0,337,void,void)
+  return idMats.Catalog(resolved,[material],[],void,0,[],[],len(triangles),0,337,void,void,void)
 end function
 function idUpdate(prepared)
   for each pass in prepared.batch.passes updated=idWorld.updatePassView(pass,[14.0,-3.0,4.0],3000);if updated is error then return updated end if end for
@@ -39,6 +39,11 @@ function idBytesEqual(a,b)
 end function
 function main(args)
   count=0;model=idModel();state=idScene.create(2,0);state.registered=true
+  sparse=idWorld.createVertexCache([[1000000,2,1000000],[2,500000,-1]])
+  count=count+idCheck(len(sparse.frames)==3 and sparse.slots[0][0]==sparse.slots[0][2] and sparse.slots[0][1]==sparse.slots[1][0],"sparse BSP IDs keep shared stage slots without a maximum-sized table")
+  count=count+idCheck(sparse.slots[1][2]==-1 and sparse.slots[1][1]!=sparse.slots[0][0],"sparse lookup excludes fallback IDs and keeps distinct vertices")
+  scratch=idWorld.vertexIndexScratch();firstSlots=idWorld.createVertexCacheWithScratch([[10000,2,10000]],scratch);nextSlots=idWorld.createVertexCacheWithScratch([[2,10000,2]],scratch)
+  count=count+idCheck(len(scratch.visited)==10001 and len(firstSlots.frames)==2 and len(nextSlots.frames)==2 and firstSlots.slots[0]==[0,1,0] and nextSlots.slots[0]==[0,1,0],"batch scratch reuses dense storage with a fresh visit serial")
   first=idPayload([200,100,50,255]);second=idPayload([50,100,200,255]);idN.writeU32(first,100,idN.floatBits(0.75));idN.writeU32(second,100,idN.floatBits(0.25));idScene.addEntity(state,0,first);idScene.addEntity(state,0,second)
   cache=idGeo.createFrameCache(void,16);refdef=IdRefdef([[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],[0.0,0.0,0.0],1000,1)
   geometry=idGeo.buildRecordsWithFrameCache(idScene.sceneEntities(state),[],["model"],[model],refdef,8192,cache,void);if geometry is error then return geometry end if
@@ -49,7 +54,7 @@ function main(args)
   count=count+idCheck(geometry.triangles[0].positions[0]==geometry.triangles[2].positions[0] and geometry.triangles[0].vertexIds[0]!=geometry.triangles[2].vertexIds[0] and geometry.triangles[0].texCoords[0]!=geometry.triangles[2].texCoords[0],"coincident UV/normal seam vertices are never welded")
   count=count+idCheck(geometry.triangles[3].vertexIds==[5,6,7] and geometry.triangles[6].vertexIds==[10,11,12],"surface and entity namespaces remain separate despite identical coordinates")
   image=idMaterials.Image(1,1,bytes(4,255));stage=idMaterials.RuntimeStage(["fx"],[image],[336],0.0,[],idMaterials.BLEND_ADD,idMaterials.ALPHA_TEST_NONE,"environment","vertex",idShader.blankWave(),"lightingspecular",idShader.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
-  material=idMats.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0);catalog=idCatalog(geometry.triangles,material);prepared=idBatch.build(catalog);if prepared is error then return prepared end if
+  material=idMats.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0,false);catalog=idCatalog(geometry.triangles,material);prepared=idBatch.build(catalog);if prepared is error then return prepared end if
   count=count+idCheck(prepared.geometry.triangles[1].vertices[0].sourceIndex==2 and len(prepared.batch.passes[0].vertexCache.frames)==20,"scene conversion retains dense mesh IDs into stage slots")
   saved=array(12,void);for index=0 to 11 saved[index]=geometry.triangles[index].vertexIds;geometry.triangles[index].vertexIds=void end for
   reference=idBatch.build(catalog);if reference is error then return reference end if

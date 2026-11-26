@@ -9,6 +9,7 @@
 ## Symbols
 
 - [`mq3.vm.syscall_ui.arg`](File-src-mq3-vm-syscall-ui-ml-839264043.md#function-function-mq3-vm-syscall-ui-arg-function-arg-vm-base-index-src-mq3-vm-syscall-ui-ml-401226320) — function
+- [`mq3.vm.syscall_ui.bindingOutput`](File-src-mq3-vm-syscall-ui-ml-839264043.md#function-function-mq3-vm-syscall-ui-bindingoutput-function-bindingoutput-vm-base-host-src-mq3-vm-syscall-ui-ml-1714533564) — function
 - [`mq3.vm.syscall_ui.callback`](File-src-mq3-vm-syscall-ui-ml-839264043.md#function-function-mq3-vm-syscall-ui-callback-function-callback-host-src-mq3-vm-syscall-ui-ml-1055542084) — function
 - [`mq3.vm.syscall_ui.CLIENT_STATE_SIZE`](File-src-mq3-vm-syscall-ui-ml-839264043.md#constant-constant-mq3-vm-syscall-ui-client-state-size-const-client-state-size-3084-src-mq3-vm-syscall-ui-ml-364908230) — constant
 - [`mq3.vm.syscall_ui.clientServices`](File-src-mq3-vm-syscall-ui-ml-839264043.md#function-function-mq3-vm-syscall-ui-clientservices-function-clientservices-src-mq3-vm-syscall-ui-ml-598890558) — function

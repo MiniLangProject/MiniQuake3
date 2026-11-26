@@ -9,8 +9,10 @@
 struct RawQuad
 ```
 
+Data record for `mq3.renderer.tr_backend_runtime.RawQuad`; groups `positions`, `texCoords`, `client`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L181)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct RawQuad
 client
 ```
 
+Cinematic client or scratch-image slot associated with the raw image.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L187)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawquad-positions-positions-src-mq3-renderer-tr-backend-runtime-ml-706047634"></a>
 ### positions
@@ -31,8 +35,10 @@ client
 positions
 ```
 
+Four screen-space corners used to draw an uploaded raw image or cinematic frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L183)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawquad-texcoords-texcoords-src-mq3-renderer-tr-backend-runtime-ml-2114623434"></a>
 ### texCoords
@@ -41,5 +47,7 @@ positions
 texCoords
 ```
 
+Texture corners used to sample an uploaded raw image or cinematic frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L185)

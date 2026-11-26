@@ -5,41 +5,77 @@ package mq3.client.server_message
 import mq3.qcommon.message as message
 import mq3.client.snapshot_command as snapshotCommand
 
+/// Capacity limit for the reliable commands collection or bounded storage used by this client module.
 const MAX_RELIABLE_COMMANDS=64
+/// Server-message command byte selecting the bad protocol operation.
 const SVC_BAD=0
+/// Server-message command byte selecting the nop protocol operation.
 const SVC_NOP=1
+/// Server-message command byte selecting the gamestate protocol operation.
 const SVC_GAMESTATE=2
+/// Server-message command byte selecting the server command protocol operation.
 const SVC_SERVER_COMMAND=5
+/// Server-message command byte selecting the download protocol operation.
 const SVC_DOWNLOAD=6
+/// Server-message command byte selecting the snapshot protocol operation.
 const SVC_SNAPSHOT=7
+/// Server-message command byte selecting the eof protocol operation.
 const SVC_EOF=8
 
+/// Stores server message state, including `snapshotState`, `reliableAcknowledge`, `reliableSequence`, `serverCommandSequence`, `serverCommands`, `gamestateFn` and additional values.
 struct State
+  /// When constructing this record, `create` supplies `snapshotState` for this member. Used by
+  /// `parseServerMessage` during subsequent processing.
   snapshotState
+  /// Highest reliable-command sequence acknowledged as executed by the peer.
   reliableAcknowledge
+  /// Sequence number assigned to the latest queued reliable command.
   reliableSequence
+  /// Highest accepted reliable server-command sequence used to reject duplicates and index the command
+  /// ring.
   serverCommandSequence
+  /// Reliable server commands retained for ordered execution by the client.
   serverCommands
+  /// Host callback for the gamestate operation; an unset callback leaves that host operation
+  /// unavailable.
   gamestateFn
+  /// Host callback for the download operation; an unset callback leaves that host operation
+  /// unavailable.
   downloadFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for server-message parsing.
   context
+  /// When constructing this record, `create` supplies `0` for this member. Used by `shownet` and
+  /// `parseServerMessage` during subsequent processing.
   shownetLevel
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `shownet`
+  /// and `emitShownet` during subsequent processing.
   shownetLines
+  /// Host callback for the shownet operation; an unset callback leaves that host operation unavailable.
   shownetFn
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `shownet` and `emitShownet` during subsequent processing.
   shownetContext
 end struct
 
+/// Creates reliable-command dispatch state, allocating snapshot state when the caller does not provide it.
+/// @param snapshotState Value used by `if snapshotState==void then snapshotState=snapshotCommand.create() end if`.
 function create(snapshotState)
   if snapshotState==void then snapshotState=snapshotCommand.create() end if
   return State(snapshotState,0,0,0,array(MAX_RELIABLE_COMMANDS,""),void,void,void,0,[],void,void)
 end function
 
+/// Pads a diagnostic message offset to a minimum width of three characters.
+/// @param value Value used by `text=str(value)`.
 function pad3(value)
   text=str(value)
   while len(bytes(text))<3 text=" "+text end while
   return text
 end function
 
+/// Records and optionally emits a byte-offset diagnostic line when shownet verbosity is at least two.
+/// @param state Mutable server message record/storage; this routine assigns `state.shownetLines`.
+/// @param msg Record read through `msg.readcount`.
+/// @param text Text consumed or emitted by `shownet` in the server message path.
 function shownet(state,msg,text)
   if state.shownetLevel<2 then return false end if
   line=pad3(msg.readcount-1)+":"+text
@@ -48,12 +84,17 @@ function shownet(state,msg,text)
   return true
 end function
 
+/// Appends a diagnostic line and forwards it to the optional shownet callback.
+/// @param state Mutable server message record/storage; this routine assigns `state.shownetLines`.
+/// @param line Value used by `state.shownetLines=state.shownetLines+[line]`.
 function emitShownet(state,line)
   state.shownetLines=state.shownetLines+[line]
   if state.shownetFn!=void then state.shownetFn(state.shownetContext,line) end if
   return void
 end function
 
+/// Maps service-command bytes to their diagnostic names, retaining unknown numeric codes in a BAD CMD message.
+/// @param command Value used by `if command==SVC_BAD then return "svc_bad" end if`.
 function serviceName(command)
   if command==SVC_BAD then return "svc_bad" end if
   if command==SVC_NOP then return "svc_nop" end if
@@ -66,6 +107,9 @@ function serviceName(command)
   return "BAD CMD "+str(command)
 end function
 
+/// Reads a reliable server command, rejects truncated payloads and ignores already received command sequences.
+/// @param state Mutable server message record/storage; this routine assigns `state.serverCommandSequence`, `state.serverCommands[sequence&(MAX_RELIABLE_COMMANDS-1)]`.
+/// @param msg Message reader positioned before the command sequence and NUL-terminated command string.
 function parseCommandString(state,msg)
   sequence=message.readI32(msg);text=message.readCString(msg)
   if msg.readcount>msg.cursize then return error(6890,"server message: truncated command") end if
@@ -74,6 +118,9 @@ function parseCommandString(state,msg)
   return true
 end function
 
+/// Parses the reliable acknowledgement and dispatches server commands, snapshots, gamestates and downloads until EOF, returning command/snapshot counts.
+/// @param state Mutable server message record/storage; this routine assigns `state.shownetLines`, `state.reliableAcknowledge`, `state.snapshotState.serverCommandSequence`, `state.snapshotState.shownetLevel` and additional values.
+/// @param msg Mutable server-message reader; parsing switches to bitstream mode and advances its read cursor.
 function parseServerMessage(state,msg)
   if state==void or msg==void then return error(6891,"server message: missing state") end if
   if state.shownetLevel==1 then
@@ -94,7 +141,8 @@ function parseServerMessage(state,msg)
     if command==SVC_NOP then
       commands=commands
     else if command==SVC_SERVER_COMMAND then
-      if parseCommandString(state,msg) then commands=commands+1 end if
+      parsed=try(parseCommandString(state,msg));if parsed is error then return parsed end if
+      if parsed then commands=commands+1 end if
     else if command==SVC_SNAPSHOT then
       state.snapshotState.serverCommandSequence=state.serverCommandSequence
       state.snapshotState.shownetLevel=state.shownetLevel;state.snapshotState.shownetLines=[]
@@ -104,9 +152,9 @@ function parseServerMessage(state,msg)
       for each line in state.snapshotState.shownetLines emitShownet(state,line) end for
       if state.shownetLevel==3 and parsed.valid then emitShownet(state,"   snapshot:"+str(parsed.messageNum)+"  delta:"+str(parsed.deltaNum)+"  ping:"+str(parsed.ping)) end if
     else if command==SVC_GAMESTATE and state.gamestateFn!=void then
-      state.gamestateFn(state,msg)
+      parsed=try(state.gamestateFn(state,msg));if parsed is error then return parsed end if
     else if command==SVC_DOWNLOAD and state.downloadFn!=void then
-      state.downloadFn(state,msg)
+      parsed=try(state.downloadFn(state,msg));if parsed is error then return parsed end if
     else
       return error(6893,"server message: illegible command")
     end if

@@ -16,6 +16,7 @@ function fixture()
   putI(data,160,0);putI(data,160+32,0);putI(data,160+36,5)
   putI(data,208,1);putI(data,208+32,5);putI(data,208+36,1)
   offsets[5]=280;lengths[5]=24;counts[5]=6;for i=0 to 5 putI(data,280+i*4,i) end for
+  offsets[7]=1920;lengths[7]=40;counts[7]=1;putI(data,1920+24,0);putI(data,1920+28,6)
   offsets[10]=320;lengths[10]=18*44;counts[10]=18
   centers=[[100.0,0.0,0.0],[20.0,0.0,0.0],[-20.0,0.0,0.0],[20.0,100.0,0.0],[30.0,0.0,0.0],[25.0,0.0,0.0]]
   for face=0 to 5
@@ -31,9 +32,25 @@ function fixture()
   offsets[16]=2000;lengths[16]=10;counts[16]=10;putI(data,2000,2);putI(data,2004,1);data[2008]=1;data[2009]=2
   return bsp.BSP(data,offsets,lengths,counts)
 end function
+function patchFixture()
+  data=bytes(1024,0);offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
+  counts[1]=1;offsets[1]=0;lengths[1]=72
+  counts[10]=9;offsets[10]=72;lengths[10]=396
+  for row=0 to 2 for column=0 to 2
+    index=row*3+column;at=72+index*44;putF(data,at,column*1.0);putF(data,at+4,row*1.0)
+    height=0.0;if row==1 and column==1 then height=32.0 end if;putF(data,at+8,height)
+  end for end for
+  counts[13]=1;offsets[13]=480;lengths[13]=104
+  offsets[7]=600;lengths[7]=40;counts[7]=1;putI(data,600+24,0);putI(data,600+28,1)
+  putI(data,480,0);putI(data,488,render.MST_PATCH);putI(data,492,0);putI(data,496,9);putI(data,508,-1);putI(data,576,3);putI(data,580,3)
+  return bsp.BSP(data,offsets,lengths,counts)
+end function
 
 function main(args)
   c=0;map=fixture();camera=viewer.camera([10.0,0.0,0.0],0.0,0.0,0.0,0.0)
+  noVis=fixture();noVis.lengths[16]=0;c=c+require(selection.pvsContains(noVis,0,1),"absent visibility lump keeps no-vis fallback")
+  shortVis=fixture();shortVis.lengths[16]=8;c=c+require(not selection.pvsContains(shortVis,0,0),"truncated PVS row is rejected")
+  wideVis=fixture();putI(wideVis.data,2004,100);c=c+require(not selection.pvsContains(wideVis,0,0),"out-of-lump PVS row is rejected")
   cfg=selection.config(800,600,90.0,1.0,200.0,1,true,render.DEFAULT_PATCH_ERROR)
   chosen=selection.choose(map,camera,cfg)
   c=c+require(chosen.pvsUsed and chosen.cameraLeaf==0 and chosen.cameraCluster==0,"camera leaf and PVS")
@@ -51,6 +68,21 @@ function main(args)
   c=c+require(len(prepared.renderData.triangles)==2 and not prepared.renderData.truncated,"render-data integration")
   cache=selection.buildCache(map,render.DEFAULT_PATCH_ERROR)
   c=c+require(cache.totalTriangleCount==6 and len(cache.trianglesByFace[5])==1,"one-time complete geometry cache")
+  inlineLeaf=fixture();putI(inlineLeaf.data,inlineLeaf.offsets[7]+28,5)
+  inlineVisible=selection.visibleFaces(inlineLeaf,0,false,void);inlineCache=selection.buildCache(inlineLeaf,render.DEFAULT_PATCH_ERROR)
+  c=c+require(len(inlineVisible[0])==5 and inlineCache.totalTriangleCount==5 and len(inlineCache.trianglesByFace[5])==0,"leaf marks must not submit the moving inline model as static world")
+  c=c+require(cache.faceCenters[0][0]==100.0 and cache.faceCenters[0][1]==0.0 and cache.faceRadii[0]>1.33 and cache.faceRadii[0]<1.34,"cached face centroid and radius retain exact geometry")
+  patchMap=patchFixture();patchReference=render.extractRetainedWithPatchError(patchMap,[0],8192,render.DEFAULT_PATCH_ERROR)
+  patchCache=selection.buildCache(patchMap,render.DEFAULT_PATCH_ERROR)
+  c=c+require(patchCache.totalTriangleCount==patchReference.triangleCount and len(patchCache.trianglesByFace[0])==len(patchReference.triangles),"patch cache uses complete extracted triangle count")
+  c=c+require(patchCache.trianglesByFace[0][0].vertices[0].position==patchReference.triangles[0].vertices[0].position and patchCache.trianglesByFace[0][len(patchReference.triangles)-1].triangleIndex==patchReference.triangles[len(patchReference.triangles)-1].triangleIndex,"patch cache preserves tessellation order and vertices")
+  lodCache=selection.buildCacheForPatches(patchMap,render.DEFAULT_PATCH_ERROR,true);if lodCache is error then return lodCache end if
+  lodCfg=selection.defaults(800,600);lodCfg.lodCurveError=250.0
+  picked=selection.Selection([0],1,1,lodCache.totalTriangleCount,false,0,0,0,0,0,0,0)
+  nearPatch=selection.choosePatchLod(lodCache,picked,viewer.camera([-2.0,0.0,0.0],0.0,0.0,0.0,0.0),lodCfg)
+  c=c+require(nearPatch.faceIndexes==[0] and nearPatch.estimatedTriangleCount==patchReference.triangleCount,"near curves keep full retained tessellation")
+  farPatch=selection.choosePatchLod(lodCache,picked,viewer.camera([-8192.0,0.0,0.0],0.0,0.0,0.0,0.0),lodCfg)
+  c=c+require(farPatch.faceIndexes[0]>0 and farPatch.estimatedTriangleCount<patchReference.triangleCount,"distant curves gather a coarser retained mesh using the original LOD threshold")
   cachedChoice=selection.chooseCached(cache,camera,cfg)
   c=c+require(cachedChoice.faceIndexes==[1,0],"cached camera selection matches direct selection")
   cached=selection.prepareCached(cache,camera,cfg)
@@ -67,6 +99,20 @@ function main(args)
   selection.setTwoSidedTextures(cache,[true]);twoSidedChoice=selection.chooseCached(cache,camera,cfg)
   c=c+require(twoSidedChoice.faceIndexes==[1,4] and twoSidedChoice.rejectedBackface==0,"two-sided shader keeps reverse-facing planar surface")
   selection.setTwoSidedTextures(cache,[false])
+  unlimited=selection.config(800,600,90.0,1.0,200.0,cache.totalTriangleCount,true,render.DEFAULT_PATCH_ERROR)
+  nearPlane=viewer.camera([26.0,0.0,0.0],0.0,0.0,0.0,0.0)
+  nearDirect=selection.choose(map,nearPlane,unlimited);nearNative=selection.chooseCached(cache,nearPlane,unlimited)
+  c=c+require(selection.contains(nearDirect.faceIndexes,4) and selection.contains(nearNative.faceIndexes,4),"front culling preserves the original eight-unit plane tolerance in both paths")
+  selection.setCullModes(cache,[selection.CULL_BACK]);backCamera=viewer.camera([40.0,0.0,0.0],180.0,0.0,0.0,0.0)
+  backNative=selection.chooseCached(cache,backCamera,unlimited)
+  c=c+require(backNative.rejectedBackface>0 and not selection.contains(backNative.faceIndexes,4),"back culling rejects positive signed distances beyond eight units")
+  areaMap=fixture();putI(areaMap.data,212,1);areaMap.data[2008]=3
+  areaCache=selection.buildCache(areaMap,render.DEFAULT_PATCH_ERROR);unlimited.areaMask=bytes(32,0)
+  open=selection.chooseCached(areaCache,camera,unlimited);unlimited.areaMask=bytes(32,0);unlimited.areaMask[0]=2
+  closed=selection.chooseCached(areaCache,camera,unlimited);closedDirect=selection.choose(areaMap,camera,unlimited)
+  c=c+require(selection.contains(open.faceIndexes,5) and not selection.contains(closed.faceIndexes,5) and not selection.contains(closedDirect.faceIndexes,5),"area masking invalidates cached PVS and suppresses the closed area")
+  unlimited.areaMask=bytes(32,0);reopened=selection.chooseCached(areaCache,camera,unlimited)
+  c=c+require(selection.contains(reopened.faceIndexes,5),"reopened area returns to cached native face selection")
   wrongError=selection.config(800,600,90.0,1.0,200.0,2,true,2.0)
   c=c+require(try(selection.chooseCached(cache,camera,wrongError)) is error,"cache patch error guarded")
   cfg=selection.config(800,600,90.0,1.0,200.0,3,false,render.DEFAULT_PATCH_ERROR);chosen=selection.choose(map,camera,cfg)
@@ -87,6 +133,8 @@ function main(args)
   c=c+require(selection.visibleInFrustum([11.2,0.0,10.0],1.0,frustumConfig),"sphere crossing horizontal side plane stays visible")
   c=c+require(selection.visibleInFrustum([0.0,8.6,10.0],1.0,frustumConfig),"sphere crossing vertical side plane stays visible")
   c=c+require(not selection.visibleInFrustum([11.5,0.0,10.0],1.0,frustumConfig) and not selection.visibleInFrustum([0.0,8.8,10.0],1.0,frustumConfig),"sphere entirely outside side planes is rejected")
+  frustumConfig.verticalFov=90.0
+  c=c+require(selection.visibleInFrustum([0.0,9.0,10.0],0.0,frustumConfig),"independent refdef vertical FOV holds the tall view")
   axes=viewer.cameraBasis(camera);c=c+require(selection.viewPointAxes(camera,[40.0,5.0,3.0],axes)==viewer.viewPoint(camera,[40.0,5.0,3.0]),"prepared camera keeps binary32 view transform")
   completeConfig=selection.config(800,600,90.0,1.0,200.0,cache.totalTriangleCount,false,render.DEFAULT_PATCH_ERROR);complete=selection.chooseCached(cache,camera,completeConfig)
   c=c+require(complete.rejectedBudget==0,"complete world capacity never drops visible occluders")

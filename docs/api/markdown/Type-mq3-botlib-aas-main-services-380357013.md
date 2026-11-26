@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for aas main, containing `context`, `printFn`, `continueReachabilityFn`, `initClusteringFn` and `initRoutingFn` and related fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L23)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Caller-supplied data associated with AAS subsystem setup, routing initialization, shutdown, and lifecycle messages.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L26)
 
 <a id="field-field-mq3-botlib-aas-main-services-continuereachabilityfn-continuereachabilityfn-src-mq3-botlib-aas-main-ml-997566195"></a>
 ### continueReachabilityFn
@@ -31,8 +35,10 @@ context
 continueReachabilityFn
 ```
 
+Host callback that continues incremental AAS reachability generation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-main-services-dumpaasfn-dumpaasfn-src-mq3-botlib-aas-main-ml-1706533627"></a>
 ### dumpAasFn
@@ -41,8 +47,10 @@ continueReachabilityFn
 dumpAasFn
 ```
 
+Host callback that releases the currently loaded AAS map data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L56)
 
 <a id="field-field-mq3-botlib-aas-main-services-dumpbspfn-dumpbspfn-src-mq3-botlib-aas-main-ml-186605487"></a>
 ### dumpBspFn
@@ -51,8 +59,10 @@ dumpAasFn
 dumpBspFn
 ```
 
+Host callback that releases the currently loaded BSP navigation data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L50)
 
 <a id="field-field-mq3-botlib-aas-main-services-freelinkedfn-freelinkedfn-src-mq3-botlib-aas-main-ml-136209533"></a>
 ### freeLinkedFn
@@ -61,8 +71,10 @@ dumpBspFn
 freeLinkedFn
 ```
 
+Host callback that releases navigation records linked to entities.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L54)
 
 <a id="field-field-mq3-botlib-aas-main-services-freelinksfn-freelinksfn-src-mq3-botlib-aas-main-ml-651086083"></a>
 ### freeLinksFn
@@ -71,8 +83,10 @@ freeLinkedFn
 freeLinksFn
 ```
 
+Host callback that releases the AAS entity-link heap.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-main-services-freeroutingfn-freeroutingfn-src-mq3-botlib-aas-main-ml-233084347"></a>
 ### freeRoutingFn
@@ -81,8 +95,10 @@ freeLinksFn
 freeRoutingFn
 ```
 
+Host callback that releases routing tables and caches.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-main-services-initalternativefn-initalternativefn-src-mq3-botlib-aas-main-ml-769728251"></a>
 ### initAlternativeFn
@@ -91,8 +107,10 @@ freeRoutingFn
 initAlternativeFn
 ```
 
+Host callback that initializes alternative-route generation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-main-services-initclusteringfn-initclusteringfn-src-mq3-botlib-aas-main-ml-382480867"></a>
 ### initClusteringFn
@@ -101,8 +119,10 @@ initAlternativeFn
 initClusteringFn
 ```
 
+Host callback that initializes AAS area clustering.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L32)
 
 <a id="field-field-mq3-botlib-aas-main-services-initlinkedfn-initlinkedfn-src-mq3-botlib-aas-main-ml-1776982801"></a>
 ### initLinkedFn
@@ -111,8 +131,10 @@ initClusteringFn
 initLinkedFn
 ```
 
+Host callback that initializes entity-linked navigation data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-main-services-initlinkheapfn-initlinkheapfn-src-mq3-botlib-aas-main-ml-653414115"></a>
 ### initLinkHeapFn
@@ -121,8 +143,10 @@ initLinkedFn
 initLinkHeapFn
 ```
 
+Host callback that initializes storage for AAS entity links.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L40)
 
 <a id="field-field-mq3-botlib-aas-main-services-initreachabilityfn-initreachabilityfn-src-mq3-botlib-aas-main-ml-1160561237"></a>
 ### initReachabilityFn
@@ -131,8 +155,10 @@ initLinkHeapFn
 initReachabilityFn
 ```
 
+Host callback that initializes AAS reachability generation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L44)
 
 <a id="field-field-mq3-botlib-aas-main-services-initroutingfn-initroutingfn-src-mq3-botlib-aas-main-ml-1987992335"></a>
 ### initRoutingFn
@@ -141,8 +167,10 @@ initReachabilityFn
 initRoutingFn
 ```
 
+Host callback that initializes AAS routing tables.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L34)
 
 <a id="field-field-mq3-botlib-aas-main-services-initsettingsfn-initsettingsfn-src-mq3-botlib-aas-main-ml-1430333301"></a>
 ### initSettingsFn
@@ -151,8 +179,10 @@ initRoutingFn
 initSettingsFn
 ```
 
+Host callback that initializes AAS movement and physics settings.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L38)
 
 <a id="field-field-mq3-botlib-aas-main-services-printfn-printfn-src-mq3-botlib-aas-main-ml-1001082331"></a>
 ### printFn
@@ -161,8 +191,10 @@ initSettingsFn
 printFn
 ```
 
+Host callback that prints AAS initialization, map-loading, and shutdown messages.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L28)
 
 <a id="field-field-mq3-botlib-aas-main-services-shutdownalternativefn-shutdownalternativefn-src-mq3-botlib-aas-main-ml-796231403"></a>
 ### shutdownAlternativeFn
@@ -171,5 +203,7 @@ printFn
 shutdownAlternativeFn
 ```
 
+Host callback that releases alternative-route resources.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L48)

@@ -28,15 +28,17 @@ Reachable from entry: **no**
 function attach(level, addBotFn, botListFn, abortPodiumFn)
 ```
 
+Apply `mq3.game.server_commands.get` while evaluating `attach`. Return paths include `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `addBotFn` | `dynamic` | — |  |
-| `botListFn` | `dynamic` | — |  |
-| `abortPodiumFn` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `serverCommands`. May update `level.serverCommands` in place. |
+| `addBotFn` | `dynamic` | — | Value used by `attach` in `state.addBotFn = addBotFn`. |
+| `botListFn` | `dynamic` | — | Value used by `attach` in `state.botListFn = botListFn`. |
+| `abortPodiumFn` | `dynamic` | — | Value used by `attach` in `state.abortPodiumFn = abortPodiumFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L36)
 
 <a id="function-function-mq3-game-server-commands-botboundary-function-botboundary-level-argv-callback-label-src-mq3-game-server-commands-ml-2097865229"></a>
 ### botBoundary
@@ -45,15 +47,17 @@ function attach(level, addBotFn, botListFn, abortPodiumFn)
 function botBoundary(level, argv, callback, label)
 ```
 
+Require the requested bot command callback and invoke it with the level and command arguments.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
-| `callback` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `callback`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
+| `callback` | `dynamic` | — | Callback invoked by this operation. |
+| `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L116)
 
 <a id="function-function-mq3-game-server-commands-clientforstring-function-clientforstring-level-text-src-mq3-game-server-commands-ml-453295291"></a>
 ### clientForString
@@ -62,13 +66,15 @@ function botBoundary(level, argv, callback, label)
 function clientForString(level, text)
 ```
 
+Apply `mq3.shared.info.textBytes` and `mq3.game.server_commands.serverPrint` while evaluating `clientForString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients` and `clients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L80)
 
 <a id="function-function-mq3-game-server-commands-command-function-command-level-argv-src-mq3-game-server-commands-ml-1141385736"></a>
 ### command
@@ -77,13 +83,15 @@ function clientForString(level, text)
 function command(level, argv)
 ```
 
+Use `level.consoleCommandFn` and `level.serverCommandFn` to perform `command`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `consoleCommandFn`, `dedicated` and `serverCommandFn`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L123)
 
 <a id="function-function-mq3-game-server-commands-entitylist-function-entitylist-level-src-mq3-game-server-commands-ml-84500448"></a>
 ### entityList
@@ -92,12 +100,14 @@ function command(level, argv)
 function entityList(level)
 ```
 
+Apply `mq3.game.server_commands.serverPrint` and `mq3.game.server_commands.slotText` while evaluating `entityList`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L59)
 
 <a id="function-function-mq3-game-server-commands-forceteam-function-forceteam-level-argv-src-mq3-game-server-commands-ml-612804390"></a>
 ### forceTeam
@@ -106,13 +116,15 @@ function entityList(level)
 function forceTeam(level, argv)
 ```
 
+Apply `mq3.game.server_commands.clientForString`, `mq3.game.command_args.argument` and `mq3.game.session.sessionSlot` while evaluating `forceTeam`. Return paths include `teamChanges.setTeam(level,level.entities[slot],commandArgs.argument(argv,2,1024))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L105)
 
 <a id="function-function-mq3-game-server-commands-get-function-get-level-src-mq3-game-server-commands-ml-642600692"></a>
 ### get
@@ -121,12 +133,14 @@ function forceTeam(level, argv)
 function get(level)
 ```
 
+Set `level.serverCommands` to `State(void,void,void)` in `mq3.game.server_commands.get`. Return paths include `level.serverCommands`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `serverCommands`. May update `level.serverCommands` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L27)
 
 <a id="function-function-mq3-game-server-commands-serverprint-function-serverprint-level-text-src-mq3-game-server-commands-ml-1398232029"></a>
 ### serverPrint
@@ -135,13 +149,15 @@ function get(level)
 function serverPrint(level, text)
 ```
 
+Use `level.gamePrintFn` to perform `serverPrint`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L43)
 
 <a id="function-function-mq3-game-server-commands-slottext-function-slottext-value-src-mq3-game-server-commands-ml-1382355081"></a>
 ### slotText
@@ -150,11 +166,13 @@ function serverPrint(level, text)
 function slotText(value)
 ```
 
+Format a signed client-slot value right-aligned in a field at least three characters wide.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i32`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L50)
 
 - [mq3.game.server_commands.State](Type-mq3-game-server-commands-state-1908516811.md) — struct

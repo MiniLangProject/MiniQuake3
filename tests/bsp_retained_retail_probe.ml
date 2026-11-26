@@ -101,11 +101,14 @@ function main(args)
         old=retainedFrozen.extractWithPatchError(map,[face],budget,4.0);if old is error then return old end if
         plain=retainedRender.extractWithPatchError(map,[face],budget,4.0);if plain is error then return plain end if
         shared=retainedRender.extractRetainedWithPatchError(map,[face],budget,4.0);if shared is error then return shared end if
-        if not retainedEqual(old,plain) or not retainedEqual(old,shared) then return error(7417,"Retail field/order/budget mismatch "+path+" face="+str(face)+" budget="+str(budget)) end if
+        kind=retainedNumeric.readI32(map.data,map.offsets[13]+face*104+8)
+        // Patch subdivision was corrected after the frozen extractor snapshot.
+        // Compare both current ownership modes for patches; retain the frozen
+        // byte-for-byte oracle for planar and triangle-soup faces.
+        if not retainedEqual(plain,shared) or (kind!=2 and not retainedEqual(old,plain)) then return error(7417,"Retail field/order/budget mismatch "+path+" face="+str(face)+" budget="+str(budget)) end if
         stats.comparisons=stats.comparisons+1
         if budget==1000000 then
           stats.faces=stats.faces+1;stats.triangles=stats.triangles+old.triangleCount;stats.patches=stats.patches+old.patchSurfaceCount
-          kind=retainedNumeric.readI32(map.data,map.offsets[13]+face*104+8)
           if kind==1 or kind==3 then stats.oldRefs=stats.oldRefs+retainedObjectCount(old.triangles);stats.uniqueVertices=stats.uniqueVertices+retainedObjectCount(shared.triangles) end if
         end if
       end for

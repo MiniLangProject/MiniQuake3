@@ -9,8 +9,10 @@
 struct Transform
 ```
 
+Stores playable item models transform record, including `origin`, `axis`, `scale`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L133)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Transform
 axis
 ```
 
+Three orientation basis vectors used to transform the rendered object.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L137)
 
 <a id="field-field-mq3-client-playable-item-models-transform-origin-origin-src-mq3-client-playable-item-models-ml-18944189"></a>
 ### origin
@@ -31,8 +35,10 @@ axis
 origin
 ```
 
+World-space translation applied after rotating and scaling a world-item model vertex.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L135)
 
 <a id="field-field-mq3-client-playable-item-models-transform-scale-scale-src-mq3-client-playable-item-models-ml-374043197"></a>
 ### scale
@@ -41,5 +47,7 @@ origin
 scale
 ```
 
+When constructing this record, `transform` supplies `scale` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L139)

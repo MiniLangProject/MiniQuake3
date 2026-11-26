@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores engine client client game runtime host-service callbacks, including `context`, `addCommandFn`, `errorFn`, `loadMapFn`, `systemInfoFn`, `debugFn` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L37)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 addCommandFn
 ```
 
+Host callback for the add command operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L43)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-clearnotifyfn-clearnotifyfn-src-mq3-client-cl-cgame-runtime-ml-665268063"></a>
 ### clearNotifyFn
@@ -31,8 +35,10 @@ addCommandFn
 clearNotifyFn
 ```
 
+Host callback for the clear notify operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L56)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-closeconsolefn-closeconsolefn-src-mq3-client-cl-cgame-runtime-ml-1793893769"></a>
 ### closeConsoleFn
@@ -41,8 +47,10 @@ clearNotifyFn
 closeConsoleFn
 ```
 
+Host callback for the close console operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L59)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-context-context-src-mq3-client-cl-cgame-runtime-ml-1630134339"></a>
 ### context
@@ -51,8 +59,10 @@ closeConsoleFn
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for the engine-side CGame runtime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L40)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-debugfn-debugfn-src-mq3-client-cl-cgame-runtime-ml-1453437595"></a>
 ### debugFn
@@ -61,8 +71,10 @@ context
 debugFn
 ```
 
+Host callback for the debug operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L53)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-errorfn-errorfn-src-mq3-client-cl-cgame-runtime-ml-835197339"></a>
 ### errorFn
@@ -71,8 +83,10 @@ debugFn
 errorFn
 ```
 
+Host callback for the error operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L45)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-loadmapfn-loadmapfn-src-mq3-client-cl-cgame-runtime-ml-1100771227"></a>
 ### loadMapFn
@@ -81,8 +95,10 @@ errorFn
 loadMapFn
 ```
 
+Host callback for the load map operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L48)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-queueconsolefn-queueconsolefn-src-mq3-client-cl-cgame-runtime-ml-715638619"></a>
 ### queueConsoleFn
@@ -91,8 +107,10 @@ loadMapFn
 queueConsoleFn
 ```
 
+Host callback for the queue console operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L62)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-serverrunning-serverrunning-src-mq3-client-cl-cgame-runtime-ml-1455909027"></a>
 ### serverRunning
@@ -101,8 +119,10 @@ queueConsoleFn
 serverRunning
 ```
 
+True when a local game server is running in the same engine instance.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L64)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-systeminfofn-systeminfofn-src-mq3-client-cl-cgame-runtime-ml-1323951041"></a>
 ### systemInfoFn
@@ -111,5 +131,7 @@ serverRunning
 systemInfoFn
 ```
 
+Host callback for the system info operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L51)

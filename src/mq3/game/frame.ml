@@ -19,6 +19,8 @@ import mq3.game.cvar_maintenance as cvarMaintenance
 import mq3.game.cvars as cvars
 import mq3.game.bot_clients as botClients
 import mq3.compat.numeric as n
+/// Use `level.runEntityFn` to perform `runEntities`.
+/// @param level Game-level state; accesses `num_entities`, `entities`, `time` and `runEntityFn`.
 function runEntities(level)
   i = 0
   while i < level.num_entities
@@ -56,12 +58,19 @@ function runEntities(level)
   return void
 end function
 
+/// Use `level.frameStageFn` to perform `stage`.
+/// @param level Game-level state; accesses `frameStageFn`.
+/// @param kind Value passed as argument 2 to `level.frameStageFn`.
+/// @param arg Value passed as argument 3 to `level.frameStageFn`.
 function stage(level,kind,arg)
   if level.frameStageFn == void then return error(488,"G_RunFrame requires frame maintenance boundaries") end if
   level.frameStageFn(level,kind,arg)
   return void
 end function
 
+/// Update `level.framenum`, `level.previousTime` and `level.time` during `run`.
+/// @param level Game-level state; accesses `restarted`, `framenum`, `previousTime`, `time` and `updateCvarsFn` and related fields. May update `level.framenum`, `level.previousTime` and `level.time` in place.
+/// @param levelTime Current server game time in milliseconds.
 function run(level,levelTime)
   if level.restarted then return void end if
   level.framenum = n.add32(level.framenum,1)

@@ -9,6 +9,8 @@ import mq3.shared.info as infoStrings
 import mq3.compat.textnumbers as textnum
 import mq3.compat.numeric as n
 
+/// Apply `mq3.shared.info.textBytes` while evaluating `sanitize`. Return paths include `decode(bytes(output))`.
+/// @param text Text to parse, format or deliver.
 function sanitize(text)
   data = infoStrings.textBytes(text); output = []; index = 0
   while index < len(data)
@@ -25,10 +27,16 @@ function sanitize(text)
   end while
   return decode(bytes(output))
 end function
+/// Require a valid client entity and return its client state for a spectator-follow command.
+/// @param ent Game entity; accesses `client` and `slot`.
 function caller(ent)
   if ent == void or ent.client == void or ent.slot < 0 or ent.slot >= 64 then return error(492,"Follow command requires a client entity") end if
   return ent.client
 end function
+/// Apply `mq3.game.follow_commands.caller`, `mq3.game.client_info.infoClientLimit` and `mq3.shared.info.textBytes` while evaluating `clientNumber`. Return paths include `-1`.
+/// @param level Game-level state; accesses `maxclients` and `clients`.
+/// @param ent Game entity; accesses `slot`.
+/// @param text Text to parse, format or deliver.
 function clientNumber(level,ent,text)
   caller(ent); clientInfo.infoClientLimit(level); data = infoStrings.textBytes(text)
   if len(data) > 1023 then return error(492,"Client lookup exceeds native name storage") end if
@@ -46,6 +54,10 @@ function clientNumber(level,ent,text)
   end while
   votes.send(level,ent.slot,"print \"User "+text+" is not on the server\n\""); return -1
 end function
+/// Set `ent.client.spectatorState` to `2` and `ent.client.spectatorClient` to `slot` in `mq3.game.follow_commands.follow`.
+/// @param level Game-level state; accesses `clients` and `spawner`.
+/// @param ent Game entity; accesses `client`. May update `ent.client.spectatorState` and `ent.client.spectatorClient` in place.
+/// @param argv Command argument strings in their original order.
 function follow(level,ent,argv)
   client = caller(ent)
   if len(argv) != 2 then
@@ -60,6 +72,10 @@ function follow(level,ent,argv)
   if client.team != 3 then teamChanges.setTeam(level,ent,"spectator") end if
   ent.client.spectatorState = 2; ent.client.spectatorClient = slot; return void
 end function
+/// Set `ent.client.spectatorClient` to `slot` and `ent.client.spectatorState` to `2` in `mq3.game.follow_commands.cycle`.
+/// @param level Game-level state; accesses `spawner`, `maxclients` and `clients`.
+/// @param ent Game entity; accesses `client`. May update `ent.client.spectatorClient` and `ent.client.spectatorState` in place.
+/// @param direction Value passed as argument 2 to `mq3.compat.numeric.add32`.
 function cycle(level,ent,direction)
   client = caller(ent)
   if level.spawner == void then return error(492,"Follow cycle requires game spawn state") end if

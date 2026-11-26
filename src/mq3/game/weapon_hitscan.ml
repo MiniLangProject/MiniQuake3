@@ -15,29 +15,47 @@ import mq3.shared.directions as directions
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 
+/// Combined CONTENTS_* mask used for shot collision queries.
 const MASK_SHOT = 0x06000001
+/// Compiled surface-flag bit marking noimpact behavior.
 const SURF_NOIMPACT=headers.SURF_NOIMPACT
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x38848
 
+/// Require and return a client state for hitscan weapon accuracy bookkeeping.
+/// @param ent Game entity; accesses `client`.
 function hitscanClient(ent)
   if ent == void or ent.client == void then return error(487,"Weapon accuracy requires a client entity") end if
   return ent.client
 end function
+/// Read a trace-hit entity after validating its number against native entity storage.
+/// @param level Game-level state; accesses `entities`.
+/// @param number Operand used to evaluate the returned expression `level.entities[number]`.
 function hitscanEntity(level,number)
   if number < 0 or number >= 1024 then return error(487,"Weapon trace entity exceeds native storage") end if
   return level.entities[number]
 end function
+/// Set `target[axis]` to `source[axis]` in `mq3.game.weapon_hitscan.hitscanCopy`.
+/// @param target Array or byte sequence accessed at `axis`. Entries are written in place.
+/// @param source Array or byte sequence accessed at `axis`.
 function hitscanCopy(target,source)
   for axis = 0 to 2
     target[axis] = source[axis]
   end for
   return void
 end function
+/// Return `2.0*(n.fdiv(game.random(level),32767.0)-0.5)` for `hitscanCenteredRandom`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
 function hitscanCenteredRandom(level)
   // random() divides as float; the crandom macro then uses double literals.
   return 2.0*(n.fdiv(game.random(level),32767.0)-0.5)
 end function
 
+/// Set `ent.client.accuracy_hits` to `n.add32(ent.client.accuracy_hits,1)` in `mq3.game.weapon_hitscan.bullet`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place.
+/// @param spread Value passed as argument 1 to `mq3.compat.numeric.f32`.
+/// @param damage Damage amount before the current operation applies its rules.
 function bullet(level,ent,spread,damage)
   w = state.get(level); spread = n.f32(spread)
   damage = n.trunc32(n.fmul(n.i32(damage),w.quadFactor))
@@ -66,6 +84,11 @@ function bullet(level,ent,spread,damage)
   return void
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.movement.copy` and `mq3.game.combat.shotTrace` while evaluating `shotgunPellet`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param finish Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param ent Game entity; accesses `s`.
 function shotgunPellet(level,start,finish,ent)
   w = state.get(level); traceStart = movement.copy(start); traceEnd = movement.copy(finish)
   hit = combat.shotTrace(level,traceStart,traceEnd,void,void,ent.s.number,MASK_SHOT)
@@ -79,6 +102,12 @@ function shotgunPellet(level,start,finish,ent)
   end if
   return false
 end function
+/// Set `ent.client.accuracy_hits` to `n.add32(ent.client.accuracy_hits,1)` in `mq3.game.weapon_hitscan.shotgunPattern`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param origin World-space position as three coordinates.
+/// @param origin2 Value passed as argument 1 to `mq3.shared.math.VectorNormalize2`.
+/// @param seed State used to initialize the deterministic random sequence.
+/// @param ent Game entity; accesses `client`. May update `ent.client.accuracy_hits` in place.
 function shotgunPattern(level,origin,origin2,seed,ent)
   // These are local vectors in C. Pellets still pass the separate global
   // forward vector to G_Damage rather than this reconstructed pattern basis.
@@ -98,6 +127,9 @@ function shotgunPattern(level,origin,origin2,seed,ent)
   end for
   return void
 end function
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.entities.tempEntity` and `mq3.game.weapon_hitscan.hitscanCopy` while evaluating `shotgun`. Return paths include `shotgunPattern(level,temp.s.pos.trBase,temp.s.origin2,temp.s.eventParm,ent)`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `s`.
 function shotgun(level,ent)
   w = state.get(level); temp = game.tempEntity(level,w.muzzle,c.EV_SHOTGUN)
   hitscanCopy(temp.s.origin2,q.VectorScale(w.forward,4096.0)); snapshot.snapVector(temp.s.origin2)
@@ -105,6 +137,9 @@ function shotgun(level,ent)
   return shotgunPattern(level,temp.s.pos.trBase,temp.s.origin2,temp.s.eventParm,ent)
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.combat.shotTrace` and `mq3.game.weapon_hitscan.hitscanEntity` while evaluating `rail`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`.
 function rail(level,ent)
   w = state.get(level); damage = n.trunc32(n.fmul(100.0,w.quadFactor))
   finish = q.VectorMA(w.muzzle,8192.0,w.forward); unlinked = []; hits = 0; passEntity = ent.s.number; hit = void
@@ -148,6 +183,9 @@ function rail(level,ent)
   return void
 end function
 
+/// Set `ent.client.accuracy_hits` to `n.add32(ent.client.accuracy_hits,1)` in `mq3.game.weapon_hitscan.lightning`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place.
 function lightning(level,ent)
   w = state.get(level); damage = n.trunc32(n.fmul(8.0,w.quadFactor))
   finish = q.VectorMA(w.muzzle,768.0,w.forward)

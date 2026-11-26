@@ -1,8 +1,503 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-16. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
+Stand: 2026-11-24. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Mark-Fragment-Ablehnprüfungen ohne Scratch-Arrays, 24. November 2026
+
+Die frühen Ablehnprüfungen des Host-Pfads von `CG_CM_MARKFRAGMENTS` arbeiten
+im Botkampf ohne Zwischenarrays: die Dreiecks-Bounds-Prüfung liest die drei
+Positionen direkt, das Eingabe-Array des Clippers entsteht erst nach den
+billigen Ablehnungen, und Projektions-Bounds, Projektionsebenen und
+Flächenprüfung rechnen inline mit identischer Gleitkomma-Arithmetik und
+Reihenfolge. Akzeptierte Dreiecke erzeugen weiterhin ihre Clip- und
+Fragment-Arrays; die clipPlane des Benutzers bleibt unverändert übernommen.
+Fünf exakte Baseq3-Datensätze, 33 Verträge einschließlich einer neuen
+Patch-Fixture, die Retail-q3dm1-Projektion sowie die Collision- und
+Mark-Verträge bestehen; sie stützen die bit-gleichen Ausgaben dieser Fälle,
+beweisen sie nicht global. Sechs alternierende 6.000-Frame-Botkampfläufe mit
+identischen Spielereignissen (1.327 Positionswechsel, 3.000 Angriffe,
+265 Munitionsabnahmen) ergaben im Median 97,40→98,09 FPS bei P99 31/32 ms —
+beide innerhalb der Streuung, keine belegte Bildratenverbesserung. Die
+Cgame-Phase sank im Median von 2,19 auf 2,15 ms pro Frame und die
+Cgame-CPU-Zyklen in zwei von drei Paaren um 2,1 % (der dritte Kandidatenlauf
+war global langsamer). GC-Zyklen (91) und Heap blieben unverändert; Draw- und
+Expand-Spitzen bleiben offen.
+[Bericht, Messwerte und Grenzen](verification/2026-11-24-mark-bounds-allocation.md)
+
+## Wiederkehrende Botkampf-Ruckler und Speicherprofil, 23. November 2026
+
+Ein 6.000-Frame-Retail-Botkampf auf q3dm1 zeigte nach dem Asset-Aufbau
+einen stabilen committed Heap von 368 MiB bei der produktiven
+128-MiB-GC-Schwelle. Die GC-Zyklen laufen jedoch weiter; 39 von 39
+langsamen Frames im ersten Profil und 49 von 50 im direkten Gegenlauf
+trafen mit einem Zyklus zusammen. Cgame-, Geometrie- und Draw-Arbeit
+wechselten ebenfalls stark. Ein stetiger Speicheranstieg ist in dieser
+Probe nicht zu sehen, Ruckelfreiheit ist nicht erreicht.
+
+Entitäts- und Lichtsubmission verwenden nun Kapazität behaltende Listen
+statt wiederholter Arraykopien; 42 Szenenverträge bestehen. Zwei komplette
+Vergleichsläufe zeigten keinen belastbaren FPS-Gewinn. Eine experimentelle
+256-MiB-GC-Schwelle halbierte die Zyklen, erhöhte den committed Heap um
+128 MiB und brachte keinen verlässlichen Gesamtgewinn; produktiv bleiben
+128 MiB. [Profil, Gegenproben und Grenzen](verification/2026-11-23-bot-combat-memory-profile.md)
+
+## Himmel am Zenit und Botkampf-Ruckler, 23. November 2026
+
+Die Wolken-UVs folgen jetzt der Kugelprojektion aus `R_InitSkyTexCoords`
+und dem `skyparms`-Höhenwert. Eine Retail-Aufnahme von `tim_hell` beim
+senkrechten Blick nach oben zeigt den gemeldeten quadratischen Fleck nicht
+mehr. 405 Originalwert-Vergleiche und drei Retail-Himmel bestehen; die
+übrige Sky-Geometrie bleibt vereinfacht. Der direkte Ausbau von
+Cgame-Polygondreiecken sank isoliert von 78 auf 16 ms für 250.000
+Dreiecke. Vollständige Botkampf-Proben auf q3dm1 und q3dm0 bestehen,
+belegen aber keinen allgemeinen FPS-Gewinn des Polygonpfads. Eine
+anschließende Erhöhung der nebenläufigen GC-Schwelle auf 128 MiB senkte
+in q3dm0 P99 von 39/44 auf 37 ms und die Zahl der Frames ab 35 ms von
+65/78 auf 50; der längste Frame dauerte 62 ms. q3dm1 blieb bei P99
+33 ms. Ein späteres Paar unter höherer Systemlast lag bei P99 43/44 ms
+(128/64 MiB). Der höhere Speicherbedarf und weitere Ruckler bleiben offen.
+Ein vollständig außerhalb der Zeichenfläche liegender World-Batch meldet
+jetzt korrekt null sichtbare Dreiecke; die native Viewport-Testgruppe besteht.
+[Messungen, Tests und Grenzen](verification/2026-11-23-sky-pole-and-poly-expansion.md)
+
+## Gebündelte Specular-Shaderpasses, 23. November 2026
+
+Unverformte `lightingSpecular`-Passes mit festen UVs aktualisieren ihre
+kameraabhängigen Alphas jetzt in einem nativen Batchaufruf. Der Bytevergleich
+gegen den vorherigen Vertexpfad, 432 Retail-Auswahlfälle und zwei direkte
+3.200-Frame-Botkampfpaare sind grün. In der isolierten q3dm0-Probe sanken
+die drei größten Passes von zusammen 178 auf 7 ms für 20 Updates.
+Beim endgültigen Code sank die mittlere Renderphase in zwei weiteren
+Paaren von 3,95/3,93 auf 3,24/2,99 ms und P99 von 46/44 auf 42/41 ms;
+die Gesamt-FPS schwankten und waren in einem Paar geringer. Andere
+Shaderpasses und sporadische Ruckler bleiben offen.
+[Messung und Grenzen](verification/2026-11-23-specular-batch.md)
+
+## Portal-Sichtprüfung im Botkampf, 23. November 2026
+
+Der produktive Renderer verwirft nun Portalflächen, deren Dreiecke vollständig
+außerhalb einer gemeinsamen Kamera-Clip-Ebene liegen. Das folgt dem
+Frustum-Teil von `SurfIsOffscreen` im Original. Auf `q3dm0` mit Retail-Daten
+entfielen dadurch in jedem von drei 3.200-Frame-Vergleichspaaren 30
+Portalansichten. Die mediane Bildrate stieg auf der RTX 5080 von 78,12 auf
+79,76 FPS; P99 blieb bei 44 ms und das Median-Maximum stieg von 63 auf
+64 ms. Die verbleibenden Ruckler sind offen. Ein größerer Portal-Cache
+wurde anhand 160 unterschiedlicher Schlüssel verworfen. Die originale
+Backface-Prüfung ist danach ergänzt und durch 43 Verträge geprüft; sie
+änderte die Portalanzahl im q3dm0-Retail-Kampf nicht. Die Entfernungsprüfung
+fehlt weiterhin im produktiven Portalpfad.
+[Diagnose, Einzelwerte und Testumfang](verification/2026-11-23-portal-frustum.md)
+
+## Weitere CPU-Ruckler im Botkampf, 23. November 2026
+
+Ein natives Rendererprofil ordnet die wiederholten langsamen Kampfframes
+vorwiegend der CPU-Vorbereitung von Shaderpasses und Portalansichten zu.
+Bedarfsgesteuerte Lichtquellen und wiederverwendete Nebelindizes bestanden
+zwar die bytegenauen Retail-Vergleiche, verschlechterten aber die
+3.200-Frame-Messungen. Diese Experimente wurden zurückgenommen. Eine
+einzelne 849-ms-Spitze war im direkten Folgelauf nicht reproduzierbar;
+weitere lange Zeichenphasen bleiben offen. Die Ruckler sind nicht behoben.
+Eine q3dm0-Materialprobe isolierte drei große Specular-Passes mit 178 von
+317 ms in 20 Updates. Das Vorberechnen der statischen Reflexionsrichtung
+senkte die isolierte Zeit auf 250 ms, brachte im vollständigen Botkampf
+aber keinen FPS-Vorteil und wurde ebenfalls zurückgenommen.
+[Profil, Gegenproben und Grenzen](verification/2026-11-23-render-pass-stutter.md)
+
+## Ladescreen beim Kartenstart
+
+Beim Wechsel vom Hauptmenü in ein lokales Match erscheint der Levelshot der
+ausgewählten Karte schon vor dem Einlesen der BSP-Datei. Cgame zeichnet die
+Retail-Detailtextur, den Ladestatus und die Spielregeln aus den
+Server-Configstrings. Darüber zeichnet die UI den Kartennamen und das
+Verbindungsziel. Der letzte Ladeschritt zeigt die registrierten Spieler- und
+Item-Symbole. Der Shaderindex wird beim Eintritt ins Match weiterverwendet.
+Die Zwischenbilder folgen den Arbeitsschritten des Ports. Der Zeitpunkt jeder
+einzelnen Registrierung kann vom Original abweichen.
+
+`python scripts/test_map_loading_retail.py --data-root build` rendert zwei
+OpenGL-Bilder mit der Retail-PK3. Für Arena Gate prüft der Test alle sechs
+Textzeilen samt Schatten, die Detailtextur und die nachgeladenen Icons.
+Mit `--desktop-exe build/MiniQuake3.exe` startet derselbe Test das fertige
+Windows-Spiel mit eigener Konfiguration, führt `spmap q3dm1` aus und
+vergleicht den sichtbaren Levelshot samt Beschriftung mit dem Referenzbild.
+Der auf der RTX 5080 aufgenommene Frame liegt unter
+`build/reference/map_loading/desktop-q3dm1-loading.png`. Ein separater
+Retail-Replay auf `q3dm1` durchlief 1.800 Spielframes mit Bewegung und
+Munitionsverbrauch. Die Vergleiche mit unverändertem C-Code laufen in
+`test_cgame_info.py`, `test_ui_connect.py` und `test_cgame_drawtools.py`.
+
+## Spiegelportal und Modelltexturen im Retail-Kampf
+
+Im Einzelspieler-Replay auf `q3dm0` stieg die Bildrate auf der RTX 5080
+gegenüber `9466c94` im Median von **68,32 auf 81,10 FPS**. Die P99-Framezeit
+sank von **52 auf 43 ms**. Der Renderer packt Welt- und Modelldreiecke
+in einem nativen Aufruf und übernimmt vollständig sichtbare Dreiecke in die
+Spiegelansicht. Die Shaderbilder der vom Server angekündigten MD3-Modelle
+werden beim Kartenstart dekodiert. Die drei Läufe der neuen Version hatten
+Maxima von 71, 67 und 82 ms. Die Ladephase der Karte stieg im Median um
+56 ms. [Laufpaare, Frameprofil und Vergleichsbedingungen](verification/2026-11-22-combat-frame-times.md#spiegel-und-erstes-auftauchen-des-hologramms)
+
+## Ruckler im Retail-Kampf, 22. November 2026
+
+Die BSP-Kollision berechnet die Endpunkte geteilter Bewegungssegmente in
+einem Puffer. Der Renderer kann die Zeichendaten einer Ansicht weiterverwenden,
+wenn sich die Dreieckszahl des Waffenmodells ändert. Bei gleichen
+Speichereinstellungen stieg die Bildrate auf der RTX 5080 im Median von
+83,06 auf 90,02 FPS. Die P99-Framezeit sank von 31 auf 28,5 ms.
+Im längeren Kampf mit Spiegelportal stieg die Bildrate von 73,54 auf
+77,97 FPS. Dort blieben einzelne Frames bis 76 ms und P99 bei 48 ms.
+[Einzelmessungen und Testumfang](verification/2026-11-22-combat-frame-times.md)
+
+## Cgame im Retail-Kampf, 22. November 2026
+
+Die Messung trennt die Ausführung der Original-Cgame-QVM von den
+Engine-Aufrufen für Kollision, Trefferflächen, Modelle und HUD. Ein
+Abgleich mit der ursprünglichen C-Engine deckt 2.684 Kollisionsfälle auf
+q3dm0 und q3dm1 mit aktivierter Kurvenkollision ab. Der Zeitvergleich
+verwendet denselben Einzelspieler-Kampf auf der RTX 5080.
+[Framezeiten, langsame Einzelbilder und Testumfang](verification/2026-11-22-cgame-simulation.md)
+
+Die Flächensuche für Cgame-Einschlagmarken verwendet jetzt einen
+wiederverwendbaren BSP-Besuchszähler. Im 3.200-Frame-Retailkampf sank die
+Hostzeit der 4.965 `CG_CM_MARKFRAGMENTS`-Aufrufe von 1.096 auf 934 ms.
+Drei abwechselnde A/B-Paare ergaben im Median 78,67 statt 76,87 FPS;
+P99 stieg von 44 auf 46 ms, während die längsten Frames im Median von
+70 auf 61 ms sanken.
+Die P99-Ruckler sind weiterhin offen.
+[Messwerte und Differentialtests](verification/2026-11-22-combat-frame-times.md#einschlagmarken-im-botkampf)
+
+Auf `q3dm1` verursachte ein anderer Teil derselben Einschlagspur-Verarbeitung
+nach längerem Botkampf wiederholte Dekodierungen von bis zu 3.552 BSP-
+Dreiecken. Der begrenzte Geometrie-Cache erfasst jetzt bis zu 4.096 pro
+Flächenliste. Drei abwechselnde 3.200-Frame-Retail-Paare ergaben im Median
+84,59 statt 66,96 FPS und P99 43 statt 68 ms; Cgame sank von 5,64 auf
+2,81 ms/Frame. Auf `q3dm0` zeigten zwei Paare keinen klaren Nachteil.
+Für weitere überlappende Flächenlisten aktiviert sich jetzt ein begrenzter
+Cache einzelner BSP-Flächen erst nach einer großen, vollständigen Liste.
+Drei zusätzliche A/B-Paare gegen die 4.096er-Version ergaben auf `q3dm1`
+96,31 statt 92,71 FPS, P99 33 statt 41 ms und maximale Framezeit 47 statt
+66 ms im Median. Auf `q3dm0` blieb P99 im Median bei 44 ms; die FPS lagen
+bei 82,00 statt 81,58. Dort trat ein einzelner 77-ms-Kandidatenframe auf.
+Ein instrumentierter q3dm0-Kampf ordnet die verbliebenen langsamen Frames
+vor allem Spiegelportal-Vorbereitung und Zeichnen zu; beide Pfade bleiben
+eine messbare Leistungsgrenze.
+Langzeit- und andere Botkombinationen bleiben offen.
+[Ursache, Tests und A/B-Läufe](verification/2026-11-23-mark-cache.md)
+
+Der Material-Batch-Aufbau für Portalansichten verwendet nun einen
+wiederverwendeten Vertex-ID-Besuchszähler statt einer großen neuen Tabelle
+je Shader-Pass. Drei abwechselnde Retail-Botkampf-Paare ergaben im Median
+79,79 statt 78,12 FPS und P99 44 statt 47 ms. Der Effekt ist begrenzt;
+Botkampf und Portalansichten ruckeln weiterhin deutlich. Ein Diagnosebuild
+ohne Portalansicht bestätigte den Einfluss dieses Renderpfads, gehört aber
+nicht zum Spiel.
+[A/B-Messung und Grenzen](verification/2026-11-22-combat-frame-times.md#portal-batch-und-vertex-indizes)
+
+Nicht-Lightmap-Pässe teilen inzwischen ihre identischen Quell- und
+Deformations-UV-Dreier-Arrays. Drei abwechselnde Retail-Botkampf-Paare
+ergaben 74,90 statt 73,13 FPS im Median, aber P99 46 statt 45 ms. Ein
+Vier-Eintrag-Portal-Cache brachte nur einen zusätzlichen Treffer in 3.200
+Frames und wurde verworfen. Die Ruckler bleiben offen.
+[Messung und verworfene Cache-Variante](verification/2026-11-22-combat-frame-times.md#uv-quellen-und-portal-cache)
+
+## Renderer und Shaderzeiten, 22. November 2026
+
+Der Renderer verwendet bei gleicher Entity-Zeit die berechnete Shaderzeit
+innerhalb eines Durchlaufs erneut. Für konstante Shaderstufen berechnet er
+die Farbe einmal. Der Vergleich mit der vorherigen Version ergab auf je
+einem Hardware-Frame von q3dm0 und q3dm1 identische RGB-Werte.
+[Kampf-Replay und Differentialtests](verification/2026-11-22-renderer-stage-work.md)
+
+## Compiler-Typverträge und Inlining, 22. November 2026
+
+Die 12.618 internen MiniLang-Funktionen wurden inventarisiert und mit einem
+instrumentierten 2.200-Frame-Retail-Replay priorisiert. Die häufigen Integer-,
+Bytezugriffs-, DEFLATE-, Kollisions-, Renderer- und VM-Helfer werden einzeln auf
+sichere Parameter- und Rückgabetypen geprüft. Dynamische Fehler- und
+`void`-Rückgaben bleiben erhalten; blind gesetzte Typen könnten die
+Quake-Fehlersemantik ändern. Explizites Inlining bleibt nur dort, wo es den
+generierten Code und einen isolierten A/B-Vergleich tatsächlich verbessert.
+Die vollständige Typisierung des Ports ist **nicht** abgeschlossen. Inventur,
+Aufrufzahlen, Differentialtests und Messgrenzen stehen im
+[Evaluationsprotokoll](verification/2026-11-22-function-contract-evaluation.md).
+Eine zweite Messrunde typisierte Float-Rückgaben, drei Renderer-Writer und
+`DotProduct` mit gezielten Fehler- und C-Differentialtests. Die beiden
+dichten Trajectory-Switches wurden semantisch äquivalent umgeschrieben;
+damit bestehen die vorher blockierten Message-State- und Snapshot-Build-Gates
+mit dem gepinnten Compiler. Der breite `verify.py`-Lauf und der erneute
+Retail-Replay sind im [zweiten Evaluationsprotokoll](verification/2026-11-22-function-contract-wave2.md)
+belegt. Die verbleibenden Funktionen sind weiter auf konkrete Aufruftypen,
+Fehlerpfade und A/B-Leistung zu prüfen.
+Die [dritte Profilrunde](verification/2026-11-22-function-contract-wave3.md)
+trennte Lade- von Match-Aufrufen, typisierte Shader-Zeit und PCM-Lesen und
+prüfte ein gezieltes Inline. Ein isolierter Shader-Benchmark gewann etwa 7 %;
+der abwechselnde Retail-Spielvergleich zeigte keinen belastbaren FPS-Gewinn.
+Der breite Verifikationslauf stoppte nach 115 erfolgreichen Gates an einem
+veralteten Client-Frame-Testanker. Dieser und weitere überholte Prüfanker für
+MD3, BSP-Patches, Kollisions-Frontier, Trace-Speicher und Snapshot-Ring sind
+aktualisiert und mit Retail-Daten separat bestanden. Der komplette Rest der
+Suite ist noch nicht grün nachgewiesen; die fortgesetzten Läufe und Grenzen
+stehen im dritten Evaluationsprotokoll. Der Windows-Produktbuild erreicht mit
+lokalem Retail-`baseq3` das Originalmenü in 0,52 Sekunden.
+Eine [vierte Hotpath-Runde](verification/2026-11-22-function-contract-wave4.md)
+setzt `isSky` und `depthHack` gezielt inline. Ihre isolierten Schleifen wurden
+schneller; drei abwechselnde Retail-Spielpaare zeigten nur 0,52 FPS
+Medianunterschied innerhalb der Laufstreuung. Ein Gesamtspielgewinn ist damit
+weiter nicht nachgewiesen.
+Eine [fünfte Hotpath-Runde](verification/2026-11-22-function-contract-wave5.md)
+typisiert `isNaNBits` und setzt vier häufige, kleine Binary32-Helfer inline.
+Die isolierten Schleifen gewinnen, während drei Retail-Spielpaare nur 0,40 FPS
+Medianunterschied innerhalb der Streuung zeigen. Verträge für `mantissa`
+und `exponent` wurden nach langsameren A/B-Messungen verworfen.
+
+## Film- und Menüwechsel-Audit, 22. November 2026
+
+Der Desktop-Filmpfad hielt bisher jeden bereits präsentierten `Draw`-Auftrag
+bis zum Filmende fest; jeder Auftrag referenziert einen dekodierten RGBA-Frame.
+Das konnte den Speicherbedarf während längerer RoQ-Videos fortlaufend erhöhen.
+Der direkte Fensterpfad verwirft diese Aufträge nun pro Frame. RoQ-Chunkindex,
+Audio- und Draw-Queue verwenden `std.ds.list` statt quadratischer
+Array-Konkatenation. Frühe Fehler im Filmfenster laufen jetzt durch denselben
+Audio-/Textur-/Film-Cleanup wie ein normaler Filmabschluss.
+
+Im Original leert `CL_HandleCinEnd` nach dem Film die Cvar `nextmap`. Der
+Desktop-Host hatte den vor dem Film erfassten Wert beim nächsten UI-Start erneut
+eingespielt. Er löscht ihn jetzt in den gesicherten Einstellungen, nachdem der
+Folgebefehl übernommen wurde. Der Retail-QVM-Test prüft den Wert in einer neu
+gestarteten UI-Shell. Das Ledger kennzeichnet die RoQ-Abdeckung nun genauer als
+Teilmenge: JPEG-/Packet-Chunks und längere Fehlerszenarien bleiben offen.
+[Prüfbericht](verification/2026-11-22-cinematic-lifecycle-audit.md).
+
+## Singleplayer-Abschluss und Tier-Film, 21. November 2026
+
+Nach dem Sieg auf der Trainingskarte sendet die unveränderte Retail-UI
+`disconnect; cinematic tier1.RoQ` und setzt `nextmap=levelselect`. Der
+Desktop-Host kannte den `cinematic`-Befehl nicht: `disconnect` wechselte
+deshalb sofort ins Hauptmenü. Der Host merkt sich nun den Folgebefehl über
+den Match-Abbau hinweg, spielt den echten Retail-RoQ im selben OpenGL-Fenster
+und öffnet nach Filmende die ursprüngliche Levelauswahl. Eine Taste kann
+den Film wie im Original überspringen. Der Retail-Integrationstest prüft
+Befehl, Film-Frames und den Folgebefehl; der sichtbare Windows-Filmtest
+prüft die produktive Wiedergabe.
+
+## Vollständige Retail-Arenenliste und Botliste, 21. November 2026
+
+Ein neuer Windows-QVM-Smoke-Test startet alle 30 Arenen aus der Retail-Datei
+`scripts/arenas.txt` mit ihrem jeweiligen BSP-Namen, rendert jeweils 30 Frames
+und prüft Szenendreiecke, Texturen und Frameabschluss. **30/30** bestehen mit
+`build/baseq3/pak0.pk3` und der originalen 1.32b-QVM. Die mediane gemessene
+Startzeit beträgt 3.328 ms; der langsamste Start ist q3ctf2 mit 5.629 ms.
+Die gemessene mittlere Framearbeit der 30 Frames liegt zwischen 6,23 und
+32,1 ms, Median 15,25 ms. Das ist ein Kurzlauf, kein Nachweis kompletter
+Match-, Bot- oder Netzspielparität jeder Arena. Der Bot-Gesamtlauf und die
+Differentialtests sind im [Prüfbericht](verification/2026-11-21-all-arenas-bots-performance.md)
+aufgeführt.
+
+Die Arena-CLI-Starts übergeben nun den tatsächlichen BSP-Namen an Qagame,
+Serverinfo und Cgame. Wie `SV_SpawnServer` im Original führt der lokale Host
+drei `GAME_RUN_FRAME`-Schritte vor der Client-Anmeldung aus. Das behebt
+`BG_CanItemBeGrabbed: index out of range` auf q3ctf4, q3dm10, q3tourney3
+und q3tourney5, wo ein noch nicht fertig gespawntes Item angesprochen wurde.
+Die native QVM-Obergrenze wurde für legitime Retail-Initialisierung angehoben;
+ein Überschreiten meldet jetzt Schrittzahl und Limit.
+
+Das Performance-Audit fand quadratische Array-Kopien in der BSP-Blattsuche,
+Brushabfrage und Punktinhaltsermittlung. Die Traversierung benutzt nun
+`std.ds.list`, Submodelle und Patchpunkte vorab dimensionierte Arrays; die
+Punktinhaltsabfrage verarbeitet Brushs direkt. Auf q3dm15 sank der mittlere
+Hostanteil von Qagames `trap_LinkEntity` im profilierten Lauf von 2.099 auf
+110 Mikrosekunden pro Aufruf; die gemessene Gesamtarbeit sank von 27,85 auf
+18,87 ms pro Frame. Die Zahl der Simulationsaufrufe unterscheidet sich bei
+Echtzeitschritten, daher ist dies ein beobachteter Laufvergleich. Der
+Shadow-Policy-Lookup ist nun hashbasiert und hat einen eigenen
+Entity-/Surface-Regressionsvertrag; q3dm4 zeigte dabei keinen messbaren
+FPS-Gewinn. Renderer-CPU-Arbeit bleibt eine offene Leistungsgrenze.
+
+## q3dm0: Crash greift an und die Tür bleibt beweglich, 21. November 2026
+
+Die ursprüngliche 1.32b-QVM verwendet für Munition, Gesundheit und Powerups
+andere Inventarpositionen als `botfiles/inv.h` aus Retail-`pak0.pk3`.
+Dadurch erkannte Crash den Spieler, bewertete aber seine 100 Maschinengewehr-
+Patronen als fehlend, wechselte zur Nahkampfwaffe und schoss nicht. Die
+Botprofil-Auswertung übersetzt die Retail-Indizes nun beim Laden in das
+Inventarlayout der QVM; auch die Item-Ziele benutzen dieselbe Zuordnung.
+Ein q3dm0-Test ohne Spielerschüsse beobachtet 41 Waffenereignisse und
+Gesundheitsverlust des Spielers. Der bisherige Test mit Spielerschüssen und
+der q3dm1-Bot-Test bestehen ebenfalls.
+
+Die beiden Türmodelle `*12` und `*13` in q3dm0 besitzen zwölf bewegliche
+Dreiecke. Ihre Flächen stehen zusätzlich in der BSP-Blattliste. Der
+statische Renderer filtert jetzt alle Flächen außerhalb von Weltmodell 0;
+die Cgame-Instanzen zeichnen die Türen weiterhin an der aktuellen Position.
+Der Retail-Test findet zwölf bewegliche und null statische Türdreiecke.
+Der Differentialtest der q3dm0-Tür- und Schaltermechanik bleibt grün.
+[Prüfdetails](verification/2026-11-21-bot-inventory-door.md).
+
+## Bot-KI, Cgame, Konsole und Scoreboard, 21. November 2026
+
+Das CPU-Profil ordnet den reproduzierbaren Bot-Hänger dem Chat-Matching und
+kalten AAS-Zielrouten zu. Im 2.200-Frame-Replay auf der RTX 5080 sinkt der
+Bot-Hostschritt von 82,7 auf 12,0 ms. Der zugehörige Frame fällt von 107 auf
+25 ms. Cgame benötigt über den Lauf 6,77 statt 17,82 s in Host-Aufrufen.
+Wiederverwendete Kollisionsmarkierungen, gespeicherte AAS-Knoten und eine
+gebündelte Zielsuche erhalten die Ergebnisse der Referenztests. Portalclips
+sammeln ihre Ausgaben linear und behalten die statischen Batches bei gleicher
+Ebene und geordneter BSP-Auswahl.
+Im 6.000-Frame-Echtzeitlauf erreicht der neue Build 83,6 statt 51,9 FPS.
+Das 99. Perzentil sinkt von 65 auf 33 ms, der Höchstwert von 107 auf 54 ms.
+
+Die Retail-Konsole zeichnet ihre zwei Shaderstufen über die aufbereitete
+Materialdarstellung. `^` öffnet und schließt sie im selben Fenster. Das
+lokale Spiel setzt `CS_SERVERINFO` vor Cgame-Init wie das Original. Die
+Tab-Tabelle zeigt Sarge und Crash mit ihren Spielständen. Temporäre
+Kollisionsmodelle übernehmen auch invertierte Grenzen wie das Original.
+[Messungen und Prüfumfang](verification/2026-11-21-bot-cgame-frame-profile.md)
+
+## Retail-CPU-Profil und Framezeiten, 21. November 2026
+
+Der 279-ms-Frame im wiederholbaren `q3dm0`-Kampf-Replay verbrachte 241 ms
+in der Materialvorbereitung. Derselbe Frame dauert mit wiederverwendeten
+Retail-Texturen unter 50 ms. Schnellere PK3-/TGA-Dekodierung, weniger
+Kopien in der Szenenwarteschlange und eine gebündelte Trace-ABI reduzieren
+weitere CPU-Arbeit. Identische 2.200 Frames mit festem Simulationsschritt
+liefen auf der RTX 5080 mit 53,4 statt 49,6 FPS. Der Höchstwert fiel auf
+100 ms. In diesem Frame beanspruchte Qagame 82 ms. Cgame und Spielsimulation
+bleiben die größten CPU-Kosten. In 6.000 Frames mit Echtzeitschritten stieg
+die Bildrate von 47,0 auf 51,9 FPS. Das Maximum fiel von 260 auf 107 ms,
+das 99. Perzentil lag bei 65 statt 64 ms. [Messungen und Prüfumfang](verification/2026-11-21-retail-cpu-hotpaths.md)
+
+## Serverbeitritt, Demos und Mods im Windows-Spielpfad
+
+Der Menü-Host startet Original-QVMs jetzt auch aus einem Netz- oder
+Demo-Gamestate. Der Retail-Beitritt zum originalen Dedicated Server wurde auf
+`q3dm1` mit und ohne Pure-Prüfung, Delta-Snapshots, Bewegung, Scoreboard und
+Trennung geprüft. Pure Baseq3 beschränkt den Zugriff auf verifizierte lokale
+PK3s und verwendet daraus die freigegebenen 1.32-kompatiblen QVMs. Die frühe
+CD-Cgame-QVM erwartet andere Configstring-Nummern und ist mit 1.32-Servern
+nicht kompatibel. Die Desktop-Verbindung
+unterstützt IPv4 und Protokoll 68. Automatische Downloads, Pure-Modserver
+und Internet-Mehrclient-Langzeittests stehen aus.
+
+**Demos → GO** spielt lose oder gepackte `.dm_68`-Aufzeichnungen mit dem
+Original-Cgame ab. Der Test zeichnet im originalen C-Programm mit Retail-Daten
+auf und überprüft Bewegung, Chat, ältere Snapshots, Gamestate-Wechsel und das
+Ende der Datei. Desktop-Aufzeichnung, Timedemo und ältere Formate bleiben
+offen. **Mods** und `fs_restart` aktivieren installierte Asset- und
+1.32-kompatible QVM-Mods mit eigener Konfiguration. DLL-only-Module und QVM v2
+sind für diesen Spielpfad nicht unterstützt.
+
+Die neue Kollisionsberechnung bestand 19.972 Weltabfragen und 12.288
+transformierte oder temporäre Abfragen gegen den Originalcode. Im separaten
+A/B-Lauf liefen die identischen Weltabfragen 16 % schneller. Der 6.000-Frame-
+Kampf-Replay auf der RTX 5080 erreichte 47,0 FPS gegenüber zuvor 46,1 FPS.
+Das 99. Perzentil sank von 74 auf 64 ms. Der damalige Höchstwert von
+260 ms war Anlass für das CPU-Profil im aktuellen Stand. [Retail-Prüfbericht](verification/2026-11-21-desktop-streams-and-collision.md)
+
+## Korrekturen aus dem Intensiv-Audit, 21. November 2026
+
+Der reguläre Windows-Start verwendet jetzt eine gemeinsame Menü- und
+Match-Schleife. Lokale Spielwechsel, Verlassen der Arena und Einzelspieler-
+Levelauswahl laufen über den Befehlsbuffer. Einstellungen, Bindings und die
+von der Original-QVM vergebenen Platzierungen landen in `baseq3/q3config.cfg`.
+`vid_restart` und Alt+Enter ändern den Anzeigemodus am bestehenden Fenster.
+Die lokale Simulation pausiert mit dem Ingame-Menü. Unter einer bildfüllenden
+UI entfallen Cgame-Rendering und Weltaufbereitung.
+
+Textur- und Tonregistrierungen verarbeiten neue Einträge. Die lokale
+Nachholzeit pro Bildschirmframe ist auf 200 ms begrenzt. Der Matchhost bindet
+Bot-Bewegung und AAS-Routing ein. Die Retail-Tests prüfen Botbewegung und echte
+Schussereignisse auf `q3dm0` und `q3dm1`. Der Renderer überträgt Area-Masken,
+beachtet Shader-Culling, `SURF_NODRAW`, `$whiteimage` und vertikalen FOV und
+löst Crashs MD3-Oberflächen über alle Detailstufen auf die Retail-Skins auf.
+
+Der [Retail-Prüfbericht](verification/2026-11-21-intensive-audit-fixes.md)
+enthält die Messungen zu den Windows- und Performance-Korrekturen. Der
+[Intensiv-Audit](INTENSIVE_AUDIT_2026-11-21.md) hält den Ausgangszustand fest.
+Remote-Serverbeitritt, Demo-Wiedergabe und Mod-Aktivierung
+sind im Windows-Spielpfad noch offen. `map_restart` lädt die aktuelle Karte neu.
+Die historische Testsuite verlangt weiterhin den exakt eingefrorenen Compiler.
+
+## Patch-Gitter und Einschlagmarken, 21. November 2026
+
+Die Patch-Unterteilung entfernt bei mehreren geraden Abschnitten nur noch
+die vorgesehenen Punkte. Der produktive Renderer und der separate
+`tr_curve`-Pfad verwenden dieselbe Verdichtung für Gitter und LOD-Daten.
+Bei der Unterteilung werden Gitter direkt befüllt. Einschlagmarken
+verwenden gemeinsame BSP-Vertices und sammeln die Ausgabe ohne wiederholte
+Arraykopien. Der synthetische Patch-Test sank von 101–142 auf 56–62 ms,
+die Projektion auf eine Fläche mit 512 Dreiecken von 45–47 auf 14 ms.
+Testaufbau, Referenzvergleich und Grenzen stehen im
+[Performance- und Code-Audit](verification/2026-11-21-performance-code-audit.md).
+
+## Weiteres Performance- und Code-Audit, 21. November 2026
+
+Der produktive Retained-World-Cache unterteilt Patchflächen nicht mehr ein
+zweites Mal allein für die Dreieckszählung. Flächenschwerpunkt und Radius
+verwenden dieselben einmal dekodierten Vertexpositionen. Beschädigte PVS-
+Tabellen werden vor dem Bytezugriff auf vollständige Zeilen und Lumpgrenzen
+geprüft. Patch-Kontrollgitter über der originalen 32×32-Grenze werden vor
+der Unterteilung abgewiesen. Der isolierte synthetische Patch-Cache-Vergleich ergab bei 200
+Patchflächen × drei Cache-Aufbauten 203 ms zuvor und 109–110 ms mit der
+einfachen Patch-Extraktion; beide lieferten 19.200 Dreiecke. Eine Retail-
+Ladezeit oder Spiel-FPS wurde damit nicht gemessen. Die Befunde, offene
+Risiken und Testgrenzen stehen in
+[`verification/2026-11-21-performance-code-audit.md`](verification/2026-11-21-performance-code-audit.md).
+
+`python scripts/build.py` baut `MiniQuake3.exe`. Die gezielten Tests bestehen
+mit 45 World-Surface-, 64 BSP-Render- und 51 Retained-World-Verträgen sowie
+7 Lighting- und 75 Patch-Normalen-Referenzdatensätzen. Der gezielte
+`verify.py`-Wiederanlauf bei `test_message_state_delta.py` scheitert am
+unveränderten Compilerfehler `unknown data patch target: switch_case_body_22681_0`.
+`D:/Quake3/baseq3/pak0.pk3` fehlt weiterhin; Retail-Ladezeit und Spiel-FPS
+sind für dieses Paket daher nicht abgenommen.
+
+## BSP-Extraktion und Ladezeit, 21. November 2026
+
+Der produktive `bsp_render_data`-Extraktor kopierte bisher beim Anfügen jedes
+Dreiecks die bisherige Ergebnisliste und suchte bereits besuchte Flächen
+linear. Dreiecke werden nun in einer wachsenden Liste gesammelt und die
+Duplikatprüfung nutzt für mehrteilige Eingaben eine indexierte Markierung.
+Der Retained-World-Pfad extrahiert einzelne Flächen und legt deshalb keine
+Markierung an. Patch-Kontrollpunkte und die feste Dreiecks-Eckliste werden
+direkt befüllt. Ausgabereihenfolge, Budget- und Fehlersemantik sind durch
+`test_bsp_render_data.py` (63 Verträge, 7 Lighting- und 75 Patch-Normalen-
+Referenzdatensätze), `test_world_surface_selection.py` (39 Verträge) und
+`test_retained_world_batch.py` (51 Verträge) geprüft.
+
+Ein isolierter Windows-A/B-Lauf gegen den Extraktor von `a9f5c8b` mit 5.000
+synthetischen planaren Flächen und drei Wiederholungen ergab 219–235 ms für
+den alten und 46–62 ms für den neuen Code; beide lieferten 15.000 Dreiecke.
+Der für den Retained-World-Cache repräsentativere Einzel-Flächen-Lauf mit
+15.000 Aufrufen lag bei 62–63 ms gegenüber 47–63 ms; hier ist der Gewinn
+kleiner und nicht in jedem Lauf messbar. Das belegt den Extraktor, keine
+reale Kartenladezeit oder Bildrate. Die
+Retail-PK3 unter `D:/Quake3/baseq3` ist weiterhin nicht verfügbar.
+Der Haupt-Build und die BSP-/World-Teiltests bestehen. Die erneute
+Gesamtabnahme `python scripts/verify.py --data-root D:/Quake3` stoppt wie
+zuvor am unveränderten Compilerfehler in `test_message_state_delta.py`
+(`unknown data patch target: switch_case_body_22681_0`), vor den Retail-Gates.
+
+## Bot-Zielwahl, 20. November 2026
+
+Die produktiven Botlib-Traps 535/536 verwenden nach dem bereits eingeführten
+Fuzzy-Gewicht-Cache nun einen wiederverwendeten Ergebnisdatensatz pro
+Zielwahl. Dadurch entfallen die kurzlebigen zweielementigen Arrays für jedes
+geprüfte Kartenitem. Die neue Regression prüft zwei Instanzen derselben
+Itemklasse und die Invalidierung des Caches zwischen zwei Zielwahlen.
+`scripts/test_ai_goal_selection.py` besteht mit acht nativen
+Baseq3-Szenarien/35 Beobachtungen und 34 MiniLang-Verträgen. Der vollständige
+Bot-Testlauf stößt beim unveränderten `bot_ai_frame`-Vertrag auf den
+Compilerfehler `unknown data patch target: switch_case_body_146653_0`.
+`python scripts/verify.py --data-root D:/Quake3` baut die Haupt-EXE und
+besteht die vorausgehenden Core-, Numeric-, Cvar- und Message-Gates, endet
+aber bei `test_message_state_delta.py` am gleichen Compilerfehlertyp
+(`switch_case_body_22681_0`).
+Ein Retail-FPS-Vergleich für diese Änderung steht aus: `D:/Quake3/baseq3`
+enthält auf diesem Rechner derzeit keine `pak0.pk3`. Die früher gemessenen
+37,73 FPS auf q3dm0 gelten weiterhin als letzte grafische Bot-Basis und
+sind kein Leistungsnachweis für diese Änderung.
 
 ## Bot-Leistung, 16. November 2026
 
@@ -2477,7 +2972,8 @@ Datensatzbytes, fünf Namensfälle sowie Erfolg, EOF und drei Trunkierungsgrenze
 27 MiniLang-Verträge ergänzen Headerentfernung, verkettete Datensätze,
 Größenablehnung, Sequenz-/Zeitstatus und den synthetischen Start-Gamestate. Die
 historische Rückgabe `demo9999.tga` für ungültige Nummern ist dabei ausdrücklich
-abgenommen. Dateisystemintegration und die laufende Demo-/Timedemo-Schleife sind
+abgenommen. Die weiter oben beschriebene Windows-Integration deckt die
+normale Wiedergabe ab. Desktop-Aufzeichnung und Timedemo sind
 noch offen.
 
 ### Produktiver Client-Input

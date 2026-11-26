@@ -9,8 +9,10 @@
 struct Material
 ```
 
+Data record for `mq3.renderer.playable_materials.Material`; groups `textureIndex`, `shaderName`, `imageName`, `image`, `slot`, `stages`, and 8 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L129)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Material
 clampTime
 ```
 
+Upper limit applied to the shader's effect time; zero disables clamping.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L155)
 
 <a id="field-field-mq3-renderer-playable-materials-material-deforms-deforms-src-mq3-renderer-playable-materials-ml-3742578"></a>
 ### deforms
@@ -31,8 +35,10 @@ clampTime
 deforms
 ```
 
+Ordered vertex deformations applied by the shader.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L143)
 
 <a id="field-field-mq3-renderer-playable-materials-material-image-image-src-mq3-renderer-playable-materials-ml-743137362"></a>
 ### image
@@ -41,8 +47,10 @@ deforms
 image
 ```
 
+Primary world-material image retained alongside its additional runtime stages.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L137)
 
 <a id="field-field-mq3-renderer-playable-materials-material-imagename-imagename-src-mq3-renderer-playable-materials-ml-1447508146"></a>
 ### imageName
@@ -51,8 +59,10 @@ image
 imageName
 ```
 
+Virtual image path selected for this texture or material.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L135)
 
 <a id="field-field-mq3-renderer-playable-materials-material-nomipmaps-nomipmaps-src-mq3-renderer-playable-materials-ml-665319198"></a>
 ### noMipMaps
@@ -61,8 +71,22 @@ imageName
 noMipMaps
 ```
 
+Whether mipmap generation is disabled for this material's textures.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L151)
+
+<a id="field-field-mq3-renderer-playable-materials-material-nopicmip-nopicmip-src-mq3-renderer-playable-materials-ml-1776481596"></a>
+### noPicMip
+
+```ml
+noPicMip
+```
+
+Whether the material bypasses the global texture downscaling setting.
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L157)
 
 <a id="field-field-mq3-renderer-playable-materials-material-polygonoffset-polygonoffset-src-mq3-renderer-playable-materials-ml-91781898"></a>
 ### polygonOffset
@@ -71,8 +95,10 @@ noMipMaps
 polygonOffset
 ```
 
+Whether polygon-offset depth bias is applied while drawing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L149)
 
 <a id="field-field-mq3-renderer-playable-materials-material-shadername-shadername-src-mq3-renderer-playable-materials-ml-1924956802"></a>
 ### shaderName
@@ -81,8 +107,10 @@ polygonOffset
 shaderName
 ```
 
+World material name used to locate the parsed shader definition and image stages.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L133)
 
 <a id="field-field-mq3-renderer-playable-materials-material-slot-slot-src-mq3-renderer-playable-materials-ml-381131450"></a>
 ### slot
@@ -91,8 +119,10 @@ shaderName
 slot
 ```
 
+Texture slot reserved for this image in the native drawing backend.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L139)
 
 <a id="field-field-mq3-renderer-playable-materials-material-sort-sort-src-mq3-renderer-playable-materials-ml-579795954"></a>
 ### sort
@@ -101,8 +131,10 @@ slot
 sort
 ```
 
+Shader ordering category used to schedule this material relative to other surfaces.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L147)
 
 <a id="field-field-mq3-renderer-playable-materials-material-stages-stages-src-mq3-renderer-playable-materials-ml-1643870396"></a>
 ### stages
@@ -111,8 +143,10 @@ sort
 stages
 ```
 
+Ordered material stages evaluated when the shader is drawn.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L141)
 
 <a id="field-field-mq3-renderer-playable-materials-material-textureindex-textureindex-src-mq3-renderer-playable-materials-ml-822464188"></a>
 ### textureIndex
@@ -121,8 +155,10 @@ stages
 textureIndex
 ```
 
+Index identifying the texture or BSP shader assigned to the surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L131)
 
 <a id="field-field-mq3-renderer-playable-materials-material-timeoffset-timeoffset-src-mq3-renderer-playable-materials-ml-1945884142"></a>
 ### timeOffset
@@ -131,8 +167,10 @@ textureIndex
 timeOffset
 ```
 
+Offset in seconds applied to the material's shader time.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L153)
 
 <a id="field-field-mq3-renderer-playable-materials-material-twosided-twosided-src-mq3-renderer-playable-materials-ml-1204912772"></a>
 ### twoSided
@@ -141,5 +179,7 @@ timeOffset
 twoSided
 ```
 
+Whether the material draws both front and back faces.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L145)

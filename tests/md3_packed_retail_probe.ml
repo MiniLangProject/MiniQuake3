@@ -42,13 +42,13 @@ function packedOnly(model)
   for each surface in model.surfaces for frame=0 to surface.mesh.numFrames-1 if surface.mesh.frames[frame]!=void or typeof(surface.mesh.packedFrames[frame])!="bytes" or len(surface.mesh.packedFrames[frame])!=surface.mesh.numVerts*8 then return false end if end for end for;return true
 end function
 function packedCompare(data,stats,table,tableBytes)
-  legacy=try(packedFrozenMd3.load(data));public=try(packedReader.load(data));packed=try(packedReader.loadPacked(data))
-  if legacy is error or public is error or packed is error then return packedFail("valid model rejected") end if
-  if not packedMetadataEqual(legacy,packed) or not packedMetadataEqual(legacy,public) then return packedFail("metadata/tag/bounds/topology mismatch") end if
+  legacy=try(packedFrozenMd3.load(data));publicModel=try(packedReader.load(data));packed=try(packedReader.loadPacked(data))
+  if legacy is error or publicModel is error or packed is error then return packedFail("valid model rejected") end if
+  if not packedMetadataEqual(legacy,packed) or not packedMetadataEqual(legacy,publicModel) then return packedFail("metadata/tag/bounds/topology mismatch") end if
   if not packedOnly(packed) then return packedFail("packed loader eagerly allocated decoded vertex frames") end if
-  if packed.numSurfaces>0 and packedOnly(public) then return packedFail("public legacy load lost its eager reference frame API") end if
+  if packed.numSurfaces>0 and packedOnly(publicModel) then return packedFail("public legacy load lost its eager reference frame API") end if
   if legacy.numSurfaces>0 then for surface=0 to legacy.numSurfaces-1
-    old=legacy.surfaces[surface].mesh;new=packed.surfaces[surface].mesh;eager=public.surfaces[surface].mesh
+    old=legacy.surfaces[surface].mesh;new=packed.surfaces[surface].mesh;eager=publicModel.surfaces[surface].mesh
     stats.surfaces=stats.surfaces+1;valid=try(packedMesh.validate(new));legacyValid=try(packedFrozenMesh.validate(old))
     if valid is error or legacyValid is error then
       if not(valid is error) or not(legacyValid is error) then return packedFail("surface validation acceptance changed") end if

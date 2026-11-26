@@ -9,8 +9,10 @@
 struct ClientFrame
 ```
 
+ClientFrame record for server.user_move, containing `messageAcked`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L21)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct ClientFrame
 messageAcked
 ```
 
+Server timestamp when this snapshot message was acknowledged, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/user_move.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L23)

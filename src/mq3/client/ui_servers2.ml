@@ -6,88 +6,335 @@ import std.string as strings
 import mq3.shared.info as info
 import mq3.compat.numeric as numeric
 
+/// Converts a NUL-terminated decimal C string to a signed 32-bit integer using the Windows C runtime. This binding is used by UI servers2.
+/// @param text NUL-terminated C string containing the decimal numeric text.
+/// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
+/// Capacity limit for the globalservers collection or bounded storage used by this client module.
 const MAX_GLOBALSERVERS=128
+/// Capacity limit for the pingrequests collection or bounded storage used by this client module.
 const MAX_PINGREQUESTS=32
+/// Capacity limit for the favoriteservers collection or bounded storage used by this client module.
 const MAX_FAVORITESERVERS=16
+/// Capacity limit for the listboxitems collection or bounded storage used by this client module.
 const MAX_LISTBOXITEMS=128
+/// Capacity limit for the localservers collection or bounded storage used by this client module.
 const MAX_LOCALSERVERS=128
+/// Menu callback event reporting that the item was gotfocus.
 const QM_GOTFOCUS=1
+/// Activation callback event accepted by the base-game server browser before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the master action by the menu event handler.
 const ID_MASTER=10
+/// Menu control identifier routed to the gametype action by the menu event handler.
 const ID_GAMETYPE=11
+/// Menu control identifier routed to the sortkey action by the menu event handler.
 const ID_SORTKEY=12
+/// Menu control identifier routed to the show full action by the menu event handler.
 const ID_SHOW_FULL=13
+/// Menu control identifier routed to the show empty action by the menu event handler.
 const ID_SHOW_EMPTY=14
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=15
+/// Menu control identifier routed to the scroll up action by the menu event handler.
 const ID_SCROLL_UP=16
+/// Menu control identifier routed to the scroll down action by the menu event handler.
 const ID_SCROLL_DOWN=17
+/// Event identifier of the Back control used to leave the base-game server browser and return to its
+/// parent menu.
 const ID_BACK=18
+/// Menu control identifier routed to the refresh action by the menu event handler.
 const ID_REFRESH=19
+/// Menu control identifier routed to the specify action by the menu event handler.
 const ID_SPECIFY=20
+/// Menu control identifier routed to the create action by the menu event handler.
 const ID_CREATE=21
+/// Menu control identifier routed to the connect action by the menu event handler.
 const ID_CONNECT=22
+/// Menu control identifier routed to the remove action by the menu event handler.
 const ID_REMOVE=23
+/// Menu control identifier routed to the punkbuster action by the menu event handler.
 const ID_PUNKBUSTER=24
+/// Server-browser source selector for the local server list.
 const AS_LOCAL=0
+/// Server-browser source selector for the mplayer server list.
 const AS_MPLAYER=1
+/// Server-browser source selector for the global server list.
 const AS_GLOBAL=2
+/// Server-browser source selector for the favorites server list.
 const AS_FAVORITES=3
+/// Server-browser sort key comparing the host column.
 const SORT_HOST=0
+/// Server-browser sort key comparing the map column.
 const SORT_MAP=1
+/// Server-browser sort key comparing the clients column.
 const SORT_CLIENTS=2
+/// Server-browser sort key comparing the game column.
 const SORT_GAME=3
+/// Server-browser sort key comparing the ping column.
 const SORT_PING=4
+/// Server-browser game-mode filter selecting all entries.
 const GAMES_ALL=0
+/// Server-browser game-mode filter selecting ffa entries.
 const GAMES_FFA=1
+/// Server-browser game-mode filter selecting teamplay entries.
 const GAMES_TEAMPLAY=2
+/// Server-browser game-mode filter selecting tourney entries.
 const GAMES_TOURNEY=3
+/// Server-browser game-mode filter selecting ctf entries.
 const GAMES_CTF=4
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when filtering and labeling
+/// server-browser entries by game mode.
 const GT_TOURNAMENT=1
+/// Native game-type value for team deathmatch, used when filtering and labeling server-browser entries
+/// by game mode.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when filtering and labeling server-browser entries
+/// by game mode.
 const GT_CTF=4
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
+/// Engine key code for the space input, used by menu and client key-event handling.
 const K_SPACE=32
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=140
+/// Engine key code for the kp del input, used by menu and client key-event handling.
 const K_KP_DEL=171
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=179
 
-struct HostAction boundary kind name text number dispatched end struct
-struct ServerNode address hostname mapName numClients maxClients pingTime gameType gameName netType minPing maxPing punkbuster end struct
-struct PingRequest address start end struct
-struct PingResult slot address time infoText end struct
-struct Item id kind name x y fallback end struct
-struct ChoiceList name values end struct
-struct BrowserState source masterSelection gameFilter sortKey showFull showEmpty punkbuster servers localServers globalServers mplayerServers favoriteServers favoriteAddresses visibleIndices rows selected top mapPicture status statusBar numQueried currentPing refreshing nextPingTime maxServers refreshTime pingRequests removeVisible controlsGrayed listGrayed goGrayed choices assets items actions end struct
+/// Stores UI servers2 host action record, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
+struct HostAction
+  /// Host service category recorded with a request emitted while refreshing, filtering, and selecting
+  /// servers for connection.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while refreshing,
+  /// filtering, and selecting servers for connection.
+  kind
+  /// Target resource, command, or setting name addressed by this queued host action.
+  name
+  /// Command or configuration text emitted by the server browser, including connect and ping requests.
+  text
+  /// When constructing this record, `action` supplies `number` for this member.
+  number
+  /// True when this request is marked for native dispatch while refreshing, filtering, and selecting
+  /// servers for connection; false when its native effect is suppressed.
+  dispatched
+end struct
+/// Stores UI servers2 server node record, including `address`, `hostname`, `mapName`, `numClients`, `maxClients`, `pingTime` and additional values.
+struct ServerNode
+  /// When constructing this record, `node` supplies `address` for this member.
+  address
+  /// When constructing this record, `node` supplies `hostname` for this member.
+  hostname
+  /// Advertised map name used to format, sort, and preview this server-browser entry.
+  mapName
+  /// Number of valid client entries represented by this record.
+  numClients
+  /// Maximum player slots advertised or supported by the connected server.
+  maxClients
+  /// When constructing this record, `node` supplies `pingTime` for this member.
+  pingTime
+  /// When constructing this record, `node` supplies `gameType` for this member.
+  gameType
+  /// When constructing this record, `node` supplies `gameName` for this member.
+  gameName
+  /// When constructing this record, `node` supplies `netType` for this member.
+  netType
+  /// When constructing this record, `node` supplies `minPing` for this member.
+  minPing
+  /// Maximum acceptable server-browser latency in milliseconds.
+  maxPing
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+end struct
+/// Stores UI servers2 ping request record, including `address`, `start`.
+struct PingRequest
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  address
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  start
+end struct
+/// Stores UI servers2 ping result record, including `slot`, `address`, `time`, `infoText`.
+struct PingResult
+  /// Ping-request slot associated with the browser latency result.
+  slot
+  /// Network-address string identifying the server that answered the ping request.
+  address
+  /// Ping timing value used to record latency or completion of the browser request.
+  time
+  /// Server information string associated with the browser query result.
+  infoText
+end struct
+/// Stores UI servers2 menu item, including `id`, `kind`, `name`, `x`, `y`, `fallback`.
+struct Item
+  /// Event-routing identifier of this selectable control in the base-game server browser.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Label or artwork resource identifying the server-browser control.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the base-game server
+  /// browser.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the base-game server browser.
+  y
+  /// When constructing this record, `item` supplies an empty string for this member.
+  fallback
+end struct
+/// Stores UI servers2 choice list record, including `name`, `values`.
+struct ChoiceList
+  /// Caption for a server-browser choice group, such as server source, game type, or sort order.
+  name
+  /// When constructing this record, `browserChoices` supplies `["Local","Internet","Favorites"]` for
+  /// this member.
+  values
+end struct
+/// Stores UI servers2 browser state record, including `source`, `masterSelection`, `gameFilter`, `sortKey`, `showFull`, `showEmpty` and additional values.
+struct BrowserState
+  /// When constructing this record, `browserState` supplies `-1` for this member.
+  source
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  masterSelection
+  /// When constructing this record, `browserState` supplies `GAMES_ALL` for this member.
+  gameFilter
+  /// When constructing this record, `browserState` supplies `SORT_HOST` for this member.
+  sortKey
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  showFull
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  showEmpty
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+  /// Working server list for the selected discovery source, sorted and filtered to produce the visible
+  /// rows.
+  servers
+  /// Saved server list for LAN discovery, restored when the browser switches to the local source.
+  localServers
+  /// Saved server list for the primary Internet master, restored when that source is selected.
+  globalServers
+  /// Saved server list for the alternate MPlayer master source.
+  mplayerServers
+  /// Saved server list corresponding to the user's favorite server addresses.
+  favoriteServers
+  /// Persistent address strings used to construct and update the browser's favorite-server list.
+  favoriteAddresses
+  /// Indices into the working server list for rows that pass the current browser filters.
+  visibleIndices
+  /// Formatted text rows corresponding to the filtered visible server indices.
+  rows
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  mapPicture
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  status
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  statusBar
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  numQueried
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  currentPing
+  /// When constructing this record, `browserState` supplies `false` for this member.
+  refreshing
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  nextPingTime
+  /// When constructing this record, `browserState` supplies `MAX_GLOBALSERVERS` for this member.
+  maxServers
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  refreshTime
+  /// When constructing this record, `browserState` supplies `requests` for this member.
+  pingRequests
+  /// When constructing this record, `browserState` supplies `false` for this member.
+  removeVisible
+  /// When constructing this record, `browserState` supplies `false` for this member.
+  controlsGrayed
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  listGrayed
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  goGrayed
+  /// Choice-list definitions for browser source, filters, and sorting controls.
+  choices
+  /// Media resources retained for registering and drawing the artwork used by the base-game server
+  /// browser.
+  assets
+  /// Interactive menu widgets installed by the server-browser initializer.
+  items
+  /// Host requests queued while refreshing, filtering, and selecting servers for connection, retained
+  /// in request order.
+  actions
+end struct
 
+/// Computes `actions+[HostAction(boundary,kind,name,text,number,not retailActive)]` for UI servers2 `action`.
+/// @param actions Value used by `return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`.
+/// @param boundary Engine service boundary recorded on the queued action, such as renderer, audio or cvar.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param name Name used to select or register the corresponding UI servers2 resource.
+/// @param text Text consumed or emitted by `action` in the UI servers2 path.
+/// @param number Value used by `return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function action(actions,boundary,kind,name,text,number,retailActive)
   return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]
 end function
 
+/// Creates a `mq3.client.ui_servers2.ServerNode` record. Assigns `address` from `address`, `hostname` from `hostname`, `mapName` from `mapName`, `numClients` from `numClients`.
+/// @param address Value used to initialize `ServerNode.address`.
+/// @param hostname Value used to initialize `ServerNode.hostname`.
+/// @param mapName Value used to initialize `ServerNode.mapName`.
+/// @param numClients Value used to initialize `ServerNode.numClients`.
+/// @param maxClients Value used to initialize `ServerNode.maxClients`.
+/// @param pingTime Value used to initialize `ServerNode.pingTime`.
+/// @param gameType Value used to initialize `ServerNode.gameType`.
+/// @param gameName Value used to initialize `ServerNode.gameName`.
+/// @param netType Value used to initialize `ServerNode.netType`.
+/// @param minPing Value used to initialize `ServerNode.minPing`.
+/// @param maxPing Value used to initialize `ServerNode.maxPing`.
+/// @param punkbuster Value used to initialize `ServerNode.punkbuster`.
 function node(address,hostname,mapName,numClients,maxClients,pingTime,gameType,gameName,netType,minPing,maxPing,punkbuster)
   return ServerNode(address,hostname,mapName,numClients,maxClients,pingTime,gameType,gameName,netType,minPing,maxPing,punkbuster)
 end function
 
+/// Adapts `mq3.client.ui_servers2.node` to UI servers2 `emptyNode`, returning its result for `address, "", "", 0, 0, pingTime, 0, "DM ", 0, 0, 0, false`.
+/// @param address Argument 1 of `mq3.client.ui_servers2.node`.
+/// @param pingTime Argument 6 of `mq3.client.ui_servers2.node`.
 function emptyNode(address,pingTime)
   return node(address,"","",0,0,pingTime,0,"DM ",0,0,0,false)
 end function
 
+/// Calls `mq3.client.ui_servers2.PingRequest`, `mq3.client.ui_servers2.BrowserState` from UI servers2 `browserState`.
 function browserState()
   requests=[]
   for i=0 to MAX_PINGREQUESTS-1 requests=requests+[PingRequest("",0)] end for
   return BrowserState(-1,0,GAMES_ALL,SORT_HOST,true,true,false,[],[],[],[],[],[],[],[],0,0,"","","",0,0,false,0,MAX_GLOBALSERVERS,0,requests,false,false,true,true,[],[],[],[])
 end function
 
+/// Creates a `mq3.client.ui_servers2.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
+/// @param id Value used to initialize `Item.id`.
+/// @param kind Value used to initialize `Item.kind`.
+/// @param name Value used to initialize `Item.name`.
+/// @param x Value used to initialize `Item.x`.
+/// @param y Value used to initialize `Item.y`.
 function item(id,kind,name,x,y) return Item(id,kind,name,x,y,"") end function
 
+/// Clamps `value` to the inclusive bounds `low` and `high` for UI servers2.
+/// @param value Value tested by `value<low`, `if value>high` before the calculation continues.
+/// @param low Lower bound used for comparison or clamping.
+/// @param high Upper bound used for comparison or clamping.
 function clamp(value,low,high)
   if value<low then return low end if
   if value>high then return high end if
   return value
 end function
 
+/// Calls `decode`, `slice` from UI servers2 `truncate`. The final path returns `decode(slice(data,0,count))`.
+/// @param text Text consumed or emitted by `truncate` in the UI servers2 path.
+/// @param count Value tested by `len(data)<=count` before the calculation continues.
 function truncate(text,count)
   if text==void then return "" end if
   data=bytes(text)
@@ -95,6 +342,8 @@ function truncate(text,count)
   return decode(slice(data,0,count))
 end function
 
+/// Calls `std.string.substr` from UI servers2 `cleanText`. The final path returns `cleaned`.
+/// @param text Text consumed or emitted by `cleanText` in the UI servers2 path.
 function cleanText(text)
   data=bytes(text);cleaned="";at=0
   while at<len(data)
@@ -104,6 +353,9 @@ function cleanText(text)
   return cleaned
 end function
 
+/// Calls `std.string.toLowerAscii` from UI servers2 `lowerCompare`. The final path returns `0`.
+/// @param leftText Value used by `left=bytes(strings.toLowerAscii(leftText))`.
+/// @param rightText Value used by `right=bytes(strings.toLowerAscii(rightText))`.
 function lowerCompare(leftText,rightText)
   left=bytes(strings.toLowerAscii(leftText));right=bytes(strings.toLowerAscii(rightText));count=len(left)
   if len(right)<count then count=len(right) end if
@@ -119,6 +371,7 @@ function lowerCompare(leftText,rightText)
 end function
 
 // ArenaServers_MaxPing
+/// @param cvarValue Value used by `value=numeric.trunc32(cvarValue)`.
 function arenaServersMaxPing(cvarValue)
   value=numeric.trunc32(cvarValue)
   if value<100 then value=100 end if
@@ -126,6 +379,9 @@ function arenaServersMaxPing(cvarValue)
 end function
 
 // ArenaServers_Compare
+/// @param left Record read through `left.hostname`, `left.mapName`, `left.maxClients`, `left.numClients` and additional values.
+/// @param right Record read through `right.hostname`, `right.mapName`, `right.maxClients`, `right.numClients` and additional values.
+/// @param sortKey Value used by `if sortKey==SORT_HOST then return lowerCompare(left.hostname,right.hostname) end if`.
 function arenaServersCompare(left,right,sortKey)
   if sortKey==SORT_HOST then return lowerCompare(left.hostname,right.hostname) end if
   if sortKey==SORT_MAP then return lowerCompare(left.mapName,right.mapName) end if
@@ -149,6 +405,8 @@ function arenaServersCompare(left,right,sortKey)
   return 0
 end function
 
+/// Updates `state.servers` during UI servers2 `sortNow`.
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.servers`.
 function sortNow(state)
   remaining=state.servers;sorted=[]
   while len(remaining)>0
@@ -164,6 +422,8 @@ function sortNow(state)
   return void
 end function
 
+/// Updates `state.localServers`, `state.globalServers`, `state.mplayerServers`, `state.favoriteServers` during UI servers2 `syncActive`.
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.localServers`, `state.globalServers`, `state.mplayerServers`, `state.favoriteServers`.
 function syncActive(state)
   if state.source==AS_LOCAL then state.localServers=state.servers
   else if state.source==AS_GLOBAL then state.globalServers=state.servers
@@ -172,6 +432,8 @@ function syncActive(state)
   return void
 end function
 
+/// Updates `state.servers`, `state.maxServers` during UI servers2 `chooseActive`.
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.servers`, `state.maxServers`.
 function chooseActive(state)
   if state.source==AS_LOCAL then state.servers=state.localServers;state.maxServers=MAX_LOCALSERVERS
   else if state.source==AS_GLOBAL then state.servers=state.globalServers;state.maxServers=MAX_GLOBALSERVERS
@@ -181,6 +443,8 @@ function chooseActive(state)
 end function
 
 // ArenaServers_Go
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersGo(state,retailActive)
   if state.selected<0 or state.selected>=len(state.visibleIndices) then return false end if
   server=state.servers[state.visibleIndices[state.selected]]
@@ -189,6 +453,7 @@ function arenaServersGo(state,retailActive)
 end function
 
 // ArenaServers_UpdatePicture
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.mapPicture`.
 function arenaServersUpdatePicture(state)
   state.mapPicture=""
   if state.selected>=0 and state.selected<len(state.visibleIndices) then
@@ -198,18 +463,27 @@ function arenaServersUpdatePicture(state)
   return state.mapPicture
 end function
 
+/// Calls `mq3.client.ui_servers2.truncate` from UI servers2 `padRight`. The final path returns `value`.
+/// @param text Text consumed or emitted by `padRight` in the UI servers2 path.
+/// @param width Width in the coordinate space used by `padRight`.
 function padRight(text,width)
   value=truncate(text,width)
   while len(value)<width value=value+" " end while
   return value
 end function
 
+/// Evaluates UI servers2 `padLeft` and returns `text` according to its guard/selection conditions.
+/// @param value Value used by `text=str(value)`.
+/// @param width Width in the coordinate space used by `padLeft`.
 function padLeft(value,width)
   text=str(value)
   while len(text)<width text=" "+text end while
   return text
 end function
 
+/// Evaluates UI servers2 `gameMatches` and returns `true`, `gameType==GT_FFA`, `gameType==GT_TEAM` and additional values according to its guard/selection conditions.
+/// @param filter Value used by `if filter==GAMES_ALL then return true end if`.
+/// @param gameType Value used by `if filter==GAMES_FFA then return gameType==GT_FFA end if`.
 function gameMatches(filter,gameType)
   if filter==GAMES_ALL then return true end if
   if filter==GAMES_FFA then return gameType==GT_FFA end if
@@ -219,6 +493,8 @@ function gameMatches(filter,gameType)
   return false
 end function
 
+/// Evaluates UI servers2 `pingColor` and returns `"^4"`, `"^2"`, `"^3"` and additional values according to its guard/selection conditions.
+/// @param server Record read through `server.pingTime`, `server.minPing`, `server.maxPing`.
 function pingColor(server)
   if server.pingTime<server.minPing then return "^4" end if
   if server.maxPing!=0 and server.pingTime>server.maxPing then return "^4" end if
@@ -227,18 +503,23 @@ function pingColor(server)
   return "^1"
 end function
 
+/// Maps the server network type to its UDP/IPX label, using ??? for unsupported types.
+/// @param value Value tested by `value==1`, `if value==2` before the calculation continues.
 function netName(value)
   if value==1 then return "UDP" end if
   if value==2 then return "IPX" end if
   return "???"
 end function
 
+/// Calls `mq3.client.ui_servers2.padRight`, `mq3.client.ui_servers2.padLeft`, `mq3.client.ui_servers2.netName` and additional helpers from UI servers2 `formatRow`.
+/// @param server Record read through `server.punkbuster`, `server.hostname`, `server.mapName`, `server.numClients` and additional values.
 function formatRow(server)
   pb="No";if server.punkbuster then pb="Yes" end if
   return padRight(server.hostname,20)+" "+padRight(server.mapName,12)+" "+padLeft(server.numClients,2)+"/"+padLeft(server.maxClients,2)+" "+padRight(server.gameName,8)+" "+padLeft(netName(server.netType),3)+" "+pingColor(server)+padLeft(server.pingTime,3)+" ^3"+pb
 end function
 
 // ArenaServers_UpdateMenu
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.status`, `state.statusBar`, `state.controlsGrayed`, `state.visibleIndices` and additional values.
 function arenaServersUpdateMenu(state)
   world="Visit www.quake3world.com - News, Community, Events, Files"
   if state.numQueried<=0 then
@@ -274,6 +555,7 @@ function arenaServersUpdateMenu(state)
 end function
 
 // ArenaServers_Remove
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.favoriteAddresses`, `state.servers`, `state.favoriteServers`, `state.numQueried` and additional values.
 function arenaServersRemove(state)
   if state.selected<0 or state.selected>=len(state.visibleIndices) then return false end if
   index=state.visibleIndices[state.selected];selected=state.servers[index]
@@ -286,12 +568,19 @@ function arenaServersRemove(state)
   return true
 end function
 
+/// Evaluates UI servers2 `gameName` and returns `names[value]` according to its guard/selection conditions.
+/// @param value Value used by `return names[value]`.
 function gameName(value)
   names=["DM ","1v1","SP ","Team DM","CTF","One Flag CTF","OverLoad","Harvester","Rocket Arena 3","Q3F","Urban Terror","OSP","???"]
   return names[value]
 end function
 
 // ArenaServers_Insert
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.servers[state.maxServers-1]`, `state.servers`.
+/// @param address Value used by `value=node(truncate(address,63),hostname,mapName,clients,maxClients,pingTime,gameType,truncate(custom,11),netType,minPing,serverMaxPing,pb)`.
+/// @param infoText Value used by `hostname=strings.toUpperAscii(truncate(cleanText(info.value(infoText,"hostname")),21))`.
+/// @param pingTime Value used by `if pingTime>=arenaServersMaxPing(maxPing) and state.source!=AS_FAVORITES then return false end if`.
+/// @param maxPing Value used by `if pingTime>=arenaServersMaxPing(maxPing) and state.source!=AS_FAVORITES then return false end if`.
 function arenaServersInsert(state,address,infoText,pingTime,maxPing)
   if pingTime>=arenaServersMaxPing(maxPing) and state.source!=AS_FAVORITES then return false end if
   hostname=strings.toUpperAscii(truncate(cleanText(info.value(infoText,"hostname")),21))
@@ -308,6 +597,8 @@ function arenaServersInsert(state,address,infoText,pingTime,maxPing)
 end function
 
 // ArenaServers_InsertFavorites
+/// @param state Record read through `state.favoriteAddresses`, `state.servers`.
+/// @param maxPing Value used by `if not found then arenaServersInsert(state,address,"\\hostname\\No Response",arenaServersMaxPing(maxPing),maxPing) end if`.
 function arenaServersInsertFavorites(state,maxPing)
   for each address in state.favoriteAddresses
     found=false
@@ -318,6 +609,9 @@ function arenaServersInsertFavorites(state,maxPing)
 end function
 
 // ArenaServers_LoadFavorites
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.favoriteAddresses`, `state.favoriteServers`, `state.servers`.
+/// @param cvarAddresses Sequence read at `cvarAddresses[i]`.
+/// @param maxPing Value used by `if not matched then loaded=loaded+[emptyNode(address,arenaServersMaxPing(maxPing))] end if`.
 function arenaServersLoadFavorites(state,cvarAddresses,maxPing)
   old=state.favoriteServers;loaded=[];addresses=[];found=false
   limit=len(cvarAddresses);if limit>MAX_FAVORITESERVERS then limit=MAX_FAVORITESERVERS end if
@@ -343,6 +637,8 @@ function arenaServersLoadFavorites(state,cvarAddresses,maxPing)
 end function
 
 // ArenaServers_StopRefresh
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.refreshing`, `state.currentPing`, `state.numQueried`.
+/// @param maxPing Value used by `if state.source==AS_FAVORITES then arenaServersInsertFavorites(state,maxPing) end if`.
 function arenaServersStopRefresh(state,maxPing)
   if not state.refreshing then return false end if
   state.refreshing=false
@@ -352,12 +648,23 @@ function arenaServersStopRefresh(state,maxPing)
   return true
 end function
 
+/// Calls `std.string.equalsIgnoreCaseAscii` from UI servers2 `findRequest`. The final path returns `-1`.
+/// @param state Record read through `state.pingRequests`.
+/// @param address Value used by `for i=0 to MAX_PINGREQUESTS-1 if strings.equalsIgnoreCaseAscii(state.pingRequests[i].address,address) then return i end if end for`.
 function findRequest(state,address)
   for i=0 to MAX_PINGREQUESTS-1 if strings.equalsIgnoreCaseAscii(state.pingRequests[i].address,address) then return i end if end for
   return -1
 end function
 
 // ArenaServers_DoRefresh
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.nextPingTime`, `state.pingRequests[request].address`, `state.actions`, `state.numQueried` and additional values.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param serverCount Value assigned to `state.numQueried`.
+/// @param pingQueueCount Value used by `queued=pingQueueCount-cleared`.
+/// @param pingResults Value used by `for each result in pingResults`.
+/// @param serverAddresses Sequence read at `serverAddresses[state.currentPing]`.
+/// @param maxPing Value used by `if elapsed<arenaServersMaxPing(maxPing) then continue end if end if`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive)
   if realtime<state.refreshTime and state.source!=AS_FAVORITES then
     if state.source==AS_LOCAL and serverCount==0 then return false end if
@@ -397,6 +704,8 @@ function arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingRes
   arenaServersUpdateMenu(state);return true
 end function
 
+/// Evaluates UI servers2 `refreshArguments` and returns `text` according to its guard/selection conditions.
+/// @param state Record read through `state.gameFilter`, `state.showEmpty`, `state.showFull`.
 function refreshArguments(state)
   text=""
   if state.gameFilter==GAMES_FFA then text=" ffa"
@@ -409,6 +718,11 @@ function refreshArguments(state)
 end function
 
 // ArenaServers_StartRefresh
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.servers`, `state.pingRequests[i].address`, `state.actions`, `state.refreshing` and additional values.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param protocol Value used by `version=str(protocol)`.
+/// @param debugProtocol Value used by `if debugProtocol!="" then version=debugProtocol end if`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersStartRefresh(state,realtime,protocol,debugProtocol,retailActive)
   state.servers=[];syncActive(state)
   for i=0 to MAX_PINGREQUESTS-1 state.pingRequests[i].address="";state.actions=action(state.actions,"lan","clear-ping","slot","",i,retailActive) end for
@@ -424,6 +738,8 @@ function arenaServersStartRefresh(state,realtime,protocol,debugProtocol,retailAc
 end function
 
 // ArenaServers_SaveChanges
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersSaveChanges(state,retailActive)
   for i=0 to MAX_FAVORITESERVERS-1
     value="";if i<len(state.favoriteAddresses) then value=state.favoriteAddresses[i] end if
@@ -433,12 +749,20 @@ function arenaServersSaveChanges(state,retailActive)
 end function
 
 // ArenaServers_Sort
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.sortKey`.
+/// @param type Value assigned to `state.sortKey`.
 function arenaServersSort(state,type)
   if state.sortKey==type then return false end if
   state.sortKey=type;sortNow(state);syncActive(state);return true
 end function
 
 // ArenaServers_SetType
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.source`, `state.removeVisible`, `state.currentPing`, `state.numQueried` and additional values.
+/// @param type Value assigned to `state.source`, `state.removeVisible`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param protocol Value used by `if len(state.servers)==0 then arenaServersStartRefresh(state,realtime,protocol,debugProtocol,retailActive)`.
+/// @param debugProtocol Value used by `if len(state.servers)==0 then arenaServersStartRefresh(state,realtime,protocol,debugProtocol,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersSetType(state,type,realtime,protocol,debugProtocol,retailActive)
   if state.source==type then return false end if
   if state.source>=0 then syncActive(state) end if
@@ -450,18 +774,35 @@ function arenaServersSetType(state,type,realtime,protocol,debugProtocol,retailAc
 end function
 
 // Punkbuster_ConfirmEnable
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.actions`, `state.punkbuster`.
+/// @param result Value used by `if result then state.actions=action(state.actions,"punkbuster","set-client-status","enabled","",1,retailActive) end if`.
+/// @param currentCvar Value used by `state.punkbuster=clamp(currentCvar,0,1)!=0`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function punkbusterConfirmEnable(state,result,currentCvar,retailActive)
   if result then state.actions=action(state.actions,"punkbuster","set-client-status","enabled","",1,retailActive) end if
   state.punkbuster=clamp(currentCvar,0,1)!=0;return state.punkbuster
 end function
 
 // Punkbuster_ConfirmDisable
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.actions`, `state.punkbuster`.
+/// @param result Value used by `if result then state.actions=action(state.actions,"punkbuster","set-client-status","disabled","",0,retailActive)`.
+/// @param currentCvar Value used by `state.punkbuster=clamp(currentCvar,0,1)!=0`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function punkbusterConfirmDisable(state,result,currentCvar,retailActive)
   if result then state.actions=action(state.actions,"punkbuster","set-client-status","disabled","",0,retailActive);state.actions=action(state.actions,"ui","message","PunkBuster will be\ndisabled the next time\nQuake III Arena\nis started.","",0,retailActive) end if
   state.punkbuster=clamp(currentCvar,0,1)!=0;return state.punkbuster
 end function
 
 // ArenaServers_Event
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.masterSelection`, `state.actions`, `state.gameFilter`, `state.showFull` and additional values.
+/// @param id Value used by `if eventCode!=QM_ACTIVATED and id!=ID_LIST then return false end if`.
+/// @param eventCode Quake III event identifier selecting the event handler.
+/// @param value Value assigned to `state.masterSelection`, `state.gameFilter`, `state.showFull`, `state.showEmpty` and additional values.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param protocol Value used by `arenaServersSetType(state,source,realtime,protocol,debugProtocol,retailActive)`.
+/// @param debugProtocol Value used by `arenaServersSetType(state,source,realtime,protocol,debugProtocol,retailActive)`.
+/// @param maxPing Value used by `else if id==ID_BACK then arenaServersStopRefresh(state,maxPing)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersEvent(state,id,eventCode,value,realtime,protocol,debugProtocol,maxPing,retailActive)
   if eventCode!=QM_ACTIVATED and id!=ID_LIST then return false end if
   if id==ID_MASTER then state.masterSelection=value;source=value;if source>=1 then source=source+1 end if;state.actions=action(state.actions,"cvar","set","ui_browserMaster",str(source),source,retailActive);arenaServersSetType(state,source,realtime,protocol,debugProtocol,retailActive)
@@ -484,12 +825,25 @@ function arenaServersEvent(state,id,eventCode,value,realtime,protocol,debugProto
 end function
 
 // ArenaServers_MenuDraw
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.actions`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param serverCount Value used by `if state.refreshing then arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive) end if`.
+/// @param pingQueueCount Value used by `if state.refreshing then arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive) end if`.
+/// @param pingResults Value used by `if state.refreshing then arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive) end if`.
+/// @param serverAddresses Value used by `if state.refreshing then arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive) end if`.
+/// @param maxPing Value used by `if state.refreshing then arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive) end if`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersMenuDraw(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive)
   if state.refreshing then arenaServersDoRefresh(state,realtime,serverCount,pingQueueCount,pingResults,serverAddresses,maxPing,retailActive) end if
   state.actions=action(state.actions,"ui","draw-menu","arena-servers","",0,retailActive);return true
 end function
 
 // ArenaServers_MenuKey
+/// @param state Record read through `state.refreshing`, `state.source`.
+/// @param key Key or control identifier used to select the corresponding UI servers2 entry.
+/// @param listFocused Value used by `if (key==K_DEL or key==K_KP_DEL) and state.source==AS_FAVORITES and listFocused then arenaServersRemove(state)`.
+/// @param maxPing Value used by `if key==K_SPACE and state.refreshing then arenaServersStopRefresh(state,maxPing)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersMenuKey(state,key,listFocused,maxPing,retailActive)
   if key==K_SPACE and state.refreshing then arenaServersStopRefresh(state,maxPing);return "menu_move" end if
   if (key==K_DEL or key==K_KP_DEL) and state.source==AS_FAVORITES and listFocused then arenaServersRemove(state);arenaServersUpdateMenu(state);return "menu_move" end if
@@ -497,6 +851,7 @@ function arenaServersMenuKey(state,key,listFocused,maxPing,retailActive)
   return "default"
 end function
 
+/// Calls `mq3.client.ui_servers2.item` from UI servers2 `browserItems`. The final path returns `items`.
 function browserItems()
   items=[
     item(0,"btext","ARENA SERVERS",320,16),item(ID_MASTER,"spin","Servers:",320,80),item(ID_GAMETYPE,"spin","Game Type:",320,96),item(ID_SORTKEY,"spin","Sort By:",320,112),item(ID_SHOW_FULL,"radio","Show Full:",320,128),item(ID_SHOW_EMPTY,"radio","Show Empty:",320,144),item(0,"bitmap","levelshot",72,80),item(ID_LIST,"scrolllist","servers",72,192),item(0,"text","status",320,376),item(0,"text","statusbar",320,392),item(0,"bitmap","menu/art/arrows_vert_0",560,192),item(ID_SCROLL_UP,"bitmap","menu/art/arrows_vert_top",560,192),item(ID_SCROLL_DOWN,"bitmap","menu/art/arrows_vert_bot",560,256),item(ID_REMOVE,"bitmap","menu/art/delete_0",450,86),item(ID_BACK,"bitmap","menu/art/back_0",0,416),item(ID_SPECIFY,"bitmap","menu/art/specify_0",128,416),item(ID_REFRESH,"bitmap","menu/art/refresh_0",256,416),item(ID_CREATE,"bitmap","menu/art/create_0",384,416),item(ID_CONNECT,"bitmap","menu/art/fight_0",640,416),item(ID_PUNKBUSTER,"spin","Punkbuster:",512,144),item(0,"bitmap","menu/art/pblogo",526,176)
@@ -505,6 +860,7 @@ function browserItems()
   return items
 end function
 
+/// Builds the UI servers2 `browserChoices` sequence from `[ ChoiceList("Servers",["Local","Internet","Favorites"]), ChoiceList("Game Type",["All","Free For All","Team Deathmatch","Tournament","Capture the Flag"]), ChoiceList("Sort By",["Server Name","Map...`.
 function browserChoices()
   return [
     ChoiceList("Servers",["Local","Internet","Favorites"]),
@@ -515,6 +871,8 @@ function browserChoices()
 end function
 
 // ArenaServers_Cache
+/// @param state Mutable UI servers2 record/storage; this routine assigns `state.assets`, `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersCache(state,retailActive)
   state.assets=["menu/art/back_0","menu/art/back_1","menu/art/create_0","menu/art/create_1","menu/art/specify_0","menu/art/specify_1","menu/art/refresh_0","menu/art/refresh_1","menu/art/fight_0","menu/art/fight_1","menu/art/arrows_vert_0","menu/art/arrows_vert_top","menu/art/arrows_vert_bot","menu/art/unknownmap","menu/art/pblogo"]
   for each asset in state.assets state.actions=action(state.actions,"renderer","register-shader",asset,"",0,retailActive) end for
@@ -522,6 +880,18 @@ function arenaServersCache(state,retailActive)
 end function
 
 // ArenaServers_MenuInit
+/// @param browserMaster Value used by `type=clamp(browserMaster,0,3)`.
+/// @param browserGameType Value used by `state.gameFilter=clamp(browserGameType,0,4)`.
+/// @param browserSortKey Value used by `state.sortKey=clamp(browserSortKey,0,4)`.
+/// @param browserShowFull Value used by `state.showFull=clamp(browserShowFull,0,1)!=0`.
+/// @param browserShowEmpty Value used by `state.showEmpty=clamp(browserShowEmpty,0,1)!=0`.
+/// @param punkbuster Value used by `state.punkbuster=clamp(punkbuster,0,1)!=0`.
+/// @param cvarFavorites Value used by `arenaServersLoadFavorites(state,cvarFavorites,maxPing)`.
+/// @param maxPing Value used by `arenaServersLoadFavorites(state,cvarFavorites,maxPing)`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param protocol Value used by `arenaServersSetType(state,type,realtime,protocol,debugProtocol,retailActive)`.
+/// @param debugProtocol Value used by `arenaServersSetType(state,type,realtime,protocol,debugProtocol,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,realtime,protocol,debugProtocol,retailActive)
   state=browserState();arenaServersCache(state,retailActive);state.choices=browserChoices();state.items=browserItems();arenaServersLoadFavorites(state,cvarFavorites,maxPing)
   state.gameFilter=clamp(browserGameType,0,4);state.sortKey=clamp(browserSortKey,0,4);state.showFull=clamp(browserShowFull,0,1)!=0;state.showEmpty=clamp(browserShowEmpty,0,1)!=0;state.punkbuster=clamp(punkbuster,0,1)!=0
@@ -531,6 +901,18 @@ function arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,brows
 end function
 
 // UI_ArenaServersMenu
+/// @param browserMaster Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param browserGameType Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param browserSortKey Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param browserShowFull Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param browserShowEmpty Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param punkbuster Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param cvarFavorites Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param maxPing Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param protocol Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param debugProtocol Value used by `state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,real...`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function uiArenaServersMenu(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,realtime,protocol,debugProtocol,retailActive)
   state=arenaServersMenuInit(browserMaster,browserGameType,browserSortKey,browserShowFull,browserShowEmpty,punkbuster,cvarFavorites,maxPing,realtime,protocol,debugProtocol,retailActive)
   state.actions=action(state.actions,"ui","push","arena-servers","",0,retailActive);return state

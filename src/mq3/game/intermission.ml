@@ -13,11 +13,16 @@ import mq3.game.session as intermissionSessions
 import mq3.game.arenas as intermissionArenas
 import mq3.game.bot_lifecycle as intermissionBots
 
+/// Validate that an intermission client limit fits the native sixty-four-client storage.
+/// @param limit Operand used to evaluate the returned expression `limit`.
 function intermissionClientLimit(limit)
   if limit < 0 or limit > 64 then return error(487,"Invalid intermission client limit") end if
   return limit
 end function
 
+/// Update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]`, `ent.client.ps.viewangles[axis]` and `ent.client.ps.pm_type` and related state during `intermissionMoveClient`.
+/// @param level Game-level state; accesses `intermission_origin` and `intermission_angle`.
+/// @param ent Game entity; accesses `client`, `s` and `r`. May update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]` and `ent.client.ps.viewangles[axis]` and additional fields in place.
 function intermissionMoveClient(level,ent)
   if ent == void or ent.client == void then return error(487,"Intermission placement requires a client entity") end if
   if ent.client.spectatorState == 2 then intermissionTeamChanges.stopFollowing(level,ent) end if
@@ -35,10 +40,15 @@ function intermissionMoveClient(level,ent)
   return void
 end function
 
+/// Forward `moveClient` to `mq3.game.intermission.intermissionMoveClient` and return the delegated result.
+/// @param level Game-level state; accesses `intermission_origin` and `intermission_angle`.
+/// @param ent Game entity; accesses `client`, `s` and `r`. May update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]` and `ent.client.ps.viewangles[axis]` and additional fields in place.
 function moveClient(level,ent)
   return intermissionMoveClient(level,ent)
 end function
 
+/// Set `level.intermissiontime` to `level.time` in `mq3.game.intermission.begin`. Return paths include `intermissionScores.sendAll(level)`.
+/// @param level Game-level state; accesses `intermissiontime`, `spawner`, `time`, `updateTournamentInfoFn` and `spawnVictoryPadsFn` and related fields. May update `level.intermissiontime` in place.
 function begin(level)
   if level.intermissiontime != 0 then return void end if
   if level.spawner == void then return error(487,"BeginIntermission requires game spawn state") end if
@@ -64,6 +74,8 @@ function begin(level)
   return intermissionScores.sendAll(level)
 end function
 
+/// Update `level.restarted`, `level.changemap`, `level.intermissiontime` and `level.teamScores[c.TEAM_RED]` and related state during `exitLevel`.
+/// @param level Game-level state; accesses `botInterbreedEndMatchFn`, `botLifecycleState`, `spawner`, `restarted` and `consoleCommandFn` and related fields. May update `level.restarted`, `level.changemap` and `level.intermissiontime` and additional fields in place.
 function exitLevel(level)
   if level.botInterbreedEndMatchFn != void then level.botInterbreedEndMatchFn(level)
   else

@@ -9,8 +9,10 @@
 struct PlayerModelAssets
 ```
 
+Stores playable app player model assets record, including `models`, `animation`, `textures`, `cache`, `barrelStates`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L140)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct PlayerModelAssets
 animation
 ```
 
+Animation description supplying frame ranges and playback timing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L144)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-barrelstates-barrelstates-src-mq3-client-playable-app-ml-351372416"></a>
 ### barrelStates
@@ -31,8 +35,10 @@ animation
 barrelStates
 ```
 
+When constructing this record, `archivePlayerAssets` supplies `barrelStates` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L150)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-cache-cache-src-mq3-client-playable-app-ml-350306848"></a>
 ### cache
@@ -41,8 +47,10 @@ barrelStates
 cache
 ```
 
+When constructing this record, `archivePlayerAssets` supplies `cache` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L148)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-models-models-src-mq3-client-playable-app-ml-1015669664"></a>
 ### models
@@ -51,8 +59,10 @@ cache
 models
 ```
 
+When constructing this record, `archivePlayerAssets` supplies `modelSet` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L142)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-textures-textures-src-mq3-client-playable-app-ml-507641844"></a>
 ### textures
@@ -61,5 +71,7 @@ models
 textures
 ```
 
+When constructing this record, `archivePlayerAssets` supplies `textures` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L146)

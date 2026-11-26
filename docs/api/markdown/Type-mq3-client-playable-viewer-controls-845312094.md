@@ -9,8 +9,10 @@
 struct Controls
 ```
 
+Stores playable viewer controls record, including `forward`, `back`, `left`, `right`, `up`, `down` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L33)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Controls
 back
 ```
 
+When constructing this record, `controls` supplies `back` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L37)
 
 <a id="field-field-mq3-client-playable-viewer-controls-down-down-src-mq3-client-playable-viewer-ml-630803419"></a>
 ### down
@@ -31,8 +35,10 @@ back
 down
 ```
 
+When constructing this record, `controls` supplies `down` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L45)
 
 <a id="field-field-mq3-client-playable-viewer-controls-forward-forward-src-mq3-client-playable-viewer-ml-477708603"></a>
 ### forward
@@ -41,8 +47,10 @@ down
 forward
 ```
 
+When constructing this record, `controls` supplies `forward` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L35)
 
 <a id="field-field-mq3-client-playable-viewer-controls-left-left-src-mq3-client-playable-viewer-ml-1764853957"></a>
 ### left
@@ -51,8 +59,10 @@ forward
 left
 ```
 
+Left boundary of the interactive or clipped region.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L39)
 
 <a id="field-field-mq3-client-playable-viewer-controls-mousex-mousex-src-mq3-client-playable-viewer-ml-998332737"></a>
 ### mouseX
@@ -61,8 +71,10 @@ left
 mouseX
 ```
 
+When constructing this record, `controls` supplies `numeric.f32(mouseX)` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L47)
 
 <a id="field-field-mq3-client-playable-viewer-controls-mousey-mousey-src-mq3-client-playable-viewer-ml-1909044107"></a>
 ### mouseY
@@ -71,8 +83,10 @@ mouseX
 mouseY
 ```
 
+When constructing this record, `controls` supplies `numeric.f32(mouseY)` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L49)
 
 <a id="field-field-mq3-client-playable-viewer-controls-right-right-src-mq3-client-playable-viewer-ml-2053597075"></a>
 ### right
@@ -81,8 +95,10 @@ mouseY
 right
 ```
 
+Right boundary of the interactive or clipped region.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L41)
 
 <a id="field-field-mq3-client-playable-viewer-controls-up-up-src-mq3-client-playable-viewer-ml-565008721"></a>
 ### up
@@ -91,5 +107,7 @@ right
 up
 ```
 
+When constructing this record, `controls` supplies `up` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L43)

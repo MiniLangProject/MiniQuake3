@@ -6,16 +6,40 @@ import mq3.game.movement as movement
 import mq3.collision.world as collision
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used by the native player's spatial queries.
 const PLAYER_MASK=0x2010001
+/// Vertical step-height setting, in world units, retained by native enemy movement.
 const STEP_HEIGHT=18.0
+/// Downward trace distance used to establish contact with supporting ground.
 const GROUND_PROBE=24.0
+/// Minimum upward surface-normal component accepted as walkable ground.
 const GROUND_NORMAL=0.7
 
-struct Result origin delta blocked stepped grounded end struct
+/// Stores playable enemy movement operation result, including `origin`, `delta`, `blocked`, `stepped`, `grounded`.
+struct Result
+  /// Final enemy position returned after movement and ground-collision resolution.
+  origin
+  /// When constructing this record, `moveOriginWithTrace` supplies `actual` for this member.
+  delta
+  /// When constructing this record, `moveOriginWithTrace` supplies `blocked` for this member.
+  blocked
+  /// When constructing this record, `moveOriginWithTrace` supplies `stepped` for this member.
+  stepped
+  /// When constructing this record, `moveOriginWithTrace` supplies `grounded` for this member.
+  grounded
+end struct
 
+/// Creates the playable enemy movement error `7550` with diagnostic text `"preview enemy movement: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview enemy movement: "+message`.
 function fail(message) return error(7550,"preview enemy movement: "+message) end function
+/// Computes `typeof(value)=="array" and len(value)==3` for playable enemy movement `validVector`.
+/// @param value Sequence whose length/content is inspected by `validVector`.
 function validVector(value) return typeof(value)=="array" and len(value)==3 end function
 
+/// Calls `mq3.collision.world.boxTrace`, `mq3.game.movement.Collision` from playable enemy movement `worldTrace`. The final path returns `movement.Collision(hit.trace,hit.endpos,entity)`.
+/// @param state Record read through `state.context`, `state.mins`, `state.maxs`, `state.mask`.
+/// @param startPoint Starting world-space point of the segment or trace.
+/// @param endPoint Ending world-space point of the segment or trace.
 function worldTrace(state,startPoint,endPoint)
   hit=collision.boxTrace(state.context,startPoint,endPoint,state.mins,state.maxs,0,state.mask,false)
   if hit is error then return hit end if
@@ -23,6 +47,10 @@ function worldTrace(state,startPoint,endPoint)
   return movement.Collision(hit.trace,hit.endpos,entity)
 end function
 
+/// Calls `mq3.game.movement.create`, `mq3.compat.numeric.f32` from playable enemy movement `configure`. The final path returns `state`.
+/// @param traceFn Collision-trace callback used to test the requested movement or visibility segment.
+/// @param context context record passed to the playable enemy movement helper calls.
+/// @param origin World-space origin of the entity, sound or rendered effect.
 function configure(traceFn,context,origin)
   state=movement.create(traceFn,context)
   state.origin=[numeric.f32(origin[0]),numeric.f32(origin[1]),numeric.f32(origin[2])]
@@ -31,6 +59,8 @@ function configure(traceFn,context,origin)
   return state
 end function
 
+/// Updates `state.groundPlane`, `state.walking`, `state.groundNormal`, `state.groundFlags` during playable enemy movement `establishGround`.
+/// @param state Mutable playable enemy movement record/storage; this routine assigns `state.groundPlane`, `state.walking`, `state.groundNormal`, `state.groundFlags`.
 function establishGround(state)
   endPoint=[state.origin[0],state.origin[1],numeric.fsub(state.origin[2],0.25)]
   hit=state.traceFn(state,state.origin,endPoint);if hit is error then return hit end if
@@ -47,6 +77,10 @@ end function
 
 // Move by a desired world-space displacement. The shared movement kernel slides
 // along blocking planes and tries Quake's 18-unit stair step.
+/// @param traceFn Collision-trace callback used to test the requested movement or visibility segment.
+/// @param context context record passed to the playable enemy movement helper calls.
+/// @param origin World-space origin of the entity, sound or rendered effect.
+/// @param desiredDelta Sequence read at `desiredDelta[0]`, `desiredDelta[1]`, `desiredDelta[2]`, `desiredDelta[axis]`.
 function moveOriginWithTrace(traceFn,context,origin,desiredDelta)
   if traceFn==void or not validVector(origin) or not validVector(desiredDelta) then return fail("trace, origin and desired delta are required") end if
   state=configure(traceFn,context,origin)
@@ -72,12 +106,20 @@ function moveOriginWithTrace(traceFn,context,origin,desiredDelta)
   return Result(state.origin,actual,blocked,stepped,grounded)
 end function
 
+/// Calls `mq3.client.playable_enemy_movement.moveOriginWithTrace` from playable enemy movement `moveOrigin`. The final path returns `moveOriginWithTrace(worldTrace,world,origin,desiredDelta)`.
+/// @param world world record passed to the playable enemy movement helper calls.
+/// @param origin World-space origin of the entity, sound or rendered effect.
+/// @param desiredDelta Value used by `return moveOriginWithTrace(worldTrace,world,origin,desiredDelta)`.
 function moveOrigin(world,origin,desiredDelta)
   if world==void then return fail("collision world is required") end if
   return moveOriginWithTrace(worldTrace,world,origin,desiredDelta)
 end function
 
 // Adapter used by preview code: target only needs a three-component origin.
+/// @param traceFn Collision-trace callback used to test the requested movement or visibility segment.
+/// @param context context record passed to the playable enemy movement helper calls.
+/// @param target Mutable playable enemy movement record/storage; this routine assigns `target.origin`.
+/// @param desiredDelta Value used by `result=moveOriginWithTrace(traceFn,context,target.origin,desiredDelta)`.
 function moveTargetWithTrace(traceFn,context,target,desiredDelta)
   if target==void or not validVector(target.origin) then return fail("target origin is required") end if
   result=moveOriginWithTrace(traceFn,context,target.origin,desiredDelta);if result is error then return result end if
@@ -85,6 +127,10 @@ function moveTargetWithTrace(traceFn,context,target,desiredDelta)
   return result
 end function
 
+/// Calls `mq3.client.playable_enemy_movement.moveTargetWithTrace` from playable enemy movement `moveTarget`. The final path returns `moveTargetWithTrace(worldTrace,world,target,desiredDelta)`.
+/// @param world world record passed to the playable enemy movement helper calls.
+/// @param target Value used by `return moveTargetWithTrace(worldTrace,world,target,desiredDelta)`.
+/// @param desiredDelta Value used by `return moveTargetWithTrace(worldTrace,world,target,desiredDelta)`.
 function moveTarget(world,target,desiredDelta)
   if world==void then return fail("collision world is required") end if
   return moveTargetWithTrace(worldTrace,world,target,desiredDelta)

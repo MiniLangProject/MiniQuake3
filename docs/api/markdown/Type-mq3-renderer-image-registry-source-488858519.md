@@ -9,8 +9,10 @@
 struct Source
 ```
 
+Data record for `mq3.renderer.image_registry.Source`; groups `width`, `height`, `pixels`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L32)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Source
 height
 ```
 
+Height in pixels of the source image supplied before texture resizing and mip generation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L36)
 
 <a id="field-field-mq3-renderer-image-registry-source-pixels-pixels-src-mq3-renderer-image-registry-ml-129438160"></a>
 ### pixels
@@ -31,8 +35,10 @@ height
 pixels
 ```
 
+Decoded pixel data for the image or upload.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L38)
 
 <a id="field-field-mq3-renderer-image-registry-source-width-width-src-mq3-renderer-image-registry-ml-1416778994"></a>
 ### width
@@ -41,5 +47,7 @@ pixels
 width
 ```
 
+Width in pixels of the source image supplied before texture resizing and mip generation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L34)

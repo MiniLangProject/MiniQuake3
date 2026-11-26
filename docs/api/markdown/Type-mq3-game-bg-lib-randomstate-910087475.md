@@ -9,8 +9,10 @@
 struct RandomState
 ```
 
+`RandomState` record for bg lib, containing `seed`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L59)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct RandomState
 seed
 ```
 
+Current pseudo-random generator state, updated whenever a random value is drawn.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L61)

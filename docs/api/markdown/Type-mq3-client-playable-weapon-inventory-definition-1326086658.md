@@ -9,8 +9,10 @@
 struct Definition
 ```
 
+Stores playable weapon inventory definition record, including `id`, `name`, `classname`, `ammoClassname`, `weaponQuantity`, `ammoQuantity`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L33)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Definition
 ammoClassname
 ```
 
+When constructing this record, `definitions` supplies `"ammo_bullets"` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L41)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-definition-ammoquantity-ammoquantity-src-mq3-client-playable-weapon-inventory-ml-917375750"></a>
 ### ammoQuantity
@@ -31,8 +35,10 @@ ammoClassname
 ammoQuantity
 ```
 
+When constructing this record, `definitions` supplies `50` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L45)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-definition-classname-classname-src-mq3-client-playable-weapon-inventory-ml-872646340"></a>
 ### classname
@@ -41,8 +47,10 @@ ammoQuantity
 classname
 ```
 
+Native weapon classname associated with this inventory definition's weapon identifier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L39)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-definition-id-id-src-mq3-client-playable-weapon-inventory-ml-1410140110"></a>
 ### id
@@ -51,8 +59,10 @@ classname
 id
 ```
 
+Native item or powerup identifier associated with this definition.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L35)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-definition-name-name-src-mq3-client-playable-weapon-inventory-ml-1871456798"></a>
 ### name
@@ -61,8 +71,10 @@ id
 name
 ```
 
+Virtual resource or definition name used to locate this entry in the client asset catalog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L37)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-definition-weaponquantity-weaponquantity-src-mq3-client-playable-weapon-inventory-ml-1285336062"></a>
 ### weaponQuantity
@@ -71,5 +83,7 @@ name
 weaponQuantity
 ```
 
+When constructing this record, `definitions` supplies `40` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L43)

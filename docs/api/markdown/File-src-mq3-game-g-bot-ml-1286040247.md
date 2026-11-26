@@ -24,15 +24,17 @@ Reachable from entry: **no**
 function AddBotToSpawnQueue(level, state, clientNum, delay)
 ```
 
+Forward `AddBotToSpawnQueue` to `mq3.game.bot_clients.addBotToSpawnQueue` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `delay` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `queue`, `printFn` and `clientBeginFn`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
+| `delay` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L113)
 
 <a id="constant-constant-mq3-game-g-bot-exec-append-const-exec-append-2-src-mq3-game-g-bot-ml-1171093705"></a>
 ### EXEC_APPEND
@@ -41,8 +43,10 @@ function AddBotToSpawnQueue(level, state, clientNum, delay)
 const EXEC_APPEND = 2
 ```
 
+Console-command execution mode selecting append scheduling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L17)
 
 <a id="function-function-mq3-game-g-bot-g-addbot-function-g-addbot-level-state-name-skill-team-delay-altname-src-mq3-game-g-bot-ml-1615760839"></a>
 ### G_AddBot
@@ -51,18 +55,20 @@ const EXEC_APPEND = 2
 function G_AddBot(level, state, name, skill, team, delay, altname)
 ```
 
+Forward `G_AddBot` to `mq3.game.bot_population.addBot` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `skill` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `delay` | `dynamic` | — |  |
-| `altname` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `spawner` and `entities`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry`, `allocateClientFn`, `setUserinfoFn`, `connectClientFn` and `clients`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `skill` | `dynamic` | — | Bot skill value used to select or interpolate characteristics. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
+| `delay` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
+| `altname` | `dynamic` | — | Value used by `addBot` in `if altname != void and altname != "" then botname = altname end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L133)
 
 <a id="function-function-mq3-game-g-bot-g-addrandombot-function-g-addrandombot-level-state-team-src-mq3-game-g-bot-ml-1534982356"></a>
 ### G_AddRandomBot
@@ -71,14 +77,16 @@ function G_AddBot(level, state, name, skill, team, delay, altname)
 function G_AddRandomBot(level, state, team)
 ```
 
+Forward `G_AddRandomBot` to `mq3.game.bot_population.addRandomBot` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry` and `spSkill`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L85)
 
 <a id="function-function-mq3-game-g-bot-g-botconnect-function-g-botconnect-level-state-clientnum-restart-src-mq3-game-g-bot-ml-1395161799"></a>
 ### G_BotConnect
@@ -87,15 +95,17 @@ function G_AddRandomBot(level, state, team)
 function G_BotConnect(level, state, clientNum, restart)
 ```
 
+Forward `G_BotConnect` to `mq3.game.bot_clients.botConnect` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.userinfoFn`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `userinfoFn`, `setupClientFn` and `dropClientFn`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L123)
 
 <a id="function-function-mq3-game-g-bot-g-checkbotspawn-function-g-checkbotspawn-level-state-src-mq3-game-g-bot-ml-1281254331"></a>
 ### G_CheckBotSpawn
@@ -104,13 +114,15 @@ function G_BotConnect(level, state, clientNum, restart)
 function G_CheckBotSpawn(level, state)
 ```
 
+Forward `G_CheckBotSpawn` to `mq3.game.bot_clients.checkBotSpawn` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `minimumPlayersFn` and `queue`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L107)
 
 <a id="function-function-mq3-game-g-bot-g-checkminimumplayers-function-g-checkminimumplayers-level-state-src-mq3-game-g-bot-ml-1954748795"></a>
 ### G_CheckMinimumPlayers
@@ -119,13 +131,15 @@ function G_CheckBotSpawn(level, state)
 function G_CheckMinimumPlayers(level, state)
 ```
 
+Forward `G_CheckMinimumPlayers` to `mq3.game.bot_population.checkMinimumPlayers` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `time`, `spawner` and `maxclients`. |
+| `state` | `dynamic` | — | Bot population state; accesses `checkTime`, `minimumVm`, `minimumPlayers` and `clients`. May update `state.checkTime` and `state.minimumPlayers` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L103)
 
 <a id="function-function-mq3-game-g-bot-g-countbotplayers-function-g-countbotplayers-level-state-team-src-mq3-game-g-bot-ml-2045679224"></a>
 ### G_CountBotPlayers
@@ -134,14 +148,16 @@ function G_CheckMinimumPlayers(level, state)
 function G_CountBotPlayers(level, state, team)
 ```
 
+Forward `G_CountBotPlayers` to `mq3.game.bot_clients.countBotPlayers` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients` and `time`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `queue`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L99)
 
 <a id="function-function-mq3-game-g-bot-g-counthumanplayers-function-g-counthumanplayers-level-team-src-mq3-game-g-bot-ml-1435536597"></a>
 ### G_CountHumanPlayers
@@ -150,13 +166,15 @@ function G_CountBotPlayers(level, state, team)
 function G_CountHumanPlayers(level, team)
 ```
 
+Forward `G_CountHumanPlayers` to `mq3.game.bot_clients.countHumanPlayers` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L94)
 
 <a id="function-function-mq3-game-g-bot-g-getarenainfobymap-function-g-getarenainfobymap-state-map-src-mq3-game-g-bot-ml-1620071901"></a>
 ### G_GetArenaInfoByMap
@@ -165,13 +183,15 @@ function G_CountHumanPlayers(level, team)
 function G_GetArenaInfoByMap(state, map)
 ```
 
+Forward `G_GetArenaInfoByMap` to `mq3.game.bot_registry.getArenaInfoByMap` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `map` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `arenaInfos`. |
+| `map` | `dynamic` | — | Value passed as argument 2 to `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L46)
 
 <a id="function-function-mq3-game-g-bot-g-getbotinfobyname-function-g-getbotinfobyname-state-name-src-mq3-game-g-bot-ml-523730402"></a>
 ### G_GetBotInfoByName
@@ -180,13 +200,15 @@ function G_GetArenaInfoByMap(state, map)
 function G_GetBotInfoByName(state, name)
 ```
 
+Forward `G_GetBotInfoByName` to `mq3.game.bot_registry.getBotInfoByName` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `botInfos`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L63)
 
 <a id="function-function-mq3-game-g-bot-g-getbotinfobynumber-function-g-getbotinfobynumber-state-num-src-mq3-game-g-bot-ml-892898615"></a>
 ### G_GetBotInfoByNumber
@@ -195,13 +217,15 @@ function G_GetBotInfoByName(state, name)
 function G_GetBotInfoByNumber(state, num)
 ```
 
+Forward `G_GetBotInfoByNumber` to `mq3.game.bot_registry.getBotInfoByNumber` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `num` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `botInfos`. |
+| `num` | `dynamic` | — | Value passed as argument 1 to `str`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L59)
 
 <a id="function-function-mq3-game-g-bot-g-initbots-function-g-initbots-level-state-restart-mapname-botenable-botsfile-arenasfile-src-mq3-game-g-bot-ml-1729334231"></a>
 ### G_InitBots
@@ -210,18 +234,20 @@ function G_GetBotInfoByNumber(state, num)
 function G_InitBots(level, state, restart, mapname, botEnable, botsFile, arenasFile)
 ```
 
+Apply `mq3.game.g_bot.G_LoadBots`, `mq3.game.g_bot.G_LoadArenas` and `mq3.game.bot_population.initSinglePlayer` while evaluating `G_InitBots`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
-| `mapname` | `dynamic` | — |  |
-| `botEnable` | `dynamic` | — |  |
-| `botsFile` | `dynamic` | — |  |
-| `arenasFile` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `state` | `dynamic` | — | G bot state; accesses `registry`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
+| `mapname` | `dynamic` | — | Value passed as argument 2 to `std.string.equalsIgnoreCaseAscii`. |
+| `botEnable` | `dynamic` | — | Value used by `loadBots` in `if not botEnable then return void end if`. |
+| `botsFile` | `dynamic` | — | Filename supplied to the configured loader or file service. |
+| `arenasFile` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L164)
 
 <a id="function-function-mq3-game-g-bot-g-loadarenas-function-g-loadarenas-state-arenasfile-src-mq3-game-g-bot-ml-266316441"></a>
 ### G_LoadArenas
@@ -230,13 +256,15 @@ function G_InitBots(level, state, restart, mapname, botEnable, botsFile, arenasF
 function G_LoadArenas(state, arenasFile)
 ```
 
+Forward `G_LoadArenas` to `mq3.game.bot_registry.loadArenas` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arenasFile` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `arenaInfos`, `context` and `printFn`. May update `state.arenaInfos` in place. |
+| `arenasFile` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L42)
 
 <a id="function-function-mq3-game-g-bot-g-loadarenasfromfile-function-g-loadarenasfromfile-state-filename-src-mq3-game-g-bot-ml-2043826804"></a>
 ### G_LoadArenasFromFile
@@ -245,13 +273,15 @@ function G_LoadArenas(state, arenasFile)
 function G_LoadArenasFromFile(state, filename)
 ```
 
+Forward `G_LoadArenasFromFile` to `mq3.game.bot_registry.loadArenasFromFile` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `arenaInfos`. May update `state.arenaInfos` in place. |
+| `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L38)
 
 <a id="function-function-mq3-game-g-bot-g-loadbots-function-g-loadbots-state-botenable-botsfile-src-mq3-game-g-bot-ml-1344246141"></a>
 ### G_LoadBots
@@ -260,14 +290,16 @@ function G_LoadArenasFromFile(state, filename)
 function G_LoadBots(state, botEnable, botsFile)
 ```
 
+Forward `G_LoadBots` to `mq3.game.bot_registry.loadBots` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `botEnable` | `dynamic` | — |  |
-| `botsFile` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `botInfos`. May update `state.botInfos` in place. |
+| `botEnable` | `dynamic` | — | Value used by `loadBots` in `if not botEnable then return void end if`. |
+| `botsFile` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L55)
 
 <a id="function-function-mq3-game-g-bot-g-loadbotsfromfile-function-g-loadbotsfromfile-state-filename-src-mq3-game-g-bot-ml-2131974176"></a>
 ### G_LoadBotsFromFile
@@ -276,13 +308,15 @@ function G_LoadBots(state, botEnable, botsFile)
 function G_LoadBotsFromFile(state, filename)
 ```
 
+Forward `G_LoadBotsFromFile` to `mq3.game.bot_registry.loadBotsFromFile` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `botInfos`. May update `state.botInfos` in place. |
+| `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L50)
 
 <a id="function-function-mq3-game-g-bot-g-parseinfos-function-g-parseinfos-state-buf-max-src-mq3-game-g-bot-ml-558908072"></a>
 ### G_ParseInfos
@@ -291,14 +325,16 @@ function G_LoadBotsFromFile(state, filename)
 function G_ParseInfos(state, buf, max)
 ```
 
+Forward `G_ParseInfos` to `mq3.game.bot_registry.parseInfos` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `buf` | `dynamic` | — |  |
-| `max` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot registry state; accesses `context` and `printFn`. |
+| `buf` | `dynamic` | — | Text to parse, format or deliver. |
+| `max` | `dynamic` | — | Value used by `parseInfos` in `if max < 0 then return error(490,"Negative info capacity") end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L34)
 
 <a id="function-function-mq3-game-g-bot-g-removequeuedbotbegin-function-g-removequeuedbotbegin-state-clientnum-src-mq3-game-g-bot-ml-1766479324"></a>
 ### G_RemoveQueuedBotBegin
@@ -307,13 +343,15 @@ function G_ParseInfos(state, buf, max)
 function G_RemoveQueuedBotBegin(state, clientNum)
 ```
 
+Forward `G_RemoveQueuedBotBegin` to `mq3.game.bot_clients.removeQueuedBotBegin` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot clients state; accesses `queue`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L117)
 
 <a id="function-function-mq3-game-g-bot-g-removerandombot-function-g-removerandombot-level-state-team-src-mq3-game-g-bot-ml-656751656"></a>
 ### G_RemoveRandomBot
@@ -322,14 +360,16 @@ function G_RemoveQueuedBotBegin(state, clientNum)
 function G_RemoveRandomBot(level, state, team)
 ```
 
+Forward `G_RemoveRandomBot` to `mq3.game.bot_population.removeRandomBot` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `state` | `dynamic` | — | Bot population state; accesses `consoleFn`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L90)
 
 <a id="function-function-mq3-game-g-bot-g-spawnbots-function-g-spawnbots-level-state-botlist-basedelay-src-mq3-game-g-bot-ml-1506109632"></a>
 ### G_SpawnBots
@@ -338,15 +378,17 @@ function G_RemoveRandomBot(level, state, team)
 function G_SpawnBots(level, state, botList, baseDelay)
 ```
 
+Forward `G_SpawnBots` to `mq3.game.bot_population.spawnBots` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `botList` | `dynamic` | — |  |
-| `baseDelay` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.consoleFn`. |
+| `state` | `dynamic` | — | Bot population state; accesses `spSkill` and `cvarSetFn`. May update `state.spSkill` in place. |
+| `botList` | `dynamic` | — | Text to parse, format or deliver. |
+| `baseDelay` | `dynamic` | — | Value used by `spawnBots` in `delay = baseDelay`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L154)
 
 <a id="function-function-mq3-game-g-bot-playerintrosound-function-playerintrosound-level-modelandskin-src-mq3-game-g-bot-ml-548189087"></a>
 ### PlayerIntroSound
@@ -355,13 +397,15 @@ function G_SpawnBots(level, state, botList, baseDelay)
 function PlayerIntroSound(level, modelAndSkin)
 ```
 
+Use `level.consoleCommandFn` to perform `PlayerIntroSound`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `modelAndSkin` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `consoleCommandFn`. |
+| `modelAndSkin` | `dynamic` | — | Value used by `PlayerIntroSound` in `model = modelAndSkin`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L68)
 
 <a id="function-function-mq3-game-g-bot-svcmd-addbot-f-function-svcmd-addbot-f-level-state-argv-src-mq3-game-g-bot-ml-1340016129"></a>
 ### Svcmd_AddBot_f
@@ -370,14 +414,16 @@ function PlayerIntroSound(level, modelAndSkin)
 function Svcmd_AddBot_f(level, state, argv)
 ```
 
+Apply `mq3.game.bot_population.serviceAddBot` while evaluating `Svcmd_AddBot_f`. Return paths include `population.serviceAddBot(level,state,args)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time` and `startTime`. |
+| `state` | `dynamic` | — | Bot population state; accesses `botEnable`, `clRunning` and `serverCommandFn`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L140)
 
 <a id="function-function-mq3-game-g-bot-svcmd-botlist-f-function-svcmd-botlist-f-level-state-src-mq3-game-g-bot-ml-1651102971"></a>
 ### Svcmd_BotList_f
@@ -386,13 +432,15 @@ function Svcmd_AddBot_f(level, state, argv)
 function Svcmd_BotList_f(level, state)
 ```
 
+Forward `Svcmd_BotList_f` to `mq3.game.bot_population.botList` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.printFn`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L148)
 
 <a id="function-function-mq3-game-g-bot-trap-cvar-variablevalue-function-trap-cvar-variablevalue-level-var-name-src-mq3-game-g-bot-ml-1888003737"></a>
 ### trap_Cvar_VariableValue
@@ -401,10 +449,12 @@ function Svcmd_BotList_f(level, state)
 function trap_Cvar_VariableValue(level, var_name)
 ```
 
+Apply `mq3.qcommon.cvar.find` while evaluating `trap_Cvar_VariableValue`. Return paths include `numbers.atof32(variable.string)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `var_name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `var_name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L22)

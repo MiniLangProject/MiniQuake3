@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for server commands, containing `addBotFn`, `botListFn` and `abortPodiumFn`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L17)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 abortPodiumFn
 ```
 
+Injected callback for abort podium; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L23)
 
 <a id="field-field-mq3-game-server-commands-state-addbotfn-addbotfn-src-mq3-game-server-commands-ml-1409833788"></a>
 ### addBotFn
@@ -31,8 +35,10 @@ abortPodiumFn
 addBotFn
 ```
 
+Injected callback for add bot; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L19)
 
 <a id="field-field-mq3-game-server-commands-state-botlistfn-botlistfn-src-mq3-game-server-commands-ml-1592888268"></a>
 ### botListFn
@@ -41,5 +47,7 @@ addBotFn
 botListFn
 ```
 
+Injected callback for bot list; invoked through the State service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L21)

@@ -9,8 +9,10 @@
 struct ClipWindow
 ```
 
+Data record for `mq3.renderer.view_math.ClipWindow`; groups `normalized`, `window`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L32)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ClipWindow
 normalized
 ```
 
+Perspective-divided X/Y and depth Z remapped to the usual zero-to-one range; components are not clamped.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L34)
 
 <a id="field-field-mq3-renderer-view-math-clipwindow-window-window-src-mq3-renderer-view-math-ml-801054411"></a>
 ### window
@@ -31,5 +35,7 @@ normalized
 window
 ```
 
+Viewport-relative pixel X/Y followed by the same remapped depth Z; only X/Y are rounded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L36)

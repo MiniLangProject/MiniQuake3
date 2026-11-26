@@ -23,14 +23,16 @@ Reachable from entry: **no**
 function action(services, bot, roamingGoal)
 ```
 
+Use `services.easyClientNameFn`, `services.goalNameFn` and `services.clientNameFn` to perform `action`. Return paths include `+services.goalNameFn(services,roamingGoal)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `roamingGoal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `easyClientNameFn`, `goalNameFn` and `clientNameFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype`, `teammate`, `teamgoalNumber` and `teamgoalEntitynum`. |
+| `roamingGoal` | `dynamic` | — | Value passed as argument 2 to `services.goalNameFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L172)
 
 <a id="function-function-mq3-game-bot-ai-commands-battlenodestep-function-battlenodestep-services-bot-src-mq3-game-bot-ai-commands-ml-1392481627"></a>
 ### battleNodeStep
@@ -39,13 +41,15 @@ function action(services, bot, roamingGoal)
 function battleNodeStep(services, bot)
 ```
 
+Apply `mq3.game.bot_seek_state.runNode` and `mq3.game.bot_fight_state.runNode` while evaluating `battleNodeStep`. Return paths include `fight.runNode(services.fightServices,bot)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices` and `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L108)
 
 <a id="function-function-mq3-game-bot-ai-commands-botai-function-botai-services-client-thinktime-src-mq3-game-bot-ai-commands-ml-255990130"></a>
 ### botAI
@@ -54,14 +58,16 @@ function battleNodeStep(services, bot)
 function botAI(services, client, thinktime)
 ```
 
+Use `services.resetInputFn`, `services.diagnosticFn` and `services.getClientStateFn` to perform `botAI`. Return paths include `runNodes(services,bot)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `thinktime` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `resetInputFn`, `lifecycleState`, `diagnosticFn`, `getClientStateFn` and `nextServerCommandFn` and related fields. |
+| `client` | `dynamic` | — | Value passed as argument 2 to `services.resetInputFn`. |
+| `thinktime` | `dynamic` | — | Not read by this implementation; retained in the `botAI` signature. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L148)
 
 <a id="function-function-mq3-game-bot-ai-commands-carrying-function-carrying-services-bot-colored-src-mq3-game-bot-ai-commands-ml-1094026821"></a>
 ### carrying
@@ -70,14 +76,16 @@ function botAI(services, client, thinktime)
 function carrying(services, bot, colored)
 ```
 
+Use `services.carryingFlagFn` and `services.teamFn` to perform `carrying`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `colored` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `gametype`, `carryingFlagFn` and `teamFn`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `services.carryingFlagFn`. |
+| `colored` | `dynamic` | — | Value used by `carrying` in `if not colored then return "F " end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L195)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-cms-chat-const-cms-chat-1-src-mq3-game-bot-ai-commands-ml-77279942"></a>
 ### CMS_CHAT
@@ -86,8 +94,10 @@ function carrying(services, bot, colored)
 const CMS_CHAT = 1
 ```
 
+Console-message category for chat text supplied to bot chat processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L14)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-cms-normal-const-cms-normal-0-src-mq3-game-bot-ai-commands-ml-1913329699"></a>
 ### CMS_NORMAL
@@ -96,8 +106,10 @@ const CMS_CHAT = 1
 const CMS_NORMAL = 0
 ```
 
+Console-message category for ordinary engine messages.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L12)
 
 <a id="function-function-mq3-game-bot-ai-commands-create-function-create-state-src-mq3-game-bot-ai-commands-ml-196680575"></a>
 ### create
@@ -106,12 +118,14 @@ const CMS_NORMAL = 0
 function create(state)
 ```
 
+Create a `mq3.game.bot_ai_commands.Services` record, initializing `lifecycleState` from `state`, `maxclients` as `64` and `nodeStepFn` as `battleNodeStep`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial value stored in `mq3.game.bot_ai_commands.Services.lifecycleState`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L102)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-gt-ctf-const-gt-ctf-4-src-mq3-game-bot-ai-commands-ml-1918484531"></a>
 ### GT_CTF
@@ -120,8 +134,10 @@ function create(state)
 const GT_CTF = 4
 ```
 
+Game-mode identifier selecting capture the flag rules.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L16)
 
 <a id="function-function-mq3-game-bot-ai-commands-leader-function-leader-services-bot-src-mq3-game-bot-ai-commands-ml-1099290119"></a>
 ### leader
@@ -130,13 +146,15 @@ const GT_CTF = 4
 function leader(services, bot)
 ```
 
+Use `services.clientNameFn` to perform `leader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `clientNameFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `teamleader`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L190)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-attackenemybase-const-ltg-attackenemybase-13-src-mq3-game-bot-ai-commands-ml-376750753"></a>
 ### LTG_ATTACKENEMYBASE
@@ -145,8 +163,10 @@ function leader(services, bot)
 const LTG_ATTACKENEMYBASE = 13
 ```
 
+Long-term bot goal identifier selecting attackenemybase behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L46)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-camp-const-ltg-camp-7-src-mq3-game-bot-ai-commands-ml-22424466"></a>
 ### LTG_CAMP
@@ -155,8 +175,10 @@ const LTG_ATTACKENEMYBASE = 13
 const LTG_CAMP = 7
 ```
 
+Long-term bot goal identifier selecting camp behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L34)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-camporder-const-ltg-camporder-8-src-mq3-game-bot-ai-commands-ml-425679975"></a>
 ### LTG_CAMPORDER
@@ -165,8 +187,10 @@ const LTG_CAMP = 7
 const LTG_CAMPORDER = 8
 ```
 
+Long-term bot goal identifier selecting follow a camp order behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L36)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-defendkeyarea-const-ltg-defendkeyarea-3-src-mq3-game-bot-ai-commands-ml-717919854"></a>
 ### LTG_DEFENDKEYAREA
@@ -175,8 +199,10 @@ const LTG_CAMPORDER = 8
 const LTG_DEFENDKEYAREA = 3
 ```
 
+Long-term bot goal identifier selecting defend a key area behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L26)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-getflag-const-ltg-getflag-4-src-mq3-game-bot-ai-commands-ml-1832819575"></a>
 ### LTG_GETFLAG
@@ -185,8 +211,10 @@ const LTG_DEFENDKEYAREA = 3
 const LTG_GETFLAG = 4
 ```
 
+Long-term bot goal identifier selecting capture the flag behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L28)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-getitem-const-ltg-getitem-10-src-mq3-game-bot-ai-commands-ml-2085690696"></a>
 ### LTG_GETITEM
@@ -195,8 +223,10 @@ const LTG_GETFLAG = 4
 const LTG_GETITEM = 10
 ```
 
+Long-term bot goal identifier selecting getitem behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L40)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-harvest-const-ltg-harvest-12-src-mq3-game-bot-ai-commands-ml-1207527230"></a>
 ### LTG_HARVEST
@@ -205,8 +235,10 @@ const LTG_GETITEM = 10
 const LTG_HARVEST = 12
 ```
 
+Long-term bot goal identifier selecting harvest behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L44)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-kill-const-ltg-kill-11-src-mq3-game-bot-ai-commands-ml-703633249"></a>
 ### LTG_KILL
@@ -215,8 +247,10 @@ const LTG_HARVEST = 12
 const LTG_KILL = 11
 ```
 
+Long-term bot goal identifier selecting kill behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L42)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-patrol-const-ltg-patrol-9-src-mq3-game-bot-ai-commands-ml-1947511522"></a>
 ### LTG_PATROL
@@ -225,8 +259,10 @@ const LTG_KILL = 11
 const LTG_PATROL = 9
 ```
 
+Long-term bot goal identifier selecting patrol behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L38)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-returnflag-const-ltg-returnflag-6-src-mq3-game-bot-ai-commands-ml-881217371"></a>
 ### LTG_RETURNFLAG
@@ -235,8 +271,10 @@ const LTG_PATROL = 9
 const LTG_RETURNFLAG = 6
 ```
 
+Long-term bot goal identifier selecting return the flag behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L32)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-rushbase-const-ltg-rushbase-5-src-mq3-game-bot-ai-commands-ml-1069658844"></a>
 ### LTG_RUSHBASE
@@ -245,8 +283,10 @@ const LTG_RETURNFLAG = 6
 const LTG_RUSHBASE = 5
 ```
 
+Long-term bot goal identifier selecting rush the base behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L30)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-teamaccompany-const-ltg-teamaccompany-2-src-mq3-game-bot-ai-commands-ml-818405921"></a>
 ### LTG_TEAMACCOMPANY
@@ -255,8 +295,10 @@ const LTG_RUSHBASE = 5
 const LTG_TEAMACCOMPANY = 2
 ```
 
+Long-term bot goal identifier selecting teamaccompany behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L24)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-ltg-teamhelp-const-ltg-teamhelp-1-src-mq3-game-bot-ai-commands-ml-1126274310"></a>
 ### LTG_TEAMHELP
@@ -265,8 +307,10 @@ const LTG_TEAMACCOMPANY = 2
 const LTG_TEAMHELP = 1
 ```
 
+Long-term bot goal identifier selecting teamhelp behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L22)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-max-nodeswitches-const-max-nodeswitches-50-src-mq3-game-bot-ai-commands-ml-1170401812"></a>
 ### MAX_NODESWITCHES
@@ -275,8 +319,10 @@ const LTG_TEAMHELP = 1
 const MAX_NODESWITCHES = 50
 ```
 
+Upper bound on nodeswitches represented by mq3.game.bot_ai_commands.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L48)
 
 <a id="function-function-mq3-game-bot-ai-commands-pad20-function-pad20-text-src-mq3-game-bot-ai-commands-ml-1093148673"></a>
 ### pad20
@@ -285,12 +331,14 @@ const MAX_NODESWITCHES = 50
 function pad20(text)
 ```
 
+Right-pad bot diagnostic text with spaces until its byte length is at least twenty.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L167)
 
 <a id="function-function-mq3-game-bot-ai-commands-removecolorescapesequences-function-removecolorescapesequences-text-src-mq3-game-bot-ai-commands-ml-1569283579"></a>
 ### removeColorEscapeSequences
@@ -299,12 +347,14 @@ function pad20(text)
 function removeColorEscapeSequences(text)
 ```
 
+Remove Quake color escape pairs and DEL bytes from bot command text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L115)
 
 <a id="function-function-mq3-game-bot-ai-commands-reportstatus-function-reportstatus-services-bot-src-mq3-game-bot-ai-commands-ml-1361026407"></a>
 ### reportStatus
@@ -313,13 +363,15 @@ function removeColorEscapeSequences(text)
 function reportStatus(services, bot)
 ```
 
+Use `services.topGoalNumberFn`, `services.clientNameFn` and `services.printFn` to perform `reportStatus`. Return paths include `line`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `topGoalNumberFn`, `clientNameFn` and `printFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs` and `client`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L221)
 
 <a id="function-function-mq3-game-bot-ai-commands-runnodes-function-runnodes-services-bot-src-mq3-game-bot-ai-commands-ml-75442031"></a>
 ### runNodes
@@ -328,13 +380,15 @@ function reportStatus(services, bot)
 function runNodes(services, bot)
 ```
 
+Use `services.nodeStepFn` to perform `runNodes`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `nodeStepFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode` and `inuse`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L135)
 
 - [mq3.game.bot_ai_commands.Services](Type-mq3-game-bot-ai-commands-services-1434487593.md) — struct
 <a id="function-function-mq3-game-bot-ai-commands-setinfoconfigstring-function-setinfoconfigstring-services-bot-src-mq3-game-bot-ai-commands-ml-1535198393"></a>
@@ -344,13 +398,15 @@ function runNodes(services, bot)
 function setInfoConfigString(services, bot)
 ```
 
+Use `services.topGoalNumberFn` and `services.setBotInfoFn` to perform `setInfoConfigString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `topGoalNumberFn` and `setBotInfoFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs` and `client`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L203)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-team-blue-const-team-blue-2-src-mq3-game-bot-ai-commands-ml-1847458141"></a>
 ### TEAM_BLUE
@@ -359,8 +415,10 @@ function setInfoConfigString(services, bot)
 const TEAM_BLUE = 2
 ```
 
+Team identifier selecting the blue team/category.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L20)
 
 <a id="constant-constant-mq3-game-bot-ai-commands-team-red-const-team-red-1-src-mq3-game-bot-ai-commands-ml-1594935096"></a>
 ### TEAM_RED
@@ -369,8 +427,10 @@ const TEAM_BLUE = 2
 const TEAM_RED = 1
 ```
 
+Team identifier selecting the red team/category.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L18)
 
 <a id="function-function-mq3-game-bot-ai-commands-teamplayreport-function-teamplayreport-services-src-mq3-game-bot-ai-commands-ml-1567749994"></a>
 ### teamplayReport
@@ -379,12 +439,14 @@ const TEAM_RED = 1
 function teamplayReport(services)
 ```
 
+Use `services.printFn` and `services.getPlayerConfigFn` to perform `teamplayReport`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `printFn`, `maxclients`, `lifecycleState` and `getPlayerConfigFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L228)
 
 <a id="function-function-mq3-game-bot-ai-commands-unquote-function-unquote-text-src-mq3-game-bot-ai-commands-ml-1488665709"></a>
 ### unquote
@@ -393,12 +455,14 @@ function teamplayReport(services)
 function unquote(text)
 ```
 
+Remove the outer byte pair from quoted bot command text, returning empty text for a short input.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L128)
 
 <a id="function-function-mq3-game-bot-ai-commands-updateinfoconfigstrings-function-updateinfoconfigstrings-services-src-mq3-game-bot-ai-commands-ml-759349800"></a>
 ### updateInfoConfigStrings
@@ -407,9 +471,11 @@ function unquote(text)
 function updateInfoConfigStrings(services)
 ```
 
+Use `services.getPlayerConfigFn` to perform `updateInfoConfigStrings`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `maxclients`, `lifecycleState` and `getPlayerConfigFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L209)

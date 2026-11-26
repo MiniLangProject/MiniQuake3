@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for aas bspq3, containing `loaded`, `entDataSize`, `dentData`, `numEntities` and `entities`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L18)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 dentData
 ```
 
+BSP entity text used to parse navigation-relevant map entities.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-entdatasize-entdatasize-src-mq3-botlib-aas-bspq3-ml-983695414"></a>
 ### entDataSize
@@ -31,8 +35,10 @@ dentData
 entDataSize
 ```
 
+Byte length of the loaded BSP entity text.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L22)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-entities-entities-src-mq3-botlib-aas-bspq3-ml-468875124"></a>
 ### entities
@@ -41,8 +47,10 @@ entDataSize
 entities
 ```
 
+Game or BSP entity records tracked by this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L28)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-loaded-loaded-src-mq3-botlib-aas-bspq3-ml-841093580"></a>
 ### loaded
@@ -51,8 +59,10 @@ entities
 loaded
 ```
 
+True after BSP entity text has been read and parsed into navigation entity records.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L20)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-numentities-numentities-src-mq3-botlib-aas-bspq3-ml-1514019414"></a>
 ### numEntities
@@ -61,5 +71,7 @@ loaded
 numEntities
 ```
 
+Number of entity records currently represented by this state or snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L26)

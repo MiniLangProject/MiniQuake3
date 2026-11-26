@@ -8,22 +8,86 @@ import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 import mq3.renderer.native_md3 as nativeMd3
 
+/// Scale converting packed MD3 vertex coordinates into model-space coordinates.
 const MD3_XYZ_SCALE=0.015625
+/// Number of samples in the periodic shader waveform lookup table.
 const FUNCTABLE_SIZE=1024
+/// Mask that wraps waveform-table indices to the power-of-two table size.
 const FUNCTABLE_MASK=1023
 
-struct PackedVertex xyz packedNormal end struct
-struct MeshSurface numFrames numVerts numTriangles triangles texCoords frames packedFrames end struct
-struct Submission xyz normals texCoords indexes baseVertex baseIndex numVertexes numIndexes flushed dlightBits touchesDlights end struct
+/// Data record for `mq3.renderer.surface_md3.PackedVertex`; groups `xyz`, `packedNormal`.
+struct PackedVertex
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// MD3 normal encoded as two angular bytes.
+  packedNormal
+end struct
+/// Data record for `mq3.renderer.surface_md3.MeshSurface`; groups `numFrames`, `numVerts`, `numTriangles`, `triangles`, `texCoords`, `frames`, and 1 further field.
+struct MeshSurface
+  /// Number of animation frames stored in the model surface.
+  numFrames
+  /// Number of vertices stored in the polygon or model surface.
+  numVerts
+  /// Number of triangles stored in the model surface.
+  numTriangles
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Per-vertex MD3 texture coordinates shared by all animation frames of the surface.
+  texCoords
+  /// Per-frame animation data retained for model interpolation.
+  frames
+  /// Packed MD3 vertex records for each animation frame.
+  packedFrames
+end struct
+/// Data record for `mq3.renderer.surface_md3.Submission`; groups `xyz`, `normals`, `texCoords`, `indexes`, `baseVertex`, `baseIndex`, and 5 further fields.
+struct Submission
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// MD3 surface texture coordinates copied alongside the interpolated vertex positions.
+  texCoords
+  /// MD3 triangle indices rebased to the interpolated vertices in the destination buffer.
+  indexes
+  /// First vertex slot used by the submitted geometry.
+  baseVertex
+  /// First index slot used by the submitted geometry.
+  baseIndex
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Whether the current batch was flushed before this geometry was appended.
+  flushed
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+  /// Whether the submitted geometry is affected by dynamic lighting.
+  touchesDlights
+end struct
 
+/// Constructs `mq3.renderer.surface_md3.PackedVertex` with `xyz` = `[numeric.i16(x),numeric.i16(y),numeric.i16(z)]`, `packedNormal` = `packedNormal&0xffff`.
+/// @param x Argument 1 supplied to `mq3.compat.numeric.i16`.
+/// @param y Argument 1 supplied to `mq3.compat.numeric.i16`.
+/// @param z Argument 1 supplied to `mq3.compat.numeric.i16`.
+/// @param packedNormal Input used in the result expression `PackedVertex([numeric.i16(x),numeric.i16(y),numeric.i16(z)],packedNormal&0xffff)`.
 function vertex(x,y,z,packedNormal)
   return PackedVertex([numeric.i16(x),numeric.i16(y),numeric.i16(z)],packedNormal&0xffff)
 end function
 
+/// Constructs `mq3.renderer.surface_md3.MeshSurface` with `packedFrames` = `array(numFrames,void)` and the supplied remaining values.
+/// @param numFrames Initial value for `mq3.renderer.surface_md3.MeshSurface.numFrames`.
+/// @param numVerts Initial value for `mq3.renderer.surface_md3.MeshSurface.numVerts`.
+/// @param numTriangles Initial value for `mq3.renderer.surface_md3.MeshSurface.numTriangles`.
+/// @param triangles Initial value for `mq3.renderer.surface_md3.MeshSurface.triangles`.
+/// @param texCoords Initial value for `mq3.renderer.surface_md3.MeshSurface.texCoords`.
+/// @param frames Initial value for `mq3.renderer.surface_md3.MeshSurface.frames`.
 function surface(numFrames,numVerts,numTriangles,triangles,texCoords,frames)
   return MeshSurface(numFrames,numVerts,numTriangles,triangles,texCoords,frames,array(numFrames,void))
 end function
 
+/// Updates `value.packedFrames[frame]` in `mq3.renderer.surface_md3.packedFrame`; returns `result`.
+/// @param value Mutable record or buffer; this call updates `value.packedFrames[frame]`.
+/// @param frame Input tested by `value.packedFrames[frame]!=void`.
 function packedFrame(value,frame)
   if value.packedFrames[frame]!=void then return value.packedFrames[frame] end if
   result=bytes(value.numVerts*8,0)
@@ -37,6 +101,8 @@ end function
 // Reference access to a packed-only asset is intentionally transient. Never
 // populate every visited .frames slot over a long match: native rendering uses
 // packedFrames directly, while legacy load/surface frames remain unchanged.
+/// @param value Record providing `value.numFrames`, `value.frames`, `value.packedFrames`, `value.numVerts`.
+/// @param frame Input tested by `frame<0 or frame>=value.numFrames`.
 function frameVertices(value,frame)
   if frame<0 or frame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
   if value.frames[frame]!=void then return value.frames[frame] end if
@@ -48,13 +114,23 @@ function frameVertices(value,frame)
   end for
   return decoded
 end function
+/// Computes `lerpVertexesPacked` from `nativeMd3.lerp(fresh,old,table,value.numVerts,backlerp)` using `mq3.renderer.surface_md3.packedFrame`, `mq3.renderer.native_md3.lerp`.
+/// @param value Record providing `value.numFrames`, `value.numVerts`.
+/// @param frame Value forwarded as `frame` to `mq3.renderer.surface_md3.packedFrame`.
+/// @param oldFrame Value forwarded as `frame` to `mq3.renderer.surface_md3.packedFrame`.
+/// @param backlerp Argument 5 supplied to `mq3.renderer.native_md3.lerp`.
+/// @param table Argument 3 supplied to `mq3.renderer.native_md3.lerp`.
 function lerpVertexesPacked(value,frame,oldFrame,backlerp,table)
   if frame<0 or frame>=value.numFrames or oldFrame<0 or oldFrame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
   if backlerp<0.0 or backlerp>1.0 then return error(7360,"MD3 backlerp outside zero to one") end if
   fresh=packedFrame(value,frame);old=packedFrame(value,oldFrame);return nativeMd3.lerp(fresh,old,table,value.numVerts,backlerp)
 end function
 
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.surface_md3.valid3`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function valid3(value) return value!=void and len(value)==3 end function
+/// Validates MD3 frame/vertex/triangle counts, index ranges, coordinates, and per-frame vertex storage.
+/// @param value Record providing `value.numFrames`, `value.numVerts`, `value.numTriangles`, `value.triangles`, `value.texCoords`, `value.frames`.
 function validate(value)
   if value==void or value.numFrames<1 then return error(7350,"MD3 surface needs at least one frame") end if
   if value.numVerts<1 or value.numTriangles<0 then return error(7351,"invalid MD3 surface counts") end if
@@ -84,25 +160,34 @@ end function
 
 // R_Init builds this 1024-entry table with a 1023 divisor. Preserve the float
 // operation before the double-precision angle and the final binary32 store.
+/// @param index Input used by `step=numeric.fdiv(numeric.fmul(index&FUNCTABLE_MASK,360.0),1023.0)`.
 function tableValue(index)
   step=numeric.fdiv(numeric.fmul(index&FUNCTABLE_MASK,360.0),1023.0)
   return numeric.f32(trans.sin(step*3.14159265358979323846/180.0))
 end function
 
+/// Decodes an MD3 packed latitude/longitude normal using the renderer's sine lookup table.
+/// @param packed Input used by `bits=packed&0xffff`.
 function decodeNormal(packed)
   bits=packed&0xffff
   lat=((bits>>8)&255)*4;lng=(bits&255)*4
   return [numeric.fmul(tableValue(lat+256),tableValue(lng)),numeric.fmul(tableValue(lat),tableValue(lng)),tableValue(lng+256)]
 end function
+/// Builds `result[index]` in `mq3.renderer.surface_md3.normalTable`; returns `result`.
 function normalTable()
   result=array(FUNCTABLE_SIZE,0.0);for index=0 to FUNCTABLE_SIZE-1 result[index]=tableValue(index) end for;return result
 end function
+/// Decodes a packed MD3 normal using a supplied sine table, falling back when its size is invalid.
+/// @param packed Value forwarded as `packed` to `mq3.renderer.surface_md3.decodeNormal`.
+/// @param table Indexed input read at `(lat+256)&FUNCTABLE_MASK`, `lng&FUNCTABLE_MASK`, `lat&FUNCTABLE_MASK`, `(lng+256)&FUNCTABLE_MASK`.
 function decodeNormalCached(packed,table)
   if table==void or len(table)!=FUNCTABLE_SIZE then return decodeNormal(packed) end if
   bits=packed&0xffff;lat=((bits>>8)&255)*4;lng=(bits&255)*4
   return [numeric.fmul(table[(lat+256)&FUNCTABLE_MASK],table[lng&FUNCTABLE_MASK]),numeric.fmul(table[lat&FUNCTABLE_MASK],table[lng&FUNCTABLE_MASK]),table[(lng+256)&FUNCTABLE_MASK]]
 end function
 
+/// Returns `[numeric.fmul(value[0],inverse),numeric.fmul(value[1],inverse),numeric.fmul(value[2],inverse)]` from `mq3.renderer.surface_md3.normalizeFast`.
+/// @param value Argument 1 supplied to `mq3.shared.math.DotProduct`.
 function normalizeFast(value)
   inverse=qmath.Q_rsqrt(qmath.DotProduct(value,value))
   return [numeric.fmul(value[0],inverse),numeric.fmul(value[1],inverse),numeric.fmul(value[2],inverse)]
@@ -110,6 +195,11 @@ end function
 
 // LerpMeshVertexes selects the new frame directly when backlerp is zero. With
 // interpolation it blends decoded normals and applies Quake's Q_rsqrt pass.
+/// @param value Record providing `value.numFrames`, `value.numVerts`.
+/// @param frame Value forwarded as `frame` to `mq3.renderer.surface_md3.frameVertices`.
+/// @param oldFrame Value forwarded as `frame` to `mq3.renderer.surface_md3.frameVertices`.
+/// @param backlerp Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param table Value forwarded as `table` to `mq3.renderer.surface_md3.decodeNormalCached`.
 function lerpVertexesCached(value,frame,oldFrame,backlerp,table)
   if frame<0 or frame>=value.numFrames or oldFrame<0 or oldFrame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
   backlerp=numeric.f32(backlerp)
@@ -140,7 +230,17 @@ function lerpVertexesCached(value,frame,oldFrame,backlerp,table)
   end for
   return [xyz,normals]
 end function
+/// Calls `mq3.renderer.surface_md3.lerpVertexesCached` with `(value,frame,oldFrame,backlerp,void)` and returns its result.
+/// @param value Value forwarded as `value` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param frame Value forwarded as `frame` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param oldFrame Value forwarded as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param backlerp Value forwarded as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesCached`.
 function lerpVertexesTrusted(value,frame,oldFrame,backlerp) return lerpVertexesCached(value,frame,oldFrame,backlerp,void) end function
+/// Returns `lerpVertexesTrusted(value,frame,oldFrame,backlerp)` from `mq3.renderer.surface_md3.lerpVertexes`; earlier branches return `valid`.
+/// @param value Value forwarded as `value` to `mq3.renderer.surface_md3.validate`.
+/// @param frame Value forwarded as `frame` to `mq3.renderer.surface_md3.lerpVertexesTrusted`.
+/// @param oldFrame Value forwarded as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesTrusted`.
+/// @param backlerp Value forwarded as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesTrusted`.
 function lerpVertexes(value,frame,oldFrame,backlerp)
   valid=validate(value);if valid is error then return valid end if
   return lerpVertexesTrusted(value,frame,oldFrame,backlerp)
@@ -148,6 +248,15 @@ end function
 
 // RB_CHECKOVERFLOW ends the current tessellation before this surface when the
 // combined counts exceed capacity. MD3 submission itself does not alter lights.
+/// @param value Record providing `value.numTriangles`, `value.numVerts`, `value.triangles`, `value.texCoords`.
+/// @param frame Value forwarded as `frame` to `mq3.renderer.surface_md3.lerpVertexes`.
+/// @param oldFrame Value forwarded as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexes`.
+/// @param backlerp Input used by `effectiveBacklerp=backlerp`.
+/// @param currentVertexes Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`.
+/// @param currentIndexes Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`.
+/// @param maxVertexes Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`.
+/// @param maxIndexes Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`.
+/// @param dlightBits Input used by `outputDlightBits=dlightBits`.
 function submit(value,frame,oldFrame,backlerp,currentVertexes,currentIndexes,maxVertexes,maxIndexes,dlightBits)
   valid=validate(value);if valid is error then return valid end if
   if currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1 then return error(7361,"invalid tessellation counts") end if

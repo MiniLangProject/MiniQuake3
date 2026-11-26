@@ -19,39 +19,76 @@ import mq3.shared.math as q
 import mq3.shared.directions as directions
 import mq3.compat.numeric as n
 
+/// Weapon identifier selecting nailgun.
 const WP_NAILGUN = 11
+/// Weapon identifier selecting prox launcher.
 const WP_PROX_LAUNCHER = 12
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE = 26
+/// Cause-of-death identifier attributing damage or a kill to juiced.
 const MOD_JUICED = 28
+/// Network entity-flag bit indicating ticking.
 const EF_TICKING = 0x00000002
+/// Network entity-flag bit indicating bounce half.
 const EF_BOUNCE_HALF = 0x00000020
+/// Network entity-flag bit indicating nodraw.
 const EF_NODRAW = 0x00000080
+/// Server entity-flag bit controlling noclient.
 const SVF_NOCLIENT = 0x00000001
+/// Server entity-flag bit controlling use current origin.
 const SVF_USE_CURRENT_ORIGIN = 0x00000080
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Combined CONTENTS_* mask used for shot collision queries.
 const MASK_SHOT = 0x06000001
+/// Entity-number sentinel meaning that no entity was hit or referenced.
 const ENTITYNUM_NONE = 1023
+/// Damage-processing flag enabling no knockback.
 const DAMAGE_NO_KNOCKBACK = 4
 
+/// Forward `G_BounceMissile` to `mq3.game.missiles.bounce` and return the delegated result.
+/// @param level Game-level state; accesses `previousTime` and `time`.
+/// @param ent Game entity; accesses `s` and `r`. May update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]` and `ent.r.currentOrigin[axis]` and additional fields in place.
+/// @param hit Hit record; accesses `trace` and `endpos`.
 function G_BounceMissile(level,ent,hit) return missileBase.bounce(level,ent,hit) end function
+/// Forward `G_ExplodeMissile` to `mq3.game.missiles.explode` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `freeAfterEvent`, `splashDamage`, `r` and `parent` and related fields. May update `ent.s.eType` and `ent.freeAfterEvent` in place.
 function G_ExplodeMissile(level,ent) return missileBase.explode(level,ent) end function
 
+/// Set `mine.activator` to `void` in `mq3.game.g_missile.ProximityMine_Explode`.
+/// @param level Game-level state; accesses `time`.
+/// @param mine Mine record; accesses `activator`. May update `mine.activator` in place.
 function ProximityMine_Explode(level,mine)
   G_ExplodeMissile(level,mine)
   if mine.activator != void then game.free(level,mine.activator); mine.activator = void end if
   return void
 end function
 
+/// Set `ent.think` to `ProximityMine_Explode` and `ent.nextthink` to `n.add32(level.time,1)` in `mq3.game.g_missile.ProximityMine_Die`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `think` and `nextthink`. May update `ent.think` and `ent.nextthink` in place.
+/// @param inflictor Not read by this implementation; retained in the `ProximityMine_Die` signature.
+/// @param attacker Not read by this implementation; retained in the `ProximityMine_Die` signature.
+/// @param damage Not read by this implementation; retained in the `ProximityMine_Die` signature.
+/// @param mod Not read by this implementation; retained in the `ProximityMine_Die` signature.
 function ProximityMine_Die(level,ent,inflictor,attacker,damage,mod)
   ent.think = ProximityMine_Explode; ent.nextthink = n.add32(level.time,1)
   return void
 end function
 
+/// Read the active game type from the spawner, using zero when no spawner is installed.
+/// @param level Game-level state; accesses `spawner`.
 function gameType(level)
   if level.spawner == void then return 0 end if
   return level.spawner.gametype
 end function
 
+/// Apply `mq3.game.g_missile.gameType`, `mq3.game.combat.canDamage` and `mq3.game.events.add` while evaluating `ProximityMine_Trigger`.
+/// @param level Game-level state; accesses `time`.
+/// @param trigger Trigger record; accesses `s` and `parent`.
+/// @param other Other record; accesses `client` and `s`.
+/// @param trace Not read by this implementation; retained in the `ProximityMine_Trigger` signature.
 function ProximityMine_Trigger(level,trigger,other,trace)
   if other.client == void then return void end if
   delta = [n.fsub(trigger.s.pos.trBase[0],other.s.pos.trBase[0]),n.fsub(trigger.s.pos.trBase[1],other.s.pos.trBase[1]),n.fsub(trigger.s.pos.trBase[2],other.s.pos.trBase[2])]
@@ -63,6 +100,9 @@ function ProximityMine_Trigger(level,trigger,other,trace)
   return void
 end function
 
+/// Update `ent.think`, `ent.nextthink`, `ent.takedamage` and `ent.health` and related state during `ProximityMine_Activate`. Return paths include `trigger`.
+/// @param level Game-level state; accesses `time` and `spawner`.
+/// @param ent Game entity; accesses `think`, `nextthink`, `takedamage`, `health` and `die` and related fields. May update `ent.think`, `ent.nextthink` and `ent.takedamage` and additional fields in place.
 function ProximityMine_Activate(level,ent)
   ent.think = ProximityMine_Explode; ent.nextthink = n.add32(level.time,20000)
   ent.takedamage = true; ent.health = 1; ent.die = ProximityMine_Die
@@ -74,6 +114,9 @@ function ProximityMine_Activate(level,ent)
   return trigger
 end function
 
+/// Set `mine.r.svFlags` to `mine.r.svFlags & n.i32(~SVF_NOCLIENT)` and `mine.splashMethodOfDeath` to `MOD_PROXIMITY_MINE` in `mq3.game.g_missile.ProximityMine_ExplodeOnPlayer`.
+/// @param level Game-level state; accesses `time`.
+/// @param mine Mine record; accesses `enemy`, `parent`, `s`, `r` and `splashMethodOfDeath`. May update `mine.r.svFlags` and `mine.splashMethodOfDeath` in place.
 function ProximityMine_ExplodeOnPlayer(level,mine)
   player = mine.enemy; player.client.ps.eFlags = player.client.ps.eFlags & n.i32(~EF_TICKING)
   if player.client.invulnerabilityTime > level.time then
@@ -86,6 +129,10 @@ function ProximityMine_ExplodeOnPlayer(level,mine)
   return void
 end function
 
+/// Update `player.activator.splashDamage`, `player.activator.splashRadius`, `mine.think` and `mine.nextthink` and related state during `ProximityMine_Player`.
+/// @param level Game-level state; accesses `time`.
+/// @param mine Mine record; accesses `s`, `splashDamage`, `think`, `nextthink` and `r` and related fields. May update `mine.think`, `mine.nextthink` and `mine.s.eFlags` and additional fields in place.
+/// @param player Player entity; accesses `s`, `activator` and `client`. May update `player.activator.splashDamage`, `player.activator.splashRadius` and `player.client.ps.eFlags` and additional fields in place.
 function ProximityMine_Player(level,mine,player)
   if (mine.s.eFlags & EF_NODRAW) != 0 then return void end if
   events.add(level,mine,c.EV_PROXIMITY_MINE_STICK,0)
@@ -103,6 +150,10 @@ end function
 
 // Exact RaySphereIntersections/G_InvulnerabilityEffect geometry used by the
 // Team Arena projectile reflection branch.
+/// @param level Game-level state; accesses `time`.
+/// @param target Target record; accesses `client`.
+/// @param direction Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param point Three-component point used by the geometric query.
 function invulnerabilityEffect(level,target,direction,point)
   if target.client == void then return [false,[0.0,0.0,0.0],[0.0,0.0,0.0]] end if
   ray = [n.fneg(direction[0]),n.fneg(direction[1]),n.fneg(direction[2])]; q.VectorNormalize(ray)
@@ -116,6 +167,10 @@ function invulnerabilityEffect(level,target,direction,point)
   return [true,impactPoint,bounced]
 end function
 
+/// Update `ent.s.eFlags`, `ent.target_ent`, `ent.s.pos.trType` and `ent.s.pos.trDelta` and related state during `G_MissileImpact`.
+/// @param level Game-level state; accesses `entities` and `time`.
+/// @param ent Game entity; accesses `s`, `target_ent`, `damage`, `r` and `methodOfDeath` and related fields. May update `ent.s.eFlags`, `ent.target_ent` and `ent.s.pos.trType` and additional fields in place.
+/// @param hit Hit record; accesses `trace`, `entityNum` and `endpos`.
 function G_MissileImpact(level,ent,hit)
   tr = hit.trace; other = level.entities[hit.entityNum]; hitClient = false
   if not other.takedamage and (ent.s.eFlags & 48) != 0 then G_BounceMissile(level,ent,hit); events.add(level,ent,c.EV_GRENADE_BOUNCE,0); return void end if
@@ -142,6 +197,9 @@ function G_MissileImpact(level,ent,hit)
   return void
 end function
 
+/// Update `ent.r.currentOrigin`, `ent.parent.client.hook` and `ent.count` during `G_RunMissile`. Return paths include `game.runThink(level,ent)`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `r`, `target_ent`, `count` and `clipmask` and related fields. May update `ent.r.currentOrigin`, `ent.parent.client.hook` and `ent.count` in place.
 function G_RunMissile(level,ent)
   origin = trajectory.evaluate(ent.s.pos,level.time); passEntity = ent.r.ownerNum
   if ent.target_ent != void then passEntity = ent.target_ent.s.number else if ent.s.weapon == WP_PROX_LAUNCHER and ent.count != 0 then passEntity = ENTITYNUM_NONE end if
@@ -160,11 +218,48 @@ function G_RunMissile(level,ent)
   return game.runThink(level,ent)
 end function
 
+/// Forward `fire_plasma` to `mq3.game.missiles.fire` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fire_plasma(level,self,start,dir) return missileBase.fire(level,self,start,dir,c.WP_PLASMAGUN) end function
+/// Forward `fire_grenade` to `mq3.game.missiles.fire` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fire_grenade(level,self,start,dir) return missileBase.fire(level,self,start,dir,c.WP_GRENADE_LAUNCHER) end function
+/// Forward `fire_bfg` to `mq3.game.missiles.fire` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fire_bfg(level,self,start,dir) return missileBase.fire(level,self,start,dir,c.WP_BFG) end function
+/// Forward `fire_rocket` to `mq3.game.missiles.fire` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fire_rocket(level,self,start,dir) return missileBase.fire(level,self,start,dir,c.WP_ROCKET_LAUNCHER) end function
+/// Forward `fire_grapple` to `mq3.game.missiles.fire` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fire_grapple(level,self,start,dir) return missileBase.fire(level,self,start,dir,c.WP_GRAPPLING_HOOK) end function
+/// Forward `fire_nail` to `mq3.game.g_weapon.fireNail` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param forward Value passed as argument 3 to `mq3.shared.math.VectorMA`.
+/// @param right Value passed as argument 3 to `mq3.shared.math.VectorMA`.
+/// @param up Value passed as argument 3 to `mq3.shared.math.VectorMA`.
 function fire_nail(level,self,start,forward,right,up) return weapon.fireNail(level,self,start,forward,right,up) end function
+/// Forward `fire_prox` to `mq3.game.g_weapon.fireProx` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s` and `client`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
 function fire_prox(level,self,start,dir) return weapon.fireProx(level,self,start,dir) end function
 

@@ -9,8 +9,10 @@
 struct Address
 ```
 
+Data record for `mq3.platform.null_runtime.Address`; groups `type`, `host`, `port`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L7)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Address
 host
 ```
 
+Host address or host-service adapter associated with the operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-address-port-port-src-mq3-platform-null-runtime-ml-660158991"></a>
 ### port
@@ -31,8 +35,10 @@ host
 port
 ```
 
+Transport port number associated with the endpoint.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L13)
 
 <a id="field-field-mq3-platform-null-runtime-address-type-type-src-mq3-platform-null-runtime-ml-1750079377"></a>
 ### type
@@ -41,5 +47,7 @@ port
 type
 ```
 
+Network address kind selecting loopback, IPv4, broadcast, or another supported transport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L9)

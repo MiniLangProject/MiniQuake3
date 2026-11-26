@@ -4,12 +4,19 @@
 package mq3.renderer.image_processing
 import mq3.compat.numeric as n
 
+/// Largest scanline width supported by the image resampling workspace.
 const MAX_RESAMPLE_WIDTH=2048
 
+/// Creates error `7160` with message `"image processing: "+message`.
+/// @param message Input used in the result expression `error(7160,"image processing: "+message)`.
 function fail(message)
   return error(7160,"image processing: "+message)
 end function
 
+/// Validates positive RGBA image dimensions, overflow limits, and the available pixel-buffer length.
+/// @param pixels Input tested by `pixels==void`.
+/// @param width Input tested by `width<1 or height<1`.
+/// @param height Input tested by `width<1 or height<1`.
 function checkedPixels(pixels,width,height)
   if pixels==void then return fail("missing pixels") end if
   if width<1 or height<1 then return fail("invalid dimensions") end if
@@ -18,6 +25,9 @@ function checkedPixels(pixels,width,height)
   return 1
 end function
 
+/// Builds `output[i]` in `mq3.renderer.image_processing.copyPixels`; returns `output`.
+/// @param pixels Indexed input read at `i`.
+/// @param count Argument 1 supplied to `bytes`.
 function copyPixels(pixels,count)
   output=bytes(count,0)
   for i=0 to count-1 output[i]=pixels[i] end for
@@ -25,6 +35,11 @@ function copyPixels(pixels,count)
 end function
 
 // Exact fixed-point sample positions and four-tap average from ResampleTexture.
+/// @param pixels Value forwarded as `pixels` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param inWidth Value forwarded as `width` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param inHeight Value forwarded as `height` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param outWidth Argument 2 supplied to `mq3.compat.numeric.quotient`.
+/// @param outHeight Input tested by `outWidth<1 or outHeight<1`.
 function resample(pixels,inWidth,inHeight,outWidth,outHeight)
   checkedPixels(pixels,inWidth,inHeight)
   if outWidth<1 or outHeight<1 then return fail("invalid output dimensions") end if
@@ -50,6 +65,13 @@ function resample(pixels,inWidth,inHeight,outWidth,outHeight)
 end function
 
 // R_LightScaleTexture with tables supplied by the renderer color-mapping owner.
+/// @param pixels Value forwarded as `pixels` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param width Value forwarded as `width` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param height Value forwarded as `height` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param onlyGamma Input tested by `onlyGamma`.
+/// @param deviceSupportsGamma Input tested by `not deviceSupportsGamma`.
+/// @param gammaTable Indexed input read at `value`.
+/// @param intensityTable Indexed input read at `value`.
 function lightScale(pixels,width,height,onlyGamma,deviceSupportsGamma,gammaTable,intensityTable)
   checkedPixels(pixels,width,height)
   if len(gammaTable)<256 or len(intensityTable)<256 then return fail("color table is truncated") end if
@@ -71,6 +93,9 @@ function lightScale(pixels,width,height,onlyGamma,deviceSupportsGamma,gammaTable
 end function
 
 // Simple R_MipMap path. The one-dimensional case follows its adjacent-pixel rule.
+/// @param pixels Value forwarded as `pixels` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param width Value forwarded as `width` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param height Value forwarded as `height` to `mq3.renderer.image_processing.checkedPixels`.
 function mipMapSimple(pixels,width,height)
   checkedPixels(pixels,width,height)
   if width==1 and height==1 then return copyPixels(pixels,4) end if
@@ -95,11 +120,16 @@ function mipMapSimple(pixels,width,height)
   return output
 end function
 
+/// Computes `value>0 and (value&(value-1))==0` for `mq3.renderer.image_processing.isPowerOfTwo`.
+/// @param value Input used in the result expression `value>0 and (value&(value-1))==0`.
 function isPowerOfTwo(value)
   return value>0 and (value&(value-1))==0
 end function
 
 // Proper linear R_MipMap2 filter with the original power-of-two wrapping masks.
+/// @param pixels Value forwarded as `pixels` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param width Value forwarded as `width` to `mq3.renderer.image_processing.checkedPixels`.
+/// @param height Value forwarded as `height` to `mq3.renderer.image_processing.checkedPixels`.
 function mipMapFiltered(pixels,width,height)
   checkedPixels(pixels,width,height)
   if width<2 or height<2 or not isPowerOfTwo(width) or not isPowerOfTwo(height) then return fail("filtered mipmaps require power-of-two dimensions of at least 2") end if

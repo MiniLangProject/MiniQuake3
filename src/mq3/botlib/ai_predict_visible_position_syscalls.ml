@@ -7,7 +7,16 @@ import mq3.botlib.ai_goal_state_syscalls as goalAbi
 import mq3.compat.numeric as n
 import mq3.vm.syscall_common as common
 
+/// Write three float bit patterns to consecutive VM memory words for ai predict visible position syscalls.
+/// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.
+/// @param address Address within the VM memory or native data buffer.
+/// @param value Array or byte sequence accessed at `axis`.
 function writeVector(data,address,value) for axis=0 to 2 n.writeU32(data,address+axis*4,n.floatBits(value[axis])) end for;return void end function
+/// Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_goal_state_syscalls.readGoal` while evaluating `dispatch`.
+/// @param runtime AI predict visible position runtime; accesses `router`.
+/// @param vm Vm record; accesses `data`.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(runtime,vm,base,op)
   if op!=prediction.OP_PREDICT_VISIBLE_POSITION then return error(7601,"AI visible-position syscall: unsupported trap "+str(op)) end if
   origin=common.readFloatVector(vm,common.argument(vm,base,1),3,"BotPredictVisiblePosition origin");if origin is error then return origin end if

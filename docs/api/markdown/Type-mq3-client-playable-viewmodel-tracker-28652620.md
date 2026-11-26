@@ -9,8 +9,10 @@
 struct Tracker
 ```
 
+Stores playable viewmodel tracker record, including `bobPhase`, `lastTime`, `initialized`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L45)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Tracker
 bobPhase
 ```
 
+When constructing this record, `tracker` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L47)
 
 <a id="field-field-mq3-client-playable-viewmodel-tracker-initialized-initialized-src-mq3-client-playable-viewmodel-ml-1162761637"></a>
 ### initialized
@@ -31,8 +35,10 @@ bobPhase
 initialized
 ```
 
+True after the first animation update establishes the previous timestamp used for subsequent frame deltas.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L52)
 
 <a id="field-field-mq3-client-playable-viewmodel-tracker-lasttime-lasttime-src-mq3-client-playable-viewmodel-ml-1041310187"></a>
 ### lastTime
@@ -41,5 +47,7 @@ initialized
 lastTime
 ```
 
+When constructing this record, `tracker` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L49)

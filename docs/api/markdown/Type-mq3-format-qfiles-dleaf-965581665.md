@@ -9,8 +9,10 @@
 struct Dleaf
 ```
 
+Dleaf record for format.qfiles, containing `cluster`, `area`, `mins`, `maxs`, `firstLeafSurface`, `numLeafSurfaces`, and 2 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L495)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Dleaf
 area
 ```
 
+Portal-area index containing this BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L499)
 
 <a id="field-field-mq3-format-qfiles-dleaf-cluster-cluster-src-mq3-format-qfiles-ml-286943229"></a>
 ### cluster
@@ -31,8 +35,10 @@ area
 cluster
 ```
 
+Visibility-cluster index of this leaf, or minus one for opaque space.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L497)
 
 <a id="field-field-mq3-format-qfiles-dleaf-firstleafbrush-firstleafbrush-src-mq3-format-qfiles-ml-481668917"></a>
 ### firstLeafBrush
@@ -41,8 +47,10 @@ cluster
 firstLeafBrush
 ```
 
+Index of the first brush reference for this BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L509)
 
 <a id="field-field-mq3-format-qfiles-dleaf-firstleafsurface-firstleafsurface-src-mq3-format-qfiles-ml-385068555"></a>
 ### firstLeafSurface
@@ -51,8 +59,10 @@ firstLeafBrush
 firstLeafSurface
 ```
 
+Index of the first surface reference for this BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L505)
 
 <a id="field-field-mq3-format-qfiles-dleaf-maxs-maxs-src-mq3-format-qfiles-ml-466160159"></a>
 ### maxs
@@ -61,8 +71,10 @@ firstLeafSurface
 maxs
 ```
 
+Maximum XYZ corner of the region occupied by this serialized BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L503)
 
 <a id="field-field-mq3-format-qfiles-dleaf-mins-mins-src-mq3-format-qfiles-ml-963588619"></a>
 ### mins
@@ -71,8 +83,10 @@ maxs
 mins
 ```
 
+Minimum XYZ corner of the region occupied by this serialized BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L501)
 
 <a id="field-field-mq3-format-qfiles-dleaf-numleafbrushes-numleafbrushes-src-mq3-format-qfiles-ml-2141450381"></a>
 ### numLeafBrushes
@@ -81,8 +95,10 @@ mins
 numLeafBrushes
 ```
 
+Number of brush references belonging to this BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L511)
 
 <a id="field-field-mq3-format-qfiles-dleaf-numleafsurfaces-numleafsurfaces-src-mq3-format-qfiles-ml-1109210785"></a>
 ### numLeafSurfaces
@@ -91,5 +107,7 @@ numLeafBrushes
 numLeafSurfaces
 ```
 
+Number of surface references belonging to this BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L507)

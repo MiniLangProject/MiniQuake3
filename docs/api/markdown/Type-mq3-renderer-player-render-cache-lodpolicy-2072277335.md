@@ -9,8 +9,10 @@
 struct LodPolicy
 ```
 
+Data record for `mq3.renderer.player_render_cache.LodPolicy`; groups `fullDistance`, `mediumDistance`, `farDistance`, `mediumStride`, `farStride`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L46)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LodPolicy
 farDistance
 ```
 
+Distance threshold for the most distant model-detail tier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L52)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-farstride-farstride-src-mq3-renderer-player-render-cache-ml-2105492460"></a>
 ### farStride
@@ -31,8 +35,10 @@ farDistance
 farStride
 ```
 
+Triangle sampling stride used by the distant detail tier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L56)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-fulldistance-fulldistance-src-mq3-renderer-player-render-cache-ml-326468520"></a>
 ### fullDistance
@@ -41,8 +47,10 @@ farStride
 fullDistance
 ```
 
+Maximum distance at which full model detail is retained.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L48)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-mediumdistance-mediumdistance-src-mq3-renderer-player-render-cache-ml-225486980"></a>
 ### mediumDistance
@@ -51,8 +59,10 @@ fullDistance
 mediumDistance
 ```
 
+Distance threshold for the medium model-detail tier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L50)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-mediumstride-mediumstride-src-mq3-renderer-player-render-cache-ml-1178556056"></a>
 ### mediumStride
@@ -61,5 +71,7 @@ mediumDistance
 mediumStride
 ```
 
+Triangle sampling stride used by the medium detail tier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L54)

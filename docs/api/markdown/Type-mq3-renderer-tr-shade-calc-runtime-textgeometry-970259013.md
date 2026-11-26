@@ -9,8 +9,10 @@
 struct TextGeometry
 ```
 
+Data record for `mq3.renderer.tr_shade_calc_runtime.TextGeometry`; groups `positions`, `texCoords`, `colors`, `indexes`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L24)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TextGeometry
 colors
 ```
 
+Vertex modulation colors emitted for the generated deform-text glyph quads.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-shade-calc-runtime-textgeometry-indexes-indexes-src-mq3-renderer-tr-shade-calc-runtime-ml-1235774302"></a>
 ### indexes
@@ -31,8 +35,10 @@ colors
 indexes
 ```
 
+Triangle indices connecting the glyph quads produced by text deformation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-shade-calc-runtime-textgeometry-positions-positions-src-mq3-renderer-tr-shade-calc-runtime-ml-1302344738"></a>
 ### positions
@@ -41,8 +47,10 @@ indexes
 positions
 ```
 
+Glyph-quad positions generated from the deform-text shader's source surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-tr-shade-calc-runtime-textgeometry-texcoords-texcoords-src-mq3-renderer-tr-shade-calc-runtime-ml-12829002"></a>
 ### texCoords
@@ -51,5 +59,7 @@ positions
 texCoords
 ```
 
+Font-atlas coordinates generated for the quads of a deform-text shader stage.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L28)

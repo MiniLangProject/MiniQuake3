@@ -8,33 +8,110 @@ import mq3.format.md3 as md3
 import mq3.renderer.model_tags as modelTags
 import mq3.renderer.view_math as viewMath
 
+/// Player-model component identifier for the lower body and legs.
 const LOWER_PART=0
+/// Player-model component identifier for the upper body and torso.
 const UPPER_PART=1
+/// Player-model component identifier for the head.
 const HEAD_PART=2
 
-struct Animation frame oldFrame backlerp end struct
-struct Transform origin axis end struct
-struct Models lower upper head end struct
-struct Part kind name model animation transform end struct
-struct Assembly lower upper head end struct
-struct Triangle positions texCoords normals part surfaceIndex shaderName end struct
+/// Data record for `mq3.renderer.player_model_assembly.Animation`; groups `frame`, `oldFrame`, `backlerp`.
+struct Animation
+  /// Current model animation-frame index.
+  frame
+  /// Previous animation frame used for interpolation.
+  oldFrame
+  /// Interpolation weight of the previous frame: zero selects current, one selects previous.
+  backlerp
+end struct
+/// Data record for `mq3.renderer.player_model_assembly.Transform`; groups `origin`, `axis`.
+struct Transform
+  /// Translation applied when placing a player-model body part through its parent attachment.
+  origin
+  /// Composed orientation basis that places a player-model part relative to its parent.
+  axis
+end struct
+/// Data record for `mq3.renderer.player_model_assembly.Models`; groups `lower`, `upper`, `head`.
+struct Models
+  /// Lower-body player model or its assembled animation state.
+  lower
+  /// Upper-body player model or its assembled animation state.
+  upper
+  /// Head player model or its assembled animation state.
+  head
+end struct
+/// Data record for `mq3.renderer.player_model_assembly.Part`; groups `kind`, `name`, `model`, `animation`, `transform`.
+struct Part
+  /// Player-body component selector distinguishing the lower body, upper body, and head.
+  kind
+  /// Body-part label identifying the assembled lower, upper, or head model.
+  name
+  /// Loaded model selected for animation or drawing.
+  model
+  /// Animation frame pair and interpolation weight used by the model part.
+  animation
+  /// Position and orientation used to place the model part.
+  transform
+end struct
+/// Data record for `mq3.renderer.player_model_assembly.Assembly`; groups `lower`, `upper`, `head`.
+struct Assembly
+  /// Lower-body player model or its assembled animation state.
+  lower
+  /// Upper-body player model or its assembled animation state.
+  upper
+  /// Head player model or its assembled animation state.
+  head
+end struct
+/// Data record for `mq3.renderer.player_model_assembly.Triangle`; groups `positions`, `texCoords`, `normals`, `part`, `surfaceIndex`, `shaderName`.
+struct Triangle
+  /// Triangle corners after attaching and transforming the player's lower, upper, or head model.
+  positions
+  /// MD3 texture coordinates carried by an assembled player-body triangle.
+  texCoords
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Player-model component from which this geometry originated.
+  part
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Shader name carried from the MD3 surface of the assembled player component.
+  shaderName
+end struct
 
+/// Creates error `7520` with message `"player model assembly: "+message`.
+/// @param message Input used in the result expression `error(7520,"player model assembly: "+message)`.
 function fail(message) return error(7520,"player model assembly: "+message) end function
 
+/// Constructs `mq3.renderer.player_model_assembly.Animation` with `backlerp` = `numeric.f32(backlerp)` and the supplied remaining values.
+/// @param frame Initial value for `mq3.renderer.player_model_assembly.Animation.frame`.
+/// @param oldFrame Initial value for `mq3.renderer.player_model_assembly.Animation.oldFrame`.
+/// @param backlerp Argument 1 supplied to `mq3.compat.numeric.f32`.
 function animation(frame,oldFrame,backlerp)
   return Animation(frame,oldFrame,numeric.f32(backlerp))
 end function
 
+/// Returns `[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]` for `mq3.renderer.player_model_assembly.identityAxis`.
 function identityAxis()
   return [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
 end function
 
+/// Constructs `mq3.renderer.player_model_assembly.Transform` from `origin`, `axis`.
+/// @param origin Initial value for `mq3.renderer.player_model_assembly.Transform.origin`.
+/// @param axis Initial value for `mq3.renderer.player_model_assembly.Transform.axis`.
 function transform(origin,axis) return Transform(origin,axis) end function
+/// Constructs `mq3.renderer.player_model_assembly.Transform` with `origin` = `[0.0,0.0,0.0]`, `axis` = `identityAxis()`.
 function identityTransform() return Transform([0.0,0.0,0.0],identityAxis()) end function
+/// Constructs `mq3.renderer.player_model_assembly.Models` from `lower`, `upper`, `head`.
+/// @param lower Initial value for `mq3.renderer.player_model_assembly.Models.lower`.
+/// @param upper Initial value for `mq3.renderer.player_model_assembly.Models.upper`.
+/// @param head Initial value for `mq3.renderer.player_model_assembly.Models.head`.
 function models(lower,upper,head) return Models(lower,upper,head) end function
 
 // Loads the three conventional player-model pieces without taking ownership of
 // an archive or filesystem. This keeps asset lookup policy outside the renderer.
+/// @param lowerData Argument 1 supplied to `mq3.format.md3.load`.
+/// @param upperData Argument 1 supplied to `mq3.format.md3.load`.
+/// @param headData Argument 1 supplied to `mq3.format.md3.load`.
 function load(lowerData,upperData,headData)
   lower=md3.load(lowerData);if lower is error then return lower end if
   upper=md3.load(upperData);if upper is error then return upper end if
@@ -42,13 +119,20 @@ function load(lowerData,upperData,headData)
   return Models(lower,upper,head)
 end function
 
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.player_model_assembly.valid3`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function valid3(value) return value!=void and len(value)==3 end function
+/// Requires a three-component origin and three valid three-component transform axes.
+/// @param value Record providing `value.origin`, `value.axis`.
 function validateTransform(value)
   if value==void or not valid3(value.origin) or value.axis==void or len(value.axis)!=3 then return fail("malformed transform") end if
   for row=0 to 2 if not valid3(value.axis[row]) then return fail("malformed transform axis") end if end for
   return true
 end function
 
+/// Checks current/previous animation frames against the model and bounds backlerp to zero through one.
+/// @param model Record providing `model.numFrames`.
+/// @param anim Record providing `anim.frame`, `anim.oldFrame`, `anim.backlerp`.
 function validateAnimation(model,anim)
   if model==void or model.numFrames<1 then return fail("model has no animation frames") end if
   if anim==void then return fail("missing animation") end if
@@ -57,6 +141,9 @@ function validateAnimation(model,anim)
   return true
 end function
 
+/// Multiplies two 3-by-3 orientation matrices using the compatibility float arithmetic operations.
+/// @param left Nested indexed data; outer entries read at `row`.
+/// @param right Nested indexed data; outer entries read at `0`, `1`, `2`.
 function multiplyAxis(left,right)
   result=[]
   for row=0 to 2
@@ -72,6 +159,8 @@ end function
 
 // Equivalent to the identity-local-axis case of
 // CG_PositionRotatedEntityOnTag: tag.axis * parent.axis.
+/// @param parent Record providing `parent.axis`.
+/// @param orientation Record providing `orientation.found`, `orientation.origin`, `orientation.axis`.
 function attach(parent,orientation)
   valid=validateTransform(parent);if valid is error then return valid end if
   if orientation==void or not orientation.found then return fail("required attachment tag missing") end if
@@ -81,6 +170,10 @@ function attach(parent,orientation)
   return Transform(origin,multiplyAxis(orientation.axis,parent.axis))
 end function
 
+/// Computes `tagOrientation` from `modelTags.lerpTag(wrapped,anim.oldFrame,anim.frame,numeric.fsub(1.0,anim.backlerp),name)` using `mq3.renderer.model_tags.md3`, `mq3.renderer.model_tags.model`, `mq3.renderer.model_tags.lerpTag`.
+/// @param model Record providing `model.tags`, `model.bounds`.
+/// @param anim Record providing `anim.oldFrame`, `anim.frame`, `anim.backlerp`.
+/// @param name Argument 5 supplied to `mq3.renderer.model_tags.lerpTag`.
 function tagOrientation(model,anim,name)
   tagModel=modelTags.md3(model.tags,model.bounds[0],model.bounds[1])
   wrapped=modelTags.model(void,tagModel)
@@ -90,6 +183,11 @@ end function
 
 // Builds the hierarchy lower -> tag_torso -> upper -> tag_head -> head.
 // The root transform places the complete player in the caller's model space.
+/// @param value Record providing `value.lower`, `value.upper`, `value.head`.
+/// @param lowerAnimation Value forwarded as `anim` to `mq3.renderer.player_model_assembly.validateAnimation`.
+/// @param upperAnimation Value forwarded as `anim` to `mq3.renderer.player_model_assembly.validateAnimation`.
+/// @param headAnimation Value forwarded as `anim` to `mq3.renderer.player_model_assembly.validateAnimation`.
+/// @param root Value forwarded as `value` to `mq3.renderer.player_model_assembly.validateTransform`.
 function assemble(value,lowerAnimation,upperAnimation,headAnimation,root)
   if value==void or value.lower==void or value.upper==void or value.head==void then return fail("three MD3 model pieces required") end if
   valid=validateTransform(root);if valid is error then return valid end if
@@ -109,12 +207,17 @@ end function
 // CG_AddPlayerWeapon attaches the weapon model to the animated torso rather
 // than to the player root. Keep this transform renderer-neutral so view and
 // world weapon models share the same item-model path.
+/// @param value Record providing `value.upper`.
+/// @param name Value forwarded as `name` to `mq3.renderer.player_model_assembly.tagOrientation`.
 function upperAttachment(value,name)
   if value==void or value.upper==void or name=="" then return fail("upper attachment needs an assembled player and tag name") end if
   orientation=tagOrientation(value.upper.model,value.upper.animation,name);if orientation is error then return orientation end if
   return attach(value.upper.transform,orientation)
 end function
 
+/// Builds `mq3.renderer.player_model_assembly.Triangle` using `mq3.renderer.view_math.localPointToWorld`, `mq3.renderer.view_math.localNormalToWorld`.
+/// @param source Record providing `source.positions`, `source.normals`, `source.texCoords`, `source.surfaceIndex`, `source.shaderName`.
+/// @param part Record providing `part.transform`, `part.kind`.
 function transformTriangle(source,part)
   positions=[];normals=[]
   for corner=0 to 2
@@ -125,6 +228,9 @@ function transformTriangle(source,part)
   return Triangle(positions,source.texCoords,normals,part.kind,source.surfaceIndex,source.shaderName)
 end function
 
+/// Interpolates every model surface within the triangle budget and transforms the resulting triangles into the part's space.
+/// @param part Record providing `part.model`, `part.animation`.
+/// @param maxTrianglesPerSurface Argument 6 supplied to `mq3.format.md3.renderTriangles`.
 function renderPart(part,maxTrianglesPerSurface)
   result=[]
   if len(part.model.surfaces)>0 then
@@ -144,6 +250,8 @@ end function
 
 // Returns lower, upper and head triangles in one shared coordinate system.
 // The limit applies independently to every surface, matching renderTriangles.
+/// @param value Record providing `value.lower`, `value.upper`, `value.head`.
+/// @param maxTrianglesPerSurface Value forwarded as `maxTrianglesPerSurface` to `mq3.renderer.player_model_assembly.renderPart`.
 function render(value,maxTrianglesPerSurface)
   if value==void then return fail("missing assembly") end if
   if maxTrianglesPerSurface<0 then return fail("negative triangle limit") end if

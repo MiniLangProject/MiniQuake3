@@ -10,24 +10,85 @@ import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.playable_fog as playableFog
 
+/// BSP surface type for a map-defined light flare.
 const MST_FLARE=4
+/// Byte stride of one face record in the BSP surface lump.
 const FACE_STRIDE=104
+/// Default screen-space scale used when drawing a light flare.
 const DEFAULT_SIZE=40.0
+/// Default rate used to fade flares after visibility transitions.
 const DEFAULT_FADE=7.0
+/// Tolerance used when comparing flare depth with sampled scene depth.
 const VISIBILITY_TOLERANCE=24.0
+/// Maximum number of independent view-specific flare states retained.
 const MAX_VIEW_STATES=16
 
-struct Flare faceIndex textureIndex fogIndex origin color normal end struct
-struct State visible fadeTime drawIntensity end struct
-struct Catalog flares states dynamicStates textureSlot image enabled end struct
-struct Point x y depth end struct
+/// Data record for `mq3.renderer.playable_flares.Flare`; groups `faceIndex`, `textureIndex`, `fogIndex`, `origin`, `color`, `normal`.
+struct Flare
+  /// Index of the source BSP face.
+  faceIndex
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Map-authored world position from which the flare is projected into the view.
+  origin
+  /// BSP-authored tint of the flare surface before view-dependent fading.
+  color
+  /// Map-authored flare-facing direction used to scale visibility from the current eye position.
+  normal
+end struct
+/// Data record for `mq3.renderer.playable_flares.State`; groups `visible`, `fadeTime`, `drawIntensity`.
+struct State
+  /// Whether the flare passed its most recent visibility test.
+  visible
+  /// Timestamp of the last visibility transition used to fade a flare.
+  fadeTime
+  /// Current flare intensity after visibility fading.
+  drawIntensity
+end struct
+/// Data record for `mq3.renderer.playable_flares.Catalog`; groups `flares`, `states`, `dynamicStates`, `textureSlot`, `image`, `enabled`.
+struct Catalog
+  /// Map-defined light flares registered by the renderer.
+  flares
+  /// Persistent visibility and fade state associated with the registered flares.
+  states
+  /// Visibility and fade state retained for dynamically generated flares.
+  dynamicStates
+  /// Texture slot reserved for this effect's image.
+  textureSlot
+  /// Shared flare texture drawn by static and dynamic flare instances.
+  image
+  /// Whether this feature is enabled by the current configuration.
+  enabled
+end struct
+/// Data record for `mq3.renderer.playable_flares.Point`; groups `x`, `y`, `depth`.
+struct Point
+  /// Horizontal screen-space coordinate of the projected or drawn point.
+  x
+  /// Vertical screen-space coordinate of the projected or drawn point.
+  y
+  /// Depth of the projected point or fog region in its owning coordinate system.
+  depth
+end struct
 
+/// Creates error `7696` with message `"playable flares: "+message`.
+/// @param message Input used in the result expression `error(7696,"playable flares: "+message)`.
 function fail(message) return error(7696,"playable flares: "+message) end function
+/// Computes `map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>13 and map.counts!=void and len(map.counts)>13` for `mq3.renderer.playable_flares.validMap`.
+/// @param map Record providing `map.data`, `map.offsets`, `map.counts`.
 function validMap(map) return map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>13 and map.counts!=void and len(map.counts)>13 end function
+/// Returns `n.bitsFloat(value)` from `mq3.renderer.playable_flares.f32`; earlier branches return `fail("truncated float")`.
+/// @param map Record providing `map.data`.
+/// @param offset Argument 2 supplied to `mq3.compat.numeric.readU32`.
 function f32(map,offset) value=n.readU32(map.data,offset);if value is error then return fail("truncated float") end if;return n.bitsFloat(value) end function
+/// Returns `value` from `mq3.renderer.playable_flares.i32`; earlier branches return `fail("truncated integer")`.
+/// @param map Record providing `map.data`.
+/// @param offset Argument 2 supplied to `mq3.compat.numeric.readI32`.
 function i32(map,offset) value=n.readI32(map.data,offset);if value is error then return fail("truncated integer") end if;return value end function
 
 // ParseFlare in tr_bsp.c copies these fields directly from dsurface_t.
+/// @param map Record providing `map.counts`, `map.offsets`, `map.data`.
 function parse(map)
   if not validMap(map) then return fail("invalid BSP") end if
   result=[]
@@ -48,16 +109,27 @@ function parse(map)
   return result
 end function
 
+/// Returns `result` from `mq3.renderer.playable_flares.makeStates`.
+/// @param count Input used by `for index=0 to count-1 result=result+[State(false,0,0.0)]`.
 function makeStates(count) result=[];for index=0 to count-1 result=result+[State(false,0,0.0)] end for;return result end function
+/// Updates `catalog.states` in `mq3.renderer.playable_flares.ensureView`; returns `catalog.states[viewIndex]`.
+/// @param catalog Mutable record or buffer; this call updates `catalog.states`.
+/// @param viewIndex Input tested by `viewIndex<0 or viewIndex>=MAX_VIEW_STATES`.
 function ensureView(catalog,viewIndex)
   if viewIndex<0 or viewIndex>=MAX_VIEW_STATES then return fail("view index outside flare state range") end if
   while len(catalog.states)<=viewIndex catalog.states=catalog.states+[makeStates(len(catalog.flares))] end while
   return catalog.states[viewIndex]
 end function
 
+/// Builds `mq3.renderer.playable_flares.Catalog` using `mq3.renderer.playable_materials.mappedImageName`, `mq3.renderer.playable_materials.loadImage`.
+/// @param archive Argument 1 supplied to `mq3.renderer.playable_materials.loadImage`.
+/// @param map Value forwarded as `map` to `mq3.renderer.playable_flares.parse`.
+/// @param scripts Argument 1 supplied to `mq3.renderer.playable_materials.mappedImageName`.
+/// @param textureSlot Initial value for `mq3.renderer.playable_flares.Catalog.textureSlot`.
+/// @param enabled Input tested by `enabled or len(flares)>0`.
 function load(archive,map,scripts,textureSlot,enabled)
   flares=parse(map);if flares is error then return flares end if
-  if textureSlot<0 or textureSlot>=512 then return fail("invalid texture slot") end if
+  if textureSlot<0 or textureSlot>=window.NATIVE_TEXTURE_SLOTS then return fail("invalid texture slot") end if
   image=void
   if enabled or len(flares)>0 then
     name=materials.mappedImageName(scripts,"flareShader");if name==void then name="gfx/misc/flare" end if
@@ -65,15 +137,23 @@ function load(archive,map,scripts,textureSlot,enabled)
   end if
   return Catalog(flares,[],[],textureSlot,image,enabled and image!=void)
 end function
+/// Uploads the enabled flare catalog image to its assigned texture slot and reports upload failure.
+/// @param catalog Record providing `catalog.enabled`, `catalog.textureSlot`, `catalog.image`.
 function upload(catalog)
   if catalog==void then return fail("missing catalog") end if
   if not catalog.enabled then return 0 end if
   if not window.uploadTextureNoMip(catalog.textureSlot,catalog.image.pixels,catalog.image.width,catalog.image.height) then return fail("could not upload flare texture") end if
   return 1
 end function
+/// Returns `void` from `mq3.renderer.playable_flares.release`.
+/// @param catalog Record providing `catalog.image`, `catalog.textureSlot`.
 function release(catalog) if catalog!=void and catalog.image!=void then window.releaseTexture(catalog.textureSlot) end if;return void end function
 
 // RB_TestFlare changes visibility at now-1 and clamps the linear fade.
+/// @param state Mutable record or buffer; this call updates `state.visible`, `state.fadeTime`, `state.drawIntensity`.
+/// @param visible Input tested by `visible`.
+/// @param nowMilliseconds Input used by `state.fadeTime=nowMilliseconds-1`.
+/// @param fadeRate Input tested by `fadeRate<0.0`.
 function updateState(state,visible,nowMilliseconds,fadeRate)
   if fadeRate<0.0 then return fail("negative fade rate") end if
   fade=0.0
@@ -87,17 +167,32 @@ function updateState(state,visible,nowMilliseconds,fadeRate)
   if fade<0.0 then fade=0.0 end if;if fade>1.0 then fade=1.0 end if
   state.drawIntensity=fade;return fade
 end function
+/// Computes `surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE` for `mq3.renderer.playable_flares.visibleAtDepth`.
+/// @param flareDepth Input used in the result expression `surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE`.
+/// @param surfaceDepth Input used in the result expression `surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE`.
 function visibleAtDepth(flareDepth,surfaceDepth) return surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE end function
+/// Returns `viewportWidth*(sizeValue/640.0+8.0/eyeDepth)` from `mq3.renderer.playable_flares.flareSize`; earlier branches return `0.0`.
+/// @param viewportWidth Input tested by `viewportWidth<1 or eyeDepth<=0.0`.
+/// @param eyeDepth Input tested by `viewportWidth<1 or eyeDepth<=0.0`.
+/// @param sizeValue Input used in the result expression `viewportWidth*(sizeValue/640.0+8.0/eyeDepth)`.
 function flareSize(viewportWidth,eyeDepth,sizeValue) if viewportWidth<1 or eyeDepth<=0.0 then return 0.0 end if;return viewportWidth*(sizeValue/640.0+8.0/eyeDepth) end function
+/// Returns `(dx*normal[0]+dy*normal[1]+dz*normal[2])/length` from `mq3.renderer.playable_flares.facing`; earlier branches return `0.0`.
+/// @param origin Three-component vector read at indices 0, 1, and 2.
+/// @param point Three-component vector read at indices 0, 1, and 2.
+/// @param normal Three-component vector read at indices 0, 1, and 2.
 function facing(origin,point,normal)
   dx=origin[0]-point[0];dy=origin[1]-point[1];dz=origin[2]-point[2];length=n.fsqrt(dx*dx+dy*dy+dz*dz)
   if length<=0.0 then return 0.0 end if
   return (dx*normal[0]+dy*normal[1]+dz*normal[2])/length
 end function
+/// Returns `n.trunc32(value)` from `mq3.renderer.playable_flares.colorByte`; earlier branches return `0`, `255`.
+/// @param value Argument 1 supplied to `mq3.compat.numeric.trunc32`.
 function colorByte(value) if value<0.0 then return 0 end if;if value>255.0 then return 255 end if;return n.trunc32(value) end function
 
 // RB_AddDlightFlares assigns each submitted light to the first fog whose
 // axial brush bounds contain its origin.  Fog zero is the outside fallback.
+/// @param fogCatalog Record providing `fogCatalog.fogs`.
+/// @param origin Three-component vector read at indices 0, 1, and 2.
 function fogIndexAt(fogCatalog,origin)
   if fogCatalog==void or origin==void or len(origin)!=3 then return 0 end if
   for fogIndex=1 to len(fogCatalog.fogs)-1
@@ -107,6 +202,10 @@ function fogIndexAt(fogCatalog,origin)
   return 0
 end function
 
+/// Updates `catalog.dynamicStates`, `catalog.dynamicStates[viewIndex]` in `mq3.renderer.playable_flares.ensureDynamicView`; returns `states`.
+/// @param catalog Mutable record or buffer; this call updates `catalog.dynamicStates`, `catalog.dynamicStates[viewIndex]`.
+/// @param viewIndex Input tested by `viewIndex<0 or viewIndex>=MAX_VIEW_STATES`.
+/// @param count Input used by `while len(states)<count states=states+[State(false,0,0.0)]`.
 function ensureDynamicView(catalog,viewIndex,count)
   if viewIndex<0 or viewIndex>=MAX_VIEW_STATES then return fail("view index outside flare state range") end if
   while len(catalog.dynamicStates)<=viewIndex catalog.dynamicStates=catalog.dynamicStates+[[]] end while
@@ -115,18 +214,35 @@ end function
 
 // RB_RenderFlares frees active entries that were not submitted this frame.
 // Slot identity matches the stable refdef dlight-array address used by Baseq3.
+/// @param states Mutable record or buffer; this call updates `states[index].visible`, `states[index].fadeTime`, `states[index].drawIntensity`.
+/// @param submittedCount Input used by `for index=submittedCount to len(states)-1 states[index].visible=false`.
+/// @param nowMilliseconds Input used by `states[index].fadeTime=nowMilliseconds-2000`.
 function retireDynamicStates(states,submittedCount,nowMilliseconds)
   for index=submittedCount to len(states)-1 states[index].visible=false;states[index].fadeTime=nowMilliseconds-2000;states[index].drawIntensity=0.0 end for;return states
 end function
 
 // RB_RenderFlare begins flareShader with the retained fog number. Its additive
 // blend selects ACFF_MODULATE_RGB in FinishShader, so fog attenuates RGB only.
+/// @param flare Record providing `flare.fogIndex`, `flare.origin`.
+/// @param color Argument 1 supplied to `mq3.renderer.playable_materials.modulateForFog`.
+/// @param fogCatalog Record providing `fogCatalog.fogs`.
+/// @param viewOrigin Argument 3 supplied to `mq3.renderer.playable_fog.density`.
+/// @param forward Argument 4 supplied to `mq3.renderer.playable_fog.density`.
 function foggedColor(flare,color,fogCatalog,viewOrigin,forward)
   if fogCatalog==void or flare.fogIndex<=0 or flare.fogIndex>=len(fogCatalog.fogs) then return color end if
   density=playableFog.density(fogCatalog.fogs[flare.fogIndex],flare.origin,viewOrigin,forward)
   return materials.modulateForFog(color,density,"rgb")
 end function
 
+/// Projects a flare, tests on-screen depth visibility, updates its fade state, and submits its visible quad.
+/// @param catalog Record providing `catalog.textureSlot`.
+/// @param fogCatalog Value forwarded as `fogCatalog` to `mq3.renderer.playable_flares.foggedColor`.
+/// @param flare Record providing `flare.origin`, `flare.normal`, `flare.color`.
+/// @param state Value forwarded as `state` to `mq3.renderer.playable_flares.updateState`.
+/// @param projection Record providing `projection.position`, `projection.forward`.
+/// @param area Record providing `area.x`, `area.width`, `area.y`, `area.height`.
+/// @param nowMilliseconds Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_flares.updateState`.
+/// @param applyFacing Input tested by `applyFacing`.
 function drawOne(catalog,fogCatalog,flare,state,projection,area,nowMilliseconds,applyFacing)
   screen=viewer.projectPrepared(projection,flare.origin);onscreen=screen!=void and not (screen is error)
   if onscreen then onscreen=screen.x>=area.x and screen.x<area.x+area.width and screen.y>=area.y and screen.y<area.y+area.height end if
@@ -144,6 +260,14 @@ function drawOne(catalog,fogCatalog,flare,state,projection,area,nowMilliseconds,
   window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,c,[1.0,1.0],color,d,[1.0,0.0],color,255,255,255);return 1
 end function
 
+/// Draws enabled static and dynamic flares for one view using persistent per-view visibility state.
+/// @param catalog Record providing `catalog.enabled`, `catalog.flares`.
+/// @param fogCatalog Value forwarded as `fogCatalog` to `mq3.renderer.playable_flares.drawOne`.
+/// @param lights Indexed input read at `index`.
+/// @param projection Value forwarded as `projection` to `mq3.renderer.playable_flares.drawOne`.
+/// @param area Value forwarded as `area` to `mq3.renderer.playable_flares.drawOne`.
+/// @param nowMilliseconds Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_flares.drawOne`.
+/// @param viewIndex Value forwarded as `viewIndex` to `mq3.renderer.playable_flares.ensureView`.
 function drawViewport(catalog,fogCatalog,lights,projection,area,nowMilliseconds,viewIndex)
   if catalog==void then return 0 end if
   if projection==void or area==void then return fail("projection and viewport are required") end if

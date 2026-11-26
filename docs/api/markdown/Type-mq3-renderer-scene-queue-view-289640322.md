@@ -9,8 +9,10 @@
 struct View
 ```
 
+Data record for `mq3.renderer.scene_queue.View`; groups `entities`, `dlights`, `polys`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L105)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct View
 dlights
 ```
 
+Dynamic lights submitted to the current scene.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L109)
 
 <a id="field-field-mq3-renderer-scene-queue-view-entities-entities-src-mq3-renderer-scene-queue-ml-613146610"></a>
 ### entities
@@ -31,8 +35,10 @@ dlights
 entities
 ```
 
+Entity records associated with the current world, scene, or snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L107)
 
 <a id="field-field-mq3-renderer-scene-queue-view-polys-polys-src-mq3-renderer-scene-queue-ml-999731608"></a>
 ### polys
@@ -41,5 +47,7 @@ entities
 polys
 ```
 
+Polygons submitted to the current scene.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L111)

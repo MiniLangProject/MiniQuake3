@@ -8,7 +8,7 @@ const FRAMES=60
 function main(args)
   image=materials.Image(1,1,bytes([128,192,255,255]))
   layers=[sky.Layer("first",image,0,2.0,2.0,0.05,0.1,false),sky.Layer("second",image,1,3.0,2.0,0.05,0.06,true)]
-  catalog=sky.Catalog(layers,0,2,"benchmark",void)
+  catalog=sky.Catalog(layers,0,2,"benchmark",512.0,void)
   camera=viewer.camera([10.0,20.0,30.0],37.0,-11.0,0.0,0.0);basis=viewer.cameraBasis(camera)
   started=time.ticks()
   for frame=0 to FRAMES-1 reference=sky.buildBatchPrepared(catalog,basis,0,0,1280,720,1000+frame*16);if reference is error then return reference end if end for

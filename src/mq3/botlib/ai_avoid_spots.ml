@@ -6,11 +6,21 @@ package mq3.botlib.ai_avoid_spots
 import mq3.botlib.ai_resource_pools as resources
 import mq3.compat.numeric as n
 
+/// Bot-library syscall identifier for add avoid spot.
 const OP_ADD_AVOID_SPOT=574
+/// Avoidance-spot mode that removes the previously registered spots.
 const AVOID_CLEAR=0
+/// Avoidance-spot mode that always rejects paths through the spot.
 const AVOID_ALWAYS=1
+/// Avoidance-spot mode that influences path choice without blocking all movement.
 const AVOID_DONTBLOCK=2
 
+/// Apply `mq3.botlib.ai_resource_pools.moveState` while evaluating `add`.
+/// @param pools Bot resource pools; accesses `moveStates`.
+/// @param moveHandle Handle identifying the allocated bot movement state.
+/// @param origin World-space position as three coordinates.
+/// @param radius Radius used by the spatial or damage query.
+/// @param type Value used by `add` in `if type==AVOID_CLEAR then state.numAvoidSpots=0`.
 function add(pools,moveHandle,origin,radius,type)
   state=resources.moveState(pools,moveHandle);if state==void then return 0 end if
   if type==AVOID_CLEAR then state.numAvoidSpots=0;return 0 end if

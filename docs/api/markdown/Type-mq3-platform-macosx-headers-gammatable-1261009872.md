@@ -9,8 +9,10 @@
 struct GammaTable
 ```
 
+Data record for `mq3.platform.macosx_headers.GammaTable`; groups `display`, `tableSize`, `red`, `blue`, `green`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct GammaTable
 blue
 ```
 
+Blue-channel gamma-ramp samples.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L50)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-display-display-src-mq3-platform-macosx-headers-ml-1106672698"></a>
 ### display
@@ -31,8 +35,10 @@ blue
 display
 ```
 
+Display identifier used for video and gamma operations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L44)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-green-green-src-mq3-platform-macosx-headers-ml-1000066546"></a>
 ### green
@@ -41,8 +47,10 @@ display
 green
 ```
 
+Green-channel gamma-ramp samples.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L52)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-red-red-src-mq3-platform-macosx-headers-ml-135517406"></a>
 ### red
@@ -51,8 +59,10 @@ green
 red
 ```
 
+Red-channel gamma-ramp samples.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L48)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-tablesize-tablesize-src-mq3-platform-macosx-headers-ml-1213148646"></a>
 ### tableSize
@@ -61,5 +71,7 @@ red
 tableSize
 ```
 
+Number of samples in each gamma-ramp channel.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L46)

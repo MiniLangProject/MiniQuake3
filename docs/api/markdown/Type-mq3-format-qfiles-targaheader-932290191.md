@@ -9,8 +9,10 @@
 struct TargaHeader
 ```
 
+TargaHeader record for format.qfiles, containing `idLength`, `colormapType`, `imageType`, `colormapIndex`, `colormapLength`, `colormapSize`, and 6 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L212)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TargaHeader
 attributes
 ```
 
+TGA descriptor bits controlling orientation and attribute depth.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L236)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormapindex-colormapindex-src-mq3-format-qfiles-ml-1483399727"></a>
 ### colormapIndex
@@ -31,8 +35,10 @@ attributes
 colormapIndex
 ```
 
+Index of the first entry in the TGA color map.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L220)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormaplength-colormaplength-src-mq3-format-qfiles-ml-2053006261"></a>
 ### colormapLength
@@ -41,8 +47,10 @@ colormapIndex
 colormapLength
 ```
 
+Number of entries in the TGA color map.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L222)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormapsize-colormapsize-src-mq3-format-qfiles-ml-954553195"></a>
 ### colormapSize
@@ -51,8 +59,10 @@ colormapLength
 colormapSize
 ```
 
+Bits stored for each entry in the TGA color map.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L224)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormaptype-colormaptype-src-mq3-format-qfiles-ml-41891713"></a>
 ### colormapType
@@ -61,8 +71,10 @@ colormapSize
 colormapType
 ```
 
+TGA color-map presence flag.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L216)
 
 <a id="field-field-mq3-format-qfiles-targaheader-height-height-src-mq3-format-qfiles-ml-487434265"></a>
 ### height
@@ -71,8 +83,10 @@ colormapType
 height
 ```
 
+Image height in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L232)
 
 <a id="field-field-mq3-format-qfiles-targaheader-idlength-idlength-src-mq3-format-qfiles-ml-730729469"></a>
 ### idLength
@@ -81,8 +95,10 @@ height
 idLength
 ```
 
+Length in bytes of the TGA image-identification string.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L214)
 
 <a id="field-field-mq3-format-qfiles-targaheader-imagetype-imagetype-src-mq3-format-qfiles-ml-56715519"></a>
 ### imageType
@@ -91,8 +107,10 @@ idLength
 imageType
 ```
 
+TGA image encoding type.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L218)
 
 <a id="field-field-mq3-format-qfiles-targaheader-pixelsize-pixelsize-src-mq3-format-qfiles-ml-602234415"></a>
 ### pixelSize
@@ -101,8 +119,10 @@ imageType
 pixelSize
 ```
 
+Bits stored for each TGA image pixel.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L234)
 
 <a id="field-field-mq3-format-qfiles-targaheader-width-width-src-mq3-format-qfiles-ml-1768248643"></a>
 ### width
@@ -111,8 +131,10 @@ pixelSize
 width
 ```
 
+Image width in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L230)
 
 <a id="field-field-mq3-format-qfiles-targaheader-xorigin-xorigin-src-mq3-format-qfiles-ml-1017942855"></a>
 ### xOrigin
@@ -121,8 +143,10 @@ width
 xOrigin
 ```
 
+Horizontal image-origin coordinate stored in the TGA header.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L226)
 
 <a id="field-field-mq3-format-qfiles-targaheader-yorigin-yorigin-src-mq3-format-qfiles-ml-1364125443"></a>
 ### yOrigin
@@ -131,5 +155,7 @@ xOrigin
 yOrigin
 ```
 
+Vertical image-origin coordinate stored in the TGA header.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L228)

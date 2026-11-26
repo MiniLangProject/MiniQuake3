@@ -9,32 +9,125 @@ import mq3.compat.numeric as numeric
 import std.array as arrays
 import mq3.renderer.playable_dynamic_lights as dynamicLights
 
+/// Duration or scheduling interval in milliseconds controlling trail step.
 const TRAIL_STEP_MILLISECONDS=50
+/// Duration or scheduling interval in milliseconds controlling rocket trail.
 const ROCKET_TRAIL_MILLISECONDS=2000
+/// Duration or scheduling interval in milliseconds controlling grenade trail.
 const GRENADE_TRAIL_MILLISECONDS=700
+/// Duration or scheduling interval in milliseconds controlling plasma trail.
 const PLASMA_TRAIL_MILLISECONDS=600
+/// Radius used by the rocket's smoke-trail effect.
 const ROCKET_TRAIL_RADIUS=64.0
+/// Radius used by the grenade's smoke-trail effect.
 const GRENADE_TRAIL_RADIUS=32.0
+/// Radius used by the plasma projectile's trail effect.
 const PLASMA_TRAIL_RADIUS=4.0
+/// World-space radius of the dynamic light attached to a rocket.
 const ROCKET_DLIGHT_RADIUS=200.0
+/// World-space radius of the dynamic light emitted by an explosion.
 const EXPLOSION_DLIGHT_RADIUS=300.0
+/// Effect command kind selecting the puff rendering operation.
 const COMMAND_PUFF=1
+/// Effect command kind selecting the light rendering operation.
 const COMMAND_LIGHT=2
+/// Capacity limit for the puffs collection or bounded storage used by this client module.
 const MAX_PUFFS=512
 
-struct Profile smoke radius lifetime flyingLight impactLight impactLifetime red green blue end struct
-struct Puff entityId style origin bornAt expiresAt radius end struct
-struct Tracker entityId style position sampledAt nextPuffAt seenAt end struct
-struct State puffs trackers end struct
-struct Command kind center radius red green blue end struct
+/// Stores playable projectile fx profile record, including `smoke`, `radius`, `lifetime`, `flyingLight`, `impactLight`, `impactLifetime` and additional values.
+struct Profile
+  /// When constructing this record, `profile` supplies `true` for this member.
+  smoke
+  /// Initial world-space radius assigned to trail puffs for this projectile style.
+  radius
+  /// When constructing this record, `profile` supplies `ROCKET_TRAIL_MILLISECONDS` for this member.
+  lifetime
+  /// When constructing this record, `profile` supplies `ROCKET_DLIGHT_RADIUS` for this member.
+  flyingLight
+  /// When constructing this record, `profile` supplies `EXPLOSION_DLIGHT_RADIUS` for this member.
+  impactLight
+  /// When constructing this record, `profile` supplies `1000` for this member.
+  impactLifetime
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
+/// Stores playable projectile fx puff record, including `entityId`, `style`, `origin`, `bornAt`, `expiresAt`, `radius`.
+struct Puff
+  /// When constructing this record, `addPuff` supplies `entityId` for this member.
+  entityId
+  /// Projectile style retained by a smoke puff to select its trail appearance.
+  style
+  /// World-space center projected to place a projectile smoke puff on screen.
+  origin
+  /// When constructing this record, `addPuff` supplies `bornAt` for this member. Used by `update` and
+  /// `puffFraction` during subsequent processing.
+  bornAt
+  /// When constructing this record, `addPuff` supplies `bornAt+p.lifetime` for this member. Used by
+  /// `update` and `puffFraction` during subsequent processing.
+  expiresAt
+  /// Initial world-space size of this trail puff before age and perspective scaling.
+  radius
+end struct
+/// Stores playable projectile fx tracker record, including `entityId`, `style`, `position`, `sampledAt`, `nextPuffAt`, `seenAt`.
+struct Tracker
+  /// When constructing this record, `sampleFlight` supplies `snapshot.entityId` for this member.
+  entityId
+  /// Last tracked projectile style, used when generating and continuing its smoke trail.
+  style
+  /// When constructing this record, `sampleFlight` supplies `copy3(snapshot.position)` for this member.
+  position
+  /// When constructing this record, `sampleFlight` supplies `snapshot.eventAt` for this member.
+  sampledAt
+  /// When constructing this record, `sampleFlight` supplies `next` for this member.
+  nextPuffAt
+  /// When constructing this record, `sampleFlight` supplies `now` for this member. Used by `update`
+  /// during subsequent processing.
+  seenAt
+end struct
+/// Stores playable projectile fx state, including `puffs`, `trackers`.
+struct State
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `addPuff`
+  /// and `update` during subsequent processing.
+  puffs
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `trackerIndex` and `sampleFlight` during subsequent processing.
+  trackers
+end struct
+/// Stores playable projectile fx command data, including `kind`, `center`, `radius`, `red`, `green`, `blue`.
+struct Command
+  /// Smoke-effect drawing selector; puff commands are rendered as four-line diamonds around their
+  /// projected center.
+  kind
+  /// When constructing this record, `command` supplies `center` for this member.
+  center
+  /// Projected pixel radius used to draw the trail-puff or impact diamond.
+  radius
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 
+/// Creates the playable projectile fx error `7610` with diagnostic text `"preview projectile fx: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview projectile fx: "+message`.
 function fail(message) return error(7610,"preview projectile fx: "+message) end function
+/// Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable projectile fx `valid3`.
+/// @param value Sequence whose length/content is inspected by `valid3`.
 function valid3(value) return value!=void and typeof(value)=="array" and len(value)==3 end function
+/// Copies three vector components with float32 rounding for playable projectile fx.
+/// @param value Sequence read at `value[0]`, `value[1]`, `value[2]`.
 function copy3(value) return [numeric.f32(value[0]),numeric.f32(value[1]),numeric.f32(value[2])] end function
 
 // Values are taken from CG_RegisterWeapon, CG_RocketTrail, CG_PlasmaTrail and
 // CG_MissileHitWall. Grenade and plasma intentionally have no flying dlight;
 // Baseq3 only assigns missileDlight to the rocket launcher.
+/// @param style Value used by `if style==projectileView.STYLE_ROCKET then return Profile(true,ROCKET_TRAIL_RADIUS,ROCKET_TRAIL_MILLISECONDS,ROCKET_DLIGHT_RADIUS,EXPLOSION_DL...`.
 function profile(style)
   if style==projectileView.STYLE_ROCKET then return Profile(true,ROCKET_TRAIL_RADIUS,ROCKET_TRAIL_MILLISECONDS,ROCKET_DLIGHT_RADIUS,EXPLOSION_DLIGHT_RADIUS,1000,255,191,0) end if
   if style==projectileView.STYLE_GRENADE then return Profile(true,GRENADE_TRAIL_RADIUS,GRENADE_TRAIL_MILLISECONDS,0.0,EXPLOSION_DLIGHT_RADIUS,600,255,255,0) end if
@@ -43,28 +136,49 @@ function profile(style)
   return Profile(false,0.0,0,0.0,0,0,255,255,255)
 end function
 
+/// Creates a `mq3.client.playable_projectile_fx.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State([],[]) end function
 
+/// Evaluates playable projectile fx `trackerIndex` and returns `-1`, `index` according to its guard/selection conditions.
+/// @param state Record read through `state.trackers`.
+/// @param entityId Value used by `for index=0 to len(state.trackers)-1 if state.trackers[index].entityId==entityId then return index end if end for`.
 function trackerIndex(state,entityId)
   if len(state.trackers)==0 then return -1 end if
   for index=0 to len(state.trackers)-1 if state.trackers[index].entityId==entityId then return index end if end for
   return -1
 end function
 
+/// Computes `numeric.trunc32((time+TRAIL_STEP_MILLISECONDS)/TRAIL_STEP_MILLISECONDS)*TRAIL_STEP_MILLISECONDS` for playable projectile fx `alignedNext`.
+/// @param time Value used by `return numeric.trunc32((time+TRAIL_STEP_MILLISECONDS)/TRAIL_STEP_MILLISECONDS)*TRAIL_STEP_MILLISECONDS`.
 function alignedNext(time)
   return numeric.trunc32((time+TRAIL_STEP_MILLISECONDS)/TRAIL_STEP_MILLISECONDS)*TRAIL_STEP_MILLISECONDS
 end function
 
+/// Builds the playable projectile fx `interpolate` sequence from `[a[0]+(b[0]-a[0])*fraction,a[1]+(b[1]-a[1])*fraction,a[2]+(b[2]-a[2])*fraction]`.
+/// @param a Sequence read at `a[0]`, `a[1]`, `a[2]`.
+/// @param b Sequence read at `b[0]`, `b[1]`, `b[2]`.
+/// @param fraction Interpolation or blend fraction between the endpoint values.
 function interpolate(a,b,fraction)
   return [a[0]+(b[0]-a[0])*fraction,a[1]+(b[1]-a[1])*fraction,a[2]+(b[2]-a[2])*fraction]
 end function
 
+/// Updates `state.puffs` during playable projectile fx `addPuff`.
+/// @param state Mutable playable projectile fx record/storage; this routine assigns `state.puffs`.
+/// @param entityId Value used by `state.puffs=state.puffs+[Puff(entityId,style,copy3(origin),bornAt,bornAt+p.lifetime,p.radius)]`.
+/// @param style Value used by `state.puffs=state.puffs+[Puff(entityId,style,copy3(origin),bornAt,bornAt+p.lifetime,p.radius)]`.
+/// @param origin World-space origin of the entity, sound or rendered effect.
+/// @param bornAt Value used by `state.puffs=state.puffs+[Puff(entityId,style,copy3(origin),bornAt,bornAt+p.lifetime,p.radius)]`.
+/// @param p Record read through `p.lifetime`, `p.radius`.
 function addPuff(state,entityId,style,origin,bornAt,p)
   if len(state.puffs)>=MAX_PUFFS then state.puffs=arrays.slice(state.puffs,len(state.puffs)-MAX_PUFFS+1,MAX_PUFFS-1) end if
   state.puffs=state.puffs+[Puff(entityId,style,copy3(origin),bornAt,bornAt+p.lifetime,p.radius)]
   return void
 end function
 
+/// Updates `state.trackers` during playable projectile fx `sampleFlight`.
+/// @param state Mutable playable projectile fx record/storage; this routine assigns `state.trackers`.
+/// @param snapshot Record read through `snapshot.style`, `snapshot.entityId`, `snapshot.eventAt`, `snapshot.position`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function sampleFlight(state,snapshot,now)
   p=profile(snapshot.style);if not p.smoke then return void end if
   index=trackerIndex(state,snapshot.entityId)
@@ -97,6 +211,10 @@ function sampleFlight(state,snapshot,now)
   return void
 end function
 
+/// Updates `state.puffs`, `state.trackers` during playable projectile fx `update`.
+/// @param state Mutable playable projectile fx record/storage; this routine assigns `state.puffs`, `state.trackers`.
+/// @param snapshots Value used by `if state==void or snapshots==void or now<0 then return fail("state, snapshots and non-negative time are required") end if`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function update(state,snapshots,now)
   if state==void or snapshots==void or now<0 then return fail("state, snapshots and non-negative time are required") end if
   live=[];for each puff in state.puffs if now>=puff.bornAt and now<puff.expiresAt then live=live+[puff] end if end for;state.puffs=live
@@ -107,20 +225,39 @@ function update(state,snapshots,now)
   return len(state.puffs)
 end function
 
+/// Returns a smoke puff's remaining lifetime fraction, or zero before its birth and after expiration.
+/// @param puff Record read through `puff.bornAt`, `puff.expiresAt`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function puffFraction(puff,now)
   if now<puff.bornAt or now>=puff.expiresAt then return 0.0 end if
   return (puff.expiresAt-now)/(puff.expiresAt-puff.bornAt)
 end function
 
+/// Calls `mq3.compat.numeric.trunc32` from playable projectile fx `projectedRadius`. The final path returns `value`.
+/// @param worldRadius Value used by `value=numeric.trunc32(worldRadius*(width/2)/depth)`.
+/// @param depth Value used by `if depth<=0.0 then return 0 end if`.
+/// @param width Width in the coordinate space used by `projectedRadius`.
 function projectedRadius(worldRadius,depth,width)
   if depth<=0.0 then return 0 end if
   value=numeric.trunc32(worldRadius*(width/2)/depth)
   if value<2 then return 2 end if;if value>72 then return 72 end if;return value
 end function
 
+/// Creates a `mq3.client.playable_projectile_fx.Command` record. Assigns `kind` from `kind`, `center` from `center`, `radius` from `radius`, `red` from `red`.
+/// @param kind Value used to initialize `Command.kind`.
+/// @param center Value used to initialize `Command.center`.
+/// @param radius Value used to initialize `Command.radius`.
+/// @param red Value used to initialize `Command.red`.
+/// @param green Value used to initialize `Command.green`.
+/// @param blue Value used to initialize `Command.blue`.
 function command(kind,center,radius,red,green,blue) return Command(kind,center,radius,red,green,blue) end function
+/// Computes `snapshot.eventAt-(numeric.i32(snapshot.entityId*97+snapshot.eventAt*17) & 63)` for playable projectile fx `impactStart`.
+/// @param snapshot Record read through `snapshot.eventAt`, `snapshot.entityId`.
 function impactStart(snapshot) return snapshot.eventAt-(numeric.i32(snapshot.entityId*97+snapshot.eventAt*17) & 63) end function
 
+/// Calls `mq3.client.playable_projectile_fx.profile`, `mq3.client.playable_projectile_fx.impactStart`, `mq3.renderer.playable_dynamic_lights.Light` and additional helpers from playable projectile fx `worldLights`. The final path returns `result`.
+/// @param snapshots Value used by `for each snapshot in snapshots`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function worldLights(snapshots,now)
   result=[]
   for each snapshot in snapshots
@@ -132,6 +269,15 @@ function worldLights(snapshots,now)
   return result
 end function
 
+/// Calls `mq3.client.playable_viewer.projectPoint`, `mq3.client.playable_projectile_fx.puffFraction`, `mq3.client.playable_projectile_fx.projectedRadius` and additional helpers from playable projectile fx `frameCommands`. The final path returns `result`.
+/// @param state Record read through `state.puffs`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param snapshots Value used by `for each snapshot in snapshots`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param width Width in the coordinate space used by `frameCommands`.
+/// @param height Height in the coordinate space used by `frameCommands`.
+/// @param horizontalFovDegrees Horizontal camera field of view in degrees.
+/// @param nearDistance Distance from the camera to the near clipping plane.
 function frameCommands(state,camera,snapshots,now,width,height,horizontalFovDegrees,nearDistance)
   if state==void or camera==void then return [] end if
   result=[]
@@ -158,7 +304,17 @@ function frameCommands(state,camera,snapshots,now,width,height,horizontalFovDegr
   return result
 end function
 
+/// Adapts `mq3.client.playable_viewer.ScreenPoint` to playable projectile fx `point`, returning its result for `center.x+x, center.y+y, center.depth`.
+/// @param center Record read through `center.x`, `center.y`, `center.depth`.
+/// @param x Argument 1 of `mq3.client.playable_viewer.ScreenPoint`; passed as `center.x+x`.
+/// @param y Argument 2 of `mq3.client.playable_viewer.ScreenPoint`; passed as `center.y+y`.
 function point(center,x,y) return viewer.ScreenPoint(center.x+x,center.y+y,center.depth) end function
+/// Calls `mq3.platform.playable_window.drawLine`, `mq3.client.playable_projectile_fx.point` from playable projectile fx `diamond`.
+/// @param center Value used by `window.drawLine(point(center,0,0-radius),point(center,radius,0),red,green,blue)`.
+/// @param radius Radius used by the spatial or visual calculation.
+/// @param red Red color component.
+/// @param green Green color component.
+/// @param blue Blue color component.
 function diamond(center,radius,red,green,blue)
   window.drawLine(point(center,0,0-radius),point(center,radius,0),red,green,blue)
   window.drawLine(point(center,radius,0),point(center,0,radius),red,green,blue)
@@ -169,6 +325,7 @@ end function
 // Screen-space rings approximate R_AddLightToScene in the current software
 // raster path. Three attenuated rings make the radius readable without a
 // framebuffer blend or a BSP shader rewrite.
+/// @param commands Value used by `for each entry in commands`.
 function draw(commands)
   lines=0
   for each entry in commands
@@ -181,6 +338,8 @@ function draw(commands)
   end for
   return lines
 end function
+/// Calls `mq3.client.playable_projectile_fx.diamond` from playable projectile fx `drawPuffs`. The final path returns `lines`.
+/// @param commands Value used by `for each entry in commands if entry.kind==COMMAND_PUFF then diamond(entry.center,entry.radius,entry.red,entry.green,entry.blue)`.
 function drawPuffs(commands)
   lines=0;for each entry in commands if entry.kind==COMMAND_PUFF then diamond(entry.center,entry.radius,entry.red,entry.green,entry.blue);lines=lines+4 end if end for;return lines
 end function

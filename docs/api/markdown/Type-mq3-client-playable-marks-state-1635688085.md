@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores playable marks state, including `marks`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L78)
 
 ## Members
 
@@ -21,5 +23,7 @@ struct State
 marks
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `hasKey` and `append` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L81)

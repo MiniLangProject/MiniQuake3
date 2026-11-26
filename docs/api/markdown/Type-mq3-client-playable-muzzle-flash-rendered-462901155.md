@@ -9,8 +9,10 @@
 struct Rendered
 ```
 
+Stores playable muzzle flash rendered record, including `triangles`, `red`, `green`, `blue`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L30)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Rendered
 blue
 ```
 
+Blue color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L38)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-rendered-green-green-src-mq3-client-playable-muzzle-flash-ml-300824544"></a>
 ### green
@@ -31,8 +35,10 @@ blue
 green
 ```
 
+Green color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L36)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-rendered-red-red-src-mq3-client-playable-muzzle-flash-ml-1030084300"></a>
 ### red
@@ -41,8 +47,10 @@ green
 red
 ```
 
+Red color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L34)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-rendered-triangles-triangles-src-mq3-client-playable-muzzle-flash-ml-795858232"></a>
 ### triangles
@@ -51,5 +59,7 @@ red
 triangles
 ```
 
+When constructing this record, `render` supplies an empty list for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L32)

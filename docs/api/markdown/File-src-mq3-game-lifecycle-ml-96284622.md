@@ -44,13 +44,15 @@ Reachable from entry: **no**
 function attach(level, buildDate)
 ```
 
+Update `level.lifecycleState`, `level.randSeed`, `level.shaderRemaps` and `level.itemRegistered` and related state during `attach`. Return paths include `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `buildDate` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`, `spawner`, `observeFn`, `randSeed` and `shaderRemaps` and related fields. May update `level.lifecycleState`, `level.randSeed` and `level.shaderRemaps` and additional fields in place. |
+| `buildDate` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L456)
 
 <a id="function-function-mq3-game-lifecycle-checkbotspawn-function-checkbotspawn-level-src-mq3-game-lifecycle-ml-5910352"></a>
 ### checkBotSpawn
@@ -59,12 +61,14 @@ function attach(level, buildDate)
 function checkBotSpawn(level)
 ```
 
+Forward `checkBotSpawn` to `mq3.game.bot_clients.checkBotSpawn` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L326)
 
 <a id="function-function-mq3-game-lifecycle-clearclients-function-clearclients-level-src-mq3-game-lifecycle-ml-457563868"></a>
 ### clearClients
@@ -73,12 +77,14 @@ function checkBotSpawn(level)
 function clearClients(level)
 ```
 
+Apply `mq3.game.entities.resetClient` while evaluating `clearClients`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L447)
 
 <a id="function-function-mq3-game-lifecycle-clearentities-function-clearentities-level-src-mq3-game-lifecycle-ml-102269176"></a>
 ### clearEntities
@@ -87,12 +93,14 @@ function clearClients(level)
 function clearEntities(level)
 ```
 
+Set `level.scene.entities[index]` to `r` in `mq3.game.lifecycle.clearEntities`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities` and `scene`. May update `level.scene.entities[index]` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L353)
 
 <a id="function-function-mq3-game-lifecycle-clearlevel-function-clearlevel-level-src-mq3-game-lifecycle-ml-102405576"></a>
 ### clearLevel
@@ -101,12 +109,14 @@ function clearEntities(level)
 function clearLevel(level)
 ```
 
+Update `level.num_entities`, `level.time`, `level.startTime` and `level.previousTime` and related state during `clearLevel`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `time`, `startTime`, `previousTime` and `maxclients` and related fields. May update `level.num_entities`, `level.time` and `level.startTime` and additional fields in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L331)
 
 <a id="function-function-mq3-game-lifecycle-cvareffect-function-cvareffect-cvarstate-kind-index-key-value-src-mq3-game-lifecycle-ml-1313783875"></a>
 ### cvarEffect
@@ -115,16 +125,18 @@ function clearLevel(level)
 function cvarEffect(cvarState, kind, index, key, value)
 ```
 
+Apply `mq3.game.lifecycle.get` and `mq3.game.lifecycle.gamePrint` while evaluating `cvarEffect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `cvarState` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `cvarState` | `dynamic` | — | Cvar state record; accesses `level`. |
+| `kind` | `dynamic` | — | Value passed as argument 2 to `state.cvarEffectFn`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L126)
 
 <a id="function-function-mq3-game-lifecycle-defaultbotconnect-function-defaultbotconnect-level-slot-restart-src-mq3-game-lifecycle-ml-991028081"></a>
 ### defaultBotConnect
@@ -133,14 +145,16 @@ function cvarEffect(cvarState, kind, index, key, value)
 function defaultBotConnect(level, slot, restart)
 ```
 
+Forward `defaultBotConnect` to `mq3.game.bot_clients.botConnect` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.userinfoFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L306)
 
 <a id="function-function-mq3-game-lifecycle-defaultbotshutdownclient-function-defaultbotshutdownclient-level-slot-restart-src-mq3-game-lifecycle-ml-1347082285"></a>
 ### defaultBotShutdownClient
@@ -149,14 +163,16 @@ function defaultBotConnect(level, slot, restart)
 function defaultBotShutdownClient(level, slot, restart)
 ```
 
+Apply `mq3.game.lifecycle.get` while evaluating `defaultBotShutdownClient`. Return paths include `state.shutdownClientFn(state,slot,restart)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L319)
 
 <a id="function-function-mq3-game-lifecycle-defaultinitbots-function-defaultinitbots-level-restart-src-mq3-game-lifecycle-ml-1050292139"></a>
 ### defaultInitBots
@@ -165,13 +181,15 @@ function defaultBotShutdownClient(level, slot, restart)
 function defaultInitBots(level, restart)
 ```
 
+Apply `mq3.game.lifecycle.get`, `mq3.qcommon.cvar.createVm` and `mq3.qcommon.cvar.registerVm` while evaluating `defaultInitBots`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L284)
 
 <a id="function-function-mq3-game-lifecycle-defaultremovequeuedbotbegin-function-defaultremovequeuedbotbegin-level-slot-src-mq3-game-lifecycle-ml-925625176"></a>
 ### defaultRemoveQueuedBotBegin
@@ -180,13 +198,15 @@ function defaultInitBots(level, restart)
 function defaultRemoveQueuedBotBegin(level, slot)
 ```
 
+Apply `mq3.game.bot_clients.removeQueuedBotBegin` and `mq3.game.lifecycle.get` while evaluating `defaultRemoveQueuedBotBegin`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L312)
 
 <a id="function-function-mq3-game-lifecycle-entityobserve-function-entityobserve-level-kind-ent-src-mq3-game-lifecycle-ml-2140878675"></a>
 ### entityObserve
@@ -195,14 +215,16 @@ function defaultRemoveQueuedBotBegin(level, slot)
 function entityObserve(level, kind, ent)
 ```
 
+Apply `mq3.game.lifecycle.get` while evaluating `entityObserve`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities`. |
+| `kind` | `dynamic` | — | Value passed as argument 2 to `state.entityObserveFn`. |
+| `ent` | `dynamic` | — | Value passed as argument 3 to `state.entityObserveFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L148)
 
 <a id="function-function-mq3-game-lifecycle-gameprint-function-gameprint-level-text-src-mq3-game-lifecycle-ml-827805307"></a>
 ### gamePrint
@@ -211,13 +233,15 @@ function entityObserve(level, kind, ent)
 function gamePrint(level, text)
 ```
 
+Use `level.gamePrintFn` to perform `gamePrint`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L96)
 
 <a id="function-function-mq3-game-lifecycle-get-function-get-level-src-mq3-game-lifecycle-ml-1450409996"></a>
 ### get
@@ -226,12 +250,14 @@ function gamePrint(level, text)
 function get(level)
 ```
 
+Require and return the module bindings attached to the game-level lifecycle state.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L81)
 
 <a id="function-function-mq3-game-lifecycle-init-function-init-level-leveltime-randomseed-restart-entitytext-src-mq3-game-lifecycle-ml-1486170376"></a>
 ### init
@@ -240,16 +266,18 @@ function get(level)
 function init(level, levelTime, randomSeed, restart, entityText)
 ```
 
+Update `level.spawner.parser`, `level.randSeed`, `level.time` and `level.startTime` and related state during `init`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `levelTime` | `dynamic` | — |  |
-| `randomSeed` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
-| `entityText` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `randSeed`, `time`, `startTime` and `sndFry` and related fields. May update `level.spawner.parser`, `level.randSeed` and `level.time` and additional fields in place. |
+| `levelTime` | `dynamic` | — | Current server game time in milliseconds. |
+| `randomSeed` | `dynamic` | — | State used to initialize the deterministic random sequence. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
+| `entityText` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L504)
 
 <a id="function-function-mq3-game-lifecycle-integervalue-function-integervalue-level-name-src-mq3-game-lifecycle-ml-1376039701"></a>
 ### integerValue
@@ -258,13 +286,15 @@ function init(level, levelTime, randomSeed, restart, entityText)
 function integerValue(level, name)
 ```
 
+Apply `mq3.qcommon.cvar.find` and `mq3.game.lifecycle.get` while evaluating `integerValue`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L113)
 
 <a id="function-function-mq3-game-lifecycle-populationaddcommand-function-populationaddcommand-level-argv-src-mq3-game-lifecycle-ml-2112799042"></a>
 ### populationAddCommand
@@ -273,13 +303,15 @@ function integerValue(level, name)
 function populationAddCommand(level, argv)
 ```
 
+Apply `mq3.game.lifecycle.get`, `mq3.game.lifecycle.integerValue` and `mq3.qcommon.cvar.find` while evaluating `populationAddCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L268)
 
 <a id="function-function-mq3-game-lifecycle-populationallocate-function-populationallocate-level-src-mq3-game-lifecycle-ml-394985472"></a>
 ### populationAllocate
@@ -288,12 +320,14 @@ function populationAddCommand(level, argv)
 function populationAllocate(level)
 ```
 
+Apply `mq3.game.lifecycle.get` while evaluating `populationAllocate`. Return paths include `callback(level)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L260)
 
 <a id="function-function-mq3-game-lifecycle-populationconnect-function-populationconnect-level-slot-firsttime-isbot-src-mq3-game-lifecycle-ml-1127824582"></a>
 ### populationConnect
@@ -302,15 +336,17 @@ function populationAllocate(level)
 function populationConnect(level, slot, firstTime, isBot)
 ```
 
+Forward `populationConnect` to `mq3.game.g_client.ClientConnect` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `firstTime` | `dynamic` | — |  |
-| `isBot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`, `userinfoFn`, `filterPacketFn`, `cvarMaintenance` and `clients` and related fields. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `firstTime` | `dynamic` | — | Value used by `connect` in `if firstTime or level.newSession then sessions.initClient(level,client,info) end if`. |
+| `isBot` | `dynamic` | — | Value used by `connect` in `if isBot then`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L255)
 
 <a id="function-function-mq3-game-lifecycle-populationconsole-function-populationconsole-level-mode-text-src-mq3-game-lifecycle-ml-1842504268"></a>
 ### populationConsole
@@ -319,14 +355,16 @@ function populationConnect(level, slot, firstTime, isBot)
 function populationConsole(level, mode, text)
 ```
 
+Use `level.consoleCommandFn` to perform `populationConsole`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `consoleCommandFn`. |
+| `mode` | `dynamic` | — | Value passed as argument 2 to `level.consoleCommandFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L222)
 
 <a id="function-function-mq3-game-lifecycle-populationcvarset-function-populationcvarset-level-key-value-src-mq3-game-lifecycle-ml-422911226"></a>
 ### populationCvarSet
@@ -335,14 +373,16 @@ function populationConsole(level, mode, text)
 function populationCvarSet(level, key, value)
 ```
 
+Use `level.cvarSetFn` to perform `populationCvarSet`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `cvarSetFn`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Value passed as argument 3 to `level.cvarSetFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L238)
 
 <a id="function-function-mq3-game-lifecycle-populationlistcommand-function-populationlistcommand-level-argv-src-mq3-game-lifecycle-ml-1873204558"></a>
 ### populationListCommand
@@ -351,13 +391,15 @@ function populationCvarSet(level, key, value)
 function populationListCommand(level, argv)
 ```
 
+Apply `mq3.game.g_bot.Svcmd_BotList_f` and `mq3.game.lifecycle.get` while evaluating `populationListCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.printFn`. |
+| `argv` | `dynamic` | — | Not read by this implementation; retained in the `populationListCommand` signature. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L278)
 
 <a id="function-function-mq3-game-lifecycle-populationminimum-function-populationminimum-level-src-mq3-game-lifecycle-ml-1735572222"></a>
 ### populationMinimum
@@ -366,12 +408,14 @@ function populationListCommand(level, argv)
 function populationMinimum(level)
 ```
 
+Forward `populationMinimum` to `mq3.game.bot_population.checkMinimumPlayers` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `time`, `spawner` and `maxclients`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L209)
 
 <a id="function-function-mq3-game-lifecycle-populationprint-function-populationprint-level-text-src-mq3-game-lifecycle-ml-1013114725"></a>
 ### populationPrint
@@ -380,13 +424,15 @@ function populationMinimum(level)
 function populationPrint(level, text)
 ```
 
+Forward `populationPrint` to `mq3.game.lifecycle.gamePrint` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L215)
 
 <a id="function-function-mq3-game-lifecycle-populationserver-function-populationserver-level-slot-text-src-mq3-game-lifecycle-ml-895866421"></a>
 ### populationServer
@@ -395,14 +441,16 @@ function populationPrint(level, text)
 function populationServer(level, slot, text)
 ```
 
+Use `level.serverCommandFn` to perform `populationServer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `serverCommandFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L230)
 
 <a id="function-function-mq3-game-lifecycle-populationsetuserinfo-function-populationsetuserinfo-level-slot-value-src-mq3-game-lifecycle-ml-1553682655"></a>
 ### populationSetUserinfo
@@ -411,14 +459,16 @@ function populationServer(level, slot, text)
 function populationSetUserinfo(level, slot, value)
 ```
 
+Use `level.userinfoSetFn` to perform `populationSetUserinfo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `userinfoSetFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `value` | `dynamic` | — | Value passed as argument 3 to `level.userinfoSetFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L246)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotbegin-function-queuedbotbegin-level-slot-src-mq3-game-lifecycle-ml-1405605288"></a>
 ### queuedBotBegin
@@ -427,13 +477,15 @@ function populationSetUserinfo(level, slot, value)
 function queuedBotBegin(level, slot)
 ```
 
+Use `level.clientBeginFn` to perform `queuedBotBegin`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clientBeginFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L173)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotdrop-function-queuedbotdrop-level-slot-message-src-mq3-game-lifecycle-ml-946538783"></a>
 ### queuedBotDrop
@@ -442,14 +494,16 @@ function queuedBotBegin(level, slot)
 function queuedBotDrop(level, slot, message)
 ```
 
+Use `level.dropClientFn` to perform `queuedBotDrop`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `dropClientFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L181)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotprint-function-queuedbotprint-level-text-src-mq3-game-lifecycle-ml-270359101"></a>
 ### queuedBotPrint
@@ -458,13 +512,15 @@ function queuedBotDrop(level, slot, message)
 function queuedBotPrint(level, text)
 ```
 
+Forward `queuedBotPrint` to `mq3.game.lifecycle.gamePrint` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L188)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotuserinfo-function-queuedbotuserinfo-level-slot-src-mq3-game-lifecycle-ml-786508046"></a>
 ### queuedBotUserinfo
@@ -473,13 +529,15 @@ function queuedBotPrint(level, text)
 function queuedBotUserinfo(level, slot)
 ```
 
+Use `level.userinfoFn` to perform `queuedBotUserinfo`. Return paths include `level.userinfoFn(level,slot)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `userinfoFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L166)
 
 <a id="function-function-mq3-game-lifecycle-registryprint-function-registryprint-level-text-src-mq3-game-lifecycle-ml-1889840205"></a>
 ### registryPrint
@@ -488,13 +546,15 @@ function queuedBotUserinfo(level, slot)
 function registryPrint(level, text)
 ```
 
+Forward `registryPrint` to `mq3.game.lifecycle.gamePrint` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L160)
 
 <a id="function-function-mq3-game-lifecycle-resourcebotsetup-function-resourcebotsetup-level-slot-settings-restart-src-mq3-game-lifecycle-ml-906963812"></a>
 ### resourceBotSetup
@@ -503,15 +563,17 @@ function registryPrint(level, text)
 function resourceBotSetup(level, slot, settings, restart)
 ```
 
+Forward `resourceBotSetup` to `mq3.game.bot_client_resources.setupClient` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `settings` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `settings` | `dynamic` | — | Settings record; accesses `characterfile`, `skill` and `team`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L196)
 
 <a id="function-function-mq3-game-lifecycle-resourcebotshutdown-function-resourcebotshutdown-state-slot-restart-src-mq3-game-lifecycle-ml-2053185676"></a>
 ### resourceBotShutdown
@@ -520,14 +582,16 @@ function resourceBotSetup(level, slot, settings, restart)
 function resourceBotShutdown(state, slot, restart)
 ```
 
+Apply `mq3.game.bot_client_resources.shutdownClient` while evaluating `resourceBotShutdown`. Return paths include `botClientResources.shutdownClient(state.clientResources,slot,restart)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Lifecycle state; accesses `clientResources`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L203)
 
 <a id="function-function-mq3-game-lifecycle-shutdown-function-shutdown-level-restart-src-mq3-game-lifecycle-ml-405171057"></a>
 ### shutdown
@@ -536,13 +600,15 @@ function resourceBotShutdown(state, slot, restart)
 function shutdown(level, restart)
 ```
 
+Apply `mq3.game.lifecycle.get`, `mq3.game.lifecycle.gamePrint` and `mq3.game.logging.write` while evaluating `shutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `logFile`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L565)
 
 <a id="function-function-mq3-game-lifecycle-spawneffect-function-spawneffect-spawner-kind-index-key-value-src-mq3-game-lifecycle-ml-1787822708"></a>
 ### spawnEffect
@@ -551,16 +617,18 @@ function shutdown(level, restart)
 function spawnEffect(spawner, kind, index, key, value)
 ```
 
+Apply `mq3.game.lifecycle.get` and `mq3.game.logging.write` while evaluating `spawnEffect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `spawner` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `spawner` | `dynamic` | — | Spawner record; accesses `level`. |
+| `kind` | `dynamic` | — | Value passed as argument 2 to `state.spawnEffectFn`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L138)
 
 <a id="function-function-mq3-game-lifecycle-startbotframe-function-startbotframe-level-time-src-mq3-game-lifecycle-ml-239923783"></a>
 ### startBotFrame
@@ -569,13 +637,15 @@ function spawnEffect(spawner, kind, index, key, value)
 function startBotFrame(level, time)
 ```
 
+Apply `mq3.game.lifecycle.get` and `mq3.game.bot_ai_frame.startFrame` while evaluating `startBotFrame`. Return paths include `botAiFrame.startFrame(level,state.botAiFrame,time)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `lifecycleState`. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L88)
 
 - [mq3.game.lifecycle.State](Type-mq3-game-lifecycle-state-475950533.md) — struct
 <a id="function-function-mq3-game-lifecycle-vm-function-vm-level-name-src-mq3-game-lifecycle-ml-1701472661"></a>
@@ -585,10 +655,12 @@ function startBotFrame(level, time)
 function vm(level, name)
 ```
 
+Apply `mq3.game.cvars.moduleState` while evaluating `vm`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gameCvars`. |
+| `name` | `dynamic` | — | Lookup text matched against `row.vmName`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L104)

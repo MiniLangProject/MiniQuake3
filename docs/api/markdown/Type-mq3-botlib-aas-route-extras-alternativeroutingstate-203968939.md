@@ -9,8 +9,10 @@
 struct AlternativeRoutingState
 ```
 
+`AlternativeRoutingState` record for aas route extras, containing `valid`, `clusterAreas`, `numClusterAreas` and `initialized`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L75)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct AlternativeRoutingState
 clusterAreas
 ```
 
+Area indexes considered while generating alternative cluster routes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L79)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutingstate-initialized-initialized-src-mq3-botlib-aas-route-extras-ml-1426269141"></a>
 ### initialized
@@ -31,8 +35,10 @@ clusterAreas
 initialized
 ```
 
+True when alternative-route area membership and cluster working data are ready.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L83)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutingstate-numclusterareas-numclusterareas-src-mq3-botlib-aas-route-extras-ml-1687868461"></a>
 ### numClusterAreas
@@ -41,8 +47,10 @@ initialized
 numClusterAreas
 ```
 
+Number of cluster areas represented by this record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L81)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutingstate-valid-valid-src-mq3-botlib-aas-route-extras-ml-1130768053"></a>
 ### valid
@@ -51,5 +59,7 @@ numClusterAreas
 valid
 ```
 
+True when the represented entry contains usable data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L77)

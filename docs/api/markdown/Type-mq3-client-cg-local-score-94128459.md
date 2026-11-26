@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game local score record, including `client`, `score`, `ping`, `time`, `scoreFlags`, `powerUps` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L349)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Score
 accuracy
 ```
 
+Percentage of successful weapon hits reported in the scoreboard data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L363)
 
 <a id="field-field-mq3-client-cg-local-score-assistcount-assistcount-src-mq3-client-cg-local-ml-1496239999"></a>
 ### assistCount
@@ -31,8 +35,10 @@ accuracy
 assistCount
 ```
 
+Number of assist awards reported for this player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L373)
 
 <a id="field-field-mq3-client-cg-local-score-captures-captures-src-mq3-client-cg-local-ml-1590020565"></a>
 ### captures
@@ -41,8 +47,10 @@ assistCount
 captures
 ```
 
+Number of flag captures credited to this player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L375)
 
 <a id="field-field-mq3-client-cg-local-score-client-client-src-mq3-client-cg-local-ml-1555683161"></a>
 ### client
@@ -51,8 +59,10 @@ captures
 client
 ```
 
+Player slot associated with this score or client-side record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L351)
 
 <a id="field-field-mq3-client-cg-local-score-defendcount-defendcount-src-mq3-client-cg-local-ml-775359843"></a>
 ### defendCount
@@ -61,8 +71,10 @@ client
 defendCount
 ```
 
+Number of defense awards reported for this player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L371)
 
 <a id="field-field-mq3-client-cg-local-score-excellentcount-excellentcount-src-mq3-client-cg-local-ml-1007233385"></a>
 ### excellentCount
@@ -71,8 +83,10 @@ defendCount
 excellentCount
 ```
 
+Number of excellent awards reported for this player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L367)
 
 <a id="field-field-mq3-client-cg-local-score-guantletcount-guantletcount-src-mq3-client-cg-local-ml-489560159"></a>
 ### guantletCount
@@ -81,8 +95,10 @@ excellentCount
 guantletCount
 ```
 
+Number of gauntlet awards reported for this player; spelling follows the native record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L369)
 
 <a id="field-field-mq3-client-cg-local-score-impressivecount-impressivecount-src-mq3-client-cg-local-ml-1390244187"></a>
 ### impressiveCount
@@ -91,8 +107,10 @@ guantletCount
 impressiveCount
 ```
 
+Number of impressive awards reported for this player.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L365)
 
 <a id="field-field-mq3-client-cg-local-score-perfect-perfect-src-mq3-client-cg-local-ml-570474467"></a>
 ### perfect
@@ -101,8 +119,10 @@ impressiveCount
 perfect
 ```
 
+True or nonzero when the player's result qualifies as a perfect game.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L377)
 
 <a id="field-field-mq3-client-cg-local-score-ping-ping-src-mq3-client-cg-local-ml-1481015183"></a>
 ### ping
@@ -111,8 +131,10 @@ perfect
 ping
 ```
 
+Player ping value in the shared client-game scoreboard record, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L355)
 
 <a id="field-field-mq3-client-cg-local-score-powerups-powerups-src-mq3-client-cg-local-ml-124518321"></a>
 ### powerUps
@@ -121,8 +143,10 @@ ping
 powerUps
 ```
 
+Powerup bitset supplied with the scoreboard entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L361)
 
 <a id="field-field-mq3-client-cg-local-score-score-score-src-mq3-client-cg-local-ml-411286207"></a>
 ### score
@@ -131,8 +155,10 @@ powerUps
 score
 ```
 
+Player score stored in the shared client-game score-list entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L353)
 
 <a id="field-field-mq3-client-cg-local-score-scoreflags-scoreflags-src-mq3-client-cg-local-ml-778485993"></a>
 ### scoreFlags
@@ -141,8 +167,10 @@ score
 scoreFlags
 ```
 
+Flags supplied with the server's scoreboard entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L359)
 
 <a id="field-field-mq3-client-cg-local-score-team-team-src-mq3-client-cg-local-ml-1067821601"></a>
 ### team
@@ -151,8 +179,10 @@ scoreFlags
 team
 ```
 
+Team identifier retained in the native-compatible scoreboard entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L379)
 
 <a id="field-field-mq3-client-cg-local-score-time-time-src-mq3-client-cg-local-ml-963949209"></a>
 ### time
@@ -161,5 +191,7 @@ team
 time
 ```
 
+Elapsed player connection time reported by the server for scoreboard presentation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L357)

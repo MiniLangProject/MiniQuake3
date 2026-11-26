@@ -9,8 +9,10 @@
 struct Result
 ```
 
+Stores UI sp arena operation result, including `maxClientsRaised`, `selection`, `map`, `command`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L34)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Result
 command
 ```
 
+When constructing this record, `start` supplies `command` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L42)
 
 <a id="field-field-mq3-client-ui-sp-arena-result-map-map-src-mq3-client-ui-sp-arena-ml-777466444"></a>
 ### map
@@ -31,8 +35,10 @@ command
 map
 ```
 
+When constructing this record, `start` supplies `map` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L40)
 
 <a id="field-field-mq3-client-ui-sp-arena-result-maxclientsraised-maxclientsraised-src-mq3-client-ui-sp-arena-ml-1458872796"></a>
 ### maxClientsRaised
@@ -41,8 +47,10 @@ map
 maxClientsRaised
 ```
 
+When constructing this record, `start` supplies `raised` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L36)
 
 <a id="field-field-mq3-client-ui-sp-arena-result-selection-selection-src-mq3-client-ui-sp-arena-ml-609532988"></a>
 ### selection
@@ -51,5 +59,7 @@ maxClientsRaised
 selection
 ```
 
+When constructing this record, `start` supplies `level` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L38)

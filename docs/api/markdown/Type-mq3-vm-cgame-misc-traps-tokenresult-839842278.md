@@ -9,8 +9,10 @@
 struct TokenResult
 ```
 
+TokenResult record for vm.cgame_misc_traps, containing `found`, `text`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L30)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TokenResult
 found
 ```
 
+Nonzero when the requested token, source, or resource result is available.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L32)
 
 <a id="field-field-mq3-vm-cgame-misc-traps-tokenresult-text-text-src-mq3-vm-cgame-misc-traps-ml-2016654683"></a>
 ### text
@@ -31,5 +35,7 @@ found
 text
 ```
 
+Spelling of the token returned by the host token-reading operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L34)

@@ -28,11 +28,11 @@ BotAlreadySelected
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.playerTypes`, `value.gametype`, `value.playerTeams`, `value.newBotIndex` and additional values. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI start server resource. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L229)
 
 <a id="constant-constant-mq3-client-ui-start-server-bots-per-page-const-bots-per-page-16-src-mq3-client-ui-start-server-ml-1920905954"></a>
 ### BOTS_PER_PAGE
@@ -41,8 +41,10 @@ BotAlreadySelected
 const BOTS_PER_PAGE = 16
 ```
 
+Number of bot choices shown on one bot-selection page.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L26)
 
 <a id="function-function-mq3-client-ui-start-server-botselectbackevent-function-botselectbackevent-state-activated-retailactive-src-mq3-client-ui-start-server-ml-564280901"></a>
 ### botSelectBackEvent
@@ -55,12 +57,12 @@ UI_BotSelectMenu_BackEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.actions`. |
+| `activated` | `dynamic` | — | Value used by `if not activated then return false end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L339)
 
 <a id="function-function-mq3-client-ui-start-server-botselectbotevent-function-botselectbotevent-state-index-activated-src-mq3-client-ui-start-server-ml-1653408672"></a>
 ### botSelectBotEvent
@@ -73,12 +75,12 @@ UI_BotSelectMenu_BotEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.selected`. |
+| `index` | `dynamic` | — | Value tested by `not activated or index<0 or index>=16 or not state.active[index]` before the calculation continues. |
+| `activated` | `dynamic` | — | Value used by `if not activated or index<0 or index>=16 or not state.active[index] then return false end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L334)
 
 <a id="function-function-mq3-client-ui-start-server-botselectbuildlist-function-botselectbuildlist-state-bots-src-mq3-client-ui-start-server-ml-1434928179"></a>
 ### botSelectBuildList
@@ -91,11 +93,11 @@ UI_BotSelectMenu_BuildList
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bots` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.bots`, `state.sorted`, `state.modelPage`, `state.numPages`. |
+| `bots` | `dynamic` | — | Sequence whose length/content is inspected by `botSelectBuildList`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L307)
 
 <a id="function-function-mq3-client-ui-start-server-botselectcache-function-botselectcache-state-retailactive-src-mq3-client-ui-start-server-ml-1269244714"></a>
 ### botSelectCache
@@ -108,11 +110,11 @@ UI_BotSelectMenu_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.actions`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L349)
 
 <a id="function-function-mq3-client-ui-start-server-botselectdefault-function-botselectdefault-state-name-src-mq3-client-ui-start-server-ml-1852028380"></a>
 ### botSelectDefault
@@ -125,11 +127,11 @@ UI_BotSelectMenu_Default
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.selected`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI start server resource. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L319)
 
 <a id="function-function-mq3-client-ui-start-server-botselectinit-function-botselectinit-state-value-bots-selected-src-mq3-client-ui-start-server-ml-1675394279"></a>
 ### botSelectInit
@@ -142,13 +144,13 @@ UI_BotSelectMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `bots` | `dynamic` | — |  |
-| `selected` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.modelPage`. |
+| `value` | `dynamic` | — | Value used by `botSelectUpdateGrid(state,value)`. |
+| `bots` | `dynamic` | — | Value used by `botSelectBuildList(state,bots)`. |
+| `selected` | `dynamic` | — | Value used by `botSelectDefault(state,selected)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L355)
 
 <a id="function-function-mq3-client-ui-start-server-botselectleftevent-function-botselectleftevent-state-value-activated-src-mq3-client-ui-start-server-ml-1531069433"></a>
 ### botSelectLeftEvent
@@ -161,12 +163,12 @@ UI_BotSelectMenu_LeftEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.modelPage`, `state.selected`. |
+| `value` | `dynamic` | — | Value used by `botSelectUpdateGrid(state,value)`. |
+| `activated` | `dynamic` | — | Value used by `if activated and state.modelPage>0 then state.modelPage=state.modelPage-1`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L324)
 
 <a id="function-function-mq3-client-ui-start-server-botselectrightevent-function-botselectrightevent-state-value-activated-src-mq3-client-ui-start-server-ml-56280203"></a>
 ### botSelectRightEvent
@@ -179,12 +181,12 @@ UI_BotSelectMenu_RightEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.modelPage`, `state.selected`. |
+| `value` | `dynamic` | — | Value used by `botSelectUpdateGrid(state,value)`. |
+| `activated` | `dynamic` | — | Value used by `if activated and state.modelPage<state.numPages-1 then state.modelPage=state.modelPage+1`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L329)
 
 <a id="function-function-mq3-client-ui-start-server-botselectselectevent-function-botselectselectevent-state-value-activated-retailactive-src-mq3-client-ui-start-server-ml-1186996870"></a>
 ### botSelectSelectEvent
@@ -197,13 +199,13 @@ UI_BotSelectMenu_SelectEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.actions`. |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.newBot`, `value.newBotName`. |
+| `activated` | `dynamic` | — | Value used by `if not activated or state.selected>=len(state.sorted) then return false end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L345)
 
 <a id="function-function-mq3-client-ui-start-server-botselectupdategrid-function-botselectupdategrid-state-value-src-mq3-client-ui-start-server-ml-1247085780"></a>
 ### botSelectUpdateGrid
@@ -216,11 +218,11 @@ UI_BotSelectMenu_UpdateGrid
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.active[i]`, `state.names[i]`, `state.icons[i]`, `state.alreadySelected[i]`. |
+| `value` | `dynamic` | — | Value used by `state.alreadySelected[i]=botAlreadySelected(value,bot.name) else state.active[i]=false`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L315)
 
 <a id="function-function-mq3-client-ui-start-server-botsortcompare-function-botsortcompare-a-b-src-mq3-client-ui-start-server-ml-1630197159"></a>
 ### botSortCompare
@@ -233,11 +235,11 @@ UI_BotSelectMenu_SortCompare
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Record read through `a.name`. |
+| `b` | `dynamic` | — | Record read through `b.name`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L303)
 
 <a id="function-function-mq3-client-ui-start-server-botstate-function-botstate-src-mq3-client-ui-start-server-ml-1694716830"></a>
 ### botState
@@ -246,8 +248,10 @@ UI_BotSelectMenu_SortCompare
 function botState()
 ```
 
+Creates a `mq3.client.ui_start_server.BotState` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L162)
 
 - [mq3.client.ui_start_server.BotState](Type-mq3-client-ui-start-server-botstate-448919066.md) — struct
 <a id="function-function-mq3-client-ui-start-server-clamp-function-clamp-value-low-high-src-mq3-client-ui-start-server-ml-1390054851"></a>
@@ -257,14 +261,16 @@ function botState()
 function clamp(value, low, high)
 ```
 
+Clamps `value` to the inclusive bounds `low` and `high` for UI start server.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `low` | `dynamic` | — |  |
-| `high` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<low`, `value>high` before the calculation continues. |
+| `low` | `dynamic` | — | Lower bound used for comparison or clamping. |
+| `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L234)
 
 <a id="function-function-mq3-client-ui-start-server-emit-function-emit-actions-boundary-kind-name-value-number-retailactive-src-mq3-client-ui-start-server-ml-1214547961"></a>
 ### emit
@@ -273,18 +279,20 @@ function clamp(value, low, high)
 function emit(actions, boundary, kind, name, value, number, retailActive)
 ```
 
+Calls `mq3.client.ui_start_server.Action` from UI start server `emit`. The final path returns `actions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `actions` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `actions` | `dynamic` | — | Value used by `actions=actions+[Action(boundary,kind,name,value,number,not retailActive)]`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI start server resource. |
+| `value` | `dynamic` | — | Value used by `actions=actions+[Action(boundary,kind,name,value,number,not retailActive)]`. |
+| `number` | `dynamic` | — | Value used by `actions=actions+[Action(boundary,kind,name,value,number,not retailActive)]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L171)
 
 <a id="function-function-mq3-client-ui-start-server-gametypebits-function-gametypebits-text-src-mq3-client-ui-start-server-ml-866165391"></a>
 ### gametypeBits
@@ -297,10 +305,10 @@ GametypeBits
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `gametypeBits` in the UI start server path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L177)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-start-server-ml-124563005"></a>
 ### GT_CTF
@@ -309,8 +317,10 @@ GametypeBits
 const GT_CTF = 4
 ```
 
+Native game-type value for capture the flag, used when mapping game-mode choices into server rules and bot-slot options.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-start-server-ml-1387121249"></a>
 ### GT_FFA
@@ -319,8 +329,10 @@ const GT_CTF = 4
 const GT_FFA = 0
 ```
 
+Native game-type identifier selecting free-for-all deathmatch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-start-server-ml-451616657"></a>
 ### GT_SINGLE_PLAYER
@@ -329,8 +341,10 @@ const GT_FFA = 0
 const GT_SINGLE_PLAYER = 2
 ```
 
+Native game-type value for single-player arena progression, used when mapping game-mode choices into server rules and bot-slot options.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-team-const-gt-team-3-src-mq3-client-ui-start-server-ml-423586784"></a>
 ### GT_TEAM
@@ -339,8 +353,10 @@ const GT_SINGLE_PLAYER = 2
 const GT_TEAM = 3
 ```
 
+Native game-type value for team deathmatch, used when mapping game-mode choices into server rules and bot-slot options.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-start-server-ml-189917802"></a>
 ### GT_TOURNAMENT
@@ -349,8 +365,10 @@ const GT_TEAM = 3
 const GT_TOURNAMENT = 1
 ```
 
+Native game-type value for one-on-one tournament play, used when mapping game-mode choices into server rules and bot-slot options.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-start-server-maps-per-page-const-maps-per-page-4-src-mq3-client-ui-start-server-ml-1473917485"></a>
 ### MAPS_PER_PAGE
@@ -359,8 +377,10 @@ const GT_TOURNAMENT = 1
 const MAPS_PER_PAGE = 4
 ```
 
+Number of map choices shown on one start-server selection page.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L24)
 
 <a id="function-function-mq3-client-ui-start-server-ntrunc-function-ntrunc-value-src-mq3-client-ui-start-server-ml-1943877157"></a>
 ### ntrunc
@@ -369,12 +389,14 @@ const MAPS_PER_PAGE = 4
 function ntrunc(value)
 ```
 
+Adapts `mq3.compat.numeric.trunc32` to UI start server `ntrunc`, returning its result for `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.trunc32`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L186)
 
 <a id="function-function-mq3-client-ui-start-server-options-function-options-src-mq3-client-ui-start-server-ml-882400766"></a>
 ### options
@@ -383,8 +405,10 @@ function ntrunc(value)
 function options()
 ```
 
+Creates a `mq3.client.ui_start_server.Options` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L160)
 
 - [mq3.client.ui_start_server.Options](Type-mq3-client-ui-start-server-options-1771769706.md) — struct
 <a id="constant-constant-mq3-client-ui-start-server-player-slots-const-player-slots-12-src-mq3-client-ui-start-server-ml-555162890"></a>
@@ -394,8 +418,10 @@ function options()
 const PLAYER_SLOTS = 12
 ```
 
+Number of configurable player and bot slots exposed by the start-server UI.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="function-function-mq3-client-ui-start-server-playernamedraw-function-playernamedraw-value-index-focused-retailactive-src-mq3-client-ui-start-server-ml-353289897"></a>
 ### playerNameDraw
@@ -408,13 +434,13 @@ PlayerName_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `focused` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.actions`. |
+| `index` | `dynamic` | — | Value used by `text=value.playerNames[index]`. |
+| `focused` | `dynamic` | — | Value used by `value.actions=emit(value.actions,"ui","draw-player-name",text,str(focused),index,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L281)
 
 <a id="function-function-mq3-client-ui-start-server-remapgametype-function-remapgametype-index-src-mq3-client-ui-start-server-ml-892855352"></a>
 ### remapGametype
@@ -423,12 +449,14 @@ PlayerName_Draw
 function remapGametype(index)
 ```
 
+Builds the UI start server `remapGametype` sequence from `[GT_FFA,GT_TEAM,GT_TOURNAMENT,GT_CTF][index]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Value used by `return [GT_FFA,GT_TEAM,GT_TOURNAMENT,GT_CTF][index]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L180)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionscache-function-serveroptionscache-value-retailactive-src-mq3-client-ui-start-server-ml-859055806"></a>
 ### serverOptionsCache
@@ -441,11 +469,11 @@ ServerOptions_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.actions`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L294)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsevent-function-serveroptionsevent-value-id-activated-retailactive-src-mq3-client-ui-start-server-ml-620892408"></a>
 ### serverOptionsEvent
@@ -458,13 +486,13 @@ ServerOptions_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==23 and activated then serverOptionsStart(value,retailActive)`. |
+| `activated` | `dynamic` | — | Value used by `if id==23 and activated then serverOptionsStart(value,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L251)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsinitbotnames-function-serveroptionsinitbotnames-value-arena-bots-src-mq3-client-ui-start-server-ml-1050053124"></a>
 ### serverOptionsInitBotNames
@@ -477,12 +505,12 @@ ServerOptions_InitBotNames
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `arena` | `dynamic` | — |  |
-| `bots` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.playerNames[1]`, `value.playerNames[2]`, `value.playerNames[3]`, `value.playerTypes[3]` and additional values. |
+| `arena` | `dynamic` | — | Record read through `arena.bots`. |
+| `bots` | `dynamic` | — | Value used by `for each key in words(arena.bots) for each bot in bots if strings.equalsIgnoreCaseAscii(bot.name,key) and count<12 then value.playerNames[coun...`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L268)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsinitplayeritems-function-serveroptionsinitplayeritems-value-playername-src-mq3-client-ui-start-server-ml-1903605691"></a>
 ### serverOptionsInitPlayerItems
@@ -495,11 +523,11 @@ ServerOptions_InitPlayerItems
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `playerName` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.playerTypes`, `value.playerTypes[i]`, `value.playerTypes[0]`, `value.playerNames[0]` and additional values. |
+| `playerName` | `dynamic` | — | Player name shown in the UI or supplied to the client configuration. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L242)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionslevelshotdraw-function-serveroptionslevelshotdraw-value-retailactive-src-mq3-client-ui-start-server-ml-752743210"></a>
 ### serverOptionsLevelshotDraw
@@ -512,11 +540,11 @@ ServerOptions_LevelshotDraw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.playerNames[value.newBotIndex]`, `value.newBot`, `value.actions`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L263)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsmenuinit-function-serveroptionsmenuinit-value-multiplayer-gametype-mapname-playername-arena-bots-src-mq3-client-ui-start-server-ml-681174561"></a>
 ### serverOptionsMenuInit
@@ -529,16 +557,16 @@ ServerOptions_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `multiplayer` | `dynamic` | — |  |
-| `gametype` | `dynamic` | — |  |
-| `mapName` | `dynamic` | — |  |
-| `playerName` | `dynamic` | — |  |
-| `arena` | `dynamic` | — |  |
-| `bots` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.multiplayer`, `value.gametype`. |
+| `multiplayer` | `dynamic` | — | Value assigned to `value.multiplayer`. |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
+| `mapName` | `dynamic` | — | Map name used to select the level and its associated assets. |
+| `playerName` | `dynamic` | — | Player name shown in the UI or supplied to the client configuration. |
+| `arena` | `dynamic` | — | Value used by `serverOptionsSetMenuItems(value,mapName,playerName,arena,bots)`. |
+| `bots` | `dynamic` | — | Value used by `serverOptionsSetMenuItems(value,mapName,playerName,arena,bots)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L290)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsplayernameevent-function-serveroptionsplayernameevent-value-index-activated-retailactive-src-mq3-client-ui-start-server-ml-759716343"></a>
 ### serverOptionsPlayerNameEvent
@@ -551,13 +579,13 @@ ServerOptions_PlayerNameEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.newBotIndex`, `value.actions`. |
+| `index` | `dynamic` | — | Value assigned to `value.newBotIndex`. |
+| `activated` | `dynamic` | — | Value used by `if not activated then return false end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L257)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionssetmenuitems-function-serveroptionssetmenuitems-value-mapname-playername-arena-bots-src-mq3-client-ui-start-server-ml-764136673"></a>
 ### serverOptionsSetMenuItems
@@ -570,14 +598,14 @@ ServerOptions_SetMenuItems
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `mapName` | `dynamic` | — |  |
-| `playerName` | `dynamic` | — |  |
-| `arena` | `dynamic` | — |  |
-| `bots` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.mapName`, `value.timeLimit`, `value.fragLimit`, `value.flagLimit`. |
+| `mapName` | `dynamic` | — | Map name used to select the level and its associated assets. |
+| `playerName` | `dynamic` | — | Player name shown in the UI or supplied to the client configuration. |
+| `arena` | `dynamic` | — | Value used by `serverOptionsInitBotNames(value,arena,bots)`. |
+| `bots` | `dynamic` | — | Value used by `serverOptionsInitBotNames(value,arena,bots)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L275)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionssetplayeritems-function-serveroptionssetplayeritems-value-src-mq3-client-ui-start-server-ml-1084077533"></a>
 ### serverOptionsSetPlayerItems
@@ -590,10 +618,10 @@ ServerOptions_SetPlayerItems
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.visibleNames[i]`, `value.visibleTeams[i]`, `value.visibleNames[0]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L245)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsstart-function-serveroptionsstart-value-retailactive-src-mq3-client-ui-start-server-ml-1990947234"></a>
 ### serverOptionsStart
@@ -606,11 +634,11 @@ ServerOptions_Start
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.actions`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L238)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsstatusbar-function-serveroptionsstatusbar-src-mq3-client-ui-start-server-ml-1673773142"></a>
 ### serverOptionsStatusBar
@@ -622,7 +650,7 @@ function serverOptionsStatusBar()
 ServerOptions_StatusBar
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L259)
 
 <a id="function-function-mq3-client-ui-start-server-serverplayericon-function-serverplayericon-modelandskin-skinexists-src-mq3-client-ui-start-server-ml-326829980"></a>
 ### serverPlayerIcon
@@ -635,11 +663,11 @@ ServerPlayerIcon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `modelAndSkin` | `dynamic` | — |  |
-| `skinExists` | `dynamic` | — |  |
+| `modelAndSkin` | `dynamic` | — | Sequence whose length/content is inspected by `serverPlayerIcon`. |
+| `skinExists` | `dynamic` | — | Value used by `if not skinExists and skin!="default" then skin="default" end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L311)
 
 <a id="function-function-mq3-client-ui-start-server-startservercache-function-startservercache-state-arenas-buildscript-retailactive-src-mq3-client-ui-start-server-ml-1935638113"></a>
 ### startServerCache
@@ -652,13 +680,13 @@ StartServer_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arenas` | `dynamic` | — |  |
-| `buildScript` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.actions`. |
+| `arenas` | `dynamic` | — | Value used by `if buildScript then for each arena in arenas state.actions=emit(state.actions,"renderer","register-shader","levelshots/"+strings.toUpperAscii(...`. |
+| `buildScript` | `dynamic` | — | Value used by `if buildScript then for each arena in arenas state.actions=emit(state.actions,"renderer","register-shader","levelshots/"+strings.toUpperAscii(...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L219)
 
 <a id="function-function-mq3-client-ui-start-server-startservergametypeevent-function-startservergametypeevent-state-arenas-index-activated-src-mq3-client-ui-start-server-ml-1199711508"></a>
 ### startServerGametypeEvent
@@ -671,13 +699,13 @@ StartServer_GametypeEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arenas` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.gametype`, `state.maps`, `state.mapBits`, `state.maxPages` and additional values. |
+| `arenas` | `dynamic` | — | Value used by `for each arena in arenas bits=gametypeBits(arena.type)`. |
+| `index` | `dynamic` | — | Value assigned to `state.gametype`. |
+| `activated` | `dynamic` | — | Value used by `if not activated then return false end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L197)
 
 <a id="function-function-mq3-client-ui-start-server-startserverlevelshotdraw-function-startserverlevelshotdraw-state-slot-available-retailactive-src-mq3-client-ui-start-server-ml-757127333"></a>
 ### startServerLevelshotDraw
@@ -690,13 +718,13 @@ StartServer_LevelshotDraw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `available` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.actions`. |
+| `slot` | `dynamic` | — | Value used by `index=state.page*4+slot`. |
+| `available` | `dynamic` | — | Value used by `if not available then shader="menu/art/unknownmap" end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L209)
 
 <a id="function-function-mq3-client-ui-start-server-startservermapevent-function-startservermapevent-state-slot-activated-src-mq3-client-ui-start-server-ml-35606688"></a>
 ### startServerMapEvent
@@ -709,12 +737,12 @@ StartServer_MapEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.currentMap`. |
+| `slot` | `dynamic` | — | Value used by `index=state.page*MAPS_PER_PAGE+slot`. |
+| `activated` | `dynamic` | — | Value used by `if not activated then return false end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L191)
 
 <a id="function-function-mq3-client-ui-start-server-startservermenuevent-function-startservermenuevent-state-id-activated-retailactive-src-mq3-client-ui-start-server-ml-632429604"></a>
 ### startServerMenuEvent
@@ -727,13 +755,13 @@ StartServer_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `activated` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.page`, `state.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==15 and state.page>0 then state.page=state.page-1`. |
+| `activated` | `dynamic` | — | Value used by `if not activated then return false end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L203)
 
 <a id="function-function-mq3-client-ui-start-server-startservermenuinit-function-startservermenuinit-state-arenas-src-mq3-client-ui-start-server-ml-1448285273"></a>
 ### startServerMenuInit
@@ -746,11 +774,11 @@ StartServer_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arenas` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI start server state passed to the helper calls in `startServerMenuInit`. |
+| `arenas` | `dynamic` | — | Value used by `startServerGametypeEvent(state,arenas,0,true)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L213)
 
 <a id="function-function-mq3-client-ui-start-server-startserverupdate-function-startserverupdate-state-src-mq3-client-ui-start-server-ml-513220597"></a>
 ### startServerUpdate
@@ -763,10 +791,10 @@ StartServer_Update
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.currentMap`, `state.displayName`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L183)
 
 <a id="function-function-mq3-client-ui-start-server-startstate-function-startstate-src-mq3-client-ui-start-server-ml-1785673514"></a>
 ### startState
@@ -775,8 +803,10 @@ StartServer_Update
 function startState()
 ```
 
+Creates a `mq3.client.ui_start_server.StartState` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L158)
 
 - [mq3.client.ui_start_server.StartState](Type-mq3-client-ui-start-server-startstate-1227913597.md) — struct
 <a id="function-function-mq3-client-ui-start-server-uibotselectmenu-function-uibotselectmenu-state-value-bots-selected-retailactive-src-mq3-client-ui-start-server-ml-2000382258"></a>
@@ -790,14 +820,14 @@ UI_BotSelectMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `bots` | `dynamic` | — |  |
-| `selected` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.actions`. |
+| `value` | `dynamic` | — | Value used by `botSelectInit(state,value,bots,selected)`. |
+| `bots` | `dynamic` | — | Value used by `botSelectInit(state,value,bots,selected)`. |
+| `selected` | `dynamic` | — | Value used by `botSelectInit(state,value,bots,selected)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L362)
 
 <a id="function-function-mq3-client-ui-start-server-uiserveroptionsmenu-function-uiserveroptionsmenu-value-multiplayer-retailactive-src-mq3-client-ui-start-server-ml-1737352852"></a>
 ### uiServerOptionsMenu
@@ -810,12 +840,12 @@ UI_ServerOptionsMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `multiplayer` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `value.multiplayer`, `value.actions`. |
+| `multiplayer` | `dynamic` | — | Value assigned to `value.multiplayer`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L299)
 
 <a id="function-function-mq3-client-ui-start-server-uistartservermenu-function-uistartservermenu-state-arenas-multiplayer-retailactive-src-mq3-client-ui-start-server-ml-1738304804"></a>
 ### uiStartServerMenu
@@ -828,13 +858,13 @@ UI_StartServerMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arenas` | `dynamic` | — |  |
-| `multiplayer` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI start server record/storage; this routine assigns `state.multiplayer`, `state.actions`. |
+| `arenas` | `dynamic` | — | Value used by `startServerMenuInit(state,arenas)`. |
+| `multiplayer` | `dynamic` | — | Value assigned to `state.multiplayer`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L225)
 
 <a id="function-function-mq3-client-ui-start-server-words-function-words-text-src-mq3-client-ui-start-server-ml-1177162833"></a>
 ### words
@@ -843,9 +873,11 @@ UI_StartServerMenu
 function words(text)
 ```
 
+Calls `decode`, `slice` from UI start server `words`. The final path returns `effect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `words` in the UI start server path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L174)

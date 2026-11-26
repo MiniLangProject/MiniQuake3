@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Data record for `mq3.platform.win_gamma.Action`; groups `boundary`, `kind`, `ramp`, `dispatched`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L10)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Action
 boundary
 ```
 
+Host operation boundary at which this platform action is dispatched.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L12)
 
 <a id="field-field-mq3-platform-win-gamma-action-dispatched-dispatched-src-mq3-platform-win-gamma-ml-1214069629"></a>
 ### dispatched
@@ -31,8 +35,10 @@ boundary
 dispatched
 ```
 
+Whether the recorded action was delivered to its host implementation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L18)
 
 <a id="field-field-mq3-platform-win-gamma-action-kind-kind-src-mq3-platform-win-gamma-ml-1603449171"></a>
 ### kind
@@ -41,8 +47,10 @@ dispatched
 kind
 ```
 
+Gamma operation selecting a Win32 or 3Dfx ramp update or restoration.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L14)
 
 <a id="field-field-mq3-platform-win-gamma-action-ramp-ramp-src-mq3-platform-win-gamma-ml-861853639"></a>
 ### ramp
@@ -51,5 +59,7 @@ kind
 ramp
 ```
 
+Gamma-ramp samples carried by the platform action.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L16)

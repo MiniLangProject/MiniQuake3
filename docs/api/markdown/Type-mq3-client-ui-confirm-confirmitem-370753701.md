@@ -9,8 +9,10 @@
 struct ConfirmItem
 ```
 
+Stores UI confirm confirm item record, including `id`, `label`, `x`, `y`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L20)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ConfirmItem
 id
 ```
 
+Event-routing identifier of this selectable control in the confirmation dialog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L22)
 
 <a id="field-field-mq3-client-ui-confirm-confirmitem-label-label-src-mq3-client-ui-confirm-ml-549308072"></a>
 ### label
@@ -31,8 +35,10 @@ id
 label
 ```
 
+Human-readable caption painted beside or inside the UI control.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L24)
 
 <a id="field-field-mq3-client-ui-confirm-confirmitem-x-x-src-mq3-client-ui-confirm-ml-449123192"></a>
 ### x
@@ -41,8 +47,10 @@ label
 x
 ```
 
+Horizontal position of this menu control in the virtual layout used by the confirmation dialog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L26)
 
 <a id="field-field-mq3-client-ui-confirm-confirmitem-y-y-src-mq3-client-ui-confirm-ml-985330460"></a>
 ### y
@@ -51,5 +59,7 @@ x
 y
 ```
 
+Vertical position of this menu control in the virtual layout used by the confirmation dialog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L28)

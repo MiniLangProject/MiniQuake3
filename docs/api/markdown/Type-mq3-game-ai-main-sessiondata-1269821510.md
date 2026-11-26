@@ -9,8 +9,10 @@
 struct SessionData
 ```
 
+`SessionData` record for ai main, containing `decisionmaker`, `ltgtype`, `teammate` and `goal`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L69)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct SessionData
 decisionmaker
 ```
 
+Client/entity currently responsible for the bot team decisions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L71)
 
 <a id="field-field-mq3-game-ai-main-sessiondata-goal-goal-src-mq3-game-ai-main-ml-1443490911"></a>
 ### goal
@@ -31,8 +35,10 @@ decisionmaker
 goal
 ```
 
+Navigation or activation goal associated with the current task.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L77)
 
 <a id="field-field-mq3-game-ai-main-sessiondata-ltgtype-ltgtype-src-mq3-game-ai-main-ml-708437233"></a>
 ### ltgtype
@@ -41,8 +47,10 @@ goal
 ltgtype
 ```
 
+Current long-term goal category selected from the LTG_* constants.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L73)
 
 <a id="field-field-mq3-game-ai-main-sessiondata-teammate-teammate-src-mq3-game-ai-main-ml-810678009"></a>
 ### teammate
@@ -51,5 +59,7 @@ ltgtype
 teammate
 ```
 
+Teammate entity/client selected for the current cooperative task.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L75)

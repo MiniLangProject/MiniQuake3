@@ -9,8 +9,10 @@
 struct Listener
 ```
 
+Listener record for audio.qvm_playback, containing `entity`, `origin`, `axis`, `inWater`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L28)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Listener
 axis
 ```
 
+Three listener orientation axes used to spatialize sounds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L34)
 
 <a id="field-field-mq3-audio-qvm-playback-listener-entity-entity-src-mq3-audio-qvm-playback-ml-1669137397"></a>
 ### entity
@@ -31,8 +35,10 @@ axis
 entity
 ```
 
+Entity number whose local sounds are heard without attenuation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 <a id="field-field-mq3-audio-qvm-playback-listener-inwater-inwater-src-mq3-audio-qvm-playback-ml-377522583"></a>
 ### inWater
@@ -41,8 +47,10 @@ entity
 inWater
 ```
 
+True when the listener is inside water.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L36)
 
 <a id="field-field-mq3-audio-qvm-playback-listener-origin-origin-src-mq3-audio-qvm-playback-ml-272919087"></a>
 ### origin
@@ -51,5 +59,7 @@ inWater
 origin
 ```
 
+World-space XYZ position of the listener.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L32)

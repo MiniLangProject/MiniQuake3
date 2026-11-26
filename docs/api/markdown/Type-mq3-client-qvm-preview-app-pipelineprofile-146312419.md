@@ -9,8 +9,10 @@
 struct PipelineProfile
 ```
 
+Stores QVM preview app pipeline profile record, including `expansion`, `material`, `batch`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L129)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct PipelineProfile
 batch
 ```
 
+When constructing this record, `runMatchWithLoading` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L135)
 
 <a id="field-field-mq3-client-qvm-preview-app-pipelineprofile-expansion-expansion-src-mq3-client-qvm-preview-app-ml-2047983078"></a>
 ### expansion
@@ -31,8 +35,10 @@ batch
 expansion
 ```
 
+When constructing this record, `runMatchWithLoading` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L131)
 
 <a id="field-field-mq3-client-qvm-preview-app-pipelineprofile-material-material-src-mq3-client-qvm-preview-app-ml-1387108288"></a>
 ### material
@@ -41,5 +47,7 @@ expansion
 material
 ```
 
+When constructing this record, `runMatchWithLoading` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L133)

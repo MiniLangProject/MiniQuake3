@@ -9,8 +9,10 @@
 struct Node
 ```
 
+Node record for collision.world, containing `plane`, `axis`, `children`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L95)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Node
 axis
 ```
 
+Coordinate-axis index used by the optimized BSP split test.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L99)
 
 <a id="field-field-mq3-collision-world-node-children-children-src-mq3-collision-world-ml-666683477"></a>
 ### children
@@ -31,8 +35,10 @@ axis
 children
 ```
 
+Child BSP node indices; negative values encode leaf indices as minus one minus the leaf number.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L101)
 
 <a id="field-field-mq3-collision-world-node-plane-plane-src-mq3-collision-world-ml-2097012479"></a>
 ### plane
@@ -41,5 +47,7 @@ children
 plane
 ```
 
+BSP splitting plane used to classify positions between the two child nodes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L97)

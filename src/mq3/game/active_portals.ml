@@ -16,14 +16,27 @@ import mq3.game.spawn_values as values
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
 
+/// Collision-contents bit identifying corpse space or objects.
 const CONTENTS_CORPSE=headers.CONTENTS_CORPSE
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Damage-processing flag enabling no protection.
 const DAMAGE_NO_PROTECTION = 8
 
+/// Forward `PortalDie` to `mq3.game.entities.free` and return the delegated result.
+/// @param level Game-level state; accesses `scene` and `time`. May update `level.scene.entities[ent.slot]` in place.
+/// @param self Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `self.r`, `self.s` and `self.client` and additional fields in place.
+/// @param inflictor Not read by this implementation; retained in the `PortalDie` signature.
+/// @param attacker Not read by this implementation; retained in the `PortalDie` signature.
+/// @param damage Not read by this implementation; retained in the `PortalDie` signature.
+/// @param mod Not read by this implementation; retained in the `PortalDie` signature.
 function PortalDie(level,self,inflictor,attacker,damage,mod)
   return game.free(level,self)
 end function
 
+/// Find the active personal-portal destination with the matching portal identifier.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param id Value used by `findDestination` in `if ent.inuse and ent.classname == "hi_portal destination" and ent.count == id then return ent end if`.
 function findDestination(level,id)
   for index = 0 to level.num_entities-1
     ent = level.entities[index]
@@ -32,6 +45,9 @@ function findDestination(level,id)
   return void
 end function
 
+/// Set `other.client.ps.powerups[powerup]` to `0` in `mq3.game.active_portals.dropCarriedFlag`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
+/// @param other Other record; accesses `client`. May update `other.client.ps.powerups[powerup]` in place.
 function dropCarriedFlag(level,other)
   powerup = -1; item = -1
   if other.client.ps.powerups[c.PW_NEUTRALFLAG] != 0 then powerup = c.PW_NEUTRALFLAG; item = 46
@@ -41,6 +57,11 @@ function dropCarriedFlag(level,other)
   return void
 end function
 
+/// Apply `mq3.game.active_portals.dropCarriedFlag`, `mq3.game.active_portals.findDestination` and `mq3.game.teleport.player` while evaluating `PortalTouch`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
+/// @param self Entity receiving the callback; accesses `count`, `pos1` and `s`.
+/// @param other Other record; accesses `health` and `client`.
+/// @param trace Not read by this implementation; retained in the `PortalTouch` signature.
 function PortalTouch(level,self,other,trace)
   if other.health <= 0 or other.client == void then return void end if
   dropCarriedFlag(level,other)
@@ -54,11 +75,17 @@ function PortalTouch(level,self,other,trace)
   return void
 end function
 
+/// Update `self.touch`, `self.think` and `self.nextthink` during `PortalEnable`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `touch`, `think` and `nextthink`. May update `self.touch`, `self.think` and `self.nextthink` in place.
 function PortalEnable(level,self)
   self.touch = PortalTouch; self.think = game.free; self.nextthink = n.add32(level.time,120000)
   return void
 end function
 
+/// Update `level.spawner.portalSequence`, `player.client.portalID` and `player.client.ps.stats[c.STAT_HOLDABLE_ITEM]` during `DropPortalDestination`. Return paths include `ent`.
+/// @param level Game-level state; accesses `spawner` and `time`. May update `level.spawner.portalSequence` in place.
+/// @param player Player entity; accesses `s`, `r` and `client`. May update `player.client.portalID` and `player.client.ps.stats[c.STAT_HOLDABLE_ITEM]` in place.
 function DropPortalDestination(level,player)
   if level.spawner == void then return error(498,"Portal destination requires spawn state") end if
   ent = game.spawn(level); ent.s.modelindex = values.modelIndex(level.spawner,"models/powerups/teleporter/tele_exit.md3")
@@ -72,6 +99,9 @@ function DropPortalDestination(level,player)
   return ent
 end function
 
+/// Set `player.client.portalID` to `0` in `mq3.game.active_portals.DropPortalSource`. Return paths include `ent`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param player Player entity; accesses `s`, `r` and `client`. May update `player.client.portalID` in place.
 function DropPortalSource(level,player)
   if level.spawner == void then return error(498,"Portal source requires spawn state") end if
   ent = game.spawn(level); ent.s.modelindex = values.modelIndex(level.spawner,"models/powerups/teleporter/tele_enter.md3")
@@ -85,6 +115,9 @@ function DropPortalSource(level,player)
   return ent
 end function
 
+/// Apply `mq3.game.active_portals.DropPortalSource` and `mq3.game.active_portals.DropPortalDestination` while evaluating `use`. Return paths include `DropPortalDestination(level,player)`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param player Player entity; accesses `client`.
 function use(level,player)
   if player.client.portalID != 0 then return DropPortalSource(level,player) end if
   return DropPortalDestination(level,player)

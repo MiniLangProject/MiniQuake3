@@ -3,69 +3,214 @@
 package mq3.client.original_ui_session
 
 import mq3.client.keycodes as q3keys
+import mq3.platform.playable_window as window
 
+/// UI keyboard-capture mask used when coordinating keyboard ownership with the original UI virtual
+/// machine.
 const KEYCATCH_UI=2
+/// Input-capture bit that routes keyboard events to the console subsystem.
 const KEYCATCH_CONSOLE=1
+/// Engine key code for the char flag input, used by menu and client key-event handling.
 const K_CHAR_FLAG=q3keys.K_CHAR_FLAG
+/// Engine key code for the backspace input, used by menu and client key-event handling.
 const K_BACKSPACE=q3keys.K_BACKSPACE
+/// Engine key code for the uparrow input, used by menu and client key-event handling.
 const K_UPARROW=q3keys.K_UPARROW
+/// Engine key code for the downarrow input, used by menu and client key-event handling.
 const K_DOWNARROW=q3keys.K_DOWNARROW
+/// Engine key code for the leftarrow input, used by menu and client key-event handling.
 const K_LEFTARROW=q3keys.K_LEFTARROW
+/// Engine key code for the rightarrow input, used by menu and client key-event handling.
 const K_RIGHTARROW=q3keys.K_RIGHTARROW
+/// Engine key code for the alt input, used by menu and client key-event handling.
 const K_ALT=q3keys.K_ALT
+/// Engine key code for the ctrl input, used by menu and client key-event handling.
 const K_CTRL=q3keys.K_CTRL
+/// Engine key code for the shift input, used by menu and client key-event handling.
 const K_SHIFT=q3keys.K_SHIFT
+/// Engine key code for the ins input, used by menu and client key-event handling.
 const K_INS=q3keys.K_INS
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=q3keys.K_DEL
+/// Engine key code for the pgdn input, used by menu and client key-event handling.
 const K_PGDN=q3keys.K_PGDN
+/// Engine key code for the pgup input, used by menu and client key-event handling.
 const K_PGUP=q3keys.K_PGUP
+/// Engine key code for the home input, used by menu and client key-event handling.
 const K_HOME=q3keys.K_HOME
+/// Engine key code for the end input, used by menu and client key-event handling.
 const K_END=q3keys.K_END
+/// Engine key code for the f1 input, used by menu and client key-event handling.
 const K_F1=q3keys.K_F1
+/// Engine key code for the mouse1 input, used by menu and client key-event handling.
 const K_MOUSE1=q3keys.K_MOUSE1
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=q3keys.K_MOUSE2
+/// Engine key code for the mouse3 input, used by menu and client key-event handling.
 const K_MOUSE3=q3keys.K_MOUSE3
+/// Engine-to-UI menu selector for the none screen or menu state.
 const UIMENU_NONE=0
+/// Engine-to-UI menu selector for the main screen or menu state.
 const UIMENU_MAIN=1
+/// Engine-to-UI menu selector for the ingame screen or menu state.
 const UIMENU_INGAME=2
+/// Engine-to-UI menu selector for the need cd screen or menu state.
 const UIMENU_NEED_CD=3
+/// Engine-to-UI menu selector for the bad cd key screen or menu state.
 const UIMENU_BAD_CD_KEY=4
+/// Engine-to-UI menu selector for the team screen or menu state.
 const UIMENU_TEAM=5
+/// Engine-to-UI menu selector for the postgame screen or menu state.
 const UIMENU_POSTGAME=6
 
+/// Windows virtual-key code for the back input before translation to engine key codes.
 const VK_BACK=8
+/// Windows virtual-key code for the tab input before translation to engine key codes.
 const VK_TAB=9
+/// Windows virtual-key code for the return input before translation to engine key codes.
 const VK_RETURN=13
+/// Windows virtual-key code for the shift input before translation to engine key codes.
 const VK_SHIFT=16
+/// Windows virtual-key code for the control input before translation to engine key codes.
 const VK_CONTROL=17
+/// Windows virtual-key code for the menu input before translation to engine key codes.
 const VK_MENU=18
+/// Windows virtual-key code for the escape input before translation to engine key codes.
 const VK_ESCAPE=27
+/// Windows virtual-key code for the space input before translation to engine key codes.
 const VK_SPACE=32
+/// Windows virtual-key code for the prior input before translation to engine key codes.
 const VK_PRIOR=33
+/// Windows virtual-key code for the next input before translation to engine key codes.
 const VK_NEXT=34
+/// Windows virtual-key code for the end input before translation to engine key codes.
 const VK_END=35
+/// Windows virtual-key code for the home input before translation to engine key codes.
 const VK_HOME=36
+/// Windows virtual-key code for the left input before translation to engine key codes.
 const VK_LEFT=37
+/// Windows virtual-key code for the up input before translation to engine key codes.
 const VK_UP=38
+/// Windows virtual-key code for the right input before translation to engine key codes.
 const VK_RIGHT=39
+/// Windows virtual-key code for the down input before translation to engine key codes.
 const VK_DOWN=40
+/// Windows virtual-key code for the insert input before translation to engine key codes.
 const VK_INSERT=45
+/// Windows virtual-key code for the delete input before translation to engine key codes.
 const VK_DELETE=46
+/// Windows virtual-key code for the f1 input before translation to engine key codes.
 const VK_F1=112
+/// Windows virtual-key code for the lbutton input before translation to engine key codes.
 const VK_LBUTTON=1
+/// Windows virtual-key code for the rbutton input before translation to engine key codes.
 const VK_RBUTTON=2
+/// Windows virtual-key code for the mbutton input before translation to engine key codes.
 const VK_MBUTTON=4
 
-struct Binding virtualKey quakeKey normalChar shiftedChar end struct
-struct Services context catcherFn keyEventFn mouseEventFn refreshFn menuFn commandCountFn stateEventFn connectFn end struct
-struct State services inputContext keyDownFn mouseDeltaFn bindings down frameCount end struct
-struct Frame active refreshed menuOpened keyEvents charEvents mouseEvents commandStart uiCommands commandCount end struct
+/// Stores original UI session binding record, including `virtualKey`, `quakeKey`, `normalChar`, `shiftedChar`.
+struct Binding
+  /// When constructing this record, `binding` supplies `virtualKey` for this member.
+  virtualKey
+  /// When constructing this record, `binding` supplies `quakeKey` for this member.
+  quakeKey
+  /// When constructing this record, `binding` supplies `normalChar` for this member.
+  normalChar
+  /// When constructing this record, `binding` supplies `shiftedChar` for this member.
+  shiftedChar
+end struct
+/// Stores original UI session host-service callbacks, including `context`, `catcherFn`, `keyEventFn`, `mouseEventFn`, `refreshFn`, `menuFn` and additional values.
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for the original UI session
+  /// bridge.
+  context
+  /// Host callback for the catcher operation; an unset callback leaves that host operation unavailable.
+  catcherFn
+  /// Host callback for the key event operation; an unset callback leaves that host operation
+  /// unavailable.
+  keyEventFn
+  /// Host callback for the mouse event operation; an unset callback leaves that host operation
+  /// unavailable.
+  mouseEventFn
+  /// Host callback for the refresh operation; an unset callback leaves that host operation unavailable.
+  refreshFn
+  /// Host callback for the menu operation; an unset callback leaves that host operation unavailable.
+  menuFn
+  /// Host callback for the command count operation; an unset callback leaves that host operation
+  /// unavailable.
+  commandCountFn
+  /// Host callback for the state event operation; an unset callback leaves that host operation
+  /// unavailable.
+  stateEventFn
+  /// Host callback for the connect operation; an unset callback leaves that host operation unavailable.
+  connectFn
+end struct
+/// Stores original UI session state, including `services`, `inputContext`, `keyDownFn`, `mouseDeltaFn`, `bindings`, `down` and additional values.
+struct State
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// When constructing this record, `create` supplies `inputContext` for this member. Used by `frame`
+  /// during subsequent processing.
+  inputContext
+  /// Host callback for the key down operation; an unset callback leaves that host operation
+  /// unavailable.
+  keyDownFn
+  /// Host callback for the mouse delta operation; an unset callback leaves that host operation
+  /// unavailable.
+  mouseDeltaFn
+  /// Key-to-command associations available to the UI controls editor.
+  bindings
+  /// When constructing this record, `create` supplies `array(len(mapped),false)` for this member. Used
+  /// by `frame` during subsequent processing.
+  down
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `finishOriginalUiFrame` during subsequent processing.
+  frameCount
+end struct
+/// Stores original UI session frame data, including `active`, `refreshed`, `menuOpened`, `keyEvents`, `charEvents`, `mouseEvents` and additional values.
+struct Frame
+  /// When constructing this record, `finishOriginalUiFrame` supplies `active(state)` for this member.
+  active
+  /// When constructing this record, `finishOriginalUiFrame` supplies `refreshed` for this member.
+  refreshed
+  /// When constructing this record, `finishOriginalUiFrame` supplies `menuOpened` for this member.
+  menuOpened
+  /// When constructing this record, `finishOriginalUiFrame` supplies `keyEvents` for this member.
+  keyEvents
+  /// When constructing this record, `finishOriginalUiFrame` supplies `charEvents` for this member.
+  charEvents
+  /// When constructing this record, `finishOriginalUiFrame` supplies `mouseEvents` for this member.
+  mouseEvents
+  /// When constructing this record, `finishOriginalUiFrame` supplies `commandStart` for this member.
+  commandStart
+  /// When constructing this record, `finishOriginalUiFrame` supplies `count-commandStart` for this
+  /// member.
+  uiCommands
+  /// When constructing this record, `finishOriginalUiFrame` supplies `count` for this member.
+  commandCount
+end struct
 
+/// Creates the original UI session error `7686` with diagnostic text `"original UI session: "+message`.
+/// @param message Argument 2 of `error`; passed as `"original UI session: "+message`.
 function fail(message) return error(7686,"original UI session: "+message) end function
+/// Creates a `mq3.client.original_ui_session.Services` record. Assigns `context` from `context`, `catcherFn` from `catcherFn`, `keyEventFn` from `keyEventFn`, `mouseEventFn` from `mouseEventFn`.
+/// @param context Value used to initialize `Services.context`.
+/// @param catcherFn Value used to initialize `Services.catcherFn`.
+/// @param keyEventFn Value used to initialize `Services.keyEventFn`.
+/// @param mouseEventFn Value used to initialize `Services.mouseEventFn`.
+/// @param refreshFn Value used to initialize `Services.refreshFn`.
+/// @param menuFn Value used to initialize `Services.menuFn`.
+/// @param commandCountFn Value used to initialize `Services.commandCountFn`.
 function services(context,catcherFn,keyEventFn,mouseEventFn,refreshFn,menuFn,commandCountFn)
   return Services(context,catcherFn,keyEventFn,mouseEventFn,refreshFn,menuFn,commandCountFn,void,void)
 end function
+/// Creates a `mq3.client.original_ui_session.Binding` record. Assigns `virtualKey` from `virtualKey`, `quakeKey` from `quakeKey`, `normalChar` from `normalChar`, `shiftedChar` from `shiftedChar`.
+/// @param virtualKey Value used to initialize `Binding.virtualKey`.
+/// @param quakeKey Value used to initialize `Binding.quakeKey`.
+/// @param normalChar Value used to initialize `Binding.normalChar`.
+/// @param shiftedChar Value used to initialize `Binding.shiftedChar`.
 function binding(virtualKey,quakeKey,normalChar,shiftedChar) return Binding(virtualKey,quakeKey,normalChar,shiftedChar) end function
+/// Calls `mq3.client.original_ui_session.binding` from original UI session `bindings`. The final path returns `result`.
 function bindings()
   result=[binding(VK_ESCAPE,27,0,0),binding(VK_RETURN,13,0,0),binding(VK_TAB,9,0,0),binding(VK_BACK,K_BACKSPACE,0,0),binding(VK_SPACE,32,32,32),binding(VK_UP,K_UPARROW,0,0),binding(VK_DOWN,K_DOWNARROW,0,0),binding(VK_LEFT,K_LEFTARROW,0,0),binding(VK_RIGHT,K_RIGHTARROW,0,0),binding(VK_SHIFT,K_SHIFT,0,0),binding(VK_CONTROL,K_CTRL,0,0),binding(VK_MENU,K_ALT,0,0),binding(VK_INSERT,K_INS,0,0),binding(VK_DELETE,K_DEL,0,0),binding(VK_PRIOR,K_PGUP,0,0),binding(VK_NEXT,K_PGDN,0,0),binding(VK_HOME,K_HOME,0,0),binding(VK_END,K_END,0,0),binding(VK_LBUTTON,K_MOUSE1,0,0),binding(VK_RBUTTON,K_MOUSE2,0,0),binding(VK_MBUTTON,K_MOUSE3,0,0)]
   for index=0 to 11 result=result+[binding(VK_F1+index,K_F1+index,0,0)] end for
@@ -75,30 +220,67 @@ function bindings()
   result=result+[binding(186,59,59,58),binding(187,61,61,43),binding(188,44,44,60),binding(189,45,45,95),binding(190,46,46,62),binding(191,47,47,63),binding(192,96,96,126),binding(219,91,91,123),binding(220,92,92,124),binding(221,93,93,125),binding(222,39,39,34)]
   return result
 end function
+/// Calls `mq3.client.original_ui_session.bindings`, `mq3.client.original_ui_session.State` from original UI session `create`. The final path returns `State(serviceSet,inputContext,keyDownFn,mouseDeltaFn,mapped,array(len(mapped),false),0)`.
+/// @param serviceSet Record read through `serviceSet.catcherFn`, `serviceSet.keyEventFn`, `serviceSet.mouseEventFn`, `serviceSet.refreshFn` and additional values.
+/// @param inputContext Value used by `return State(serviceSet,inputContext,keyDownFn,mouseDeltaFn,mapped,array(len(mapped),false),0)`.
+/// @param keyDownFn Callback invoked by `create` for key down.
+/// @param mouseDeltaFn Callback invoked by `create` for mouse delta.
 function create(serviceSet,inputContext,keyDownFn,mouseDeltaFn)
   if serviceSet==void or serviceSet.catcherFn==void or serviceSet.keyEventFn==void or serviceSet.mouseEventFn==void or serviceSet.refreshFn==void or serviceSet.menuFn==void or serviceSet.commandCountFn==void then return fail("complete UI services are required") end if
   if keyDownFn==void or mouseDeltaFn==void then return fail("native input callbacks are required") end if
   mapped=bindings();return State(serviceSet,inputContext,keyDownFn,mouseDeltaFn,mapped,array(len(mapped),false),0)
 end function
+/// Adapts `state.services.catcherFn` to original UI session `keyCatcher`, returning its result for `state.services.context`.
+/// @param state Record read through `state.services.catcherFn`, `state.services.context`.
 function keyCatcher(state) return state.services.catcherFn(state.services.context) end function
+/// Computes `(keyCatcher(state)&KEYCATCH_UI)!=0` for original UI session `active`.
+/// @param state Shared original UI session state passed to the helper calls in `active`.
 function active(state) return (keyCatcher(state)&KEYCATCH_UI)!=0 end function
+/// Computes `active(state) and (keyCatcher(state)&KEYCATCH_CONSOLE)==0` for original UI session `acceptsInput`.
+/// @param state Shared original UI session state passed to the helper calls in `acceptsInput`.
 function acceptsInput(state) return active(state) and (keyCatcher(state)&KEYCATCH_CONSOLE)==0 end function
+/// Calls `state.services.menuFn` from original UI session `setMenu`. The final path returns `state.services.menuFn(state.services.context,menu)`.
+/// @param state Record read through `state.services.menuFn`, `state.services.context`.
+/// @param menu Value used by `if state==void or menu<UIMENU_NONE or menu>UIMENU_POSTGAME then return fail("invalid active menu") end if`.
 function setMenu(state,menu)
   if state==void or menu<UIMENU_NONE or menu>UIMENU_POSTGAME then return fail("invalid active menu") end if
   return state.services.menuFn(state.services.context,menu)
 end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openMain`, returning its result for `state, UIMENU_MAIN`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function openMain(state) return setMenu(state,UIMENU_MAIN) end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openIngame`, returning its result for `state, UIMENU_INGAME`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function openIngame(state) return setMenu(state,UIMENU_INGAME) end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openNeedCd`, returning its result for `state, UIMENU_NEED_CD`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function openNeedCd(state) return setMenu(state,UIMENU_NEED_CD) end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openBadCdKey`, returning its result for `state, UIMENU_BAD_CD_KEY`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function openBadCdKey(state) return setMenu(state,UIMENU_BAD_CD_KEY) end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openTeam`, returning its result for `state, UIMENU_TEAM`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function openTeam(state) return setMenu(state,UIMENU_TEAM) end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openPostgame`, returning its result for `state, UIMENU_POSTGAME`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function openPostgame(state) return setMenu(state,UIMENU_POSTGAME) end function
+/// Adapts `mq3.client.original_ui_session.setMenu` to original UI session `close`, returning its result for `state, UIMENU_NONE`.
+/// @param state Argument 1 of `mq3.client.original_ui_session.setMenu`.
 function close(state) return setMenu(state,UIMENU_NONE) end function
+/// Calls `state.services.connectFn` from original UI session `drawConnectScreen`. The final path returns `state.services.connectFn(state.services.context,overlay)`.
+/// @param state Record read through `state.services.connectFn`, `state.services.context`.
+/// @param overlay Value used by `return state.services.connectFn(state.services.context,overlay)`.
 function drawConnectScreen(state,overlay)
   if state==void or state.services.connectFn==void then return fail("connect-screen service is required") end if
   return state.services.connectFn(state.services.context,overlay)
 end function
 
+/// Calls `mq3.client.original_ui_session.active`, `mq3.client.original_ui_session.openIngame`, `mq3.client.original_ui_session.acceptsInput` and additional helpers from original UI session `dispatchKey`. The final path returns `sent`.
+/// @param state Record read through `state.services.keyEventFn`, `state.services.context`.
+/// @param key Key or control identifier used to select the corresponding original UI session entry.
+/// @param down Whether this event presses the key/button; false represents its release.
+/// @param character Value used by `if down and character>0 then`.
+/// @param shifted Value used by `if shifted then value=shifted end if`.
 function dispatchKey(state,key,down,character,shifted)
   result=[0,0,0]
   if key==27 and down and not active(state) then
@@ -113,6 +295,9 @@ function dispatchKey(state,key,down,character,shifted)
   return result
 end function
 
+/// Updates `state.down[index]` during original UI session `frame`.
+/// @param state Mutable original UI session record/storage; this routine assigns `state.down[index]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function frame(state,now)
   if state==void or typeof(now)!="int" or now<0 then return fail("valid state and frame time are required") end if
   keyEvents=0;charEvents=0;menuOpened=false;shifted=state.keyDownFn(state.inputContext,K_SHIFT)
@@ -132,10 +317,54 @@ function frame(state,now)
   mouseEvents=0;delta=state.mouseDeltaFn(state.inputContext)
   if delta==void or len(delta)!=2 then return fail("mouse callback must return two components") end if
   if acceptsInput(state) and (delta[0]!=0 or delta[1]!=0) then sent=state.services.mouseEventFn(state.services.context,delta[0],delta[1]);if sent is error then return sent end if;mouseEvents=1 end if
+  return finishOriginalUiFrame(state,now,menuOpened,keyEvents,charEvents,mouseEvents)
+end function
+
+/// Updates `state.frameCount` during original UI session `finishOriginalUiFrame`.
+/// @param state Mutable original UI session record/storage; this routine assigns `state.frameCount`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param menuOpened Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`.
+/// @param keyEvents Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`.
+/// @param charEvents Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`.
+/// @param mouseEvents Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`.
+function finishOriginalUiFrame(state,now,menuOpened,keyEvents,charEvents,mouseEvents)
   refreshed=false;commandStart=state.services.commandCountFn(state.services.context)
   if active(state) then
     value=state.services.refreshFn(state.services.context,now);if value is error then return value end if;refreshed=true;state.frameCount=state.frameCount+1
   end if
   count=state.services.commandCountFn(state.services.context)
   return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)
+end function
+
+// Win32 supplies key transitions, text and pointer deltas in message order.
+// Keep physical keys distinct from WM_CHAR, as in CL_KeyEvent/CL_CharEvent.
+/// @param state Record read through `state.services.stateEventFn`, `state.services.context`, `state.services.keyEventFn`, `state.services.mouseEventFn`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param events Value used by `for each event in events`.
+function frameQueued(state,now,events)
+  if state==void or typeof(now)!="int" or now<0 then return fail("valid state and frame time are required") end if
+  keyEvents=0;charEvents=0;mouseEvents=0;menuOpened=false
+  for each event in events
+    if event.type==window.INPUT_KEY then
+      key=event.value;down=event.value2!=0
+      if state.services.stateEventFn!=void then
+        observed=state.services.stateEventFn(state.services.context,key,down);if observed is error then return observed end if
+      end if
+      if acceptsInput(state) then
+        sent=state.services.keyEventFn(state.services.context,key,down);if sent is error then return sent end if
+        keyEvents=keyEvents+1
+      else if key==27 and down and not active(state) then
+        opened=openMain(state);if opened is error then return opened end if;menuOpened=true
+      end if
+    else if event.type==window.INPUT_CHAR then
+      if event.value!=96 and event.value!=126 and acceptsInput(state) then
+        sent=state.services.keyEventFn(state.services.context,event.value|K_CHAR_FLAG,true);if sent is error then return sent end if
+        charEvents=charEvents+1
+      end if
+    else if event.type==window.INPUT_MOUSE and acceptsInput(state) then
+      sent=state.services.mouseEventFn(state.services.context,event.value,event.value2);if sent is error then return sent end if
+      mouseEvents=mouseEvents+1
+    end if
+  end for
+  return finishOriginalUiFrame(state,now,menuOpened,keyEvents,charEvents,mouseEvents)
 end function

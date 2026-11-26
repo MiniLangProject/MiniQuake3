@@ -14,27 +14,48 @@ import mq3.game.spawn_values as values
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Player movement-state bit indicating follow.
 const PMF_FOLLOW = 4096
+/// Player movement-state bit indicating scoreboard.
 const PMF_SCOREBOARD = 8192
+/// Network entity-flag bit indicating player event.
 const EF_PLAYER_EVENT = 0x00000010
+/// Network entity-flag bit indicating connection.
 const EF_CONNECTION = 0x00002000
+/// Network entity-flag bit indicating voted.
 const EF_VOTED = 0x00004000
+/// Network entity-flag bit indicating teamvoted.
 const EF_TEAMVOTED = 0x00080000
+/// Game entity-flag bit enabling or marking godmode.
 const FL_GODMODE = 0x00000010
+/// Collision-contents bit identifying lava space or objects.
 const CONTENTS_LAVA=headers.CONTENTS_LAVA
+/// Collision-contents bit identifying slime space or objects.
 const CONTENTS_SLIME=headers.CONTENTS_SLIME
+/// Server entity-flag bit controlling notsingleclient.
 const SVF_NOTSINGLECLIENT = 0x00000800
+/// Damage-processing flag enabling no armor.
 const DAMAGE_NO_ARMOR = 0x00000002
+/// Audio channel identifier selecting voice playback.
 const CHAN_VOICE = 2
+/// Spectator-state identifier selecting free.
 const SPECTATOR_FREE = 1
+/// Spectator-state identifier selecting follow.
 const SPECTATOR_FOLLOW = 2
+/// Spectator-state identifier selecting scoreboard.
 const SPECTATOR_SCOREBOARD = 3
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
 
+/// Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.
+/// @param level Game-level state; accesses `spawner`.
 function missionpack(level)
   return level.spawner != void and level.spawner.missionpack
 end function
 
+/// Apply `mq3.game.client_frame.missionpack` and `mq3.game.constants.missionpackItemTag` while evaluating `persistentTag`. Return paths include `c.missionpackItemTag(index)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param client Client state; accesses `ps`.
 function persistentTag(level,client)
   if not missionpack(level) then return c.PW_NONE end if
   index = client.ps.stats[STAT_PERSISTANT_POWERUP]
@@ -42,6 +63,9 @@ function persistentTag(level,client)
   return c.missionpackItemTag(index)
 end function
 
+/// Set `player.pain_debounce_time` to `n.add32(level.time,700)` in `mq3.game.client_frame.damageFeedback`.
+/// @param level Game-level state; accesses `time`.
+/// @param player Player entity; accesses `client`, `pain_debounce_time`, `flags` and `health`. May update `player.pain_debounce_time` in place.
 function damageFeedback(level,player)
   client = player.client
   if client.ps.pm_type == c.PM_DEAD then return void end if
@@ -64,11 +88,17 @@ function damageFeedback(level,player)
   return void
 end function
 
+/// Apply `mq3.game.spawn_values.soundIndex` while evaluating `soundIndex`. Return paths include `values.soundIndex(level.spawner,name)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param name Name used to identify the requested entry.
 function soundIndex(level,name)
   if level.spawner == void then return error(498,"ClientEndFrame requires game spawn state for sounds") end if
   return values.soundIndex(level.spawner,name)
 end function
 
+/// Update `ent.damage` and `ent.pain_debounce_time` during `worldEffects`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `client`, `waterlevel`, `health`, `damage` and `pain_debounce_time` and related fields. May update `ent.damage` and `ent.pain_debounce_time` in place.
 function worldEffects(level,ent)
   client = ent.client
   if client.noclip then client.airOutTime = n.add32(level.time,12000); return void end if
@@ -100,12 +130,18 @@ function worldEffects(level,ent)
   return void
 end function
 
+/// Set `ent.client.ps.loopSound` to `level.sndFry` and `ent.client.ps.loopSound` to `0` in `mq3.game.client_frame.setClientSound`.
+/// @param level Game-level state; accesses `sndFry`.
+/// @param ent Game entity; accesses `waterlevel`, `watertype` and `client`. May update `ent.client.ps.loopSound` in place.
 function setClientSound(level,ent)
   if ent.waterlevel != 0 and (ent.watertype & (CONTENTS_LAVA | CONTENTS_SLIME)) != 0 then ent.client.ps.loopSound = level.sndFry
   else ent.client.ps.loopSound = 0 end if
   return void
 end function
 
+/// Set `ps.externalEvent` to `0` and `ps.externalEvent` to `external` in `mq3.game.client_frame.sendPendingPredictableEvents`.
+/// @param level Game-level state; accesses `time`.
+/// @param ps Player movement state; accesses `entityEventSequence`, `eventSequence`, `events`, `externalEvent` and `origin` and related fields. May update `ps.externalEvent` in place.
 function sendPendingPredictableEvents(level,ps)
   if ps.entityEventSequence >= ps.eventSequence then return void end if
   seq = ps.entityEventSequence & 1; event = ps.events[seq] | ((ps.entityEventSequence & 3) << 8)
@@ -118,6 +154,9 @@ function sendPendingPredictableEvents(level,ps)
   return void
 end function
 
+/// Use `level.clientBeginFn` to perform `spectatorEndFrame`.
+/// @param level Game-level state; accesses `follow1`, `follow2`, `clients` and `clientBeginFn`.
+/// @param ent Game entity; accesses `client` and `slot`.
 function spectatorEndFrame(level,ent)
   client = ent.client
   if client.spectatorState == SPECTATOR_FOLLOW then
@@ -141,6 +180,9 @@ function spectatorEndFrame(level,ent)
   return void
 end function
 
+/// Set `ent.s.eFlags` to `ent.s.eFlags | EF_CONNECTION` and `ent.s.eFlags` to `ent.s.eFlags & ~EF_CONNECTION` in `mq3.game.client_frame.endFrame`.
+/// @param level Game-level state; accesses `time`, `intermissiontime` and `smoothClients`.
+/// @param ent Game entity; accesses `client`, `s` and `health`. May update `ent.s.eFlags` in place.
 function endFrame(level,ent)
   client = ent.client
   if client.team == c.TEAM_SPECTATOR then return spectatorEndFrame(level,ent) end if

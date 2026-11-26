@@ -27,15 +27,17 @@ Reachable from entry: **no**
 function pushTouch(level, self, other, trace)
 ```
 
+Apply `mq3.game.jumppad.touch` while evaluating `pushTouch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Not read by this implementation; retained in the `pushTouch` signature. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `other` | `dynamic` | — | Other record; accesses `client`. |
+| `trace` | `dynamic` | — | Not read by this implementation; retained in the `pushTouch` signature. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L18)
 
 <a id="function-function-mq3-game-triggers-teleportertouch-function-teleportertouch-level-self-other-trace-src-mq3-game-triggers-ml-77343593"></a>
 ### teleporterTouch
@@ -44,15 +46,17 @@ function pushTouch(level, self, other, trace)
 function teleporterTouch(level, self, other, trace)
 ```
 
+Apply `mq3.game.entities.pickTarget`, `mq3.game.teleport.player` and `mq3.game.entities.diagnostic` while evaluating `teleporterTouch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`, `num_entities` and `entities`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `spawnflags` and `target`. |
+| `other` | `dynamic` | — | Other record; accesses `client`. |
+| `trace` | `dynamic` | — | Not read by this implementation; retained in the `teleporterTouch` signature. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L27)
 
 <a id="function-function-mq3-game-triggers-touch-function-touch-level-ent-src-mq3-game-triggers-ml-187947799"></a>
 ### touch
@@ -61,10 +65,12 @@ function teleporterTouch(level, self, other, trace)
 function touch(level, ent)
 ```
 
+Set `ent.client.ps.jumppad_frame` to `0` and `ent.client.ps.jumppad_ent` to `0` in `mq3.game.triggers.touch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene`, `entities`, `doorTouch` and `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `r` and `touch`. May update `ent.client.ps.jumppad_frame` and `ent.client.ps.jumppad_ent` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L38)

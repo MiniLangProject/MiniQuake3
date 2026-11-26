@@ -9,8 +9,10 @@
 struct LoadedSkin
 ```
 
+Data record for `mq3.renderer.qvm_scene_materials.LoadedSkin`; groups `handle`, `skin`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L16)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LoadedSkin
 handle
 ```
 
+Resource handle used to identify the registered or opened object.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L18)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-loadedskin-skin-skin-src-mq3-renderer-qvm-scene-materials-ml-725192503"></a>
 ### skin
@@ -31,5 +35,7 @@ handle
 skin
 ```
 
+Parsed skin definition assigning shaders to model surfaces.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_materials.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L20)

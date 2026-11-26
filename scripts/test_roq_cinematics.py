@@ -17,7 +17,7 @@ def main():
     args = parser.parse_args()
     contracts = build("tests/roq_contracts.ml", "roq_contracts.exe")
     value = run([contracts], ROOT / "build").strip()
-    if value != "PASS: 12 RoQ media contracts":
+    if value != "PASS: 13 RoQ media contracts":
         raise RuntimeError(value)
     print(value)
     if args.data_root:

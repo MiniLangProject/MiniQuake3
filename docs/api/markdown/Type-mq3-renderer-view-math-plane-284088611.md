@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+Data record for `mq3.renderer.view_math.Plane`; groups `normal`, `dist`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L18)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Plane
 dist
 ```
 
+Signed plane distance measured along its normal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L22)
 
 <a id="field-field-mq3-renderer-view-math-plane-normal-normal-src-mq3-renderer-view-math-ml-1820675107"></a>
 ### normal
@@ -31,5 +35,7 @@ dist
 normal
 ```
 
+Plane normal transformed between the object's local basis and world space.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L20)

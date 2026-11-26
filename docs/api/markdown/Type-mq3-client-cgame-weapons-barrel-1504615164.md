@@ -9,8 +9,10 @@
 struct Barrel
 ```
 
+Stores client game weapons barrel record, including `angle`, `time`, `spinning`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L195)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Barrel
 angle
 ```
 
+When constructing this record, `barrel` supplies `0.0` for this member. Used by `machinegunSpinAngle` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L198)
 
 <a id="field-field-mq3-client-cgame-weapons-barrel-spinning-spinning-src-mq3-client-cgame-weapons-ml-1952013129"></a>
 ### spinning
@@ -31,8 +35,10 @@ angle
 spinning
 ```
 
+When constructing this record, `barrel` supplies `false` for this member. Used by `machinegunSpinAngle` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L204)
 
 <a id="field-field-mq3-client-cgame-weapons-barrel-time-time-src-mq3-client-cgame-weapons-ml-280196447"></a>
 ### time
@@ -41,5 +47,7 @@ spinning
 time
 ```
 
+Timestamp in milliseconds of the last weapon-barrel spin-state change, paired with the stored angle.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L201)

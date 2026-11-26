@@ -5,57 +5,183 @@ package mq3.format.md3
 
 import mq3.compat.numeric as n
 import mq3.renderer.surface_md3 as md3Mesh
+import std.string as strings
 
+/// Magic value identifying an MD3 animated model.
 const MD3_IDENT=0x33504449
+/// Serialized format or interface version expected by MD3.
 const MD3_VERSION=15
+/// Serialized byte size of header in this file format.
 const HEADER_SIZE=108
+/// Serialized byte size of frame in this file format.
 const FRAME_SIZE=56
+/// Serialized byte size of tag in this file format.
 const TAG_SIZE=112
+/// Serialized byte size of surface in this file format.
 const SURFACE_SIZE=108
+/// Serialized byte size of triangle in this file format.
 const TRIANGLE_SIZE=12
+/// Serialized byte size of shader in this file format.
 const SHADER_SIZE=68
+/// Serialized byte size of st in this file format.
 const ST_SIZE=8
+/// Serialized byte size of vertex in this file format.
 const VERTEX_SIZE=8
 
+/// Maximum number of animation frames accepted by the MD3 model loader.
 const MAX_FRAMES=1024
+/// Maximum number of attachment tags accepted per MD3 frame.
 const MAX_TAGS=256
+/// Maximum number of mesh surfaces accepted in one MD3 model.
 const MAX_SURFACES=128
+/// Maximum number of shader references accepted for one MD3 surface.
 const MAX_SHADERS=256
+/// Maximum number of vertices accepted for one MD3 surface.
 const MAX_VERTS=4096
+/// Maximum number of triangles accepted for one MD3 surface.
 const MAX_TRIANGLES=8192
 
-struct Frame mins maxs localOrigin radius name end struct
-struct Tag name origin axis end struct
-struct Surface name shaders mesh end struct
-struct Model name flags numFrames numTags numSurfaces numSkins frames tags surfaces bounds end struct
-struct RenderTriangle positions texCoords normals surfaceIndex shaderName end struct
+/// Frame record for format.md3, containing `mins`, `maxs`, `localOrigin`, `radius`, `name`.
+struct Frame
+  /// Minimum XYZ corner of all model surfaces in this MD3 animation frame.
+  mins
+  /// Maximum XYZ corner of all model surfaces in this MD3 animation frame.
+  maxs
+  /// Model-local center used for the frame bounding sphere.
+  localOrigin
+  /// Model-local bounding-sphere radius stored for this animation frame.
+  radius
+  /// Frame name retained from the MD3 animation record.
+  name
+end struct
+/// Tag record for format.md3, containing `name`, `origin`, `axis`.
+struct Tag
+  /// Attachment-tag name used to connect player-model parts.
+  name
+  /// Model-space position of this attachment tag.
+  origin
+  /// Three orientation axes defining the local coordinate frame.
+  axis
+end struct
+/// Surface record for format.md3, containing `name`, `shaders`, `mesh`.
+struct Surface
+  /// Model surface name used by skin and shader lookup.
+  name
+  /// Shader-name strings read from this surface's MD3 shader records; shader definitions are resolved separately.
+  shaders
+  /// Triangle geometry and per-frame vertices for this surface.
+  mesh
+end struct
+/// Model record for format.md3, containing `name`, `flags`, `numFrames`, `numTags`, `numSurfaces`, `numSkins`, and 4 further fields.
+struct Model
+  /// Name retained from the MD3 model header.
+  name
+  /// Raw model flags retained from the MD3 header.
+  flags
+  /// Number of animation frames represented by this model, surface, or animation.
+  numFrames
+  /// Number of attachment tags stored for each model frame.
+  numTags
+  /// Number of surfaces described by this model or file record.
+  numSurfaces
+  /// Number of skin slots declared by the model header.
+  numSkins
+  /// Animation-frame bounds and origin data.
+  frames
+  /// Attachment Tag records indexed first by animation frame, then by tag number within that frame.
+  tags
+  /// Surface meshes and their shader assignments.
+  surfaces
+  /// Model-local minimum and maximum corners spanning the bounds of every animation frame.
+  bounds
+end struct
+/// RenderTriangle record for format.md3, containing `positions`, `texCoords`, `normals`, `surfaceIndex`, `shaderName`.
+struct RenderTriangle
+  /// Three interpolated model-local vertex positions; renderTrianglesCached does not apply a world transform.
+  positions
+  /// Texture coordinates associated with the represented vertex or triangle.
+  texCoords
+  /// Interpolated normal vectors at the generated triangle vertices.
+  normals
+  /// Index of the model surface from which this render triangle was produced.
+  surfaceIndex
+  /// Asset name of the shader used to render this surface.
+  shaderName
+end struct
 
+/// Create the format.md3 error for `fail` with 7500 and the supplied diagnostic text.
+/// @param message Message used in `("MD3: " + message)` and `error(7500, ("MD3: " + message))`.
 function fail(message) return error(7500,"MD3: "+message) end function
+/// Test span in format.md3; the normal completion returns `true`.
+/// @param offset Offset used in `(offset < 0)` and `(offset > limit)`.
+/// @param size Size used in `(size < 0)` and `(size > (limit - offset))`.
+/// @param limit Limit used in `(offset > limit)` and `(limit - offset)`.
 function span(offset,size,limit)
   if offset<0 or size<0 or offset>limit or size>limit-offset then return fail("section outside file") end if
   return true
 end function
+/// Compute i 32 in format.md3; the normal completion returns `value`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readI32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readI32`.
 function i32(data,offset)
   value=n.readI32(data,offset);if value is error then return fail("truncated integer") end if;return value
 end function
+/// Compute u 16 in format.md3; the normal completion returns `(data[offset] | (data[(offset + 1)] << 8))`.
+/// @param data Data used in `len(data)` and `data[offset]`.
+/// @param offset Zero-based index into `data`.
 function u16(data,offset)
   if offset<0 or offset+2>len(data) then return fail("truncated word") end if
   return data[offset]|(data[offset+1]<<8)
 end function
+/// Compute f 32 in format.md3; the normal completion returns `n.bitsFloat(value)`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readU32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readU32`.
 function f32(data,offset)
   value=n.readU32(data,offset);if value is error then return fail("truncated float") end if;return n.bitsFloat(value)
 end function
+/// Compute format.md3.vec3 as `[f32(data, offset), f32(data, (offset + 4)), f32(data, (offset + 8))]`.
+/// @param data Data passed as `data` to `mq3.format.md3.f32`.
+/// @param offset Offset passed as `offset` to `mq3.format.md3.f32`.
 function vec3(data,offset) return [f32(data,offset),f32(data,offset+4),f32(data,offset+8)] end function
+/// Compute fixed string in format.md3; the normal completion returns `decode(slice(data, offset, count))`.
+/// @param data Data used in `len(data)` and `data[(offset + count)]`.
+/// @param offset Offset passed as `offset` to `mq3.format.md3.span`.
+/// @param capacity Size passed as `size` to `mq3.format.md3.span`.
 function fixedString(data,offset,capacity)
   check=span(offset,capacity,len(data));if check is error then return check end if
   count=0;while count<capacity and data[offset+count]!=0 count=count+1 end while
   return decode(slice(data,offset,count))
 end function
 
-// Both representations pass through the identical complete parser/validation.
-// Public load keeps its eagerly decoded reference frames unchanged.
+// The renderer strips a trailing LOD suffix before resolving skin mappings.
+/// @param model Record exposing `surfaces`.
+function normalizeSurfaceNames(model)
+  for each surface in model.surfaces
+    name=strings.toLowerAscii(surface.name);raw=bytes(name)
+    if len(raw)>2 and raw[len(raw)-2]==95 then name=decode(slice(raw,0,len(raw)-2)) end if
+    surface.name=name
+  end for
+  return model
+end function
+
+/// Parse a version-15 MD3 and materialize PackedVertex records for every surface frame.
+/// Returns the validated Model, including tag-only models with no surfaces,
+/// or a format error. Positions remain quantized in the surface frame records
+/// until renderer interpolation converts them to model-space coordinates.
+/// @param data Complete MD3 file bytes.
 function load(data) return loadMode(data,false) end function
+/// Parse the same MD3 format while retaining surface frames as packed byte buffers.
+/// Performs the same header, span, count, and triangle-index validation as load,
+/// but leaves the per-frame vertex-record slots empty for lazy reference access
+/// and native rendering. Model bounds, tags, shader names, and UVs are still parsed.
+/// @param data Complete MD3 file bytes.
 function loadPacked(data) return loadMode(data,true) end function
+/// Validate MD3 model and surface sections and build the requested surface-frame representation.
+/// Checks count limits, header-relative spans, surface-frame agreement, vertex
+/// indices, and the final surface-chain endpoint. Model sections use offsets from
+/// the file header; each surface section uses offsets from its own surface header.
+/// @param data Complete MD3 byte buffer; bytes beyond the declared ofsEnd are not part of the model.
+/// @param packedOnly True stores surface frames in packedFrames; false creates PackedVertex arrays in frames.
 function loadMode(data,packedOnly)
   if data==void or typeof(data)!="bytes" or len(data)<HEADER_SIZE then return fail("truncated header") end if
   if i32(data,0)!=MD3_IDENT then return fail("invalid signature") end if
@@ -154,6 +280,13 @@ function loadMode(data,packedOnly)
 end function
 
 // Produces renderer-neutral animated triangles for the playable preview.
+/// @param model Record exposing `surfaces`.
+/// @param surfaceIndex Initial `surfaceIndex` field stored in the returned or constructed `mq3.format.md3.RenderTriangle` record.
+/// @param frame Frame passed as `frame` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param oldFrame Old frame passed as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param backlerp Backlerp passed as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param maxTriangles Max triangles used in `(maxTriangles < 0)` and `(maxTriangles == 0)`.
+/// @param normalTable Table passed as `table` to `mq3.renderer.surface_md3.lerpVertexesCached`.
 function renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles,normalTable)
   if model==void or surfaceIndex<0 or surfaceIndex>=len(model.surfaces) then return fail("surface index outside model") end if
   if maxTriangles<0 then return fail("negative triangle limit") end if
@@ -173,4 +306,11 @@ function renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTri
   end for
   return result
 end function
+/// Return `mq3.format.md3.renderTrianglesCached(model, surfaceIndex, frame, oldFrame, backlerp, maxTriangles, void)` from `format.md3.renderTriangles`.
+/// @param model Model passed as `model` to `mq3.format.md3.renderTrianglesCached`.
+/// @param surfaceIndex Surface index passed as `surfaceIndex` to `mq3.format.md3.renderTrianglesCached`.
+/// @param frame Frame passed as `frame` to `mq3.format.md3.renderTrianglesCached`.
+/// @param oldFrame Old frame passed as `oldFrame` to `mq3.format.md3.renderTrianglesCached`.
+/// @param backlerp Backlerp passed as `backlerp` to `mq3.format.md3.renderTrianglesCached`.
+/// @param maxTriangles Max triangles passed as `maxTriangles` to `mq3.format.md3.renderTrianglesCached`.
 function renderTriangles(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles) return renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles,void) end function

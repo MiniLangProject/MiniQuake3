@@ -20,12 +20,14 @@ Reachable from entry: **no**
 function check(level)
 ```
 
+Use `level.cvarSetFn` to perform `check`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `cvarMaintenance` and `cvarSetFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L24)
 
 <a id="function-function-mq3-game-cvar-maintenance-create-function-create-src-mq3-game-cvar-maintenance-ml-116955276"></a>
 ### create
@@ -34,7 +36,9 @@ function check(level)
 function create()
 ```
 
+Create a `mq3.game.cvar_maintenance.State` record, initializing `lastPasswordModificationCount` as `-1`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L17)
 
 - [mq3.game.cvar_maintenance.State](Type-mq3-game-cvar-maintenance-state-1996197783.md) — struct

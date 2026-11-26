@@ -11,47 +11,84 @@ import mq3.compat.textnumbers as textnum
 import mq3.qcommon.cvar as cv
 import std.string as strings
 
+/// Game-mode identifier selecting ffa rules.
 const GT_FFA = 0
+/// Game-mode identifier selecting tournament rules.
 const GT_TOURNAMENT = 1
+/// Game-mode identifier selecting single player rules.
 const GT_SINGLE_PLAYER = 2
+/// Game-mode identifier selecting team rules.
 const GT_TEAM = 3
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 8
+/// Console-command execution mode selecting insert scheduling.
 const EXEC_INSERT = 1
+/// Initial delay in milliseconds before queued bots begin playing.
 const BOT_BEGIN_DELAY_BASE = 2000
+/// Additional delay in milliseconds used to stagger consecutive bot starts.
 const BOT_BEGIN_DELAY_INCREMENT = 1500
 
+/// `State` record for bot population, containing `registry`, `clients`, `checkTime`, `minimumPlayers` and `minimumVm` and related fields.
 struct State
+  /// Registry of currently loaded preprocessor/token sources.
   registry
+  /// Client records indexed by client slot.
   clients
+  /// Deadline for the next periodic condition check.
   checkTime
+  /// Target minimum player count maintained by bot population logic.
   minimumPlayers
+  /// VM console-variable record controlling the minimum-player target.
   minimumVm
+  /// Single-player bot skill setting.
   spSkill
+  /// Setting controlling bot creation and bot-AI processing.
   botEnable
+  /// Setting indicating whether a local client is running.
   clRunning
+  /// Injected callback for allocate client; invoked through the State service/state record.
   allocateClientFn
+  /// Injected callback for connect client; invoked through the State service/state record.
   connectClientFn
+  /// Injected callback for set user information; invoked through the State service/state record.
   setUserinfoFn
+  /// Injected callback for console; invoked through the State service/state record.
   consoleFn
+  /// Injected callback for server command; invoked through the State service/state record.
   serverCommandFn
+  /// Injected callback for print; invoked through the State service/state record.
   printFn
+  /// Injected callback for console variable set; invoked through the State service/state record.
   cvarSetFn
 end struct
 
+/// Create a `mq3.game.bot_population.State` record, initializing `registry` from `registry`, `clients` from `clients` and `spSkill` as `4.0`.
+/// @param registry Initial value stored in `mq3.game.bot_population.State.registry`.
+/// @param clients Initial value stored in `mq3.game.bot_population.State.clients`.
 function create(registry,clients)
   return State(registry,clients,0,0,void,4.0,true,false,void,void,void,void,void,void,void)
 end function
 
+/// Use `state.printFn` to perform `output`.
+/// @param level Value passed as argument 1 to `state.printFn`.
+/// @param state Bot population state; accesses `printFn`.
+/// @param text Text to parse, format or deliver.
 function output(level,state,text)
   if state.printFn != void then state.printFn(level,text) end if
   return void
 end function
 
+/// Use `state.consoleFn` to perform `console`.
+/// @param level Value passed as argument 1 to `state.consoleFn`.
+/// @param state Bot population state; accesses `consoleFn`.
+/// @param text Text to parse, format or deliver.
 function console(level,state,text)
   if state.consoleFn == void then return error(494,"Bot population requires console-command delivery") end if
   state.consoleFn(level,EXEC_INSERT,text); return void
 end function
 
+/// Apply `mq3.shared.info.textBytes` while evaluating `clean`. Return paths include `decode(bytes(result))`.
+/// @param text Text to parse, format or deliver.
 function clean(text)
   data = infoStrings.textBytes(text); result = []; index = 0
   while index < len(data)
@@ -63,6 +100,11 @@ function clean(text)
   return decode(bytes(result))
 end function
 
+/// Apply `mq3.game.bot_clients.clientLimit` and `mq3.game.bot_clients.entityForClient` while evaluating `botAlreadyUsed`.
+/// @param level Game-level state; accesses `clients`.
+/// @param state Not read by this implementation; retained in the `botAlreadyUsed` signature.
+/// @param name Name used to identify the requested entry.
+/// @param team Team identifier used by the game rules.
 function botAlreadyUsed(level,state,name,team)
   limit = botClients.clientLimit(level)
   for index = 0 to limit-1
@@ -76,6 +118,10 @@ function botAlreadyUsed(level,state,name,team)
   return false
 end function
 
+/// Apply `mq3.shared.info.value`, `mq3.game.bot_population.botAlreadyUsed` and `mq3.game.bot_population.console` while evaluating `addRandomBot`.
+/// @param level Game-level state; accesses `clients`.
+/// @param state Bot population state; accesses `registry` and `spSkill`.
+/// @param team Team identifier used by the game rules.
 function addRandomBot(level,state,team)
   available = []
   for each row in state.registry.botInfos
@@ -93,6 +139,10 @@ function addRandomBot(level,state,team)
   return true
 end function
 
+/// Apply `mq3.game.bot_clients.clientLimit`, `mq3.game.bot_clients.entityForClient` and `mq3.game.bot_population.console` while evaluating `removeRandomBot`.
+/// @param level Game-level state; accesses `clients`.
+/// @param state Bot population state; accesses `consoleFn`.
+/// @param team Team identifier used by the game rules.
 function removeRandomBot(level,state,team)
   limit = botClients.clientLimit(level)
   for index = 0 to limit-1
@@ -105,6 +155,9 @@ function removeRandomBot(level,state,team)
   return false
 end function
 
+/// Set `state.checkTime` to `level.time` and `state.minimumPlayers` to `state.minimumVm.integer` in `mq3.game.bot_population.checkMinimumPlayers`.
+/// @param level Game-level state; accesses `intermissiontime`, `time`, `spawner` and `maxclients`.
+/// @param state Bot population state; accesses `checkTime`, `minimumVm`, `minimumPlayers` and `clients`. May update `state.checkTime` and `state.minimumPlayers` in place.
 function checkMinimumPlayers(level,state)
   if level.intermissiontime != 0 then return false end if
   if state.checkTime > level.time-10000 then return false end if
@@ -136,10 +189,20 @@ function checkMinimumPlayers(level,state)
   return true
 end function
 
+/// Forward `infoSet` to `mq3.shared.info.setValue` and return the delegated result.
+/// @param level Context forwarded to the configured host callbacks.
+/// @param state Bot population state; accesses `printFn`.
+/// @param value Text to parse, format or deliver.
+/// @param key Lookup key or field name used by the operation.
+/// @param text Text to parse, format or deliver.
 function infoSet(level,state,value,key,text)
   return infoStrings.setValue(value,key,text,level,state.printFn)
 end function
 
+/// Apply `mq3.game.bot_clients.clientLimit` while evaluating `teamCount`. Return paths include `count`.
+/// @param level Game-level state; accesses `clients`.
+/// @param ignore Value used by `teamCount` in `if slot != ignore and client.connected != 0 and client.team == team then count = count+1 end if`.
+/// @param team Team identifier used by the game rules.
 function teamCount(level,ignore,team)
   count = 0; limit = botClients.clientLimit(level)
   for slot = 0 to limit-1
@@ -149,6 +212,9 @@ function teamCount(level,ignore,team)
   return count
 end function
 
+/// Apply `mq3.game.bot_population.teamCount` while evaluating `pickTeam`. Return paths include `c.TEAM_BLUE`.
+/// @param level Game-level state; accesses `teamScores`.
+/// @param ignore Value used by `teamCount` in `if slot != ignore and client.connected != 0 and client.team == team then count = count+1 end if`.
 function pickTeam(level,ignore)
   blue = teamCount(level,ignore,c.TEAM_BLUE); red = teamCount(level,ignore,c.TEAM_RED)
   if blue > red then return c.TEAM_RED end if
@@ -157,6 +223,14 @@ function pickTeam(level,ignore)
   return c.TEAM_BLUE
 end function
 
+/// Record or dispatch `"^1Error: bot has no aifile specified\n"` and `"^1Unable to add bot. All player slots are in use.\n"` actions in `addBot`. Return paths include `clientNum`.
+/// @param level Game-level state; accesses `maxclients`, `spawner` and `entities`.
+/// @param state Bot population state; accesses `registry`, `allocateClientFn`, `setUserinfoFn`, `connectClientFn` and `clients`.
+/// @param name Name used to identify the requested entry.
+/// @param skill Bot skill value used to select or interpolate characteristics.
+/// @param team Team identifier used by the game rules.
+/// @param delay Value passed as argument 2 to `mq3.compat.numeric.add32`.
+/// @param altname Value used by `addBot` in `if altname != void and altname != "" then botname = altname end if`.
 function addBot(level,state,name,skill,team,delay,altname)
   botinfo = botRegistry.getBotInfoByName(state.registry,name)
   if botinfo == void then output(level,state,"^1Error: Bot '"+name+"' not defined\n"); return -1 end if
@@ -206,6 +280,10 @@ function addBot(level,state,name,skill,team,delay,altname)
   return clientNum
 end function
 
+/// Use `state.serverCommandFn` to perform `serviceAddBot`.
+/// @param level Game-level state; accesses `time` and `startTime`.
+/// @param state Bot population state; accesses `botEnable`, `clRunning` and `serverCommandFn`.
+/// @param args Three-component array; components 0, 1 and 2 are used in their stored order.
 function serviceAddBot(level,state,args)
   if not state.botEnable then return false end if
   name = ""; if len(args) > 0 then name = args[0] end if
@@ -222,11 +300,17 @@ function serviceAddBot(level,state,args)
   return true
 end function
 
+/// Right-pad a bot-list field to the requested width and append one separating space.
+/// @param text Text to parse, format or deliver.
+/// @param width Operand used to evaluate the returned expression `text+decode(bytes(width-len(data),32))+" "`.
 function padded(text,width)
   data = bytes(text); if len(data) >= width then return text+" " end if
   return text+decode(bytes(width-len(data),32))+" "
 end function
 
+/// Apply `mq3.game.bot_population.output`, `mq3.shared.info.value` and `mq3.game.bot_population.padded` while evaluating `botList`.
+/// @param level Value passed as argument 1 to `state.printFn`.
+/// @param state Bot population state; accesses `registry`.
 function botList(level,state)
   output(level,state,"^1name             model            aifile              funname\n")
   for each row in state.registry.botInfos
@@ -239,6 +323,11 @@ function botList(level,state)
   return void
 end function
 
+/// Set `state.spSkill` to `skill` in `mq3.game.bot_population.spawnBots`. Return paths include `delay`.
+/// @param level Value passed as argument 1 to `state.consoleFn`.
+/// @param state Bot population state; accesses `spSkill` and `cvarSetFn`. May update `state.spSkill` in place.
+/// @param botList Text to parse, format or deliver.
+/// @param baseDelay Value used by `spawnBots` in `delay = baseDelay`.
 function spawnBots(level,state,botList,baseDelay)
   skill = state.spSkill
   if skill < 1.0 then skill = 1.0; state.spSkill = skill; if state.cvarSetFn != void then state.cvarSetFn(level,"g_spSkill","1") end if
@@ -255,6 +344,11 @@ function spawnBots(level,state,botList,baseDelay)
   return delay
 end function
 
+/// Use `state.cvarSetFn` to perform `initSinglePlayer`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param state Bot population state; accesses `registry` and `cvarSetFn`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
+/// @param mapname Value passed as argument 2 to `std.string.equalsIgnoreCaseAscii`.
 function initSinglePlayer(level,state,restart,mapname)
   if level.spawner.gametype != GT_SINGLE_PLAYER then return false end if
   arena = botRegistry.getArenaInfoByMap(state.registry,mapname); if arena == void then return false end if

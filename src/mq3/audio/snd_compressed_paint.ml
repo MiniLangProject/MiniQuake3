@@ -5,20 +5,52 @@ package mq3.audio.snd_compressed_paint
 
 import mq3.compat.numeric as n
 
+/// Compression-method identifier for four-bit adaptive differential PCM.
 const METHOD_ADPCM=1
+/// Compression-method identifier for the wavelet sound decoder.
 const METHOD_WAVELET=2
+/// Compression-method identifier for eight-bit mu-law sound data.
 const METHOD_MULAW=3
+/// Maximum number of decoded mono samples represented by an ADPCM block.
 const ADPCM_BLOCK_SAMPLES=4096
+/// Maximum number of samples represented by a byte-coded sound block.
 const BYTE_BLOCK_SAMPLES=2048
 
-struct Block data size sample index end struct
-struct Compressed compression blocks length end struct
+/// Block record for audio.snd_compressed_paint, containing `data`, `size`, `sample`, `index`.
+struct Block
+  /// Encoded bytes for this compressed sound block.
+  data
+  /// Number of logical mono samples represented by the block.
+  size
+  /// Previous reconstructed sample used as the ADPCM predictor.
+  sample
+  /// Index into the ADPCM step-size table.
+  index
+end struct
+/// Compressed record for audio.snd_compressed_paint, containing `compression`, `blocks`, `length`.
+struct Compressed
+  /// Compression-method identifier selecting the block decoder.
+  compression
+  /// Compressed blocks in playback order.
+  blocks
+  /// Total logical number of mono samples across all compressed blocks.
+  length
+end struct
 
+/// Compute audio.snd_compressed_paint.indexTable as `[- 1, - 1, - 1, - 1, 2, 4, 6, 8, - 1, - 1, - 1, - 1, 2, 4, 6, 8]`.
 function indexTable() return [-1,-1,-1,-1,2,4,6,8,-1,-1,-1,-1,2,4,6,8] end function
+/// Return the fixed IMA ADPCM quantization-step lookup table.
 function stepTable() return [7,8,9,10,11,12,13,14,16,17,19,21,23,25,28,31,34,37,41,45,50,55,60,66,73,80,88,97,107,118,130,143,157,173,190,209,230,253,279,307,337,371,408,449,494,544,598,658,724,796,876,963,1060,1166,1282,1411,1552,1707,1878,2066,2272,2499,2749,3024,3327,3660,4026,4428,4871,5358,5894,6484,7132,7845,8630,9493,10442,11487,12635,13899,15289,16818,18500,20350,22385,24623,27086,29794,32767] end function
 
+/// Create the audio.snd_compressed_paint error for `fail` with 7668 and the supplied diagnostic text.
+/// @param message Message used in `("compressed sound paint: " + message)` and `error(7668, ("compressed sound paint: " + message))`.
 function fail(message) return error(7668,"compressed sound paint: "+message) end function
 
+/// Decode an IMA ADPCM block into signed PCM samples while advancing predictor and step-index state.
+/// @param data Data used in `len(data)` and `(data == void)`.
+/// @param count Count used in `(count < 0)` and `(count - 1)`.
+/// @param predictor Predictor operand used by `adpcmDecode`; its reads are shown in the implementation.
+/// @param startIndex Start index used in `(startIndex < 0)` and `(startIndex > 88)`.
 function adpcmDecode(data,count,predictor,startIndex)
   if data==void or count<0 or len(data)*2<count then return fail("truncated ADPCM block") end if
   if startIndex<0 or startIndex>88 then return fail("invalid ADPCM index") end if
@@ -37,6 +69,8 @@ function adpcmDecode(data,count,predictor,startIndex)
   return output
 end function
 
+/// Expand one mu-law code byte into a signed PCM amplitude.
+/// @param value Value used in `(~ value & 255)`.
 function muLawDecode(value)
   decoded=(~value)&255;exponent=(decoded>>4)&7;mantissa=(decoded&15)+16
   adjusted=(mantissa<<(exponent+3))-132
@@ -44,6 +78,12 @@ function muLawDecode(value)
   return 0-adjusted
 end function
 
+/// Update `values entries` in audio.snd_compressed_paint; the normal completion returns `values`.
+///
+/// Direct state writes: `values elements`.
+/// @param values Mutable sequence written at `position`.
+/// @param size Size used in `(size < 4)` and `(size - 4)`.
+/// @param inverse Inverse operand used by `daub4`; its reads are shown in the implementation.
 function daub4(values,size,inverse)
   if size<4 then return values end if
   c0=0.4829629131445341;c1=0.8365163037378079;c2=0.2241438680420134;c3=-0.1294095225512604
@@ -70,6 +110,9 @@ function daub4(values,size,inverse)
   return values
 end function
 
+/// Expand compressed wavelet coefficients into the requested PCM sample block.
+/// @param data Data used in `len(data)` and `(data == void)`.
+/// @param size Size used in `(size < 0)` and `(size - 1)`.
 function waveletDecode(data,size)
   if data==void or size<0 or len(data)<size then return fail("truncated wavelet block") end if
   values=array(size,0.0);for position=0 to size-1 values[position]=n.f32(muLawDecode(data[position])) end for
@@ -81,6 +124,9 @@ function waveletDecode(data,size)
   return output
 end function
 
+/// Decode block in audio.snd_compressed_paint; the normal completion returns `fail("unknown compression method")`.
+/// @param compressed Record exposing `compression`.
+/// @param block Record exposing `data`, `size`, `sample`, `index`.
 function decodeBlock(compressed,block)
   if compressed.compression==METHOD_ADPCM then return adpcmDecode(block.data,block.size,block.sample,block.index) end if
   if compressed.compression==METHOD_MULAW then
@@ -91,6 +137,8 @@ function decodeBlock(compressed,block)
   return fail("unknown compression method")
 end function
 
+/// Compute decoded samples in audio.snd_compressed_paint; the normal completion returns `output`.
+/// @param compressed Record exposing `blocks`, `length`.
 function decodedSamples(compressed)
   if compressed==void or compressed.blocks==void or compressed.length<0 then return fail("invalid compressed sound") end if
   output=[]
@@ -100,6 +148,14 @@ function decodedSamples(compressed)
   return output
 end function
 
+/// Add sample in audio.snd_compressed_paint; updates `paint entries`.
+///
+/// Direct state writes: `paint elements`.
+/// @param paint Mutable sequence written at `destination`, `(destination + 1)`.
+/// @param frame Frame used in `(frame * 2)`.
+/// @param data Left integer operand; only its low 32 bits participate.
+/// @param leftVolume Right integer operand; only its low 32 bits participate.
+/// @param rightVolume Right integer operand; only its low 32 bits participate.
 function addSample(paint,frame,data,leftVolume,rightVolume)
   destination=frame*2
   paint[destination]=n.add32(paint[destination],n.sar32(n.mul32(data,leftVolume),8))
@@ -109,6 +165,17 @@ end function
 // Mirrors the three compressed S_PaintChannelFrom* entry points. Wavelet and
 // ADPCM use decoded scratch blocks; MuLaw retains the original nearest-sample
 // Doppler stepping. The caller splits loops at the logical sfx length.
+/// @param paintBuffer Paint passed as `paint` to `mq3.audio.snd_compressed_paint.addSample`.
+/// @param compressed Record exposing `length`, `compression`.
+/// @param count Count used in `(count < 0)` and `(count - 1)`.
+/// @param sampleOffset Sample offset used in `(sampleOffset < 0)` and `(sampleOffset + count)`.
+/// @param bufferOffset Buffer offset used in `(bufferOffset < 0)` and `(bufferOffset + i)`.
+/// @param leftVol Left integer operand; only its low 32 bits participate.
+/// @param rightVol Left integer operand; only its low 32 bits participate.
+/// @param sndVol Right integer operand; only its low 32 bits participate.
+/// @param doppler Doppler used in `((compressed.compression == METHOD_ADPCM) and doppler)` and `((compressed.compression == METHOD_MULAW) and doppler)`.
+/// @param dopplerScale Floating-point value to narrow to binary32.
+/// @param oldDopplerScale Old doppler scale used in `(oldDopplerScale < 0.0)` and `(sampleOffset * oldDopplerScale)`.
 function paint(paintBuffer,compressed,count,sampleOffset,bufferOffset,leftVol,rightVol,sndVol,doppler,dopplerScale,oldDopplerScale)
   if compressed==void then return fail("compressed sound is required") end if
   if count<0 or sampleOffset<0 or bufferOffset<0 or sampleOffset+count>compressed.length then return fail("paint range outside sound") end if

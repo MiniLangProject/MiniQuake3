@@ -9,8 +9,10 @@
 struct InlineModel
 ```
 
+Data record for `mq3.renderer.qvm_scene_geometry.InlineModel`; groups `index`, `renderData`, `shaderNames`, `bounds`, `dynamicLightFlags`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L142)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct InlineModel
 bounds
 ```
 
+Minimum and maximum corners enclosing the object or surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L150)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-inlinemodel-dynamiclightflags-dynamiclightflags-src-mq3-renderer-qvm-scene-geometry-ml-681619359"></a>
 ### dynamicLightFlags
@@ -31,8 +35,10 @@ bounds
 dynamicLightFlags
 ```
 
+Dynamic-light eligibility flags associated with the inline model.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L152)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-inlinemodel-index-index-src-mq3-renderer-qvm-scene-geometry-ml-1491193659"></a>
 ### index
@@ -41,8 +47,10 @@ dynamicLightFlags
 index
 ```
 
+Position of this record in its owning table or list.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L144)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-inlinemodel-renderdata-renderdata-src-mq3-renderer-qvm-scene-geometry-ml-509596319"></a>
 ### renderData
@@ -51,8 +59,10 @@ index
 renderData
 ```
 
+Prepared triangle and vertex data used to render the world or model.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L146)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-inlinemodel-shadernames-shadernames-src-mq3-renderer-qvm-scene-geometry-ml-461229567"></a>
 ### shaderNames
@@ -61,5 +71,7 @@ renderData
 shaderNames
 ```
 
+Shader names associated with the model's surfaces.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L148)

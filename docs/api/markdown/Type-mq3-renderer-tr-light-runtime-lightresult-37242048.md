@@ -9,8 +9,10 @@
 struct LightResult
 ```
 
+Data record for `mq3.renderer.tr_light_runtime.LightResult`; groups `found`, `ambientLight`, `directedLight`, `lightDir`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L90)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LightResult
 ambientLight
 ```
 
+Ambient light contribution applied to the entity.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L94)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-lightresult-directedlight-directedlight-src-mq3-renderer-tr-light-runtime-ml-649511514"></a>
 ### directedLight
@@ -31,8 +35,10 @@ ambientLight
 directedLight
 ```
 
+Directional light contribution applied to the entity.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L96)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-lightresult-found-found-src-mq3-renderer-tr-light-runtime-ml-578669802"></a>
 ### found
@@ -41,8 +47,10 @@ directedLight
 found
 ```
 
+Whether the requested object or result was found.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L92)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-lightresult-lightdir-lightdir-src-mq3-renderer-tr-light-runtime-ml-932089432"></a>
 ### lightDir
@@ -51,5 +59,7 @@ found
 lightDir
 ```
 
+Direction of the dominant light in the entity's coordinate system.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L98)

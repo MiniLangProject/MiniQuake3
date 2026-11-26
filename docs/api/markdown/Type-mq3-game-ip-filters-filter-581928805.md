@@ -9,8 +9,10 @@
 struct Filter
 ```
 
+`Filter` record for ip filters, containing `mask` and `compare`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L11)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Filter
 compare
 ```
 
+IP address bits compared after applying the filter mask.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L15)
 
 <a id="field-field-mq3-game-ip-filters-filter-mask-mask-src-mq3-game-ip-filters-ml-636042749"></a>
 ### mask
@@ -31,5 +35,7 @@ compare
 mask
 ```
 
+Mask selecting the collision or filter categories used by the operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L13)

@@ -9,8 +9,10 @@
 struct Route
 ```
 
+`Route` record for aas routing, containing `travelTime` and `reachNum`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L145)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Route
 reachNum
 ```
 
+First reachability selected along the calculated route.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L149)
 
 <a id="field-field-mq3-botlib-aas-routing-route-traveltime-traveltime-src-mq3-botlib-aas-routing-ml-1834464334"></a>
 ### travelTime
@@ -31,5 +35,7 @@ reachNum
 travelTime
 ```
 
+AAS travel cost assigned to traversing this movement link.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L147)

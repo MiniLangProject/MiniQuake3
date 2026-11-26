@@ -15,8 +15,10 @@ Reachable from entry: **yes**
 function declarationNames()
 ```
 
+List the 22 names in audio.snd_public.declarationNames, beginning with `S_Init`, `S_Shutdown`, `S_StartSound`, `S_StartLocalSound`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L6)
 
 <a id="function-function-mq3-audio-snd-public-soundcommandkind-function-soundcommandkind-name-src-mq3-audio-snd-public-ml-1413523957"></a>
 ### soundCommandKind
@@ -25,12 +27,14 @@ function declarationNames()
 function soundCommandKind(name)
 ```
 
+Compute sound command kind in audio.snd_public; the normal completion returns `- 1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used in `(names[index] == name)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L17)
 
 <a id="function-function-mq3-audio-snd-public-validentity-function-validentity-entity-src-mq3-audio-snd-public-ml-2113154263"></a>
 ### validEntity
@@ -39,12 +43,14 @@ function soundCommandKind(name)
 function validEntity(entity)
 ```
 
+Compute audio.snd_public.validEntity as `((entity >= 0) and (entity < 1024))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entity` | `dynamic` | — |  |
+| `entity` | `dynamic` | — | Entity used in `(entity >= 0)` and `(entity < 1024)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L14)
 
 <a id="function-function-mq3-audio-snd-public-validrawformat-function-validrawformat-rate-width-channels-src-mq3-audio-snd-public-ml-719935388"></a>
 ### validRawFormat
@@ -53,11 +59,13 @@ function validEntity(entity)
 function validRawFormat(rate, width, channels)
 ```
 
+Compute audio.snd_public.validRawFormat as `(((rate > 0) and ((width == 1) or (width == 2))) and ((channels == 1) or (channels == 2)))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rate` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `channels` | `dynamic` | — |  |
+| `rate` | `dynamic` | — | Rate used in `(rate > 0)` and `((rate > 0) and ((width == 1) or (width == 2)))`. |
+| `width` | `dynamic` | — | Width used in `(width == 1)` and `(width == 2)`. |
+| `channels` | `dynamic` | — | Channels used in `(channels == 1)` and `(channels == 2)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L11)

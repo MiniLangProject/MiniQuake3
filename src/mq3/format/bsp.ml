@@ -6,22 +6,35 @@ import mq3.compat.numeric as n
 import mq3.shared.parser as parser
 import mq3.format.qfiles as qfiles
 
+/// BSP record for format.bsp, containing `data`, `offsets`, `lengths`, `counts`.
 struct BSP
+  /// Complete BSP file bytes backing the lump readers.
   data
+  /// Byte offsets of BSP lump payloads, indexed by lump identifier.
   offsets
+  /// Byte lengths of BSP lump payloads, indexed by lump identifier.
   lengths
+  /// Decoded element counts for each BSP lump.
   counts
 end struct
 
+/// Create the format.bsp error for `fail` with 3502 and the supplied diagnostic text.
+/// @param message Message used in `("BSP46: " + message)` and `error(3502, ("BSP46: " + message))`.
 function fail(message)
   return error(3502, "BSP46: " + message)
 end function
 
+/// Test range in format.bsp; the normal completion returns `true`.
+/// @param first First used in `(first < 0)` and `(first + count)`.
+/// @param count Count used in `(count < 0)` and `(first + count)`.
+/// @param limit Limit used in `((first + count) > limit)` and `(((first < 0) or (count < 0)) or ((first + count) > limit))`.
 function range(first, count, limit)
   if first < 0 or count < 0 or first + count > limit then return fail("invalid indexed range") end if
   return true
 end function
 
+/// Load bsp in format.bsp; the normal completion returns `BSP(data, offsets, lengths, counts)`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readU32`.
 function load(data)
   if len(data) < 8+qfiles.HEADER_LUMPS*8 or n.readU32(data, 0) != qfiles.BSP_IDENT or n.readU32(data, 4) != qfiles.BSP_VERSION then return fail("invalid header") end if
   strides = [1,72,16,36,48,4,4,40,12,8,44,4,72,104,49152,8,1]
@@ -105,6 +118,8 @@ function load(data)
   return BSP(data, offsets, lengths, counts)
 end function
 
+/// Compute entities in format.bsp; the normal completion returns `result`.
+/// @param map Record exposing `data`, `offsets`, `lengths`.
 function entities(map)
   state = parser.create(slice(map.data, map.offsets[0], map.lengths[0]))
   result = []

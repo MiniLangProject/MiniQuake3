@@ -12,62 +12,112 @@ import mq3.compat.numeric as n
 import std.array as arrays
 import std.ds.list as spatialAreaLists
 
+/// Entity record for server.world, containing `number`, `modelindex`, `solid`, `origin`, `angles`, `linked`, and 18 further fields.
 struct Entity
+  /// Game-entity number used by collision and linking queries.
   number
+  /// Model index used to associate this entity or item with registered model data.
   modelindex
+  /// Encoded collision-hull or solidity value associated with the entity.
   solid
+  /// World-space reference position used to link the server entity collision hull.
   origin
+  /// Pitch, yaw, and roll values carried by the entity or user command.
   angles
+  /// True when this entity or resource is linked into the world.
   linked
+  /// Number of times the entity has been linked or relinked into the world.
   linkcount
+  /// Server-side visibility and entity-behavior flags.
   svFlags
+  /// True when the entity uses a brush-model collision hull.
   bmodel
+  /// Minimum XYZ corner of the linked server entity collision hull relative to its origin.
   mins
+  /// Maximum XYZ corner of the linked server entity collision hull relative to its origin.
   maxs
+  /// Collision or AAS contents flags describing the represented volume.
   contents
+  /// Minimum corner of the entity's world-space collision bounds.
   absmin
+  /// Maximum corner of the entity's world-space collision bounds.
   absmax
+  /// Current world-space position used for collision and mover queries.
   currentOrigin
+  /// Current orientation angles used for collision and mover queries.
   currentAngles
+  /// Entity number of the owner excluded from selected collision tests.
   ownerNum
+  /// Spatial sector containing this linked entity.
   sector
+  /// Next entity in the same spatial-sector linked list.
   nextEntity
+  /// Cluster records or assignments used to group navigation and visibility areas.
   clusters
+  /// Final visibility cluster used when the explicit cluster list overflows.
   lastCluster
+  /// Primary collision area reached while linking this entity into the server world.
   areanum
+  /// Second AAS area number used by the operation.
   areanum2
+  /// Client number selected or excluded by the entity's single-client visibility flags.
   singleClient
 end struct
+/// Sector record for server.world, containing `axis`, `distance`, `children`, `head`.
 struct Sector
+  /// Coordinate-axis index along which this spatial sector is split.
   axis
+  /// Coordinate value of the sector's splitting plane.
   distance
+  /// Child sector indexes on either side of the split.
   children
+  /// First entity linked into this sector.
   head
 end struct
+/// Scene record for server.world, containing `world`, `entities`, `sectors`.
 struct Scene
+  /// Collision or navigation world used by this operation.
   world
+  /// Game or BSP entity records tracked by this subsystem.
   entities
+  /// Spatial partition sectors used to find linked game entities.
   sectors
 end struct
 
+/// Create `mq3.server.world.Entity` with number=number; modelindex=0; solid=0; origin=[0.0, 0.0, 0.0]; 20 further fields.
+/// @param number Initial `number` field stored in the returned or constructed `mq3.server.world.Entity` record.
 function entity(number)
   return Entity(number,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],false,0,0,false,[0.0,0.0,0.0],[0.0,0.0,0.0],0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,-1,-1,[],0,0,0,0)
 end function
+/// Get entity in server.world; the normal completion returns `scene.entities[number]`.
+///
+/// Validation failures include `Invalid server entity number`.
+/// @param scene Record exposing `entities`.
+/// @param number Zero-based index into `scene.entities`.
 function getEntity(scene,number)
   if typeof(number) != "int" or number < 0 or number >= 1024 then return error(480,"Invalid server entity number") end if
   return scene.entities[number]
 end function
+/// Compute in pvs in server.world; the normal completion returns `vis.areasConnected(visibility, area1, area2)`.
+/// @param scene Record exposing `world`.
+/// @param p1 Point passed as `point` to `mq3.collision.world.pointLeafnum`.
+/// @param p2 Point passed as `point` to `mq3.collision.world.pointLeafnum`.
 function inPVS(scene,p1,p2)
   visibility = scene.world.visibility
   leaf1 = cm.pointLeafnum(scene.world,p1); cluster1 = vis.leafCluster(visibility,leaf1); area1 = vis.leafArea(visibility,leaf1)
-  mask = vis.clusterPVS(visibility,cluster1)
   leaf2 = cm.pointLeafnum(scene.world,p2); cluster2 = vis.leafCluster(visibility,leaf2); area2 = vis.leafArea(visibility,leaf2)
   // Valid engine points have a non-negative cluster. Guard malformed or
   // solid-only leaves instead of reproducing C's negative array subscript.
-  if cluster2 < 0 or (cluster2 >> 3) >= len(mask) then return false end if
-  if (mask[cluster2 >> 3] & (1 << (cluster2 & 7))) == 0 then return false end if
+  if not vis.clusterVisible(visibility,cluster1,cluster2) then return false end if
   return vis.areasConnected(visibility,area1,area2)
 end function
+/// Create sector in server.world; the normal completion returns `index`.
+///
+/// Direct state writes: `scene.sectors`.
+/// @param scene Record exposing `sectors`. Updated in place: `sectors`.
+/// @param depth Depth used in `(depth + 1)` and `(depth == 4)`.
+/// @param mins V passed as `v` to `mq3.game.movement.copy`.
+/// @param maxs V passed as `v` to `mq3.game.movement.copy`.
 function createSector(scene,depth,mins,maxs)
   index = len(scene.sectors); node = Sector(-1,0.0,[-1,-1],-1)
   scene.sectors = scene.sectors+[node]
@@ -81,6 +131,8 @@ function createSector(scene,depth,mins,maxs)
   node.children[1] = createSector(scene,depth+1,mins,maxs1)
   return index
 end function
+/// Create world in server.world; the normal completion returns `scene`.
+/// @param world Initial `world` field stored in the returned or constructed `mq3.server.world.Scene` record.
 function create(world)
   entities=array(1024,void);for i=0 to 1023 entities[i]=entity(i) end for
   scene = Scene(world,entities,[])
@@ -91,6 +143,7 @@ end function
 // same intrusive sector chains used by collision queries.  Baseq3 prints all
 // 64 statically allocated slots; only the first 31 belong to the depth-four
 // tree and the remaining slots consequently report zero entities.
+/// @param scene Record exposing `sectors`, `entities`.
 function sectorList(scene)
   lines = []
   for index = 0 to 63
@@ -106,11 +159,18 @@ function sectorList(scene)
   end for
   return lines
 end function
+/// Compute sector list f in server.world; the normal completion returns `len(lines)`.
+/// @param scene Scene passed as `scene` to `mq3.server.world.sectorList`.
+/// @param printFn Callback invoked for print; the call sites below define the callback arguments.
+/// @param context Context used in `printFn(context, line)`.
 function SV_SectorList_f(scene,printFn,context)
   lines = sectorList(scene)
   if printFn != void then for each line in lines printFn(context,line) end for end if
   return len(lines)
 end function
+/// Compute unlink entity in server.world.
+/// @param scene Record exposing `sectors`, `entities`.
+/// @param number Number passed as `number` to `mq3.server.world.getEntity`.
 function unlinkEntity(scene,number)
   ent = getEntity(scene,number); ent.linked = false
   if ent.sector == -1 then return void end if
@@ -124,9 +184,16 @@ function unlinkEntity(scene,number)
   end while
   return void
 end function
+/// Return `mq3.collision.world.max(1, cm.min(255, n.trunc32(value)))` from `server.world.packedExtent`.
+/// @param value Floating-point value to convert to signed 32-bit integer semantics.
 function packedExtent(value)
   return cm.max(1,cm.min(255,n.trunc32(value)))
 end function
+/// Compute link entity in server.world.
+///
+/// Validation failures include `Server entity number does not match its slot`; `Inverted entity bounds`.
+/// @param scene Record exposing `world`, `sectors`.
+/// @param number Number passed as `number` to `mq3.server.world.getEntity`.
 function linkEntity(scene,number)
   ent = getEntity(scene,number)
   if ent.number != number then return error(480,"Server entity number does not match its slot") end if
@@ -189,6 +256,13 @@ function linkEntity(scene,number)
   scene.sectors[index].head = number; ent.linked = true
   return void
 end function
+/// Compute area entities in server.world; the normal completion returns `result.toArray()`.
+///
+/// Validation failures include `Invalid server area-list capacity`.
+/// @param scene Record exposing `sectors`, `entities`.
+/// @param mins Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param maxs Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param capacity Capacity used in `(capacity < 0)` and `typeof(capacity)`.
 function areaEntities(scene,mins,maxs,capacity)
   if typeof(capacity) != "int" or capacity < 0 or capacity > 1024 then return error(480,"Invalid server area-list capacity") end if
   mins = cm.vector32(mins); maxs = cm.vector32(maxs)
@@ -218,10 +292,22 @@ function areaEntities(scene,mins,maxs,capacity)
   end while
   return result.toArray()
 end function
+/// Compute clip handle for entity in server.world; the normal completion returns `cm.tempBoxModel(scene.world, ent.mins, ent.maxs, ((ent.svFlags & 1024) != 0))`.
+/// @param scene Record exposing `world`.
+/// @param ent Record exposing `bmodel`, `modelindex`, `mins`, `maxs`, `svFlags`.
 function clipHandleForEntity(scene,ent)
   if ent.bmodel then return cm.inlineModel(scene.world,ent.modelindex) end if
   return cm.tempBoxModel(scene.world,ent.mins,ent.maxs,(ent.svFlags & 1024) != 0)
 end function
+/// Compute clip to entity in server.world; the normal completion returns `movement.Collision(result.trace, result.endpos, hit)`.
+/// @param scene Record exposing `world`.
+/// @param start Start passed as `start` to `mq3.collision.world.transformedTrace`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.transformedTrace`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.transformedTrace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.transformedTrace`.
+/// @param number Number passed as `number` to `mq3.server.world.getEntity`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.transformedTrace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.transformedTrace`.
 function clipToEntity(scene,start,finish,mins,maxs,number,mask,capsule)
   ent = getEntity(scene,number)
   if (mask & ent.contents) == 0 then return movement.Collision(brush.emptyTrace(),[0.0,0.0,0.0],0) end if
@@ -232,6 +318,15 @@ function clipToEntity(scene,start,finish,mins,maxs,number,mask,capsule)
   if result.trace.fraction < 1 then hit = ent.number end if
   return movement.Collision(result.trace,result.endpos,hit)
 end function
+/// Trace world in server.world; the normal completion returns `result`.
+/// @param scene Record exposing `world`, `entities`.
+/// @param start Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param finish Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param mins Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param maxs Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param passEntity Number passed as `number` to `mq3.server.world.getEntity`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.trace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.trace`.
 function trace(scene,start,finish,mins,maxs,passEntity,mask,capsule)
   start = cm.vector32(start); finish = cm.vector32(finish)
   if mins == void then mins = [0.0,0.0,0.0] end if
@@ -270,6 +365,10 @@ function trace(scene,start,finish,mins,maxs,passEntity,mask,capsule)
   end for
   return result
 end function
+/// Compute point contents in server.world; the normal completion returns `contents`.
+/// @param scene Record exposing `world`, `entities`.
+/// @param point Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param passEntity Pass entity used in `(number == passEntity)`.
 function pointContents(scene,point,passEntity)
   point = cm.vector32(point); contents = cm.pointContents(scene.world,point,0)
   for each number in areaEntities(scene,point,point,1024)
@@ -280,12 +379,25 @@ function pointContents(scene,point,passEntity)
   end for
   return contents
 end function
+/// Return `mq3.server.world.trace(p.context, start, finish, p.k.mins, p.k.maxs, p.ps.clientNum, p.k.mask, false)` from `server.world.pmoveTrace`.
+/// @param p Record exposing `context`, `k`, `ps`.
+/// @param start Start passed as `start` to `mq3.server.world.trace`.
+/// @param finish Finish passed as `finish` to `mq3.server.world.trace`.
 function pmoveTrace(p,start,finish)
   return trace(p.context,start,finish,p.k.mins,p.k.maxs,p.ps.clientNum,p.k.mask,false)
 end function
+/// Return `mq3.server.world.pointContents(p.context, point, p.ps.clientNum)` from `server.world.pmoveContents`.
+/// @param p Record exposing `context`, `ps`.
+/// @param point Point passed as `point` to `mq3.server.world.pointContents`.
 function pmoveContents(p,point)
   return pointContents(p.context,point,p.ps.clientNum)
 end function
+/// Compute entity contact in server.world; the normal completion returns `hit.trace.startsolid`.
+/// @param scene Record exposing `world`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.transformedTrace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.transformedTrace`.
+/// @param number Number passed as `number` to `mq3.server.world.getEntity`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.transformedTrace`.
 function entityContact(scene,mins,maxs,number,capsule)
   ent = getEntity(scene,number); model = clipHandleForEntity(scene,ent)
   hit = cm.transformedTrace(scene.world,[0.0,0.0,0.0],[0.0,0.0,0.0],mins,maxs,model,-1,ent.currentOrigin,ent.currentAngles,capsule,scene.world.patchesReady)

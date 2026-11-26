@@ -3,10 +3,20 @@
 // FS_Seek semantics for the in-memory PK3 file handles used by local QVMs.
 package mq3.qcommon.memory_file_seek
 
+/// Seek-origin selector relative to the current file position.
 const FS_SEEK_CUR=0
+/// Seek-origin selector relative to the end of the file.
 const FS_SEEK_END=1
+/// Seek-origin selector relative to the beginning of the file.
 const FS_SEEK_SET=2
 
+/// Seek memory file seek in qcommon.memory_file_seek; the normal completion returns `0`.
+///
+/// Validation failures include `invalid FS_Seek origin`.
+/// @param files Files used in `len(files)` and `files[handle]`.
+/// @param handle Zero-based index into `files`.
+/// @param offset Offset used in `(base + offset)` and `(cursor.offset < 0)`.
+/// @param origin Origin used in `(origin == FS_SEEK_END)` and `(origin == FS_SEEK_SET)`.
 function seek(files,handle,offset,origin)
   if files==void or handle<=0 or handle>=len(files) then return -1 end if
   cursor=files[handle]

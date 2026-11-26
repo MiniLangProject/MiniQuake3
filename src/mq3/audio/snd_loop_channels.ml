@@ -4,11 +4,52 @@ package mq3.audio.snd_loop_channels
 
 import mq3.audio.snd_spatialize as loopSpatial
 
+/// Maximum number of simultaneously allocated sound channels.
 const MAX_CHANNELS=96
 
-struct Entry id handle origin realLoop doppler dopplerScale oldDopplerScale active end struct
-struct Group handle primary ids left right doppler dopplerScale oldDopplerScale end struct
+/// Entry record for audio.snd_loop_channels, containing `id`, `handle`, `origin`, `realLoop`, `doppler`, `dopplerScale`, and 2 further fields.
+struct Entry
+  /// Caller-supplied identifier used to find or update this sound source.
+  id
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// World-space XYZ position of the sound source.
+  origin
+  /// True for a persistent real looping sound rather than a frame-submitted loop.
+  realLoop
+  /// True when Doppler resampling is enabled for this source.
+  doppler
+  /// Current Doppler scale applied to the source sample-advance rate.
+  dopplerScale
+  /// Previous Doppler scale retained when continuing a loop between frames.
+  oldDopplerScale
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+end struct
+/// Group record for audio.snd_loop_channels, containing `handle`, `primary`, `ids`, `left`, `right`, `doppler`, and 2 further fields.
+struct Group
+  /// Sound handle shared by the loop sources in this group.
+  handle
+  /// Index of the source whose playback cursor leads the merged group.
+  primary
+  /// Identifiers of all sources contributing to this merged loop.
+  ids
+  /// Combined left-channel gain for the merged looping sources.
+  left
+  /// Combined right-channel gain for the merged looping sources.
+  right
+  /// True when Doppler resampling is enabled for this source.
+  doppler
+  /// Current Doppler scale applied to the source sample-advance rate.
+  dopplerScale
+  /// Previous Doppler scale retained when continuing a loop between frames.
+  oldDopplerScale
+end struct
 
+/// Group active loop sounds by matching source while accumulating their spatialized channel volumes.
+/// @param entries Entries used in `len(entries)` and `entries[index]`.
+/// @param listenerOrigin Listener origin passed as `listenerOrigin` to `mq3.audio.snd_spatialize.spatialize`.
+/// @param listenerAxis Listener axis passed as `listenerAxis` to `mq3.audio.snd_spatialize.spatialize`.
 function build(entries,listenerOrigin,listenerAxis)
   groups=[];merged=array(len(entries),false)
   if len(entries)>0 then

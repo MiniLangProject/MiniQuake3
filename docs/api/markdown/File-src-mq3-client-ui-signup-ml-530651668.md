@@ -21,17 +21,19 @@ Reachable from entry: **no**
 function button(text, id, x, y, flags, style)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI signup `button`. The final path returns `item`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Value assigned to `item.string`. |
+| `id` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_PTEXT,"",id,x,y,flags)`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `button`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `button`. |
+| `flags` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_PTEXT,"",id,x,y,flags)`. |
+| `style` | `dynamic` | — | Value assigned to `item.style`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L131)
 
 <a id="function-function-mq3-client-ui-signup-create-function-create-retailactive-src-mq3-client-ui-signup-ml-384598149"></a>
 ### create
@@ -40,12 +42,14 @@ function button(text, id, x, y, flags, style)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_signup.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L104)
 
 <a id="function-function-mq3-client-ui-signup-emit-function-emit-state-boundary-kind-name-text-text2-text3-src-mq3-client-ui-signup-ml-2098194146"></a>
 ### emit
@@ -54,18 +58,20 @@ function create(retailActive)
 function emit(state, boundary, kind, name, text, text2, text3)
 ```
 
+Appends a UI signup action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `text2` | `dynamic` | — |  |
-| `text3` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI signup record/storage; this routine assigns `state.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI signup resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI signup path. |
+| `text2` | `dynamic` | — | Value used by `a=Action(boundary,kind,name,text,text2,text3,not state.retailActive)`. |
+| `text3` | `dynamic` | — | Value used by `a=Action(boundary,kind,name,text,text2,text3,not state.retailActive)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L113)
 
 <a id="function-function-mq3-client-ui-signup-field-function-field-id-y-maxchars-src-mq3-client-ui-signup-ml-553675395"></a>
 ### field
@@ -74,14 +80,16 @@ function emit(state, boundary, kind, name, text, text2, text3)
 function field(id, y, maxchars)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI signup `field`. The final path returns `item`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `maxchars` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_FIELD,"",id,330,y,0)`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `field`. |
+| `maxchars` | `dynamic` | — | Value assigned to `item.maxchars`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L118)
 
 <a id="constant-constant-mq3-client-ui-signup-id-again-const-id-again-104-src-mq3-client-ui-signup-ml-1961283920"></a>
 ### ID_AGAIN
@@ -90,8 +98,10 @@ function field(id, y, maxchars)
 const ID_AGAIN = 104
 ```
 
+Menu control identifier routed to the again action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-signup-id-again-box-const-id-again-box-105-src-mq3-client-ui-signup-ml-596204075"></a>
 ### ID_AGAIN_BOX
@@ -100,8 +110,10 @@ const ID_AGAIN = 104
 const ID_AGAIN_BOX = 105
 ```
 
+Menu control identifier routed to the again box action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-signup-id-cancel-const-id-cancel-109-src-mq3-client-ui-signup-ml-829618313"></a>
 ### ID_CANCEL
@@ -110,8 +122,10 @@ const ID_AGAIN_BOX = 105
 const ID_CANCEL = 109
 ```
 
+Menu control identifier routed to the cancel action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-signup-id-email-const-id-email-106-src-mq3-client-ui-signup-ml-2011133322"></a>
 ### ID_EMAIL
@@ -120,8 +134,10 @@ const ID_CANCEL = 109
 const ID_EMAIL = 106
 ```
 
+Menu control identifier routed to the email action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-signup-id-email-box-const-id-email-box-107-src-mq3-client-ui-signup-ml-1065922189"></a>
 ### ID_EMAIL_BOX
@@ -130,8 +146,10 @@ const ID_EMAIL = 106
 const ID_EMAIL_BOX = 107
 ```
 
+Menu control identifier routed to the email box action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-signup-id-name-const-id-name-100-src-mq3-client-ui-signup-ml-1862217922"></a>
 ### ID_NAME
@@ -140,8 +158,10 @@ const ID_EMAIL_BOX = 107
 const ID_NAME = 100
 ```
 
+Menu control identifier routed to the name action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-signup-id-name-box-const-id-name-box-101-src-mq3-client-ui-signup-ml-1985002673"></a>
 ### ID_NAME_BOX
@@ -150,8 +170,10 @@ const ID_NAME = 100
 const ID_NAME_BOX = 101
 ```
 
+Menu control identifier routed to the name box action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-signup-id-password-const-id-password-102-src-mq3-client-ui-signup-ml-1121242692"></a>
 ### ID_PASSWORD
@@ -160,8 +182,10 @@ const ID_NAME_BOX = 101
 const ID_PASSWORD = 102
 ```
 
+Menu control identifier routed to the password action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-signup-id-password-box-const-id-password-box-103-src-mq3-client-ui-signup-ml-283054999"></a>
 ### ID_PASSWORD_BOX
@@ -170,8 +194,10 @@ const ID_PASSWORD = 102
 const ID_PASSWORD_BOX = 103
 ```
 
+Menu control identifier routed to the password box action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-signup-id-signup-const-id-signup-108-src-mq3-client-ui-signup-ml-250545594"></a>
 ### ID_SIGNUP
@@ -180,8 +206,10 @@ const ID_PASSWORD_BOX = 103
 const ID_SIGNUP = 108
 ```
 
+Menu control identifier routed to the signup action by the menu event handler.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L26)
 
 <a id="function-function-mq3-client-ui-signup-label-function-label-text-id-y-src-mq3-client-ui-signup-ml-1456663873"></a>
 ### label
@@ -190,14 +218,16 @@ const ID_SIGNUP = 108
 function label(text, id, y)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI signup `label`. The final path returns `item`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Value assigned to `item.string`. |
+| `id` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_PTEXT,"",id,310,y,q.QMF_RIGHT_JUSTIFY\|q.QMF_INACTIVE)`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `label`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L123)
 
 <a id="function-function-mq3-client-ui-signup-signup-cache-function-signup-cache-state-src-mq3-client-ui-signup-ml-1757558205"></a>
 ### Signup_Cache
@@ -210,10 +240,10 @@ Signup_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI signup state passed to the helper calls in `Signup_Cache`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L141)
 
 <a id="constant-constant-mq3-client-ui-signup-signup-frame-const-signup-frame-menu-art-cut-frame-src-mq3-client-ui-signup-ml-1382306615"></a>
 ### SIGNUP_FRAME
@@ -222,8 +252,10 @@ Signup_Cache
 const SIGNUP_FRAME = "menu/art/cut_frame"
 ```
 
+Virtual asset path used to load the signup frame renderer or menu resource.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L8)
 
 <a id="function-function-mq3-client-ui-signup-signup-menuevent-function-signup-menuevent-state-id-event-src-mq3-client-ui-signup-ml-347147062"></a>
 ### Signup_MenuEvent
@@ -236,12 +268,12 @@ Signup_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI signup record/storage; this routine assigns `state.nameBox.buffer`, `state.passwordBox.buffer`, `state.againBox.buffer`, `state.forcedOff` and additional values. |
+| `id` | `dynamic` | — | Value used by `if id==ID_SIGNUP then state.nameBox.buffer=rankings.sanitize(state.nameBox.buffer)`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L136)
 
 <a id="function-function-mq3-client-ui-signup-signup-menuinit-function-signup-menuinit-state-status-src-mq3-client-ui-signup-ml-1697519491"></a>
 ### Signup_MenuInit
@@ -254,11 +286,11 @@ Signup_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI signup record/storage; this routine assigns `state.menu`, `state.actions`, `state.status`, `state.frame` and additional values. |
+| `status` | `dynamic` | — | Value assigned to `state.status`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L145)
 
 - [mq3.client.ui_signup.State](Type-mq3-client-ui-signup-state-429813871.md) — struct
 <a id="function-function-mq3-client-ui-signup-ui-signupmenu-function-ui-signupmenu-state-status-src-mq3-client-ui-signup-ml-1193865575"></a>
@@ -272,8 +304,8 @@ UI_SignupMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI signup record/storage; this routine assigns `state.pushed`. |
+| `status` | `dynamic` | — | Value used by `Signup_MenuInit(state,status)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L152)

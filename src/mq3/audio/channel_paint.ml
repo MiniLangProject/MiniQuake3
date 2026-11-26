@@ -4,22 +4,38 @@
 package mq3.audio.channel_paint
 import mq3.compat.numeric as n
 
+/// Number of signed 16-bit mono samples stored in one sound-memory chunk.
 const SND_CHUNK_SIZE=1024
 
+/// Create the audio.channel_paint error for `fail` with 7250 and the supplied diagnostic text.
+/// @param message Message used in `("audio channel paint: " + message)` and `error(7250, ("audio channel paint: " + message))`.
 function fail(message)
   return error(7250,"audio channel paint: "+message)
 end function
 
+/// Check that channel PCM contains a nonempty integral number of 1024-sample chunks.
+/// @param samples PCM sample array representing the cyclic sndBuffer chunk chain.
 function validSamples(samples)
   return len(samples)>=SND_CHUNK_SIZE and (len(samples)%SND_CHUNK_SIZE)==0
 end function
 
+/// Wrap a source sample index into the cyclic PCM array, including negative indices.
+/// @param samples Nonempty cyclic sample array.
+/// @param index Logical sample index before modulo wrapping.
 function sourceIndex(samples,index)
   size=len(samples);result=index%size
   if result<0 then result=result+size end if
   return result
 end function
 
+/// Accumulate one PCM sample into adjacent left and right paint entries using signed 32-bit mixer arithmetic.
+///
+/// Direct state writes: `paint elements`.
+/// @param paint Mutable interleaved integer paint buffer.
+/// @param index Index of the left paint entry; the right entry is index + 1.
+/// @param data Signed source PCM sample.
+/// @param leftVolume Left channel scale, shifted right by eight after multiplication.
+/// @param rightVolume Right channel scale, shifted right by eight after multiplication.
 function addScaled(paint,index,data,leftVolume,rightVolume)
   left=n.sar32(n.mul32(data,leftVolume),8)
   right=n.sar32(n.mul32(data,rightVolume),8)
@@ -29,6 +45,17 @@ end function
 
 // paint is interleaved [left,right,...]. samples represents the linked 1024
 // sample sndBuffer chunks as one cyclic array. The result is modified in place.
+/// @param samples Cyclic signed PCM array containing complete 1024-sample chunks.
+/// @param count Number of output stereo frames to paint.
+/// @param sampleOffset Starting source sample offset before Doppler adjustment.
+/// @param bufferOffset Starting stereo-frame offset in paint.
+/// @param leftVol Left channel gain before sound-volume scaling.
+/// @param rightVol Right channel gain before sound-volume scaling.
+/// @param sndVol Overall sound gain multiplied into both channel gains.
+/// @param doppler Whether to resample using Doppler scale changes.
+/// @param dopplerScale Positive current source-step scale.
+/// @param oldDopplerScale Nonnegative scale used to adjust the starting source offset.
+/// @param paint Mutable interleaved left/right accumulator with room for (bufferOffset + count) * 2 entries.
 function paint16(samples,count,sampleOffset,bufferOffset,leftVol,rightVol,sndVol,doppler,dopplerScale,oldDopplerScale,paint)
   if not validSamples(samples) then return fail("sample data must contain complete 1024-sample chunks") end if
   if count<0 or sampleOffset<0 or bufferOffset<0 then return fail("negative range") end if

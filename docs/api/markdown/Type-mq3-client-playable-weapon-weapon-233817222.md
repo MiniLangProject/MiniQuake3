@@ -9,8 +9,10 @@
 struct Weapon
 ```
 
+Stores playable weapon weapon record, including `traceFn`, `context`, `ammo`, `capacity`, `cooldownMilliseconds`, `cooldownRemaining` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L20)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Weapon
 ammo
 ```
 
+Ammunition quantity or ammunition state associated with the selected weapon.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L26)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-automatic-automatic-src-mq3-client-playable-weapon-ml-1145019009"></a>
 ### automatic
@@ -31,8 +35,10 @@ ammo
 automatic
 ```
 
+When constructing this record, `createWithTrace` supplies `automatic` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L36)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-capacity-capacity-src-mq3-client-playable-weapon-ml-899875701"></a>
 ### capacity
@@ -41,8 +47,10 @@ automatic
 capacity
 ```
 
+Maximum number of entries or allocation units supported by the bounded storage.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L28)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-classname-classname-src-mq3-client-playable-weapon-ml-550978277"></a>
 ### classname
@@ -51,8 +59,10 @@ capacity
 classname
 ```
 
+Weapon item classname used to select firing behavior and corresponding weapon resources.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L42)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-context-context-src-mq3-client-playable-weapon-ml-933020817"></a>
 ### context
@@ -61,8 +71,10 @@ classname
 context
 ```
 
+When constructing this record, `createWithTrace` supplies `context` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L24)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-cooldownmilliseconds-cooldownmilliseconds-src-mq3-client-playable-weapon-ml-90340691"></a>
 ### cooldownMilliseconds
@@ -71,8 +83,10 @@ context
 cooldownMilliseconds
 ```
 
+When constructing this record, `createWithTrace` supplies `cooldownMilliseconds` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L30)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-cooldownremaining-cooldownremaining-src-mq3-client-playable-weapon-ml-132503849"></a>
 ### cooldownRemaining
@@ -81,8 +95,10 @@ cooldownMilliseconds
 cooldownRemaining
 ```
 
+When constructing this record, `createWithTrace` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L32)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-damage-damage-src-mq3-client-playable-weapon-ml-1536383635"></a>
 ### damage
@@ -91,8 +107,10 @@ cooldownRemaining
 damage
 ```
 
+Damage amount applied or reported by the weapon, projectile, or hit result.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L44)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-noammoevent-noammoevent-src-mq3-client-playable-weapon-ml-926415461"></a>
 ### noAmmoEvent
@@ -101,8 +119,10 @@ damage
 noAmmoEvent
 ```
 
+When constructing this record, `createWithTrace` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L46)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-range-range-src-mq3-client-playable-weapon-ml-1136009609"></a>
 ### range
@@ -111,8 +131,10 @@ noAmmoEvent
 range
 ```
 
+When constructing this record, `createWithTrace` supplies `numeric.f32(range)` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L34)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-shotsfired-shotsfired-src-mq3-client-playable-weapon-ml-62046575"></a>
 ### shotsFired
@@ -121,8 +143,10 @@ range
 shotsFired
 ```
 
+When constructing this record, `createWithTrace` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L40)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-tracefn-tracefn-src-mq3-client-playable-weapon-ml-2084130781"></a>
 ### traceFn
@@ -131,8 +155,10 @@ shotsFired
 traceFn
 ```
 
+Host callback for the trace operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L22)
 
 <a id="field-field-mq3-client-playable-weapon-weapon-triggerheld-triggerheld-src-mq3-client-playable-weapon-ml-547520605"></a>
 ### triggerHeld
@@ -141,5 +167,7 @@ traceFn
 triggerHeld
 ```
 
+When constructing this record, `createWithTrace` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L38)

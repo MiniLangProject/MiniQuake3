@@ -9,8 +9,10 @@
 struct PlatformServices
 ```
 
+PlatformServices record for vm.syscall_ui_media, containing `realTimeFn`, `remapShaderFn`, `getCdKeyFn`, `setCdKeyFn`, `verifyCdKeyFn`, `seekFn`, and 1 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L37)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct PlatformServices
 getCdKeyFn
 ```
 
+Injected callback for get cd key; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L43)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-pbstatusfn-pbstatusfn-src-mq3-vm-syscall-ui-media-ml-446704164"></a>
 ### pbStatusFn
@@ -31,8 +35,10 @@ getCdKeyFn
 pbStatusFn
 ```
 
+Injected callback for pb status; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L51)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-realtimefn-realtimefn-src-mq3-vm-syscall-ui-media-ml-670509166"></a>
 ### realTimeFn
@@ -41,8 +47,10 @@ pbStatusFn
 realTimeFn
 ```
 
+Injected callback for real time; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L39)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-remapshaderfn-remapshaderfn-src-mq3-vm-syscall-ui-media-ml-1642660632"></a>
 ### remapShaderFn
@@ -51,8 +59,10 @@ realTimeFn
 remapShaderFn
 ```
 
+Injected callback for remap shader; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L41)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-seekfn-seekfn-src-mq3-vm-syscall-ui-media-ml-1070936276"></a>
 ### seekFn
@@ -61,8 +71,10 @@ remapShaderFn
 seekFn
 ```
 
+Injected callback for seek; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L49)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-setcdkeyfn-setcdkeyfn-src-mq3-vm-syscall-ui-media-ml-1799119428"></a>
 ### setCdKeyFn
@@ -71,8 +83,10 @@ seekFn
 setCdKeyFn
 ```
 
+Injected callback for set cd key; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L45)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-verifycdkeyfn-verifycdkeyfn-src-mq3-vm-syscall-ui-media-ml-1881614372"></a>
 ### verifyCdKeyFn
@@ -81,5 +95,7 @@ setCdKeyFn
 verifyCdKeyFn
 ```
 
+Injected callback for verify cd key; invoked through the PlatformServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L47)

@@ -26,11 +26,11 @@ Gamestate parsing normally performs these transitions. Local hosts that have ins
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.slots`, `state.server.clients`. |
+| `index` | `dynamic` | — | Value tested by `not ready(state,index)` before the calculation continues. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L188)
 
 <a id="function-function-mq3-client-network-handshake-allready-function-allready-state-src-mq3-client-network-handshake-ml-1955741023"></a>
 ### allReady
@@ -39,12 +39,14 @@ Gamestate parsing normally performs these transitions. Local hosts that have ins
 function allReady(state)
 ```
 
+Calls `mq3.client.network_handshake.ready` from network handshake `allReady`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.slots`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L178)
 
 <a id="function-function-mq3-client-network-handshake-bindclient-function-bindclient-slot-src-mq3-client-network-handshake-ml-289598546"></a>
 ### bindClient
@@ -53,12 +55,14 @@ function allReady(state)
 function bindClient(slot)
 ```
 
+Updates `slot.clientBound` during network handshake `bindClient`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `slot` | `dynamic` | — |  |
+| `slot` | `dynamic` | — | Mutable network handshake record/storage; this routine assigns `slot.clientBound`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L64)
 
 <a id="function-function-mq3-client-network-handshake-bindserver-function-bindserver-state-serverslot-src-mq3-client-network-handshake-ml-1910253474"></a>
 ### bindServer
@@ -67,13 +71,15 @@ function bindClient(slot)
 function bindServer(state, serverSlot)
 ```
 
+Calls `mq3.client.network_handshake.sameEndpoint`, `mq3.client.network_handshake.findSlot`, `mq3.qcommon.netchan.setup` from network handshake `bindServer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverSlot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.server.clients`, `state.slots`. |
+| `serverSlot` | `dynamic` | — | Value assigned to `slot.serverSlot`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L92)
 
 <a id="function-function-mq3-client-network-handshake-create-function-create-groupstate-serverstate-src-mq3-client-network-handshake-ml-1374697564"></a>
 ### create
@@ -82,13 +88,15 @@ function bindServer(state, serverSlot)
 function create(groupState, serverState)
 ```
 
+Calls `mq3.client.network_handshake.Slot`, `mq3.client.network_handshake.Runtime` from network handshake `create`. The final path returns `Runtime(groupState,serverState,slots,"")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `groupState` | `dynamic` | — |  |
-| `serverState` | `dynamic` | — |  |
+| `groupState` | `dynamic` | — | Record read through `groupState.runtimes`. |
+| `serverState` | `dynamic` | — | Value used by `if groupState==void or serverState==void or groupState.runtimes==void or len(groupState.runtimes)<1 then return error(7715,"network handshake:...`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L45)
 
 <a id="function-function-mq3-client-network-handshake-findslot-function-findslot-state-accepted-src-mq3-client-network-handshake-ml-1830244000"></a>
 ### findSlot
@@ -97,13 +105,15 @@ function create(groupState, serverState)
 function findSlot(state, accepted)
 ```
 
+Calls `mq3.client.network_handshake.sameEndpoint` from network handshake `findSlot`. The final path returns `found`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `accepted` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.slots`. |
+| `accepted` | `dynamic` | — | Record read through `accepted.qport`, `accepted.address`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L78)
 
 <a id="function-function-mq3-client-network-handshake-pump-function-pump-state-budget-src-mq3-client-network-handshake-ml-23790988"></a>
 ### pump
@@ -112,13 +122,15 @@ function findSlot(state, accepted)
 function pump(state, budget)
 ```
 
+Calls `mq3.client.network_handshake.pumpOnce` from network handshake `pump`. The final path returns `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `budget` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared network handshake state passed to the helper calls in `pump`. |
+| `budget` | `dynamic` | — | Value used by `if state==void or budget<0 then return error(7715,"network handshake: invalid pump") end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L162)
 
 <a id="function-function-mq3-client-network-handshake-pumponce-function-pumponce-state-src-mq3-client-network-handshake-ml-770583947"></a>
 ### pumpOnce
@@ -127,12 +139,14 @@ function pump(state, budget)
 function pumpOnce(state)
 ```
 
+Calls `mq3.client.network_match_loop.pumpGroupOnce`, `mq3.client.network_handshake.reconcile` from network handshake `pumpOnce`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.group`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L154)
 
 <a id="function-function-mq3-client-network-handshake-ready-function-ready-state-index-src-mq3-client-network-handshake-ml-158992401"></a>
 ### ready
@@ -141,13 +155,15 @@ function pumpOnce(state)
 function ready(state, index)
 ```
 
+Checks that the selected network slot exists and both client/server transport endpoints are bound.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.slots`. |
+| `index` | `dynamic` | — | Value tested by `state==void or index<0 or index>=len(state.slots)` before the calculation continues. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L172)
 
 <a id="function-function-mq3-client-network-handshake-reconcile-function-reconcile-state-src-mq3-client-network-handshake-ml-1045593439"></a>
 ### reconcile
@@ -156,12 +172,14 @@ function ready(state, index)
 function reconcile(state)
 ```
 
+Updates `state.lastError` during network handshake `reconcile`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable network handshake record/storage; this routine assigns `state.lastError`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L117)
 
 <a id="function-function-mq3-client-network-handshake-resend-function-resend-state-src-mq3-client-network-handshake-ml-881788647"></a>
 ### resend
@@ -170,12 +188,14 @@ function reconcile(state)
 function resend(state)
 ```
 
+Calls `mq3.client.connectionless.checkForResend` from network handshake `resend`. The final path returns `sent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.slots`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L142)
 
 - [mq3.client.network_handshake.Runtime](Type-mq3-client-network-handshake-runtime-1346947741.md) — struct
 <a id="function-function-mq3-client-network-handshake-sameendpoint-function-sameendpoint-left-right-src-mq3-client-network-handshake-ml-791477271"></a>
@@ -185,13 +205,15 @@ function resend(state)
 function sameEndpoint(left, right)
 ```
 
+Adapts `mq3.client.connectionless.addressEqual` to network handshake `sameEndpoint`, returning its result for `left, right, true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `left` | `dynamic` | — | Argument 1 of `mq3.client.connectionless.addressEqual`. |
+| `right` | `dynamic` | — | Argument 2 of `mq3.client.connectionless.addressEqual`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L58)
 
 <a id="function-function-mq3-client-network-handshake-settime-function-settime-state-time-src-mq3-client-network-handshake-ml-853469366"></a>
 ### setTime
@@ -200,12 +222,14 @@ function sameEndpoint(left, right)
 function setTime(state, time)
 ```
 
+Updates `state.server.time` during network handshake `setTime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable network handshake record/storage; this routine assigns `state.server.time`. |
+| `time` | `dynamic` | — | Value assigned to `state.server.time`, `slot.runtime.clientConnection.realtime`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L134)
 
 - [mq3.client.network_handshake.Slot](Type-mq3-client-network-handshake-slot-1260725159.md) — struct

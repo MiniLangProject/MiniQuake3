@@ -31,13 +31,17 @@ Reachable from entry: **yes**
 function addLoop(state, command)
 ```
 
+Add loop in audio.qvm_playback; the normal completion returns `true`.
+
+Direct state writes: `state.loops`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `loops`, `listener`. Updated in place: `loops`. |
+| `command` | `dynamic` | — | Record exposing `entity`, `handle`, `origin`, `velocity`, `flag`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L283)
 
 <a id="function-function-mq3-audio-qvm-playback-addvoice-function-addvoice-state-command-localsound-src-mq3-audio-qvm-playback-ml-1758157648"></a>
 ### addVoice
@@ -46,14 +50,18 @@ function addLoop(state, command)
 function addVoice(state, command, localSound)
 ```
 
+Add voice in audio.qvm_playback; the normal completion returns `true`.
+
+Direct state writes: `state.nextVoice`, `state.voices`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
-| `localSound` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `listener`, `channels`, `voices`, `nextVoice`. Updated in place: `nextVoice`, `voices`. |
+| `command` | `dynamic` | — | Record exposing `handle`, `entity`, `channel`, `origin`. |
+| `localSound` | `dynamic` | — | Initial `localSound` field stored in the returned or constructed `mq3.audio.qvm_playback.Voice` record. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L266)
 
 <a id="function-function-mq3-audio-qvm-playback-apply-function-apply-state-commands-src-mq3-audio-qvm-playback-ml-461914009"></a>
 ### apply
@@ -62,13 +70,15 @@ function addVoice(state, command, localSound)
 function apply(state, commands)
 ```
 
+Return `mq3.audio.qvm_playback.applyFrom(state, commands, 0)` from `audio.qvm_playback.apply`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.audio.qvm_playback.applyFrom`. |
+| `commands` | `dynamic` | — | Commands passed as `commands` to `mq3.audio.qvm_playback.applyFrom`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L403)
 
 <a id="function-function-mq3-audio-qvm-playback-applyfrom-function-applyfrom-state-commands-start-src-mq3-audio-qvm-playback-ml-638805327"></a>
 ### applyFrom
@@ -77,14 +87,18 @@ function apply(state, commands)
 function applyFrom(state, commands, start)
 ```
 
+Apply from in audio.qvm_playback; the normal completion returns `ApplyResult(applied, missing, ignored)`.
+
+Direct state writes: `state.music`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Updated in place: `music`. |
+| `commands` | `dynamic` | — | Commands used in `len(commands)` and `(commands == void)`. |
+| `start` | `dynamic` | — | Start used in `(start < 0)` and `(start > len(commands))`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L372)
 
 - [mq3.audio.qvm_playback.ApplyResult](Type-mq3-audio-qvm-playback-applyresult-735207379.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-cachedmono-function-cachedmono-state-clip-src-mq3-audio-qvm-playback-ml-1134498517"></a>
@@ -94,13 +108,17 @@ function applyFrom(state, commands, start)
 function cachedMono(state, clip)
 ```
 
+Update `state.monoHandles` in audio.qvm_playback; the normal completion returns `samples`.
+
+Direct state writes: `state.monoHandles`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clip` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `monoHandles`, `monoCache`. Updated in place: `monoHandles`. |
+| `clip` | `dynamic` | — | Record exposing `compressed`, `handle`, `sound`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L230)
 
 - [mq3.audio.qvm_playback.Chunk](Type-mq3-audio-qvm-playback-chunk-1612025479.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-clearloops-function-clearloops-state-killall-src-mq3-audio-qvm-playback-ml-134434408"></a>
@@ -110,13 +128,17 @@ function cachedMono(state, clip)
 function clearLoops(state, killAll)
 ```
 
+Clear loops in audio.qvm_playback; updates `state.loops`.
+
+Direct state writes: `state.loops`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `killAll` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `loops`. Updated in place: `loops`. |
+| `killAll` | `dynamic` | — | Kill all operand used by `clearLoops`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L309)
 
 <a id="function-function-mq3-audio-qvm-playback-clipforhandle-function-clipforhandle-state-handle-src-mq3-audio-qvm-playback-ml-1323685387"></a>
 ### clipForHandle
@@ -125,13 +147,17 @@ function clearLoops(state, killAll)
 function clipForHandle(state, handle)
 ```
 
+Update `state.clipHandles` in audio.qvm_playback; the normal completion returns `clip`.
+
+Direct state writes: `state.clipHandles`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `clipHandles`, `catalog`. Updated in place: `clipHandles`. |
+| `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.audio.qvm_sound_assets.clipForHandle`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L194)
 
 <a id="function-function-mq3-audio-qvm-playback-consume-function-consume-state-commands-src-mq3-audio-qvm-playback-ml-946021513"></a>
 ### consume
@@ -140,13 +166,17 @@ function clipForHandle(state, handle)
 function consume(state, commands)
 ```
 
+Update `state.commandCursor` in audio.qvm_playback; the normal completion returns `result`.
+
+Direct state writes: `state.commandCursor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `commandCursor`. Updated in place: `commandCursor`. |
+| `commands` | `dynamic` | — | Commands passed as `commands` to `mq3.audio.qvm_playback.applyFrom`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L410)
 
 <a id="function-function-mq3-audio-qvm-playback-copyorigin-function-copyorigin-origin-src-mq3-audio-qvm-playback-ml-89678826"></a>
 ### copyOrigin
@@ -155,12 +185,14 @@ function consume(state, commands)
 function copyOrigin(origin)
 ```
 
+Compute audio.qvm_playback.copyOrigin as `[origin[0], origin[1], origin[2]]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Origin used in `origin[0]` and `origin[1]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L223)
 
 <a id="function-function-mq3-audio-qvm-playback-create-function-create-catalog-outputrate-chunkframes-src-mq3-audio-qvm-playback-ml-307653205"></a>
 ### create
@@ -169,14 +201,16 @@ function copyOrigin(origin)
 function create(catalog, outputRate, chunkFrames)
 ```
 
+Create qvm playback in audio.qvm_playback.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `outputRate` | `dynamic` | — |  |
-| `chunkFrames` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Record exposing `clips`. |
+| `outputRate` | `dynamic` | — | Output rate passed as `outputRate` to `mq3.audio.snd_raw_stream.create`. |
+| `chunkFrames` | `dynamic` | — | Initial `chunkFrames` field stored in the returned or constructed `mq3.audio.qvm_playback.State` record. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L179)
 
 <a id="function-function-mq3-audio-qvm-playback-defaultaxis-function-defaultaxis-src-mq3-audio-qvm-playback-ml-1072121772"></a>
 ### defaultAxis
@@ -185,8 +219,10 @@ function create(catalog, outputRate, chunkFrames)
 function defaultAxis()
 ```
 
+Compute audio.qvm_playback.defaultAxis as `[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L173)
 
 <a id="function-function-mq3-audio-qvm-playback-entityorigin-function-entityorigin-state-entity-src-mq3-audio-qvm-playback-ml-77468830"></a>
 ### entityOrigin
@@ -195,13 +231,15 @@ function defaultAxis()
 function entityOrigin(state, entity)
 ```
 
+Compute entity origin in audio.qvm_playback; the normal completion returns `[0.0, 0.0, 0.0]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `entityOrigins`. |
+| `entity` | `dynamic` | — | Zero-based index into `state.entityOrigins`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L255)
 
 <a id="function-function-mq3-audio-qvm-playback-fail-function-fail-message-src-mq3-audio-qvm-playback-ml-1645920433"></a>
 ### fail
@@ -210,12 +248,14 @@ function entityOrigin(state, entity)
 function fail(message)
 ```
 
+Create the audio.qvm_playback error for `fail` with 7651 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("QVM playback: " + message)` and `error(7651, ("QVM playback: " + message))`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L171)
 
 <a id="function-function-mq3-audio-qvm-playback-hascompressedsources-function-hascompressedsources-state-src-mq3-audio-qvm-playback-ml-150827347"></a>
 ### hasCompressedSources
@@ -224,12 +264,14 @@ function fail(message)
 function hasCompressedSources(state)
 ```
 
+Test compressed sources in audio.qvm_playback; the normal completion returns `false`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `voices`, `loops`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L601)
 
 - [mq3.audio.qvm_playback.Listener](Type-mq3-audio-qvm-playback-listener-1057660462.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-loopbyentity-function-loopbyentity-state-entity-src-mq3-audio-qvm-playback-ml-1896973342"></a>
@@ -239,13 +281,15 @@ function hasCompressedSources(state)
 function loopByEntity(state, entity)
 ```
 
+Compute loop by entity in audio.qvm_playback.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `loops`. |
+| `entity` | `dynamic` | — | Entity used in `(sourceLoop.entity == entity)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L444)
 
 - [mq3.audio.qvm_playback.LoopSource](Type-mq3-audio-qvm-playback-loopsource-1361245797.md) — struct
 <a id="constant-constant-mq3-audio-qvm-playback-max-entities-const-max-entities-1024-src-mq3-audio-qvm-playback-ml-1314032354"></a>
@@ -255,8 +299,10 @@ function loopByEntity(state, entity)
 const MAX_ENTITIES = 1024
 ```
 
+Number of entity slots for sound origins and entity-attached playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L21)
 
 <a id="constant-constant-mq3-audio-qvm-playback-max-loops-const-max-loops-1024-src-mq3-audio-qvm-playback-ml-1741773076"></a>
 ### MAX_LOOPS
@@ -265,8 +311,10 @@ const MAX_ENTITIES = 1024
 const MAX_LOOPS = 1024
 ```
 
+Maximum number of entity-attached looping sound sources.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
 
 <a id="constant-constant-mq3-audio-qvm-playback-max-voices-const-max-voices-96-src-mq3-audio-qvm-playback-ml-991642406"></a>
 ### MAX_VOICES
@@ -275,8 +323,10 @@ const MAX_LOOPS = 1024
 const MAX_VOICES = 96
 ```
 
+Maximum number of active one-shot playback voices.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L23)
 
 <a id="function-function-mq3-audio-qvm-playback-mixmusic-function-mixmusic-state-music-leftmix-rightmix-src-mq3-audio-qvm-playback-ml-744687743"></a>
 ### mixMusic
@@ -285,15 +335,19 @@ const MAX_VOICES = 96
 function mixMusic(state, music, leftMix, rightMix)
 ```
 
+Mix music in audio.qvm_playback; the normal completion returns `active`.
+
+Direct state writes: `music.cursor`, `music.inIntro`, `music.active`, `leftMix elements`, `rightMix elements`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `music` | `dynamic` | — |  |
-| `leftMix` | `dynamic` | — |  |
-| `rightMix` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `chunkFrames`, `outputRate`. |
+| `music` | `dynamic` | — | Record exposing `cursor`, `inIntro`, `active`, `loopSound`, `introSound`. Updated in place: `cursor`, `inIntro`, `active`. |
+| `leftMix` | `dynamic` | — | Mutable sequence written at `frame`. |
+| `rightMix` | `dynamic` | — | Mutable sequence written at `frame`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L493)
 
 <a id="function-function-mq3-audio-qvm-playback-mixsource-function-mixsource-state-sound-cursor-looping-gains-leftmix-rightmix-src-mq3-audio-qvm-playback-ml-1176732825"></a>
 ### mixSource
@@ -302,18 +356,22 @@ function mixMusic(state, music, leftMix, rightMix)
 function mixSource(state, sound, cursor, looping, gains, leftMix, rightMix)
 ```
 
+Mix source in audio.qvm_playback; the normal completion returns `[phase, active]`.
+
+Direct state writes: `leftMix elements`, `rightMix elements`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `cursor` | `dynamic` | — |  |
-| `looping` | `dynamic` | — |  |
-| `gains` | `dynamic` | — |  |
-| `leftMix` | `dynamic` | — |  |
-| `rightMix` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `outputRate`, `chunkFrames`. |
+| `sound` | `dynamic` | — | Record exposing `samples`, `blockAlign`, `sampleRate`. |
+| `cursor` | `dynamic` | — | Cursor operand used by `mixSource`; its reads are shown in the implementation. |
+| `looping` | `dynamic` | — | Looping operand used by `mixSource`; its reads are shown in the implementation. |
+| `gains` | `dynamic` | — | Record exposing `left`, `right`. |
+| `leftMix` | `dynamic` | — | Mutable sequence written at `frame`. |
+| `rightMix` | `dynamic` | — | Mutable sequence written at `frame`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L459)
 
 - [mq3.audio.qvm_playback.Music](Type-mq3-audio-qvm-playback-music-237700753.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-musicsample-function-musicsample-sound-frame-channel-src-mq3-audio-qvm-playback-ml-442861751"></a>
@@ -323,14 +381,16 @@ function mixSource(state, sound, cursor, looping, gains, leftMix, rightMix)
 function musicSample(sound, frame, channel)
 ```
 
+Compute music sample in audio.qvm_playback; the normal completion returns `spatial.signed16(sound.samples, offset)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sound` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
+| `sound` | `dynamic` | — | Record exposing `samples`, `blockAlign`, `bitsPerSample`, `channels`. |
+| `frame` | `dynamic` | — | Frame used in `(frame % frames)`. |
+| `channel` | `dynamic` | — | Channel used in `(channel * 2)` and `(offset + channel)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L475)
 
 <a id="function-function-mq3-audio-qvm-playback-paintmusic-function-paintmusic-state-music-paint-src-mq3-audio-qvm-playback-ml-388702800"></a>
 ### paintMusic
@@ -339,14 +399,18 @@ function musicSample(sound, frame, channel)
 function paintMusic(state, music, paint)
 ```
 
+Paint music in audio.qvm_playback; the normal completion returns `active`.
+
+Direct state writes: `music.cursor`, `music.inIntro`, `music.active`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `music` | `dynamic` | — |  |
-| `paint` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `chunkFrames`, `outputRate`. |
+| `music` | `dynamic` | — | Record exposing `cursor`, `inIntro`, `active`, `loopSound`, `introSound`. Updated in place: `cursor`, `inIntro`, `active`. |
+| `paint` | `dynamic` | — | Paint passed as `paint` to `mq3.audio.snd_paint_pipeline.paintRaw`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L529)
 
 <a id="function-function-mq3-audio-qvm-playback-paintmusicfast-function-paintmusicfast-state-music-paint-src-mq3-audio-qvm-playback-ml-1007080332"></a>
 ### paintMusicFast
@@ -355,14 +419,18 @@ function paintMusic(state, music, paint)
 function paintMusicFast(state, music, paint)
 ```
 
+Paint music fast in audio.qvm_playback; the normal completion returns `active`.
+
+Direct state writes: `music.cursor`, `music.inIntro`, `music.active`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `music` | `dynamic` | — |  |
-| `paint` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `chunkFrames`, `outputRate`. |
+| `music` | `dynamic` | — | Record exposing `cursor`, `inIntro`, `active`, `loopSound`, `introSound`. Updated in place: `cursor`, `inIntro`, `active`. |
+| `paint` | `dynamic` | — | Writable byte buffer containing interleaved signed-int32 stereo accumulators. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L613)
 
 <a id="function-function-mq3-audio-qvm-playback-queueraw-function-queueraw-state-audio-volume-src-mq3-audio-qvm-playback-ml-1716616169"></a>
 ### queueRaw
@@ -371,14 +439,16 @@ function paintMusicFast(state, music, paint)
 function queueRaw(state, audio, volume)
 ```
 
+Queue raw in audio.qvm_playback.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `audio` | `dynamic` | — |  |
-| `volume` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `rawStream`, `loopPaintedFrames`. |
+| `audio` | `dynamic` | — | Record exposing `frames`, `sampleRate`, `bitsPerSample`, `channels`, `samples`. |
+| `volume` | `dynamic` | — | Volume passed as `volume` to `mq3.audio.snd_raw_stream.enqueue`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L209)
 
 <a id="function-function-mq3-audio-qvm-playback-render-function-render-state-src-mq3-audio-qvm-playback-ml-1646771407"></a>
 ### render
@@ -387,12 +457,16 @@ function queueRaw(state, audio, volume)
 function render(state)
 ```
 
+Render qvm playback in audio.qvm_playback; the normal completion returns `Chunk(output, state.chunkFrames, voiceCount, loopCount, peak, limiter)`.
+
+Direct state writes: `state.loopPaintedFrames`, `state.voices`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `chunkFrames`, `rawStream`, `loopPaintedFrames`, `music`, `voices`, `loops`, `listener` and further fields. Updated in place: `loopPaintedFrames`, `voices`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L559)
 
 <a id="function-function-mq3-audio-qvm-playback-renderfast-function-renderfast-state-src-mq3-audio-qvm-playback-ml-1369910823"></a>
 ### renderFast
@@ -405,10 +479,10 @@ Production Windows fast path. It is deliberately additive: the exact, reference-
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `rawStream`, `loopPaintedFrames`, `chunkFrames`, `music`, `voices`, `loops`, `listener` and further fields. Updated in place: `loopPaintedFrames`, `voices`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L352)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L637)
 
 <a id="function-function-mq3-audio-qvm-playback-setlistener-function-setlistener-state-command-src-mq3-audio-qvm-playback-ml-1733859714"></a>
 ### setListener
@@ -417,13 +491,17 @@ Production Windows fast path. It is deliberately additive: the exact, reference-
 function setListener(state, command)
 ```
 
+Set listener in audio.qvm_playback; the normal completion returns `true`.
+
+Direct state writes: `state.listener`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `channels`. Updated in place: `listener`. |
+| `command` | `dynamic` | — | Record exposing `origin`, `axis`, `entity`, `flag`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L342)
 
 <a id="function-function-mq3-audio-qvm-playback-setposition-function-setposition-state-entity-origin-src-mq3-audio-qvm-playback-ml-1784495770"></a>
 ### setPosition
@@ -432,14 +510,16 @@ function setListener(state, command)
 function setPosition(state, entity, origin)
 ```
 
+Set position in audio.qvm_playback; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `entityOrigins`, `loops`. |
+| `entity` | `dynamic` | — | Entity used in `(entity < 0)` and `(entity >= MAX_ENTITIES)`. |
+| `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.audio.qvm_playback.validOrigin`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L330)
 
 <a id="function-function-mq3-audio-qvm-playback-sourcegains-function-sourcegains-state-entity-origin-localsound-src-mq3-audio-qvm-playback-ml-1413147048"></a>
 ### sourceGains
@@ -448,15 +528,17 @@ function setPosition(state, entity, origin)
 function sourceGains(state, entity, origin, localSound)
 ```
 
+Compute source gains in audio.qvm_playback; the normal completion returns `spatial.Spatial(value[0], value[1], value[2], value[3])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `localSound` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `listener`. |
+| `entity` | `dynamic` | — | Entity used in `(entity == state.listener.entity)` and `(localSound or (entity == state.listener.entity))`. |
+| `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.audio.snd_spatialize.gains`. |
+| `localSound` | `dynamic` | — | Local sound used in `(localSound or (entity == state.listener.entity))`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L424)
 
 <a id="function-function-mq3-audio-qvm-playback-sourcevolumes-function-sourcevolumes-state-entity-origin-localsound-src-mq3-audio-qvm-playback-ml-1231283674"></a>
 ### sourceVolumes
@@ -465,15 +547,17 @@ function sourceGains(state, entity, origin, localSound)
 function sourceVolumes(state, entity, origin, localSound)
 ```
 
+Compute source volumes in audio.qvm_playback; the normal completion returns `[value.left, value.right]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `localSound` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `listener`. |
+| `entity` | `dynamic` | — | Entity used in `(entity == state.listener.entity)` and `(localSound or (entity == state.listener.entity))`. |
+| `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.audio.snd_spatialize.spatialize`. |
+| `localSound` | `dynamic` | — | Local sound used in `(localSound or (entity == state.listener.entity))`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L435)
 
 <a id="function-function-mq3-audio-qvm-playback-startmusic-function-startmusic-state-intro-trackloop-src-mq3-audio-qvm-playback-ml-1513180938"></a>
 ### startMusic
@@ -482,14 +566,18 @@ function sourceVolumes(state, entity, origin, localSound)
 function startMusic(state, intro, trackLoop)
 ```
 
+Start music in audio.qvm_playback; the normal completion returns `true`.
+
+Direct state writes: `state.music`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `intro` | `dynamic` | — |  |
-| `trackLoop` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `catalog`. Updated in place: `music`. |
+| `intro` | `dynamic` | — | Path passed as `path` to `mq3.audio.qvm_sound_assets.ensurePath`. |
+| `trackLoop` | `dynamic` | — | Track loop operand used by `startMusic`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L355)
 
 - [mq3.audio.qvm_playback.State](Type-mq3-audio-qvm-playback-state-887669543.md) — struct
 <a id="function-function-mq3-audio-qvm-playback-stoploop-function-stoploop-state-entity-src-mq3-audio-qvm-playback-ml-815501138"></a>
@@ -499,13 +587,17 @@ function startMusic(state, intro, trackLoop)
 function stopLoop(state, entity)
 ```
 
+Stop loop in audio.qvm_playback; the normal completion returns `found`.
+
+Direct state writes: `state.loops`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `loops`. Updated in place: `loops`. |
+| `entity` | `dynamic` | — | Entity used in `(sourceLoop.entity == entity)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L320)
 
 <a id="function-function-mq3-audio-qvm-playback-validorigin-function-validorigin-origin-src-mq3-audio-qvm-playback-ml-335252890"></a>
 ### validOrigin
@@ -514,12 +606,14 @@ function stopLoop(state, entity)
 function validOrigin(origin)
 ```
 
+Compute audio.qvm_playback.validOrigin as `((origin != void) and (len(origin) == 3))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Origin used in `len(origin)` and `(origin != void)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L217)
 
 <a id="function-function-mq3-audio-qvm-playback-validsoundentity-function-validsoundentity-entity-src-mq3-audio-qvm-playback-ml-1094715125"></a>
 ### validSoundEntity
@@ -528,11 +622,13 @@ function validOrigin(origin)
 function validSoundEntity(entity)
 ```
 
+Return `mq3.audio.snd_public.validEntity(entity)` from `audio.qvm_playback.validSoundEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entity` | `dynamic` | — |  |
+| `entity` | `dynamic` | — | Entity passed as `entity` to `mq3.audio.snd_public.validEntity`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L220)
 
 - [mq3.audio.qvm_playback.Voice](Type-mq3-audio-qvm-playback-voice-1400706100.md) — struct

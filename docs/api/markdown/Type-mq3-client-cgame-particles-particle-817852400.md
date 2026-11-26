@@ -9,8 +9,10 @@
 struct Particle
 ```
 
+Stores client game particles particle record, including `id`, `active`, `time`, `endtime`, `org`, `vel` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L63)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Particle
 accel
 ```
 
+When constructing this record, `newParticle` supplies `zero3()` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L77)
 
 <a id="field-field-mq3-client-cgame-particles-particle-accumroll-accumroll-src-mq3-client-cgame-particles-ml-470045411"></a>
 ### accumroll
@@ -31,8 +35,10 @@ accel
 accumroll
 ```
 
+When constructing this record, `newParticle` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L115)
 
 <a id="field-field-mq3-client-cgame-particles-particle-active-active-src-mq3-client-cgame-particles-ml-868377283"></a>
 ### active
@@ -41,8 +47,10 @@ accumroll
 active
 ```
 
+When constructing this record, `newParticle` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L67)
 
 <a id="field-field-mq3-client-cgame-particles-particle-alpha-alpha-src-mq3-client-cgame-particles-ml-1847474059"></a>
 ### alpha
@@ -51,8 +59,10 @@ active
 alpha
 ```
 
+Opacity or alpha modulation applied while drawing or fading the object.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L83)
 
 <a id="field-field-mq3-client-cgame-particles-particle-alphavel-alphavel-src-mq3-client-cgame-particles-ml-181905025"></a>
 ### alphavel
@@ -61,8 +71,10 @@ alpha
 alphavel
 ```
 
+When constructing this record, `newParticle` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L85)
 
 <a id="field-field-mq3-client-cgame-particles-particle-color-color-src-mq3-client-cgame-particles-ml-2011195263"></a>
 ### color
@@ -71,8 +83,10 @@ alphavel
 color
 ```
 
+Particle color-mode selector, including blood-red, gray, and emissive-fade behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L79)
 
 <a id="field-field-mq3-client-cgame-particles-particle-colorvel-colorvel-src-mq3-client-cgame-particles-ml-2049148483"></a>
 ### colorvel
@@ -81,8 +95,10 @@ color
 colorvel
 ```
 
+When constructing this record, `newParticle` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L81)
 
 <a id="field-field-mq3-client-cgame-particles-particle-endheight-endheight-src-mq3-client-cgame-particles-ml-332002595"></a>
 ### endheight
@@ -91,8 +107,10 @@ colorvel
 endheight
 ```
 
+Target particle height reached at the end of its lifetime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L95)
 
 <a id="field-field-mq3-client-cgame-particles-particle-endtime-endtime-src-mq3-client-cgame-particles-ml-1735941743"></a>
 ### endtime
@@ -101,8 +119,10 @@ endheight
 endtime
 ```
 
+When constructing this record, `newParticle` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L71)
 
 <a id="field-field-mq3-client-cgame-particles-particle-endwidth-endwidth-src-mq3-client-cgame-particles-ml-1383585205"></a>
 ### endwidth
@@ -111,8 +131,10 @@ endtime
 endwidth
 ```
 
+Target particle width reached at the end of its lifetime.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L97)
 
 <a id="field-field-mq3-client-cgame-particles-particle-finish-finish-src-mq3-client-cgame-particles-ml-724887205"></a>
 ### finish
@@ -121,8 +143,10 @@ endwidth
 finish
 ```
 
+When constructing this record, `newParticle` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L101)
 
 <a id="field-field-mq3-client-cgame-particles-particle-height-height-src-mq3-client-cgame-particles-ml-1384874601"></a>
 ### height
@@ -131,8 +155,10 @@ finish
 height
 ```
 
+Initial vertical half-size of the particle quad in world units.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L91)
 
 <a id="field-field-mq3-client-cgame-particles-particle-id-id-src-mq3-client-cgame-particles-ml-1648783981"></a>
 ### id
@@ -141,8 +167,10 @@ height
 id
 ```
 
+Stable effect identifier used to track or replace this projectile, particle, or mark.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L65)
 
 <a id="field-field-mq3-client-cgame-particles-particle-link-link-src-mq3-client-cgame-particles-ml-241945295"></a>
 ### link
@@ -151,8 +179,10 @@ id
 link
 ```
 
+When constructing this record, `newParticle` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L109)
 
 <a id="field-field-mq3-client-cgame-particles-particle-org-org-src-mq3-client-cgame-particles-ml-597313259"></a>
 ### org
@@ -161,8 +191,10 @@ link
 org
 ```
 
+When constructing this record, `newParticle` supplies `zero3()` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L73)
 
 <a id="field-field-mq3-client-cgame-particles-particle-roll-roll-src-mq3-client-cgame-particles-ml-1374200697"></a>
 ### roll
@@ -171,8 +203,10 @@ org
 roll
 ```
 
+When constructing this record, `newParticle` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L113)
 
 <a id="field-field-mq3-client-cgame-particles-particle-rotate-rotate-src-mq3-client-cgame-particles-ml-1752562425"></a>
 ### rotate
@@ -181,8 +215,10 @@ roll
 rotate
 ```
 
+When constructing this record, `newParticle` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L105)
 
 <a id="field-field-mq3-client-cgame-particles-particle-shader-shader-src-mq3-client-cgame-particles-ml-2017549553"></a>
 ### shader
@@ -191,8 +227,10 @@ rotate
 shader
 ```
 
+Particle material name, updated to the selected frame name for an animated particle.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L89)
 
 <a id="field-field-mq3-client-cgame-particles-particle-shaderanim-shaderanim-src-mq3-client-cgame-particles-ml-1883543243"></a>
 ### shaderAnim
@@ -201,8 +239,10 @@ shader
 shaderAnim
 ```
 
+When constructing this record, `newParticle` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L111)
 
 <a id="field-field-mq3-client-cgame-particles-particle-snum-snum-src-mq3-client-cgame-particles-ml-1588940969"></a>
 ### snum
@@ -211,8 +251,10 @@ shaderAnim
 snum
 ```
 
+When constructing this record, `newParticle` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L107)
 
 <a id="field-field-mq3-client-cgame-particles-particle-start-start-src-mq3-client-cgame-particles-ml-179264307"></a>
 ### start
@@ -221,8 +263,10 @@ snum
 start
 ```
 
+When constructing this record, `newParticle` supplies `0.0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L99)
 
 <a id="field-field-mq3-client-cgame-particles-particle-startfade-startfade-src-mq3-client-cgame-particles-ml-242409443"></a>
 ### startfade
@@ -231,8 +275,10 @@ start
 startfade
 ```
 
+When constructing this record, `newParticle` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L103)
 
 <a id="field-field-mq3-client-cgame-particles-particle-time-time-src-mq3-client-cgame-particles-ml-739129501"></a>
 ### time
@@ -241,8 +287,10 @@ startfade
 time
 ```
 
+Client timestamp used as the creation or update reference for this temporary visual effect.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L69)
 
 <a id="field-field-mq3-client-cgame-particles-particle-type-type-src-mq3-client-cgame-particles-ml-522537983"></a>
 ### type
@@ -251,8 +299,10 @@ time
 type
 ```
 
+When constructing this record, `newParticle` supplies `P_NONE` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L87)
 
 <a id="field-field-mq3-client-cgame-particles-particle-vel-vel-src-mq3-client-cgame-particles-ml-29994575"></a>
 ### vel
@@ -261,8 +311,10 @@ type
 vel
 ```
 
+When constructing this record, `newParticle` supplies `zero3()` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L75)
 
 <a id="field-field-mq3-client-cgame-particles-particle-width-width-src-mq3-client-cgame-particles-ml-1742213031"></a>
 ### width
@@ -271,5 +323,7 @@ vel
 width
 ```
 
+Initial horizontal half-size of the particle quad in world units.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L93)

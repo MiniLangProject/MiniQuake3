@@ -9,8 +9,10 @@
 struct ClientServices
 ```
 
+ClientServices record for vm.syscall_ui, containing `clipboardFn`, `glconfigFn`, `clientStateFn`, `configStringFn`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ClientServices
 clientStateFn
 ```
 
+Injected callback for client state; invoked through the ClientServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L21)
 
 <a id="field-field-mq3-vm-syscall-ui-clientservices-clipboardfn-clipboardfn-src-mq3-vm-syscall-ui-ml-1405951742"></a>
 ### clipboardFn
@@ -31,8 +35,10 @@ clientStateFn
 clipboardFn
 ```
 
+Injected callback for clipboard; invoked through the ClientServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L17)
 
 <a id="field-field-mq3-vm-syscall-ui-clientservices-configstringfn-configstringfn-src-mq3-vm-syscall-ui-ml-6750724"></a>
 ### configStringFn
@@ -41,8 +47,10 @@ clipboardFn
 configStringFn
 ```
 
+Injected callback for config string; invoked through the ClientServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L23)
 
 <a id="field-field-mq3-vm-syscall-ui-clientservices-glconfigfn-glconfigfn-src-mq3-vm-syscall-ui-ml-1639847856"></a>
 ### glconfigFn
@@ -51,5 +59,7 @@ configStringFn
 glconfigFn
 ```
 
+Injected callback for glconfig; invoked through the ClientServices service/state record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)

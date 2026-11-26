@@ -5,43 +5,270 @@ package mq3.client.ui_video
 import std.string as strings
 import mq3.compat.numeric as numeric
 
+/// Activation callback event accepted by the graphics-options and driver-information menus before it
+/// processes the selected control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the driverinfoback action by the menu event handler.
 const ID_DRIVERINFOBACK=100
+/// Menu control identifier routed to the back2 action by the menu event handler.
 const ID_BACK2=101
+/// Menu control identifier routed to the fullscreen action by the menu event handler.
 const ID_FULLSCREEN=102
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=103
+/// Menu control identifier routed to the mode action by the menu event handler.
 const ID_MODE=104
+/// Menu control identifier routed to the driverinfo action by the menu event handler.
 const ID_DRIVERINFO=105
+/// Menu control identifier routed to the graphics action by the menu event handler.
 const ID_GRAPHICS=106
+/// Menu control identifier routed to the display action by the menu event handler.
 const ID_DISPLAY=107
+/// Menu control identifier routed to the sound action by the menu event handler.
 const ID_SOUND=108
+/// Menu control identifier routed to the network action by the menu event handler.
 const ID_NETWORK=109
+/// Renderer-driver category identifying a standard installable OpenGL driver.
 const GLDRV_ICD=0
+/// Renderer-driver category identifying the legacy Voodoo driver path.
 const GLDRV_VOODOO=2
+/// Renderer-hardware category identifying the legacy 3Dfx 2D/3D hardware path.
 const GLHW_3DFX_2D3D=1
 
-struct HostAction boundary kind name text number dispatched end struct
-struct Item id kind name x y active hidden grayed end struct
-struct DrawLine text x y alignment end struct
-struct ChoiceList name values end struct
-struct GlConfig vendor version renderer extensions colorBits depthBits stencilBits driverType hardwareType end struct
-struct VideoCvars mode fullscreen allowExtensions picmip vertexLight textureBits textureMode lodBias subdivisions colorBits glDriver end struct
-struct InitialVideo mode fullscreen tq lighting colorDepth textureBits geometry filter driver extensions end struct
-struct DriverInfoState config extensionStrings drawLines items assets actions end struct
-struct GraphicsState mode fullscreen tq lighting colorDepth textureBits geometry filter driver extensions preset applyVisible fullscreenGrayed colorDepthGrayed driverHidden initial choices items assets actions end struct
+/// Stores UI video host action record, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
+struct HostAction
+  /// Host service category recorded with a request emitted while listing renderer capabilities and
+  /// applying graphics configuration changes.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while listing renderer
+  /// capabilities and applying graphics configuration changes.
+  kind
+  /// Target resource, command, or setting name addressed by this queued host action.
+  name
+  /// Driver-information text, video-setting value, or renderer restart command supplied by the graphics
+  /// menu.
+  text
+  /// When constructing this record, `host` supplies `number` for this member.
+  number
+  /// True when this request is marked for native dispatch while listing renderer capabilities and
+  /// applying graphics configuration changes; false when its native effect is suppressed.
+  dispatched
+end struct
+/// Stores UI video menu item, including `id`, `kind`, `name`, `x`, `y`, `active` and additional values.
+struct Item
+  /// Event-routing identifier of this selectable control in the graphics-options and driver-information
+  /// menus.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Label or artwork resource identifying a video-options control.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the graphics-options and
+  /// driver-information menus.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the graphics-options and
+  /// driver-information menus.
+  y
+  /// When constructing this record, `item` supplies `active` for this member.
+  active
+  /// When constructing this record, `item` supplies `hidden` for this member.
+  hidden
+  /// When constructing this record, `item` supplies `grayed` for this member.
+  grayed
+end struct
+/// Stores UI video draw line record, including `text`, `x`, `y`, `alignment`.
+struct DrawLine
+  /// Driver-information line containing vendor, renderer, version, or extension text.
+  text
+  /// Horizontal coordinate of a renderer-information text line in the graphics menu layout.
+  x
+  /// Vertical coordinate of a renderer-information text line in the graphics menu layout.
+  y
+  /// Horizontal alignment mode for the item within its layout region.
+  alignment
+end struct
+/// Stores UI video choice list record, including `name`, `values`.
+struct ChoiceList
+  /// Caption for a graphics choice group, such as video mode, color depth, or texture quality.
+  name
+  /// When constructing this record, `graphicsChoices` supplies `["High
+  /// Quality","Normal","Fast","Fastest","Custom"]` for this member.
+  values
+end struct
+/// Stores UI video gl config record, including `vendor`, `version`, `renderer`, `extensions`, `colorBits`, `depthBits` and additional values.
+struct GlConfig
+  /// Renderer vendor identification string reported by the graphics driver.
+  vendor
+  /// Graphics-driver or renderer version string exposed to the video-settings UI.
+  version
+  /// Renderer implementation name reported by the graphics driver.
+  renderer
+  /// Graphics extension information exposed by the renderer or selected by the video-settings UI.
+  extensions
+  /// Number of bits requested or provided for the framebuffer's color channels.
+  colorBits
+  /// Number of bits available in the graphics depth buffer.
+  depthBits
+  /// Number of bits available in the graphics stencil buffer.
+  stencilBits
+  /// Native renderer-driver category used to select compatible video-settings behavior.
+  driverType
+  /// Native graphics-hardware category used to select compatible video-settings behavior.
+  hardwareType
+end struct
+/// Stores UI video video cvars record, including `mode`, `fullscreen`, `allowExtensions`, `picmip`, `vertexLight`, `textureBits` and additional values.
+struct VideoCvars
+  /// Renderer video-mode index read from the engine's mode configuration variable.
+  mode
+  /// Fullscreen video setting supplied by the renderer configuration variables.
+  fullscreen
+  /// Nonzero when the renderer is allowed to use optional graphics-driver extensions.
+  allowExtensions
+  /// Texture mip-level reduction setting; larger values select lower-resolution texture data.
+  picmip
+  /// Nonzero when lighting is computed from vertex colors instead of lightmap sampling.
+  vertexLight
+  /// Requested color precision for texture storage.
+  textureBits
+  /// Texture-filtering mode name used to select bilinear or trilinear sampling.
+  textureMode
+  /// Bias applied when choosing lower-detail model geometry.
+  lodBias
+  /// Renderer subdivision setting used to control curved-surface geometry detail.
+  subdivisions
+  /// Number of bits requested or provided for the framebuffer's color channels.
+  colorBits
+  /// Configured OpenGL driver name or path selected by the video-settings UI.
+  glDriver
+end struct
+/// Stores UI video initial video record, including `mode`, `fullscreen`, `tq`, `lighting`, `colorDepth`, `textureBits` and additional values.
+struct InitialVideo
+  /// When constructing this record, `initial` supplies `mode` for this member.
+  mode
+  /// Fullscreen choice saved when the graphics menu opens, used to detect unapplied video changes.
+  fullscreen
+  /// When constructing this record, `initial` supplies `tq` for this member.
+  tq
+  /// When constructing this record, `initial` supplies `lighting` for this member.
+  lighting
+  /// When constructing this record, `initial` supplies `colorDepth` for this member.
+  colorDepth
+  /// Requested color precision for texture storage.
+  textureBits
+  /// When constructing this record, `initial` supplies `geometry` for this member.
+  geometry
+  /// When constructing this record, `initial` supplies `filter` for this member.
+  filter
+  /// When constructing this record, `initial` supplies `driver` for this member.
+  driver
+  /// Graphics extension information exposed by the renderer or selected by the video-settings UI.
+  extensions
+end struct
+/// Stores UI video driver info state record, including `config`, `extensionStrings`, `drawLines`, `items`, `assets`, `actions`.
+struct DriverInfoState
+  /// When constructing this record, `driverState` supplies `config` for this member.
+  config
+  /// When constructing this record, `driverState` supplies an empty list for this member.
+  extensionStrings
+  /// When constructing this record, `driverState` supplies an empty list for this member.
+  drawLines
+  /// When constructing this record, `driverState` supplies an empty list for this member.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the graphics-options and
+  /// driver-information menus.
+  assets
+  /// Host requests queued while listing renderer capabilities and applying graphics configuration
+  /// changes, retained in request order.
+  actions
+end struct
+/// Stores UI video graphics state record, including `mode`, `fullscreen`, `tq`, `lighting`, `colorDepth`, `textureBits` and additional values.
+struct GraphicsState
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  mode
+  /// Current fullscreen choice in the graphics menu, applied to the renderer when settings are
+  /// accepted.
+  fullscreen
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  tq
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  lighting
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  colorDepth
+  /// Requested color precision for texture storage.
+  textureBits
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  geometry
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  filter
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  driver
+  /// Graphics extension information exposed by the renderer or selected by the video-settings UI.
+  extensions
+  /// When constructing this record, `graphicsState` supplies `4` for this member.
+  preset
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  applyVisible
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  fullscreenGrayed
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  colorDepthGrayed
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  driverHidden
+  /// When constructing this record, `graphicsState` supplies `base` for this member.
+  initial
+  /// When constructing this record, `graphicsState` supplies an empty list for this member.
+  choices
+  /// When constructing this record, `graphicsState` supplies an empty list for this member.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the graphics-options and
+  /// driver-information menus.
+  assets
+  /// Host requests queued while listing renderer capabilities and applying graphics configuration
+  /// changes, retained in request order.
+  actions
+end struct
 
+/// Computes `actions+[HostAction(boundary,kind,name,text,number,not retailActive)]` for UI video `host`.
+/// @param actions Value used by `return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`.
+/// @param boundary Engine service boundary recorded on the queued action, such as renderer, audio or cvar.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param name Name used to select or register the corresponding UI video resource.
+/// @param text Text consumed or emitted by `host` in the UI video path.
+/// @param number Value used by `return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function host(actions,boundary,kind,name,text,number,retailActive)
   return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]
 end function
 
+/// Creates a `mq3.client.ui_video.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
+/// @param id Value used to initialize `Item.id`.
+/// @param kind Value used to initialize `Item.kind`.
+/// @param name Value used to initialize `Item.name`.
+/// @param x Value used to initialize `Item.x`.
+/// @param y Value used to initialize `Item.y`.
+/// @param active Value used to initialize `Item.active`.
+/// @param hidden Value used to initialize `Item.hidden`.
+/// @param grayed Value used to initialize `Item.grayed`.
 function item(id,kind,name,x,y,active,hidden,grayed)
   return Item(id,kind,name,x,y,active,hidden,grayed)
 end function
 
+/// Creates a `mq3.client.ui_video.InitialVideo` record. Assigns `mode` from `mode`, `fullscreen` from `fullscreen`, `tq` from `tq`, `lighting` from `lighting`.
+/// @param mode Value used to initialize `InitialVideo.mode`.
+/// @param fullscreen Value used to initialize `InitialVideo.fullscreen`.
+/// @param tq Value used to initialize `InitialVideo.tq`.
+/// @param lighting Value used to initialize `InitialVideo.lighting`.
+/// @param colorDepth Value used to initialize `InitialVideo.colorDepth`.
+/// @param textureBits Value used to initialize `InitialVideo.textureBits`.
+/// @param geometry Value used to initialize `InitialVideo.geometry`.
+/// @param filter Value used to initialize `InitialVideo.filter`.
+/// @param driver Value used to initialize `InitialVideo.driver`.
+/// @param extensions Value used to initialize `InitialVideo.extensions`.
 function initial(mode,fullscreen,tq,lighting,colorDepth,textureBits,geometry,filter,driver,extensions)
   return InitialVideo(mode,fullscreen,tq,lighting,colorDepth,textureBits,geometry,filter,driver,extensions)
 end function
 
+/// Builds the UI video `templates` sequence from `[ initial(4,true,2,0,2,2,1,1,0,true), initial(3,true,2,0,0,0,1,0,0,true), initial(2,true,1,0,1,0,0,0,0,true), initial(2,true,1,1,1,0,0,0,0,true), initial(3,true,1,0,0,0,1,0,0,true) ]`.
 function templates()
   return [
     initial(4,true,2,0,2,2,1,1,0,true),
@@ -52,19 +279,27 @@ function templates()
   ]
 end function
 
+/// Adapts `mq3.client.ui_video.initial` to UI video `copyInitial`, returning its result for `value.mode, value.fullscreen, value.tq, value.lighting, value.colorDepth, value.textureBits, value.geometry, value.filter, value.driver, value.extensions`.
+/// @param value Record read through `value.mode`, `value.fullscreen`, `value.tq`, `value.lighting` and additional values.
 function copyInitial(value)
   return initial(value.mode,value.fullscreen,value.tq,value.lighting,value.colorDepth,value.textureBits,value.geometry,value.filter,value.driver,value.extensions)
 end function
 
+/// Calls `mq3.client.ui_video.initial`, `mq3.client.ui_video.GraphicsState` from UI video `graphicsState`. The final path returns `GraphicsState(0,false,0,0,0,0,0,0,0,false,4,false,false,false,false,base,[],[],[],[])`.
 function graphicsState()
   base=initial(0,false,0,0,0,0,0,0,0,false)
   return GraphicsState(0,false,0,0,0,0,0,0,0,false,4,false,false,false,false,base,[],[],[],[])
 end function
 
+/// Creates a `mq3.client.ui_video.DriverInfoState` record. Assigns `config` from `config`.
+/// @param config Value used to initialize `DriverInfoState.config`.
 function driverState(config)
   return DriverInfoState(config,[],[],[],[],[])
 end function
 
+/// Calls `decode`, `slice`, `std.string.substr` from UI video `words`. The final path returns `result`.
+/// @param text Text consumed or emitted by `words` in the UI video path.
+/// @param limit Upper limit applied while collecting or rendering the result.
 function words(text,limit)
   result=[]
   data=bytes(text)
@@ -82,12 +317,22 @@ function words(text,limit)
 end function
 
 // DriverInfo_Event
+/// @param state Mutable UI video record/storage; this routine assigns `state.actions`.
+/// @param eventCode Quake III event identifier selecting the event handler.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function driverInfoEvent(state,eventCode,retailActive)
   if eventCode!=QM_ACTIVATED then return false end if
   state.actions=host(state.actions,"ui","pop","driver-info","",ID_DRIVERINFOBACK,retailActive)
   return true
 end function
 
+/// Updates `state.drawLines`, `state.actions` during UI video `draw`.
+/// @param state Mutable UI video record/storage; this routine assigns `state.drawLines`, `state.actions`.
+/// @param text Text consumed or emitted by `draw` in the UI video path.
+/// @param x Horizontal coordinate in the coordinate space used by `draw`.
+/// @param y Vertical coordinate in the coordinate space used by `draw`.
+/// @param alignment Value used by `state.drawLines=state.drawLines+[DrawLine(text,x,y,alignment)]`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function draw(state,text,x,y,alignment,retailActive)
   state.drawLines=state.drawLines+[DrawLine(text,x,y,alignment)]
   state.actions=host(state.actions,"renderer","draw-string",alignment,text,0,retailActive)
@@ -95,6 +340,8 @@ function draw(state,text,x,y,alignment,retailActive)
 end function
 
 // DriverInfo_MenuDraw
+/// @param state Mutable UI video record/storage; this routine assigns `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function driverInfoMenuDraw(state,retailActive)
   state.actions=host(state.actions,"ui","draw-menu","driver-info","",0,retailActive)
   draw(state,"VENDOR",320,80,"center-red",retailActive)
@@ -119,6 +366,8 @@ function driverInfoMenuDraw(state,retailActive)
 end function
 
 // DriverInfo_Cache
+/// @param state Mutable UI video record/storage; this routine assigns `state.assets`, `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function driverInfoCache(state,retailActive)
   state.assets=["menu/art/frame2_l","menu/art/frame1_r","menu/art/back_0","menu/art/back_1"]
   for each asset in state.assets state.actions=host(state.actions,"renderer","register-shader",asset,"",0,retailActive) end for
@@ -126,6 +375,8 @@ function driverInfoCache(state,retailActive)
 end function
 
 // UI_DriverInfo_Menu
+/// @param config Record read through `config.extensions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function uiDriverInfoMenu(config,retailActive)
   state=driverState(config)
   extensionText=config.extensions
@@ -144,16 +395,21 @@ function uiDriverInfoMenu(config,retailActive)
 end function
 
 // GraphicsOptions_GetInitialVideo
+/// @param state Mutable UI video record/storage; this routine assigns `state.initial`.
 function graphicsOptionsGetInitialVideo(state)
   state.initial=initial(state.mode,state.fullscreen,state.tq,state.lighting,state.colorDepth,state.textureBits,state.geometry,state.filter,state.driver,state.extensions)
   return copyInitial(state.initial)
 end function
 
+/// Computes `value.colorDepth==state.colorDepth and value.driver==state.driver and value.mode==state.mode and value.fullscreen==state.fullscreen and value.tq==state.tq and value.lighting==state.lighting and val...` for UI video `sameTemplate`.
+/// @param state Record read through `state.colorDepth`, `state.driver`, `state.mode`, `state.fullscreen` and additional values.
+/// @param value Record read through `value.colorDepth`, `value.driver`, `value.mode`, `value.fullscreen` and additional values.
 function sameTemplate(state,value)
   return value.colorDepth==state.colorDepth and value.driver==state.driver and value.mode==state.mode and value.fullscreen==state.fullscreen and value.tq==state.tq and value.lighting==state.lighting and value.geometry==state.geometry and value.filter==state.filter
 end function
 
 // GraphicsOptions_CheckConfig
+/// @param state Mutable UI video record/storage; this routine assigns `state.preset`.
 function graphicsOptionsCheckConfig(state)
   all=templates()
   for i=0 to len(all)-1
@@ -164,6 +420,7 @@ function graphicsOptionsCheckConfig(state)
 end function
 
 // GraphicsOptions_UpdateMenuItems
+/// @param state Mutable UI video record/storage; this routine assigns `state.fullscreen`, `state.fullscreenGrayed`, `state.colorDepth`, `state.colorDepthGrayed` and additional values.
 function graphicsOptionsUpdateMenuItems(state)
   if state.driver==1 then state.fullscreen=true;state.fullscreenGrayed=true;state.colorDepth=1 else state.fullscreenGrayed=false end if
   if not state.fullscreen or state.driver==1 then state.colorDepth=0;state.colorDepthGrayed=true else state.colorDepthGrayed=false end if
@@ -174,17 +431,28 @@ function graphicsOptionsUpdateMenuItems(state)
   return state.applyVisible
 end function
 
+/// Updates `state.actions` during UI video `write`.
+/// @param state Mutable UI video record/storage; this routine assigns `state.actions`.
+/// @param name Name used to select or register the corresponding UI video resource.
+/// @param text Text consumed or emitted by `write` in the UI video path.
+/// @param number Value used by `state.actions=host(state.actions,"cvar","set",name,text,number,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function write(state,name,text,number,retailActive)
   state.actions=host(state.actions,"cvar","set",name,text,number,retailActive)
   return void
 end function
 
+/// Evaluates UI video `booleanNumber` and returns `1`, `0` according to its guard/selection conditions.
+/// @param value Value tested by `value` before the calculation continues.
 function booleanNumber(value)
   if value then return 1 end if
   return 0
 end function
 
 // GraphicsOptions_ApplyChanges
+/// @param state Mutable UI video record/storage; this routine assigns `state.actions`.
+/// @param eventCode Quake III event identifier selecting the event handler.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function graphicsOptionsApplyChanges(state,eventCode,retailActive)
   if eventCode!=QM_ACTIVATED then return false end if
   textureBits=[0,16,32][state.textureBits]
@@ -217,6 +485,9 @@ function graphicsOptionsApplyChanges(state,eventCode,retailActive)
   return true
 end function
 
+/// Updates `state.mode`, `state.tq`, `state.lighting`, `state.colorDepth` and additional values during UI video `applyTemplate`.
+/// @param state Mutable UI video record/storage; this routine assigns `state.mode`, `state.tq`, `state.lighting`, `state.colorDepth` and additional values.
+/// @param index Value used by `value=templates()[index]`.
 function applyTemplate(state,index)
   value=templates()[index]
   state.mode=value.mode;state.tq=value.tq;state.lighting=value.lighting;state.colorDepth=value.colorDepth;state.textureBits=value.textureBits;state.geometry=value.geometry;state.filter=value.filter;state.fullscreen=value.fullscreen
@@ -224,6 +495,11 @@ function applyTemplate(state,index)
 end function
 
 // GraphicsOptions_Event
+/// @param state Mutable UI video record/storage; this routine assigns `state.mode`, `state.actions`.
+/// @param id Value used by `if id==ID_MODE then`.
+/// @param eventCode Quake III event identifier selecting the event handler.
+/// @param config Record read through `config.vendor`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function graphicsOptionsEvent(state,id,eventCode,config,retailActive)
   if eventCode!=QM_ACTIVATED then return false end if
   if id==ID_MODE then
@@ -247,6 +523,8 @@ function graphicsOptionsEvent(state,id,eventCode,config,retailActive)
 end function
 
 // GraphicsOptions_TQEvent
+/// @param state Mutable UI video record/storage; this routine assigns `state.tq`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function graphicsOptionsTQEvent(state,eventCode)
   if eventCode!=QM_ACTIVATED then return false end if
   state.tq=numeric.trunc32(state.tq+0.5)
@@ -254,6 +532,8 @@ function graphicsOptionsTQEvent(state,eventCode)
 end function
 
 // GraphicsOptions_MenuDraw
+/// @param state Mutable UI video record/storage; this routine assigns `state.items`, `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function graphicsOptionsMenuDraw(state,retailActive)
   graphicsOptionsUpdateMenuItems(state)
   state.items=graphicsItems(state)
@@ -262,6 +542,8 @@ function graphicsOptionsMenuDraw(state,retailActive)
 end function
 
 // GraphicsOptions_SetMenuItems
+/// @param state Mutable UI video record/storage; this routine assigns `state.mode`, `state.fullscreen`, `state.extensions`, `state.tq` and additional values.
+/// @param cvars Record read through `cvars.mode`, `cvars.fullscreen`, `cvars.allowExtensions`, `cvars.picmip` and additional values.
 function graphicsOptionsSetMenuItems(state,cvars)
   state.mode=cvars.mode
   if state.mode<0 then state.mode=3 end if
@@ -282,6 +564,8 @@ function graphicsOptionsSetMenuItems(state,cvars)
   return state
 end function
 
+/// Builds the UI video `graphicsItems` sequence from `[ item(0,"btext","SYSTEM SETUP",320,16,true,false,false), item(0,"bitmap","menu/art/frame2_l",0,78,false,false,false), item(0,"bitmap","menu/art/frame1_r",376,76,false,false,false), item(ID_GRAPHIC...`.
+/// @param state Record read through `state.driverHidden`, `state.colorDepthGrayed`, `state.fullscreenGrayed`, `state.applyVisible`.
 function graphicsItems(state)
   return [
     item(0,"btext","SYSTEM SETUP",320,16,true,false,false),
@@ -308,6 +592,7 @@ function graphicsItems(state)
   ]
 end function
 
+/// Builds the UI video `graphicsChoices` sequence from `[ ChoiceList("Graphics Settings",["High Quality","Normal","Fast","Fastest","Custom"]), ChoiceList("GL Driver",["Default","Voodoo"]), ChoiceList("GL Extensions",["Off","On"]), ChoiceList("Video Mode...`.
 function graphicsChoices()
   return [
     ChoiceList("Graphics Settings",["High Quality","Normal","Fast","Fastest","Custom"]),
@@ -324,6 +609,8 @@ function graphicsChoices()
 end function
 
 // GraphicsOptions_Cache
+/// @param state Mutable UI video record/storage; this routine assigns `state.assets`, `state.actions`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function graphicsOptionsCache(state,retailActive)
   state.assets=["menu/art/frame2_l","menu/art/frame1_r","menu/art/back_0","menu/art/back_1","menu/art/accept_0","menu/art/accept_1"]
   for each asset in state.assets state.actions=host(state.actions,"renderer","register-shader",asset,"",0,retailActive) end for
@@ -331,6 +618,9 @@ function graphicsOptionsCache(state,retailActive)
 end function
 
 // GraphicsOptions_MenuInit
+/// @param cvars Value used by `graphicsOptionsSetMenuItems(state,cvars)`.
+/// @param config Record read through `config.driverType`, `config.hardwareType`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function graphicsOptionsMenuInit(cvars,config,retailActive)
   state=graphicsState()
   if config.driverType==GLDRV_VOODOO then state.driver=1 end if
@@ -345,6 +635,9 @@ function graphicsOptionsMenuInit(cvars,config,retailActive)
 end function
 
 // UI_GraphicsOptionsMenu
+/// @param cvars Value used by `state=graphicsOptionsMenuInit(cvars,config,retailActive)`.
+/// @param config Value used by `state=graphicsOptionsMenuInit(cvars,config,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function uiGraphicsOptionsMenu(cvars,config,retailActive)
   state=graphicsOptionsMenuInit(cvars,config,retailActive)
   state.actions=host(state.actions,"ui","push","graphics-options","",0,retailActive)

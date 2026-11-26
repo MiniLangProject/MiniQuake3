@@ -9,8 +9,10 @@
 struct PlayerTexture
 ```
 
+Stores playable app player texture record, including `part`, `surface`, `imageName`, `image`, `slot`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L118)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct PlayerTexture
 image
 ```
 
+When constructing this record, `appendSkinTextures` supplies `binding.image` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L126)
 
 <a id="field-field-mq3-client-playable-app-playertexture-imagename-imagename-src-mq3-client-playable-app-ml-1143341125"></a>
 ### imageName
@@ -31,8 +35,10 @@ image
 imageName
 ```
 
+Virtual image path associated with a loaded player-model texture slot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L124)
 
 <a id="field-field-mq3-client-playable-app-playertexture-part-part-src-mq3-client-playable-app-ml-545748875"></a>
 ### part
@@ -41,8 +47,10 @@ imageName
 part
 ```
 
+When constructing this record, `appendSkinTextures` supplies `part` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L120)
 
 <a id="field-field-mq3-client-playable-app-playertexture-slot-slot-src-mq3-client-playable-app-ml-1679070045"></a>
 ### slot
@@ -51,8 +59,10 @@ part
 slot
 ```
 
+Texture or media-cache slot assigned to this asset for renderer submission.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L128)
 
 <a id="field-field-mq3-client-playable-app-playertexture-surface-surface-src-mq3-client-playable-app-ml-1684489169"></a>
 ### surface
@@ -61,5 +71,7 @@ slot
 surface
 ```
 
+When constructing this record, `appendSkinTextures` supplies `binding.surface` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L122)

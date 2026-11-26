@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for qcommon.startup_commands, containing `commandState`, `lines`, `cvarSetFn`, `cvarGetFn`, `context`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/startup_commands.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L13)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 commandState
 ```
 
+Command buffer receiving commands parsed from the startup arguments.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/startup_commands.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L15)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-context-context-src-mq3-qcommon-startup-commands-ml-1839458674"></a>
 ### context
@@ -31,8 +35,10 @@ commandState
 context
 ```
 
+Caller-supplied data associated with configuration-variable access while processing startup commands.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/startup_commands.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L24)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-cvargetfn-cvargetfn-src-mq3-qcommon-startup-commands-ml-180570282"></a>
 ### cvarGetFn
@@ -41,8 +47,10 @@ context
 cvarGetFn
 ```
 
+Host callback that retrieves a configuration variable from the host registry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/startup_commands.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L21)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-cvarsetfn-cvarsetfn-src-mq3-qcommon-startup-commands-ml-356677754"></a>
 ### cvarSetFn
@@ -51,8 +59,10 @@ cvarGetFn
 cvarSetFn
 ```
 
+Host callback that sets a configuration variable in the host registry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/startup_commands.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L19)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-lines-lines-src-mq3-qcommon-startup-commands-ml-209748014"></a>
 ### lines
@@ -61,5 +71,7 @@ cvarSetFn
 lines
 ```
 
+Startup command lines split from the process command line.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/startup_commands.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L17)

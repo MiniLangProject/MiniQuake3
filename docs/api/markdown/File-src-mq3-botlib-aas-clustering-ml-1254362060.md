@@ -23,10 +23,10 @@ AAS_AddTeleporterPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings` and `reachabilities`. May update `value.settings[r.areaNum].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L493)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-canmergeareas-function-aas-canmergeareas-value-areanums-src-mq3-botlib-aas-clustering-ml-361023729"></a>
 ### AAS_CanMergeAreas
@@ -39,11 +39,11 @@ AAS_CanMergeAreas
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNums` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `faces`. |
+| `areaNums` | `dynamic` | — | Value used by `contains` in `for each value in values if value==needle then return true end if end for`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L396)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-canmergefaces-function-aas-canmergefaces-value-facenums-planenum-src-mq3-botlib-aas-clustering-ml-213112823"></a>
 ### AAS_CanMergeFaces
@@ -56,12 +56,12 @@ AAS_CanMergeFaces
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `faceNums` | `dynamic` | — |  |
-| `planeNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `faces`, `edgeIndex` and `edges`. |
+| `faceNums` | `dynamic` | — | Value used by `AAS_CanMergeFaces` in `for each faceNum in faceNums`. |
+| `planeNum` | `dynamic` | — | Value used by `AAS_NonConvexEdges` in `p=value.planes[planeNum]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L413)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-checkareaforpossibleportals-function-aas-checkareaforpossibleportals-value-areanum-src-mq3-botlib-aas-clustering-ml-1806112268"></a>
 ### AAS_CheckAreaForPossiblePortals
@@ -74,11 +74,11 @@ AAS_CheckAreaForPossiblePortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`, `faces` and `edgeIndex`. May update `value.settings[currentArea].contents` in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L458)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-clearcluster-function-aas-clearcluster-value-clusternum-src-mq3-botlib-aas-clustering-ml-2090425631"></a>
 ### AAS_ClearCluster
@@ -91,11 +91,11 @@ AAS_ClearCluster
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[index].cluster` in place. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L319)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-connectedareas-function-aas-connectedareas-value-areanums-src-mq3-botlib-aas-clustering-ml-627179053"></a>
 ### AAS_ConnectedAreas
@@ -108,11 +108,11 @@ AAS_ConnectedAreas
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNums` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `faces`. |
+| `areaNums` | `dynamic` | — | Array or byte sequence accessed at `current` and `index`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L446)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-connectedareas-r-function-aas-connectedareas-r-value-areanums-connectedareas-current-src-mq3-botlib-aas-clustering-ml-1073033471"></a>
 ### AAS_ConnectedAreas_r
@@ -125,13 +125,13 @@ AAS_ConnectedAreas_r
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNums` | `dynamic` | — |  |
-| `connectedAreas` | `dynamic` | — |  |
-| `current` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `faces`. |
+| `areaNums` | `dynamic` | — | Array or byte sequence accessed at `current` and `index`. |
+| `connectedAreas` | `dynamic` | — | Array or byte sequence accessed at `current` and `index`. Entries are written in place. |
+| `current` | `dynamic` | — | Value used by `AAS_ConnectedAreas_r` in `connectedAreas[current]=true`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L440)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-countforcedclusterportals-function-aas-countforcedclusterportals-value-src-mq3-botlib-aas-clustering-ml-577175203"></a>
 ### AAS_CountForcedClusterPortals
@@ -144,10 +144,10 @@ AAS_CountForcedClusterPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L499)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-createportals-function-aas-createportals-value-src-mq3-botlib-aas-clustering-ml-142190151"></a>
 ### AAS_CreatePortals
@@ -160,10 +160,10 @@ AAS_CreatePortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `portals` and `settings`. May update `value.portals` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L377)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-createviewportals-function-aas-createviewportals-value-src-mq3-botlib-aas-clustering-ml-289009053"></a>
 ### AAS_CreateViewPortals
@@ -176,10 +176,10 @@ AAS_CreateViewPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[index].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L502)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-findclusters-function-aas-findclusters-value-src-mq3-botlib-aas-clustering-ml-1247884613"></a>
 ### AAS_FindClusters
@@ -192,10 +192,10 @@ AAS_FindClusters
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `clusters`, `settings`, `noFaceFlood` and `portalIndex`. May update `value.clusters` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L371)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-findpossibleportals-function-aas-findpossibleportals-value-src-mq3-botlib-aas-clustering-ml-1984488439"></a>
 ### AAS_FindPossiblePortals
@@ -208,10 +208,10 @@ AAS_FindPossiblePortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L468)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-floodcluster-r-function-aas-floodcluster-r-value-areanum-clusternum-src-mq3-botlib-aas-clustering-ml-297035470"></a>
 ### AAS_FloodCluster_r
@@ -224,12 +224,12 @@ Legacy BSPC flood helpers retained as callable native behavior. AAS_FloodCluster
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[areaNum].cluster` in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L478)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-floodclusterareas-r-function-aas-floodclusterareas-r-value-areanum-clusternum-src-mq3-botlib-aas-clustering-ml-965382364"></a>
 ### AAS_FloodClusterAreas_r
@@ -242,12 +242,12 @@ AAS_FloodClusterAreas_r
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings` and `noFaceFlood`. May update `value.settings[areaNum].cluster` and `value.settings[areaNum].clusterAreaNum` in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L341)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-floodclusterareasusingreachabilities-function-aas-floodclusterareasusingreachabilities-value-clusternum-src-mq3-botlib-aas-clustering-ml-192008231"></a>
 ### AAS_FloodClusterAreasUsingReachabilities
@@ -260,11 +260,11 @@ AAS_FloodClusterAreasUsingReachabilities
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L352)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-floodclusterreachabilities-function-aas-floodclusterreachabilities-value-clusternum-src-mq3-botlib-aas-clustering-ml-414612115"></a>
 ### AAS_FloodClusterReachabilities
@@ -277,11 +277,11 @@ AAS_FloodClusterReachabilities
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L485)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-getadjacentareaswithlesspresencetypes-r-function-aas-getadjacentareaswithlesspresencetypes-r-value-areanums-currentareanum-src-mq3-botlib-aas-clustering-ml-1997092869"></a>
 ### AAS_GetAdjacentAreasWithLessPresenceTypes_r
@@ -294,12 +294,12 @@ AAS_GetAdjacentAreasWithLessPresenceTypes_r
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNums` | `dynamic` | — |  |
-| `currentAreaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings` and `faces`. |
+| `areaNums` | `dynamic` | — | Value used by `contains` in `for each value in values if value==needle then return true end if end for`. |
+| `currentAreaNum` | `dynamic` | — | Text or value to search for. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L451)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-initclustering-function-aas-initclustering-value-src-mq3-botlib-aas-clustering-ml-1335281109"></a>
 ### AAS_InitClustering
@@ -312,10 +312,10 @@ AAS_InitClustering
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `loaded`, `clusters`, `forceClustering`, `forceReachability` and `settings` and related fields. May update `value.portalIndex`, `value.clusters` and `value.saveFile` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L508)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-mapcontainsteleporters-function-aas-mapcontainsteleporters-value-src-mq3-botlib-aas-clustering-ml-1467414017"></a>
 ### AAS_MapContainsTeleporters
@@ -328,10 +328,10 @@ BSPC geometry helpers retained because they are part of the original source API.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `entities`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L382)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-aas-max-clusters-const-aas-max-clusters-65536-src-mq3-botlib-aas-clustering-ml-227763400"></a>
 ### AAS_MAX_CLUSTERS
@@ -340,8 +340,10 @@ BSPC geometry helpers retained because they are part of the original source API.
 const AAS_MAX_CLUSTERS = 65536
 ```
 
+Maximum number of clusters produced by AAS clustering.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-aas-max-portalindexsize-const-aas-max-portalindexsize-65536-src-mq3-botlib-aas-clustering-ml-367926614"></a>
 ### AAS_MAX_PORTALINDEXSIZE
@@ -350,8 +352,10 @@ const AAS_MAX_CLUSTERS = 65536
 const AAS_MAX_PORTALINDEXSIZE = 65536
 ```
 
+Maximum number of portal references in the cluster portal-index array.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-aas-max-portals-const-aas-max-portals-65536-src-mq3-botlib-aas-clustering-ml-852193290"></a>
 ### AAS_MAX_PORTALS
@@ -360,8 +364,10 @@ const AAS_MAX_PORTALINDEXSIZE = 65536
 const AAS_MAX_PORTALS = 65536
 ```
 
+Maximum number of portal records produced by AAS clustering.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L9)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-nonconvexedges-function-aas-nonconvexedges-value-edge1-edge2-side1-side2-planenum-src-mq3-botlib-aas-clustering-ml-1731631799"></a>
 ### AAS_NonConvexEdges
@@ -374,15 +380,15 @@ AAS_NonConvexEdges
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `edge1` | `dynamic` | — |  |
-| `edge2` | `dynamic` | — |  |
-| `side1` | `dynamic` | — |  |
-| `side2` | `dynamic` | — |  |
-| `planeNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `vertexes` and `planes`. |
+| `edge1` | `dynamic` | — | Edge1 record; accesses `vertices`. |
+| `edge2` | `dynamic` | — | Edge2 record; accesses `vertices`. |
+| `side1` | `dynamic` | — | Value used by `AAS_NonConvexEdges` in `if side1 then edgeVector1=[0-edgeVector1[0],0-edgeVector1[1],0-edgeVector1[2]] end if`. |
+| `side2` | `dynamic` | — | Value used by `AAS_NonConvexEdges` in `if side2 then edgeVector2=[0-edgeVector2[0],0-edgeVector2[1],0-edgeVector2[2]] end if`. |
+| `planeNum` | `dynamic` | — | Value used by `AAS_NonConvexEdges` in `p=value.planes[planeNum]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L406)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-nonconvexfaces-function-aas-nonconvexfaces-value-face1-face2-side1-side2-src-mq3-botlib-aas-clustering-ml-1148434685"></a>
 ### AAS_NonConvexFaces
@@ -395,14 +401,14 @@ AAS_NonConvexFaces
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `face1` | `dynamic` | — |  |
-| `face2` | `dynamic` | — |  |
-| `side1` | `dynamic` | — |  |
-| `side2` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `planes`, `edgeIndex`, `edges` and `vertexes`. |
+| `face1` | `dynamic` | — | Face1 record; accesses `planeNum`. |
+| `face2` | `dynamic` | — | Face2 record; accesses `planeNum`. |
+| `side1` | `dynamic` | — | Value used by `AAS_NonConvexFaces` in `plane1=value.planes[face1.planeNum^side1]`. |
+| `side2` | `dynamic` | — | Value used by `AAS_NonConvexFaces` in `plane2=value.planes[face2.planeNum^side2]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L389)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-numberclusterareas-function-aas-numberclusterareas-value-clusternum-src-mq3-botlib-aas-clustering-ml-1113077279"></a>
 ### AAS_NumberClusterAreas
@@ -415,11 +421,11 @@ AAS_NumberClusterAreas
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `clusters`, `settings`, `portals` and `portalIndex`. May update `value.settings[index].clusterAreaNum` in place. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L362)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-numberclusterportals-function-aas-numberclusterportals-value-clusternum-src-mq3-botlib-aas-clustering-ml-635194791"></a>
 ### AAS_NumberClusterPortals
@@ -432,11 +438,11 @@ AAS_NumberClusterPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `clusters`, `portals` and `portalIndex`. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L358)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-removeallportals-function-aas-removeallportals-value-src-mq3-botlib-aas-clustering-ml-997635945"></a>
 ### AAS_RemoveAllPortals
@@ -449,10 +455,10 @@ AAS_RemoveAllPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[index].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L471)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-removeclusterareas-function-aas-removeclusterareas-value-src-mq3-botlib-aas-clustering-ml-1638971773"></a>
 ### AAS_RemoveClusterAreas
@@ -465,10 +471,10 @@ AAS_RemoveClusterAreas
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[index].cluster` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L315)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-removenotclusterclosingportals-function-aas-removenotclusterclosingportals-value-src-mq3-botlib-aas-clustering-ml-791488497"></a>
 ### AAS_RemoveNotClusterClosingPortals
@@ -481,10 +487,10 @@ AAS_RemoveNotClusterClosingPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[index].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L488)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-removeportalsclusterreference-function-aas-removeportalsclusterreference-value-clusternum-src-mq3-botlib-aas-clustering-ml-630710087"></a>
 ### AAS_RemovePortalsClusterReference
@@ -497,11 +503,11 @@ AAS_RemovePortalsClusterReference
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `portals`. May update `value.portals[index].frontCluster` and `value.portals[index].backCluster` in place. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L323)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-removeteleporterportals-function-aas-removeteleporterportals-value-src-mq3-botlib-aas-clustering-ml-903859071"></a>
 ### AAS_RemoveTeleporterPortals
@@ -514,10 +520,10 @@ AAS_RemoveTeleporterPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings` and `reachabilities`. May update `value.settings[r.areaNum].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L481)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-setviewportalsasclusterportals-function-aas-setviewportalsasclusterportals-value-src-mq3-botlib-aas-clustering-ml-1497850605"></a>
 ### AAS_SetViewPortalsAsClusterPortals
@@ -530,10 +536,10 @@ AAS_SetViewPortalsAsClusterPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. May update `value.settings[index].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L505)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-testportals-function-aas-testportals-value-src-mq3-botlib-aas-clustering-ml-1843566815"></a>
 ### AAS_TestPortals
@@ -546,10 +552,10 @@ AAS_TestPortals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `portals` and `settings`. May update `value.settings[p.areaNum].contents` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L496)
 
 <a id="function-function-mq3-botlib-aas-clustering-aas-updateportal-function-aas-updateportal-value-areanum-clusternum-src-mq3-botlib-aas-clustering-ml-824689434"></a>
 ### AAS_UpdatePortal
@@ -562,12 +568,12 @@ AAS_UpdatePortal
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `clusterNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `portals`, `settings` and `portalIndex`. May update `value.settings[areaNum].contents`, `value.settings[areaNum].cluster` and `value.portalIndex` in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `clusterNum` | `dynamic` | — | AAS cluster number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L328)
 
 <a id="function-function-mq3-botlib-aas-clustering-absint-function-absint-value-src-mq3-botlib-aas-clustering-ml-1511659865"></a>
 ### absInt
@@ -576,12 +582,14 @@ AAS_UpdatePortal
 function absInt(value)
 ```
 
+Return the absolute value of the numeric argument for aas clustering.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `0-value`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L266)
 
 <a id="function-function-mq3-botlib-aas-clustering-appendunique-function-appendunique-values-needle-src-mq3-botlib-aas-clustering-ml-1797268177"></a>
 ### appendUnique
@@ -590,13 +598,15 @@ function absInt(value)
 function appendUnique(values, needle)
 ```
 
+Apply `mq3.botlib.aas_clustering.contains` while evaluating `appendUnique`. Return paths include `values`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `needle` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Value used by `contains` in `for each value in values if value==needle then return true end if end for`. |
+| `needle` | `dynamic` | — | Text or value to search for. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L307)
 
 <a id="function-function-mq3-botlib-aas-clustering-area-function-area-numfaces-firstface-src-mq3-botlib-aas-clustering-ml-1075675969"></a>
 ### area
@@ -605,13 +615,15 @@ function appendUnique(values, needle)
 function area(numFaces, firstFace)
 ```
 
+Create a `mq3.botlib.aas_clustering.Area` record, initializing `numFaces` from `numFaces` and `firstFace` from `firstFace`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `numFaces` | `dynamic` | — |  |
-| `firstFace` | `dynamic` | — |  |
+| `numFaces` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Area.numFaces`. |
+| `firstFace` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Area.firstFace`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L206)
 
 - [mq3.botlib.aas_clustering.Area](Type-mq3-botlib-aas-clustering-area-352668781.md) — struct
 <a id="constant-constant-mq3-botlib-aas-clustering-area-grounded-const-area-grounded-1-src-mq3-botlib-aas-clustering-ml-555790540"></a>
@@ -621,8 +633,10 @@ function area(numFaces, firstFace)
 const AREA_GROUNDED = 1
 ```
 
+Bot can stand on the ground.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L19)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-areacontents-clusterportal-const-areacontents-clusterportal-8-src-mq3-botlib-aas-clustering-ml-1664323727"></a>
 ### AREACONTENTS_CLUSTERPORTAL
@@ -631,8 +645,10 @@ const AREA_GROUNDED = 1
 const AREACONTENTS_CLUSTERPORTAL = 8
 ```
 
+AAS area-contents bit marking cluster portal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L21)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-areacontents-routeportal-const-areacontents-routeportal-32-src-mq3-botlib-aas-clustering-ml-508480338"></a>
 ### AREACONTENTS_ROUTEPORTAL
@@ -641,8 +657,10 @@ const AREACONTENTS_CLUSTERPORTAL = 8
 const AREACONTENTS_ROUTEPORTAL = 32
 ```
 
+AAS area-contents bit marking routing portal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L25)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-areacontents-teleportal-const-areacontents-teleportal-16-src-mq3-botlib-aas-clustering-ml-542555340"></a>
 ### AREACONTENTS_TELEPORTAL
@@ -651,8 +669,10 @@ const AREACONTENTS_ROUTEPORTAL = 32
 const AREACONTENTS_TELEPORTAL = 16
 ```
 
+AAS area-contents bit marking teleportal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L23)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-areacontents-viewportal-const-areacontents-viewportal-512-src-mq3-botlib-aas-clustering-ml-690700117"></a>
 ### AREACONTENTS_VIEWPORTAL
@@ -661,8 +681,10 @@ const AREACONTENTS_TELEPORTAL = 16
 const AREACONTENTS_VIEWPORTAL = 512
 ```
 
+AAS area-contents bit marking view portal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 <a id="function-function-mq3-botlib-aas-clustering-areafaces-function-areafaces-value-areanum-src-mq3-botlib-aas-clustering-ml-1339010982"></a>
 ### areaFaces
@@ -671,13 +693,15 @@ const AREACONTENTS_VIEWPORTAL = 512
 function areaFaces(value, areaNum)
 ```
 
+Apply `mq3.botlib.aas_clustering.validArea` and `mq3.botlib.aas_clustering.absInt` while evaluating `areaFaces`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `areas` and `faceIndex`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L295)
 
 <a id="function-function-mq3-botlib-aas-clustering-areahasreachability-function-areahasreachability-value-areanum-src-mq3-botlib-aas-clustering-ml-505038632"></a>
 ### areaHasReachability
@@ -686,13 +710,15 @@ function areaFaces(value, areaNum)
 function areaHasReachability(value, areaNum)
 ```
 
+Test `validArea(value,areaNum) and value.settings[areaNum].numReachableAreas>0` as the condition for `areaHasReachability`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L286)
 
 <a id="function-function-mq3-botlib-aas-clustering-areasettings-function-areasettings-contents-areaflags-presencetype-cluster-clusterareanum-numreachableareas-firstreachablearea-src-mq3-botlib-aas-clustering-ml-1938961185"></a>
 ### areaSettings
@@ -701,18 +727,20 @@ function areaHasReachability(value, areaNum)
 function areaSettings(contents, areaFlags, presenceType, cluster, clusterAreaNum, numReachableAreas, firstReachableArea)
 ```
 
+Create a `mq3.botlib.aas_clustering.AreaSettings` record, initializing `contents` from `contents`, `areaFlags` from `areaFlags` and `presenceType` from `presenceType`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `contents` | `dynamic` | — |  |
-| `areaFlags` | `dynamic` | — |  |
-| `presenceType` | `dynamic` | — |  |
-| `cluster` | `dynamic` | — |  |
-| `clusterAreaNum` | `dynamic` | — |  |
-| `numReachableAreas` | `dynamic` | — |  |
-| `firstReachableArea` | `dynamic` | — |  |
+| `contents` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.AreaSettings.contents`. |
+| `areaFlags` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.AreaSettings.areaFlags`. |
+| `presenceType` | `dynamic` | — | AAS presence type selecting the movement bounds. |
+| `cluster` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.AreaSettings.cluster`. |
+| `clusterAreaNum` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.AreaSettings.clusterAreaNum`. |
+| `numReachableAreas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.AreaSettings.numReachableAreas`. |
+| `firstReachableArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.AreaSettings.firstReachableArea`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L215)
 
 - [mq3.botlib.aas_clustering.AreaSettings](Type-mq3-botlib-aas-clustering-areasettings-203967600.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-cluster-function-cluster-numareas-numreachabilityareas-numportals-firstportal-src-mq3-botlib-aas-clustering-ml-445607606"></a>
@@ -722,15 +750,17 @@ function areaSettings(contents, areaFlags, presenceType, cluster, clusterAreaNum
 function cluster(numAreas, numReachabilityAreas, numPortals, firstPortal)
 ```
 
+Create a `mq3.botlib.aas_clustering.Cluster` record, initializing `numAreas` from `numAreas`, `numReachabilityAreas` from `numReachabilityAreas` and `numPortals` from `numPortals`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `numAreas` | `dynamic` | — |  |
-| `numReachabilityAreas` | `dynamic` | — |  |
-| `numPortals` | `dynamic` | — |  |
-| `firstPortal` | `dynamic` | — |  |
+| `numAreas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Cluster.numAreas`. |
+| `numReachabilityAreas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Cluster.numReachabilityAreas`. |
+| `numPortals` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Cluster.numPortals`. |
+| `firstPortal` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Cluster.firstPortal`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L232)
 
 - [mq3.botlib.aas_clustering.Cluster](Type-mq3-botlib-aas-clustering-cluster-335209526.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-contains-function-contains-values-needle-src-mq3-botlib-aas-clustering-ml-1775581069"></a>
@@ -740,13 +770,15 @@ function cluster(numAreas, numReachabilityAreas, numPortals, firstPortal)
 function contains(values, needle)
 ```
 
+Search the supplied values for an entry equal to the needle.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `needle` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Value used by `contains` in `for each value in values if value==needle then return true end if end for`. |
+| `needle` | `dynamic` | — | Text or value to search for. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L303)
 
 <a id="function-function-mq3-botlib-aas-clustering-cross-function-cross-a-b-src-mq3-botlib-aas-clustering-ml-2043726795"></a>
 ### cross
@@ -755,13 +787,15 @@ function contains(values, needle)
 function cross(a, b)
 ```
 
+Return a new array `[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]` for `cross`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L278)
 
 <a id="function-function-mq3-botlib-aas-clustering-dot-function-dot-a-b-src-mq3-botlib-aas-clustering-ml-974547009"></a>
 ### dot
@@ -770,13 +804,15 @@ function cross(a, b)
 function dot(a, b)
 ```
 
+Return `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `dot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L270)
 
 <a id="function-function-mq3-botlib-aas-clustering-edge-function-edge-a-b-src-mq3-botlib-aas-clustering-ml-1532628795"></a>
 ### edge
@@ -785,13 +821,15 @@ function dot(a, b)
 function edge(a, b)
 ```
 
+Create a `mq3.botlib.aas_clustering.Edge` record, initializing `vertices` as `[a,b]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Operand used to evaluate the returned expression `Edge([a,b])`. |
+| `b` | `dynamic` | — | Operand used to evaluate the returned expression `Edge([a,b])`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L194)
 
 - [mq3.botlib.aas_clustering.Edge](Type-mq3-botlib-aas-clustering-edge-776394497.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-emit-function-emit-value-boundary-kind-subject-detail-number-src-mq3-botlib-aas-clustering-ml-1023787683"></a>
@@ -801,17 +839,19 @@ function edge(a, b)
 function emit(value, boundary, kind, subject, detail, number)
 ```
 
+Update `value.actions` during `emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `subject` | `dynamic` | — |  |
-| `detail` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `actions` and `retailActive`. May update `value.actions` in place. |
+| `boundary` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.HostAction.boundary`. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.HostAction.kind`. |
+| `subject` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.HostAction.subject`. |
+| `detail` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.HostAction.detail`. |
+| `number` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.HostAction.value`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L263)
 
 <a id="function-function-mq3-botlib-aas-clustering-ensurecluster-function-ensurecluster-value-index-src-mq3-botlib-aas-clustering-ml-567488775"></a>
 ### ensureCluster
@@ -820,13 +860,15 @@ function emit(value, boundary, kind, subject, detail, number)
 function ensureCluster(value, index)
 ```
 
+Set `value.clusters` to `value.clusters+[cluster(0,0,0,0)]` in `mq3.botlib.aas_clustering.ensureCluster`. Return paths include `value.clusters[index]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `clusters`. May update `value.clusters` in place. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L311)
 
 <a id="function-function-mq3-botlib-aas-clustering-entity-function-entity-classname-target-targetname-origin-linkedareas-destinationarea-valid-src-mq3-botlib-aas-clustering-ml-1387253010"></a>
 ### entity
@@ -835,18 +877,20 @@ function ensureCluster(value, index)
 function entity(className, target, targetName, origin, linkedAreas, destinationArea, valid)
 ```
 
+Create a `mq3.botlib.aas_clustering.Entity` record, initializing `className` from `className`, `target` from `target` and `targetName` from `targetName`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `className` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `targetName` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `linkedAreas` | `dynamic` | — |  |
-| `destinationArea` | `dynamic` | — |  |
-| `valid` | `dynamic` | — |  |
+| `className` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Entity.className`. |
+| `target` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Entity.target`. |
+| `targetName` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Entity.targetName`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `linkedAreas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Entity.linkedAreas`. |
+| `destinationArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Entity.destinationArea`. |
+| `valid` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Entity.valid`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L241)
 
 - [mq3.botlib.aas_clustering.Entity](Type-mq3-botlib-aas-clustering-entity-1051813991.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-face-function-face-planenum-flags-numedges-firstedge-frontarea-backarea-src-mq3-botlib-aas-clustering-ml-448002198"></a>
@@ -856,17 +900,19 @@ function entity(className, target, targetName, origin, linkedAreas, destinationA
 function face(planeNum, flags, numEdges, firstEdge, frontArea, backArea)
 ```
 
+Create a `mq3.botlib.aas_clustering.Face` record, initializing `planeNum` from `planeNum`, `flags` from `flags` and `numEdges` from `numEdges`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `planeNum` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `numEdges` | `dynamic` | — |  |
-| `firstEdge` | `dynamic` | — |  |
-| `frontArea` | `dynamic` | — |  |
-| `backArea` | `dynamic` | — |  |
+| `planeNum` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Face.planeNum`. |
+| `flags` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Face.flags`. |
+| `numEdges` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Face.numEdges`. |
+| `firstEdge` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Face.firstEdge`. |
+| `frontArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Face.frontArea`. |
+| `backArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Face.backArea`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L202)
 
 - [mq3.botlib.aas_clustering.Face](Type-mq3-botlib-aas-clustering-face-1757093549.md) — struct
 <a id="constant-constant-mq3-botlib-aas-clustering-face-solid-const-face-solid-1-src-mq3-botlib-aas-clustering-ml-1375378656"></a>
@@ -876,8 +922,10 @@ function face(planeNum, flags, numEdges, firstEdge, frontArea, backArea)
 const FACE_SOLID = 1
 ```
 
+Just solid at the other side.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L17)
 
 <a id="function-function-mq3-botlib-aas-clustering-frommap-function-frommap-map-retailactive-src-mq3-botlib-aas-clustering-ml-707857707"></a>
 ### fromMap
@@ -886,13 +934,15 @@ const FACE_SOLID = 1
 function fromMap(map, retailActive)
 ```
 
+Apply `mq3.format.aas.plane`, `mq3.botlib.aas_clustering.plane` and `mq3.format.aas.vertex` while evaluating `fromMap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Map record; accesses `counts`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L517)
 
 - [mq3.botlib.aas_clustering.HostAction](Type-mq3-botlib-aas-clustering-hostaction-1074524356.md) — struct
 <a id="constant-constant-mq3-botlib-aas-clustering-max-portalareas-const-max-portalareas-1024-src-mq3-botlib-aas-clustering-ml-1860986540"></a>
@@ -902,8 +952,10 @@ function fromMap(map, retailActive)
 const MAX_PORTALAREAS = 1024
 ```
 
+Maximum number of portal areas retained during AAS clustering.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L15)
 
 <a id="function-function-mq3-botlib-aas-clustering-otherarea-function-otherarea-value-facenum-areanum-src-mq3-botlib-aas-clustering-ml-816967437"></a>
 ### otherArea
@@ -912,14 +964,16 @@ const MAX_PORTALAREAS = 1024
 function otherArea(value, faceNum, areaNum)
 ```
 
+Return the area on the opposite side of an AAS face, or zero for an invalid face index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `faceNum` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `faces`. |
+| `faceNum` | `dynamic` | — | AAS face index. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L291)
 
 <a id="function-function-mq3-botlib-aas-clustering-plane-function-plane-normal-dist-src-mq3-botlib-aas-clustering-ml-1215880171"></a>
 ### plane
@@ -928,13 +982,15 @@ function otherArea(value, faceNum, areaNum)
 function plane(normal, dist)
 ```
 
+Create a `mq3.botlib.aas_clustering.Plane` record, initializing `normal` from `normal` and `dist` from `dist`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `normal` | `dynamic` | — |  |
-| `dist` | `dynamic` | — |  |
+| `normal` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Plane.normal`. |
+| `dist` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Plane.dist`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L190)
 
 - [mq3.botlib.aas_clustering.Plane](Type-mq3-botlib-aas-clustering-plane-1463209310.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-portal-function-portal-areanum-frontcluster-backcluster-frontarea-backarea-src-mq3-botlib-aas-clustering-ml-2047451941"></a>
@@ -944,16 +1000,18 @@ function plane(normal, dist)
 function portal(areaNum, frontCluster, backCluster, frontArea, backArea)
 ```
 
+Create a `mq3.botlib.aas_clustering.Portal` record, initializing `areaNum` from `areaNum`, `frontCluster` from `frontCluster` and `backCluster` from `backCluster`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `areaNum` | `dynamic` | — |  |
-| `frontCluster` | `dynamic` | — |  |
-| `backCluster` | `dynamic` | — |  |
-| `frontArea` | `dynamic` | — |  |
-| `backArea` | `dynamic` | — |  |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `frontCluster` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Portal.frontCluster`. |
+| `backCluster` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.Portal.backCluster`. |
+| `frontArea` | `dynamic` | — | Operand used to evaluate the returned expression `Portal(areaNum,frontCluster,backCluster,[frontArea,backArea])`. |
+| `backArea` | `dynamic` | — | Operand used to evaluate the returned expression `Portal(areaNum,frontCluster,backCluster,[frontArea,backArea])`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L226)
 
 - [mq3.botlib.aas_clustering.Portal](Type-mq3-botlib-aas-clustering-portal-1814820458.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-reachability-function-reachability-areanum-traveltype-src-mq3-botlib-aas-clustering-ml-1101123835"></a>
@@ -963,13 +1021,15 @@ function portal(areaNum, frontCluster, backCluster, frontArea, backArea)
 function reachability(areaNum, travelType)
 ```
 
+Create a `mq3.botlib.aas_clustering.Reachability` record, initializing `areaNum` from `areaNum` and `travelType` from `travelType`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `areaNum` | `dynamic` | — |  |
-| `travelType` | `dynamic` | — |  |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L219)
 
 - [mq3.botlib.aas_clustering.Reachability](Type-mq3-botlib-aas-clustering-reachability-1954272347.md) — struct
 <a id="function-function-mq3-botlib-aas-clustering-reachableareas-function-reachableareas-value-areanum-src-mq3-botlib-aas-clustering-ml-1277098516"></a>
@@ -979,13 +1039,15 @@ function reachability(areaNum, travelType)
 function reachableAreas(value, areaNum)
 ```
 
+Apply `mq3.botlib.aas_clustering.validArea` while evaluating `reachableAreas`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `settings` and `reachabilities`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L299)
 
 <a id="function-function-mq3-botlib-aas-clustering-subtract-function-subtract-a-b-src-mq3-botlib-aas-clustering-ml-1302415459"></a>
 ### subtract
@@ -994,13 +1056,15 @@ function reachableAreas(value, areaNum)
 function subtract(a, b)
 ```
 
+Return a new array `[a[0]-b[0],a[1]-b[1],a[2]-b[2]]` for `subtract`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L274)
 
 <a id="constant-constant-mq3-botlib-aas-clustering-travel-teleport-const-travel-teleport-10-src-mq3-botlib-aas-clustering-ml-1302158378"></a>
 ### TRAVEL_TELEPORT
@@ -1009,8 +1073,10 @@ function subtract(a, b)
 const TRAVEL_TELEPORT = 10
 ```
 
+AAS movement-type identifier for teleport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="function-function-mq3-botlib-aas-clustering-validarea-function-validarea-value-areanum-src-mq3-botlib-aas-clustering-ml-1471588830"></a>
 ### validArea
@@ -1019,13 +1085,15 @@ const TRAVEL_TELEPORT = 10
 function validArea(value, areaNum)
 ```
 
+Test `areaNum>0 and areaNum<len(value.areas) and areaNum<len(value.settings)` as the condition for `validArea`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `areas` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L282)
 
 <a id="function-function-mq3-botlib-aas-clustering-world-function-world-loaded-nofaceflood-planes-vertexes-edges-edgeindex-faces-faceindex-areas-settings-reachabilities-retailactive-src-mq3-botlib-aas-clustering-ml-122096713"></a>
 ### world
@@ -1034,22 +1102,24 @@ function validArea(value, areaNum)
 function world(loaded, noFaceFlood, planes, vertexes, edges, edgeIndex, faces, faceIndex, areas, settings, reachabilities, retailActive)
 ```
 
+Create a `mq3.botlib.aas_clustering.World` record, initializing `loaded` from `loaded`, `noFaceFlood` from `noFaceFlood` and `planes` from `planes`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `loaded` | `dynamic` | — |  |
-| `noFaceFlood` | `dynamic` | — |  |
-| `planes` | `dynamic` | — |  |
-| `vertexes` | `dynamic` | — |  |
-| `edges` | `dynamic` | — |  |
-| `edgeIndex` | `dynamic` | — |  |
-| `faces` | `dynamic` | — |  |
-| `faceIndex` | `dynamic` | — |  |
-| `areas` | `dynamic` | — |  |
-| `settings` | `dynamic` | — |  |
-| `reachabilities` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `loaded` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.loaded`. |
+| `noFaceFlood` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.noFaceFlood`. |
+| `planes` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.planes`. |
+| `vertexes` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.vertexes`. |
+| `edges` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.edges`. |
+| `edgeIndex` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.edgeIndex`. |
+| `faces` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.faces`. |
+| `faceIndex` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.faceIndex`. |
+| `areas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.areas`. |
+| `settings` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.settings`. |
+| `reachabilities` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_clustering.World.reachabilities`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L255)
 
 - [mq3.botlib.aas_clustering.World](Type-mq3-botlib-aas-clustering-world-1347418376.md) — struct

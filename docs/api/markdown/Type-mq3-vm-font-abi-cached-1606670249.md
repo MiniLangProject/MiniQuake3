@@ -9,8 +9,10 @@
 struct Cached
 ```
 
+Cached record for vm.font_abi, containing `pointSize`, `data`, `registeredGlyphs`, `path`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L28)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Cached
 data
 ```
 
+Packed legacy fontInfo bytes retained in the font cache.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L32)
 
 <a id="field-field-mq3-vm-font-abi-cached-path-path-src-mq3-vm-font-abi-ml-142785871"></a>
 ### path
@@ -31,8 +35,10 @@ data
 path
 ```
 
+Resource path associated with the cached font data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L36)
 
 <a id="field-field-mq3-vm-font-abi-cached-pointsize-pointsize-src-mq3-vm-font-abi-ml-1214731541"></a>
 ### pointSize
@@ -41,8 +47,10 @@ path
 pointSize
 ```
 
+Requested font point size associated with the font cache entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L30)
 
 <a id="field-field-mq3-vm-font-abi-cached-registeredglyphs-registeredglyphs-src-mq3-vm-font-abi-ml-311259023"></a>
 ### registeredGlyphs
@@ -51,5 +59,7 @@ pointSize
 registeredGlyphs
 ```
 
+Renderer glyph handles registered while preparing the font record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L34)

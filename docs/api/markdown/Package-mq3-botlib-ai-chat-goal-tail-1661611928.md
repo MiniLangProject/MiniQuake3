@@ -8,8 +8,8 @@
 
 ## Symbols
 
-- [`mq3.botlib.ai_chat_goal_tail.AVOID_DEFAULT_TIME`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-chat-goal-tail-ml-2097555130) — constant
-- [`mq3.botlib.ai_chat_goal_tail.AVOID_MINIMUM_TIME`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-chat-goal-tail-ml-38429298) — constant
+- [`mq3.botlib.ai_chat_goal_tail.AVOID_DEFAULT_TIME`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-chat-goal-tail-ml-1852317214) — constant
+- [`mq3.botlib.ai_chat_goal_tail.AVOID_MINIMUM_TIME`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-chat-goal-tail-ml-501024790) — constant
 - [`mq3.botlib.ai_chat_goal_tail.chatState`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#function-function-mq3-botlib-ai-chat-goal-tail-chatstate-function-chatstate-state-handle-src-mq3-botlib-ai-chat-goal-tail-ml-1612733753) — function
 - [`mq3.botlib.ai_chat_goal_tail.create`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#function-function-mq3-botlib-ai-chat-goal-tail-create-function-create-chatprofiles-goalruntime-levelitems-src-mq3-botlib-ai-chat-goal-tail-ml-1793519771) — function
 - [`mq3.botlib.ai_chat_goal_tail.getChatMessage`](File-src-mq3-botlib-ai-chat-goal-tail-ml-1426920332.md#function-function-mq3-botlib-ai-chat-goal-tail-getchatmessage-function-getchatmessage-state-handle-size-src-mq3-botlib-ai-chat-goal-tail-ml-326452756) — function

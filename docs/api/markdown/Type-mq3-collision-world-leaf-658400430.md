@@ -9,8 +9,10 @@
 struct Leaf
 ```
 
+Leaf record for collision.world, containing `brushes`, `surfaces`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L104)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Leaf
 brushes
 ```
 
+Brush indexes referenced by this collision leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L106)
 
 <a id="field-field-mq3-collision-world-leaf-surfaces-surfaces-src-mq3-collision-world-ml-1191871651"></a>
 ### surfaces
@@ -31,5 +35,7 @@ brushes
 surfaces
 ```
 
+Indices of patch collision surfaces referenced by this BSP leaf.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L108)

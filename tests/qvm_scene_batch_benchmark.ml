@@ -15,10 +15,10 @@ end function
 function main(args)
   image=materials.Image(1,1,bytes([255,255,255,255]))
   stage=materials.RuntimeStage(["fx"],[image],[336],0.0,[],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
-  material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0)
+  material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0,false)
   resolved=array(TRIANGLES,void)
   for index=0 to TRIANGLES-1 resolved[index]=sceneMaterials.ResolvedTriangle(sourceTriangle(index),0) end for
-  catalog=sceneMaterials.Catalog(resolved,[material],[],void,0,[],[],TRIANGLES,0,337,void,void)
+  catalog=sceneMaterials.Catalog(resolved,[material],[],void,0,[],[],TRIANGLES,0,337,void,void,void)
   started=window.milliseconds();fresh=void
   for frame=0 to FRAMES-1 fresh=sceneBatch.build(catalog);if fresh is error then return fresh end if end for
   freshMs=window.milliseconds()-started

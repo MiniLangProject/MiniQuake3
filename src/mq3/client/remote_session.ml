@@ -15,34 +15,119 @@ import mq3.qcommon.net_transport as transport
 import mq3.qcommon.network_pump as pump
 import mq3.shared.info as info
 
+/// Snapshot flag marking a server snapshot that must not activate a primed remote client.
 const SNAPFLAG_NOT_ACTIVE=2
 
+/// Coordinates a protocol-68 connection, message parser, command sender and reliable-command consumer.
+/// The application owns the UDP socket, asset loading, rendering and clock. A received gamestate
+/// enters loading until the application explicitly accepts its unpure asset configuration.
 struct Session
-  socket userinfo connection wire protocol ingress send sendServices pump
-  gamestateGeneration preparedGeneration serverPrint lastRealtime
-  commands commandServices serverCommandFn restartCount
+  /// Borrowed UDP socket used for handshake packets and sequenced traffic; this module never closes it.
+  socket
+  /// Userinfo text returned to the connection handshake when constructing the connect request.
+  userinfo
+  /// Connectionless handshake state, including the server address, challenge and established netchan.
+  connection
+  /// Client netchan runtime providing transport and protocol payload encoding/decoding state.
+  wire
+  /// Server-message parser runtime containing the current gamestate, snapshots and reliable command ring.
+  protocol
+  /// Client packet-event adapter connecting the handshake, netchan and server-message parser.
+  ingress
+  /// Outgoing user-command and reliable-command state, including packet history and acknowledgement cursors.
+  send
+  /// Live sender callbacks whose channel is replaced with the established connection channel when available.
+  sendServices
+  /// Network pump configured to receive server datagrams through this session's ingress adapter.
+  pump
+  /// Number of complete gamestates delivered to this session; zero means none has been received.
+  gamestateGeneration
+  /// Gamestate generation explicitly accepted by the application; zero invalidates readiness after loading or stop.
+  preparedGeneration
+  /// Most recent server print, disconnect message or local terminal-session explanation.
+  serverPrint
+  /// Client realtime in milliseconds supplied by the most recent poll call.
+  lastRealtime
+  /// Reliable server-command consumer retaining its execution cursor and partial large configstring across gamestates.
+  commands
+  /// Command-consumer callbacks applying configstrings, systeminfo changes and map-restart cleanup to this session.
+  commandServices
+  /// Optional callback `(session, sequence, commandState)` for a delivered reliable command.
+  /// Tokenized arguments are borrowed until the next command; retaining them requires copying during the call.
+  /// A callback error stops the session and is propagated by `runServerCommands`.
+  serverCommandFn
+  /// Number of consumed map-restart commands whose cleanup callback has cleared the user-command ring.
+  restartCount
 end struct
+
+/// Sends a connectionless text packet through the session socket and returns the encoded datagram bytes.
+/// @param host Connectionless services record whose context is the owning Session.
+/// @param state Handshake callback argument retained for signature compatibility; unused here.
+/// @param address Destination network address for the outgoing datagram.
+/// @param text Command text placed after the four-byte connectionless prefix.
 function sendOob(host,state,address,text) return transport.outOfBandPrint(host.context.socket,address,text) end function
+
+/// Sends a connectionless data packet using the connect-message Huffman format and returns its encoded bytes.
+/// @param host Connectionless services record whose context supplies the borrowed UDP socket.
+/// @param state Handshake callback argument retained for signature compatibility; unused here.
+/// @param address Destination network address for the outgoing datagram.
+/// @param data Connect-request bytes; the transport preserves the packet's 12-byte prefix before compression.
 function sendOobData(host,state,address,data) return transport.outOfBandData(host.context.socket,address,data) end function
+
+/// Returns the session's current userinfo text to the connection handshake.
+/// @param host Connectionless services record whose context is the owning Session.
+/// @param state Handshake callback argument retained for signature compatibility; unused here.
 function userinfo(host,state) return host.context.userinfo end function
+
+/// Retains the latest server print text in the session and returns void.
+/// @param host Connectionless services record whose context receives the retained text.
+/// @param state Handshake callback argument retained for signature compatibility; unused here.
+/// @param text Server text to store without printing it to a terminal.
 function printed(host,state,text) host.context.serverPrint=text;return void end function
-// A terminal session cannot be promoted by a previously valid snapshot.
+
+/// Marks both connection and sender disconnected, invalidates asset readiness, and retains the reason.
+/// Returns void without closing the application-owned socket. Existing snapshots cannot reactivate
+/// the session because promotion requires a primed connection and an accepted gamestate generation.
+/// @param session Mutable session whose connection state and prepared generation are cleared.
+/// @param text Terminal-session explanation stored in `serverPrint`.
 function stop(session,text)
   session.connection.connectionState=connectionless.CA_DISCONNECTED
   session.send.connectionState=connectionless.CA_DISCONNECTED
   session.preparedGeneration=0;session.serverPrint=text;return void
 end function
+
+/// Applies a connectionless disconnect callback to the session and returns void.
+/// @param host Connectionless services record whose context identifies the session to stop.
+/// @param state Handshake callback argument retained for signature compatibility; unused here.
+/// @param show Callback display flag; this adapter retains the text regardless of its value.
+/// @param text Disconnect explanation forwarded to `stop`.
 function disconnected(host,state,show,text) return stop(host.context,text) end function
+
+/// Replaces every retained user command with a zero command and returns void without resetting sequence counters.
+/// @param session Session whose outgoing `CMD_BACKUP` command slots are cleared.
 function clearUsercmds(session)
   for index=0 to sendCmd.CMD_BACKUP-1 session.send.commands[index]=sendCmd.zeroCommand() end for
   return void
 end function
+
+/// Clears pending user commands for a consumed map restart, increments `restartCount`, and returns void.
+/// @param session Session supplied as the command-consumer callback context.
 function restarted(session)
   clearUsercmds(session);session.restartCount=session.restartCount+1;return void
 end function
+
+/// Applies a reliable configstring change to packed gamestate storage.
+/// Returns true when storage changes, false for identical text, or the gamestate validation error.
+/// @param session Session whose parser owns the mutable gamestate storage.
+/// @param index Configstring slot in the range zero through `MAX_CONFIGSTRINGS - 1`.
+/// @param value Replacement text; embedded zero bytes and storage overflow are rejected.
 function configstringChanged(session,index,value)
   return gamestate.updateConfigString(session.protocol.gamestateState,index,value)
 end function
+
+/// Refreshes the outgoing server ID from systeminfo and returns void when the session remains usable.
+/// An already accepted session stops with error 7982 if `sv_pure` is no longer exactly `"0"`.
+/// @param session Session whose gamestate systeminfo and outgoing server ID are synchronized.
 function systemInfoChanged(session)
   system=gamestate.configString(session.protocol.gamestateState,1)
   if session.preparedGeneration>0 and info.value(system,"sv_pure")!="0" then
@@ -51,6 +136,12 @@ function systemInfoChanged(session)
   end if
   session.send.serverId=toNumber(info.value(system,"sv_serverid"));return void
 end function
+
+/// Starts a new loading generation after a complete gamestate and returns void.
+/// Resets outgoing user commands and packet timing, copies current configstrings, and refreshes the
+/// server ID and checksum feed. The reliable execution cursor and partial large-configstring assembly
+/// survive so commands received before the gamestate can still be consumed at the application boundary.
+/// @param state Parsed gamestate record whose context is the Session receiving this callback.
 function gameStateReady(state)
   session=state.context;session.gamestateGeneration=session.gamestateGeneration+1
   session.preparedGeneration=0;session.connection.connectionState=connectionless.CA_LOADING
@@ -67,6 +158,14 @@ function gameStateReady(state)
   session.commands.commandSequence=state.serverCommandSequence
   return void
 end function
+
+/// Creates a remote session in connecting state with transport, parsing and command callbacks wired together.
+/// Returns a Session, or error 7982 for a missing socket/address or qport outside 0..65535.
+/// Creation does not poll, send the handshake, load assets or accept a gamestate.
+/// @param socket Borrowed nonblocking UDP socket; its lifetime remains the application's responsibility.
+/// @param address Server network address, including the remote endpoint type and port.
+/// @param qport Protocol client identifier carried by the handshake and client netchan headers.
+/// @param initialUserinfo Userinfo string supplied to subsequent connect requests.
 function create(socket,address,qport,initialUserinfo)
   if socket==void or address==void or qport<0 or qport>65535 then return error(7982,"remote session: invalid endpoint or qport") end if
   connection=connectionless.create(address);connection.qport=qport
@@ -85,6 +184,12 @@ function create(socket,address,qport,initialUserinfo)
   session.pump=ingress.createPump(receiver,socket,void,net.MAX_MSGLEN)
   return session
 end function
+
+/// Synchronizes connection, acknowledgement, reliable-ring and snapshot state with the outgoing sender.
+/// Returns void. A primed session becomes active only after a valid active snapshot for its accepted
+/// gamestate generation; loading or disconnected sessions remain in their current lifecycle state.
+/// Reliable-command arrays are shared with the wire codec rather than copied.
+/// @param session Mutable session whose parser, connection, codec and sender state must agree.
 function synchronize(session)
   connection=session.connection;sending=session.send;dispatcher=session.protocol.dispatcher
   sending.connectionState=connection.connectionState;sending.realtime=session.lastRealtime
@@ -104,6 +209,14 @@ function synchronize(session)
   end if
   return void
 end function
+
+/// Advances the handshake and receives at most the requested number of datagrams at the supplied realtime.
+/// Synchronizes state after each packet so a connect response can precede encrypted traffic in one poll.
+/// Returns the processed-datagram count, error 7982 for invalid input, or a receive/processing error.
+/// A zero packet budget still checks handshake retransmission and synchronizes the session.
+/// @param session Session to poll; must not be void.
+/// @param realtime Nonnegative client clock value in milliseconds used for resend and packet timing.
+/// @param maxPackets Nonnegative maximum number of received datagrams to process before returning.
 function poll(session,realtime,maxPackets)
   if session==void or realtime<0 or maxPackets<0 then return error(7982,"remote session: invalid poll") end if
   session.lastRealtime=realtime;session.connection.realtime=realtime
@@ -119,8 +232,13 @@ function poll(session,realtime,maxPackets)
   end while
   synchronize(session);return count
 end function
-// An application must load/validate its assets before accepting a gamestate.
-// Pure-server checksums/download negotiation are deliberately not bypassed.
+
+/// Accepts the current unpure gamestate after application asset preparation and returns void.
+/// Requires a received gamestate in loading state and an exact `sv_pure` value of `"0"`; otherwise
+/// returns error 7982. Sets the accepted generation and enters primed state, possibly becoming active
+/// immediately if an active snapshot is already available. This entry point implements no pure-server
+/// checksum validation or download negotiation; the application must load and validate assets first.
+/// @param session Session awaiting explicit acceptance of its current gamestate generation.
 function acceptUnpureGamestate(session)
   if session==void or session.gamestateGeneration<1 then return error(7982,"remote session: no gamestate") end if
   if session.connection.connectionState!=connectionless.CA_LOADING then return error(7982,"remote session: gamestate is not awaiting acceptance") end if
@@ -129,11 +247,17 @@ function acceptUnpureGamestate(session)
   session.preparedGeneration=session.gamestateGeneration;session.connection.connectionState=connectionless.CA_PRIMED
   session.send.demoWaiting=false;synchronize(session);return void
 end function
-// Consume at an application-selected boundary (normally the adopted snapshot's
-// serverCommandNum). Never run newer commands merely because packets arrived.
-// The borrowed reliable ring avoids 64 string copies on each synchronization.
-// serverCommandFn(session, sequence, commandState) receives transient tokenized
-// arguments; applications retaining them must copy the values during the call.
+
+/// Consumes reliable server commands through an explicit application-selected sequence boundary.
+/// Requires a primed or active session with its current gamestate accepted. Returns the number of
+/// sequence entries consumed, including internal configstring fragments, or zero for an already
+/// consumed boundary. Invalid state/boundaries return error 7982; command or application-callback
+/// errors stop the session and propagate. Stops early if a callback ends the session or changes its
+/// gamestate generation. Packet receipt alone never delivers commands beyond the requested boundary.
+/// `serverCommandFn` receives transient tokenized arguments; retained values must be copied during the callback.
+/// @param session Session whose consumer borrows the parser's reliable-command ring for this call.
+/// @param throughSequence Last sequence to consume, normally the adopted snapshot's server-command number.
+/// Must be nonnegative and no greater than the latest received sequence.
 function runServerCommands(session,throughSequence)
   if session==void or session.commands==void then return error(7982,"remote session: no command stream") end if
   if session.connection.connectionState<connectionless.CA_PRIMED or session.connection.connectionState>connectionless.CA_ACTIVE or session.preparedGeneration<1 or session.preparedGeneration!=session.gamestateGeneration then return error(7982,"remote session: command stream is not active") end if
@@ -159,6 +283,11 @@ function runServerCommands(session,throughSequence)
   synchronize(session);return count
 end function
 
+/// Enqueues one reliable client command and returns its newly assigned sequence number.
+/// Returns error 7982 for missing input, text of 1,024 bytes or more, or a full unacknowledged ring.
+/// Queuing synchronizes protocol sequence state but does not itself send a datagram.
+/// @param session Session whose outgoing reliable-command ring receives the command.
+/// @param text Command text shorter than 1,024 encoded bytes; an empty string is permitted.
 function queueCommand(session,text)
   if session==void or text==void or len(bytes(text))>=1024 then return error(7982,"remote session: invalid reliable command") end if
   sending=session.send
@@ -167,6 +296,13 @@ function queueCommand(session,text)
   sending.reliableCommands[sending.reliableSequence&(sendCmd.MAX_RELIABLE_COMMANDS-1)]=text
   synchronize(session);return sending.reliableSequence
 end function
+
+/// Runs one outgoing client-frame send attempt and updates snapshot acknowledgement timing for a sent packet.
+/// Returns a sender WriteResult or the no-send string `"disconnected"`, `"paused"` or `"choked"`.
+/// Sender errors propagate; a missing session produces error 7982. Packet history is copied only when
+/// the outgoing sequence advances.
+/// @param session Session providing user commands, reliable commands, transport and packet history.
+/// @param serverTime Game/server time in milliseconds attached to the outgoing user command.
 function sendFrame(session,serverTime)
   if session==void then return error(7982,"remote session: missing session") end if
   synchronize(session);before=session.send.outgoingSequence

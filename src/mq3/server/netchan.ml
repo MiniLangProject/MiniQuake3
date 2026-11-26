@@ -6,30 +6,50 @@ import mq3.qcommon.netchan as net
 import mq3.qcommon.message as message
 import std.ds.queue as queues
 
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Byte offset at which server-to-client payload obfuscation begins.
 const SV_ENCODE_START=4
+/// Byte offset at which client-to-server payload decoding begins.
 const SV_DECODE_START=12
+/// Server-to-client opcode marking the end of a message.
 const SVC_EOF=8
 
+/// Client record for server.netchan, containing `challenge`, `lastClientCommandString`, `reliableCommands`, `channel`, `queue`, `queueInitialized`.
 struct Client
+  /// Challenge value used to authenticate a connection attempt.
   challenge
+  /// Text of the last processed reliable client command.
   lastClientCommandString
+  /// Reliable command entries retained until the peer acknowledges them.
   reliableCommands
+  /// Sequenced network channel used to send this client's messages.
   channel
+  /// Messages waiting for earlier fragments to finish transmitting.
   queue
+  /// True after the pending-message queue has been initialized.
   queueInitialized
 end struct
 
+/// Create `mq3.server.netchan.Client` with challenge=challenge; lastClientCommandString=""; reliableCommands=array(MAX_RELIABLE_COMMANDS, ""); channel=channel; queue=queues.Queue.withCapacity(8); queueInitialized=true.
+/// @param challenge Initial `challenge` field stored in the returned or constructed `mq3.server.netchan.Client` record.
+/// @param channel Initial `channel` field stored in the returned or constructed `mq3.server.netchan.Client` record.
 function client(challenge,channel)
   return Client(challenge,"",array(MAX_RELIABLE_COMMANDS,""),channel,queues.Queue.withCapacity(8),true)
 end function
 
+/// Compute require client in server.netchan.
+///
+/// Validation failures include `server netchan: invalid client`; `server netchan: invalid reliable ring`.
+/// @param clientState Record exposing `channel`, `reliableCommands`.
 function requireClient(clientState)
   if clientState==void or clientState.channel==void then return error(6960,"server netchan: invalid client") end if
   if clientState.reliableCommands==void or len(clientState.reliableCommands)!=MAX_RELIABLE_COMMANDS then return error(6961,"server netchan: invalid reliable ring") end if
   return void
 end function
 
+/// Compute clone message in server.netchan; the normal completion returns `target`.
+/// @param source Record exposing `maxsize`, `allowoverflow`, `overflowed`, `oob`, `cursize`, `readcount`, `bit` and further fields.
 function cloneMessage(source)
   target=message.init(source.maxsize)
   target.allowoverflow=source.allowoverflow;target.overflowed=source.overflowed;target.oob=source.oob
@@ -38,6 +58,9 @@ function cloneMessage(source)
   return target
 end function
 
+/// Compute command byte in server.netchan; the normal completion returns `[value, (index + 1)]`.
+/// @param raw Raw used in `len(raw)` and `raw[index]`.
+/// @param index Zero-based index into `raw`.
 function commandByte(raw,index)
   if len(raw)==0 then return [0,1] end if
   if index>=len(raw) or raw[index]==0 then index=0 end if
@@ -48,6 +71,8 @@ end function
 
 // First four physical bytes remain clear. The initial compressed long is read
 // only to reproduce the original msg_t cursor save/restore behavior.
+/// @param clientState Record exposing `lastClientCommandString`, `challenge`, `channel`.
+/// @param msg Record exposing `cursize`, `readcount`, `bit`, `oob`, `data`. Updated in place: `bit`, `readcount`, `oob`.
 function encode(clientState,msg)
   requireClient(clientState)
   if msg.cursize<SV_ENCODE_START then return msg end if
@@ -72,8 +97,11 @@ function encode(clientState,msg)
   return msg
 end function
 
-// The three compressed client header longs remain logically unread by the
-// caller. Cursors are restored exactly before the payload XOR begins.
+/// Decodes the client's XOR payload in place after inspecting three compressed header integers.
+/// Reads those integers from the existing bit origin, then restores `readcount`, `bit` and `oob`
+/// before applying the XOR bytes. Returns the same message with its header and cursors preserved.
+/// @param clientState Client containing the challenge, reliable-command ring and a required netchan channel.
+/// @param msg Mutable message positioned after its physical netchan header; payload bytes change in place.
 function decodeMessage(clientState,msg)
   requireClient(clientState)
   savedRead=msg.readcount;savedBit=msg.bit;savedOob=msg.oob
@@ -101,8 +129,17 @@ function decodeMessage(clientState,msg)
   return msg
 end function
 
+/// Return `mq3.server.netchan.decodeMessage(clientState, msg)` from `server.netchan.decode`.
+/// @param clientState Client state passed as `clientState` to `mq3.server.netchan.decodeMessage`.
+/// @param msg Msg passed as `msg` to `mq3.server.netchan.decodeMessage`.
 function decode(clientState,msg) return decodeMessage(clientState,msg) end function
 
+/// Compute transmit in server.netchan; the normal completion returns `net.transmit(runtime, clientState.channel, data)`.
+///
+/// Validation failures include `server netchan: queue is not initialized`.
+/// @param runtime Runtime passed as `runtime` to `mq3.qcommon.netchan.transmitNextFragment`.
+/// @param clientState Record exposing `channel`, `queueInitialized`, `queue`.
+/// @param msg Record exposing `cursize`, `data`.
 function transmit(runtime,clientState,msg)
   requireClient(clientState)
   message.writeByte(msg,SVC_EOF)
@@ -119,6 +156,9 @@ end function
 // Snapshot construction already appends svc_EOF before reaching the netchan
 // boundary. This entry point applies the server XOR and drains every fragment
 // without adding a second terminator.
+/// @param runtime Runtime passed as `runtime` to `mq3.qcommon.netchan.transmit`.
+/// @param clientState Record exposing `channel`.
+/// @param payload Payload used in `len(payload)` and `(payload == void)`.
 function transmitPayload(runtime,clientState,payload)
   requireClient(clientState)
   if runtime==void or payload==void then return error(6964,"server netchan: invalid payload transport") end if
@@ -131,6 +171,11 @@ function transmitPayload(runtime,clientState,payload)
   return first
 end function
 
+/// Compute transmit next fragment in server.netchan; the normal completion returns `packets`.
+///
+/// Validation failures include `server netchan: queue is not initialized after fragment drain`.
+/// @param runtime Runtime passed as `runtime` to `mq3.qcommon.netchan.transmitNextFragment`.
+/// @param clientState Record exposing `channel`, `queueInitialized`, `queue`.
 function transmitNextFragment(runtime,clientState)
   requireClient(clientState)
   first=net.transmitNextFragment(runtime,clientState.channel);packets=[first]
@@ -145,6 +190,12 @@ function transmitNextFragment(runtime,clientState)
   return packets
 end function
 
+/// Processes client netchan sequencing and fragments, then decodes an accepted message into independent storage.
+/// Rejected or incomplete messages return the netchan result unchanged. Accepted results preserve the
+/// physical header, valid byte count and read/bit cursors while replacing payload bytes with decoded data.
+/// @param clientState Client containing an established channel, challenge and reliable-command ring.
+/// @param data Incoming packet bytes; accepted message decoding does not modify the caller's buffer.
+/// @param maxsize Receive capacity in bytes, including the reconstructed four-byte sequence prefix.
 function process(clientState,data,maxsize)
   requireClient(clientState)
   result=net.process(clientState.channel,data,maxsize)

@@ -8,44 +8,137 @@ import mq3.botlib.ai_resource_pools as pools
 import mq3.vm.pc_parser as pc
 import std.string as strings
 
+/// Bot-library syscall identifier for load chat file.
 const OP_LOAD_CHAT_FILE=522
+/// Bot-library syscall identifier for set chat gender.
 const OP_SET_CHAT_GENDER=523
+/// Bot-library syscall identifier for set chat name.
 const OP_SET_CHAT_NAME=524
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=publicHeaders.BLERR_NOERROR
+/// Bot-library error indicating that an initial-chat script could not be loaded.
 const BLERR_CANNOTLOADICHAT=publicHeaders.BLERR_CANNOTLOADICHAT
+/// Chat gender selector for neutral or unspecified pronoun choices.
 const CHAT_GENDERLESS=publicHeaders.CHAT_GENDERLESS
+/// Chat gender selector for female pronoun choices.
 const CHAT_GENDERFEMALE=publicHeaders.CHAT_GENDERFEMALE
+/// Chat gender selector for male pronoun choices.
 const CHAT_GENDERMALE=publicHeaders.CHAT_GENDERMALE
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=publicHeaders.MAX_MESSAGE_SIZE
+/// Maximum length of a bot name used by the chat subsystem.
 const MAX_CHAT_NAME=32
 
+/// Chat-template component containing literal text.
 const COMPONENT_FIXED=1
+/// Chat-template component substituting a captured match variable.
 const COMPONENT_VARIABLE=2
+/// Chat-template component selecting a named random-text list.
 const COMPONENT_RANDOM=3
 
-struct Component kind text number end struct
-struct Message encoded components recentTime end struct
-struct ChatType name messages end struct
-struct Profile filename chatName types messageCount end struct
-struct Cached filename chatName profile end struct
-struct Loader state end struct
-struct State pools context readFn cache reload fileReads end struct
+/// `Component` record for ai chat profiles, containing `kind`, `text` and `number`.
+struct Component
+  /// Template component discriminator selecting literal, variable, or random text.
+  kind
+  /// Literal text or random-list name associated with the component.
+  text
+  /// Captured-variable index used by a variable-substitution component.
+  number
+end struct
+/// `Message` record for ai chat profiles, containing `encoded`, `components` and `recentTime`.
+struct Message
+  /// Encoded chat-message template retained for expansion.
+  encoded
+  /// Parsed literal, variable, and random-list components of the message.
+  components
+  /// Next time at which the chat message may be selected again.
+  recentTime
+end struct
+/// `ChatType` record for ai chat profiles, containing `name` and `messages`.
+struct ChatType
+  /// Name of the chat category selected by bot AI.
+  name
+  /// Alternative messages available within this chat category.
+  messages
+end struct
+/// `Profile` record for ai chat profiles, containing `filename`, `chatName`, `types` and `messageCount`.
+struct Profile
+  /// Path of the file associated with this operation.
+  filename
+  /// Name identifying the initial-chat profile selected from its source file.
+  chatName
+  /// Named chat categories and their available messages.
+  types
+  /// Total number of chat messages contained in the loaded profile.
+  messageCount
+end struct
+/// `Cached` record for ai chat profiles, containing `filename`, `chatName` and `profile`.
+struct Cached
+  /// Path of the file associated with this operation.
+  filename
+  /// Name identifying the initial-chat profile selected from its source file.
+  chatName
+  /// Parsed initial-chat profile retained in the cache.
+  profile
+end struct
+/// `Loader` record for ai chat profiles, containing `state`.
+struct Loader
+  /// Owning chat runtime supplying the file callback and file-read accounting.
+  state
+end struct
+/// `State` record for ai chat profiles, containing `pools`, `context`, `readFn`, `cache` and `reload` and related fields.
+struct State
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// Caller-supplied data associated with loading initial-chat profiles and their included files.
+  context
+  /// Host callback that reads initial-chat profile definitions and included chat sources.
+  readFn
+  /// Cached lookup or routing data reused by subsequent requests.
+  cache
+  /// True when chat profiles should be reloaded instead of reused from cache.
+  reload
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
+/// Construct error `7570` with diagnostic text `"AI chat: "+message`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(message) return error(7570,"AI chat: "+message) end function
+/// Create a `mq3.botlib.ai_chat_profiles.State` record, initializing `pools` from `resourcePools`, `context` from `context` and `readFn` from `readFn`.
+/// @param resourcePools Initial value stored in `mq3.botlib.ai_chat_profiles.State.pools`.
+/// @param context Context forwarded to the configured host callbacks.
+/// @param readFn Callback that loads a named resource through the supplied context.
 function create(resourcePools,context,readFn) return State(resourcePools,context,readFn,[],false,0) end function
+/// Set `state.reload` to `value!=0` in `mq3.botlib.ai_chat_profiles.setReload`.
+/// @param state AI chat profiles state; accesses `reload`. May update `state.reload` in place.
+/// @param value Value used by `setReload` in `if state!=void then state.reload=value!=0 end if`.
 function setReload(state,value) if state!=void then state.reload=value!=0 end if;return 0 end function
+/// Normalize a ai chat profiles resource path by removing leading slashes and ensuring the botfiles prefix.
+/// @param name Name used to identify the requested entry.
 function botPath(name)
   value=name;while strings.startsWith(value,"/") value=decode(slice(bytes(value),1,len(bytes(value))-1)) end while
   if strings.startsWith(strings.toLowerAscii(value),"botfiles/") then return value end if;return "botfiles/"+value
 end function
+/// Set `loader.state.fileReads` to `loader.state.fileReads+1` in `mq3.botlib.ai_chat_profiles.loadText`. Return paths include `loader.state.readFn(loader.state.context,botPath(name))`.
+/// @param loader Loader record; accesses `state`. May update `loader.state.fileReads` in place.
+/// @param name Name used to identify the requested entry.
 function loadText(loader,name)
   if loader==void or loader.state==void or loader.state.readFn==void then return fail("file callback missing") end if
   loader.state.fileReads=loader.state.fileReads+1;return loader.state.readFn(loader.state.context,botPath(name))
 end function
+/// Return the result of `decode(bytes(1,1))` for `marker`.
 function marker() return decode(bytes(1,1)) end function
+/// Append a chat-message fragment and reject text reaching the fixed message-buffer capacity.
+/// @param text Text to parse, format or deliver.
+/// @param piece Value used by `appendChecked` in `value=text+piece`.
 function appendChecked(text,piece)
   value=text+piece;if len(bytes(value))>=MAX_MESSAGE_SIZE then return fail("chat message too long") end if;return value
 end function
+/// Build the `mq3.botlib.ai_chat_profiles.Message` result for `readMessage`. Return paths include `fail("expected comma or semicolon in chat message, found "+separator.text)`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
+/// @param first Value used by `readMessage` in `token=first`.
 function readMessage(registry,source,first)
   encoded="";components=[];token=first
   while true
@@ -66,9 +159,15 @@ function readMessage(registry,source,first)
     token=pc.read(registry,source)
   end while
 end function
+/// Apply `mq3.vm.pc_parser.read` while evaluating `skipBlock`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
 function skipBlock(registry,source)
   depth=1;while depth>0 token=pc.read(registry,source);if token==void or token is error then return fail("unterminated chat block") end if;if token.text=="{" then depth=depth+1 else if token.text=="}" then depth=depth-1 end if end while;return 0
 end function
+/// Build the `mq3.botlib.ai_chat_profiles.ChatType` result for `parseType`. Return paths include `message`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
 function parseType(registry,source)
   name=pc.read(registry,source);brace=pc.read(registry,source)
   if name==void or name is error or name.type!=pc.TT_STRING then return fail("expected chat type name") end if
@@ -81,6 +180,11 @@ function parseType(registry,source)
     message=readMessage(registry,source,first);if message is error then return message end if;messages=[message]+messages
   end while
 end function
+/// Build the `mq3.botlib.ai_chat_profiles.Profile` result for `parseSelectedChat`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
+/// @param filename Filename supplied to the configured loader or file service.
+/// @param chatName Named chat profile within the chat-definition file.
 function parseSelectedChat(registry,source,filename,chatName)
   types=[];count=0
   while true
@@ -90,6 +194,10 @@ function parseSelectedChat(registry,source,filename,chatName)
     value=parseType(registry,source);if value is error then return value end if;types=[value]+types;count=count+len(value.messages)
   end while
 end function
+/// Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.vm.pc_parser.read` while evaluating `parseProfile`. Return paths include `skipped`.
+/// @param state Initial value stored in `mq3.botlib.ai_chat_profiles.Loader.state`.
+/// @param filename Filename supplied to the configured loader or file service.
+/// @param wantedName Value passed as argument 1 to `std.string.toLowerAscii`.
 function parseProfile(state,filename,wantedName)
   loader=Loader(state);registry=pc.create(loader,loadText);source=pc.load(registry,filename)
   if source==0 then return void end if
@@ -104,10 +212,19 @@ function parseProfile(state,filename,wantedName)
     skipped=skipBlock(registry,source);if skipped is error then pc.free(registry,source);return skipped end if
   end while
 end function
+/// Find a cached chat profile by case-insensitive filename and profile name.
+/// @param state AI chat profiles state; accesses `cache`.
+/// @param filename Filename supplied to the configured loader or file service.
+/// @param chatName Named chat profile within the chat-definition file.
 function cachedProfile(state,filename,chatName)
   lowerFile=strings.toLowerAscii(filename);lowerName=strings.toLowerAscii(chatName)
   for each item in state.cache if strings.toLowerAscii(item.filename)==lowerFile and strings.toLowerAscii(item.chatName)==lowerName then return item.profile end if end for;return void
 end function
+/// Set `state.cache` to `state.cache+[Cached(filename,chatName,profile)]` in `mq3.botlib.ai_chat_profiles.loadChatFile`. Return paths include `BLERR_NOERROR`.
+/// @param state AI chat profiles state; accesses `pools`, `reload` and `cache`. May update `state.cache` in place.
+/// @param handle Handle identifying the allocated bot chat state.
+/// @param filename Filename supplied to the configured loader or file service.
+/// @param chatName Named chat profile within the chat-definition file.
 function loadChatFile(state,handle,filename,chatName)
   if state==void or state.pools==void then return BLERR_CANNOTLOADICHAT end if
   chatState=pools.chatState(state.pools,handle);if chatState==void or filename==void or filename=="" or chatName==void or chatName=="" then return BLERR_CANNOTLOADICHAT end if
@@ -116,16 +233,30 @@ function loadChatFile(state,handle,filename,chatName)
   if profile==void then profile=try(parseProfile(state,filename,chatName));if profile is error or profile==void then return BLERR_CANNOTLOADICHAT end if;if not state.reload then state.cache=state.cache+[Cached(filename,chatName,profile)] end if end if
   chatState.chat=profile;return BLERR_NOERROR
 end function
+/// Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `setChatGender`.
+/// @param state AI chat profiles state; accesses `pools`.
+/// @param handle Handle identifying the allocated bot chat state.
+/// @param gender Chat gender identifier.
 function setChatGender(state,handle,gender)
   if state==void then return 0 end if;chatState=pools.chatState(state.pools,handle);if chatState==void then return 0 end if
   if gender==CHAT_GENDERFEMALE or gender==CHAT_GENDERMALE then chatState.gender=gender else chatState.gender=CHAT_GENDERLESS end if;return 0
 end function
+/// Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `setChatName`.
+/// @param state AI chat profiles state; accesses `pools`.
+/// @param handle Handle identifying the allocated bot chat state.
+/// @param name Name used to identify the requested entry.
+/// @param client Value used by `setChatName` in `chatState.client=client`.
 function setChatName(state,handle,name,client)
   if state==void then return 0 end if;chatState=pools.chatState(state.pools,handle);if chatState==void then return 0 end if
   data=bytes(name);count=len(data);if count>=MAX_CHAT_NAME then count=MAX_CHAT_NAME-1 end if
   chatState.name=decode(slice(data,0,count));chatState.client=client;return 0
 end function
+/// Find a chat message type by an ASCII case-insensitive name, returning void when the profile or type is absent.
+/// @param profile Profile record; accesses `types`.
+/// @param name Name used to identify the requested entry.
 function typeByName(profile,name)
   if profile==void then return void end if;lower=strings.toLowerAscii(name);for each value in profile.types if strings.toLowerAscii(value.name)==lower then return value end if end for;return void
 end function
+/// Set `state.cache` to `[]` in `mq3.botlib.ai_chat_profiles.clearCache`.
+/// @param state AI chat profiles state; accesses `cache`. May update `state.cache` in place.
 function clearCache(state) if state!=void then state.cache=[] end if;return 0 end function

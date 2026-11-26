@@ -9,8 +9,10 @@
 struct RawUpload
 ```
 
+Data record for `mq3.renderer.tr_backend_runtime.RawUpload`; groups `client`, `width`, `height`, `pixels`, `fullUpload`, `dirty`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L166)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct RawUpload
 client
 ```
 
+Cinematic client or scratch-image slot associated with the raw image.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L168)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawupload-dirty-dirty-src-mq3-renderer-tr-backend-runtime-ml-620130148"></a>
 ### dirty
@@ -31,8 +35,10 @@ client
 dirty
 ```
 
+Whether the stored image differs from the graphics-driver copy.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L178)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawupload-fullupload-fullupload-src-mq3-renderer-tr-backend-runtime-ml-1811545276"></a>
 ### fullUpload
@@ -41,8 +47,10 @@ dirty
 fullUpload
 ```
 
+Whether all image pixels must be uploaded to the graphics backend.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L176)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawupload-height-height-src-mq3-renderer-tr-backend-runtime-ml-829392678"></a>
 ### height
@@ -51,8 +59,10 @@ fullUpload
 height
 ```
 
+Height in pixels of the raw or cinematic image being uploaded to its scratch texture.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L172)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawupload-pixels-pixels-src-mq3-renderer-tr-backend-runtime-ml-996328658"></a>
 ### pixels
@@ -61,8 +71,10 @@ height
 pixels
 ```
 
+Decoded pixel data for the image or upload.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L174)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawupload-width-width-src-mq3-renderer-tr-backend-runtime-ml-1431088092"></a>
 ### width
@@ -71,5 +83,7 @@ pixels
 width
 ```
 
+Width in pixels of the raw or cinematic image being uploaded to its scratch texture.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L170)

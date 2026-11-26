@@ -12,6 +12,10 @@ import mq3.game.vote_commands as voteCommands
 import mq3.game.votes as votes
 import std.string as strings
 
+/// Apply `mq3.game.command_args.argument`, `mq3.game.chat_commands.sayCommand` and `mq3.game.chat_commands.tellCommand` while evaluating `command`.
+/// @param level Game-level state; accesses `entities` and `intermissiontime`.
+/// @param clientNum Client slot number.
+/// @param argv Command argument strings in their original order.
 function command(level,clientNum,argv)
   if clientNum < 0 or clientNum >= 64 then return error(488,"Invalid client command slot") end if
   ent = level.entities[clientNum]

@@ -9,8 +9,10 @@
 struct GroundTrace
 ```
 
+`GroundTrace` record for ai move runtime, containing `startSolid`, `fraction`, `entity` and `endPos`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L198)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct GroundTrace
 endPos
 ```
 
+End position reached by the collision trace.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L206)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-groundtrace-entity-entity-src-mq3-botlib-ai-move-runtime-ml-299484061"></a>
 ### entity
@@ -31,8 +35,10 @@ endPos
 entity
 ```
 
+Entity number of the ground or obstacle reported by the trace.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L204)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-groundtrace-fraction-fraction-src-mq3-botlib-ai-move-runtime-ml-2056964071"></a>
 ### fraction
@@ -41,8 +47,10 @@ entity
 fraction
 ```
 
+Fraction of the requested trace segment completed before the first collision.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L202)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-groundtrace-startsolid-startsolid-src-mq3-botlib-ai-move-runtime-ml-1389492677"></a>
 ### startSolid
@@ -51,5 +59,7 @@ fraction
 startSolid
 ```
 
+True when the initial trace position lies inside solid geometry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L200)

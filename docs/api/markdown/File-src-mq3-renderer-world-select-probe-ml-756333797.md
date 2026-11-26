@@ -15,5 +15,7 @@ Reachable from entry: **no**
 const VALUE = 1
 ```
 
+Sentinel exported to verify that the world-selection probe module can be imported.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_select_probe.ml#L3)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_select_probe.ml#L5)

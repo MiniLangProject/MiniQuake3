@@ -9,8 +9,10 @@
 struct Input
 ```
 
+Stores playable enemy events input record, including `targetIndex`, `lowerAnimation`, `upperAnimation`, `elapsedMilliseconds`, `action`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L52)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Input
 action
 ```
 
+When constructing this record, `appendInput` supplies `track.action` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L62)
 
 <a id="field-field-mq3-client-playable-enemy-events-input-elapsedmilliseconds-elapsedmilliseconds-src-mq3-client-playable-enemy-events-ml-288534553"></a>
 ### elapsedMilliseconds
@@ -31,8 +35,10 @@ action
 elapsedMilliseconds
 ```
 
+When constructing this record, `appendInput` supplies `elapsed` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L60)
 
 <a id="field-field-mq3-client-playable-enemy-events-input-loweranimation-loweranimation-src-mq3-client-playable-enemy-events-ml-1002062695"></a>
 ### lowerAnimation
@@ -41,8 +47,10 @@ elapsedMilliseconds
 lowerAnimation
 ```
 
+When constructing this record, `appendInput` supplies `lower` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L56)
 
 <a id="field-field-mq3-client-playable-enemy-events-input-targetindex-targetindex-src-mq3-client-playable-enemy-events-ml-714031277"></a>
 ### targetIndex
@@ -51,8 +59,10 @@ lowerAnimation
 targetIndex
 ```
 
+Index identifying the selected target in the owning target collection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L54)
 
 <a id="field-field-mq3-client-playable-enemy-events-input-upperanimation-upperanimation-src-mq3-client-playable-enemy-events-ml-110230425"></a>
 ### upperAnimation
@@ -61,5 +71,7 @@ targetIndex
 upperAnimation
 ```
 
+When constructing this record, `appendInput` supplies `upper` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L58)

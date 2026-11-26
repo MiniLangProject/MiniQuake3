@@ -38,8 +38,20 @@ def cases(data,count,seed):
             start=to_world(start,rotation,origin);finish=to_world(finish,rotation,origin)
         else:origin=[0,0,0]
         mins,maxs=rng.choice([([-15,-15,-24],[15,15,32]),([0,0,0],[0,0,0]),([-2,-8,-3],[5,9,1]),([-20,-20,-40],[20,20,40])])
-        mask=rng.choice([-1,0x2010001,0x2000000,1,0,0x38]);capsule=i%2
+        mask=rng.choice([-1,0x2010001,0x2000000,1,0,0x38])
+        # kind==1 otherwise shares the same odd parity as its capsule flag.
+        capsule=(i//6)%2 if kind==1 else i%2
         result.append(struct.pack('<24f4i',*start,*finish,*mins,*maxs,*origin,*angles,*tempmins,*tempmaxs,model,mask,capsule,kind))
+    return b''.join(result)
+
+def inverted_temp_cases():
+    # Network solids can encode an upper Z extent below the lower one.
+    # Original CM_TempBoxModel preserves both face planes and traces the hull.
+    result=[]
+    for start,end in (([4.0,4.0,-16.0],[4.0,4.0,-16.0]),
+                      ([4.0,4.0,100.0],[4.0,4.0,-100.0])):
+        floats=start+end+[0.0]*6+[0.0]*3+[0.0]*3+[0.0]*3+[8.0,8.0,-32.0]
+        result.append(struct.pack('<24f4i',*floats,0,-1,0,1))
     return b''.join(result)
 
 def main():
@@ -58,10 +70,14 @@ def main():
             inputs=folder/'inputs.bin';inputs.write_bytes(cases(bsp.read_bytes(),args.count,0x351000+j))
             expected=folder/'expected.bin';run([output/'collision_oracle.exe',bsp,inputs,expected,flag],folder,log=folder/'oracle.log')
             print(name+': '+run([ROOT/'build/spatial_tests.exe',bsp,inputs,expected,flag],ROOT/'build',log=folder/'test.log',timeout=600).strip(),flush=True)
+            inverted=folder/'inverted_inputs.bin';inverted.write_bytes(inverted_temp_cases())
+            inverted_expected=folder/'inverted_expected.bin'
+            run([output/'collision_oracle.exe',bsp,inverted,inverted_expected,flag],folder,log=folder/'inverted_oracle.log')
+            print(name+' inverted temporary hulls: '+run([ROOT/'build/spatial_tests.exe',bsp,inverted,inverted_expected,flag],ROOT/'build',log=folder/'inverted_test.log',timeout=600).strip(),flush=True)
             rejection=subprocess.run([str(output/'collision_oracle.exe'),'--capsule-rejection',str(bsp)],capture_output=True,text=True)
             if rejection.returncode!=41 or not rejection.stderr.startswith('CM_ClipHandleToModel: bad handle') or '254' not in rejection.stderr:raise RuntimeError('Unexpected original capsule-handle outcome: '+rejection.stderr)
             rows=list(struct.iter_unpack('<24I',expected.read_bytes()))
-            records.append({'map':name,'cases':args.count,'hits':sum(r[0]!=0x3f800000 for r in rows),
+            records.append({'map':name,'cases':args.count,'inverted_temp_cases':2,'hits':sum(r[0]!=0x3f800000 for r in rows),
                             'capsule_rejection_code':rejection.returncode,'capsule_rejection':rejection.stderr,
                             'map_sha256':sha(bsp),'inputs_sha256':sha(inputs),'expected_sha256':sha(expected)})
     if not records:raise RuntimeError('No maps matched')

@@ -10,13 +10,22 @@ import mq3.game.g_weapon as weapon
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Server entity-flag bit controlling noclient.
 const SVF_NOCLIENT = 1
+/// Network entity-flag bit indicating nodraw.
 const EF_NODRAW = 0x80
+/// Network entity-flag bit indicating kamikaze.
 const EF_KAMIKAZE = 0x200
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER = 7
 
+/// Set `self.client.ps.generic1` to `0` in `mq3.game.combat_missionpack.TossClientCubes`. Return paths include `drop`.
+/// @param level Game-level state; accesses `time` and `neutralObelisk`.
+/// @param self Entity receiving the callback; accesses `client`. May update `self.client.ps.generic1` in place.
 function TossClientCubes(level,self)
   if self.client == void then return void end if
   self.client.ps.generic1 = 0
@@ -31,6 +40,9 @@ function TossClientCubes(level,self)
   return drop
 end function
 
+/// Set `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` to `0` and `ent.client.persistantPowerup` to `void` in `mq3.game.combat_missionpack.TossClientPersistantPowerups`. Return paths include `powerup`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `client`. May update `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `ent.client.persistantPowerup` in place.
 function TossClientPersistantPowerups(level,ent)
   if ent.client == void or ent.client.persistantPowerup == void then return void end if
   powerup = ent.client.persistantPowerup; powerup.r.svFlags = powerup.r.svFlags & n.i32(~SVF_NOCLIENT)
@@ -39,16 +51,25 @@ function TossClientPersistantPowerups(level,ent)
   return powerup
 end function
 
+/// Apply `mq3.game.g_weapon.G_StartKamikaze` and `mq3.game.entities.free` while evaluating `Kamikaze_DeathActivate`.
+/// @param level Game-level state; accesses `time` and `entities`.
+/// @param ent Game entity; accesses `client`, `activator` and `s`. May update `ent.s.eFlags` in place.
 function Kamikaze_DeathActivate(level,ent)
   result = weapon.G_StartKamikaze(level,ent); game.free(level,ent); return result
 end function
 
+/// Apply `mq3.game.entities.spawn` while evaluating `Kamikaze_DeathTimer`. Return paths include `timer`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
 function Kamikaze_DeathTimer(level,self)
   timer = game.spawn(level); timer.classname = "kamikaze timer"; timer.s.pos.trBase = [self.s.pos.trBase[0],self.s.pos.trBase[1],self.s.pos.trBase[2]]
   timer.r.svFlags = timer.r.svFlags | SVF_NOCLIENT; timer.think = Kamikaze_DeathActivate
   timer.nextthink = n.add32(level.time,5000); timer.activator = self; return timer
 end function
 
+/// Update `self.client.ps.eFlags`, `self.activator.think` and `self.activator.nextthink` during `cleanupPlayerDie`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param self Entity receiving the callback; accesses `client` and `activator`. May update `self.client.ps.eFlags`, `self.activator.think` and `self.activator.nextthink` in place.
 function cleanupPlayerDie(level,self)
   if level.spawner == void or not level.spawner.missionpack or self.client == void then return void end if
   if (self.client.ps.eFlags & 2) != 0 and self.activator != void then
@@ -57,6 +78,9 @@ function cleanupPlayerDie(level,self)
   return void
 end function
 
+/// Apply `mq3.game.combat_missionpack.TossClientPersistantPowerups` and `mq3.game.combat_missionpack.TossClientCubes` while evaluating `dropPlayerDeathItems`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param self Game entity; accesses `client`. May update `self.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `self.client.persistantPowerup` in place.
 function dropPlayerDeathItems(level,self)
   if level.spawner == void or not level.spawner.missionpack then return void end if
   TossClientPersistantPowerups(level,self)
@@ -64,6 +88,9 @@ function dropPlayerDeathItems(level,self)
   return void
 end function
 
+/// Apply `mq3.game.combat_missionpack.Kamikaze_DeathTimer` while evaluating `afterPlayerDie`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param self Entity receiving the callback; accesses `inuse` and `s`.
 function afterPlayerDie(level,self)
   if level.spawner != void and level.spawner.missionpack and self.inuse and self.s.eType != c.ET_INVISIBLE and (self.s.eFlags & EF_KAMIKAZE) != 0 then return Kamikaze_DeathTimer(level,self) end if
   return void

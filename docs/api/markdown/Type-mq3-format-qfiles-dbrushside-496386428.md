@@ -9,8 +9,10 @@
 struct Dbrushside
 ```
 
+Dbrushside record for format.qfiles, containing `planeNum`, `shaderNum`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L514)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Dbrushside
 planeNum
 ```
 
+BSP plane-lump index of the boundary represented by this brush side.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L516)
 
 <a id="field-field-mq3-format-qfiles-dbrushside-shadernum-shadernum-src-mq3-format-qfiles-ml-1812651086"></a>
 ### shaderNum
@@ -31,5 +35,7 @@ planeNum
 shaderNum
 ```
 
+Index of the shader referenced by this geometric element.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L518)

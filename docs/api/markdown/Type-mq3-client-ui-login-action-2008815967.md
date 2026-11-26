@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI login queued engine action, including `boundary`, `kind`, `name`, `text`, `text2`, `dispatched`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L22)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Action
 boundary
 ```
 
+Host service category recorded with a request emitted while submitting account credentials or closing the login dialog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L25)
 
 <a id="field-field-mq3-client-ui-login-action-dispatched-dispatched-src-mq3-client-ui-login-ml-752733735"></a>
 ### dispatched
@@ -31,8 +35,10 @@ boundary
 dispatched
 ```
 
+True when this request is marked for native dispatch while submitting account credentials or closing the login dialog; false when its native effect is suppressed.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L38)
 
 <a id="field-field-mq3-client-ui-login-action-kind-kind-src-mq3-client-ui-login-ml-252623845"></a>
 ### kind
@@ -41,8 +47,10 @@ dispatched
 kind
 ```
 
+Operation selector telling the host how to interpret a request emitted while submitting account credentials or closing the login dialog.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L28)
 
 <a id="field-field-mq3-client-ui-login-action-name-name-src-mq3-client-ui-login-ml-757420803"></a>
 ### name
@@ -51,8 +59,10 @@ kind
 name
 ```
 
+Login-menu target, account-operation label, or artwork resource referenced by the host action.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L30)
 
 <a id="field-field-mq3-client-ui-login-action-text-text-src-mq3-client-ui-login-ml-435391871"></a>
 ### text
@@ -61,8 +71,10 @@ name
 text
 ```
 
+Sanitized account name passed to the rankings login operation; menu and asset actions leave it empty.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L33)
 
 <a id="field-field-mq3-client-ui-login-action-text2-text2-src-mq3-client-ui-login-ml-1507399197"></a>
 ### text2
@@ -71,5 +83,7 @@ text
 text2
 ```
 
+When constructing this record, `emit` supplies `text2` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L35)

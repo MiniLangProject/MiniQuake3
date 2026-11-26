@@ -36,14 +36,17 @@ function main(args)
  w=make(3,3);w.entities[2].svFlags=snapshot.SVF_BROADCAST;h=host([bytes([1]),bytes([0])]);f=snapshot.buildClientSnapshot(w,h,p,true,false)
  c=c+req(f.numEntities==2 and f.firstEntity==0 and w.nextSnapshotEntities==2,"frame ring counts")
  c=c+req(w.ring[0].number==1 and w.ring[1].number==2,"own entity excluded and sorted copies")
- c=c+req(f.playerState.clientNum==0 and f.playerState.origin==p.origin,"playerstate copied")
+ samePlayer=f.playerState.clientNum==0 and f.playerState.origin==p.origin
+ f.playerState.stats[0]=105;f.playerState.origin[0]=500.0
+ c=c+req(samePlayer and p.stats[0]==0 and p.origin[0]==10.0,"playerstate and its arrays are detached copies")
  c=c+req(h.context.origins[0]==[10.0,20.0,56.0],"viewheight origin")
  c=c+req(f.areaBytes==1 and f.areaBits[0]==254 and f.areaBits[31]==255,"area mask inverted")
  w.entities[1].state.eType=99;c=c+req(w.ring[0].eType==11,"ring state detached copy")
  before=w.snapshotCounter;empty=snapshot.buildClientSnapshot(w,h,p,false,false);c=c+req(empty.numEntities==0 and w.snapshotCounter==before+1,"missing client empty frame")
  before=w.snapshotCounter;empty=snapshot.buildClientSnapshot(w,h,p,true,true);c=c+req(empty.numEntities==0 and w.snapshotCounter==before+1,"zombie empty frame")
  bad=ps.create();bad.clientNum=5;c=c+req(try(snapshot.buildClientSnapshot(make(1,2),h,bad,true,false)) is error,"client entity bound")
- w=make(2,2);w.entities[1].state.number=77;f=snapshot.buildClientSnapshot(w,h,p,true,false);c=c+req(w.entities[1].state.number==1,"entity number repaired")
+ w=make(3,3);w.entities[0]=void;w.entities[1]=void;w.entities[2].state.number=77;f=snapshot.buildClientSnapshot(w,h,p,true,false)
+ c=c+req(f.numEntities==1 and w.ring[0].number==2 and w.entities[2].state.number==2,"sparse entity table preserves snapshot indices with hidden viewer and unlinked entity")
  portal=make(2,4);portal.entities[1].svFlags=snapshot.SVF_PORTAL;portal.entities[1].state.origin=[500.0,0.0,0.0];portal.entities[1].state.origin2=[100.0,0.0,0.0];portal.entities[1].state.generic1=10;h=host([bytes([1]),bytes([2])]);snapshot.buildClientSnapshot(portal,h,p,true,false);c=c+req(len(h.context.origins)==1,"distant portal skipped")
  print "PASS: "+str(c)+" snapshot-build contracts";return 0
 end function

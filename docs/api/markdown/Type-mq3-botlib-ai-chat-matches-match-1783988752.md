@@ -9,8 +9,10 @@
 struct Match
 ```
 
+`Match` record for ai chat matches, containing `string`, `type`, `subtype`, `offsets` and `lengths`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L42)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Match
 lengths
 ```
 
+Character lengths of the captured match variables.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L52)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-offsets-offsets-src-mq3-botlib-ai-chat-matches-ml-363875790"></a>
 ### offsets
@@ -31,8 +35,10 @@ lengths
 offsets
 ```
 
+Start positions of captured variables within the matched message.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L50)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-string-string-src-mq3-botlib-ai-chat-matches-ml-224066608"></a>
 ### string
@@ -41,8 +47,10 @@ offsets
 string
 ```
 
+Input message text matched against the chat templates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L44)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-subtype-subtype-src-mq3-botlib-ai-chat-matches-ml-1957021578"></a>
 ### subtype
@@ -51,8 +59,10 @@ string
 subtype
 ```
 
+Subtype returned by the chat template that matched this message.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L48)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-type-type-src-mq3-botlib-ai-chat-matches-ml-993016758"></a>
 ### type
@@ -61,5 +71,7 @@ subtype
 type
 ```
 
+Match-category bits reported by the successful template.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L46)

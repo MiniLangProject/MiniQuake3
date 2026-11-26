@@ -9,8 +9,10 @@
 struct ShotEffect
 ```
 
+Stores playable effects shot effect record, including `startPoint`, `impactPoint`, `bornAt`, `expiresAt`, `key`, `classname` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L41)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ShotEffect
 bornAt
 ```
 
+When constructing this record, `shot` supplies `nowMilliseconds` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L47)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-classname-classname-src-mq3-client-playable-effects-ml-1944673090"></a>
 ### classname
@@ -31,8 +35,10 @@ bornAt
 classname
 ```
 
+Weapon classname retained with a shot effect to select its hit-feedback appearance.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L54)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-expiresat-expiresat-src-mq3-client-playable-effects-ml-226753286"></a>
 ### expiresAt
@@ -41,8 +47,10 @@ classname
 expiresAt
 ```
 
+When constructing this record, `shot` supplies `nowMilliseconds+durationMilliseconds` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L50)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-impactpoint-impactpoint-src-mq3-client-playable-effects-ml-707567266"></a>
 ### impactPoint
@@ -51,8 +59,10 @@ expiresAt
 impactPoint
 ```
 
+When constructing this record, `shot` supplies `impactPoint` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L45)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-key-key-src-mq3-client-playable-effects-ml-694802682"></a>
 ### key
@@ -61,8 +71,10 @@ impactPoint
 key
 ```
 
+When constructing this record, `shot` supplies `nowMilliseconds` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L52)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-normal-normal-src-mq3-client-playable-effects-ml-757076708"></a>
 ### normal
@@ -71,8 +83,10 @@ key
 normal
 ```
 
+Impact-surface normal retained with the shot-feedback effect for decal and hit presentation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L56)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-startpoint-startpoint-src-mq3-client-playable-effects-ml-493761282"></a>
 ### startPoint
@@ -81,8 +95,10 @@ normal
 startPoint
 ```
 
+When constructing this record, `shot` supplies `startPoint` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L43)
 
 <a id="field-field-mq3-client-playable-effects-shoteffect-worldhit-worldhit-src-mq3-client-playable-effects-ml-1796272792"></a>
 ### worldHit
@@ -91,5 +107,7 @@ startPoint
 worldHit
 ```
 
+When constructing this record, `shot` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L58)

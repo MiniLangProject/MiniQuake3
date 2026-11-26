@@ -1,0 +1,119 @@
+{
+  "source_revision": "14417c8e9832465a943c7d628f8124feec06983d",
+  "generator": {
+    "generator_version": "0.4.9",
+    "generator_source_commit": "a9a058215cde15459d42525a4a3e0d5ff2108f05",
+    "generator_sha256": "c93e4a45e65e06f8096bf146a3c4f9b360523c6816216a783af122b53f81c55a",
+    "compiler": "MiniLangCompilerML 1.3.11 Linux x64 release",
+    "compiler_sha256": "7a61fe5447d0e81d700c834c7f02dce2259c0bd2418050b056653bea742b8c67",
+    "compiler_source_revision": "a8777b1e0d975c4b238e1df914ddcfb3db3bd994",
+    "compiler_imports_revision": "c1f402d66e7021bd2137e68b5d919569f10f3959"
+  },
+  "generation": {
+    "exit_code": 0,
+    "elapsed_seconds": 530.746,
+    "started_at_utc": "2026-11-26T16:30:43.729333+00:00",
+    "finished_at_utc": "2026-11-26T16:39:34.476075+00:00",
+    "peak_sampled_rss_bytes": 380080128,
+    "write_diagnostics": []
+  },
+  "source_integrity": {
+    "baseline_commit": "caef716ae922d2be821c166e9d844eb037d8a038",
+    "source_files": 601,
+    "unchanged_files": 580,
+    "changed_files": [
+      "src/mq3/audio/spatial_mixer.ml",
+      "src/mq3/audio/wav.ml",
+      "src/mq3/client/cl_parse_runtime.ml",
+      "src/mq3/client/demo_playback.ml",
+      "src/mq3/client/network_ingress.ml",
+      "src/mq3/client/qvm_preview_app.ml",
+      "src/mq3/client/remote_play.ml",
+      "src/mq3/client/server_stream.ml",
+      "src/mq3/collision/brush.ml",
+      "src/mq3/format/md3.ml",
+      "src/mq3/format/pk3.ml",
+      "src/mq3/qcommon/network_pump.ml",
+      "src/mq3/renderer/qvm_viewport.ml",
+      "src/mq3/renderer/view_math.ml",
+      "src/mq3/server/abi.ml",
+      "src/mq3/server/client_command.ml",
+      "src/mq3/server/client_input.ml",
+      "src/mq3/server/client_message.ml",
+      "src/mq3/server/connectionless.ml",
+      "src/mq3/vm/interpreter.ml",
+      "src/mq3/vm/syscall_common.ml"
+    ],
+    "changed_file_count": 21,
+    "method": "Verify published Git blob hashes; compare all non-comment lines; compare tokens after collapsing consecutive NL tokens; compare parser AST dataclass fields excluding source positions",
+    "target": "windows-x64",
+    "errors": [],
+    "equal": true
+  },
+  "coverage": {
+    "API declarations": {
+      "documented": 14452,
+      "total": 14452
+    },
+    "Constants": {
+      "documented": 7135,
+      "total": 7135
+    },
+    "Fields": {
+      "documented": 13257,
+      "total": 13257
+    },
+    "Overall": {
+      "documented": 67480,
+      "total": 67480
+    },
+    "Parameters": {
+      "documented": 32636,
+      "total": 32636
+    }
+  },
+  "diagnostics": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "output_validation": {
+    "generated_files": 5613,
+    "manifests": [
+      {
+        "format": "html",
+        "files": 2808
+      },
+      {
+        "format": "markdown",
+        "files": 2805
+      }
+    ],
+    "local_links": 259418,
+    "fragment_references": 199893,
+    "json_files": 1,
+    "svg_files": 4,
+    "expected_source_revision": "14417c8e9832465a943c7d628f8124feec06983d",
+    "expected_generator_version": "0.4.9",
+    "defects": 0,
+    "errors": []
+  },
+  "native_generator_build_and_tests": [
+    {
+      "stage": "generator",
+      "exit_code": 0,
+      "seconds": 24.423
+    },
+    {
+      "stage": "tests",
+      "exit_code": 0,
+      "seconds": 25.723
+    },
+    {
+      "stage": "test-suite",
+      "exit_code": 0,
+      "seconds": 5.776
+    }
+  ],
+  "native_test_checks": 145,
+  "graph_golden_comparisons": 15
+}

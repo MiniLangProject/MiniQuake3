@@ -16,6 +16,7 @@
 - [`mq3.client.cinematic_runtime.Clip`](Type-mq3-client-cinematic-runtime-clip-1278602487.md) — struct
 - [`mq3.client.cinematic_runtime.closeAll`](File-src-mq3-client-cinematic-runtime-ml-1539162371.md#function-function-mq3-client-cinematic-runtime-closeall-function-closeall-state-src-mq3-client-cinematic-runtime-ml-1095697911) — function
 - [`mq3.client.cinematic_runtime.create`](File-src-mq3-client-cinematic-runtime-ml-1539162371.md#function-function-mq3-client-cinematic-runtime-create-function-create-archive-src-mq3-client-cinematic-runtime-ml-33781950) — function
+- [`mq3.client.cinematic_runtime.discardDraws`](File-src-mq3-client-cinematic-runtime-ml-1539162371.md#function-function-mq3-client-cinematic-runtime-discarddraws-function-discarddraws-state-src-mq3-client-cinematic-runtime-ml-2064515291) — function
 - [`mq3.client.cinematic_runtime.draw`](File-src-mq3-client-cinematic-runtime-ml-1539162371.md#function-function-mq3-client-cinematic-runtime-draw-function-draw-state-handle-src-mq3-client-cinematic-runtime-ml-1438765113) — function
 - [`mq3.client.cinematic_runtime.Draw`](Type-mq3-client-cinematic-runtime-draw-320421191.md) — struct
 - [`mq3.client.cinematic_runtime.Extents`](Type-mq3-client-cinematic-runtime-extents-627808258.md) — struct

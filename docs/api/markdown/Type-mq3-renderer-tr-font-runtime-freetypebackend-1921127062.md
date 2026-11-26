@@ -9,8 +9,10 @@
 struct FreeTypeBackend
 ```
 
+Callback table for `mq3.renderer.tr_font_runtime.FreeTypeBackend`; exposes `context`, `rasterizeFn`, `createImageFn`, `saveFontData`, `outputRoot`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L132)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct FreeTypeBackend
 context
 ```
 
+Font-backend state passed to glyph rasterization and atlas-image creation callbacks.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L134)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-createimagefn-createimagefn-src-mq3-renderer-tr-font-runtime-ml-1202590647"></a>
 ### createImageFn
@@ -31,8 +35,10 @@ context
 createImageFn
 ```
 
+Host callback used to perform create image operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L138)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-outputroot-outputroot-src-mq3-renderer-tr-font-runtime-ml-19894301"></a>
 ### outputRoot
@@ -41,8 +47,10 @@ createImageFn
 outputRoot
 ```
 
+Directory under which generated font assets are written.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L142)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-rasterizefn-rasterizefn-src-mq3-renderer-tr-font-runtime-ml-1609210395"></a>
 ### rasterizeFn
@@ -51,8 +59,10 @@ outputRoot
 rasterizeFn
 ```
 
+Host callback used to perform rasterize operations for this subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L136)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-savefontdata-savefontdata-src-mq3-renderer-tr-font-runtime-ml-2091417567"></a>
 ### saveFontData
@@ -61,5 +71,7 @@ rasterizeFn
 saveFontData
 ```
 
+Whether generated font metadata is saved by the backend.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L140)

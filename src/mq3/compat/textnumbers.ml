@@ -2,13 +2,39 @@
 // The original native game uses CRT atoi/atof/sscanf. Keep that CRT boundary.
 package mq3.compat.textnumbers
 import mq3.compat.numeric as n
+/// Convert a C-string floating-point numeric prefix for compat.textnumbers.
+/// @param text Null-terminated narrow numeric text accepted by the C runtime.
+/// @returns The converted double; zero when no number is recognized.
 extern function atof(text as cstr) from "ucrtbase.dll" returns double
+/// Convert a C-string signed decimal integer prefix for compat.textnumbers.
+/// @param text Null-terminated narrow numeric text accepted by the C runtime.
+/// @returns The converted signed integer; zero when no number is recognized.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
+/// Parse a bounded narrow string using the UCRT scanner and a prepacked native argument list.
+/// @param options UCRT scanf option bitmask.
+/// @param text Null-terminated narrow input text.
+/// @param length Maximum input character count supplied to the scanner.
+/// @param format Null-terminated scanf format string.
+/// @param locale Native locale pointer, or null for the current locale.
+/// @param arguments Native argument-list storage containing destination pointers matching the format.
+/// @returns The number of successfully assigned fields, or a negative scanner failure result.
 extern function __stdio_common_vsscanf(options as u64,text as cstr,length as u64,format as cstr,locale as ptr,arguments as bytes) from "ucrtbase.dll" returns i32
+/// Format a narrow string into a bounded byte buffer using UCRT argument-list storage.
+/// @param options UCRT printf option bitmask.
+/// @param output Writable narrow-character output buffer.
+/// @param length Output capacity in bytes.
+/// @param format Null-terminated printf format string.
+/// @param locale Native locale pointer, or null for the current locale.
+/// @param arguments Native argument-list storage matching the format conversions.
+/// @returns The formatted character count, or a negative value on formatting failure.
 extern function __stdio_common_vsprintf(options as u64,output as bytes,length as u64,format as cstr,locale as ptr,arguments as bytes) from "ucrtbase.dll" returns i32
+/// Return `mq3.compat.numeric.f32(atof(text))` from `compat.textnumbers.atof32`.
+/// @param text Null-terminated narrow numeric text accepted by the C runtime.
 function atof32(text)
   return n.f32(atof(text))
 end function
+/// Compute trunc double 32 in compat.textnumbers; the normal completion returns `low`.
+/// @param value Value used in `(value < 0)` and `(0.0 - value)`.
 function truncDouble32(value)
   // cvttsd2si semantics without a premature float store.
   if value != value or value >= 2147483648.0 or value < -2147483648.0 then return -2147483648 end if
@@ -22,6 +48,10 @@ function truncDouble32(value)
   if negative then return 0-low end if
   return low
 end function
+/// Compute fixed 2 in compat.textnumbers; the normal completion returns `decode(slice(output, 0, count))`.
+///
+/// Validation failures include `Shader time formatting overflow`.
+/// @param value Floating-point value to narrow and reinterpret.
 function fixed2(value)
   // Encode the exact float-to-double promotion in an x64 va_list slot.
   bits = n.floatBits(value); exponent = (bits >> 23) & 255; fraction = bits & 0x7fffff
@@ -45,6 +75,10 @@ function fixed2(value)
   if count < 0 or count >= 64 then return error(487,"Shader time formatting overflow") end if
   return decode(slice(output,0,count))
 end function
+/// Compute fixed 6 in compat.textnumbers; the normal completion returns `decode(slice(output, 0, count))`.
+///
+/// Validation failures include `Float formatting overflow`.
+/// @param value Floating-point value to narrow and reinterpret.
 function fixed6(value)
   // va("%f", float) receives the same binary32-to-double promotion.
   bits = n.floatBits(value); exponent = (bits >> 23) & 255; fraction = bits & 0x7fffff
@@ -67,6 +101,9 @@ function fixed6(value)
   if count < 0 or count >= 64 then return error(487,"Float formatting overflow") end if
   return decode(slice(output,0,count))
 end function
+/// Apply `mq3.compat.numeric.floatBits`, `nativeBytesPtr`, `mq3.compat.textnumbers.__stdio_common_vsscanf` for vector in compat.textnumbers.
+/// @param text Null-terminated narrow input text.
+/// @param initial Initial used in `initial[axis]` and `n.floatBits(initial[axis])`.
 function vector(text,initial)
   output = bytes(12,0); arguments = bytes(24,0)
   for axis = 0 to 2
@@ -81,6 +118,10 @@ function vector(text,initial)
   count = __stdio_common_vsscanf(0,text,len(bytes(text)),"%f %f %f",0,arguments)
   return [count,[n.bitsFloat(n.readU32(output,0)),n.bitsFloat(n.readU32(output,4)),n.bitsFloat(n.readU32(output,8))]]
 end function
+/// Compute session integers in compat.textnumbers; the normal completion returns `result`.
+///
+/// Validation failures include `Incomplete session data would read uninitialized C locals`.
+/// @param text Null-terminated narrow input text.
 function sessionIntegers(text)
   // Match the native game's seven %i conversions, including octal/hex input.
   output = bytes(28,0); arguments = bytes(56,0)

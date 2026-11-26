@@ -9,8 +9,10 @@
 struct Image
 ```
 
+Data record for `mq3.renderer.tga.Image`; groups `width`, `height`, `pixels`, `topDownDeclared`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L30)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Image
 height
 ```
 
+Height in pixels of the decoded TGA pixel array.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L34)
 
 <a id="field-field-mq3-renderer-tga-image-pixels-pixels-src-mq3-renderer-tga-ml-480832240"></a>
 ### pixels
@@ -31,8 +35,10 @@ height
 pixels
 ```
 
+Decoded pixel data for the image or upload.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L36)
 
 <a id="field-field-mq3-renderer-tga-image-topdowndeclared-topdowndeclared-src-mq3-renderer-tga-ml-1295020478"></a>
 ### topDownDeclared
@@ -41,8 +47,10 @@ pixels
 topDownDeclared
 ```
 
+Whether the image header declares a top-to-bottom pixel order.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L38)
 
 <a id="field-field-mq3-renderer-tga-image-width-width-src-mq3-renderer-tga-ml-522167838"></a>
 ### width
@@ -51,5 +59,7 @@ topDownDeclared
 width
 ```
 
+Width in pixels of the decoded TGA pixel array.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L32)

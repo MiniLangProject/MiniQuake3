@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.packet_event, containing `time`, `clients`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L36)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Runtime
 clients
 ```
 
+Client slots matched against source addresses and packet channel identifiers.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L40)
 
 <a id="field-field-mq3-server-packet-event-runtime-time-time-src-mq3-server-packet-event-ml-1928082151"></a>
 ### time
@@ -31,5 +35,7 @@ clients
 time
 ```
 
+Server timestamp attached to accepted client packets for activity tracking, in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L38)

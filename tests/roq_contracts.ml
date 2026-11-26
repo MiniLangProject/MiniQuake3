@@ -29,5 +29,9 @@ function main(args)
   bad=data;bad[0]=0;count=count+req(try(roq.parse(bad)) is error,"signature rejected")
   count=count+req(try(video.process(video.create(),movie,movie.chunks[4])) is error,"VQ before dimensions rejected")
   count=count+req(try(video.create().latest.width) is error,"empty decoder has no frame")
+  many=bytes(8+4096*8,0);many[0]=roq.MAGIC&255;many[1]=roq.MAGIC>>8;many[6]=30
+  for index=0 to 4095 offset=8+index*8;many[offset]=roq.QUAD_HANG&255;many[offset+1]=roq.QUAD_HANG>>8 end for
+  indexed=roq.parse(many)
+  count=count+req(len(indexed.chunks)==4096 and indexed.chunks[4095].dataOffset==8+4096*8,"large RoQ index retains all chunk offsets")
   print("PASS: "+str(count)+" RoQ media contracts");return 0
 end function

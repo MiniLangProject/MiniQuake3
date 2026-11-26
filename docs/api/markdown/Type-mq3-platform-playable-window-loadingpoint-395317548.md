@@ -9,8 +9,10 @@
 struct LoadingPoint
 ```
 
+Data record for `mq3.platform.playable_window.LoadingPoint`; groups `x`, `y`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L615)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LoadingPoint
 x
 ```
 
+Horizontal screen-space coordinate of the projected or drawn point.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L617)
 
 <a id="field-field-mq3-platform-playable-window-loadingpoint-y-y-src-mq3-platform-playable-window-ml-1938357835"></a>
 ### y
@@ -31,5 +35,7 @@ x
 y
 ```
 
+Vertical screen-space coordinate of the projected or drawn point.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L619)

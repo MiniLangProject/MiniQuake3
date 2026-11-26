@@ -21,14 +21,16 @@ Reachable from entry: **yes**
 function edge(value, sourceSize, targetSize)
 ```
 
+Scale one viewport edge and truncate it toward zero, rejecting signed-32-bit overflow.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `sourceSize` | `dynamic` | — |  |
-| `targetSize` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Signed edge coordinate in source pixels; negative offscreen edges are preserved. |
+| `sourceSize` | `dynamic` | — | Positive source dimension in pixels, validated by prepare. |
+| `targetSize` | `dynamic` | — | Positive target dimension in pixels, validated by prepare. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L24)
 
 <a id="function-function-mq3-renderer-qvm-viewport-fail-function-fail-message-src-mq3-renderer-qvm-viewport-ml-758355279"></a>
 ### fail
@@ -37,12 +39,14 @@ function edge(value, sourceSize, targetSize)
 function fail(message)
 ```
 
+Creates error `7691` with message `"QVM viewport: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Input used in the result expression `error(7691,"QVM viewport: "+message)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L19)
 
 <a id="function-function-mq3-renderer-qvm-viewport-prepare-function-prepare-refdef-sourcewidth-sourceheight-targetwidth-targetheight-src-mq3-renderer-qvm-viewport-ml-625616116"></a>
 ### prepare
@@ -51,16 +55,18 @@ function fail(message)
 function prepare(refdef, sourceWidth, sourceHeight, targetWidth, targetHeight)
 ```
 
+Scale a QVM refdef rectangle into a native viewport and construct its camera projection. Scales the four edges independently without clipping offscreen portions, so an offscreen UI model keeps its original projection. Converts Quake's forward/left/up basis to the viewer's right-facing screen basis and uses separate horizontal and vertical fields of view. Returns Prepared or the viewport/projection error; the projection's near distance is one world unit.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `refdef` | `dynamic` | — |  |
-| `sourceWidth` | `dynamic` | — |  |
-| `sourceHeight` | `dynamic` | — |  |
-| `targetWidth` | `dynamic` | — |  |
-| `targetHeight` | `dynamic` | — |  |
+| `refdef` | `dynamic` | — | Source-pixel x/y/width/height, world-space vieworg, forward/left/up viewaxis, and fovX/fovY in degrees. |
+| `sourceWidth` | `dynamic` | — | Positive width of the QVM drawable coordinate space in pixels. |
+| `sourceHeight` | `dynamic` | — | Positive height of the QVM drawable coordinate space in pixels. |
+| `targetWidth` | `dynamic` | — | Positive native framebuffer width in pixels. |
+| `targetHeight` | `dynamic` | — | Positive native framebuffer height in pixels. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L44)
 
 - [mq3.renderer.qvm_viewport.Prepared](Type-mq3-renderer-qvm-viewport-prepared-444055731.md) — struct
 <a id="function-function-mq3-renderer-qvm-viewport-validvector-function-validvector-value-src-mq3-renderer-qvm-viewport-ml-1724720243"></a>
@@ -70,9 +76,11 @@ function prepare(refdef, sourceWidth, sourceHeight, targetWidth, targetHeight)
 function validVector(value)
 ```
 
+Computes `value!=void and len(value)==3` for `mq3.renderer.qvm_viewport.validVector`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L31)

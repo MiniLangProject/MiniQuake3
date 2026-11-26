@@ -5,8 +5,14 @@ package mq3.qcommon.cvar_commands
 import mq3.qcommon.cvar as cvar
 import mq3.qcommon.command_buffer as command
 
+/// Emit cvar commands in qcommon.cvar_commands.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.emit`.
+/// @param text Message passed as `message` to `mq3.qcommon.command_buffer.emit`.
 function emit(commandState,text) command.emit(commandState,text);return void end function
 
+/// Test value command in qcommon.cvar_commands; the normal completion returns `true`.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.argv`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar.find`.
 function valueCommand(commandState,registry)
   variable=cvar.find(registry,command.argv(commandState,0));if variable==void then return false end if
   if command.argc(commandState)==1 then
@@ -18,12 +24,18 @@ function valueCommand(commandState,registry)
   return true
 end function
 
+/// Compute toggle callback in qcommon.cvar_commands.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.argc`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar.find`.
 function toggleCallback(commandState,registry)
   if command.argc(commandState)!=2 then emit(commandState,"usage: toggle <variable>\n");return void end if
   variable=cvar.find(registry,command.argv(commandState,1));value=0;if variable!=void then value=variable.integer end if
   next="1";if value!=0 then next="0" end if;cvar.set2(registry,command.argv(commandState,1),next,false);return void
 end function
 
+/// Set callback in qcommon.cvar_commands.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.argc`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar.set2`.
 function setCallback(commandState,registry)
   if command.argc(commandState)<3 then emit(commandState,"usage: set <variable> <value>\n");return void end if
   combined="";length=0
@@ -36,17 +48,36 @@ function setCallback(commandState,registry)
   cvar.set2(registry,command.argv(commandState,1),combined,false);return void
 end function
 
+/// Compute flagged set in qcommon.cvar_commands.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.argc`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar_commands.setCallback`.
+/// @param flag Flag used in `(variable.flags | flag)`.
+/// @param usage Text passed as `text` to `mq3.qcommon.cvar_commands.emit`.
 function flaggedSet(commandState,registry,flag,usage)
   if command.argc(commandState)!=3 then emit(commandState,usage);return void end if
   setCallback(commandState,registry);variable=cvar.find(registry,command.argv(commandState,1));if variable!=void then variable.flags=variable.flags|flag end if;return void
 end function
+/// Return `mq3.qcommon.cvar_commands.flaggedSet(commandState, registry, cvar.USERINFO, "usage: setu <variable> <value>\n")` from `qcommon.cvar_commands.setUserCallback`.
+/// @param commandState Command state passed as `commandState` to `mq3.qcommon.cvar_commands.flaggedSet`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar_commands.flaggedSet`.
 function setUserCallback(commandState,registry) return flaggedSet(commandState,registry,cvar.USERINFO,"usage: setu <variable> <value>\n") end function
+/// Return `mq3.qcommon.cvar_commands.flaggedSet(commandState, registry, cvar.SERVERINFO, "usage: sets <variable> <value>\n")` from `qcommon.cvar_commands.setServerCallback`.
+/// @param commandState Command state passed as `commandState` to `mq3.qcommon.cvar_commands.flaggedSet`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar_commands.flaggedSet`.
 function setServerCallback(commandState,registry) return flaggedSet(commandState,registry,cvar.SERVERINFO,"usage: sets <variable> <value>\n") end function
+/// Return `mq3.qcommon.cvar_commands.flaggedSet(commandState, registry, cvar.ARCHIVE, "usage: seta <variable> <value>\n")` from `qcommon.cvar_commands.setArchiveCallback`.
+/// @param commandState Command state passed as `commandState` to `mq3.qcommon.cvar_commands.flaggedSet`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar_commands.flaggedSet`.
 function setArchiveCallback(commandState,registry) return flaggedSet(commandState,registry,cvar.ARCHIVE,"usage: seta <variable> <value>\n") end function
+/// Reset callback in qcommon.cvar_commands.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.argc`.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar.set2`.
 function resetCallback(commandState,registry)
   if command.argc(commandState)!=2 then emit(commandState,"usage: reset <variable>\n");return void end if
   cvar.set2(registry,command.argv(commandState,1),void,false);return void
 end function
+/// Compute flag text in qcommon.cvar_commands; the normal completion returns `text`.
+/// @param flags Flags used in `(flags & cvar.ROM)` and `(flags & cvar.INIT)`.
 function flagText(flags)
   text="";if (flags&cvar.SERVERINFO)!=0 then text=text+"S" else text=text+" " end if
   if (flags&cvar.USERINFO)!=0 then text=text+"U" else text=text+" " end if
@@ -57,6 +88,9 @@ function flagText(flags)
   if (flags&cvar.CHEAT)!=0 then text=text+"C" else text=text+" " end if
   return text
 end function
+/// Compute list callback in qcommon.cvar_commands.
+/// @param commandState State passed as `state` to `mq3.qcommon.command_buffer.argc`.
+/// @param registry Record exposing `variables`, `numIndexes`.
 function listCallback(commandState,registry)
   match=void;if command.argc(commandState)>1 then match=command.argv(commandState,1) end if
   count=0
@@ -67,11 +101,22 @@ function listCallback(commandState,registry)
   emit(commandState,"\n"+str(count)+" total cvars\n");emit(commandState,str(registry.numIndexes)+" cvar indexes\n");return void
 end function
 
+/// Compute restart callback in qcommon.cvar_commands; the normal completion returns `cvar.restart(registry)`.
+///
+/// Validation failures include `cvar_restart command is not bound`.
+/// @param commandState Reserved argument; this implementation does not read its value.
+/// @param registry Registry passed as `registry` to `mq3.qcommon.cvar.restart`.
 function restartCallback(commandState,registry)
   if registry==void then return error(3514,"cvar_restart command is not bound") end if
   return cvar.restart(registry)
 end function
 
+/// Update `commandState.cvarContextCommandFn`, `commandState.cvarCommandContext` in qcommon.cvar_commands; the normal completion returns `true`.
+///
+/// Validation failures include `cvar_restart requires registry and command state`.
+/// Direct state writes: `commandState.cvarContextCommandFn`, `commandState.cvarCommandContext`.
+/// @param registry Context passed as `context` to `mq3.qcommon.command_buffer.addContextCommand`.
+/// @param commandState Updated in place: `cvarContextCommandFn`, `cvarCommandContext`.
 function install(registry,commandState)
   if registry==void or commandState==void then return error(3514,"cvar_restart requires registry and command state") end if
   bindings=[["toggle",toggleCallback],["set",setCallback],["sets",setServerCallback],["setu",setUserCallback],["seta",setArchiveCallback],["reset",resetCallback],["cvarlist",listCallback],["cvar_restart",restartCallback]]

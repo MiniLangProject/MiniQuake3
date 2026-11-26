@@ -13,6 +13,9 @@ import mq3.renderer.qvm_scene_batch as frameBatches
 import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
 import std.ds.list as lists
+import std.string as strings
+
+struct MaterialSurface shaderHandle customSkin shaderName surfaceName end struct
 
 function require(value,label) if not value then return error(7685,"Retail renderer frame: "+label) end if;return true end function
 function modelCount(entities)
@@ -22,13 +25,39 @@ function tap(state,key)
   down=uiVm.keyEvent(state.ui,key,true);if down is error then return down end if
   return uiVm.keyEvent(state.ui,key,false)
 end function
+function crashSkinLods(state,archive)
+  base="models/players/crash/";surfaces=lists.List.withCapacity(20)
+  for each part in ["head","upper","lower"]
+    handle=match.registerModel(state.context,base+part+".md3");skin=match.registerSkin(state.context,base+part+"_default.skin")
+    asset=frameGeometry.modelAt(state.context.assetKinds,state.context.modelAssets,handle)
+    if not frameGeometry.isLodModel(asset) or len(asset[1])!=3 then return error(7685,"Crash model LODs unavailable: "+part) end if
+    for each level in asset[1]
+      for each surface in level.surfaces surfaces.add(MaterialSurface(0,skin,"",surface.name)) end for
+    end for
+  end for
+  catalog=frameMaterials.build(archive,surfaces.toArray(),state.context.assets,state.context.assetKinds,512,512,state.context.shaderRemaps);if catalog is error then return catalog end if
+  if catalog.resolvedTriangles!=surfaces.len() or catalog.unresolvedTriangles!=0 then return error(7685,"Crash must resolve original skins on every LOD surface") end if
+  for each material in catalog.materials
+    if not strings.startsWith(material.shaderName,base) then return error(7685,"Crash LOD must resolve its retail skin shader") end if
+    image=try(pk3.read(archive,material.imageName));if image is error then return error(7685,"Crash skin shader must start with a verified retail image") end if
+  end for
+  return surfaces.len()
+end function
 function main(args)
   archive=pk3.open(args[0]);if archive is error then return archive end if
   map=bsp.load(pk3.read(archive,"maps/q3dm1.bsp"));if map is error then return map end if
   state=match.bootWithQvms(archive,map,1000,args[1]);if state is error then return state end if
   connected=match.connectLocal(state,0);if connected is error then return connected end if
   initial=match.snapshotProductive(state,0);if initial is error then return initial end if
+  payload=match.snapshotBytes(state.context,state.context.snapshotNumber)
+  if not payload.found or slice(payload.data,12,32)!=initial.areaBits then return error(7685,"cgame snapshot ABI must carry the server area mask") end if
+  cached=match.snapshotBytesScratch(state.context,state.context.snapshotNumber)
+  if not cached.found or cached.data!=payload.data then return error(7685,"scratch and allocating snapshot ABI bytes differ") end if
+  staleOffset=len(cached.data)-32;oldValue=cached.data[staleOffset];cached.data[staleOffset]=oldValue^255
+  refreshed=match.snapshotBytesScratch(state.context,state.context.snapshotNumber)
+  if nativeBytesPtr(refreshed.data)!=nativeBytesPtr(cached.data) or refreshed.data[staleOffset]!=oldValue or refreshed.data!=payload.data then return error(7685,"snapshot scratch must be reused and clear its unused entity tail") end if
   booted=match.bootCgame(state);if booted is error then return booted end if
+  skinned=crashSkinLods(state,archive);if skinned is error then return skinned end if
   cumulative=0;firstViews=void;finalModels=0;maxFrameEntities=0
   for frame=1 to 120
     now=1000+frame*16
@@ -82,6 +111,6 @@ function main(args)
     uiCumulative=uiCumulative+len(state.context.scene.entities);state.context.soundCommands=[]
   end for
   checked=require(uiCumulative>scene.ENTITYNUM_WORLD and len(state.context.errors)==0,"UI-only preview also exceeds cumulative arena capacity without disappearing");if checked is error then return checked end if
-  print("PASS: Retail renderer lifecycle cgameFrames=120 cumulativeEntities="+str(cumulative)+" maxFrameEntities="+str(maxFrameEntities)+" finalModels="+str(finalModels)+" texturedTriangles="+str(catalog.resolvedTriangles)+" uiFrames=240 uiEntities="+str(uiCumulative)+" uiModels="+str(uiModels))
+  print("PASS: Retail renderer lifecycle cgameFrames=120 cumulativeEntities="+str(cumulative)+" maxFrameEntities="+str(maxFrameEntities)+" finalModels="+str(finalModels)+" texturedTriangles="+str(catalog.resolvedTriangles)+" uiFrames=240 uiEntities="+str(uiCumulative)+" uiModels="+str(uiModels)+" texturedCrashLodSurfaces="+str(skinned))
   match.shutdown(state);return 0
 end function

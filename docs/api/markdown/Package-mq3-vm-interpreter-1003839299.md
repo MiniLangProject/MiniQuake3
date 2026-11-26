@@ -9,7 +9,10 @@
 ## Symbols
 
 - [`mq3.vm.interpreter.call`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-call-function-call-vm-args-src-mq3-vm-interpreter-ml-1225421514) — function
+- [`mq3.vm.interpreter.callFast`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-callfast-function-callfast-vm-args-src-mq3-vm-interpreter-ml-1372106202) — function
 - [`mq3.vm.interpreter.fail`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-fail-function-fail-message-src-mq3-vm-interpreter-ml-2045130873) — function
+- [`mq3.vm.interpreter.imageLayout`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-imagelayout-function-imagelayout-image-src-mq3-vm-interpreter-ml-735397417) — function
+- [`mq3.vm.interpreter.ImageLayout`](Type-mq3-vm-interpreter-imagelayout-733203426.md) — struct
 - [`mq3.vm.interpreter.immediateSize`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-immediatesize-function-immediatesize-op-src-mq3-vm-interpreter-ml-690945279) — function
 - [`mq3.vm.interpreter.load`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-load-function-load-image-callback-src-mq3-vm-interpreter-ml-598598174) — function
 - [`mq3.vm.interpreter.restoreStack`](File-src-mq3-vm-interpreter-ml-500037689.md#function-function-mq3-vm-interpreter-restorestack-function-restorestack-vm-saved-src-mq3-vm-interpreter-ml-625622636) — function

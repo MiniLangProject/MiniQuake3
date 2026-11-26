@@ -9,8 +9,10 @@
 struct TokenResult
 ```
 
+TokenResult record for vm.cgame_pc_traps, containing `found`, `data`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L42)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TokenResult
 data
 ```
 
+Packed token ABI bytes returned to the calling VM.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L46)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-tokenresult-found-found-src-mq3-vm-cgame-pc-traps-ml-307814017"></a>
 ### found
@@ -31,5 +35,7 @@ data
 found
 ```
 
+Nonzero when the requested token, source, or resource result is available.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L44)

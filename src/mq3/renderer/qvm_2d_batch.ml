@@ -14,46 +14,224 @@ import mq3.platform.playable_multitexture as multitexture
 import std.ds.list as lists
 import std.string as strings
 
+/// Fixed depth assigned to two-dimensional screen geometry.
 const SCREEN_DEPTH=0.001
 
-struct Point x y depth end struct
-struct Quad shaderHandle shaderName positions texCoords color commandIndex end struct
-struct Triangle positions texCoords colors commandIndex end struct
-struct Texture imageName image slot noMipMaps end struct
-struct Material shaderHandle shaderName stages noMipMaps timeOffset clampTime end struct
-struct StagePass stage triangles batch timeOffset clampTime initialized dynamic end struct
-struct Run materialIndex shaderHandle passes quadCount triangleCount end struct
-struct Extracted quads setColors ignoredCommands sourceWidth sourceHeight targetWidth targetHeight end struct
-struct Catalog materials textures runs archive scriptIndex scriptCount sourceQuads emittedTriangles resolvedQuads unresolvedQuads nextTextureSlot endTextureSlot shaderRemaps lastCommands remapRevision assetCount sourceWidth sourceHeight targetWidth targetHeight end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Point`; groups `x`, `y`, `depth`.
+struct Point
+  /// Horizontal screen-space coordinate of the projected or drawn point.
+  x
+  /// Vertical screen-space coordinate of the projected or drawn point.
+  y
+  /// Depth of the projected point or fog region in its owning coordinate system.
+  depth
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Quad`; groups `shaderHandle`, `shaderName`, `positions`, `texCoords`, `color`, `commandIndex`.
+struct Quad
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Registered material name selected by the VM's stretch-picture command.
+  shaderName
+  /// Four corners of the submitted two-dimensional rectangle before triangulation.
+  positions
+  /// Four texture corners specified by the two-dimensional stretch-picture command.
+  texCoords
+  /// Modulation color active when the VM submitted this two-dimensional rectangle.
+  color
+  /// Index of the original drawing command that produced this primitive.
+  commandIndex
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Triangle`; groups `positions`, `texCoords`, `colors`, `commandIndex`.
+struct Triangle
+  /// Three screen-space corners produced when triangulating a two-dimensional drawing command.
+  positions
+  /// Three interpolated texture coordinates of a triangle produced from a 2D drawing rectangle.
+  texCoords
+  /// Per-corner modulation colors retained after splitting a 2D command into triangles.
+  colors
+  /// Index of the original drawing command that produced this primitive.
+  commandIndex
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Texture`; groups `imageName`, `image`, `slot`, `noMipMaps`.
+struct Texture
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Decoded image cached for two-dimensional shader drawing and native texture upload.
+  image
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Material`; groups `shaderHandle`, `shaderName`, `stages`, `noMipMaps`, `timeOffset`, `clampTime`.
+struct Material
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Two-dimensional material name whose stages are cached for drawing rectangles.
+  shaderName
+  /// Ordered material stages evaluated when the shader is drawn.
+  stages
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.StagePass`; groups `stage`, `triangles`, `batch`, `timeOffset`, `clampTime`, `initialized`, and 1 further field.
+struct StagePass
+  /// Runtime material stage executed by this drawing pass.
+  stage
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Prepared drawing batch associated with the selected geometry.
+  batch
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Whether initialization completed successfully.
+  initialized
+  /// Whether this pass requires per-frame updates for animated effects.
+  dynamic
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Run`; groups `materialIndex`, `shaderHandle`, `passes`, `quadCount`, `triangleCount`.
+struct Run
+  /// Index of the resolved material in the material catalog.
+  materialIndex
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Drawing passes required by the material or retained batch.
+  passes
+  /// Number of two-dimensional quads represented by this draw run.
+  quadCount
+  /// Number of triangles represented by this geometry or result.
+  triangleCount
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Extracted`; groups `quads`, `setColors`, `ignoredCommands`, `sourceWidth`, `sourceHeight`, `targetWidth`, and 1 further field.
+struct Extracted
+  /// Two-dimensional textured rectangles extracted from renderer commands.
+  quads
+  /// Number of color-setting commands encountered while extracting quads.
+  setColors
+  /// Number of commands not converted into two-dimensional primitives.
+  ignoredCommands
+  /// Width of the source coordinate system or image, in pixels.
+  sourceWidth
+  /// Height of the source coordinate system or image, in pixels.
+  sourceHeight
+  /// Width of the destination viewport or image, in pixels.
+  targetWidth
+  /// Height of the destination viewport or image, in pixels.
+  targetHeight
+end struct
+/// Data record for `mq3.renderer.qvm_2d_batch.Catalog`; groups `materials`, `textures`, `runs`, `archive`, `scriptIndex`, `scriptCount`, and 14 further fields.
+struct Catalog
+  /// Resolved drawing materials retained by the catalog.
+  materials
+  /// Texture resources retained by the material catalog.
+  textures
+  /// Contiguous primitive ranges grouped for retained drawing or material submission.
+  runs
+  /// Asset archive used to resolve game resources by virtual path.
+  archive
+  /// Index of parsed shader definitions used for material resolution.
+  scriptIndex
+  /// Number of shader script sources loaded into the catalog.
+  scriptCount
+  /// Number of quads extracted from the original drawing commands.
+  sourceQuads
+  /// Number of triangles submitted after expanding material passes.
+  emittedTriangles
+  /// Number of quads whose materials resolved successfully.
+  resolvedQuads
+  /// Number of quads whose materials could not be resolved.
+  unresolvedQuads
+  /// Next texture slot available for a newly loaded image.
+  nextTextureSlot
+  /// Exclusive upper bound of texture slots available to the catalog.
+  endTextureSlot
+  /// Shader name substitutions and associated effect-time offsets.
+  shaderRemaps
+  /// Drawing commands used to build the currently retained batch.
+  lastCommands
+  /// Shader-remap generation used to detect stale material bindings.
+  remapRevision
+  /// Number of registered assets when the cached catalog was prepared.
+  assetCount
+  /// Width of the source coordinate system or image, in pixels.
+  sourceWidth
+  /// Height of the source coordinate system or image, in pixels.
+  sourceHeight
+  /// Width of the destination viewport or image, in pixels.
+  targetWidth
+  /// Height of the destination viewport or image, in pixels.
+  targetHeight
+end struct
 
+/// Creates error `7683` with message `"QVM 2D batch: "+message`.
+/// @param message Input used in the result expression `error(7683,"QVM 2D batch: "+message)`.
 function fail(message) return error(7683,"QVM 2D batch: "+message) end function
+/// Returns `[n.trunc32(rgba[0]*255.0),n.trunc32(rgba[1]*255.0),n.trunc32(rgba[2]*255.0),n.trunc32(rgba[3]*255.0)]` for `mq3.renderer.qvm_2d_batch.colorBytes`.
+/// @param rgba Indexed input read at `0`, `1`, `2`, `3`.
 function colorBytes(rgba)
   return [n.trunc32(rgba[0]*255.0),n.trunc32(rgba[1]*255.0),n.trunc32(rgba[2]*255.0),n.trunc32(rgba[3]*255.0)]
 end function
+/// Returns `assets[handle-1]` from `mq3.renderer.qvm_2d_batch.shaderName`; earlier branches return `""`.
+/// @param assets Indexed input read at `handle-1`.
+/// @param kinds Indexed input read at `handle-1`.
+/// @param handle Input tested by `handle<=0 or handle>len(assets) or handle>len(kinds)`.
 function shaderName(assets,kinds,handle)
   if handle<=0 or handle>len(assets) or handle>len(kinds) then return "" end if
   if kinds[handle-1]!="shader" and kinds[handle-1]!="shaderNoMip" then return "" end if
   return assets[handle-1]
 end function
+/// Computes `handle>0 and handle<=len(kinds) and kinds[handle-1]=="shaderNoMip"` for `mq3.renderer.qvm_2d_batch.shaderNoMip`.
+/// @param kinds Indexed input read at `handle-1`.
+/// @param handle Input used in the result expression `handle>0 and handle<=len(kinds) and kinds[handle-1]=="shaderNoMip"`.
 function shaderNoMip(kinds,handle) return handle>0 and handle<=len(kinds) and kinds[handle-1]=="shaderNoMip" end function
+/// Constructs `mq3.renderer.qvm_2d_batch.Point` with `x` = `x*scaleX`, `y` = `y*scaleY`, `depth` = `SCREEN_DEPTH`.
+/// @param x Input used in the result expression `Point(x*scaleX,y*scaleY,SCREEN_DEPTH)`.
+/// @param y Input used in the result expression `Point(x*scaleX,y*scaleY,SCREEN_DEPTH)`.
+/// @param scaleX Input used in the result expression `Point(x*scaleX,y*scaleY,SCREEN_DEPTH)`.
+/// @param scaleY Input used in the result expression `Point(x*scaleX,y*scaleY,SCREEN_DEPTH)`.
 function scaledPoint(x,y,scaleX,scaleY) return Point(x*scaleX,y*scaleY,SCREEN_DEPTH) end function
+/// Returns `true` from `mq3.renderer.qvm_2d_batch.sameValues`; earlier branches return `false`.
+/// @param left Indexed input read at `index`.
+/// @param right Indexed input read at `index`.
 function sameValues(left,right)
   if left==void or right==void or len(left)!=len(right) then return false end if
   if len(left)>0 then for index=0 to len(left)-1 if left[index]!=right[index] then return false end if end for end if;return true
 end function
+/// Compares command count, command IDs, shaders, and all associated command values.
+/// @param left Indexed input read at `index`.
+/// @param right Indexed input read at `index`.
 function sameCommands(left,right)
   if left==void or right==void or len(left)!=len(right) then return false end if
   if len(left)>0 then for index=0 to len(left)-1 a=left[index];b=right[index];if a.id!=b.id or a.shader!=b.shader or not sameValues(a.values,b.values) then return false end if end for end if;return true
 end function
+/// Compares only command count, IDs, and shaders to determine whether 2D batch topology can be reused.
+/// @param left Indexed input read at `index`.
+/// @param right Indexed input read at `index`.
 function sameTopology(left,right)
   if left==void or right==void or len(left)!=len(right) then return false end if
   if len(left)>0 then for index=0 to len(left)-1 if left[index].id!=right[index].id or left[index].shader!=right[index].shader then return false end if end for end if;return true
 end function
+/// Identifies 2D stages with animation, UV modifiers, nontexture coordinate generation, or waveform color/alpha.
+/// @param stage Record providing `stage.slots`, `stage.uvMods`, `stage.tcGen`, `stage.rgbGen`, `stage.alphaGen`.
 function dynamicStage(stage)
   if stage==void then return true end if
   return len(stage.slots)>1 or len(stage.uvMods)>0 or stage.tcGen!="texture" or stage.rgbGen=="wave" or stage.alphaGen=="wave"
 end function
 
+/// Builds `mq3.renderer.qvm_2d_batch.Extracted` using `quadList.add`, `quadList.toArray`.
+/// @param queueCommands Sequence traversed as `command` while producing this result.
+/// @param assets Value forwarded as `assets` to `mq3.renderer.qvm_2d_batch.shaderName`.
+/// @param kinds Value forwarded as `kinds` to `mq3.renderer.qvm_2d_batch.shaderName`.
+/// @param sourceWidth Initial value for `mq3.renderer.qvm_2d_batch.Extracted.sourceWidth`.
+/// @param sourceHeight Initial value for `mq3.renderer.qvm_2d_batch.Extracted.sourceHeight`.
+/// @param targetWidth Initial value for `mq3.renderer.qvm_2d_batch.Extracted.targetWidth`.
+/// @param targetHeight Initial value for `mq3.renderer.qvm_2d_batch.Extracted.targetHeight`.
 function extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight)
   if queueCommands==void or assets==void or kinds==void then return fail("commands and asset registry are required") end if
   if len(assets)!=len(kinds) then return fail("asset registry length mismatch") end if
@@ -76,28 +254,47 @@ function extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth
   return Extracted(quadList.toArray(),setColors,ignored,sourceWidth,sourceHeight,targetWidth,targetHeight)
 end function
 
+/// Splits a HUD quad into two triangles while preserving UVs, RGBA modulation, and the source command index.
+/// @param quad Record providing `quad.positions`, `quad.texCoords`, `quad.color`, `quad.commandIndex`.
+/// @param materialIndex Unused compatibility argument retained by this entry point.
 function trianglesFor(quad,materialIndex)
   p=quad.positions;uv=quad.texCoords;c=quad.color;colors=[[c[0],c[1],c[2],c[3]],[c[0],c[1],c[2],c[3]],[c[0],c[1],c[2],c[3]]]
   // RB_StretchPic writes indexes 3,0,2 and 2,0,1.
   return [Triangle([p[3],p[0],p[2]],[uv[3],uv[0],uv[2]],colors,quad.commandIndex),Triangle([p[2],p[0],p[1]],[uv[2],uv[0],uv[1]],colors,quad.commandIndex)]
 end function
 
+/// Calls `mq3.renderer.playable_materials.Image` with `(1,1,bytes(4,255))` and returns its result.
 function whiteImage()
   return materials.Image(1,1,bytes(4,255))
 end function
+/// Builds `pixels[1]`, `pixels[3]`, `pixels[4]`, `pixels[5]`, `pixels[6]` in `mq3.renderer.qvm_2d_batch.checkerImage`; returns `materials.Image(2,2,pixels)`.
 function checkerImage()
   pixels=bytes(16,255);pixels[1]=0;pixels[3]=255;pixels[4]=0;pixels[5]=0;pixels[6]=0;pixels[7]=255;pixels[8]=0;pixels[9]=0;pixels[10]=0;pixels[11]=255;pixels[13]=0
   return materials.Image(2,2,pixels)
 end function
+/// Forwards `directStage` to `mq3.renderer.playable_materials.RuntimeStage` and returns its result.
+/// @param imageName Name stored in the single-image runtime stage.
+/// @param image Decoded image object stored in the stage.
+/// @param slot Native texture slot assigned to that image.
 function directStage(imageName,image,slot)
   return materials.RuntimeStage([imageName],[image],[slot],0.0,[],materials.BLEND_ALPHA,materials.ALPHA_TEST_NONE,"texture","vertex",shaderParser.blankWave(),"vertex",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
 end function
+/// Returns `-1` from `mq3.renderer.qvm_2d_batch.materialIndex`; earlier branches return `-1`, `index`.
+/// @param materialList Indexed input read at `index`.
+/// @param handle Input used by `for index=0 to len(materialList)-1 if materialList[index].shaderHandle==handle then return index`.
 function materialIndex(materialList,handle)
   if len(materialList)==0 then return -1 end if
   for index=0 to len(materialList)-1 if materialList[index].shaderHandle==handle then return index end if end for
   return -1
 end function
+/// Computes `material!=void and stringEqualsIgnoreCaseAscii(material.shaderName,name)` for `mq3.renderer.qvm_2d_batch.materialMatches`.
+/// @param material Record providing `material.shaderName`.
+/// @param name Argument 2 supplied to `stringEqualsIgnoreCaseAscii`.
 function materialMatches(material,name) return material!=void and stringEqualsIgnoreCaseAscii(material.shaderName,name) end function
+/// Computes `addStageTextures` from `textureList` using `mq3.renderer.qvm_2d_batch.Texture`.
+/// @param textureList Input used by `result=textureList`.
+/// @param stages Sequence traversed as `stage` while producing this result.
+/// @param noMipMaps Value used for `mq3.renderer.qvm_2d_batch.Texture.noMipMaps`.
 function addStageTextures(textureList,stages,noMipMaps)
   result=textureList
   for each stage in stages for index=0 to len(stage.slots)-1
@@ -106,6 +303,12 @@ function addStageTextures(textureList,stages,noMipMaps)
   end for end for
   return result
 end function
+/// Computes `loadMaterial` from `[Material(quad.shaderHandle,name,stages,noMip,0.0,clampTime),nextSlot]` using `mq3.renderer.shader_index.find`, `mq3.renderer.playable_materials.runtimeStages`, `mq3.renderer.playable_materials.loadImage`.
+/// @param archive Argument 1 supplied to `mq3.renderer.playable_materials.runtimeStages`.
+/// @param index Argument 1 supplied to `mq3.renderer.shader_index.find`.
+/// @param quad Record providing `quad.shaderName`, `quad.shaderHandle`.
+/// @param nextSlot Argument 4 supplied to `mq3.renderer.playable_materials.runtimeStages`.
+/// @param endSlot Argument 5 supplied to `mq3.renderer.playable_materials.runtimeStages`.
 function loadMaterial(archive,index,quad,nextSlot,endSlot)
   name=quad.shaderName;if name=="" or nextSlot>=endSlot then return void end if
   noMip=false;clampTime=0.0
@@ -125,6 +328,12 @@ function loadMaterial(archive,index,quad,nextSlot,endSlot)
   return [Material(quad.shaderHandle,name,stages,noMip,0.0,clampTime),nextSlot]
 end function
 
+/// Builds `mq3.renderer.qvm_2d_batch.StagePass` using `mq3.platform.playable_window.resetTriangleBatch`, `mq3.platform.playable_window.createTriangleBatch`, `mq3.platform.playable_window.appendScreenQuad`.
+/// @param stage Initial value for `mq3.renderer.qvm_2d_batch.StagePass.stage`.
+/// @param triangles Initial value for `mq3.renderer.qvm_2d_batch.StagePass.triangles`.
+/// @param timeOffset Initial value for `mq3.renderer.qvm_2d_batch.StagePass.timeOffset`.
+/// @param clampTime Initial value for `mq3.renderer.qvm_2d_batch.StagePass.clampTime`.
+/// @param previous Record providing `previous.batch`.
 function createPassReusable(stage,triangles,timeOffset,clampTime,previous)
   batch=void
   if previous!=void and previous.batch!=void and previous.batch.capacity>=len(triangles) then batch=window.resetTriangleBatch(previous.batch)
@@ -141,7 +350,18 @@ function createPassReusable(stage,triangles,timeOffset,clampTime,previous)
   if triangleIndex<len(triangles) then triangle=triangles[triangleIndex];p=triangle.positions;uv=triangle.texCoords;c=triangle.colors;batch=window.appendSingleTextureTriangleColored(batch,slot,p[0],uv[0],1.0,c[0],p[1],uv[1],1.0,c[1],p[2],uv[2],1.0,c[2],255,255,255);if batch is error then return batch end if end if
   return StagePass(stage,triangles,batch,timeOffset,clampTime,false,dynamicStage(stage))
 end function
+/// Calls `mq3.renderer.qvm_2d_batch.createPassReusable` with `(stage,triangles,timeOffset,clampTime,void)` and returns its result.
+/// @param stage Value forwarded as `stage` to `mq3.renderer.qvm_2d_batch.createPassReusable`.
+/// @param triangles Value forwarded as `triangles` to `mq3.renderer.qvm_2d_batch.createPassReusable`.
+/// @param timeOffset Value forwarded as `timeOffset` to `mq3.renderer.qvm_2d_batch.createPassReusable`.
+/// @param clampTime Value forwarded as `clampTime` to `mq3.renderer.qvm_2d_batch.createPassReusable`.
 function createPass(stage,triangles,timeOffset,clampTime) return createPassReusable(stage,triangles,timeOffset,clampTime,void) end function
+/// Builds `mq3.renderer.qvm_2d_batch.Run` using `triangleList.addAll`, `triangleList.toArray`, `passList.add`.
+/// @param materialIndexValue Initial value for `mq3.renderer.qvm_2d_batch.Run.materialIndex`.
+/// @param handle Initial value for `mq3.renderer.qvm_2d_batch.Run.shaderHandle`.
+/// @param material Record providing `material.stages`, `material.timeOffset`, `material.clampTime`.
+/// @param quads Sequence traversed as `quad` while producing this result.
+/// @param previous Record providing `previous.materialIndex`, `previous.shaderHandle`, `previous.triangleCount`, `previous.passes`.
 function createRunReusable(materialIndexValue,handle,material,quads,previous)
   triangleList=lists.List.withCapacity(len(quads)*2);for each quad in quads triangleList.addAll(trianglesFor(quad,materialIndexValue)) end for;triangles=triangleList.toArray()
   canReuse=previous!=void and previous.materialIndex==materialIndexValue and previous.shaderHandle==handle and previous.triangleCount==len(triangles) and len(previous.passes)==len(material.stages)
@@ -149,8 +369,20 @@ function createRunReusable(materialIndexValue,handle,material,quads,previous)
   for each stage in material.stages oldPass=void;if canReuse then oldPass=previous.passes[stageIndex] end if;pass=createPassReusable(stage,triangles,material.timeOffset,material.clampTime,oldPass);if pass is error then return pass end if;passList.add(pass);stageIndex=stageIndex+1 end for
   return Run(materialIndexValue,handle,passList.toArray(),len(quads),len(triangles))
 end function
+/// Calls `mq3.renderer.qvm_2d_batch.createRunReusable` with `(materialIndexValue,handle,material,quads,void)` and returns its result.
+/// @param materialIndexValue Value forwarded as `materialIndexValue` to `mq3.renderer.qvm_2d_batch.createRunReusable`.
+/// @param handle Value forwarded as `handle` to `mq3.renderer.qvm_2d_batch.createRunReusable`.
+/// @param material Value forwarded as `material` to `mq3.renderer.qvm_2d_batch.createRunReusable`.
+/// @param quads Value forwarded as `quads` to `mq3.renderer.qvm_2d_batch.createRunReusable`.
 function createRun(materialIndexValue,handle,material,quads) return createRunReusable(materialIndexValue,handle,material,quads,void) end function
 
+/// Updates `catalog.lastCommands`, `catalog.sourceWidth`, `catalog.sourceHeight`, `catalog.targetWidth`, `catalog.targetHeight` in `mq3.renderer.qvm_2d_batch.refreshStaticTopology`; returns `catalog`.
+/// @param catalog Mutable record or buffer; this call updates `catalog.lastCommands`, `catalog.sourceWidth`, `catalog.sourceHeight`, `catalog.targetWidth`, `catalog.targetHeight`.
+/// @param queueCommands Value assigned to `catalog.lastCommands`.
+/// @param sourceWidth Value assigned to `catalog.sourceWidth`.
+/// @param sourceHeight Value assigned to `catalog.sourceHeight`.
+/// @param targetWidth Value assigned to `catalog.targetWidth`.
+/// @param targetHeight Value assigned to `catalog.targetHeight`.
 function refreshStaticTopology(catalog,queueCommands,sourceWidth,sourceHeight,targetWidth,targetHeight)
   colors=array(len(queueCommands),void);color=[255,255,255,255]
   if len(queueCommands)>0 then for commandIndex=0 to len(queueCommands)-1
@@ -177,6 +409,14 @@ end function
 
 // Rebuild only the changing quad/run buffers.  Shader parsing, PK3 image
 // decoding and texture-slot assignment remain cached in the catalog.
+/// @param catalog Mutable record or buffer; this call updates `catalog.runs`, `catalog.sourceQuads`, `catalog.emittedTriangles`, `catalog.resolvedQuads`, `catalog.unresolvedQuads`.
+/// @param queueCommands Value assigned to `catalog.lastCommands`.
+/// @param assets Value forwarded as `assets` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param kinds Value forwarded as `kinds` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param sourceWidth Value assigned to `catalog.sourceWidth`.
+/// @param sourceHeight Value assigned to `catalog.sourceHeight`.
+/// @param targetWidth Value assigned to `catalog.targetWidth`.
+/// @param targetHeight Value assigned to `catalog.targetHeight`.
 function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight)
   if catalog==void then return fail("catalog is required") end if
   revision=0;if catalog.shaderRemaps!=void then revision=catalog.shaderRemaps.revision end if
@@ -208,9 +448,22 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
   return catalog
 end function
 
+/// Builds `material.noMipMaps`, `material.timeOffset`, `catalog.nextTextureSlot`, `catalog.materials`, `catalog.textures` in `mq3.renderer.qvm_2d_batch.buildIndexed`; returns `catalog`.
+/// @param archive Value used for `mq3.renderer.qvm_2d_batch.Catalog.archive`.
+/// @param queueCommands Value forwarded as `queueCommands` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param assets Value forwarded as `assets` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param kinds Value forwarded as `kinds` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param firstTextureSlot Value used for `mq3.renderer.qvm_2d_batch.Catalog.nextTextureSlot`.
+/// @param maxTextureSlots Input tested by `firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>window.NATIVE_TEXTURE_SLOTS`.
+/// @param sourceWidth Value forwarded as `sourceWidth` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param sourceHeight Value forwarded as `sourceHeight` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param targetWidth Value forwarded as `targetWidth` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param targetHeight Value forwarded as `targetHeight` to `mq3.renderer.qvm_2d_batch.extract`.
+/// @param shaderRemaps Record providing `shaderRemaps.revision`.
+/// @param scripts Indexed input read at `0`, `1`.
 function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps,scripts)
   if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>512 then return fail("invalid native texture slot range") end if
+  if firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>window.NATIVE_TEXTURE_SLOTS then return fail("invalid native texture slot range") end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
   revision=0;if shaderRemaps!=void then revision=shaderRemaps.revision end if
@@ -235,18 +488,46 @@ function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTex
   catalog.runs=runList.toArray()
   return catalog
 end function
+/// Builds a shared shader-script index and creates the scaled QVM 2D draw catalog from queued commands.
+/// @param archive Argument 1 supplied to `mq3.renderer.playable_materials.buildScriptIndex`.
+/// @param queueCommands Value forwarded as `queueCommands` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param assets Value forwarded as `assets` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param kinds Value forwarded as `kinds` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param firstTextureSlot Value forwarded as `firstTextureSlot` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param maxTextureSlots Value forwarded as `maxTextureSlots` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param sourceWidth Value forwarded as `sourceWidth` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param sourceHeight Value forwarded as `sourceHeight` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param targetWidth Value forwarded as `targetWidth` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param targetHeight Value forwarded as `targetHeight` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
+/// @param shaderRemaps Value forwarded as `shaderRemaps` to `mq3.renderer.qvm_2d_batch.buildIndexed`.
 function build(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps)
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
   return buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps,scripts)
 end function
 
-function upload(catalog)
+/// Computes `uploadFrom` from `len(catalog.textures)` using `mq3.platform.playable_window.uploadTextureMipmapped`.
+/// @param catalog Record providing `catalog.textures`.
+/// @param first Input tested by `first<0 or first>len(catalog.textures)`.
+function uploadFrom(catalog,first)
   if catalog==void then return fail("catalog is required") end if
-  for each texture in catalog.textures if not window.uploadTextureMipmapped(texture.slot,texture.image.pixels,texture.image.width,texture.image.height,not texture.noMipMaps) then release(catalog);return fail("could not upload "+texture.imageName) end if end for
+  if first<0 or first>len(catalog.textures) then return fail("invalid upload cursor") end if
+  if first==len(catalog.textures) then return first end if
+  for index=first to len(catalog.textures)-1
+    texture=catalog.textures[index]
+    if not window.uploadTextureMipmapped(texture.slot,texture.image.pixels,texture.image.width,texture.image.height,not texture.noMipMaps) then return fail("could not upload "+texture.imageName) end if
+  end for
   return len(catalog.textures)
 end function
+/// Calls `mq3.renderer.qvm_2d_batch.uploadFrom` with `(catalog,0)` and returns its result.
+/// @param catalog Value forwarded as `catalog` to `mq3.renderer.qvm_2d_batch.uploadFrom`.
+function upload(catalog) return uploadFrom(catalog,0) end function
+/// Returns `void` from `mq3.renderer.qvm_2d_batch.release`.
+/// @param catalog Record providing `catalog.textures`.
 function release(catalog) if catalog!=void then for each texture in catalog.textures window.releaseTexture(texture.slot) end for end if;return void end function
 
+/// Updates `pass.initialized` in `mq3.renderer.qvm_2d_batch.updatePass`; returns `slot`.
+/// @param pass Mutable record or buffer; this call updates `pass.initialized`.
+/// @param nowMilliseconds Argument 1 supplied to `mq3.renderer.playable_materials.shaderMilliseconds`.
 function updatePass(pass,nowMilliseconds)
   effectiveMilliseconds=materials.shaderMilliseconds(nowMilliseconds,0.0,pass.timeOffset,pass.clampTime);slot=materials.slotAt(pass.stage,effectiveMilliseconds)
   if pass.initialized and not pass.dynamic then return slot end if
@@ -259,6 +540,9 @@ function updatePass(pass,nowMilliseconds)
   end for
   pass.initialized=true;return slot
 end function
+/// Updates and draws each 2D shader pass, then restores clamp, alpha-test, and opaque depth-write defaults.
+/// @param catalog Record providing `catalog.runs`.
+/// @param nowMilliseconds Value forwarded as `nowMilliseconds` to `mq3.renderer.qvm_2d_batch.updatePass`.
 function draw(catalog,nowMilliseconds)
   if catalog==void or nowMilliseconds<0 then return fail("valid catalog and time are required") end if
   drawn=0

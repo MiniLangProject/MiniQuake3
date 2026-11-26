@@ -21,7 +21,7 @@ function fixture()
   offsets[13]=1500;counts[13]=4;lengths[13]=416
   putI(data,1500,0);putI(data,1504,0xffffffff);putI(data,1508,1);putI(data,1512,0);putI(data,1516,4);putI(data,1520,0);putI(data,1524,6);putI(data,1528,0);putF(data,1584,0.0);putF(data,1588,0.0);putF(data,1592,1.0)
   off=1604;putI(data,off,1);putI(data,off+4,0xffffffff);putI(data,off+8,3);putI(data,off+12,0);putI(data,off+16,5);putI(data,off+20,6);putI(data,off+24,3);putI(data,off+28,0xffffffff)
-  off=1708;putI(data,off,0);putI(data,off+4,0xffffffff);putI(data,off+8,2);putI(data,off+12,5);putI(data,off+16,9);putI(data,off+28,0);putI(data,off+96,3);putI(data,off+100,3)
+  off=1708;putI(data,off,1);putI(data,off+4,0xffffffff);putI(data,off+8,2);putI(data,off+12,5);putI(data,off+16,9);putI(data,off+28,0);putI(data,off+96,3);putI(data,off+100,3)
   off=1812;putI(data,off,1);putI(data,off+4,0xffffffff);putI(data,off+8,4);putF(data,off+48,10.0);putF(data,off+52,20.0);putF(data,off+56,30.0);putF(data,off+60,0.25);putF(data,off+64,0.5);putF(data,off+68,1.0);putF(data,off+92,1.0)
   offsets[14]=2000;counts[14]=1;lengths[14]=49152;data[2000]=1;data[2001]=2;data[2002]=3
   offsets[15]=51200;lengths[15]=8;counts[15]=1;data[51200]=10;data[51201]=20;data[51202]=30;data[51203]=40;data[51204]=50;data[51205]=60

@@ -28,10 +28,12 @@ Reachable from entry: **no**
 function disconnect(level, slot)
 ```
 
+Set `level.clients[winner].wins` to `n.add32(level.clients[winner].wins,1)` in `mq3.game.client_disconnect.disconnect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `removeQueuedBotBeginFn`, `lifecycleState`, `entities`, `maxclients` and `clients` and related fields. May update `level.clients[winner].wins` in place. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_disconnect.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_disconnect.ml#L19)

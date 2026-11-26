@@ -1,4 +1,5 @@
 import mq3.client.original_ui_session as session
+import mq3.platform.playable_window as window
 
 struct Context catcher events resets commands down mouse observed connects end struct
 function hostCatcher(c) return c.catcher end function
@@ -63,7 +64,7 @@ function main(args)
   count=count+req(observedDown,"active navigation also updates shared physical state")
   session.openMain(state);context.catcher=context.catcher|session.KEYCATCH_CONSOLE;beforeEvents=len(context.events);context.down[session.K_DOWNARROW]=true;context.mouse=[2,3];frame=session.frame(state,18)
   count=count+req(frame.active and frame.refreshed and frame.keyEvents==0 and frame.mouseEvents==0 and len(context.events)==beforeEvents+1,"console catcher suppresses UI input but keeps refresh")
-  // Exercise the same polling path used by the standalone main menu. The
+  // Exercise the legacy polling path used by standalone hosts. The
   // physical key remains unshifted; only the emitted character follows Shift.
   context.catcher=session.KEYCATCH_UI;now=20
   for each sample in [[97,false,97],[97,true,65],[49,false,49],[49,true,33]]
@@ -74,5 +75,10 @@ function main(args)
     end for
     count=count+req(frame.charEvents==1 and charCount==1 and charCode==sample[2],"polling character follows Shift for key "+str(sample[0])+" shift="+str(sample[1]))
   end for
+  context.events=[];context.catcher=session.KEYCATCH_UI
+  queued=[window.InputEvent(100,window.INPUT_KEY,121,1),window.InputEvent(101,window.INPUT_CHAR,90,0),window.InputEvent(102,window.INPUT_CHAR,90,0),window.InputEvent(103,window.INPUT_KEY,121,0),window.InputEvent(104,window.INPUT_KEY,161,1),window.InputEvent(105,window.INPUT_CHAR,96,0)]
+  frame=session.frameQueued(state,106,queued)
+  count=count+req(frame.keyEvents==3 and frame.charEvents==2,"native keyboard layout, keypad and text repeat")
+  count=count+req(context.events==[["key",121,true],["key",90|session.K_CHAR_FLAG,true],["key",90|session.K_CHAR_FLAG,true],["key",121,false],["key",161,true],["refresh",106]],"physical keys and native characters stay ordered and separate")
   print("PASS: "+str(count)+" original UI session contracts");return 0
 end function

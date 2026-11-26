@@ -7,21 +7,78 @@ import mq3.format.aas as aas
 import mq3.compat.numeric as n
 import std.array as arrays
 
+/// Distance tolerance used to position a trace safely before an impact plane.
 const TRACEPLANE_EPSILON=0.125
+/// Maximum number of pending nodes retained by an iterative BSP trace.
 const TRACE_STACK_SIZE=127
 
-struct Segment start finish nodeNum planeNum end struct
-struct Trace startsolid fraction endpos ent lastarea area planenum normal end struct
+/// `Segment` record for aas client trace, containing `start`, `finish`, `nodeNum` and `planeNum`.
+struct Segment
+  /// Beginning of the remaining line segment being tested against an AAS subtree.
+  start
+  /// End of the remaining line segment being tested against an AAS subtree.
+  finish
+  /// Index of the BSP or AAS node visited by this operation.
+  nodeNum
+  /// Last AAS splitting plane crossed before entering this trace segment.
+  planeNum
+end struct
+/// `Trace` record for aas client trace, containing `startsolid`, `fraction`, `endpos`, `ent` and `lastarea` and related fields.
+struct Trace
+  /// True when the initial trace position lies inside solid geometry.
+  startsolid
+  /// Fraction of the requested trace segment completed before the first collision.
+  fraction
+  /// End position reached by the collision trace.
+  endpos
+  /// Entity blocking the trace.
+  ent
+  /// Last area the trace was in (zero if none).
+  lastarea
+  /// Area blocking the trace (zero if none).
+  area
+  /// AAS plane index of the boundary that stopped this navigation trace.
+  planenum
+  /// Normal of the AAS boundary plane that stopped the presence-shape trace.
+  normal
+end struct
 
+/// Construct error `7542` with diagnostic text `"AAS client trace: "+message`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(message) return error(7542,"AAS client trace: "+message) end function
+/// Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas client trace.
+/// @param value Three-component array; components 0, 1 and 2 are used in their stored order.
 function copy(value) return [value[0],value[1],value[2]] end function
+/// Return a new array `[n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])]` for `sub`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function sub(a,b) return [n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])] end function
+/// Return the result of `n.fadd(n.fadd(n.fmul(a[0],b[0]),n.fmul(a[1],b[1])),n.fmul(a[2],b[2]))` for `dot`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function dot(a,b) return n.fadd(n.fadd(n.fmul(a[0],b[0]),n.fmul(a[1],b[1])),n.fmul(a[2],b[2])) end function
+/// Forward `length` to `mq3.compat.numeric.fsqrt` and return the delegated result.
+/// @param value Three-component array; components 0, 1 and 2 are used in their stored order.
 function length(value) return n.fsqrt(dot(value,value)) end function
+/// Return a new array `[n.fmul(value[0],amount),n.fmul(value[1],amount),n.fmul(value[2],amount)]` for `scale`.
+/// @param value Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param amount Value passed as argument 2 to `mq3.compat.numeric.fmul`.
 function scale(value,amount) return [n.fmul(value[0],amount),n.fmul(value[1],amount),n.fmul(value[2],amount)] end function
+/// Return a new array `[n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])]` for `add`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function add(a,b) return [n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])] end function
+/// Create a `mq3.botlib.aas_client_trace.Trace` record, initializing `endpos` as `[0.0,0.0,0.0]` and `normal` as `[0.0,0.0,0.0]`.
 function empty() return Trace(false,0.0,[0.0,0.0,0.0],0,0,0,0,[0.0,0.0,0.0]) end function
 
+/// Set `segment.start` to `add(segment.start,scale(normalized,-0.125))` in `mq3.botlib.aas_client_trace.hit`.
+/// @param runtime AAS client trace runtime; accesses `map`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param finish Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param segment Segment record; accesses `start`. May update `segment.start` in place.
+/// @param nodeNum Value used by `hit` in `result.area=nodeNum`.
+/// @param planenum Index of the entry to access.
+/// @param lastarea Value used by `hit` in `result.lastarea=lastarea`.
 function hit(runtime,start,finish,segment,nodeNum,planenum,lastarea)
   result=empty();direction=sub(finish,start);distance=length(direction)
   same=segment.start[0]==start[0] and segment.start[1]==start[1] and segment.start[2]==start[2]
@@ -40,6 +97,11 @@ function hit(runtime,start,finish,segment,nodeNum,planenum,lastarea)
   return result
 end function
 
+/// Build the `mq3.botlib.aas_client_trace.Trace` result for `trace`. Return paths include `Trace(false,1.0,copy(finish),0,lastarea,0,0,[0.0,0.0,0.0])`.
+/// @param runtime AAS client trace runtime; accesses `initialized` and `map`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param finish Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param presenceType AAS presence type selecting the movement bounds.
 function trace(runtime,start,finish,presenceType)
   if runtime==void or not runtime.initialized or runtime.map==void then return empty() end if
   if start==void or finish==void or len(start)!=3 or len(finish)!=3 then return fail("invalid trace line") end if

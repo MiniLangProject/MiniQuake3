@@ -9,8 +9,10 @@
 struct Viewport
 ```
 
+Data record for `mq3.platform.playable_window.Viewport`; groups `x`, `y`, `width`, `height`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L604)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Viewport
 height
 ```
 
+Height in pixels of the native drawing viewport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L612)
 
 <a id="field-field-mq3-platform-playable-window-viewport-width-width-src-mq3-platform-playable-window-ml-1298167227"></a>
 ### width
@@ -31,8 +35,10 @@ height
 width
 ```
 
+Width in pixels of the native drawing viewport.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L610)
 
 <a id="field-field-mq3-platform-playable-window-viewport-x-x-src-mq3-platform-playable-window-ml-1477600239"></a>
 ### x
@@ -41,8 +47,10 @@ width
 x
 ```
 
+Horizontal position of the view or drawing rectangle, in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L606)
 
 <a id="field-field-mq3-platform-playable-window-viewport-y-y-src-mq3-platform-playable-window-ml-1317307563"></a>
 ### y
@@ -51,5 +59,7 @@ x
 y
 ```
 
+Vertical position of the view or drawing rectangle, in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L608)

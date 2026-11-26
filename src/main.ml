@@ -68,6 +68,7 @@ import mq3.client.playable_viewer as playableViewer
 import mq3.client.playable_app as playableApp
 import mq3.client.qvm_preview_app as qvmPreviewApp
 import mq3.client.qvm_menu_app as qvmMenuApp
+import mq3.client.desktop_session as desktopSession
 import mq3.engine.local_qvm_match as localQvmMatch
 import mq3.audio.wav as wav
 import mq3.platform.playable_audio as playableAudio
@@ -102,11 +103,16 @@ import mq3.game.bot_combat_ai as botCombatAi
 import mq3.game.bot_fight_state as botFightState
 import mq3.game.bot_seek_state as botSeekState
 import std.fs as fs
+import std.string as strings
 
+/// Format a three-component vector as a parenthesized comma-separated diagnostic string.
+/// @param vector Three-element vector in X, Y, Z order.
 function formatVector(vector)
   return "("+str(vector[0])+", "+str(vector[1])+", "+str(vector[2])+")"
 end function
 
+/// Print the collision fraction, endpoint, plane, contents, surface flags, and solid-state diagnostics.
+/// @param result Collision result with a trace record and endpos vector.
 function printTrace(result)
   print "Fraction: "+str(result.trace.fraction)
   print "End: "+formatVector(result.endpos)
@@ -116,7 +122,30 @@ function printTrace(result)
   return void
 end function
 
+/// Extract the final path component and remove its last extension for use as the map name.
+/// @param path Map filename using either slash or backslash separators.
+function mapNameFromPath(path)
+  slash=strings.lastIndexOf(path,"/");backslash=strings.lastIndexOf(path,"\\")
+  if backslash>slash then slash=backslash end if
+  name=strings.substr(path,slash+1,len(path)-slash-1)
+  dot=strings.lastIndexOf(name,".")
+  if dot>=0 then return strings.substr(name,0,dot) end if
+  return name
+end function
+/// Start the desktop QVM menu or dispatch the selected command-line game, asset, and regression probe.
+///
+/// Validation failures include `could not determine the MiniQuake3 executable directory`; `--qvm-match requires a positive frame count`.
+/// @param args Command-line arguments excluding the executable; an empty list starts the retail menu beside the executable.
 function main(args)
+  if len(args)==3 and args[0]=="--cinematic-smoke" then
+    archive=try(pk3.open(args[1]));if archive is error then return archive end if
+    session=desktopSession.create("");session.target=args[2];session.cinematicNext="levelselect"
+    opened=try(playableWindow.open(1280,720));if opened is error then return opened end if
+    played=try(qvmMenuApp.runCinematic(archive,session,true));playableWindow.shutdown()
+    if played is error then return played end if
+    if session.action!="levelselect" or played<100 then return error(7688,"Retail cinematic did not render and return to level selection: action="+session.action+" pixels="+str(played)) end if
+    print "PASS: Retail cinematic rendered and returned to level selection";return 0
+  end if
   if len(args)==0 then
     executableRoot=playableWindow.executableDirectory()
     if executableRoot=="" then return error(7688,"could not determine the MiniQuake3 executable directory") end if
@@ -132,15 +161,15 @@ function main(args)
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmMenuApp.run(archive,map,args[3])
   end if
   if len(args)==4 and args[0]=="--play-qvm" then
-    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.run(archive,map,args[3])
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runWithSettingsNamed(archive,map,mapNameFromPath(args[2]),args[3],void)
   end if
   if len(args)==5 and args[0]=="--play-qvm-smoke" then
-    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runLimited(archive,map,args[3],toNumber(args[4]))
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runLimitedSettingsNamed(archive,map,mapNameFromPath(args[2]),args[3],toNumber(args[4]),void)
   end if
   if len(args)==5 and args[0]=="--qvm-match" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));frames=toNumber(args[3])
     if frames<=0 then return error(7650,"--qvm-match requires a positive frame count") end if
-    state=localQvmMatch.bootWithQvms(archive,map,1000,args[4]);if state is error then return state end if
+    state=localQvmMatch.bootWithQvmsSettingsNamed(archive,map,mapNameFromPath(args[2]),1000,args[4],void);if state is error then return state end if
     if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
     joined=localQvmMatch.connectLocal(state,0);if joined is error then return joined end if;clientStarted=false
     for frame=1 to frames

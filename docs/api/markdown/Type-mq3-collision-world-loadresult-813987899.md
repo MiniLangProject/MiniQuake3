@@ -9,8 +9,10 @@
 struct LoadResult
 ```
 
+LoadResult record for collision.world, containing `world`, `checksum`, `cached`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L171)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LoadResult
 cached
 ```
 
+True when an existing collision world was reused.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L177)
 
 <a id="field-field-mq3-collision-world-loadresult-checksum-checksum-src-mq3-collision-world-ml-114913066"></a>
 ### checksum
@@ -31,8 +35,10 @@ cached
 checksum
 ```
 
+Checksum used to validate or identify the represented data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L175)
 
 <a id="field-field-mq3-collision-world-loadresult-world-world-src-mq3-collision-world-ml-1572559344"></a>
 ### world
@@ -41,5 +47,7 @@ checksum
 world
 ```
 
+Collision or navigation world used by this operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L173)

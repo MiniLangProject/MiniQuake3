@@ -17,7 +17,7 @@ function main(args)
   count=count+require(materials.stageColor(stage("entity","identity"),entity,0)==[17,63,129,255],"identity alpha completes entity ComputeColors")
   count=count+require(materials.stageColorAtEntity(stage("entity","entity"),vertex,entity,[1.0,2.0,3.0],[0.0,0.0,0.0],0)==entity,"position-aware generator accepts entity color")
   triangle=sceneGeometry.Triangle([[1.0,0.0,0.0],[1.0,1.0,0.0],[1.0,0.0,1.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[1.0,0.0,0.0],[1.0,0.0,0.0],[1.0,0.0,0.0]],[vertex,vertex,vertex],entity,[0.0,0.0],0.0,0,0,1,"fx","surface",0,0,0,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void,void)
-  runtimeStage=stage("entity","identity");material=sceneMaterials.Material(0,"fx","fx",runtimeStage.images[0],336,[runtimeStage],[],false,3.0,false,false,0.0,0.0);catalog=sceneMaterials.Catalog([sceneMaterials.ResolvedTriangle(triangle,0)],[material],[],void,0,[],[],1,0,336,void,void)
+  runtimeStage=stage("entity","identity");material=sceneMaterials.Material(0,"fx","fx",runtimeStage.images[0],336,[runtimeStage],[],false,3.0,false,false,0.0,0.0,false);catalog=sceneMaterials.Catalog([sceneMaterials.ResolvedTriangle(triangle,0)],[material],[],void,0,[],[],1,0,336,void,void,void)
   prepared=sceneBatch.build(catalog);if prepared is error then return prepared end if;pass=prepared.batch.passes[0]
   count=count+require(pass.sourceColors[0][0]==vertex and pass.sourceEntityColors[0][0]==entity,"QVM batch preserves lighting and entity color separately")
   worldBatch.updatePass(pass,0)

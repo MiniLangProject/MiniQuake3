@@ -9,8 +9,10 @@
 struct RenderView
 ```
 
+RenderView record for engine.local_qvm_match, containing `refdef`, `scene`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L162)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L239)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct RenderView
 refdef
 ```
 
+Camera, viewport, timing, and rendering flags for the view.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L162)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L241)
 
 <a id="field-field-mq3-engine-local-qvm-match-renderview-scene-scene-src-mq3-engine-local-qvm-match-ml-1017915644"></a>
 ### scene
@@ -31,5 +35,7 @@ refdef
 scene
 ```
 
+Scene entities, lights, and polygons collected for drawing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L162)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L243)

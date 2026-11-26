@@ -9,8 +9,10 @@
 struct ListState
 ```
 
+ListState record for splines.headers, containing `values`, `size`, `granularity`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L61)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ListState
 granularity
 ```
 
+Allocation growth increment used by list storage.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L67)
 
 <a id="field-field-mq3-splines-headers-liststate-size-size-src-mq3-splines-headers-ml-938989158"></a>
 ### size
@@ -31,8 +35,10 @@ granularity
 size
 ```
 
+Allocated element capacity of the list; the used element count is len(values).
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L65)
 
 <a id="field-field-mq3-splines-headers-liststate-values-values-src-mq3-splines-headers-ml-368154816"></a>
 ### values
@@ -41,5 +47,7 @@ size
 values
 ```
 
+List elements currently in use.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L63)

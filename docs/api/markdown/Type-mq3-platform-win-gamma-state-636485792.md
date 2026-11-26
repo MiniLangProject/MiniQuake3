@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.platform.win_gamma.State`; groups `deviceSupportsGamma`, `ignoreHardwareGamma`, `driverType`, `hasDc`, `has3dfx`, `isWin2k`, and 6 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L21)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 actions
 ```
 
+Platform operations recorded for dispatch or inspection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L39)
 
 <a id="field-field-mq3-platform-win-gamma-state-currentramp-currentramp-src-mq3-platform-win-gamma-ml-978567302"></a>
 ### currentRamp
@@ -31,8 +35,10 @@ actions
 currentRamp
 ```
 
+Gamma ramp currently selected by the platform layer.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L37)
 
 <a id="field-field-mq3-platform-win-gamma-state-debug-debug-src-mq3-platform-win-gamma-ml-639872738"></a>
 ### debug
@@ -41,8 +47,10 @@ currentRamp
 debug
 ```
 
+Debug messages recorded while processing platform actions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L43)
 
 <a id="field-field-mq3-platform-win-gamma-state-devicesupportsgamma-devicesupportsgamma-src-mq3-platform-win-gamma-ml-210377354"></a>
 ### deviceSupportsGamma
@@ -51,8 +59,10 @@ debug
 deviceSupportsGamma
 ```
 
+Whether the display supports hardware gamma-ramp updates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L23)
 
 <a id="field-field-mq3-platform-win-gamma-state-drivertype-drivertype-src-mq3-platform-win-gamma-ml-1942680830"></a>
 ### driverType
@@ -61,8 +71,10 @@ deviceSupportsGamma
 driverType
 ```
 
+Graphics-driver integration category used by platform compatibility handling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L27)
 
 <a id="field-field-mq3-platform-win-gamma-state-has3dfx-has3dfx-src-mq3-platform-win-gamma-ml-1825336746"></a>
 ### has3dfx
@@ -71,8 +83,10 @@ driverType
 has3dfx
 ```
 
+Whether the graphics driver uses the legacy 3Dfx path.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L31)
 
 <a id="field-field-mq3-platform-win-gamma-state-hasdc-hasdc-src-mq3-platform-win-gamma-ml-2015472086"></a>
 ### hasDc
@@ -81,8 +95,10 @@ has3dfx
 hasDc
 ```
 
+Whether a valid display device context is available.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L29)
 
 <a id="field-field-mq3-platform-win-gamma-state-ignorehardwaregamma-ignorehardwaregamma-src-mq3-platform-win-gamma-ml-237732730"></a>
 ### ignoreHardwareGamma
@@ -91,8 +107,10 @@ hasDc
 ignoreHardwareGamma
 ```
 
+Whether hardware gamma-ramp updates are disabled by configuration.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L25)
 
 <a id="field-field-mq3-platform-win-gamma-state-iswin2k-iswin2k-src-mq3-platform-win-gamma-ml-1112219986"></a>
 ### isWin2k
@@ -101,8 +119,10 @@ ignoreHardwareGamma
 isWin2k
 ```
 
+Whether the detected Windows version uses the Windows 2000 gamma restrictions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L33)
 
 <a id="field-field-mq3-platform-win-gamma-state-oldramp-oldramp-src-mq3-platform-win-gamma-ml-1124491426"></a>
 ### oldRamp
@@ -111,8 +131,10 @@ isWin2k
 oldRamp
 ```
 
+Original display gamma ramp saved for restoration.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L35)
 
 <a id="field-field-mq3-platform-win-gamma-state-retailactive-retailactive-src-mq3-platform-win-gamma-ml-1493893972"></a>
 ### retailActive
@@ -121,8 +143,10 @@ oldRamp
 retailActive
 ```
 
+Whether the real platform backend is active for action dispatch.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L45)
 
 <a id="field-field-mq3-platform-win-gamma-state-warnings-warnings-src-mq3-platform-win-gamma-ml-1529421216"></a>
 ### warnings
@@ -131,5 +155,7 @@ retailActive
 warnings
 ```
 
+Nonfatal diagnostics retained by the subsystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L41)

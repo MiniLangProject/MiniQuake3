@@ -8,14 +8,26 @@ import mq3.botlib.ai_resource_pools as pools
 import mq3.botlib.ai_weapon_weights as weapons
 import mq3.compat.numeric as n
 
+/// Bot-library syscall identifier for choose best fight weapon.
 const OP_CHOOSE_BEST_FIGHT_WEAPON=558
+/// Bot-library syscall identifier for get weapon info.
 const OP_GET_WEAPON_INFO=559
+/// Byte capacity of a fixed-length string in the bot weapon ABI.
 const STRING_FIELD_SIZE=80
+/// Byte size of the projectile info record in the bot VM ABI or serialized representation.
 const PROJECTILE_INFO_SIZE=208
+/// Byte size of the weapon info record in the bot VM ABI or serialized representation.
 const WEAPON_INFO_SIZE=552
 
+/// Construct error `7597` with diagnostic text `"AI weapon combat: "+message`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(message) return error(7597,"AI weapon combat: "+message) end function
 
+/// Apply `mq3.botlib.ai_resource_pools.weaponState` and `mq3.botlib.ai_item_weights.fuzzyWeight` while evaluating `chooseBestFightWeapon`. Return paths include `bestWeapon`.
+/// @param runtime AI weapon combat runtime; accesses `config`.
+/// @param statePools Bot resource pools; accesses `weaponStates`.
+/// @param handle Handle identifying the allocated bot weapon state.
+/// @param inventory Bot inventory indexed by the corresponding inventory constants.
 function chooseBestFightWeapon(runtime,statePools,handle,inventory)
   state=pools.weaponState(statePools,handle)
   if state==void or runtime==void or runtime.config==void or runtime.config is error or state.weaponWeightConfig==void or state.weaponWeightIndex==void then return 0 end if
@@ -33,6 +45,11 @@ function chooseBestFightWeapon(runtime,statePools,handle,inventory)
   return bestWeapon
 end function
 
+/// Apply `mq3.botlib.ai_resource_pools.weaponState` while evaluating `weaponInfo`. Return paths include `runtime.config.weapons[number]`.
+/// @param runtime AI weapon combat runtime; accesses `config`.
+/// @param statePools Bot resource pools; accesses `weaponStates`.
+/// @param handle Handle identifying the allocated bot weapon state.
+/// @param number Operand used to evaluate the returned expression `runtime.config.weapons[number]`.
 function weaponInfo(runtime,statePools,handle,number)
   if pools.weaponState(statePools,handle)==void or runtime==void or runtime.config==void or runtime.config is error then return void end if
   // Retail weapon numbers start at one; entry zero is deliberately invalid.
@@ -40,15 +57,35 @@ function weaponInfo(runtime,statePools,handle,number)
   return runtime.config.weapons[number]
 end function
 
+/// Store a signed 32-bit integer word in the output buffer at the requested byte offset.
+/// @param output Value passed as argument 1 to `mq3.compat.numeric.writeU32`.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.i32`.
 function putI32(output,offset,value) n.writeU32(output,offset,n.i32(value));return void end function
+/// Store a floating-point bit pattern as a 32-bit word in the output buffer.
+/// @param output Value passed as argument 1 to `mq3.compat.numeric.writeU32`.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.floatBits`.
 function putF32(output,offset,value) n.writeU32(output,offset,n.floatBits(value));return void end function
+/// Apply `mq3.botlib.ai_weapon_combat.putF32` while evaluating `putVector`.
+/// @param output Value passed as argument 1 to `mq3.compat.numeric.writeU32`.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param value Array or byte sequence accessed at `axis`.
 function putVector(output,offset,value) for axis=0 to 2 putF32(output,offset+axis*4,value[axis]) end for;return void end function
+/// Set `output[offset+count]` to `0` in `mq3.botlib.ai_weapon_combat.putString`.
+/// @param output Array or byte sequence accessed at `offset+count`. Entries are written in place.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param value Value passed as argument 1 to `typeof`.
 function putString(output,offset,value)
   if typeof(value)!="string" then return fail("weapon string field is not text") end if
   data=bytes(value);count=len(data);if count>=STRING_FIELD_SIZE then count=STRING_FIELD_SIZE-1 end if
   if count>0 then copyBytes(output,offset,data,0,count) end if;output[offset+count]=0;return void
 end function
 
+/// Apply `mq3.botlib.ai_weapon_weights.emptyProjectile`, `mq3.botlib.ai_weapon_combat.putString` and `mq3.botlib.ai_weapon_combat.putI32` while evaluating `encodeProjectile`.
+/// @param output Array or byte sequence accessed at `offset+count`. Entries are written in place.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param value Value record; accesses `name`, `model`, `flags`, `gravity` and `damage` and related fields.
 function encodeProjectile(output,offset,value)
   if value==void then value=weapons.emptyProjectile() end if
   putString(output,offset,value.name);putString(output,offset+80,value.model)
@@ -58,6 +95,8 @@ function encodeProjectile(output,offset,value)
   return void
 end function
 
+/// Apply `mq3.botlib.ai_weapon_combat.putI32`, `mq3.botlib.ai_weapon_combat.putString` and `mq3.botlib.ai_weapon_combat.putF32` while evaluating `encodeWeaponInfo`. Return paths include `output`.
+/// @param value Value record; accesses `valid`, `number`, `name`, `model` and `level` and related fields.
 function encodeWeaponInfo(value)
   if value==void then return fail("missing weapon info") end if
   output=bytes(WEAPON_INFO_SIZE,0)

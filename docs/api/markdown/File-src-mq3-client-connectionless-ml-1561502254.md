@@ -23,14 +23,16 @@ Reachable from entry: **yes**
 function addressEqual(a, b, includePort)
 ```
 
+Compares network-address type and IP bytes and optionally requires the UDP ports to match.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `includePort` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Record read through `a.type`, `a.ip`, `a.port`. |
+| `b` | `dynamic` | — | Record read through `b.type`, `b.ip`, `b.port`. |
+| `includePort` | `dynamic` | — | Value used by `if includePort and a.port!=b.port then return false end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L138)
 
 <a id="constant-constant-mq3-client-connectionless-ca-active-const-ca-active-8-src-mq3-client-connectionless-ml-469475829"></a>
 ### CA_ACTIVE
@@ -39,8 +41,10 @@ function addressEqual(a, b, includePort)
 const CA_ACTIVE = 8
 ```
 
+Native connection-state value for normal gameplay, retained in the connectionless reply handler's state vocabulary.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
 
 <a id="constant-constant-mq3-client-connectionless-ca-authorizing-const-ca-authorizing-2-src-mq3-client-connectionless-ml-244222447"></a>
 ### CA_AUTHORIZING
@@ -49,8 +53,10 @@ const CA_ACTIVE = 8
 const CA_AUTHORIZING = 2
 ```
 
+Client connection state while waiting for authorization to contact the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L16)
 
 <a id="constant-constant-mq3-client-connectionless-ca-challenging-const-ca-challenging-4-src-mq3-client-connectionless-ml-1825104305"></a>
 ### CA_CHALLENGING
@@ -59,8 +65,10 @@ const CA_AUTHORIZING = 2
 const CA_CHALLENGING = 4
 ```
 
+Client connection state while replying to the server challenge and requesting connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L20)
 
 <a id="constant-constant-mq3-client-connectionless-ca-cinematic-const-ca-cinematic-9-src-mq3-client-connectionless-ml-672836282"></a>
 ### CA_CINEMATIC
@@ -69,8 +77,10 @@ const CA_CHALLENGING = 4
 const CA_CINEMATIC = 9
 ```
 
+Client connection state used for fullscreen cinematic playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="constant-constant-mq3-client-connectionless-ca-connected-const-ca-connected-5-src-mq3-client-connectionless-ml-2130063470"></a>
 ### CA_CONNECTED
@@ -79,8 +89,10 @@ const CA_CINEMATIC = 9
 const CA_CONNECTED = 5
 ```
 
+Connection-state value for a completed handshake before game-state loading, defined for connectionless handshake and server-reply handling.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L23)
 
 <a id="constant-constant-mq3-client-connectionless-ca-connecting-const-ca-connecting-3-src-mq3-client-connectionless-ml-304994166"></a>
 ### CA_CONNECTING
@@ -89,8 +101,10 @@ const CA_CONNECTED = 5
 const CA_CONNECTING = 3
 ```
 
+Client connection state while requesting a challenge from the server.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L18)
 
 <a id="constant-constant-mq3-client-connectionless-ca-disconnected-const-ca-disconnected-1-src-mq3-client-connectionless-ml-74425328"></a>
 ### CA_DISCONNECTED
@@ -99,8 +113,10 @@ const CA_CONNECTING = 3
 const CA_DISCONNECTED = 1
 ```
 
+Client connection state with no active server connection.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L14)
 
 <a id="constant-constant-mq3-client-connectionless-ca-loading-const-ca-loading-6-src-mq3-client-connectionless-ml-1985533531"></a>
 ### CA_LOADING
@@ -109,8 +125,10 @@ const CA_DISCONNECTED = 1
 const CA_LOADING = 6
 ```
 
+Client connection state while level media and game state are being loaded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L25)
 
 <a id="constant-constant-mq3-client-connectionless-ca-primed-const-ca-primed-7-src-mq3-client-connectionless-ml-126569994"></a>
 ### CA_PRIMED
@@ -119,8 +137,10 @@ const CA_LOADING = 6
 const CA_PRIMED = 7
 ```
 
+Client connection state with game state loaded, awaiting a playable snapshot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="constant-constant-mq3-client-connectionless-ca-uninitialized-const-ca-uninitialized-0-src-mq3-client-connectionless-ml-1396581971"></a>
 ### CA_UNINITIALIZED
@@ -129,8 +149,10 @@ const CA_PRIMED = 7
 const CA_UNINITIALIZED = 0
 ```
 
+Client connection state before the client subsystem has been initialized.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L12)
 
 <a id="function-function-mq3-client-connectionless-checkforresend-function-checkforresend-state-host-src-mq3-client-connectionless-ml-240059339"></a>
 ### checkForResend
@@ -139,13 +161,15 @@ const CA_UNINITIALIZED = 0
 function checkForResend(state, host)
 ```
 
+Retries the protocol-68 handshake every three seconds, sending getchallenge or connect with protocol, qport and challenge userinfo.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable connectionless record/storage; this routine assigns `state.connectTime`, `state.connectPacketCount`. |
+| `host` | `dynamic` | — | Record read through `host.lanFn`, `host.authorizationFn`, `host.outOfBandFn`, `host.userinfoFn` and additional values. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L162)
 
 <a id="function-function-mq3-client-connectionless-create-function-create-address-src-mq3-client-connectionless-ml-1941720080"></a>
 ### create
@@ -154,12 +178,14 @@ function checkForResend(state, host)
 function create(address)
 ```
 
+Creates a disconnected client handshake state for the supplied network address.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `address` | `dynamic` | — |  |
+| `address` | `dynamic` | — | Value used to initialize `State.serverAddress`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L112)
 
 <a id="function-function-mq3-client-connectionless-disconnectpacket-function-disconnectpacket-state-host-source-src-mq3-client-connectionless-ml-211632334"></a>
 ### disconnectPacket
@@ -168,14 +194,16 @@ function create(address)
 function disconnectPacket(state, host, source)
 ```
 
+Accepts disconnects only from the connected remote endpoint after three quiet seconds and invokes the host print/disconnect callbacks.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.connectionState`, `state.channel.remoteAddress`, `state.realtime`, `state.lastPacketTime`. |
+| `host` | `dynamic` | — | Record read through `host.printFn`, `host.disconnectFn`. |
+| `source` | `dynamic` | — | Value used by `if not addressEqual(source,state.channel.remoteAddress,true) then return false end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L149)
 
 <a id="function-function-mq3-client-connectionless-dispatch-function-dispatch-state-host-source-msg-src-mq3-client-connectionless-ml-1798771667"></a>
 ### dispatch
@@ -184,15 +212,17 @@ function disconnectPacket(state, host, source)
 function dispatch(state, host, source, msg)
 ```
 
+Reads and tokenizes an out-of-band packet, advances challenge/connect state and dispatches server-browser, status, print, MOTD and echo responses.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable connectionless record/storage; this routine assigns `state.challenge`, `state.connectionState`, `state.connectPacketCount`, `state.connectTime` and additional values. |
+| `host` | `dynamic` | — | Record read through `host.infoFn`, `host.statusFn`, `host.outOfBandFn`, `host.motdFn` and additional values. |
+| `source` | `dynamic` | — | Value assigned to `state.serverAddress`. |
+| `msg` | `dynamic` | — | Value used by `if state==void or host==void or source==void or msg==void then return error(6940,"client connectionless: missing state") end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L189)
 
 <a id="function-function-mq3-client-connectionless-lowerascii-function-lowerascii-text-src-mq3-client-connectionless-ml-258004247"></a>
 ### lowerAscii
@@ -201,12 +231,14 @@ function dispatch(state, host, source, msg)
 function lowerAscii(text)
 ```
 
+Converts only ASCII A-Z bytes to lowercase for case-insensitive connectionless command dispatch.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `lowerAscii` in the connectionless path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L120)
 
 <a id="constant-constant-mq3-client-connectionless-max-string-tokens-const-max-string-tokens-1024-src-mq3-client-connectionless-ml-956411172"></a>
 ### MAX_STRING_TOKENS
@@ -215,8 +247,10 @@ function lowerAscii(text)
 const MAX_STRING_TOKENS = 1024
 ```
 
+Maximum number of tokens or token-storage units used by the native command interface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L34)
 
 <a id="constant-constant-mq3-client-connectionless-protocol-version-const-protocol-version-68-src-mq3-client-connectionless-ml-341628895"></a>
 ### PROTOCOL_VERSION
@@ -225,8 +259,10 @@ const MAX_STRING_TOKENS = 1024
 const PROTOCOL_VERSION = 68
 ```
 
+Quake network protocol version required by this client implementation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L38)
 
 <a id="constant-constant-mq3-client-connectionless-retransmit-timeout-const-retransmit-timeout-3000-src-mq3-client-connectionless-ml-648147008"></a>
 ### RETRANSMIT_TIMEOUT
@@ -235,8 +271,10 @@ const PROTOCOL_VERSION = 68
 const RETRANSMIT_TIMEOUT = 3000
 ```
 
+Connection-handshake retransmission interval in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L36)
 
 <a id="function-function-mq3-client-connectionless-services-function-services-src-mq3-client-connectionless-ml-406009708"></a>
 ### services
@@ -245,8 +283,10 @@ const RETRANSMIT_TIMEOUT = 3000
 function services()
 ```
 
+Creates a `mq3.client.connectionless.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L116)
 
 - [mq3.client.connectionless.Services](Type-mq3-client-connectionless-services-831468066.md) — struct
 <a id="function-function-mq3-client-connectionless-startswith-function-startswith-text-prefix-src-mq3-client-connectionless-ml-1006722643"></a>
@@ -256,12 +296,14 @@ function services()
 function startsWith(text, prefix)
 ```
 
+Tests a byte-for-byte text prefix, accepting an empty prefix.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `prefix` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `startsWith` in the connectionless path. |
+| `prefix` | `dynamic` | — | Value used by `b=bytes(prefix)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/connectionless.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L128)
 
 - [mq3.client.connectionless.State](Type-mq3-client-connectionless-state-260944787.md) — struct

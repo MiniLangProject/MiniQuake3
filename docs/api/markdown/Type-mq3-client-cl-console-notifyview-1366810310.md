@@ -9,8 +9,10 @@
 struct NotifyView
 ```
 
+Stores engine client console notify view record, including `lines`, `chat`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L77)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct NotifyView
 chat
 ```
 
+When constructing this record, `Con_DrawNotify` supplies `chat` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L81)
 
 <a id="field-field-mq3-client-cl-console-notifyview-lines-lines-src-mq3-client-cl-console-ml-723733069"></a>
 ### lines
@@ -31,5 +35,7 @@ chat
 lines
 ```
 
+When constructing this record, `Con_DrawNotify` supplies `lines` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L79)

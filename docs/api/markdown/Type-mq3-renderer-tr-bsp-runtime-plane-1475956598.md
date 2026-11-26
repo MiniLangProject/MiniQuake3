@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.Plane`; groups `normal`, `dist`, `type`, `signbits`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L51)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Plane
 dist
 ```
 
+Signed plane distance measured along its normal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L55)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-plane-normal-normal-src-mq3-renderer-tr-bsp-runtime-ml-203333393"></a>
 ### normal
@@ -31,8 +35,10 @@ dist
 normal
 ```
 
+BSP plane direction loaded for partition, surface, and visibility calculations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L53)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-plane-signbits-signbits-src-mq3-renderer-tr-bsp-runtime-ml-148520817"></a>
 ### signbits
@@ -41,8 +47,10 @@ normal
 signbits
 ```
 
+Sign-bit mask of the plane normal used for fast bounds classification.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L59)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-plane-type-type-src-mq3-renderer-tr-bsp-runtime-ml-1960182183"></a>
 ### type
@@ -51,5 +59,7 @@ signbits
 type
 ```
 
+Plane classification used to select axial or general distance calculations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L57)

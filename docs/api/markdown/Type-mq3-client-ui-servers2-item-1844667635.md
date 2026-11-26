@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores UI servers2 menu item, including `id`, `kind`, `name`, `x`, `y`, `fallback`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L174)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Item
 fallback
 ```
 
+When constructing this record, `item` supplies an empty string for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L187)
 
 <a id="field-field-mq3-client-ui-servers2-item-id-id-src-mq3-client-ui-servers2-ml-767842824"></a>
 ### id
@@ -31,8 +35,10 @@ fallback
 id
 ```
 
+Event-routing identifier of this selectable control in the base-game server browser.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L176)
 
 <a id="field-field-mq3-client-ui-servers2-item-kind-kind-src-mq3-client-ui-servers2-ml-515430030"></a>
 ### kind
@@ -41,8 +47,10 @@ id
 kind
 ```
 
+Item category selecting pickup behavior or the type-specific UI control implementation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L178)
 
 <a id="field-field-mq3-client-ui-servers2-item-name-name-src-mq3-client-ui-servers2-ml-645407764"></a>
 ### name
@@ -51,8 +59,10 @@ kind
 name
 ```
 
+Label or artwork resource identifying the server-browser control.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L180)
 
 <a id="field-field-mq3-client-ui-servers2-item-x-x-src-mq3-client-ui-servers2-ml-138743578"></a>
 ### x
@@ -61,8 +71,10 @@ name
 x
 ```
 
+Horizontal position of this menu control in the virtual layout used by the base-game server browser.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L183)
 
 <a id="field-field-mq3-client-ui-servers2-item-y-y-src-mq3-client-ui-servers2-ml-869263174"></a>
 ### y
@@ -71,5 +83,7 @@ x
 y
 ```
 
+Vertical position of this menu control in the virtual layout used by the base-game server browser.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L185)

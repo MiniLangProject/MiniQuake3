@@ -30,8 +30,10 @@ Reachable from entry: **no**
 const AWARD_MASK = 231496
 ```
 
+Player-award identifier selecting the mask reward.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L23)
 
 <a id="function-function-mq3-game-weapon-hitscan-bullet-function-bullet-level-ent-spread-damage-src-mq3-game-weapon-hitscan-ml-1146743315"></a>
 ### bullet
@@ -40,15 +42,17 @@ const AWARD_MASK = 231496
 function bullet(level, ent, spread, damage)
 ```
 
+Set `ent.client.accuracy_hits` to `n.add32(ent.client.accuracy_hits,1)` in `mq3.game.weapon_hitscan.bullet`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `spread` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `weaponState`. May update `level.weaponState` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place. |
+| `spread` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
+| `damage` | `dynamic` | — | Damage amount before the current operation applies its rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L59)
 
 <a id="function-function-mq3-game-weapon-hitscan-hitscancenteredrandom-function-hitscancenteredrandom-level-src-mq3-game-weapon-hitscan-ml-45965204"></a>
 ### hitscanCenteredRandom
@@ -57,12 +61,14 @@ function bullet(level, ent, spread, damage)
 function hitscanCenteredRandom(level)
 ```
 
+Return `2.0*(n.fdiv(game.random(level),32767.0)-0.5)` for `hitscanCenteredRandom`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L49)
 
 <a id="function-function-mq3-game-weapon-hitscan-hitscanclient-function-hitscanclient-ent-src-mq3-game-weapon-hitscan-ml-1760211671"></a>
 ### hitscanClient
@@ -71,12 +77,14 @@ function hitscanCenteredRandom(level)
 function hitscanClient(ent)
 ```
 
+Require and return a client state for hitscan weapon accuracy bookkeeping.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ent` | `dynamic` | — |  |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L27)
 
 <a id="function-function-mq3-game-weapon-hitscan-hitscancopy-function-hitscancopy-target-source-src-mq3-game-weapon-hitscan-ml-54506952"></a>
 ### hitscanCopy
@@ -85,13 +93,15 @@ function hitscanClient(ent)
 function hitscanCopy(target, source)
 ```
 
+Set `target[axis]` to `source[axis]` in `mq3.game.weapon_hitscan.hitscanCopy`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `target` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `target` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
+| `source` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L41)
 
 <a id="function-function-mq3-game-weapon-hitscan-hitscanentity-function-hitscanentity-level-number-src-mq3-game-weapon-hitscan-ml-263779489"></a>
 ### hitscanEntity
@@ -100,13 +110,15 @@ function hitscanCopy(target, source)
 function hitscanEntity(level, number)
 ```
 
+Read a trace-hit entity after validating its number against native entity storage.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`. |
+| `number` | `dynamic` | — | Operand used to evaluate the returned expression `level.entities[number]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L34)
 
 <a id="function-function-mq3-game-weapon-hitscan-lightning-function-lightning-level-ent-src-mq3-game-weapon-hitscan-ml-552170733"></a>
 ### lightning
@@ -115,13 +127,15 @@ function hitscanEntity(level, number)
 function lightning(level, ent)
 ```
 
+Set `ent.client.accuracy_hits` to `n.add32(ent.client.accuracy_hits,1)` in `mq3.game.weapon_hitscan.lightning`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `weaponState`. May update `level.weaponState` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L189)
 
 <a id="constant-constant-mq3-game-weapon-hitscan-mask-shot-const-mask-shot-100663297-src-mq3-game-weapon-hitscan-ml-714104971"></a>
 ### MASK_SHOT
@@ -130,8 +144,10 @@ function lightning(level, ent)
 const MASK_SHOT = 100663297
 ```
 
+Combined CONTENTS_* mask used for shot collision queries.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L19)
 
 <a id="function-function-mq3-game-weapon-hitscan-rail-function-rail-level-ent-src-mq3-game-weapon-hitscan-ml-815929269"></a>
 ### rail
@@ -140,13 +156,15 @@ const MASK_SHOT = 100663297
 function rail(level, ent)
 ```
 
+Apply `mq3.game.weapon_state.get`, `mq3.game.combat.shotTrace` and `mq3.game.weapon_hitscan.hitscanEntity` while evaluating `rail`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L143)
 
 <a id="function-function-mq3-game-weapon-hitscan-shotgun-function-shotgun-level-ent-src-mq3-game-weapon-hitscan-ml-1724690917"></a>
 ### shotgun
@@ -155,13 +173,15 @@ function rail(level, ent)
 function shotgun(level, ent)
 ```
 
+Apply `mq3.game.weapon_state.get`, `mq3.game.entities.tempEntity` and `mq3.game.weapon_hitscan.hitscanCopy` while evaluating `shotgun`. Return paths include `shotgunPattern(level,temp.s.pos.trBase,temp.s.origin2,temp.s.eventParm,ent)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `weaponState`. May update `level.weaponState` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L133)
 
 <a id="function-function-mq3-game-weapon-hitscan-shotgunpattern-function-shotgunpattern-level-origin-origin2-seed-ent-src-mq3-game-weapon-hitscan-ml-1912116694"></a>
 ### shotgunPattern
@@ -170,16 +190,18 @@ function shotgun(level, ent)
 function shotgunPattern(level, origin, origin2, seed, ent)
 ```
 
+Set `ent.client.accuracy_hits` to `n.add32(ent.client.accuracy_hits,1)` in `mq3.game.weapon_hitscan.shotgunPattern`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `origin2` | `dynamic` | — |  |
-| `seed` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `weaponState`. May update `level.weaponState` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `origin2` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize2`. |
+| `seed` | `dynamic` | — | State used to initialize the deterministic random sequence. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.accuracy_hits` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L111)
 
 <a id="function-function-mq3-game-weapon-hitscan-shotgunpellet-function-shotgunpellet-level-start-finish-ent-src-mq3-game-weapon-hitscan-ml-1452732982"></a>
 ### shotgunPellet
@@ -188,15 +210,17 @@ function shotgunPattern(level, origin, origin2, seed, ent)
 function shotgunPellet(level, start, finish, ent)
 ```
 
+Apply `mq3.game.weapon_state.get`, `mq3.game.movement.copy` and `mq3.game.combat.shotTrace` while evaluating `shotgunPellet`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `weaponState`. May update `level.weaponState` in place. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L92)
 
 <a id="constant-constant-mq3-game-weapon-hitscan-surf-noimpact-const-surf-noimpact-headers-surf-noimpact-src-mq3-game-weapon-hitscan-ml-628713333"></a>
 ### SURF_NOIMPACT
@@ -205,5 +229,7 @@ function shotgunPellet(level, start, finish, ent)
 const SURF_NOIMPACT = headers.SURF_NOIMPACT
 ```
 
+Compiled surface-flag bit marking noimpact behavior.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_hitscan.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_hitscan.ml#L21)

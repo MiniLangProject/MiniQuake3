@@ -25,11 +25,11 @@ CHECKS = {
         ),
     },
     "src/mq3/engine/local_qvm_match.ml": {
-        "requires": ("mappedList=lists.List.withCapacity", "entities=array(frame.numEntities,void)"),
+        "requires": ("mapped=array(context.entityCount,void)", "entities=array(frame.numEntities,void)"),
         "forbids": ("mapped=mapped+[", "entities=entities+["),
     },
     "src/mq3/client/qvm_preview_app.ml": {
-        "requires": ("std.ds.queue", "pendingInputEvents.enqueue", "pendingInputEvents.dequeue"),
+        "requires": ("for each event in nativeEvents", "applyInputEvent(inputBridge,state,event)"),
         "forbids": ("pendingInputEvents=pendingInputEvents+[", "slice(pendingInputEvents,1,"),
     },
     "src/mq3/platform/playable_window.ml": {
@@ -53,8 +53,17 @@ CHECKS = {
         "forbids": ("shadowPositions=shadowPositions+[", "worldSide=worldSide+[", "positions=positions+["),
     },
     "src/mq3/renderer/qvm_scene_batch.ml": {
-        "requires": ("result=lists.List.withCapacity", "origins=array(count,void)"),
-        "forbids": ("result=result+[ShadowPolicy", "origins=origins+["),
+        "requires": ("result=maps.HashMap.new()", "origins=array(count,void)"),
+        "forbids": ("result=result+[ShadowPolicy", "policyIndex=0 to result.len()-1", "origins=origins+["),
+    },
+    "src/mq3/collision/world.ml": {
+        "requires": ("stack = worldTraceLists.List.new()", "num = stack.pop()",
+                     "entries=worldTraceLists.List.withCapacity", "points=array(count,void)",
+                     "contents=contents|brushPointContents"),
+        "forbids": ("stack = arrays.slice(stack", "stack = stack + [[",
+                    "leaves = leaves+[", "result.entries = result.entries+[",
+                    "points=points+[", "brushes=brushes+[", "surfaces=surfaces+[",
+                    "selected = selected+[")
     },
 }
 

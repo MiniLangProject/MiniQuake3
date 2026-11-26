@@ -6,6 +6,11 @@ import mq3.botlib.ai_chat_goal_tail as tail
 import mq3.compat.numeric as n
 import mq3.vm.syscall_common as common
 
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_chat_goal_tail.numInitialChats` while evaluating `dispatch`.
+/// @param state AI chat goal tail state; accesses `chatProfiles`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(state,vm,base,op)
   handle=common.argument(vm,base,1)
   if op==tail.OP_NUM_INITIAL_CHATS then type=common.readString(vm,common.argument(vm,base,2));if type is error then return type end if;return tail.numInitialChats(state,handle,type) end if

@@ -9,8 +9,10 @@
 struct Collision
 ```
 
+`Collision` record for movement, containing `trace`, `endpos` and `entityNum`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L11)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Collision
 endpos
 ```
 
+Final position reached by the collision trace.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L15)
 
 <a id="field-field-mq3-game-movement-collision-entitynum-entitynum-src-mq3-game-movement-ml-1700588125"></a>
 ### entityNum
@@ -31,8 +35,10 @@ endpos
 entityNum
 ```
 
+Entity number returned by or associated with this operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L17)
 
 <a id="field-field-mq3-game-movement-collision-trace-trace-src-mq3-game-movement-ml-522791009"></a>
 ### trace
@@ -41,5 +47,7 @@ entityNum
 trace
 ```
 
+Collision trace result or callback used by the movement calculation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L13)

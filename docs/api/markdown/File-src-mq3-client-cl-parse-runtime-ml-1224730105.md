@@ -25,17 +25,19 @@ Reachable from entry: **no**
 function CL_DeltaEntity(state, msg, frame, newnum, old, unchanged)
 ```
 
+Adapts `mq3.client.snapshot_parse.deltaEntity` to engine client parse runtime `CL_DeltaEntity`, returning its result for `state, msg, frame, newnum, old, unchanged`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `newnum` | `dynamic` | — |  |
-| `old` | `dynamic` | — |  |
-| `unchanged` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.snapshot_parse.deltaEntity`. |
+| `msg` | `dynamic` | — | Argument 2 of `mq3.client.snapshot_parse.deltaEntity`. |
+| `frame` | `dynamic` | — | Argument 3 of `mq3.client.snapshot_parse.deltaEntity`. |
+| `newnum` | `dynamic` | — | Argument 4 of `mq3.client.snapshot_parse.deltaEntity`. |
+| `old` | `dynamic` | — | Argument 5 of `mq3.client.snapshot_parse.deltaEntity`. |
+| `unchanged` | `dynamic` | — | Argument 6 of `mq3.client.snapshot_parse.deltaEntity`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L61)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-parsecommandstring-function-cl-parsecommandstring-state-msg-src-mq3-client-cl-parse-runtime-ml-472072294"></a>
 ### CL_ParseCommandString
@@ -44,13 +46,15 @@ function CL_DeltaEntity(state, msg, frame, newnum, old, unchanged)
 function CL_ParseCommandString(state, msg)
 ```
 
+Adapts `mq3.client.server_message.parseCommandString` to engine client parse runtime `CL_ParseCommandString`, returning its result for `state, msg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.server_message.parseCommandString`. |
+| `msg` | `dynamic` | — | Argument 2 of `mq3.client.server_message.parseCommandString`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L99)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-parsedownload-function-cl-parsedownload-state-services-msg-src-mq3-client-cl-parse-runtime-ml-2083716632"></a>
 ### CL_ParseDownload
@@ -59,14 +63,16 @@ function CL_ParseCommandString(state, msg)
 function CL_ParseDownload(state, services, msg)
 ```
 
+Adapts `mq3.client.download.parseDownload` to engine client parse runtime `CL_ParseDownload`, returning its result for `state, services, msg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `services` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.download.parseDownload`. |
+| `services` | `dynamic` | — | Argument 2 of `mq3.client.download.parseDownload`. |
+| `msg` | `dynamic` | — | Argument 3 of `mq3.client.download.parseDownload`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L92)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-parsegamestate-function-cl-parsegamestate-state-msg-src-mq3-client-cl-parse-runtime-ml-1471854276"></a>
 ### CL_ParseGamestate
@@ -75,13 +81,15 @@ function CL_ParseDownload(state, services, msg)
 function CL_ParseGamestate(state, msg)
 ```
 
+Adapts `mq3.client.gamestate.parse` to engine client parse runtime `CL_ParseGamestate`, returning its result for `state, msg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.gamestate.parse`. |
+| `msg` | `dynamic` | — | Argument 2 of `mq3.client.gamestate.parse`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L84)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-parsepacketentities-function-cl-parsepacketentities-state-msg-oldframe-newframe-src-mq3-client-cl-parse-runtime-ml-1818794589"></a>
 ### CL_ParsePacketEntities
@@ -90,15 +98,17 @@ function CL_ParseGamestate(state, msg)
 function CL_ParsePacketEntities(state, msg, oldframe, newframe)
 ```
 
+Adapts `mq3.client.snapshot_parse.parsePacketEntities` to engine client parse runtime `CL_ParsePacketEntities`, returning its result for `state, msg, oldframe, newframe`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `oldframe` | `dynamic` | — |  |
-| `newframe` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.snapshot_parse.parsePacketEntities`. |
+| `msg` | `dynamic` | — | Argument 2 of `mq3.client.snapshot_parse.parsePacketEntities`. |
+| `oldframe` | `dynamic` | — | Argument 3 of `mq3.client.snapshot_parse.parsePacketEntities`. |
+| `newframe` | `dynamic` | — | Argument 4 of `mq3.client.snapshot_parse.parsePacketEntities`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L70)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-parseservermessage-function-cl-parseservermessage-runtime-msg-src-mq3-client-cl-parse-runtime-ml-1329423721"></a>
 ### CL_ParseServerMessage
@@ -107,13 +117,15 @@ function CL_ParsePacketEntities(state, msg, oldframe, newframe)
 function CL_ParseServerMessage(runtime, msg)
 ```
 
+Calls `mq3.client.protocol_runtime.parse` from engine client parse runtime `CL_ParseServerMessage`. The final path returns `protocolRuntime.parse(runtime.protocol,msg)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record read through `runtime.protocol`. |
+| `msg` | `dynamic` | — | Value used by `return protocolRuntime.parse(runtime.protocol,msg)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L106)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-parsesnapshot-function-cl-parsesnapshot-state-msg-src-mq3-client-cl-parse-runtime-ml-1793635312"></a>
 ### CL_ParseSnapshot
@@ -122,13 +134,15 @@ function CL_ParseServerMessage(runtime, msg)
 function CL_ParseSnapshot(state, msg)
 ```
 
+Adapts `mq3.client.snapshot_command.parseSnapshot` to engine client parse runtime `CL_ParseSnapshot`, returning its result for `state, msg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.snapshot_command.parseSnapshot`. |
+| `msg` | `dynamic` | — | Argument 2 of `mq3.client.snapshot_command.parseSnapshot`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L77)
 
 <a id="function-function-mq3-client-cl-parse-runtime-cl-systeminfochanged-function-cl-systeminfochanged-state-services-text-src-mq3-client-cl-parse-runtime-ml-1967363414"></a>
 ### CL_SystemInfoChanged
@@ -137,14 +151,16 @@ function CL_ParseSnapshot(state, msg)
 function CL_SystemInfoChanged(state, services, text)
 ```
 
+Adapts `mq3.client.system_info.apply` to engine client parse runtime `CL_SystemInfoChanged`, returning its result for `state, services, text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `services` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.system_info.apply`. |
+| `services` | `dynamic` | — | Argument 2 of `mq3.client.system_info.apply`. |
+| `text` | `dynamic` | — | Argument 3 of `mq3.client.system_info.apply`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L115)
 
 <a id="function-function-mq3-client-cl-parse-runtime-configureshownet-function-configureshownet-runtime-level-outputfn-context-src-mq3-client-cl-parse-runtime-ml-1785278722"></a>
 ### configureShownet
@@ -153,15 +169,17 @@ function CL_SystemInfoChanged(state, services, text)
 function configureShownet(runtime, level, outputFn, context)
 ```
 
+Evaluates engine client parse runtime `configureShownet` and returns `error(6990,"cl_parse: missing runtime")`, `void` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `level` | `dynamic` | — |  |
-| `outputFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record read through `runtime.protocol.dispatcher`. |
+| `level` | `dynamic` | — | Value assigned to `state.shownetLevel`. |
+| `outputFn` | `dynamic` | — | Value assigned to `state.shownetFn`. |
+| `context` | `dynamic` | — | Value assigned to `state.shownetContext`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L39)
 
 <a id="function-function-mq3-client-cl-parse-runtime-create-function-create-downloadservices-systemservices-src-mq3-client-cl-parse-runtime-ml-1688440143"></a>
 ### create
@@ -170,13 +188,15 @@ function configureShownet(runtime, level, outputFn, context)
 function create(downloadServices, systemServices)
 ```
 
+Calls `mq3.client.download.services`, `mq3.client.system_info.services`, `mq3.client.protocol_runtime.create` and additional helpers from engine client parse runtime `create`. The final path returns `Runtime(protocol,systemState,systemServices)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `downloadServices` | `dynamic` | — |  |
-| `systemServices` | `dynamic` | — |  |
+| `downloadServices` | `dynamic` | — | Value used by `if downloadServices==void then downloadServices=download.services() end if`. |
+| `systemServices` | `dynamic` | — | Value used by `if systemServices==void then systemServices=systemInfo.services() end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L26)
 
 - [mq3.client.cl_parse_runtime.Runtime](Type-mq3-client-cl-parse-runtime-runtime-1984470323.md) — struct
 <a id="function-function-mq3-client-cl-parse-runtime-shownet-function-shownet-state-msg-text-src-mq3-client-cl-parse-runtime-ml-900360411"></a>
@@ -186,11 +206,13 @@ function create(downloadServices, systemServices)
 function SHOWNET(state, msg, text)
 ```
 
+Calls `mq3.client.server_message.shownet` from engine client parse runtime `SHOWNET`. The final path returns `serverMessage.shownet(state,msg,text)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared engine client parse runtime state passed to the helper calls in `SHOWNET`. |
+| `msg` | `dynamic` | — | Value used by `if state==void or msg==void then return error(6991,"cl_parse: missing shownet state") end if`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `SHOWNET` in the engine client parse runtime path. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L49)

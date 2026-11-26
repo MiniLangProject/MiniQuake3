@@ -9,8 +9,10 @@
 struct Frame
 ```
 
+Frame record for video.roq_video, containing `width`, `height`, `pixels`, `number`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Frame
 height
 ```
 
+Image/frame height in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L15)
 
 <a id="field-field-mq3-video-roq-video-frame-number-number-src-mq3-video-roq-video-ml-1962386878"></a>
 ### number
@@ -31,8 +35,10 @@ height
 number
 ```
 
+Sequence number of this decoded video frame.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L19)
 
 <a id="field-field-mq3-video-roq-video-frame-pixels-pixels-src-mq3-video-roq-video-ml-660605874"></a>
 ### pixels
@@ -41,8 +47,10 @@ number
 pixels
 ```
 
+Decoded image/frame pixel data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L17)
 
 <a id="field-field-mq3-video-roq-video-frame-width-width-src-mq3-video-roq-video-ml-610555932"></a>
 ### width
@@ -51,5 +59,7 @@ pixels
 width
 ```
 
+Image/frame width in pixels.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L13)

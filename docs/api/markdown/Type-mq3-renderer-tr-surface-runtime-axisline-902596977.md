@@ -9,8 +9,10 @@
 struct AxisLine
 ```
 
+Data record for `mq3.renderer.tr_surface_runtime.AxisLine`; groups `start`, `finish`, `color`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L30)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct AxisLine
 color
 ```
 
+Color identifying one segment of the debug coordinate-axis drawing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L36)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-axisline-finish-finish-src-mq3-renderer-tr-surface-runtime-ml-336169494"></a>
 ### finish
@@ -31,8 +35,10 @@ color
 finish
 ```
 
+Ending point or position of the represented segment.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-axisline-start-start-src-mq3-renderer-tr-surface-runtime-ml-881830240"></a>
 ### start
@@ -41,5 +47,7 @@ finish
 start
 ```
 
+Beginning point or position of the represented segment.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L32)

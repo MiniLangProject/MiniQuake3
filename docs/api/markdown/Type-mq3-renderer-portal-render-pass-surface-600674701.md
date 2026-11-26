@@ -9,8 +9,10 @@
 struct Surface
 ```
 
+Data record for `mq3.renderer.portal_render_pass.Surface`; groups `normal`, `dist`, `faceIndex`, `textureIndex`, `distanceSquared`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L39)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Surface
 dist
 ```
 
+Signed plane distance measured along its normal.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L43)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-distancesquared-distancesquared-src-mq3-renderer-portal-render-pass-ml-719678036"></a>
 ### distanceSquared
@@ -31,8 +35,10 @@ dist
 distanceSquared
 ```
 
+Squared distance used for ordering or rejecting the candidate.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L49)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-faceindex-faceindex-src-mq3-renderer-portal-render-pass-ml-759566072"></a>
 ### faceIndex
@@ -41,8 +47,10 @@ distanceSquared
 faceIndex
 ```
 
+Index of the source BSP face.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L45)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-normal-normal-src-mq3-renderer-portal-render-pass-ml-82289370"></a>
 ### normal
@@ -51,8 +59,10 @@ faceIndex
 normal
 ```
 
+Normalized portal-surface plane normal derived from its candidate world triangle.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L41)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-textureindex-textureindex-src-mq3-renderer-portal-render-pass-ml-1357438862"></a>
 ### textureIndex
@@ -61,5 +71,7 @@ normal
 textureIndex
 ```
 
+Index identifying the texture or BSP shader assigned to the surface.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L47)

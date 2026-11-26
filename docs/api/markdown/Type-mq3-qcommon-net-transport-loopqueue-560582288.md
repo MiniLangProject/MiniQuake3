@@ -9,8 +9,10 @@
 struct LoopQueue
 ```
 
+LoopQueue record for qcommon.net_transport, containing `messages`, `get`, `send`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L37)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LoopQueue
 get
 ```
 
+Absolute sequence position of the next loopback datagram to receive.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L41)
 
 <a id="field-field-mq3-qcommon-net-transport-loopqueue-messages-messages-src-mq3-qcommon-net-transport-ml-1935649308"></a>
 ### messages
@@ -31,8 +35,10 @@ get
 messages
 ```
 
+Ring-buffer slots containing queued loopback datagrams.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L39)
 
 <a id="field-field-mq3-qcommon-net-transport-loopqueue-send-send-src-mq3-qcommon-net-transport-ml-515647080"></a>
 ### send
@@ -41,5 +47,7 @@ messages
 send
 ```
 
+Absolute sequence position assigned to the next loopback datagram.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L43)

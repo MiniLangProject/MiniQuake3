@@ -32,13 +32,15 @@ Reachable from entry: **no**
 function addToken(state, value)
 ```
 
+Set `state.chars` to `next` in `mq3.game.spawn.addToken`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `chars`. May update `state.chars` in place. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L226)
 
 <a id="function-function-mq3-game-spawn-callspawn-function-callspawn-state-ent-src-mq3-game-spawn-ml-674042530"></a>
 ### callSpawn
@@ -47,13 +49,15 @@ function addToken(state, value)
 function callSpawn(state, ent)
 ```
 
+Use `state.unportedFn` to perform `callSpawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `missionpack`, `level` and `unportedFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `classname`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L302)
 
 <a id="function-function-mq3-game-spawn-create-function-create-level-text-src-mq3-game-spawn-ml-657154539"></a>
 ### create
@@ -62,13 +66,15 @@ function callSpawn(state, ent)
 function create(level, text)
 ```
 
+Set `level.spawner` to `state` and `level.damageFn` to `combat.damage` in `mq3.game.spawn.create`. Return paths include `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner` and `damageFn`. May update `level.spawner` and `level.damageFn` in place. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L65)
 
 <a id="function-function-mq3-game-spawn-effect-function-effect-state-kind-index-key-value-src-mq3-game-spawn-ml-217343885"></a>
 ### effect
@@ -77,16 +83,18 @@ function create(level, text)
 function effect(state, kind, index, key, value)
 ```
 
+Use `state.effectFn` to perform `effect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `effectFn`. |
+| `kind` | `dynamic` | — | Value passed as argument 2 to `state.effectFn`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L257)
 
 <a id="function-function-mq3-game-spawn-fromvars-function-fromvars-state-src-mq3-game-spawn-ml-274452507"></a>
 ### fromVars
@@ -95,12 +103,14 @@ function effect(state, kind, index, key, value)
 function fromVars(state)
 ```
 
+Apply `mq3.game.entities.spawn`, `mq3.game.spawn.parseLevelField` and `mq3.game.spawn.getInt` while evaluating `fromVars`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `level`, `vars`, `gametype` and `missionpack`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L326)
 
 <a id="function-function-mq3-game-spawn-getfloat-function-getfloat-state-key-fallback-src-mq3-game-spawn-ml-985165628"></a>
 ### getFloat
@@ -109,14 +119,16 @@ function fromVars(state)
 function getFloat(state, key, fallback)
 ```
 
+Apply `mq3.game.spawn.getString` while evaluating `getFloat`. Return paths include `[result[0],n.f32(textnum.atof(result[1]))]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L90)
 
 <a id="function-function-mq3-game-spawn-getint-function-getint-state-key-fallback-src-mq3-game-spawn-ml-493058368"></a>
 ### getInt
@@ -125,14 +137,16 @@ function getFloat(state, key, fallback)
 function getInt(state, key, fallback)
 ```
 
+Apply `mq3.game.spawn.getString` while evaluating `getInt`. Return paths include `[result[0],textnum.atoi(result[1])]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L83)
 
 <a id="function-function-mq3-game-spawn-getstring-function-getstring-state-key-fallback-src-mq3-game-spawn-ml-1007838582"></a>
 ### getString
@@ -141,14 +155,16 @@ function getInt(state, key, fallback)
 function getString(state, key, fallback)
 ```
 
+Forward `getString` to `mq3.game.spawn_values.getString` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L75)
 
 <a id="function-function-mq3-game-spawn-getvector-function-getvector-state-key-fallback-initial-src-mq3-game-spawn-ml-2078850512"></a>
 ### getVector
@@ -157,15 +173,17 @@ function getString(state, key, fallback)
 function getVector(state, key, fallback, initial)
 ```
 
+Apply `mq3.game.spawn.getString` while evaluating `getVector`. Return paths include `[result[0],values[1]]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
-| `initial` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
+| `initial` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.textnumbers.vector`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L98)
 
 <a id="function-function-mq3-game-spawn-load-function-load-state-src-mq3-game-spawn-ml-461778323"></a>
 ### load
@@ -174,12 +192,14 @@ function getVector(state, key, fallback, initial)
 function load(state)
 ```
 
+Update `state.spawning` and `state.vars` during `load`. Return paths include `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `spawning` and `vars`. May update `state.spawning` and `state.vars` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L347)
 
 <a id="function-function-mq3-game-spawn-newstring-function-newstring-value-src-mq3-game-spawn-ml-519981417"></a>
 ### newString
@@ -188,12 +208,14 @@ function load(state)
 function newString(value)
 ```
 
+Copy a native spawn string while translating newline escapes and preserving the released backslash escape behavior.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L104)
 
 <a id="function-function-mq3-game-spawn-parsefield-function-parsefield-key-value-ent-src-mq3-game-spawn-ml-1038250227"></a>
 ### parseField
@@ -202,14 +224,16 @@ function newString(value)
 function parseField(key, value, ent)
 ```
 
+Forward `parseField` to `mq3.game.spawn.parseLevelField` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `ent` | `dynamic` | — | Game entity; accesses `classname`, `s`, `model`, `model2` and `spawnflags` and related fields. May update `ent.classname`, `ent.s.origin` and `ent.model` and additional fields in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L124)
 
 <a id="function-function-mq3-game-spawn-parselevelfield-function-parselevelfield-level-key-value-ent-src-mq3-game-spawn-ml-1003926461"></a>
 ### parseLevelField
@@ -218,15 +242,17 @@ function parseField(key, value, ent)
 function parseLevelField(level, key, value, ent)
 ```
 
+Update `ent.classname`, `ent.s.origin`, `ent.model` and `ent.model2` and related state during `parseLevelField`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `memoryState`. May update `level.memoryState` in place. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `ent` | `dynamic` | — | Game entity; accesses `classname`, `s`, `model`, `model2` and `spawnflags` and related fields. May update `ent.classname`, `ent.s.origin` and `ent.model` and additional fields in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L132)
 
 <a id="function-function-mq3-game-spawn-parsevars-function-parsevars-state-src-mq3-game-spawn-ml-72674357"></a>
 ### parseVars
@@ -235,12 +261,14 @@ function parseLevelField(level, key, value, ent)
 function parseVars(state)
 ```
 
+Update `state.vars` and `state.chars` during `parseVars`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `vars` and `chars`. May update `state.vars` and `state.chars` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L234)
 
 <a id="function-function-mq3-game-spawn-setconfig-function-setconfig-state-index-value-src-mq3-game-spawn-ml-2103218492"></a>
 ### setConfig
@@ -249,14 +277,16 @@ function parseVars(state)
 function setConfig(state, index, value)
 ```
 
+Forward `setConfig` to `mq3.game.spawn_values.setConfig` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `configstrings` and `effectFn`. May update `state.configstrings[index]` in place. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L265)
 
 <a id="function-function-mq3-game-spawn-setcvar-function-setcvar-state-key-value-src-mq3-game-spawn-ml-707472135"></a>
 ### setCvar
@@ -265,14 +295,16 @@ function setConfig(state, index, value)
 function setCvar(state, key, value)
 ```
 
+Apply `mq3.qcommon.cvar.set2` and `mq3.game.spawn.effect` while evaluating `setCvar`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `cvars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Initial value stored in `mq3.qcommon.cvar.Cvar.string`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L272)
 
 <a id="function-function-mq3-game-spawn-spawndiagnostic-function-spawndiagnostic-state-text-src-mq3-game-spawn-ml-1405074930"></a>
 ### spawnDiagnostic
@@ -281,13 +313,15 @@ function setCvar(state, key, value)
 function spawnDiagnostic(state, text)
 ```
 
+Use `state.level.gamePrintFn` to perform `spawnDiagnostic`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `level`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L292)
 
 - [mq3.game.spawn.State](Type-mq3-game-spawn-state-1341454670.md) — struct
 <a id="function-function-mq3-game-spawn-token-function-token-state-src-mq3-game-spawn-ml-932534125"></a>
@@ -297,12 +331,14 @@ function spawnDiagnostic(state, text)
 function token(state)
 ```
 
+Apply `mq3.shared.parser.parseExt` while evaluating `token`. Return paths include `[state.parser.offset >= 0 or value != "",value]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `parser`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L219)
 
 <a id="function-function-mq3-game-spawn-worldspawn-function-worldspawn-state-src-mq3-game-spawn-ml-1564732003"></a>
 ### worldspawn
@@ -311,9 +347,11 @@ function token(state)
 function worldspawn(state)
 ```
 
+Update `state.level.entities[1022].s.number`, `state.level.entities[1022].classname` and `state.warmupTime` during `worldspawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn state; accesses `level`, `motd`, `restarted`, `warmupTime` and `doWarmup`. May update `state.level.entities[1022].s.number`, `state.level.entities[1022].classname` and `state.warmupTime` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L278)

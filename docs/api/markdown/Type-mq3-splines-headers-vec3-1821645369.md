@@ -9,8 +9,10 @@
 struct Vec3
 ```
 
+Vec3 record for splines.headers, containing `x`, `y`, `z`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L18)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Vec3
 x
 ```
 
+X component of the spatial vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L20)
 
 <a id="field-field-mq3-splines-headers-vec3-y-y-src-mq3-splines-headers-ml-1219846538"></a>
 ### y
@@ -31,8 +35,10 @@ x
 y
 ```
 
+Y component of the spatial vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L22)
 
 <a id="field-field-mq3-splines-headers-vec3-z-z-src-mq3-splines-headers-ml-1553568134"></a>
 ### z
@@ -41,5 +47,7 @@ y
 z
 ```
 
+Z component of the spatial vector.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L24)

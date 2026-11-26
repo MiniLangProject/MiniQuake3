@@ -9,8 +9,10 @@
 struct Entry
 ```
 
+Entry record for format.pk3, containing `name`, `version`, `versionNeeded`, `flags`, `method`, `dosDate`, and 12 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L14)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Entry
 centralExtra
 ```
 
+Extra-field bytes stored in the central-directory record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L38)
 
 <a id="field-field-mq3-format-pk3-entry-centraloffset-centraloffset-src-mq3-format-pk3-ml-1618252407"></a>
 ### centralOffset
@@ -31,8 +35,10 @@ centralExtra
 centralOffset
 ```
 
+Absolute byte offset of this entry's central-directory record in sourcePath.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L36)
 
 <a id="field-field-mq3-format-pk3-entry-checksum-checksum-src-mq3-format-pk3-ml-127014181"></a>
 ### checksum
@@ -41,8 +47,10 @@ centralOffset
 checksum
 ```
 
+CRC-32 of the uncompressed ZIP entry, checked by readEntry for archive-backed data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L28)
 
 <a id="field-field-mq3-format-pk3-entry-comment-comment-src-mq3-format-pk3-ml-1816313115"></a>
 ### comment
@@ -51,8 +59,10 @@ checksum
 comment
 ```
 
+Per-entry ZIP comment decoded from the central-directory record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L40)
 
 <a id="field-field-mq3-format-pk3-entry-compressedsize-compressedsize-src-mq3-format-pk3-ml-460328823"></a>
 ### compressedSize
@@ -61,8 +71,10 @@ comment
 compressedSize
 ```
 
+Length of the compressed ZIP entry data in bytes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L30)
 
 <a id="field-field-mq3-format-pk3-entry-diskstart-diskstart-src-mq3-format-pk3-ml-782579843"></a>
 ### diskStart
@@ -71,8 +83,10 @@ compressedSize
 diskStart
 ```
 
+Disk number containing the start of this ZIP entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L42)
 
 <a id="field-field-mq3-format-pk3-entry-dosdate-dosdate-src-mq3-format-pk3-ml-1458153015"></a>
 ### dosDate
@@ -81,8 +95,10 @@ diskStart
 dosDate
 ```
 
+Packed MS-DOS date and time of the ZIP entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L26)
 
 <a id="field-field-mq3-format-pk3-entry-externalattributes-externalattributes-src-mq3-format-pk3-ml-1453543103"></a>
 ### externalAttributes
@@ -91,8 +107,10 @@ dosDate
 externalAttributes
 ```
 
+External platform-specific ZIP file-attribute bits.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L46)
 
 <a id="field-field-mq3-format-pk3-entry-flags-flags-src-mq3-format-pk3-ml-241394919"></a>
 ### flags
@@ -101,8 +119,10 @@ externalAttributes
 flags
 ```
 
+ZIP general-purpose flags controlling the entry encoding.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L22)
 
 <a id="field-field-mq3-format-pk3-entry-internalattributes-internalattributes-src-mq3-format-pk3-ml-1680007255"></a>
 ### internalAttributes
@@ -111,8 +131,10 @@ flags
 internalAttributes
 ```
 
+Internal ZIP file-attribute bits.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L44)
 
 <a id="field-field-mq3-format-pk3-entry-localoffset-localoffset-src-mq3-format-pk3-ml-1115577231"></a>
 ### localOffset
@@ -121,8 +143,10 @@ internalAttributes
 localOffset
 ```
 
+Absolute byte offset of the local header in sourcePath, including any prefix before the ZIP data.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L34)
 
 <a id="field-field-mq3-format-pk3-entry-method-method-src-mq3-format-pk3-ml-304300829"></a>
 ### method
@@ -131,8 +155,10 @@ localOffset
 method
 ```
 
+ZIP compression-method identifier.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L24)
 
 <a id="field-field-mq3-format-pk3-entry-name-name-src-mq3-format-pk3-ml-1402328065"></a>
 ### name
@@ -141,8 +167,10 @@ method
 name
 ```
 
+Entry path exactly as decoded from ZIP metadata; lookup ignores ASCII case but does not rewrite separators.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L16)
 
 <a id="field-field-mq3-format-pk3-entry-size-size-src-mq3-format-pk3-ml-1037092069"></a>
 ### size
@@ -151,8 +179,10 @@ name
 size
 ```
 
+Length of the uncompressed entry data in bytes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L32)
 
 <a id="field-field-mq3-format-pk3-entry-sourcedirectoryoffset-sourcedirectoryoffset-src-mq3-format-pk3-ml-1811552327"></a>
 ### sourceDirectoryOffset
@@ -161,8 +191,10 @@ size
 sourceDirectoryOffset
 ```
 
+Absolute byte offset of the source PK3's central directory; -1 identifies a loose file.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L50)
 
 <a id="field-field-mq3-format-pk3-entry-sourcepath-sourcepath-src-mq3-format-pk3-ml-153377515"></a>
 ### sourcePath
@@ -171,8 +203,10 @@ sourceDirectoryOffset
 sourcePath
 ```
 
+Filesystem path of the containing PK3, or of the file itself for a loose-file entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L48)
 
 <a id="field-field-mq3-format-pk3-entry-version-version-src-mq3-format-pk3-ml-756469275"></a>
 ### version
@@ -181,8 +215,10 @@ sourcePath
 version
 ```
 
+ZIP creator version recorded in the central-directory entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L18)
 
 <a id="field-field-mq3-format-pk3-entry-versionneeded-versionneeded-src-mq3-format-pk3-ml-674118419"></a>
 ### versionNeeded
@@ -191,5 +227,7 @@ version
 versionNeeded
 ```
 
+Minimum ZIP reader version required to extract the entry.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L20)

@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for be aas file, containing `context`, `readFileFn`, `writeFileFn` and `printFn`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L22)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Caller-supplied data associated with AAS file reads, writes, and file diagnostics.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-file-services-printfn-printfn-src-mq3-botlib-be-aas-file-ml-968128725"></a>
 ### printFn
@@ -31,8 +35,10 @@ context
 printFn
 ```
 
+Host callback that prints navigation-file loading and serialization diagnostics.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L30)
 
 <a id="field-field-mq3-botlib-be-aas-file-services-readfilefn-readfilefn-src-mq3-botlib-be-aas-file-ml-131844805"></a>
 ### readFileFn
@@ -41,8 +47,10 @@ printFn
 readFileFn
 ```
 
+Host callback that reads a requested file through the host filesystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L26)
 
 <a id="field-field-mq3-botlib-be-aas-file-services-writefilefn-writefilefn-src-mq3-botlib-be-aas-file-ml-1493522165"></a>
 ### writeFileFn
@@ -51,5 +59,7 @@ readFileFn
 writeFileFn
 ```
 
+Host callback that writes a complete file through the host filesystem.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L28)

@@ -9,8 +9,10 @@
 struct Orientation
 ```
 
+Data record for `mq3.renderer.model_tags.Orientation`; groups `found`, `origin`, `axis`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L33)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Orientation
 axis
 ```
 
+Normalized attachment basis produced by interpolating the requested model tag.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L39)
 
 <a id="field-field-mq3-renderer-model-tags-orientation-found-found-src-mq3-renderer-model-tags-ml-371171151"></a>
 ### found
@@ -31,8 +35,10 @@ axis
 found
 ```
 
+Whether the requested object or result was found.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L35)
 
 <a id="field-field-mq3-renderer-model-tags-orientation-origin-origin-src-mq3-renderer-model-tags-ml-1822871443"></a>
 ### origin
@@ -41,5 +47,7 @@ found
 origin
 ```
 
+Interpolated attachment-tag translation returned when blending two MD3 animation frames.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L37)

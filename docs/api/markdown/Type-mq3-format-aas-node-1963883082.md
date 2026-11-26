@@ -9,8 +9,10 @@
 struct Node
 ```
 
+Node record for format.aas, containing `planeNum`, `children`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L319)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Node
 children
 ```
 
+Child nodes of this node, or areas as leaves when negative.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L323)
 
 <a id="field-field-mq3-format-aas-node-planenum-planenum-src-mq3-format-aas-ml-1835606593"></a>
 ### planeNum
@@ -31,5 +35,7 @@ children
 planeNum
 ```
 
+AAS plane index dividing the child regions of this serialized node.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L321)

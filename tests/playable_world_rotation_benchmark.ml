@@ -22,7 +22,7 @@ extern function queryFrequency(output as bytes) from "kernel32.dll" symbol "Quer
 const WIDTH=1280
 const HEIGHT=720
 const FRAMES=360
-struct Refdef x y width height fovX vieworg viewaxis end struct
+struct Refdef x y width height fovX fovY vieworg viewaxis end struct
 struct Observation frame yaw milliseconds chooseMs buildMs effectsMs renderMs faces retained drawable skippedSky sky world gpu drawCalls rebuilt cluster pvs end struct
 function fail(message) window.shutdown();return error(7492,"retail world rotation: "+message) end function
 function u64(data) return numeric.readU32(data,0)+numeric.readU32(data,4)*4294967296 end function
@@ -66,7 +66,7 @@ function main(args)
   configured=selection.setTwoSidedTextures(cache,twoSided);if configured is error then return configured end if
   camera=viewer.camera([1024.0,1000.0,50.125],90.0,0.0,0.0,0.0)
   axes=qmath.AnglesToAxis([0.0,90.0,0.0]);cfg.runtime=axes
-  refdef=Refdef(0,0,640,480,90.0,camera.position,axes)
+  refdef=Refdef(0,0,640,480,90.0,73.739795,camera.position,axes)
   chosen=selection.prepareCached(cache,camera,cfg);if chosen is error then return chosen end if
   retainedCache=void;batch=void
   if referenceMode then

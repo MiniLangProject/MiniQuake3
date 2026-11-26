@@ -9,22 +9,168 @@ import mq3.renderer.player_skins as skins
 import mq3.renderer.view_math as viewMath
 import std.array as arrays
 
+/// Level-of-detail result indicating that the model is not drawn.
 const LOD_CULLED=0
+/// Level-of-detail tier used for distant player models.
 const LOD_FAR=1
+/// Level-of-detail tier used for intermediate-distance player models.
 const LOD_MEDIUM=2
+/// Level-of-detail tier retaining full player-model geometry.
 const LOD_FULL=3
+/// Triangle-count threshold used when retaining full detail for a model surface.
 const FULL_SURFACE_TRIANGLE_LIMIT=8192
 
-struct Key lowerOldFrame lowerFrame lowerPhase upperOldFrame upperFrame upperPhase end struct
-struct Entry key triangles end struct
-struct LodPolicy fullDistance mediumDistance farDistance mediumStride farStride end struct
-struct Lighting direction ambient directed end struct
-struct DrawTriangle positions texCoords normals lights part surfaceIndex surfaceName shaderName imageName lod end struct
-struct Cache models phaseCount maxEntries maxTrianglesPerTarget maxTargetsPerFrame entries hits misses builds evictions frameTargets frameTriangles detailed skinSet lodPolicy lighting frameCulled frameFull frameMedium frameFar sourceTriangles end struct
-struct Stats entries hits misses builds evictions frameTargets frameTriangles frameCulled frameFull frameMedium frameFar sourceTriangles end struct
+/// Data record for `mq3.renderer.player_render_cache.Key`; groups `lowerOldFrame`, `lowerFrame`, `lowerPhase`, `upperOldFrame`, `upperFrame`, `upperPhase`.
+struct Key
+  /// Previous animation frame of the lower-body model used in the animation cache key.
+  lowerOldFrame
+  /// Current animation frame of the lower-body model used in the animation cache key.
+  lowerFrame
+  /// Quantized frame-interpolation phase of the lower-body model used in the animation cache key.
+  lowerPhase
+  /// Previous animation frame of the upper-body model used in the animation cache key.
+  upperOldFrame
+  /// Current animation frame of the upper-body model used in the animation cache key.
+  upperFrame
+  /// Quantized frame-interpolation phase of the upper-body model used in the animation cache key.
+  upperPhase
+end struct
+/// Data record for `mq3.renderer.player_render_cache.Entry`; groups `key`, `triangles`.
+struct Entry
+  /// Animation-frame and interpolation-phase values used to identify a cache entry.
+  key
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+end struct
+/// Data record for `mq3.renderer.player_render_cache.LodPolicy`; groups `fullDistance`, `mediumDistance`, `farDistance`, `mediumStride`, `farStride`.
+struct LodPolicy
+  /// Maximum distance at which full model detail is retained.
+  fullDistance
+  /// Distance threshold for the medium model-detail tier.
+  mediumDistance
+  /// Distance threshold for the most distant model-detail tier.
+  farDistance
+  /// Triangle sampling stride used by the medium detail tier.
+  mediumStride
+  /// Triangle sampling stride used by the distant detail tier.
+  farStride
+end struct
+/// Data record for `mq3.renderer.player_render_cache.Lighting`; groups `direction`, `ambient`, `directed`.
+struct Lighting
+  /// Direction of the dominant light contribution.
+  direction
+  /// Ambient light contribution sampled or applied by the renderer.
+  ambient
+  /// Directional light contribution sampled or applied by the renderer.
+  directed
+end struct
+/// Data record for `mq3.renderer.player_render_cache.DrawTriangle`; groups `positions`, `texCoords`, `normals`, `lights`, `part`, `surfaceIndex`, and 4 further fields.
+struct DrawTriangle
+  /// Cached player-triangle positions reused for the selected animation and detail level.
+  positions
+  /// Cached texture coordinates reused when drawing a player-model triangle at the selected detail
+  /// level.
+  texCoords
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Lighting contributions applied to the cached draw triangle.
+  lights
+  /// Player-model component from which this geometry originated.
+  part
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Model-surface name used to select a skin or material mapping.
+  surfaceName
+  /// Material name retained with the cached player-model triangle for drawing.
+  shaderName
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Level-of-detail selection used for this model or draw result.
+  lod
+end struct
+/// Data record for `mq3.renderer.player_render_cache.Cache`; groups `models`, `phaseCount`, `maxEntries`, `maxTrianglesPerTarget`, `maxTargetsPerFrame`, `entries`, and 15 further fields.
+struct Cache
+  /// Registered models or model parts available to the subsystem.
+  models
+  /// Number of interpolation phases represented by the animation cache.
+  phaseCount
+  /// Maximum number of entries retained by the cache.
+  maxEntries
+  /// Maximum triangle detail retained for one cached draw target.
+  maxTrianglesPerTarget
+  /// Maximum number of draw targets prepared during one frame.
+  maxTargetsPerFrame
+  /// Records currently stored in this index, registry, or cache.
+  entries
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of lookups that required loading or rebuilding data.
+  misses
+  /// Number of cache entries or batches rebuilt from source data.
+  builds
+  /// Number of cache entries discarded to make room for newer data.
+  evictions
+  /// Number of model draw targets prepared during the current frame.
+  frameTargets
+  /// Number of triangles submitted for cached model targets this frame.
+  frameTriangles
+  /// Whether the cache retains the more detailed geometry variant.
+  detailed
+  /// Resolved skin bindings for the player model's three body parts.
+  skinSet
+  /// Distance and stride thresholds controlling player-model detail.
+  lodPolicy
+  /// Lighting values applied to the assembled player model.
+  lighting
+  /// Number of player-model targets rejected this frame.
+  frameCulled
+  /// Number of player-model targets drawn at full detail this frame.
+  frameFull
+  /// Number of player-model targets drawn at medium detail this frame.
+  frameMedium
+  /// Number of player-model targets drawn at distant detail this frame.
+  frameFar
+  /// Number of source triangles considered when preparing the batch.
+  sourceTriangles
+end struct
+/// Data record for `mq3.renderer.player_render_cache.Stats`; groups `entries`, `hits`, `misses`, `builds`, `evictions`, `frameTargets`, and 6 further fields.
+struct Stats
+  /// Number of player-render cache entries currently retained.
+  entries
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of lookups that required loading or rebuilding data.
+  misses
+  /// Number of cache entries or batches rebuilt from source data.
+  builds
+  /// Number of cache entries discarded to make room for newer data.
+  evictions
+  /// Number of model draw targets prepared during the current frame.
+  frameTargets
+  /// Number of triangles submitted for cached model targets this frame.
+  frameTriangles
+  /// Number of player-model targets rejected this frame.
+  frameCulled
+  /// Number of player-model targets drawn at full detail this frame.
+  frameFull
+  /// Number of player-model targets drawn at medium detail this frame.
+  frameMedium
+  /// Number of player-model targets drawn at distant detail this frame.
+  frameFar
+  /// Number of source triangles considered when preparing the batch.
+  sourceTriangles
+end struct
 
+/// Creates error `7540` with message `"player render cache: "+message`.
+/// @param message Input used in the result expression `error(7540,"player render cache: "+message)`.
 function fail(message) return error(7540,"player render cache: "+message) end function
 
+/// Builds `mq3.renderer.player_render_cache.Cache` for `mq3.renderer.player_render_cache.create`.
+/// @param models Initial value for `mq3.renderer.player_render_cache.Cache.models`.
+/// @param phaseCount Initial value for `mq3.renderer.player_render_cache.Cache.phaseCount`.
+/// @param maxEntries Initial value for `mq3.renderer.player_render_cache.Cache.maxEntries`.
+/// @param maxTrianglesPerTarget Initial value for `mq3.renderer.player_render_cache.Cache.maxTrianglesPerTarget`.
+/// @param maxTargetsPerFrame Initial value for `mq3.renderer.player_render_cache.Cache.maxTargetsPerFrame`.
 function create(models,phaseCount,maxEntries,maxTrianglesPerTarget,maxTargetsPerFrame)
   if models==void or models.lower==void or models.upper==void or models.head==void then return fail("three MD3 model pieces required") end if
   if phaseCount<1 then return fail("phase count must be positive") end if
@@ -34,12 +180,22 @@ function create(models,phaseCount,maxEntries,maxTrianglesPerTarget,maxTargetsPer
   return Cache(models,phaseCount,maxEntries,maxTrianglesPerTarget,maxTargetsPerFrame,[],0,0,0,0,0,0,false,void,void,void,0,0,0,0,0)
 end function
 
+/// Builds `mq3.renderer.player_render_cache.LodPolicy` for `mq3.renderer.player_render_cache.lodPolicy`.
+/// @param fullDistance Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param mediumDistance Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param farDistance Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param mediumStride Initial value for `mq3.renderer.player_render_cache.LodPolicy.mediumStride`.
+/// @param farStride Initial value for `mq3.renderer.player_render_cache.LodPolicy.farStride`.
 function lodPolicy(fullDistance,mediumDistance,farDistance,mediumStride,farStride)
   if fullDistance<0.0 or mediumDistance<=fullDistance or farDistance<=mediumDistance then return fail("LOD distances must be increasing") end if
   if mediumStride<2 or farStride<=mediumStride then return fail("LOD strides must be increasing") end if
   return LodPolicy(numeric.f32(fullDistance),numeric.f32(mediumDistance),numeric.f32(farDistance),mediumStride,farStride)
 end function
 
+/// Builds `mq3.renderer.player_render_cache.Lighting` for `mq3.renderer.player_render_cache.lighting`.
+/// @param direction Three-component vector read at indices 0, 1, and 2.
+/// @param ambient Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param directed Argument 1 supplied to `mq3.compat.numeric.f32`.
 function lighting(direction,ambient,directed)
   if direction==void or len(direction)!=3 then return fail("light direction must have three components") end if
   lengthSquared=numeric.fadd(numeric.fadd(numeric.fmul(direction[0],direction[0]),numeric.fmul(direction[1],direction[1])),numeric.fmul(direction[2],direction[2]))
@@ -52,6 +208,13 @@ end function
 
 // Detailed caches retain every triangle at build time. LOD selection happens
 // after lookup, so all targets sharing an animation pose share one interpolation.
+/// @param models Value forwarded as `models` to `mq3.renderer.player_render_cache.create`.
+/// @param skinSet Record providing `skinSet.lower`, `skinSet.upper`, `skinSet.head`.
+/// @param phaseCount Value forwarded as `phaseCount` to `mq3.renderer.player_render_cache.create`.
+/// @param maxEntries Value forwarded as `maxEntries` to `mq3.renderer.player_render_cache.create`.
+/// @param maxTargetsPerFrame Value forwarded as `maxTargetsPerFrame` to `mq3.renderer.player_render_cache.create`.
+/// @param policy Value assigned to `value.lodPolicy`.
+/// @param light Value assigned to `value.lighting`.
 function createDetailed(models,skinSet,phaseCount,maxEntries,maxTargetsPerFrame,policy,light)
   if skinSet==void or skinSet.lower==void or skinSet.upper==void or skinSet.head==void then return fail("three resolved player skins required") end if
   if policy==void or light==void then return fail("LOD policy and lighting required") end if
@@ -60,12 +223,16 @@ function createDetailed(models,skinSet,phaseCount,maxEntries,maxTargetsPerFrame,
   return value
 end function
 
+/// Updates `cache.frameTargets`, `cache.frameTriangles`, `cache.frameCulled`, `cache.frameFull`, `cache.frameMedium` in `mq3.renderer.player_render_cache.beginFrame`; returns `cache`.
+/// @param cache Mutable record or buffer; this call updates `cache.frameTargets`, `cache.frameTriangles`, `cache.frameCulled`, `cache.frameFull`, `cache.frameMedium`.
 function beginFrame(cache)
   if cache==void then return fail("missing cache") end if
   cache.frameTargets=0;cache.frameTriangles=0;cache.frameCulled=0;cache.frameFull=0;cache.frameMedium=0;cache.frameFar=0
   return cache
 end function
 
+/// Rejects missing animation samples, negative frame indices, and backlerp outside zero through one.
+/// @param value Record providing `value.oldFrame`, `value.frame`, `value.backlerp`.
 function validateSample(value)
   if value==void then return fail("frame sample required") end if
   if value.oldFrame<0 or value.frame<0 then return fail("negative animation frame") end if
@@ -75,6 +242,8 @@ end function
 
 // Round to the nearest one of phaseCount evenly spaced backlerp values.
 // phaseCount=1 deliberately selects the current frame without interpolation.
+/// @param cache Record providing `cache.phaseCount`.
+/// @param value Record providing `value.backlerp`.
 function phaseFor(cache,value)
   valid=validateSample(value);if valid is error then return valid end if
   if cache.phaseCount==1 then return 0 end if
@@ -84,21 +253,34 @@ function phaseFor(cache,value)
   return phase
 end function
 
+/// Returns `numeric.f32((phase*1.0)/(cache.phaseCount-1))` from `mq3.renderer.player_render_cache.phaseBacklerp`; earlier branches return `0.0`.
+/// @param cache Record providing `cache.phaseCount`.
+/// @param phase Input used in the result expression `numeric.f32((phase*1.0)/(cache.phaseCount-1))`.
 function phaseBacklerp(cache,phase)
   if cache.phaseCount==1 then return 0.0 end if
   return numeric.f32((phase*1.0)/(cache.phaseCount-1))
 end function
 
+/// Builds `mq3.renderer.player_render_cache.Key` for `mq3.renderer.player_render_cache.keyFor`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.player_render_cache.phaseFor`.
+/// @param lowerSample Record providing `lowerSample.oldFrame`, `lowerSample.frame`.
+/// @param upperSample Record providing `upperSample.oldFrame`, `upperSample.frame`.
 function keyFor(cache,lowerSample,upperSample)
   lowerPhase=phaseFor(cache,lowerSample);if lowerPhase is error then return lowerPhase end if
   upperPhase=phaseFor(cache,upperSample);if upperPhase is error then return upperPhase end if
   return Key(lowerSample.oldFrame,lowerSample.frame,lowerPhase,upperSample.oldFrame,upperSample.frame,upperPhase)
 end function
 
+/// Compares lower/upper current frames, previous frames, and quantized interpolation phases for cache identity.
+/// @param a Record providing `a.lowerOldFrame`, `a.lowerFrame`, `a.lowerPhase`, `a.upperOldFrame`, `a.upperFrame`, `a.upperPhase`.
+/// @param b Record providing `b.lowerOldFrame`, `b.lowerFrame`, `b.lowerPhase`, `b.upperOldFrame`, `b.upperFrame`, `b.upperPhase`.
 function sameKey(a,b)
   return a.lowerOldFrame==b.lowerOldFrame and a.lowerFrame==b.lowerFrame and a.lowerPhase==b.lowerPhase and a.upperOldFrame==b.upperOldFrame and a.upperFrame==b.upperFrame and a.upperPhase==b.upperPhase
 end function
 
+/// Returns `void` from `mq3.renderer.player_render_cache.find`; earlier branches return `cache.entries[index]`.
+/// @param cache Record providing `cache.entries`.
+/// @param key Value forwarded as `b` to `mq3.renderer.player_render_cache.sameKey`.
 function find(cache,key)
   if len(cache.entries)>0 then
     for index=0 to len(cache.entries)-1
@@ -110,6 +292,8 @@ end function
 
 // Evenly retain triangles across the stable lower/upper/head stream. This
 // avoids starving later model pieces when the target budget is small.
+/// @param triangles Indexed input read at `source`.
+/// @param budget Argument 2 supplied to `mq3.compat.numeric.quotient`.
 function limitTriangles(triangles,budget)
   if len(triangles)<=budget then return triangles end if
   result=[]
@@ -120,6 +304,9 @@ function limitTriangles(triangles,budget)
   return result
 end function
 
+/// Updates `cache.entries`, `cache.evictions`, `cache.builds`, `cache.sourceTriangles` in `mq3.renderer.player_render_cache.build`; returns `entry`.
+/// @param cache Mutable record or buffer; this call updates `cache.entries`, `cache.evictions`, `cache.builds`, `cache.sourceTriangles`.
+/// @param key Record providing `key.lowerFrame`, `key.lowerOldFrame`, `key.lowerPhase`, `key.upperFrame`, `key.upperOldFrame`, `key.upperPhase`.
 function build(cache,key)
   lower=player.animation(key.lowerFrame,key.lowerOldFrame,phaseBacklerp(cache,key.lowerPhase))
   upper=player.animation(key.upperFrame,key.upperOldFrame,phaseBacklerp(cache,key.upperPhase))
@@ -137,6 +324,9 @@ function build(cache,key)
   return entry
 end function
 
+/// Builds `positions[corner]`, `normals[corner]` in `mq3.renderer.player_render_cache.localTriangleToTarget`.
+/// @param source Record providing `source.positions`, `source.normals`, `source.texCoords`, `source.part`, `source.surfaceIndex`, `source.shaderName`.
+/// @param target Record providing `target.axis`, `target.origin`.
 function localTriangleToTarget(source,target)
   positions=array(3,void);normals=array(3,void)
   for corner=0 to 2
@@ -149,6 +339,9 @@ function localTriangleToTarget(source,target)
   return player.Triangle(positions,source.texCoords,normals,source.part,source.surfaceIndex,source.shaderName)
 end function
 
+/// Builds `result[index]` in `mq3.renderer.player_render_cache.transformTriangles`; returns `result`.
+/// @param triangles Indexed input read at `index`.
+/// @param target Value forwarded as `target` to `mq3.renderer.player_render_cache.localTriangleToTarget`.
 function transformTriangles(triangles,target)
   // Fill a fixed result buffer. Appending here recopies the growing triangle
   // stream for every source triangle and dominates frames with full player LOD.
@@ -164,6 +357,10 @@ end function
 
 // One call consumes one target from the current frame budget. Cache misses
 // assemble/interpolate in identity space; hits only apply the target transform.
+/// @param cache Mutable record or buffer; this call updates `cache.misses`, `cache.hits`, `cache.frameTargets`, `cache.frameTriangles`.
+/// @param lowerSample Value forwarded as `lowerSample` to `mq3.renderer.player_render_cache.keyFor`.
+/// @param upperSample Value forwarded as `upperSample` to `mq3.renderer.player_render_cache.keyFor`.
+/// @param target Argument 1 supplied to `mq3.renderer.player_model_assembly.validateTransform`.
 function renderTarget(cache,lowerSample,upperSample,target)
   if cache==void then return fail("missing cache") end if
   if cache.frameTargets>=cache.maxTargetsPerFrame then return fail("target budget exhausted") end if
@@ -178,14 +375,24 @@ function renderTarget(cache,lowerSample,upperSample,target)
   return triangles
 end function
 
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.player_render_cache.validPoint`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function validPoint(value) return value!=void and len(value)==3 end function
 
+/// Computes `distance` from `numeric.fsqrt(numeric.fadd(numeric.fadd(numeric.fmul(dx,dx),numeric.fmul(dy,dy)),numeric.fmul(dz,dz)))` using `mq3.renderer.player_render_cache.validPoint`, `mq3.compat.numeric.fsub`, `mq3.compat.numeric.fsqrt`.
+/// @param a Value forwarded as `value` to `mq3.renderer.player_render_cache.validPoint`.
+/// @param b Value forwarded as `value` to `mq3.renderer.player_render_cache.validPoint`.
 function distance(a,b)
   if not validPoint(a) or not validPoint(b) then return fail("viewer and target origins need three components") end if
   dx=numeric.fsub(a[0],b[0]);dy=numeric.fsub(a[1],b[1]);dz=numeric.fsub(a[2],b[2])
   return numeric.fsqrt(numeric.fadd(numeric.fadd(numeric.fmul(dx,dx),numeric.fmul(dy,dy)),numeric.fmul(dz,dz)))
 end function
 
+/// Selects full, medium, far, or culled detail from visibility and the cache's distance thresholds.
+/// @param cache Record providing `cache.detailed`, `cache.lodPolicy`.
+/// @param viewerOrigin Value forwarded as `a` to `mq3.renderer.player_render_cache.distance`.
+/// @param visible Input tested by `not visible`.
+/// @param target Record providing `target.origin`.
 function lodFor(cache,viewerOrigin,visible,target)
   if cache==void or not cache.detailed then return fail("detailed cache required") end if
   if not visible then return LOD_CULLED end if
@@ -196,6 +403,9 @@ function lodFor(cache,viewerOrigin,visible,target)
   return LOD_CULLED
 end function
 
+/// Returns `0` from `mq3.renderer.player_render_cache.strideFor`; earlier branches return `1`, `cache.lodPolicy.mediumStride`, `cache.lodPolicy.farStride`.
+/// @param cache Record providing `cache.lodPolicy`.
+/// @param lod Input tested by `lod==LOD_FULL`.
 function strideFor(cache,lod)
   if lod==LOD_FULL then return 1 end if
   if lod==LOD_MEDIUM then return cache.lodPolicy.mediumStride end if
@@ -205,6 +415,9 @@ end function
 
 // The source stream is grouped by part and surface. Resetting the stride at
 // every boundary guarantees that even a tiny face/gear surface stays present.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.player_render_cache.strideFor`.
+/// @param triangles Sequence traversed as `triangle` while producing this result.
+/// @param lod Value forwarded as `lod` to `mq3.renderer.player_render_cache.strideFor`.
 function selectLodTriangles(cache,triangles,lod)
   stride=strideFor(cache,lod);if stride==0 then return [] end if
   if stride==1 then return triangles end if
@@ -217,6 +430,9 @@ function selectLodTriangles(cache,triangles,lod)
   return result
 end function
 
+/// Computes `modelForPart` from `fail("unknown player part")`.
+/// @param cache Record providing `cache.models`.
+/// @param part Input tested by `part==player.LOWER_PART`.
 function modelForPart(cache,part)
   if part==player.LOWER_PART then return cache.models.lower end if
   if part==player.UPPER_PART then return cache.models.upper end if
@@ -224,6 +440,9 @@ function modelForPart(cache,part)
   return fail("unknown player part")
 end function
 
+/// Computes `skinForPart` from `fail("unknown player part")`.
+/// @param cache Record providing `cache.skinSet`.
+/// @param part Input tested by `part==player.LOWER_PART`.
 function skinForPart(cache,part)
   if part==player.LOWER_PART then return cache.skinSet.lower end if
   if part==player.UPPER_PART then return cache.skinSet.upper end if
@@ -231,6 +450,10 @@ function skinForPart(cache,part)
   return fail("unknown player part")
 end function
 
+/// Computes `bindingForSurface` from `fail("skin has no binding for "+surfaceName)` using `mq3.renderer.player_render_cache.modelForPart`, `mq3.renderer.player_render_cache.skinForPart`, `stringEqualsIgnoreCaseAscii`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.player_render_cache.modelForPart`.
+/// @param part Value forwarded as `part` to `mq3.renderer.player_render_cache.modelForPart`.
+/// @param surfaceIndex Input tested by `surfaceIndex<0 or surfaceIndex>=len(model.surfaces)`.
 function bindingForSurface(cache,part,surfaceIndex)
   model=modelForPart(cache,part);if model is error then return model end if
   if surfaceIndex<0 or surfaceIndex>=len(model.surfaces) then return fail("surface outside player model") end if
@@ -241,6 +464,9 @@ function bindingForSurface(cache,part,surfaceIndex)
   return fail("skin has no binding for "+surfaceName)
 end function
 
+/// Computes `vertexLight` from `numeric.f32(value)` using `mq3.compat.numeric.fadd`, `mq3.compat.numeric.fmul`, `mq3.compat.numeric.f32`.
+/// @param cache Record providing `cache.lighting`.
+/// @param normal Three-component vector read at indices 0, 1, and 2.
 function vertexLight(cache,normal)
   dot=numeric.fadd(numeric.fadd(numeric.fmul(normal[0],cache.lighting.direction[0]),numeric.fmul(normal[1],cache.lighting.direction[1])),numeric.fmul(normal[2],cache.lighting.direction[2]))
   if dot<0.0 then dot=0.0 end if
@@ -249,6 +475,10 @@ function vertexLight(cache,normal)
   return numeric.f32(value)
 end function
 
+/// Builds `mq3.renderer.player_render_cache.DrawTriangle` for `mq3.renderer.player_render_cache.decorateTriangle`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.player_render_cache.bindingForSurface`.
+/// @param triangle Record providing `triangle.part`, `triangle.surfaceIndex`, `triangle.normals`, `triangle.positions`, `triangle.texCoords`.
+/// @param lod Initial value for `mq3.renderer.player_render_cache.DrawTriangle.lod`.
 function decorateTriangle(cache,triangle,lod)
   resolved=bindingForSurface(cache,triangle.part,triangle.surfaceIndex);if resolved is error then return resolved end if
   lights=[]
@@ -258,6 +488,12 @@ end function
 
 // Visibility and distance are evaluated before consuming the per-frame target
 // budget. Visible targets use the complete cached mesh at close range.
+/// @param cache Mutable record or buffer; this call updates `cache.frameCulled`, `cache.misses`, `cache.hits`, `cache.frameTargets`, `cache.frameTriangles`.
+/// @param lowerSample Value forwarded as `lowerSample` to `mq3.renderer.player_render_cache.keyFor`.
+/// @param upperSample Value forwarded as `upperSample` to `mq3.renderer.player_render_cache.keyFor`.
+/// @param target Argument 1 supplied to `mq3.renderer.player_model_assembly.validateTransform`.
+/// @param viewerOrigin Value forwarded as `viewerOrigin` to `mq3.renderer.player_render_cache.lodFor`.
+/// @param visible Value forwarded as `visible` to `mq3.renderer.player_render_cache.lodFor`.
 function renderTargetDetailed(cache,lowerSample,upperSample,target,viewerOrigin,visible)
   if cache==void or not cache.detailed then return fail("detailed cache required") end if
   valid=player.validateTransform(target);if valid is error then return valid end if
@@ -282,6 +518,8 @@ function renderTargetDetailed(cache,lowerSample,upperSample,target,viewerOrigin,
   return result
 end function
 
+/// Builds `mq3.renderer.player_render_cache.Stats` for `mq3.renderer.player_render_cache.stats`.
+/// @param cache Record providing `cache.entries`, `cache.hits`, `cache.misses`, `cache.builds`, `cache.evictions`, `cache.frameTargets`.
 function stats(cache)
   if cache==void then return fail("missing cache") end if
   return Stats(len(cache.entries),cache.hits,cache.misses,cache.builds,cache.evictions,cache.frameTargets,cache.frameTriangles,cache.frameCulled,cache.frameFull,cache.frameMedium,cache.frameFar,cache.sourceTriangles)

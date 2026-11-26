@@ -15,14 +15,16 @@ Reachable from entry: **no**
 function exchange(indices, a, b)
 ```
 
+Swap two entries of the rank-index array in place.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `indices` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `indices` | `dynamic` | — | Array or byte sequence accessed at `a` and `b`. Entries are written in place. |
+| `a` | `dynamic` | — | Value used by `exchange` in `saved = indices[a]`. |
+| `b` | `dynamic` | — | Value used by `exchange` in `indices[a] = indices[b]`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L10)
 
 <a id="function-function-mq3-game-rank-sort-rangesort-function-rangesort-level-indices-low-high-compare-src-mq3-game-rank-sort-ml-1193293874"></a>
 ### rangeSort
@@ -31,16 +33,18 @@ function exchange(indices, a, b)
 function rangeSort(level, indices, low, high, compare)
 ```
 
+Apply `mq3.game.rank_sort.exchange` and `mq3.game.rank_sort.rangeSort` while evaluating `rangeSort`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `indices` | `dynamic` | — |  |
-| `low` | `dynamic` | — |  |
-| `high` | `dynamic` | — |  |
-| `compare` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `compare`. |
+| `indices` | `dynamic` | — | Array or byte sequence accessed at `a` and `b`. Entries are written in place. |
+| `low` | `dynamic` | — | Value used by `exchange` in `saved = indices[a]`. |
+| `high` | `dynamic` | — | Value used by `exchange` in `indices[a] = indices[b]`. |
+| `compare` | `dynamic` | — | Value passed as argument 5 to `mq3.game.rank_sort.rangeSort`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L20)
 
 <a id="function-function-mq3-game-rank-sort-sortindices-function-sortindices-level-indices-count-compare-src-mq3-game-rank-sort-ml-1148496387"></a>
 ### sortIndices
@@ -49,12 +53,14 @@ function rangeSort(level, indices, low, high, compare)
 function sortIndices(level, indices, count, compare)
 ```
 
+Sort client indices using the rank comparison callback without moving the underlying client records.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `indices` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
-| `compare` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `compare`. |
+| `indices` | `dynamic` | — | Array or byte sequence accessed at `a` and `b`. Entries are written in place. |
+| `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
+| `compare` | `dynamic` | — | Value passed as argument 5 to `mq3.game.rank_sort.rangeSort`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L87)

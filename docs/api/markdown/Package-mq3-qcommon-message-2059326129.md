@@ -17,6 +17,7 @@
 - [`mq3.qcommon.message.init`](File-src-mq3-qcommon-message-ml-1547411275.md#function-function-mq3-qcommon-message-init-function-init-length-src-mq3-qcommon-message-ml-136413964) — function
 - [`mq3.qcommon.message.initOob`](File-src-mq3-qcommon-message-ml-1547411275.md#function-function-mq3-qcommon-message-initoob-function-initoob-length-src-mq3-qcommon-message-ml-2033628292) — function
 - [`mq3.qcommon.message.initStorage`](File-src-mq3-qcommon-message-ml-1547411275.md#function-function-mq3-qcommon-message-initstorage-function-initstorage-data-length-oob-src-mq3-qcommon-message-ml-1993176884) — function
+- [`mq3.qcommon.message.initStorageWithCodec`](File-src-mq3-qcommon-message-ml-1547411275.md#function-function-mq3-qcommon-message-initstoragewithcodec-function-initstoragewithcodec-data-length-oob-codec-src-mq3-qcommon-message-ml-2140469862) — function
 - [`mq3.qcommon.message.MAX_STRING_CHARS`](File-src-mq3-qcommon-message-ml-1547411275.md#constant-constant-mq3-qcommon-message-max-string-chars-const-max-string-chars-1024-src-mq3-qcommon-message-ml-835710058) — constant
 - [`mq3.qcommon.message.Message`](Type-mq3-qcommon-message-message-1158097836.md) — struct
 - [`mq3.qcommon.message.readAngle16`](File-src-mq3-qcommon-message-ml-1547411275.md#function-function-mq3-qcommon-message-readangle16-function-readangle16-msg-src-mq3-qcommon-message-ml-108316579) — function

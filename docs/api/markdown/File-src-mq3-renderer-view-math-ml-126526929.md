@@ -22,8 +22,10 @@ Reachable from entry: **yes**
 const CULL_CLIP = 1
 ```
 
+Bounds classification indicating that the object intersects the view frustum.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L13)
 
 <a id="constant-constant-mq3-renderer-view-math-cull-in-const-cull-in-0-src-mq3-renderer-view-math-ml-1220791251"></a>
 ### CULL_IN
@@ -32,8 +34,10 @@ const CULL_CLIP = 1
 const CULL_IN = 0
 ```
 
+Bounds classification indicating that the object lies entirely inside the view frustum.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L11)
 
 <a id="constant-constant-mq3-renderer-view-math-cull-out-const-cull-out-2-src-mq3-renderer-view-math-ml-1811835061"></a>
 ### CULL_OUT
@@ -42,8 +46,10 @@ const CULL_IN = 0
 const CULL_OUT = 2
 ```
 
+Bounds classification indicating that the object lies entirely outside the view frustum.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L15)
 
 <a id="function-function-mq3-renderer-view-math-culllocalbox-function-culllocalbox-bounds-value-frustum-nocull-src-mq3-renderer-view-math-ml-2041496011"></a>
 ### cullLocalBox
@@ -52,15 +58,17 @@ const CULL_OUT = 2
 function cullLocalBox(bounds, value, frustum, noCull)
 ```
 
+Transforms all eight local box corners and classifies them against the validated world-space frustum.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `bounds` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `frustum` | `dynamic` | — |  |
-| `noCull` | `dynamic` | — |  |
+| `bounds` | `dynamic` | — | Nested indexed data; outer entries read at `0`, `1`, `i&1`, `(i>>1)&1`. |
+| `value` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.view_math.validateOrientation`. |
+| `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.view_math.validateFrustum`. |
+| `noCull` | `dynamic` | — | Input tested by `noCull`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L183)
 
 <a id="function-function-mq3-renderer-view-math-culllocalpointandradius-function-culllocalpointandradius-point-radius-value-frustum-nocull-src-mq3-renderer-view-math-ml-873582862"></a>
 ### cullLocalPointAndRadius
@@ -69,16 +77,18 @@ function cullLocalBox(bounds, value, frustum, noCull)
 function cullLocalPointAndRadius(point, radius, value, frustum, noCull)
 ```
 
+Returns `cullPointAndRadius(transformed,radius,frustum,noCull)` from `mq3.renderer.view_math.cullLocalPointAndRadius`; earlier branches return `transformed`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `point` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `frustum` | `dynamic` | — |  |
-| `noCull` | `dynamic` | — |  |
+| `point` | `dynamic` | — | Value forwarded as `local` to `mq3.renderer.view_math.localPointToWorld`. |
+| `radius` | `dynamic` | — | Value forwarded as `radius` to `mq3.renderer.view_math.cullPointAndRadius`. |
+| `value` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.view_math.localPointToWorld`. |
+| `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.view_math.cullPointAndRadius`. |
+| `noCull` | `dynamic` | — | Value forwarded as `noCull` to `mq3.renderer.view_math.cullPointAndRadius`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L173)
 
 <a id="function-function-mq3-renderer-view-math-cullpointandradius-function-cullpointandradius-point-radius-frustum-nocull-src-mq3-renderer-view-math-ml-371780749"></a>
 ### cullPointAndRadius
@@ -87,15 +97,17 @@ function cullLocalPointAndRadius(point, radius, value, frustum, noCull)
 function cullPointAndRadius(point, radius, frustum, noCull)
 ```
 
+Validates and classifies a sphere against four frustum planes; disabled culling returns CULL_CLIP.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `point` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `frustum` | `dynamic` | — |  |
-| `noCull` | `dynamic` | — |  |
+| `point` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.view_math.valid3`. |
+| `radius` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.fneg`. |
+| `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.view_math.validateFrustum`. |
+| `noCull` | `dynamic` | — | Input tested by `noCull`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L152)
 
 <a id="function-function-mq3-renderer-view-math-localnormaltoworld-function-localnormaltoworld-local-value-src-mq3-renderer-view-math-ml-428252802"></a>
 ### localNormalToWorld
@@ -104,13 +116,15 @@ function cullPointAndRadius(point, radius, frustum, noCull)
 function localNormalToWorld(local, value)
 ```
 
+Transforms a local direction through the orientation basis using compatibility float arithmetic, without translation.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `local` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `local` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.view_math.valid3`. |
+| `value` | `dynamic` | — | Record providing `value.axis`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L77)
 
 <a id="function-function-mq3-renderer-view-math-localpointtoworld-function-localpointtoworld-local-value-src-mq3-renderer-view-math-ml-2069206878"></a>
 ### localPointToWorld
@@ -119,13 +133,15 @@ function localNormalToWorld(local, value)
 function localPointToWorld(local, value)
 ```
 
+Transforms a local point through the orientation basis and adds the world-space origin.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `local` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `local` | `dynamic` | — | Value forwarded as `local` to `mq3.renderer.view_math.localNormalToWorld`. |
+| `value` | `dynamic` | — | Record providing `value.origin`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L91)
 
 <a id="function-function-mq3-renderer-view-math-matrixvector4-function-matrixvector4-source-matrix-src-mq3-renderer-view-math-ml-703450354"></a>
 ### matrixVector4
@@ -134,13 +150,15 @@ function localPointToWorld(local, value)
 function matrixVector4(source, matrix)
 ```
 
+Multiplies a four-component vector by a column-major 4-by-4 matrix using compatibility float arithmetic.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
-| `matrix` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Indexed input read at `0`, `1`, `2`, `3`. |
+| `matrix` | `dynamic` | — | Indexed input read at `i`, `i+4`, `i+8`, `i+12`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L109)
 
 <a id="function-function-mq3-renderer-view-math-orientation-function-orientation-origin-axis-src-mq3-renderer-view-math-ml-385764019"></a>
 ### orientation
@@ -149,13 +167,15 @@ function matrixVector4(source, matrix)
 function orientation(origin, axis)
 ```
 
+Constructs `mq3.renderer.view_math.Orientation` from `origin`, `axis`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
-| `axis` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Initial value for `mq3.renderer.view_math.Orientation.origin`. |
+| `axis` | `dynamic` | — | Initial value for `mq3.renderer.view_math.Orientation.axis`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L46)
 
 - [mq3.renderer.view_math.Orientation](Type-mq3-renderer-view-math-orientation-1941990111.md) — struct
 <a id="function-function-mq3-renderer-view-math-plane-function-plane-normal-dist-src-mq3-renderer-view-math-ml-209118715"></a>
@@ -165,13 +185,15 @@ function orientation(origin, axis)
 function plane(normal, dist)
 ```
 
+Constructs `mq3.renderer.view_math.Plane` with `dist` = `numeric.f32(dist)` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `normal` | `dynamic` | — |  |
-| `dist` | `dynamic` | — |  |
+| `normal` | `dynamic` | — | Initial value for `mq3.renderer.view_math.Plane.normal`. |
+| `dist` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L42)
 
 - [mq3.renderer.view_math.Plane](Type-mq3-renderer-view-math-plane-284088611.md) — struct
 <a id="function-function-mq3-renderer-view-math-setupfrustum-function-setupfrustum-origin-axis-fovx-fovy-src-mq3-renderer-view-math-ml-1424550098"></a>
@@ -181,17 +203,17 @@ function plane(normal, dist)
 function setupFrustum(origin, axis, fovX, fovY)
 ```
 
-R_SetupFrustum constructs the four side planes from the current refdef. Quake's view axes are forward, left and up, so the signed cosine terms intentionally follow the original renderer rather than a right-vector API.
+Construct the left, right, top, and bottom world-space frustum planes for a Quake camera. Returns four side planes in that order; no near or far plane is added. Malformed vector dimensions or a field of view outside (0, 180) produce errors.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
-| `axis` | `dynamic` | — |  |
-| `fovX` | `dynamic` | — |  |
-| `fovY` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Three-component camera origin in world units. |
+| `axis` | `dynamic` | — | Camera basis in forward, left, up order, expected to be orthonormal. |
+| `fovX` | `dynamic` | — | Full horizontal field of view in degrees, strictly between zero and 180. |
+| `fovY` | `dynamic` | — | Full vertical field of view in degrees, strictly between zero and 180. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L214)
 
 <a id="function-function-mq3-renderer-view-math-transformcliptowindow-function-transformcliptowindow-clip-viewportwidth-viewportheight-src-mq3-renderer-view-math-ml-557816541"></a>
 ### transformClipToWindow
@@ -200,14 +222,16 @@ R_SetupFrustum constructs the four side planes from the current refdef. Quake's 
 function transformClipToWindow(clip, viewportWidth, viewportHeight)
 ```
 
+Perspective-divide a clip-space point and map it to viewport-relative pixel coordinates. Stores X/W, Y/W, and (Z+W)/(2W) in normalized; window contains the mapped pixel X/Y and the same depth. Pixel components use trunc(value + 0.5). This operation does not clip the point, clamp depth, or add a viewport origin.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clip` | `dynamic` | — |  |
-| `viewportWidth` | `dynamic` | — |  |
-| `viewportHeight` | `dynamic` | — |  |
+| `clip` | `dynamic` | — | Four-component homogeneous point; the caller must supply a nonzero W component. |
+| `viewportWidth` | `dynamic` | — | Nonnegative viewport width in pixels. |
+| `viewportHeight` | `dynamic` | — | Nonnegative viewport height in pixels. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L136)
 
 <a id="function-function-mq3-renderer-view-math-transformmodeltoclip-function-transformmodeltoclip-source-modelmatrix-projectionmatrix-src-mq3-renderer-view-math-ml-2025318329"></a>
 ### transformModelToClip
@@ -216,14 +240,16 @@ function transformClipToWindow(clip, viewportWidth, viewportHeight)
 function transformModelToClip(source, modelMatrix, projectionMatrix)
 ```
 
+Computes `transformModelToClip` from `[eye,matrixVector4(eye,projectionMatrix)]` using `mq3.renderer.view_math.valid3`, `mq3.renderer.view_math.matrixVector4`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
-| `modelMatrix` | `dynamic` | — |  |
-| `projectionMatrix` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.view_math.valid3`. |
+| `modelMatrix` | `dynamic` | — | Value forwarded as `matrix` to `mq3.renderer.view_math.matrixVector4`. |
+| `projectionMatrix` | `dynamic` | — | Value forwarded as `matrix` to `mq3.renderer.view_math.matrixVector4`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L122)
 
 <a id="function-function-mq3-renderer-view-math-valid3-function-valid3-value-src-mq3-renderer-view-math-ml-1362406791"></a>
 ### valid3
@@ -232,12 +258,14 @@ function transformModelToClip(source, modelMatrix, projectionMatrix)
 function valid3(value)
 ```
 
+Computes `value!=void and len(value)==3` for `mq3.renderer.view_math.valid3`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L49)
 
 <a id="function-function-mq3-renderer-view-math-valid4-function-valid4-value-src-mq3-renderer-view-math-ml-1804441623"></a>
 ### valid4
@@ -246,12 +274,14 @@ function valid3(value)
 function valid4(value)
 ```
 
+Computes `value!=void and len(value)==4` for `mq3.renderer.view_math.valid4`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==4`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L52)
 
 <a id="function-function-mq3-renderer-view-math-validatefrustum-function-validatefrustum-frustum-src-mq3-renderer-view-math-ml-1624148410"></a>
 ### validateFrustum
@@ -260,12 +290,14 @@ function valid4(value)
 function validateFrustum(frustum)
 ```
 
+Requires four nonmissing frustum planes with three-component normals.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `frustum` | `dynamic` | — |  |
+| `frustum` | `dynamic` | — | Indexed input read at `i`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L66)
 
 <a id="function-function-mq3-renderer-view-math-validateorientation-function-validateorientation-value-src-mq3-renderer-view-math-ml-2120474111"></a>
 ### validateOrientation
@@ -274,12 +306,14 @@ function validateFrustum(frustum)
 function validateOrientation(value)
 ```
 
+Checks a renderer orientation's three-component origin and three three-component basis axes.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.origin`, `value.axis`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L56)
 
 <a id="function-function-mq3-renderer-view-math-worldtolocal-function-worldtolocal-world-value-src-mq3-renderer-view-math-ml-1321034873"></a>
 ### worldToLocal
@@ -292,8 +326,8 @@ Baseq3's R_WorldToLocal projects the supplied vector onto the axes. The caller s
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `world` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.view_math.valid3`. |
+| `value` | `dynamic` | — | Record providing `value.axis`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L100)

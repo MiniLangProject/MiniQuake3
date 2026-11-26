@@ -5,30 +5,64 @@ package mq3.client.packet_event
 import mq3.client.connectionless as clientConnectionless
 import mq3.compat.numeric as numeric
 
+/// Connection-state value for a completed handshake before game-state loading, defined for validating
+/// whether sequenced server packets may be processed.
 const CA_CONNECTED=5
 
+/// Stores packet event state, including `connection`, `realtime`, `serverMessageSequence`, `demoRecording`, `demoWaiting`.
 struct State
+  /// When constructing this record, `create` supplies `connectionState` for this member. Used by
+  /// `packetEvent` during subsequent processing.
   connection
+  /// Local client timestamp in milliseconds associated with incoming packet processing.
   realtime
+  /// Highest server network-message sequence observed by the client.
   serverMessageSequence
+  /// When constructing this record, `create` supplies `false` for this member. Used by `packetEvent`
+  /// during subsequent processing.
   demoRecording
+  /// When constructing this record, `create` supplies `false` for this member. Used by `packetEvent`
+  /// during subsequent processing.
   demoWaiting
 end struct
 
+/// Calls `mq3.client.packet_event.State` from packet event `create`. The final path returns `State(connectionState,0,0,false,false)`.
+/// @param connectionState Value used by `if connectionState==void then return error(6980,"packet event: missing connection state") end if`.
 function create(connectionState)
   if connectionState==void then return error(6980,"packet event: missing connection state") end if
   return State(connectionState,0,0,false,false)
 end function
 
-struct Services connectionlessHost processFn parseFn demoFn context end struct
+/// Stores packet event host-service callbacks, including `connectionlessHost`, `processFn`, `parseFn`, `demoFn`, `context`.
+struct Services
+  /// When constructing this record, `services` supplies `connectionlessHost` for this member.
+  connectionlessHost
+  /// Host callback for the process operation; an unset callback leaves that host operation unavailable.
+  processFn
+  /// Host callback for the parse operation; an unset callback leaves that host operation unavailable.
+  parseFn
+  /// Host callback for the demo operation; an unset callback leaves that host operation unavailable.
+  demoFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for sequenced client packet
+  /// processing.
+  context
+end struct
+/// Creates a `mq3.client.packet_event.Services` record. Assigns `connectionlessHost` from `connectionlessHost`.
+/// @param connectionlessHost Value used to initialize `Services.connectionlessHost`.
 function services(connectionlessHost) return Services(connectionlessHost,void,void,void,void) end function
 
+/// Computes `msg.cursize>=4 and numeric.readI32(msg.data,0)==-1` for packet event `isOob`.
+/// @param msg Record read through `msg.cursize`, `msg.data`.
 function isOob(msg)
   return msg.cursize>=4 and numeric.readI32(msg.data,0)==-1
 end function
 
 // processFn(host,state,msg) owns CL_Netchan_Process. parseFn is normally bound
 // to protocol_runtime.parse; demoFn owns the filesystem recording boundary.
+/// @param state Mutable packet event record/storage; this routine assigns `state.connection.realtime`, `state.connection.lastPacketTime`, `state.serverMessageSequence`.
+/// @param host Record read through `host.connectionlessHost`, `host.processFn`, `host.parseFn`, `host.demoFn`.
+/// @param source Value used by `if state==void or state.connection==void or host==void or source==void or msg==void then return error(6981,"packet event: missing input") end if`.
+/// @param msg Record read through `msg.cursize`, `msg.readcount`, `msg.data`.
 function packetEvent(state,host,source,msg)
   if state==void or state.connection==void or host==void or source==void or msg==void then return error(6981,"packet event: missing input") end if
   state.connection.realtime=state.realtime

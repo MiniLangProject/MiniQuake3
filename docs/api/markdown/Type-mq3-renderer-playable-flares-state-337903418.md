@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.playable_flares.State`; groups `visible`, `fadeTime`, `drawIntensity`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L42)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 drawIntensity
 ```
 
+Current flare intensity after visibility fading.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L48)
 
 <a id="field-field-mq3-renderer-playable-flares-state-fadetime-fadetime-src-mq3-renderer-playable-flares-ml-12719232"></a>
 ### fadeTime
@@ -31,8 +35,10 @@ drawIntensity
 fadeTime
 ```
 
+Timestamp of the last visibility transition used to fade a flare.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L46)
 
 <a id="field-field-mq3-renderer-playable-flares-state-visible-visible-src-mq3-renderer-playable-flares-ml-192325770"></a>
 ### visible
@@ -41,5 +47,7 @@ fadeTime
 visible
 ```
 
+Whether the flare passed its most recent visibility test.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L44)

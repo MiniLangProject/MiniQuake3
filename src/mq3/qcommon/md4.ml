@@ -6,6 +6,8 @@ import mq3.compat.numeric as n
 // C-named little-endian conversion helpers.  The original functions accept
 // output pointers; the native facade returns the produced buffer/word array so
 // callers cannot observe partially initialized storage.
+/// @param input Input used in `len(input)` and `input[index]`.
+/// @param length Length used in `(length < 0)` and `(length & 3)`.
 function Encode(input,length)
   if input==void or length<0 or (length&3)!=0 or length>len(input)*4 then return error(7820,"MD4 Encode: invalid length") end if
   output=bytes(length,0)
@@ -13,6 +15,11 @@ function Encode(input,length)
   return output
 end function
 
+/// Decode md 4 in qcommon.md4; the normal completion returns `output`.
+///
+/// Validation failures include `MD4 Decode: invalid length`.
+/// @param input Data passed as `data` to `mq3.compat.numeric.readI32`.
+/// @param length Length used in `(length < 0)` and `(length & 3)`.
 function Decode(input,length)
   if input==void or typeof(input)!="bytes" or length<0 or (length&3)!=0 or length>len(input) then return error(7821,"MD4 Decode: invalid length") end if
   output=array(length/4,0)
@@ -20,15 +27,30 @@ function Decode(input,length)
   return output
 end function
 
+/// Compute rol in qcommon.md4; the normal completion returns `n.i32(((value << amount) | (value >> (32 - amount))))`.
+/// @param value Integer whose low 32 bits are retained.
+/// @param amount Amount used in `(32 - amount)` and `(value << amount)`.
 function rol(value, amount)
   value = n.u32(value)
   return n.i32((value << amount) | (value >> (32-amount)))
 end function
 
+/// Return `mq3.compat.numeric.add32(n.add32(a, b), c)` from `qcommon.md4.add3`.
+/// @param a Left integer operand; only its low 32 bits participate.
+/// @param b Right integer operand; only its low 32 bits participate.
+/// @param c Right integer operand; only its low 32 bits participate.
 function add3(a,b,c)
   return n.add32(n.add32(a,b),c)
 end function
 
+/// Update `work entries` in qcommon.md4.
+///
+/// Direct state writes: `work elements`.
+/// @param work Mutable sequence written at `target`.
+/// @param target Zero-based index into `work`.
+/// @param word C passed as `c` to `mq3.qcommon.md4.add3`.
+/// @param rotation Amount passed as `amount` to `mq3.qcommon.md4.rol`.
+/// @param round Round used in `(round == 1)` and `(round == 2)`.
 function step(work,target,word,rotation,round)
   b = work[(target+1)&3]; c = work[(target+2)&3]; d = work[(target+3)&3]
   mix = 0; constant = 0
@@ -40,6 +62,12 @@ function step(work,target,word,rotation,round)
   return void
 end function
 
+/// Update `state entries` in qcommon.md4.
+///
+/// Direct state writes: `state elements`.
+/// @param state Mutable sequence written at `index`.
+/// @param block Block used in `slice(block, offset, 64)` and `Decode(slice(block, offset, 64), 64)`.
+/// @param offset Offset used in `slice(block, offset, 64)` and `Decode(slice(block, offset, 64), 64)`.
 function transform(state,block,offset)
   words = Decode(slice(block,offset,64),64)
   work = [state[0],state[1],state[2],state[3]]
@@ -61,6 +89,8 @@ function transform(state,block,offset)
   return void
 end function
 
+/// Compute digest in qcommon.md4; the normal completion returns `result`.
+/// @param data Data used in `len(data)` and `data[index]`.
 function digest(data)
   length = len(data)
   paddedLength = ((length+8) | 63)+1
@@ -85,11 +115,16 @@ function digest(data)
   return result
 end function
 
+/// Compute block checksum in qcommon.md4; the normal completion returns `n.i32((((n.readI32(hash, 0) ^ n.readI32(hash, 4)) ^ n.readI32(hash, 8)) ^ n.readI32(hash, 12)))`.
+/// @param data Data passed as `data` to `mq3.qcommon.md4.digest`.
 function blockChecksum(data)
   hash = digest(data)
   return n.i32(n.readI32(hash,0)^n.readI32(hash,4)^n.readI32(hash,8)^n.readI32(hash,12))
 end function
 
+/// Compute block checksum key in qcommon.md4; the normal completion returns `blockChecksum(keyed)`.
+/// @param data Data used in `len(data)` and `data[index]`.
+/// @param key Value passed as `value` to `mq3.compat.numeric.writeU32`.
 function blockChecksumKey(data,key)
   keyed = bytes(len(data)+4,0); n.writeU32(keyed,0,key)
   if len(data) > 0 then

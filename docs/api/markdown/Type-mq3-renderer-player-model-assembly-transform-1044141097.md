@@ -9,8 +9,10 @@
 struct Transform
 ```
 
+Data record for `mq3.renderer.player_model_assembly.Transform`; groups `origin`, `axis`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L28)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Transform
 axis
 ```
 
+Composed orientation basis that places a player-model part relative to its parent.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L32)
 
 <a id="field-field-mq3-renderer-player-model-assembly-transform-origin-origin-src-mq3-renderer-player-model-assembly-ml-582832179"></a>
 ### origin
@@ -31,5 +35,7 @@ axis
 origin
 ```
 
+Translation applied when placing a player-model body part through its parent attachment.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L30)

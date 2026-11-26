@@ -9,8 +9,10 @@
 struct Connection
 ```
 
+Stores netchan connection state, including `challenge`, `reliableCommands`, `serverCommands`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L19)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Connection
 challenge
 ```
 
+Server-issued challenge token used to validate the connection handshake.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L21)
 
 <a id="field-field-mq3-client-netchan-connection-reliablecommands-reliablecommands-src-mq3-client-netchan-ml-1159944969"></a>
 ### reliableCommands
@@ -31,8 +35,10 @@ challenge
 reliableCommands
 ```
 
+Ring of reliable command strings awaiting acknowledgement or execution.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L23)
 
 <a id="field-field-mq3-client-netchan-connection-servercommands-servercommands-src-mq3-client-netchan-ml-706441799"></a>
 ### serverCommands
@@ -41,5 +47,7 @@ reliableCommands
 serverCommands
 ```
 
+Reliable server commands retained for ordered execution by the client.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/netchan.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L25)

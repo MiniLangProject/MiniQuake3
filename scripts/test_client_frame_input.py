@@ -2,7 +2,9 @@
 from __future__ import annotations
 import argparse
 import json
+import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -31,31 +33,40 @@ def write_app_input_module(out: Path) -> Path:
                       bridge + "\n" + functions + failure + "\n" + draw,
                       encoding="utf-8", newline="\n")
     loop = text.split("while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)", 1)[1]
-    server = loop.split("while simulationTime+50<=serverTime", 1)[1].split("end while", 1)[0]
+    server_loop = re.search(r"while[^\n]*\bsimulationTime\+50<=serverTime\b[^\n]*\n(.*?)\bend while\b", loop, re.S)
+    if server_loop is None:
+        raise RuntimeError("productive 20Hz server loop not found")
+    server = server_loop.group(1)
     if "frameInput.finish(" in server or "submitUsercmd" in server:
         raise RuntimeError("local command generation regressed into the20Hz server loop")
     if loop.index("frameInput.finish(") > loop.index("drawnFrame=drawFrame("):
         raise RuntimeError("CL_SendCmd must precede CL_SetCGameTime/drawFrame")
     if 'state.context.soundCommands=[]' in draw:
         raise RuntimeError("Cgame draw discards early UI input sounds")
-    if "refreshUiFrame(ui,serverTime)" not in loop or "uiSession.frame(ui,serverTime)" in loop:
+    if ("uiTime=simulationStart+frameTiming.elapsed(realStart,startedAt)" not in loop or
+            "refreshUiFrame(ui,uiTime)" not in loop or "uiSession.frame(ui," in loop):
         raise RuntimeError("productive UI input is duplicated by polling")
     return module
 
 
-def compile_test(source: str, name: str, out: Path) -> Path:
+def compile_test(source: str, name: str, out: Path, compiler: Path, library_root: Path) -> Path:
     executable = out / (name + ".exe")
-    compiler = ROOT / "artifacts/toolchain/build/mlc_win64.exe"
     stamp = executable.with_suffix(".inputs.json")
     inputs = minilang_inputs(ROOT / source, compiler)
+    inputs["toolchain_mode"] = os.environ.get("MQ3_BUILD_TOOLCHAIN", "frozen")
+    inputs["flags"] = ["-I", str(out / "modules"), "-I", str(ROOT / "src"),
+                       "-I", str(library_root), "--heap-reserve", "1g",
+                       "--heap-commit", "32m", "--gc-limit", "256m"]
     inputs["generated_app_input"] = sha(out / "modules/mq3/tests/client_frame_routing.ml")
     with build_file_lock(executable.with_suffix(".build.lock")):
         if not valid_minilang_cache(executable, stamp, inputs):
             run([compiler, ROOT / source, executable,
-                 "-I", out / "modules", "-I", ROOT / "src", "-I", ROOT / "artifacts/toolchain",
+                 "-I", out / "modules", "-I", ROOT / "src", "-I", library_root,
                  "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"],
                 ROOT / "build", log=out / (name + "-build.log"), timeout=900)
             current = minilang_inputs(ROOT / source, compiler)
+            current["toolchain_mode"] = inputs["toolchain_mode"]
+            current["flags"] = inputs["flags"]
             current["generated_app_input"] = sha(out / "modules/mq3/tests/client_frame_routing.ml")
             if current != inputs:
                 raise RuntimeError("Input gate sources changed during compilation; rerun against a frozen source")
@@ -77,13 +88,22 @@ def main() -> None:
     out = ROOT / "build/reference/client_frame_input"
     out.mkdir(parents=True, exist_ok=True)
     generated = write_app_input_module(out)
+    mode = os.environ.get("MQ3_BUILD_TOOLCHAIN", "frozen")
+    if mode == "release":
+        from build_release import prepare_compiler
+        compiler, library_root = prepare_compiler()
+    elif mode == "frozen":
+        compiler = ROOT / "artifacts/toolchain/build/mlc_win64.exe"
+        library_root = ROOT / "artifacts/toolchain"
+    else:
+        raise RuntimeError("Unknown MQ3_BUILD_TOOLCHAIN: " + mode)
     with native_build_lock(ROOT / "build"):
         build_native(ROOT / "build", msvc_env("x64"))
-    core_exe = compile_test("tests/client_frame_input_contracts.ml", "contracts", out)
+    core_exe = compile_test("tests/client_frame_input_contracts.ml", "contracts", out, compiler, library_root)
     core = run([core_exe], ROOT / "build", log=out / "contracts.log").strip()
     if core != "PASS: 95 client-frame input contracts":
         raise RuntimeError(core)
-    route_exe = compile_test("tests/client_frame_input_routing_contracts.ml", "routing", out)
+    route_exe = compile_test("tests/client_frame_input_routing_contracts.ml", "routing", out, compiler, library_root)
     routing = run([route_exe], ROOT / "build", log=out / "routing.log").strip()
     if routing != "PASS: 29 exact productive app routing contracts":
         raise RuntimeError(routing)
@@ -95,7 +115,7 @@ def main() -> None:
     run(["cl", "/nologo", "/Od", "/MT", f"/I{out}", ROOT / "tests/reference/cl_input_complete_oracle.c",
          f"/Fe:{oracle}", "/link", "/Brepro"], out, msvc_env("x86"), out / "oracle-build.log")
     native = run([oracle], out, log=out / "oracle.log")
-    oracle_exe = compile_test("tests/client_frame_input_oracle.ml", "oracle_mini", out)
+    oracle_exe = compile_test("tests/client_frame_input_oracle.ml", "oracle_mini", out, compiler, library_root)
     mini = run([oracle_exe], ROOT / "build", log=out / "oracle-mini.log")
     if native != mini or "finish|5|123456|16384|57344|0\n" not in mini or "oddHalf|2\n" not in mini:
         raise RuntimeError("original unmasked usercmd_t.intAngles/key-up mismatch\nC:\n" + native + "MiniLang:\n" + mini)
@@ -104,7 +124,7 @@ def main() -> None:
         qvms = ROOT / "build/reference/qvms"
         if not all((qvms / name).is_file() for name in ("qagame.qvm", "cgame.qvm", "ui.qvm")):
             subprocess.run([sys.executable, ROOT / "scripts/build_qvms.py"], cwd=ROOT, check=True)
-        retail_exe = compile_test("tests/client_frame_input_retail_probe.ml", "retail", out)
+        retail_exe = compile_test("tests/client_frame_input_retail_probe.ml", "retail", out, compiler, library_root)
         retail = run([retail_exe, retail_archive(args.data_root.resolve()), qvms], ROOT / "build",
                      log=out / "retail.log", timeout=300).strip()
         if not retail.startswith("PASS: ") or "Retail client-frame contracts" not in retail:

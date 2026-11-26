@@ -20,8 +20,10 @@ Reachable from entry: **yes**
 function createClient()
 ```
 
+Create an initially inactive client with no consumed reliable commands and no flood deadline.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L45)
 
 <a id="constant-constant-mq3-server-client-command-cs-active-const-cs-active-4-src-mq3-server-client-command-ml-1308717357"></a>
 ### CS_ACTIVE
@@ -30,8 +32,10 @@ function createClient()
 const CS_ACTIVE = 4
 ```
 
+Client-state value identifying a client whose commands may be dispatched as active gameplay commands.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L9)
 
 <a id="function-function-mq3-server-client-command-execute-function-execute-host-clientstate-msg-src-mq3-server-client-command-ml-1750153017"></a>
 ### execute
@@ -40,14 +44,16 @@ const CS_ACTIVE = 4
 function execute(host, clientState, msg)
 ```
 
+Consume one reliable client command and return whether its sequence stream can continue. Duplicate or older sequences return true without callbacks or state updates. A forward sequence gap invokes the optional drop callback and returns false. For the next sequence, the execute callback receives a `clientOk` flag indicating whether game-command flood policy permits dispatch. Even when that flag is false, the sequence and text are retained and the deadline becomes `host.time + 1000`. Returns true after consuming the next command, or error 6981 for missing input state.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Runtime with a millisecond clock, flood policy, and optional execute/drop/diagnostic callbacks. |
+| `clientState` | `dynamic` | — | Mutable client sequence, last command text, lifecycle state, and flood deadline. |
+| `msg` | `dynamic` | — | Mutable network message positioned at an int32 sequence followed by a zero-terminated command string. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L64)
 
 <a id="function-function-mq3-server-client-command-runtime-function-runtime-src-mq3-server-client-command-ml-413634544"></a>
 ### runtime
@@ -56,7 +62,9 @@ function execute(host, clientState, msg)
 function runtime()
 ```
 
+Create reliable-command processing services with flood protection enabled and callbacks unset. The server clock starts at zero and no local client is assumed to be running.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L51)
 
 - [mq3.server.client_command.Runtime](Type-mq3-server-client-command-runtime-180684606.md) — struct

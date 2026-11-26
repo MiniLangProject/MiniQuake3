@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for audio.snd_raw_stream, containing `outputRate`, `soundTime`, `rawEnd`, `left`, `right`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L13)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct State
 left
 ```
 
+Ring buffer of left-channel raw sample values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L21)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-outputrate-outputrate-src-mq3-audio-snd-raw-stream-ml-923272774"></a>
 ### outputRate
@@ -31,8 +35,10 @@ left
 outputRate
 ```
 
+Output sample rate in hertz.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L15)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-rawend-rawend-src-mq3-audio-snd-raw-stream-ml-285813158"></a>
 ### rawEnd
@@ -41,8 +47,10 @@ outputRate
 rawEnd
 ```
 
+Exclusive absolute sample position through which raw input has been buffered.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L19)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-right-right-src-mq3-audio-snd-raw-stream-ml-313933888"></a>
 ### right
@@ -51,8 +59,10 @@ rawEnd
 right
 ```
 
+Ring buffer of right-channel raw sample values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L23)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-soundtime-soundtime-src-mq3-audio-snd-raw-stream-ml-2072764440"></a>
 ### soundTime
@@ -61,5 +71,7 @@ right
 soundTime
 ```
 
+Absolute sample position currently consumed by playback.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L17)

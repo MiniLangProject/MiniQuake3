@@ -30,13 +30,15 @@ Reachable from entry: **yes**
 function bindingForSurface(asset, surfaceIndex)
 ```
 
+Evaluates playable item models `bindingForSurface` and returns `void`, `binding` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `asset` | `dynamic` | — |  |
-| `surfaceIndex` | `dynamic` | — |  |
+| `asset` | `dynamic` | — | Record read through `asset.bindings`. |
+| `surfaceIndex` | `dynamic` | — | Value used by `for each binding in asset.bindings if binding.surfaceIndex==surfaceIndex then return binding end if end for`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L410)
 
 - [mq3.client.playable_item_models.CachedSurface](Type-mq3-client-playable-item-models-cachedsurface-1441569629.md) — struct
 <a id="function-function-mq3-client-playable-item-models-cachemodeltriangles-function-cachemodeltriangles-model-src-mq3-client-playable-item-models-ml-621162801"></a>
@@ -46,12 +48,14 @@ function bindingForSurface(asset, surfaceIndex)
 function cacheModelTriangles(model)
 ```
 
+Calls `mq3.renderer.surface_md3.lerpVertexes`, `mq3.client.playable_item_models.CachedSurface` from playable item models `cacheModelTriangles`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Record read through `model.surfaces`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L336)
 
 - [mq3.client.playable_item_models.Catalog](Type-mq3-client-playable-item-models-catalog-1063629371.md) — struct
 <a id="function-function-mq3-client-playable-item-models-containsclassname-function-containsclassname-catalog-classname-src-mq3-client-playable-item-models-ml-864121746"></a>
@@ -61,33 +65,39 @@ function cacheModelTriangles(model)
 function containsClassname(catalog, classname)
 ```
 
+Calls `stringEqualsIgnoreCaseAscii` from playable item models `containsClassname`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `classname` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
+| `classname` | `dynamic` | — | Value used by `for each asset in catalog.assets if stringEqualsIgnoreCaseAscii(asset.classname,classname) then return true end if end for`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L329)
 
-<a id="constant-constant-mq3-client-playable-item-models-default-bob-amplitude-const-default-bob-amplitude-4-src-mq3-client-playable-item-models-ml-1470164087"></a>
+<a id="constant-constant-mq3-client-playable-item-models-default-bob-amplitude-const-default-bob-amplitude-4-src-mq3-client-playable-item-models-ml-1978469185"></a>
 ### DEFAULT_BOB_AMPLITUDE
 
 ```ml
-const DEFAULT_BOB_AMPLITUDE = 4.
+const DEFAULT_BOB_AMPLITUDE = 4
 ```
 
+Fallback bob amplitude setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L15)
 
-<a id="constant-constant-mq3-client-playable-item-models-default-spin-degrees-per-second-const-default-spin-degrees-per-second-100-src-mq3-client-playable-item-models-ml-988126236"></a>
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L17)
+
+<a id="constant-constant-mq3-client-playable-item-models-default-spin-degrees-per-second-const-default-spin-degrees-per-second-100-src-mq3-client-playable-item-models-ml-1166353544"></a>
 ### DEFAULT_SPIN_DEGREES_PER_SECOND
 
 ```ml
-const DEFAULT_SPIN_DEGREES_PER_SECOND = 100.
+const DEFAULT_SPIN_DEGREES_PER_SECOND = 100
 ```
 
+Default spin angular rate, in degrees per second.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L19)
 
 <a id="function-function-mq3-client-playable-item-models-definition-function-definition-classname-src-mq3-client-playable-item-models-ml-1504508215"></a>
 ### definition
@@ -100,10 +110,10 @@ Baseq3 bg_itemlist world_model[0] paths. These are the actual MD3 pickups in pak
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `classname` | `dynamic` | — |  |
+| `classname` | `dynamic` | — | Value used by `name=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L190)
 
 - [mq3.client.playable_item_models.Definition](Type-mq3-client-playable-item-models-definition-1759347693.md) — struct
 <a id="function-function-mq3-client-playable-item-models-fail-function-fail-message-src-mq3-client-playable-item-models-ml-2033179375"></a>
@@ -113,12 +123,14 @@ Baseq3 bg_itemlist world_model[0] paths. These are the actual MD3 pickups in pak
 function fail(message)
 ```
 
+Creates the playable item models error `7560` with diagnostic text `"preview item models: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview item models: "+message`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L175)
 
 <a id="function-function-mq3-client-playable-item-models-find-function-find-catalog-classname-src-mq3-client-playable-item-models-ml-1971496970"></a>
 ### find
@@ -127,13 +139,15 @@ function fail(message)
 function find(catalog, classname)
 ```
 
+Searches the playable item models collection for find, returning `void` when no entry matches.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `classname` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
+| `classname` | `dynamic` | — | Value used by `for each asset in catalog.assets if stringEqualsIgnoreCaseAscii(asset.classname,classname) then return asset end if end for`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L401)
 
 <a id="function-function-mq3-client-playable-item-models-identityaxis-function-identityaxis-src-mq3-client-playable-item-models-ml-1220977248"></a>
 ### identityAxis
@@ -142,8 +156,10 @@ function find(catalog, classname)
 function identityAxis()
 ```
 
+Creates the three orthonormal unit axes used as the identity orientation in playable item models.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L89)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L241)
 
 <a id="function-function-mq3-client-playable-item-models-identitytransform-function-identitytransform-src-mq3-client-playable-item-models-ml-669273956"></a>
 ### identityTransform
@@ -152,8 +168,10 @@ function identityAxis()
 function identityTransform()
 ```
 
+Creates a `mq3.client.playable_item_models.Transform` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L91)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L248)
 
 <a id="function-function-mq3-client-playable-item-models-imagestem-function-imagestem-name-src-mq3-client-playable-item-models-ml-312363663"></a>
 ### imageStem
@@ -162,12 +180,14 @@ function identityTransform()
 function imageStem(name)
 ```
 
+Calls `std.string.toLowerAscii`, `std.string.endsWith`, `decode` and additional helpers from playable item models `imageStem`. The final path returns `name`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding playable item models resource. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L291)
 
 <a id="function-function-mq3-client-playable-item-models-item-function-item-classname-category-path-scale-heightoffset-src-mq3-client-playable-item-models-ml-1611980642"></a>
 ### item
@@ -176,16 +196,18 @@ function imageStem(name)
 function item(classname, category, path, scale, heightOffset)
 ```
 
+Creates a `mq3.client.playable_item_models.Definition` record. Assigns `classname` from `classname`, `category` from `category`, `modelPath` from `path`, `scale` from `scale`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `classname` | `dynamic` | — |  |
-| `category` | `dynamic` | — |  |
-| `path` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `heightOffset` | `dynamic` | — |  |
+| `classname` | `dynamic` | — | Value used to initialize `Definition.classname`. |
+| `category` | `dynamic` | — | Value used to initialize `Definition.category`. |
+| `path` | `dynamic` | — | Value used to initialize `Definition.modelPath`. |
+| `scale` | `dynamic` | — | Value used to initialize `Definition.scale`. |
+| `heightOffset` | `dynamic` | — | Value used to initialize `Definition.heightOffset`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L183)
 
 <a id="function-function-mq3-client-playable-item-models-itemtransform-function-itemtransform-asset-origin-itemindex-now-src-mq3-client-playable-item-models-ml-600519947"></a>
 ### itemTransform
@@ -194,15 +216,17 @@ function item(classname, category, path, scale, heightOffset)
 function itemTransform(asset, origin, itemIndex, now)
 ```
 
+Calls `mq3.client.playable_item_models.valid3`, `mq3.compat.numeric.f32`, `mq3.compat.transcendental.sin` and additional helpers from playable item models `itemTransform`. The final path returns `Transform(placed,yawAxis(yaw),asset.scale)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `asset` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `itemIndex` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `asset` | `dynamic` | — | Record read through `asset.bobAmplitude`, `asset.spinDegreesPerSecond`, `asset.heightOffset`, `asset.scale`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `itemIndex` | `dynamic` | — | Value used by `if asset==void or not valid3(origin) or itemIndex<0 or now<0 then return fail("asset, origin, item index and time are required") end if`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L464)
 
 <a id="function-function-mq3-client-playable-item-models-loadcatalog-function-loadcatalog-archive-classnames-firsttextureslot-maxtextureslots-maxmodels-src-mq3-client-playable-item-models-ml-810287419"></a>
 ### loadCatalog
@@ -215,14 +239,14 @@ Loads each unique recognized classname once. The returned texture list owns stab
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `classnames` | `dynamic` | — |  |
-| `firstTextureSlot` | `dynamic` | — |  |
-| `maxTextureSlots` | `dynamic` | — |  |
-| `maxModels` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `classnames` | `dynamic` | — | Value used by `if archive==void or classnames==void then return fail("archive and classnames are required") end if`. |
+| `firstTextureSlot` | `dynamic` | — | First texture slot reserved for this asset collection. |
+| `maxTextureSlots` | `dynamic` | — | Maximum number of texture slots available to the renderer. |
+| `maxModels` | `dynamic` | — | Value used by `if maxModels<0 or maxModels>MAX_CATALOG_MODELS then return fail("model budget outside supported range") end if`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L379)
 
 <a id="function-function-mq3-client-playable-item-models-loaddefinition-function-loaddefinition-archive-catalog-def-src-mq3-client-playable-item-models-ml-1287684788"></a>
 ### loadDefinition
@@ -231,14 +255,16 @@ Loads each unique recognized classname once. The returned texture list owns stab
 function loadDefinition(archive, catalog, def)
 ```
 
+Calls `mq3.format.pk3.read`, `mq3.format.md3.load`, `mq3.renderer.player_skins.load` and additional helpers from playable item models `loadDefinition`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-| `def` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `def` | `dynamic` | — | Record read through `def.modelPath`, `def.skinPath`, `def.classname`, `def.category` and additional values. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L356)
 
 <a id="constant-constant-mq3-client-playable-item-models-max-catalog-models-const-max-catalog-models-64-src-mq3-client-playable-item-models-ml-952049731"></a>
 ### MAX_CATALOG_MODELS
@@ -247,8 +273,10 @@ function loadDefinition(archive, catalog, def)
 const MAX_CATALOG_MODELS = 64
 ```
 
+Capacity limit for the catalog models collection or bounded storage used by this client module.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
 
 <a id="constant-constant-mq3-client-playable-item-models-max-catalog-textures-const-max-catalog-textures-96-src-mq3-client-playable-item-models-ml-1531555868"></a>
 ### MAX_CATALOG_TEXTURES
@@ -257,18 +285,22 @@ const MAX_CATALOG_MODELS = 64
 const MAX_CATALOG_TEXTURES = 96
 ```
 
+Capacity limit for the catalog textures collection or bounded storage used by this client module.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L18)
 
-<a id="constant-constant-mq3-client-playable-item-models-pi-const-pi-3-14159265358979-src-mq3-client-playable-item-models-ml-137730720"></a>
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+
+<a id="constant-constant-mq3-client-playable-item-models-pi-const-pi-3-141593-src-mq3-client-playable-item-models-ml-1565835699"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
+Circle constant used to convert or evaluate angles in trigonometric calculations.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="function-function-mq3-client-playable-item-models-renderasset-function-renderasset-asset-value-maxtriangles-src-mq3-client-playable-item-models-ml-1776559574"></a>
 ### renderAsset
@@ -277,14 +309,16 @@ const PI = 3.14159265358979
 function renderAsset(asset, value, maxTriangles)
 ```
 
+Calls `mq3.client.playable_item_models.validateTransform`, `mq3.client.playable_item_models.Triangle` from playable item models `renderAsset`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `asset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `maxTriangles` | `dynamic` | — |  |
+| `asset` | `dynamic` | — | Record read through `asset.sourceTriangles`, `asset.bindings`, `asset.classname`. |
+| `value` | `dynamic` | — | Record read through `value.scale`, `value.axis`, `value.origin`. |
+| `maxTriangles` | `dynamic` | — | Upper bound on emitted render triangles. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L420)
 
 <a id="function-function-mq3-client-playable-item-models-renderitem-function-renderitem-asset-origin-itemindex-now-maxtriangles-src-mq3-client-playable-item-models-ml-5070254"></a>
 ### renderItem
@@ -293,16 +327,18 @@ function renderAsset(asset, value, maxTriangles)
 function renderItem(asset, origin, itemIndex, now, maxTriangles)
 ```
 
+Calls `mq3.client.playable_item_models.itemTransform`, `mq3.client.playable_item_models.renderAsset` from playable item models `renderItem`. The final path returns `renderAsset(asset,placed,maxTriangles)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `asset` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `itemIndex` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `maxTriangles` | `dynamic` | — |  |
+| `asset` | `dynamic` | — | Value used by `placed=itemTransform(asset,origin,itemIndex,now)`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `itemIndex` | `dynamic` | — | Value used by `placed=itemTransform(asset,origin,itemIndex,now)`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `maxTriangles` | `dynamic` | — | Upper bound on emitted render triangles. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L479)
 
 <a id="function-function-mq3-client-playable-item-models-renderitems-function-renderitems-catalog-itemvalues-now-maxitems-maxtrianglesperitem-maxtriangles-src-mq3-client-playable-item-models-ml-2035623974"></a>
 ### renderItems
@@ -315,15 +351,15 @@ Applies both per-item and whole-frame budgets to playable_items.Item values.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `itemValues` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `maxItems` | `dynamic` | — |  |
-| `maxTrianglesPerItem` | `dynamic` | — |  |
-| `maxTriangles` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `itemValues` | `dynamic` | — | Sequence read at `itemValues[itemIndex]`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `maxItems` | `dynamic` | — | Value used by `if maxItems<0 or maxTrianglesPerItem<0 or maxTriangles<0 then return fail("negative frame budget") end if`. |
+| `maxTrianglesPerItem` | `dynamic` | — | Value used by `if maxItems<0 or maxTrianglesPerItem<0 or maxTriangles<0 then return fail("negative frame budget") end if`. |
+| `maxTriangles` | `dynamic` | — | Upper bound on emitted render triangles. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L491)
 
 <a id="function-function-mq3-client-playable-item-models-resolvebinding-function-resolvebinding-archive-catalog-surface-surfaceindex-skin-src-mq3-client-playable-item-models-ml-1562859464"></a>
 ### resolveBinding
@@ -332,16 +368,18 @@ Applies both per-item and whole-frame budgets to playable_items.Item values.
 function resolveBinding(archive, catalog, surface, surfaceIndex, skin)
 ```
 
+Updates `catalog.textures` during playable item models `resolveBinding`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-| `surface` | `dynamic` | — |  |
-| `surfaceIndex` | `dynamic` | — |  |
-| `skin` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `catalog` | `dynamic` | — | Mutable playable item models record/storage; this routine assigns `catalog.textures`. |
+| `surface` | `dynamic` | — | Record read through `surface.name`. |
+| `surfaceIndex` | `dynamic` | — | Value used by `return Binding(surfaceIndex,surface.name,shaderName,texture.imageName,texture.image,texture.slot)`. |
+| `skin` | `dynamic` | — | Value used by `shaderName=surfaceShader(surface,skin)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L304)
 
 <a id="function-function-mq3-client-playable-item-models-surfaceshader-function-surfaceshader-surface-skin-src-mq3-client-playable-item-models-ml-1568465778"></a>
 ### surfaceShader
@@ -350,13 +388,15 @@ function resolveBinding(archive, catalog, surface, surfaceIndex, skin)
 function surfaceShader(surface, skin)
 ```
 
+Calls `stringEqualsIgnoreCaseAscii` from playable item models `surfaceShader`. The final path returns `""`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `surface` | `dynamic` | — |  |
-| `skin` | `dynamic` | — |  |
+| `surface` | `dynamic` | — | Record read through `surface.name`, `surface.shaders`. |
+| `skin` | `dynamic` | — | Record read through `skin.mappings`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L271)
 
 - [mq3.client.playable_item_models.Texture](Type-mq3-client-playable-item-models-texture-2097774111.md) — struct
 <a id="function-function-mq3-client-playable-item-models-texturebyname-function-texturebyname-catalog-name-src-mq3-client-playable-item-models-ml-118018094"></a>
@@ -366,13 +406,15 @@ function surfaceShader(surface, skin)
 function textureByName(catalog, name)
 ```
 
+Calls `stringEqualsIgnoreCaseAscii` from playable item models `textureByName`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textures`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding playable item models resource. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L284)
 
 <a id="function-function-mq3-client-playable-item-models-transform-function-transform-origin-axis-scale-src-mq3-client-playable-item-models-ml-296271207"></a>
 ### transform
@@ -381,14 +423,16 @@ function textureByName(catalog, name)
 function transform(origin, axis, scale)
 ```
 
+Creates a `mq3.client.playable_item_models.Transform` record. Assigns `origin` from `origin`, `axis` from `axis`, `scale` from `scale`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
-| `axis` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Value used to initialize `Transform.origin`. |
+| `axis` | `dynamic` | — | Value used to initialize `Transform.axis`. |
+| `scale` | `dynamic` | — | Value used to initialize `Transform.scale`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L246)
 
 - [mq3.client.playable_item_models.Transform](Type-mq3-client-playable-item-models-transform-683847984.md) — struct
 - [mq3.client.playable_item_models.Triangle](Type-mq3-client-playable-item-models-triangle-556282752.md) — struct
@@ -399,12 +443,14 @@ function transform(origin, axis, scale)
 function valid3(value)
 ```
 
+Computes `value!=void and len(value)==3` for playable item models `valid3`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence whose length/content is inspected by `valid3`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L251)
 
 <a id="function-function-mq3-client-playable-item-models-validatetransform-function-validatetransform-value-src-mq3-client-playable-item-models-ml-716572937"></a>
 ### validateTransform
@@ -413,12 +459,14 @@ function valid3(value)
 function validateTransform(value)
 ```
 
+Calls `mq3.client.playable_item_models.valid3` from playable item models `validateTransform`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.origin`, `value.axis`, `value.scale`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L255)
 
 <a id="function-function-mq3-client-playable-item-models-yawaxis-function-yawaxis-degrees-src-mq3-client-playable-item-models-ml-1952780153"></a>
 ### yawAxis
@@ -427,9 +475,11 @@ function validateTransform(value)
 function yawAxis(degrees)
 ```
 
+Calls `mq3.compat.numeric.f32`, `mq3.compat.transcendental.sin`, `mq3.compat.transcendental.cos` and additional helpers from playable item models `yawAxis`. The final path returns `[[c,s,0.0],[numeric.fneg(s),c,0.0],[0.0,0.0,1.0]]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `degrees` | `dynamic` | — |  |
+| `degrees` | `dynamic` | — | Value used by `radians=numeric.f32(degrees*PI/180.0)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L263)

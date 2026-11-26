@@ -24,18 +24,19 @@ def main():
     spatial = ROOT / "src/mq3/server/world.ml"
     legacy = ROOT / "tests/reference/trace_query_storage_legacy.ml"
     source = ROOT / "tests/trace_query_storage_contracts.ml"
-    # Pull the actual private-storage arguments from the productive Work
-    # constructor; replacing byte flags with the old arrays must fail this gate.
+    # Pull the exact allocation branch for worlds without reusable scratch.
+    # The Work constructor now receives local variables and a visit serial.
     text = collision.read_text(encoding="utf-8")
     constructor = next(line for line in text.splitlines() if line.strip().startswith("work = Work("))
-    flags = re.search(r",point,(.+),curves\)", constructor)
-    if not flags:
+    flags = re.search(r",point,seen,seenPatches,visitSerial,brushScratch,curves\)", constructor)
+    allocation = "seen=bytes(len(world.brushes),0);if curves then seenPatches=bytes(len(world.surfaces),0) end if;visitSerial=1"
+    if not flags or text.count(allocation) != 1:
         raise RuntimeError("productive Work constructor changed")
     area = extract(spatial.read_text(encoding="utf-8"), "areaEntities")
     area = area.replace("function areaEntities(", "function productiveAreaEntities(", 1)
     blocks = ["package mq3.tests.trace_query_storage", "import mq3.collision.world as cm",
               "import std.array as arrays", "import std.ds.list as spatialAreaLists",
-              "function productiveSeenFlags(world) return [" + flags[1] + "] end function",
+              "function productiveSeenFlags(world) curves=true;seen=void;seenPatches=void;visitSerial=0;" + allocation + ";return [seen,seenPatches,visitSerial] end function",
               area, legacy.read_text(encoding="utf-8")]
     generated = folder / "trace_query_storage.ml"
     generated.write_text("\n\n".join(blocks) + "\n", encoding="utf-8", newline="\n")
@@ -59,7 +60,7 @@ def main():
         raise RuntimeError(result)
     report = {"passed": True, "contracts": 23, "result": result,
               "allocation_probe": dict(zip(("flags", "legacy_flags", "area", "legacy_area"), map(int, measured.groups()))),
-              "scope": "Actual Work-constructor storage expressions, actual throughLeaf byte writes/duplicate suppression, independent query storage and actual area-list capacity/order versus frozen legacy including geometric growth.",
+              "scope": "Actual no-scratch Work allocation branch, actual throughLeaf byte writes/duplicate suppression with visit serial, independent fallback query storage and actual area-list capacity/order versus frozen legacy including geometric growth.",
               "sources": {str(p.relative_to(ROOT)).replace("\\", "/"): sha(p) for p in (collision, spatial, legacy, source, Path(__file__).resolve())},
               "binary_sha256": sha(executable)}
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n")

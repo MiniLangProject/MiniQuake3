@@ -9,8 +9,10 @@
 struct LineCommand
 ```
 
+Stores playable effects line command record, including `a`, `b`, `red`, `green`, `blue`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L61)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct LineCommand
 a
 ```
 
+Alpha component controlling opacity or blending.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L63)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-b-b-src-mq3-client-playable-effects-ml-1504802432"></a>
 ### b
@@ -31,8 +35,10 @@ a
 b
 ```
 
+Blue component of the stored color.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L65)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-blue-blue-src-mq3-client-playable-effects-ml-1736752896"></a>
 ### blue
@@ -41,8 +47,10 @@ b
 blue
 ```
 
+Blue color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L71)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-green-green-src-mq3-client-playable-effects-ml-493370552"></a>
 ### green
@@ -51,8 +59,10 @@ blue
 green
 ```
 
+Green color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L69)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-red-red-src-mq3-client-playable-effects-ml-1346456652"></a>
 ### red
@@ -61,5 +71,7 @@ green
 red
 ```
 
+Red color component used by this drawing or effect record.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L67)

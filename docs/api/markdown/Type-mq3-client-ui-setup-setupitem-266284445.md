@@ -9,8 +9,10 @@
 struct SetupItem
 ```
 
+Stores UI setup setup item record, including `id`, `label`, `y`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L24)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct SetupItem
 id
 ```
 
+Event-routing identifier of this selectable control in the player and system setup menu.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L26)
 
 <a id="field-field-mq3-client-ui-setup-setupitem-label-label-src-mq3-client-ui-setup-ml-658420767"></a>
 ### label
@@ -31,8 +35,10 @@ id
 label
 ```
 
+Human-readable caption painted beside or inside the UI control.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L28)
 
 <a id="field-field-mq3-client-ui-setup-setupitem-y-y-src-mq3-client-ui-setup-ml-1489894731"></a>
 ### y
@@ -41,5 +47,7 @@ label
 y
 ```
 
+Vertical position of this menu control in the virtual layout used by the player and system setup menu.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L31)

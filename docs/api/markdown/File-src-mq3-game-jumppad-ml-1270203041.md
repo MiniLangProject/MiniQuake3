@@ -22,11 +22,13 @@ Reachable from entry: **yes**
 function touch(ps, number, origin2)
 ```
 
+Update `ps.events[slot]`, `ps.eventParms[slot]`, `ps.eventSequence` and `ps.jumppad_ent` and related state during `touch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ps` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `origin2` | `dynamic` | — |  |
+| `ps` | `dynamic` | — | Player movement state; accesses `pm_type`, `powerups`, `jumppad_ent`, `eventSequence` and `events` and related fields. May update `ps.events[slot]`, `ps.eventParms[slot]` and `ps.eventSequence` and additional fields in place. |
+| `number` | `dynamic` | — | Value used by `touch` in `if ps.jumppad_ent != number then`. |
+| `origin2` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/jumppad.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/jumppad.ml#L13)

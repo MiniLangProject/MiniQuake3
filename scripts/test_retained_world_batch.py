@@ -71,19 +71,21 @@ def main():
     # Calling the general build script without that root cannot compile it.
     with selected_compiler() as (mlcompiler, library_root):
         contracts = run_ml("retained_world_batch_contracts", [], mlcompiler, library_root)
-        if not contracts.startswith("PASS: 51 retained-world contracts"):
+        if not contracts.startswith("PASS: 54 retained-world contracts"):
             raise RuntimeError(contracts)
         if pak:
             retail = run_ml("retained_world_batch_retail_probe", [pak.resolve()], mlcompiler, library_root)
-            if "PASS: 288 productive retained-world retail differential cases" not in retail:
+            if "PASS: 432 productive retained-world retail differential cases" not in retail:
                 raise RuntimeError(retail)
     paths = [ROOT / "src/mq3/renderer/retained_world_batch.ml", ROOT / "native/playable_world_gather.h",
+             ROOT / "src/mq3/renderer/world_surface_selection.ml", ROOT / "src/mq3/renderer/world_patch_lod.ml",
+             ROOT / "src/mq3/renderer/patch_stitch.ml",
              ROOT / "tests/retained_world_batch_contracts.ml", ROOT / "tests/retained_world_batch_retail_probe.ml",
              ROOT / "tests/playable_world_gather_native.c"]
-    report = {"passed": True, "contracts": 51, "retail_cases": 288 if retail else 0,
+    report = {"passed": True, "contracts": 54, "retail_cases": 432 if retail else 0,
               "retail": retail, "sources": {str(path.relative_to(ROOT)): sha(path) for path in paths},
               "toolchain_mode": os.environ.get("MQ3_BUILD_TOOLCHAIN", "frozen"),
-              "scope": "full-map templates, selected-face order, active-only stage updates, monotonic cache epochs, fog/dlight prefixes, unchanged original-builder capacity/autosprite/portal fallback"}
+              "scope": "full-map templates, camera-selected patch variants, retained portal materials, selected-face order, active-only stage updates, monotonic cache epochs, fog/dlight prefixes, capacity and autosprite fallbacks"}
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n")
 
 

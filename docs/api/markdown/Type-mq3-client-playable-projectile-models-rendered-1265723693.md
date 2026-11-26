@@ -9,8 +9,10 @@
 struct Rendered
 ```
 
+Stores playable projectile models rendered record, including `triangles`, `fallback`, `style`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L110)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Rendered
 fallback
 ```
 
+When constructing this record, `renderSnapshot` supplies `true` for this member. Used by `renderSnapshots` during subsequent processing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L115)
 
 <a id="field-field-mq3-client-playable-projectile-models-rendered-style-style-src-mq3-client-playable-projectile-models-ml-1581842702"></a>
 ### style
@@ -31,8 +35,10 @@ fallback
 style
 ```
 
+Projectile style associated with the completed model-or-sprite rendering result.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L117)
 
 <a id="field-field-mq3-client-playable-projectile-models-rendered-triangles-triangles-src-mq3-client-playable-projectile-models-ml-606033674"></a>
 ### triangles
@@ -41,5 +47,7 @@ style
 triangles
 ```
 
+When constructing this record, `renderSnapshot` supplies an empty list for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L112)

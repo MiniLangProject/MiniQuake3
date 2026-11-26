@@ -9,8 +9,10 @@
 struct InfoPair
 ```
 
+InfoPair record for shared.q_shared_runtime, containing `head`, `key`, `value`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L28)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct InfoPair
 head
 ```
 
+Unconsumed remainder of the backslash-delimited information string.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L30)
 
 <a id="field-field-mq3-shared-q-shared-runtime-infopair-key-key-src-mq3-shared-q-shared-runtime-ml-1347556599"></a>
 ### key
@@ -31,8 +35,10 @@ head
 key
 ```
 
+Key extracted from the current information-string pair.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L32)
 
 <a id="field-field-mq3-shared-q-shared-runtime-infopair-value-value-src-mq3-shared-q-shared-runtime-ml-509317207"></a>
 ### value
@@ -41,5 +47,7 @@ key
 value
 ```
 
+Value extracted from the current information-string pair.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L34)

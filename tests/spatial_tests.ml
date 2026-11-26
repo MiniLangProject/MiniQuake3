@@ -5,12 +5,32 @@ import std.fs as fs
 function vector(data,off)
   return [n.bitsFloat(n.readU32(data,off)),n.bitsFloat(n.readU32(data,off+4)),n.bitsFloat(n.readU32(data,off+8))]
 end function
+struct VmTraceMemory data mask end struct
+
+function checkVmBox(world,vm,inputs,off,expected,model,mask,output)
+  n.writeU32(vm.data,20,output)
+  n.writeU32(vm.data,24,128)
+  n.writeU32(vm.data,28,140)
+  n.writeU32(vm.data,32,152)
+  n.writeU32(vm.data,36,164)
+  n.writeU32(vm.data,40,model)
+  n.writeU32(vm.data,44,mask)
+  n.writeU32(vm.data,48,176)
+  n.writeU32(vm.data,52,188)
+  copyBytes(vm.data,128,inputs,off,72)
+  if not cm.writeVmTemporaryBoxTrace(world,vm,16) then return false end if
+  for field=0 to 13
+    if n.readU32(vm.data,output+4*field)!=expected[field] then return false end if
+  end for
+  return true
+end function
+
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
   inputs = fs.readAllBytes(args[1]); expected = fs.readAllBytes(args[2])
   count = n.quotient(len(inputs),112)
   if len(inputs) != count*112 or len(expected) != count*96 then return 2 end if
-  index = 0
+  index = 0;vm=VmTraceMemory(bytes(256,0),255);vmCases=0
   while index < count
     off = index*112
     start = vector(inputs,off); finish = vector(inputs,off+12)
@@ -51,6 +71,17 @@ function main(args)
         return 1
       end if
     end for
+    if kind==1 and not capsule and model>=len(world.models) then
+      // Match the complete x86 trace_t layout using the independent oracle
+      // fields, including signed axial metadata, padding and the entity word.
+      vmExpected=[actual[8],actual[7],actual[0],actual[9],actual[10],actual[11],
+          actual[1],actual[2],actual[3],actual[4],actual[14],actual[5],actual[6],0]
+      output=64;if vmCases%2==0 then output=128 end if
+      if not checkVmBox(world,vm,inputs,off,vmExpected,model,mask,output) then
+        print "FAIL spatial VM trace case "+str(index);return 1
+      end if
+      vmCases=vmCases+1
+    end if
     index = index+1
   end while
   handle = cm.tempBoxModel(world,[-15.0,-15.0,-24.0],[15.0,15.0,32.0],true)
@@ -59,6 +90,27 @@ function main(args)
     capsuleResult = cm.trace(world,[0.0,0.0,0.0],[0.0,0.0,0.0],[-15.0,-15.0,-24.0],[15.0,15.0,32.0],handle,-1,true,world.patchesReady)
     if not capsuleResult.trace.startsolid or not capsuleResult.trace.allsolid or capsuleResult.trace.fraction != 0.0 then return 1 end if
   end if
-  print "PASS: "+str(count)+" transformed/temporary collision cases and productive capsule handle"
+  if count>=12 and vmCases==0 and len(world.models)<=255 then return 1 end if
+  // CM_Trace's original checkcount avoids clearing every map brush and patch
+  // for every query. Exercise the byte-generation wrap while preserving the
+  // exact trace result and the full original-C differential above.
+  start=[0.0,0.0,0.0];finish=[16.0,0.0,0.0];mins=[-15.0,-15.0,-24.0];maxs=[15.0,15.0,32.0]
+  first=cm.trace(world,start,finish,mins,maxs,0,-1,false,world.patchesReady)
+  serial=world.temporary.visitSerial
+  for repeat=0 to 259
+    if serial>=255 then serial=0 end if;serial=serial+1
+    again=cm.trace(world,start,finish,mins,maxs,0,-1,false,world.patchesReady)
+    if world.temporary.visitSerial!=serial or n.floatBits(again.trace.fraction)!=n.floatBits(first.trace.fraction) or again.trace.contents!=first.trace.contents or again.trace.planeMetadata!=first.trace.planeMetadata or again.endpos!=first.endpos then return error(3503,"collision visit generation changed trace") end if
+  end for
+  // Out-of-range output must fall back without touching guest memory.
+  if vmCases>0 then
+    n.writeU32(vm.data,20,248);original=slice(vm.data,0,len(vm.data))
+    if cm.writeVmTemporaryBoxTrace(world,vm,16) or vm.data!=original then return 1 end if
+  end if
+  // Original CM_TempBoxModel accepts encoded network solids whose upper
+  // extent falls below their lower extent and still copies all six faces.
+  inverted=cm.tempBoxModel(world,[0.0,0.0,0.0],[8.0,8.0,-32.0],false)
+  if inverted!=255 or world.temporary.bounds[0][2]!=0.0 or world.temporary.bounds[1][2]!=-32.0 or world.temporary.brush.planes[4].distance!=-32.0 or world.temporary.brush.planes[5].distance!=0.0 then return error(3503,"inverted temporary hull did not preserve original face planes") end if
+  print "PASS: "+str(count)+" transformed/temporary collision cases and productive capsule handle, VM trace ABI cases="+str(vmCases)
   return 0
 end function

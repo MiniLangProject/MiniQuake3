@@ -22,12 +22,14 @@ Reachable from entry: **no**
 function boundClient(ent)
 ```
 
+Require and return the initialized client state of an entity used by team status.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ent` | `dynamic` | — |  |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L63)
 
 <a id="function-function-mq3-game-team-status-check-function-check-level-src-mq3-game-team-status-ml-88582312"></a>
 ### check
@@ -36,12 +38,14 @@ function boundClient(ent)
 function check(level)
 ```
 
+Set `level.lastTeamLocationTime` to `level.time` in `mq3.game.team_status.check`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`, `lastTeamLocationTime` and `entities`. May update `level.lastTeamLocationTime` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L114)
 
 <a id="function-function-mq3-game-team-status-getlocation-function-getlocation-level-ent-src-mq3-game-team-status-ml-650712465"></a>
 ### getLocation
@@ -50,13 +54,15 @@ function check(level)
 function getLocation(level, ent)
 ```
 
+Apply `mq3.server.world.inPVS` while evaluating `getLocation`. Return paths include `best`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `locationHead` and `scene`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L17)
 
 <a id="function-function-mq3-game-team-status-getlocationmsg-function-getlocationmsg-level-ent-capacity-src-mq3-game-team-status-ml-766372091"></a>
 ### getLocationMsg
@@ -65,14 +71,16 @@ function getLocation(level, ent)
 function getLocationMsg(level, ent, capacity)
 ```
 
+Use `level.gamePrintFn` to perform `getLocationMsg`. Return paths include `infoStrings.copy(text,capacity)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`. |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L36)
 
 <a id="function-function-mq3-game-team-status-overlaylimit-function-overlaylimit-level-src-mq3-game-team-status-ml-965036820"></a>
 ### overlayLimit
@@ -81,12 +89,14 @@ function getLocationMsg(level, ent, capacity)
 function overlayLimit(level)
 ```
 
+Validate the team-overlay client limit against the native sixty-four-client capacity.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclientsCvar`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L57)
 
 <a id="function-function-mq3-game-team-status-sendinfo-function-sendinfo-level-ent-src-mq3-game-team-status-ml-346757035"></a>
 ### sendInfo
@@ -95,13 +105,15 @@ function overlayLimit(level)
 function sendInfo(level, ent)
 ```
 
+Use `level.serverCommandFn` to perform `sendInfo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `sortedClients`, `entities` and `serverCommandFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L76)
 
 <a id="function-function-mq3-game-team-status-sortclients-function-sortclients-a-b-src-mq3-game-team-status-ml-1701338567"></a>
 ### sortClients
@@ -110,13 +122,15 @@ function sendInfo(level, ent)
 function sortClients(a, b)
 ```
 
+Return the result of `n.i32(a-b)` for `sortClients`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Operand used to evaluate the returned expression `n.i32(a-b)`. |
+| `b` | `dynamic` | — | Operand used to evaluate the returned expression `n.i32(a-b)`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L70)
 
 <a id="constant-constant-mq3-game-team-status-team-location-update-time-const-team-location-update-time-1000-src-mq3-game-team-status-ml-137245256"></a>
 ### TEAM_LOCATION_UPDATE_TIME
@@ -125,8 +139,10 @@ function sortClients(a, b)
 const TEAM_LOCATION_UPDATE_TIME = 1000
 ```
 
+Interval in milliseconds between team-location information updates.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L12)
 
 <a id="constant-constant-mq3-game-team-status-team-maxoverlay-const-team-maxoverlay-32-src-mq3-game-team-status-ml-1785622740"></a>
 ### TEAM_MAXOVERLAY
@@ -135,5 +151,7 @@ const TEAM_LOCATION_UPDATE_TIME = 1000
 const TEAM_MAXOVERLAY = 32
 ```
 
+Maximum number of players included in a team-overlay message.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L10)

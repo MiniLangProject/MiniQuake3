@@ -9,8 +9,10 @@
 struct TokenResult
 ```
 
+TokenResult record for vm.syscall_qagame, containing `found`, `text`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L14)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct TokenResult
 found
 ```
 
+Nonzero when the requested token, source, or resource result is available.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L16)
 
 <a id="field-field-mq3-vm-syscall-qagame-tokenresult-text-text-src-mq3-vm-syscall-qagame-ml-40627667"></a>
 ### text
@@ -31,5 +35,7 @@ found
 text
 ```
 
+Spelling of the token returned by the host token-reading operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L18)

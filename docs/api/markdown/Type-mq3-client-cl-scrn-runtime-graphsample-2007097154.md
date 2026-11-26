@@ -9,8 +9,10 @@
 struct GraphSample
 ```
 
+Stores engine client scrn runtime graph sample record, including `value`, `color`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L50)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct GraphSample
 color
 ```
 
+Palette color index recorded with this debug-graph sample.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L54)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-graphsample-value-value-src-mq3-client-cl-scrn-runtime-ml-2016169667"></a>
 ### value
@@ -31,5 +35,7 @@ color
 value
 ```
 
+Measured graph sample used to determine the height of the debug-graph column.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L52)

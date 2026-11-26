@@ -6,7 +6,16 @@ import mq3.botlib.elementary_actions as ea
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Return the result of `n.bitsFloat(common.argument(vm,base,index))` for `farg`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param index Index of the entry to access.
 function farg(vm,base,index) return n.bitsFloat(common.argument(vm,base,index)) end function
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.elementary_actions.say` while evaluating `dispatch`.
+/// @param state Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place.
+/// @param vm Vm record; accesses `data`.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(state,vm,base,op)
   client=common.argument(vm,base,1)
   if op==ea.OP_SAY or op==ea.OP_SAY_TEAM or op==ea.OP_COMMAND then

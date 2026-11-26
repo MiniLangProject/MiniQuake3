@@ -9,8 +9,10 @@
 struct DrawCommand
 ```
 
+Stores UI player settings draw command record, including `kind`, `text`, `x`, `y`, `width`, `height` and additional values.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L53)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct DrawCommand
 asset
 ```
 
+When constructing this record, `visibleNameCommands` supplies an empty string for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L72)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-color-color-src-mq3-client-ui-player-settings-ml-1424107556"></a>
 ### color
@@ -31,8 +35,10 @@ asset
 color
 ```
 
+RGBA text or cursor color selected for the player-settings draw command.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L70)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-height-height-src-mq3-client-ui-player-settings-ml-1138893798"></a>
 ### height
@@ -41,8 +47,10 @@ color
 height
 ```
 
+Height of the character or image quad in a player-settings draw command.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L66)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-kind-kind-src-mq3-client-ui-player-settings-ml-326210384"></a>
 ### kind
@@ -51,8 +59,10 @@ height
 kind
 ```
 
+Player-settings drawing operation selecting how its text, artwork, bounds, and color are interpreted.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L56)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-style-style-src-mq3-client-ui-player-settings-ml-346944060"></a>
 ### style
@@ -61,8 +71,10 @@ kind
 style
 ```
 
+UI drawing-style flags controlling alignment, font selection, and text emphasis.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L68)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-text-text-src-mq3-client-ui-player-settings-ml-275251738"></a>
 ### text
@@ -71,8 +83,10 @@ style
 text
 ```
 
+Text portion of a player-settings drawing command, such as the cleaned name or a handicap label.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L58)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-width-width-src-mq3-client-ui-player-settings-ml-1033680892"></a>
 ### width
@@ -81,8 +95,10 @@ text
 width
 ```
 
+Width of the character or image quad in a player-settings draw command.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L64)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-x-x-src-mq3-client-ui-player-settings-ml-447013952"></a>
 ### x
@@ -91,8 +107,10 @@ width
 x
 ```
 
+Horizontal coordinate of the player-settings text or image command in the virtual menu layout.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L60)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-y-y-src-mq3-client-ui-player-settings-ml-550529580"></a>
 ### y
@@ -101,5 +119,7 @@ x
 y
 ```
 
+Vertical coordinate of the player-settings text or image command in the virtual menu layout.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L62)

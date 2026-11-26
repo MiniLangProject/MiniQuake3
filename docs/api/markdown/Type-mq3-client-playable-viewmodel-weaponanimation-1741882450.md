@@ -9,8 +9,10 @@
 struct WeaponAnimation
 ```
 
+Stores playable viewmodel weapon animation record, including `displayedClass`, `targetClass`, `transitionStart`, `switching`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L103)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct WeaponAnimation
 displayedClass
 ```
 
+When constructing this record, `weaponAnimation` supplies `initialClass` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L105)
 
 <a id="field-field-mq3-client-playable-viewmodel-weaponanimation-switching-switching-src-mq3-client-playable-viewmodel-ml-963169763"></a>
 ### switching
@@ -31,8 +35,10 @@ displayedClass
 switching
 ```
 
+When constructing this record, `weaponAnimation` supplies `false` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L111)
 
 <a id="field-field-mq3-client-playable-viewmodel-weaponanimation-targetclass-targetclass-src-mq3-client-playable-viewmodel-ml-1255213235"></a>
 ### targetClass
@@ -41,8 +47,10 @@ switching
 targetClass
 ```
 
+When constructing this record, `weaponAnimation` supplies `initialClass` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L107)
 
 <a id="field-field-mq3-client-playable-viewmodel-weaponanimation-transitionstart-transitionstart-src-mq3-client-playable-viewmodel-ml-1519881043"></a>
 ### transitionStart
@@ -51,5 +59,7 @@ targetClass
 transitionStart
 ```
 
+When constructing this record, `weaponAnimation` supplies `0` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L109)

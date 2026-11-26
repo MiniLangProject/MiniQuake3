@@ -9,8 +9,10 @@
 struct SourceLocation
 ```
 
+SourceLocation record for vm.cgame_pc_traps, containing `found`, `name`, `line`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L49)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct SourceLocation
 found
 ```
 
+Nonzero when the requested token, source, or resource result is available.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L51)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-sourcelocation-line-line-src-mq3-vm-cgame-pc-traps-ml-2071554177"></a>
 ### line
@@ -31,8 +35,10 @@ found
 line
 ```
 
+Current source line number.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L55)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-sourcelocation-name-name-src-mq3-vm-cgame-pc-traps-ml-405775459"></a>
 ### name
@@ -41,5 +47,7 @@ line
 name
 ```
 
+Name of the source containing the current token.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_pc_traps.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L53)

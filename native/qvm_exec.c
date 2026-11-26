@@ -29,11 +29,19 @@ static void write32(unsigned char *p,int32_t v) { memcpy(p,&v,4); }
  * times, not suitable for a frame-rate acceptance run with logging enabled. */
 #define QVM_PROFILE_VMS 8
 #define QVM_PROFILE_TRAPS 1024
+#define QVM_PROFILE_ENTRIES 32
 typedef struct qvmTrapProfile_s { uint64_t yields,resumes,ticks,maximum; } qvmTrapProfile;
+typedef struct qvmEntryProfile_s { uint64_t nativeTicks,hostTicks,returns; } qvmEntryProfile;
+typedef struct qvmFrameProfile_s {
+    qvmEntryProfile entries[QVM_PROFILE_ENTRIES+1];
+    qvmTrapProfile traps[QVM_PROFILE_TRAPS+1];
+} qvmFrameProfile;
 typedef struct qvmVmProfile_s {
     int count,codeLength;
     uint64_t returns,errors,instructions,nativeTicks,yields,hostTicks;
     qvmTrapProfile traps[QVM_PROFILE_TRAPS+1];
+    qvmEntryProfile entries[QVM_PROFILE_ENTRIES+1];
+    qvmFrameProfile frame;
 } qvmVmProfile;
 typedef struct qvmThreadProfile_s { qvmVmProfile vms[QVM_PROFILE_VMS]; } qvmThreadProfile;
 static INIT_ONCE qvmProfileOnce=INIT_ONCE_STATIC_INIT;
@@ -41,18 +49,20 @@ static volatile LONG qvmProfileMode=-1;
 static LARGE_INTEGER qvmProfileFrequency;
 static FILE *qvmProfileOutput;
 static __declspec(thread) qvmThreadProfile *qvmProfileThread;
+static __declspec(thread) int qvmFrameActive;
 static BOOL CALLBACK qvmProfileInit(PINIT_ONCE once,PVOID parameter,PVOID *context) {
-    char setting[32],path[32768];DWORD length;FILE *output=NULL;
+    char setting[32],path[32768];DWORD length;FILE *output=NULL;int mode;
     (void)once;(void)parameter;(void)context;
     length=GetEnvironmentVariableA("MQ3_QVM_PROFILE",setting,(DWORD)sizeof(setting));
     if (!length||length>=sizeof(setting)||(length==1&&setting[0]=='0')||
             !QueryPerformanceFrequency(&qvmProfileFrequency)||qvmProfileFrequency.QuadPart<=0) {
         InterlockedExchange(&qvmProfileMode,0);return TRUE;
     }
+    mode=strcmp(setting,"frame")==0 ? 2 : 1;
     length=GetEnvironmentVariableA("MQ3_QVM_PROFILE_FILE",path,(DWORD)sizeof(path));
     if (length&&length<sizeof(path)) (void)fopen_s(&output,path,"a");
     qvmProfileOutput=output ? output : stderr;
-    InterlockedExchange(&qvmProfileMode,1);return TRUE;
+    InterlockedExchange(&qvmProfileMode,mode);return TRUE;
 }
 static int qvmProfileEnabled(void) {
     if (qvmProfileMode<0) (void)InitOnceExecuteOnce(&qvmProfileOnce,qvmProfileInit,NULL,NULL);
@@ -92,6 +102,53 @@ static void qvmProfileDump(const qvmVmProfile *vm,int entry,int status) {
     }
     fflush(qvmProfileOutput);
 }
+static void recordTrapResume(qvmTrapProfile *trap,uint64_t elapsed) {
+    trap->ticks+=elapsed;
+    ++trap->resumes;
+    if (elapsed>trap->maximum) trap->maximum=elapsed;
+}
+
+/* frame 0 starts at the playable loop boundary, -1 emits match totals.
+ * The replay invokes this after measuring the frame, with no active VM call. */
+API int mq3_qvm_profile_frame(int frame,int workMs,int minimumWorkMs) {
+    int index,slot;
+    if (!qvmProfileEnabled()||qvmProfileMode!=2) return 0;
+    if (frame==0) {
+        if (qvmProfileThread) memset(qvmProfileThread,0,sizeof(*qvmProfileThread));
+        qvmFrameActive=1;
+        return 1;
+    }
+    if (!qvmFrameActive||!qvmProfileThread) return 0;
+    for (index=0;index<QVM_PROFILE_VMS;++index) {
+        qvmVmProfile *vm=qvmProfileThread->vms+index;
+        const qvmEntryProfile *entries=frame<0 ? vm->entries : vm->frame.entries;
+        if (!vm->count) break;
+        if (frame<0||workMs>=minimumWorkMs) {
+            for (slot=0;slot<=QVM_PROFILE_ENTRIES;++slot) {
+                const qvmEntryProfile *entry=entries+slot;
+                if (!entry->returns&&!entry->nativeTicks&&!entry->hostTicks) continue;
+                fprintf(qvmProfileOutput,"[qvm-entry] frame=%d work_ms=%d vm=%d:%d id=%d calls=%llu native_ms=%.6f host_ms=%.6f\n",
+                        frame,workMs,vm->count,vm->codeLength,
+                        slot==QVM_PROFILE_ENTRIES ? -1 : slot,(unsigned long long)entry->returns,
+                        qvmProfileMs(entry->nativeTicks),qvmProfileMs(entry->hostTicks));
+            }
+            if (frame<0) qvmProfileDump(vm,-1,0);
+            else for (slot=0;slot<=QVM_PROFILE_TRAPS;++slot) {
+                const qvmTrapProfile *trap=vm->frame.traps+slot;
+                /* Small per-trap contributors are represented in entry totals. */
+                if (!trap->resumes||qvmProfileMs(trap->ticks)<0.25) continue;
+                fprintf(qvmProfileOutput,"[qvm-frame-trap] frame=%d vm=%d:%d id=%d calls=%llu host_ms=%.6f max_ms=%.6f\n",
+                        frame,vm->count,vm->codeLength,slot==QVM_PROFILE_TRAPS ? -1 : slot,
+                        (unsigned long long)trap->resumes,qvmProfileMs(trap->ticks),qvmProfileMs(trap->maximum));
+            }
+        }
+        if (frame>0) memset(&vm->frame,0,sizeof(vm->frame));
+    }
+    if (frame<0) qvmFrameActive=0;
+    if (frame<0||workMs>=minimumWorkMs) fflush(qvmProfileOutput);
+    return 1;
+}
+
 static int widthFor(int op) { return op==33 ? 1 : (op==3||op==4||op==8||op==9||(op>=11&&op<=26)||op==34 ? 4 : 0); }
 static int needFor(int op) {
     if (op==5||op==7||op==10||(op>=27&&op<=29)||op==33||(op>=35&&op<=37)||op==49||op==53||op==58||op==59) return 1;
@@ -165,19 +222,25 @@ API int mq3_qvm_run(const unsigned char *plan,int planBytes,unsigned char *data,
     int32_t *c=(int32_t *)control,*s;
     unsigned int savedControl;
     int pc,ps,top,mask,steps,breaks,count,codeLength,error=0;
-    qvmVmProfile *profile=NULL;uint64_t profileStart=0;int profileSteps=0,profileEntry=0;
+    qvmVmProfile *profile=NULL;
+    qvmEntryProfile *frameEntry=NULL,*totalEntry=NULL;
+    uint64_t profileStart=0;int profileSteps=0,profileEntry=0;
     if (!plan||planBytes<16||!data||!control||controlBytes<CONTROL_WORDS*4||read32(plan)!=PLAN_MAGIC) return -1;
     count=read32(plan+4);codeLength=read32(plan+8);
     if (count<1||codeLength<1||16+(int64_t)count*4+(int64_t)codeLength*2>planBytes) return -1;
     addresses=(const int32_t *)(plan+16);code=plan+16+(size_t)count*4;starts=code+codeLength;s=c+C_STACK;
     pc=c[C_PC];ps=c[C_PS];top=c[C_TOP];mask=c[C_MASK];steps=c[C_STEPS];breaks=c[C_BREAKS];
     if (mask!=dataBytes-1||dataBytes<1||(dataBytes&(dataBytes-1))||top<0||top>=256) return -1;
-    if (qvmProfileEnabled()) {
+    if (qvmProfileEnabled()&&(qvmProfileMode!=2||qvmFrameActive)) {
         profile=qvmProfileVm(count,codeLength);
         if (profile) {
             int64_t entryOffset=(int64_t)c[C_ORIGINAL]-40;
             profileStart=qvmProfileClock();profileSteps=steps;
             if (entryOffset>=0&&entryOffset<=dataBytes-4) profileEntry=read32(data+(size_t)entryOffset);
+            if (qvmProfileMode==2) {
+                int index=profileEntry>=0&&profileEntry<QVM_PROFILE_ENTRIES ? profileEntry : QVM_PROFILE_ENTRIES;
+                frameEntry=profile->frame.entries+index;totalEntry=profile->entries+index;
+            }
         }
     }
     if (resume) {
@@ -185,7 +248,14 @@ API int mq3_qvm_run(const unsigned char *plan,int planBytes,unsigned char *data,
         if (profile&&ps<=dataBytes-8) {
             uint64_t stamp,elapsed;int trap=qvmProfileTrapIndex(read32(data+ps+4));qvmTrapProfile *bucket=profile->traps+trap;
             memcpy(&stamp,c+C_RESERVED0,sizeof(stamp));
-            if (stamp&&profileStart>=stamp) { elapsed=profileStart-stamp;bucket->ticks+=elapsed;profile->hostTicks+=elapsed;++bucket->resumes;if (elapsed>bucket->maximum) bucket->maximum=elapsed; }
+            if (stamp&&profileStart>=stamp) {
+                elapsed=profileStart-stamp;
+                recordTrapResume(bucket,elapsed);profile->hostTicks+=elapsed;
+                if (frameEntry) {
+                    frameEntry->hostTicks+=elapsed;totalEntry->hostTicks+=elapsed;
+                    recordTrapResume(profile->frame.traps+trap,elapsed);
+                }
+            }
         }
         s[++top]=resumeValue;pc=read32(data+ps);c[C_PENDING]=0;
     }
@@ -270,14 +340,17 @@ API int mq3_qvm_run(const unsigned char *plan,int planBytes,unsigned char *data,
 finished:
     c[C_PC]=pc;c[C_PS]=ps;c[C_TOP]=top;c[C_STEPS]=steps;c[C_BREAKS]=breaks;
     if (profile) {
-        uint64_t finishedAt=qvmProfileClock();profile->nativeTicks+=finishedAt-profileStart;
+        uint64_t finishedAt=qvmProfileClock(),elapsed=finishedAt-profileStart;
+        profile->nativeTicks+=elapsed;
+        if (frameEntry) { frameEntry->nativeTicks+=elapsed;totalEntry->nativeTicks+=elapsed; }
         profile->instructions+=(uint32_t)steps-(uint32_t)profileSteps;
         if (c[C_STATUS]==1) {
             int trap=qvmProfileTrapIndex(read32(data+ps+4));uint64_t stamp;
             ++profile->yields;++profile->traps[trap].yields;stamp=qvmProfileClock();memcpy(c+C_RESERVED0,&stamp,sizeof(stamp));
         } else {
             if (c[C_STATUS]==0) ++profile->returns;else ++profile->errors;
-            qvmProfileDump(profile,profileEntry,c[C_STATUS]);
+            if (frameEntry) { ++frameEntry->returns;++totalEntry->returns; }
+            else qvmProfileDump(profile,profileEntry,c[C_STATUS]);
         }
     }
     _mm_setcsr(savedControl);
@@ -404,7 +477,7 @@ API int mq3_md3_transform(const unsigned char *input,int inputBytes,unsigned cha
 
 typedef struct worldFace_s {
     double center[3],radius,normal[3];
-    int32_t kind,triangles,twoSided,reserved;
+    int32_t kind,triangles,cullMode,reserved;
 } worldFace;
 typedef char worldFaceSizeMustBe72[sizeof(worldFace)==72 ? 1 : -1];
 API int mq3_world_store_face(unsigned char *records,int bytes,int index,int kind,int triangles,
@@ -413,11 +486,14 @@ API int mq3_world_store_face(unsigned char *records,int bytes,int index,int kind
     if (!records||index<0||((int64_t)index+1)*72>bytes||triangles<0) return 0;
     face.center[0]=x;face.center[1]=y;face.center[2]=z;face.radius=radius;
     face.normal[0]=nx;face.normal[1]=ny;face.normal[2]=nz;face.kind=kind;face.triangles=triangles;
-    face.twoSided=0;face.reserved=0;memcpy(records+(size_t)index*72,&face,72);return 1;
+    face.cullMode=0;face.reserved=0;memcpy(records+(size_t)index*72,&face,72);return 1;
+}
+API int mq3_world_set_cull_mode(unsigned char *records,int bytes,int index,int mode) {
+    if (!records||index<0||((int64_t)index+1)*72>bytes||mode<0||mode>2) return 0;
+    write32(records+(size_t)index*72+64,mode);return 1;
 }
 API int mq3_world_set_two_sided(unsigned char *records,int bytes,int index,int twoSided) {
-    if (!records||index<0||((int64_t)index+1)*72>bytes) return 0;
-    write32(records+(size_t)index*72+64,twoSided!=0);return 1;
+    return mq3_world_set_cull_mode(records,bytes,index,twoSided!=0);
 }
 API int mq3_world_filter(const unsigned char *records,int recordBytes,int faceCount,
         const unsigned char *visible,int visibleBytes,int visibleCount,
@@ -447,9 +523,9 @@ API int mq3_world_filter(const unsigned char *records,int recordBytes,int faceCo
         horizontal=local[2]*slopeX+face.radius*radiusScaleX;vertical=local[2]*slopeY+face.radius*radiusScaleY;
         if (local[2]+face.radius<nearDistance||local[2]-face.radius>farDistance||
                 local[0]<-horizontal||local[0]>horizontal||local[1]<-vertical||local[1]>vertical) { ++rejectedFrustum;continue; }
-        if (backfaceCull&&face.kind==1&&!face.twoSided) {
+        if (backfaceCull&&face.kind==1&&face.cullMode!=1) {
             double facing=face.normal[0]*(camera[0]-face.center[0])+face.normal[1]*(camera[1]-face.center[1])+face.normal[2]*(camera[2]-face.center[2]);
-            if (facing<0.0) { ++rejectedBackface;continue; }
+            if ((face.cullMode==2&&facing>8.0)||(face.cullMode==0&&facing< -8.0)) { ++rejectedBackface;continue; }
         }
         ++candidates;
         if (face.triangles>0) {
@@ -461,4 +537,282 @@ API int mq3_world_filter(const unsigned char *records,int recordBytes,int faceCo
     write32(output+12,rejectedFrustum);write32(output+16,rejectedBackface);write32(output+20,rejectedDistance);
     write32(output+24,read32(previous+4)==selected&&memcmp(output+32,previous+32,(size_t)selected*4)==0);
     memcpy(previous,output,32+(size_t)selected*4);_mm_setcsr(savedControl);return 1;
+}
+
+
+/* CM_TransformedBoxTrace against the six axial planes of CM_TempBoxModel.
+ * World traversal, capsule traces and ownership of the result stay in MiniLang.
+ * A negative return sends unusual or non-finite input through the checked path.
+ */
+static int trace_transformed_box(const float start[3], const float end[3],
+                                 const float mins[3], const float maxs[3],
+                                 const float origin[3], const float box_min[3],
+                                 const float box_max[3], int matches_mask,
+                                 float result[5]) {
+    float a[3], b[3], lo[3], hi[3], enter = -1.0f, leave = 1.0f;
+    int stationary = 1, startout = 0, getout = 0, leading = -1, hit = 0;
+    result[0] = 1.0f;
+    result[1] = 0.0f;
+    for (int i = 0; i < 3; ++i) {
+        if (!isfinite(start[i]) || !isfinite(end[i]) || !isfinite(origin[i]) ||
+            !isfinite(mins[i]) || !isfinite(maxs[i]) || mins[i] > maxs[i]) return -1;
+        float center = (mins[i] + maxs[i]) * 0.5f;
+        lo[i] = mins[i] - center;
+        hi[i] = maxs[i] - center;
+        a[i] = (start[i] + center) - origin[i];
+        b[i] = (end[i] + center) - origin[i];
+        if (!isfinite(lo[i]) || !isfinite(hi[i]) || !isfinite(a[i]) || !isfinite(b[i])) return -1;
+        if (a[i] != b[i]) stationary = 0;
+        /* CM_Trace recenters the transformed bounds again. */
+        center = (lo[i] + hi[i]) * 0.5f;
+        a[i] += center;
+        b[i] += center;
+        lo[i] -= center;
+        hi[i] -= center;
+        if (!isfinite(a[i]) || !isfinite(b[i]) || !isfinite(end[i] - start[i])) return -1;
+    }
+    if (matches_mask && stationary) {
+        hit = 2;
+        for (int i = 0; i < 3; ++i) {
+            if (a[i] + lo[i] > box_max[i] || a[i] + hi[i] < box_min[i]) hit = 0;
+        }
+        if (hit == 2) result[0] = 0.0f;
+    } else if (matches_mask) {
+        for (int side = 0; side < 6; ++side) {
+            int i = side / 2, negative = side & 1;
+            float plane = negative ? -box_min[i] : box_max[i];
+            float distance = plane - (negative ? -hi[i] : lo[i]);
+            float d1 = (negative ? -a[i] : a[i]) - distance;
+            float d2 = (negative ? -b[i] : b[i]) - distance;
+            if (!isfinite(d1) || !isfinite(d2)) return -1;
+            if (d1 > 0.0f && (d2 >= 0.125f || d2 >= d1)) goto done;
+            if (d1 > 0.0f) startout = 1;
+            if (d2 > 0.0f) getout = 1;
+            if (d1 <= 0.0f && d2 <= 0.0f) continue;
+            float delta = d1 - d2;
+            if (!isfinite(delta)) return -1;
+            if (d1 > d2) {
+                float fraction = (float)(((double)d1 - 0.125) / (double)delta);
+                if (fraction < 0.0f) fraction = 0.0f;
+                if (fraction > enter) { enter = fraction; leading = side; }
+            } else {
+                float fraction = (float)(((double)d1 + 0.125) / (double)delta);
+                if (fraction < leave) leave = fraction;
+            }
+        }
+        if (!startout) {
+            hit = getout ? 1 : 2;
+            if (!getout) result[0] = 0.0f;
+        } else if (enter < leave && leading >= 0) {
+            hit = 3 + leading;
+            result[0] = enter;
+            result[1] = (leading & 1) ? -box_min[leading / 2] : box_max[leading / 2];
+        }
+    }
+done:
+    for (int i = 0; i < 3; ++i) result[2 + i] = start[i] + result[0] * (end[i] - start[i]);
+    return hit;
+}
+
+API int mq3_trace_transformed_box(
+    double ax, double ay, double az, double bx, double by, double bz,
+    double lx, double ly, double lz, double hx, double hy, double hz,
+    double ox, double oy, double oz, double tx, double ty, double tz,
+    double ux, double uy, double uz, int matches_mask, unsigned char *output) {
+    unsigned int saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float start[3] = {(float)ax, (float)ay, (float)az};
+    float end[3] = {(float)bx, (float)by, (float)bz};
+    float mins[3] = {(float)lx, (float)ly, (float)lz};
+    float maxs[3] = {(float)hx, (float)hy, (float)hz};
+    float origin[3] = {(float)ox, (float)oy, (float)oz};
+    float box_min[3] = {(float)tx, (float)ty, (float)tz};
+    float box_max[3] = {(float)ux, (float)uy, (float)uz};
+    float result[5];
+    int hit = trace_transformed_box(start, end, mins, maxs, origin, box_min, box_max, matches_mask, result);
+    if (hit >= 0) memcpy(output, result, sizeof(result));
+    _mm_setcsr(saved);
+    return hit;
+}
+
+
+static unsigned char *vm_trace_buffer(unsigned char *data, int capacity, uint32_t mask,
+                                      int address, unsigned int size) {
+    uint32_t offset = (uint32_t)address & mask;
+    if (!address || offset > (uint32_t)capacity || size > (uint32_t)capacity - offset) return NULL;
+    return data + offset;
+}
+
+static int vm_trace_vector(unsigned char *data, int capacity, uint32_t mask,
+                           int address, int nullable, float value[3]) {
+    const unsigned char *source;
+    if (nullable && !address) {
+        value[0] = value[1] = value[2] = 0.0f;
+        return 1;
+    }
+    source = vm_trace_buffer(data, capacity, mask, address, 12);
+    if (!source) return 0;
+    memcpy(value, source, 12);
+    return isfinite(value[0]) && isfinite(value[1]) && isfinite(value[2]);
+}
+
+/* The Cgame temporary box trap has no BSP walk or managed callbacks.
+ * A zero return changes no VM bytes and leaves validation/general models to
+ * the checked MiniLang path. Read all operands before writing trace_t to
+ * preserve legal aliases between the stack, vectors and result. */
+API int mq3_cgame_transformed_box_trace(unsigned char *data, int capacity, uint32_t mask,
+    int base, int model, uint32_t contents, double tx, double ty, double tz,
+    double ux, double uy, double uz) {
+    unsigned char *output;
+    float start[3], end[3], mins[3], maxs[3], origin[3], angles[3], result[5];
+    uint32_t trace[14] = {0};
+    unsigned int saved;
+    int hit;
+    if (!data || base < 0 || capacity < 40 || base > capacity - 40) return 0;
+    if (read32(data + base + 24) != model) return 0;
+    output = vm_trace_buffer(data, capacity, mask, read32(data + base + 4), sizeof(trace));
+    if (!output ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 8), 0, start) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 12), 0, end) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 16), 1, mins) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 20), 1, maxs) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 32), 0, origin) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 36), 0, angles)) return 0;
+    saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float box_min[3] = {(float)tx, (float)ty, (float)tz};
+    float box_max[3] = {(float)ux, (float)uy, (float)uz};
+    hit = trace_transformed_box(start, end, mins, maxs, origin, box_min, box_max,
+                               (read32(data + base + 28) & contents) != 0, result);
+    _mm_setcsr(saved);
+    if (hit < 0) return 0;
+    trace[0] = hit == 2; trace[1] = hit == 1 || hit == 2;
+    memcpy(trace + 2, result, 4);
+    memcpy(trace + 3, result + 2, 12);
+    if (hit == 2 || hit >= 3) trace[12] = contents;
+    if (hit >= 3) {
+        int side = hit - 3, axis = side / 2;
+        trace[6 + axis] = side & 1 ? 0xbf800000u : 0x3f800000u;
+        memcpy(trace + 9, result + 1, 4);
+        trace[10] = (uint32_t)(side & 1 ? (3 + axis) | (1 << (axis + 8)) : axis);
+    }
+    memcpy(output, trace, sizeof(trace));
+    return 1;
+}
+
+static float collision_dot(const float a[3], const float b[3]) {
+    return (a[0] * b[0] + a[1] * b[1]) + a[2] * b[2];
+}
+
+/* Numerical step from CM_TraceThroughTree. MiniLang visits nodes and leaves
+ * and clips the live trace. On a split, replace the current record with the
+ * deferred far interval and write the near interval in the next record.
+ * The fourth coordinate is the fraction along the original sweep. */
+API int mq3_trace_segment_step(unsigned char *records, int capacity, int offset,
+                               int axis, double nx, double ny, double nz,
+                               double plane_distance, double box_extent) {
+    if (!records || offset < 0 || capacity < 64 || offset > capacity - 64 ||
+        axis < 0 || axis > 3) return -1;
+    unsigned int saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float start[4], end[4];
+    memcpy(start, records + offset, sizeof(start));
+    memcpy(end, records + offset + sizeof(start), sizeof(end));
+    float distance = (float)plane_distance, extent = (float)box_extent;
+    float d1, d2;
+    if (axis < 3) {
+        d1 = start[axis] - distance;
+        d2 = end[axis] - distance;
+    } else {
+        float x = (float)nx, y = (float)ny, z = (float)nz;
+        d1 = (x * start[0] + y * start[1]) + z * start[2] - distance;
+        d2 = (x * end[0] + y * end[1]) + z * end[2] - distance;
+    }
+    int side;
+    if (d1 >= extent + 1.0f && d2 >= extent + 1.0f) side = 0;
+    else if (d1 < -extent - 1.0f && d2 < -extent - 1.0f) side = 1;
+    else {
+        float near_fraction = 1.0f, far_fraction = 0.0f;
+        side = 2;
+        /* The reference narrows the signed distances and reciprocal before
+         * applying the double-precision epsilon expression. */
+        if (d1 < d2) {
+            float inverse = (float)(1.0 / (double)(d1 - d2));
+            near_fraction = (float)(((double)(d1 - extent) + 0.125) * inverse);
+            far_fraction = (float)(((double)(d1 + extent) + 0.125) * inverse);
+            side = 3;
+        } else if (d1 > d2) {
+            float inverse = (float)(1.0 / (double)(d1 - d2));
+            near_fraction = (float)(((double)(d1 + extent) + 0.125) * inverse);
+            far_fraction = (float)(((double)(d1 - extent) - 0.125) * inverse);
+        }
+        if (near_fraction < 0) near_fraction = 0;
+        if (near_fraction > 1) near_fraction = 1;
+        if (far_fraction < 0) far_fraction = 0;
+        if (far_fraction > 1) far_fraction = 1;
+        __m128 a = _mm_loadu_ps(start);
+        __m128 delta = _mm_sub_ps(_mm_loadu_ps(end), a);
+        __m128 near_end = _mm_add_ps(a, _mm_mul_ps(delta, _mm_set1_ps(near_fraction)));
+        __m128 far_start = _mm_add_ps(a, _mm_mul_ps(delta, _mm_set1_ps(far_fraction)));
+        memcpy(records + offset, &far_start, 16);
+        memcpy(records + offset + 32, start, 16);
+        memcpy(records + offset + 48, &near_end, 16);
+    }
+    _mm_setcsr(saved);
+    return side;
+}
+
+/* Return the matching side with the earliest opposing plane, or the
+ * startsolid/allsolid status. BSP order, masks and patches stay in MiniLang. */
+static int trace_convex_brush(const unsigned char *planes, int plane_bytes,
+                              const float start[3], const float end[3],
+                              const float mins[3], const float maxs[3],
+                              float limit, float *result) {
+    float enter = -1.0f, leave = 1.0f;
+    int startout = 0, getout = 0, leading = -1;
+    for (int offset = 0; offset < plane_bytes; offset += 16) {
+        float p[4], corner[3];
+        memcpy(p, planes + offset, sizeof(p));
+        for (int i = 0; i < 3; ++i) corner[i] = p[i] < 0.0f ? maxs[i] : mins[i];
+        float distance = p[3] - collision_dot(corner, p);
+        float d1 = collision_dot(start, p) - distance;
+        float d2 = collision_dot(end, p) - distance;
+        if (!isfinite(d1) || !isfinite(d2)) return -1;
+        if (d1 > 0.0f && (d2 >= 0.125f || d2 >= d1)) return 0;
+        if (d1 > 0.0f) startout = 1;
+        if (d2 > 0.0f) getout = 1;
+        if (d1 <= 0.0f && d2 <= 0.0f) continue;
+        float delta = d1 - d2;
+        if (!isfinite(delta)) return -1;
+        if (d1 > d2) {
+            float fraction = (float)(((double)d1 - 0.125) / (double)delta);
+            if (fraction < 0.0f) fraction = 0.0f;
+            if (fraction > enter) { enter = fraction; leading = offset / 16; }
+        } else {
+            float fraction = (float)(((double)d1 + 0.125) / (double)delta);
+            if (fraction < leave) leave = fraction;
+        }
+    }
+    if (!startout && plane_bytes != 0) return getout ? 1 : 2;
+    if (leading < 0 || !(enter < leave && enter < limit)) return 0;
+    *result = enter;
+    return leading + 3;
+}
+
+API int mq3_trace_convex_brush(const unsigned char *planes, int plane_bytes,
+    double ax, double ay, double az, double bx, double by, double bz,
+    double lx, double ly, double lz, double hx, double hy, double hz,
+    double limit, unsigned char *output) {
+    if (plane_bytes < 0 || plane_bytes % 16 != 0) return -1;
+    unsigned int saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float start[3] = {(float)ax, (float)ay, (float)az};
+    float end[3] = {(float)bx, (float)by, (float)bz};
+    float mins[3] = {(float)lx, (float)ly, (float)lz};
+    float maxs[3] = {(float)hx, (float)hy, (float)hz};
+    float fraction = 1.0f;
+    int hit = trace_convex_brush(planes, plane_bytes, start, end, mins, maxs, (float)limit, &fraction);
+    if (hit >= 3) memcpy(output, &fraction, sizeof(fraction));
+    _mm_setcsr(saved);
+    return hit;
 }

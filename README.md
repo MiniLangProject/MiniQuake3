@@ -10,6 +10,8 @@ to [MiniLang](https://github.com/MiniLangProject). Its goal is to preserve the
 original game's behavior, data formats and virtual-machine interfaces while
 moving engine ownership into MiniLang.
 
+The sole maintained branch is `main`.
+
 The current playable path runs the original `ui`, `cgame` and `qagame` QVMs
 against the MiniLang engine. Small native bridges provide Windows services,
 rendering, audio and accelerated bytecode dispatch. It is a working preview,
@@ -48,8 +50,8 @@ source and binary hashes, renderer details and test limits are recorded in the
   batches and a software-rendering fallback.
 - **Desktop integration:** keyboard and mouse input, configurable bindings
   transferred from the menu into a match, and continued operation when no
-  audio output device is available. Full desktop persistence remains separate
-  from the verified core correction set.
+  audio output device is available. Bindings and archived settings persist
+  across launches.
 - **Evidence-oriented development:** original-source comparisons, compiled
   contracts, retail probes and reproducible screenshot captures.
 
@@ -62,14 +64,20 @@ complete behavioral parity.
 | Area | What has been demonstrated |
 | --- | --- |
 | Windows build | Native EXE, Windows bridge DLLs and the three original QVM modules build with the published MiniLang 1.3.9 compiler. |
-| Normal startup | Starting `MiniQuake3.exe` without arguments opens the original main menu using data beside the executable. |
-| Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. |
-| Graphical execution | An earlier `q3dm0` replay completed 300 frames; the README capture run separately exercises both pictured arenas. |
+| Normal startup | Starting `MiniQuake3.exe` without arguments opens the original main menu using data beside the executable. Selecting an arena shows its Retail levelshot, connection status and match rules while the map loads. |
+| Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. All 30 Retail arena BSPs complete a 30-frame Windows/QVM smoke test; all 32 named Retail bots pass a 120-frame command probe on `q3dm1`. [Scope and limits](docs/verification/2026-11-21-all-arenas-bots-performance.md) |
+| Graphical execution | The 6,000-frame Retail `q3dm0` combat replay on the RTX 5080 reached 83.6 FPS. The longest frame fell from 107 to 54 ms. [Frame-time and CPU profile](docs/verification/2026-11-21-bot-cgame-frame-profile.md) |
+| Extended bot combat | In three alternating 3,200-frame Retail `q3dm1` pairs, caching larger impact-mark batches raised the median from 66.96 to 84.59 FPS and cut P99 from 68 to 43 ms. A further bounded per-face cache yielded 92.71→96.31 FPS and P99 41→33 ms against that version; gameplay counters matched. [Cause and limits](docs/verification/2026-11-23-mark-cache.md) |
+| Specular pass audit | Static `lightingSpecular` passes now update in one native batch call. In two 3,200-frame Retail bot-combat pairs on the RTX 5080, the mean render phase fell from 3.95/3.93 to 3.24/2.99 ms and P99 from 46/44 to 42/41 ms. Total FPS varied, including one lower candidate run; other CPU spikes remain. [Measurements and remaining work](docs/verification/2026-11-23-specular-batch.md) |
+| Sky pole and current frame times | Retail sky cloud UVs now use Quake III's cloud-sphere formula and parsed sky height; a q3dm1 zenith capture no longer shows the square tile. Direct polygon expansion improved an isolated 250,000-triangle test from 78 to 16 ms. Raising the concurrent GC threshold to 128 MiB cut q3dm0 slow frames in a 3,200-frame bot replay, but P99 remained 33 ms on q3dm1 and varied from 37 to 43 ms on q3dm0 across system loads. [Checks and limits](docs/verification/2026-11-23-sky-pole-and-poly-expansion.md) |
+| Combat memory and recurrent stutter | A 6,000-frame Retail bot replay held its committed heap at 368 MiB after asset loading; GC cycles and changing Cgame, geometry and draw costs coincide with slow frames. Retained entity/light queues remove repeated array copies but have no proven full-game FPS benefit. A 256 MiB GC experiment consumed 128 MiB more memory without reliable overall gain; the 128 MiB setting remains. [Profile and limits](docs/verification/2026-11-23-bot-combat-memory-profile.md) |
+| Collision query performance | A Retail `q3dm15` QVM profile observed `trap_LinkEntity` host time fall from 2,099 to 110 microseconds per call after BSP query storage changes. The run's average frame work fell from 27.85 to 18.87 ms; real-time simulation trajectories can differ. [Measurements](docs/verification/2026-11-21-all-arenas-bots-performance.md) |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
 | Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
 | Protocol 68 remote client | A separate original dedicated server has accepted the headless MiniLang peer over UDP, including gamestate, snapshots, input acknowledgement and reliable chat. See [network scope and restart acceptance](docs/NETWORK_RUNTIME.md#original-server-acceptance) for the current tests and limits. |
-| Desktop lifecycle and persistence | A separate candidate exists; complete restart/map/menu/video and persistent-file integration is not yet accepted in this core change set. |
-| Broader compatibility | Graphical remote connect, pure servers, reverse full-game interoperability, longer interactive sessions, hardware-specific behavior and complete 1:1 parity still need implementation or acceptance testing. |
+| Compiler contracts | A complete inventory of 12,618 internal function signatures and an instrumented Retail call profile guide a measured, incremental typing and inlining pass. The current typed hotpaths have isolated A/B and differential evidence; most functions remain dynamic. [First evaluation](docs/verification/2026-11-22-function-contract-evaluation.md) · [Second evaluation](docs/verification/2026-11-22-function-contract-wave2.md) · [Third evaluation](docs/verification/2026-11-22-function-contract-wave3.md) · [Renderer predicates](docs/verification/2026-11-22-function-contract-wave4.md) · [Binary32 hotpaths](docs/verification/2026-11-22-function-contract-wave5.md) |
+| Desktop lifecycle and persistence | The Windows host routes local map, restart, menu and Retail tier-cinematic commands, consumes the post-film `nextmap` command, and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |
+| Broader compatibility | Longer interactive sessions, multiplayer interoperability, hardware-specific behavior and complete 1:1 parity still need acceptance testing. |
 
 The historical hosted Windows screenshot runs used **software rendering** and do not
 establish hardware-accelerated performance or audible playback. Capture I/O is
@@ -188,13 +196,30 @@ regenerating the historical manifest with unrelated compiler inputs.
 | Scoreboard | Hold `Tab` |
 | Chat / team chat | `T` / `Y` |
 | Menu | `Esc` |
+| Toggle fullscreen | `Alt+Enter` |
 
-The Controls menu provides rebinding and mouse settings, transferred from the
-menu into the match. The audited normal desktop host does not yet provide the
-complete persistent `q3config.cfg` and QVM write integration; its separate
-candidate still needs end-to-end acceptance. Do not rely on settings surviving
-a program restart in this core-only version. The current starter configuration
-uses an inverted vertical mouse axis, which can be changed in Controls.
+Controls provides rebinding and mouse settings, including the default inverted
+vertical axis. Setup → System → Graphics applies Video Mode and Fullscreen
+while the same game window stays open. The runtime uses a borderless fullscreen
+window if the graphics driver cannot switch to the selected display mode.
+Live mode changes scale the QVM's existing logical viewport to the new surface.
+Controls, archived settings and single-player placement use the local
+`baseq3/q3config.cfg` beside the executable.
+
+## Multiplayer, demos and mods
+
+- Join through **Multiplayer** or enter `connect 192.0.2.10:27960` in the
+  in-game console, substituting your server address. The Windows client
+  supports IPv4 protocol-68 servers. Pure Baseq3 joins require matching local
+  PK3s with 1.32-compatible client QVMs. Early CD-only QVMs use an older ABI.
+  The client does not download missing packages.
+- Use **Demos** to play a `.dm_68` recording in `baseq3/demos` (or the active
+  mod's `demos` directory). The console command is `demo <name>`.
+- Put each mod in its own directory beside `baseq3` and select it in
+  **Mods**. From the console, use `set fs_game <directory>; fs_restart`.
+  Mods can supply assets and Quake III 1.32 QVMs, and use their own
+  `q3config.cfg`. Native DLL mods, Pure mod servers, demo recording and
+  Timedemo on the Windows path remain open.
 
 ## Tests and verification
 
@@ -205,6 +230,14 @@ After building and supplying `build/baseq3/pak0.pk3`:
 ```powershell
 python scripts/test_default_launcher.py
 python scripts/test_default_exe_startup.py
+python scripts/test_desktop_video_retail.py
+python scripts/test_desktop_session_retail.py --data-root build --published
+python scripts/test_desktop_cinematic_retail.py --data-root build
+$env:MQ3_BUILD_TOOLCHAIN = "release"
+python scripts/test_singleplayer_bot_retail.py --data-root build
+python scripts/test_all_retail_levels.py --data-root build
+python scripts/test_all_retail_bots.py --data-root build
+Remove-Item Env:MQ3_BUILD_TOOLCHAIN
 python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml --output singleplayer_bot_retail_probe.exe
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm0
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm1
@@ -213,6 +246,10 @@ python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml 
 These are focused startup and retail-logic checks, not the full acceptance
 suite. The no-argument startup test intentionally closes the menu after
 observing it; it is not a manual playthrough or a normal menu-exit test.
+The single-player bot script also checks that Crash attacks without the
+player firing and that the original scoreboard still lists both clients.
+The arena test checks all 30 Retail maps over 30 frames each; the bot test
+spawns all 32 Retail profiles and checks active commands over 120 frames each.
 
 ### Audit core regressions
 
@@ -276,6 +313,8 @@ suite was run, nor does it prove binary identity with an older build.
 ## Documentation
 
 - [MiniDoc API reference](docs/api/markdown/README.md)
+- [Current documentation coverage and semantic verification](docs/verification/MINIDOC_COVERAGE_2026-11-26.md)
+- [MiniDoc warning cleanup and verification](docs/verification/MINIDOC_WARNINGS_2026-11-26.md)
 - [Audit corrections and validation scope](docs/AUDIT_FIXES_2026-11-17.md)
 - [Port plan](docs/PORTPLAN.md) and [current parity audit](docs/PARITY_AUDIT.md)
 - [Behavioral compatibility audit](docs/BEHAVIOR_PARITY_AUDIT.md)
@@ -283,6 +322,31 @@ suite was run, nor does it prove binary identity with an older build.
 - [Playable preview](docs/PLAYABLE_PREVIEW.md) and [VM runtime](docs/VM_RUNTIME.md)
 - [Upstream source provenance](docs/UPSTREAM.md)
 - [Screenshot provenance](docs/screenshots/capture-manifest.json)
+
+### Updating the API reference
+
+MiniDoc runs in strict mode through `minidoc.toml`: missing API summaries,
+parameter/return contracts, license headers, and summary-quality warnings fail
+the command. Use MiniDoc 0.4.9 or newer for indexed relation-graph rendering on
+this large source tree. Keep MiniDoc and MiniLangCompilerML as sibling checkouts
+and run:
+
+```powershell
+$SourceRevision = git rev-parse HEAD
+..\MiniDoc\build\minidoc.exe --config .\minidoc.toml --revision $SourceRevision
+python docs/verification/verify_minidoc.py --revision $SourceRevision
+```
+
+On Linux, use `../MiniDoc/build/minidoc --config minidoc.toml --revision "$(git rev-parse HEAD)"`
+and run the same Python verifier. Add `--check` to MiniDoc to validate without
+rewriting the generated HTML and Markdown. The Python verifier checks both output
+manifests, local links, anchors, search-result targets, and complete HTML/SVG/JSON
+files. Commit source documentation changes and their regenerated reference pages.
+
+The [coverage report](docs/verification/MINIDOC_COVERAGE_2026-11-26.md) separates
+comment coverage from semantic review: a comment on every declaration does not
+prove that every description is correct. Source contracts and generated pages
+must continue to be reviewed against their implementations.
 
 Some historical engineering documents are still in German. This README is
 the English entry point; the detailed reports retain their original evidence

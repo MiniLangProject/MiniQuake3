@@ -24,14 +24,16 @@ Reachable from entry: **yes**
 function clientTick(runtime, time, msec)
 ```
 
+Updates `runtime.lastClientResult`, `runtime.frameCount` in `mq3.platform.engine_loop.clientTick`; returns `runtime.lastClientResult`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `msec` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.lastClientResult`, `runtime.frameCount`. |
+| `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
+| `msec` | `dynamic` | — | Argument 2 supplied to `mq3.client.frame.run`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L99)
 
 <a id="function-function-mq3-platform-engine-loop-commontick-function-commontick-runtime-time-src-mq3-platform-engine-loop-ml-1716240505"></a>
 ### commonTick
@@ -40,13 +42,15 @@ function clientTick(runtime, time, msec)
 function commonTick(runtime, time)
 ```
 
+Returns `void` from `mq3.platform.engine_loop.commonTick`; earlier branches return `error(7120,"engine loop: missing runtime")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record providing `runtime.configState`. |
+| `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L74)
 
 <a id="function-function-mq3-platform-engine-loop-create-function-create-inputqueue-inputhandlers-inputbudget-serverstate-serverservices-clientstate-clientservices-src-mq3-platform-engine-loop-ml-651422523"></a>
 ### create
@@ -55,18 +59,20 @@ function commonTick(runtime, time)
 function create(inputQueue, inputHandlers, inputBudget, serverState, serverServices, clientState, clientServices)
 ```
 
+Builds `mq3.platform.engine_loop.Runtime` for `mq3.platform.engine_loop.create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `inputQueue` | `dynamic` | — |  |
-| `inputHandlers` | `dynamic` | — |  |
-| `inputBudget` | `dynamic` | — |  |
-| `serverState` | `dynamic` | — |  |
-| `serverServices` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `clientServices` | `dynamic` | — |  |
+| `inputQueue` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.inputQueue`. |
+| `inputHandlers` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.inputHandlers`. |
+| `inputBudget` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.inputBudget`. |
+| `serverState` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.serverState`. |
+| `serverServices` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.serverServices`. |
+| `clientState` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.clientState`. |
+| `clientServices` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.clientServices`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L50)
 
 <a id="function-function-mq3-platform-engine-loop-initializeconfiguration-function-initializeconfiguration-runtime-configstate-commandstate-src-mq3-platform-engine-loop-ml-332429321"></a>
 ### initializeConfiguration
@@ -79,12 +85,12 @@ Completes the common startup portion after cvars, commands, filesystem and clien
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `configState` | `dynamic` | — |  |
-| `commandState` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.configState`, `runtime.commandState`. |
+| `configState` | `dynamic` | — | Mutable record or buffer; this call updates `configState.fullyInitialized`. |
+| `commandState` | `dynamic` | — | Value assigned to `runtime.commandState`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L62)
 
 <a id="function-function-mq3-platform-engine-loop-liveservices-function-liveservices-runtime-serveringress-src-mq3-platform-engine-loop-ml-1529702480"></a>
 ### liveServices
@@ -93,13 +99,15 @@ Completes the common startup portion after cvars, commands, filesystem and clien
 function liveServices(runtime, serverIngress)
 ```
 
+Returns `desktopHost.liveServicesWithCommon(serverIngress,runtime,commonTick,serverTick,clientTick)` from `mq3.platform.engine_loop.liveServices`; earlier branches return `error(7120,"engine loop: missing live component")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `serverIngress` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Argument 2 supplied to `mq3.platform.desktop_frame_host.liveServicesWithCommon`. |
+| `serverIngress` | `dynamic` | — | Argument 1 supplied to `mq3.platform.desktop_frame_host.liveServicesWithCommon`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L109)
 
 - [mq3.platform.engine_loop.Runtime](Type-mq3-platform-engine-loop-runtime-932181352.md) — struct
 <a id="function-function-mq3-platform-engine-loop-servertick-function-servertick-runtime-time-msec-src-mq3-platform-engine-loop-ml-30592809"></a>
@@ -113,9 +121,9 @@ desktop_frame_host calls this after the network pump, preserving Quake's event-b
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `msec` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.inputCount`, `runtime.lastServerResult`. |
+| `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.engine_loop.commonTick`. |
+| `msec` | `dynamic` | — | Argument 2 supplied to `mq3.server.frame.run`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L85)

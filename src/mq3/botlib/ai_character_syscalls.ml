@@ -6,7 +6,16 @@ import mq3.botlib.ai_characters as characters
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Return the result of `n.bitsFloat(common.argument(vm,base,index))` for `farg`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param index Index of the entry to access.
 function farg(vm,base,index) return n.bitsFloat(common.argument(vm,base,index)) end function
+/// Apply `mq3.vm.syscall_common.readString`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_characters.loadCharacter` while evaluating `dispatch`.
+/// @param state AI characters state; accesses `readFn`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(state,vm,base,op)
   if op==characters.OP_LOAD_CHARACTER then filename=common.readString(vm,common.argument(vm,base,1));if filename is error then return filename end if;return characters.loadCharacter(state,filename,farg(vm,base,2)) end if
   handle=common.argument(vm,base,1)

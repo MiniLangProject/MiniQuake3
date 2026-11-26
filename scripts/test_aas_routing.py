@@ -33,7 +33,7 @@ def main()->int:
     parser=argparse.ArgumentParser();parser.add_argument('--pak',type=Path);args=parser.parse_args()
     generated=ROOT/'build/reference/aas/routing.aas';generated.parent.mkdir(parents=True,exist_ok=True);generated.write_bytes(fixture())
     value=run([build('tests/aas_routing_contracts.ml','aas_routing_contracts.exe'),generated],ROOT/'build').strip()
-    if value!='PASS: 12 AAS weighted routing contracts':raise RuntimeError(value)
+    if value!='PASS: 13 AAS weighted routing contracts':raise RuntimeError(value)
     print(value)
     if args.pak:
         value=run([build('tests/aas_routing_retail_probe.ml','aas_routing_retail_probe.exe'),args.pak],ROOT/'build').strip()

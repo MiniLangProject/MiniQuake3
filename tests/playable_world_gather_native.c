@@ -38,6 +38,17 @@ int main(void) {
         if(memcmp(metadata,before,sizeof(metadata))) return 16;
     }
     if(!expect(mq3_test_gather_world(0,0,0,0,0,0,0,0,0,0),0,"empty streams")) return 17;
+    {
+        unsigned char normals[6*36],destination[6*36+32],expected[6*36];
+        for(index=0;index<(int)sizeof(normals);++index) normals[index]=(unsigned char)(index*17+3);
+        for(index=0;index<6;++index) memcpy(expected+index*36,normals+sequence[index]*36,36);
+        memset(destination,0xcc,sizeof(destination));selected[0]=3;selected[1]=0;selected[2]=2;
+        if(!expect(playable_window_gather_specular_normals(normals,sizeof(normals),6,destination+16,6*36,(unsigned char *)runs,sizeof(runs),(unsigned char *)selected,sizeof(selected),3),6,"specular normal order")) return 18;
+        if(memcmp(destination+16,expected,sizeof(expected))) return 19;
+        for(index=0;index<16;++index) if(destination[index]!=0xcc || destination[sizeof(destination)-1-index]!=0xcc) return 20;
+        if(!expect(playable_window_gather_specular_normals(normals,sizeof(normals),6,destination+16,5*36,(unsigned char *)runs,sizeof(runs),(unsigned char *)selected,sizeof(selected),3),-4,"specular capacity")) return 21;
+        if(!expect(playable_window_gather_specular_normals(normals,sizeof(normals),6,normals,sizeof(normals),(unsigned char *)runs,sizeof(runs),(unsigned char *)selected,sizeof(selected),3),-5,"specular alias")) return 22;
+    }
     if(!mq3_test_world_records_equal(source,sizeof(source),6,source,sizeof(source),6) || mq3_test_world_records_equal(source,5,6,source,sizeof(source),6)) return 14;
     puts("PASS: test-only world gather exact order, repeated faces, canaries, validation-before-write, bounds and alias rejection");return 0;
 }

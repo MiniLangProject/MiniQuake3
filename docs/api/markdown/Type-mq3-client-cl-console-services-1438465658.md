@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores engine client console host-service callbacks, including `context`, `startDemoLoopFn`, `crosshairPlayerFn`, `lastAttackerFn`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L40)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Services
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for console scrollback and notification drawing.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L43)
 
 <a id="field-field-mq3-client-cl-console-services-crosshairplayerfn-crosshairplayerfn-src-mq3-client-cl-console-ml-198940877"></a>
 ### crosshairPlayerFn
@@ -31,8 +35,10 @@ context
 crosshairPlayerFn
 ```
 
+Host callback for the crosshair player operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L49)
 
 <a id="field-field-mq3-client-cl-console-services-lastattackerfn-lastattackerfn-src-mq3-client-cl-console-ml-1613484019"></a>
 ### lastAttackerFn
@@ -41,8 +47,10 @@ crosshairPlayerFn
 lastAttackerFn
 ```
 
+Host callback for the last attacker operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L52)
 
 <a id="field-field-mq3-client-cl-console-services-startdemoloopfn-startdemoloopfn-src-mq3-client-cl-console-ml-1978232077"></a>
 ### startDemoLoopFn
@@ -51,5 +59,7 @@ lastAttackerFn
 startDemoLoopFn
 ```
 
+Host callback for the start demo loop operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L46)

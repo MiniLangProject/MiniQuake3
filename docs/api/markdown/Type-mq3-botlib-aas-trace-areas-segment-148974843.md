@@ -9,8 +9,10 @@
 struct Segment
 ```
 
+`Segment` record for aas trace areas, containing `start`, `finish`, `nodeNum` and `planeNum`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L10)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Segment
 finish
 ```
 
+End of the current segment used to enumerate crossed navigation areas.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-trace-areas-segment-nodenum-nodenum-src-mq3-botlib-aas-trace-areas-ml-2104286872"></a>
 ### nodeNum
@@ -31,8 +35,10 @@ finish
 nodeNum
 ```
 
+Index of the BSP or AAS node visited by this operation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L16)
 
 <a id="field-field-mq3-botlib-aas-trace-areas-segment-planenum-planenum-src-mq3-botlib-aas-trace-areas-ml-241225032"></a>
 ### planeNum
@@ -41,8 +47,10 @@ nodeNum
 planeNum
 ```
 
+Splitting plane crossed to enter the segment while collecting traversed areas.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-trace-areas-segment-start-start-src-mq3-botlib-aas-trace-areas-ml-1166197844"></a>
 ### start
@@ -51,5 +59,7 @@ planeNum
 start
 ```
 
+Beginning of the current segment used to enumerate crossed navigation areas.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)

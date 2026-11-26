@@ -32,8 +32,8 @@ function main(args)
   count=0;image=materials.Image(1,1,bytes([255,255,255,255]));wave=shader.Wave(5,0.2,0.7,0.3,1.25)
   effect=materials.RuntimeStage(["effect"],[image],[81],0.0,[materials.UvMod("scroll",0.13,-0.23,0.0,0.0,0.0,0.0,shader.blankWave())],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"environment","wave",wave,"wave",wave,[255,255,255,255],false,false,false,false,256.0,[])
   fixedStage=materials.RuntimeStage(["clamp"],[image],[82],0.0,[],materials.BLEND_ALPHA,materials.ALPHA_TEST_GE128,"texture","identity",shader.blankWave(),"identity",shader.blankWave(),[255,255,255,255],false,true,true,false,256.0,[])
-  dynamicMaterial=materials.Material(0,"dynamic","effect",image,81,[effect],[],true,3.0,false,false,0.0,0.0)
-  fixedMaterial=materials.Material(1,"fixed","clamp",image,82,[fixedStage],[],true,3.0,false,false,0.0,0.0)
+  dynamicMaterial=materials.Material(0,"dynamic","effect",image,81,[effect],[],true,3.0,false,false,0.0,0.0,false)
+  fixedMaterial=materials.Material(1,"fixed","clamp",image,82,[fixedStage],[],true,3.0,false,false,0.0,0.0,false)
   catalog=materials.Catalog([dynamicMaterial,fixedMaterial],0,2,2,2,0,2);byFace=array(3,void)
   for face=0 to 2
     a=retainedFixtureVertex(face*3.0,0.0,0.0,0.0,face*4);b=retainedFixtureVertex(face*3.0+1.0,0.0,1.0,0.0,face*4+1);c=retainedFixtureVertex(face*3.0+1.0,1.0,1.0,1.0,face*4+2);d=retainedFixtureVertex(face*3.0,1.0,0.0,1.0,face*4+3)
@@ -66,9 +66,18 @@ function main(args)
   emptyChosen=retainedFixtureSelected(emptyWorld,[]);emptyBatch=retained.select(emptyCache,emptyChosen);if emptyBatch is error then return emptyBatch end if
   count=count+retainedFixtureReq(emptyBatch.sourceTriangles==0 and emptyBatch.base.count==0 and len(emptyBatch.passes)==0 and emptyBatch.fogBatch.commands.count==0 and len(emptyBatch.dlightBatch.triangles)==0,"empty map selects no command/source rows without descending zero-length loops")
   dynamicMaterial.deforms=[shader.Deform("autosprite",0.0,shader.blankWave(),[0.0,0.0,0.0],0.0,0.0,0.0)]
-  sprite=retained.create(world,catalog,[false,false],fogCatalog,lightCatalog,[true,true]);actual=retained.select(sprite,chosen);count=count+retainedFixtureReq(sprite.fallbacks==1 and actual.sourceTriangles==2,"autosprite paired topology uses original selected builder")
+  sprite=retained.create(world,catalog,[false,false],fogCatalog,lightCatalog,[true,true])
+  for each spriteFaces in [[1,0],[0],[0,1]]
+    spriteSelection=retainedFixtureSelected(world,spriteFaces);actual=retained.select(sprite,spriteSelection);if actual is error then return actual end if
+    expected=reference.buildMaterials(spriteSelection.renderData,catalog,[false,false]);if expected is error then return expected end if
+    reference.attachFog(expected,spriteSelection.renderData,fogCatalog)
+    retainedFixtureUpdate(actual,[0.0,-4.0,9.0],3500,fogCatalog);retainedFixtureUpdate(expected,[0.0,-4.0,9.0],3500,fogCatalog)
+    count=count+retainedFixtureReq(sprite.fallbacks==0 and retainedFixtureCompare(actual,expected),"autosprite gathers whole pairs with equal deformed output")
+  end for
+  odd=World(1,[[byFace[0][0]]],[0],[1]);oddSprite=retained.create(odd,catalog,[false,false],fogCatalog,lightCatalog,[true,true])
+  actual=retained.select(oddSprite,retainedFixtureSelected(odd,[0]));count=count+retainedFixtureReq(oddSprite.fallbacks==1 and actual.sourceTriangles==1,"odd autosprite face keeps legacy pairing")
   dynamicMaterial.deforms=[];dynamicMaterial.sort=1.0
-  portal=retained.create(world,catalog,[false,false],fogCatalog,lightCatalog,[true,true]);actual=retained.select(portal,chosen);count=count+retainedFixtureReq(portal.fallbacks==1 and actual.sourceTriangles==2,"portal material path uses original selected builder")
-  print "PASS: "+str(count)+" retained-world contracts (sparse updates, epochs, exact fog/light sources, empty/reordered sets, capacity/auto/portal fallback)"
+  portal=retained.create(world,catalog,[false,false],fogCatalog,lightCatalog,[true,true]);actual=retained.select(portal,chosen);count=count+retainedFixtureReq(portal.fallbacks==0 and actual.sourceTriangles==2 and actual.passes[0].sort==1.0,"portal surface uses retained main-view records and preserves portal stage ordering")
+  print "PASS: "+str(count)+" retained-world contracts (sparse updates, epochs, exact fog/light sources, empty/reordered sets, capacity, autosprite pairs and portal gather)"
   return 0
 end function

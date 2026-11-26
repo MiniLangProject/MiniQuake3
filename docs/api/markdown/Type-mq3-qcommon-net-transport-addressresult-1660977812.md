@@ -9,8 +9,10 @@
 struct AddressResult
 ```
 
+AddressResult record for qcommon.net_transport, containing `ok`, `address`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L67)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct AddressResult
 address
 ```
 
+Network address associated with the client or packet.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L71)
 
 <a id="field-field-mq3-qcommon-net-transport-addressresult-ok-ok-src-mq3-qcommon-net-transport-ml-642328512"></a>
 ### ok
@@ -31,5 +35,7 @@ address
 ok
 ```
 
+True when the address lookup or transport operation succeeded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L69)

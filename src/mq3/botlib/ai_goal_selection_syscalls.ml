@@ -6,14 +6,27 @@ import mq3.botlib.ai_goal_state_syscalls as goalAbi
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Number of inventory integer slots read from the bot VM ABI.
 const INVENTORY_COUNT=256
+/// Apply `mq3.vm.syscall_common.pointer` while evaluating `readInventory`.
+/// @param vm Vm record; accesses `data`.
+/// @param address Address within the VM memory or native data buffer.
 function readInventory(vm,address)
-  at=common.pointer(vm,address,INVENTORY_COUNT*4,"bot inventory input");if at is error then return at end if;result=[];for index=0 to INVENTORY_COUNT-1 result=result+[n.readI32(vm.data,at+index*4)] end for;return result
+  at=common.pointer(vm,address,INVENTORY_COUNT*4,"bot inventory input");if at is error then return at end if;result=array(INVENTORY_COUNT,0);for index=0 to INVENTORY_COUNT-1 result[index]=n.readI32(vm.data,at+index*4) end for;return result
 end function
+/// Apply `mq3.vm.syscall_common.pointer` while evaluating `readRanks`.
+/// @param vm Vm record; accesses `data`.
+/// @param address Address within the VM memory or native data buffer.
+/// @param count Number of entries or bytes processed by this call.
 function readRanks(vm,address,count)
   if count<0 or count>256 then return error(7595,"invalid genetic rank count "+str(count)) end if
   at=common.pointer(vm,address,count*4,"genetic ranks");if at is error then return at end if;result=[];for index=0 to count-1 result=result+[n.bitsFloat(n.readU32(vm.data,at+index*4))] end for;return result
 end function
+/// Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_goal_selection_syscalls.readInventory` while evaluating `dispatch`.
+/// @param runtime AI goal selection runtime; accesses `goals` and `levelItems`.
+/// @param vm Vm record; accesses `data`.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(runtime,vm,base,op)
   if op==goalSelection.OP_CHOOSE_LTG_ITEM or op==goalSelection.OP_CHOOSE_NBG_ITEM then
     origin=common.readFloatVector(vm,common.argument(vm,base,2),3,"goal choice origin");if origin is error then return origin end if;inventory=readInventory(vm,common.argument(vm,base,3));if inventory is error then return inventory end if

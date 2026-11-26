@@ -9,8 +9,10 @@
 struct ModInfo
 ```
 
+Stores UI main missionpack mod info record, including `name`, `description`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L232)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct ModInfo
 description
 ```
 
+When constructing this record, `UI_LoadMods` supplies `description` for this member.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L236)
 
 <a id="field-field-mq3-client-ui-main-missionpack-modinfo-name-name-src-mq3-client-ui-main-missionpack-ml-281579297"></a>
 ### name
@@ -31,5 +35,7 @@ description
 name
 ```
 
+Mod directory name passed to the engine when selecting this modification.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L234)

@@ -9,8 +9,10 @@
 struct Refdef
 ```
 
+Data record for `mq3.renderer.tr_light_runtime.Refdef`; groups `rdflags`, `dlights`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L83)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Refdef
 dlights
 ```
 
+Dynamic lights submitted to the current scene.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L87)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-refdef-rdflags-rdflags-src-mq3-renderer-tr-light-runtime-ml-1187962675"></a>
 ### rdflags
@@ -31,5 +35,7 @@ dlights
 rdflags
 ```
 
+Bit mask of view-level rendering options such as no-world or hyperspace rendering.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L85)

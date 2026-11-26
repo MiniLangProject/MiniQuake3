@@ -114,7 +114,7 @@ function main(args)
   refreshedUi=match.refreshUi(state,host.realTime);if refreshedUi is error then return refreshedUi end if;state.context.soundCommands=[]
   sentUi=uiVm.keyEvent(state.ui,uiSession.K_DOWNARROW,true);if sentUi is error then return sentUi end if;sentUi=uiVm.keyEvent(state.ui,uiSession.K_DOWNARROW,false);if sentUi is error then return sentUi end if
   uiSoundCount=len(state.context.soundCommands);checked=checked+draftRequire(uiSoundCount>0,"real UI keyboard navigation emits a local sound before Cgame draw");uiSound=state.context.soundCommands[0]
-  afterUiDraw=frameRoute.drawFrame(state,host.clock,host.realTime+4);if afterUiDraw is error then return afterUiDraw end if
+  afterUiDraw=frameRoute.drawFrame(state,host.clock,host.realTime+4,void);if afterUiDraw is error then return afterUiDraw end if
   checked=checked+draftRequire(len(state.context.soundCommands)>=uiSoundCount and state.context.soundCommands[0]==uiSound,"real original UI sound survives Cgame render reset")
   closedUi=match.setUiMenu(state,uiSession.UIMENU_NONE);if closedUi is error then return closedUi end if
   zoomPlan=frame.prepare(host.client,host.realTime+4,state.context.commandNumber,8,true,false,false);zoomBridge=frameRoute.ClientInputBridge(host.client,zoomPlan,void,state);match.attachInputClear(state,zoomBridge,frameRoute.clearClientInput);match.setKeyBinding(state,122,"+zoom")

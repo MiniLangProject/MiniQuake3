@@ -21,15 +21,17 @@ Reachable from entry: **no**
 function addBotToSpawnQueue(level, state, clientNum, delay)
 ```
 
+Use `state.printFn` and `state.clientBeginFn` to perform `addBotToSpawnQueue`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `delay` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `queue`, `printFn` and `clientBeginFn`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
+| `delay` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L122)
 
 <a id="function-function-mq3-game-bot-clients-beginclient-function-beginclient-level-state-entry-src-mq3-game-bot-clients-ml-385927613"></a>
 ### beginClient
@@ -38,14 +40,16 @@ function addBotToSpawnQueue(level, state, clientNum, delay)
 function beginClient(level, state, entry)
 ```
 
+Set `entry.spawnTime` to `0` in `mq3.game.bot_clients.beginClient`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `entry` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `clientBeginFn`, `userinfoFn` and `introSoundFn`. |
+| `entry` | `dynamic` | — | Entry record; accesses `clientNum` and `spawnTime`. May update `entry.spawnTime` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L152)
 
 <a id="constant-constant-mq3-game-bot-clients-bot-spawn-queue-depth-const-bot-spawn-queue-depth-16-src-mq3-game-bot-clients-ml-1842660522"></a>
 ### BOT_SPAWN_QUEUE_DEPTH
@@ -54,8 +58,10 @@ function beginClient(level, state, entry)
 const BOT_SPAWN_QUEUE_DEPTH = 16
 ```
 
+Number of delayed bot-begin requests retained by the spawn queue.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L16)
 
 <a id="function-function-mq3-game-bot-clients-botconnect-function-botconnect-level-state-clientnum-restart-src-mq3-game-bot-clients-ml-520021791"></a>
 ### botConnect
@@ -64,15 +70,17 @@ const BOT_SPAWN_QUEUE_DEPTH = 16
 function botConnect(level, state, clientNum, restart)
 ```
 
+Use `state.userinfoFn`, `state.setupClientFn` and `state.dropClientFn` to perform `botConnect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.userinfoFn`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `userinfoFn`, `setupClientFn` and `dropClientFn`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L186)
 
 - [mq3.game.bot_clients.BotSettings](Type-mq3-game-bot-clients-botsettings-1293764382.md) — struct
 <a id="function-function-mq3-game-bot-clients-checkbotspawn-function-checkbotspawn-level-state-src-mq3-game-bot-clients-ml-116352531"></a>
@@ -82,13 +90,15 @@ function botConnect(level, state, clientNum, restart)
 function checkBotSpawn(level, state)
 ```
 
+Use `state.minimumPlayersFn` to perform `checkBotSpawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `minimumPlayersFn` and `queue`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L168)
 
 <a id="function-function-mq3-game-bot-clients-clientlimit-function-clientlimit-level-src-mq3-game-bot-clients-ml-391383348"></a>
 ### clientLimit
@@ -97,12 +107,14 @@ function checkBotSpawn(level, state)
 function clientLimit(level)
 ```
 
+Validate the level's bot client range against the native sixty-four-client limit.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L65)
 
 <a id="constant-constant-mq3-game-bot-clients-con-connected-const-con-connected-2-src-mq3-game-bot-clients-ml-789366867"></a>
 ### CON_CONNECTED
@@ -111,8 +123,10 @@ function clientLimit(level)
 const CON_CONNECTED = 2
 ```
 
+Client connection-state identifier representing connected.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L10)
 
 <a id="function-function-mq3-game-bot-clients-countbotplayers-function-countbotplayers-level-state-team-src-mq3-game-bot-clients-ml-1415271368"></a>
 ### countBotPlayers
@@ -121,14 +135,16 @@ const CON_CONNECTED = 2
 function countBotPlayers(level, state, team)
 ```
 
+Apply `mq3.game.bot_clients.clientLimit` and `mq3.game.bot_clients.entityForClient` while evaluating `countBotPlayers`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients` and `time`. |
+| `state` | `dynamic` | — | Bot clients state; accesses `queue`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L98)
 
 <a id="function-function-mq3-game-bot-clients-counthumanplayers-function-counthumanplayers-level-team-src-mq3-game-bot-clients-ml-2039272071"></a>
 ### countHumanPlayers
@@ -137,13 +153,15 @@ function countBotPlayers(level, state, team)
 function countHumanPlayers(level, team)
 ```
 
+Apply `mq3.game.bot_clients.clientLimit` and `mq3.game.bot_clients.entityForClient` while evaluating `countHumanPlayers`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L82)
 
 <a id="function-function-mq3-game-bot-clients-create-function-create-src-mq3-game-bot-clients-ml-834113734"></a>
 ### create
@@ -152,8 +170,10 @@ function countHumanPlayers(level, team)
 function create()
 ```
 
+Build the `mq3.game.bot_clients.State` result for `create`. Return paths include `State(queue,void,void,void,void,void,void,void)`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L55)
 
 <a id="function-function-mq3-game-bot-clients-entityforclient-function-entityforclient-level-client-src-mq3-game-bot-clients-ml-219907003"></a>
 ### entityForClient
@@ -162,13 +182,15 @@ function create()
 function entityForClient(level, client)
 ```
 
+Resolve a client player-state entity number after validating the native entity-table bounds.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`. |
+| `client` | `dynamic` | — | Client state; accesses `ps`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L73)
 
 <a id="constant-constant-mq3-game-bot-clients-gt-single-player-const-gt-single-player-2-src-mq3-game-bot-clients-ml-704181717"></a>
 ### GT_SINGLE_PLAYER
@@ -177,8 +199,10 @@ function entityForClient(level, client)
 const GT_SINGLE_PLAYER = 2
 ```
 
+Game-mode identifier selecting single player rules.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L14)
 
 <a id="function-function-mq3-game-bot-clients-removequeuedbotbegin-function-removequeuedbotbegin-state-clientnum-src-mq3-game-bot-clients-ml-861973840"></a>
 ### removeQueuedBotBegin
@@ -187,13 +211,15 @@ const GT_SINGLE_PLAYER = 2
 function removeQueuedBotBegin(state, clientNum)
 ```
 
+Cancel the pending spawn time of a matching queued bot client and report whether it was found.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot clients state; accesses `queue`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L139)
 
 - [mq3.game.bot_clients.SpawnEntry](Type-mq3-game-bot-clients-spawnentry-2083918495.md) — struct
 - [mq3.game.bot_clients.State](Type-mq3-game-bot-clients-state-876943711.md) — struct
@@ -204,5 +230,7 @@ function removeQueuedBotBegin(state, clientNum)
 const SVF_BOT = 8
 ```
 
+Server entity-flag bit controlling bot.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L12)

@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.client_pings, containing `state`, `ping`, `gentity`, `frames`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L44)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Client
 frames
 ```
 
+Updates can be delta'd from here.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L53)
 
 <a id="field-field-mq3-server-client-pings-client-gentity-gentity-src-mq3-server-client-pings-ml-587823800"></a>
 ### gentity
@@ -31,8 +35,10 @@ frames
 gentity
 ```
 
+Game-VM entity associated with this client.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L51)
 
 <a id="field-field-mq3-server-client-pings-client-ping-ping-src-mq3-server-client-pings-ml-540156392"></a>
 ### ping
@@ -41,8 +47,10 @@ gentity
 ping
 ```
 
+Estimated round-trip client latency in milliseconds.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L49)
 
 <a id="field-field-mq3-server-client-pings-client-state-state-src-mq3-server-client-pings-ml-1296291260"></a>
 ### state
@@ -51,5 +59,7 @@ ping
 state
 ```
 
+Connection lifecycle value that determines whether snapshot acknowledgments can produce a player ping.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L47)

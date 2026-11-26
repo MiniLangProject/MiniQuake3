@@ -24,12 +24,14 @@ Reachable from entry: **no**
 function caller(ent)
 ```
 
+Require a valid client entity and return its client state for a spectator-follow command.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ent` | `dynamic` | — |  |
+| `ent` | `dynamic` | — | Game entity; accesses `client` and `slot`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L32)
 
 <a id="function-function-mq3-game-follow-commands-clientnumber-function-clientnumber-level-ent-text-src-mq3-game-follow-commands-ml-140410898"></a>
 ### clientNumber
@@ -38,14 +40,16 @@ function caller(ent)
 function clientNumber(level, ent, text)
 ```
 
+Apply `mq3.game.follow_commands.caller`, `mq3.game.client_info.infoClientLimit` and `mq3.shared.info.textBytes` while evaluating `clientNumber`. Return paths include `-1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients` and `clients`. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L40)
 
 <a id="function-function-mq3-game-follow-commands-cycle-function-cycle-level-ent-direction-src-mq3-game-follow-commands-ml-888054494"></a>
 ### cycle
@@ -54,14 +58,16 @@ function clientNumber(level, ent, text)
 function cycle(level, ent, direction)
 ```
 
+Set `ent.client.spectatorClient` to `slot` and `ent.client.spectatorState` to `2` in `mq3.game.follow_commands.cycle`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `maxclients` and `clients`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.spectatorClient` and `ent.client.spectatorState` in place. |
+| `direction` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L79)
 
 <a id="function-function-mq3-game-follow-commands-follow-function-follow-level-ent-argv-src-mq3-game-follow-commands-ml-766171577"></a>
 ### follow
@@ -70,14 +76,16 @@ function cycle(level, ent, direction)
 function follow(level, ent, argv)
 ```
 
+Set `ent.client.spectatorState` to `2` and `ent.client.spectatorClient` to `slot` in `mq3.game.follow_commands.follow`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients` and `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.spectatorState` and `ent.client.spectatorClient` in place. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L61)
 
 <a id="function-function-mq3-game-follow-commands-sanitize-function-sanitize-text-src-mq3-game-follow-commands-ml-472988715"></a>
 ### sanitize
@@ -86,9 +94,11 @@ function follow(level, ent, argv)
 function sanitize(text)
 ```
 
+Apply `mq3.shared.info.textBytes` while evaluating `sanitize`. Return paths include `decode(bytes(output))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L14)

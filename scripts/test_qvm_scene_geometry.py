@@ -6,7 +6,7 @@ from toolchain import ROOT,run
 def main():
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/qvm_scene_geometry_contracts.ml','--output','qvm_scene_geometry_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/qvm_scene_geometry_contracts.exe'],ROOT/'build').strip()
-    if value!='PASS: 55 QVM scene geometry contracts':raise RuntimeError(value)
+    if value!='PASS: 60 QVM scene geometry contracts':raise RuntimeError(value)
     retained=ROOT/'build/reference/bodies/cd_q3dm12.bsp'
     if retained.exists():
         subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/qvm_inline_model_map_probe.ml','--output','qvm_inline_model_map_probe.exe'],cwd=ROOT,check=True)

@@ -9,8 +9,10 @@
 struct Sfx
 ```
 
+Sfx record for audio.snd_local, containing `soundData`, `defaultSound`, `inMemory`, `soundCompressed`, `soundCompressionMethod`, `soundLength`, and 3 further fields.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L53)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Sfx
 defaultSound
 ```
 
+True when a fallback sound substitutes for an asset that could not be loaded.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L57)
 
 <a id="field-field-mq3-audio-snd-local-sfx-inmemory-inmemory-src-mq3-audio-snd-local-ml-69424930"></a>
 ### inMemory
@@ -31,8 +35,10 @@ defaultSound
 inMemory
 ```
 
+True when the sound sample data is currently resident in memory.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L59)
 
 <a id="field-field-mq3-audio-snd-local-sfx-lasttimeused-lasttimeused-src-mq3-audio-snd-local-ml-1185699326"></a>
 ### lastTimeUsed
@@ -41,8 +47,10 @@ inMemory
 lastTimeUsed
 ```
 
+Last-use timestamp used when selecting an old sound for eviction.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L69)
 
 <a id="field-field-mq3-audio-snd-local-sfx-next-next-src-mq3-audio-snd-local-ml-2121326076"></a>
 ### next
@@ -51,8 +59,10 @@ lastTimeUsed
 next
 ```
 
+Next sound-effect descriptor in the registry hash chain.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L71)
 
 <a id="field-field-mq3-audio-snd-local-sfx-soundcompressed-soundcompressed-src-mq3-audio-snd-local-ml-572678138"></a>
 ### soundCompressed
@@ -61,8 +71,10 @@ next
 soundCompressed
 ```
 
+True when sound data is stored using a compressed representation.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L61)
 
 <a id="field-field-mq3-audio-snd-local-sfx-soundcompressionmethod-soundcompressionmethod-src-mq3-audio-snd-local-ml-924572346"></a>
 ### soundCompressionMethod
@@ -71,8 +83,10 @@ soundCompressed
 soundCompressionMethod
 ```
 
+Compression-method identifier used to decode the sound buffers.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L63)
 
 <a id="field-field-mq3-audio-snd-local-sfx-sounddata-sounddata-src-mq3-audio-snd-local-ml-1665857190"></a>
 ### soundData
@@ -81,8 +95,10 @@ soundCompressionMethod
 soundData
 ```
 
+Head of the sample-buffer chain or loaded sample data for the sound.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L55)
 
 <a id="field-field-mq3-audio-snd-local-sfx-soundlength-soundlength-src-mq3-audio-snd-local-ml-541624370"></a>
 ### soundLength
@@ -91,8 +107,10 @@ soundData
 soundLength
 ```
 
+Length of the sound in mono sample positions.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L65)
 
 <a id="field-field-mq3-audio-snd-local-sfx-soundname-soundname-src-mq3-audio-snd-local-ml-1962407138"></a>
 ### soundName
@@ -101,5 +119,7 @@ soundLength
 soundName
 ```
 
+Quake asset path identifying the registered sound.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L67)

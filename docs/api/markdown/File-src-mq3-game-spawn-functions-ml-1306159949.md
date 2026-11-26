@@ -41,13 +41,15 @@ Reachable from entry: **no**
 function aimAtTarget(level, ent)
 ```
 
+Update `ent.s.origin2` and `ent.s.origin2[2]` during `aimAtTarget`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`, `target` and `s`. May update `ent.s.origin2` and `ent.s.origin2[2]` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L64)
 
 <a id="function-function-mq3-game-spawn-functions-dispatch-function-dispatch-level-ent-src-mq3-game-spawn-functions-ml-1143669247"></a>
 ### dispatch
@@ -56,13 +58,15 @@ function aimAtTarget(level, ent)
 function dispatch(level, ent)
 ```
 
+Set `ent.classname` to `"info_player_deathmatch"` in `mq3.game.spawn_functions.dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner` and `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `classname`. May update `ent.classname` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L136)
 
 <a id="function-function-mq3-game-spawn-functions-initshooter-function-initshooter-level-ent-weapon-src-mq3-game-spawn-functions-ml-2115834003"></a>
 ### initShooter
@@ -71,14 +75,16 @@ function dispatch(level, ent)
 function initShooter(level, ent, weapon)
 ```
 
+Update `ent.use`, `ent.s.weapon`, `ent.random` and `ent.think` and related state during `initShooter`. Return paths include `game.link(level,ent)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `use`, `s`, `random`, `target` and `think` and related fields. May update `ent.use`, `ent.s.weapon` and `ent.random` and additional fields in place. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L125)
 
 <a id="function-function-mq3-game-spawn-functions-inittrigger-function-inittrigger-level-ent-src-mq3-game-spawn-functions-ml-1021733195"></a>
 ### initTrigger
@@ -87,13 +93,15 @@ function initShooter(level, ent, weapon)
 function initTrigger(level, ent)
 ```
 
+Set `ent.r.contents` to `0x40000000` and `ent.r.svFlags` to `1` in `mq3.game.spawn_functions.initTrigger`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`, `model` and `r`. May update `ent.r.contents` and `ent.r.svFlags` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L56)
 
 <a id="function-function-mq3-game-spawn-functions-laserstart-function-laserstart-level-self-src-mq3-game-spawn-functions-ml-250016416"></a>
 ### laserStart
@@ -102,13 +110,15 @@ function initTrigger(level, ent)
 function laserStart(level, self)
 ```
 
+Update `self.s.eType`, `self.enemy`, `self.use` and `self.think` and related state during `laserStart`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`, `target`, `classname`, `enemy` and `use` and related fields. May update `self.s.eType`, `self.enemy` and `self.use` and additional fields in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L99)
 
 <a id="function-function-mq3-game-spawn-functions-movedirvector-function-movedirvector-angles-src-mq3-game-spawn-functions-ml-2133028172"></a>
 ### movedirVector
@@ -117,12 +127,14 @@ function laserStart(level, self)
 function movedirVector(angles)
 ```
 
+Forward `movedirVector` to `mq3.shared.directions.movedirVector` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `angles` | `dynamic` | — |  |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L30)
 
 <a id="function-function-mq3-game-spawn-functions-playerdeathmatch-function-playerdeathmatch-level-ent-src-mq3-game-spawn-functions-ml-119639895"></a>
 ### playerDeathmatch
@@ -131,13 +143,15 @@ function movedirVector(angles)
 function playerDeathmatch(level, ent)
 ```
 
+Set `ent.flags` to `ent.flags | 0x2000` and `ent.flags` to `ent.flags | 0x4000` in `mq3.game.spawn_functions.playerDeathmatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `flags`. May update `ent.flags` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L91)
 
 <a id="function-function-mq3-game-spawn-functions-runthink-function-runthink-level-ent-src-mq3-game-spawn-functions-ml-1003343583"></a>
 ### runThink
@@ -146,13 +160,15 @@ function playerDeathmatch(level, ent)
 function runThink(level, ent)
 ```
 
+Forward `runThink` to `mq3.game.entities.runThink` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L85)
 
 <a id="function-function-mq3-game-spawn-functions-setbrushmodel-function-setbrushmodel-level-ent-name-src-mq3-game-spawn-functions-ml-627634548"></a>
 ### setBrushModel
@@ -161,14 +177,16 @@ function runThink(level, ent)
 function setBrushModel(level, ent, name)
 ```
 
+Update `ent.s.modelindex`, `ent.r.mins`, `ent.r.maxs` and `ent.r.bmodel` and related state during `setBrushModel`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`, `r` and `slot`. May update `ent.s.modelindex`, `ent.r.mins` and `ent.r.maxs` and additional fields in place. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L44)
 
 <a id="function-function-mq3-game-spawn-functions-setmovedir-function-setmovedir-ent-src-mq3-game-spawn-functions-ml-779790167"></a>
 ### setMovedir
@@ -177,9 +195,11 @@ function setBrushModel(level, ent, name)
 function setMovedir(ent)
 ```
 
+Set `ent.movedir` to `movedirVector(ent.s.angles)` and `ent.s.angles` to `[0.0,0.0,0.0]` in `mq3.game.spawn_functions.setMovedir`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ent` | `dynamic` | — |  |
+| `ent` | `dynamic` | — | Game entity; accesses `movedir` and `s`. May update `ent.movedir` and `ent.s.angles` in place. |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L35)

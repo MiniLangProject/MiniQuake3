@@ -9,8 +9,10 @@
 struct Result
 ```
 
+Result record for audio.native_paint, containing `samples`, `peak`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L53)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Result
 peak
 ```
 
+Largest absolute mixed sample magnitude measured before output clipping.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L57)
 
 <a id="field-field-mq3-audio-native-paint-result-samples-samples-src-mq3-audio-native-paint-ml-1127339430"></a>
 ### samples
@@ -31,5 +35,7 @@ peak
 samples
 ```
 
+Interleaved little-endian signed 16-bit stereo PCM output bytes.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L55)

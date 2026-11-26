@@ -9,8 +9,10 @@
 struct Endpoint
 ```
 
+Data record for `mq3.platform.udp.Endpoint`; groups `address`, `port`.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L88)
 
 ## Members
 
@@ -21,8 +23,10 @@ struct Endpoint
 address
 ```
 
+Network address used to identify the remote or local endpoint.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L90)
 
 <a id="field-field-mq3-platform-udp-endpoint-port-port-src-mq3-platform-udp-ml-176682962"></a>
 ### port
@@ -31,5 +35,7 @@ address
 port
 ```
 
+Transport port number associated with the endpoint.
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L92)
