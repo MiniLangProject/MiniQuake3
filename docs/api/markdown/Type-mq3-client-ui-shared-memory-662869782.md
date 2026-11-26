@@ -12,7 +12,7 @@ struct Memory
 Stores UI shared memory record, including `capacity`, `used`, `strings`, `outOfMemory`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L191)
 
 ## Members
 
@@ -26,7 +26,7 @@ capacity
 Maximum number of entries or allocation units supported by the bounded storage.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L193)
 
 <a id="field-field-mq3-client-ui-shared-memory-outofmemory-outofmemory-src-mq3-client-ui-shared-ml-624918306"></a>
 ### outOfMemory
@@ -38,7 +38,7 @@ outOfMemory
 True when the bounded allocation or string-storage pool could not satisfy a request.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L201)
 
 <a id="field-field-mq3-client-ui-shared-memory-strings-strings-src-mq3-client-ui-shared-ml-1372123330"></a>
 ### strings
@@ -50,7 +50,7 @@ strings
 When constructing this record, `memory` supplies an empty list for this member. Used by `String_Alloc` and `String_Report` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L199)
 
 <a id="field-field-mq3-client-ui-shared-memory-used-used-src-mq3-client-ui-shared-ml-1798651736"></a>
 ### used
@@ -62,4 +62,4 @@ used
 When constructing this record, `memory` supplies `0` for this member. Used by `String_Report` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L196)

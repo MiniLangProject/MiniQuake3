@@ -12,7 +12,7 @@ struct Shader
 Shader record for collision.world, containing `name`, `surfaceFlags`, `contentFlags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L73)
 
 ## Members
 
@@ -26,7 +26,7 @@ contentFlags
 Contents bits describing collision and volume behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L79)
 
 <a id="field-field-mq3-collision-world-shader-name-name-src-mq3-collision-world-ml-2064452586"></a>
 ### name
@@ -38,7 +38,7 @@ name
 Shader asset name used to identify the collision surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L75)
 
 <a id="field-field-mq3-collision-world-shader-surfaceflags-surfaceflags-src-mq3-collision-world-ml-262746672"></a>
 ### surfaceFlags
@@ -50,4 +50,4 @@ surfaceFlags
 Surface-property flags reported for the intersected surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L77)

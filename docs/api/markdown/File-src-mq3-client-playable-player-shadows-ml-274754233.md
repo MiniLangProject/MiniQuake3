@@ -33,7 +33,7 @@ Calls `mq3.client.playable_player_shadows.perpendicular`, `mq3.shared.math.Cross
 | `shadow` | `dynamic` | — | Record read through `shadow.normal`, `shadow.orientation`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L102)
 
 - [mq3.client.playable_player_shadows.Catalog](Type-mq3-client-playable-player-shadows-catalog-199763454.md) — struct
 <a id="function-function-mq3-client-playable-player-shadows-color-function-color-shadow-src-mq3-client-playable-player-shadows-ml-374587060"></a>
@@ -50,7 +50,7 @@ Calls `mq3.compat.numeric.trunc32` from playable player shadows `color`. The fin
 | `shadow` | `dynamic` | — | Record read through `shadow.alpha`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L115)
 
 <a id="function-function-mq3-client-playable-player-shadows-draw-function-draw-shadows-catalog-projection-src-mq3-client-playable-player-shadows-ml-786066437"></a>
 ### draw
@@ -68,7 +68,7 @@ Calls `mq3.platform.playable_window.createTriangleBatch`, `mq3.platform.playable
 | `projection` | `dynamic` | — | Projection parameters used to convert camera-space geometry to screen coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L121)
 
 <a id="function-function-mq3-client-playable-player-shadows-fail-function-fail-message-src-mq3-client-playable-player-shadows-ml-1774094565"></a>
 ### fail
@@ -84,7 +84,7 @@ Creates the playable player shadows error `7670` with diagnostic text `"playable
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"playable player shadows: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L51)
 
 <a id="function-function-mq3-client-playable-player-shadows-load-function-load-archive-textureslot-src-mq3-client-playable-player-shadows-ml-1670245405"></a>
 ### load
@@ -101,7 +101,7 @@ Calls `mq3.renderer.playable_materials.loadImage`, `mq3.client.playable_player_s
 | `textureSlot` | `dynamic` | — | Value used by `if archive==void or textureSlot<0 then return fail("archive and texture slot are required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L55)
 
 <a id="constant-constant-mq3-client-playable-player-shadows-mask-playersolid-const-mask-playersolid-33619969-src-mq3-client-playable-player-shadows-ml-2057640905"></a>
 ### MASK_PLAYERSOLID
@@ -113,7 +113,7 @@ const MASK_PLAYERSOLID = 33619969
 Combined collision-content mask used by player movement traces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L20)
 
 <a id="function-function-mq3-client-playable-player-shadows-perpendicular-function-perpendicular-normal-src-mq3-client-playable-player-shadows-ml-545382807"></a>
 ### perpendicular
@@ -129,7 +129,7 @@ Calls `mq3.shared.math.CrossProduct`, `mq3.shared.math.VectorNormalize` from pla
 | `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L96)
 
 <a id="constant-constant-mq3-client-playable-player-shadows-pi-const-pi-3-141593-src-mq3-client-playable-player-shadows-ml-101999151"></a>
 ### PI
@@ -141,7 +141,7 @@ const PI = 3.141593
 Circle constant used to convert or evaluate angles in trigonometric calculations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L22)
 
 <a id="function-function-mq3-client-playable-player-shadows-point-function-point-shadow-axis1-axis2-x-y-src-mq3-client-playable-player-shadows-ml-2146266484"></a>
 ### point
@@ -161,7 +161,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable player shadows `poin
 | `y` | `dynamic` | — | Argument 1, 2, 3 of `mq3.client.playable_viewer.ScreenPoint`; passed as `shadow.origin[0]+axis1[0]*x+axis2[0]*y`, `shadow.origin[1]+axis1[1]*x+axis2[1]*y`, `shadow.origin[2]+axis1[2]*x+axis2[2]*y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L112)
 
 <a id="function-function-mq3-client-playable-player-shadows-release-function-release-catalog-src-mq3-client-playable-player-shadows-ml-677537927"></a>
 ### release
@@ -177,7 +177,7 @@ Calls `mq3.platform.playable_window.releaseTexture` from playable player shadows
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textureSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L65)
 
 - [mq3.client.playable_player_shadows.Shadow](Type-mq3-client-playable-player-shadows-shadow-430357955.md) — struct
 <a id="constant-constant-mq3-client-playable-player-shadows-shadow-distance-const-shadow-distance-128-src-mq3-client-playable-player-shadows-ml-1269344070"></a>
@@ -190,7 +190,7 @@ const SHADOW_DISTANCE = 128
 Maximum downward trace distance used to place a player's ground shadow.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L16)
 
 <a id="constant-constant-mq3-client-playable-player-shadows-shadow-radius-const-shadow-radius-24-src-mq3-client-playable-player-shadows-ml-222979687"></a>
 ### SHADOW_RADIUS
@@ -202,7 +202,7 @@ const SHADOW_RADIUS = 24
 World-space radius used when projecting the player's ground-shadow mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L18)
 
 <a id="function-function-mq3-client-playable-player-shadows-trace-function-trace-world-origin-orientation-src-mq3-client-playable-player-shadows-ml-1572982104"></a>
 ### trace
@@ -220,7 +220,7 @@ Adapts `mq3.client.playable_player_shadows.traceWith` to playable player shadows
 | `orientation` | `dynamic` | — | Argument 4 of `mq3.client.playable_player_shadows.traceWith`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L92)
 
 <a id="function-function-mq3-client-playable-player-shadows-tracewith-function-tracewith-tracefn-context-origin-orientation-src-mq3-client-playable-player-shadows-ml-207494638"></a>
 ### traceWith
@@ -239,7 +239,7 @@ Calls `traceFn`, `mq3.shared.math.VectorNormalize`, `mq3.client.playable_player_
 | `orientation` | `dynamic` | — | Value used by `return Shadow([hit.endpos[0],hit.endpos[1],hit.endpos[2]],normal,orientation,alpha,SHADOW_RADIUS)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L79)
 
 <a id="function-function-mq3-client-playable-player-shadows-upload-function-upload-catalog-src-mq3-client-playable-player-shadows-ml-1521347545"></a>
 ### upload
@@ -255,7 +255,7 @@ Calls `mq3.platform.playable_window.uploadTextureNoMip` from playable player sha
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textureSlot`, `catalog.image.pixels`, `catalog.image.width`, `catalog.image.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L62)
 
 <a id="function-function-mq3-client-playable-player-shadows-worldtrace-function-worldtrace-context-startpoint-endpoint-mins-maxs-src-mq3-client-playable-player-shadows-ml-496757738"></a>
 ### worldTrace
@@ -275,4 +275,4 @@ Adapts `mq3.collision.world.boxTrace` to playable player shadows `worldTrace`, r
 | `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L73)

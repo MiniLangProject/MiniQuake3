@@ -12,7 +12,7 @@ struct Refdef
 Data record for `mq3.renderer.tr_backend_runtime.Refdef`; groups `time`, `floatTime`, `rdflags`, `entities`, `dlights`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L126)
 
 ## Members
 
@@ -26,7 +26,7 @@ dlights
 Dynamic lights submitted to the current scene.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L136)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-entities-entities-src-mq3-renderer-tr-backend-runtime-ml-921967761"></a>
 ### entities
@@ -38,7 +38,7 @@ entities
 Entity records associated with the current world, scene, or snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L134)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-floattime-floattime-src-mq3-renderer-tr-backend-runtime-ml-106959795"></a>
 ### floatTime
@@ -50,7 +50,7 @@ floatTime
 View time expressed in seconds for shader calculations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L130)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-rdflags-rdflags-src-mq3-renderer-tr-backend-runtime-ml-597359715"></a>
 ### rdflags
@@ -62,7 +62,7 @@ rdflags
 Bit mask of view-level rendering options such as no-world or hyperspace rendering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L132)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-time-time-src-mq3-renderer-tr-backend-runtime-ml-19336081"></a>
 ### time
@@ -74,4 +74,4 @@ time
 Backend view time in milliseconds, also converted to floating-point seconds for shader evaluation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L128)

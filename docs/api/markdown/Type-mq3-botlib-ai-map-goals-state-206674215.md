@@ -12,7 +12,7 @@ struct State
 `State` record for ai map goals, containing `aas`, `bspEntities`, `locations`, `campSpots` and `initialized`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L42)
 
 ## Members
 
@@ -26,7 +26,7 @@ aas
 AAS navigation runtime used for area and route queries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L44)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-bspentities-bspentities-src-mq3-botlib-ai-map-goals-ml-1482199834"></a>
 ### bspEntities
@@ -38,7 +38,7 @@ bspEntities
 Parsed key/value definitions from the BSP entity lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L46)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-campspots-campspots-src-mq3-botlib-ai-map-goals-ml-913895498"></a>
 ### campSpots
@@ -50,7 +50,7 @@ campSpots
 Camp goals parsed from BSP entities.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L50)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-initialized-initialized-src-mq3-botlib-ai-map-goals-ml-1802588906"></a>
 ### initialized
@@ -62,7 +62,7 @@ initialized
 True after map locations and camp spots have been collected.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L52)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-locations-locations-src-mq3-botlib-ai-map-goals-ml-1189624022"></a>
 ### locations
@@ -74,4 +74,4 @@ locations
 Named map-location goals parsed from BSP entities.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L48)

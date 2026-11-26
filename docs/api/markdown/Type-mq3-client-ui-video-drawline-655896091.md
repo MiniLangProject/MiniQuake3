@@ -12,7 +12,7 @@ struct DrawLine
 Stores UI video draw line record, including `text`, `x`, `y`, `alignment`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L80)
 
 ## Members
 
@@ -26,7 +26,7 @@ alignment
 Horizontal alignment mode for the item within its layout region.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L88)
 
 <a id="field-field-mq3-client-ui-video-drawline-text-text-src-mq3-client-ui-video-ml-523100021"></a>
 ### text
@@ -38,7 +38,7 @@ text
 Driver-information line containing vendor, renderer, version, or extension text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L82)
 
 <a id="field-field-mq3-client-ui-video-drawline-x-x-src-mq3-client-ui-video-ml-195822291"></a>
 ### x
@@ -50,7 +50,7 @@ x
 Horizontal coordinate of a renderer-information text line in the graphics menu layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L84)
 
 <a id="field-field-mq3-client-ui-video-drawline-y-y-src-mq3-client-ui-video-ml-1908522943"></a>
 ### y
@@ -62,4 +62,4 @@ y
 Vertical coordinate of a renderer-information text line in the graphics menu layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L86)

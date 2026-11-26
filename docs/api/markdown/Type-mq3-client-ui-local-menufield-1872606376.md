@@ -12,7 +12,7 @@ struct MenuField
 Stores UI local menu field record, including `generic`, `field`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L195)
 
 ## Members
 
@@ -26,7 +26,7 @@ field
 Compatibility member corresponding to native `menufield_s.field`; the original declaration is `mfield_t field`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L200)
 
 <a id="field-field-mq3-client-ui-local-menufield-generic-generic-src-mq3-client-ui-local-ml-1019808738"></a>
 ### generic
@@ -38,4 +38,4 @@ generic
 Common menu-item record containing the shared identity, layout, and callback data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L197)

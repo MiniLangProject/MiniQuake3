@@ -12,7 +12,7 @@ struct Dbrush
 Dbrush record for format.qfiles, containing `firstSide`, `numSides`, `shaderNum`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L521)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L521)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstSide
 Index of the first bounding side of this brush.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L523)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L523)
 
 <a id="field-field-mq3-format-qfiles-dbrush-numsides-numsides-src-mq3-format-qfiles-ml-517988235"></a>
 ### numSides
@@ -38,7 +38,7 @@ numSides
 Number of planes bounding this collision brush.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L525)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L525)
 
 <a id="field-field-mq3-format-qfiles-dbrush-shadernum-shadernum-src-mq3-format-qfiles-ml-2039784195"></a>
 ### shaderNum
@@ -50,4 +50,4 @@ shaderNum
 Index of the shader referenced by this geometric element.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L527)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L527)

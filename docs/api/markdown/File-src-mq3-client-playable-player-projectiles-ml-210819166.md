@@ -30,7 +30,7 @@ Evaluates playable player projectiles `activeCount` and returns `0`, `len(state.
 | `state` | `dynamic` | — | Record read through `state.projectiles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L408)
 
 <a id="function-function-mq3-client-playable-player-projectiles-addimpact-function-addimpact-state-shot-kind-point-normal-targetindex-targetstate-now-src-mq3-client-playable-player-projectiles-ml-1791425783"></a>
 ### addImpact
@@ -53,7 +53,7 @@ Updates `state.nextImpactId`, `state.impacts` during playable player projectiles
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L307)
 
 <a id="function-function-mq3-client-playable-player-projectiles-applydamage-function-applydamage-targetstate-index-requested-direct-now-src-mq3-client-playable-player-projectiles-ml-766640443"></a>
 ### applyDamage
@@ -73,7 +73,7 @@ Updates `targetState.score` during playable player projectiles `applyDamage`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L245)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-bfg-const-bfg-weapon-bfg-src-mq3-client-playable-player-projectiles-ml-29866283"></a>
 ### BFG
@@ -85,7 +85,7 @@ const BFG = "weapon_bfg"
 Weapon classname used to select the BFG projectile profile.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L28)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-bounce-scale-const-bounce-scale-0-65-src-mq3-client-playable-player-projectiles-ml-2147379974"></a>
 ### BOUNCE_SCALE
@@ -97,7 +97,7 @@ const BOUNCE_SCALE = 0.65
 Velocity-retention multiplier applied when a native projectile bounces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L18)
 
 <a id="function-function-mq3-client-playable-player-projectiles-bouncehalf-function-bouncehalf-shot-point-normal-impactvelocity-src-mq3-client-playable-player-projectiles-ml-825145450"></a>
 ### bounceHalf
@@ -116,7 +116,7 @@ Mirrors G_BounceMissile for grenades carrying EF_BOUNCE_HALF: reflect the trajec
 | `impactVelocity` | `dynamic` | — | Sequence read at `impactVelocity[0]`, `impactVelocity[1]`, `impactVelocity[2]`, `impactVelocity[axis]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L339)
 
 <a id="function-function-mq3-client-playable-player-projectiles-copypoint-function-copypoint-value-src-mq3-client-playable-player-projectiles-ml-1164020671"></a>
 ### copyPoint
@@ -132,7 +132,7 @@ Copies three vector components with float32 rounding for playable player project
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L158)
 
 <a id="function-function-mq3-client-playable-player-projectiles-create-function-create-now-src-mq3-client-playable-player-projectiles-ml-709642858"></a>
 ### create
@@ -148,7 +148,7 @@ Calls `mq3.client.playable_player_projectiles.State` from playable player projec
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L172)
 
 - [mq3.client.playable_player_projectiles.Damage](Type-mq3-client-playable-player-projectiles-damage-2054670037.md) — struct
 <a id="function-function-mq3-client-playable-player-projectiles-damageatimpact-function-damageatimpact-targetstate-shot-point-directtarget-now-src-mq3-client-playable-player-projectiles-ml-1510796506"></a>
@@ -169,7 +169,7 @@ Calls `mq3.client.playable_player_projectiles.applyDamage`, `mq3.client.playable
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L279)
 
 <a id="function-function-mq3-client-playable-player-projectiles-distancetobounds-function-distancetobounds-targetstate-target-point-src-mq3-client-playable-player-projectiles-ml-466050491"></a>
 ### distanceToBounds
@@ -187,7 +187,7 @@ Quake 3 measures splash distance from the nearest point of the target box.
 | `point` | `dynamic` | — | Sequence read at `point[axis]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L259)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-ef-bounce-half-const-ef-bounce-half-16-src-mq3-client-playable-player-projectiles-ml-24867104"></a>
 ### EF_BOUNCE_HALF
@@ -199,7 +199,7 @@ const EF_BOUNCE_HALF = 16
 Entity-state flag selecting bounce half behavior in client presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L16)
 
 <a id="function-function-mq3-client-playable-player-projectiles-fail-function-fail-message-src-mq3-client-playable-player-projectiles-ml-1241521379"></a>
 ### fail
@@ -215,7 +215,7 @@ Creates the playable player projectiles error `7590` with diagnostic text `"play
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"player projectiles: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L152)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-gravity-const-gravity-800-src-mq3-client-playable-player-projectiles-ml-2128710305"></a>
 ### GRAVITY
@@ -227,7 +227,7 @@ const GRAVITY = 800
 Downward acceleration used by the module's ballistic or movement integration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-grenade-const-grenade-weapon-grenadelauncher-src-mq3-client-playable-player-projectiles-ml-2048373786"></a>
 ### GRENADE
@@ -239,7 +239,7 @@ const GRENADE = "weapon_grenadelauncher"
 Weapon classname used to select the grenade projectile profile.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L26)
 
 - [mq3.client.playable_player_projectiles.Impact](Type-mq3-client-playable-player-projectiles-impact-914252022.md) — struct
 <a id="constant-constant-mq3-client-playable-player-projectiles-max-bounces-per-frame-const-max-bounces-per-frame-8-src-mq3-client-playable-player-projectiles-ml-548165281"></a>
@@ -252,7 +252,7 @@ const MAX_BOUNCES_PER_FRAME = 8
 Capacity limit for the bounces per frame collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L20)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-plasma-const-plasma-weapon-plasmagun-src-mq3-client-playable-player-projectiles-ml-1783967806"></a>
 ### PLASMA
@@ -264,7 +264,7 @@ const PLASMA = "weapon_plasmagun"
 Weapon classname used to select the plasma projectile profile.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L24)
 
 <a id="function-function-mq3-client-playable-player-projectiles-pointonsegment-function-pointonsegment-startpoint-endpoint-fraction-src-mq3-client-playable-player-projectiles-ml-1699017529"></a>
 ### pointOnSegment
@@ -282,7 +282,7 @@ Builds the playable player projectiles `pointOnSegment` sequence from `[startPoi
 | `fraction` | `dynamic` | — | Interpolation or blend fraction between the endpoint values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L217)
 
 <a id="function-function-mq3-client-playable-player-projectiles-profile-function-profile-classname-src-mq3-client-playable-player-projectiles-ml-1421539561"></a>
 ### profile
@@ -298,7 +298,7 @@ Values mirror baseq3's fire_rocket, fire_plasma and fire_grenade.
 | `classname` | `dynamic` | — | Value used by `if classname==ROCKET then return Profile(classname,view.STYLE_ROCKET,900.0,15000,100,100,120.0,false,0) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L162)
 
 - [mq3.client.playable_player_projectiles.Profile](Type-mq3-client-playable-player-projectiles-profile-1296376593.md) — struct
 - [mq3.client.playable_player_projectiles.Projectile](Type-mq3-client-playable-player-projectiles-projectile-493868627.md) — struct
@@ -312,7 +312,7 @@ const ROCKET = "weapon_rocketlauncher"
 Weapon classname used to select the rocket projectile profile.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="constant-constant-mq3-client-playable-player-projectiles-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-player-projectiles-ml-212960831"></a>
 ### SHOT_MASK
@@ -324,7 +324,7 @@ const SHOT_MASK = 100663297
 Combined collision-content mask used when tracing a weapon shot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L12)
 
 <a id="function-function-mq3-client-playable-player-projectiles-spawn-function-spawn-state-classname-muzzle-direction-now-src-mq3-client-playable-player-projectiles-ml-146039942"></a>
 ### spawn
@@ -344,7 +344,7 @@ Calls `mq3.client.playable_player_projectiles.profile`, `mq3.client.playable_pla
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L200)
 
 <a id="function-function-mq3-client-playable-player-projectiles-spawnprofile-function-spawnprofile-state-weaponprofile-muzzle-direction-now-src-mq3-client-playable-player-projectiles-ml-1542565762"></a>
 ### spawnProfile
@@ -364,7 +364,7 @@ Updates `state.nextProjectileId`, `state.projectiles` during playable player pro
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L183)
 
 - [mq3.client.playable_player_projectiles.State](Type-mq3-client-playable-player-projectiles-state-1661152569.md) — struct
 <a id="function-function-mq3-client-playable-player-projectiles-stependpoint-function-stependpoint-shot-milliseconds-src-mq3-client-playable-player-projectiles-ml-1381455440"></a>
@@ -382,7 +382,7 @@ Evaluates playable player projectiles `stepEndpoint` and returns `[shot.origin[0
 | `milliseconds` | `dynamic` | — | Time interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L317)
 
 <a id="function-function-mq3-client-playable-player-projectiles-targetfraction-function-targetfraction-targetstate-startpoint-endpoint-src-mq3-client-playable-player-projectiles-ml-932746873"></a>
 ### targetFraction
@@ -400,7 +400,7 @@ Calls `mq3.client.playable_targets.segmentFraction` from playable player project
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L225)
 
 - [mq3.client.playable_player_projectiles.Trail](Type-mq3-client-playable-player-projectiles-trail-1669136824.md) — struct
 <a id="function-function-mq3-client-playable-player-projectiles-update-function-update-world-state-targetstate-now-src-mq3-client-playable-player-projectiles-ml-1709731623"></a>
@@ -420,7 +420,7 @@ Calls `mq3.client.playable_player_projectiles.updateWithTrace` from playable pla
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L401)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L401)
 
 <a id="function-function-mq3-client-playable-player-projectiles-updatewithtrace-function-updatewithtrace-tracefn-context-state-targetstate-now-src-mq3-client-playable-player-projectiles-ml-2064425719"></a>
 ### updateWithTrace
@@ -440,7 +440,7 @@ traceFn(context,start,end) returns the normal baseq3 trace wrapper. A BSP hit wi
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L356)
 
 <a id="function-function-mq3-client-playable-player-projectiles-validpoint-function-validpoint-value-src-mq3-client-playable-player-projectiles-ml-1959441945"></a>
 ### validPoint
@@ -456,7 +456,7 @@ Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L155)
 
 <a id="function-function-mq3-client-playable-player-projectiles-velocityafter-function-velocityafter-shot-milliseconds-src-mq3-client-playable-player-projectiles-ml-2049827958"></a>
 ### velocityAfter
@@ -473,7 +473,7 @@ Calls `mq3.client.playable_player_projectiles.copyPoint` from playable player pr
 | `milliseconds` | `dynamic` | — | Time interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L327)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L327)
 
 <a id="function-function-mq3-client-playable-player-projectiles-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-player-projectiles-ml-49988592"></a>
 ### worldPointTrace
@@ -491,4 +491,4 @@ Adapts `mq3.collision.world.boxTrace` to playable player projectiles `worldPoint
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L209)

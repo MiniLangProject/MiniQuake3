@@ -12,7 +12,7 @@ struct Entry
 Data record for `mq3.renderer.player_render_cache.Entry`; groups `key`, `triangles`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L39)
 
 ## Members
 
@@ -26,7 +26,7 @@ key
 Animation-frame and interpolation-phase values used to identify a cache entry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L41)
 
 <a id="field-field-mq3-renderer-player-render-cache-entry-triangles-triangles-src-mq3-renderer-player-render-cache-ml-993374057"></a>
 ### triangles
@@ -38,4 +38,4 @@ triangles
 Triangle records or index triplets represented by this geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L43)

@@ -12,7 +12,7 @@ struct Client
 Client record for server.oob_connect, containing `state`, `address`, `qport`, `lastConnectTime`, `reliableAcknowledge`, `reliableSequence`, and 6 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L63)
 
 ## Members
 
@@ -26,7 +26,7 @@ address
 Network address associated with the client or packet.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L68)
 
 <a id="field-field-mq3-server-oob-connect-client-bot-bot-src-mq3-server-oob-connect-ml-8485774"></a>
 ### bot
@@ -38,7 +38,7 @@ bot
 True when the client slot is controlled by an in-process bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L88)
 
 <a id="field-field-mq3-server-oob-connect-client-challenge-challenge-src-mq3-server-oob-connect-ml-1315347738"></a>
 ### challenge
@@ -50,7 +50,7 @@ challenge
 Challenge value used to authenticate a connection attempt.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L78)
 
 <a id="field-field-mq3-server-oob-connect-client-gamestatemessagenum-gamestatemessagenum-src-mq3-server-oob-connect-ml-168630218"></a>
 ### gamestateMessageNum
@@ -62,7 +62,7 @@ gamestateMessageNum
 Outgoing network sequence number of the client gamestate message.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L86)
 
 <a id="field-field-mq3-server-oob-connect-client-lastconnecttime-lastconnecttime-src-mq3-server-oob-connect-ml-389730898"></a>
 ### lastConnectTime
@@ -74,7 +74,7 @@ lastConnectTime
 Server timestamp when this client connection began, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L72)
 
 <a id="field-field-mq3-server-oob-connect-client-lastpackettime-lastpackettime-src-mq3-server-oob-connect-ml-1093000236"></a>
 ### lastPacketTime
@@ -86,7 +86,7 @@ lastPacketTime
 Server timestamp of the most recently received client packet, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L84)
 
 <a id="field-field-mq3-server-oob-connect-client-nextsnapshottime-nextsnapshottime-src-mq3-server-oob-connect-ml-2077013450"></a>
 ### nextSnapshotTime
@@ -98,7 +98,7 @@ nextSnapshotTime
 Earliest server timestamp for sending the next snapshot, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L82)
 
 <a id="field-field-mq3-server-oob-connect-client-qport-qport-src-mq3-server-oob-connect-ml-627231626"></a>
 ### qport
@@ -110,7 +110,7 @@ qport
 Client-selected virtual port used to recognize a connection across address translation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L70)
 
 <a id="field-field-mq3-server-oob-connect-client-reliableacknowledge-reliableacknowledge-src-mq3-server-oob-connect-ml-1859273418"></a>
 ### reliableAcknowledge
@@ -122,7 +122,7 @@ reliableAcknowledge
 Reliable command acknowledgment reset when this connection slot is admitted or reused.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L74)
 
 <a id="field-field-mq3-server-oob-connect-client-reliablesequence-reliablesequence-src-mq3-server-oob-connect-ml-633333132"></a>
 ### reliableSequence
@@ -134,7 +134,7 @@ reliableSequence
 Sequence number of the newest queued reliable command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L76)
 
 <a id="field-field-mq3-server-oob-connect-client-state-state-src-mq3-server-oob-connect-ml-908738966"></a>
 ### state
@@ -146,7 +146,7 @@ state
 Connection lifecycle value that tracks slot availability and progress through connection admission.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L66)
 
 <a id="field-field-mq3-server-oob-connect-client-userinfo-userinfo-src-mq3-server-oob-connect-ml-8137252"></a>
 ### userinfo
@@ -158,4 +158,4 @@ userinfo
 Backslash-delimited client information string, including name and connection settings.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L80)

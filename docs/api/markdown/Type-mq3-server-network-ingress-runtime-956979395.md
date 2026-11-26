@@ -12,7 +12,7 @@ struct Runtime
 Runtime record for server.network_ingress, containing `server`, `bindings`, `services`, `packetState`, `packetHost`, `messageHost`, and 3 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L49)
 
 ## Members
 
@@ -26,7 +26,7 @@ bindings
 Associations between packet-channel clients and message-decoder clients.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L53)
 
 <a id="field-field-mq3-server-network-ingress-runtime-lastclientresult-lastclientresult-src-mq3-server-network-ingress-ml-2031613011"></a>
 ### lastClientResult
@@ -38,7 +38,7 @@ lastClientResult
 Most recent client-message decoding result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L65)
 
 <a id="field-field-mq3-server-network-ingress-runtime-lastpacketresult-lastpacketresult-src-mq3-server-network-ingress-ml-1839078053"></a>
 ### lastPacketResult
@@ -50,7 +50,7 @@ lastPacketResult
 Most recent packet-validation and dispatch result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L63)
 
 <a id="field-field-mq3-server-network-ingress-runtime-messagehost-messagehost-src-mq3-server-network-ingress-ml-833501267"></a>
 ### messageHost
@@ -62,7 +62,7 @@ messageHost
 Host callbacks used by the client-message decoder.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L61)
 
 <a id="field-field-mq3-server-network-ingress-runtime-packetcount-packetcount-src-mq3-server-network-ingress-ml-2047466339"></a>
 ### packetCount
@@ -74,7 +74,7 @@ packetCount
 Number of packet recorded by this state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L67)
 
 <a id="field-field-mq3-server-network-ingress-runtime-packethost-packethost-src-mq3-server-network-ingress-ml-2008921655"></a>
 ### packetHost
@@ -86,7 +86,7 @@ packetHost
 Host callbacks used by the packet event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L59)
 
 <a id="field-field-mq3-server-network-ingress-runtime-packetstate-packetstate-src-mq3-server-network-ingress-ml-182342923"></a>
 ### packetState
@@ -98,7 +98,7 @@ packetState
 State used to validate packet sequence and fragment headers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L57)
 
 <a id="field-field-mq3-server-network-ingress-runtime-server-server-src-mq3-server-network-ingress-ml-217926769"></a>
 ### server
@@ -110,7 +110,7 @@ server
 Server runtime receiving the incoming datagrams.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L51)
 
 <a id="field-field-mq3-server-network-ingress-runtime-services-services-src-mq3-server-network-ingress-ml-1924617859"></a>
 ### services
@@ -122,4 +122,4 @@ services
 Host entry points used to route packets into connectionless and sequenced client handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/network_ingress.ml#L55)

@@ -16,7 +16,7 @@ Reachable from entry: **no**
 - `mq3/game/utility_commands.ml` as `utility` → [src/mq3/game/utility_commands.ml](File-src-mq3-game-utility-commands-ml-2099018205.md)
 - `mq3/game/vote_commands.ml` as `voteCommands` → [src/mq3/game/vote_commands.ml](File-src-mq3-game-vote-commands-ml-1392379875.md)
 - `mq3/game/votes.ml` as `votes` → [src/mq3/game/votes.ml](File-src-mq3-game-votes-ml-1007667129.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -36,4 +36,4 @@ Apply `mq3.game.command_args.argument`, `mq3.game.chat_commands.sayCommand` and 
 | `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_commands.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_commands.ml#L19)

@@ -12,7 +12,7 @@ struct Source
 Source record for audio.spatial_mixer, containing `id`, `key`, `origin`, `sound`, `volume`, `globalSound`, and 2 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L20)
 
 ## Members
 
@@ -26,7 +26,7 @@ cursor
 Current playback position in source sample frames.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L34)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-enabled-enabled-src-mq3-audio-spatial-mixer-ml-2041248512"></a>
 ### enabled
@@ -38,7 +38,7 @@ enabled
 Whether render considers this source; disabled sources retain their current playback cursor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L36)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-globalsound-globalsound-src-mq3-audio-spatial-mixer-ml-1392993152"></a>
 ### globalSound
@@ -50,7 +50,7 @@ globalSound
 True when source gain is independent of listener position.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L32)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-id-id-src-mq3-audio-spatial-mixer-ml-2078145654"></a>
 ### id
@@ -62,7 +62,7 @@ id
 Caller-supplied identifier used to find or update this sound source.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L22)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-key-key-src-mq3-audio-spatial-mixer-ml-167852140"></a>
 ### key
@@ -74,7 +74,7 @@ key
 Candidate loop-sharing key; render also requires the same sound record and playback cursor before grouping.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L24)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-origin-origin-src-mq3-audio-spatial-mixer-ml-1938474612"></a>
 ### origin
@@ -86,7 +86,7 @@ origin
 World-space XYZ position of the sound source.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L26)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-sound-sound-src-mq3-audio-spatial-mixer-ml-1285754644"></a>
 ### sound
@@ -98,7 +98,7 @@ sound
 Decoded WAVE sound descriptor supplying the source PCM data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L28)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-volume-volume-src-mq3-audio-spatial-mixer-ml-1196033516"></a>
 ### volume
@@ -110,4 +110,4 @@ volume
 Source gain before distance attenuation, in the range zero through one.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L30)

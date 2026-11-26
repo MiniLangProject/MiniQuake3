@@ -12,7 +12,7 @@ struct Runtime
 Runtime record for server.snapshot_runtime, containing `scene`, `buildWorld`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L12)
 
 ## Members
 
@@ -26,7 +26,7 @@ buildWorld
 Snapshot-builder world containing entity states and visibility data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L16)
 
 <a id="field-field-mq3-server-snapshot-runtime-runtime-scene-scene-src-mq3-server-snapshot-runtime-ml-1403573657"></a>
 ### scene
@@ -38,4 +38,4 @@ scene
 Linked collision scene used to determine snapshot visibility.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L14)

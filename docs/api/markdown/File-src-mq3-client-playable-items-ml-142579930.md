@@ -11,7 +11,7 @@ Reachable from entry: **yes**
 - `mq3/client/playable_weapon_inventory.ml` as `weaponInventory` → [src/mq3/client/playable_weapon_inventory.ml](File-src-mq3-client-playable-weapon-inventory-ml-1741297641.md)
 - `mq3/compat/textnumbers.ml` as `textnumbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
 - `mq3/format/bsp.ml` as `bsp` → [src/mq3/format/bsp.ml](File-src-mq3-format-bsp-ml-526613882.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -29,7 +29,7 @@ Evaluates playable items `activeCount` and returns `0`, `count` according to its
 | `state` | `dynamic` | — | Record read through `state.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L313)
 
 <a id="constant-constant-mq3-client-playable-items-ammo-cap-const-ammo-cap-200-src-mq3-client-playable-items-ml-134725023"></a>
 ### AMMO_CAP
@@ -41,7 +41,7 @@ const AMMO_CAP = 200
 Maximum ammunition quantity accepted by the native pickup simulation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L20)
 
 <a id="constant-constant-mq3-client-playable-items-armor-cap-const-armor-cap-200-src-mq3-client-playable-items-ml-794753919"></a>
 ### ARMOR_CAP
@@ -53,7 +53,7 @@ const ARMOR_CAP = 200
 Maximum armor quantity accepted by the native pickup simulation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L18)
 
 <a id="function-function-mq3-client-playable-items-cantake-function-cantake-item-stats-src-mq3-client-playable-items-ml-399150444"></a>
 ### canTake
@@ -70,7 +70,7 @@ Evaluates playable items `canTake` and returns `stats.health<item.cap`, `stats.a
 | `stats` | `dynamic` | — | Record read through `stats.health`, `stats.armor`, `stats.ammo`, `stats.weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L187)
 
 <a id="function-function-mq3-client-playable-items-cantakeinventory-function-cantakeinventory-item-stats-inventory-src-mq3-client-playable-items-ml-2033689450"></a>
 ### canTakeInventory
@@ -88,7 +88,7 @@ The integrated preview keeps Baseq3's independent ammo pools.  The legacy aggreg
 | `inventory` | `dynamic` | — | Value used by `amount=weaponInventory.ammoFor(inventory,def.id)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L200)
 
 <a id="constant-constant-mq3-client-playable-items-default-pickup-radius-const-default-pickup-radius-42-src-mq3-client-playable-items-ml-243410395"></a>
 ### DEFAULT_PICKUP_RADIUS
@@ -100,7 +100,7 @@ const DEFAULT_PICKUP_RADIUS = 42
 Fallback pickup radius setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L12)
 
 <a id="function-function-mq3-client-playable-items-definition-function-definition-classname-src-mq3-client-playable-items-ml-1149955667"></a>
 ### definition
@@ -116,7 +116,7 @@ function definition(classname)
 | `classname` | `dynamic` | — | Value used by `name=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L110)
 
 <a id="function-function-mq3-client-playable-items-distancesquared-function-distancesquared-a-b-src-mq3-client-playable-items-ml-156251467"></a>
 ### distanceSquared
@@ -133,7 +133,7 @@ Evaluates playable items `distanceSquared` and returns `x*x+y*y+z*z` according t
 | `b` | `dynamic` | — | Sequence read at `b[0]`, `b[1]`, `b[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L218)
 
 <a id="function-function-mq3-client-playable-items-fail-function-fail-message-src-mq3-client-playable-items-ml-1097930527"></a>
 ### fail
@@ -149,7 +149,7 @@ Creates the playable items error `7501` with diagnostic text `"preview items: "+
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview items: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L94)
 
 <a id="function-function-mq3-client-playable-items-field-function-field-fields-key-src-mq3-client-playable-items-ml-1212252796"></a>
 ### field
@@ -166,7 +166,7 @@ Calls `std.string.toLowerAscii` from playable items `field`. The final path retu
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable items entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L99)
 
 <a id="function-function-mq3-client-playable-items-fromentities-function-fromentities-entities-pickupradius-src-mq3-client-playable-items-ml-2106058625"></a>
 ### fromEntities
@@ -183,7 +183,7 @@ Calls `mq3.client.playable_items.field`, `mq3.client.playable_items.definition`,
 | `pickupRadius` | `dynamic` | — | Value used by `if entities==void or pickupRadius<=0.0 then return fail("entities and a positive pickup radius are required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L148)
 
 <a id="constant-constant-mq3-client-playable-items-health-normal-cap-const-health-normal-cap-100-src-mq3-client-playable-items-ml-1151679916"></a>
 ### HEALTH_NORMAL_CAP
@@ -195,7 +195,7 @@ const HEALTH_NORMAL_CAP = 100
 Ordinary health limit used by regular health pickups.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-items-health-overmax-cap-const-health-overmax-cap-200-src-mq3-client-playable-items-ml-856994197"></a>
 ### HEALTH_OVERMAX_CAP
@@ -207,7 +207,7 @@ const HEALTH_OVERMAX_CAP = 200
 Overhealth limit used by health pickups that may exceed ordinary maximum health.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L16)
 
 - [mq3.client.playable_items.Item](Type-mq3-client-playable-items-item-1445328517.md) — struct
 <a id="function-function-mq3-client-playable-items-load-function-load-map-src-mq3-client-playable-items-ml-1175186094"></a>
@@ -224,7 +224,7 @@ Calls `mq3.format.bsp.entities`, `mq3.client.playable_items.fromEntities` from p
 | `map` | `dynamic` | — | map record passed to the playable items helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L163)
 
 - [mq3.client.playable_items.Pickup](Type-mq3-client-playable-items-pickup-1925681042.md) — struct
 <a id="function-function-mq3-client-playable-items-setstats-function-setstats-state-health-armor-ammo-weapon-src-mq3-client-playable-items-ml-1043651740"></a>
@@ -245,7 +245,7 @@ Updates `state.stats.health`, `state.stats.armor`, `state.stats.ammo`, `state.st
 | `weapon` | `dynamic` | — | Value assigned to `state.stats.weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L174)
 
 - [mq3.client.playable_items.State](Type-mq3-client-playable-items-state-1444940859.md) — struct
 - [mq3.client.playable_items.Stats](Type-mq3-client-playable-items-stats-1277164669.md) — struct
@@ -265,7 +265,7 @@ Calls `mq3.client.playable_items.Pickup` from playable items `take`. The final p
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L227)
 
 <a id="function-function-mq3-client-playable-items-takeinventory-function-takeinventory-state-index-now-inventory-teammode-src-mq3-client-playable-items-ml-918499855"></a>
 ### takeInventory
@@ -285,7 +285,7 @@ Updates `state.stats.ammo`, `state.stats.weapon` during playable items `takeInve
 | `teamMode` | `dynamic` | — | Value used by `granted=weaponInventory.pickupWeapon(inventory,item.classname,0,false,teamMode) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L263)
 
 <a id="function-function-mq3-client-playable-items-update-function-update-state-playerposition-now-src-mq3-client-playable-items-ml-88296977"></a>
 ### update
@@ -303,7 +303,7 @@ Updates `state.lastTime` during playable items `update`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L243)
 
 <a id="function-function-mq3-client-playable-items-updateinventory-function-updateinventory-state-playerposition-now-inventory-teammode-src-mq3-client-playable-items-ml-1247885667"></a>
 ### updateInventory
@@ -323,4 +323,4 @@ Updates `state.lastTime` during playable items `updateInventory`.
 | `teamMode` | `dynamic` | — | Value used by `picked=takeInventory(state,index,now,inventory,teamMode)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L296)

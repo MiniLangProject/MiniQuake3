@@ -31,7 +31,7 @@ Compute call 0 in server.frame.
 | `host` | `dynamic` | — | Host used in `fn(host)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L114)
 
 <a id="constant-constant-mq3-server-frame-cs-serverinfo-const-cs-serverinfo-0-src-mq3-server-frame-ml-402189561"></a>
 ### CS_SERVERINFO
@@ -43,7 +43,7 @@ const CS_SERVERINFO = 0
 An info string with all the serverinfo cvars.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L16)
 
 <a id="constant-constant-mq3-server-frame-cs-systeminfo-const-cs-systeminfo-1-src-mq3-server-frame-ml-397464762"></a>
 ### CS_SYSTEMINFO
@@ -55,7 +55,7 @@ const CS_SYSTEMINFO = 1
 An info string for server system to client system configuration (timescale, etc).
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L18)
 
 <a id="constant-constant-mq3-server-frame-cvar-serverinfo-const-cvar-serverinfo-4-src-mq3-server-frame-ml-137631489"></a>
 ### CVAR_SERVERINFO
@@ -67,7 +67,7 @@ const CVAR_SERVERINFO = 4
 Sent in response to front end requests.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L12)
 
 <a id="constant-constant-mq3-server-frame-cvar-systeminfo-const-cvar-systeminfo-8-src-mq3-server-frame-ml-1080884573"></a>
 ### CVAR_SYSTEMINFO
@@ -79,7 +79,7 @@ const CVAR_SYSTEMINFO = 8
 These cvars will be duplicated on all clients.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L14)
 
 <a id="function-function-mq3-server-frame-cvarset-function-cvarset-host-name-value-src-mq3-server-frame-ml-526066864"></a>
 ### cvarSet
@@ -97,7 +97,7 @@ Compute cvar set in server.frame.
 | `value` | `dynamic` | — | Value used in `host.cvarSetFn(host, name, value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L119)
 
 <a id="function-function-mq3-server-frame-run-function-run-state-msec-host-src-mq3-server-frame-ml-716877157"></a>
 ### run
@@ -115,7 +115,7 @@ Runs one outer server frame. All platform/VM effects are explicit services; ping
 | `host` | `dynamic` | — | Record exposing `shutdownFn`, `pauseObservedFn`, `botFrameFn`, `sleepFn`, `commandFn`, `infoStringFn`, `setConfigstringFn` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L126)
 
 <a id="function-function-mq3-server-frame-runtime-function-runtime-src-mq3-server-frame-ml-832790798"></a>
 ### runtime
@@ -127,7 +127,7 @@ function runtime()
 Create `mq3.server.frame.Runtime` with killServer=0; running=0; clPaused=0; svPaused=0; 16 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L64)
 
 - [mq3.server.frame.Runtime](Type-mq3-server-frame-runtime-733694840.md) — struct
 <a id="function-function-mq3-server-frame-services-function-services-src-mq3-server-frame-ml-408716694"></a>
@@ -140,6 +140,6 @@ function services()
 Create `mq3.server.frame.Services` with shutdownFn=void; cvarSetFn=void; botFrameFn=void; sleepFn=void; 13 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/frame.ml#L107)
 
 - [mq3.server.frame.Services](Type-mq3-server-frame-services-969691596.md) — struct

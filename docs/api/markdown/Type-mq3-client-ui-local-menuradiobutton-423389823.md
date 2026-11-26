@@ -12,7 +12,7 @@ struct MenuRadioButton
 Stores UI local menu radio button record, including `generic`, `curvalue`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L252)
 
 ## Members
 
@@ -26,7 +26,7 @@ curvalue
 Compatibility member corresponding to native `menuradiobutton_s.curvalue`; the original declaration is `int curvalue`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L257)
 
 <a id="field-field-mq3-client-ui-local-menuradiobutton-generic-generic-src-mq3-client-ui-local-ml-1534260843"></a>
 ### generic
@@ -38,4 +38,4 @@ generic
 Common menu-item record containing the shared identity, layout, and callback data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L254)

@@ -12,7 +12,7 @@ struct ScreenPoint
 Stores QVM menu app screen point record, including `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L43)
 
 ## Members
 
@@ -26,7 +26,7 @@ depth
 When constructing this record, `runCinematic` supplies `depth` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L51)
 
 <a id="field-field-mq3-client-qvm-menu-app-screenpoint-x-x-src-mq3-client-qvm-menu-app-ml-881480727"></a>
 ### x
@@ -38,7 +38,7 @@ x
 Horizontal coordinate of a textured quad vertex in the standalone QVM menu viewer's output coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L46)
 
 <a id="field-field-mq3-client-qvm-menu-app-screenpoint-y-y-src-mq3-client-qvm-menu-app-ml-890935803"></a>
 ### y
@@ -50,4 +50,4 @@ y
 Vertical coordinate of a textured quad vertex in the standalone QVM menu viewer's output coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L49)

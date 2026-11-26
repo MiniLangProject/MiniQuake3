@@ -12,7 +12,7 @@ struct ServerStatus
 Stores client main server status record, including `address`, `text`, `start`, `pending`, `retrieved`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L117)
 
 ## Members
 
@@ -26,7 +26,7 @@ address
 When constructing this record, `CL_ServerStatus` supplies `address` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L119)
 
 <a id="field-field-mq3-client-client-main-serverstatus-pending-pending-src-mq3-client-client-main-ml-165880964"></a>
 ### pending
@@ -38,7 +38,7 @@ pending
 When constructing this record, `CL_ServerStatus` supplies `true` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L126)
 
 <a id="field-field-mq3-client-client-main-serverstatus-retrieved-retrieved-src-mq3-client-client-main-ml-538543504"></a>
 ### retrieved
@@ -50,7 +50,7 @@ retrieved
 When constructing this record, `CL_ServerStatus` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L128)
 
 <a id="field-field-mq3-client-client-main-serverstatus-start-start-src-mq3-client-client-main-ml-530884596"></a>
 ### start
@@ -62,7 +62,7 @@ start
 When constructing this record, `CL_ServerStatus` supplies `state.lifecycle.realtime` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L124)
 
 <a id="field-field-mq3-client-client-main-serverstatus-text-text-src-mq3-client-client-main-ml-994396230"></a>
 ### text
@@ -74,4 +74,4 @@ text
 Cached server-status reply returned to the browser after the status request completes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L121)

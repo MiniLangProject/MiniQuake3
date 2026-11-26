@@ -31,7 +31,7 @@ Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_action_syscalls.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_action_syscalls.ml#L19)
 
 <a id="function-function-mq3-botlib-elementary-action-syscalls-farg-function-farg-vm-base-index-src-mq3-botlib-elementary-action-syscalls-ml-2130824560"></a>
 ### farg
@@ -49,4 +49,4 @@ Return the result of `n.bitsFloat(common.argument(vm,base,index))` for `farg`.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_action_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_action_syscalls.ml#L13)

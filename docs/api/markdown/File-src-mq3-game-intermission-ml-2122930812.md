@@ -34,7 +34,7 @@ Set `level.intermissiontime` to `level.time` in `mq3.game.intermission.begin`. R
 | `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `spawner`, `time`, `updateTournamentInfoFn` and `spawnVictoryPadsFn` and related fields. May update `level.intermissiontime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L52)
 
 <a id="function-function-mq3-game-intermission-exitlevel-function-exitlevel-level-src-mq3-game-intermission-ml-199365878"></a>
 ### exitLevel
@@ -50,7 +50,7 @@ Update `level.restarted`, `level.changemap`, `level.intermissiontime` and `level
 | `level` | `dynamic` | — | Game-level state; accesses `botInterbreedEndMatchFn`, `botLifecycleState`, `spawner`, `restarted` and `consoleCommandFn` and related fields. May update `level.restarted`, `level.changemap` and `level.intermissiontime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L79)
 
 <a id="function-function-mq3-game-intermission-intermissionclientlimit-function-intermissionclientlimit-limit-src-mq3-game-intermission-ml-1941874611"></a>
 ### intermissionClientLimit
@@ -66,7 +66,7 @@ Validate that an intermission client limit fits the native sixty-four-client sto
 | `limit` | `dynamic` | — | Operand used to evaluate the returned expression `limit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L18)
 
 <a id="function-function-mq3-game-intermission-intermissionmoveclient-function-intermissionmoveclient-level-ent-src-mq3-game-intermission-ml-728533771"></a>
 ### intermissionMoveClient
@@ -83,7 +83,7 @@ Update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]`, `ent.client.ps.viewan
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `r`. May update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]` and `ent.client.ps.viewangles[axis]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L26)
 
 <a id="function-function-mq3-game-intermission-moveclient-function-moveclient-level-ent-src-mq3-game-intermission-ml-1569945443"></a>
 ### moveClient
@@ -100,4 +100,4 @@ Forward `moveClient` to `mq3.game.intermission.intermissionMoveClient` and retur
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `r`. May update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]` and `ent.client.ps.viewangles[axis]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L46)

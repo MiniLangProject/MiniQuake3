@@ -30,7 +30,7 @@ Update `ent.s.event`, `ent.s.eventParm` and `ent.eventTime` during `add`.
 | `parm` | `dynamic` | — | Integer parameter stored alongside the emitted event. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/events.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/events.ml#L11)
 
 <a id="function-function-mq3-game-events-sound-function-sound-level-ent-channel-index-src-mq3-game-events-ml-1716547734"></a>
 ### sound
@@ -49,4 +49,4 @@ Create an entity sound event using the game event-delivery path.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/events.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/events.ml#L27)

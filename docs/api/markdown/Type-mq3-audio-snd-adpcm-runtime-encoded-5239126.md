@@ -12,7 +12,7 @@ struct Encoded
 Encoded record for audio.snd_adpcm_runtime, containing `data`, `state`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L21)
 
 ## Members
 
@@ -26,7 +26,7 @@ data
 Packed four-bit ADPCM codes, with two codes stored in each byte.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L23)
 
 <a id="field-field-mq3-audio-snd-adpcm-runtime-encoded-state-state-src-mq3-audio-snd-adpcm-runtime-ml-164376693"></a>
 ### state
@@ -38,4 +38,4 @@ state
 Final predictor sample and step index needed to continue encoding.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L25)

@@ -25,7 +25,7 @@ const ATTACK_COOLDOWN_MILLISECONDS = 100
 Duration or scheduling interval in milliseconds controlling attack cooldown.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-attack-range-const-attack-range-900-src-mq3-client-playable-enemy-ai-ml-166177134"></a>
 ### ATTACK_RANGE
@@ -37,7 +37,7 @@ const ATTACK_RANGE = 900
 Maximum target distance at which the native enemy AI attempts to attack.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L17)
 
 - [mq3.client.playable_enemy_ai.Brain](Type-mq3-client-playable-enemy-ai-brain-1780529749.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-ai-chase-distance-const-chase-distance-280-src-mq3-client-playable-enemy-ai-ml-41389183"></a>
@@ -50,7 +50,7 @@ const CHASE_DISTANCE = 280
 Target-distance threshold controlling the native enemy's chase movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-default-damage-const-default-damage-7-src-mq3-client-playable-enemy-ai-ml-380889318"></a>
 ### DEFAULT_DAMAGE
@@ -62,7 +62,7 @@ const DEFAULT_DAMAGE = 7
 Fallback damage setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L27)
 
 - [mq3.client.playable_enemy_ai.Event](Type-mq3-client-playable-enemy-ai-event-91712061.md) — struct
 <a id="function-function-mq3-client-playable-enemy-ai-fail-function-fail-message-src-mq3-client-playable-enemy-ai-ml-1183821461"></a>
@@ -79,7 +79,7 @@ Creates the playable enemy ai error `7540` with diagnostic text `"preview enemy 
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview enemy AI: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L73)
 
 <a id="function-function-mq3-client-playable-enemy-ai-horizontaldirection-function-horizontaldirection-frompoint-topoint-src-mq3-client-playable-enemy-ai-ml-750622701"></a>
 ### horizontalDirection
@@ -96,7 +96,7 @@ Calls `mq3.compat.numeric.fsub`, `mq3.shared.math.VectorLength`, `mq3.shared.mat
 | `toPoint` | `dynamic` | — | Sequence read at `toPoint[0]`, `toPoint[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L112)
 
 <a id="function-function-mq3-client-playable-enemy-ai-linevisible-function-linevisible-tracefn-context-startpoint-endpoint-src-mq3-client-playable-enemy-ai-ml-1187773159"></a>
 ### lineVisible
@@ -115,7 +115,7 @@ Calls `traceFn` from playable enemy ai `lineVisible`. The final path returns `re
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L104)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-move-speed-const-move-speed-105-src-mq3-client-playable-enemy-ai-ml-732794515"></a>
 ### MOVE_SPEED
@@ -127,7 +127,7 @@ const MOVE_SPEED = 105
 Movement speed used when advancing a native enemy toward its target.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L21)
 
 <a id="function-function-mq3-client-playable-enemy-ai-movetarget-function-movetarget-target-brain-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-274391639"></a>
 ### moveTarget
@@ -147,7 +147,7 @@ Updates `target.origin[0]`, `target.origin[1]`, `target.origin[2]` during playab
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L125)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-patrol-radius-const-patrol-radius-30-src-mq3-client-playable-enemy-ai-ml-424119334"></a>
 ### PATROL_RADIUS
@@ -159,7 +159,7 @@ const PATROL_RADIUS = 30
 Radius used by the native enemy's local patrol movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L25)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-sight-mask-const-sight-mask-100663297-src-mq3-client-playable-enemy-ai-ml-753285539"></a>
 ### SIGHT_MASK
@@ -171,7 +171,7 @@ const SIGHT_MASK = 100663297
 Combined collision-content mask used for line-of-sight queries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L11)
 
 <a id="function-function-mq3-client-playable-enemy-ai-state-function-state-targetstate-now-src-mq3-client-playable-enemy-ai-ml-1284813214"></a>
 ### state
@@ -188,7 +188,7 @@ A separate state object keeps AI timing out of playable_targets' combat data.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L81)
 
 - [mq3.client.playable_enemy_ai.State](Type-mq3-client-playable-enemy-ai-state-2024476272.md) — struct
 <a id="function-function-mq3-client-playable-enemy-ai-step-function-step-world-ai-targetstate-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-863388020"></a>
@@ -210,7 +210,7 @@ Public BSP-world entry point: sight is a zero-sized CM_BoxTrace.
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L191)
 
 <a id="function-function-mq3-client-playable-enemy-ai-stepwithtrace-function-stepwithtrace-tracefn-context-ai-targetstate-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-2088443336"></a>
 ### stepWithTrace
@@ -232,7 +232,7 @@ Injectable trace entry point used by contracts. Events are rebuilt per frame.
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L152)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-strafe-speed-const-strafe-speed-72-src-mq3-client-playable-enemy-ai-ml-722084112"></a>
 ### STRAFE_SPEED
@@ -244,7 +244,7 @@ const STRAFE_SPEED = 72
 Lateral movement speed used by the native enemy's strafe behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-think-milliseconds-const-think-milliseconds-100-src-mq3-client-playable-enemy-ai-ml-2049696872"></a>
 ### THINK_MILLISECONDS
@@ -256,7 +256,7 @@ const THINK_MILLISECONDS = 100
 Duration or scheduling interval in milliseconds controlling think.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L13)
 
 <a id="function-function-mq3-client-playable-enemy-ai-validvector-function-validvector-value-src-mq3-client-playable-enemy-ai-ml-915887837"></a>
 ### validVector
@@ -272,7 +272,7 @@ Computes `typeof(value)=="array" and len(value)==3` for playable enemy ai `valid
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `validVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L76)
 
 <a id="function-function-mq3-client-playable-enemy-ai-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-ai-ml-395437554"></a>
 ### worldPointTrace
@@ -290,4 +290,4 @@ Adapts `mq3.collision.world.boxTrace` to playable enemy ai `worldPointTrace`, re
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L95)

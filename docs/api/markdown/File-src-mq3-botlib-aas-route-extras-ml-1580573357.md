@@ -14,7 +14,7 @@ Reachable from entry: **yes**
 - `mq3/botlib/aas_trace_areas.ml` as `routeExtraTraceAreas` → [src/mq3/botlib/aas_trace_areas.ml](File-src-mq3-botlib-aas-trace-areas-ml-2060721500.md)
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/format/aas.ml` as `routeExtraAas` → [src/mq3/format/aas.ml](File-src-mq3-format-aas-ml-835678928.md)
-- `std/array.ml` as `routeExtraArrays` → `../MiniLangCompilerML/std/array.ml` — external dependency
+- `std/array.ml` as `routeExtraArrays` → `../../a7594a0c0299/MiniLangCompilerML/std/array.ml` — external dependency
 
 ## Declarations
 
@@ -32,7 +32,7 @@ Forward `AAS_InitAlternativeRouting` to `mq3.botlib.aas_route_extras.initAlterna
 | `router` | `dynamic` | — | AAS routing state; accesses `settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L122)
 
 <a id="function-function-mq3-botlib-aas-route-extras-aas-shutdownalternativerouting-function-aas-shutdownalternativerouting-state-src-mq3-botlib-aas-route-extras-ml-1235845361"></a>
 ### AAS_ShutdownAlternativeRouting
@@ -48,7 +48,7 @@ Forward `AAS_ShutdownAlternativeRouting` to `mq3.botlib.aas_route_extras.shutdow
 | `state` | `dynamic` | — | AAS route extras state; accesses `valid`, `clusterAreas`, `numClusterAreas` and `initialized`. May update `state.valid`, `state.clusterAreas` and `state.numClusterAreas` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L125)
 
 <a id="function-function-mq3-botlib-aas-route-extras-absint-function-absint-value-src-mq3-botlib-aas-route-extras-ml-651641365"></a>
 ### absInt
@@ -64,7 +64,7 @@ Return the absolute value of the numeric argument for aas route extras.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L94)
 
 - [mq3.botlib.aas_route_extras.AlternativeRouteGoal](Type-mq3-botlib-aas-route-extras-alternativeroutegoal-906342734.md) — struct
 <a id="function-function-mq3-botlib-aas-route-extras-alternativeroutegoals-function-alternativeroutegoals-router-start-startareanum-goal-goalareanum-travelflags-maximum-type-src-mq3-botlib-aas-route-extras-ml-306256186"></a>
@@ -88,7 +88,7 @@ Apply `mq3.botlib.aas_route_extras.validRouter`, `mq3.botlib.aas_route_extras.ro
 | `type` | `dynamic` | — | Value used by `alternativeRouteGoals` in `if (type&ALTROUTEGOAL_ALL)==0 and not (((type&ALTROUTEGOAL_CLUSTERPORTALS)!=0 and (contents&AREACONTENTS_CLUSTER...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L239)
 
 - [mq3.botlib.aas_route_extras.AlternativeRoutingState](Type-mq3-botlib-aas-route-extras-alternativeroutingstate-203968939.md) — struct
 <a id="constant-constant-mq3-botlib-aas-route-extras-altroutegoal-all-const-altroutegoal-all-1-src-mq3-botlib-aas-route-extras-ml-1414014528"></a>
@@ -101,7 +101,7 @@ const ALTROUTEGOAL_ALL = 1
 Alternative-route goal selector for all.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L22)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-altroutegoal-clusterportals-const-altroutegoal-clusterportals-2-src-mq3-botlib-aas-route-extras-ml-887883991"></a>
 ### ALTROUTEGOAL_CLUSTERPORTALS
@@ -113,7 +113,7 @@ const ALTROUTEGOAL_CLUSTERPORTALS = 2
 Alternative-route goal selector for cluster portals.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L24)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-altroutegoal-viewportals-const-altroutegoal-viewportals-4-src-mq3-botlib-aas-route-extras-ml-1639564507"></a>
 ### ALTROUTEGOAL_VIEWPORTALS
@@ -125,7 +125,7 @@ const ALTROUTEGOAL_VIEWPORTALS = 4
 Alternative-route goal selector for view portals.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L26)
 
 <a id="function-function-mq3-botlib-aas-route-extras-altroutingfloodcluster-function-altroutingfloodcluster-router-state-areanum-src-mq3-botlib-aas-route-extras-ml-1877178031"></a>
 ### altRoutingFloodCluster
@@ -143,7 +143,7 @@ Update `state.clusterAreas[state.numClusterAreas]`, `state.numClusterAreas` and 
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L131)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-areacontents-clusterportal-const-areacontents-clusterportal-8-src-mq3-botlib-aas-route-extras-ml-1031393207"></a>
 ### AREACONTENTS_CLUSTERPORTAL
@@ -155,7 +155,7 @@ const AREACONTENTS_CLUSTERPORTAL = 8
 AAS area-contents bit marking cluster portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L28)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-areacontents-viewportal-const-areacontents-viewportal-512-src-mq3-botlib-aas-route-extras-ml-769541289"></a>
 ### AREACONTENTS_VIEWPORTAL
@@ -167,7 +167,7 @@ const AREACONTENTS_VIEWPORTAL = 512
 AAS area-contents bit marking view portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L30)
 
 <a id="function-function-mq3-botlib-aas-route-extras-connectedmidrange-function-connectedmidrange-router-first-valid-src-mq3-botlib-aas-route-extras-ml-1891588859"></a>
 ### connectedMidrange
@@ -185,7 +185,7 @@ Apply `mq3.botlib.aas_route_extras.altRoutingFloodCluster` while evaluating `con
 | `valid` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_route_extras.AlternativeRoutingState.valid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L221)
 
 <a id="function-function-mq3-botlib-aas-route-extras-copyvector-function-copyvector-value-src-mq3-botlib-aas-route-extras-ml-1440082173"></a>
 ### copyVector
@@ -201,7 +201,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas rout
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L88)
 
 <a id="function-function-mq3-botlib-aas-route-extras-distancesquared-function-distancesquared-a-b-src-mq3-botlib-aas-route-extras-ml-530026953"></a>
 ### distanceSquared
@@ -218,7 +218,7 @@ Calculate squared Euclidean distance between two three-component points for aas 
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L228)
 
 <a id="function-function-mq3-botlib-aas-route-extras-initalternativerouting-function-initalternativerouting-router-src-mq3-botlib-aas-route-extras-ml-2034406939"></a>
 ### initAlternativeRouting
@@ -234,7 +234,7 @@ The released botlib keeps these two work arrays as process globals.  The port ke
 | `router` | `dynamic` | — | AAS routing state; accesses `settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L110)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-max-reachability-pass-areas-const-max-reachability-pass-areas-32-src-mq3-botlib-aas-route-extras-ml-481694368"></a>
 ### MAX_REACHABILITY_PASS_AREAS
@@ -246,7 +246,7 @@ const MAX_REACHABILITY_PASS_AREAS = 32
 Maximum number of AAS areas collected while tracing a reachability path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L42)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-op-alternative-route-goal-const-op-alternative-route-goal-575-src-mq3-botlib-aas-route-extras-ml-998792408"></a>
 ### OP_ALTERNATIVE_ROUTE_GOAL
@@ -258,7 +258,7 @@ const OP_ALTERNATIVE_ROUTE_GOAL = 575
 Bot-library syscall identifier for alternative route goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L16)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-op-point-reachability-area-index-const-op-point-reachability-area-index-577-src-mq3-botlib-aas-route-extras-ml-2032934730"></a>
 ### OP_POINT_REACHABILITY_AREA_INDEX
@@ -270,7 +270,7 @@ const OP_POINT_REACHABILITY_AREA_INDEX = 577
 Bot-library syscall identifier for point area reachability area index.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L20)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-op-predict-route-const-op-predict-route-576-src-mq3-botlib-aas-route-extras-ml-753438063"></a>
 ### OP_PREDICT_ROUTE
@@ -282,7 +282,7 @@ const OP_PREDICT_ROUTE = 576
 Bot-library syscall identifier for predict route.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L18)
 
 <a id="function-function-mq3-botlib-aas-route-extras-passedareas-function-passedareas-router-reach-src-mq3-botlib-aas-route-extras-ml-1104122544"></a>
 ### passedAreas
@@ -299,7 +299,7 @@ Apply `mq3.botlib.aas_trace_areas.trace` while evaluating `passedAreas`. Return 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `travelType`, `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L147)
 
 <a id="function-function-mq3-botlib-aas-route-extras-pointreachabilityareaindex-function-pointreachabilityareaindex-state-origin-src-mq3-botlib-aas-route-extras-ml-1180733955"></a>
 ### pointReachabilityAreaIndex
@@ -316,7 +316,7 @@ Apply `mq3.format.aas.cluster`, `mq3.botlib.aas_runtime.pointAreaNum` and `mq3.b
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L263)
 
 <a id="function-function-mq3-botlib-aas-route-extras-predictroute-function-predictroute-router-route-areanum-origin-goalareanum-travelflags-maxareas-maxtime-stopevent-stopcontents-stoptfl-stopareanum-src-mq3-botlib-aas-route-extras-ml-164771494"></a>
 ### predictRoute
@@ -343,7 +343,7 @@ Forward `predictRoute` to `mq3.botlib.aas_route_extras.predictRouteCached` and r
 | `stopAreaNum` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERAREA)!=0 and testArea==stopAreaNum then route.stopEvent=RSE_ENTERAREA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L213)
 
 - [mq3.botlib.aas_route_extras.PredictRoute](Type-mq3-botlib-aas-route-extras-predictroute-1593577971.md) — struct
 <a id="function-function-mq3-botlib-aas-route-extras-predictroutecached-function-predictroutecached-router-cache-route-areanum-origin-goalareanum-travelflags-maxareas-maxtime-stopevent-stopcontents-stoptfl-stopareanum-src-mq3-botlib-aas-route-extras-ml-182676320"></a>
@@ -372,7 +372,7 @@ Update `route.stopEvent`, `route.endArea`, `route.endContents` and `route.endTra
 | `stopAreaNum` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERAREA)!=0 and testArea==stopAreaNum then route.stopEvent=RSE_ENTERAREA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L170)
 
 <a id="function-function-mq3-botlib-aas-route-extras-routetime-function-routetime-router-area-origin-goalarea-travelflags-src-mq3-botlib-aas-route-extras-ml-1023819155"></a>
 ### routeTime
@@ -392,7 +392,7 @@ Forward `routeTime` to `mq3.botlib.aas_routing.areaTravelTimeToGoalArea` and ret
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L104)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-rse-enterarea-const-rse-enterarea-8-src-mq3-botlib-aas-route-extras-ml-209110993"></a>
 ### RSE_ENTERAREA
@@ -404,7 +404,7 @@ const RSE_ENTERAREA = 8
 Stop when entering the given area.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L40)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-rse-entercontents-const-rse-entercontents-4-src-mq3-botlib-aas-route-extras-ml-875376321"></a>
 ### RSE_ENTERCONTENTS
@@ -416,7 +416,7 @@ const RSE_ENTERCONTENTS = 4
 Stop when entering the given contents.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L38)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-rse-none-const-rse-none-0-src-mq3-botlib-aas-route-extras-ml-730704081"></a>
 ### RSE_NONE
@@ -428,7 +428,7 @@ const RSE_NONE = 0
 Route-prediction result indicating that no requested stop event occurred.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L32)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-rse-noroute-const-rse-noroute-1-src-mq3-botlib-aas-route-extras-ml-1506083064"></a>
 ### RSE_NOROUTE
@@ -440,7 +440,7 @@ const RSE_NOROUTE = 1
 No route to goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L34)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-rse-usetraveltype-const-rse-usetraveltype-2-src-mq3-botlib-aas-route-extras-ml-1754704923"></a>
 ### RSE_USETRAVELTYPE
@@ -452,7 +452,7 @@ const RSE_USETRAVELTYPE = 2
 Stop as soon as on of the given travel types is used.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L36)
 
 <a id="function-function-mq3-botlib-aas-route-extras-shutdownalternativerouting-function-shutdownalternativerouting-state-src-mq3-botlib-aas-route-extras-ml-717701245"></a>
 ### shutdownAlternativeRouting
@@ -468,7 +468,7 @@ Update `state.valid`, `state.clusterAreas`, `state.numClusterAreas` and `state.i
 | `state` | `dynamic` | — | AAS route extras state; accesses `valid`, `clusterAreas`, `numClusterAreas` and `initialized`. May update `state.valid`, `state.clusterAreas` and `state.numClusterAreas` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L116)
 
 <a id="function-function-mq3-botlib-aas-route-extras-supportstrap-function-supportstrap-op-src-mq3-botlib-aas-route-extras-ml-265223201"></a>
 ### supportsTrap
@@ -484,7 +484,7 @@ Test `op==OP_ALTERNATIVE_ROUTE_GOAL or op==OP_PREDICT_ROUTE or op==OP_POINT_REAC
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L272)
 
 <a id="function-function-mq3-botlib-aas-route-extras-u16-function-u16-value-src-mq3-botlib-aas-route-extras-ml-418873693"></a>
 ### u16
@@ -500,7 +500,7 @@ Return `value&65535` for `u16`.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value&65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L91)
 
 <a id="function-function-mq3-botlib-aas-route-extras-validrouter-function-validrouter-router-src-mq3-botlib-aas-route-extras-ml-1848484733"></a>
 ### validRouter
@@ -516,4 +516,4 @@ Test `router!=void and router.runtime!=void and router.runtime.initialized` as t
 | `router` | `dynamic` | — | AAS routing state; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L97)

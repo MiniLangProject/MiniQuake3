@@ -12,7 +12,7 @@ struct Cursor
 Cursor record for engine.user_files, containing `data`, `offset`, `size`, `mode`, `path`, `dirty`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L13)
 
 ## Members
 
@@ -26,7 +26,7 @@ data
 Buffered contents of the opened user file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L15)
 
 <a id="field-field-mq3-engine-user-files-cursor-dirty-dirty-src-mq3-engine-user-files-ml-1207943397"></a>
 ### dirty
@@ -38,7 +38,7 @@ dirty
 Whether the stored image differs from the graphics-driver copy.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L25)
 
 <a id="field-field-mq3-engine-user-files-cursor-mode-mode-src-mq3-engine-user-files-ml-2019073271"></a>
 ### mode
@@ -50,7 +50,7 @@ mode
 Access mode selected when the user file was opened.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L21)
 
 <a id="field-field-mq3-engine-user-files-cursor-offset-offset-src-mq3-engine-user-files-ml-383814127"></a>
 ### offset
@@ -62,7 +62,7 @@ offset
 Byte offset of the current cursor or data range.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L17)
 
 <a id="field-field-mq3-engine-user-files-cursor-path-path-src-mq3-engine-user-files-ml-73790207"></a>
 ### path
@@ -74,7 +74,7 @@ path
 Filesystem or virtual asset path associated with this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L23)
 
 <a id="field-field-mq3-engine-user-files-cursor-size-size-src-mq3-engine-user-files-ml-1528681447"></a>
 ### size
@@ -86,4 +86,4 @@ size
 Logical file length in bytes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L19)

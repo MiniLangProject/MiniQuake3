@@ -27,7 +27,7 @@ Creates the playable enemy hitscan error `7630` with diagnostic text `"preview e
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview enemy hitscan: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L35)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-fire-function-fire-world-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-hitscan-ml-584943640"></a>
 ### fire
@@ -48,7 +48,7 @@ Calls `mq3.client.playable_enemy_hitscan.fireWithTrace` from playable enemy hits
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L91)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-firewithtrace-function-firewithtrace-tracefn-context-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-hitscan-ml-2082619288"></a>
 ### fireWithTrace
@@ -70,7 +70,7 @@ The AI has already selected its target. This final muzzle-to-player trace is rep
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L60)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-point-function-point-value-src-mq3-client-playable-enemy-hitscan-ml-1155821765"></a>
 ### point
@@ -86,7 +86,7 @@ Copies three vector components with float32 rounding for playable enemy hitscan.
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L41)
 
 - [mq3.client.playable_enemy_hitscan.Shot](Type-mq3-client-playable-enemy-hitscan-shot-2051138919.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-hitscan-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-enemy-hitscan-ml-748115703"></a>
@@ -99,7 +99,7 @@ const SHOT_MASK = 100663297
 Combined collision-content mask used when tracing a weapon shot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L9)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-validpoint-function-validpoint-value-src-mq3-client-playable-enemy-hitscan-ml-457868573"></a>
 ### validPoint
@@ -115,7 +115,7 @@ Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L38)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-hitscan-ml-700371026"></a>
 ### worldPointTrace
@@ -133,4 +133,4 @@ Adapts `mq3.collision.world.boxTrace` to playable enemy hitscan `worldPointTrace
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L47)

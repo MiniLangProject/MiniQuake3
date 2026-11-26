@@ -12,7 +12,7 @@ struct Model
 Data record for `mq3.renderer.tr_bsp_runtime.Model`; groups `index`, `name`, `bounds`, `firstSurface`, `numSurfaces`, `renderData`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L77)
 
 ## Members
 
@@ -26,7 +26,7 @@ bounds
 Minimum and maximum corners enclosing the object or surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L83)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-model-firstsurface-firstsurface-src-mq3-renderer-tr-bsp-runtime-ml-489131716"></a>
 ### firstSurface
@@ -38,7 +38,7 @@ firstSurface
 Index of the model's first surface in the world surface array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L85)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-model-index-index-src-mq3-renderer-tr-bsp-runtime-ml-1869358578"></a>
 ### index
@@ -50,7 +50,7 @@ index
 Position of this record in its owning table or list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L79)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-model-name-name-src-mq3-renderer-tr-bsp-runtime-ml-1755598404"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Inline BSP model name used to resolve the model's world-surface range.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L81)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-model-numsurfaces-numsurfaces-src-mq3-renderer-tr-bsp-runtime-ml-1567810774"></a>
 ### numSurfaces
@@ -74,7 +74,7 @@ numSurfaces
 Number of surfaces belonging to the model or draw group.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L87)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-model-renderdata-renderdata-src-mq3-renderer-tr-bsp-runtime-ml-1980542502"></a>
 ### renderData
@@ -86,4 +86,4 @@ renderData
 Prepared triangle and vertex data used to render the world or model.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L89)

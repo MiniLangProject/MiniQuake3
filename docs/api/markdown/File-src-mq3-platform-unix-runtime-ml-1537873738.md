@@ -10,7 +10,7 @@ Reachable from entry: **no**
 
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/vm/jit_compat.ml` as `jit` → [src/mq3/vm/jit_compat.ml](File-src-mq3-vm-jit-compat-ml-1033093697.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -32,7 +32,7 @@ Calls `mq3.platform.unix_runtime.Com_Memcpy` with `(destination,destinationOffse
 | `count` | `dynamic` | — | Input used in the result expression `Com_Memcpy(destination,destinationOffset,source,sourceOffset,count*4)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L132)
 
 - [mq3.platform.unix_runtime.Address](Type-mq3-platform-unix-runtime-address-1805079642.md) — struct
 <a id="function-function-mq3-platform-unix-runtime-com-memcpy-function-com-memcpy-destination-destinationoffset-source-sourceoffset-count-src-mq3-platform-unix-runtime-ml-1585396127"></a>
@@ -53,7 +53,7 @@ Returns `destination` from `mq3.platform.unix_runtime.Com_Memcpy`.
 | `count` | `dynamic` | — | Argument 5 supplied to `copyBytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L115)
 
 <a id="function-function-mq3-platform-unix-runtime-com-memset-function-com-memset-destination-offset-value-count-src-mq3-platform-unix-runtime-ml-539120043"></a>
 ### Com_Memset
@@ -72,7 +72,7 @@ Updates `destination[offset+index]` in `mq3.platform.unix_runtime.Com_Memset`; r
 | `count` | `dynamic` | — | Input used by `for index=0 to count-1 destination[offset+index]=value&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L121)
 
 <a id="function-function-mq3-platform-unix-runtime-com-prefetch-function-com-prefetch-memory-count-src-mq3-platform-unix-runtime-ml-1161591606"></a>
 ### Com_Prefetch
@@ -89,7 +89,7 @@ Computes `count` for `mq3.platform.unix_runtime.Com_Prefetch`.
 | `count` | `dynamic` | — | Input used in the result expression `count`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L125)
 
 <a id="function-function-mq3-platform-unix-runtime-create-function-create-src-mq3-platform-unix-runtime-ml-91702896"></a>
 ### create
@@ -101,7 +101,7 @@ function create()
 Constructs `mq3.platform.unix_runtime.State` with `glInitialized` = `false`, `inputInitialized` = `false`, `joystickInitialized` = `false`, `soundInitialized` = `false` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L107)
 
 <a id="function-function-mq3-platform-unix-runtime-createnullcursor-function-createnullcursor-state-src-mq3-platform-unix-runtime-ml-1285158637"></a>
 ### CreateNullCursor
@@ -117,7 +117,7 @@ Returns `1` for the `mq3.platform.unix_runtime.CreateNullCursor` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L181)
 
 - [mq3.platform.unix_runtime.Event](Type-mq3-platform-unix-runtime-event-892773070.md) — struct
 <a id="function-function-mq3-platform-unix-runtime-fastftol-function-fastftol-value-src-mq3-platform-unix-runtime-ml-380049725"></a>
@@ -134,7 +134,7 @@ Calls `mq3.compat.numeric.trunc32` with `(value)` and returns its result.
 | `value` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.trunc32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L593)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L593)
 
 <a id="function-function-mq3-platform-unix-runtime-floating-point-exception-handler-function-floating-point-exception-handler-state-src-mq3-platform-unix-runtime-ml-1914943221"></a>
 ### floating_point_exception_handler
@@ -150,7 +150,7 @@ Returns `void` for the `mq3.platform.unix_runtime.floating_point_exception_handl
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L376)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L376)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-endframe-function-glimp-endframe-state-src-mq3-platform-unix-runtime-ml-606287117"></a>
 ### GLimp_EndFrame
@@ -166,7 +166,7 @@ Computes `state.glInitialized` for `mq3.platform.unix_runtime.GLimp_EndFrame`.
 | `state` | `dynamic` | — | Record providing `state.glInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L146)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-frontendsleep-function-glimp-frontendsleep-state-src-mq3-platform-unix-runtime-ml-255469339"></a>
 ### GLimp_FrontEndSleep
@@ -182,7 +182,7 @@ Returns `void` for the `mq3.platform.unix_runtime.GLimp_FrontEndSleep` compatibi
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L256)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-init-function-glimp-init-state-src-mq3-platform-unix-runtime-ml-517852485"></a>
 ### GLimp_Init
@@ -198,7 +198,7 @@ Updates `state.glInitialized`, `state.active` in `mq3.platform.unix_runtime.GLim
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.glInitialized`, `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L140)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-logcomment-function-glimp-logcomment-state-text-src-mq3-platform-unix-runtime-ml-48815778"></a>
 ### GLimp_LogComment
@@ -215,7 +215,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.GLimp_LogComment`.
 | `text` | `dynamic` | — | Input tested by `state.logging`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L156)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-lognewframe-function-glimp-lognewframe-state-src-mq3-platform-unix-runtime-ml-402563999"></a>
 ### GLimp_LogNewFrame
@@ -231,7 +231,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.GLimp_LogNewFrame`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L275)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-renderersleep-function-glimp-renderersleep-state-src-mq3-platform-unix-runtime-ml-1792512165"></a>
 ### GLimp_RendererSleep
@@ -247,7 +247,7 @@ Returns `void` for the `mq3.platform.unix_runtime.GLimp_RendererSleep` compatibi
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L253)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-renderthreadwrapper-function-glimp-renderthreadwrapper-state-callback-context-src-mq3-platform-unix-runtime-ml-1592679715"></a>
 ### GLimp_RenderThreadWrapper
@@ -265,7 +265,7 @@ Returns `void` from `mq3.platform.unix_runtime.GLimp_RenderThreadWrapper`.
 | `context` | `dynamic` | — | Argument 1 supplied to `callback`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L250)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-setgamma-function-glimp-setgamma-state-red-green-blue-src-mq3-platform-unix-runtime-ml-155174035"></a>
 ### GLimp_SetGamma
@@ -284,7 +284,7 @@ Updates `state.gamma` in `mq3.platform.unix_runtime.GLimp_SetGamma`.
 | `blue` | `dynamic` | — | Input used by `state.gamma=[red,green,blue]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L152)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-shutdown-function-glimp-shutdown-state-src-mq3-platform-unix-runtime-ml-686621373"></a>
 ### GLimp_Shutdown
@@ -300,7 +300,7 @@ Updates `state.glInitialized`, `state.active` in `mq3.platform.unix_runtime.GLim
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.glInitialized`, `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L143)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-spawnrenderthread-function-glimp-spawnrenderthread-state-callback-src-mq3-platform-unix-runtime-ml-468802528"></a>
 ### GLimp_SpawnRenderThread
@@ -317,7 +317,7 @@ Computes `callback!=void` for `mq3.platform.unix_runtime.GLimp_SpawnRenderThread
 | `callback` | `dynamic` | — | Input used in the result expression `callback!=void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L245)
 
 <a id="function-function-mq3-platform-unix-runtime-glimp-wakerenderer-function-glimp-wakerenderer-state-data-src-mq3-platform-unix-runtime-ml-1181285833"></a>
 ### GLimp_WakeRenderer
@@ -334,7 +334,7 @@ Computes `data` for `mq3.platform.unix_runtime.GLimp_WakeRenderer`.
 | `data` | `dynamic` | — | Input used in the result expression `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L260)
 
 <a id="function-function-mq3-platform-unix-runtime-glw-initextensions-function-glw-initextensions-state-text-src-mq3-platform-unix-runtime-ml-509615550"></a>
 ### GLW_InitExtensions
@@ -351,7 +351,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.GLW_InitExtensions`.
 | `text` | `dynamic` | — | Input used by `state.events=state.events+[["extensions",text]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L175)
 
 <a id="function-function-mq3-platform-unix-runtime-glw-initgamma-function-glw-initgamma-state-src-mq3-platform-unix-runtime-ml-155885585"></a>
 ### GLW_InitGamma
@@ -367,7 +367,7 @@ Updates `state.gamma` in `mq3.platform.unix_runtime.GLW_InitGamma`; returns `tru
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.gamma`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L178)
 
 <a id="function-function-mq3-platform-unix-runtime-glw-loadopengl-function-glw-loadopengl-state-driver-src-mq3-platform-unix-runtime-ml-348420155"></a>
 ### GLW_LoadOpenGL
@@ -384,7 +384,7 @@ Calls `mq3.platform.unix_runtime.GLW_StartDriverAndSetMode` with `(state,driver,
 | `driver` | `dynamic` | — | Value forwarded as `driver` to `mq3.platform.unix_runtime.GLW_StartDriverAndSetMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L171)
 
 <a id="function-function-mq3-platform-unix-runtime-glw-setmode-function-glw-setmode-state-mode-fullscreen-src-mq3-platform-unix-runtime-ml-206462139"></a>
 ### GLW_SetMode
@@ -402,7 +402,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.GLW_SetMode`; returns `0`.
 | `fullscreen` | `dynamic` | — | Input used by `state.events=state.events+[["mode",mode,fullscreen]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L161)
 
 <a id="function-function-mq3-platform-unix-runtime-glw-startdriverandsetmode-function-glw-startdriverandsetmode-state-driver-mode-fullscreen-src-mq3-platform-unix-runtime-ml-1530422631"></a>
 ### GLW_StartDriverAndSetMode
@@ -421,7 +421,7 @@ Returns `true` from `mq3.platform.unix_runtime.GLW_StartDriverAndSetMode`; earli
 | `fullscreen` | `dynamic` | — | Value forwarded as `fullscreen` to `mq3.platform.unix_runtime.GLW_SetMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L167)
 
 <a id="function-function-mq3-platform-unix-runtime-handleevents-function-handleevents-state-src-mq3-platform-unix-runtime-ml-632731741"></a>
 ### HandleEvents
@@ -437,7 +437,7 @@ Calls `len` with `(state.events)` and returns its result.
 | `state` | `dynamic` | — | Record providing `state.events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L184)
 
 <a id="function-function-mq3-platform-unix-runtime-hist-add-function-hist-add-state-text-src-mq3-platform-unix-runtime-ml-893481842"></a>
 ### Hist_Add
@@ -454,7 +454,7 @@ Updates `state.history`, `state.historyCursor` in `mq3.platform.unix_runtime.His
 | `text` | `dynamic` | — | Input tested by `text==""`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L317)
 
 <a id="function-function-mq3-platform-unix-runtime-hist-next-function-hist-next-state-src-mq3-platform-unix-runtime-ml-325151417"></a>
 ### Hist_Next
@@ -470,7 +470,7 @@ Updates `state.historyCursor` in `mq3.platform.unix_runtime.Hist_Next`; returns 
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.historyCursor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L323)
 
 <a id="function-function-mq3-platform-unix-runtime-hist-prev-function-hist-prev-state-src-mq3-platform-unix-runtime-ml-1288882765"></a>
 ### Hist_Prev
@@ -486,7 +486,7 @@ Updates `state.historyCursor` in `mq3.platform.unix_runtime.Hist_Prev`; returns 
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.historyCursor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L320)
 
 <a id="function-function-mq3-platform-unix-runtime-in-activate-function-in-activate-state-active-src-mq3-platform-unix-runtime-ml-1743189089"></a>
 ### IN_Activate
@@ -503,7 +503,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.IN_Activate`.
 | `active` | `dynamic` | — | Value assigned to `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L194)
 
 <a id="function-function-mq3-platform-unix-runtime-in-activatemouse-function-in-activatemouse-state-src-mq3-platform-unix-runtime-ml-2142808681"></a>
 ### IN_ActivateMouse
@@ -519,7 +519,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.IN_ActivateMouse`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L197)
 
 <a id="function-function-mq3-platform-unix-runtime-in-deactivatemouse-function-in-deactivatemouse-state-src-mq3-platform-unix-runtime-ml-1050294281"></a>
 ### IN_DeactivateMouse
@@ -535,7 +535,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.IN_DeactivateMouse`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L200)
 
 <a id="function-function-mq3-platform-unix-runtime-in-frame-function-in-frame-state-src-mq3-platform-unix-runtime-ml-1389851993"></a>
 ### IN_Frame
@@ -551,7 +551,7 @@ Computes `state.inputInitialized` for `mq3.platform.unix_runtime.IN_Frame`.
 | `state` | `dynamic` | — | Record providing `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L209)
 
 <a id="function-function-mq3-platform-unix-runtime-in-init-function-in-init-state-src-mq3-platform-unix-runtime-ml-810330405"></a>
 ### IN_Init
@@ -567,7 +567,7 @@ Updates `state.inputInitialized` in `mq3.platform.unix_runtime.IN_Init`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L203)
 
 <a id="function-function-mq3-platform-unix-runtime-in-joymove-function-in-joymove-state-axes-src-mq3-platform-unix-runtime-ml-1320104488"></a>
 ### IN_JoyMove
@@ -584,7 +584,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.IN_JoyMove`.
 | `axes` | `dynamic` | — | Input tested by `state.joystickInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L216)
 
 <a id="function-function-mq3-platform-unix-runtime-in-shutdown-function-in-shutdown-state-src-mq3-platform-unix-runtime-ml-43949733"></a>
 ### IN_Shutdown
@@ -600,7 +600,7 @@ Updates `state.inputInitialized` in `mq3.platform.unix_runtime.IN_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L206)
 
 <a id="function-function-mq3-platform-unix-runtime-in-startupjoystick-function-in-startupjoystick-state-src-mq3-platform-unix-runtime-ml-1915396041"></a>
 ### IN_StartupJoystick
@@ -616,7 +616,7 @@ Updates `state.joystickInitialized` in `mq3.platform.unix_runtime.IN_StartupJoys
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.joystickInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L212)
 
 <a id="function-function-mq3-platform-unix-runtime-initsig-function-initsig-state-src-mq3-platform-unix-runtime-ml-1605948807"></a>
 ### InitSig
@@ -632,7 +632,7 @@ Updates `state.signals` in `mq3.platform.unix_runtime.InitSig`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.signals`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L288)
 
 <a id="function-function-mq3-platform-unix-runtime-install-grabs-function-install-grabs-state-src-mq3-platform-unix-runtime-ml-2045148963"></a>
 ### install_grabs
@@ -648,7 +648,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.install_grabs`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L187)
 
 <a id="function-function-mq3-platform-unix-runtime-kbd-close-function-kbd-close-state-src-mq3-platform-unix-runtime-ml-531686965"></a>
 ### KBD_Close
@@ -664,7 +664,7 @@ Calls `mq3.platform.unix_runtime.IN_Shutdown` with `(state)` and returns its res
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.unix_runtime.IN_Shutdown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L222)
 
 <a id="function-function-mq3-platform-unix-runtime-kbd-init-function-kbd-init-state-src-mq3-platform-unix-runtime-ml-516740053"></a>
 ### KBD_Init
@@ -680,7 +680,7 @@ Calls `mq3.platform.unix_runtime.IN_Init` with `(state)` and returns its result.
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.unix_runtime.IN_Init`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L219)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxcommonsymbols-function-linuxcommonsymbols-src-mq3-platform-unix-runtime-ml-382501660"></a>
 ### linuxCommonSymbols
@@ -692,7 +692,7 @@ function linuxCommonSymbols()
 Lists the 4 declared names for `mq3.platform.unix_runtime.linuxCommonSymbols`, including `Com_Memcpy`, `Com_Memset`, `Com_Prefetch`, `_copyDWord`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L11)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxglimpsymbols-function-linuxglimpsymbols-src-mq3-platform-unix-runtime-ml-951033228"></a>
 ### linuxGlimpSymbols
@@ -704,7 +704,7 @@ function linuxGlimpSymbols()
 Lists the 35 declared names for `mq3.platform.unix_runtime.linuxGlimpSymbols`, including `CreateNullCursor`, `GLW_InitExtensions`, `GLW_InitGamma`, `GLW_LoadOpenGL`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L13)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxjoysticksymbols-function-linuxjoysticksymbols-src-mq3-platform-unix-runtime-ml-1394088372"></a>
 ### linuxJoystickSymbols
@@ -716,7 +716,7 @@ function linuxJoystickSymbols()
 Lists the 2 declared names for `mq3.platform.unix_runtime.linuxJoystickSymbols`, including `IN_JoyMove`, `IN_StartupJoystick`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L15)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxlocalsymbols-function-linuxlocalsymbols-src-mq3-platform-unix-runtime-ml-1979442028"></a>
 ### linuxLocalSymbols
@@ -728,7 +728,7 @@ function linuxLocalSymbols()
 Returns `[]` for the `mq3.platform.unix_runtime.linuxLocalSymbols` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L17)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxqglsymbols-function-linuxqglsymbols-src-mq3-platform-unix-runtime-ml-1684487250"></a>
 ### linuxQglSymbols
@@ -740,7 +740,7 @@ function linuxQglSymbols()
 Lists the 341 declared names for `mq3.platform.unix_runtime.linuxQglSymbols`, including `GLimp_LogNewFrame`, `QGL_EnableLogging`, `QGL_Init`, `QGL_Shutdown`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L19)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxsignalssymbols-function-linuxsignalssymbols-src-mq3-platform-unix-runtime-ml-1748482144"></a>
 ### linuxSignalsSymbols
@@ -752,7 +752,7 @@ function linuxSignalsSymbols()
 Lists the 2 declared names for `mq3.platform.unix_runtime.linuxSignalsSymbols`, including `InitSig`, `signal_handler`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L21)
 
 <a id="function-function-mq3-platform-unix-runtime-linuxsoundsymbols-function-linuxsoundsymbols-src-mq3-platform-unix-runtime-ml-1914306244"></a>
 ### linuxSoundSymbols
@@ -764,7 +764,7 @@ function linuxSoundSymbols()
 Lists the 6 declared names for `mq3.platform.unix_runtime.linuxSoundSymbols`, including `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L23)
 
 <a id="constant-constant-mq3-platform-unix-runtime-na-bad-const-na-bad-1-src-mq3-platform-unix-runtime-ml-931683240"></a>
 ### NA_BAD
@@ -776,7 +776,7 @@ const NA_BAD = 1
 Network-address sentinel identifying an invalid or unresolved address.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L100)
 
 <a id="constant-constant-mq3-platform-unix-runtime-na-ip-const-na-ip-4-src-mq3-platform-unix-runtime-ml-62011145"></a>
 ### NA_IP
@@ -788,7 +788,7 @@ const NA_IP = 4
 Network-address type for an IPv4 endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L104)
 
 <a id="constant-constant-mq3-platform-unix-runtime-na-loopback-const-na-loopback-2-src-mq3-platform-unix-runtime-ml-299013299"></a>
 ### NA_LOOPBACK
@@ -800,7 +800,7 @@ const NA_LOOPBACK = 2
 Network-address type for in-process loopback transport.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L102)
 
 <a id="function-function-mq3-platform-unix-runtime-net-baseadrtostring-function-net-baseadrtostring-address-src-mq3-platform-unix-runtime-ml-1029440956"></a>
 ### NET_BaseAdrToString
@@ -816,7 +816,7 @@ Computes `address.host` for `mq3.platform.unix_runtime.NET_BaseAdrToString`.
 | `address` | `dynamic` | — | Record providing `address.host`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L485)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L485)
 
 <a id="function-function-mq3-platform-unix-runtime-net-errorstring-function-net-errorstring-code-src-mq3-platform-unix-runtime-ml-1093611855"></a>
 ### NET_ErrorString
@@ -832,7 +832,7 @@ Computes `"network error "+str(code)` for `mq3.platform.unix_runtime.NET_ErrorSt
 | `code` | `dynamic` | — | Input used in the result expression `"network error "+str(code)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L488)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L488)
 
 <a id="function-function-mq3-platform-unix-runtime-net-getlocaladdress-function-net-getlocaladdress-state-src-mq3-platform-unix-runtime-ml-1312316403"></a>
 ### NET_GetLocalAddress
@@ -848,7 +848,7 @@ Constructs `mq3.platform.unix_runtime.Address` with `type` = `NA_LOOPBACK`, `hos
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L507)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L507)
 
 <a id="function-function-mq3-platform-unix-runtime-net-init-function-net-init-state-src-mq3-platform-unix-runtime-ml-1504912197"></a>
 ### NET_Init
@@ -864,7 +864,7 @@ Returns `true` for the `mq3.platform.unix_runtime.NET_Init` compatibility entry 
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L495)
 
 <a id="function-function-mq3-platform-unix-runtime-net-ipsocket-function-net-ipsocket-interfacename-port-src-mq3-platform-unix-runtime-ml-184691627"></a>
 ### NET_IPSocket
@@ -881,7 +881,7 @@ Returns `1` from `mq3.platform.unix_runtime.NET_IPSocket`; earlier branches retu
 | `port` | `dynamic` | — | Input tested by `port<0 or port>65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L492)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L492)
 
 <a id="function-function-mq3-platform-unix-runtime-net-openip-function-net-openip-state-src-mq3-platform-unix-runtime-ml-526294889"></a>
 ### NET_OpenIP
@@ -897,7 +897,7 @@ Returns `true` for the `mq3.platform.unix_runtime.NET_OpenIP` compatibility entr
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L498)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L498)
 
 <a id="function-function-mq3-platform-unix-runtime-net-shutdown-function-net-shutdown-state-src-mq3-platform-unix-runtime-ml-1585380493"></a>
 ### NET_Shutdown
@@ -913,7 +913,7 @@ Updates `state.packets` in `mq3.platform.unix_runtime.NET_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.packets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L501)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L501)
 
 <a id="function-function-mq3-platform-unix-runtime-net-sleep-function-net-sleep-msec-src-mq3-platform-unix-runtime-ml-728380310"></a>
 ### NET_Sleep
@@ -929,7 +929,7 @@ Returns `void` for the `mq3.platform.unix_runtime.NET_Sleep` compatibility entry
 | `msec` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L504)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L504)
 
 <a id="function-function-mq3-platform-unix-runtime-netadrtosockadr-function-netadrtosockadr-address-src-mq3-platform-unix-runtime-ml-260928788"></a>
 ### NetadrToSockadr
@@ -945,7 +945,7 @@ Computes `address` for `mq3.platform.unix_runtime.NetadrToSockadr`.
 | `address` | `dynamic` | — | Input used in the result expression `address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L479)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L479)
 
 <a id="function-function-mq3-platform-unix-runtime-q-stristr-function-q-stristr-text-needle-src-mq3-platform-unix-runtime-ml-890161702"></a>
 ### Q_stristr
@@ -962,7 +962,7 @@ Calls `std.string.indexOf` with `(strings.toLowerAscii(text),strings.toLowerAsci
 | `needle` | `dynamic` | — | Argument 1 supplied to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L137)
 
 <a id="function-function-mq3-platform-unix-runtime-qasmsymbols-function-qasmsymbols-src-mq3-platform-unix-runtime-ml-1514513646"></a>
 ### qasmSymbols
@@ -974,7 +974,7 @@ function qasmSymbols()
 Returns `[]` for the `mq3.platform.unix_runtime.qasmSymbols` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L25)
 
 <a id="function-function-mq3-platform-unix-runtime-qgl-enablelogging-function-qgl-enablelogging-state-enabled-src-mq3-platform-unix-runtime-ml-21279100"></a>
 ### QGL_EnableLogging
@@ -991,7 +991,7 @@ Updates `state.logging` in `mq3.platform.unix_runtime.QGL_EnableLogging`; return
 | `enabled` | `dynamic` | — | Value assigned to `state.logging`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L272)
 
 <a id="function-function-mq3-platform-unix-runtime-qgl-init-function-qgl-init-state-driver-src-mq3-platform-unix-runtime-ml-1841211359"></a>
 ### QGL_Init
@@ -1008,7 +1008,7 @@ Updates `state.glInitialized`, `state.events` in `mq3.platform.unix_runtime.QGL_
 | `driver` | `dynamic` | — | Input tested by `driver==""`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L265)
 
 <a id="function-function-mq3-platform-unix-runtime-qgl-shutdown-function-qgl-shutdown-state-src-mq3-platform-unix-runtime-ml-2122809329"></a>
 ### QGL_Shutdown
@@ -1024,7 +1024,7 @@ Updates `state.glInitialized`, `state.logging` in `mq3.platform.unix_runtime.QGL
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.glInitialized`, `state.logging`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L268)
 
 <a id="function-function-mq3-platform-unix-runtime-qgldispatch-function-qgldispatch-state-name-arguments-src-mq3-platform-unix-runtime-ml-2094617498"></a>
 ### qglDispatch
@@ -1042,7 +1042,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.qglDispatch`; returns `true
 | `arguments` | `dynamic` | — | Input used by `state.events=state.events+[[name,arguments]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L280)
 
 <a id="function-function-mq3-platform-unix-runtime-qwglgetprocaddress-function-qwglgetprocaddress-state-name-src-mq3-platform-unix-runtime-ml-1843470826"></a>
 ### qwglGetProcAddress
@@ -1059,7 +1059,7 @@ Returns `1` from `mq3.platform.unix_runtime.qwglGetProcAddress`; earlier branche
 | `name` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L284)
 
 <a id="function-function-mq3-platform-unix-runtime-qxerrorhandler-function-qxerrorhandler-state-code-src-mq3-platform-unix-runtime-ml-32356848"></a>
 ### qXErrorHandler
@@ -1076,7 +1076,7 @@ Updates `state.warnings` in `mq3.platform.unix_runtime.qXErrorHandler`; returns 
 | `code` | `dynamic` | — | Input used by `state.warnings=state.warnings+["X11 error "+str(code)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L241)
 
 <a id="function-function-mq3-platform-unix-runtime-repeated-press-function-repeated-press-state-key-time-src-mq3-platform-unix-runtime-ml-1372004869"></a>
 ### repeated_press
@@ -1094,7 +1094,7 @@ Returns `false` for the `mq3.platform.unix_runtime.repeated_press` compatibility
 | `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L237)
 
 <a id="function-function-mq3-platform-unix-runtime-signal-handler-function-signal-handler-state-signal-src-mq3-platform-unix-runtime-ml-1486033045"></a>
 ### signal_handler
@@ -1111,7 +1111,7 @@ Updates `state.errors` in `mq3.platform.unix_runtime.signal_handler`; returns `e
 | `signal` | `dynamic` | — | Input used by `state.errors=state.errors+["signal "+str(signal)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L292)
 
 <a id="function-function-mq3-platform-unix-runtime-snd-memset-function-snd-memset-destination-value-count-src-mq3-platform-unix-runtime-ml-33134564"></a>
 ### Snd_Memset
@@ -1129,7 +1129,7 @@ Calls `mq3.platform.unix_runtime.Com_Memset` with `(destination,0,value,count)` 
 | `count` | `dynamic` | — | Value forwarded as `count` to `mq3.platform.unix_runtime.Com_Memset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L312)
 
 <a id="function-function-mq3-platform-unix-runtime-snddma-beginpainting-function-snddma-beginpainting-state-src-mq3-platform-unix-runtime-ml-1195256945"></a>
 ### SNDDMA_BeginPainting
@@ -1145,7 +1145,7 @@ Computes `state.soundInitialized` for `mq3.platform.unix_runtime.SNDDMA_BeginPai
 | `state` | `dynamic` | — | Record providing `state.soundInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L301)
 
 <a id="function-function-mq3-platform-unix-runtime-snddma-getdmapos-function-snddma-getdmapos-state-src-mq3-platform-unix-runtime-ml-1019745913"></a>
 ### SNDDMA_GetDMAPos
@@ -1161,7 +1161,7 @@ Returns `0` for the `mq3.platform.unix_runtime.SNDDMA_GetDMAPos` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L298)
 
 <a id="function-function-mq3-platform-unix-runtime-snddma-init-function-snddma-init-state-src-mq3-platform-unix-runtime-ml-2049090325"></a>
 ### SNDDMA_Init
@@ -1177,7 +1177,7 @@ Updates `state.soundInitialized` in `mq3.platform.unix_runtime.SNDDMA_Init`; ret
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.soundInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L295)
 
 <a id="function-function-mq3-platform-unix-runtime-snddma-shutdown-function-snddma-shutdown-state-src-mq3-platform-unix-runtime-ml-860364941"></a>
 ### SNDDMA_Shutdown
@@ -1193,7 +1193,7 @@ Updates `state.soundInitialized` in `mq3.platform.unix_runtime.SNDDMA_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.soundInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L307)
 
 <a id="function-function-mq3-platform-unix-runtime-snddma-submit-function-snddma-submit-state-src-mq3-platform-unix-runtime-ml-1185856777"></a>
 ### SNDDMA_Submit
@@ -1209,7 +1209,7 @@ Computes `state.soundInitialized` for `mq3.platform.unix_runtime.SNDDMA_Submit`.
 | `state` | `dynamic` | — | Record providing `state.soundInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L304)
 
 <a id="function-function-mq3-platform-unix-runtime-sockadrtonetadr-function-sockadrtonetadr-address-src-mq3-platform-unix-runtime-ml-1346841420"></a>
 ### SockadrToNetadr
@@ -1225,7 +1225,7 @@ Computes `address` for `mq3.platform.unix_runtime.SockadrToNetadr`.
 | `address` | `dynamic` | — | Input used in the result expression `address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L482)
 
 - [mq3.platform.unix_runtime.State](Type-mq3-platform-unix-runtime-state-1024097335.md) — struct
 <a id="function-function-mq3-platform-unix-runtime-strlwr-function-strlwr-value-src-mq3-platform-unix-runtime-ml-1665452013"></a>
@@ -1242,7 +1242,7 @@ Calls `std.string.toLowerAscii` with `(value)` and returns its result.
 | `value` | `dynamic` | — | Argument 1 supplied to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L596)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L596)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-appactivate-function-sys-appactivate-state-src-mq3-platform-unix-runtime-ml-2118922409"></a>
 ### Sys_AppActivate
@@ -1258,7 +1258,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.Sys_AppActivate`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L388)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L388)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-beginprofiling-function-sys-beginprofiling-state-src-mq3-platform-unix-runtime-ml-1912013833"></a>
 ### Sys_BeginProfiling
@@ -1274,7 +1274,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_BeginProfiling` compatibil
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L394)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L394)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-beginstreamedfile-function-sys-beginstreamedfile-state-file-readahead-src-mq3-platform-unix-runtime-ml-1427397644"></a>
 ### Sys_BeginStreamedFile
@@ -1292,7 +1292,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_BeginStreamedFile` compati
 | `readAhead` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L428)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-checkcd-function-sys-checkcd-state-src-mq3-platform-unix-runtime-ml-1677975583"></a>
 ### Sys_CheckCD
@@ -1308,7 +1308,7 @@ Returns `true` for the `mq3.platform.unix_runtime.Sys_CheckCD` compatibility ent
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L385)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L385)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-configurefpu-function-sys-configurefpu-state-src-mq3-platform-unix-runtime-ml-1627328537"></a>
 ### Sys_ConfigureFPU
@@ -1324,7 +1324,7 @@ Returns `true` for the `mq3.platform.unix_runtime.Sys_ConfigureFPU` compatibilit
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L373)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L373)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-consoleinput-function-sys-consoleinput-state-src-mq3-platform-unix-runtime-ml-1635696093"></a>
 ### Sys_ConsoleInput
@@ -1340,7 +1340,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_ConsoleInput` compatibilit
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L344)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-consoleinputinit-function-sys-consoleinputinit-state-src-mq3-platform-unix-runtime-ml-287615769"></a>
 ### Sys_ConsoleInputInit
@@ -1356,7 +1356,7 @@ Returns `true` for the `mq3.platform.unix_runtime.Sys_ConsoleInputInit` compatib
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L338)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-consoleinputshutdown-function-sys-consoleinputshutdown-state-src-mq3-platform-unix-runtime-ml-580973321"></a>
 ### Sys_ConsoleInputShutdown
@@ -1372,7 +1372,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_ConsoleInputShutdown` comp
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L341)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-cwd-function-sys-cwd-state-src-mq3-platform-unix-runtime-ml-1498865641"></a>
 ### Sys_Cwd
@@ -1388,7 +1388,7 @@ Computes `state.paths[0]` for `mq3.platform.unix_runtime.Sys_Cwd`.
 | `state` | `dynamic` | — | Record providing `state.paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L526)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L526)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-defaultcdpath-function-sys-defaultcdpath-state-src-mq3-platform-unix-runtime-ml-893174315"></a>
 ### Sys_DefaultCDPath
@@ -1404,7 +1404,7 @@ Computes `state.paths[1]` for `mq3.platform.unix_runtime.Sys_DefaultCDPath`.
 | `state` | `dynamic` | — | Record providing `state.paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L529)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L529)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-defaulthomepath-function-sys-defaulthomepath-state-src-mq3-platform-unix-runtime-ml-1447202287"></a>
 ### Sys_DefaultHomePath
@@ -1420,7 +1420,7 @@ Computes `state.paths[2]` for `mq3.platform.unix_runtime.Sys_DefaultHomePath`.
 | `state` | `dynamic` | — | Record providing `state.paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L532)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L532)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-defaultinstallpath-function-sys-defaultinstallpath-state-src-mq3-platform-unix-runtime-ml-1851126449"></a>
 ### Sys_DefaultInstallPath
@@ -1436,7 +1436,7 @@ Computes `state.paths[3]` for `mq3.platform.unix_runtime.Sys_DefaultInstallPath`
 | `state` | `dynamic` | — | Record providing `state.paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L535)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L535)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-endstreamedfile-function-sys-endstreamedfile-state-file-src-mq3-platform-unix-runtime-ml-161778075"></a>
 ### Sys_EndStreamedFile
@@ -1453,7 +1453,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_EndStreamedFile` compatibi
 | `file` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L432)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L432)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-error-function-sys-error-state-text-src-mq3-platform-unix-runtime-ml-1912329106"></a>
 ### Sys_Error
@@ -1470,7 +1470,7 @@ Updates `state.errors` in `mq3.platform.unix_runtime.Sys_Error`; returns `error(
 | `text` | `dynamic` | — | Argument 2 supplied to `error`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L360)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-exit-function-sys-exit-state-code-src-mq3-platform-unix-runtime-ml-933762844"></a>
 ### Sys_Exit
@@ -1487,7 +1487,7 @@ Updates `state.quitRequested` in `mq3.platform.unix_runtime.Sys_Exit`; returns `
 | `code` | `dynamic` | — | Input used in the result expression `code`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L367)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-filetime-function-sys-filetime-state-path-src-mq3-platform-unix-runtime-ml-130090374"></a>
 ### Sys_FileTime
@@ -1504,7 +1504,7 @@ Returns `-1` for the `mq3.platform.unix_runtime.Sys_FileTime` compatibility entr
 | `path` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L423)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L423)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-freefilelist-function-sys-freefilelist-state-list-src-mq3-platform-unix-runtime-ml-1510683885"></a>
 ### Sys_FreeFileList
@@ -1521,7 +1521,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_FreeFileList` compatibilit
 | `list` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L579)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L579)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-functionchecksum-function-sys-functionchecksum-value-src-mq3-platform-unix-runtime-ml-1296410049"></a>
 ### Sys_FunctionCheckSum
@@ -1537,7 +1537,7 @@ Computes `value` for `mq3.platform.unix_runtime.Sys_FunctionCheckSum`.
 | `value` | `dynamic` | — | Input used in the result expression `value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L419)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-functioncmp-function-sys-functioncmp-left-right-src-mq3-platform-unix-runtime-ml-1274372533"></a>
 ### Sys_FunctionCmp
@@ -1554,7 +1554,7 @@ Computes `left==right` for `mq3.platform.unix_runtime.Sys_FunctionCmp`.
 | `right` | `dynamic` | — | Input used in the result expression `left==right`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L416)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-getclipboarddata-function-sys-getclipboarddata-state-src-mq3-platform-unix-runtime-ml-1870063809"></a>
 ### Sys_GetClipboardData
@@ -1570,7 +1570,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_GetClipboardData` compatib
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L404)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L404)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-getcurrentuser-function-sys-getcurrentuser-state-src-mq3-platform-unix-runtime-ml-631326641"></a>
 ### Sys_GetCurrentUser
@@ -1586,7 +1586,7 @@ Computes `state.user` for `mq3.platform.unix_runtime.Sys_GetCurrentUser`.
 | `state` | `dynamic` | — | Record providing `state.user`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L550)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L550)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-getevent-function-sys-getevent-state-src-mq3-platform-unix-runtime-ml-582919877"></a>
 ### Sys_GetEvent
@@ -1602,7 +1602,7 @@ Updates `state.systemEvents` in `mq3.platform.unix_runtime.Sys_GetEvent`; return
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.systemEvents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L464)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L464)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-getpacket-function-sys-getpacket-state-src-mq3-platform-unix-runtime-ml-2058464149"></a>
 ### Sys_GetPacket
@@ -1618,7 +1618,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_GetPacket` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L519)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L519)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-getprocessorid-function-sys-getprocessorid-state-src-mq3-platform-unix-runtime-ml-1447839965"></a>
 ### Sys_GetProcessorId
@@ -1634,7 +1634,7 @@ Returns `0` for the `mq3.platform.unix_runtime.Sys_GetProcessorId` compatibility
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L587)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L587)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-in-restart-f-function-sys-in-restart-f-state-src-mq3-platform-unix-runtime-ml-154008417"></a>
 ### Sys_In_Restart_f
@@ -1650,7 +1650,7 @@ Updates `state.inputInitialized` in `mq3.platform.unix_runtime.Sys_In_Restart_f`
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L391)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-init-function-sys-init-state-src-mq3-platform-unix-runtime-ml-1774883393"></a>
 ### Sys_Init
@@ -1666,7 +1666,7 @@ Computes `state` for `mq3.platform.unix_runtime.Sys_Init`.
 | `state` | `dynamic` | — | Input used in the result expression `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L370)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-initstreamthread-function-sys-initstreamthread-state-src-mq3-platform-unix-runtime-ml-740446701"></a>
 ### Sys_InitStreamThread
@@ -1682,7 +1682,7 @@ Returns `true` for the `mq3.platform.unix_runtime.Sys_InitStreamThread` compatib
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L448)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L448)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-islanaddress-function-sys-islanaddress-address-src-mq3-platform-unix-runtime-ml-701267892"></a>
 ### Sys_IsLANAddress
@@ -1698,7 +1698,7 @@ Computes `address!=void and (address.type==NA_LOOPBACK or strings.indexOf(addres
 | `address` | `dynamic` | — | Record providing `address.type`, `address.host`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L510)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L510)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-listfiles-function-sys-listfiles-state-directory-extension-src-mq3-platform-unix-runtime-ml-895500407"></a>
 ### Sys_ListFiles
@@ -1716,7 +1716,7 @@ Returns `[]` for the `mq3.platform.unix_runtime.Sys_ListFiles` compatibility ent
 | `extension` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L569)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-listfilteredfiles-function-sys-listfilteredfiles-state-directory-extension-filter-src-mq3-platform-unix-runtime-ml-1854960635"></a>
 ### Sys_ListFilteredFiles
@@ -1735,7 +1735,7 @@ Returns `[]` for the `mq3.platform.unix_runtime.Sys_ListFilteredFiles` compatibi
 | `filter` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L575)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L575)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-loaddll-function-sys-loaddll-state-name-src-mq3-platform-unix-runtime-ml-624168886"></a>
 ### Sys_LoadDll
@@ -1752,7 +1752,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_LoadDll` compatibility ent
 | `name` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L408)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-lowphysicalmemory-function-sys-lowphysicalmemory-state-src-mq3-platform-unix-runtime-ml-1640400637"></a>
 ### Sys_LowPhysicalMemory
@@ -1768,7 +1768,7 @@ Returns `false` for the `mq3.platform.unix_runtime.Sys_LowPhysicalMemory` compat
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L379)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L379)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-milliseconds-function-sys-milliseconds-state-src-mq3-platform-unix-runtime-ml-1796632257"></a>
 ### Sys_Milliseconds
@@ -1784,7 +1784,7 @@ Computes `state.currentTime` for `mq3.platform.unix_runtime.Sys_Milliseconds`.
 | `state` | `dynamic` | — | Record providing `state.currentTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L556)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L556)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-mkdir-function-sys-mkdir-state-path-src-mq3-platform-unix-runtime-ml-1499951668"></a>
 ### Sys_Mkdir
@@ -1801,7 +1801,7 @@ Returns `true` for the `mq3.platform.unix_runtime.Sys_Mkdir` compatibility entry
 | `path` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L564)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L564)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-monkeyshouldbespanked-function-sys-monkeyshouldbespanked-state-src-mq3-platform-unix-runtime-ml-2131039879"></a>
 ### Sys_MonkeyShouldBeSpanked
@@ -1817,7 +1817,7 @@ Returns `false` for the `mq3.platform.unix_runtime.Sys_MonkeyShouldBeSpanked` co
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L382)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L382)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-parseargs-function-sys-parseargs-state-args-src-mq3-platform-unix-runtime-ml-795763220"></a>
 ### Sys_ParseArgs
@@ -1834,7 +1834,7 @@ Computes `args` for `mq3.platform.unix_runtime.Sys_ParseArgs`.
 | `args` | `dynamic` | — | Input used in the result expression `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L401)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L401)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-print-function-sys-print-state-text-src-mq3-platform-unix-runtime-ml-1407838760"></a>
 ### Sys_Print
@@ -1851,7 +1851,7 @@ Updates `state.events` in `mq3.platform.unix_runtime.Sys_Print`.
 | `text` | `dynamic` | — | Input used by `state.events=state.events+[["print",text]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L348)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-printbinversion-function-sys-printbinversion-state-src-mq3-platform-unix-runtime-ml-1886615637"></a>
 ### Sys_PrintBinVersion
@@ -1867,7 +1867,7 @@ Computes `"MiniQuake3"` for `mq3.platform.unix_runtime.Sys_PrintBinVersion`.
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L397)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-printf-function-sys-printf-state-text-src-mq3-platform-unix-runtime-ml-1091302602"></a>
 ### Sys_Printf
@@ -1884,7 +1884,7 @@ Calls `mq3.platform.unix_runtime.Sys_Print` with `(state,text)` and returns its 
 | `text` | `dynamic` | — | Value forwarded as `text` to `mq3.platform.unix_runtime.Sys_Print`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L352)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L352)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-processorcount-function-sys-processorcount-state-src-mq3-platform-unix-runtime-ml-296190513"></a>
 ### Sys_ProcessorCount
@@ -1900,7 +1900,7 @@ Returns `1` for the `mq3.platform.unix_runtime.Sys_ProcessorCount` compatibility
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L553)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L553)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-queevent-function-sys-queevent-state-time-kind-value1-value2-src-mq3-platform-unix-runtime-ml-1373879547"></a>
 ### Sys_QueEvent
@@ -1920,7 +1920,7 @@ Updates `state.systemEvents` in `mq3.platform.unix_runtime.Sys_QueEvent`.
 | `value2` | `dynamic` | — | Value used for `mq3.platform.unix_runtime.Event.value2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L461)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L461)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-quit-function-sys-quit-state-src-mq3-platform-unix-runtime-ml-1101858973"></a>
 ### Sys_Quit
@@ -1936,7 +1936,7 @@ Updates `state.quitRequested` in `mq3.platform.unix_runtime.Sys_Quit`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.quitRequested`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L363)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L363)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-sendkeyevents-function-sys-sendkeyevents-state-src-mq3-platform-unix-runtime-ml-417121573"></a>
 ### Sys_SendKeyEvents
@@ -1952,7 +1952,7 @@ Calls `mq3.platform.unix_runtime.HandleEvents` with `(state)` and returns its re
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.unix_runtime.HandleEvents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L225)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-sendpacket-function-sys-sendpacket-state-length-data-address-src-mq3-platform-unix-runtime-ml-2037045007"></a>
 ### Sys_SendPacket
@@ -1971,7 +1971,7 @@ Updates `state.packets` in `mq3.platform.unix_runtime.Sys_SendPacket`.
 | `address` | `dynamic` | — | Input used by `state.packets=state.packets+[[address,slice(data,0,count)]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L516)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L516)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-setdefaultcdpath-function-sys-setdefaultcdpath-state-value-src-mq3-platform-unix-runtime-ml-1031467334"></a>
 ### Sys_SetDefaultCDPath
@@ -1988,7 +1988,7 @@ Updates `state.paths[1]` in `mq3.platform.unix_runtime.Sys_SetDefaultCDPath`.
 | `value` | `dynamic` | — | Value assigned to `state.paths[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L539)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-setdefaulthomepath-function-sys-setdefaulthomepath-state-value-src-mq3-platform-unix-runtime-ml-1701091450"></a>
 ### Sys_SetDefaultHomePath
@@ -2005,7 +2005,7 @@ Updates `state.paths[2]` in `mq3.platform.unix_runtime.Sys_SetDefaultHomePath`.
 | `value` | `dynamic` | — | Value assigned to `state.paths[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L543)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-setdefaultinstallpath-function-sys-setdefaultinstallpath-state-value-src-mq3-platform-unix-runtime-ml-555471684"></a>
 ### Sys_SetDefaultInstallPath
@@ -2022,7 +2022,7 @@ Updates `state.paths[3]` in `mq3.platform.unix_runtime.Sys_SetDefaultInstallPath
 | `value` | `dynamic` | — | Value assigned to `state.paths[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L547)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L547)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-showconsole-function-sys-showconsole-state-level-quitonclose-src-mq3-platform-unix-runtime-ml-448204113"></a>
 ### Sys_ShowConsole
@@ -2040,7 +2040,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_ShowConsole` compatibility
 | `quitOnClose` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L584)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L584)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-showip-function-sys-showip-state-src-mq3-platform-unix-runtime-ml-1673658965"></a>
 ### Sys_ShowIP
@@ -2056,7 +2056,7 @@ Lists the 1 declared names for `mq3.platform.unix_runtime.Sys_ShowIP`, including
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L522)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L522)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-shutdownstreamthread-function-sys-shutdownstreamthread-state-src-mq3-platform-unix-runtime-ml-450633433"></a>
 ### Sys_ShutdownStreamThread
@@ -2072,7 +2072,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_ShutdownStreamThread` comp
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L451)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L451)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-snapvector-function-sys-snapvector-value-src-mq3-platform-unix-runtime-ml-270491777"></a>
 ### Sys_SnapVector
@@ -2088,7 +2088,7 @@ Returns `[n.trunc32(value[0]),n.trunc32(value[1]),n.trunc32(value[2])]` for `mq3
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L590)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L590)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-streamedread-function-sys-streamedread-state-buffer-size-count-file-src-mq3-platform-unix-runtime-ml-96943447"></a>
 ### Sys_StreamedRead
@@ -2108,7 +2108,7 @@ Returns `0` for the `mq3.platform.unix_runtime.Sys_StreamedRead` compatibility e
 | `file` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L439)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L439)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-streamseek-function-sys-streamseek-state-file-offset-origin-src-mq3-platform-unix-runtime-ml-1093845250"></a>
 ### Sys_StreamSeek
@@ -2127,7 +2127,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_StreamSeek` compatibility 
 | `origin` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L445)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-streamthread-function-sys-streamthread-state-src-mq3-platform-unix-runtime-ml-1500489605"></a>
 ### Sys_StreamThread
@@ -2143,7 +2143,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_StreamThread` compatibilit
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L454)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L454)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-stringtoadr-function-sys-stringtoadr-text-src-mq3-platform-unix-runtime-ml-2107411553"></a>
 ### Sys_StringToAdr
@@ -2159,7 +2159,7 @@ Calls `mq3.platform.unix_runtime.Sys_StringToSockaddr` with `(text,27960)` and r
 | `text` | `dynamic` | — | Value forwarded as `text` to `mq3.platform.unix_runtime.Sys_StringToSockaddr`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L476)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L476)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-stringtosockaddr-function-sys-stringtosockaddr-text-defaultport-src-mq3-platform-unix-runtime-ml-142573995"></a>
 ### Sys_StringToSockaddr
@@ -2176,7 +2176,7 @@ Builds `mq3.platform.unix_runtime.Address` for `mq3.platform.unix_runtime.Sys_St
 | `defaultPort` | `dynamic` | — | Input used by `port=defaultPort`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L469)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L469)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-unloaddll-function-sys-unloaddll-state-handle-src-mq3-platform-unix-runtime-ml-2142462989"></a>
 ### Sys_UnloadDll
@@ -2193,7 +2193,7 @@ Returns `void` for the `mq3.platform.unix_runtime.Sys_UnloadDll` compatibility e
 | `handle` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L412)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-warn-function-sys-warn-state-text-src-mq3-platform-unix-runtime-ml-921067382"></a>
 ### Sys_Warn
@@ -2210,7 +2210,7 @@ Updates `state.warnings` in `mq3.platform.unix_runtime.Sys_Warn`.
 | `text` | `dynamic` | — | Input used by `state.warnings=state.warnings+[text]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L356)
 
 <a id="function-function-mq3-platform-unix-runtime-sys-xtimetosystime-function-sys-xtimetosystime-state-time-src-mq3-platform-unix-runtime-ml-1407740988"></a>
 ### Sys_XTimeToSysTime
@@ -2227,7 +2227,7 @@ Computes `time` for `mq3.platform.unix_runtime.Sys_XTimeToSysTime`.
 | `time` | `dynamic` | — | Input used in the result expression `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L560)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L560)
 
 <a id="function-function-mq3-platform-unix-runtime-tty-back-function-tty-back-state-src-mq3-platform-unix-runtime-ml-1264155065"></a>
 ### tty_Back
@@ -2243,7 +2243,7 @@ Calls `mq3.platform.unix_runtime.Hist_Prev` with `(state)` and returns its resul
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.unix_runtime.Hist_Prev`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L326)
 
 <a id="function-function-mq3-platform-unix-runtime-tty-flushin-function-tty-flushin-state-src-mq3-platform-unix-runtime-ml-2034239907"></a>
 ### tty_FlushIn
@@ -2259,7 +2259,7 @@ Updates `state.historyCursor` in `mq3.platform.unix_runtime.tty_FlushIn`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.historyCursor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L329)
 
 <a id="function-function-mq3-platform-unix-runtime-tty-hide-function-tty-hide-state-src-mq3-platform-unix-runtime-ml-1757806533"></a>
 ### tty_Hide
@@ -2275,7 +2275,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.tty_Hide`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L332)
 
 <a id="function-function-mq3-platform-unix-runtime-tty-show-function-tty-show-state-src-mq3-platform-unix-runtime-ml-2086826129"></a>
 ### tty_Show
@@ -2291,7 +2291,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.tty_Show`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L335)
 
 <a id="function-function-mq3-platform-unix-runtime-uninstall-grabs-function-uninstall-grabs-state-src-mq3-platform-unix-runtime-ml-866473413"></a>
 ### uninstall_grabs
@@ -2307,7 +2307,7 @@ Updates `state.active` in `mq3.platform.unix_runtime.uninstall_grabs`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L190)
 
 <a id="function-function-mq3-platform-unix-runtime-unixglwsymbols-function-unixglwsymbols-src-mq3-platform-unix-runtime-ml-797116364"></a>
 ### unixGlwSymbols
@@ -2319,7 +2319,7 @@ function unixGlwSymbols()
 Returns `[]` for the `mq3.platform.unix_runtime.unixGlwSymbols` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L27)
 
 <a id="function-function-mq3-platform-unix-runtime-unixmain-function-unixmain-state-framecount-framefn-context-src-mq3-platform-unix-runtime-ml-1667934653"></a>
 ### unixMain
@@ -2338,7 +2338,7 @@ Returns `state` from `mq3.platform.unix_runtime.unixMain`.
 | `context` | `dynamic` | — | Argument 1 supplied to `frameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L612)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L612)
 
 <a id="function-function-mq3-platform-unix-runtime-unixmainsymbols-function-unixmainsymbols-src-mq3-platform-unix-runtime-ml-824741404"></a>
 ### unixMainSymbols
@@ -2350,7 +2350,7 @@ function unixMainSymbols()
 Lists the 43 declared names for `mq3.platform.unix_runtime.unixMainSymbols`, including `Hist_Add`, `Hist_Next`, `Hist_Prev`, `Sys_AppActivate`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L29)
 
 <a id="function-function-mq3-platform-unix-runtime-unixnetsymbols-function-unixnetsymbols-src-mq3-platform-unix-runtime-ml-876182252"></a>
 ### unixNetSymbols
@@ -2362,7 +2362,7 @@ function unixNetSymbols()
 Lists the 16 declared names for `mq3.platform.unix_runtime.unixNetSymbols`, including `NET_BaseAdrToString`, `NET_ErrorString`, `NET_GetLocalAddress`, `NET_IPSocket`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L31)
 
 <a id="function-function-mq3-platform-unix-runtime-unixsharedsymbols-function-unixsharedsymbols-src-mq3-platform-unix-runtime-ml-31313744"></a>
 ### unixSharedSymbols
@@ -2374,7 +2374,7 @@ function unixSharedSymbols()
 Lists the 20 declared names for `mq3.platform.unix_runtime.unixSharedSymbols`, including `Sys_Cwd`, `Sys_DefaultCDPath`, `Sys_DefaultHomePath`, `Sys_DefaultInstallPath`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L33)
 
 <a id="function-function-mq3-platform-unix-runtime-unixvmx86symbols-function-unixvmx86symbols-src-mq3-platform-unix-runtime-ml-414680164"></a>
 ### unixVmX86Symbols
@@ -2386,7 +2386,7 @@ function unixVmX86Symbols()
 Lists the 2 declared names for `mq3.platform.unix_runtime.unixVmX86Symbols`, including `VM_CallCompiled`, `VM_Compile`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L35)
 
 <a id="function-function-mq3-platform-unix-runtime-vm-callcompiled-function-vm-callcompiled-compiled-args-src-mq3-platform-unix-runtime-ml-200912856"></a>
 ### VM_CallCompiled
@@ -2403,7 +2403,7 @@ Calls `mq3.vm.jit_compat.VM_CallCompiled` with `(compiled,args)` and returns its
 | `args` | `dynamic` | — | Argument 2 supplied to `mq3.vm.jit_compat.VM_CallCompiled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L605)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L605)
 
 <a id="function-function-mq3-platform-unix-runtime-vm-compile-function-vm-compile-image-callback-src-mq3-platform-unix-runtime-ml-603218990"></a>
 ### VM_Compile
@@ -2420,7 +2420,7 @@ Calls `mq3.vm.jit_compat.VM_Compile` with `(image,callback,"x86")` and returns i
 | `callback` | `dynamic` | — | Argument 2 supplied to `mq3.vm.jit_compat.VM_Compile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L601)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L601)
 
 <a id="function-function-mq3-platform-unix-runtime-x11-pendinginput-function-x11-pendinginput-state-src-mq3-platform-unix-runtime-ml-1732292133"></a>
 ### X11_PendingInput
@@ -2436,7 +2436,7 @@ Computes `len(state.events)>0` for `mq3.platform.unix_runtime.X11_PendingInput`.
 | `state` | `dynamic` | — | Record providing `state.events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L228)
 
 <a id="function-function-mq3-platform-unix-runtime-xlatekey-function-xlatekey-state-key-src-mq3-platform-unix-runtime-ml-1785830688"></a>
 ### XLateKey
@@ -2453,4 +2453,4 @@ Computes `key` for `mq3.platform.unix_runtime.XLateKey`.
 | `key` | `dynamic` | — | Input used in the result expression `key`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L232)

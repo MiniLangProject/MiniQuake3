@@ -12,7 +12,7 @@ struct Frame
 Frame record for format.md3, containing `mins`, `maxs`, `localOrigin`, `radius`, `name`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/md3.ml#L45)
 
 ## Members
 
@@ -26,7 +26,7 @@ localOrigin
 Model-local center used for the frame bounding sphere.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/md3.ml#L51)
 
 <a id="field-field-mq3-format-md3-frame-maxs-maxs-src-mq3-format-md3-ml-1770203636"></a>
 ### maxs
@@ -38,7 +38,7 @@ maxs
 Maximum XYZ corner of all model surfaces in this MD3 animation frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/md3.ml#L49)
 
 <a id="field-field-mq3-format-md3-frame-mins-mins-src-mq3-format-md3-ml-1141660188"></a>
 ### mins
@@ -50,7 +50,7 @@ mins
 Minimum XYZ corner of all model surfaces in this MD3 animation frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/md3.ml#L47)
 
 <a id="field-field-mq3-format-md3-frame-name-name-src-mq3-format-md3-ml-843726824"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Frame name retained from the MD3 animation record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/md3.ml#L55)
 
 <a id="field-field-mq3-format-md3-frame-radius-radius-src-mq3-format-md3-ml-468010510"></a>
 ### radius
@@ -74,4 +74,4 @@ radius
 Model-local bounding-sphere radius stored for this animation frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/md3.ml#L53)

@@ -12,7 +12,7 @@ struct DiskContext
 Stores UI LAN cache disk context record, including `root`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L48)
 
 ## Members
 
@@ -26,4 +26,4 @@ root
 When constructing this record, `diskServices` supplies `root` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L50)

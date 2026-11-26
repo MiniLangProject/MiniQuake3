@@ -24,7 +24,7 @@ Swap two entries of the rank-index array in place.
 | `b` | `dynamic` | — | Value used by `exchange` in `indices[a] = indices[b]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L10)
 
 <a id="function-function-mq3-game-rank-sort-rangesort-function-rangesort-level-indices-low-high-compare-src-mq3-game-rank-sort-ml-1193293874"></a>
 ### rangeSort
@@ -44,7 +44,7 @@ Apply `mq3.game.rank_sort.exchange` and `mq3.game.rank_sort.rangeSort` while eva
 | `compare` | `dynamic` | — | Value passed as argument 5 to `mq3.game.rank_sort.rangeSort`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L20)
 
 <a id="function-function-mq3-game-rank-sort-sortindices-function-sortindices-level-indices-count-compare-src-mq3-game-rank-sort-ml-1148496387"></a>
 ### sortIndices
@@ -63,4 +63,4 @@ Sort client indices using the rank comparison callback without moving the underl
 | `compare` | `dynamic` | — | Value passed as argument 5 to `mq3.game.rank_sort.rangeSort`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L87)

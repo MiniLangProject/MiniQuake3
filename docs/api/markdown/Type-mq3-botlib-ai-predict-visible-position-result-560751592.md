@@ -12,7 +12,7 @@ struct Result
 `Result` record for ai predict visible position, containing `found`, `target`, `hops` and `reachNums`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L26)
 
 ## Members
 
@@ -26,7 +26,7 @@ found
 True when the requested lookup produced a matching entry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L28)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-result-hops-hops-src-mq3-botlib-ai-predict-visible-position-ml-1206479452"></a>
 ### hops
@@ -38,7 +38,7 @@ hops
 Number of reachability links followed while predicting a visible point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L32)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-result-reachnums-reachnums-src-mq3-botlib-ai-predict-visible-position-ml-937416528"></a>
 ### reachNums
@@ -50,7 +50,7 @@ reachNums
 Reachability indexes followed while predicting a visible point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-result-target-target-src-mq3-botlib-ai-predict-visible-position-ml-1778964778"></a>
 ### target
@@ -62,4 +62,4 @@ target
 Predicted world-space position visible from the requested origin.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L30)

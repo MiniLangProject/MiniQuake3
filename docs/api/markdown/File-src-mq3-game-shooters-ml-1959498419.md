@@ -35,7 +35,7 @@ Update `ent.enemy`, `ent.think` and `ent.nextthink` during `finish`.
 | `ent` | `dynamic` | — | Game entity; accesses `enemy`, `target`, `think` and `nextthink`. May update `ent.enemy`, `ent.think` and `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L31)
 
 <a id="function-function-mq3-game-shooters-registeritem-function-registeritem-level-index-src-mq3-game-shooters-ml-301716100"></a>
 ### registerItem
@@ -52,7 +52,7 @@ Forward `registerItem` to `mq3.game.items.register` and return the delegated res
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L16)
 
 <a id="function-function-mq3-game-shooters-use-function-use-level-ent-other-activator-src-mq3-game-shooters-ml-848764082"></a>
 ### use
@@ -71,7 +71,7 @@ Apply `mq3.game.movement.copy`, `mq3.shared.directions.perpendicular` and `mq3.g
 | `activator` | `dynamic` | — | Not read by this implementation; retained in the `use` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L40)
 
 <a id="function-function-mq3-game-shooters-weaponitem-function-weaponitem-weapon-src-mq3-game-shooters-ml-214364138"></a>
 ### weaponItem
@@ -87,4 +87,4 @@ Apply `mq3.game.constants.itemTag` while evaluating `weaponItem`.
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L21)

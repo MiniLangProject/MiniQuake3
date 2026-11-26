@@ -12,7 +12,7 @@ struct Header
 Header record for format.aas, containing `ident`, `version`, `bspChecksum`, `lumps`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L355)
 
 ## Members
 
@@ -26,7 +26,7 @@ bspChecksum
 Checksum of the BSP map associated with the navigation data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L361)
 
 <a id="field-field-mq3-format-aas-header-ident-ident-src-mq3-format-aas-ml-403972168"></a>
 ### ident
@@ -38,7 +38,7 @@ ident
 Magic value identifying the AAS navigation file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L357)
 
 <a id="field-field-mq3-format-aas-header-lumps-lumps-src-mq3-format-aas-ml-1435177988"></a>
 ### lumps
@@ -50,7 +50,7 @@ lumps
 Directory records locating the AAS navigation sections.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L363)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L363)
 
 <a id="field-field-mq3-format-aas-header-version-version-src-mq3-format-aas-ml-1673431932"></a>
 ### version
@@ -62,4 +62,4 @@ version
 AAS navigation-file format version.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L359)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L359)

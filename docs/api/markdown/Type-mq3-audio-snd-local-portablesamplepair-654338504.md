@@ -12,7 +12,7 @@ struct PortableSamplePair
 PortableSamplePair record for audio.snd_local, containing `left`, `right`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L28)
 
 ## Members
 
@@ -26,7 +26,7 @@ left
 Accumulated left-channel paint value before clamping and conversion.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L30)
 
 <a id="field-field-mq3-audio-snd-local-portablesamplepair-right-right-src-mq3-audio-snd-local-ml-181357914"></a>
 ### right
@@ -38,4 +38,4 @@ right
 Accumulated right-channel paint value before clamping and conversion.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_local.ml#L32)

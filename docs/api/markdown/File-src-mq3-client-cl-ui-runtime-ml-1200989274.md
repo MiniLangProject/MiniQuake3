@@ -33,7 +33,7 @@ Calls `decode`, `slice` from engine client UI runtime `bounded`. The final path 
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L79)
 
 <a id="function-function-mq3-client-cl-ui-runtime-cl-getglconfig-function-cl-getglconfig-state-src-mq3-client-cl-ui-runtime-ml-323161673"></a>
 ### CL_GetGlconfig
@@ -49,7 +49,7 @@ Calls `slice` from engine client UI runtime `CL_GetGlconfig`. The final path ret
 | `state` | `dynamic` | — | Record read through `state.glconfig`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L183)
 
 <a id="function-function-mq3-client-cl-ui-runtime-cl-initui-function-cl-initui-state-connectionstate-connectedtopureserver-vmui-src-mq3-client-cl-ui-runtime-ml-2130133588"></a>
 ### CL_InitUI
@@ -68,7 +68,7 @@ Calls `mq3.client.ui_vm.initialize` from engine client UI runtime `CL_InitUI`. T
 | `vmUi` | `dynamic` | — | Value used by `return uiVm.initialize(state.ui,connectionState,connectedToPureServer,vmUi)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L253)
 
 <a id="function-function-mq3-client-cl-ui-runtime-cl-shutdownui-function-cl-shutdownui-state-src-mq3-client-cl-ui-runtime-ml-442658501"></a>
 ### CL_ShutdownUI
@@ -84,7 +84,7 @@ Calls `mq3.client.cl_ui_runtime.Key_SetCatcher`, `mq3.client.cl_ui_runtime.Key_G
 | `state` | `dynamic` | — | Record read through `state.ui`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L240)
 
 <a id="function-function-mq3-client-cl-ui-runtime-cl-uisystemcalls-function-cl-uisystemcalls-state-vm-base-src-mq3-client-cl-ui-runtime-ml-1951910289"></a>
 ### CL_UISystemCalls
@@ -102,7 +102,7 @@ Calls `mq3.vm.syscall_ui.dispatch` from engine client UI runtime `CL_UISystemCal
 | `base` | `dynamic` | — | Value used by `return syscalls.dispatch(state.syscallHost,vm,base)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L237)
 
 <a id="function-function-mq3-client-cl-ui-runtime-clui-getcdkey-function-clui-getcdkey-state-capacity-src-mq3-client-cl-ui-runtime-ml-243281553"></a>
 ### CLUI_GetCDKey
@@ -119,7 +119,7 @@ Calls `mq3.client.cl_ui_runtime.UI_usesUniqueCDKey`, `mq3.client.cl_ui_runtime.b
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L216)
 
 <a id="function-function-mq3-client-cl-ui-runtime-clui-setcdkey-function-clui-setcdkey-state-value-src-mq3-client-cl-ui-runtime-ml-814809908"></a>
 ### CLUI_SetCDKey
@@ -136,7 +136,7 @@ Updates `state.cdKey`, `state.modifiedFlags` during engine client UI runtime `CL
 | `value` | `dynamic` | — | Value used by `part=normalizedKey(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L222)
 
 <a id="function-function-mq3-client-cl-ui-runtime-create-function-create-browser-cachehost-querystate-syscallhost-ui-clientstate-glconfig-configstrings-src-mq3-client-cl-ui-runtime-ml-494264797"></a>
 ### create
@@ -159,7 +159,7 @@ Calls `mq3.client.ui_lan_browser.create`, `mq3.client.cl_ui_runtime.State` from 
 | `configStrings` | `dynamic` | — | Value used by `if configStrings==void then configStrings=array(MAX_CONFIGSTRINGS,"") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L72)
 
 <a id="constant-constant-mq3-client-cl-ui-runtime-cvar-archive-const-cvar-archive-1-src-mq3-client-cl-ui-runtime-ml-1835573130"></a>
 ### CVAR_ARCHIVE
@@ -171,7 +171,7 @@ const CVAR_ARCHIVE = 1
 Configuration-variable attribute that persists the value in the user's saved configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="function-function-mq3-client-cl-ui-runtime-fail-function-fail-message-src-mq3-client-cl-ui-runtime-ml-2019267771"></a>
 ### fail
@@ -187,7 +187,7 @@ Creates the engine client UI runtime error `7801` with diagnostic text `"cl_ui: 
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cl_ui: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L62)
 
 <a id="function-function-mq3-client-cl-ui-runtime-floatasint-function-floatasint-value-src-mq3-client-cl-ui-runtime-ml-471018229"></a>
 ### FloatAsInt
@@ -203,7 +203,7 @@ Adapts `mq3.compat.numeric.i32` to engine client UI runtime `FloatAsInt`, return
 | `value` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.i32`; passed as `n.floatBits(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L232)
 
 <a id="function-function-mq3-client-cl-ui-runtime-getclientstate-function-getclientstate-state-src-mq3-client-cl-ui-runtime-ml-17150313"></a>
 ### GetClientState
@@ -219,7 +219,7 @@ Calls `mq3.client.ui_host_lifecycle.encodeClientState` from engine client UI run
 | `state` | `dynamic` | — | Record read through `state.clientState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L83)
 
 <a id="function-function-mq3-client-cl-ui-runtime-getclipboarddata-function-getclipboarddata-state-capacity-src-mq3-client-cl-ui-runtime-ml-1016045181"></a>
 ### GetClipboardData
@@ -236,7 +236,7 @@ Adapts `mq3.client.cl_ui_runtime.bounded` to engine client UI runtime `GetClipbo
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. Forwarded to `mq3.client.cl_ui_runtime.bounded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L187)
 
 <a id="function-function-mq3-client-cl-ui-runtime-getconfigstring-function-getconfigstring-state-index-capacity-src-mq3-client-cl-ui-runtime-ml-456416925"></a>
 ### GetConfigString
@@ -254,7 +254,7 @@ Calls `mq3.client.cl_ui_runtime.bounded` from engine client UI runtime `GetConfi
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L229)
 
 <a id="function-function-mq3-client-cl-ui-runtime-key-getbindingbuf-function-key-getbindingbuf-state-keynum-capacity-src-mq3-client-cl-ui-runtime-ml-1125324806"></a>
 ### Key_GetBindingBuf
@@ -272,7 +272,7 @@ Calls `mq3.client.cl_ui_runtime.bounded`, `state.syscallHost.keys.bindingFn` fro
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L197)
 
 <a id="function-function-mq3-client-cl-ui-runtime-key-getcatcher-function-key-getcatcher-state-src-mq3-client-cl-ui-runtime-ml-1909306641"></a>
 ### Key_GetCatcher
@@ -288,7 +288,7 @@ Calls `state.syscallHost.keys.getCatcherFn` from engine client UI runtime `Key_G
 | `state` | `dynamic` | — | Record read through `state.syscallHost`, `state.syscallHost.keys.getCatcherFn`, `state.syscallHost.context`, `state.keyCatchers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L200)
 
 <a id="function-function-mq3-client-cl-ui-runtime-key-keynumtostringbuf-function-key-keynumtostringbuf-state-keynum-capacity-src-mq3-client-cl-ui-runtime-ml-1332082230"></a>
 ### Key_KeynumToStringBuf
@@ -306,7 +306,7 @@ Calls `mq3.client.cl_ui_runtime.bounded`, `state.syscallHost.keys.keyNameFn` fro
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L192)
 
 <a id="function-function-mq3-client-cl-ui-runtime-key-setcatcher-function-key-setcatcher-state-catcher-src-mq3-client-cl-ui-runtime-ml-376007863"></a>
 ### Key_SetCatcher
@@ -323,7 +323,7 @@ Updates `state.keyCatchers` during engine client UI runtime `Key_SetCatcher`.
 | `catcher` | `dynamic` | — | Value assigned to `state.keyCatchers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L204)
 
 <a id="function-function-mq3-client-cl-ui-runtime-keysegment-function-keysegment-value-offset-src-mq3-client-cl-ui-runtime-ml-56971720"></a>
 ### keySegment
@@ -340,7 +340,7 @@ Calls `copyBytes`, `decode` from engine client UI runtime `keySegment`. The fina
 | `offset` | `dynamic` | — | Value tested by `offset<len(raw)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L209)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-addserver-function-lan-addserver-state-source-name-address-src-mq3-client-cl-ui-runtime-ml-1691438937"></a>
 ### LAN_AddServer
@@ -359,7 +359,7 @@ Adapts `mq3.client.ui_lan_browser.add` to engine client UI runtime `LAN_AddServe
 | `address` | `dynamic` | — | Argument 4 of `mq3.client.ui_lan_browser.add`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L99)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-clearping-function-lan-clearping-state-index-src-mq3-client-cl-ui-runtime-ml-353070941"></a>
 ### LAN_ClearPing
@@ -376,7 +376,7 @@ Adapts `mq3.client.ui_lan_browser.clearPing` to engine client UI runtime `LAN_Cl
 | `index` | `dynamic` | — | Argument 2 of `mq3.client.ui_lan_browser.clearPing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L145)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-compareservers-function-lan-compareservers-state-source-sortkey-sortdir-first-second-src-mq3-client-cl-ui-runtime-ml-1824543298"></a>
 ### LAN_CompareServers
@@ -397,7 +397,7 @@ Adapts `mq3.client.ui_lan_browser.compare` to engine client UI runtime `LAN_Comp
 | `second` | `dynamic` | — | Argument 6 of `mq3.client.ui_lan_browser.compare`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L138)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getping-function-lan-getping-state-index-capacity-src-mq3-client-cl-ui-runtime-ml-1023624239"></a>
 ### LAN_GetPing
@@ -415,7 +415,7 @@ Calls `mq3.client.ui_lan_browser.getPing`, `mq3.client.cl_ui_runtime.bounded` fr
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L150)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getpinginfo-function-lan-getpinginfo-state-index-capacity-src-mq3-client-cl-ui-runtime-ml-992322595"></a>
 ### LAN_GetPingInfo
@@ -433,7 +433,7 @@ Adapts `mq3.client.cl_ui_runtime.bounded` to engine client UI runtime `LAN_GetPi
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. Forwarded to `mq3.client.cl_ui_runtime.bounded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L155)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getpingqueuecount-function-lan-getpingqueuecount-state-src-mq3-client-cl-ui-runtime-ml-1525595693"></a>
 ### LAN_GetPingQueueCount
@@ -449,7 +449,7 @@ Adapts `mq3.client.ui_lan_browser.pingCount` to engine client UI runtime `LAN_Ge
 | `state` | `dynamic` | — | Record read through `state.browser`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L141)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getserveraddressstring-function-lan-getserveraddressstring-state-source-index-capacity-src-mq3-client-cl-ui-runtime-ml-154284238"></a>
 ### LAN_GetServerAddressString
@@ -468,7 +468,7 @@ Adapts `mq3.client.cl_ui_runtime.bounded` to engine client UI runtime `LAN_GetSe
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. Forwarded to `mq3.client.cl_ui_runtime.bounded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L114)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getservercount-function-lan-getservercount-state-source-src-mq3-client-cl-ui-runtime-ml-1093966354"></a>
 ### LAN_GetServerCount
@@ -485,7 +485,7 @@ Adapts `mq3.client.ui_lan_browser.count` to engine client UI runtime `LAN_GetSer
 | `source` | `dynamic` | — | Argument 2 of `mq3.client.ui_lan_browser.count`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L108)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getserverinfo-function-lan-getserverinfo-state-source-index-capacity-src-mq3-client-cl-ui-runtime-ml-1364339984"></a>
 ### LAN_GetServerInfo
@@ -504,7 +504,7 @@ Adapts `mq3.client.cl_ui_runtime.bounded` to engine client UI runtime `LAN_GetSe
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. Forwarded to `mq3.client.cl_ui_runtime.bounded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L120)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getserverping-function-lan-getserverping-state-source-index-src-mq3-client-cl-ui-runtime-ml-1949283796"></a>
 ### LAN_GetServerPing
@@ -522,7 +522,7 @@ Adapts `mq3.client.ui_lan_browser.serverPing` to engine client UI runtime `LAN_G
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_lan_browser.serverPing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L125)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getserverptr-function-lan-getserverptr-state-source-index-src-mq3-client-cl-ui-runtime-ml-1737610414"></a>
 ### LAN_GetServerPtr
@@ -540,7 +540,7 @@ Adapts `mq3.client.ui_lan_browser.at` to engine client UI runtime `LAN_GetServer
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_lan_browser.at`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L130)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-getserverstatus-function-lan-getserverstatus-state-address-capacity-src-mq3-client-cl-ui-runtime-ml-1199071957"></a>
 ### LAN_GetServerStatus
@@ -558,7 +558,7 @@ Calls `mq3.client.ui_lan_queries.setRealtime`, `mq3.client.ui_lan_queries.server
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L177)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-loadcachedservers-function-lan-loadcachedservers-state-src-mq3-client-cl-ui-runtime-ml-312673357"></a>
 ### LAN_LoadCachedServers
@@ -574,7 +574,7 @@ Calls `mq3.client.ui_lan_cache.load` from engine client UI runtime `LAN_LoadCach
 | `state` | `dynamic` | — | Record read through `state.browser`, `state.cacheHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L86)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-markservervisible-function-lan-markservervisible-state-source-index-visible-src-mq3-client-cl-ui-runtime-ml-654537408"></a>
 ### LAN_MarkServerVisible
@@ -593,7 +593,7 @@ Adapts `mq3.client.ui_lan_browser.markVisible` to engine client UI runtime `LAN_
 | `visible` | `dynamic` | — | Argument 4 of `mq3.client.ui_lan_browser.markVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L161)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-removeserver-function-lan-removeserver-state-source-address-src-mq3-client-cl-ui-runtime-ml-1865071606"></a>
 ### LAN_RemoveServer
@@ -611,7 +611,7 @@ Adapts `mq3.client.ui_lan_browser.remove` to engine client UI runtime `LAN_Remov
 | `address` | `dynamic` | — | Argument 3 of `mq3.client.ui_lan_browser.remove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L104)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-resetpings-function-lan-resetpings-state-source-src-mq3-client-cl-ui-runtime-ml-221353402"></a>
 ### LAN_ResetPings
@@ -628,7 +628,7 @@ Adapts `mq3.client.ui_lan_browser.resetPings` to engine client UI runtime `LAN_R
 | `source` | `dynamic` | — | Argument 2 of `mq3.client.ui_lan_browser.resetPings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L93)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-saveserverstocache-function-lan-saveserverstocache-state-src-mq3-client-cl-ui-runtime-ml-1981849905"></a>
 ### LAN_SaveServersToCache
@@ -644,7 +644,7 @@ Calls `mq3.client.ui_lan_cache.save` from engine client UI runtime `LAN_SaveServ
 | `state` | `dynamic` | — | Record read through `state.browser`, `state.cacheHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L89)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-serverisvisible-function-lan-serverisvisible-state-source-index-src-mq3-client-cl-ui-runtime-ml-522125632"></a>
 ### LAN_ServerIsVisible
@@ -662,7 +662,7 @@ Adapts `mq3.client.ui_lan_browser.isVisible` to engine client UI runtime `LAN_Se
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_lan_browser.isVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L166)
 
 <a id="function-function-mq3-client-cl-ui-runtime-lan-updatevisiblepings-function-lan-updatevisiblepings-state-source-src-mq3-client-cl-ui-runtime-ml-1780680210"></a>
 ### LAN_UpdateVisiblePings
@@ -679,7 +679,7 @@ Calls `mq3.client.ui_lan_queries.setRealtime`, `mq3.client.ui_lan_queries.update
 | `source` | `dynamic` | — | Value used by `return queries.updateVisiblePings(state.queryState,source) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L170)
 
 <a id="constant-constant-mq3-client-cl-ui-runtime-max-configstrings-const-max-configstrings-1024-src-mq3-client-cl-ui-runtime-ml-1507604798"></a>
 ### MAX_CONFIGSTRINGS
@@ -691,7 +691,7 @@ const MAX_CONFIGSTRINGS = 1024
 Capacity limit for the configstrings collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L14)
 
 <a id="function-function-mq3-client-cl-ui-runtime-normalizedkey-function-normalizedkey-value-src-mq3-client-cl-ui-runtime-ml-188573045"></a>
 ### normalizedKey
@@ -707,7 +707,7 @@ Calls `copyBytes` from engine client UI runtime `normalizedKey`. The final path 
 | `value` | `dynamic` | — | Value used by `raw=bytes(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L212)
 
 - [mq3.client.cl_ui_runtime.State](Type-mq3-client-cl-ui-runtime-state-614647333.md) — struct
 <a id="function-function-mq3-client-cl-ui-runtime-ui-gamecommand-function-ui-gamecommand-state-src-mq3-client-cl-ui-runtime-ml-1677308989"></a>
@@ -724,7 +724,7 @@ Calls `mq3.client.ui_vm.consoleCommand` from engine client UI runtime `UI_GameCo
 | `state` | `dynamic` | — | Record read through `state.ui`, `state.realtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L259)
 
 <a id="function-function-mq3-client-cl-ui-runtime-ui-usesuniquecdkey-function-ui-usesuniquecdkey-state-src-mq3-client-cl-ui-runtime-ml-1197989773"></a>
 ### UI_usesUniqueCDKey
@@ -740,4 +740,4 @@ Calls `mq3.client.ui_vm.usesUniqueCdKey` from engine client UI runtime `UI_usesU
 | `state` | `dynamic` | — | Record read through `state.ui`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_ui_runtime.ml#L256)

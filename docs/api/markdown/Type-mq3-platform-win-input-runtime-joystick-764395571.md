@@ -12,7 +12,7 @@ struct Joystick
 Data record for `mq3.platform.win_input_runtime.Joystick`; groups `enabled`, `available`, `buttonCount`, `axisCount`, `hasPov`, `oldButtons`, and 3 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L56)
 
 ## Members
 
@@ -26,7 +26,7 @@ available
 Whether the requested input device is present and usable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L60)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-axiscount-axiscount-src-mq3-platform-win-input-runtime-ml-1023145735"></a>
 ### axisCount
@@ -38,7 +38,7 @@ axisCount
 Number of axes reported by the joystick.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L64)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-ballscale-ballscale-src-mq3-platform-win-input-runtime-ml-256863023"></a>
 ### ballScale
@@ -50,7 +50,7 @@ ballScale
 Scale applied to joystick trackball movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L74)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-buttoncount-buttoncount-src-mq3-platform-win-input-runtime-ml-1660066975"></a>
 ### buttonCount
@@ -62,7 +62,7 @@ buttonCount
 Number of buttons reported by the input device.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L62)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-enabled-enabled-src-mq3-platform-win-input-runtime-ml-1957278887"></a>
 ### enabled
@@ -74,7 +74,7 @@ enabled
 Whether this feature is enabled by the current configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L58)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-haspov-haspov-src-mq3-platform-win-input-runtime-ml-169771909"></a>
 ### hasPov
@@ -86,7 +86,7 @@ hasPov
 Whether the joystick provides a point-of-view hat control.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L66)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-oldbuttons-oldbuttons-src-mq3-platform-win-input-runtime-ml-249788095"></a>
 ### oldButtons
@@ -98,7 +98,7 @@ oldButtons
 Joystick button mask retained from the preceding sample.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L68)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-olddirections-olddirections-src-mq3-platform-win-input-runtime-ml-170785799"></a>
 ### oldDirections
@@ -110,7 +110,7 @@ oldDirections
 Joystick or hat directions retained from the preceding sample.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L70)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-threshold-threshold-src-mq3-platform-win-input-runtime-ml-573134523"></a>
 ### threshold
@@ -122,4 +122,4 @@ threshold
 Dead-zone threshold used when translating joystick axes into directions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L72)

@@ -25,7 +25,7 @@ Compute the sum with signed 32-bit wraparound.
 
 **Returns:** The signed 32-bit sum.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L90)
 
 <a id="function-function-mq3-compat-numeric-addbits-function-addbits-a-b-src-mq3-compat-numeric-ml-128044929"></a>
 ### addBits
@@ -42,7 +42,7 @@ Add bits in compat.numeric; the normal completion returns `packFloat(sign, resul
 | `b` | `dynamic` | — | Unsigned 32-bit binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L336)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L336)
 
 <a id="function-function-mq3-compat-numeric-bitsfloat-inline-function-bitsfloat-value-returns-float-src-mq3-compat-numeric-ml-84583969"></a>
 ### bitsFloat
@@ -60,7 +60,7 @@ Decode an IEEE-754 binary32 bit pattern through the MiniLang numeric facade.
 
 **Returns:** The encoded binary32 value widened to the declared floating-point type.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L150)
 
 <a id="function-function-mq3-compat-numeric-divbits-function-divbits-a-b-src-mq3-compat-numeric-ml-1918849153"></a>
 ### divBits
@@ -77,7 +77,7 @@ Compute div bits in compat.numeric; the normal completion returns `packFloat(sig
 | `b` | `dynamic` | — | Unsigned 32-bit binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L409)
 
 <a id="function-function-mq3-compat-numeric-dot3-function-dot3-ax-ay-az-bx-by-bz-returns-float-src-mq3-compat-numeric-ml-978491790"></a>
 ### dot3
@@ -100,7 +100,7 @@ Compute a three-component dot product with separate binary32 products and left-t
 
 **Returns:** The separately rounded binary32 dot product.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L195)
 
 <a id="function-function-mq3-compat-numeric-exponent-function-exponent-bits-src-mq3-compat-numeric-ml-119393466"></a>
 ### exponent
@@ -116,7 +116,7 @@ Compute exponent in compat.numeric; the normal completion returns `(value - 150)
 | `bits` | `dynamic` | — | Bits used in `(bits >> 23)` and `((bits >> 23) & 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L269)
 
 <a id="function-function-mq3-compat-numeric-f32-function-f32-value-returns-float-src-mq3-compat-numeric-ml-50800476"></a>
 ### f32
@@ -134,7 +134,7 @@ Round a floating-point value to IEEE-754 binary32 through the native SSE boundar
 
 **Returns:** The rounded binary32 value, widened to the declared floating-point return type.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L134)
 
 <a id="function-function-mq3-compat-numeric-fadd-inline-function-fadd-a-b-returns-float-src-mq3-compat-numeric-ml-1511952267"></a>
 ### fadd
@@ -153,7 +153,7 @@ Compute the binary32 sum through the controlled-rounding native ABI.
 
 **Returns:** The binary32 sum, widened to a MiniLang float.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L158)
 
 <a id="function-function-mq3-compat-numeric-fdiv-function-fdiv-a-b-returns-float-src-mq3-compat-numeric-ml-1069362746"></a>
 ### fdiv
@@ -172,7 +172,7 @@ Compute the binary32 quotient through the controlled-rounding native ABI.
 
 **Returns:** The binary32 quotient, widened to a MiniLang float.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L203)
 
 <a id="function-function-mq3-compat-numeric-floatbits-inline-function-floatbits-value-returns-int-src-mq3-compat-numeric-ml-1527303266"></a>
 ### floatBits
@@ -190,7 +190,7 @@ Expose the binary32 representation of a floating-point value through the MiniLan
 
 **Returns:** The unsigned 32-bit IEEE-754 bit pattern.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L143)
 
 <a id="function-function-mq3-compat-numeric-fmul-inline-function-fmul-a-b-returns-float-src-mq3-compat-numeric-ml-1727347409"></a>
 ### fmul
@@ -209,7 +209,7 @@ Compute the binary32 product through the controlled-rounding native ABI.
 
 **Returns:** The binary32 product, widened to a MiniLang float.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L183)
 
 <a id="function-function-mq3-compat-numeric-fneg-function-fneg-value-returns-float-src-mq3-compat-numeric-ml-1788435838"></a>
 ### fneg
@@ -227,7 +227,7 @@ Negate a binary32 value by toggling its sign bit, preserving signed zero and NaN
 
 **Returns:** The binary32 value with bit 31 inverted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L217)
 
 <a id="function-function-mq3-compat-numeric-fsqrt-function-fsqrt-value-returns-float-src-mq3-compat-numeric-ml-850296950"></a>
 ### fsqrt
@@ -245,7 +245,7 @@ Compute the binary32 square root through the controlled native numeric boundary.
 
 **Returns:** The binary32 square-root result widened to a MiniLang float.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L210)
 
 <a id="function-function-mq3-compat-numeric-fsub-inline-function-fsub-a-b-returns-float-src-mq3-compat-numeric-ml-1754441521"></a>
 ### fsub
@@ -264,7 +264,7 @@ Compute the binary32 difference through the controlled-rounding native ABI.
 
 **Returns:** The binary32 difference, widened to a MiniLang float.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L166)
 
 <a id="function-function-mq3-compat-numeric-i16-function-i16-value-as-int-returns-int-src-mq3-compat-numeric-ml-915248514"></a>
 ### i16
@@ -282,7 +282,7 @@ Interpret the low 16 bits as a signed integer.
 
 **Returns:** The signed 16-bit value, represented as a MiniLang integer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L71)
 
 <a id="function-function-mq3-compat-numeric-i32-inline-function-i32-value-as-int-returns-int-src-mq3-compat-numeric-ml-1242513899"></a>
 ### i32
@@ -300,7 +300,7 @@ Interpret the low 32 bits as a signed integer.
 
 **Returns:** The signed 32-bit value, represented as a MiniLang integer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L62)
 
 <a id="function-function-mq3-compat-numeric-i8-function-i8-value-as-int-returns-int-src-mq3-compat-numeric-ml-44760694"></a>
 ### i8
@@ -318,7 +318,7 @@ Interpret the low 8 bits as a signed integer.
 
 **Returns:** The signed 8-bit value, represented as a MiniLang integer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L80)
 
 <a id="function-function-mq3-compat-numeric-isnanbits-inline-function-isnanbits-value-as-int-returns-bool-src-mq3-compat-numeric-ml-387624950"></a>
 ### isNaNBits
@@ -336,7 +336,7 @@ Recognize IEEE-754 binary32 NaN encodings from the exponent and mantissa bits.
 
 **Returns:** True for a NaN bit pattern; false for finite values and infinities.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L329)
 
 <a id="function-function-mq3-compat-numeric-jam-function-jam-value-shift-src-mq3-compat-numeric-ml-1337836023"></a>
 ### jam
@@ -353,7 +353,7 @@ Compute jam in compat.numeric; the normal completion returns `result`.
 | `shift` | `dynamic` | — | Shift used in `(shift <= 0)` and `(1 << shift)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L278)
 
 <a id="function-function-mq3-compat-numeric-mantissa-function-mantissa-bits-src-mq3-compat-numeric-ml-1070147254"></a>
 ### mantissa
@@ -369,7 +369,7 @@ Compute mantissa in compat.numeric; the normal completion returns `value`.
 | `bits` | `dynamic` | — | Bits used in `(bits & 8388607)` and `(bits & 2139095040)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L261)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-bits-float-extern-function-mq3-bits-float-value-as-u32-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1152099730"></a>
 ### mq3_bits_float
@@ -387,7 +387,7 @@ Decode an IEEE-754 binary32 bit pattern through the native ABI.
 
 **Returns:** The encoded binary32 value widened to the declared floating-point type.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L17)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-dot3-extern-function-mq3-dot3-ax-as-double-ay-as-double-az-as-double-bx-as-double-by-as-double-bz-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1500050510"></a>
 ### mq3_dot3
@@ -410,7 +410,7 @@ Compute a three-component dot product with separate binary32 products and left-t
 
 **Returns:** The separately rounded binary32 dot product.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L46)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-f32-extern-function-mq3-f32-value-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-431069333"></a>
 ### mq3_f32
@@ -428,7 +428,7 @@ Round a floating-point value to IEEE-754 binary32 through a saved and restored S
 
 **Returns:** The rounded binary32 value, widened to the declared floating-point return type.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L9)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-fadd-extern-function-mq3-fadd-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1908597462"></a>
 ### mq3_fadd
@@ -447,7 +447,7 @@ Compute the binary32 sum while saving and restoring the host SSE control state.
 
 **Returns:** The binary32 sum, widened to double; NaNs follow left-to-right operand selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L22)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-fdiv-extern-function-mq3-fdiv-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-65874490"></a>
 ### mq3_fdiv
@@ -466,7 +466,7 @@ Compute the binary32 quotient while saving and restoring the host SSE control st
 
 **Returns:** The binary32 quotient, widened to double; NaNs follow left-to-right operand selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L37)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-float-bits-extern-function-mq3-float-bits-value-as-double-from-miniquake3-abi-dll-returns-u32-src-mq3-compat-numeric-ml-1713572452"></a>
 ### mq3_float_bits
@@ -484,7 +484,7 @@ Expose the binary32 representation of a floating-point value through the native 
 
 **Returns:** The unsigned 32-bit IEEE-754 bit pattern.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L13)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-fmul-extern-function-mq3-fmul-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-685655624"></a>
 ### mq3_fmul
@@ -503,7 +503,7 @@ Compute the binary32 product while saving and restoring the host SSE control sta
 
 **Returns:** The binary32 product, widened to double; NaNs follow left-to-right operand selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L32)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-fsqrt-extern-function-mq3-fsqrt-value-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-38913125"></a>
 ### mq3_fsqrt
@@ -521,7 +521,7 @@ Take a binary32 square root while preserving the host SSE control state.
 
 **Returns:** The binary32 square root widened to double, including IEEE-754 NaN propagation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L50)
 
 <a id="extern_function-extern-function-mq3-compat-numeric-mq3-fsub-extern-function-mq3-fsub-a-as-double-b-as-double-from-miniquake3-abi-dll-returns-double-src-mq3-compat-numeric-ml-1881110056"></a>
 ### mq3_fsub
@@ -540,7 +540,7 @@ Compute the binary32 difference while saving and restoring the host SSE control 
 
 **Returns:** The binary32 difference, widened to double; NaNs follow left-to-right operand selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L27)
 
 <a id="function-function-mq3-compat-numeric-mul32-function-mul32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-1360046207"></a>
 ### mul32
@@ -559,7 +559,7 @@ Compute the product with signed 32-bit wraparound.
 
 **Returns:** The signed 32-bit product.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L98)
 
 <a id="function-function-mq3-compat-numeric-mulbits-function-mulbits-a-b-src-mq3-compat-numeric-ml-703990999"></a>
 ### mulBits
@@ -576,7 +576,7 @@ Compute mul bits in compat.numeric; the normal completion returns `packFloat(sig
 | `b` | `dynamic` | — | Unsigned 32-bit binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L367)
 
 <a id="function-function-mq3-compat-numeric-packfloat-function-packfloat-sign-significand-power-src-mq3-compat-numeric-ml-38213243"></a>
 ### packFloat
@@ -594,7 +594,7 @@ Round an exact integer significand times 2^power to binary32 (nearest-even).
 | `power` | `dynamic` | — | Power used in `(power + high)` and `(target - power)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L294)
 
 <a id="function-function-mq3-compat-numeric-quotient-function-quotient-a-b-src-mq3-compat-numeric-ml-1337281667"></a>
 ### quotient
@@ -613,7 +613,7 @@ Validation failures include `integer divide by zero`.
 | `b` | `dynamic` | — | B used in `(b == 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L385)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L385)
 
 <a id="function-function-mq3-compat-numeric-readi32-inline-function-readi32-data-offset-as-int-src-mq3-compat-numeric-ml-701295519"></a>
 ### readI32
@@ -630,7 +630,7 @@ Read i 32 in compat.numeric; the normal completion returns `i32(readU32(data, of
 | `offset` | `int` | — | Offset passed as `offset` to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L449)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L449)
 
 <a id="function-function-mq3-compat-numeric-readu32-function-readu32-data-offset-as-int-src-mq3-compat-numeric-ml-2038765784"></a>
 ### readU32
@@ -649,7 +649,7 @@ Validation failures include `readU32 out of range`.
 | `offset` | `int` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L441)
 
 <a id="function-function-mq3-compat-numeric-sar32-function-sar32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-1992573103"></a>
 ### sar32
@@ -668,7 +668,7 @@ Apply a 32-bit arithmetic right shift with the shift count masked to five bits.
 
 **Returns:** The shifted 32-bit result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L127)
 
 <a id="function-function-mq3-compat-numeric-shl32-function-shl32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-28240201"></a>
 ### shl32
@@ -687,7 +687,7 @@ Apply a 32-bit left shift with the shift count masked to five bits.
 
 **Returns:** The shifted 32-bit result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L111)
 
 <a id="function-function-mq3-compat-numeric-shr32-function-shr32-a-as-int-b-as-int-returns-int-src-mq3-compat-numeric-ml-113964033"></a>
 ### shr32
@@ -706,7 +706,7 @@ Apply a 32-bit logical right shift with the shift count masked to five bits.
 
 **Returns:** The shifted 32-bit result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L119)
 
 <a id="function-function-mq3-compat-numeric-sqrtbits-function-sqrtbits-value-src-mq3-compat-numeric-ml-1668291363"></a>
 ### sqrtBits
@@ -722,7 +722,7 @@ Compute sqrt bits in compat.numeric; the normal completion returns `packFloat(0,
 | `value` | `dynamic` | — | Unsigned 32-bit binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L236)
 
 <a id="function-function-mq3-compat-numeric-subbits-function-subbits-a-b-src-mq3-compat-numeric-ml-1610695063"></a>
 ### subBits
@@ -739,7 +739,7 @@ Compute sub bits in compat.numeric; the normal completion returns `addBits(a, (b
 | `b` | `dynamic` | — | Unsigned 32-bit binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L172)
 
 <a id="function-function-mq3-compat-numeric-trunc32-function-trunc32-value-src-mq3-compat-numeric-ml-144812385"></a>
 ### trunc32
@@ -755,7 +755,7 @@ Truncate binary32 toward zero, matching the x86 integer sentinel for NaN or out-
 | `value` | `dynamic` | — | Floating-point value to convert to signed 32-bit integer semantics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L223)
 
 <a id="function-function-mq3-compat-numeric-u32-function-u32-value-as-int-returns-int-src-mq3-compat-numeric-ml-1299631906"></a>
 ### u32
@@ -773,7 +773,7 @@ Interpret the low 32 bits as an unsigned integer.
 
 **Returns:** The unsigned 32-bit value, represented as a MiniLang integer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L55)
 
 <a id="function-function-mq3-compat-numeric-writeu32-function-writeu32-data-offset-as-int-value-as-int-src-mq3-compat-numeric-ml-1014296534"></a>
 ### writeU32
@@ -794,4 +794,4 @@ Direct state writes: `data elements`.
 | `value` | `int` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/numeric.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/numeric.ml#L460)

@@ -12,7 +12,7 @@ struct DrawBufferCommand
 Data record for `mq3.renderer.tr_local.DrawBufferCommand`; groups `commandId`, `buffer`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L124)
 
 ## Members
 
@@ -26,7 +26,7 @@ buffer
 OpenGL draw-buffer selector to activate when this command executes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L128)
 
 <a id="field-field-mq3-renderer-tr-local-drawbuffercommand-commandid-commandid-src-mq3-renderer-tr-local-ml-84146954"></a>
 ### commandId
@@ -38,4 +38,4 @@ commandId
 Renderer command identifier selecting the backend operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L126)

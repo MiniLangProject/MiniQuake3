@@ -12,7 +12,7 @@ struct Action
 Stores client game main queued engine action, including `boundary`, `kind`, `name`, `value`, `value2`, `number` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L78)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Host service category recorded with a request emitted while initializing CGame, registering media, and updating shared client information.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L81)
 
 <a id="field-field-mq3-client-cgame-main-action-dispatched-dispatched-src-mq3-client-cgame-main-ml-1246481349"></a>
 ### dispatched
@@ -38,7 +38,7 @@ dispatched
 True when this request is marked for native dispatch while initializing CGame, registering media, and updating shared client information; false when its native effect is suppressed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L100)
 
 <a id="field-field-mq3-client-cgame-main-action-flags-flags-src-mq3-client-cgame-main-ml-1920909527"></a>
 ### flags
@@ -50,7 +50,7 @@ flags
 When constructing this record, `action` supplies `flags` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L97)
 
 <a id="field-field-mq3-client-cgame-main-action-kind-kind-src-mq3-client-cgame-main-ml-547119199"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 Operation selector telling the host how to interpret a request emitted while initializing CGame, registering media, and updating shared client information.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L84)
 
 <a id="field-field-mq3-client-cgame-main-action-name-name-src-mq3-client-cgame-main-ml-1712391613"></a>
 ### name
@@ -74,7 +74,7 @@ name
 Cvar, media asset, command, or other named target referenced by a client-game initialization action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L87)
 
 <a id="field-field-mq3-client-cgame-main-action-number-number-src-mq3-client-cgame-main-ml-1619523017"></a>
 ### number
@@ -86,7 +86,7 @@ number
 Numeric argument interpreted by the selected host operation while initializing CGame, registering media, and updating shared client information.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L95)
 
 <a id="field-field-mq3-client-cgame-main-action-value-value-src-mq3-client-cgame-main-ml-1228170755"></a>
 ### value
@@ -98,7 +98,7 @@ value
 Value payload supplied to the selected host operation while initializing CGame, registering media, and updating shared client information.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L90)
 
 <a id="field-field-mq3-client-cgame-main-action-value2-value2-src-mq3-client-cgame-main-ml-12939209"></a>
 ### value2
@@ -110,4 +110,4 @@ value2
 When constructing this record, `action` supplies `value2` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L92)

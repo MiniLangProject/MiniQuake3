@@ -33,7 +33,7 @@ Apply `mq3.game.combat_missionpack.Kamikaze_DeathTimer` while evaluating `afterP
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `inuse` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L94)
 
 <a id="function-function-mq3-game-combat-missionpack-cleanupplayerdie-function-cleanupplayerdie-level-self-src-mq3-game-combat-missionpack-ml-1580319672"></a>
 ### cleanupPlayerDie
@@ -50,7 +50,7 @@ Update `self.client.ps.eFlags`, `self.activator.think` and `self.activator.nextt
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `client` and `activator`. May update `self.client.ps.eFlags`, `self.activator.think` and `self.activator.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L73)
 
 <a id="constant-constant-mq3-game-combat-missionpack-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-combat-missionpack-ml-1791835658"></a>
 ### CONTENTS_TRIGGER
@@ -62,7 +62,7 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 Collision-contents bit identifying trigger space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L20)
 
 <a id="function-function-mq3-game-combat-missionpack-dropplayerdeathitems-function-dropplayerdeathitems-level-self-src-mq3-game-combat-missionpack-ml-1190200964"></a>
 ### dropPlayerDeathItems
@@ -79,7 +79,7 @@ Apply `mq3.game.combat_missionpack.TossClientPersistantPowerups` and `mq3.game.c
 | `self` | `dynamic` | — | Game entity; accesses `client`. May update `self.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `self.client.persistantPowerup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L84)
 
 <a id="constant-constant-mq3-game-combat-missionpack-ef-kamikaze-const-ef-kamikaze-512-src-mq3-game-combat-missionpack-ml-669888657"></a>
 ### EF_KAMIKAZE
@@ -91,7 +91,7 @@ const EF_KAMIKAZE = 512
 Network entity-flag bit indicating kamikaze.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L18)
 
 <a id="constant-constant-mq3-game-combat-missionpack-ef-nodraw-const-ef-nodraw-128-src-mq3-game-combat-missionpack-ml-42053266"></a>
 ### EF_NODRAW
@@ -103,7 +103,7 @@ const EF_NODRAW = 128
 Network entity-flag bit indicating nodraw.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L16)
 
 <a id="constant-constant-mq3-game-combat-missionpack-gt-harvester-const-gt-harvester-7-src-mq3-game-combat-missionpack-ml-1000521980"></a>
 ### GT_HARVESTER
@@ -115,7 +115,7 @@ const GT_HARVESTER = 7
 Game-mode identifier selecting harvester rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L24)
 
 <a id="function-function-mq3-game-combat-missionpack-kamikaze-deathactivate-function-kamikaze-deathactivate-level-ent-src-mq3-game-combat-missionpack-ml-754287187"></a>
 ### Kamikaze_DeathActivate
@@ -132,7 +132,7 @@ Apply `mq3.game.g_weapon.G_StartKamikaze` and `mq3.game.entities.free` while eva
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `activator` and `s`. May update `ent.s.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L57)
 
 <a id="function-function-mq3-game-combat-missionpack-kamikaze-deathtimer-function-kamikaze-deathtimer-level-self-src-mq3-game-combat-missionpack-ml-874081074"></a>
 ### Kamikaze_DeathTimer
@@ -149,7 +149,7 @@ Apply `mq3.game.entities.spawn` while evaluating `Kamikaze_DeathTimer`. Return p
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L64)
 
 <a id="constant-constant-mq3-game-combat-missionpack-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-combat-missionpack-ml-241809358"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -161,7 +161,7 @@ const STAT_PERSISTANT_POWERUP = 7
 Player-state statistics index storing persistant powerup.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L22)
 
 <a id="constant-constant-mq3-game-combat-missionpack-svf-noclient-const-svf-noclient-1-src-mq3-game-combat-missionpack-ml-1297404122"></a>
 ### SVF_NOCLIENT
@@ -173,7 +173,7 @@ const SVF_NOCLIENT = 1
 Server entity-flag bit controlling noclient.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L14)
 
 <a id="function-function-mq3-game-combat-missionpack-tossclientcubes-function-tossclientcubes-level-self-src-mq3-game-combat-missionpack-ml-1776894812"></a>
 ### TossClientCubes
@@ -190,7 +190,7 @@ Set `self.client.ps.generic1` to `0` in `mq3.game.combat_missionpack.TossClientC
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `client`. May update `self.client.ps.generic1` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L29)
 
 <a id="function-function-mq3-game-combat-missionpack-tossclientpersistantpowerups-function-tossclientpersistantpowerups-level-ent-src-mq3-game-combat-missionpack-ml-735002531"></a>
 ### TossClientPersistantPowerups
@@ -207,4 +207,4 @@ Set `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` to `0` and `ent.client.persis
 | `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `ent.client.persistantPowerup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/combat_missionpack.ml#L46)

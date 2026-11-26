@@ -23,7 +23,7 @@ const CHUNK_FRAMES = 1024
 Number of sample frames produced in one ambient-audio output chunk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L11)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-create-function-create-catalog-src-mq3-client-playable-spatial-ambient-ml-8725623"></a>
 ### create
@@ -39,7 +39,7 @@ Calls `mq3.audio.spatial_mixer.create`, `mq3.audio.spatial_mixer.addSharedLoop`,
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.speakers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L31)
 
 <a id="constant-constant-mq3-client-playable-spatial-ambient-output-rate-const-output-rate-22050-src-mq3-client-playable-spatial-ambient-ml-372507770"></a>
 ### OUTPUT_RATE
@@ -51,7 +51,7 @@ const OUTPUT_RATE = 22050
 Sample rate in frames per second used by native spatial ambient-audio output.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L9)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-pump-function-pump-runtime-listenerorigin-listenerright-src-mq3-client-playable-spatial-ambient-ml-379720670"></a>
 ### pump
@@ -69,7 +69,7 @@ Updates `runtime.dropped`, `runtime.submitted` during playable spatial ambient `
 | `listenerRight` | `dynamic` | — | Value used by `chunk=mixer.render(runtime.mix,listenerOrigin,listenerRight)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L54)
 
 - [mq3.client.playable_spatial_ambient.Runtime](Type-mq3-client-playable-spatial-ambient-runtime-1789148433.md) — struct
 <a id="function-function-mq3-client-playable-spatial-ambient-shutdown-function-shutdown-runtime-src-mq3-client-playable-spatial-ambient-ml-871534464"></a>
@@ -86,7 +86,7 @@ Updates `runtime.started` during playable spatial ambient `shutdown`.
 | `runtime` | `dynamic` | — | Mutable playable spatial ambient record/storage; this routine assigns `runtime.started`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L70)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-start-function-start-runtime-src-mq3-client-playable-spatial-ambient-ml-756160296"></a>
 ### start
@@ -102,7 +102,7 @@ Updates `runtime.started` during playable spatial ambient `start`.
 | `runtime` | `dynamic` | — | Mutable playable spatial ambient record/storage; this routine assigns `runtime.started`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L44)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-stop-function-stop-runtime-src-mq3-client-playable-spatial-ambient-ml-687035268"></a>
 ### stop
@@ -118,4 +118,4 @@ Updates `runtime.started` during playable spatial ambient `stop`.
 | `runtime` | `dynamic` | — | Mutable playable spatial ambient record/storage; this routine assigns `runtime.started`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L64)

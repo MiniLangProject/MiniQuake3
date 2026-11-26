@@ -27,7 +27,7 @@ Forward `PM_SlideMove` to `mq3.game.movement.slideMove` and return the delegated
 | `gravity` | `dynamic` | — | Value used by `slideMove` in `if gravity then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_slidemove_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_slidemove_runtime.ml#L10)
 
 <a id="function-function-mq3-game-bg-slidemove-runtime-pm-stepslidemove-function-pm-stepslidemove-state-gravity-src-mq3-game-bg-slidemove-runtime-ml-953260251"></a>
 ### PM_StepSlideMove
@@ -44,4 +44,4 @@ Forward `PM_StepSlideMove` to `mq3.game.movement.stepSlideMove` and return the d
 | `gravity` | `dynamic` | — | Value used by `slideMove` in `if gravity then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_slidemove_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_slidemove_runtime.ml#L14)

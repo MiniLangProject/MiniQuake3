@@ -12,7 +12,7 @@ struct Upload
 Data record for `mq3.renderer.qvm_video_materials.Upload`; groups `path`, `handle`, `slot`, `pixels`, `width`, `height`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L24)
 
 ## Members
 
@@ -26,7 +26,7 @@ handle
 Resource handle used to identify the registered or opened object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L28)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-upload-height-height-src-mq3-renderer-qvm-video-materials-ml-1661203770"></a>
 ### height
@@ -38,7 +38,7 @@ height
 Height in pixels of the cinematic frame submitted for texture upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-upload-path-path-src-mq3-renderer-qvm-video-materials-ml-1267752474"></a>
 ### path
@@ -50,7 +50,7 @@ path
 Filesystem or virtual asset path associated with this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L26)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-upload-pixels-pixels-src-mq3-renderer-qvm-video-materials-ml-277001350"></a>
 ### pixels
@@ -62,7 +62,7 @@ pixels
 Decoded pixel data for the image or upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L32)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-upload-slot-slot-src-mq3-renderer-qvm-video-materials-ml-873565740"></a>
 ### slot
@@ -74,7 +74,7 @@ slot
 Texture slot reserved for this image in the native drawing backend.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L30)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-upload-width-width-src-mq3-renderer-qvm-video-materials-ml-1238786616"></a>
 ### width
@@ -86,4 +86,4 @@ width
 Width in pixels of the cinematic frame submitted for texture upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L34)

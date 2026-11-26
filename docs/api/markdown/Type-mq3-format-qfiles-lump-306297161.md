@@ -12,7 +12,7 @@ struct Lump
 Lump record for format.qfiles, containing `fileofs`, `filelen`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L437)
 
 ## Members
 
@@ -26,7 +26,7 @@ filelen
 Length of the serialized lump in bytes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L441)
 
 <a id="field-field-mq3-format-qfiles-lump-fileofs-fileofs-src-mq3-format-qfiles-ml-1519855341"></a>
 ### fileofs
@@ -38,4 +38,4 @@ fileofs
 Byte offset of the lump from the beginning of the file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L439)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L439)

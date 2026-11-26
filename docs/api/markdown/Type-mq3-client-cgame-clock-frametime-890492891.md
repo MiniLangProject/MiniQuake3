@@ -12,7 +12,7 @@ struct FrameTime
 Stores client game clock frame time record, including `draw`, `serverTime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L18)
 
 ## Members
 
@@ -26,7 +26,7 @@ draw
 When constructing this record, `frame` supplies `draw` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L20)
 
 <a id="field-field-mq3-client-cgame-clock-frametime-servertime-servertime-src-mq3-client-cgame-clock-ml-626682711"></a>
 ### serverTime
@@ -38,4 +38,4 @@ serverTime
 Synchronized server-domain presentation timestamp in milliseconds returned for the client-game frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L23)

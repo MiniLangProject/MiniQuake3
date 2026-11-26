@@ -12,7 +12,7 @@ struct RenderCommandList
 Data record for `mq3.renderer.tr_local.RenderCommandList`; groups `cmds`, `used`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L110)
 
 ## Members
 
@@ -26,7 +26,7 @@ cmds
 Serialized bytes of the renderer command list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L112)
 
 <a id="field-field-mq3-renderer-tr-local-rendercommandlist-used-used-src-mq3-renderer-tr-local-ml-1048448324"></a>
 ### used
@@ -38,4 +38,4 @@ used
 Number of occupied bytes in the serialized render-command buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L114)

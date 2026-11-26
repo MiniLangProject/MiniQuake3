@@ -12,7 +12,7 @@ struct Action
 `Action` record for ai team, containing `kind`, `client`, `target`, `text` and `args` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L38)
 
 ## Members
 
@@ -26,7 +26,7 @@ args
 Arguments attached to the recorded command or host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L48)
 
 <a id="field-field-mq3-game-ai-team-action-client-client-src-mq3-game-ai-team-ml-597369177"></a>
 ### client
@@ -38,7 +38,7 @@ client
 Client slot associated with the recorded team-order or team-chat action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L42)
 
 <a id="field-field-mq3-game-ai-team-action-kind-kind-src-mq3-game-ai-team-ml-1425145087"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Discriminator selecting the recorded bot action or decision event.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L40)
 
 <a id="field-field-mq3-game-ai-team-action-suppressed-suppressed-src-mq3-game-ai-team-ml-1892641551"></a>
 ### suppressed
@@ -62,7 +62,7 @@ suppressed
 Nonzero when an action was deliberately withheld from dispatch.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L50)
 
 <a id="field-field-mq3-game-ai-team-action-target-target-src-mq3-game-ai-team-ml-1514075189"></a>
 ### target
@@ -74,7 +74,7 @@ target
 Target-name selector identifying entities activated by this entity.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L44)
 
 <a id="field-field-mq3-game-ai-team-action-text-text-src-mq3-game-ai-team-ml-553302665"></a>
 ### text
@@ -86,4 +86,4 @@ text
 Text payload supplied to the recorded command, chat, or host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_team.ml#L46)

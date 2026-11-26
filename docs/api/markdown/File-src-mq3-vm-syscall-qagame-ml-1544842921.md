@@ -31,7 +31,7 @@ Return `mq3.vm.syscall_common.argument(vm, base, index)` from `vm.syscall_qagame
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L94)
 
 <a id="function-function-mq3-vm-syscall-qagame-brushmodel-function-brushmodel-vm-base-host-src-mq3-vm-syscall-qagame-ml-1956602340"></a>
 ### brushModel
@@ -49,7 +49,7 @@ Compute brush model in vm.syscall_qagame; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `setBrushModelFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L171)
 
 <a id="function-function-mq3-vm-syscall-qagame-callback-function-callback-host-src-mq3-vm-syscall-qagame-ml-2146510780"></a>
 ### callback
@@ -65,7 +65,7 @@ Apply `mq3.vm.syscall_qagame.dispatch` for callback in vm.syscall_qagame.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_qagame.dispatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L333)
 
 <a id="function-function-mq3-vm-syscall-qagame-debugpolygoncreate-function-debugpolygoncreate-vm-base-host-src-mq3-vm-syscall-qagame-ml-817040"></a>
 ### debugPolygonCreate
@@ -85,7 +85,7 @@ Validation failures include `qagame syscall: negative debug-polygon point count`
 | `host` | `dynamic` | — | Record exposing `debugPolygonCreateFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L248)
 
 <a id="function-function-mq3-vm-syscall-qagame-dispatch-function-dispatch-host-vm-base-src-mq3-vm-syscall-qagame-ml-85348628"></a>
 ### dispatch
@@ -105,7 +105,7 @@ Validation failures include `qagame syscall: invalid dispatcher context`.
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L324)
 
 <a id="function-function-mq3-vm-syscall-qagame-dispatchspecific-function-dispatchspecific-vm-base-host-op-src-mq3-vm-syscall-qagame-ml-12328851"></a>
 ### dispatchSpecific
@@ -124,7 +124,7 @@ Dispatch specific in vm.syscall_qagame; the normal completion returns `error(342
 | `op` | `dynamic` | — | Op passed as `op` to `mq3.vm.syscall_qagame_world.dispatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L278)
 
 <a id="function-function-mq3-vm-syscall-qagame-entitylink-function-entitylink-vm-base-host-islink-src-mq3-vm-syscall-qagame-ml-447516740"></a>
 ### entityLink
@@ -143,7 +143,7 @@ Compute entity link in vm.syscall_qagame; the normal completion returns `0`.
 | `isLink` | `dynamic` | — | Is link operand used by `entityLink`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L202)
 
 <a id="function-function-mq3-vm-syscall-qagame-entitytoken-function-entitytoken-vm-base-host-src-mq3-vm-syscall-qagame-ml-1249798624"></a>
 ### entityToken
@@ -161,7 +161,7 @@ Compute entity token in vm.syscall_qagame; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `entityTokenFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L212)
 
 <a id="function-function-mq3-vm-syscall-qagame-filelist-function-filelist-vm-base-host-src-mq3-vm-syscall-qagame-ml-1309192768"></a>
 ### fileList
@@ -181,7 +181,7 @@ Validation failures include `qagame syscall: negative file-list capacity`.
 | `host` | `dynamic` | — | Record exposing `fileListFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L227)
 
 <a id="function-function-mq3-vm-syscall-qagame-indexedoutput-function-indexedoutput-vm-base-host-callback-name-src-mq3-vm-syscall-qagame-ml-1865226884"></a>
 ### indexedOutput
@@ -201,7 +201,7 @@ Compute indexed output in vm.syscall_qagame; the normal completion returns `0`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.vm.syscall_qagame.unavailable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L150)
 
 <a id="function-function-mq3-vm-syscall-qagame-inpvs-function-inpvs-vm-base-host-ignoreportals-src-mq3-vm-syscall-qagame-ml-53662335"></a>
 ### inPvs
@@ -220,7 +220,7 @@ Compute in pvs in vm.syscall_qagame; the normal completion returns `0`.
 | `ignorePortals` | `dynamic` | — | Argument 4 passed to `host.inPvsFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L182)
 
 <a id="function-function-mq3-vm-syscall-qagame-locategamedata-function-locategamedata-vm-base-host-src-mq3-vm-syscall-qagame-ml-700143552"></a>
 ### locateGameData
@@ -240,7 +240,7 @@ Validation failures include `qagame syscall: invalid game-data layout`.
 | `host` | `dynamic` | — | Record exposing `locateGameDataFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L119)
 
 <a id="function-function-mq3-vm-syscall-qagame-opaque-function-opaque-vm-value-label-src-mq3-vm-syscall-qagame-ml-1204426150"></a>
 ### opaque
@@ -258,7 +258,7 @@ Return `mq3.vm.syscall_common.pointer(vm, value, 1, label)` from `vm.syscall_qag
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L100)
 
 <a id="function-function-mq3-vm-syscall-qagame-portalstate-function-portalstate-vm-base-host-src-mq3-vm-syscall-qagame-ml-1569823322"></a>
 ### portalState
@@ -276,7 +276,7 @@ Compute portal state in vm.syscall_qagame; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `adjustAreaPortalFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L192)
 
 <a id="constant-constant-mq3-vm-syscall-qagame-qtime-size-const-qtime-size-36-src-mq3-vm-syscall-qagame-ml-37612602"></a>
 ### QTIME_SIZE
@@ -288,7 +288,7 @@ const QTIME_SIZE = 36
 Byte size used for qtime storage or binary layout in mq3.vm.syscall_qagame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L11)
 
 <a id="function-function-mq3-vm-syscall-qagame-realtime-function-realtime-vm-base-host-src-mq3-vm-syscall-qagame-ml-1009759860"></a>
 ### realTime
@@ -308,7 +308,7 @@ Validation failures include `qagame syscall: invalid qtime_t layout`.
 | `host` | `dynamic` | — | Record exposing `realTimeFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L265)
 
 <a id="function-function-mq3-vm-syscall-qagame-serverinfo-function-serverinfo-vm-base-host-src-mq3-vm-syscall-qagame-ml-820174848"></a>
 ### serverInfo
@@ -326,7 +326,7 @@ Compute server info in vm.syscall_qagame; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `getServerinfoFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L161)
 
 <a id="function-function-mq3-vm-syscall-qagame-services-function-services-shared-context-src-mq3-vm-syscall-qagame-ml-129315272"></a>
 ### services
@@ -343,7 +343,7 @@ Create `mq3.vm.syscall_qagame.Services` with shared=shared; context=context; loc
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.vm.syscall_qagame.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L82)
 
 - [mq3.vm.syscall_qagame.Services](Type-mq3-vm-syscall-qagame-services-610565517.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-stringcall-function-stringcall-vm-base-host-callback-name-withclient-src-mq3-vm-syscall-qagame-ml-1929098247"></a>
@@ -365,7 +365,7 @@ Compute string call in vm.syscall_qagame; the normal completion returns `0`.
 | `withClient` | `dynamic` | — | With client operand used by `stringCall`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L137)
 
 - [mq3.vm.syscall_qagame.TokenResult](Type-mq3-vm-syscall-qagame-tokenresult-549605699.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-unavailable-function-unavailable-name-src-mq3-vm-syscall-qagame-ml-797689625"></a>
@@ -382,7 +382,7 @@ Create the vm.syscall_qagame error for `unavailable` with 3421 and the supplied 
 | `name` | `dynamic` | — | Name used in `("qagame syscall: " + name)` and `(("qagame syscall: " + name) + " service unavailable")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L88)
 
 <a id="function-function-mq3-vm-syscall-qagame-vector-function-vector-vm-value-label-src-mq3-vm-syscall-qagame-ml-1429486430"></a>
 ### vector
@@ -400,4 +400,4 @@ Apply `mq3.vm.syscall_common.pointer`, `mq3.compat.numeric.bitsFloat`, `mq3.comp
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L108)

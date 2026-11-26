@@ -28,7 +28,7 @@ Updates `state.mouseDx[state.mouseIndex]`, `state.mouseDy[state.mouseIndex]` dur
 | `dy` | `dynamic` | — | Value used by `if state==void or typeof(dx)!="int" or typeof(dy)!="int" then return error(7700,"input command: invalid mouse delta") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L226)
 
 <a id="function-function-mq3-client-input-command-adjustangles-function-adjustangles-state-config-frametime-framemsec-src-mq3-client-input-command-ml-2084204174"></a>
 ### adjustAngles
@@ -47,7 +47,7 @@ Updates `state.viewangles[1]`, `state.viewangles[0]` during input command `adjus
 | `frameMsec` | `dynamic` | — | Elapsed frame interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L250)
 
 <a id="function-function-mq3-client-input-command-angleshort-function-angleshort-value-src-mq3-client-input-command-ml-1984569151"></a>
 ### angleShort
@@ -63,7 +63,7 @@ Computes `n.trunc32(value*65536.0/360.0)&65535` for input command `angleShort`.
 | `value` | `dynamic` | — | Value used by `return n.trunc32(value*65536.0/360.0)&65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L175)
 
 <a id="function-function-mq3-client-input-command-button-function-button-src-mq3-client-input-command-ml-1698313926"></a>
 ### button
@@ -75,7 +75,7 @@ function button()
 Creates a `mq3.client.input_command.Button` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L156)
 
 - [mq3.client.input_command.Button](Type-mq3-client-input-command-button-1295425149.md) — struct
 <a id="constant-constant-mq3-client-input-command-button-any-const-button-any-2048-src-mq3-client-input-command-ml-1333872831"></a>
@@ -88,7 +88,7 @@ const BUTTON_ANY = 2048
 User-command button bit recording the any input action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
 
 <a id="constant-constant-mq3-client-input-command-button-attack-const-button-attack-1-src-mq3-client-input-command-ml-1937836016"></a>
 ### BUTTON_ATTACK
@@ -100,7 +100,7 @@ const BUTTON_ATTACK = 1
 User-command button bit recording the attack input action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L9)
 
 <a id="constant-constant-mq3-client-input-command-button-talk-const-button-talk-2-src-mq3-client-input-command-ml-799089129"></a>
 ### BUTTON_TALK
@@ -112,7 +112,7 @@ const BUTTON_TALK = 2
 User-command button bit recording the talk input action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L11)
 
 <a id="constant-constant-mq3-client-input-command-button-walking-const-button-walking-16-src-mq3-client-input-command-ml-1682790380"></a>
 ### BUTTON_WALKING
@@ -124,7 +124,7 @@ const BUTTON_WALKING = 16
 User-command button bit recording the walking input action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L13)
 
 <a id="function-function-mq3-client-input-command-clampchar-function-clampchar-value-src-mq3-client-input-command-ml-1165281305"></a>
 ### clampChar
@@ -140,7 +140,7 @@ Calls `mq3.compat.numeric.trunc32` from input command `clampChar`. The final pat
 | `value` | `dynamic` | — | Value tested by `value< -128`, `value>127` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L170)
 
 <a id="function-function-mq3-client-input-command-clearmouse-function-clearmouse-state-src-mq3-client-input-command-ml-1050656251"></a>
 ### clearMouse
@@ -156,7 +156,7 @@ Updates `state.mouseDx[0]`, `state.mouseDx[1]`, `state.mouseDy[0]`, `state.mouse
 | `state` | `dynamic` | — | Mutable input command record/storage; this routine assigns `state.mouseDx[0]`, `state.mouseDx[1]`, `state.mouseDy[0]`, `state.mouseDy[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L232)
 
 - [mq3.client.input_command.Command](Type-mq3-client-input-command-command-1791324198.md) — struct
 <a id="function-function-mq3-client-input-command-commandbuttons-function-commandbuttons-state-command-keycatchers-anykeydown-src-mq3-client-input-command-ml-1892526559"></a>
@@ -176,7 +176,7 @@ Updates `command.buttons`, `state.buttons[index].wasPressed` during input comman
 | `anyKeyDown` | `dynamic` | — | Value used by `if anyKeyDown and keyCatchers==0 then command.buttons=command.buttons\|BUTTON_ANY end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L301)
 
 - [mq3.client.input_command.Config](Type-mq3-client-input-command-config-767474203.md) — struct
 <a id="function-function-mq3-client-input-command-create-function-create-pitch-yaw-roll-src-mq3-client-input-command-ml-102531456"></a>
@@ -195,7 +195,7 @@ Calls `mq3.client.input_command.button`, `mq3.client.input_command.State`, `mq3.
 | `roll` | `dynamic` | — | Value used by `return State(button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),values,false,[n.f32(p...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L163)
 
 <a id="function-function-mq3-client-input-command-createcommand-function-createcommand-state-config-frametime-framemsec-servertime-weapon-cgamesensitivity-keycatchers-anykeydown-src-mq3-client-input-command-ml-140919699"></a>
 ### createCommand
@@ -219,7 +219,7 @@ Updates `state.viewangles[0]` during input command `createCommand`.
 | `anyKeyDown` | `dynamic` | — | Value used by `commandButtons(state,command,keyCatchers,anyKeyDown)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L316)
 
 <a id="function-function-mq3-client-input-command-defaults-function-defaults-src-mq3-client-input-command-ml-746014542"></a>
 ### defaults
@@ -231,7 +231,7 @@ function defaults()
 Creates a `mq3.client.input_command.Config` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L158)
 
 <a id="function-function-mq3-client-input-command-joystickevent-function-joystickevent-state-axis-value-src-mq3-client-input-command-ml-132357641"></a>
 ### joystickEvent
@@ -249,7 +249,7 @@ Updates `state.joystickAxis[axis]` during input command `joystickEvent`.
 | `value` | `dynamic` | — | Value tested by `state==void or axis<0 or axis>=MAX_JOYSTICK_AXIS or value< -127 or value>127` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L240)
 
 <a id="function-function-mq3-client-input-command-joystickmove-function-joystickmove-state-config-command-framemsec-src-mq3-client-input-command-ml-865505231"></a>
 ### joystickMove
@@ -268,7 +268,7 @@ Updates `command.buttons`, `state.viewangles[1]`, `command.rightmove`, `state.vi
 | `frameMsec` | `dynamic` | — | Elapsed frame interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L289)
 
 <a id="function-function-mq3-client-input-command-keydown-function-keydown-value-key-time-src-mq3-client-input-command-ml-197993219"></a>
 ### keyDown
@@ -286,7 +286,7 @@ IN_KeyDown/IN_KeyUp preserve two independent physical sources and exact sub-fram
 | `time` | `dynamic` | — | Value assigned to `value.downtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L182)
 
 <a id="function-function-mq3-client-input-command-keymove-function-keymove-state-config-command-frametime-framemsec-src-mq3-client-input-command-ml-2050745353"></a>
 ### keyMove
@@ -306,7 +306,7 @@ Updates `command.buttons`, `command.forwardmove`, `command.rightmove`, `command.
 | `frameMsec` | `dynamic` | — | Elapsed frame interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L261)
 
 <a id="function-function-mq3-client-input-command-keystate-function-keystate-value-frametime-framemsec-src-mq3-client-input-command-ml-781548716"></a>
 ### keyState
@@ -324,7 +324,7 @@ Updates `value.msec`, `value.downtime` during input command `keyState`.
 | `frameMsec` | `dynamic` | — | Elapsed frame interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L215)
 
 <a id="function-function-mq3-client-input-command-keyup-function-keyup-value-key-time-framemsec-src-mq3-client-input-command-ml-1400370686"></a>
 ### keyUp
@@ -343,7 +343,7 @@ Updates `value.down0`, `value.down1`, `value.active`, `value.msec` during input 
 | `frameMsec` | `dynamic` | — | Elapsed frame interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L194)
 
 <a id="constant-constant-mq3-client-input-command-max-joystick-axis-const-max-joystick-axis-16-src-mq3-client-input-command-ml-712909698"></a>
 ### MAX_JOYSTICK_AXIS
@@ -355,7 +355,7 @@ const MAX_JOYSTICK_AXIS = 16
 Capacity limit for the joystick axis collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L17)
 
 <a id="function-function-mq3-client-input-command-mousemove-function-mousemove-state-config-command-framemsec-cgamesensitivity-src-mq3-client-input-command-ml-1098644317"></a>
 ### mouseMove
@@ -375,7 +375,7 @@ Updates `state.mouseIndex`, `state.mouseDx[state.mouseIndex]`, `state.mouseDy[st
 | `cgameSensitivity` | `dynamic` | — | Value used by `acceleration=(config.sensitivity+rate*config.mouseAccel)*cgameSensitivity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L276)
 
 <a id="function-function-mq3-client-input-command-setpolled-function-setpolled-value-active-time-framemsec-src-mq3-client-input-command-ml-1375195715"></a>
 ### setPolled
@@ -394,6 +394,6 @@ Calls `mq3.client.input_command.keyDown`, `mq3.client.input_command.keyUp` from 
 | `frameMsec` | `dynamic` | — | Elapsed frame interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L206)
 
 - [mq3.client.input_command.State](Type-mq3-client-input-command-state-1220533610.md) — struct

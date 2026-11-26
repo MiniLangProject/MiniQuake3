@@ -30,7 +30,7 @@ Scale one viewport edge and truncate it toward zero, rejecting signed-32-bit ove
 | `targetSize` | `dynamic` | — | Positive target dimension in pixels, validated by prepare. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L24)
 
 <a id="function-function-mq3-renderer-qvm-viewport-fail-function-fail-message-src-mq3-renderer-qvm-viewport-ml-758355279"></a>
 ### fail
@@ -46,7 +46,7 @@ Creates error `7691` with message `"QVM viewport: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7691,"QVM viewport: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L19)
 
 <a id="function-function-mq3-renderer-qvm-viewport-prepare-function-prepare-refdef-sourcewidth-sourceheight-targetwidth-targetheight-src-mq3-renderer-qvm-viewport-ml-625616116"></a>
 ### prepare
@@ -66,7 +66,7 @@ Scale a QVM refdef rectangle into a native viewport and construct its camera pro
 | `targetHeight` | `dynamic` | — | Positive native framebuffer height in pixels. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L44)
 
 - [mq3.renderer.qvm_viewport.Prepared](Type-mq3-renderer-qvm-viewport-prepared-444055731.md) — struct
 <a id="function-function-mq3-renderer-qvm-viewport-validvector-function-validvector-value-src-mq3-renderer-qvm-viewport-ml-1724720243"></a>
@@ -83,4 +83,4 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.qvm_viewport.validVec
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L31)

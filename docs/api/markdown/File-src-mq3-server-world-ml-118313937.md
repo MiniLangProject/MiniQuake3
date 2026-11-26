@@ -14,8 +14,8 @@ Reachable from entry: **yes**
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/game/movement.ml` as `movement` → [src/mq3/game/movement.ml](File-src-mq3-game-movement-ml-621504687.md)
 - `mq3/shared/math.ml` as `q` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/array.ml` as `arrays` → `../MiniLangCompilerML/std/array.ml` — external dependency
-- `std/ds/list.ml` as `spatialAreaLists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/array.ml` as `arrays` → `../../a7594a0c0299/MiniLangCompilerML/std/array.ml` — external dependency
+- `std/ds/list.ml` as `spatialAreaLists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
 
 ## Declarations
 
@@ -38,7 +38,7 @@ Validation failures include `Invalid server area-list capacity`.
 | `capacity` | `dynamic` | — | Capacity used in `(capacity < 0)` and `typeof(capacity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L266)
 
 <a id="function-function-mq3-server-world-cliphandleforentity-function-cliphandleforentity-scene-ent-src-mq3-server-world-ml-627773269"></a>
 ### clipHandleForEntity
@@ -55,7 +55,7 @@ Compute clip handle for entity in server.world; the normal completion returns `c
 | `ent` | `dynamic` | — | Record exposing `bmodel`, `modelindex`, `mins`, `maxs`, `svFlags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L298)
 
 <a id="function-function-mq3-server-world-cliptoentity-function-cliptoentity-scene-start-finish-mins-maxs-number-mask-capsule-src-mq3-server-world-ml-1301694165"></a>
 ### clipToEntity
@@ -78,7 +78,7 @@ Compute clip to entity in server.world; the normal completion returns `movement.
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.transformedTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L311)
 
 <a id="function-function-mq3-server-world-create-function-create-world-src-mq3-server-world-ml-79069600"></a>
 ### create
@@ -94,7 +94,7 @@ Create world in server.world; the normal completion returns `scene`.
 | `world` | `dynamic` | — | Initial `world` field stored in the returned or constructed `mq3.server.world.Scene` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L136)
 
 <a id="function-function-mq3-server-world-createsector-function-createsector-scene-depth-mins-maxs-src-mq3-server-world-ml-412428779"></a>
 ### createSector
@@ -115,7 +115,7 @@ Direct state writes: `scene.sectors`.
 | `maxs` | `dynamic` | — | V passed as `v` to `mq3.game.movement.copy`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L121)
 
 <a id="function-function-mq3-server-world-entity-function-entity-number-src-mq3-server-world-ml-597149977"></a>
 ### entity
@@ -131,7 +131,7 @@ Create `mq3.server.world.Entity` with number=number; modelindex=0; solid=0; orig
 | `number` | `dynamic` | — | Initial `number` field stored in the returned or constructed `mq3.server.world.Entity` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L89)
 
 - [mq3.server.world.Entity](Type-mq3-server-world-entity-81524084.md) — struct
 <a id="function-function-mq3-server-world-entitycontact-function-entitycontact-scene-mins-maxs-number-capsule-src-mq3-server-world-ml-765350366"></a>
@@ -152,7 +152,7 @@ Compute entity contact in server.world; the normal completion returns `hit.trace
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.transformedTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L401)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L401)
 
 <a id="function-function-mq3-server-world-getentity-function-getentity-scene-number-src-mq3-server-world-ml-998856317"></a>
 ### getEntity
@@ -171,7 +171,7 @@ Validation failures include `Invalid server entity number`.
 | `number` | `dynamic` | — | Zero-based index into `scene.entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L97)
 
 <a id="function-function-mq3-server-world-inpvs-function-inpvs-scene-p1-p2-src-mq3-server-world-ml-573800115"></a>
 ### inPVS
@@ -189,7 +189,7 @@ Compute in pvs in server.world; the normal completion returns `vis.areasConnecte
 | `p2` | `dynamic` | — | Point passed as `point` to `mq3.collision.world.pointLeafnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L105)
 
 <a id="function-function-mq3-server-world-linkentity-function-linkentity-scene-number-src-mq3-server-world-ml-1777207911"></a>
 ### linkEntity
@@ -208,7 +208,7 @@ Validation failures include `Server entity number does not match its slot`; `Inv
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.server.world.getEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L197)
 
 <a id="function-function-mq3-server-world-packedextent-function-packedextent-value-src-mq3-server-world-ml-1831734143"></a>
 ### packedExtent
@@ -224,7 +224,7 @@ Return `mq3.collision.world.max(1, cm.min(255, n.trunc32(value)))` from `server.
 | `value` | `dynamic` | — | Floating-point value to convert to signed 32-bit integer semantics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L189)
 
 <a id="function-function-mq3-server-world-pmovecontents-function-pmovecontents-p-point-src-mq3-server-world-ml-761886690"></a>
 ### pmoveContents
@@ -241,7 +241,7 @@ Return `mq3.server.world.pointContents(p.context, point, p.ps.clientNum)` from `
 | `point` | `dynamic` | — | Point passed as `point` to `mq3.server.world.pointContents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L392)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L392)
 
 <a id="function-function-mq3-server-world-pmovetrace-function-pmovetrace-p-start-finish-src-mq3-server-world-ml-1865127243"></a>
 ### pmoveTrace
@@ -259,7 +259,7 @@ Return `mq3.server.world.trace(p.context, start, finish, p.k.mins, p.k.maxs, p.p
 | `finish` | `dynamic` | — | Finish passed as `finish` to `mq3.server.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L386)
 
 <a id="function-function-mq3-server-world-pointcontents-function-pointcontents-scene-point-passentity-src-mq3-server-world-ml-30362442"></a>
 ### pointContents
@@ -277,7 +277,7 @@ Compute point contents in server.world; the normal completion returns `contents`
 | `passEntity` | `dynamic` | — | Pass entity used in `(number == passEntity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L372)
 
 - [mq3.server.world.Scene](Type-mq3-server-world-scene-1257075529.md) — struct
 - [mq3.server.world.Sector](Type-mq3-server-world-sector-552023813.md) — struct
@@ -295,7 +295,7 @@ SV_SectorList_f is a diagnostic command, but it deliberately walks the same intr
 | `scene` | `dynamic` | — | Record exposing `sectors`, `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L147)
 
 <a id="function-function-mq3-server-world-sv-sectorlist-f-function-sv-sectorlist-f-scene-printfn-context-src-mq3-server-world-ml-576195340"></a>
 ### SV_SectorList_f
@@ -313,7 +313,7 @@ Compute sector list f in server.world; the normal completion returns `len(lines)
 | `context` | `dynamic` | — | Context used in `printFn(context, line)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L166)
 
 <a id="function-function-mq3-server-world-trace-function-trace-scene-start-finish-mins-maxs-passentity-mask-capsule-src-mq3-server-world-ml-995559152"></a>
 ### trace
@@ -336,7 +336,7 @@ Trace world in server.world; the normal completion returns `result`.
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L330)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L330)
 
 <a id="function-function-mq3-server-world-unlinkentity-function-unlinkentity-scene-number-src-mq3-server-world-ml-900267787"></a>
 ### unlinkEntity
@@ -353,4 +353,4 @@ Compute unlink entity in server.world.
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.server.world.getEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/world.ml#L174)

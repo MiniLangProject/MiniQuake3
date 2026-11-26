@@ -12,7 +12,7 @@ struct Extents
 Stores cinematic runtime extents record, including `x`, `y`, `width`, `height`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L33)
 
 ## Members
 
@@ -26,7 +26,7 @@ height
 Requested cinematic destination height, interpreted in virtual screen units for non-shader playback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L45)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-width-width-src-mq3-client-cinematic-runtime-ml-1642379986"></a>
 ### width
@@ -38,7 +38,7 @@ width
 Requested cinematic destination width, interpreted in virtual screen units for non-shader playback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L42)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-x-x-src-mq3-client-cinematic-runtime-ml-240205902"></a>
 ### x
@@ -50,7 +50,7 @@ x
 Horizontal coordinate of the requested cinematic rectangle before conversion to target-display coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-y-y-src-mq3-client-cinematic-runtime-ml-522215746"></a>
 ### y
@@ -62,4 +62,4 @@ y
 Vertical coordinate of the requested cinematic rectangle before conversion to target-display coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L39)

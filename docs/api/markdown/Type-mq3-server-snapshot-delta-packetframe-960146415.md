@@ -12,7 +12,7 @@ struct PacketFrame
 PacketFrame record for server.snapshot_delta, containing `firstEntity`, `numEntities`, `areaBits`, `playerState`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L31)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaBits
 Bitset of map areas visible in this snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L37)
 
 <a id="field-field-mq3-server-snapshot-delta-packetframe-firstentity-firstentity-src-mq3-server-snapshot-delta-ml-565407850"></a>
 ### firstEntity
@@ -38,7 +38,7 @@ firstEntity
 First entity-state position for this snapshot in the shared circular snapshot buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L33)
 
 <a id="field-field-mq3-server-snapshot-delta-packetframe-numentities-numentities-src-mq3-server-snapshot-delta-ml-831295570"></a>
 ### numEntities
@@ -50,7 +50,7 @@ numEntities
 Number of entity records currently represented by this state or snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L35)
 
 <a id="field-field-mq3-server-snapshot-delta-packetframe-playerstate-playerstate-src-mq3-server-snapshot-delta-ml-989661990"></a>
 ### playerState
@@ -62,4 +62,4 @@ playerState
 Authoritative player-state record used for snapshots and game simulation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L39)

@@ -12,7 +12,7 @@ struct State
 `State` record for ai characters, containing `maxClients`, `characters`, `context`, `readFn` and `reloadCharacters` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L66)
 
 ## Members
 
@@ -26,7 +26,7 @@ characters
 Loaded bot-character definitions retained for reuse.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L70)
 
 <a id="field-field-mq3-botlib-ai-characters-state-context-context-src-mq3-botlib-ai-characters-ml-1457259982"></a>
 ### context
@@ -38,7 +38,7 @@ context
 Caller-supplied data associated with reading and caching bot personality definitions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L72)
 
 <a id="field-field-mq3-botlib-ai-characters-state-filereads-filereads-src-mq3-botlib-ai-characters-ml-1691584386"></a>
 ### fileReads
@@ -50,7 +50,7 @@ fileReads
 Number of source-file reads performed through the loading interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L78)
 
 <a id="field-field-mq3-botlib-ai-characters-state-maxclients-maxclients-src-mq3-botlib-ai-characters-ml-2078984726"></a>
 ### maxClients
@@ -62,7 +62,7 @@ maxClients
 Client limit used to size and bound the bot character-handle cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L68)
 
 <a id="field-field-mq3-botlib-ai-characters-state-readfn-readfn-src-mq3-botlib-ai-characters-ml-820012030"></a>
 ### readFn
@@ -74,7 +74,7 @@ readFn
 Host callback that loads bot personality files for the character cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L74)
 
 <a id="field-field-mq3-botlib-ai-characters-state-reloadcharacters-reloadcharacters-src-mq3-botlib-ai-characters-ml-268106088"></a>
 ### reloadCharacters
@@ -86,4 +86,4 @@ reloadCharacters
 True when bot definitions should be reloaded instead of reused from cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L76)

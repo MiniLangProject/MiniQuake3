@@ -12,7 +12,7 @@ struct Face
 `Face` record for aas optimizer, containing `planeNum`, `flags`, `numEdges`, `firstEdge` and `frontArea` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L25)
 
 ## Members
 
@@ -26,7 +26,7 @@ backArea
 Area at the back of this face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-optimizer-face-firstedge-firstedge-src-mq3-botlib-aas-optimizer-ml-80484880"></a>
 ### firstEdge
@@ -38,7 +38,7 @@ firstEdge
 Starting offset of this face in the signed edge-index array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-optimizer-face-flags-flags-src-mq3-botlib-aas-optimizer-ml-1167112572"></a>
 ### flags
@@ -50,7 +50,7 @@ flags
 AAS face properties preserved while unused geometry is removed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-optimizer-face-frontarea-frontarea-src-mq3-botlib-aas-optimizer-ml-1663877852"></a>
 ### frontArea
@@ -62,7 +62,7 @@ frontArea
 Area at the front of this face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L35)
 
 <a id="field-field-mq3-botlib-aas-optimizer-face-numedges-numedges-src-mq3-botlib-aas-optimizer-ml-2041366132"></a>
 ### numEdges
@@ -74,7 +74,7 @@ numEdges
 Number of edge records represented by this face or file inventory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L31)
 
 <a id="field-field-mq3-botlib-aas-optimizer-face-planenum-planenum-src-mq3-botlib-aas-optimizer-ml-1426355036"></a>
 ### planeNum
@@ -86,4 +86,4 @@ planeNum
 Plane reference retained when copying this face into compacted navigation geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L27)

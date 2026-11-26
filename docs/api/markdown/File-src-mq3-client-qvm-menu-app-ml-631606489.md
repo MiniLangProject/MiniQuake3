@@ -31,8 +31,8 @@ Reachable from entry: **yes**
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
 - `mq3/renderer/qvm_2d_batch.ml` as `qvm2d` → [src/mq3/renderer/qvm_2d_batch.ml](File-src-mq3-renderer-qvm-2d-batch-ml-1820350507.md)
 - `mq3/renderer/shader_index.ml` as `shaderIndex` → [src/mq3/renderer/shader_index.ml](File-src-mq3-renderer-shader-index-ml-492021135.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
-- `std/time.ml` as `time` → `../MiniLangCompilerML/std/time.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
+- `std/time.ml` as `time` → `../../a7594a0c0299/MiniLangCompilerML/std/time.ml` — external dependency
 
 ## Declarations
 
@@ -46,7 +46,7 @@ const CINEMATIC_TEXTURE_SLOT = 4055
 Texture-cache slot or starting slot reserved for the cinematic rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L41)
 
 <a id="function-function-mq3-client-qvm-menu-app-fail-function-fail-message-src-mq3-client-qvm-menu-app-ml-219657267"></a>
 ### fail
@@ -62,7 +62,7 @@ Creates the QVM menu app error `7688` with diagnostic text `"QVM menu: "+message
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"QVM menu: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L56)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-first-texture-slot-const-first-texture-slot-1-src-mq3-client-qvm-menu-app-ml-1030347800"></a>
 ### FIRST_TEXTURE_SLOT
@@ -74,7 +74,7 @@ const FIRST_TEXTURE_SLOT = 1
 Texture-cache slot or starting slot reserved for the first rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L37)
 
 <a id="function-function-mq3-client-qvm-menu-app-loadlocalmatch-function-loadlocalmatch-archive-session-qvmroot-src-mq3-client-qvm-menu-app-ml-199632816"></a>
 ### loadLocalMatch
@@ -92,7 +92,7 @@ Updates `session.action` during QVM menu app `loadLocalMatch`.
 | `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L212)
 
 <a id="function-function-mq3-client-qvm-menu-app-loadmap-function-loadmap-archive-dataroot-name-src-mq3-client-qvm-menu-app-ml-1837954293"></a>
 ### loadMap
@@ -110,7 +110,7 @@ Calls `mq3.engine.local_qvm_match.desktopFilePath`, `std.string.indexOf`, `mq3.f
 | `name` | `dynamic` | — | Name used to select or register the corresponding QVM menu app resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L200)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-max-texture-slots-const-max-texture-slots-300-src-mq3-client-qvm-menu-app-ml-572085514"></a>
 ### MAX_TEXTURE_SLOTS
@@ -122,7 +122,7 @@ const MAX_TEXTURE_SLOTS = 300
 Capacity limit for the texture slots collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L39)
 
 <a id="function-function-mq3-client-qvm-menu-app-renderstream-function-renderstream-basearchive-archive-installroot-qvmroot-session-source-src-mq3-client-qvm-menu-app-ml-441497051"></a>
 ### renderStream
@@ -143,7 +143,7 @@ Updates `session.action` during QVM menu app `renderStream`.
 | `source` | `dynamic` | — | Record read through `source.demo`, `source.transport.mapName`, `source.transport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L258)
 
 <a id="function-function-mq3-client-qvm-menu-app-run-function-run-archive-bootstrapmap-qvmroot-src-mq3-client-qvm-menu-app-ml-1503318232"></a>
 ### run
@@ -161,7 +161,7 @@ Calls `mq3.platform.playable_window.executableDirectory`, `mq3.client.desktop_se
 | `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L314)
 
 <a id="function-function-mq3-client-qvm-menu-app-runcinematic-function-runcinematic-archive-session-measurepixels-src-mq3-client-qvm-menu-app-ml-1091549707"></a>
 ### runCinematic
@@ -179,7 +179,7 @@ CL_PlayCinematic_f takes ownership of the disconnected screen. When the system R
 | `measurePixels` | `dynamic` | — | Value used by `if measurePixels then lit=window.presentedNonBlack()`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L139)
 
 <a id="function-function-mq3-client-qvm-menu-app-runmenu-function-runmenu-archive-bootstrapmap-qvmroot-session-openlevelselect-src-mq3-client-qvm-menu-app-ml-538961304"></a>
 ### runMenu
@@ -199,7 +199,7 @@ Updates `session.videoWidth`, `session.videoHeight`, `session.videoRestart` duri
 | `openLevelSelect` | `dynamic` | — | Value used by `if openLevelSelect then match.executeClientConsole(state,"levelselect") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L64)
 
 <a id="function-function-mq3-client-qvm-menu-app-runstream-function-runstream-basearchive-archive-installroot-qvmroot-session-demoplaying-src-mq3-client-qvm-menu-app-ml-255400437"></a>
 ### runStream
@@ -220,7 +220,7 @@ Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.c
 | `demoPlaying` | `dynamic` | — | Value used by `if demoPlaying then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L290)
 
 - [mq3.client.qvm_menu_app.ScreenPoint](Type-mq3-client-qvm-menu-app-screenpoint-1566616169.md) — struct
 <a id="constant-constant-mq3-client-qvm-menu-app-source-height-const-source-height-720-src-mq3-client-qvm-menu-app-ml-1893579200"></a>
@@ -233,7 +233,7 @@ const SOURCE_HEIGHT = 720
 Nominal source-view height used when scaling QVM presentation into the preview target.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L35)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-source-width-const-source-width-1280-src-mq3-client-qvm-menu-app-ml-723930664"></a>
 ### SOURCE_WIDTH
@@ -245,7 +245,7 @@ const SOURCE_WIDTH = 1280
 Nominal source-view width used when scaling QVM presentation into the preview target.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L33)
 
 <a id="function-function-mq3-client-qvm-menu-app-switchgame-function-switchgame-session-mounted-src-mq3-client-qvm-menu-app-ml-125974246"></a>
 ### switchGame
@@ -262,7 +262,7 @@ Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.c
 | `mounted` | `dynamic` | — | Record read through `mounted.game`, `mounted.dataRoot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L226)
 
 <a id="function-function-mq3-client-qvm-menu-app-waitforserver-function-waitforserver-live-src-mq3-client-qvm-menu-app-ml-2042830486"></a>
 ### waitForServer
@@ -278,4 +278,4 @@ Calls `mq3.platform.playable_window.shouldClose`, `mq3.platform.playable_window.
 | `live` | `dynamic` | — | Value used by `ready=try(remote.pump(live,now,64))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L237)

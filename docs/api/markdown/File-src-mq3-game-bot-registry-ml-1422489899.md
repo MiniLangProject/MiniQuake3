@@ -10,7 +10,7 @@ Reachable from entry: **no**
 
 - `mq3/shared/info.ml` as `infoStrings` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
 - `mq3/shared/parser.ml` as `parser` → [src/mq3/shared/parser.ml](File-src-mq3-shared-parser-ml-1977832534.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -31,7 +31,7 @@ Create a `mq3.game.bot_registry.Registry` record, initializing `readFileFn` from
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L36)
 
 <a id="function-function-mq3-game-bot-registry-filedata-function-filedata-state-filename-src-mq3-game-bot-registry-ml-341744468"></a>
 ### fileData
@@ -48,7 +48,7 @@ Use `state.readFileFn` to perform `fileData`. Return paths include `state.readFi
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L80)
 
 <a id="function-function-mq3-game-bot-registry-getarenainfobymap-function-getarenainfobymap-state-map-src-mq3-game-bot-registry-ml-404539183"></a>
 ### getArenaInfoByMap
@@ -65,7 +65,7 @@ Apply `mq3.shared.info.value` while evaluating `getArenaInfoByMap`.
 | `map` | `dynamic` | — | Value passed as argument 2 to `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L172)
 
 <a id="function-function-mq3-game-bot-registry-getbotinfobyname-function-getbotinfobyname-state-name-src-mq3-game-bot-registry-ml-913399118"></a>
 ### getBotInfoByName
@@ -82,7 +82,7 @@ Apply `mq3.shared.info.value` while evaluating `getBotInfoByName`.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L192)
 
 <a id="function-function-mq3-game-bot-registry-getbotinfobynumber-function-getbotinfobynumber-state-num-src-mq3-game-bot-registry-ml-2094867101"></a>
 ### getBotInfoByNumber
@@ -99,7 +99,7 @@ Apply `mq3.game.bot_registry.output` while evaluating `getBotInfoByNumber`. Retu
 | `num` | `dynamic` | — | Value passed as argument 1 to `str`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L182)
 
 <a id="function-function-mq3-game-bot-registry-listedfiles-function-listedfiles-state-extension-src-mq3-game-bot-registry-ml-1668054484"></a>
 ### listedFiles
@@ -116,7 +116,7 @@ Use `state.listFilesFn` to perform `listedFiles`. Return paths include `files`.
 | `extension` | `dynamic` | — | Value passed as argument 3 to `state.listFilesFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L119)
 
 <a id="function-function-mq3-game-bot-registry-loadarenas-function-loadarenas-state-arenasfile-src-mq3-game-bot-registry-ml-230659527"></a>
 ### loadArenas
@@ -133,7 +133,7 @@ Set `state.arenaInfos` to `[]` and `state.arenaInfos` to `numbered` in `mq3.game
 | `arenasFile` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L139)
 
 <a id="function-function-mq3-game-bot-registry-loadarenasfromfile-function-loadarenasfromfile-state-filename-src-mq3-game-bot-registry-ml-1484088228"></a>
 ### loadArenasFromFile
@@ -150,7 +150,7 @@ Set `state.arenaInfos` to `loadFromFile(state,filename,state.arenaInfos)` in `mq
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L105)
 
 <a id="function-function-mq3-game-bot-registry-loadbots-function-loadbots-state-botenable-botsfile-src-mq3-game-bot-registry-ml-445156535"></a>
 ### loadBots
@@ -168,7 +168,7 @@ Load bot definitions into the registry using the configured file and diagnostic 
 | `botsFile` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L158)
 
 <a id="function-function-mq3-game-bot-registry-loadbotsfromfile-function-loadbotsfromfile-state-filename-src-mq3-game-bot-registry-ml-1599104248"></a>
 ### loadBotsFromFile
@@ -185,7 +185,7 @@ Set `state.botInfos` to `loadFromFile(state,filename,state.botInfos)` in `mq3.ga
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L112)
 
 <a id="function-function-mq3-game-bot-registry-loadfromfile-function-loadfromfile-state-filename-destination-src-mq3-game-bot-registry-ml-777211318"></a>
 ### loadFromFile
@@ -203,7 +203,7 @@ Apply `mq3.game.bot_registry.fileData`, `mq3.game.bot_registry.output` and `mq3.
 | `destination` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `loadFromFile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L89)
 
 <a id="constant-constant-mq3-game-bot-registry-max-info-text-const-max-info-text-8192-src-mq3-game-bot-registry-ml-1922505083"></a>
 ### MAX_INFO_TEXT
@@ -215,7 +215,7 @@ const MAX_INFO_TEXT = 8192
 Upper bound on info text represented by mq3.game.bot_registry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L12)
 
 <a id="constant-constant-mq3-game-bot-registry-max-infos-const-max-infos-1024-src-mq3-game-bot-registry-ml-1594952030"></a>
 ### MAX_INFOS
@@ -227,7 +227,7 @@ const MAX_INFOS = 1024
 Upper bound on infos represented by mq3.game.bot_registry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L10)
 
 <a id="function-function-mq3-game-bot-registry-output-function-output-state-text-src-mq3-game-bot-registry-ml-1831207462"></a>
 ### output
@@ -244,7 +244,7 @@ Use `state.printFn` to perform `output`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L43)
 
 <a id="function-function-mq3-game-bot-registry-parseinfos-function-parseinfos-state-text-max-src-mq3-game-bot-registry-ml-2091311498"></a>
 ### parseInfos
@@ -262,7 +262,7 @@ Record or dispatch `"Missing { in info file\n"`, `"Max infos exceeded\n"` and `"
 | `max` | `dynamic` | — | Value used by `parseInfos` in `if max < 0 then return error(490,"Negative info capacity") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L52)
 
 - [mq3.game.bot_registry.Registry](Type-mq3-game-bot-registry-registry-1702601920.md) — struct
 <a id="function-function-mq3-game-bot-registry-scriptpath-function-scriptpath-name-src-mq3-game-bot-registry-ml-1998571885"></a>
@@ -279,4 +279,4 @@ Prefix a bot registry filename with scripts/ and reject paths exceeding the nati
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L128)

@@ -9,7 +9,7 @@ Reachable from entry: **yes**
 ## Imports
 
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
-- `std/sort.ml` as `sort` → `../MiniLangCompilerML/std/sort.ml` — external dependency
+- `std/sort.ml` as `sort` → `../../a7594a0c0299/MiniLangCompilerML/std/sort.ml` — external dependency
 
 ## Declarations
 
@@ -32,7 +32,7 @@ Updates `queue.drawSurfs[index]`, `queue.numDrawSurfs`, `queue.nextOrdinal` in `
 | `dlightMap` | `dynamic` | — | Value forwarded as `dlightMap` to `mq3.renderer.draw_surfs.pack`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L99)
 
 <a id="function-function-mq3-renderer-draw-surfs-count-function-count-queue-src-mq3-renderer-draw-surfs-ml-30123153"></a>
 ### count
@@ -48,7 +48,7 @@ Returns `queue.capacity` from `mq3.renderer.draw_surfs.count`; earlier branches 
 | `queue` | `dynamic` | — | Record providing `queue.numDrawSurfs`, `queue.capacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L113)
 
 <a id="function-function-mq3-renderer-draw-surfs-create-function-create-capacity-src-mq3-renderer-draw-surfs-ml-1405911314"></a>
 ### create
@@ -64,7 +64,7 @@ Builds `mq3.renderer.draw_surfs.Queue` for `mq3.renderer.draw_surfs.create`.
 | `capacity` | `dynamic` | — | Initial value for `mq3.renderer.draw_surfs.Queue.capacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L64)
 
 <a id="function-function-mq3-renderer-draw-surfs-createdefault-function-createdefault-src-mq3-renderer-draw-surfs-ml-1831083596"></a>
 ### createDefault
@@ -76,7 +76,7 @@ function createDefault()
 Calls `mq3.renderer.draw_surfs.create` with `(MAX_DRAWSURFS)` and returns its result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L70)
 
 <a id="function-function-mq3-renderer-draw-surfs-decompose-function-decompose-sortkey-src-mq3-renderer-draw-surfs-ml-1841597797"></a>
 ### decompose
@@ -92,7 +92,7 @@ Builds `mq3.renderer.draw_surfs.SortFields` for `mq3.renderer.draw_surfs.decompo
 | `sortKey` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.u32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L87)
 
 - [mq3.renderer.draw_surfs.DrawSurf](Type-mq3-renderer-draw-surfs-drawsurf-1972676811.md) — struct
 <a id="function-function-mq3-renderer-draw-surfs-drawsurfless-function-drawsurfless-left-right-src-mq3-renderer-draw-surfs-ml-81288669"></a>
@@ -110,7 +110,7 @@ Returns `left.ordinal<right.ordinal` from `mq3.renderer.draw_surfs.drawSurfLess`
 | `right` | `dynamic` | — | Record providing `right.sort`, `right.ordinal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L142)
 
 <a id="function-function-mq3-renderer-draw-surfs-fail-function-fail-message-src-mq3-renderer-draw-surfs-ml-1940509643"></a>
 ### fail
@@ -126,7 +126,7 @@ Creates error `7340` with message `"draw surfaces: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7340,"draw surfaces: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L54)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-max-drawsurfs-const-max-drawsurfs-65536-src-mq3-renderer-draw-surfs-ml-290909658"></a>
 ### MAX_DRAWSURFS
@@ -138,7 +138,7 @@ const MAX_DRAWSURFS = 65536
 Capacity of the draw-surface ring used when queuing scene geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L12)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-max-shaders-const-max-shaders-16384-src-mq3-renderer-draw-surfs-ml-903977173"></a>
 ### MAX_SHADERS
@@ -150,7 +150,7 @@ const MAX_SHADERS = 16384
 Maximum number of shader records registered by the renderer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L10)
 
 <a id="function-function-mq3-renderer-draw-surfs-pack-function-pack-shaderindex-entitynum-fognum-dlightmap-src-mq3-renderer-draw-surfs-ml-15751242"></a>
 ### pack
@@ -169,7 +169,7 @@ Validates shader/entity/fog/lightmap ranges and packs them into a draw-surface s
 | `dlightMap` | `dynamic` | — | Input tested by `dlightMap<0 or dlightMap>3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L77)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-qsort-entitynum-shift-const-qsort-entitynum-shift-7-src-mq3-renderer-draw-surfs-ml-1171204846"></a>
 ### QSORT_ENTITYNUM_SHIFT
@@ -181,7 +181,7 @@ const QSORT_ENTITYNUM_SHIFT = 7
 Bit position of the entity number in a packed draw-surface sort key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L16)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-qsort-fognum-shift-const-qsort-fognum-shift-2-src-mq3-renderer-draw-surfs-ml-104813111"></a>
 ### QSORT_FOGNUM_SHIFT
@@ -193,7 +193,7 @@ const QSORT_FOGNUM_SHIFT = 2
 Bit position of the fog number in a packed draw-surface sort key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L18)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-qsort-shadernum-shift-const-qsort-shadernum-shift-17-src-mq3-renderer-draw-surfs-ml-1634426427"></a>
 ### QSORT_SHADERNUM_SHIFT
@@ -205,7 +205,7 @@ const QSORT_SHADERNUM_SHIFT = 17
 Bit position of the shader index in a packed draw-surface sort key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L14)
 
 - [mq3.renderer.draw_surfs.Queue](Type-mq3-renderer-draw-surfs-queue-429885024.md) — struct
 - [mq3.renderer.draw_surfs.SortFields](Type-mq3-renderer-draw-surfs-sortfields-1426777600.md) — struct
@@ -223,7 +223,7 @@ Updates `queue.drawSurfs[index]` in `mq3.renderer.draw_surfs.sortQueue`; returns
 | `queue` | `dynamic` | — | Mutable record or buffer; this call updates `queue.drawSurfs[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L149)
 
 <a id="function-function-mq3-renderer-draw-surfs-sortstable-function-sortstable-drawsurfs-src-mq3-renderer-draw-surfs-ml-820256599"></a>
 ### sortStable
@@ -239,7 +239,7 @@ Deterministic stable insertion ordering by the same unsigned packed key. Baseq3 
 | `drawSurfs` | `dynamic` | — | Argument 3 supplied to `copyArray`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L131)
 
 <a id="function-function-mq3-renderer-draw-surfs-validcapacity-function-validcapacity-capacity-src-mq3-renderer-draw-surfs-ml-214236730"></a>
 ### validCapacity
@@ -255,7 +255,7 @@ Computes `capacity>0 and capacity<=MAX_DRAWSURFS and (capacity&(capacity-1))==0`
 | `capacity` | `dynamic` | — | Input used in the result expression `capacity>0 and capacity<=MAX_DRAWSURFS and (capacity&(capacity-1))==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L58)
 
 <a id="function-function-mq3-renderer-draw-surfs-values-function-values-queue-src-mq3-renderer-draw-surfs-ml-1311098351"></a>
 ### values
@@ -271,4 +271,4 @@ Builds `result[index]` in `mq3.renderer.draw_surfs.values`; returns `result`.
 | `queue` | `dynamic` | — | Record providing `queue.drawSurfs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L120)

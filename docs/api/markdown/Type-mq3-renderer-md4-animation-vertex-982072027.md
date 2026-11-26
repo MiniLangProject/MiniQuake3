@@ -12,7 +12,7 @@ struct Vertex
 Data record for `mq3.renderer.md4_animation.Vertex`; groups `normal`, `texCoords`, `weights`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L23)
 
 ## Members
 
@@ -26,7 +26,7 @@ normal
 Unskinned vertex normal transformed by the weighted skeletal bone matrices.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L25)
 
 <a id="field-field-mq3-renderer-md4-animation-vertex-texcoords-texcoords-src-mq3-renderer-md4-animation-ml-730335695"></a>
 ### texCoords
@@ -38,7 +38,7 @@ texCoords
 Texture coordinates stored with the unskinned skeletal vertex and preserved during bone deformation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L28)
 
 <a id="field-field-mq3-renderer-md4-animation-vertex-weights-weights-src-mq3-renderer-md4-animation-ml-1336577835"></a>
 ### weights
@@ -50,4 +50,4 @@ weights
 Bone influences used to deform this skeletal vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L30)

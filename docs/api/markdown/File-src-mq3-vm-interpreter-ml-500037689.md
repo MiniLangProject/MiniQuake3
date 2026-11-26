@@ -29,7 +29,7 @@ Run vmMain in the reference bytecode interpreter and return its single integer r
 | `args` | `dynamic` | — | Up to ten integer slots written after the entry-frame header; slot zero conventionally selects the vmMain command. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L267)
 
 <a id="function-function-mq3-vm-interpreter-callfast-function-callfast-vm-args-src-mq3-vm-interpreter-ml-1372106202"></a>
 ### callFast
@@ -46,7 +46,7 @@ Keep the MiniLang interpreter as the executable reference implementation. Produc
 | `args` | `dynamic` | — | Up to ten integer argument slots, including the vmMain command selector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L223)
 
 <a id="function-function-mq3-vm-interpreter-fail-function-fail-message-src-mq3-vm-interpreter-ml-2045130873"></a>
 ### fail
@@ -62,7 +62,7 @@ Create an interpreter error with code 3400 and the `QVM: ` prefix.
 | `message` | `dynamic` | — | Diagnostic text appended after the subsystem prefix. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L65)
 
 <a id="function-function-mq3-vm-interpreter-imagelayout-function-imagelayout-image-src-mq3-vm-interpreter-ml-735397417"></a>
 ### imageLayout
@@ -78,7 +78,7 @@ Validate the QVM header and return its section offsets, lengths, and declared me
 | `image` | `dynamic` | — | Complete QVM file as a byte buffer, including the 32-byte header. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L135)
 
 - [mq3.vm.interpreter.ImageLayout](Type-mq3-vm-interpreter-imagelayout-733203426.md) — struct
 <a id="function-function-mq3-vm-interpreter-immediatesize-function-immediatesize-op-src-mq3-vm-interpreter-ml-690945279"></a>
@@ -95,7 +95,7 @@ Return an opcode's immediate-operand length in bytes: 4, 1, or 0, excluding the 
 | `op` | `dynamic` | — | Numeric QVM opcode. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L115)
 
 <a id="function-function-mq3-vm-interpreter-load-function-load-image-callback-src-mq3-vm-interpreter-ml-598598174"></a>
 ### load
@@ -112,7 +112,7 @@ Decode and validate a QVM image, allocate zeroed data memory, and prepare native
 | `callback` | `dynamic` | — | Optional host syscall callback `(vm, argumentBase)`; the base is a VM byte offset. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L161)
 
 <a id="function-function-mq3-vm-interpreter-restorestack-function-restorestack-vm-saved-src-mq3-vm-interpreter-ml-625622636"></a>
 ### restoreStack
@@ -129,7 +129,7 @@ Restore the VM program-stack pointer saved before a call. Used by the deferred c
 | `saved` | `dynamic` | — | Program-stack byte offset captured at call entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L256)
 
 <a id="function-function-mq3-vm-interpreter-signeddivide-function-signeddivide-a-b-src-mq3-vm-interpreter-ml-1769187931"></a>
 ### signedDivide
@@ -146,7 +146,7 @@ Divide signed 32-bit operands with truncation toward zero. Zero divisors and INT
 | `b` | `dynamic` | — | Signed 32-bit divisor. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L241)
 
 <a id="function-function-mq3-vm-interpreter-stackneed-function-stackneed-op-src-mq3-vm-interpreter-ml-1190623647"></a>
 ### stackNeed
@@ -162,7 +162,7 @@ Return the minimum operand-stack depth required before executing a QVM opcode. T
 | `op` | `dynamic` | — | Numeric QVM opcode whose input operands are being checked. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L124)
 
 <a id="function-function-mq3-vm-interpreter-targetaddress-function-targetaddress-vm-target-src-mq3-vm-interpreter-ml-2097599284"></a>
 ### targetAddress
@@ -179,7 +179,7 @@ Resolve a zero-based QVM instruction number to its decoded code byte offset. Neg
 | `target` | `dynamic` | — | Zero-based instruction number supplied by a call or computed jump. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L232)
 
 - [mq3.vm.interpreter.VM](Type-mq3-vm-interpreter-vm-1653730746.md) — struct
 <a id="function-function-mq3-vm-interpreter-vm-indent-function-vm-indent-calllevel-src-mq3-vm-interpreter-ml-2095087730"></a>
@@ -196,7 +196,7 @@ Debug helpers from vm_interpreted.c.  The C implementation returns a pointer int
 | `callLevel` | `dynamic` | — | Nonnegative stack-trace nesting depth. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L76)
 
 <a id="function-function-mq3-vm-interpreter-vm-stacktrace-function-vm-stacktrace-data-programcounter-programstack-symbolfn-context-src-mq3-vm-interpreter-ml-86497079"></a>
 ### VM_StackTrace
@@ -216,4 +216,4 @@ Collect at most 32 stack frames from QVM data memory, starting with the current 
 | `context` | `dynamic` | — | Opaque value passed unchanged as the first argument to `symbolFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L93)

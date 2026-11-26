@@ -12,7 +12,7 @@ struct VmHeader
 Managed mirrors keep the original member order. Variable-sized tails are represented by ordinary arrays and all on-disk decoding remains explicit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L156)
 
 ## Members
 
@@ -26,7 +26,7 @@ bssLength
 Size in bytes of the zero-initialized memory appended after the file data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L172)
 
 <a id="field-field-mq3-format-qfiles-vmheader-codelength-codelength-src-mq3-format-qfiles-ml-1659256333"></a>
 ### codeLength
@@ -38,7 +38,7 @@ codeLength
 Length of the QVM instruction section in bytes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L164)
 
 <a id="field-field-mq3-format-qfiles-vmheader-codeoffset-codeoffset-src-mq3-format-qfiles-ml-1370684271"></a>
 ### codeOffset
@@ -50,7 +50,7 @@ codeOffset
 Byte offset of QVM instructions from the beginning of the file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L162)
 
 <a id="field-field-mq3-format-qfiles-vmheader-datalength-datalength-src-mq3-format-qfiles-ml-1172310443"></a>
 ### dataLength
@@ -62,7 +62,7 @@ dataLength
 Length of the initialized QVM data section in bytes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L168)
 
 <a id="field-field-mq3-format-qfiles-vmheader-dataoffset-dataoffset-src-mq3-format-qfiles-ml-2012425397"></a>
 ### dataOffset
@@ -74,7 +74,7 @@ dataOffset
 Byte offset of initialized QVM data from the beginning of the file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L166)
 
 <a id="field-field-mq3-format-qfiles-vmheader-instructioncount-instructioncount-src-mq3-format-qfiles-ml-741067405"></a>
 ### instructionCount
@@ -86,7 +86,7 @@ instructionCount
 Number of instructions declared by the QVM bytecode header.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L160)
 
 <a id="field-field-mq3-format-qfiles-vmheader-litlength-litlength-src-mq3-format-qfiles-ml-1725249903"></a>
 ### litLength
@@ -98,7 +98,7 @@ litLength
 Byte length of the literal-data region that must not be byte-swapped.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L170)
 
 <a id="field-field-mq3-format-qfiles-vmheader-vmmagic-vmmagic-src-mq3-format-qfiles-ml-1019689671"></a>
 ### vmMagic
@@ -110,4 +110,4 @@ vmMagic
 Magic value identifying the supported QVM bytecode format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L158)

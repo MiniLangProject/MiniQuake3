@@ -12,7 +12,7 @@ struct Constructed
 Data record for `mq3.renderer.tr_font_runtime.Constructed`; groups `glyph`, `x`, `y`, `maxHeight`, `placed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L108)
 
 ## Members
 
@@ -26,7 +26,7 @@ glyph
 Glyph metadata updated with the atlas coordinates and image dimensions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L110)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-maxheight-maxheight-src-mq3-renderer-tr-font-runtime-ml-433747089"></a>
 ### maxHeight
@@ -38,7 +38,7 @@ maxHeight
 Tallest glyph currently placed in the active atlas row.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L116)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-placed-placed-src-mq3-renderer-tr-font-runtime-ml-1352626207"></a>
 ### placed
@@ -50,7 +50,7 @@ placed
 Whether the glyph was successfully placed in the font atlas.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L118)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-x-x-src-mq3-renderer-tr-font-runtime-ml-211921669"></a>
 ### x
@@ -62,7 +62,7 @@ x
 Horizontal atlas packing cursor returned after the glyph-placement attempt, in pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L112)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-y-y-src-mq3-renderer-tr-font-runtime-ml-601515305"></a>
 ### y
@@ -74,4 +74,4 @@ y
 Vertical atlas packing cursor returned after the glyph-placement attempt, in pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L114)

@@ -12,7 +12,7 @@ Reachable from entry: **no**
 - `mq3/renderer/shader_parser.ml` as `shaderParser` → [src/mq3/renderer/shader_parser.ml](File-src-mq3-renderer-shader-parser-ml-2114769074.md)
 - `mq3/renderer/shader_remap.ml` as `shaderRemap` → [src/mq3/renderer/shader_remap.ml](File-src-mq3-renderer-shader-remap-ml-1685814656.md)
 - `mq3/shared/parser.ml` as `parser` → [src/mq3/shared/parser.ml](File-src-mq3-shared-parser-ml-1977832534.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -31,7 +31,7 @@ Computes `collapseMode` from `""` using `mq3.renderer.shader_runtime.stageBlend`
 | `second` | `dynamic` | — | Value forwarded as `stage` to `mq3.renderer.shader_runtime.stageBlend`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L243)
 
 <a id="function-function-mq3-renderer-shader-runtime-collapsemultitexture-function-collapsemultitexture-shader-multitextureavailable-addavailable-src-mq3-renderer-shader-runtime-ml-649494806"></a>
 ### collapseMultitexture
@@ -49,7 +49,7 @@ Builds `mq3.renderer.shader_runtime.CollapseResult` for `mq3.renderer.shader_run
 | `addAvailable` | `dynamic` | — | Input tested by `environment=="" or (environment=="add" and not addAvailable)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L253)
 
 - [mq3.renderer.shader_runtime.CollapseResult](Type-mq3-renderer-shader-runtime-collapseresult-2142915461.md) — struct
 <a id="function-function-mq3-renderer-shader-runtime-computestageiteratorfunc-function-computestageiteratorfunc-shader-collapse-ignorefastpath-src-mq3-renderer-shader-runtime-ml-1105009575"></a>
@@ -68,7 +68,7 @@ Computes `computeStageIteratorFunc` from `"generic"` using `mq3.renderer.shader_
 | `ignoreFastPath` | `dynamic` | — | Input tested by `ignoreFastPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L290)
 
 <a id="function-function-mq3-renderer-shader-runtime-create-function-create-context-loadimagefn-commandfixfn-src-mq3-renderer-shader-runtime-ml-214614938"></a>
 ### create
@@ -86,7 +86,7 @@ Builds `mq3.renderer.shader_runtime.State` using `mq3.renderer.shader_index.buil
 | `commandFixFn` | `dynamic` | — | Initial value for `mq3.renderer.shader_runtime.State.commandFixFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L166)
 
 <a id="function-function-mq3-renderer-shader-runtime-createexternalshaders-function-createexternalshaders-state-src-mq3-renderer-shader-runtime-ml-1362104259"></a>
 ### createExternalShaders
@@ -102,7 +102,7 @@ Returns `3` from `mq3.renderer.shader_runtime.createExternalShaders`.
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.shader_runtime.r_FindShader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L443)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L443)
 
 <a id="function-function-mq3-renderer-shader-runtime-createinternalshaders-function-createinternalshaders-state-defaultimage-src-mq3-renderer-shader-runtime-ml-642593697"></a>
 ### createInternalShaders
@@ -119,7 +119,7 @@ Updates `state.shaders`, `state.sorted`, `state.assets`, `state.kinds` in `mq3.r
 | `defaultImage` | `dynamic` | — | Value forwarded as `image` to `mq3.renderer.shader_runtime.implicitShader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L434)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L434)
 
 <a id="function-function-mq3-renderer-shader-runtime-findloaded-function-findloaded-state-name-lightmapindex-src-mq3-renderer-shader-runtime-ml-678328306"></a>
 ### findLoaded
@@ -137,7 +137,7 @@ Returns `void` from `mq3.renderer.shader_runtime.findLoaded`; earlier branches r
 | `lightmapIndex` | `dynamic` | — | Input used by `for each item in state.shaders if sameName(item.name,name) and (item.lightmapIndex==lightmapIndex or item.defaultShader) then return item`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L351)
 
 <a id="function-function-mq3-renderer-shader-runtime-findshaderinshadertext-function-findshaderinshadertext-state-name-src-mq3-renderer-shader-runtime-ml-873939046"></a>
 ### findShaderInShaderText
@@ -154,7 +154,7 @@ Returns `shaderIndex.find(state.index,name)` from `mq3.renderer.shader_runtime.f
 | `name` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.shader_index.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L178)
 
 <a id="function-function-mq3-renderer-shader-runtime-finishshader-function-finishshader-state-shader-lightmapindex-miprawimage-image-explicit-src-mq3-renderer-shader-runtime-ml-1892756666"></a>
 ### finishShader
@@ -175,7 +175,7 @@ Builds `mq3.renderer.shader_runtime.PermanentShader` after updating `shader.sort
 | `explicit` | `dynamic` | — | Initial value for `mq3.renderer.shader_runtime.PermanentShader.explicitlyDefined`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L305)
 
 <a id="function-function-mq3-renderer-shader-runtime-fixrendercommandlist-function-fixrendercommandlist-state-newshader-src-mq3-renderer-shader-runtime-ml-879017634"></a>
 ### fixRenderCommandList
@@ -192,7 +192,7 @@ Returns `0` from `mq3.renderer.shader_runtime.fixRenderCommandList`; earlier bra
 | `newShader` | `dynamic` | — | Argument 2 supplied to `state.commandFixFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L331)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L331)
 
 <a id="function-function-mq3-renderer-shader-runtime-generatehashvalue-function-generatehashvalue-name-size-src-mq3-renderer-shader-runtime-ml-1801932876"></a>
 ### generateHashValue
@@ -209,7 +209,7 @@ Parser and shader-text entry points -----------------------------------
 | `size` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.shader_index.hashValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L174)
 
 <a id="function-function-mq3-renderer-shader-runtime-generatepermanentshader-function-generatepermanentshader-state-record-src-mq3-renderer-shader-runtime-ml-1459351724"></a>
 ### generatePermanentShader
@@ -226,7 +226,7 @@ Updates `record.handle`, `state.shaders`, `state.assets`, `state.kinds` in `mq3.
 | `record` | `dynamic` | — | Mutable record or buffer; this call updates `record.handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L343)
 
 <a id="function-function-mq3-renderer-shader-runtime-has-function-has-values-value-src-mq3-renderer-shader-runtime-ml-717555831"></a>
 ### has
@@ -243,7 +243,7 @@ Returns `false` from `mq3.renderer.shader_runtime.has`; earlier branches return 
 | `value` | `dynamic` | — | Input used by `for each item in values if item==value then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L156)
 
 <a id="function-function-mq3-renderer-shader-runtime-implicitshader-function-implicitshader-name-lightmapindex-image-src-mq3-renderer-shader-runtime-ml-2124410682"></a>
 ### implicitShader
@@ -261,7 +261,7 @@ Builds `stage.images`, `stage.rgbGen`, `stage.alphaGen`, `stage.depthWrite`, `st
 | `image` | `dynamic` | — | Input used by `stage.images=[image]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L363)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L363)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-lightmap-2d-const-lightmap-2d-3-src-mq3-renderer-shader-runtime-ml-2020322995"></a>
 ### LIGHTMAP_2D
@@ -273,7 +273,7 @@ const LIGHTMAP_2D = -3
 Negative lightmap selector used for two-dimensional drawing shaders.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L17)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-lightmap-by-vertex-const-lightmap-by-vertex-2-src-mq3-renderer-shader-runtime-ml-109322994"></a>
 ### LIGHTMAP_BY_VERTEX
@@ -285,7 +285,7 @@ const LIGHTMAP_BY_VERTEX = -2
 Negative lightmap selector requesting vertex lighting instead of a lightmap image.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L15)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-lightmap-none-const-lightmap-none-1-src-mq3-renderer-shader-runtime-ml-494735809"></a>
 ### LIGHTMAP_NONE
@@ -297,7 +297,7 @@ const LIGHTMAP_NONE = -1
 Negative lightmap selector for a shader that does not use baked lighting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L13)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-lightmap-whiteimage-const-lightmap-whiteimage-4-src-mq3-renderer-shader-runtime-ml-1753623624"></a>
 ### LIGHTMAP_WHITEIMAGE
@@ -309,7 +309,7 @@ const LIGHTMAP_WHITEIMAGE = -4
 Negative lightmap selector substituting the renderer's white image.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L19)
 
 <a id="function-function-mq3-renderer-shader-runtime-loadimage-function-loadimage-state-name-miprawimage-src-mq3-renderer-shader-runtime-ml-595709983"></a>
 ### loadImage
@@ -327,7 +327,7 @@ Returns `state.loadImageFn(state.context,name,mipRawImage)` from `mq3.renderer.s
 | `mipRawImage` | `dynamic` | — | Argument 3 supplied to `state.loadImageFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L358)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L358)
 
 <a id="function-function-mq3-renderer-shader-runtime-lower-function-lower-value-src-mq3-renderer-shader-runtime-ml-2122659127"></a>
 ### lower
@@ -343,7 +343,7 @@ Returns `strings.toLowerAscii(value)` from `mq3.renderer.shader_runtime.lower`; 
 | `value` | `dynamic` | — | Argument 1 supplied to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L141)
 
 <a id="function-function-mq3-renderer-shader-runtime-modes-function-modes-src-mq3-renderer-shader-runtime-ml-1191274866"></a>
 ### modes
@@ -355,7 +355,7 @@ function modes()
 Original static tables exposed as deterministic native contracts.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L226)
 
 <a id="function-function-mq3-renderer-shader-runtime-nametoafunc-function-nametoafunc-name-src-mq3-renderer-shader-runtime-ml-2100071219"></a>
 ### nameToAFunc
@@ -371,7 +371,7 @@ Calls `mq3.renderer.shader_parser.nameToAFunc` with `(name)` and returns its res
 | `name` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.nameToAFunc`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L181)
 
 <a id="function-function-mq3-renderer-shader-runtime-nametodstblendmode-function-nametodstblendmode-name-src-mq3-renderer-shader-runtime-ml-307525785"></a>
 ### nameToDstBlendMode
@@ -387,7 +387,7 @@ Calls `mq3.renderer.shader_parser.nameToDstBlendMode` with `(name)` and returns 
 | `name` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.nameToDstBlendMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L187)
 
 <a id="function-function-mq3-renderer-shader-runtime-nametogenfunc-function-nametogenfunc-name-src-mq3-renderer-shader-runtime-ml-1950796865"></a>
 ### nameToGenFunc
@@ -403,7 +403,7 @@ Calls `mq3.renderer.shader_parser.nameToGenFunc` with `(name)` and returns its r
 | `name` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.nameToGenFunc`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L190)
 
 <a id="function-function-mq3-renderer-shader-runtime-nametosrcblendmode-function-nametosrcblendmode-name-src-mq3-renderer-shader-runtime-ml-425446657"></a>
 ### nameToSrcBlendMode
@@ -419,7 +419,7 @@ Calls `mq3.renderer.shader_parser.nameToSrcBlendMode` with `(name)` and returns 
 | `name` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.nameToSrcBlendMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L184)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsedeform-function-parsedeform-state-src-mq3-renderer-shader-runtime-ml-671672661"></a>
 ### parseDeform
@@ -435,7 +435,7 @@ Calls `mq3.renderer.shader_parser.parseDeform` with `(state)` and returns its re
 | `state` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.parseDeform`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L206)
 
 <a id="function-function-mq3-renderer-shader-runtime-parseshader-function-parseshader-text-name-src-mq3-renderer-shader-runtime-ml-1005028498"></a>
 ### parseShader
@@ -452,7 +452,7 @@ Calls `mq3.renderer.shader_parser.parseText` with `(text,name)` and returns its 
 | `name` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.shader_parser.parseText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L223)
 
 <a id="function-function-mq3-renderer-shader-runtime-parseskyparms-function-parseskyparms-outerbox-cloudheight-innerbox-src-mq3-renderer-shader-runtime-ml-170868057"></a>
 ### parseSkyParms
@@ -470,7 +470,7 @@ Constructs `mq3.renderer.shader_runtime.SkyParms` from `outerBox`, `cloudHeight`
 | `innerBox` | `dynamic` | — | Initial value for `mq3.renderer.shader_runtime.SkyParms.innerBox`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L211)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsesort-function-parsesort-shader-value-src-mq3-renderer-shader-runtime-ml-758167748"></a>
 ### parseSort
@@ -487,7 +487,7 @@ Updates `shader.sort` in `mq3.renderer.shader_runtime.parseSort`; returns `shade
 | `value` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.sortValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L215)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsestage-function-parsestage-state-src-mq3-renderer-shader-runtime-ml-179937941"></a>
 ### parseStage
@@ -503,7 +503,7 @@ Calls `mq3.renderer.shader_parser.parseStage` with `(state)` and returns its res
 | `state` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.parseStage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L203)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsesurfaceparm-function-parsesurfaceparm-shader-value-src-mq3-renderer-shader-runtime-ml-68614146"></a>
 ### parseSurfaceParm
@@ -520,7 +520,7 @@ Updates `shader.surfaceParms` in `mq3.renderer.shader_runtime.parseSurfaceParm`;
 | `value` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.shader_runtime.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L219)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsetexmod-function-parsetexmod-tokens-src-mq3-renderer-shader-runtime-ml-1620050320"></a>
 ### parseTexMod
@@ -536,7 +536,7 @@ Calls `mq3.renderer.shader_parser.parseTexMod` with `(tokens)` and returns its r
 | `tokens` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.parseTexMod`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L200)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsevector-function-parsevector-state-count-src-mq3-renderer-shader-runtime-ml-907546982"></a>
 ### parseVector
@@ -553,7 +553,7 @@ Calls `mq3.renderer.shader_parser.parseVector` with `(state,count)` and returns 
 | `count` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.shader_parser.parseVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L194)
 
 <a id="function-function-mq3-renderer-shader-runtime-parsewaveform-function-parsewaveform-state-src-mq3-renderer-shader-runtime-ml-462639601"></a>
 ### parseWaveForm
@@ -569,7 +569,7 @@ Calls `mq3.renderer.shader_parser.parseWave` with `(state)` and returns its resu
 | `state` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.parseWave`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L197)
 
 - [mq3.renderer.shader_runtime.PermanentShader](Type-mq3-renderer-shader-runtime-permanentshader-1958080594.md) — struct
 <a id="function-function-mq3-renderer-shader-runtime-r-findshader-function-r-findshader-state-name-lightmapindex-miprawimage-src-mq3-renderer-shader-runtime-ml-1122039445"></a>
@@ -589,7 +589,7 @@ Builds `record.defaultShader` in `mq3.renderer.shader_runtime.r_FindShader`; ret
 | `mipRawImage` | `dynamic` | — | Value forwarded as `mipRawImage` to `mq3.renderer.shader_runtime.finishShader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L376)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L376)
 
 <a id="function-function-mq3-renderer-shader-runtime-r-findshaderbyname-function-r-findshaderbyname-state-name-src-mq3-renderer-shader-runtime-ml-1637148206"></a>
 ### r_FindShaderByName
@@ -606,7 +606,7 @@ Returns `void` from `mq3.renderer.shader_runtime.r_FindShaderByName`; earlier br
 | `name` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.shader_runtime.sameName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L391)
 
 <a id="function-function-mq3-renderer-shader-runtime-r-initshaders-function-r-initshaders-state-sources-defaultimage-src-mq3-renderer-shader-runtime-ml-766697883"></a>
 ### r_InitShaders
@@ -624,7 +624,7 @@ Updates `state.initialized` in `mq3.renderer.shader_runtime.r_InitShaders`; retu
 | `defaultImage` | `dynamic` | — | Value forwarded as `defaultImage` to `mq3.renderer.shader_runtime.createInternalShaders`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L448)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L448)
 
 <a id="function-function-mq3-renderer-shader-runtime-r-remapshader-function-r-remapshader-state-oldname-newname-timeoffset-src-mq3-renderer-shader-runtime-ml-1872593126"></a>
 ### r_RemapShader
@@ -643,7 +643,7 @@ Builds `record.remappedName`, `record.timeOffset` in `mq3.renderer.shader_runtim
 | `timeOffset` | `dynamic` | — | Value assigned to `record.timeOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L413)
 
 <a id="function-function-mq3-renderer-shader-runtime-r-shaderlist-f-function-r-shaderlist-f-state-sorted-src-mq3-renderer-shader-runtime-ml-1310205376"></a>
 ### r_ShaderList_f
@@ -660,7 +660,7 @@ Formats registered shaders with lightmap, multitexture, explicit-definition, ite
 | `sorted` | `dynamic` | — | Input tested by `sorted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L420)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L420)
 
 <a id="function-function-mq3-renderer-shader-runtime-re-registershaderfromimage-function-re-registershaderfromimage-state-name-lightmapindex-image-miprawimage-src-mq3-renderer-shader-runtime-ml-1452815120"></a>
 ### re_RegisterShaderFromImage
@@ -680,7 +680,7 @@ Builds `record.defaultShader` in `mq3.renderer.shader_runtime.re_RegisterShaderF
 | `mipRawImage` | `dynamic` | — | Value forwarded as `mipRawImage` to `mq3.renderer.shader_runtime.finishShader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L400)
 
 <a id="function-function-mq3-renderer-shader-runtime-re-registershadernomip-function-re-registershadernomip-state-name-src-mq3-renderer-shader-runtime-ml-1776083258"></a>
 ### re_RegisterShaderNoMip
@@ -697,7 +697,7 @@ Returns `record.handle` from `mq3.renderer.shader_runtime.re_RegisterShaderNoMip
 | `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.shader_runtime.r_FindShader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L406)
 
 <a id="function-function-mq3-renderer-shader-runtime-samename-function-samename-a-b-src-mq3-renderer-shader-runtime-ml-555744137"></a>
 ### sameName
@@ -714,7 +714,7 @@ Calls `stringEqualsIgnoreCaseAscii` with `(stripExtension(a),stripExtension(b))`
 | `b` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.shader_runtime.stripExtension`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L145)
 
 <a id="function-function-mq3-renderer-shader-runtime-scanandloadshaderfiles-function-scanandloadshaderfiles-state-sources-src-mq3-renderer-shader-runtime-ml-1901993287"></a>
 ### scanAndLoadShaderFiles
@@ -731,7 +731,7 @@ Updates `state.text`, `state.index` in `mq3.renderer.shader_runtime.scanAndLoadS
 | `sources` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L428)
 
 - [mq3.renderer.shader_runtime.ShaderSource](Type-mq3-renderer-shader-runtime-shadersource-898785343.md) — struct
 - [mq3.renderer.shader_runtime.SkyParms](Type-mq3-renderer-shader-runtime-skyparms-1273089407.md) — struct
@@ -750,7 +750,7 @@ Updates `state.sorted`, `state.sorted[position].sortedIndex` in `mq3.renderer.sh
 | `record` | `dynamic` | — | Record providing `record.shader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L335)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-blend0-const-ss-blend0-9-src-mq3-renderer-shader-runtime-ml-1466936588"></a>
 ### SS_BLEND0
@@ -762,7 +762,7 @@ const SS_BLEND0 = 9
 Shader sort order for the first general blended-surface category.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L31)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-decal-const-ss-decal-4-src-mq3-renderer-shader-runtime-ml-28407443"></a>
 ### SS_DECAL
@@ -774,7 +774,7 @@ const SS_DECAL = 4
 Shader sort order for decals placed over opaque geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L27)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-environment-const-ss-environment-2-src-mq3-renderer-shader-runtime-ml-700699353"></a>
 ### SS_ENVIRONMENT
@@ -786,7 +786,7 @@ const SS_ENVIRONMENT = 2
 Shader sort order reserved for environment and sky surfaces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L23)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-fog-const-ss-fog-7-src-mq3-renderer-shader-runtime-ml-1115761410"></a>
 ### SS_FOG
@@ -798,7 +798,7 @@ const SS_FOG = 7
 Shader sort order reserved for fog surfaces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L33)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-opaque-const-ss-opaque-3-src-mq3-renderer-shader-runtime-ml-2141143086"></a>
 ### SS_OPAQUE
@@ -810,7 +810,7 @@ const SS_OPAQUE = 3
 Shader sort order for opaque surfaces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L25)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-portal-const-ss-portal-1-src-mq3-renderer-shader-runtime-ml-629210272"></a>
 ### SS_PORTAL
@@ -822,7 +822,7 @@ const SS_PORTAL = 1
 Shader sort order reserved for portal surfaces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L21)
 
 <a id="constant-constant-mq3-renderer-shader-runtime-ss-see-through-const-ss-see-through-5-src-mq3-renderer-shader-runtime-ml-550736762"></a>
 ### SS_SEE_THROUGH
@@ -834,7 +834,7 @@ const SS_SEE_THROUGH = 5
 Shader sort order for surfaces with cutout transparency.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L29)
 
 <a id="function-function-mq3-renderer-shader-runtime-stageblend-function-stageblend-stage-src-mq3-renderer-shader-runtime-ml-919125130"></a>
 ### stageBlend
@@ -850,7 +850,7 @@ Computes `stage.blendSrc|stage.blendDst` for `mq3.renderer.shader_runtime.stageB
 | `stage` | `dynamic` | — | Record providing `stage.blendSrc`, `stage.blendDst`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L239)
 
 <a id="function-function-mq3-renderer-shader-runtime-stagerank-function-stagerank-stage-src-mq3-renderer-shader-runtime-ml-944313774"></a>
 ### stageRank
@@ -866,7 +866,7 @@ Scores lightmaps and nontrivial coordinate/color generation with negative weight
 | `stage` | `dynamic` | — | Record providing `stage.isLightmap`, `stage.tcGen`, `stage.texMods`, `stage.rgbGen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L269)
 
 - [mq3.renderer.shader_runtime.State](Type-mq3-renderer-shader-runtime-state-1190495544.md) — struct
 <a id="function-function-mq3-renderer-shader-runtime-stripextension-function-stripextension-name-src-mq3-renderer-shader-runtime-ml-1497590505"></a>
@@ -883,7 +883,7 @@ Computes `stripExtension` from `decode(slice(data,0,last))`.
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L148)
 
 <a id="function-function-mq3-renderer-shader-runtime-valid-function-valid-shader-src-mq3-renderer-shader-runtime-ml-215419631"></a>
 ### valid
@@ -899,7 +899,7 @@ Computes `shader!=void and shader.name!="" and (len(shader.stages)>0 or has(shad
 | `shader` | `dynamic` | — | Record providing `shader.name`, `shader.stages`, `shader.surfaceParms`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L235)
 
 <a id="function-function-mq3-renderer-shader-runtime-vertexlightingcollapse-function-vertexlightingcollapse-shader-lightmapindex-src-mq3-renderer-shader-runtime-ml-183698253"></a>
 ### vertexLightingCollapse
@@ -916,7 +916,7 @@ Updates `shader.stages` in `mq3.renderer.shader_runtime.vertexLightingCollapse`;
 | `lightmapIndex` | `dynamic` | — | Input tested by `lightmapIndex==LIGHTMAP_NONE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L276)
 
 <a id="function-function-mq3-renderer-shader-runtime-waveequal-function-waveequal-a-b-src-mq3-renderer-shader-runtime-ml-1118333711"></a>
 ### waveEqual
@@ -933,4 +933,4 @@ Computes `a.func==b.func and a.base==b.base and a.amplitude==b.amplitude and a.p
 | `b` | `dynamic` | — | Record providing `b.func`, `b.base`, `b.amplitude`, `b.phase`, `b.frequency`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L160)

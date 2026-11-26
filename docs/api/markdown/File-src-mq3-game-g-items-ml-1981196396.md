@@ -29,7 +29,7 @@ Forward `Add_Ammo` to `mq3.game.items.addAmmo` and return the delegated result.
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L28)
 
 <a id="function-function-mq3-game-g-items-clearregistereditems-function-clearregistereditems-level-src-mq3-game-g-items-ml-522654400"></a>
 ### ClearRegisteredItems
@@ -45,7 +45,7 @@ Forward `ClearRegisteredItems` to `mq3.game.items.clearRegistered` and return th
 | `level` | `dynamic` | — | Game-level state; accesses `itemRegistered` and `spawner`. May update `level.itemRegistered[index]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L86)
 
 <a id="function-function-mq3-game-g-items-drop-item-function-drop-item-level-ent-item-angle-src-mq3-game-g-items-ml-1932210125"></a>
 ### Drop_Item
@@ -64,7 +64,7 @@ Forward `Drop_Item` to `mq3.game.items.drop` and return the delegated result.
 | `angle` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L70)
 
 <a id="function-function-mq3-game-g-items-finishspawningitem-function-finishspawningitem-level-ent-src-mq3-game-g-items-ml-1644135103"></a>
 ### FinishSpawningItem
@@ -81,7 +81,7 @@ Forward `FinishSpawningItem` to `mq3.game.items.finishSpawning` and return the d
 | `ent` | `dynamic` | — | Game entity; accesses `item`, `r`, `s`, `touch` and `use` and related fields. May update `ent.r.mins`, `ent.r.maxs` and `ent.s.eType` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L80)
 
 <a id="function-function-mq3-game-g-items-g-bounceitem-function-g-bounceitem-level-ent-trace-src-mq3-game-g-items-ml-696021642"></a>
 ### G_BounceItem
@@ -99,7 +99,7 @@ Forward `G_BounceItem` to `mq3.game.items.bounce` and return the delegated resul
 | `trace` | `dynamic` | — | Hit record; accesses `trace`, `endpos` and `entityNum`. May update `trace.endpos[2]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L111)
 
 <a id="function-function-mq3-game-g-items-g-checkteamitems-function-g-checkteamitems-level-src-mq3-game-g-items-ml-970250560"></a>
 ### G_CheckTeamItems
@@ -115,7 +115,7 @@ Forward `G_CheckTeamItems` to `mq3.game.items.checkTeamItems` and return the del
 | `level` | `dynamic` | — | Game-level state; accesses `spawner` and `itemRegistered`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L83)
 
 <a id="function-function-mq3-game-g-items-g-itemdisabled-function-g-itemdisabled-level-item-src-mq3-game-g-items-ml-1970085373"></a>
 ### G_ItemDisabled
@@ -132,7 +132,7 @@ Apply `mq3.game.items.modeItemName` and `mq3.qcommon.cvar.find` while evaluating
 | `item` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L97)
 
 <a id="function-function-mq3-game-g-items-g-runitem-function-g-runitem-level-ent-src-mq3-game-g-items-ml-2030139043"></a>
 ### G_RunItem
@@ -149,7 +149,7 @@ Forward `G_RunItem` to `mq3.game.items.run` and return the delegated result.
 | `ent` | `dynamic` | — | Game entity; accesses `item`, `physicsObject`, `s`, `clipmask` and `r`. May update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L115)
 
 <a id="function-function-mq3-game-g-items-g-spawnitem-function-g-spawnitem-level-ent-item-src-mq3-game-g-items-ml-24738774"></a>
 ### G_SpawnItem
@@ -167,7 +167,7 @@ Forward `G_SpawnItem` to `mq3.game.items.spawnItem` and return the delegated res
 | `item` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L106)
 
 <a id="function-function-mq3-game-g-items-launchitem-function-launchitem-level-item-origin-velocity-src-mq3-game-g-items-ml-760832178"></a>
 ### LaunchItem
@@ -186,7 +186,7 @@ Forward `LaunchItem` to `mq3.game.items.launch` and return the delegated result.
 | `velocity` | `dynamic` | — | Three-component movement velocity. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L64)
 
 <a id="function-function-mq3-game-g-items-pickup-ammo-function-pickup-ammo-level-ent-other-src-mq3-game-g-items-ml-1757469549"></a>
 ### Pickup_Ammo
@@ -204,7 +204,7 @@ Forward `Pickup_Ammo` to `mq3.game.items.pickupAmmo` and return the delegated re
 | `other` | `dynamic` | — | Game entity; accesses `client`. May update `other.client.ps.ammo[weapon]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L33)
 
 <a id="function-function-mq3-game-g-items-pickup-armor-function-pickup-armor-level-ent-other-src-mq3-game-g-items-ml-371918767"></a>
 ### Pickup_Armor
@@ -222,7 +222,7 @@ Forward `Pickup_Armor` to `mq3.game.items.pickupArmor` and return the delegated 
 | `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_ARMOR]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L48)
 
 <a id="function-function-mq3-game-g-items-pickup-health-function-pickup-health-level-ent-other-src-mq3-game-g-items-ml-59895297"></a>
 ### Pickup_Health
@@ -240,7 +240,7 @@ Forward `Pickup_Health` to `mq3.game.items.pickupHealth` and return the delegate
 | `other` | `dynamic` | — | Other record; accesses `client` and `health`. May update `other.health` and `other.client.ps.stats[c.STAT_HEALTH]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L43)
 
 <a id="function-function-mq3-game-g-items-pickup-holdable-function-pickup-holdable-level-ent-other-src-mq3-game-g-items-ml-865316815"></a>
 ### Pickup_Holdable
@@ -258,7 +258,7 @@ Forward `Pickup_Holdable` to `mq3.game.items.pickupHoldable` and return the dele
 | `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_HOLDABLE_ITEM]` and `other.client.ps.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L23)
 
 <a id="function-function-mq3-game-g-items-pickup-persistantpowerup-function-pickup-persistantpowerup-level-ent-other-src-mq3-game-g-items-ml-719023159"></a>
 ### Pickup_PersistantPowerup
@@ -276,7 +276,7 @@ Forward `Pickup_PersistantPowerup` to `mq3.game.items.pickupPersistantPowerup` a
 | `other` | `dynamic` | — | Other record; accesses `client` and `health`. May update `other.client.ps.stats[7]`, `other.client.persistantPowerup` and `other.health` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L18)
 
 <a id="function-function-mq3-game-g-items-pickup-powerup-function-pickup-powerup-level-ent-other-src-mq3-game-g-items-ml-1297142171"></a>
 ### Pickup_Powerup
@@ -294,7 +294,7 @@ Forward `Pickup_Powerup` to `mq3.game.items.pickupPowerup` and return the delega
 | `other` | `dynamic` | — | Other record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L13)
 
 <a id="function-function-mq3-game-g-items-pickup-weapon-function-pickup-weapon-level-ent-other-src-mq3-game-g-items-ml-1476403081"></a>
 ### Pickup_Weapon
@@ -312,7 +312,7 @@ Forward `Pickup_Weapon` to `mq3.game.items.pickupWeapon` and return the delegate
 | `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_WEAPONS]` and `other.client.ps.ammo[tag]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L38)
 
 <a id="function-function-mq3-game-g-items-registeritem-function-registeritem-level-item-src-mq3-game-g-items-ml-265063149"></a>
 ### RegisterItem
@@ -329,7 +329,7 @@ Forward `RegisterItem` to `mq3.game.items.register` and return the delegated res
 | `item` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L90)
 
 <a id="function-function-mq3-game-g-items-respawnitem-function-respawnitem-level-ent-src-mq3-game-g-items-ml-975885433"></a>
 ### RespawnItem
@@ -346,7 +346,7 @@ Forward `RespawnItem` to `mq3.game.items.respawn` and return the delegated resul
 | `ent` | `dynamic` | — | Game entity; accesses `item`, `team`, `teammaster`, `r` and `s` and related fields. May update `ent.r.contents`, `ent.s.eFlags` and `ent.r.svFlags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L52)
 
 <a id="function-function-mq3-game-g-items-saveregistereditems-function-saveregistereditems-level-src-mq3-game-g-items-ml-55510706"></a>
 ### SaveRegisteredItems
@@ -362,7 +362,7 @@ Forward `SaveRegisteredItems` to `mq3.game.items.saveRegistered` and return the 
 | `level` | `dynamic` | — | Game-level state; accesses `itemRegistered` and `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L93)
 
 <a id="function-function-mq3-game-g-items-touch-item-function-touch-item-level-ent-other-trace-src-mq3-game-g-items-ml-730417230"></a>
 ### Touch_Item
@@ -381,7 +381,7 @@ Forward `Touch_Item` to `mq3.game.items.touch` and return the delegated result.
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.items.touch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L58)
 
 <a id="function-function-mq3-game-g-items-use-item-function-use-item-level-ent-other-activator-src-mq3-game-g-items-ml-958662900"></a>
 ### Use_Item
@@ -400,4 +400,4 @@ Forward `Use_Item` to `mq3.game.items.use` and return the delegated result.
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L76)

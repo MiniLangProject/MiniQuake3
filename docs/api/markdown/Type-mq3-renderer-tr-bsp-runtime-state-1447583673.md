@@ -12,7 +12,7 @@ struct State
 Data record for `mq3.renderer.tr_bsp_runtime.State`; groups `worldMapLoaded`, `externalVisData`, `world`, `sunDirection`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L188)
 
 ## Members
 
@@ -26,7 +26,7 @@ externalVisData
 Visibility data shared with the renderer by another subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L192)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-sundirection-sundirection-src-mq3-renderer-tr-bsp-runtime-ml-366881884"></a>
 ### sunDirection
@@ -38,7 +38,7 @@ sunDirection
 Direction used for the shader-defined sunlight contribution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L196)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-world-world-src-mq3-renderer-tr-bsp-runtime-ml-1578605082"></a>
 ### world
@@ -50,7 +50,7 @@ world
 Loaded world geometry and associated scene state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L194)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-worldmaploaded-worldmaploaded-src-mq3-renderer-tr-bsp-runtime-ml-858755264"></a>
 ### worldMapLoaded
@@ -62,4 +62,4 @@ worldMapLoaded
 Whether the renderer has finished loading a world map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L190)

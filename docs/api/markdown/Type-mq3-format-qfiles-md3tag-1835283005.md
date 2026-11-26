@@ -12,7 +12,7 @@ struct Md3Tag
 Md3Tag record for format.qfiles, containing `name`, `origin`, `axis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L250)
 
 ## Members
 
@@ -26,7 +26,7 @@ axis
 Three orientation axes defining the local coordinate frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L256)
 
 <a id="field-field-mq3-format-qfiles-md3tag-name-name-src-mq3-format-qfiles-ml-244220391"></a>
 ### name
@@ -38,7 +38,7 @@ name
 Attachment-tag name used to connect model parts.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L252)
 
 <a id="field-field-mq3-format-qfiles-md3tag-origin-origin-src-mq3-format-qfiles-ml-517410469"></a>
 ### origin
@@ -50,4 +50,4 @@ origin
 Model-space position of this attachment tag.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L254)

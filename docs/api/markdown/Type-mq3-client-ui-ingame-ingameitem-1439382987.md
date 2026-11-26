@@ -12,7 +12,7 @@ struct InGameItem
 Stores UI ingame in game item record, including `id`, `label`, `y`, `grayed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L41)
 
 ## Members
 
@@ -26,7 +26,7 @@ grayed
 When constructing this record, `init` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L49)
 
 <a id="field-field-mq3-client-ui-ingame-ingameitem-id-id-src-mq3-client-ui-ingame-ml-1575840321"></a>
 ### id
@@ -38,7 +38,7 @@ id
 Event-routing identifier of this selectable control in the in-game pause menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L43)
 
 <a id="field-field-mq3-client-ui-ingame-ingameitem-label-label-src-mq3-client-ui-ingame-ml-1000823419"></a>
 ### label
@@ -50,7 +50,7 @@ label
 Human-readable caption painted beside or inside the UI control.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L45)
 
 <a id="field-field-mq3-client-ui-ingame-ingameitem-y-y-src-mq3-client-ui-ingame-ml-356918511"></a>
 ### y
@@ -62,4 +62,4 @@ y
 Vertical position of this menu control in the virtual layout used by the in-game pause menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L47)

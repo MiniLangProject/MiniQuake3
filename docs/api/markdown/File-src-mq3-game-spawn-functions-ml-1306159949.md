@@ -30,7 +30,7 @@ Reachable from entry: **no**
 - `mq3/server/world.ml` as `sv` → [src/mq3/server/world.ml](File-src-mq3-server-world-ml-118313937.md)
 - `mq3/shared/directions.ml` as `dirs` → [src/mq3/shared/directions.ml](File-src-mq3-shared-directions-ml-575237557.md)
 - `mq3/shared/math.ml` as `q` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -49,7 +49,7 @@ Update `ent.s.origin2` and `ent.s.origin2[2]` during `aimAtTarget`.
 | `ent` | `dynamic` | — | Game entity; accesses `r`, `target` and `s`. May update `ent.s.origin2` and `ent.s.origin2[2]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L64)
 
 <a id="function-function-mq3-game-spawn-functions-dispatch-function-dispatch-level-ent-src-mq3-game-spawn-functions-ml-1143669247"></a>
 ### dispatch
@@ -66,7 +66,7 @@ Set `ent.classname` to `"info_player_deathmatch"` in `mq3.game.spawn_functions.d
 | `ent` | `dynamic` | — | Game entity; accesses `classname`. May update `ent.classname` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L136)
 
 <a id="function-function-mq3-game-spawn-functions-initshooter-function-initshooter-level-ent-weapon-src-mq3-game-spawn-functions-ml-2115834003"></a>
 ### initShooter
@@ -84,7 +84,7 @@ Update `ent.use`, `ent.s.weapon`, `ent.random` and `ent.think` and related state
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L125)
 
 <a id="function-function-mq3-game-spawn-functions-inittrigger-function-inittrigger-level-ent-src-mq3-game-spawn-functions-ml-1021733195"></a>
 ### initTrigger
@@ -101,7 +101,7 @@ Set `ent.r.contents` to `0x40000000` and `ent.r.svFlags` to `1` in `mq3.game.spa
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `model` and `r`. May update `ent.r.contents` and `ent.r.svFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L56)
 
 <a id="function-function-mq3-game-spawn-functions-laserstart-function-laserstart-level-self-src-mq3-game-spawn-functions-ml-250016416"></a>
 ### laserStart
@@ -118,7 +118,7 @@ Update `self.s.eType`, `self.enemy`, `self.use` and `self.think` and related sta
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`, `target`, `classname`, `enemy` and `use` and related fields. May update `self.s.eType`, `self.enemy` and `self.use` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L99)
 
 <a id="function-function-mq3-game-spawn-functions-movedirvector-function-movedirvector-angles-src-mq3-game-spawn-functions-ml-2133028172"></a>
 ### movedirVector
@@ -134,7 +134,7 @@ Forward `movedirVector` to `mq3.shared.directions.movedirVector` and return the 
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L30)
 
 <a id="function-function-mq3-game-spawn-functions-playerdeathmatch-function-playerdeathmatch-level-ent-src-mq3-game-spawn-functions-ml-119639895"></a>
 ### playerDeathmatch
@@ -151,7 +151,7 @@ Set `ent.flags` to `ent.flags | 0x2000` and `ent.flags` to `ent.flags | 0x4000` 
 | `ent` | `dynamic` | — | Game entity; accesses `flags`. May update `ent.flags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L91)
 
 <a id="function-function-mq3-game-spawn-functions-runthink-function-runthink-level-ent-src-mq3-game-spawn-functions-ml-1003343583"></a>
 ### runThink
@@ -168,7 +168,7 @@ Forward `runThink` to `mq3.game.entities.runThink` and return the delegated resu
 | `ent` | `dynamic` | — | Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L85)
 
 <a id="function-function-mq3-game-spawn-functions-setbrushmodel-function-setbrushmodel-level-ent-name-src-mq3-game-spawn-functions-ml-627634548"></a>
 ### setBrushModel
@@ -186,7 +186,7 @@ Update `ent.s.modelindex`, `ent.r.mins`, `ent.r.maxs` and `ent.r.bmodel` and rel
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L44)
 
 <a id="function-function-mq3-game-spawn-functions-setmovedir-function-setmovedir-ent-src-mq3-game-spawn-functions-ml-779790167"></a>
 ### setMovedir
@@ -202,4 +202,4 @@ Set `ent.movedir` to `movedirVector(ent.s.angles)` and `ent.s.angles` to `[0.0,0
 | `ent` | `dynamic` | — | Game entity; accesses `movedir` and `s`. May update `ent.movedir` and `ent.s.angles` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L35)

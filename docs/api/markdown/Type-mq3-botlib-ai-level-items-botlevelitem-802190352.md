@@ -12,7 +12,7 @@ struct BotLevelItem
 `BotLevelItem` record for ai level items, containing `number`, `itemInfo`, `flags`, `weight` and `origin` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L38)
 
 ## Members
 
@@ -26,7 +26,7 @@ entityNum
 Number of the game entity associated with this result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L54)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-flags-flags-src-mq3-botlib-ai-level-items-ml-1674656143"></a>
 ### flags
@@ -38,7 +38,7 @@ flags
 Item restrictions and roam-goal properties combined from IFL flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L44)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-goalareanum-goalareanum-src-mq3-botlib-ai-level-items-ml-1323968279"></a>
 ### goalAreaNum
@@ -50,7 +50,7 @@ goalAreaNum
 AAS area containing the destination of this route or goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L50)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-goalorigin-goalorigin-src-mq3-botlib-ai-level-items-ml-1009353353"></a>
 ### goalOrigin
@@ -62,7 +62,7 @@ goalOrigin
 Goal origin within the area.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L52)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-iteminfo-iteminfo-src-mq3-botlib-ai-level-items-ml-562194209"></a>
 ### itemInfo
@@ -74,7 +74,7 @@ itemInfo
 Item-configuration index associated with this bot goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-number-number-src-mq3-botlib-ai-level-items-ml-1090180813"></a>
 ### number
@@ -86,7 +86,7 @@ number
 Unique level-item goal identifier used by bot goal queries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-origin-origin-src-mq3-botlib-ai-level-items-ml-1703051031"></a>
 ### origin
@@ -98,7 +98,7 @@ origin
 World-space position of the tracked level item or roam entity.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L48)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-timeout-timeout-src-mq3-botlib-ai-level-items-ml-1141266571"></a>
 ### timeout
@@ -110,7 +110,7 @@ timeout
 Item is removed after this time.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L56)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-weight-weight-src-mq3-botlib-ai-level-items-ml-1090971755"></a>
 ### weight
@@ -122,4 +122,4 @@ weight
 Configured preference multiplier for a bot roam goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L46)

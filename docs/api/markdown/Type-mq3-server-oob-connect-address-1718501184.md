@@ -12,7 +12,7 @@ struct Address
 Address record for server.oob_connect, containing `type`, `ip`, `port`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L23)
 
 ## Members
 
@@ -26,7 +26,7 @@ ip
 Address bytes identifying the remote IPv4 endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-address-port-port-src-mq3-server-oob-connect-ml-1124760219"></a>
 ### port
@@ -38,7 +38,7 @@ port
 Network port associated with the endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L29)
 
 <a id="field-field-mq3-server-oob-connect-address-type-type-src-mq3-server-oob-connect-ml-2107907021"></a>
 ### type
@@ -50,4 +50,4 @@ type
 Network-address kind used when validating the connection source.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)

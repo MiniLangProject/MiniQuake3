@@ -12,7 +12,7 @@ struct State
 Stores playable weapon barrel state, including `angle`, `time`, `spinning`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_weapon_barrel.ml#L25)
 
 ## Members
 
@@ -26,7 +26,7 @@ angle
 When constructing this record, `state` supplies `0.0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_weapon_barrel.ml#L27)
 
 <a id="field-field-mq3-client-playable-weapon-barrel-state-spinning-spinning-src-mq3-client-playable-weapon-barrel-ml-411614458"></a>
 ### spinning
@@ -38,7 +38,7 @@ spinning
 When constructing this record, `state` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_weapon_barrel.ml#L32)
 
 <a id="field-field-mq3-client-playable-weapon-barrel-state-time-time-src-mq3-client-playable-weapon-barrel-ml-1726498964"></a>
 ### time
@@ -50,4 +50,4 @@ time
 Timestamp in milliseconds of the last transition between spinning and coasting, anchoring the stored barrel angle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_weapon_barrel.ml#L30)

@@ -20,3 +20,4 @@
 - [`mq3.client.gamestate.SVC_BASELINE`](File-src-mq3-client-gamestate-ml-1690167636.md#constant-constant-mq3-client-gamestate-svc-baseline-const-svc-baseline-4-src-mq3-client-gamestate-ml-1221981739) — constant
 - [`mq3.client.gamestate.SVC_CONFIGSTRING`](File-src-mq3-client-gamestate-ml-1690167636.md#constant-constant-mq3-client-gamestate-svc-configstring-const-svc-configstring-3-src-mq3-client-gamestate-ml-230624466) — constant
 - [`mq3.client.gamestate.SVC_EOF`](File-src-mq3-client-gamestate-ml-1690167636.md#constant-constant-mq3-client-gamestate-svc-eof-const-svc-eof-8-src-mq3-client-gamestate-ml-1342501085) — constant
+- [`mq3.client.gamestate.updateConfigString`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-updateconfigstring-function-updateconfigstring-state-index-value-src-mq3-client-gamestate-ml-342217550) — function

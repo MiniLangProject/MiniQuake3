@@ -22,7 +22,7 @@ function backCounters()
 Constructs `mq3.renderer.tr_cmds_runtime.BackCounters` with `shaders` = `0`, `surfaces` = `0`, `vertexes` = `0`, `indexes` = `0` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L180)
 
 - [mq3.renderer.tr_cmds_runtime.BackCounters](Type-mq3-renderer-tr-cmds-runtime-backcounters-878105578.md) — struct
 <a id="function-function-mq3-renderer-tr-cmds-runtime-clearcounters-function-clearcounters-state-src-mq3-renderer-tr-cmds-runtime-ml-1519482705"></a>
@@ -39,7 +39,7 @@ Updates `state.front`, `state.back` in `mq3.renderer.tr_cmds_runtime.clearCounte
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.front`, `state.back`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L208)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-configureoverdraw-function-configureoverdraw-state-src-mq3-renderer-tr-cmds-runtime-ml-2099892329"></a>
 ### configureOverdraw
@@ -55,7 +55,7 @@ Builds `c.measureOverdraw`, `c.measureOverdrawModified` in `mq3.renderer.tr_cmds
 | `state` | `dynamic` | — | Record providing `state.settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L314)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-create-function-create-queue-backendstate-configuration-host-src-mq3-renderer-tr-cmds-runtime-ml-1016866612"></a>
 ### create
@@ -74,7 +74,7 @@ Builds `mq3.renderer.tr_cmds_runtime.State` using `mq3.renderer.command_queue.cr
 | `host` | `dynamic` | — | Initial value for `mq3.renderer.tr_cmds_runtime.State.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L190)
 
 <a id="constant-constant-mq3-renderer-tr-cmds-runtime-draw-surfs-bytes-const-draw-surfs-bytes-32-src-mq3-renderer-tr-cmds-runtime-ml-45844450"></a>
 ### DRAW_SURFS_BYTES
@@ -86,7 +86,7 @@ const DRAW_SURFS_BYTES = 32
 Serialized byte size of the draw-surface submission command record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L17)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-emit-function-emit-state-kind-value-src-mq3-renderer-tr-cmds-runtime-ml-1356997922"></a>
 ### emit
@@ -104,7 +104,7 @@ Forwards a renderer-command event through the configured event service callback.
 | `value` | `dynamic` | — | Argument 3 supplied to `state.services.eventFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L204)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-executebatch-function-executebatch-state-src-mq3-renderer-tr-cmds-runtime-ml-1183747961"></a>
 ### executeBatch
@@ -120,7 +120,7 @@ Returns `commands.execute(state.backend,state.queue)` from `mq3.renderer.tr_cmds
 | `state` | `dynamic` | — | Record providing `state.services`, `state.queue`, `state.backend`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L247)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-fail-function-fail-message-src-mq3-renderer-tr-cmds-runtime-ml-420679059"></a>
 ### fail
@@ -136,7 +136,7 @@ Creates error `7740` with message `"tr_cmds: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7740,"tr_cmds: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L199)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-frontcounters-function-frontcounters-src-mq3-renderer-tr-cmds-runtime-ml-890505214"></a>
 ### frontCounters
@@ -148,7 +148,7 @@ function frontCounters()
 Constructs `mq3.renderer.tr_cmds_runtime.FrontCounters` with `leafs` = `0`, `spherePatchIn` = `0`, `spherePatchClip` = `0`, `spherePatchOut` = `0` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L178)
 
 - [mq3.renderer.tr_cmds_runtime.FrontCounters](Type-mq3-renderer-tr-cmds-runtime-frontcounters-977270382.md) — struct
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-adddrawsurfcmd-function-r-adddrawsurfcmd-state-drawsurfs-numdrawsurfs-refdef-viewparms-src-mq3-renderer-tr-cmds-runtime-ml-1017614705"></a>
@@ -169,7 +169,7 @@ Returns `commands.app` from `mq3.renderer.tr_cmds_runtime.R_AddDrawSurfCmd`; ear
 | `viewParms` | `dynamic` | — | Input used in the result expression `commands.append(state.queue,commands.RC_DRAW_SURFS,DRAW_SURFS_BYTES,[drawSurfs,numDrawSurfs,refdef,viewParms],void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L291)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-getcommandbuffer-function-r-getcommandbuffer-state-bytes-src-mq3-renderer-tr-cmds-runtime-ml-566043910"></a>
 ### R_GetCommandBuffer
@@ -186,7 +186,7 @@ Returns `commands.allocate(state.queue,bytes)` from `mq3.renderer.tr_cmds_runtim
 | `bytes` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.command_queue.allocate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L284)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-initcommandbuffers-function-r-initcommandbuffers-state-src-mq3-renderer-tr-cmds-runtime-ml-159808589"></a>
 ### R_InitCommandBuffers
@@ -202,7 +202,7 @@ Updates `state.smpActive` in `mq3.renderer.tr_cmds_runtime.R_InitCommandBuffers`
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.smpActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L227)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-issuerendercommands-function-r-issuerendercommands-state-runperformancecounters-src-mq3-renderer-tr-cmds-runtime-ml-586684389"></a>
 ### R_IssueRenderCommands
@@ -219,7 +219,7 @@ Updates `state.blockedOnRender`, `state.blockedOnMain`, `state.renderThreadActiv
 | `runPerformanceCounters` | `dynamic` | — | Input tested by `runPerformanceCounters`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L254)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-performancecounters-function-r-performancecounters-state-src-mq3-renderer-tr-cmds-runtime-ml-1502401213"></a>
 ### R_PerformanceCounters
@@ -235,7 +235,7 @@ Formats the selected renderer performance-counter category and sends it through 
 | `state` | `dynamic` | — | Record providing `state.settings`, `state.back`, `state.front`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L211)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-shutdowncommandbuffers-function-r-shutdowncommandbuffers-state-src-mq3-renderer-tr-cmds-runtime-ml-1695518441"></a>
 ### R_ShutdownCommandBuffers
@@ -251,7 +251,7 @@ Updates `state.smpActive`, `state.renderThreadActive` in `mq3.renderer.tr_cmds_r
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.smpActive`, `state.renderThreadActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L239)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-syncrenderthread-function-r-syncrenderthread-state-src-mq3-renderer-tr-cmds-runtime-ml-1012056805"></a>
 ### R_SyncRenderThread
@@ -267,7 +267,7 @@ Updates `state.renderThreadActive` in `mq3.renderer.tr_cmds_runtime.R_SyncRender
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.renderThreadActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L274)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-beginframe-function-re-beginframe-state-stereoframe-src-mq3-renderer-tr-cmds-runtime-ml-328991232"></a>
 ### RE_BeginFrame
@@ -284,7 +284,7 @@ Updates `state.finishCalled`, `state.frameCount`, `state.frameSceneNum` in `mq3.
 | `stereoFrame` | `dynamic` | — | Input tested by `stereoFrame==STEREO_LEFT`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L329)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-endframe-function-re-endframe-state-src-mq3-renderer-tr-cmds-runtime-ml-1236738521"></a>
 ### RE_EndFrame
@@ -300,7 +300,7 @@ Updates `state.smpFrame`, `state.frontEndMsec`, `state.back.msec` in `mq3.render
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.smpFrame`, `state.frontEndMsec`, `state.back.msec`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L348)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-setcolor-function-re-setcolor-state-rgba-src-mq3-renderer-tr-cmds-runtime-ml-1621964701"></a>
 ### RE_SetColor
@@ -317,7 +317,7 @@ Returns `commands.setColor(state.queue,rgba)` from `mq3.renderer.tr_cmds_runtime
 | `rgba` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.command_queue.setColor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L298)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-stretchpic-function-re-stretchpic-state-x-y-w-h-s1-t1-s2-t2-shader-src-mq3-renderer-tr-cmds-runtime-ml-165668916"></a>
 ### RE_StretchPic
@@ -342,7 +342,7 @@ Returns `commands.stretchPic(state.queue,x,y,w,h,s1,t1,s2,t2,shader)` from `mq3.
 | `shader` | `dynamic` | — | Argument 10 supplied to `mq3.renderer.command_queue.stretchPic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L310)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-services-function-services-src-mq3-renderer-tr-cmds-runtime-ml-1282015870"></a>
 ### services
@@ -354,7 +354,7 @@ function services()
 Constructs `mq3.renderer.tr_cmds_runtime.Services` with `eventFn` = `void`, `spawnThreadFn` = `void`, `frontEndSleepFn` = `void`, `wakeRendererFn` = `void` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L184)
 
 - [mq3.renderer.tr_cmds_runtime.Services](Type-mq3-renderer-tr-cmds-runtime-services-2141671456.md) — struct
 <a id="function-function-mq3-renderer-tr-cmds-runtime-settings-function-settings-src-mq3-renderer-tr-cmds-runtime-ml-217141690"></a>
@@ -367,7 +367,7 @@ function settings()
 Constructs `mq3.renderer.tr_cmds_runtime.Settings` with `speeds` = `0`, `smp` = `false`, `showSmp` = `false`, `skipBackEnd` = `false` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L182)
 
 - [mq3.renderer.tr_cmds_runtime.Settings](Type-mq3-renderer-tr-cmds-runtime-settings-272563117.md) — struct
 - [mq3.renderer.tr_cmds_runtime.State](Type-mq3-renderer-tr-cmds-runtime-state-1273923861.md) — struct
@@ -381,7 +381,7 @@ const STEREO_CENTER = 0
 Stereo-frame selector for the ordinary centered view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L11)
 
 <a id="constant-constant-mq3-renderer-tr-cmds-runtime-stereo-left-const-stereo-left-1-src-mq3-renderer-tr-cmds-runtime-ml-1160974322"></a>
 ### STEREO_LEFT
@@ -393,7 +393,7 @@ const STEREO_LEFT = 1
 Stereo-frame selector for the left-eye view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L13)
 
 <a id="constant-constant-mq3-renderer-tr-cmds-runtime-stereo-right-const-stereo-right-2-src-mq3-renderer-tr-cmds-runtime-ml-2078498975"></a>
 ### STEREO_RIGHT
@@ -405,4 +405,4 @@ const STEREO_RIGHT = 2
 Stereo-frame selector for the right-eye view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)

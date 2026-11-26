@@ -12,7 +12,7 @@ struct Effect
 An Effect contains every field written by cg_effects.c.  Unused scalar fields are zero and unused names are empty strings.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L92)
 
 ## Members
 
@@ -26,7 +26,7 @@ angles
 Euler orientation used to place or animate the object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L119)
 
 <a id="field-field-mq3-client-cgame-effects-effect-bouncefactor-bouncefactor-src-mq3-client-cgame-effects-ml-1450111758"></a>
 ### bounceFactor
@@ -38,7 +38,7 @@ bounceFactor
 Velocity multiplier after an impact; zero stops the fragment and one preserves its speed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L135)
 
 <a id="field-field-mq3-client-cgame-effects-effect-bouncesound-bouncesound-src-mq3-client-cgame-effects-ml-848632320"></a>
 ### bounceSound
@@ -50,7 +50,7 @@ bounceSound
 Sound resource selected for the bounce event or effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L137)
 
 <a id="field-field-mq3-client-cgame-effects-effect-boundary-boundary-src-mq3-client-cgame-effects-ml-1728194884"></a>
 ### boundary
@@ -62,7 +62,7 @@ boundary
 Host service category recorded with a request emitted while constructing smoke, bubble, debris, and explosion effects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L95)
 
 <a id="field-field-mq3-client-cgame-effects-effect-channel-channel-src-mq3-client-cgame-effects-ml-1172684372"></a>
 ### channel
@@ -74,7 +74,7 @@ channel
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L152)
 
 <a id="field-field-mq3-client-cgame-effects-effect-color-color-src-mq3-client-cgame-effects-ml-1499650704"></a>
 ### color
@@ -86,7 +86,7 @@ color
 Normalized RGBA tint and opacity from which the spawned effect computes its shader color.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L123)
 
 <a id="field-field-mq3-client-cgame-effects-effect-dispatched-dispatched-src-mq3-client-cgame-effects-ml-1933394258"></a>
 ### dispatched
@@ -98,7 +98,7 @@ dispatched
 True when this request is marked for native dispatch while constructing smoke, bubble, debris, and explosion effects; false when its native effect is suppressed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L155)
 
 <a id="field-field-mq3-client-cgame-effects-effect-endtime-endtime-src-mq3-client-cgame-effects-ml-852165056"></a>
 ### endTime
@@ -110,7 +110,7 @@ endTime
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L105)
 
 <a id="field-field-mq3-client-cgame-effects-effect-entity-entity-src-mq3-client-cgame-effects-ml-854961478"></a>
 ### entity
@@ -122,7 +122,7 @@ entity
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L150)
 
 <a id="field-field-mq3-client-cgame-effects-effect-fadeintime-fadeintime-src-mq3-client-cgame-effects-ml-877312064"></a>
 ### fadeInTime
@@ -134,7 +134,7 @@ fadeInTime
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L103)
 
 <a id="field-field-mq3-client-cgame-effects-effect-flags-flags-src-mq3-client-cgame-effects-ml-479603996"></a>
 ### flags
@@ -146,7 +146,7 @@ flags
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L109)
 
 <a id="field-field-mq3-client-cgame-effects-effect-kind-kind-src-mq3-client-cgame-effects-ml-1224501412"></a>
 ### kind
@@ -158,7 +158,7 @@ kind
 Effect or media category selecting the matching geometry, texture, or presentation behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L97)
 
 <a id="field-field-mq3-client-cgame-effects-effect-letype-letype-src-mq3-client-cgame-effects-ml-1237411082"></a>
 ### leType
@@ -170,7 +170,7 @@ leType
 Local-effect entity kind selecting its update and rendering behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L99)
 
 <a id="field-field-mq3-client-cgame-effects-effect-liferate-liferate-src-mq3-client-cgame-effects-ml-995247928"></a>
 ### lifeRate
@@ -182,7 +182,7 @@ lifeRate
 Reciprocal effect lifetime used to normalize the fade or growth fraction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L107)
 
 <a id="field-field-mq3-client-cgame-effects-effect-light-light-src-mq3-client-cgame-effects-ml-909327592"></a>
 ### light
@@ -194,7 +194,7 @@ light
 Dynamic-light intensity emitted by the local effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L146)
 
 <a id="field-field-mq3-client-cgame-effects-effect-lightcolor-lightcolor-src-mq3-client-cgame-effects-ml-1768675418"></a>
 ### lightColor
@@ -206,7 +206,7 @@ lightColor
 RGB components of the dynamic light emitted by the effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L148)
 
 <a id="field-field-mq3-client-cgame-effects-effect-marktype-marktype-src-mq3-client-cgame-effects-ml-1073111294"></a>
 ### markType
@@ -218,7 +218,7 @@ markType
 When constructing this record, `effect` supplies `LEMT_NONE` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L139)
 
 <a id="field-field-mq3-client-cgame-effects-effect-model-model-src-mq3-client-cgame-effects-ml-103150164"></a>
 ### model
@@ -230,7 +230,7 @@ model
 Model resource selected for rendering the object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L127)
 
 <a id="field-field-mq3-client-cgame-effects-effect-oldposition-oldposition-src-mq3-client-cgame-effects-ml-2071071108"></a>
 ### oldPosition
@@ -242,7 +242,7 @@ oldPosition
 When constructing this record, `effect` supplies `[0.0,0.0,0.0]` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L115)
 
 <a id="field-field-mq3-client-cgame-effects-effect-position-position-src-mq3-client-cgame-effects-ml-589002450"></a>
 ### position
@@ -254,7 +254,7 @@ position
 When constructing this record, `effect` supplies `[0.0,0.0,0.0]` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L113)
 
 <a id="field-field-mq3-client-cgame-effects-effect-radius-radius-src-mq3-client-cgame-effects-ml-507367348"></a>
 ### radius
@@ -266,7 +266,7 @@ radius
 World-space radius supplied when creating a smoke puff, bubble, or other temporary effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L121)
 
 <a id="field-field-mq3-client-cgame-effects-effect-renderfx-renderfx-src-mq3-client-cgame-effects-ml-1298649260"></a>
 ### renderfx
@@ -278,7 +278,7 @@ renderfx
 Renderer-entity flags controlling lighting, view restrictions, depth handling, and related effects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L144)
 
 <a id="field-field-mq3-client-cgame-effects-effect-retype-retype-src-mq3-client-cgame-effects-ml-189746886"></a>
 ### reType
@@ -290,7 +290,7 @@ reType
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L141)
 
 <a id="field-field-mq3-client-cgame-effects-effect-rotation-rotation-src-mq3-client-cgame-effects-ml-1787897708"></a>
 ### rotation
@@ -302,7 +302,7 @@ rotation
 When constructing this record, `effect` supplies `0.0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L133)
 
 <a id="field-field-mq3-client-cgame-effects-effect-shader-shader-src-mq3-client-cgame-effects-ml-322434846"></a>
 ### shader
@@ -314,7 +314,7 @@ shader
 Material selected for the spawned smoke, bubble, teleport, or other temporary visual effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L129)
 
 <a id="field-field-mq3-client-cgame-effects-effect-shadercolor-shadercolor-src-mq3-client-cgame-effects-ml-1633347532"></a>
 ### shaderColor
@@ -326,7 +326,7 @@ shaderColor
 When constructing this record, `effect` supplies `[0.0,0.0,0.0,0.0]` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L125)
 
 <a id="field-field-mq3-client-cgame-effects-effect-shadertime-shadertime-src-mq3-client-cgame-effects-ml-2140097496"></a>
 ### shaderTime
@@ -338,7 +338,7 @@ shaderTime
 When constructing this record, `effect` supplies `0.0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L131)
 
 <a id="field-field-mq3-client-cgame-effects-effect-starttime-starttime-src-mq3-client-cgame-effects-ml-2037681288"></a>
 ### startTime
@@ -350,7 +350,7 @@ startTime
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L101)
 
 <a id="field-field-mq3-client-cgame-effects-effect-trajectorytype-trajectorytype-src-mq3-client-cgame-effects-ml-1110152870"></a>
 ### trajectoryType
@@ -362,7 +362,7 @@ trajectoryType
 When constructing this record, `effect` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L111)
 
 <a id="field-field-mq3-client-cgame-effects-effect-velocity-velocity-src-mq3-client-cgame-effects-ml-915376022"></a>
 ### velocity
@@ -374,4 +374,4 @@ velocity
 Linear rate of change of position used by movement or effect integration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L117)

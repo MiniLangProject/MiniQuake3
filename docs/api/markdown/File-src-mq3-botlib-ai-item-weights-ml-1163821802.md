@@ -11,7 +11,7 @@ Reachable from entry: **yes**
 - `mq3/botlib/ai_resource_pools.ml` as `pools` → [src/mq3/botlib/ai_resource_pools.ml](File-src-mq3-botlib-ai-resource-pools-ml-103445473.md)
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/vm/pc_parser.ml` as `pc` → [src/mq3/vm/pc_parser.ml](File-src-mq3-vm-pc-parser-ml-1324474776.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -25,7 +25,7 @@ const BLERR_CANNOTLOADITEMWEIGHTS = 9
 Bot-library error indicating that an item-weight script could not be loaded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-ai-item-weights-ml-1730865805"></a>
 ### BLERR_NOERROR
@@ -37,7 +37,7 @@ const BLERR_NOERROR = 0
 Bot-library status indicating successful completion.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-item-weights-botpath-function-botpath-name-src-mq3-botlib-ai-item-weights-ml-306067159"></a>
 ### botPath
@@ -53,7 +53,7 @@ Normalize a ai item weights resource path by removing leading slashes and ensuri
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L158)
 
 <a id="function-function-mq3-botlib-ai-item-weights-cached-function-cached-runtime-filename-src-mq3-botlib-ai-item-weights-ml-1829343449"></a>
 ### cached
@@ -70,7 +70,7 @@ Find a previously loaded item-weight configuration by exact filename.
 | `filename` | `dynamic` | — | Lookup text matched against `config.filename`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L391)
 
 <a id="function-function-mq3-botlib-ai-item-weights-close-function-close-reader-src-mq3-botlib-ai-item-weights-ml-1146017143"></a>
 ### close
@@ -86,7 +86,7 @@ Apply `mq3.vm.pc_parser.free` while evaluating `close`.
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L177)
 
 <a id="function-function-mq3-botlib-ai-item-weights-computedfromfirst-function-computedfromfirst-reader-token-src-mq3-botlib-ai-item-weights-ml-126103680"></a>
 ### computedFromFirst
@@ -103,7 +103,7 @@ Apply `mq3.botlib.ai_item_weights.readComputed`, `mq3.botlib.ai_item_weights.tak
 | `token` | `dynamic` | — | Parsed token; accesses `text`, `type` and `floatValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L278)
 
 <a id="function-function-mq3-botlib-ai-item-weights-create-function-create-context-readfn-src-mq3-botlib-ai-item-weights-ml-1833614891"></a>
 ### create
@@ -120,7 +120,7 @@ Create a `mq3.botlib.ai_item_weights.Runtime` record, initializing `context` fro
 | `readFn` | `dynamic` | — | Callback that loads a named resource through the supplied context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L125)
 
 <a id="function-function-mq3-botlib-ai-item-weights-ensureitems-function-ensureitems-runtime-src-mq3-botlib-ai-item-weights-ml-1260647190"></a>
 ### ensureItems
@@ -136,7 +136,7 @@ Set `runtime.items` to `parseItems(runtime,"items.c")` in `mq3.botlib.ai_item_we
 | `runtime` | `dynamic` | — | AI item weights runtime; accesses `items`. May update `runtime.items` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L406)
 
 - [mq3.botlib.ai_item_weights.Eval](Type-mq3-botlib-ai-item-weights-eval-1136597710.md) — struct
 <a id="function-function-mq3-botlib-ai-item-weights-evaladd-function-evaladd-state-src-mq3-botlib-ai-item-weights-ml-2108671551"></a>
@@ -153,7 +153,7 @@ Apply `mq3.botlib.ai_item_weights.evalMultiply` and `mq3.botlib.ai_item_weights.
 | `state` | `dynamic` | — | AI item weights state; accesses `position` and `tokens`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L220)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalbitwise-function-evalbitwise-state-src-mq3-botlib-ai-item-weights-ml-1534373823"></a>
 ### evalBitwise
@@ -169,7 +169,7 @@ Apply `mq3.botlib.ai_item_weights.evalCompare` and `mq3.botlib.ai_item_weights.e
 | `state` | `dynamic` | — | AI item weights state; accesses `position` and `tokens`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L256)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalcompare-function-evalcompare-state-src-mq3-botlib-ai-item-weights-ml-1904488287"></a>
 ### evalCompare
@@ -185,7 +185,7 @@ Apply `mq3.botlib.ai_item_weights.evalAdd` and `mq3.botlib.ai_item_weights.evalM
 | `state` | `dynamic` | — | AI item weights state; accesses `position` and `tokens`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L232)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalconditional-function-evalconditional-state-src-mq3-botlib-ai-item-weights-ml-2108767533"></a>
 ### evalConditional
@@ -201,7 +201,7 @@ Set `state.valid` to `false` in `mq3.botlib.ai_item_weights.evalConditional`. Re
 | `state` | `dynamic` | — | AI item weights state; accesses `valid`. May update `state.valid` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L266)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalmatch-function-evalmatch-state-text-src-mq3-botlib-ai-item-weights-ml-345618298"></a>
 ### evalMatch
@@ -218,7 +218,7 @@ Set `state.position` to `state.position+1` in `mq3.botlib.ai_item_weights.evalMa
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L194)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalmultiply-function-evalmultiply-state-src-mq3-botlib-ai-item-weights-ml-139419989"></a>
 ### evalMultiply
@@ -234,7 +234,7 @@ Set `state.valid` to `false` in `mq3.botlib.ai_item_weights.evalMultiply`.
 | `state` | `dynamic` | — | AI item weights state; accesses `position`, `tokens` and `valid`. May update `state.valid` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L211)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalprimary-function-evalprimary-state-src-mq3-botlib-ai-item-weights-ml-1731014849"></a>
 ### evalPrimary
@@ -250,7 +250,7 @@ Set `state.valid` to `false` in `mq3.botlib.ai_item_weights.evalPrimary`. Return
 | `state` | `dynamic` | — | AI item weights state; accesses `valid`. May update `state.valid` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L197)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evaltake-function-evaltake-state-src-mq3-botlib-ai-item-weights-ml-660177141"></a>
 ### evalTake
@@ -266,7 +266,7 @@ Set `state.valid` to `false` and `state.position` to `state.position+1` in `mq3.
 | `state` | `dynamic` | — | AI item weights state; accesses `position`, `tokens` and `valid`. May update `state.valid` and `state.position` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L190)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evaluate-function-evaluate-tokens-src-mq3-botlib-ai-item-weights-ml-840159940"></a>
 ### evaluate
@@ -282,7 +282,7 @@ Apply `mq3.botlib.ai_item_weights.evalConditional` while evaluating `evaluate`. 
 | `tokens` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_item_weights.Eval.tokens`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L272)
 
 <a id="function-function-mq3-botlib-ai-item-weights-evalunary-function-evalunary-state-src-mq3-botlib-ai-item-weights-ml-1812955231"></a>
 ### evalUnary
@@ -298,7 +298,7 @@ Apply `mq3.botlib.ai_item_weights.evalMatch`, `mq3.botlib.ai_item_weights.evalUn
 | `state` | `dynamic` | — | AI item weights state; accesses `position` and `tokens`. May update `state.position` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L203)
 
 <a id="function-function-mq3-botlib-ai-item-weights-expect-function-expect-reader-text-src-mq3-botlib-ai-item-weights-ml-619831610"></a>
 ### expect
@@ -315,7 +315,7 @@ Apply `mq3.botlib.ai_item_weights.take` while evaluating `expect`. Return paths 
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L184)
 
 <a id="function-function-mq3-botlib-ai-item-weights-fail-function-fail-message-src-mq3-botlib-ai-item-weights-ml-1173564951"></a>
 ### fail
@@ -331,7 +331,7 @@ Construct error `7570` with diagnostic text `"AI item weights: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L121)
 
 <a id="function-function-mq3-botlib-ai-item-weights-findweight-function-findweight-config-name-src-mq3-botlib-ai-item-weights-ml-2056022409"></a>
 ### findWeight
@@ -348,7 +348,7 @@ Find the index of a named fuzzy weight, returning -1 when the configuration or w
 | `name` | `dynamic` | — | Lookup text matched against `config.weights[index].name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L383)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L383)
 
 <a id="function-function-mq3-botlib-ai-item-weights-freeitemweights-function-freeitemweights-runtime-statepools-handle-src-mq3-botlib-ai-item-weights-ml-1712659688"></a>
 ### freeItemWeights
@@ -366,7 +366,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` while evaluating `freeItemWeights
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L421)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L421)
 
 <a id="function-function-mq3-botlib-ai-item-weights-fuzzyseparators-function-fuzzyseparators-inventory-separators-src-mq3-botlib-ai-item-weights-ml-644246750"></a>
 ### fuzzySeparators
@@ -383,7 +383,7 @@ Apply `mq3.botlib.ai_item_weights.separatorWeight` while evaluating `fuzzySepara
 | `separators` | `dynamic` | — | Array or byte sequence accessed at `index` and `index+1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L437)
 
 <a id="function-function-mq3-botlib-ai-item-weights-fuzzyweight-function-fuzzyweight-inventory-config-weightnumber-src-mq3-botlib-ai-item-weights-ml-1424945523"></a>
 ### fuzzyWeight
@@ -401,7 +401,7 @@ Apply `mq3.botlib.ai_item_weights.fuzzySeparators` while evaluating `fuzzyWeight
 | `weightNumber` | `dynamic` | — | Operand used to evaluate the returned expression `fuzzySeparators(inventory,config.weights[weightNumber].separators)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L442)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L442)
 
 - [mq3.botlib.ai_item_weights.ItemInfo](Type-mq3-botlib-ai-item-weights-iteminfo-967266419.md) — struct
 <a id="function-function-mq3-botlib-ai-item-weights-itemweightindex-function-itemweightindex-config-items-src-mq3-botlib-ai-item-weights-ml-1335058722"></a>
@@ -419,7 +419,7 @@ Apply `mq3.botlib.ai_item_weights.findWeight` while evaluating `itemWeightIndex`
 | `items` | `dynamic` | — | Value used by `itemWeightIndex` in `for each item in items result=result+[findWeight(config,item.classname)] end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L387)
 
 <a id="function-function-mq3-botlib-ai-item-weights-loaditemweights-function-loaditemweights-runtime-statepools-handle-filename-src-mq3-botlib-ai-item-weights-ml-1012590259"></a>
 ### loadItemWeights
@@ -438,7 +438,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState`, `mq3.botlib.ai_item_weights.weig
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L412)
 
 <a id="function-function-mq3-botlib-ai-item-weights-loadtext-function-loadtext-runtime-name-src-mq3-botlib-ai-item-weights-ml-1054562959"></a>
 ### loadText
@@ -455,7 +455,7 @@ Set `runtime.fileReads` to `runtime.fileReads+1` in `mq3.botlib.ai_item_weights.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L165)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-max-inventoryvalue-const-max-inventoryvalue-999999-src-mq3-botlib-ai-item-weights-ml-859303161"></a>
 ### MAX_INVENTORYVALUE
@@ -467,7 +467,7 @@ const MAX_INVENTORYVALUE = 999999
 Upper inventory threshold used when evaluating fuzzy-weight separators.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L22)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-max-iteminfo-const-max-iteminfo-256-src-mq3-botlib-ai-item-weights-ml-1181481654"></a>
 ### MAX_ITEMINFO
@@ -479,7 +479,7 @@ const MAX_ITEMINFO = 256
 Maximum number of item definitions in the bot item configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-max-weight-files-const-max-weight-files-128-src-mq3-botlib-ai-item-weights-ml-845203884"></a>
 ### MAX_WEIGHT_FILES
@@ -491,7 +491,7 @@ const MAX_WEIGHT_FILES = 128
 Maximum number of fuzzy-weight files retained by the bot configuration cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L20)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-max-weights-const-max-weights-128-src-mq3-botlib-ai-item-weights-ml-1564894892"></a>
 ### MAX_WEIGHTS
@@ -503,7 +503,7 @@ const MAX_WEIGHTS = 128
 Maximum number of named fuzzy-weight expressions in a configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-op-free-item-weights-const-op-free-item-weights-544-src-mq3-botlib-ai-item-weights-ml-1349560348"></a>
 ### OP_FREE_ITEM_WEIGHTS
@@ -515,7 +515,7 @@ const OP_FREE_ITEM_WEIGHTS = 544
 Bot-library syscall identifier for free item weights.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L28)
 
 <a id="constant-constant-mq3-botlib-ai-item-weights-op-load-item-weights-const-op-load-item-weights-543-src-mq3-botlib-ai-item-weights-ml-1799544485"></a>
 ### OP_LOAD_ITEM_WEIGHTS
@@ -527,7 +527,7 @@ const OP_LOAD_ITEM_WEIGHTS = 543
 Bot-library syscall identifier for load item weights.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
 
 <a id="function-function-mq3-botlib-ai-item-weights-open-function-open-runtime-name-src-mq3-botlib-ai-item-weights-ml-1022866927"></a>
 ### open
@@ -544,7 +544,7 @@ Build the `mq3.botlib.ai_item_weights.Reader` result for `open`. Return paths in
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L172)
 
 <a id="function-function-mq3-botlib-ai-item-weights-parseitems-function-parseitems-runtime-name-src-mq3-botlib-ai-item-weights-ml-1662087135"></a>
 ### parseItems
@@ -561,7 +561,7 @@ Apply `mq3.botlib.ai_item_weights.open`, `mq3.botlib.ai_item_weights.take` and `
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L309)
 
 <a id="function-function-mq3-botlib-ai-item-weights-parseweightconfig-function-parseweightconfig-runtime-filename-src-mq3-botlib-ai-item-weights-ml-1242150499"></a>
 ### parseWeightConfig
@@ -578,7 +578,7 @@ Build the `mq3.botlib.ai_item_weights.WeightConfig` result for `parseWeightConfi
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L363)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L363)
 
 <a id="function-function-mq3-botlib-ai-item-weights-qvminventoryindex-function-qvminventoryindex-index-src-mq3-botlib-ai-item-weights-ml-1716390458"></a>
 ### qvmInventoryIndex
@@ -594,7 +594,7 @@ Translate native inventory indices to the QVM inventory layout, preserving indic
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L134)
 
 <a id="function-function-mq3-botlib-ai-item-weights-readcomputed-function-readcomputed-reader-src-mq3-botlib-ai-item-weights-ml-2030156623"></a>
 ### readComputed
@@ -610,7 +610,7 @@ Forward `readComputed` to `mq3.botlib.ai_item_weights.computedFromFirst` and ret
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L294)
 
 - [mq3.botlib.ai_item_weights.Reader](Type-mq3-botlib-ai-item-weights-reader-738797067.md) — struct
 <a id="function-function-mq3-botlib-ai-item-weights-readfuzzyweight-function-readfuzzyweight-reader-src-mq3-botlib-ai-item-weights-ml-2058903027"></a>
@@ -627,7 +627,7 @@ Apply `mq3.botlib.ai_item_weights.take`, `mq3.botlib.ai_item_weights.expect` and
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L331)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L331)
 
 <a id="function-function-mq3-botlib-ai-item-weights-readinteger-function-readinteger-reader-src-mq3-botlib-ai-item-weights-ml-1798860315"></a>
 ### readInteger
@@ -643,7 +643,7 @@ Apply `mq3.botlib.ai_item_weights.readComputed` while evaluating `readInteger`. 
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L297)
 
 <a id="function-function-mq3-botlib-ai-item-weights-readseparators-function-readseparators-reader-src-mq3-botlib-ai-item-weights-ml-228758831"></a>
 ### readSeparators
@@ -659,7 +659,7 @@ Apply `mq3.botlib.ai_item_weights.expect`, `mq3.botlib.ai_item_weights.readInteg
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L343)
 
 <a id="function-function-mq3-botlib-ai-item-weights-readvector-function-readvector-reader-src-mq3-botlib-ai-item-weights-ml-1904615503"></a>
 ### readVector
@@ -675,7 +675,7 @@ Apply `mq3.botlib.ai_item_weights.expect` and `mq3.botlib.ai_item_weights.readCo
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L300)
 
 - [mq3.botlib.ai_item_weights.Runtime](Type-mq3-botlib-ai-item-weights-runtime-1588812156.md) — struct
 - [mq3.botlib.ai_item_weights.Separator](Type-mq3-botlib-ai-item-weights-separator-240953263.md) — struct
@@ -695,7 +695,7 @@ Apply `mq3.botlib.ai_item_weights.fuzzySeparators` and `mq3.botlib.ai_item_weigh
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L426)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L426)
 
 <a id="function-function-mq3-botlib-ai-item-weights-setqvminventorylayout-function-setqvminventorylayout-runtime-enabled-src-mq3-botlib-ai-item-weights-ml-1780619537"></a>
 ### setQvmInventoryLayout
@@ -712,7 +712,7 @@ The shipped pak0 botfiles/inv.h predates the pinned 1.32b game/inv.h. Qagame fil
 | `enabled` | `dynamic` | — | Value used by `setQvmInventoryLayout` in `if runtime!=void then runtime.qvmInventory=enabled end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L131)
 
 <a id="function-function-mq3-botlib-ai-item-weights-setreloadcharacters-function-setreloadcharacters-runtime-value-src-mq3-botlib-ai-item-weights-ml-1349990003"></a>
 ### setReloadCharacters
@@ -729,7 +729,7 @@ ReadWeightConfig and FreeWeightConfig use the global bot_reloadcharacters libvar
 | `value` | `dynamic` | — | Value used by `setReloadCharacters` in `if runtime!=void then runtime.reloadCharacters=value!=0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L155)
 
 <a id="function-function-mq3-botlib-ai-item-weights-shutdown-function-shutdown-runtime-src-mq3-botlib-ai-item-weights-ml-2035362054"></a>
 ### shutdown
@@ -745,7 +745,7 @@ Set `runtime.items` to `void` and `runtime.configs` to `[]` in `mq3.botlib.ai_it
 | `runtime` | `dynamic` | — | AI item weights runtime; accesses `items` and `configs`. May update `runtime.items` and `runtime.configs` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L445)
 
 <a id="function-function-mq3-botlib-ai-item-weights-take-function-take-reader-src-mq3-botlib-ai-item-weights-ml-1241287299"></a>
 ### take
@@ -761,7 +761,7 @@ Forward `take` to `mq3.vm.pc_parser.read` and return the delegated result.
 | `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L180)
 
 <a id="function-function-mq3-botlib-ai-item-weights-translateseparators-function-translateseparators-separators-src-mq3-botlib-ai-item-weights-ml-1772342974"></a>
 ### translateSeparators
@@ -777,7 +777,7 @@ Apply `mq3.botlib.ai_item_weights.qvmInventoryIndex` and `mq3.botlib.ai_item_wei
 | `separators` | `dynamic` | — | Value used by `translateSeparators` in `if separators==void then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L142)
 
 <a id="function-function-mq3-botlib-ai-item-weights-truth-function-truth-value-src-mq3-botlib-ai-item-weights-ml-1849732347"></a>
 ### truth
@@ -793,7 +793,7 @@ Test `value!=0.0` as the condition for `truth`.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value!=0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L229)
 
 - [mq3.botlib.ai_item_weights.Weight](Type-mq3-botlib-ai-item-weights-weight-580247880.md) — struct
 <a id="function-function-mq3-botlib-ai-item-weights-weightconfig-function-weightconfig-runtime-filename-src-mq3-botlib-ai-item-weights-ml-50108977"></a>
@@ -811,7 +811,7 @@ Set `runtime.configs` to `runtime.configs+[config]` in `mq3.botlib.ai_item_weigh
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L395)
 
 - [mq3.botlib.ai_item_weights.WeightConfig](Type-mq3-botlib-ai-item-weights-weightconfig-709290726.md) — struct
 <a id="constant-constant-mq3-botlib-ai-item-weights-wt-balance-const-wt-balance-1-src-mq3-botlib-ai-item-weights-ml-1222326604"></a>
@@ -824,4 +824,4 @@ const WT_BALANCE = 1
 Fuzzy-weight node kind whose value can be adjusted during weight balancing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L24)

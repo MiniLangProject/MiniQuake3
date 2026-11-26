@@ -12,7 +12,7 @@ struct AreaInfo
 `AreaInfo` record for ai main, containing `cluster`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L45)
 
 ## Members
 
@@ -26,4 +26,4 @@ cluster
 AAS cluster associated with the spatial or routing state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L47)

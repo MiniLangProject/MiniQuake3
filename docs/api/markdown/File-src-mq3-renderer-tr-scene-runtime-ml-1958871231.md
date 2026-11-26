@@ -28,7 +28,7 @@ Builds `mq3.renderer.tr_scene_runtime.State` for `mq3.renderer.tr_scene_runtime.
 | `host` | `dynamic` | — | Initial value for `mq3.renderer.tr_scene_runtime.State.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L165)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-emit-function-emit-state-kind-value-src-mq3-renderer-tr-scene-runtime-ml-1339091762"></a>
 ### emit
@@ -46,7 +46,7 @@ Forwards a renderer-scene event through the configured event service callback.
 | `value` | `dynamic` | — | Argument 3 supplied to `state.services.eventFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L177)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-emptyrefdef-function-emptyrefdef-src-mq3-renderer-tr-scene-runtime-ml-926251548"></a>
 ### emptyRefdef
@@ -58,7 +58,7 @@ function emptyRefdef()
 Constructs `mq3.renderer.tr_scene_runtime.Refdef` with `x` = `0`, `y` = `0`, `width` = `0`, `height` = `0` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L160)
 
 <a id="constant-constant-mq3-renderer-tr-scene-runtime-entitynum-world-const-entitynum-world-1022-src-mq3-renderer-tr-scene-runtime-ml-984245788"></a>
 ### ENTITYNUM_WORLD
@@ -70,7 +70,7 @@ const ENTITYNUM_WORLD = 1022
 Reserved entity number identifying static world geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L11)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-fail-function-fail-message-src-mq3-renderer-tr-scene-runtime-ml-1100739555"></a>
 ### fail
@@ -86,7 +86,7 @@ Creates error `7750` with message `"tr_scene: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7750,"tr_scene: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L172)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-maskchanged-function-maskchanged-previous-current-src-mq3-renderer-tr-scene-runtime-ml-2026347282"></a>
 ### maskChanged
@@ -103,7 +103,7 @@ Returns `false` from `mq3.renderer.tr_scene_runtime.maskChanged`; earlier branch
 | `current` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L248)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-now-function-now-state-src-mq3-renderer-tr-scene-runtime-ml-1678427937"></a>
 ### now
@@ -119,7 +119,7 @@ Returns `0` from `mq3.renderer.tr_scene_runtime.now`; earlier branches return `s
 | `state` | `dynamic` | — | Record providing `state.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L180)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-r-addpolygonsurfaces-function-r-addpolygonsurfaces-state-src-mq3-renderer-tr-scene-runtime-ml-962268889"></a>
 ### R_AddPolygonSurfaces
@@ -135,7 +135,7 @@ Updates `state.firstSceneDrawSurf` in `mq3.renderer.tr_scene_runtime.R_AddPolygo
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.firstSceneDrawSurf`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L234)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-r-togglesmpframe-function-r-togglesmpframe-state-src-mq3-renderer-tr-scene-runtime-ml-1973463729"></a>
 ### R_ToggleSmpFrame
@@ -151,7 +151,7 @@ Updates `state.smpFrame`, `state.commandUsed[state.smpFrame]`, `state.firstScene
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.smpFrame`, `state.commandUsed[state.smpFrame]`, `state.firstSceneDrawSurf`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L184)
 
 <a id="constant-constant-mq3-renderer-tr-scene-runtime-rdf-noworldmodel-const-rdf-noworldmodel-1-src-mq3-renderer-tr-scene-runtime-ml-983085148"></a>
 ### RDF_NOWORLDMODEL
@@ -163,7 +163,7 @@ const RDF_NOWORLDMODEL = 1
 View flag that renders submitted entities without the BSP world model.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L9)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-addadditivelighttoscene-function-re-addadditivelighttoscene-state-origin-intensity-r-g-b-src-mq3-renderer-tr-scene-runtime-ml-610331555"></a>
 ### RE_AddAdditiveLightToScene
@@ -184,7 +184,7 @@ Calls `mq3.renderer.tr_scene_runtime.RE_AddDynamicLightToScene` with `(state,ori
 | `b` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.tr_scene_runtime.RE_AddDynamicLightToScene`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L230)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-adddynamiclighttoscene-function-re-adddynamiclighttoscene-state-origin-intensity-r-g-b-additive-src-mq3-renderer-tr-scene-runtime-ml-596355989"></a>
 ### RE_AddDynamicLightToScene
@@ -206,7 +206,7 @@ Returns `queue.addDynamicLight(state.scene,origin,intensity,r,g,b,additive)` fro
 | `additive` | `dynamic` | — | Argument 7 supplied to `mq3.renderer.scene_queue.addDynamicLight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L214)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-addlighttoscene-function-re-addlighttoscene-state-origin-intensity-r-g-b-src-mq3-renderer-tr-scene-runtime-ml-1273727099"></a>
 ### RE_AddLightToScene
@@ -227,7 +227,7 @@ Calls `mq3.renderer.tr_scene_runtime.RE_AddDynamicLightToScene` with `(state,ori
 | `b` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.tr_scene_runtime.RE_AddDynamicLightToScene`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L222)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-addpolytoscene-function-re-addpolytoscene-state-hshader-numverts-verts-numpolys-src-mq3-renderer-tr-scene-runtime-ml-25096381"></a>
 ### RE_AddPolyToScene
@@ -247,7 +247,7 @@ Returns `queue.addPolys(state.scene,hShader,numVerts,verts,numPolys)` from `mq3.
 | `numPolys` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.scene_queue.addPolys`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L198)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-addrefentitytoscene-function-re-addrefentitytoscene-state-entity-src-mq3-renderer-tr-scene-runtime-ml-1456666138"></a>
 ### RE_AddRefEntityToScene
@@ -264,7 +264,7 @@ Returns `queue.addEntity(state.scene,entity.reType,entity.payload)` from `mq3.re
 | `entity` | `dynamic` | — | Record providing `entity.reType`, `entity.payload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L202)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-clearscene-function-re-clearscene-state-src-mq3-renderer-tr-scene-runtime-ml-64809739"></a>
 ### RE_ClearScene
@@ -280,7 +280,7 @@ Returns `void` from `mq3.renderer.tr_scene_runtime.RE_ClearScene`; earlier branc
 | `state` | `dynamic` | — | Record providing `state.scene`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L191)
 
 <a id="function-function-mq3-renderer-tr-scene-runtime-re-renderscene-function-re-renderscene-state-input-src-mq3-renderer-tr-scene-runtime-ml-122590105"></a>
 ### RE_RenderScene
@@ -297,7 +297,7 @@ Updates `state.areaMask`, `state.refdef`, `state.frameSceneNum`, `state.sceneCou
 | `input` | `dynamic` | — | Record providing `input.rdflags`, `input.areamask`, `input.x`, `input.y`, `input.width`, `input.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L256)
 
 - [mq3.renderer.tr_scene_runtime.Refdef](Type-mq3-renderer-tr-scene-runtime-refdef-947831467.md) — struct
 - [mq3.renderer.tr_scene_runtime.RefdefInput](Type-mq3-renderer-tr-scene-runtime-refdefinput-515794905.md) — struct
@@ -311,7 +311,7 @@ function services()
 Constructs `mq3.renderer.tr_scene_runtime.Services` with `timeFn` = `void`, `renderViewFn` = `void`, `drawSurfFn` = `void`, `shaderFn` = `void` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_scene_runtime.ml#L158)
 
 - [mq3.renderer.tr_scene_runtime.Services](Type-mq3-renderer-tr-scene-runtime-services-956693799.md) — struct
 - [mq3.renderer.tr_scene_runtime.State](Type-mq3-renderer-tr-scene-runtime-state-1258614764.md) — struct

@@ -12,7 +12,7 @@ struct Surface
 Data record for `mq3.renderer.md4_animation.Surface`; groups `shaderIndex`, `triangles`, `vertices`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L33)
 
 ## Members
 
@@ -26,7 +26,7 @@ shaderIndex
 Index of the resolved shader in the renderer's shader table.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L35)
 
 <a id="field-field-mq3-renderer-md4-animation-surface-triangles-triangles-src-mq3-renderer-md4-animation-ml-539099760"></a>
 ### triangles
@@ -38,7 +38,7 @@ triangles
 Triangle records or index triplets represented by this geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L37)
 
 <a id="field-field-mq3-renderer-md4-animation-surface-vertices-vertices-src-mq3-renderer-md4-animation-ml-1842084874"></a>
 ### vertices
@@ -50,4 +50,4 @@ vertices
 Skeletal vertex definitions containing texture coordinates, normals, and bone weights.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L39)

@@ -27,7 +27,7 @@ Computes `(finished-started)&0xffffffff` for frame timing `elapsed`.
 | `finished` | `dynamic` | — | Value used by `return (finished-started)&0xffffffff`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame_timing.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/frame_timing.ml#L14)
 
 <a id="function-function-mq3-client-frame-timing-histogram-function-histogram-src-mq3-client-frame-timing-ml-1049621914"></a>
 ### histogram
@@ -39,7 +39,7 @@ function histogram()
 Creates an array from `OVERFLOW_MS+1, 0` for frame timing `histogram`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame_timing.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/frame_timing.ml#L10)
 
 <a id="constant-constant-mq3-client-frame-timing-overflow-ms-const-overflow-ms-60000-src-mq3-client-frame-timing-ml-2064893699"></a>
 ### OVERFLOW_MS
@@ -51,7 +51,7 @@ const OVERFLOW_MS = 60000
 Exact millisecond buckets through 59,999 ms. The final bucket is explicitly reported as a lower bound; an arbitrarily long pause is never called 60 s.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame_timing.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/frame_timing.ml#L8)
 
 <a id="function-function-mq3-client-frame-timing-percentile-function-percentile-bins-count-percent-src-mq3-client-frame-timing-ml-1812578084"></a>
 ### percentile
@@ -69,7 +69,7 @@ Calls `mq3.compat.numeric.trunc32` from frame timing `percentile`.
 | `percent` | `dynamic` | — | Value used by `if percent<1 or percent>100 then return error(7790,"invalid frame percentile") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame_timing.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/frame_timing.ml#L37)
 
 <a id="function-function-mq3-client-frame-timing-record-function-record-bins-milliseconds-src-mq3-client-frame-timing-ml-457851186"></a>
 ### record
@@ -86,7 +86,7 @@ Updates `bins[bucket]` during frame timing `record`.
 | `milliseconds` | `dynamic` | — | Time interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame_timing.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/frame_timing.ml#L27)
 
 <a id="function-function-mq3-client-frame-timing-remaining-function-remaining-started-finished-budget-src-mq3-client-frame-timing-ml-1375372798"></a>
 ### remaining
@@ -104,4 +104,4 @@ Calls `mq3.client.frame_timing.elapsed` from frame timing `remaining`. The final
 | `budget` | `dynamic` | — | Value used by `if used>=budget then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame_timing.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/frame_timing.ml#L19)

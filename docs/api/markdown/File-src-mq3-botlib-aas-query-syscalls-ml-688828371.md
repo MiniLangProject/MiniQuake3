@@ -25,7 +25,7 @@ const AAS_ENTITYINFO_SIZE = 140
 Byte size of the AAS entity information record in the bot VM ABI or serialized representation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L14)
 
 <a id="constant-constant-mq3-botlib-aas-query-syscalls-bot-entitystate-size-const-bot-entitystate-size-112-src-mq3-botlib-aas-query-syscalls-ml-1657180063"></a>
 ### BOT_ENTITYSTATE_SIZE
@@ -37,7 +37,7 @@ const BOT_ENTITYSTATE_SIZE = 112
 Byte size of the bot entity state record in the bot VM ABI or serialized representation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L12)
 
 <a id="function-function-mq3-botlib-aas-query-syscalls-entityinfo-function-entityinfo-state-vm-number-address-src-mq3-botlib-aas-query-syscalls-ml-2102955209"></a>
 ### entityInfo
@@ -56,7 +56,7 @@ Apply `mq3.vm.syscall_common.pointer`, `mq3.botlib.aas_entities.AAS_EntityInfo` 
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L39)
 
 <a id="function-function-mq3-botlib-aas-query-syscalls-readentitystate-function-readentitystate-vm-address-src-mq3-botlib-aas-query-syscalls-ml-1488503795"></a>
 ### readEntityState
@@ -73,7 +73,7 @@ Build the `mq3.botlib.aas_entities.EntityState` result for `readEntityState`.
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L29)
 
 <a id="function-function-mq3-botlib-aas-query-syscalls-trace-function-trace-runtime-vm-base-src-mq3-botlib-aas-query-syscalls-ml-1402662882"></a>
 ### trace
@@ -91,7 +91,7 @@ Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readFloatVector` 
 | `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L52)
 
 <a id="function-function-mq3-botlib-aas-query-syscalls-vector-function-vector-data-address-src-mq3-botlib-aas-query-syscalls-ml-886072484"></a>
 ### vector
@@ -108,7 +108,7 @@ Return a new array `[n.bitsFloat(n.readI32(data,address)),n.bitsFloat(n.readI32(
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L19)
 
 <a id="function-function-mq3-botlib-aas-query-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-aas-query-syscalls-ml-1813390055"></a>
 ### writeVector
@@ -126,4 +126,4 @@ Write three float bit patterns to consecutive VM memory words for aas query sysc
 | `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_query_syscalls.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_query_syscalls.ml#L24)

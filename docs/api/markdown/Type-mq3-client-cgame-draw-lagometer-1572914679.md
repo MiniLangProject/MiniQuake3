@@ -12,7 +12,7 @@ struct Lagometer
 Stores client game draw lagometer record, including `frameSamples`, `snapshotSamples`, `snapshotFlags`, `frameCount`, `snapshotCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L164)
 
 ## Members
 
@@ -26,7 +26,7 @@ frameCount
 When constructing this record, `lagometer` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L172)
 
 <a id="field-field-mq3-client-cgame-draw-lagometer-framesamples-framesamples-src-mq3-client-cgame-draw-ml-517127487"></a>
 ### frameSamples
@@ -38,7 +38,7 @@ frameSamples
 When constructing this record, `lagometer` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L166)
 
 <a id="field-field-mq3-client-cgame-draw-lagometer-snapshotcount-snapshotcount-src-mq3-client-cgame-draw-ml-711797071"></a>
 ### snapshotCount
@@ -50,7 +50,7 @@ snapshotCount
 When constructing this record, `lagometer` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L174)
 
 <a id="field-field-mq3-client-cgame-draw-lagometer-snapshotflags-snapshotflags-src-mq3-client-cgame-draw-ml-1372727907"></a>
 ### snapshotFlags
@@ -62,7 +62,7 @@ snapshotFlags
 When constructing this record, `lagometer` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L170)
 
 <a id="field-field-mq3-client-cgame-draw-lagometer-snapshotsamples-snapshotsamples-src-mq3-client-cgame-draw-ml-1330050311"></a>
 ### snapshotSamples
@@ -74,4 +74,4 @@ snapshotSamples
 When constructing this record, `lagometer` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L168)

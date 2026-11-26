@@ -12,7 +12,7 @@ struct BotInput
 `BotInput` record for bot input, containing `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L78)
 
 ## Members
 
@@ -26,7 +26,7 @@ actionflags
 Bot action bits describing the requested buttons and movement actions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L88)
 
 <a id="field-field-mq3-game-bot-input-botinput-dir-dir-src-mq3-game-bot-input-ml-922457466"></a>
 ### dir
@@ -38,7 +38,7 @@ dir
 Requested movement direction vector supplied to bot input generation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L82)
 
 <a id="field-field-mq3-game-bot-input-botinput-speed-speed-src-mq3-game-bot-input-ml-1433841394"></a>
 ### speed
@@ -50,7 +50,7 @@ speed
 Movement or travel speed used by this game object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L84)
 
 <a id="field-field-mq3-game-bot-input-botinput-thinktime-thinktime-src-mq3-game-bot-input-ml-1836216090"></a>
 ### thinktime
@@ -62,7 +62,7 @@ thinktime
 Time interval used for the current bot thinking/update step.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L80)
 
 <a id="field-field-mq3-game-bot-input-botinput-viewangles-viewangles-src-mq3-game-bot-input-ml-1813409528"></a>
 ### viewangles
@@ -74,7 +74,7 @@ viewangles
 Player or bot viewing angles used for aiming and command generation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L86)
 
 <a id="field-field-mq3-game-bot-input-botinput-weapon-weapon-src-mq3-game-bot-input-ml-705037910"></a>
 ### weapon
@@ -86,4 +86,4 @@ weapon
 Selected or reported weapon identifier.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L90)

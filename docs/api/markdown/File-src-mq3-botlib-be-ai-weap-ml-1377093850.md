@@ -28,7 +28,7 @@ Forward `BotAllocWeaponState` to `mq3.botlib.ai_resource_pools.allocWeaponState`
 | `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. May update `statePools.weaponStates[handle]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L68)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botchoosebestfightweapon-function-botchoosebestfightweapon-runtime-statepools-weaponstate-inventory-src-mq3-botlib-be-ai-weap-ml-1400276371"></a>
 ### BotChooseBestFightWeapon
@@ -47,7 +47,7 @@ Forward `BotChooseBestFightWeapon` to `mq3.botlib.ai_weapon_combat.chooseBestFig
 | `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L61)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botfreeweaponstate-function-botfreeweaponstate-statepools-handle-src-mq3-botlib-be-ai-weap-ml-1549961278"></a>
 ### BotFreeWeaponState
@@ -64,7 +64,7 @@ Forward `BotFreeWeaponState` to `mq3.botlib.ai_resource_pools.freeWeaponState` a
 | `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L72)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botfreeweaponweights-function-botfreeweaponweights-runtime-statepools-weaponstate-src-mq3-botlib-be-ai-weap-ml-869358001"></a>
 ### BotFreeWeaponWeights
@@ -82,7 +82,7 @@ Forward `BotFreeWeaponWeights` to `mq3.botlib.ai_weapon_weights.freeWeaponWeight
 | `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L43)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botgetweaponinfo-function-botgetweaponinfo-runtime-statepools-weaponstate-weapon-src-mq3-botlib-be-ai-weap-ml-362490473"></a>
 ### BotGetWeaponInfo
@@ -101,7 +101,7 @@ Forward `BotGetWeaponInfo` to `mq3.botlib.ai_weapon_combat.weaponInfo` and retur
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L55)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botloadweaponweights-function-botloadweaponweights-runtime-statepools-weaponstate-filename-src-mq3-botlib-be-ai-weap-ml-1101735572"></a>
 ### BotLoadWeaponWeights
@@ -120,7 +120,7 @@ Forward `BotLoadWeaponWeights` to `mq3.botlib.ai_weapon_weights.loadWeaponWeight
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L49)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botresetweaponstate-function-botresetweaponstate-statepools-weaponstate-src-mq3-botlib-be-ai-weap-ml-390260839"></a>
 ### BotResetWeaponState
@@ -137,7 +137,7 @@ Forward `BotResetWeaponState` to `mq3.botlib.ai_resource_pools.resetWeaponState`
 | `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L65)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botsetupweaponai-function-botsetupweaponai-runtime-src-mq3-botlib-be-ai-weap-ml-1688691656"></a>
 ### BotSetupWeaponAI
@@ -153,7 +153,7 @@ Apply `mq3.botlib.ai_weapon_weights.ensureConfig` while evaluating `BotSetupWeap
 | `runtime` | `dynamic` | — | AI weapon weights runtime; accesses `config`. May update `runtime.config` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L75)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botshutdownweaponai-function-botshutdownweaponai-runtime-statepools-src-mq3-botlib-be-ai-weap-ml-651086822"></a>
 ### BotShutdownWeaponAI
@@ -170,7 +170,7 @@ Apply `mq3.botlib.ai_resource_pools.weaponState`, `mq3.botlib.ai_resource_pools.
 | `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L82)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botvalidweaponnumber-function-botvalidweaponnumber-runtime-weaponnum-src-mq3-botlib-be-ai-weap-ml-1933697796"></a>
 ### BotValidWeaponNumber
@@ -187,7 +187,7 @@ Check that a weapon number refers to an entry in a loaded weapon configuration.
 | `weaponNum` | `dynamic` | — | Operand used to evaluate the returned expression `weaponNum>0 and weaponNum<=len(runtime.config.weapons)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L13)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botweaponstatefromhandle-function-botweaponstatefromhandle-statepools-handle-src-mq3-botlib-be-ai-weap-ml-1579131118"></a>
 ### BotWeaponStateFromHandle
@@ -204,7 +204,7 @@ Forward `BotWeaponStateFromHandle` to `mq3.botlib.ai_resource_pools.weaponState`
 | `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L22)
 
 <a id="function-function-mq3-botlib-be-ai-weap-dumpweaponconfig-function-dumpweaponconfig-config-src-mq3-botlib-be-ai-weap-ml-1174770698"></a>
 ### DumpWeaponConfig
@@ -220,7 +220,7 @@ List projectile names and valid weapon numbers and names from the weapon configu
 | `config` | `dynamic` | — | Configuration record; accesses `projectiles` and `weapons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L25)
 
 <a id="function-function-mq3-botlib-be-ai-weap-loadweaponconfig-function-loadweaponconfig-runtime-filename-src-mq3-botlib-be-ai-weap-ml-494205605"></a>
 ### LoadWeaponConfig
@@ -237,7 +237,7 @@ Forward `LoadWeaponConfig` to `mq3.botlib.ai_weapon_weights.parseWeaponConfig` a
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L34)
 
 <a id="function-function-mq3-botlib-be-ai-weap-weaponweightindex-function-weaponweightindex-profile-config-src-mq3-botlib-be-ai-weap-ml-1587439739"></a>
 ### WeaponWeightIndex
@@ -254,4 +254,4 @@ Forward `WeaponWeightIndex` to `mq3.botlib.ai_weapon_weights.weaponWeightIndex` 
 | `config` | `dynamic` | — | Configuration record; accesses `weapons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L38)

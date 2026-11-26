@@ -12,7 +12,7 @@ struct Music
 Music record for audio.qvm_playback, containing `introSound`, `loopSound`, `cursor`, `inIntro`, `active`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L97)
 
 ## Members
 
@@ -26,7 +26,7 @@ active
 True while this sound, channel, or music stream participates in playback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L107)
 
 <a id="field-field-mq3-audio-qvm-playback-music-cursor-cursor-src-mq3-audio-qvm-playback-ml-409599328"></a>
 ### cursor
@@ -38,7 +38,7 @@ cursor
 Current playback position in source sample frames.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L103)
 
 <a id="field-field-mq3-audio-qvm-playback-music-inintro-inintro-src-mq3-audio-qvm-playback-ml-1997450888"></a>
 ### inIntro
@@ -50,7 +50,7 @@ inIntro
 True while the introductory clip is still playing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L105)
 
 <a id="field-field-mq3-audio-qvm-playback-music-introsound-introsound-src-mq3-audio-qvm-playback-ml-1553746950"></a>
 ### introSound
@@ -62,7 +62,7 @@ introSound
 Decoded introductory music clip played once before the loop.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L99)
 
 <a id="field-field-mq3-audio-qvm-playback-music-loopsound-loopsound-src-mq3-audio-qvm-playback-ml-771197480"></a>
 ### loopSound
@@ -74,4 +74,4 @@ loopSound
 Decoded music clip repeated after the introduction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L101)

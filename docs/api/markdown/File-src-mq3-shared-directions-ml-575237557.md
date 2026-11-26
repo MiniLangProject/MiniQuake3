@@ -28,7 +28,7 @@ Compute dir to byte in shared.directions; the normal completion returns `best`.
 | `dir` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L16)
 
 <a id="function-function-mq3-shared-directions-movedirvector-function-movedirvector-angles-src-mq3-shared-directions-ml-420476336"></a>
 ### movedirVector
@@ -44,7 +44,7 @@ Compute movedir vector in shared.directions; the normal completion returns `axes
 | `angles` | `dynamic` | — | Three-element [pitch, yaw, roll] array in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L9)
 
 <a id="function-function-mq3-shared-directions-perpendicular-function-perpendicular-src-src-mq3-shared-directions-ml-93724774"></a>
 ### perpendicular
@@ -60,7 +60,7 @@ Compute perpendicular in shared.directions; the normal completion returns `resul
 | `src` | `dynamic` | — | Normal passed as `normal` to `mq3.shared.directions.projectPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L39)
 
 <a id="function-function-mq3-shared-directions-projectpoint-function-projectpoint-p-normal-src-mq3-shared-directions-ml-175034459"></a>
 ### projectPoint
@@ -77,4 +77,4 @@ Compute project point in shared.directions; the normal completion returns `resul
 | `normal` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L29)

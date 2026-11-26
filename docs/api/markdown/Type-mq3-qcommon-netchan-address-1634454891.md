@@ -12,7 +12,7 @@ struct Address
 Address record for qcommon.netchan, containing `type`, `ip`, `port`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L26)
 
 ## Members
 
@@ -26,7 +26,7 @@ ip
 Address bytes identifying the remote IPv4 endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L30)
 
 <a id="field-field-mq3-qcommon-netchan-address-port-port-src-mq3-qcommon-netchan-ml-1261334429"></a>
 ### port
@@ -38,7 +38,7 @@ port
 Network port associated with the endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L32)
 
 <a id="field-field-mq3-qcommon-netchan-address-type-type-src-mq3-qcommon-netchan-ml-693202551"></a>
 ### type
@@ -50,4 +50,4 @@ type
 Network-address kind selecting loopback, IPv4, or another supported transport.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L28)

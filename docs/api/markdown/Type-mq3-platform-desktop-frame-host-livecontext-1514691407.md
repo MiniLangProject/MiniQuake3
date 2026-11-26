@@ -12,7 +12,7 @@ struct LiveContext
 Callback table for `mq3.platform.desktop_frame_host.LiveContext`; exposes `ingress`, `frameContext`, `commonFrameFn`, `serverFrameFn`, `clientFrameFn`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L51)
 
 ## Members
 
@@ -26,7 +26,7 @@ clientFrameFn
 Host callback used to perform client frame operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L61)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-commonframefn-commonframefn-src-mq3-platform-desktop-frame-host-ml-989665958"></a>
 ### commonFrameFn
@@ -38,7 +38,7 @@ commonFrameFn
 Host callback used to perform common frame operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L57)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-framecontext-framecontext-src-mq3-platform-desktop-frame-host-ml-383991982"></a>
 ### frameContext
@@ -50,7 +50,7 @@ frameContext
 Host state passed to common, server, and client frame callbacks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L55)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-ingress-ingress-src-mq3-platform-desktop-frame-host-ml-869160558"></a>
 ### ingress
@@ -62,7 +62,7 @@ ingress
 Ingress adapter that delivers received packets to the common frame loop.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L53)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-serverframefn-serverframefn-src-mq3-platform-desktop-frame-host-ml-1859910454"></a>
 ### serverFrameFn
@@ -74,4 +74,4 @@ serverFrameFn
 Host callback used to perform server frame operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L59)

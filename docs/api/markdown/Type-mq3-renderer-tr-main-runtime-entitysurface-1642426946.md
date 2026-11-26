@@ -12,7 +12,7 @@ struct EntitySurface
 Data record for `mq3.renderer.tr_main_runtime.EntitySurface`; groups `entityIndex`, `reType`, `fogNum`, `payload`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L60)
 
 ## Members
 
@@ -26,7 +26,7 @@ entityIndex
 Index of the scene entity that produced this geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L62)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-entitysurface-fognum-fognum-src-mq3-renderer-tr-main-runtime-ml-842840067"></a>
 ### fogNum
@@ -38,7 +38,7 @@ fogNum
 Fog volume number encoded or used by the draw surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L66)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-entitysurface-payload-payload-src-mq3-renderer-tr-main-runtime-ml-1239776711"></a>
 ### payload
@@ -50,7 +50,7 @@ payload
 Operation-specific data interpreted according to the record's command or event type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L68)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-entitysurface-retype-retype-src-mq3-renderer-tr-main-runtime-ml-59100701"></a>
 ### reType
@@ -62,4 +62,4 @@ reType
 Renderer entity type selecting the model, sprite, beam, or portal path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L64)

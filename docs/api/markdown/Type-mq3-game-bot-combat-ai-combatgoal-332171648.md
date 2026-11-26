@@ -12,7 +12,7 @@ struct CombatGoal
 `CombatGoal` record for bot combat ai, containing `entitynum`, `areanum`, `origin`, `mins` and `maxs`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L176)
 
 ## Members
 
@@ -26,7 +26,7 @@ areanum
 AAS area containing the bot or spatial goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L180)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-entitynum-entitynum-src-mq3-game-bot-combat-ai-ml-1720315870"></a>
 ### entitynum
@@ -38,7 +38,7 @@ entitynum
 Entity number associated with the goal used by bot combat movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L178)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-maxs-maxs-src-mq3-game-bot-combat-ai-ml-1592052600"></a>
 ### maxs
@@ -50,7 +50,7 @@ maxs
 Upper local bounding-box corner of the goal used by bot combat movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L186)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-mins-mins-src-mq3-game-bot-combat-ai-ml-440353056"></a>
 ### mins
@@ -62,7 +62,7 @@ mins
 Lower local bounding-box corner of the goal used by bot combat movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L184)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-origin-origin-src-mq3-game-bot-combat-ai-ml-1433872714"></a>
 ### origin
@@ -74,4 +74,4 @@ origin
 World-space target position of the goal used by bot combat movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L182)

@@ -30,7 +30,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` and `mq3.botlib.ai_goal_state.cur
 | `avoidTime` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L103)
 
 <a id="function-function-mq3-botlib-ai-goal-state-avoidgoaltime-function-avoidgoaltime-runtime-handle-number-src-mq3-botlib-ai-goal-state-ml-1857923601"></a>
 ### avoidGoalTime
@@ -48,7 +48,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` and `mq3.botlib.ai_goal_state.cur
 | `number` | `dynamic` | — | Value used by `avoidGoalTime` in `if value.avoidGoals[index]==number and value.avoidGoalTimes[index]>=now then return goalNumeric.fsub(value.avoid...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L128)
 
 <a id="function-function-mq3-botlib-ai-goal-state-copygoal-function-copygoal-value-src-mq3-botlib-ai-goal-state-ml-1613439393"></a>
 ### copyGoal
@@ -64,7 +64,7 @@ Create a `mq3.botlib.ai_resource_pools.Goal` record, initializing `origin` as `c
 | `value` | `dynamic` | — | Value record; accesses `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L72)
 
 <a id="function-function-mq3-botlib-ai-goal-state-copyvector-function-copyvector-value-src-mq3-botlib-ai-goal-state-ml-506848857"></a>
 ### copyVector
@@ -80,7 +80,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for ai goal 
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L69)
 
 <a id="function-function-mq3-botlib-ai-goal-state-create-function-create-pools-context-timefn-goalnamefn-logfn-printfn-src-mq3-botlib-ai-goal-state-ml-1208343904"></a>
 ### create
@@ -101,7 +101,7 @@ Create a `mq3.botlib.ai_goal_state.Runtime` record, initializing `pools` from `p
 | `printFn` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_goal_state.Runtime.printFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L58)
 
 <a id="function-function-mq3-botlib-ai-goal-state-currenttime-function-currenttime-runtime-src-mq3-botlib-ai-goal-state-ml-45084334"></a>
 ### currentTime
@@ -117,7 +117,7 @@ Use `runtime.timeFn` to perform `currentTime`. Return paths include `runtime.tim
 | `runtime` | `dynamic` | — | AI goal state runtime; accesses `timeFn` and `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L63)
 
 <a id="function-function-mq3-botlib-ai-goal-state-dumpavoidgoals-function-dumpavoidgoals-runtime-handle-src-mq3-botlib-ai-goal-state-ml-1582883492"></a>
 ### dumpAvoidGoals
@@ -134,7 +134,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState`, `mq3.botlib.ai_goal_state.curren
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L138)
 
 <a id="function-function-mq3-botlib-ai-goal-state-dumpgoalstack-function-dumpgoalstack-runtime-handle-src-mq3-botlib-ai-goal-state-ml-1343778266"></a>
 ### dumpGoalStack
@@ -151,7 +151,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState`, `mq3.botlib.ai_goal_state.goalNa
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L148)
 
 <a id="function-function-mq3-botlib-ai-goal-state-emitlog-function-emitlog-runtime-text-src-mq3-botlib-ai-goal-state-ml-870779829"></a>
 ### emitLog
@@ -168,7 +168,7 @@ Use `runtime.logFn` to perform `emitLog`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L85)
 
 <a id="function-function-mq3-botlib-ai-goal-state-emitprint-function-emitprint-runtime-level-text-src-mq3-botlib-ai-goal-state-ml-826752549"></a>
 ### emitPrint
@@ -186,7 +186,7 @@ Use `runtime.printFn` to perform `emitPrint`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L90)
 
 <a id="function-function-mq3-botlib-ai-goal-state-emptygoalstack-function-emptygoalstack-runtime-handle-src-mq3-botlib-ai-goal-state-ml-2126859940"></a>
 ### emptyGoalStack
@@ -203,7 +203,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` while evaluating `emptyGoalStack`
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L171)
 
 <a id="function-function-mq3-botlib-ai-goal-state-goalname-function-goalname-runtime-number-src-mq3-botlib-ai-goal-state-ml-942512185"></a>
 ### goalName
@@ -220,7 +220,7 @@ Use `runtime.goalNameFn` to perform `goalName`. Return paths include `runtime.go
 | `number` | `dynamic` | — | Value passed as argument 2 to `runtime.goalNameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L78)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-avoid-goal-time-const-op-avoid-goal-time-540-src-mq3-botlib-ai-goal-state-ml-1206132830"></a>
 ### OP_AVOID_GOAL_TIME
@@ -232,7 +232,7 @@ const OP_AVOID_GOAL_TIME = 540
 Bot-library syscall identifier for avoid goal time.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L30)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-dump-avoid-goals-const-op-dump-avoid-goals-530-src-mq3-botlib-ai-goal-state-ml-1574513537"></a>
 ### OP_DUMP_AVOID_GOALS
@@ -244,7 +244,7 @@ const OP_DUMP_AVOID_GOALS = 530
 Bot-library syscall identifier for dump avoid goals.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-dump-goal-stack-const-op-dump-goal-stack-531-src-mq3-botlib-ai-goal-state-ml-630399330"></a>
 ### OP_DUMP_GOAL_STACK
@@ -256,7 +256,7 @@ const OP_DUMP_GOAL_STACK = 531
 Bot-library syscall identifier for dump goal stack.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L20)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-empty-goal-stack-const-op-empty-goal-stack-529-src-mq3-botlib-ai-goal-state-ml-1683896399"></a>
 ### OP_EMPTY_GOAL_STACK
@@ -268,7 +268,7 @@ const OP_EMPTY_GOAL_STACK = 529
 Bot-library syscall identifier for empty goal stack.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-get-second-goal-const-op-get-second-goal-534-src-mq3-botlib-ai-goal-state-ml-559420705"></a>
 ### OP_GET_SECOND_GOAL
@@ -280,7 +280,7 @@ const OP_GET_SECOND_GOAL = 534
 Bot-library syscall identifier for get second goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L26)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-get-top-goal-const-op-get-top-goal-533-src-mq3-botlib-ai-goal-state-ml-1754311472"></a>
 ### OP_GET_TOP_GOAL
@@ -292,7 +292,7 @@ const OP_GET_TOP_GOAL = 533
 Bot-library syscall identifier for get top goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-goal-name-const-op-goal-name-532-src-mq3-botlib-ai-goal-state-ml-860463407"></a>
 ### OP_GOAL_NAME
@@ -304,7 +304,7 @@ const OP_GOAL_NAME = 532
 Bot-library syscall identifier for goal name.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L22)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-pop-goal-const-op-pop-goal-528-src-mq3-botlib-ai-goal-state-ml-155846388"></a>
 ### OP_POP_GOAL
@@ -316,7 +316,7 @@ const OP_POP_GOAL = 528
 Bot-library syscall identifier for pop goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-push-goal-const-op-push-goal-527-src-mq3-botlib-ai-goal-state-ml-1633414459"></a>
 ### OP_PUSH_GOAL
@@ -328,7 +328,7 @@ const OP_PUSH_GOAL = 527
 Bot-library syscall identifier for push goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-reset-avoid-goals-const-op-reset-avoid-goals-526-src-mq3-botlib-ai-goal-state-ml-1731226012"></a>
 ### OP_RESET_AVOID_GOALS
@@ -340,7 +340,7 @@ const OP_RESET_AVOID_GOALS = 526
 Bot-library syscall identifier for reset avoid goals.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L10)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-op-touching-goal-const-op-touching-goal-537-src-mq3-botlib-ai-goal-state-ml-885223884"></a>
 ### OP_TOUCHING_GOAL
@@ -352,7 +352,7 @@ const OP_TOUCHING_GOAL = 537
 Bot-library syscall identifier for touching goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L28)
 
 <a id="function-function-mq3-botlib-ai-goal-state-popgoal-function-popgoal-runtime-handle-src-mq3-botlib-ai-goal-state-ml-1422073864"></a>
 ### popGoal
@@ -369,7 +369,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` while evaluating `popGoal`.
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L165)
 
 <a id="constant-constant-mq3-botlib-ai-goal-state-prt-error-const-prt-error-3-src-mq3-botlib-ai-goal-state-ml-669558928"></a>
 ### PRT_ERROR
@@ -381,7 +381,7 @@ const PRT_ERROR = 3
 Bot-library diagnostic severity for error.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L32)
 
 <a id="function-function-mq3-botlib-ai-goal-state-pushgoal-function-pushgoal-runtime-handle-goal-src-mq3-botlib-ai-goal-state-ml-691106377"></a>
 ### pushGoal
@@ -399,7 +399,7 @@ Push a copied goal onto the bounded goal stack, reporting stack overflow through
 | `goal` | `dynamic` | — | Value record; accesses `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L157)
 
 <a id="function-function-mq3-botlib-ai-goal-state-removefromavoidgoals-function-removefromavoidgoals-runtime-handle-number-src-mq3-botlib-ai-goal-state-ml-1384743767"></a>
 ### removeFromAvoidGoals
@@ -417,7 +417,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` and `mq3.botlib.ai_goal_state.cur
 | `number` | `dynamic` | — | Value used by `removeFromAvoidGoals` in `if value.avoidGoals[index]==number and value.avoidGoalTimes[index]>=now then value.avoidGoalTimes[index]=0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L117)
 
 <a id="function-function-mq3-botlib-ai-goal-state-resetavoidgoals-function-resetavoidgoals-runtime-handle-src-mq3-botlib-ai-goal-state-ml-339935000"></a>
 ### resetAvoidGoals
@@ -434,7 +434,7 @@ Apply `mq3.botlib.ai_resource_pools.resetAvoidGoalsState` and `mq3.botlib.ai_res
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L95)
 
 - [mq3.botlib.ai_goal_state.Runtime](Type-mq3-botlib-ai-goal-state-runtime-1899549260.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-state-secondgoal-function-secondgoal-runtime-handle-src-mq3-botlib-ai-goal-state-ml-1484744600"></a>
@@ -452,7 +452,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` and `mq3.botlib.ai_goal_state.cop
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L183)
 
 <a id="function-function-mq3-botlib-ai-goal-state-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-goal-state-ml-1467280807"></a>
 ### supportsTrap
@@ -468,7 +468,7 @@ Test `op==OP_RESET_AVOID_GOALS or op==OP_PUSH_GOAL or op==OP_POP_GOAL or op==OP_
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L201)
 
 <a id="function-function-mq3-botlib-ai-goal-state-topgoal-function-topgoal-runtime-handle-src-mq3-botlib-ai-goal-state-ml-764598968"></a>
 ### topGoal
@@ -485,7 +485,7 @@ Apply `mq3.botlib.ai_resource_pools.goalState` and `mq3.botlib.ai_goal_state.cop
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L177)
 
 <a id="function-function-mq3-botlib-ai-goal-state-touchinggoal-function-touchinggoal-origin-goal-src-mq3-botlib-ai-goal-state-ml-133068521"></a>
 ### touchingGoal
@@ -502,4 +502,4 @@ Test the player origin against goal bounds expanded by the standing player bound
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `mins`, `origin` and `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state.ml#L190)

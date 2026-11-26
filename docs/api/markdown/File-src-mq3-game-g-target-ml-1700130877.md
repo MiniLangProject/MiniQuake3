@@ -17,7 +17,7 @@ Reachable from entry: **no**
 - `mq3/game/spawn_values.ml` as `values` → [src/mq3/game/spawn_values.ml](File-src-mq3-game-spawn-values-ml-1233448418.md)
 - `mq3/game/targets.ml` as `targets` → [src/mq3/game/targets.ml](File-src-mq3-game-targets-ml-1419507080.md)
 - `mq3/shared/directions.ml` as `dirs` → [src/mq3/shared/directions.ml](File-src-mq3-shared-directions-ml-575237557.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -36,7 +36,7 @@ Update `ent.wait` and `ent.use` during `SP_target_delay`.
 | `ent` | `dynamic` | — | Game entity; accesses `wait` and `use`. May update `ent.wait` and `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L52)
 
 <a id="function-function-mq3-game-g-target-sp-target-give-function-sp-target-give-level-ent-src-mq3-game-g-target-ml-1804813281"></a>
 ### SP_target_give
@@ -53,7 +53,7 @@ Set `ent.use` to `Use_Target_Give` in `mq3.game.g_target.SP_target_give`.
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L25)
 
 <a id="function-function-mq3-game-g-target-sp-target-kill-function-sp-target-kill-level-self-src-mq3-game-g-target-ml-159105420"></a>
 ### SP_target_kill
@@ -70,7 +70,7 @@ Set `self.use` to `target_kill_use` in `mq3.game.g_target.SP_target_kill`.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `use`. May update `self.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L200)
 
 <a id="function-function-mq3-game-g-target-sp-target-laser-function-sp-target-laser-level-self-src-mq3-game-g-target-ml-278391506"></a>
 ### SP_target_laser
@@ -87,7 +87,7 @@ Set `self.think` to `target_laser_start` and `self.nextthink` to `n.add32(level.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `think` and `nextthink`. May update `self.think` and `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L161)
 
 <a id="function-function-mq3-game-g-target-sp-target-location-function-sp-target-location-level-self-src-mq3-game-g-target-ml-1557985024"></a>
 ### SP_target_location
@@ -104,7 +104,7 @@ Set `self.think` to `target_location_linkup` and `self.nextthink` to `n.add32(le
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `think`, `nextthink` and `s`. May update `self.think` and `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L212)
 
 <a id="function-function-mq3-game-g-target-sp-target-position-function-sp-target-position-level-self-src-mq3-game-g-target-ml-1582424544"></a>
 ### SP_target_position
@@ -121,7 +121,7 @@ Apply `mq3.game.entities.setOrigin` while evaluating `SP_target_position`.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L204)
 
 <a id="function-function-mq3-game-g-target-sp-target-print-function-sp-target-print-level-ent-src-mq3-game-g-target-ml-692483023"></a>
 ### SP_target_print
@@ -138,7 +138,7 @@ Set `ent.use` to `Use_Target_Print` in `mq3.game.g_target.SP_target_print`.
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L81)
 
 <a id="function-function-mq3-game-g-target-sp-target-relay-function-sp-target-relay-level-self-src-mq3-game-g-target-ml-1302861242"></a>
 ### SP_target_relay
@@ -155,7 +155,7 @@ Set `self.use` to `target_relay_use` in `mq3.game.g_target.SP_target_relay`.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `use`. May update `self.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L190)
 
 <a id="function-function-mq3-game-g-target-sp-target-remove-powerups-function-sp-target-remove-powerups-level-ent-src-mq3-game-g-target-ml-1912853437"></a>
 ### SP_target_remove_powerups
@@ -172,7 +172,7 @@ Set `ent.use` to `Use_target_remove_powerups` in `mq3.game.g_target.SP_target_re
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L35)
 
 <a id="function-function-mq3-game-g-target-sp-target-score-function-sp-target-score-level-ent-src-mq3-game-g-target-ml-758525937"></a>
 ### SP_target_score
@@ -189,7 +189,7 @@ Set `ent.use` to `Use_Target_Score` in `mq3.game.g_target.SP_target_score`.
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L69)
 
 <a id="function-function-mq3-game-g-target-sp-target-speaker-function-sp-target-speaker-level-ent-src-mq3-game-g-target-ml-1819624599"></a>
 ### SP_target_speaker
@@ -206,7 +206,7 @@ Update `ent.wait`, `ent.random`, `ent.spawnflags` and `ent.noise_index` and rela
 | `ent` | `dynamic` | — | Game entity; accesses `wait`, `random`, `spawnflags`, `noise_index` and `s` and related fields. May update `ent.wait`, `ent.random` and `ent.spawnflags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L94)
 
 <a id="function-function-mq3-game-g-target-sp-target-teleporter-function-sp-target-teleporter-level-self-src-mq3-game-g-target-ml-155580372"></a>
 ### SP_target_teleporter
@@ -223,7 +223,7 @@ Set `self.use` to `target_teleporter_use` in `mq3.game.g_target.SP_target_telepo
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `targetname`, `classname`, `s` and `use`. May update `self.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L174)
 
 <a id="function-function-mq3-game-g-target-target-kill-use-function-target-kill-use-level-self-other-activator-src-mq3-game-g-target-ml-2043602405"></a>
 ### target_kill_use
@@ -242,7 +242,7 @@ Forward `target_kill_use` to `mq3.game.hazards.killUse` and return the delegated
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L196)
 
 <a id="function-function-mq3-game-g-target-target-laser-off-function-target-laser-off-level-self-src-mq3-game-g-target-ml-294115456"></a>
 ### target_laser_off
@@ -259,7 +259,7 @@ Forward `target_laser_off` to `mq3.game.hazards.laserOff` and return the delegat
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `nextthink`. May update `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L128)
 
 <a id="function-function-mq3-game-g-target-target-laser-on-function-target-laser-on-level-self-src-mq3-game-g-target-ml-871788738"></a>
 ### target_laser_on
@@ -276,7 +276,7 @@ Set `self.activator` to `self` in `mq3.game.g_target.target_laser_on`. Return pa
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `activator`. May update `self.activator` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L121)
 
 <a id="function-function-mq3-game-g-target-target-laser-start-function-target-laser-start-level-self-src-mq3-game-g-target-ml-1119541036"></a>
 ### target_laser_start
@@ -293,7 +293,7 @@ Update `self.s.eType`, `self.enemy`, `self.movedir` and `self.s.angles` and rela
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`, `target`, `classname`, `enemy` and `movedir` and related fields. May update `self.s.eType`, `self.enemy` and `self.movedir` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L138)
 
 <a id="function-function-mq3-game-g-target-target-laser-think-function-target-laser-think-level-self-src-mq3-game-g-target-ml-225888084"></a>
 ### target_laser_think
@@ -310,7 +310,7 @@ Forward `target_laser_think` to `mq3.game.hazards.laserThink` and return the del
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `enemy`, `movedir`, `s`, `activator` and `damage` and related fields. May update `self.movedir`, `self.s.origin2` and `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L117)
 
 <a id="function-function-mq3-game-g-target-target-laser-use-function-target-laser-use-level-self-other-activator-src-mq3-game-g-target-ml-1532686629"></a>
 ### target_laser_use
@@ -329,7 +329,7 @@ Forward `target_laser_use` to `mq3.game.hazards.laserUse` and return the delegat
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L134)
 
 <a id="function-function-mq3-game-g-target-target-location-linkup-function-target-location-linkup-level-ent-src-mq3-game-g-target-ml-678353025"></a>
 ### target_location_linkup
@@ -346,7 +346,7 @@ Forward `target_location_linkup` to `mq3.game.targets.locationLinkup` and return
 | `ent` | `dynamic` | — | Value passed as argument 2 to `mq3.game.targets.locationLinkup`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L208)
 
 <a id="function-function-mq3-game-g-target-target-relay-use-function-target-relay-use-level-self-other-activator-src-mq3-game-g-target-ml-388403609"></a>
 ### target_relay_use
@@ -365,7 +365,7 @@ Forward `target_relay_use` to `mq3.game.targets.relayUse` and return the delegat
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L186)
 
 <a id="function-function-mq3-game-g-target-target-teleporter-use-function-target-teleporter-use-level-self-other-activator-src-mq3-game-g-target-ml-1286800621"></a>
 ### target_teleporter_use
@@ -384,7 +384,7 @@ Forward `target_teleporter_use` to `mq3.game.targets.teleporterUse` and return t
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L170)
 
 <a id="function-function-mq3-game-g-target-think-target-delay-function-think-target-delay-level-ent-src-mq3-game-g-target-ml-1436718493"></a>
 ### Think_Target_Delay
@@ -401,7 +401,7 @@ Forward `Think_Target_Delay` to `mq3.game.targets.delayThink` and return the del
 | `ent` | `dynamic` | — | Game entity; accesses `activator`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L40)
 
 <a id="function-function-mq3-game-g-target-use-target-delay-function-use-target-delay-level-ent-other-activator-src-mq3-game-g-target-ml-1758591368"></a>
 ### Use_Target_Delay
@@ -420,7 +420,7 @@ Update `ent.nextthink`, `ent.think` and `ent.activator` during `Use_Target_Delay
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L46)
 
 <a id="function-function-mq3-game-g-target-use-target-give-function-use-target-give-level-ent-other-activator-src-mq3-game-g-target-ml-1328052018"></a>
 ### Use_Target_Give
@@ -439,7 +439,7 @@ Forward `Use_Target_Give` to `mq3.game.map_targets.giveUse` and return the deleg
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L21)
 
 <a id="function-function-mq3-game-g-target-use-target-print-function-use-target-print-level-ent-other-activator-src-mq3-game-g-target-ml-1988349688"></a>
 ### Use_Target_Print
@@ -458,7 +458,7 @@ Forward `Use_Target_Print` to `mq3.game.map_targets.printUse` and return the del
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L77)
 
 <a id="function-function-mq3-game-g-target-use-target-remove-powerups-function-use-target-remove-powerups-level-ent-other-activator-src-mq3-game-g-target-ml-29676616"></a>
 ### Use_target_remove_powerups
@@ -477,7 +477,7 @@ Forward `Use_target_remove_powerups` to `mq3.game.map_targets.removePowerupsUse`
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L31)
 
 <a id="function-function-mq3-game-g-target-use-target-score-function-use-target-score-level-ent-other-activator-src-mq3-game-g-target-ml-1932876456"></a>
 ### Use_Target_Score
@@ -496,7 +496,7 @@ Forward `Use_Target_Score` to `mq3.game.map_targets.scoreUse` and return the del
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L65)
 
 <a id="function-function-mq3-game-g-target-use-target-speaker-function-use-target-speaker-level-ent-other-activator-src-mq3-game-g-target-ml-1193033636"></a>
 ### Use_Target_Speaker
@@ -515,4 +515,4 @@ Forward `Use_Target_Speaker` to `mq3.game.targets.speakerUse` and return the del
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L90)

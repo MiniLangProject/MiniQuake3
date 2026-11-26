@@ -12,7 +12,7 @@ struct ServerAddress
 Stores client ABI server address record, including `ip`, `port`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L235)
 
 ## Members
 
@@ -26,7 +26,7 @@ ip
 Compatibility member corresponding to native `serverAddress_t.ip`; the original declaration is `byte ip[4]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L238)
 
 <a id="field-field-mq3-client-client-abi-serveraddress-port-port-src-mq3-client-client-abi-ml-787445484"></a>
 ### port
@@ -38,4 +38,4 @@ port
 Compatibility member corresponding to native `serverAddress_t.port`; the original declaration is `unsigned short port`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L241)

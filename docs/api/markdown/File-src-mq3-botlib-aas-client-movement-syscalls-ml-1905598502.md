@@ -24,7 +24,7 @@ const AAS_CLIENTMOVE_SIZE = 84
 Byte size of the AAS client movement prediction record in the bot VM ABI or serialized representation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-client-movement-syscalls-dispatch-function-dispatch-services-vm-base-src-mq3-botlib-aas-client-movement-syscalls-ml-2129030112"></a>
 ### dispatch
@@ -42,7 +42,7 @@ Apply `mq3.vm.syscall_common.pointer`, `mq3.vm.syscall_common.argument` and `mq3
 | `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement_syscalls.ml#L21)
 
 <a id="function-function-mq3-botlib-aas-client-movement-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-aas-client-movement-syscalls-ml-1333138845"></a>
 ### writeVector
@@ -60,4 +60,4 @@ Write three float bit patterns to consecutive VM memory words for aas client mov
 | `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement_syscalls.ml#L16)

@@ -30,7 +30,7 @@ Every branch returns. A dense switch here emits unresolved jump-table data when 
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L34)
 
 <a id="function-function-mq3-game-trajectory-evaluatedelta-function-evaluatedelta-tr-attime-src-mq3-game-trajectory-ml-332497278"></a>
 ### evaluateDelta
@@ -47,7 +47,7 @@ Evaluate trajectory velocity for stationary, linear, stopped, sinusoidal and gra
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L63)
 
 <a id="function-function-mq3-game-trajectory-phaseangle-function-phaseangle-tr-attime-src-mq3-game-trajectory-ml-959890316"></a>
 ### phaseAngle
@@ -64,7 +64,7 @@ Calculate the sine-trajectory phase in radians at the supplied game time; reject
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L25)
 
 <a id="function-function-mq3-game-trajectory-playertouchesitem-function-playertouchesitem-ps-trajectory-attime-src-mq3-game-trajectory-ml-718069784"></a>
 ### playerTouchesItem
@@ -82,6 +82,6 @@ Test the player origin against the asymmetric item-pickup bounds after evaluatin
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L89)
 
 - [mq3.game.trajectory.Trajectory](Type-mq3-game-trajectory-trajectory-1628072410.md) — struct

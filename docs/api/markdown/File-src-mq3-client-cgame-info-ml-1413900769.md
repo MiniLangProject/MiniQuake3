@@ -10,7 +10,7 @@ Reachable from entry: **yes**
 
 - `mq3/qcommon/command_buffer.ml` as `commandBuffer` → [src/mq3/qcommon/command_buffer.ml](File-src-mq3-qcommon-command-buffer-ml-122952676.md)
 - `mq3/shared/info.ml` as `info` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Converts a NUL-terminated decimal C string to a signed 32-bit integer using the 
 
 **Returns:** The converted integer; a string with no initial numeric conversion yields zero.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L11)
 
 <a id="function-function-mq3-client-cgame-info-baseitemicons-function-baseitemicons-src-mq3-client-cgame-info-ml-104683526"></a>
 ### baseItemIcons
@@ -42,7 +42,7 @@ function baseItemIcons()
 Baseq3 bg_itemlist order is the bit order of CS_ITEMS.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L119)
 
 <a id="function-function-mq3-client-cgame-info-clean-function-clean-text-src-mq3-client-cgame-info-ml-1408830407"></a>
 ### clean
@@ -58,7 +58,7 @@ Calls `decode` from client game info `clean`. The final path returns `decode(byt
 | `text` | `dynamic` | — | Text consumed or emitted by `clean` in the client game info path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L75)
 
 <a id="function-function-mq3-client-cgame-info-create-function-create-src-mq3-client-cgame-info-ml-455228258"></a>
 ### create
@@ -70,7 +70,7 @@ function create()
 Creates a `mq3.client.cgame_info.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L72)
 
 - [mq3.client.cgame_info.Draw](Type-mq3-client-cgame-info-draw-298961247.md) — struct
 <a id="function-function-mq3-client-cgame-info-drawinformation-function-drawinformation-state-serverinfo-systeminfo-motd-message-gametype-svrunning-availableassets-src-mq3-client-cgame-info-ml-301713500"></a>
@@ -94,7 +94,7 @@ CG_DrawInformation
 | `availableAssets` | `dynamic` | — | Asset names/resources available for model or menu selection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L155)
 
 <a id="function-function-mq3-client-cgame-info-drawinformationwithshot-function-drawinformationwithshot-state-serverinfo-systeminfo-motd-message-gametype-svrunning-levelshot-src-mq3-client-cgame-info-ml-1449181912"></a>
 ### drawInformationWithShot
@@ -117,7 +117,7 @@ Calls `mq3.client.cgame_info.Information`, `mq3.client.cgame_info.Draw`, `mq3.cl
 | `levelshot` | `dynamic` | — | Value used by `result.requestedShaders=[levelshot,"levelShotDetail"]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L169)
 
 <a id="function-function-mq3-client-cgame-info-drawloadingicons-function-drawloadingicons-state-src-mq3-client-cgame-info-ml-757835433"></a>
 ### drawLoadingIcons
@@ -133,7 +133,7 @@ CG_DrawLoadingIcons
 | `state` | `dynamic` | — | Record read through `state.playerIcons`, `state.itemIcons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L132)
 
 <a id="function-function-mq3-client-cgame-info-gametypename-function-gametypename-gametype-src-mq3-client-cgame-info-ml-524560352"></a>
 ### gametypeName
@@ -149,7 +149,7 @@ Evaluates client game info `gametypeName` and returns `"Free For All"`, `"Single
 | `gametype` | `dynamic` | — | Quake III game-type identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L138)
 
 <a id="constant-constant-mq3-client-cgame-info-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-info-ml-300612385"></a>
 ### GT_CTF
@@ -161,7 +161,7 @@ const GT_CTF = 4
 Native game-type value for capture the flag, used when composing the loading screen's game-mode and rules text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L30)
 
 <a id="constant-constant-mq3-client-cgame-info-gt-ffa-const-gt-ffa-0-src-mq3-client-cgame-info-ml-1798032509"></a>
 ### GT_FFA
@@ -173,7 +173,7 @@ const GT_FFA = 0
 Native game-type identifier selecting free-for-all deathmatch.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-info-gt-single-player-const-gt-single-player-2-src-mq3-client-cgame-info-ml-594657053"></a>
 ### GT_SINGLE_PLAYER
@@ -185,7 +185,7 @@ const GT_SINGLE_PLAYER = 2
 Native game-type value for single-player arena progression, used when composing the loading screen's game-mode and rules text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L24)
 
 <a id="constant-constant-mq3-client-cgame-info-gt-team-const-gt-team-3-src-mq3-client-cgame-info-ml-1338752738"></a>
 ### GT_TEAM
@@ -197,7 +197,7 @@ const GT_TEAM = 3
 Native game-type value for team deathmatch, used when composing the loading screen's game-mode and rules text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-info-gt-tournament-const-gt-tournament-1-src-mq3-client-cgame-info-ml-443562016"></a>
 ### GT_TOURNAMENT
@@ -209,7 +209,7 @@ const GT_TOURNAMENT = 1
 Native game-type value for one-on-one tournament play, used when composing the loading screen's game-mode and rules text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L21)
 
 - [mq3.client.cgame_info.Information](Type-mq3-client-cgame-info-information-431493297.md) — struct
 <a id="function-function-mq3-client-cgame-info-line-function-line-result-y-text-src-mq3-client-cgame-info-ml-1868194463"></a>
@@ -228,7 +228,7 @@ Updates `result.commands` during client game info `line`.
 | `text` | `dynamic` | — | Text consumed or emitted by `line` in the client game info path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L145)
 
 <a id="function-function-mq3-client-cgame-info-loadingclient-function-loadingclient-state-playerinfo-gametype-availableassets-src-mq3-client-cgame-info-ml-2147050968"></a>
 ### loadingClient
@@ -247,7 +247,7 @@ Updates `state.playerIcons`, `state.registeredShaders`, `state.registeredSounds`
 | `availableAssets` | `dynamic` | — | Asset names/resources available for model or menu selection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L113)
 
 <a id="function-function-mq3-client-cgame-info-loadingitem-function-loadingitem-state-icon-pickupname-handle-src-mq3-client-cgame-info-ml-914388139"></a>
 ### loadingItem
@@ -266,7 +266,7 @@ Updates `state.itemIcons`, `state.registeredShaders` during client game info `lo
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `loadingItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L94)
 
 <a id="function-function-mq3-client-cgame-info-loadingstring-function-loadingstring-state-text-src-mq3-client-cgame-info-ml-1505844736"></a>
 ### loadingString
@@ -283,7 +283,7 @@ Updates `state.infoScreenText`, `state.updates` during client game info `loading
 | `text` | `dynamic` | — | Text consumed or emitted by `loadingString` in the client game info path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L88)
 
 <a id="constant-constant-mq3-client-cgame-info-max-loading-item-icons-const-max-loading-item-icons-26-src-mq3-client-cgame-info-ml-1419542253"></a>
 ### MAX_LOADING_ITEM_ICONS
@@ -295,7 +295,7 @@ const MAX_LOADING_ITEM_ICONS = 26
 Capacity limit for the loading item icons collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
 
 <a id="constant-constant-mq3-client-cgame-info-max-loading-player-icons-const-max-loading-player-icons-16-src-mq3-client-cgame-info-ml-712601108"></a>
 ### MAX_LOADING_PLAYER_ICONS
@@ -307,7 +307,7 @@ const MAX_LOADING_PLAYER_ICONS = 16
 Capacity limit for the loading player icons collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L14)
 
 <a id="function-function-mq3-client-cgame-info-playericoncandidates-function-playericoncandidates-playerinfo-src-mq3-client-cgame-info-ml-1464278091"></a>
 ### playerIconCandidates
@@ -323,7 +323,7 @@ Calls `mq3.client.cgame_info.splitModel`, `mq3.shared.info.value` from client ga
 | `playerInfo` | `dynamic` | — | Value used by `modelSkin=splitModel(info.value(playerInfo,"model"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L104)
 
 <a id="function-function-mq3-client-cgame-info-splitmodel-function-splitmodel-value-src-mq3-client-cgame-info-ml-1401948745"></a>
 ### splitModel
@@ -339,6 +339,6 @@ Calls `std.string.split` from client game info `splitModel`. The final path retu
 | `value` | `dynamic` | — | Value used by `parts=strings.split(value,"/")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L99)
 
 - [mq3.client.cgame_info.State](Type-mq3-client-cgame-info-state-1283701186.md) — struct

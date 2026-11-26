@@ -12,7 +12,7 @@ struct Stream
 Data record for `mq3.platform.win_main_runtime.Stream`; groups `file`, `data`, `position`, `active`, `readFn`, `seekFn`, and 1 further field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L124)
 
 ## Members
 
@@ -26,7 +26,7 @@ active
 Whether this object is currently active and accepts processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L132)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-context-context-src-mq3-platform-win-main-runtime-ml-1517494677"></a>
 ### context
@@ -38,7 +38,7 @@ context
 File-backend state passed to the stream's read and seek callbacks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L138)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-data-data-src-mq3-platform-win-main-runtime-ml-940222313"></a>
 ### data
@@ -50,7 +50,7 @@ data
 Buffered bytes backing the streamed-file adapter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L128)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-file-file-src-mq3-platform-win-main-runtime-ml-371357573"></a>
 ### file
@@ -62,7 +62,7 @@ file
 Open file object used by the stream or cursor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L126)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-position-position-src-mq3-platform-win-main-runtime-ml-270252627"></a>
 ### position
@@ -74,7 +74,7 @@ position
 Current byte position in the streamed file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L130)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-readfn-readfn-src-mq3-platform-win-main-runtime-ml-983745133"></a>
 ### readFn
@@ -86,7 +86,7 @@ readFn
 Host callback used to perform read operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L134)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-seekfn-seekfn-src-mq3-platform-win-main-runtime-ml-1612830705"></a>
 ### seekFn
@@ -98,4 +98,4 @@ seekFn
 Host callback used to perform seek operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L136)

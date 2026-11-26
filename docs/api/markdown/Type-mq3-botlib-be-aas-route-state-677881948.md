@@ -12,7 +12,7 @@ struct State
 `State` record for be aas route, containing `runtime`, `router`, `cache`, `staticTables` and `areaContentTravelFlags` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L59)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaContentTravelFlags
 Travel-permission masks derived from each area's contents.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L69)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-cache-cache-src-mq3-botlib-be-aas-route-ml-1733490482"></a>
 ### cache
@@ -38,7 +38,7 @@ cache
 Cached lookup or routing data reused by subsequent requests.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L65)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-initialized-initialized-src-mq3-botlib-be-aas-route-ml-1022763362"></a>
 ### initialized
@@ -50,7 +50,7 @@ initialized
 True after routing flags, reverse links, caches, and travel-time tables have been built.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L77)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-lru-lru-src-mq3-botlib-be-aas-route-ml-285507818"></a>
 ### lru
@@ -62,7 +62,7 @@ lru
 Least-recently-used ordering of cached routes or areas.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L75)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-maxroutingcachesize-maxroutingcachesize-src-mq3-botlib-be-aas-route-ml-927320510"></a>
 ### maxRoutingCacheSize
@@ -74,7 +74,7 @@ maxRoutingCacheSize
 Maximum size allowed for cached routing data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L81)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-reachabilityareaindex-reachabilityareaindex-src-mq3-botlib-be-aas-route-ml-100720450"></a>
 ### reachabilityAreaIndex
@@ -86,7 +86,7 @@ reachabilityAreaIndex
 Index used to look up areas associated with each reachability.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L73)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-reachabilityareas-reachabilityareas-src-mq3-botlib-be-aas-route-ml-1763419214"></a>
 ### reachabilityAreas
@@ -98,7 +98,7 @@ reachabilityAreas
 Area membership information associated with stored reachabilities.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L71)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-router-router-src-mq3-botlib-be-aas-route-ml-250680704"></a>
 ### router
@@ -110,7 +110,7 @@ router
 AAS navigation state supplying area settings and reachabilities for route searches.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L63)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-routingcachesize-routingcachesize-src-mq3-botlib-be-aas-route-ml-1659092644"></a>
 ### routingCacheSize
@@ -122,7 +122,7 @@ routingCacheSize
 Current size charged to cached routing data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L79)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-runtime-runtime-src-mq3-botlib-be-aas-route-ml-995406826"></a>
 ### runtime
@@ -134,7 +134,7 @@ runtime
 Navigation runtime supplying map geometry and area availability to the routing facade.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L61)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-services-services-src-mq3-botlib-be-aas-route-ml-1935560490"></a>
 ### services
@@ -146,7 +146,7 @@ services
 Visibility, crossed-area, and random-choice services used by the routing facade.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L83)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-statictables-statictables-src-mq3-botlib-be-aas-route-ml-705925180"></a>
 ### staticTables
@@ -158,4 +158,4 @@ staticTables
 Precomputed reverse-link and portal travel-time tables.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L67)

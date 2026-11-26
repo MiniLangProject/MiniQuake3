@@ -23,7 +23,7 @@ const CA_CONNECTED = 5
 Connection-state value for a completed handshake before game-state loading, defined for validating whether sequenced server packets may be processed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L10)
 
 <a id="function-function-mq3-client-packet-event-create-function-create-connectionstate-src-mq3-client-packet-event-ml-1322778445"></a>
 ### create
@@ -39,7 +39,7 @@ Calls `mq3.client.packet_event.State` from packet event `create`. The final path
 | `connectionState` | `dynamic` | — | Value used by `if connectionState==void then return error(6980,"packet event: missing connection state") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L31)
 
 <a id="function-function-mq3-client-packet-event-isoob-function-isoob-msg-src-mq3-client-packet-event-ml-694438301"></a>
 ### isOob
@@ -55,7 +55,7 @@ Computes `msg.cursize>=4 and numeric.readI32(msg.data,0)==-1` for packet event `
 | `msg` | `dynamic` | — | Record read through `msg.cursize`, `msg.data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L56)
 
 <a id="function-function-mq3-client-packet-event-packetevent-function-packetevent-state-host-source-msg-src-mq3-client-packet-event-ml-909878735"></a>
 ### packetEvent
@@ -74,7 +74,7 @@ processFn(host,state,msg) owns CL_Netchan_Process. parseFn is normally bound to 
 | `msg` | `dynamic` | — | Record read through `msg.cursize`, `msg.readcount`, `msg.data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L66)
 
 <a id="function-function-mq3-client-packet-event-services-function-services-connectionlesshost-src-mq3-client-packet-event-ml-1457457375"></a>
 ### services
@@ -90,7 +90,7 @@ Creates a `mq3.client.packet_event.Services` record. Assigns `connectionlessHost
 | `connectionlessHost` | `dynamic` | — | Value used to initialize `Services.connectionlessHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L52)
 
 - [mq3.client.packet_event.Services](Type-mq3-client-packet-event-services-377319072.md) — struct
 - [mq3.client.packet_event.State](Type-mq3-client-packet-event-state-64967829.md) — struct

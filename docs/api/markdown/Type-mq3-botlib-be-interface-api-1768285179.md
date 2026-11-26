@@ -12,7 +12,7 @@ struct Api
 `Api` record for be interface, containing `version`, `top`, `aas`, `ea` and `ai`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L76)
 
 ## Members
 
@@ -26,7 +26,7 @@ aas
 AAS navigation runtime used for area and route queries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L82)
 
 <a id="field-field-mq3-botlib-be-interface-api-ai-ai-src-mq3-botlib-be-interface-ml-1236301657"></a>
 ### ai
@@ -38,7 +38,7 @@ ai
 Higher-level chat, goal, movement, and weapon AI entry points.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L86)
 
 <a id="field-field-mq3-botlib-be-interface-api-ea-ea-src-mq3-botlib-be-interface-ml-116291361"></a>
 ### ea
@@ -50,7 +50,7 @@ ea
 Elementary-action entry points for bot movement and commands.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L84)
 
 <a id="field-field-mq3-botlib-be-interface-api-top-top-src-mq3-botlib-be-interface-ml-750101045"></a>
 ### top
@@ -62,7 +62,7 @@ top
 Top-level setup, shutdown, and frame entry points.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L80)
 
 <a id="field-field-mq3-botlib-be-interface-api-version-version-src-mq3-botlib-be-interface-ml-452581785"></a>
 ### version
@@ -74,4 +74,4 @@ version
 Version of the exported bot-library interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L78)

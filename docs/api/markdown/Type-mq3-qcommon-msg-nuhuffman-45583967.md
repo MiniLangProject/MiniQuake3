@@ -12,7 +12,7 @@ struct NUHuffman
 NUHuffman record for qcommon.msg, containing `compressor`, `decompressor`, `frequencies`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L21)
 
 ## Members
 
@@ -26,7 +26,7 @@ compressor
 Huffman state used to encode outgoing message data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L23)
 
 <a id="field-field-mq3-qcommon-msg-nuhuffman-decompressor-decompressor-src-mq3-qcommon-msg-ml-1273050109"></a>
 ### decompressor
@@ -38,7 +38,7 @@ decompressor
 Huffman state used to decode incoming message data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L25)
 
 <a id="field-field-mq3-qcommon-msg-nuhuffman-frequencies-frequencies-src-mq3-qcommon-msg-ml-281819517"></a>
 ### frequencies
@@ -50,4 +50,4 @@ frequencies
 Reference symbol frequencies used to initialize both codec directions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L27)

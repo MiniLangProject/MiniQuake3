@@ -12,7 +12,7 @@ struct VmSymbol
 VmSymbol record for vm.abi, containing `next`, `symValue`, `profileCount`, `symName`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L135)
 
 ## Members
 
@@ -26,7 +26,7 @@ next
 Next entry in the linked VM symbol list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L137)
 
 <a id="field-field-mq3-vm-abi-vmsymbol-profilecount-profilecount-src-mq3-vm-abi-ml-1681995588"></a>
 ### profileCount
@@ -38,7 +38,7 @@ profileCount
 Execution/profile counter associated with this VM symbol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L141)
 
 <a id="field-field-mq3-vm-abi-vmsymbol-symname-symname-src-mq3-vm-abi-ml-955280368"></a>
 ### symName
@@ -50,7 +50,7 @@ symName
 Name associated with the VM debug symbol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L143)
 
 <a id="field-field-mq3-vm-abi-vmsymbol-symvalue-symvalue-src-mq3-vm-abi-ml-617376740"></a>
 ### symValue
@@ -62,4 +62,4 @@ symValue
 Numeric address/value associated with the VM debug symbol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L139)

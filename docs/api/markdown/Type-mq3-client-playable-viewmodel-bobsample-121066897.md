@@ -12,7 +12,7 @@ struct BobSample
 Stores playable viewmodel bob sample record, including `cycle`, `fraction`, `xySpeed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L55)
 
 ## Members
 
@@ -26,7 +26,7 @@ cycle
 When constructing this record, `advance` supplies `cycle` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L57)
 
 <a id="field-field-mq3-client-playable-viewmodel-bobsample-fraction-fraction-src-mq3-client-playable-viewmodel-ml-670808134"></a>
 ### fraction
@@ -38,7 +38,7 @@ fraction
 When constructing this record, `advance` supplies `fraction` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L59)
 
 <a id="field-field-mq3-client-playable-viewmodel-bobsample-xyspeed-xyspeed-src-mq3-client-playable-viewmodel-ml-1921561918"></a>
 ### xySpeed
@@ -50,4 +50,4 @@ xySpeed
 When constructing this record, `advance` supplies `numeric.f32(speed)` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L61)

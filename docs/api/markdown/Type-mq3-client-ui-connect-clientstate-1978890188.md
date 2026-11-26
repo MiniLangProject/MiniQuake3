@@ -12,7 +12,7 @@ struct ClientState
 Stores UI connect client state record, including `connState`, `connectPacketCount`, `servername`, `updateInfoString`, `messageString`, `serverInfo`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L73)
 
 ## Members
 
@@ -26,7 +26,7 @@ connectPacketCount
 Number of connection-handshake packets sent, also used by progress displays.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L77)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-connstate-connstate-src-mq3-client-ui-connect-ml-1390206509"></a>
 ### connState
@@ -38,7 +38,7 @@ connState
 When constructing this record, `clientState` supplies `connState` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L75)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-messagestring-messagestring-src-mq3-client-ui-connect-ml-804006257"></a>
 ### messageString
@@ -50,7 +50,7 @@ messageString
 When constructing this record, `clientState` supplies `messageString` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L83)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-serverinfo-serverinfo-src-mq3-client-ui-connect-ml-654574119"></a>
 ### serverInfo
@@ -62,7 +62,7 @@ serverInfo
 When constructing this record, `clientState` supplies `serverInfo` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L85)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-servername-servername-src-mq3-client-ui-connect-ml-2097518857"></a>
 ### servername
@@ -74,7 +74,7 @@ servername
 When constructing this record, `clientState` supplies `servername` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L79)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-updateinfostring-updateinfostring-src-mq3-client-ui-connect-ml-212494329"></a>
 ### updateInfoString
@@ -86,4 +86,4 @@ updateInfoString
 When constructing this record, `clientState` supplies `updateInfoString` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L81)

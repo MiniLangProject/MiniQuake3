@@ -12,7 +12,7 @@ struct PowerupInfo
 Stores client game local powerup info record, including `itemNum`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L538)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L538)
 
 ## Members
 
@@ -26,4 +26,4 @@ itemNum
 Compatibility member corresponding to native `powerupInfo_t.itemNum`; the original declaration is `int itemNum`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L541)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L541)

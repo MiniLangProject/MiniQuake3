@@ -11,11 +11,11 @@ Reachable from entry: **yes**
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/format/deflate.ml` as `deflate` → [src/mq3/format/deflate.ml](File-src-mq3-format-deflate-ml-363514060.md)
 - `mq3/platform/file.ml` as `file` → [src/mq3/platform/file.ml](File-src-mq3-platform-file-ml-722016459.md)
-- `std/checksum/crc32.ml` as `crc` → `../MiniLangCompilerML/std/checksum/crc32.ml` — external dependency
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/fs.ml` as `fs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
-- `std/sort.ml` as `sort` → `../MiniLangCompilerML/std/sort.ml` — external dependency
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/checksum/crc32.ml` as `crc` → `../../a7594a0c0299/MiniLangCompilerML/std/checksum/crc32.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/fs.ml` as `fs` → `../../a7594a0c0299/MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/sort.ml` as `sort` → `../../a7594a0c0299/MiniLangCompilerML/std/sort.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -34,7 +34,7 @@ Build name buckets in format.pk3; the normal completion returns `freezeNameBucke
 | `entries` | `dynamic` | — | Entries used in `len(entries)` and `entries[entryIndex]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L101)
 
 - [mq3.format.pk3.Entry](Type-mq3-format-pk3-entry-196778127.md) — struct
 <a id="function-function-mq3-format-pk3-fail-function-fail-message-src-mq3-format-pk3-ml-1470314325"></a>
@@ -51,7 +51,7 @@ Create the format.pk3 error for `fail` with 3501 and the supplied diagnostic tex
 | `message` | `dynamic` | — | Message used in `("PK3: " + message)` and `error(3501, ("PK3: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L115)
 
 <a id="function-function-mq3-format-pk3-findentry-function-findentry-archive-name-src-mq3-format-pk3-ml-1248708977"></a>
 ### findEntry
@@ -68,7 +68,7 @@ Find an indexed entry by ASCII-case-insensitive path, returning void when no mat
 | `name` | `dynamic` | — | Entry path using the separators stored in the archive; separators are not normalized here. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L324)
 
 <a id="function-function-mq3-format-pk3-freezenamebuckets-function-freezenamebuckets-builders-src-mq3-format-pk3-ml-1089897880"></a>
 ### freezeNameBuckets
@@ -84,7 +84,7 @@ Compute freeze name buckets in format.pk3; the normal completion returns `bucket
 | `builders` | `dynamic` | — | Builders used in `builders[bucketIndex]` and `(builders[bucketIndex] != void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L91)
 
 <a id="function-function-mq3-format-pk3-has-function-has-archive-name-src-mq3-format-pk3-ml-1667368471"></a>
 ### has
@@ -101,7 +101,7 @@ Compute format.pk3.has as `(findEntry(archive, name) != void)`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.format.pk3.findEntry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L335)
 
 <a id="function-function-mq3-format-pk3-localinfo-function-localinfo-archive-entry-src-mq3-format-pk3-ml-2137394202"></a>
 ### localInfo
@@ -118,7 +118,7 @@ Validate an entry's local ZIP header and return its absolute payload offset and 
 | `entry` | `dynamic` | — | Record exposing `localOffset`, `sourceDirectoryOffset`, `sourcePath`, `flags`, `method`, `checksum`, `compressedSize` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L282)
 
 <a id="function-function-mq3-format-pk3-looseentry-function-looseentry-name-path-size-src-mq3-format-pk3-ml-1400599413"></a>
 ### looseEntry
@@ -136,7 +136,7 @@ Create `mq3.format.pk3.Entry` with name=name; version=0; versionNeeded=0; flags=
 | `size` | `dynamic` | — | Initial `compressedSize` field stored in the returned or constructed `mq3.format.pk3.Entry` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L247)
 
 <a id="function-function-mq3-format-pk3-mergelayers-function-mergelayers-path-archives-modarchive-src-mq3-format-pk3-ml-233507008"></a>
 ### mergeLayers
@@ -154,7 +154,7 @@ Merge archive search layers, retaining the first entry for each ASCII-case-insen
 | `modArchive` | `dynamic` | — | Active-game Archive to retain on the result, or void. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L199)
 
 <a id="constant-constant-mq3-format-pk3-name-bucket-count-const-name-bucket-count-4096-src-mq3-format-pk3-ml-141245390"></a>
 ### NAME_BUCKET_COUNT
@@ -166,7 +166,7 @@ const NAME_BUCKET_COUNT = 4096
 Number of hash buckets used to find archive entries by name.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L76)
 
 <a id="function-function-mq3-format-pk3-namehash-function-namehash-name-src-mq3-format-pk3-ml-131796375"></a>
 ### nameHash
@@ -182,7 +182,7 @@ Compute name hash in format.pk3; the normal completion returns `(hash & (NAME_BU
 | `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L80)
 
 <a id="function-function-mq3-format-pk3-open-function-open-path-src-mq3-format-pk3-ml-794783239"></a>
 ### open
@@ -198,7 +198,7 @@ Read a PK3's ZIP directory and build a case-insensitive name index without extra
 | `path` | `dynamic` | — | Filesystem path of the PK3 file to index. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L133)
 
 <a id="function-function-mq3-format-pk3-openpackages-function-openpackages-basedirectory-requirepak0-src-mq3-format-pk3-ml-115648399"></a>
 ### openPackages
@@ -215,7 +215,7 @@ Open packages in format.pk3; the normal completion returns `mergeLayers(baseDire
 | `requirePak0` | `dynamic` | — | Require pak 0 used in `(requirePak0 and not hasPak0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L222)
 
 <a id="function-function-mq3-format-pk3-openstandard-function-openstandard-basedirectory-src-mq3-format-pk3-ml-999257644"></a>
 ### openStandard
@@ -231,7 +231,7 @@ Mount the standard Baseq3 patch set with the same higher-pak precedence as Quake
 | `baseDirectory` | `dynamic` | — | Base directory passed as `baseDirectory` to `mq3.format.pk3.openPackages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L188)
 
 <a id="function-function-mq3-format-pk3-overlay-function-overlay-root-base-activegame-src-mq3-format-pk3-ml-926630889"></a>
 ### overlay
@@ -249,7 +249,7 @@ Return `mq3.format.pk3.mergeLayers(root, [activeGame, base], activeGame)` from `
 | `activeGame` | `dynamic` | — | Mod archive passed as `modArchive` to `mq3.format.pk3.mergeLayers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L263)
 
 <a id="function-function-mq3-format-pk3-pk3nameless-function-pk3nameless-left-right-src-mq3-format-pk3-ml-581024115"></a>
 ### pk3NameLess
@@ -266,7 +266,7 @@ Compute pk3 name less in format.pk3; the normal completion returns `(len(a) < le
 | `right` | `dynamic` | — | Right used in `strings.toLowerAscii(right)` and `bytes(strings.toLowerAscii(right))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L270)
 
 <a id="function-function-mq3-format-pk3-read-function-read-archive-name-src-mq3-format-pk3-ml-790368599"></a>
 ### read
@@ -283,7 +283,7 @@ Resolve an entry path and return its loaded bytes; missing entries produce PK3 e
 | `name` | `dynamic` | — | Entry path matched without regard to ASCII letter case. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L340)
 
 <a id="function-function-mq3-format-pk3-readentry-function-readentry-archive-entry-src-mq3-format-pk3-ml-1659180012"></a>
 ### readEntry
@@ -300,7 +300,7 @@ Load an entry's bytes, decompressing and checking its size and CRC for archive-b
 | `entry` | `dynamic` | — | Indexed ZIP entry or looseEntry record to read. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L305)
 
 <a id="function-function-mq3-format-pk3-u16-function-u16-data-offset-src-mq3-format-pk3-ml-1956257435"></a>
 ### u16
@@ -317,7 +317,7 @@ Compute u 16 in format.pk3; the normal completion returns `(data[offset] | (data
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L122)
 
 <a id="function-function-mq3-format-pk3-withloose-function-withloose-root-packages-looseentries-src-mq3-format-pk3-ml-1724392663"></a>
 ### withLoose
@@ -335,4 +335,4 @@ Compute with loose in format.pk3; the normal completion returns `mergeLayers(roo
 | `looseEntries` | `dynamic` | — | Initial `entries` field stored in the returned or constructed `mq3.format.pk3.Archive` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L254)

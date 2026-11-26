@@ -12,7 +12,7 @@ struct Decoder
 Decoder record for video.roq_video, containing `width`, `height`, `q2`, `q4`, `q8`, `buffers`, and 2 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L22)
 
 ## Members
 
@@ -26,7 +26,7 @@ buffers
 Frame buffers retained for RoQ motion compensation and frame output.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L34)
 
 <a id="field-field-mq3-video-roq-video-decoder-framecount-framecount-src-mq3-video-roq-video-ml-2128640511"></a>
 ### frameCount
@@ -38,7 +38,7 @@ frameCount
 Number of video frames decoded so far.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L36)
 
 <a id="field-field-mq3-video-roq-video-decoder-height-height-src-mq3-video-roq-video-ml-140805825"></a>
 ### height
@@ -50,7 +50,7 @@ height
 Image/frame height in pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L26)
 
 <a id="field-field-mq3-video-roq-video-decoder-latest-latest-src-mq3-video-roq-video-ml-1993100941"></a>
 ### latest
@@ -62,7 +62,7 @@ latest
 Most recently decoded output frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L38)
 
 <a id="field-field-mq3-video-roq-video-decoder-q2-q2-src-mq3-video-roq-video-ml-552774369"></a>
 ### q2
@@ -74,7 +74,7 @@ q2
 RoQ codebook entries containing decoded 2-by-2 pixel blocks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L28)
 
 <a id="field-field-mq3-video-roq-video-decoder-q4-q4-src-mq3-video-roq-video-ml-1982133313"></a>
 ### q4
@@ -86,7 +86,7 @@ q4
 RoQ codebook entries containing assembled 4-by-4 pixel blocks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L30)
 
 <a id="field-field-mq3-video-roq-video-decoder-q8-q8-src-mq3-video-roq-video-ml-110153681"></a>
 ### q8
@@ -98,7 +98,7 @@ q8
 RoQ codebook entries containing expanded 8-by-8 pixel blocks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L32)
 
 <a id="field-field-mq3-video-roq-video-decoder-width-width-src-mq3-video-roq-video-ml-750323379"></a>
 ### width
@@ -110,4 +110,4 @@ width
 Image/frame width in pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/video/roq_video.ml#L24)

@@ -12,7 +12,7 @@ struct WorldBatchCache
 Data record for `mq3.renderer.portal_render_pass.WorldBatchCache`; groups `faces`, `normal`, `dist`, `batch`, `builds`, `hits`, and 1 further field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L61)
 
 ## Members
 
@@ -26,7 +26,7 @@ batch
 Prepared drawing batch associated with the selected geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L69)
 
 <a id="field-field-mq3-renderer-portal-render-pass-worldbatchcache-builds-builds-src-mq3-renderer-portal-render-pass-ml-1326928885"></a>
 ### builds
@@ -38,7 +38,7 @@ builds
 Number of cache entries or batches rebuilt from source data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L71)
 
 <a id="field-field-mq3-renderer-portal-render-pass-worldbatchcache-clippedfaces-clippedfaces-src-mq3-renderer-portal-render-pass-ml-1855277493"></a>
 ### clippedFaces
@@ -50,7 +50,7 @@ clippedFaces
 Number of BSP faces clipped against the portal plane.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L75)
 
 <a id="field-field-mq3-renderer-portal-render-pass-worldbatchcache-dist-dist-src-mq3-renderer-portal-render-pass-ml-1564513183"></a>
 ### dist
@@ -62,7 +62,7 @@ dist
 Signed plane distance measured along its normal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L67)
 
 <a id="field-field-mq3-renderer-portal-render-pass-worldbatchcache-faces-faces-src-mq3-renderer-portal-render-pass-ml-2117245535"></a>
 ### faces
@@ -74,7 +74,7 @@ faces
 BSP faces retained for the current geometry or visibility selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L63)
 
 <a id="field-field-mq3-renderer-portal-render-pass-worldbatchcache-hits-hits-src-mq3-renderer-portal-render-pass-ml-1872023159"></a>
 ### hits
@@ -86,7 +86,7 @@ hits
 Number of lookups satisfied by an existing cache entry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L73)
 
 <a id="field-field-mq3-renderer-portal-render-pass-worldbatchcache-normal-normal-src-mq3-renderer-portal-render-pass-ml-1827086653"></a>
 ### normal
@@ -98,4 +98,4 @@ normal
 Portal clipping-plane normal included in the retained world-batch cache key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L65)

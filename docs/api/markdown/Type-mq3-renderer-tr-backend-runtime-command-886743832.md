@@ -12,7 +12,7 @@ struct Command
 Data record for `mq3.renderer.tr_backend_runtime.Command`; groups `id`, `payload`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L199)
 
 ## Members
 
@@ -26,7 +26,7 @@ id
 Command identifier selecting the renderer backend operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L201)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-command-payload-payload-src-mq3-renderer-tr-backend-runtime-ml-1540455702"></a>
 ### payload
@@ -38,4 +38,4 @@ payload
 Operation-specific data interpreted according to the record's command or event type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L203)

@@ -12,7 +12,7 @@ struct Runtime
 Runtime record for server.timeouts, containing `time`, `timeoutSeconds`, `zombieSeconds`, `maxClients`, `clients`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L35)
 
 ## Members
 
@@ -26,7 +26,7 @@ clients
 Client slots inspected for inactivity and lingering disconnected connections.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L45)
 
 <a id="field-field-mq3-server-timeouts-runtime-maxclients-maxclients-src-mq3-server-timeouts-ml-2089496657"></a>
 ### maxClients
@@ -38,7 +38,7 @@ maxClients
 Number of configured client slots inspected by the timeout pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L43)
 
 <a id="field-field-mq3-server-timeouts-runtime-time-time-src-mq3-server-timeouts-ml-2126640951"></a>
 ### time
@@ -50,7 +50,7 @@ time
 Server clock against which client inactivity and zombie retention are checked, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L37)
 
 <a id="field-field-mq3-server-timeouts-runtime-timeoutseconds-timeoutseconds-src-mq3-server-timeouts-ml-123703865"></a>
 ### timeoutSeconds
@@ -62,7 +62,7 @@ timeoutSeconds
 Maximum inactivity interval for a connected client, in seconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L39)
 
 <a id="field-field-mq3-server-timeouts-runtime-zombieseconds-zombieseconds-src-mq3-server-timeouts-ml-1328666441"></a>
 ### zombieSeconds
@@ -74,4 +74,4 @@ zombieSeconds
 Retention interval for a disconnected zombie client, in seconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L41)

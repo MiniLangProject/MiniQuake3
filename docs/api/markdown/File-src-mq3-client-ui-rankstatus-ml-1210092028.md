@@ -28,7 +28,7 @@ Creates a `mq3.client.ui_rankstatus.State` record. Assigns `retailActive` from `
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L64)
 
 <a id="function-function-mq3-client-ui-rankstatus-emit-function-emit-state-boundary-kind-name-text-src-mq3-client-ui-rankstatus-ml-1125391529"></a>
 ### emit
@@ -48,7 +48,7 @@ Appends a UI rankstatus action record to the queued engine requests. Retail-QVM 
 | `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI rankstatus path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L71)
 
 <a id="constant-constant-mq3-client-ui-rankstatus-id-message-const-id-message-100-src-mq3-client-ui-rankstatus-ml-1717840990"></a>
 ### ID_MESSAGE
@@ -60,7 +60,7 @@ const ID_MESSAGE = 100
 Menu control identifier routed to the message action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-rankstatus-id-ok-const-id-ok-101-src-mq3-client-ui-rankstatus-ml-1057689869"></a>
 ### ID_OK
@@ -72,7 +72,7 @@ const ID_OK = 101
 Menu control identifier routed to the ok action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L12)
 
 <a id="function-function-mq3-client-ui-rankstatus-rankstatus-cache-function-rankstatus-cache-state-src-mq3-client-ui-rankstatus-ml-1214388385"></a>
 ### RankStatus_Cache
@@ -88,7 +88,7 @@ RankStatus_Cache
 | `state` | `dynamic` | — | Shared UI rankstatus state passed to the helper calls in `RankStatus_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L81)
 
 <a id="constant-constant-mq3-client-ui-rankstatus-rankstatus-frame-const-rankstatus-frame-menu-art-cut-frame-src-mq3-client-ui-rankstatus-ml-1420861779"></a>
 ### RANKSTATUS_FRAME
@@ -100,7 +100,7 @@ const RANKSTATUS_FRAME = "menu/art/cut_frame"
 Virtual asset path used to load the rankstatus frame renderer or menu resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L8)
 
 <a id="function-function-mq3-client-ui-rankstatus-rankstatus-menuevent-function-rankstatus-menuevent-state-id-event-src-mq3-client-ui-rankstatus-ml-2079593546"></a>
 ### RankStatus_MenuEvent
@@ -118,7 +118,7 @@ RankStatus_MenuEvent
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L76)
 
 <a id="function-function-mq3-client-ui-rankstatus-rankstatus-menuinit-function-rankstatus-menuinit-state-src-mq3-client-ui-rankstatus-ml-1972845357"></a>
 ### RankStatus_MenuInit
@@ -134,7 +134,7 @@ RankStatus_MenuInit
 | `state` | `dynamic` | — | Mutable UI rankstatus record/storage; this routine assigns `state.menu`, `state.actions`, `state.frame`, `state.frame.width` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L84)
 
 - [mq3.client.ui_rankstatus.State](Type-mq3-client-ui-rankstatus-state-869481587.md) — struct
 <a id="function-function-mq3-client-ui-rankstatus-statusmessage-function-statusmessage-status-src-mq3-client-ui-rankstatus-ml-316279542"></a>
@@ -151,7 +151,7 @@ Maps a rankings service error status to its user-facing message; unhandled statu
 | `status` | `dynamic` | — | Value used by `if status==rankings.QGR_STATUS_NO_USER then return "Username unavailable" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L89)
 
 <a id="function-function-mq3-client-ui-rankstatus-ui-rankstatusmenu-function-ui-rankstatusmenu-state-status-src-mq3-client-ui-rankstatus-ml-1009151591"></a>
 ### UI_RankStatusMenu
@@ -168,4 +168,4 @@ UI_RankStatusMenu
 | `status` | `dynamic` | — | Value assigned to `state.status`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L93)

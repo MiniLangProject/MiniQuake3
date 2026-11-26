@@ -12,7 +12,7 @@ struct SkullTrail
 Stores client game local skull trail record, including `positions`, `numpositions`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L544)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L544)
 
 ## Members
 
@@ -26,7 +26,7 @@ numpositions
 Number of stored points currently participating in the skull trail.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L548)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L548)
 
 <a id="field-field-mq3-client-cg-local-skulltrail-positions-positions-src-mq3-client-cg-local-ml-698842542"></a>
 ### positions
@@ -38,4 +38,4 @@ positions
 Ordered positions used to build the stored trail or spatial history.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L546)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L546)

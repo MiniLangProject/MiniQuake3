@@ -12,7 +12,7 @@ struct Dplane
 Dplane record for format.qfiles, containing `normal`, `dist`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L477)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L477)
 
 ## Members
 
@@ -26,7 +26,7 @@ dist
 Distance of the plane (normal vector * distance = point in plane).
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L481)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L481)
 
 <a id="field-field-mq3-format-qfiles-dplane-normal-normal-src-mq3-format-qfiles-ml-777479251"></a>
 ### normal
@@ -38,4 +38,4 @@ normal
 Unit normal of the splitting or brush plane stored in the BSP plane lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L479)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L479)

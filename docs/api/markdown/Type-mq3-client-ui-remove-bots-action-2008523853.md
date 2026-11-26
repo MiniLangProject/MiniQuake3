@@ -12,7 +12,7 @@ struct Action
 Stores UI remove bots queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `dispatched`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L40)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Host service category recorded with a request emitted while selecting an active bot and issuing its removal command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L43)
 
 <a id="field-field-mq3-client-ui-remove-bots-action-dispatched-dispatched-src-mq3-client-ui-remove-bots-ml-1395289703"></a>
 ### dispatched
@@ -38,7 +38,7 @@ dispatched
 True when this request is marked for native dispatch while selecting an active bot and issuing its removal command; false when its native effect is suppressed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L57)
 
 <a id="field-field-mq3-client-ui-remove-bots-action-kind-kind-src-mq3-client-ui-remove-bots-ml-696830901"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Operation selector telling the host how to interpret a request emitted while selecting an active bot and issuing its removal command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L46)
 
 <a id="field-field-mq3-client-ui-remove-bots-action-name-name-src-mq3-client-ui-remove-bots-ml-777489491"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Bot-removal menu target, clientkick command name, or artwork resource selected by the action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L48)
 
 <a id="field-field-mq3-client-ui-remove-bots-action-text-text-src-mq3-client-ui-remove-bots-ml-1695418655"></a>
 ### text
@@ -74,7 +74,7 @@ text
 Complete clientkick command for the selected bot; empty for menu navigation and artwork registration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L51)
 
 <a id="field-field-mq3-client-ui-remove-bots-action-value-value-src-mq3-client-ui-remove-bots-ml-629861469"></a>
 ### value
@@ -86,4 +86,4 @@ value
 Value payload supplied to the selected host operation while selecting an active bot and issuing its removal command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L54)

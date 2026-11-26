@@ -12,7 +12,7 @@ struct OpenResult
 Host file-open result copied into the QVM handle slot and returned as the open trap result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L62)
 
 ## Members
 
@@ -26,7 +26,7 @@ handle
 Host file handle returned by the open operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L64)
 
 <a id="field-field-mq3-vm-syscall-common-openresult-length-length-src-mq3-vm-syscall-common-ml-962767786"></a>
 ### length
@@ -38,4 +38,4 @@ length
 File length or mode-specific status returned by the host; an absent open result becomes -1.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L66)

@@ -12,7 +12,7 @@ struct PreviewTarget
 Stores playable target render preview target record, including `origin`, `health`, `maxHealth`, `alive`, `respawnAt`, `hitFlashUntil`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L18)
 
 ## Members
 
@@ -26,7 +26,7 @@ alive
 True while the simulated player or target remains alive and can participate in gameplay.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L26)
 
 <a id="field-field-mq3-client-playable-target-render-previewtarget-health-health-src-mq3-client-playable-target-render-ml-91762122"></a>
 ### health
@@ -38,7 +38,7 @@ health
 Preview target health used to compute its health fraction and rendered alive state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L22)
 
 <a id="field-field-mq3-client-playable-target-render-previewtarget-hitflashuntil-hitflashuntil-src-mq3-client-playable-target-render-ml-1281542962"></a>
 ### hitFlashUntil
@@ -50,7 +50,7 @@ hitFlashUntil
 When constructing this record, `target` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L30)
 
 <a id="field-field-mq3-client-playable-target-render-previewtarget-maxhealth-maxhealth-src-mq3-client-playable-target-render-ml-1816578166"></a>
 ### maxHealth
@@ -62,7 +62,7 @@ maxHealth
 When constructing this record, `target` supplies `maxHealth` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L24)
 
 <a id="field-field-mq3-client-playable-target-render-previewtarget-origin-origin-src-mq3-client-playable-target-render-ml-865279858"></a>
 ### origin
@@ -74,7 +74,7 @@ origin
 World-space location at which the enemy target model is drawn.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L20)
 
 <a id="field-field-mq3-client-playable-target-render-previewtarget-respawnat-respawnat-src-mq3-client-playable-target-render-ml-1339335674"></a>
 ### respawnAt
@@ -86,4 +86,4 @@ respawnAt
 Client simulation timestamp at which the entity becomes eligible to respawn.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L28)

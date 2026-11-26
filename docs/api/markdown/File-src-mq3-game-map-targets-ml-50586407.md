@@ -33,7 +33,7 @@ Set `ent.use` to `giveUse` in `mq3.game.map_targets.giveSpawn`.
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L103)
 
 <a id="function-function-mq3-game-map-targets-giveuse-function-giveuse-level-ent-other-activator-src-mq3-game-map-targets-ml-1482904080"></a>
 ### giveUse
@@ -52,7 +52,7 @@ Apply `mq3.game.map_targets.mapTargetsEntity`, `mq3.game.map_targets.mapTargetsE
 | `activator` | `dynamic` | — | Activator record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L77)
 
 <a id="function-function-mq3-game-map-targets-maptargetscentercommand-function-maptargetscentercommand-ent-src-mq3-game-map-targets-ml-2007632639"></a>
 ### mapTargetsCenterCommand
@@ -68,7 +68,7 @@ Apply `mq3.game.map_targets.mapTargetsText` while evaluating `mapTargetsCenterCo
 | `ent` | `dynamic` | — | Game entity; accesses `message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L165)
 
 <a id="function-function-mq3-game-map-targets-maptargetsclientlimit-function-maptargetsclientlimit-level-src-mq3-game-map-targets-ml-974661046"></a>
 ### mapTargetsClientLimit
@@ -84,7 +84,7 @@ Validate the level client count against the native sixty-four-client storage lim
 | `level` | `dynamic` | — | Game-level state; accesses `maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L29)
 
 <a id="function-function-mq3-game-map-targets-maptargetsentity-function-maptargetsentity-ent-src-mq3-game-map-targets-ml-1364278819"></a>
 ### mapTargetsEntity
@@ -100,7 +100,7 @@ Require a non-void game entity for a map target operation.
 | `ent` | `dynamic` | — | Operand used to evaluate the returned expression `ent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L15)
 
 <a id="function-function-mq3-game-map-targets-maptargetsentitylimit-function-maptargetsentitylimit-level-src-mq3-game-map-targets-ml-83868818"></a>
 ### mapTargetsEntityLimit
@@ -116,7 +116,7 @@ Validate the level entity count against the native 1024-entity storage limit.
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L21)
 
 <a id="function-function-mq3-game-map-targets-maptargetsnamesequal-function-maptargetsnamesequal-first-second-src-mq3-game-map-targets-ml-445154546"></a>
 ### mapTargetsNamesEqual
@@ -133,7 +133,7 @@ Compare native target names case-insensitively through their zero terminators.
 | `second` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L53)
 
 <a id="function-function-mq3-game-map-targets-maptargetspowerups-function-maptargetspowerups-activator-src-mq3-game-map-targets-ml-742300405"></a>
 ### mapTargetsPowerups
@@ -149,7 +149,7 @@ Require an activating client with the native sixteen-slot powerup array and retu
 | `activator` | `dynamic` | — | Activator record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L109)
 
 <a id="function-function-mq3-game-map-targets-maptargetsteamcommand-function-maptargetsteamcommand-level-team-command-src-mq3-game-map-targets-ml-695246890"></a>
 ### mapTargetsTeamCommand
@@ -167,7 +167,7 @@ Forward `mapTargetsTeamCommand` to `mq3.game.g_utils.G_TeamCommand` and return t
 | `command` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L174)
 
 <a id="function-function-mq3-game-map-targets-maptargetstext-function-maptargetstext-text-limit-src-mq3-game-map-targets-ml-1044513422"></a>
 ### mapTargetsText
@@ -184,7 +184,7 @@ Read bounded native target text through its zero terminator, rejecting invalid t
 | `limit` | `dynamic` | — | Value used by `mapTargetsText` in `if length > limit then return error(477,"Map target format exceeds native va storage") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L38)
 
 <a id="function-function-mq3-game-map-targets-printspawn-function-printspawn-level-ent-src-mq3-game-map-targets-ml-910607175"></a>
 ### printSpawn
@@ -201,7 +201,7 @@ Set `ent.use` to `printUse` in `mq3.game.map_targets.printSpawn`.
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L203)
 
 <a id="function-function-mq3-game-map-targets-printuse-function-printuse-level-ent-other-activator-src-mq3-game-map-targets-ml-782448328"></a>
 ### printUse
@@ -220,7 +220,7 @@ Apply `mq3.game.map_targets.mapTargetsEntity`, `mq3.game.scores.send` and `mq3.g
 | `activator` | `dynamic` | — | Activator record; accesses `client` and `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L184)
 
 <a id="function-function-mq3-game-map-targets-removepowerupsspawn-function-removepowerupsspawn-level-ent-src-mq3-game-map-targets-ml-1364910679"></a>
 ### removePowerupsSpawn
@@ -237,7 +237,7 @@ Set `ent.use` to `removePowerupsUse` in `mq3.game.map_targets.removePowerupsSpaw
 | `ent` | `dynamic` | — | Game entity; accesses `use`. May update `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L139)
 
 <a id="function-function-mq3-game-map-targets-removepowerupsuse-function-removepowerupsuse-level-ent-other-activator-src-mq3-game-map-targets-ml-697155128"></a>
 ### removePowerupsUse
@@ -256,7 +256,7 @@ Apply `mq3.game.map_targets.mapTargetsEntity`, `mq3.game.map_targets.mapTargetsP
 | `activator` | `dynamic` | — | Activator record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L121)
 
 <a id="function-function-mq3-game-map-targets-scorespawn-function-scorespawn-level-ent-src-mq3-game-map-targets-ml-1564610795"></a>
 ### scoreSpawn
@@ -273,7 +273,7 @@ Set `ent.count` to `1` and `ent.use` to `scoreUse` in `mq3.game.map_targets.scor
 | `ent` | `dynamic` | — | Game entity; accesses `count` and `use`. May update `ent.count` and `ent.use` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L157)
 
 <a id="function-function-mq3-game-map-targets-scoreuse-function-scoreuse-level-ent-other-activator-src-mq3-game-map-targets-ml-1711340620"></a>
 ### scoreUse
@@ -292,4 +292,4 @@ Apply `mq3.game.map_targets.mapTargetsEntity` and `mq3.game.scores.addScore` whi
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/map_targets.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/map_targets.ml#L148)

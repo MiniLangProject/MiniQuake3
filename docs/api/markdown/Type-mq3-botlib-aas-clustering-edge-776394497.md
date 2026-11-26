@@ -12,7 +12,7 @@ struct Edge
 `Edge` record for aas clustering, containing `vertices`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L39)
 
 ## Members
 
@@ -26,4 +26,4 @@ vertices
 XYZ vertices defining the navigation or map geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L41)

@@ -10,7 +10,7 @@ Reachable from entry: **no**
 
 - `mq3/format/pk3.ml` as `pk3` → [src/mq3/format/pk3.ml](File-src-mq3-format-pk3-ml-2106134675.md)
 - `mq3/vm/syscall_common.ml` as `common` → [src/mq3/vm/syscall_common.ml](File-src-mq3-vm-syscall-common-ml-1768394.md)
-- `std/fs.ml` as `fs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/fs.ml` as `fs` → `../../a7594a0c0299/MiniLangCompilerML/std/fs.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Apply `mq3.engine.user_files.writeNative`, `nativeBytesPtr` for atomic write in 
 | `data` | `dynamic` | — | Data used in `len(data)` and `nativeBytesPtr(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L124)
 
 <a id="function-function-mq3-engine-user-files-close-function-close-store-number-src-mq3-engine-user-files-ml-1485099860"></a>
 ### close
@@ -47,7 +47,7 @@ Flush and release an open user-file handle; a failed flush returns error 7793 an
 | `number` | `dynamic` | — | Open handle to flush and release; an invalid handle is a no-op. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L226)
 
 <a id="function-function-mq3-engine-user-files-closeall-function-closeall-store-src-mq3-engine-user-files-ml-144059629"></a>
 ### closeAll
@@ -65,7 +65,7 @@ Validation failures include `One or more user files could not be saved`.
 | `store` | `dynamic` | — | Record exposing `files`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L235)
 
 <a id="function-function-mq3-engine-user-files-create-function-create-archive-root-src-mq3-engine-user-files-ml-1586101958"></a>
 ### create
@@ -82,7 +82,7 @@ Create `mq3.engine.user_files.Store` with archive=archive; root=root; files=arra
 | `root` | `dynamic` | — | Initial `root` field stored in the returned or constructed `mq3.engine.user_files.Store` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L94)
 
 - [mq3.engine.user_files.Cursor](Type-mq3-engine-user-files-cursor-546505287.md) — struct
 <a id="function-function-mq3-engine-user-files-defaultroot-function-defaultroot-src-mq3-engine-user-files-ml-913274532"></a>
@@ -97,7 +97,7 @@ Compute default root in engine.user_files; the normal completion returns `decode
 Validation failures include `Cannot resolve MiniQuake3 user directory`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L86)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-defaultrootnative-extern-function-defaultrootnative-output-as-bytes-capacity-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-default-root-returns-i32-src-mq3-engine-user-files-ml-1342553966"></a>
 ### defaultRootNative
@@ -116,7 +116,7 @@ Encode the selected MiniQuake3 writable user directory as UTF-8.
 
 **Returns:** The encoded byte length, or a negative value when the directory or output cannot be resolved.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L40)
 
 <a id="function-function-mq3-engine-user-files-flush-function-flush-store-number-src-mq3-engine-user-files-ml-1019294644"></a>
 ### flush
@@ -133,7 +133,7 @@ Atomically persist a dirty user-file buffer and clear its dirty flag only after 
 | `number` | `dynamic` | — | Open file handle whose dirty buffer is flushed; invalid handles return false. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L180)
 
 <a id="constant-constant-mq3-engine-user-files-max-bytes-const-max-bytes-67108864-src-mq3-engine-user-files-ml-855725439"></a>
 ### MAX_BYTES
@@ -145,7 +145,7 @@ const MAX_BYTES = 67108864
 Maximum number of bytes accepted by one user-file operation or buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L11)
 
 <a id="constant-constant-mq3-engine-user-files-max-handles-const-max-handles-64-src-mq3-engine-user-files-ml-1491690861"></a>
 ### MAX_HANDLES
@@ -157,7 +157,7 @@ const MAX_HANDLES = 64
 Maximum number of simultaneously open user-file handles.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L9)
 
 <a id="function-function-mq3-engine-user-files-open-function-open-store-name-mode-src-mq3-engine-user-files-ml-351031033"></a>
 ### open
@@ -175,7 +175,7 @@ Open an overlay/archive read handle or initialize a writable user file; return O
 | `mode` | `dynamic` | — | 0=read, 1=truncate/write, 2=append, 3=append with immediate flush. Successful writable opens report length zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L133)
 
 <a id="function-function-mq3-engine-user-files-read-function-read-store-number-count-src-mq3-engine-user-files-ml-932991637"></a>
 ### read
@@ -193,7 +193,7 @@ Read user files in engine.user_files; the normal completion returns `result`.
 | `count` | `dynamic` | — | Count used in `(count < 0)` and `(count > remaining)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L170)
 
 <a id="function-function-mq3-engine-user-files-readall-function-readall-store-name-src-mq3-engine-user-files-ml-1949964224"></a>
 ### readAll
@@ -212,7 +212,7 @@ Validation failures include `File not found`.
 | `name` | `dynamic` | — | Game-relative asset or user-file path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L115)
 
 <a id="function-function-mq3-engine-user-files-readuser-function-readuser-store-name-src-mq3-engine-user-files-ml-956862378"></a>
 ### readUser
@@ -229,7 +229,7 @@ An absent user file is void; invalid/inaccessible files are errors, not archive 
 | `name` | `dynamic` | — | Name used in `bytes(name)` and `("Cannot resolve user file: " + name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L99)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-resolvenative-extern-function-resolvenative-root-as-ptr-rootlength-as-i32-name-as-ptr-namelength-as-i32-output-as-bytes-capacity-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-resolve-returns-i32-src-mq3-engine-user-files-ml-1271444584"></a>
 ### resolveNative
@@ -252,7 +252,7 @@ Resolve a validated game-relative filename beneath the selected writable user di
 
 **Returns:** The encoded resolved-path byte length, or a negative value for an invalid/inaccessible path or insufficient output.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L49)
 
 <a id="function-function-mq3-engine-user-files-samepath-function-samepath-store-first-second-src-mq3-engine-user-files-ml-1640249123"></a>
 ### samePath
@@ -270,7 +270,7 @@ Compute same path in engine.user_files; the normal completion returns `samePathN
 | `second` | `dynamic` | — | Second used in `bytes(second)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L79)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-samepathnative-extern-function-samepathnative-root-as-ptr-rootlength-as-i32-first-as-ptr-firstlength-as-i32-second-as-ptr-secondlength-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-same-path-returns-i32-src-mq3-engine-user-files-ml-1342273876"></a>
 ### samePathNative
@@ -293,7 +293,7 @@ Compare two validated user qpaths case-insensitively, resolving existing long-na
 
 **Returns:** 1 for the same path, 0 for distinct/unresolved paths, or -1 when either qpath is invalid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L74)
 
 <a id="function-function-mq3-engine-user-files-seek-function-seek-store-number-offset-origin-src-mq3-engine-user-files-ml-1903187069"></a>
 ### seek
@@ -312,7 +312,7 @@ Move a user-file cursor within the 64 MiB bound; return zero on success or -1 fo
 | `origin` | `dynamic` | — | Quake seek origin: 0=current cursor, 1=end of file, 2=start of file. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L216)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-sizenative-extern-function-sizenative-root-as-ptr-rootlength-as-i32-name-as-ptr-namelength-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-size-returns-i32-src-mq3-engine-user-files-ml-216785429"></a>
 ### sizeNative
@@ -333,7 +333,7 @@ Inspect a validated regular user file while rejecting directories, reparse point
 
 **Returns:** File size in bytes; -2 means absent, and -1 means invalid, inaccessible, or larger than 64 MiB.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L65)
 
 - [mq3.engine.user_files.Store](Type-mq3-engine-user-files-store-856467318.md) — struct
 <a id="function-function-mq3-engine-user-files-valid-function-valid-store-number-src-mq3-engine-user-files-ml-238142512"></a>
@@ -351,7 +351,7 @@ Compute engine.user_files.valid as `(((number > 0) and (number < MAX_HANDLES)) a
 | `number` | `dynamic` | — | Zero-based index into `store.files`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L165)
 
 <a id="function-function-mq3-engine-user-files-write-function-write-store-number-data-src-mq3-engine-user-files-ml-125801434"></a>
 ### write
@@ -369,7 +369,7 @@ Write or append bytes to an open user buffer; mode 3 flushes immediately and may
 | `data` | `dynamic` | — | Payload bytes; an empty payload is a no-op, and append modes always write at the current file end. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L190)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-writenative-extern-function-writenative-root-as-ptr-rootlength-as-i32-name-as-ptr-namelength-as-i32-data-as-ptr-length-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-write-atomic-returns-i32-src-mq3-engine-user-files-ml-1543964437"></a>
 ### writeNative
@@ -392,4 +392,4 @@ Atomically replace a validated user file through a temporary file in the same di
 
 **Returns:** Nonzero after a successful atomic replacement; zero on path, size, or I/O failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L58)

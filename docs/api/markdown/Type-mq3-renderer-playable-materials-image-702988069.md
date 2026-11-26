@@ -12,7 +12,7 @@ struct Image
 Data record for `mq3.renderer.playable_materials.Image`; groups `width`, `height`, `pixels`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L59)
 
 ## Members
 
@@ -26,7 +26,7 @@ height
 Height in pixels of the decoded image used by the runtime material.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L63)
 
 <a id="field-field-mq3-renderer-playable-materials-image-pixels-pixels-src-mq3-renderer-playable-materials-ml-37201180"></a>
 ### pixels
@@ -38,7 +38,7 @@ pixels
 Decoded pixel data for the image or upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L65)
 
 <a id="field-field-mq3-renderer-playable-materials-image-width-width-src-mq3-renderer-playable-materials-ml-1458953798"></a>
 ### width
@@ -50,4 +50,4 @@ width
 Width in pixels of the decoded image used by the runtime material.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L61)

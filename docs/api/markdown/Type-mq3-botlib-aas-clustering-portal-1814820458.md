@@ -12,7 +12,7 @@ struct Portal
 `Portal` record for aas clustering, containing `areaNum`, `frontCluster`, `backCluster` and `clusterAreaNums`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L90)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaNum
 Area assigned as a portal while building the navigation cluster graph.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L92)
 
 <a id="field-field-mq3-botlib-aas-clustering-portal-backcluster-backcluster-src-mq3-botlib-aas-clustering-ml-1412858635"></a>
 ### backCluster
@@ -38,7 +38,7 @@ backCluster
 Cluster at back of portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L96)
 
 <a id="field-field-mq3-botlib-aas-clustering-portal-clusterareanums-clusterareanums-src-mq3-botlib-aas-clustering-ml-1170313751"></a>
 ### clusterAreaNums
@@ -50,7 +50,7 @@ clusterAreaNums
 Area indexes of this portal within its front and back clusters.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L98)
 
 <a id="field-field-mq3-botlib-aas-clustering-portal-frontcluster-frontcluster-src-mq3-botlib-aas-clustering-ml-551656421"></a>
 ### frontCluster
@@ -62,4 +62,4 @@ frontCluster
 Cluster at front of portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L94)

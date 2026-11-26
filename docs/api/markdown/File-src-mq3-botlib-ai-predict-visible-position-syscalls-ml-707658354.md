@@ -32,7 +32,7 @@ Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` 
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-predict-visible-position-syscalls-ml-1654829189"></a>
 ### writeVector
@@ -50,4 +50,4 @@ Write three float bit patterns to consecutive VM memory words for ai predict vis
 | `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L14)

@@ -31,4 +31,4 @@ Apply `mq3.vm.syscall_common.readString`, `mq3.vm.syscall_common.argument` and `
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weight_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weight_syscalls.ml#L11)

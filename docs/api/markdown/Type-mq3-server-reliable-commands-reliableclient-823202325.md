@@ -12,7 +12,7 @@ struct ReliableClient
 ReliableClient record for server.reliable_commands, containing `reliableAcknowledge`, `reliableSequence`, `reliableSent`, `reliableCommands`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L13)
 
 ## Members
 
@@ -26,7 +26,7 @@ reliableAcknowledge
 Acknowledgment cursor used to retire queued reliable server commands.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L15)
 
 <a id="field-field-mq3-server-reliable-commands-reliableclient-reliablecommands-reliablecommands-src-mq3-server-reliable-commands-ml-361904612"></a>
 ### reliableCommands
@@ -38,7 +38,7 @@ reliableCommands
 Reliable command entries retained until the peer acknowledges them.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L21)
 
 <a id="field-field-mq3-server-reliable-commands-reliableclient-reliablesent-reliablesent-src-mq3-server-reliable-commands-ml-1178746764"></a>
 ### reliableSent
@@ -50,7 +50,7 @@ reliableSent
 Sequence number of the newest reliable command transmitted to the peer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L19)
 
 <a id="field-field-mq3-server-reliable-commands-reliableclient-reliablesequence-reliablesequence-src-mq3-server-reliable-commands-ml-1927933366"></a>
 ### reliableSequence
@@ -62,4 +62,4 @@ reliableSequence
 Sequence number of the newest queued reliable command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L17)

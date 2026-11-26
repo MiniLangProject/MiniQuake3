@@ -23,7 +23,7 @@ Compute at in shared.parser; the normal completion returns `state.data[offset]`.
 | `offset` | `dynamic` | — | Zero-based index into `state.data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/parser.ml#L26)
 
 <a id="function-function-mq3-shared-parser-create-function-create-text-src-mq3-shared-parser-ml-469338955"></a>
 ### create
@@ -39,7 +39,7 @@ Create parser in shared.parser; the normal completion returns `Parser(text, 0, 0
 | `text` | `dynamic` | — | Initial `data` field stored in the returned or constructed `mq3.shared.parser.Parser` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/parser.ml#L18)
 
 <a id="function-function-mq3-shared-parser-parseext-function-parseext-state-allowlinebreaks-src-mq3-shared-parser-ml-1879082220"></a>
 ### parseExt
@@ -59,6 +59,6 @@ Direct state writes: `state.offset`, `state.line`.
 | `allowLineBreaks` | `dynamic` | — | Allow line breaks used in `(newlines and not allowLineBreaks)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/parser.ml#L37)
 
 - [mq3.shared.parser.Parser](Type-mq3-shared-parser-parser-1824324521.md) — struct

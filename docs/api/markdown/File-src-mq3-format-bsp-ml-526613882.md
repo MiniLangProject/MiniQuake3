@@ -29,7 +29,7 @@ Compute entities in format.bsp; the normal completion returns `result`.
 | `map` | `dynamic` | — | Record exposing `data`, `offsets`, `lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L123)
 
 <a id="function-function-mq3-format-bsp-fail-function-fail-message-src-mq3-format-bsp-ml-1497269251"></a>
 ### fail
@@ -45,7 +45,7 @@ Create the format.bsp error for `fail` with 3502 and the supplied diagnostic tex
 | `message` | `dynamic` | — | Message used in `("BSP46: " + message)` and `error(3502, ("BSP46: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L23)
 
 <a id="function-function-mq3-format-bsp-load-function-load-data-src-mq3-format-bsp-ml-956873278"></a>
 ### load
@@ -61,7 +61,7 @@ Load bsp in format.bsp; the normal completion returns `BSP(data, offsets, length
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L38)
 
 <a id="function-function-mq3-format-bsp-range-function-range-first-count-limit-src-mq3-format-bsp-ml-987993176"></a>
 ### range
@@ -79,4 +79,4 @@ Test range in format.bsp; the normal completion returns `true`.
 | `limit` | `dynamic` | — | Limit used in `((first + count) > limit)` and `(((first < 0) or (count < 0)) or ((first + count) > limit))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L31)

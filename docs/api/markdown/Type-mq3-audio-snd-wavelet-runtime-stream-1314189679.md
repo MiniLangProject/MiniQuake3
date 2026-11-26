@@ -12,7 +12,7 @@ struct Stream
 Stream record for audio.snd_wavelet_runtime, containing `data`, `count`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_wavelet_runtime.ml#L12)
 
 ## Members
 
@@ -26,7 +26,7 @@ count
 Number of logical source samples represented by the encoded stream.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_wavelet_runtime.ml#L16)
 
 <a id="field-field-mq3-audio-snd-wavelet-runtime-stream-data-data-src-mq3-audio-snd-wavelet-runtime-ml-2115321873"></a>
 ### data
@@ -38,4 +38,4 @@ data
 Encoded byte stream supplied to the wavelet or mu-law decoder.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_wavelet_runtime.ml#L14)

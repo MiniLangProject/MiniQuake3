@@ -12,7 +12,7 @@ struct RefDef
 Stores client game view ref def record, including `x`, `y`, `width`, `height`, `fovX`, `fovY` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L114)
 
 ## Members
 
@@ -26,7 +26,7 @@ areamask
 Portal-area visibility bitset associated with the current snapshot or rendered view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L142)
 
 <a id="field-field-mq3-client-cgame-view-refdef-fovx-fovx-src-mq3-client-cgame-view-ml-1788451707"></a>
 ### fovX
@@ -38,7 +38,7 @@ fovX
 When constructing this record, `refDef` supplies `90.0` for this member. Used by `calcFov` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L125)
 
 <a id="field-field-mq3-client-cgame-view-refdef-fovy-fovy-src-mq3-client-cgame-view-ml-973923057"></a>
 ### fovY
@@ -50,7 +50,7 @@ fovY
 When constructing this record, `refDef` supplies `90.0` for this member. Used by `calcFov` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L128)
 
 <a id="field-field-mq3-client-cgame-view-refdef-height-height-src-mq3-client-cgame-view-ml-1164689607"></a>
 ### height
@@ -62,7 +62,7 @@ height
 Pixel height of the 3D viewport submitted for this client-game view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L122)
 
 <a id="field-field-mq3-client-cgame-view-refdef-rdflags-rdflags-src-mq3-client-cgame-view-ml-826027645"></a>
 ### rdflags
@@ -74,7 +74,7 @@ rdflags
 When constructing this record, `refDef` supplies `0` for this member. Used by `calcViewValues` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L137)
 
 <a id="field-field-mq3-client-cgame-view-refdef-time-time-src-mq3-client-cgame-view-ml-1450075339"></a>
 ### time
@@ -86,7 +86,7 @@ time
 Client-game timestamp in milliseconds submitted with the rendered view for time-dependent rendering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L140)
 
 <a id="field-field-mq3-client-cgame-view-refdef-viewaxis-viewaxis-src-mq3-client-cgame-view-ml-1026349409"></a>
 ### viewaxis
@@ -98,7 +98,7 @@ viewaxis
 When constructing this record, `refDef` supplies `identityAxis()` for this member. Used by `testModel` and `addTestModel` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L134)
 
 <a id="field-field-mq3-client-cgame-view-refdef-vieworg-vieworg-src-mq3-client-cgame-view-ml-1565682469"></a>
 ### vieworg
@@ -110,7 +110,7 @@ vieworg
 When constructing this record, `refDef` supplies `[0.0,0.0,0.0]` for this member. Used by `testModel` and `addTestModel` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L131)
 
 <a id="field-field-mq3-client-cgame-view-refdef-width-width-src-mq3-client-cgame-view-ml-551482469"></a>
 ### width
@@ -122,7 +122,7 @@ width
 Pixel width of the 3D viewport submitted for this client-game view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L120)
 
 <a id="field-field-mq3-client-cgame-view-refdef-x-x-src-mq3-client-cgame-view-ml-1399054241"></a>
 ### x
@@ -134,7 +134,7 @@ x
 Horizontal coordinate of the rendered view rectangle in framebuffer pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L116)
 
 <a id="field-field-mq3-client-cgame-view-refdef-y-y-src-mq3-client-cgame-view-ml-1760546997"></a>
 ### y
@@ -146,4 +146,4 @@ y
 Vertical coordinate of the rendered view rectangle in framebuffer pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L118)

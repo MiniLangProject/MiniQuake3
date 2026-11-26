@@ -12,7 +12,7 @@ struct ClientSession
 `ClientSession` record for g local, containing `sessionTeam`, `spectatorTime`, `spectatorState`, `spectatorClient` and `wins` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L129)
 
 ## Members
 
@@ -26,7 +26,7 @@ losses
 Tournament losses retained in the client session.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L141)
 
 <a id="field-field-mq3-game-g-local-clientsession-sessionteam-sessionteam-src-mq3-game-g-local-ml-198051122"></a>
 ### sessionTeam
@@ -38,7 +38,7 @@ sessionTeam
 Team assignment retained in the client session.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L131)
 
 <a id="field-field-mq3-game-g-local-clientsession-spectatorclient-spectatorclient-src-mq3-game-g-local-ml-1740732150"></a>
 ### spectatorClient
@@ -50,7 +50,7 @@ spectatorClient
 Client slot being followed by a spectator.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L137)
 
 <a id="field-field-mq3-game-g-local-clientsession-spectatorstate-spectatorstate-src-mq3-game-g-local-ml-189522694"></a>
 ### spectatorState
@@ -62,7 +62,7 @@ spectatorState
 Spectator mode selected from the SPECTATOR_* constants.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L135)
 
 <a id="field-field-mq3-game-g-local-clientsession-spectatortime-spectatortime-src-mq3-game-g-local-ml-200402038"></a>
 ### spectatorTime
@@ -74,7 +74,7 @@ spectatorTime
 Timestamp used to order spectators waiting to enter play.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L133)
 
 <a id="field-field-mq3-game-g-local-clientsession-teamleader-teamleader-src-mq3-game-g-local-ml-1490182798"></a>
 ### teamLeader
@@ -86,7 +86,7 @@ teamLeader
 Nonzero when this client is the designated leader of its team.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L143)
 
 <a id="field-field-mq3-game-g-local-clientsession-wins-wins-src-mq3-game-g-local-ml-856329464"></a>
 ### wins
@@ -98,4 +98,4 @@ wins
 Tournament wins retained in the client session.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L139)

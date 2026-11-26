@@ -15,7 +15,7 @@ Reachable from entry: **no**
 - `mq3/botlib/ai_predict_visible_position.ml` as `predict` → [src/mq3/botlib/ai_predict_visible_position.ml](File-src-mq3-botlib-ai-predict-visible-position-ml-125650055.md)
 - `mq3/botlib/ai_resource_pools.ml` as `pools` → [src/mq3/botlib/ai_resource_pools.ml](File-src-mq3-botlib-ai-resource-pools-ml-103445473.md)
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -33,7 +33,7 @@ Return the absolute value of the numeric argument for be ai move.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `0.0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L82)
 
 - [mq3.botlib.be_ai_move.Adapter](Type-mq3-botlib-be-ai-move-adapter-2002977585.md) — struct
 <a id="function-function-mq3-botlib-be-ai-move-anglediff-function-anglediff-ang1-ang2-src-mq3-botlib-be-ai-move-ml-2006373749"></a>
@@ -51,7 +51,7 @@ Forward `AngleDiff` to `mq3.botlib.ai_move_runtime.angleDiff` and return the del
 | `ang2` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fsub`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L87)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-avoid-always-const-avoid-always-1-src-mq3-botlib-be-ai-move-ml-1528824628"></a>
 ### AVOID_ALWAYS
@@ -63,7 +63,7 @@ const AVOID_ALWAYS = 1
 Avoidance-spot mode that always rejects paths through the spot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L29)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-avoid-clear-const-avoid-clear-0-src-mq3-botlib-be-ai-move-ml-1893825813"></a>
 ### AVOID_CLEAR
@@ -75,7 +75,7 @@ const AVOID_CLEAR = 0
 Avoidance-spot mode that removes the previously registered spots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L27)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-avoid-dontblock-const-avoid-dontblock-2-src-mq3-botlib-be-ai-move-ml-1943895339"></a>
 ### AVOID_DONTBLOCK
@@ -87,7 +87,7 @@ const AVOID_DONTBLOCK = 2
 Avoidance-spot mode that influences path choice without blocking all movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L31)
 
 <a id="function-function-mq3-botlib-be-ai-move-botaddavoidspot-function-botaddavoidspot-adapter-handle-origin-radius-type-src-mq3-botlib-be-ai-move-ml-1431653795"></a>
 ### BotAddAvoidSpot
@@ -107,7 +107,7 @@ Apply `mq3.botlib.ai_avoid_spots.add` while evaluating `BotAddAvoidSpot`. Return
 | `type` | `dynamic` | — | Value used by `add` in `if type==AVOID_CLEAR then state.numAvoidSpots=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L177)
 
 <a id="function-function-mq3-botlib-be-ai-move-botaddtoavoidreach-function-botaddtoavoidreach-adapter-state-number-avoidtime-src-mq3-botlib-be-ai-move-ml-1812118947"></a>
 ### BotAddToAvoidReach
@@ -126,7 +126,7 @@ Update `state.avoidReachTries[index]`, `state.avoidReachTimes[index]` and `state
 | `avoidTime` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L133)
 
 <a id="function-function-mq3-botlib-be-ai-move-botaddtotarget-function-botaddtotarget-start-finish-maxdistance-travelled-target-src-mq3-botlib-be-ai-move-ml-786931064"></a>
 ### BotAddToTarget
@@ -146,7 +146,7 @@ Forward `BotAddToTarget` to `mq3.botlib.ai_move_runtime.addToTarget` and return 
 | `target` | `dynamic` | — | Mutable three-component look-ahead target written when the requested distance falls on this segment. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L223)
 
 <a id="function-function-mq3-botlib-be-ai-move-botaircontrol-function-botaircontrol-adapter-origin-velocity-goal-src-mq3-botlib-be-ai-move-ml-547858121"></a>
 ### BotAirControl
@@ -165,7 +165,7 @@ Forward `BotAirControl` to `mq3.botlib.ai_move_runtime.airControl` and return th
 | `goal` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L403)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L403)
 
 <a id="function-function-mq3-botlib-be-ai-move-botallocmovestate-function-botallocmovestate-adapter-src-mq3-botlib-be-ai-move-ml-907601267"></a>
 ### BotAllocMoveState
@@ -181,7 +181,7 @@ Apply `mq3.botlib.ai_resource_pools.allocMoveState` while evaluating `BotAllocMo
 | `adapter` | `dynamic` | — | Adapter record; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L91)
 
 <a id="function-function-mq3-botlib-be-ai-move-botavoidspots-function-botavoidspots-origin-reach-spots-numspots-src-mq3-botlib-be-ai-move-ml-1310553241"></a>
 ### BotAvoidSpots
@@ -200,7 +200,7 @@ Apply `mq3.botlib.be_ai_move.DistanceFromLineSquared` and `mq3.botlib.be_ai_move
 | `numSpots` | `dynamic` | — | Value used by `BotAvoidSpots` in `if numSpots>len(spots) then numSpots=len(spots) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L157)
 
 <a id="function-function-mq3-botlib-be-ai-move-botcheckbarrierjump-function-botcheckbarrierjump-adapter-state-direction-speed-src-mq3-botlib-be-ai-move-ml-896509968"></a>
 ### BotCheckBarrierJump
@@ -219,7 +219,7 @@ Forward `BotCheckBarrierJump` to `mq3.botlib.ai_move_runtime.checkBarrierJump` a
 | `speed` | `dynamic` | — | Requested movement speed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L306)
 
 <a id="function-function-mq3-botlib-be-ai-move-botcheckblocked-function-botcheckblocked-adapter-state-direction-checkbottom-result-src-mq3-botlib-be-ai-move-ml-308205043"></a>
 ### BotCheckBlocked
@@ -239,7 +239,7 @@ Forward `BotCheckBlocked` to `mq3.botlib.ai_move_runtime.checkBlocked` and retur
 | `result` | `dynamic` | — | Result record; accesses `blocked` and `blockEntity`. May update `result.blocked` and `result.blockEntity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L346)
 
 <a id="function-function-mq3-botlib-be-ai-move-botclearmoveresult-function-botclearmoveresult-result-src-mq3-botlib-be-ai-move-ml-627036917"></a>
 ### BotClearMoveResult
@@ -255,7 +255,7 @@ Update `result.failure`, `result.type`, `result.blocked` and `result.blockEntity
 | `result` | `dynamic` | — | Result record; accesses `failure`, `type`, `blocked`, `blockEntity` and `travelType` and related fields. May update `result.failure`, `result.type` and `result.blocked` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L349)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-barrierjump-function-botfinishtravel-barrierjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-636878099"></a>
 ### BotFinishTravel_BarrierJump
@@ -273,7 +273,7 @@ Forward `BotFinishTravel_BarrierJump` to `mq3.botlib.ai_move_runtime.finishTrave
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L377)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L377)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-elevator-function-botfinishtravel-elevator-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1443412227"></a>
 ### BotFinishTravel_Elevator
@@ -291,7 +291,7 @@ Forward `BotFinishTravel_Elevator` to `mq3.botlib.ai_move_runtime.finishTravelEl
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L438)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L438)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-funcbobbing-function-botfinishtravel-funcbobbing-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-483757123"></a>
 ### BotFinishTravel_FuncBobbing
@@ -309,7 +309,7 @@ Forward `BotFinishTravel_FuncBobbing` to `mq3.botlib.ai_move_runtime.finishTrave
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L460)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-jump-function-botfinishtravel-jump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-635997583"></a>
 ### BotFinishTravel_Jump
@@ -327,7 +327,7 @@ Forward `BotFinishTravel_Jump` to `mq3.botlib.ai_move_runtime.finishTravelJump` 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L418)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L418)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-jumppad-function-botfinishtravel-jumppad-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1078383287"></a>
 ### BotFinishTravel_JumpPad
@@ -345,7 +345,7 @@ Forward `BotFinishTravel_JumpPad` to `mq3.botlib.ai_move_runtime.finishTravelJum
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L499)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-walk-function-botfinishtravel-walk-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-2080074323"></a>
 ### BotFinishTravel_Walk
@@ -363,7 +363,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L360)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-walkoffledge-function-botfinishtravel-walkoffledge-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-526846895"></a>
 ### BotFinishTravel_WalkOffLedge
@@ -381,7 +381,7 @@ Forward `BotFinishTravel_WalkOffLedge` to `mq3.botlib.ai_move_runtime.finishTrav
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L408)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-waterjump-function-botfinishtravel-waterjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1543748707"></a>
 ### BotFinishTravel_WaterJump
@@ -399,7 +399,7 @@ Forward `BotFinishTravel_WaterJump` to `mq3.botlib.ai_move_runtime.finishTravelW
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L392)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L392)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfinishtravel-weaponjump-function-botfinishtravel-weaponjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1368231431"></a>
 ### BotFinishTravel_WeaponJump
@@ -417,7 +417,7 @@ Forward `BotFinishTravel_WeaponJump` to `mq3.botlib.ai_move_runtime.finishTravel
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L489)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L489)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfreemovestate-function-botfreemovestate-adapter-handle-src-mq3-botlib-be-ai-move-ml-1662774481"></a>
 ### BotFreeMoveState
@@ -434,7 +434,7 @@ Apply `mq3.botlib.ai_resource_pools.freeMoveState` while evaluating `BotFreeMove
 | `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L95)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfuncbobstartend-function-botfuncbobstartend-adapter-reach-src-mq3-botlib-be-ai-move-ml-973852502"></a>
 ### BotFuncBobStartEnd
@@ -451,7 +451,7 @@ Use `adapter.moverInfoFn` to perform `BotFuncBobStartEnd`. Return paths include 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `faceNum` and `edgeNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L446)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L446)
 
 <a id="function-function-mq3-botlib-be-ai-move-botfuzzypointreachabilityarea-function-botfuzzypointreachabilityarea-adapter-origin-src-mq3-botlib-be-ai-move-ml-1453381903"></a>
 ### BotFuzzyPointReachabilityArea
@@ -468,7 +468,7 @@ Forward `BotFuzzyPointReachabilityArea` to `mq3.botlib.ai_move_runtime.fuzzyPoin
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L121)
 
 <a id="function-function-mq3-botlib-be-ai-move-botgapdistance-function-botgapdistance-adapter-origin-horizontaldirection-entitynum-src-mq3-botlib-be-ai-move-ml-1820679143"></a>
 ### BotGapDistance
@@ -487,7 +487,7 @@ Use `adapter.runtime.services.gapDistanceFn` to perform `BotGapDistance`.
 | `entityNum` | `dynamic` | — | Entity number in the game or AAS entity table. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L298)
 
 <a id="function-function-mq3-botlib-be-ai-move-botgetreachabilitytogoal-function-botgetreachabilitytogoal-adapter-origin-areanum-lastgoalareanum-lastareanum-avoidreach-avoidtimes-avoidtries-goal-travelflags-movetravelflags-avoidspots-src-mq3-botlib-be-ai-move-ml-463684122"></a>
 ### BotGetReachabilityToGoal
@@ -514,7 +514,7 @@ Apply `mq3.botlib.aas_runtime.getTime`, `mq3.botlib.be_ai_move.BotValidTravel` a
 | `avoidSpots` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L203)
 
 <a id="function-function-mq3-botlib-be-ai-move-botinitmovestate-function-botinitmovestate-adapter-handle-value-src-mq3-botlib-be-ai-move-ml-1647133282"></a>
 ### BotInitMoveState
@@ -532,7 +532,7 @@ Apply `mq3.botlib.ai_move_runtime.initMoveState` while evaluating `BotInitMoveSt
 | `value` | `dynamic` | — | Movement initialization record; accesses `origin`, `velocity`, `viewOffset`, `entityNum` and `client` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L104)
 
 <a id="function-function-mq3-botlib-be-ai-move-botmoveindirection-function-botmoveindirection-adapter-handle-direction-speed-type-src-mq3-botlib-be-ai-move-ml-926826181"></a>
 ### BotMoveInDirection
@@ -552,7 +552,7 @@ Forward `BotMoveInDirection` to `mq3.botlib.ai_move_runtime.moveInDirection` and
 | `type` | `dynamic` | — | Value passed as argument 5 to `runtime.services.walkDirectionFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L327)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L327)
 
 <a id="function-function-mq3-botlib-be-ai-move-botmoveingoalarea-function-botmoveingoalarea-adapter-state-goal-src-mq3-botlib-be-ai-move-ml-40169097"></a>
 ### BotMoveInGoalArea
@@ -570,7 +570,7 @@ Forward `BotMoveInGoalArea` to `mq3.botlib.ai_move_runtime.moveInGoalArea` and r
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `origin` and `areaNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L507)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L507)
 
 <a id="function-function-mq3-botlib-be-ai-move-botmovementviewtarget-function-botmovementviewtarget-adapter-handle-goal-travelflags-lookahead-target-src-mq3-botlib-be-ai-move-ml-995480582"></a>
 ### BotMovementViewTarget
@@ -591,7 +591,7 @@ Forward `BotMovementViewTarget` to `mq3.botlib.ai_move_runtime.movementViewTarge
 | `target` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L231)
 
 <a id="function-function-mq3-botlib-be-ai-move-botmovestatefromhandle-function-botmovestatefromhandle-adapter-handle-src-mq3-botlib-be-ai-move-ml-1468977985"></a>
 ### BotMoveStateFromHandle
@@ -608,7 +608,7 @@ Apply `mq3.botlib.ai_resource_pools.moveState` while evaluating `BotMoveStateFro
 | `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L99)
 
 <a id="function-function-mq3-botlib-be-ai-move-botmovetogoal-function-botmovetogoal-adapter-handle-goal-travelflags-src-mq3-botlib-be-ai-move-ml-1711242537"></a>
 ### BotMoveToGoal
@@ -627,7 +627,7 @@ Forward `BotMoveToGoal` to `mq3.botlib.ai_move_runtime.moveToGoal` and return th
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L513)
 
 <a id="function-function-mq3-botlib-be-ai-move-botonmover-function-botonmover-adapter-origin-entitynum-reach-src-mq3-botlib-be-ai-move-ml-1032723161"></a>
 ### BotOnMover
@@ -646,7 +646,7 @@ Use `adapter.onMoverFn` to perform `BotOnMover`. Return paths include `adapter.o
 | `reach` | `dynamic` | — | Value passed as argument 4 to `adapter.onMoverFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L278)
 
 <a id="function-function-mq3-botlib-be-ai-move-botontopofentity-function-botontopofentity-adapter-state-src-mq3-botlib-be-ai-move-ml-91900920"></a>
 ### BotOnTopOfEntity
@@ -663,7 +663,7 @@ Use `adapter.onTopFn` to perform `BotOnTopOfEntity`. Return paths include `adapt
 | `state` | `dynamic` | — | Value passed as argument 2 to `adapter.onTopFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L282)
 
 <a id="function-function-mq3-botlib-be-ai-move-botpredictvisibleposition-function-botpredictvisibleposition-adapter-origin-areanum-goal-travelflags-src-mq3-botlib-be-ai-move-ml-2018812740"></a>
 ### BotPredictVisiblePosition
@@ -683,7 +683,7 @@ Build the `mq3.botlib.ai_predict_visible_position.Result` result for `BotPredict
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L255)
 
 <a id="function-function-mq3-botlib-be-ai-move-botreachabilityarea-function-botreachabilityarea-adapter-origin-client-src-mq3-botlib-be-ai-move-ml-1684238632"></a>
 ### BotReachabilityArea
@@ -701,7 +701,7 @@ Forward `BotReachabilityArea` to `mq3.botlib.ai_move_runtime.reachabilityArea` a
 | `client` | `dynamic` | — | Value passed as argument 6 to `runtime.services.groundTraceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L126)
 
 <a id="function-function-mq3-botlib-be-ai-move-botreachabilitytime-function-botreachabilitytime-reach-src-mq3-botlib-be-ai-move-ml-851823949"></a>
 ### BotReachabilityTime
@@ -717,7 +717,7 @@ Forward `BotReachabilityTime` to `mq3.botlib.ai_move_runtime.reachabilityTime` a
 | `reach` | `dynamic` | — | AAS reachability record; accesses `travelType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L502)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L502)
 
 <a id="function-function-mq3-botlib-be-ai-move-botresetavoidreach-function-botresetavoidreach-adapter-handle-src-mq3-botlib-be-ai-move-ml-268536821"></a>
 ### BotResetAvoidReach
@@ -734,7 +734,7 @@ Apply `mq3.botlib.ai_resource_pools.resetAvoidReach` while evaluating `BotResetA
 | `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L108)
 
 <a id="function-function-mq3-botlib-be-ai-move-botresetgrapple-function-botresetgrapple-adapter-state-src-mq3-botlib-be-ai-move-ml-650411826"></a>
 ### BotResetGrapple
@@ -751,7 +751,7 @@ Forward `BotResetGrapple` to `mq3.botlib.ai_move_runtime.resetGrapple` and retur
 | `state` | `dynamic` | — | AI move runtime state; accesses `lastReachNum`, `moveFlags` and `grappleVisibleTime`. May update `state.moveFlags` and `state.grappleVisibleTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L469)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L469)
 
 <a id="function-function-mq3-botlib-be-ai-move-botresetlastavoidreach-function-botresetlastavoidreach-adapter-handle-src-mq3-botlib-be-ai-move-ml-903537641"></a>
 ### BotResetLastAvoidReach
@@ -768,7 +768,7 @@ Apply `mq3.botlib.ai_resource_pools.resetLastAvoidReach` while evaluating `BotRe
 | `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L112)
 
 <a id="function-function-mq3-botlib-be-ai-move-botresetmovestate-function-botresetmovestate-adapter-handle-src-mq3-botlib-be-ai-move-ml-1419802833"></a>
 ### BotResetMoveState
@@ -785,7 +785,7 @@ Apply `mq3.botlib.ai_resource_pools.resetMoveState` while evaluating `BotResetMo
 | `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L116)
 
 <a id="function-function-mq3-botlib-be-ai-move-botsetbrushmodeltypes-function-botsetbrushmodeltypes-adapter-entities-src-mq3-botlib-be-ai-move-ml-1091909118"></a>
 ### BotSetBrushModelTypes
@@ -802,7 +802,7 @@ Update `adapter.modelTypes` and `adapter.modelTypes[model]` during `BotSetBrushM
 | `entities` | `dynamic` | — | Value used by `BotSetBrushModelTypes` in `for each entity in entities model=entity.modelNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L287)
 
 <a id="function-function-mq3-botlib-be-ai-move-botsetupmoveai-function-botsetupmoveai-adapter-entities-src-mq3-botlib-be-ai-move-ml-891362920"></a>
 ### BotSetupMoveAI
@@ -819,7 +819,7 @@ Use `adapter.setupFn` to perform `BotSetupMoveAI`.
 | `entities` | `dynamic` | — | Value used by `BotSetBrushModelTypes` in `for each entity in entities model=entity.modelNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L518)
 
 <a id="function-function-mq3-botlib-be-ai-move-botshutdownmoveai-function-botshutdownmoveai-adapter-src-mq3-botlib-be-ai-move-ml-981710863"></a>
 ### BotShutdownMoveAI
@@ -835,7 +835,7 @@ Use `adapter.shutdownFn` to perform `BotShutdownMoveAI`.
 | `adapter` | `dynamic` | — | Adapter record; accesses `shutdownFn`, `context` and `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L523)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L523)
 
 <a id="function-function-mq3-botlib-be-ai-move-botswimindirection-function-botswimindirection-adapter-state-direction-speed-type-src-mq3-botlib-be-ai-move-ml-1798113992"></a>
 ### BotSwimInDirection
@@ -855,7 +855,7 @@ Apply `mq3.botlib.ai_move_runtime.normalize` and `mq3.botlib.ai_move_runtime.emi
 | `type` | `dynamic` | — | Not read by this implementation; retained in the `BotSwimInDirection` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L313)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-barrierjump-function-bottravel-barrierjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-571546665"></a>
 ### BotTravel_BarrierJump
@@ -873,7 +873,7 @@ Forward `BotTravel_BarrierJump` to `mq3.botlib.ai_move_runtime.travelBarrierJump
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L372)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-bfgjump-function-bottravel-bfgjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1758113521"></a>
 ### BotTravel_BFGJump
@@ -891,7 +891,7 @@ Forward `BotTravel_BFGJump` to `mq3.botlib.ai_move_runtime.travelWeaponJump` and
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L484)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L484)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-crouch-function-bottravel-crouch-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-940900595"></a>
 ### BotTravel_Crouch
@@ -909,7 +909,7 @@ Forward `BotTravel_Crouch` to `mq3.botlib.ai_move_runtime.travelCrouch` and retu
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L367)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-elevator-function-bottravel-elevator-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1831331639"></a>
 ### BotTravel_Elevator
@@ -927,7 +927,7 @@ Forward `BotTravel_Elevator` to `mq3.botlib.ai_move_runtime.travelElevator` and 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L433)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L433)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-funcbobbing-function-bottravel-funcbobbing-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-341745105"></a>
 ### BotTravel_FuncBobbing
@@ -945,7 +945,7 @@ Forward `BotTravel_FuncBobbing` to `mq3.botlib.ai_move_runtime.travelFuncBob` an
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L455)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L455)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-grapple-function-bottravel-grapple-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-478527917"></a>
 ### BotTravel_Grapple
@@ -963,7 +963,7 @@ Forward `BotTravel_Grapple` to `mq3.botlib.ai_move_runtime.travelGrapple` and re
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L474)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-jump-function-bottravel-jump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1442748435"></a>
 ### BotTravel_Jump
@@ -981,7 +981,7 @@ Forward `BotTravel_Jump` to `mq3.botlib.ai_move_runtime.travelJump` and return t
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L413)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-jumppad-function-bottravel-jumppad-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-512225925"></a>
 ### BotTravel_JumpPad
@@ -999,7 +999,7 @@ Forward `BotTravel_JumpPad` to `mq3.botlib.ai_move_runtime.travelJumpPad` and re
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L494)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L494)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-ladder-function-bottravel-ladder-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1100867267"></a>
 ### BotTravel_Ladder
@@ -1017,7 +1017,7 @@ Forward `BotTravel_Ladder` to `mq3.botlib.ai_move_runtime.travelLadder` and retu
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L423)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L423)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-rocketjump-function-bottravel-rocketjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-104468867"></a>
 ### BotTravel_RocketJump
@@ -1035,7 +1035,7 @@ Forward `BotTravel_RocketJump` to `mq3.botlib.ai_move_runtime.travelWeaponJump` 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L479)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L479)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-swim-function-bottravel-swim-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1931350483"></a>
 ### BotTravel_Swim
@@ -1053,7 +1053,7 @@ Forward `BotTravel_Swim` to `mq3.botlib.ai_move_runtime.travelSwim` and return t
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L382)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L382)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-teleport-function-bottravel-teleport-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-260442547"></a>
 ### BotTravel_Teleport
@@ -1071,7 +1071,7 @@ Forward `BotTravel_Teleport` to `mq3.botlib.ai_move_runtime.travelTeleport` and 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L428)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-walk-function-bottravel-walk-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-214467319"></a>
 ### BotTravel_Walk
@@ -1089,7 +1089,7 @@ Forward `BotTravel_Walk` to `mq3.botlib.ai_move_runtime.travelWalk` and return t
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`, `finish` and `areaNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L355)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-walkoffledge-function-bottravel-walkoffledge-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-741865975"></a>
 ### BotTravel_WalkOffLedge
@@ -1107,7 +1107,7 @@ Forward `BotTravel_WalkOffLedge` to `mq3.botlib.ai_move_runtime.travelWalkOffLed
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L397)
 
 <a id="function-function-mq3-botlib-be-ai-move-bottravel-waterjump-function-bottravel-waterjump-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-190590669"></a>
 ### BotTravel_WaterJump
@@ -1125,7 +1125,7 @@ Forward `BotTravel_WaterJump` to `mq3.botlib.ai_move_runtime.travelWaterJump` an
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L387)
 
 <a id="function-function-mq3-botlib-be-ai-move-botvalidtravel-function-botvalidtravel-adapter-origin-reach-travelflags-src-mq3-botlib-be-ai-move-ml-2123244211"></a>
 ### BotValidTravel
@@ -1144,7 +1144,7 @@ Apply `mq3.botlib.aas_routing.travelFlagForType` and `mq3.botlib.aas_routing.are
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L184)
 
 <a id="function-function-mq3-botlib-be-ai-move-botvisible-function-botvisible-adapter-entity-eye-target-src-mq3-botlib-be-ai-move-ml-1718991824"></a>
 ### BotVisible
@@ -1163,7 +1163,7 @@ Use `adapter.visibleTraceFn` to perform `BotVisible`.
 | `target` | `dynamic` | — | Value passed as argument 3 to `adapter.visibleTraceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L238)
 
 <a id="function-function-mq3-botlib-be-ai-move-botwalkindirection-function-botwalkindirection-adapter-state-direction-speed-type-src-mq3-botlib-be-ai-move-ml-2115134604"></a>
 ### BotWalkInDirection
@@ -1183,7 +1183,7 @@ Use `adapter.runtime.services.walkDirectionFn` to perform `BotWalkInDirection`.
 | `type` | `dynamic` | — | Value passed as argument 5 to `adapter.runtime.services.walkDirectionFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L320)
 
 - [mq3.botlib.be_ai_move.BrushEntity](Type-mq3-botlib-be-ai-move-brushentity-566568305.md) — struct
 <a id="function-function-mq3-botlib-be-ai-move-create-function-create-runtime-src-mq3-botlib-be-ai-move-ml-1577810536"></a>
@@ -1200,7 +1200,7 @@ Create a `mq3.botlib.be_ai_move.Adapter` record, initializing `runtime` from `ru
 | `runtime` | `dynamic` | — | Initial value stored in `mq3.botlib.be_ai_move.Adapter.runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L76)
 
 <a id="function-function-mq3-botlib-be-ai-move-distancefromlinesquared-function-distancefromlinesquared-point-start-finish-src-mq3-botlib-be-ai-move-ml-1003698229"></a>
 ### DistanceFromLineSquared
@@ -1218,7 +1218,7 @@ Forward `DistanceFromLineSquared` to `mq3.botlib.ai_move_runtime.distanceFromLin
 | `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L146)
 
 <a id="function-function-mq3-botlib-be-ai-move-grapplestate-function-grapplestate-adapter-state-reach-src-mq3-botlib-be-ai-move-ml-1168245539"></a>
 ### GrappleState
@@ -1236,7 +1236,7 @@ Forward `GrappleState` to `mq3.botlib.ai_move_runtime.grappleState` and return t
 | `reach` | `dynamic` | — | Value passed as argument 3 to `runtime.services.grappleStateFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L465)
 
 <a id="function-function-mq3-botlib-be-ai-move-intersection-function-intersection-firststart-firstend-secondstart-secondend-target-src-mq3-botlib-be-ai-move-ml-1357944225"></a>
 ### Intersection
@@ -1256,7 +1256,7 @@ Update `target[0]` and `target[1]` during `Intersection`.
 | `target` | `dynamic` | — | Array or byte sequence accessed at `0` and `1`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L335)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-max-models-const-max-models-256-src-mq3-botlib-be-ai-move-ml-893479686"></a>
 ### MAX_MODELS
@@ -1268,7 +1268,7 @@ const MAX_MODELS = 256
 These are sent over the net as 8 bits.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L15)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-modeltype-func-bob-const-modeltype-func-bob-2-src-mq3-botlib-be-ai-move-ml-33247725"></a>
 ### MODELTYPE_FUNC_BOB
@@ -1280,7 +1280,7 @@ const MODELTYPE_FUNC_BOB = 2
 Bot mover-model classification for func bob.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L21)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-modeltype-func-door-const-modeltype-func-door-3-src-mq3-botlib-be-ai-move-ml-219445714"></a>
 ### MODELTYPE_FUNC_DOOR
@@ -1292,7 +1292,7 @@ const MODELTYPE_FUNC_DOOR = 3
 Bot mover-model classification for func door.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L23)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-modeltype-func-plat-const-modeltype-func-plat-1-src-mq3-botlib-be-ai-move-ml-661742996"></a>
 ### MODELTYPE_FUNC_PLAT
@@ -1304,7 +1304,7 @@ const MODELTYPE_FUNC_PLAT = 1
 Bot mover-model classification for func plat.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L19)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-modeltype-func-static-const-modeltype-func-static-4-src-mq3-botlib-be-ai-move-ml-1472673997"></a>
 ### MODELTYPE_FUNC_STATIC
@@ -1316,7 +1316,7 @@ const MODELTYPE_FUNC_STATIC = 4
 Bot mover-model classification for func static.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L25)
 
 <a id="constant-constant-mq3-botlib-be-ai-move-modeltype-none-const-modeltype-none-0-src-mq3-botlib-be-ai-move-ml-1608806523"></a>
 ### MODELTYPE_NONE
@@ -1328,7 +1328,7 @@ const MODELTYPE_NONE = 0
 Bot mover-model classification for none.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L17)
 
 <a id="function-function-mq3-botlib-be-ai-move-moverbottomcenter-function-moverbottomcenter-adapter-reach-src-mq3-botlib-be-ai-move-ml-748664776"></a>
 ### MoverBottomCenter
@@ -1345,7 +1345,7 @@ Use `adapter.moverInfoFn` to perform `MoverBottomCenter`.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `faceNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L263)
 
 <a id="function-function-mq3-botlib-be-ai-move-moverdown-function-moverdown-adapter-reach-src-mq3-botlib-be-ai-move-ml-553803108"></a>
 ### MoverDown
@@ -1362,7 +1362,7 @@ Use `adapter.moverInfoFn` to perform `MoverDown`. Return paths include `n.fadd(v
 | `reach` | `dynamic` | — | AAS reachability record; accesses `faceNum` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L270)
 
 - [mq3.botlib.be_ai_move.MoverInfo](Type-mq3-botlib-be-ai-move-moverinfo-201165283.md) — struct
 <a id="function-function-mq3-botlib-be-ai-move-signed16-function-signed16-value-src-mq3-botlib-be-ai-move-ml-349153705"></a>
@@ -1379,7 +1379,7 @@ Sign-extend the low sixteen bits into the original 32-bit signed representation.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L442)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L442)
 
 <a id="function-function-mq3-botlib-be-ai-move-vectordistancesquared-function-vectordistancesquared-first-second-src-mq3-botlib-be-ai-move-ml-1972447772"></a>
 ### VectorDistanceSquared
@@ -1396,7 +1396,7 @@ Forward `VectorDistanceSquared` to `mq3.botlib.ai_move_runtime.vectorDistanceSqu
 | `second` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L150)
 
 <a id="function-function-mq3-botlib-be-ai-move-visiblecallback-function-visiblecallback-context-goal-point-entity-contents-src-mq3-botlib-be-ai-move-ml-2011992057"></a>
 ### visibleCallback
@@ -1416,4 +1416,4 @@ Return the result of `context.visibleTraceFn(context.context,goal,point,entity,c
 | `contents` | `dynamic` | — | Value passed as argument 5 to `context.visibleTraceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L248)

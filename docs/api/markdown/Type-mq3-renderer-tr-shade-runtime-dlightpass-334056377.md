@@ -12,7 +12,7 @@ struct DlightPass
 Data record for `mq3.renderer.tr_shade_runtime.DlightPass`; groups `lightIndex`, `uvs`, `colors`, `indexes`, `additive`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L117)
 
 ## Members
 
@@ -26,7 +26,7 @@ additive
 Whether the dynamic light contributes additively rather than modulating the surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L127)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-dlightpass-colors-colors-src-mq3-renderer-tr-shade-runtime-ml-1944981014"></a>
 ### colors
@@ -38,7 +38,7 @@ colors
 Per-vertex colors containing the projected dynamic-light contribution for this pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L123)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-dlightpass-indexes-indexes-src-mq3-renderer-tr-shade-runtime-ml-1731126574"></a>
 ### indexes
@@ -50,7 +50,7 @@ indexes
 Selected triangle indices retained for the projected dynamic-light pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L125)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-dlightpass-lightindex-lightindex-src-mq3-renderer-tr-shade-runtime-ml-1440874694"></a>
 ### lightIndex
@@ -62,7 +62,7 @@ lightIndex
 Index of the dynamic light used by the lighting pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L119)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-dlightpass-uvs-uvs-src-mq3-renderer-tr-shade-runtime-ml-2083686046"></a>
 ### uvs
@@ -74,4 +74,4 @@ uvs
 Texture coordinates generated for the pass or its vertices.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L121)

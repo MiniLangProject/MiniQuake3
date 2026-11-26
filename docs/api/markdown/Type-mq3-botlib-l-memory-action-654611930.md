@@ -12,7 +12,7 @@ struct Action
 `Action` record for l memory, containing `boundary`, `kind`, `handle`, `size` and `message` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L33)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Subsystem boundary at which this host action must be dispatched.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L35)
 
 <a id="field-field-mq3-botlib-l-memory-action-dispatched-dispatched-src-mq3-botlib-l-memory-ml-1835485813"></a>
 ### dispatched
@@ -38,7 +38,7 @@ dispatched
 True after the recorded action has been delivered to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L45)
 
 <a id="field-field-mq3-botlib-l-memory-action-handle-handle-src-mq3-botlib-l-memory-ml-2081699015"></a>
 ### handle
@@ -50,7 +50,7 @@ handle
 Managed allocation handle affected by the operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L39)
 
 <a id="field-field-mq3-botlib-l-memory-action-kind-kind-src-mq3-botlib-l-memory-ml-208378439"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 Memory-manager operation represented by this host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L37)
 
 <a id="field-field-mq3-botlib-l-memory-action-message-message-src-mq3-botlib-l-memory-ml-1302528659"></a>
 ### message
@@ -74,7 +74,7 @@ message
 Text associated with the reported event or diagnostic.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L43)
 
 <a id="field-field-mq3-botlib-l-memory-action-size-size-src-mq3-botlib-l-memory-ml-810404973"></a>
 ### size
@@ -86,4 +86,4 @@ size
 Byte count supplied with the recorded memory-allocation or release action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L41)

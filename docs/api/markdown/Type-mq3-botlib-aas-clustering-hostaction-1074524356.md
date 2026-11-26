@@ -12,7 +12,7 @@ struct HostAction
 `HostAction` record for aas clustering, containing `boundary`, `kind`, `subject`, `detail` and `value` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L129)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Subsystem boundary at which this host action must be dispatched.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L131)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-detail-detail-src-mq3-botlib-aas-clustering-ml-746756275"></a>
 ### detail
@@ -38,7 +38,7 @@ detail
 Textual detail describing the clustering action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L137)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-dispatched-dispatched-src-mq3-botlib-aas-clustering-ml-1259115787"></a>
 ### dispatched
@@ -50,7 +50,7 @@ dispatched
 True after the recorded action has been delivered to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L141)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-kind-kind-src-mq3-botlib-aas-clustering-ml-1932277509"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 Discriminator selecting the host clustering action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L133)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-subject-subject-src-mq3-botlib-aas-clustering-ml-540845509"></a>
 ### subject
@@ -74,7 +74,7 @@ subject
 Map entity or navigation element affected by the action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L135)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-value-value-src-mq3-botlib-aas-clustering-ml-409819001"></a>
 ### value
@@ -86,4 +86,4 @@ value
 Additional scalar argument associated with the clustering action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L139)

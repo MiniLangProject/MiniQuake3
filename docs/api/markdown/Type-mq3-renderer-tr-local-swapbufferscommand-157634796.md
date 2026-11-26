@@ -12,7 +12,7 @@ struct SwapBuffersCommand
 Data record for `mq3.renderer.tr_local.SwapBuffersCommand`; groups `commandId`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L131)
 
 ## Members
 
@@ -26,4 +26,4 @@ commandId
 Renderer command identifier selecting the backend operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L133)

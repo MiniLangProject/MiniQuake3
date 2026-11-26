@@ -12,7 +12,7 @@ struct AliasContext
 `AliasContext` record for ai chat runtime, containing `runtime`, `requested` and `canonical`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L53)
 
 ## Members
 
@@ -26,7 +26,7 @@ canonical
 Canonical operation name selected after alias resolution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L59)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-aliascontext-requested-requested-src-mq3-botlib-ai-chat-runtime-ml-173045902"></a>
 ### requested
@@ -38,7 +38,7 @@ requested
 Operation name requested by the caller before alias resolution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L57)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-aliascontext-runtime-runtime-src-mq3-botlib-ai-chat-runtime-ml-583624094"></a>
 ### runtime
@@ -50,4 +50,4 @@ runtime
 Chat runtime whose file reader supplies the aliased chat resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L55)

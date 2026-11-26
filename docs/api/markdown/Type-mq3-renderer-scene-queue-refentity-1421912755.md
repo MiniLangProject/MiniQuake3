@@ -12,7 +12,7 @@ struct RefEntity
 Data record for `mq3.renderer.scene_queue.RefEntity`; groups `reType`, `payload`, `lightingCalculated`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L42)
 
 ## Members
 
@@ -26,7 +26,7 @@ lightingCalculated
 Whether entity lighting has already been computed for this frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L48)
 
 <a id="field-field-mq3-renderer-scene-queue-refentity-payload-payload-src-mq3-renderer-scene-queue-ml-1535450933"></a>
 ### payload
@@ -38,7 +38,7 @@ payload
 Operation-specific data interpreted according to the record's command or event type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L46)
 
 <a id="field-field-mq3-renderer-scene-queue-refentity-retype-retype-src-mq3-renderer-scene-queue-ml-379214295"></a>
 ### reType
@@ -50,4 +50,4 @@ reType
 Renderer entity type selecting the model, sprite, beam, or portal path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L44)

@@ -12,7 +12,7 @@ struct UvMod
 Data record for `mq3.renderer.playable_materials.UvMod`; groups `kind`, `a`, `b`, `c`, `d`, `e`, and 2 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L68)
 
 ## Members
 
@@ -26,7 +26,7 @@ a
 Texture-modifier parameter A, interpreted according to the modifier kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L73)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-b-b-src-mq3-renderer-playable-materials-ml-1047275986"></a>
 ### b
@@ -38,7 +38,7 @@ b
 Texture-modifier parameter B, interpreted according to the modifier kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L75)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-c-c-src-mq3-renderer-playable-materials-ml-569379878"></a>
 ### c
@@ -50,7 +50,7 @@ c
 Texture-modifier parameter C, interpreted according to the modifier kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L77)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-d-d-src-mq3-renderer-playable-materials-ml-184234802"></a>
 ### d
@@ -62,7 +62,7 @@ d
 Texture-modifier parameter D, interpreted according to the modifier kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L79)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-e-e-src-mq3-renderer-playable-materials-ml-1716380598"></a>
 ### e
@@ -74,7 +74,7 @@ e
 Texture-modifier parameter E, interpreted according to the modifier kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L81)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-f-f-src-mq3-renderer-playable-materials-ml-1694346498"></a>
 ### f
@@ -86,7 +86,7 @@ f
 Texture-modifier parameter F, interpreted according to the modifier kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L83)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-kind-kind-src-mq3-renderer-playable-materials-ml-204949222"></a>
 ### kind
@@ -98,7 +98,7 @@ kind
 Runtime UV operation that determines how the modifier's numeric parameters and waveform are evaluated.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L71)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-wave-wave-src-mq3-renderer-playable-materials-ml-283576520"></a>
 ### wave
@@ -110,4 +110,4 @@ wave
 Waveform parameters driving this texture or vertex modification.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L85)

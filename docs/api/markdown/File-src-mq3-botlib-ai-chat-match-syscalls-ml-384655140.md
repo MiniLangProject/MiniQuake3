@@ -31,7 +31,7 @@ Apply `mq3.vm.syscall_common.readString`, `mq3.vm.syscall_common.argument` and `
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L37)
 
 <a id="function-function-mq3-botlib-ai-chat-match-syscalls-readmatch-function-readmatch-vm-address-src-mq3-botlib-ai-chat-match-syscalls-ml-1007464697"></a>
 ### readMatch
@@ -48,7 +48,7 @@ Build the `mq3.botlib.ai_chat_matches.Match` result for `readMatch`. Return path
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L26)
 
 <a id="function-function-mq3-botlib-ai-chat-match-syscalls-signedbyte-function-signedbyte-value-src-mq3-botlib-ai-chat-match-syscalls-ml-676905953"></a>
 ### signedByte
@@ -64,7 +64,7 @@ Interpret an unsigned byte value as a signed eight-bit match offset.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value-256`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-chat-match-syscalls-writematch-function-writematch-vm-address-match-src-mq3-botlib-ai-chat-match-syscalls-ml-312164104"></a>
 ### writeMatch
@@ -82,4 +82,4 @@ Set `vm.data[at+index]` to `0` and `vm.data[at+264+index*8]` to `match.offsets[i
 | `match` | `dynamic` | — | Parsed match record; accesses `string`, `type`, `subtype`, `offsets` and `lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L16)

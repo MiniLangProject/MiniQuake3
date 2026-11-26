@@ -12,7 +12,7 @@ struct RandomList
 `RandomList` record for ai chat output, containing `name` and `messages`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L54)
 
 ## Members
 
@@ -26,7 +26,7 @@ messages
 Alternative phrases available for random substitution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L58)
 
 <a id="field-field-mq3-botlib-ai-chat-output-randomlist-name-name-src-mq3-botlib-ai-chat-output-ml-1764275636"></a>
 ### name
@@ -38,4 +38,4 @@ name
 Name used by chat templates to select this random phrase list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L56)

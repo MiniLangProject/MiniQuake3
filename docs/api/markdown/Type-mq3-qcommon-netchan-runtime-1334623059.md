@@ -12,7 +12,7 @@ struct Runtime
 Runtime record for qcommon.netchan, containing `qport`, `sendPacketFn`, `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L36)
 
 ## Members
 
@@ -26,7 +26,7 @@ context
 Caller-supplied data associated with network-channel packet transmission.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L42)
 
 <a id="field-field-mq3-qcommon-netchan-runtime-qport-qport-src-mq3-qcommon-netchan-ml-2102493835"></a>
 ### qport
@@ -38,7 +38,7 @@ qport
 Client-selected virtual port used to recognize a connection across address translation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L38)
 
 <a id="field-field-mq3-qcommon-netchan-runtime-sendpacketfn-sendpacketfn-src-mq3-qcommon-netchan-ml-209053175"></a>
 ### sendPacketFn
@@ -50,4 +50,4 @@ sendPacketFn
 Host callback that sends a network datagram to the supplied endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L40)

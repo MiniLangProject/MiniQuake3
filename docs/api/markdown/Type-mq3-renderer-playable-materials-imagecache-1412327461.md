@@ -12,7 +12,7 @@ struct ImageCache
 Data record for `mq3.renderer.playable_materials.ImageCache`; groups `archive`, `images`, `count`, `hits`, `misses`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L177)
 
 ## Members
 
@@ -26,7 +26,7 @@ archive
 Asset archive used to resolve game resources by virtual path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L179)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-count-count-src-mq3-renderer-playable-materials-ml-2067388346"></a>
 ### count
@@ -38,7 +38,7 @@ count
 Number of decoded images currently retained by the cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L183)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-hits-hits-src-mq3-renderer-playable-materials-ml-1476533822"></a>
 ### hits
@@ -50,7 +50,7 @@ hits
 Number of lookups satisfied by an existing cache entry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L185)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-images-images-src-mq3-renderer-playable-materials-ml-1337223138"></a>
 ### images
@@ -62,7 +62,7 @@ images
 Image resources or image-animation frames retained by the record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L181)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-misses-misses-src-mq3-renderer-playable-materials-ml-2000662454"></a>
 ### misses
@@ -74,4 +74,4 @@ misses
 Number of lookups that required loading or rebuilding data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L187)

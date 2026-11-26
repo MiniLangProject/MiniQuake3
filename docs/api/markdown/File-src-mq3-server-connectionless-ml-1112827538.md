@@ -11,7 +11,7 @@ Reachable from entry: **yes**
 - `mq3/qcommon/command_buffer.ml` as `commandBuffer` → [src/mq3/qcommon/command_buffer.ml](File-src-mq3-qcommon-command-buffer-ml-122952676.md)
 - `mq3/qcommon/message.ml` as `message` → [src/mq3/qcommon/message.ml](File-src-mq3-qcommon-message-ml-1547411275.md)
 - `mq3/server/oob_connect.ml` as `oobConnect` → [src/mq3/server/oob_connect.ml](File-src-mq3-server-oob-connect-ml-829458266.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -29,7 +29,7 @@ Check whether bytes 4 through 10 of the message storage contain the case-sensiti
 | `msg` | `dynamic` | — | Message exposing the backing data bytes used to recognize compressed connect requests. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L34)
 
 <a id="function-function-mq3-server-connectionless-dispatch-function-dispatch-runtime-host-sourceaddress-msg-src-mq3-server-connectionless-ml-1807300734"></a>
 ### dispatch
@@ -48,7 +48,7 @@ Read and route one connectionless packet after validating its -1 OOB marker. Rec
 | `msg` | `dynamic` | — | Mutable message containing the OOB marker and command bytes; its read cursor is advanced. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L58)
 
 <a id="function-function-mq3-server-connectionless-services-function-services-src-mq3-server-connectionless-ml-104543780"></a>
 ### services
@@ -60,7 +60,7 @@ function services()
 Create a connectionless callback bundle with all callbacks and context initially unset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L29)
 
 - [mq3.server.connectionless.Services](Type-mq3-server-connectionless-services-775299350.md) — struct
 <a id="function-function-mq3-server-connectionless-tokens-function-tokens-text-src-mq3-server-connectionless-ml-1651922383"></a>
@@ -77,4 +77,4 @@ Tokenize a connectionless command line with the engine's command parser. Returns
 | `text` | `dynamic` | — | Decoded command line to parse with Quake command quoting rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L43)

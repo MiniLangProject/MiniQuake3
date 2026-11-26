@@ -29,7 +29,7 @@ Calls `service` from download `call`.
 | `b` | `dynamic` | — | Value used by `if service!=void then service(host,a,b) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L66)
 
 <a id="function-function-mq3-client-download-create-function-create-src-mq3-client-download-ml-1144889066"></a>
 ### create
@@ -41,7 +41,7 @@ function create()
 Creates a `mq3.client.download.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L58)
 
 <a id="constant-constant-mq3-client-download-max-msglen-const-max-msglen-16384-src-mq3-client-download-ml-295364541"></a>
 ### MAX_MSGLEN
@@ -53,7 +53,7 @@ const MAX_MSGLEN = 16384
 Maximum byte length accepted for a native network message.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
 
 <a id="function-function-mq3-client-download-parsedownload-function-parsedownload-state-host-msg-src-mq3-client-download-ml-1401624696"></a>
 ### parseDownload
@@ -71,7 +71,7 @@ Updates `state.downloadSize`, `state.download`, `state.downloadBlock`, `state.do
 | `msg` | `dynamic` | — | Record read through `msg.readcount`, `msg.cursize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L72)
 
 <a id="function-function-mq3-client-download-services-function-services-src-mq3-client-download-ml-1986083990"></a>
 ### services
@@ -83,7 +83,7 @@ function services()
 Creates a `mq3.client.download.Services` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L60)
 
 - [mq3.client.download.Services](Type-mq3-client-download-services-753847501.md) — struct
 - [mq3.client.download.State](Type-mq3-client-download-state-817781582.md) — struct

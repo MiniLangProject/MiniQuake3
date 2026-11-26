@@ -28,7 +28,7 @@ Return `mq3.compat.numeric.add32(n.add32(a, b), c)` from `qcommon.md4.add3`.
 | `c` | `dynamic` | — | Right integer operand; only its low 32 bits participate. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L42)
 
 <a id="function-function-mq3-qcommon-md4-blockchecksum-function-blockchecksum-data-src-mq3-qcommon-md4-ml-213875124"></a>
 ### blockChecksum
@@ -44,7 +44,7 @@ Compute block checksum in qcommon.md4; the normal completion returns `n.i32((((n
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.qcommon.md4.digest`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L120)
 
 <a id="function-function-mq3-qcommon-md4-blockchecksumkey-function-blockchecksumkey-data-key-src-mq3-qcommon-md4-ml-295073233"></a>
 ### blockChecksumKey
@@ -61,7 +61,7 @@ Compute block checksum key in qcommon.md4; the normal completion returns `blockC
 | `key` | `dynamic` | — | Value passed as `value` to `mq3.compat.numeric.writeU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L128)
 
 <a id="function-function-mq3-qcommon-md4-decode-function-decode-input-length-src-mq3-qcommon-md4-ml-1707366610"></a>
 ### Decode
@@ -80,7 +80,7 @@ Validation failures include `MD4 Decode: invalid length`.
 | `length` | `dynamic` | — | Length used in `(length < 0)` and `(length & 3)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L23)
 
 <a id="function-function-mq3-qcommon-md4-digest-function-digest-data-src-mq3-qcommon-md4-ml-10795856"></a>
 ### digest
@@ -96,7 +96,7 @@ Compute digest in qcommon.md4; the normal completion returns `result`.
 | `data` | `dynamic` | — | Data used in `len(data)` and `data[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L94)
 
 <a id="function-function-mq3-qcommon-md4-encode-function-encode-input-length-src-mq3-qcommon-md4-ml-1899699970"></a>
 ### Encode
@@ -113,7 +113,7 @@ C-named little-endian conversion helpers.  The original functions accept output 
 | `length` | `dynamic` | — | Length used in `(length < 0)` and `(length & 3)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L11)
 
 <a id="function-function-mq3-qcommon-md4-rol-function-rol-value-amount-src-mq3-qcommon-md4-ml-833271453"></a>
 ### rol
@@ -130,7 +130,7 @@ Compute rol in qcommon.md4; the normal completion returns `n.i32(((value << amou
 | `amount` | `dynamic` | — | Amount used in `(32 - amount)` and `(value << amount)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L33)
 
 <a id="function-function-mq3-qcommon-md4-step-function-step-work-target-word-rotation-round-src-mq3-qcommon-md4-ml-1401285280"></a>
 ### step
@@ -152,7 +152,7 @@ Direct state writes: `work elements`.
 | `round` | `dynamic` | — | Round used in `(round == 1)` and `(round == 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L54)
 
 <a id="function-function-mq3-qcommon-md4-transform-function-transform-state-block-offset-src-mq3-qcommon-md4-ml-1595729661"></a>
 ### transform
@@ -172,4 +172,4 @@ Direct state writes: `state elements`.
 | `offset` | `dynamic` | — | Offset used in `slice(block, offset, 64)` and `Decode(slice(block, offset, 64), 64)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L71)

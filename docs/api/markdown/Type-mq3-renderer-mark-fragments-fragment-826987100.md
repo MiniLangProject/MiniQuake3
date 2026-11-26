@@ -12,7 +12,7 @@ struct Fragment
 Data record for `mq3.renderer.mark_fragments.Fragment`; groups `firstPoint`, `numPoints`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L41)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstPoint
 Offset of the fragment's first point in the shared point array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L43)
 
 <a id="field-field-mq3-renderer-mark-fragments-fragment-numpoints-numpoints-src-mq3-renderer-mark-fragments-ml-1956333621"></a>
 ### numPoints
@@ -38,4 +38,4 @@ numPoints
 Number of points belonging to the clipped fragment.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L45)

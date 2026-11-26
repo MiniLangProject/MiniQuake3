@@ -12,7 +12,7 @@ struct ServerStatic
 ServerStatic record for server.abi, containing `initialized`, `time`, `snapFlagServerBit`, `clients`, `numSnapshotEntities`, `nextSnapshotEntities`, and 5 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L364)
 
 ## Members
 
@@ -26,7 +26,7 @@ authorizeAddress
 Network address of the external client-authorization server.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L386)
 
 <a id="field-field-mq3-server-abi-serverstatic-challenges-challenges-src-mq3-server-abi-ml-1336334108"></a>
 ### challenges
@@ -38,7 +38,7 @@ challenges
 Pending connection challenges used to validate connecting client addresses.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L382)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L382)
 
 <a id="field-field-mq3-server-abi-serverstatic-clients-clients-src-mq3-server-abi-ml-1980828032"></a>
 ### clients
@@ -50,7 +50,7 @@ clients
 Native-compatible client array referenced by the persistent server-static state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L372)
 
 <a id="field-field-mq3-server-abi-serverstatic-initialized-initialized-src-mq3-server-abi-ml-1090370396"></a>
 ### initialized
@@ -62,7 +62,7 @@ initialized
 Native server-static flag indicating that persistent server storage is available.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L366)
 
 <a id="field-field-mq3-server-abi-serverstatic-nextheartbeattime-nextheartbeattime-src-mq3-server-abi-ml-489064588"></a>
 ### nextHeartbeatTime
@@ -74,7 +74,7 @@ nextHeartbeatTime
 Server time at which the next master heartbeat should be sent.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L380)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L380)
 
 <a id="field-field-mq3-server-abi-serverstatic-nextsnapshotentities-nextsnapshotentities-src-mq3-server-abi-ml-1385942228"></a>
 ### nextSnapshotEntities
@@ -86,7 +86,7 @@ nextSnapshotEntities
 Next absolute insertion position in the circular snapshot-entity buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L376)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L376)
 
 <a id="field-field-mq3-server-abi-serverstatic-numsnapshotentities-numsnapshotentities-src-mq3-server-abi-ml-1739660260"></a>
 ### numSnapshotEntities
@@ -98,7 +98,7 @@ numSnapshotEntities
 Number of entity-state slots reserved in the snapshot ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L374)
 
 <a id="field-field-mq3-server-abi-serverstatic-redirectaddress-redirectaddress-src-mq3-server-abi-ml-387419812"></a>
 ### redirectAddress
@@ -110,7 +110,7 @@ redirectAddress
 For rcon return messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L384)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L384)
 
 <a id="field-field-mq3-server-abi-serverstatic-snapflagserverbit-snapflagserverbit-src-mq3-server-abi-ml-891027832"></a>
 ### snapFlagServerBit
@@ -122,7 +122,7 @@ snapFlagServerBit
 Snapshot server-count bit toggled when a new server level is spawned.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L370)
 
 <a id="field-field-mq3-server-abi-serverstatic-snapshotentities-snapshotentities-src-mq3-server-abi-ml-252774942"></a>
 ### snapshotEntities
@@ -134,7 +134,7 @@ snapshotEntities
 Entity states retained in the server snapshot ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L378)
 
 <a id="field-field-mq3-server-abi-serverstatic-time-time-src-mq3-server-abi-ml-590351986"></a>
 ### time
@@ -146,4 +146,4 @@ time
 Persistent server clock represented in the native server-static ABI, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/abi.ml#L368)

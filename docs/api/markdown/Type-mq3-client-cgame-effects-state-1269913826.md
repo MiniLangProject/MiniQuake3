@@ -12,7 +12,7 @@ struct State
 Stores client game effects state, including `time`, `predictedClient`, `blood`, `gibs`, `scorePlum`, `noProjectileTrail` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L158)
 
 ## Members
 
@@ -26,7 +26,7 @@ actions
 Host requests queued while constructing smoke, bubble, debris, and explosion effects, retained in request order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L199)
 
 <a id="field-field-mq3-client-cgame-effects-state-blood-blood-src-mq3-client-cgame-effects-ml-1134273430"></a>
 ### blood
@@ -38,7 +38,7 @@ blood
 When constructing this record, `create` supplies `true` for this member. Used by `bleed` and `gibPlayer` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L166)
 
 <a id="field-field-mq3-client-cgame-effects-state-emitted-emitted-src-mq3-client-cgame-effects-ml-1755533362"></a>
 ### emitted
@@ -50,7 +50,7 @@ emitted
 When constructing this record, `create` supplies `0` for this member. Used by `publish` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L202)
 
 <a id="field-field-mq3-client-cgame-effects-state-gibs-gibs-src-mq3-client-cgame-effects-ml-1916665740"></a>
 ### gibs
@@ -62,7 +62,7 @@ gibs
 When constructing this record, `create` supplies `true` for this member. Used by `gibPlayer` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L169)
 
 <a id="field-field-mq3-client-cgame-effects-state-lastscoreposition-lastscoreposition-src-mq3-client-cgame-effects-ml-1091555454"></a>
 ### lastScorePosition
@@ -74,7 +74,7 @@ lastScorePosition
 When constructing this record, `create` supplies `[0.0,0.0,0.0]` for this member. Used by `scorePlum` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L196)
 
 <a id="field-field-mq3-client-cgame-effects-state-missionpack-missionpack-src-mq3-client-cgame-effects-ml-1489912546"></a>
 ### missionpack
@@ -86,7 +86,7 @@ missionpack
 When constructing this record, `create` supplies `false` for this member. Used by `spawnEffect` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L178)
 
 <a id="field-field-mq3-client-cgame-effects-state-noprojectiletrail-noprojectiletrail-src-mq3-client-cgame-effects-ml-1988396014"></a>
 ### noProjectileTrail
@@ -98,7 +98,7 @@ noProjectileTrail
 When constructing this record, `create` supplies `false` for this member. Used by `bubbleTrail` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L175)
 
 <a id="field-field-mq3-client-cgame-effects-state-predictedclient-predictedclient-src-mq3-client-cgame-effects-ml-1869045670"></a>
 ### predictedClient
@@ -110,7 +110,7 @@ predictedClient
 When constructing this record, `create` supplies `0` for this member. Used by `scorePlum` and `bleed` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L163)
 
 <a id="field-field-mq3-client-cgame-effects-state-ragepro-ragepro-src-mq3-client-cgame-effects-ml-972201978"></a>
 ### ragePro
@@ -122,7 +122,7 @@ ragePro
 When constructing this record, `create` supplies `false` for this member. Used by `smokePuff` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L181)
 
 <a id="field-field-mq3-client-cgame-effects-state-randomat-randomat-src-mq3-client-cgame-effects-ml-1574237082"></a>
 ### randomAt
@@ -134,7 +134,7 @@ randomAt
 When constructing this record, `create` supplies `0` for this member. Used by `setRandomInts` and `randInt` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L190)
 
 <a id="field-field-mq3-client-cgame-effects-state-randomints-randomints-src-mq3-client-cgame-effects-ml-1428992636"></a>
 ### randomInts
@@ -146,7 +146,7 @@ randomInts
 When constructing this record, `create` supplies an empty list for this member. Used by `setRandomInts` and `randInt` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L187)
 
 <a id="field-field-mq3-client-cgame-effects-state-randomseed-randomseed-src-mq3-client-cgame-effects-ml-779295970"></a>
 ### randomSeed
@@ -158,7 +158,7 @@ randomSeed
 When constructing this record, `create` supplies `1` for this member. Used by `randInt` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L184)
 
 <a id="field-field-mq3-client-cgame-effects-state-scoreplum-scoreplum-src-mq3-client-cgame-effects-ml-1810502146"></a>
 ### scorePlum
@@ -170,7 +170,7 @@ scorePlum
 When constructing this record, `create` supplies `true` for this member. Used by `scorePlum` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L172)
 
 <a id="field-field-mq3-client-cgame-effects-state-smokeseed-smokeseed-src-mq3-client-cgame-effects-ml-1854973754"></a>
 ### smokeSeed
@@ -182,7 +182,7 @@ smokeSeed
 When constructing this record, `create` supplies `0x92` for this member. Used by `smokeRandom` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L193)
 
 <a id="field-field-mq3-client-cgame-effects-state-suppressed-suppressed-src-mq3-client-cgame-effects-ml-385073170"></a>
 ### suppressed
@@ -194,7 +194,7 @@ suppressed
 Number of requests withheld from native dispatch while constructing smoke, bubble, debris, and explosion effects because the retail QVM owns their effects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L205)
 
 <a id="field-field-mq3-client-cgame-effects-state-time-time-src-mq3-client-cgame-effects-ml-492388760"></a>
 ### time
@@ -206,4 +206,4 @@ time
 Client-game timestamp in milliseconds used to initialize and schedule transient visual effects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L160)

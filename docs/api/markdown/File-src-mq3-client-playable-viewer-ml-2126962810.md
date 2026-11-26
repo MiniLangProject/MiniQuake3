@@ -30,7 +30,7 @@ Updates `state.yaw`, `state.pitch` during playable viewer `applyMouse`.
 | `mouseY` | `dynamic` | — | Value used by `state.pitch=numeric.fsub(state.pitch,numeric.fmul(numeric.f32(mouseY),state.mouseSensitivity))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L151)
 
 <a id="function-function-mq3-client-playable-viewer-camera-function-camera-position-yaw-pitch-movespeed-mousesensitivity-src-mq3-client-playable-viewer-ml-1909774700"></a>
 ### camera
@@ -50,7 +50,7 @@ Calls `mq3.client.playable_viewer.Camera`, `mq3.compat.numeric.f32`, `mq3.client
 | `mouseSensitivity` | `dynamic` | — | Value used by `if mouseSensitivity<0.0 then return error(7472,"viewer mouse sensitivity cannot be negative") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L104)
 
 - [mq3.client.playable_viewer.Camera](Type-mq3-client-playable-viewer-camera-356576099.md) — struct
 <a id="function-function-mq3-client-playable-viewer-camerabasis-function-camerabasis-state-src-mq3-client-playable-viewer-ml-1004225583"></a>
@@ -67,7 +67,7 @@ Adapts `mq3.shared.math.AngleVectors` to playable viewer `cameraBasis`, returnin
 | `state` | `dynamic` | — | Record read through `state.pitch`, `state.yaw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L160)
 
 <a id="function-function-mq3-client-playable-viewer-clampdelta-function-clampdelta-deltamilliseconds-src-mq3-client-playable-viewer-ml-739850378"></a>
 ### clampDelta
@@ -83,7 +83,7 @@ Evaluates playable viewer `clampDelta` and returns `0`, `MAX_FRAME_MILLISECONDS`
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L131)
 
 <a id="function-function-mq3-client-playable-viewer-clipnear-function-clipnear-a-b-neardistance-src-mq3-client-playable-viewer-ml-1006404032"></a>
 ### clipNear
@@ -101,7 +101,7 @@ Calls `mq3.compat.numeric.fsub`, `mq3.compat.numeric.fdiv`, `mq3.compat.numeric.
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L338)
 
 <a id="function-function-mq3-client-playable-viewer-clipnearpolygon-function-clipnearpolygon-vertices-neardistance-src-mq3-client-playable-viewer-ml-560245140"></a>
 ### clipNearPolygon
@@ -118,7 +118,7 @@ Sutherland-Hodgman clipping for a camera-space polygon. Components after xyz are
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L316)
 
 <a id="function-function-mq3-client-playable-viewer-clipnearvertex-function-clipnearvertex-a-b-neardistance-src-mq3-client-playable-viewer-ml-907094672"></a>
 ### clipNearVertex
@@ -136,7 +136,7 @@ Evaluates playable viewer `clipNearVertex` and returns `void`, `result` accordin
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L304)
 
 <a id="function-function-mq3-client-playable-viewer-controls-function-controls-forward-back-left-right-up-down-mousex-mousey-src-mq3-client-playable-viewer-ml-315472053"></a>
 ### controls
@@ -159,7 +159,7 @@ Creates a `mq3.client.playable_viewer.Controls` record. Assigns `forward` from `
 | `mouseY` | `dynamic` | — | Value used to initialize `Controls.mouseY`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L122)
 
 - [mq3.client.playable_viewer.Controls](Type-mq3-client-playable-viewer-controls-845312094.md) — struct
 <a id="constant-constant-mq3-client-playable-viewer-default-near-const-default-near-1-src-mq3-client-playable-viewer-ml-2099690268"></a>
@@ -172,7 +172,7 @@ const DEFAULT_NEAR = 1
 Fallback near setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L16)
 
 <a id="function-function-mq3-client-playable-viewer-focallength-function-focallength-width-horizontalfovdegrees-src-mq3-client-playable-viewer-ml-1625029320"></a>
 ### focalLength
@@ -189,7 +189,7 @@ Calls `mq3.compat.numeric.fdiv`, `mq3.compat.numeric.fmul`, `mq3.compat.numeric.
 | `horizontalFovDegrees` | `dynamic` | — | Horizontal camera field of view in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L217)
 
 <a id="function-function-mq3-client-playable-viewer-idlecontrols-function-idlecontrols-src-mq3-client-playable-viewer-ml-270992054"></a>
 ### idleControls
@@ -201,7 +201,7 @@ function idleControls()
 Adapts `mq3.client.playable_viewer.controls` to playable viewer `idleControls`, returning its result for `false, false, false, false, false, false, 0.0, 0.0`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L127)
 
 <a id="constant-constant-mq3-client-playable-viewer-max-frame-milliseconds-const-max-frame-milliseconds-100-src-mq3-client-playable-viewer-ml-834836590"></a>
 ### MAX_FRAME_MILLISECONDS
@@ -213,7 +213,7 @@ const MAX_FRAME_MILLISECONDS = 100
 Upper duration bound in milliseconds for frame processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-viewer-max-pitch-const-max-pitch-89-src-mq3-client-playable-viewer-ml-680314818"></a>
 ### MAX_PITCH
@@ -225,7 +225,7 @@ const MAX_PITCH = 89
 Upper pitch-angle bound used when clamping the client view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L12)
 
 <a id="constant-constant-mq3-client-playable-viewer-min-pitch-const-min-pitch-89-src-mq3-client-playable-viewer-ml-1401492993"></a>
 ### MIN_PITCH
@@ -237,7 +237,7 @@ const MIN_PITCH = -89
 Lower pitch-angle bound used when clamping the client view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L10)
 
 <a id="function-function-mq3-client-playable-viewer-movementbasis-function-movementbasis-state-src-mq3-client-playable-viewer-ml-99517715"></a>
 ### movementBasis
@@ -253,7 +253,7 @@ Calls `mq3.shared.math.AngleVectors` from playable viewer `movementBasis`. The f
 | `state` | `dynamic` | — | Record read through `state.yaw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L174)
 
 <a id="function-function-mq3-client-playable-viewer-normalizeangles-function-normalizeangles-state-src-mq3-client-playable-viewer-ml-969201339"></a>
 ### normalizeAngles
@@ -269,7 +269,7 @@ Updates `state.yaw`, `state.pitch` during playable viewer `normalizeAngles`.
 | `state` | `dynamic` | — | Mutable playable viewer record/storage; this routine assigns `state.yaw`, `state.pitch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L139)
 
 <a id="function-function-mq3-client-playable-viewer-preparedviewpoint-function-preparedviewpoint-projection-world-src-mq3-client-playable-viewer-ml-2038585699"></a>
 ### preparedViewPoint
@@ -286,7 +286,7 @@ Evaluates playable viewer `preparedViewPoint` and returns `error(7481,"prepared 
 | `world` | `dynamic` | — | Sequence read at `world[0]`, `world[1]`, `world[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L272)
 
 <a id="function-function-mq3-client-playable-viewer-prepareprojection-function-prepareprojection-state-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-76386857"></a>
 ### prepareProjection
@@ -306,7 +306,7 @@ Frame-local projection state avoids recalculating camera trigonometry and field-
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L262)
 
 - [mq3.client.playable_viewer.Projection](Type-mq3-client-playable-viewer-projection-67447881.md) — struct
 <a id="function-function-mq3-client-playable-viewer-projectline-function-projectline-state-startpoint-endpoint-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-1404191992"></a>
@@ -329,7 +329,7 @@ Calls `mq3.client.playable_viewer.viewPoint`, `mq3.client.playable_viewer.Screen
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L354)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L354)
 
 <a id="function-function-mq3-client-playable-viewer-projectpoint-function-projectpoint-state-world-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-1371433083"></a>
 ### projectPoint
@@ -350,7 +350,7 @@ Calls `mq3.client.playable_viewer.viewPoint`, `mq3.client.playable_viewer.projec
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L250)
 
 <a id="function-function-mq3-client-playable-viewer-projectprepared-function-projectprepared-projection-world-src-mq3-client-playable-viewer-ml-492908915"></a>
 ### projectPrepared
@@ -367,7 +367,7 @@ Calls `mq3.client.playable_viewer.preparedViewPoint`, `mq3.client.playable_viewe
 | `world` | `dynamic` | — | world record passed to the playable viewer helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L295)
 
 <a id="function-function-mq3-client-playable-viewer-projectpreparedview-function-projectpreparedview-projection-point-src-mq3-client-playable-viewer-ml-1019666543"></a>
 ### projectPreparedView
@@ -384,7 +384,7 @@ Calls `mq3.client.playable_viewer.ScreenPoint` from playable viewer `projectPrep
 | `point` | `dynamic` | — | Sequence read at `point[2]`, `point[0]`, `point[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L284)
 
 <a id="function-function-mq3-client-playable-viewer-projectviewpoint-function-projectviewpoint-point-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-viewer-ml-261434682"></a>
 ### projectViewPoint
@@ -404,7 +404,7 @@ Calls `mq3.client.playable_viewer.focalLength`, `mq3.compat.numeric.fdiv`, `mq3.
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L231)
 
 <a id="function-function-mq3-client-playable-viewer-refdefbasis-function-refdefbasis-axes-src-mq3-client-playable-viewer-ml-602341249"></a>
 ### refdefBasis
@@ -420,7 +420,7 @@ Original refdef_t/AnglesToAxis stores forward, LEFT, up. Screen-space projection
 | `axes` | `dynamic` | — | Sequence read at `axes[1]`, `axes[0]`, `axes[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L167)
 
 - [mq3.client.playable_viewer.ScreenLine](Type-mq3-client-playable-viewer-screenline-1193169834.md) — struct
 - [mq3.client.playable_viewer.ScreenPoint](Type-mq3-client-playable-viewer-screenpoint-679483974.md) — struct
@@ -440,7 +440,7 @@ Updates `state.position` during playable viewer `step`.
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L183)
 
 <a id="function-function-mq3-client-playable-viewer-viewpoint-function-viewpoint-state-world-src-mq3-client-playable-viewer-ml-538362457"></a>
 ### viewPoint
@@ -457,4 +457,4 @@ Calls `mq3.compat.numeric.fsub`, `mq3.client.playable_viewer.cameraBasis`, `mq3.
 | `world` | `dynamic` | — | Sequence read at `world[0]`, `world[1]`, `world[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L207)

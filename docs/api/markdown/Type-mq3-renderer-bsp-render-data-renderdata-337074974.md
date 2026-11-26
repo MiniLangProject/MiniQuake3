@@ -12,7 +12,7 @@ struct RenderData
 Data record for `mq3.renderer.bsp_render_data.RenderData`; groups `triangles`, `surfaceCount`, `triangleCount`, `skippedSurfaceCount`, `truncated`, `patchSurfaceCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L68)
 
 ## Members
 
@@ -26,7 +26,7 @@ patchSurfaceCount
 Number of curved patch surfaces represented by the render data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L80)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-skippedsurfacecount-skippedsurfacecount-src-mq3-renderer-bsp-render-data-ml-10855685"></a>
 ### skippedSurfaceCount
@@ -38,7 +38,7 @@ skippedSurfaceCount
 Number of surfaces omitted while constructing render data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L76)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-surfacecount-surfacecount-src-mq3-renderer-bsp-render-data-ml-1835575181"></a>
 ### surfaceCount
@@ -50,7 +50,7 @@ surfaceCount
 Number of source surfaces represented by this result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L72)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-trianglecount-trianglecount-src-mq3-renderer-bsp-render-data-ml-1576479497"></a>
 ### triangleCount
@@ -62,7 +62,7 @@ triangleCount
 Number of triangles represented by this geometry or result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L74)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-triangles-triangles-src-mq3-renderer-bsp-render-data-ml-1969169549"></a>
 ### triangles
@@ -74,7 +74,7 @@ triangles
 Triangle records or index triplets represented by this geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L70)
 
 <a id="field-field-mq3-renderer-bsp-render-data-renderdata-truncated-truncated-src-mq3-renderer-bsp-render-data-ml-1964929429"></a>
 ### truncated
@@ -86,4 +86,4 @@ truncated
 Whether a configured limit prevented retaining every source primitive.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L78)

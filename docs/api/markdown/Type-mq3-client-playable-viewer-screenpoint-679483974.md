@@ -12,7 +12,7 @@ struct ScreenPoint
 Stores playable viewer screen point record, including `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L52)
 
 ## Members
 
@@ -26,7 +26,7 @@ depth
 When constructing this record, `projectViewPoint` supplies `point[2]` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L58)
 
 <a id="field-field-mq3-client-playable-viewer-screenpoint-x-x-src-mq3-client-playable-viewer-ml-1789246415"></a>
 ### x
@@ -38,7 +38,7 @@ x
 Horizontal coordinate of a camera-projected point in output-screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L54)
 
 <a id="field-field-mq3-client-playable-viewer-screenpoint-y-y-src-mq3-client-playable-viewer-ml-1505287155"></a>
 ### y
@@ -50,4 +50,4 @@ y
 Vertical coordinate of a camera-projected point in output-screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L56)

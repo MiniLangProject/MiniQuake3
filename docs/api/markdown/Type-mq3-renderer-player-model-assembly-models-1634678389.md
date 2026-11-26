@@ -12,7 +12,7 @@ struct Models
 Data record for `mq3.renderer.player_model_assembly.Models`; groups `lower`, `upper`, `head`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L35)
 
 ## Members
 
@@ -26,7 +26,7 @@ head
 Head player model or its assembled animation state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L41)
 
 <a id="field-field-mq3-renderer-player-model-assembly-models-lower-lower-src-mq3-renderer-player-model-assembly-ml-779883423"></a>
 ### lower
@@ -38,7 +38,7 @@ lower
 Lower-body player model or its assembled animation state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L37)
 
 <a id="field-field-mq3-renderer-player-model-assembly-models-upper-upper-src-mq3-renderer-player-model-assembly-ml-1586637643"></a>
 ### upper
@@ -50,4 +50,4 @@ upper
 Upper-body player model or its assembled animation state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L39)

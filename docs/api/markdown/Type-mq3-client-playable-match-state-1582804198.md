@@ -12,7 +12,7 @@ struct State
 Stores playable match state, including `phase`, `fragLimit`, `timeLimitMilliseconds`, `warmupMilliseconds`, `warmupStart`, `matchStart` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L33)
 
 ## Members
 
@@ -26,7 +26,7 @@ fragLimit
 When constructing this record, `create` supplies `fragLimit` for this member. Used by `update` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L38)
 
 <a id="field-field-mq3-client-playable-match-state-intermissionat-intermissionat-src-mq3-client-playable-match-ml-892471632"></a>
 ### intermissionAt
@@ -38,7 +38,7 @@ intermissionAt
 When constructing this record, `create` supplies `0` for this member. Used by `start` and `update` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L53)
 
 <a id="field-field-mq3-client-playable-match-state-matchstart-matchstart-src-mq3-client-playable-match-ml-564491532"></a>
 ### matchStart
@@ -50,7 +50,7 @@ matchStart
 When constructing this record, `create` supplies `0` for this member. Used by `start` and `clock` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L50)
 
 <a id="field-field-mq3-client-playable-match-state-phase-phase-src-mq3-client-playable-match-ml-883865042"></a>
 ### phase
@@ -62,7 +62,7 @@ phase
 When constructing this record, `create` supplies `PHASE_WAITING` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L35)
 
 <a id="field-field-mq3-client-playable-match-state-timelimitmilliseconds-timelimitmilliseconds-src-mq3-client-playable-match-ml-644166162"></a>
 ### timeLimitMilliseconds
@@ -74,7 +74,7 @@ timeLimitMilliseconds
 When constructing this record, `create` supplies `timeLimitMinutes*60000` for this member. Used by `snapshot` and `update` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L41)
 
 <a id="field-field-mq3-client-playable-match-state-warmupmilliseconds-warmupmilliseconds-src-mq3-client-playable-match-ml-2096763666"></a>
 ### warmupMilliseconds
@@ -86,7 +86,7 @@ warmupMilliseconds
 When constructing this record, `create` supplies `warmupMilliseconds` for this member. Used by `start` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L44)
 
 <a id="field-field-mq3-client-playable-match-state-warmupstart-warmupstart-src-mq3-client-playable-match-ml-2042524298"></a>
 ### warmupStart
@@ -98,7 +98,7 @@ warmupStart
 When constructing this record, `create` supplies `0` for this member. Used by `start` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L47)
 
 <a id="field-field-mq3-client-playable-match-state-winner-winner-src-mq3-client-playable-match-ml-353275620"></a>
 ### winner
@@ -110,4 +110,4 @@ winner
 When constructing this record, `create` supplies `WINNER_NONE` for this member. Used by `start` and `update` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L56)

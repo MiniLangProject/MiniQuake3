@@ -35,7 +35,7 @@ Set `self.timestamp` to `n.add32(level.time,1000)` and `self.timestamp` to `n.ad
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `hurtTouch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L70)
 
 <a id="function-function-mq3-game-hazards-hurtuse-function-hurtuse-level-self-other-activator-src-mq3-game-hazards-ml-287052607"></a>
 ### hurtUse
@@ -54,7 +54,7 @@ Apply `mq3.game.entities.unlink` and `mq3.game.entities.link` while evaluating `
 | `activator` | `dynamic` | — | Not read by this implementation; retained in the `hurtUse` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L61)
 
 <a id="function-function-mq3-game-hazards-killuse-function-killuse-level-self-other-activator-src-mq3-game-hazards-ml-94901481"></a>
 ### killUse
@@ -73,7 +73,7 @@ Forward `killUse` to `mq3.game.combat.damage` and return the delegated result.
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L84)
 
 <a id="function-function-mq3-game-hazards-laseroff-function-laseroff-level-self-src-mq3-game-hazards-ml-375225108"></a>
 ### laserOff
@@ -90,7 +90,7 @@ Set `self.nextthink` to `0` in `mq3.game.hazards.laserOff`.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `nextthink`. May update `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L42)
 
 <a id="function-function-mq3-game-hazards-laseron-function-laseron-level-self-src-mq3-game-hazards-ml-1119559564"></a>
 ### laserOn
@@ -107,7 +107,7 @@ Set `self.activator` to `self` in `mq3.game.hazards.laserOn`. Return paths inclu
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `activator`. May update `self.activator` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L35)
 
 <a id="function-function-mq3-game-hazards-laserthink-function-laserthink-level-self-src-mq3-game-hazards-ml-1306509692"></a>
 ### laserThink
@@ -124,7 +124,7 @@ Update `self.movedir`, `self.s.origin2` and `self.nextthink` during `laserThink`
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `enemy`, `movedir`, `s`, `activator` and `damage` and related fields. May update `self.movedir`, `self.s.origin2` and `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L14)
 
 <a id="function-function-mq3-game-hazards-laseruse-function-laseruse-level-self-other-activator-src-mq3-game-hazards-ml-1209378407"></a>
 ### laserUse
@@ -143,4 +143,4 @@ Set `self.activator` to `activator` in `mq3.game.hazards.laserUse`. Return paths
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L51)

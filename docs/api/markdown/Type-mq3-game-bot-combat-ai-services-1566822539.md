@@ -12,7 +12,7 @@ struct Services
 `Services` record for bot combat ai, containing `gametype`, `rocketjump`, `intermissiontime`, `floatTimeFn` and `pointContentsFn` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L202)
 
 ## Members
 
@@ -26,7 +26,7 @@ attackFn
 Injected callback for attack; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L238)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-characteristicfloatfn-characteristicfloatfn-src-mq3-game-bot-combat-ai-ml-885170293"></a>
 ### characteristicFloatFn
@@ -38,7 +38,7 @@ characteristicFloatFn
 Injected callback for characteristic float; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L214)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-context-context-src-mq3-game-bot-combat-ai-ml-1853428149"></a>
 ### context
@@ -50,7 +50,7 @@ context
 Opaque caller-supplied context available to bot combat visibility, weapon, attack, and movement callbacks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L251)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-entitydeadfn-entitydeadfn-src-mq3-game-bot-combat-ai-ml-1818670343"></a>
 ### entityDeadFn
@@ -62,7 +62,7 @@ entityDeadFn
 Injected callback for entity dead; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L224)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-entityinfofn-entityinfofn-src-mq3-game-bot-combat-ai-ml-471504367"></a>
 ### entityInfoFn
@@ -74,7 +74,7 @@ entityInfoFn
 Injected callback for entity info; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L216)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-floattimefn-floattimefn-src-mq3-game-bot-combat-ai-ml-167634597"></a>
 ### floatTimeFn
@@ -86,7 +86,7 @@ floatTimeFn
 Injected callback for float time; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L210)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-gametype-gametype-src-mq3-game-bot-combat-ai-ml-1244623765"></a>
 ### gametype
@@ -98,7 +98,7 @@ gametype
 GT_* game-mode identifier used for mode-specific bot combat and team-relationship decisions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L204)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-intermissiontime-intermissiontime-src-mq3-game-bot-combat-ai-ml-2094927115"></a>
 ### intermissiontime
@@ -110,7 +110,7 @@ intermissiontime
 Timestamp at which the intermission began.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L208)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-lastteleportorigin-lastteleportorigin-src-mq3-game-bot-combat-ai-ml-756429415"></a>
 ### lastteleportOrigin
@@ -122,7 +122,7 @@ lastteleportOrigin
 Position recorded for the most recently observed teleport.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L222)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-lastteleporttime-lastteleporttime-src-mq3-game-bot-combat-ai-ml-1879253389"></a>
 ### lastteleportTime
@@ -134,7 +134,7 @@ lastteleportTime
 Timestamp of the most recently observed teleport.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L220)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-maxclients-maxclients-src-mq3-game-bot-combat-ai-ml-1436921341"></a>
 ### maxclients
@@ -146,7 +146,7 @@ maxclients
 Configured number of client slots active in this game state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L218)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-movedirectionfn-movedirectionfn-src-mq3-game-bot-combat-ai-ml-254669269"></a>
 ### moveDirectionFn
@@ -158,7 +158,7 @@ moveDirectionFn
 Injected callback for move direction; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L248)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-movetogoalfn-movetogoalfn-src-mq3-game-bot-combat-ai-ml-1893449291"></a>
 ### moveToGoalFn
@@ -170,7 +170,7 @@ moveToGoalFn
 Injected callback for move to goal; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L246)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-pointcontentsfn-pointcontentsfn-src-mq3-game-bot-combat-ai-ml-295001209"></a>
 ### pointContentsFn
@@ -182,7 +182,7 @@ pointContentsFn
 Injected callback for point contents; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L212)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-predictmovementfn-predictmovementfn-src-mq3-game-bot-combat-ai-ml-365048065"></a>
 ### predictMovementFn
@@ -194,7 +194,7 @@ predictMovementFn
 Injected callback for predict movement; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L240)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-predictvisiblefn-predictvisiblefn-src-mq3-game-bot-combat-ai-ml-1718649247"></a>
 ### predictVisibleFn
@@ -206,7 +206,7 @@ predictVisibleFn
 Injected callback for predict visible; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L242)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-randomfn-randomfn-src-mq3-game-bot-combat-ai-ml-1048370335"></a>
 ### randomFn
@@ -218,7 +218,7 @@ randomFn
 Injected callback for random; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L232)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-rocketjump-rocketjump-src-mq3-game-bot-combat-ai-ml-583611445"></a>
 ### rocketjump
@@ -230,7 +230,7 @@ rocketjump
 Nonzero when the bot is allowed or instructed to use a rocket jump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L206)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-sameteamfn-sameteamfn-src-mq3-game-bot-combat-ai-ml-871234167"></a>
 ### sameTeamFn
@@ -242,7 +242,7 @@ sameTeamFn
 Injected callback for same team; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L226)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-setupmovementfn-setupmovementfn-src-mq3-game-bot-combat-ai-ml-836915829"></a>
 ### setupMovementFn
@@ -254,7 +254,7 @@ setupMovementFn
 Injected callback for setup movement; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L244)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-tracefn-tracefn-src-mq3-game-bot-combat-ai-ml-354039089"></a>
 ### traceFn
@@ -266,7 +266,7 @@ traceFn
 Injected callback for trace; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L234)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-updatebattlefn-updatebattlefn-src-mq3-game-bot-combat-ai-ml-845416143"></a>
 ### updateBattleFn
@@ -278,7 +278,7 @@ updateBattleFn
 Injected callback for update battle; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L230)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-visiblefn-visiblefn-src-mq3-game-bot-combat-ai-ml-836278037"></a>
 ### visibleFn
@@ -290,7 +290,7 @@ visibleFn
 Injected callback for visible; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L228)
 
 <a id="field-field-mq3-game-bot-combat-ai-services-weaponinfofn-weaponinfofn-src-mq3-game-bot-combat-ai-ml-1093319693"></a>
 ### weaponInfoFn
@@ -302,4 +302,4 @@ weaponInfoFn
 Injected callback for weapon info; invoked through the Services service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L236)

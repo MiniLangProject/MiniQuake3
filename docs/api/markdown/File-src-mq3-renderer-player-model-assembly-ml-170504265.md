@@ -31,7 +31,7 @@ Constructs `mq3.renderer.player_model_assembly.Animation` with `backlerp` = `num
 | `backlerp` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L89)
 
 - [mq3.renderer.player_model_assembly.Animation](Type-mq3-renderer-player-model-assembly-animation-1831185039.md) — struct
 <a id="function-function-mq3-renderer-player-model-assembly-assemble-function-assemble-value-loweranimation-upperanimation-headanimation-root-src-mq3-renderer-player-model-assembly-ml-1964310744"></a>
@@ -52,7 +52,7 @@ Builds the hierarchy lower -> tag_torso -> upper -> tag_head -> head. The root t
 | `root` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.player_model_assembly.validateTransform`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L191)
 
 - [mq3.renderer.player_model_assembly.Assembly](Type-mq3-renderer-player-model-assembly-assembly-1783200075.md) — struct
 <a id="function-function-mq3-renderer-player-model-assembly-attach-function-attach-parent-orientation-src-mq3-renderer-player-model-assembly-ml-600203022"></a>
@@ -70,7 +70,7 @@ Equivalent to the identity-local-axis case of CG_PositionRotatedEntityOnTag: tag
 | `orientation` | `dynamic` | — | Record providing `orientation.found`, `orientation.origin`, `orientation.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L164)
 
 <a id="function-function-mq3-renderer-player-model-assembly-fail-function-fail-message-src-mq3-renderer-player-model-assembly-ml-1178438689"></a>
 ### fail
@@ -86,7 +86,7 @@ Creates error `7520` with message `"player model assembly: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7520,"player model assembly: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L83)
 
 <a id="constant-constant-mq3-renderer-player-model-assembly-head-part-const-head-part-2-src-mq3-renderer-player-model-assembly-ml-2098405269"></a>
 ### HEAD_PART
@@ -98,7 +98,7 @@ const HEAD_PART = 2
 Player-model component identifier for the head.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L16)
 
 <a id="function-function-mq3-renderer-player-model-assembly-identityaxis-function-identityaxis-src-mq3-renderer-player-model-assembly-ml-692348486"></a>
 ### identityAxis
@@ -110,7 +110,7 @@ function identityAxis()
 Returns `[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]` for `mq3.renderer.player_model_assembly.identityAxis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L94)
 
 <a id="function-function-mq3-renderer-player-model-assembly-identitytransform-function-identitytransform-src-mq3-renderer-player-model-assembly-ml-1761918846"></a>
 ### identityTransform
@@ -122,7 +122,7 @@ function identityTransform()
 Constructs `mq3.renderer.player_model_assembly.Transform` with `origin` = `[0.0,0.0,0.0]`, `axis` = `identityAxis()`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L103)
 
 <a id="function-function-mq3-renderer-player-model-assembly-load-function-load-lowerdata-upperdata-headdata-src-mq3-renderer-player-model-assembly-ml-818310733"></a>
 ### load
@@ -140,7 +140,7 @@ Loads the three conventional player-model pieces without taking ownership of an 
 | `headData` | `dynamic` | — | Argument 1 supplied to `mq3.format.md3.load`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L115)
 
 <a id="constant-constant-mq3-renderer-player-model-assembly-lower-part-const-lower-part-0-src-mq3-renderer-player-model-assembly-ml-1789675923"></a>
 ### LOWER_PART
@@ -152,7 +152,7 @@ const LOWER_PART = 0
 Player-model component identifier for the lower body and legs.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L12)
 
 <a id="function-function-mq3-renderer-player-model-assembly-models-function-models-lower-upper-head-src-mq3-renderer-player-model-assembly-ml-1422572053"></a>
 ### models
@@ -170,7 +170,7 @@ Constructs `mq3.renderer.player_model_assembly.Models` from `lower`, `upper`, `h
 | `head` | `dynamic` | — | Initial value for `mq3.renderer.player_model_assembly.Models.head`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L108)
 
 - [mq3.renderer.player_model_assembly.Models](Type-mq3-renderer-player-model-assembly-models-1634678389.md) — struct
 <a id="function-function-mq3-renderer-player-model-assembly-multiplyaxis-function-multiplyaxis-left-right-src-mq3-renderer-player-model-assembly-ml-810262175"></a>
@@ -188,7 +188,7 @@ Multiplies two 3-by-3 orientation matrices using the compatibility float arithme
 | `right` | `dynamic` | — | Nested indexed data; outer entries read at `0`, `1`, `2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L147)
 
 - [mq3.renderer.player_model_assembly.Part](Type-mq3-renderer-player-model-assembly-part-2100611194.md) — struct
 <a id="function-function-mq3-renderer-player-model-assembly-render-function-render-value-maxtrianglespersurface-src-mq3-renderer-player-model-assembly-ml-1585438684"></a>
@@ -206,7 +206,7 @@ Returns lower, upper and head triangles in one shared coordinate system. The lim
 | `maxTrianglesPerSurface` | `dynamic` | — | Value forwarded as `maxTrianglesPerSurface` to `mq3.renderer.player_model_assembly.renderPart`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L255)
 
 <a id="function-function-mq3-renderer-player-model-assembly-renderpart-function-renderpart-part-maxtrianglespersurface-src-mq3-renderer-player-model-assembly-ml-130237370"></a>
 ### renderPart
@@ -223,7 +223,7 @@ Interpolates every model surface within the triangle budget and transforms the r
 | `maxTrianglesPerSurface` | `dynamic` | — | Argument 6 supplied to `mq3.format.md3.renderTriangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L234)
 
 <a id="function-function-mq3-renderer-player-model-assembly-tagorientation-function-tagorientation-model-anim-name-src-mq3-renderer-player-model-assembly-ml-1117807541"></a>
 ### tagOrientation
@@ -241,7 +241,7 @@ Computes `tagOrientation` from `modelTags.lerpTag(wrapped,anim.oldFrame,anim.fra
 | `name` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.model_tags.lerpTag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L177)
 
 <a id="function-function-mq3-renderer-player-model-assembly-transform-function-transform-origin-axis-src-mq3-renderer-player-model-assembly-ml-2015906987"></a>
 ### transform
@@ -258,7 +258,7 @@ Constructs `mq3.renderer.player_model_assembly.Transform` from `origin`, `axis`.
 | `axis` | `dynamic` | — | Initial value for `mq3.renderer.player_model_assembly.Transform.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L101)
 
 - [mq3.renderer.player_model_assembly.Transform](Type-mq3-renderer-player-model-assembly-transform-1044141097.md) — struct
 <a id="function-function-mq3-renderer-player-model-assembly-transformtriangle-function-transformtriangle-source-part-src-mq3-renderer-player-model-assembly-ml-1161552786"></a>
@@ -276,7 +276,7 @@ Builds `mq3.renderer.player_model_assembly.Triangle` using `mq3.renderer.view_ma
 | `part` | `dynamic` | — | Record providing `part.transform`, `part.kind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L221)
 
 - [mq3.renderer.player_model_assembly.Triangle](Type-mq3-renderer-player-model-assembly-triangle-885326363.md) — struct
 <a id="constant-constant-mq3-renderer-player-model-assembly-upper-part-const-upper-part-1-src-mq3-renderer-player-model-assembly-ml-574345578"></a>
@@ -289,7 +289,7 @@ const UPPER_PART = 1
 Player-model component identifier for the upper body and torso.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L14)
 
 <a id="function-function-mq3-renderer-player-model-assembly-upperattachment-function-upperattachment-value-name-src-mq3-renderer-player-model-assembly-ml-2034669636"></a>
 ### upperAttachment
@@ -306,7 +306,7 @@ CG_AddPlayerWeapon attaches the weapon model to the animated torso rather than t
 | `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.player_model_assembly.tagOrientation`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L212)
 
 <a id="function-function-mq3-renderer-player-model-assembly-valid3-function-valid3-value-src-mq3-renderer-player-model-assembly-ml-1389421459"></a>
 ### valid3
@@ -322,7 +322,7 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.player_model_assembly
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L124)
 
 <a id="function-function-mq3-renderer-player-model-assembly-validateanimation-function-validateanimation-model-anim-src-mq3-renderer-player-model-assembly-ml-733614556"></a>
 ### validateAnimation
@@ -339,7 +339,7 @@ Checks current/previous animation frames against the model and bounds backlerp t
 | `anim` | `dynamic` | — | Record providing `anim.frame`, `anim.oldFrame`, `anim.backlerp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L136)
 
 <a id="function-function-mq3-renderer-player-model-assembly-validatetransform-function-validatetransform-value-src-mq3-renderer-player-model-assembly-ml-795784799"></a>
 ### validateTransform
@@ -355,4 +355,4 @@ Requires a three-component origin and three valid three-component transform axes
 | `value` | `dynamic` | — | Record providing `value.origin`, `value.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L127)

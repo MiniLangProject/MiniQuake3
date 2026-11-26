@@ -12,7 +12,7 @@ struct HeadVoice
 Stores client game servercmds head voice record, including `headmodel`, `voiceChatNum`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L190)
 
 ## Members
 
@@ -26,7 +26,7 @@ headmodel
 When constructing this record, `cacheHead` supplies `name` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L192)
 
 <a id="field-field-mq3-client-cgame-servercmds-headvoice-voicechatnum-voicechatnum-src-mq3-client-cgame-servercmds-ml-834287225"></a>
 ### voiceChatNum
@@ -38,4 +38,4 @@ voiceChatNum
 When constructing this record, `cacheHead` supplies `index` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L194)

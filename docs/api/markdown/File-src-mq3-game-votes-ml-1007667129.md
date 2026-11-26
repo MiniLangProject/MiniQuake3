@@ -13,7 +13,7 @@ Reachable from entry: **no**
 - `mq3/game/client_info.ml` as `clientInfo` → [src/mq3/game/client_info.ml](File-src-mq3-game-client-info-ml-669662398.md)
 - `mq3/game/constants.ml` as `c` → [src/mq3/game/constants.ml](File-src-mq3-game-constants-ml-318947761.md)
 - `mq3/game/spawn_values.ml` as `values` → [src/mq3/game/spawn_values.ml](File-src-mq3-game-spawn-values-ml-1233448418.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -31,7 +31,7 @@ Update `level.voteExecuteTime` and `level.voteTime` during `check`. Return paths
 | `level` | `dynamic` | — | Game-level state; accesses `voteExecuteTime`, `time`, `voteString`, `voteTime` and `voteYes` and related fields. May update `level.voteExecuteTime` and `level.voteTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L57)
 
 <a id="function-function-mq3-game-votes-checkteam-function-checkteam-level-team-src-mq3-game-votes-ml-2013583643"></a>
 ### checkTeam
@@ -48,7 +48,7 @@ Set `level.teamVoteTime[offset]` to `0` in `mq3.game.votes.checkTeam`. Return pa
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L149)
 
 <a id="function-function-mq3-game-votes-checkteamleader-function-checkteamleader-level-team-src-mq3-game-votes-ml-392217793"></a>
 ### checkTeamLeader
@@ -65,7 +65,7 @@ Set `level.clients[index].teamLeader` to `true` in `mq3.game.votes.checkTeamLead
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L125)
 
 <a id="function-function-mq3-game-votes-clientlimit-function-clientlimit-level-src-mq3-game-votes-ml-1076743630"></a>
 ### clientLimit
@@ -81,7 +81,7 @@ Validate the team-leader client limit against the native sixty-four-client capac
 | `level` | `dynamic` | — | Game-level state; accesses `maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L77)
 
 <a id="function-function-mq3-game-votes-commandtext-function-commandtext-text-src-mq3-game-votes-ml-597145955"></a>
 ### commandText
@@ -97,7 +97,7 @@ Convert vote command text to bytes after enforcing the native length limit and r
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L39)
 
 <a id="function-function-mq3-game-votes-config-function-config-level-index-src-mq3-game-votes-ml-499007704"></a>
 ### config
@@ -114,7 +114,7 @@ Apply `mq3.game.spawn_values.setConfig` while evaluating `config`. Return paths 
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L33)
 
 <a id="function-function-mq3-game-votes-console-function-console-level-text-src-mq3-game-votes-ml-1219750553"></a>
 ### console
@@ -131,7 +131,7 @@ Use `level.consoleCommandFn` to perform `console`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L50)
 
 <a id="function-function-mq3-game-votes-half-function-half-value-src-mq3-game-votes-ml-746670403"></a>
 ### half
@@ -147,7 +147,7 @@ Divide a signed 32-bit vote count by two with truncation toward zero.
 | `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L16)
 
 <a id="function-function-mq3-game-votes-printteam-function-printteam-level-team-message-src-mq3-game-votes-ml-722334500"></a>
 ### printTeam
@@ -165,7 +165,7 @@ Apply `mq3.game.votes.clientLimit` and `mq3.game.votes.send` while evaluating `p
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L85)
 
 <a id="function-function-mq3-game-votes-send-function-send-level-slot-message-src-mq3-game-votes-ml-227964361"></a>
 ### send
@@ -183,7 +183,7 @@ Use `level.serverCommandFn` to perform `send`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L26)
 
 <a id="function-function-mq3-game-votes-setleader-function-setleader-level-team-slot-src-mq3-game-votes-ml-736076811"></a>
 ### setLeader
@@ -201,7 +201,7 @@ Set `level.clients[current].teamLeader` to `false` and `level.clients[slot].team
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L106)
 
 <a id="constant-constant-mq3-game-votes-svf-bot-const-svf-bot-8-src-mq3-game-votes-ml-124725787"></a>
 ### SVF_BOT
@@ -213,7 +213,7 @@ const SVF_BOT = 8
 Server entity-flag bit controlling bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L12)
 
 <a id="function-function-mq3-game-votes-userinfochanged-function-userinfochanged-level-slot-src-mq3-game-votes-ml-1653212924"></a>
 ### userinfoChanged
@@ -230,4 +230,4 @@ Use `level.clientUserinfoChangedFn` to perform `userinfoChanged`.
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/votes.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/votes.ml#L97)

@@ -12,7 +12,7 @@ Reachable from entry: **no**
 - `mq3/compat/textnumbers.ml` as `numbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
 - `mq3/compat/transcendental.ml` as `crt` → [src/mq3/compat/transcendental.ml](File-src-mq3-compat-transcendental-ml-1855454184.md)
 - `mq3/shared/parser.ml` as `parser` → [src/mq3/shared/parser.ml](File-src-mq3-shared-parser-ml-1977832534.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Returns the absolute value used by UI shared, negating negative inputs.
 | `value` | `dynamic` | — | Value tested by `value<0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L485)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L485)
 
 - [mq3.client.ui_shared.Action](Type-mq3-client-ui-shared-action-608828119.md) — struct
 <a id="function-function-mq3-client-ui-shared-adjustfrom640-function-adjustfrom640-dc-value-src-mq3-client-ui-shared-ml-2127283568"></a>
@@ -48,7 +48,7 @@ Transforms a virtual 640-by-480 rectangle using display scale factors and the ho
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`, `value[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L601)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L601)
 
 <a id="function-function-mq3-client-ui-shared-bindingfromname-function-bindingfromname-dc-name-src-mq3-client-ui-shared-ml-1576290404"></a>
 ### BindingFromName
@@ -65,7 +65,7 @@ Calls `mq3.client.ui_shared.pairGet` from UI shared `BindingFromName`. The final
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1181)
 
 <a id="function-function-mq3-client-ui-shared-bindingidfromname-function-bindingidfromname-name-src-mq3-client-ui-shared-ml-1270561361"></a>
 ### BindingIDFromName
@@ -81,7 +81,7 @@ Calls `mq3.client.ui_shared.bindingTable`, `mq3.client.ui_shared.same` from UI s
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1177)
 
 <a id="function-function-mq3-client-ui-shared-bindingtable-function-bindingtable-src-mq3-client-ui-shared-ml-1646266950"></a>
 ### bindingTable
@@ -93,7 +93,7 @@ function bindingTable()
 Bindings and defaults.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1174)
 
 <a id="function-function-mq3-client-ui-shared-clamp-function-clamp-value-low-high-src-mq3-client-ui-shared-ml-1578536751"></a>
 ### clamp
@@ -111,7 +111,7 @@ Clamps `value` to the inclusive bounds `low` and `high` for UI shared.
 | `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L490)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L490)
 
 <a id="function-function-mq3-client-ui-shared-color-function-color-r-g-b-a-src-mq3-client-ui-shared-ml-1374922726"></a>
 ### color
@@ -130,7 +130,7 @@ Creates a `mq3.client.ui_shared.Color` record. Assigns `r` from `r`, `g` from `g
 | `a` | `dynamic` | — | Value used to initialize `Color.a`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L451)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L451)
 
 - [mq3.client.ui_shared.Color](Type-mq3-client-ui-shared-color-1363201088.md) — struct
 <a id="function-function-mq3-client-ui-shared-color-parse-function-color-parse-source-src-mq3-client-ui-shared-ml-832303907"></a>
@@ -147,7 +147,7 @@ Calls `mq3.client.ui_shared.next`, `mq3.compat.textnumbers.atof`, `mq3.client.ui
 | `source` | `dynamic` | — | Value used by `for i=0 to 3 token=next(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L542)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L542)
 
 <a id="function-function-mq3-client-ui-shared-commandhandler-function-commandhandler-name-src-mq3-client-ui-shared-ml-302252451"></a>
 ### commandHandler
@@ -163,7 +163,7 @@ Calls `mq3.client.ui_shared.same` from UI shared `commandHandler`. The final pat
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L883)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L883)
 
 <a id="function-function-mq3-client-ui-shared-controls-getconfig-function-controls-getconfig-dc-src-mq3-client-ui-shared-ml-716748197"></a>
 ### Controls_GetConfig
@@ -179,7 +179,7 @@ Reads `dc.bindings` for UI shared `Controls_GetConfig`.
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1188)
 
 <a id="function-function-mq3-client-ui-shared-controls-getkeyassignment-function-controls-getkeyassignment-dc-name-src-mq3-client-ui-shared-ml-438328798"></a>
 ### Controls_GetKeyAssignment
@@ -196,7 +196,7 @@ Calls `mq3.client.ui_shared.pairGet` from UI shared `Controls_GetKeyAssignment`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1185)
 
 <a id="function-function-mq3-client-ui-shared-controls-setconfig-function-controls-setconfig-dc-restart-src-mq3-client-ui-shared-ml-627888168"></a>
 ### Controls_SetConfig
@@ -213,7 +213,7 @@ Calls `mq3.client.ui_shared.emit` from UI shared `Controls_SetConfig`.
 | `restart` | `dynamic` | — | Value used by `if restart then emit(dc,"command","execute","in_restart","append",0,void) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1195)
 
 <a id="function-function-mq3-client-ui-shared-controls-setdefaults-function-controls-setdefaults-dc-src-mq3-client-ui-shared-ml-441380433"></a>
 ### Controls_SetDefaults
@@ -229,7 +229,7 @@ Updates `dc.bindings` during UI shared `Controls_SetDefaults`.
 | `dc` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `dc.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1191)
 
 <a id="constant-constant-mq3-client-ui-shared-cursor-arrow-const-cursor-arrow-2-src-mq3-client-ui-shared-ml-731531835"></a>
 ### CURSOR_ARROW
@@ -241,7 +241,7 @@ const CURSOR_ARROW = 2
 Cursor-display value selecting the ordinary arrow pointer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L72)
 
 <a id="constant-constant-mq3-client-ui-shared-cursor-none-const-cursor-none-1-src-mq3-client-ui-shared-ml-1015683024"></a>
 ### CURSOR_NONE
@@ -253,7 +253,7 @@ const CURSOR_NONE = 1
 Cursor-display value selecting no visible pointer shape.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L70)
 
 <a id="constant-constant-mq3-client-ui-shared-cursor-sizer-const-cursor-sizer-4-src-mq3-client-ui-shared-ml-621723401"></a>
 ### CURSOR_SIZER
@@ -265,7 +265,7 @@ const CURSOR_SIZER = 4
 Cursor-display value selecting the resizing pointer shape.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L74)
 
 <a id="function-function-mq3-client-ui-shared-display-function-display-retailactive-src-mq3-client-ui-shared-ml-1608388745"></a>
 ### display
@@ -281,7 +281,7 @@ Creates a `mq3.client.ui_shared.Display` record. Assigns `retailActive` from `re
 | `retailActive` | `dynamic` | — | Value used to initialize `Display.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L469)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L469)
 
 - [mq3.client.ui_shared.Display](Type-mq3-client-ui-shared-display-1222485597.md) — struct
 <a id="function-function-mq3-client-ui-shared-display-cacheall-function-display-cacheall-dc-src-mq3-client-ui-shared-ml-1999780121"></a>
@@ -298,7 +298,7 @@ Calls `mq3.client.ui_shared.Menu_CacheContents` from UI shared `Display_CacheAll
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1171)
 
 <a id="function-function-mq3-client-ui-shared-display-captureitem-function-display-captureitem-dc-x-y-src-mq3-client-ui-shared-ml-1870443688"></a>
 ### Display_CaptureItem
@@ -316,7 +316,7 @@ Calls `mq3.client.ui_shared.IsVisible`, `mq3.client.ui_shared.Menu_HitTest` from
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Display_CaptureItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1242)
 
 <a id="function-function-mq3-client-ui-shared-display-closecinematics-function-display-closecinematics-dc-src-mq3-client-ui-shared-ml-449753443"></a>
 ### Display_CloseCinematics
@@ -332,7 +332,7 @@ Calls `mq3.client.ui_shared.Menu_CloseCinematics` from UI shared `Display_CloseC
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L932)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L932)
 
 <a id="function-function-mq3-client-ui-shared-display-cursortype-function-display-cursortype-dc-x-y-src-mq3-client-ui-shared-ml-123225656"></a>
 ### Display_CursorType
@@ -350,7 +350,7 @@ Calls `mq3.client.ui_shared.Display_CaptureItem` from UI shared `Display_CursorT
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Display_CursorType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1253)
 
 <a id="function-function-mq3-client-ui-shared-display-getcontext-function-display-getcontext-dc-src-mq3-client-ui-shared-ml-2012866293"></a>
 ### Display_GetContext
@@ -366,7 +366,7 @@ Reads `dc` for UI shared `Display_GetContext`.
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L581)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L581)
 
 <a id="function-function-mq3-client-ui-shared-display-handlekey-function-display-handlekey-dc-key-down-x-y-src-mq3-client-ui-shared-ml-1230251697"></a>
 ### Display_HandleKey
@@ -386,7 +386,7 @@ Updates `dc.cursorx`, `dc.cursory` during UI shared `Display_HandleKey`.
 | `y` | `dynamic` | — | Value assigned to `dc.cursory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1260)
 
 <a id="function-function-mq3-client-ui-shared-display-keybindpending-function-display-keybindpending-dc-src-mq3-client-ui-shared-ml-1829964605"></a>
 ### Display_KeyBindPending
@@ -402,7 +402,7 @@ Reads `dc.keyBindPending` for UI shared `Display_KeyBindPending`.
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.keyBindPending`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1198)
 
 <a id="function-function-mq3-client-ui-shared-display-mousemove-function-display-mousemove-dc-p-x-y-src-mq3-client-ui-shared-ml-573252638"></a>
 ### Display_MouseMove
@@ -421,7 +421,7 @@ Updates `dc.cursorx`, `dc.cursory` during UI shared `Display_MouseMove`.
 | `y` | `dynamic` | — | Value assigned to `dc.cursory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1248)
 
 <a id="function-function-mq3-client-ui-shared-display-visiblemenucount-function-display-visiblemenucount-dc-src-mq3-client-ui-shared-ml-1783172181"></a>
 ### Display_VisibleMenuCount
@@ -437,7 +437,7 @@ Calls `mq3.client.ui_shared.IsVisible` from UI shared `Display_VisibleMenuCount`
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1237)
 
 <a id="function-function-mq3-client-ui-shared-emit-function-emit-dc-boundary-kind-name-detail-number-vector-src-mq3-client-ui-shared-ml-1574390001"></a>
 ### emit
@@ -459,7 +459,7 @@ Appends a typed UI engine action and sets its dispatched flag according to retai
 | `vector` | `dynamic` | — | Value used by `dc.actions=dc.actions+[Action(boundary,kind,name,detail,number,vector,not dc.retailActive)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L478)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L478)
 
 <a id="function-function-mq3-client-ui-shared-fade-function-fade-flags-alpha-clampvalue-nexttime-offsettime-bflags-fadeamount-realtime-src-mq3-client-ui-shared-ml-535346505"></a>
 ### Fade
@@ -482,7 +482,7 @@ Evaluates UI shared `Fade` and returns `[flags,alpha,nextTime]` according to its
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L616)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L616)
 
 <a id="function-function-mq3-client-ui-shared-float-parse-function-float-parse-source-src-mq3-client-ui-shared-ml-914128661"></a>
 ### Float_Parse
@@ -498,7 +498,7 @@ Text and PC parser boundaries.
 | `source` | `dynamic` | — | Value used by `token=next(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L536)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L536)
 
 <a id="function-function-mq3-client-ui-shared-gradientbar-paint-function-gradientbar-paint-dc-value-tint-src-mq3-client-ui-shared-ml-984273717"></a>
 ### GradientBar_Paint
@@ -516,7 +516,7 @@ Calls `mq3.client.ui_shared.emit` from UI shared `GradientBar_Paint`.
 | `tint` | `dynamic` | — | Record read through `tint.r`, `tint.g`, `tint.b`, `tint.a`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L635)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L635)
 
 <a id="function-function-mq3-client-ui-shared-hashforstring-function-hashforstring-value-src-mq3-client-ui-shared-ml-360014231"></a>
 ### hashForString
@@ -532,7 +532,7 @@ Hashes ASCII-case-folded string bytes into one of 2,048 UI string buckets.
 | `value` | `dynamic` | — | Value used by `for i=0 to len(bytes(value))-1 c=bytes(value)[i]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L517)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L517)
 
 <a id="function-function-mq3-client-ui-shared-init-display-function-init-display-dc-src-mq3-client-ui-shared-ml-1056631161"></a>
 ### Init_Display
@@ -548,7 +548,7 @@ Display context and geometry.
 | `dc` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `dc.menus`, `dc.focus`, `dc.capture`, `dc.cursorx` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L578)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L578)
 
 <a id="function-function-mq3-client-ui-shared-int-parse-function-int-parse-source-src-mq3-client-ui-shared-ml-866503643"></a>
 ### Int_Parse
@@ -564,7 +564,7 @@ Calls `mq3.client.ui_shared.next`, `mq3.compat.textnumbers.atoi` from UI shared 
 | `source` | `dynamic` | — | Value used by `token=next(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L539)
 
 <a id="function-function-mq3-client-ui-shared-isvisible-function-isvisible-flags-src-mq3-client-ui-shared-ml-1867945645"></a>
 ### IsVisible
@@ -580,7 +580,7 @@ Computes `(flags&WINDOW_VISIBLE)!=0 and (flags&WINDOW_FADINGOUT)==0` for UI shar
 | `flags` | `dynamic` | — | Value used by `return (flags&WINDOW_VISIBLE)!=0 and (flags&WINDOW_FADINGOUT)==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L589)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L589)
 
 <a id="function-function-mq3-client-ui-shared-item-function-item-src-mq3-client-ui-shared-ml-1378341602"></a>
 ### item
@@ -592,7 +592,7 @@ function item()
 Creates a `mq3.client.ui_shared.Item` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L457)
 
 - [mq3.client.ui_shared.Item](Type-mq3-client-ui-shared-item-693759470.md) — struct
 <a id="function-function-mq3-client-ui-shared-item-action-function-item-action-dc-value-src-mq3-client-ui-shared-ml-1502629742"></a>
@@ -610,7 +610,7 @@ Calls `mq3.client.ui_shared.Item_RunScript` from UI shared `Item_Action`.
 | `value` | `dynamic` | — | Record read through `value.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L942)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L942)
 
 <a id="constant-constant-mq3-client-ui-shared-item-align-center-const-item-align-center-1-src-mq3-client-ui-shared-ml-1014636844"></a>
 ### ITEM_ALIGN_CENTER
@@ -622,7 +622,7 @@ const ITEM_ALIGN_CENTER = 1
 Menu-item alignment value selecting center horizontal alignment.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L66)
 
 <a id="constant-constant-mq3-client-ui-shared-item-align-left-const-item-align-left-0-src-mq3-client-ui-shared-ml-341304843"></a>
 ### ITEM_ALIGN_LEFT
@@ -634,7 +634,7 @@ const ITEM_ALIGN_LEFT = 0
 Menu-item alignment value selecting left horizontal alignment.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L64)
 
 <a id="constant-constant-mq3-client-ui-shared-item-align-right-const-item-align-right-2-src-mq3-client-ui-shared-ml-1625044951"></a>
 ### ITEM_ALIGN_RIGHT
@@ -646,7 +646,7 @@ const ITEM_ALIGN_RIGHT = 2
 Menu-item alignment value selecting right horizontal alignment.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L68)
 
 <a id="function-function-mq3-client-ui-shared-item-bind-handlekey-function-item-bind-handlekey-dc-value-key-down-src-mq3-client-ui-shared-ml-191308691"></a>
 ### Item_Bind_HandleKey
@@ -665,7 +665,7 @@ Updates `dc.keyBindPending`, `dc.capture`, `dc.bindings` during UI shared `Item_
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1044)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1044)
 
 <a id="function-function-mq3-client-ui-shared-item-bind-paint-function-item-bind-paint-dc-value-src-mq3-client-ui-shared-ml-147432126"></a>
 ### Item_Bind_Paint
@@ -682,7 +682,7 @@ Adapts `mq3.client.ui_shared.paintText` to UI shared `Item_Bind_Paint`, returnin
 | `value` | `dynamic` | — | Record read through `value.cvar`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1114)
 
 <a id="function-function-mq3-client-ui-shared-item-cachecontents-function-item-cachecontents-dc-value-src-mq3-client-ui-shared-ml-624926778"></a>
 ### Item_CacheContents
@@ -699,7 +699,7 @@ Calls `mq3.client.ui_shared.Window_CacheContents`, `mq3.client.ui_shared.emit` f
 | `value` | `dynamic` | — | Record read through `value.window`, `value.focusSound`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1168)
 
 <a id="function-function-mq3-client-ui-shared-item-correctedtextrect-function-item-correctedtextrect-value-src-mq3-client-ui-shared-ml-446709031"></a>
 ### Item_CorrectedTextRect
@@ -715,7 +715,7 @@ Calls `mq3.client.ui_shared.rect` from UI shared `Item_CorrectedTextRect`. The f
 | `value` | `dynamic` | — | Record read through `value.textRect.x`, `value.textRect.y`, `value.textRect.w`, `value.textRect.h`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L680)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L680)
 
 <a id="function-function-mq3-client-ui-shared-item-enableshowviacvar-function-item-enableshowviacvar-dc-value-flag-src-mq3-client-ui-shared-ml-1439124108"></a>
 ### Item_EnableShowViaCvar
@@ -733,7 +733,7 @@ Cvar gating and item controls.
 | `flag` | `dynamic` | — | Value used by `if (flag&1)!=0 then return matched end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L938)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L938)
 
 <a id="function-function-mq3-client-ui-shared-item-handlekey-function-item-handlekey-dc-value-key-down-src-mq3-client-ui-shared-ml-1131079461"></a>
 ### Item_HandleKey
@@ -752,7 +752,7 @@ Calls `mq3.client.ui_shared.Item_ListBox_HandleKey`, `mq3.client.ui_shared.Item_
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1050)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1050)
 
 <a id="function-function-mq3-client-ui-shared-item-image-paint-function-item-image-paint-dc-value-src-mq3-client-ui-shared-ml-2141520854"></a>
 ### Item_Image_Paint
@@ -769,7 +769,7 @@ Calls `mq3.client.ui_shared.emit` from UI shared `Item_Image_Paint`.
 | `value` | `dynamic` | — | Record read through `value.window.background`, `value.window.rect.x`, `value.window.rect.y`, `value.window.rect.w` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1122)
 
 <a id="function-function-mq3-client-ui-shared-item-init-function-item-init-value-src-mq3-client-ui-shared-ml-744597423"></a>
 ### Item_Init
@@ -785,7 +785,7 @@ Item/menu initialization and coordinates.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.window`, `value.textRect`, `value.typeData`, `value.properties` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L654)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L654)
 
 <a id="function-function-mq3-client-ui-shared-item-initcontrols-function-item-initcontrols-value-src-mq3-client-ui-shared-ml-1335703751"></a>
 ### Item_InitControls
@@ -801,7 +801,7 @@ Updates `value.typeData` during UI shared `Item_InitControls`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.typeData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L660)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L660)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-handlekey-function-item-listbox-handlekey-dc-value-key-down-force-src-mq3-client-ui-shared-ml-843207284"></a>
 ### Item_ListBox_HandleKey
@@ -821,7 +821,7 @@ Updates `value.typeData.cursorPos`, `value.typeData.startPos` during UI shared `
 | `force` | `dynamic` | — | Accepted for compatibility with `Item_ListBox_HandleKey`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1020)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1020)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-maxscroll-function-item-listbox-maxscroll-dc-value-src-mq3-client-ui-shared-ml-931146378"></a>
 ### Item_ListBox_MaxScroll
@@ -838,7 +838,7 @@ Calls `mq3.compat.numeric.trunc32`, `mq3.client.ui_shared.pairGet`, `mq3.client.
 | `value` | `dynamic` | — | Record read through `value.special`, `value.typeData.elementHeight`, `value.window.rect.h`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L983)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L983)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-mouseenter-function-item-listbox-mouseenter-dc-value-x-y-src-mq3-client-ui-shared-ml-960830369"></a>
 ### Item_ListBox_MouseEnter
@@ -857,7 +857,7 @@ Updates `value.typeData.cursorPos` during UI shared `Item_ListBox_MouseEnter`.
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Item_ListBox_MouseEnter`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1013)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1013)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-overlb-function-item-listbox-overlb-dc-value-x-y-src-mq3-client-ui-shared-ml-963220427"></a>
 ### Item_ListBox_OverLB
@@ -876,7 +876,7 @@ Calls `mq3.client.ui_shared.Rect_ContainsPoint` from UI shared `Item_ListBox_Ove
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Item_ListBox_OverLB`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L997)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L997)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-paint-function-item-listbox-paint-dc-value-src-mq3-client-ui-shared-ml-721041598"></a>
 ### Item_ListBox_Paint
@@ -893,7 +893,7 @@ Calls `mq3.client.ui_shared.emit` from UI shared `Item_ListBox_Paint`.
 | `value` | `dynamic` | — | Record read through `value.special`, `value.typeData.startPos`, `value.typeData.cursorPos`, `value.window.rect.x` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1126)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-thumbdrawposition-function-item-listbox-thumbdrawposition-dc-value-src-mq3-client-ui-shared-ml-1813934238"></a>
 ### Item_ListBox_ThumbDrawPosition
@@ -910,7 +910,7 @@ Adapts `mq3.client.ui_shared.Item_ListBox_ThumbPosition` to UI shared `Item_List
 | `value` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Item_ListBox_ThumbPosition`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L991)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L991)
 
 <a id="function-function-mq3-client-ui-shared-item-listbox-thumbposition-function-item-listbox-thumbposition-dc-value-src-mq3-client-ui-shared-ml-1443281782"></a>
 ### Item_ListBox_ThumbPosition
@@ -927,7 +927,7 @@ Calls `mq3.client.ui_shared.Item_ListBox_MaxScroll`, `mq3.compat.numeric.trunc32
 | `value` | `dynamic` | — | Record read through `value.window.rect.y`, `value.window.rect.h`, `value.typeData.startPos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L987)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L987)
 
 <a id="function-function-mq3-client-ui-shared-item-model-paint-function-item-model-paint-dc-value-src-mq3-client-ui-shared-ml-1987746086"></a>
 ### Item_Model_Paint
@@ -944,7 +944,7 @@ Calls `mq3.client.ui_shared.pairGet`, `mq3.client.ui_shared.emit` from UI shared
 | `value` | `dynamic` | — | Record read through `value.properties`, `value.window.background`, `value.typeData.modelAngle`, `value.typeData.modelRotation` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1118)
 
 <a id="function-function-mq3-client-ui-shared-item-mouseenter-function-item-mouseenter-dc-value-x-y-src-mq3-client-ui-shared-ml-717971833"></a>
 ### Item_MouseEnter
@@ -963,7 +963,7 @@ Calls `mq3.client.ui_shared.Item_SetMouseOver`, `mq3.client.ui_shared.Item_RunSc
 | `y` | `dynamic` | — | Accepted for compatibility with `Item_MouseEnter`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L721)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L721)
 
 <a id="function-function-mq3-client-ui-shared-item-mouseleave-function-item-mouseleave-dc-value-src-mq3-client-ui-shared-ml-1449958"></a>
 ### Item_MouseLeave
@@ -980,7 +980,7 @@ Updates `value.window.flags` during UI shared `Item_MouseLeave`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.window.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L725)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L725)
 
 <a id="function-function-mq3-client-ui-shared-item-multi-countsettings-function-item-multi-countsettings-value-src-mq3-client-ui-shared-ml-1197910551"></a>
 ### Item_Multi_CountSettings
@@ -996,7 +996,7 @@ Returns the element/byte count of `value.typeData.settings` for UI shared `Item_
 | `value` | `dynamic` | — | Record read through `value.typeData.settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L950)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L950)
 
 <a id="function-function-mq3-client-ui-shared-item-multi-findcvarbyvalue-function-item-multi-findcvarbyvalue-dc-value-src-mq3-client-ui-shared-ml-100131058"></a>
 ### Item_Multi_FindCvarByValue
@@ -1013,7 +1013,7 @@ Calls `mq3.client.ui_shared.pairGet`, `mq3.client.ui_shared.same` from UI shared
 | `value` | `dynamic` | — | Record read through `value.cvar`, `value.typeData.values`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L954)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L954)
 
 <a id="function-function-mq3-client-ui-shared-item-multi-handlekey-function-item-multi-handlekey-dc-value-key-src-mq3-client-ui-shared-ml-1744153517"></a>
 ### Item_Multi_HandleKey
@@ -1031,7 +1031,7 @@ Updates `dc.cvars` during UI shared `Item_Multi_HandleKey`.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI shared entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L963)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L963)
 
 <a id="function-function-mq3-client-ui-shared-item-multi-paint-function-item-multi-paint-dc-value-src-mq3-client-ui-shared-ml-77983326"></a>
 ### Item_Multi_Paint
@@ -1048,7 +1048,7 @@ Adapts `mq3.client.ui_shared.paintText` to UI shared `Item_Multi_Paint`, returni
 | `value` | `dynamic` | — | Argument 2, 3 of `mq3.client.ui_shared.paintText`; passed as `value`, `Item_Multi_Setting(dc,value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1106)
 
 <a id="function-function-mq3-client-ui-shared-item-multi-setting-function-item-multi-setting-dc-value-src-mq3-client-ui-shared-ml-1656097518"></a>
 ### Item_Multi_Setting
@@ -1065,7 +1065,7 @@ Calls `mq3.client.ui_shared.Item_Multi_CountSettings`, `mq3.client.ui_shared.Ite
 | `value` | `dynamic` | — | Record read through `value.typeData.settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L958)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L958)
 
 <a id="function-function-mq3-client-ui-shared-item-ownerdraw-handlekey-function-item-ownerdraw-handlekey-dc-value-key-src-mq3-client-ui-shared-ml-507912961"></a>
 ### Item_OwnerDraw_HandleKey
@@ -1083,7 +1083,7 @@ Calls `mq3.client.ui_shared.emit` from UI shared `Item_OwnerDraw_HandleKey`.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI shared entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1038)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1038)
 
 <a id="function-function-mq3-client-ui-shared-item-ownerdraw-paint-function-item-ownerdraw-paint-dc-value-src-mq3-client-ui-shared-ml-1423689582"></a>
 ### Item_OwnerDraw_Paint
@@ -1100,7 +1100,7 @@ Calls `mq3.client.ui_shared.emit` from UI shared `Item_OwnerDraw_Paint`.
 | `value` | `dynamic` | — | Record read through `value.ownerDraw`, `value.text`, `value.ownerDrawFlags`, `value.window.rect.x` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1130)
 
 <a id="function-function-mq3-client-ui-shared-item-paint-function-item-paint-dc-value-src-mq3-client-ui-shared-ml-1243021002"></a>
 ### Item_Paint
@@ -1117,7 +1117,7 @@ Calls `mq3.client.ui_shared.Item_UpdateEffects`, `mq3.client.ui_shared.IsVisible
 | `value` | `dynamic` | — | Record read through `value.window.flags`, `value.parent`, `value.parent.fadeAmount`, `value.parent.fadeClamp` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1152)
 
 <a id="function-function-mq3-client-ui-shared-item-parse-function-item-parse-handle-value-src-mq3-client-ui-shared-ml-427978369"></a>
 ### Item_Parse
@@ -1134,7 +1134,7 @@ Parses an itemDef block through the keyword table, validates its type-specific d
 | `value` | `dynamic` | — | Value tested by `not itemParseKind(value,handle,strings.toLowerAscii(keyword),kind)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1334)
 
 <a id="function-function-mq3-client-ui-shared-item-runscript-function-item-runscript-dc-value-text-src-mq3-client-ui-shared-ml-395192879"></a>
 ### Item_RunScript
@@ -1152,7 +1152,7 @@ Calls `mq3.client.ui_shared.scriptArgs`, `mq3.client.ui_shared.next`, `mq3.clien
 | `text` | `dynamic` | — | Text consumed or emitted by `Item_RunScript` in the UI shared path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L888)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L888)
 
 <a id="function-function-mq3-client-ui-shared-item-setfocus-function-item-setfocus-dc-value-x-y-src-mq3-client-ui-shared-ml-276830991"></a>
 ### Item_SetFocus
@@ -1171,7 +1171,7 @@ Updates `value.window.flags`, `value.parent.cursorItem` during UI shared `Item_S
 | `y` | `dynamic` | — | Accepted for compatibility with `Item_SetFocus`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L711)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L711)
 
 <a id="function-function-mq3-client-ui-shared-item-setmouseover-function-item-setmouseover-value-focus-src-mq3-client-ui-shared-ml-496698949"></a>
 ### Item_SetMouseOver
@@ -1188,7 +1188,7 @@ Updates `value.window.flags` during UI shared `Item_SetMouseOver`.
 | `focus` | `dynamic` | — | Value used by `if focus then value.window.flags=value.window.flags\|WINDOW_MOUSEOVER else value.window.flags=value.window.flags&(~WINDOW_MOUSEOVER) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L715)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L715)
 
 <a id="function-function-mq3-client-ui-shared-item-setscreencoords-function-item-setscreencoords-value-x-y-src-mq3-client-ui-shared-ml-2120637126"></a>
 ### Item_SetScreenCoords
@@ -1206,7 +1206,7 @@ Updates `value.window.rect.x`, `value.window.rect.y`, `value.window.rect.w`, `va
 | `y` | `dynamic` | — | Value assigned to `value.window.rect.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L668)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L668)
 
 <a id="function-function-mq3-client-ui-shared-item-settextextents-function-item-settextextents-value-text-src-mq3-client-ui-shared-ml-2066842654"></a>
 ### Item_SetTextExtents
@@ -1223,7 +1223,7 @@ Estimates scaled text width/height, stores them in the text rectangle and return
 | `text` | `dynamic` | — | Text consumed or emitted by `Item_SetTextExtents` in the UI shared path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L684)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L684)
 
 <a id="function-function-mq3-client-ui-shared-item-setupkeywordhash-function-item-setupkeywordhash-src-mq3-client-ui-shared-ml-801027750"></a>
 ### Item_SetupKeywordHash
@@ -1235,7 +1235,7 @@ function Item_SetupKeywordHash()
 Adapts `mq3.client.ui_shared.itemKeywords` to UI shared `Item_SetupKeywordHash`, returning its result for `no arguments`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1287)
 
 <a id="function-function-mq3-client-ui-shared-item-slider-handlekey-function-item-slider-handlekey-dc-value-key-down-src-mq3-client-ui-shared-ml-173157227"></a>
 ### Item_Slider_HandleKey
@@ -1254,7 +1254,7 @@ Updates `dc.cvars` during UI shared `Item_Slider_HandleKey`.
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L979)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L979)
 
 <a id="function-function-mq3-client-ui-shared-item-slider-overslider-function-item-slider-overslider-dc-value-x-y-src-mq3-client-ui-shared-ml-651658319"></a>
 ### Item_Slider_OverSlider
@@ -1273,7 +1273,7 @@ Calls `mq3.client.ui_shared.Item_Slider_ThumbPosition` from UI shared `Item_Slid
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Item_Slider_OverSlider`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L973)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L973)
 
 <a id="function-function-mq3-client-ui-shared-item-slider-paint-function-item-slider-paint-dc-value-src-mq3-client-ui-shared-ml-1546342426"></a>
 ### Item_Slider_Paint
@@ -1290,7 +1290,7 @@ Calls `mq3.client.ui_shared.emit`, `mq3.client.ui_shared.Item_Slider_ThumbPositi
 | `value` | `dynamic` | — | Record read through `value.cvar`, `value.window.rect.x`, `value.window.rect.y`, `value.window.rect.w` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1110)
 
 <a id="function-function-mq3-client-ui-shared-item-slider-thumbposition-function-item-slider-thumbposition-dc-value-src-mq3-client-ui-shared-ml-848541940"></a>
 ### Item_Slider_ThumbPosition
@@ -1307,7 +1307,7 @@ Calls `mq3.compat.textnumbers.atof`, `mq3.client.ui_shared.pairGet`, `mq3.client
 | `value` | `dynamic` | — | Record read through `value.cvar`, `value.typeData.defVal`, `value.typeData.maxVal`, `value.typeData.minVal` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L967)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L967)
 
 <a id="function-function-mq3-client-ui-shared-item-startcapture-function-item-startcapture-dc-value-key-src-mq3-client-ui-shared-ml-498714901"></a>
 ### Item_StartCapture
@@ -1325,7 +1325,7 @@ Updates `dc.capture` during UI shared `Item_StartCapture`.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI shared entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1055)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1055)
 
 <a id="function-function-mq3-client-ui-shared-item-stopcapture-function-item-stopcapture-dc-value-src-mq3-client-ui-shared-ml-1887209086"></a>
 ### Item_StopCapture
@@ -1342,7 +1342,7 @@ Updates `dc.capture` during UI shared `Item_StopCapture`.
 | `value` | `dynamic` | — | Accepted for compatibility with `Item_StopCapture`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1059)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1059)
 
 <a id="function-function-mq3-client-ui-shared-item-text-autowrapped-paint-function-item-text-autowrapped-paint-dc-value-src-mq3-client-ui-shared-ml-1001799936"></a>
 ### Item_Text_AutoWrapped_Paint
@@ -1359,7 +1359,7 @@ Adapts `mq3.client.ui_shared.paintText` to UI shared `Item_Text_AutoWrapped_Pain
 | `value` | `dynamic` | — | Record read through `value.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1094)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1094)
 
 <a id="function-function-mq3-client-ui-shared-item-text-paint-function-item-text-paint-dc-value-src-mq3-client-ui-shared-ml-1790611486"></a>
 ### Item_Text_Paint
@@ -1376,7 +1376,7 @@ Adapts `mq3.client.ui_shared.paintText` to UI shared `Item_Text_Paint`, returnin
 | `value` | `dynamic` | — | Record read through `value.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1086)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1086)
 
 <a id="function-function-mq3-client-ui-shared-item-text-wrapped-paint-function-item-text-wrapped-paint-dc-value-src-mq3-client-ui-shared-ml-1427294414"></a>
 ### Item_Text_Wrapped_Paint
@@ -1393,7 +1393,7 @@ Adapts `mq3.client.ui_shared.paintText` to UI shared `Item_Text_Wrapped_Paint`, 
 | `value` | `dynamic` | — | Record read through `value.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1090)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1090)
 
 <a id="function-function-mq3-client-ui-shared-item-textcolor-function-item-textcolor-dc-value-src-mq3-client-ui-shared-ml-1259777846"></a>
 ### Item_TextColor
@@ -1410,7 +1410,7 @@ Painting uses typed renderer/feeder/ownerdraw actions.
 | `value` | `dynamic` | — | Record read through `value.window.foreColor`, `value.window.flags`, `value.parent`, `value.parent.focusColor` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1076)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1076)
 
 <a id="function-function-mq3-client-ui-shared-item-textfield-handlekey-function-item-textfield-handlekey-dc-value-key-src-mq3-client-ui-shared-ml-1792470053"></a>
 ### Item_TextField_HandleKey
@@ -1428,7 +1428,7 @@ Updates `value.typeData.cursorPos`, `dc.cvars` during UI shared `Item_TextField_
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI shared entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1033)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1033)
 
 <a id="function-function-mq3-client-ui-shared-item-textfield-paint-function-item-textfield-paint-dc-value-src-mq3-client-ui-shared-ml-1488838278"></a>
 ### Item_TextField_Paint
@@ -1445,7 +1445,7 @@ Adapts `mq3.client.ui_shared.paintText` to UI shared `Item_TextField_Paint`, ret
 | `value` | `dynamic` | — | Record read through `value.cvar`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1098)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1098)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-bind-const-item-type-bind-13-src-mq3-client-ui-shared-ml-320205743"></a>
 ### ITEM_TYPE_BIND
@@ -1457,7 +1457,7 @@ const ITEM_TYPE_BIND = 13
 Menu-item type selecting bind interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L62)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-button-const-item-type-button-1-src-mq3-client-ui-shared-ml-1311364728"></a>
 ### ITEM_TYPE_BUTTON
@@ -1469,7 +1469,7 @@ const ITEM_TYPE_BUTTON = 1
 Menu-item type selecting button interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L38)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-checkbox-const-item-type-checkbox-3-src-mq3-client-ui-shared-ml-1742352268"></a>
 ### ITEM_TYPE_CHECKBOX
@@ -1481,7 +1481,7 @@ const ITEM_TYPE_CHECKBOX = 3
 Menu-item type selecting checkbox interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L42)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-combo-const-item-type-combo-5-src-mq3-client-ui-shared-ml-784126244"></a>
 ### ITEM_TYPE_COMBO
@@ -1493,7 +1493,7 @@ const ITEM_TYPE_COMBO = 5
 Menu-item type selecting combo interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L46)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-editfield-const-item-type-editfield-4-src-mq3-client-ui-shared-ml-30928095"></a>
 ### ITEM_TYPE_EDITFIELD
@@ -1505,7 +1505,7 @@ const ITEM_TYPE_EDITFIELD = 4
 Menu-item type selecting editfield interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L44)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-listbox-const-item-type-listbox-6-src-mq3-client-ui-shared-ml-2012312625"></a>
 ### ITEM_TYPE_LISTBOX
@@ -1517,7 +1517,7 @@ const ITEM_TYPE_LISTBOX = 6
 Menu-item type selecting listbox interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L48)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-model-const-item-type-model-7-src-mq3-client-ui-shared-ml-170576690"></a>
 ### ITEM_TYPE_MODEL
@@ -1529,7 +1529,7 @@ const ITEM_TYPE_MODEL = 7
 Menu-item type selecting model interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L50)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-multi-const-item-type-multi-12-src-mq3-client-ui-shared-ml-435822090"></a>
 ### ITEM_TYPE_MULTI
@@ -1541,7 +1541,7 @@ const ITEM_TYPE_MULTI = 12
 Menu-item type selecting multi interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L60)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-numericfield-const-item-type-numericfield-9-src-mq3-client-ui-shared-ml-27548414"></a>
 ### ITEM_TYPE_NUMERICFIELD
@@ -1553,7 +1553,7 @@ const ITEM_TYPE_NUMERICFIELD = 9
 Menu-item type selecting numericfield interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L54)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-ownerdraw-const-item-type-ownerdraw-8-src-mq3-client-ui-shared-ml-862330631"></a>
 ### ITEM_TYPE_OWNERDRAW
@@ -1565,7 +1565,7 @@ const ITEM_TYPE_OWNERDRAW = 8
 Menu-item type selecting ownerdraw interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L52)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-radiobutton-const-item-type-radiobutton-2-src-mq3-client-ui-shared-ml-41786369"></a>
 ### ITEM_TYPE_RADIOBUTTON
@@ -1577,7 +1577,7 @@ const ITEM_TYPE_RADIOBUTTON = 2
 Menu-item type selecting radiobutton interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L40)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-slider-const-item-type-slider-10-src-mq3-client-ui-shared-ml-1227123958"></a>
 ### ITEM_TYPE_SLIDER
@@ -1589,7 +1589,7 @@ const ITEM_TYPE_SLIDER = 10
 Menu-item type selecting slider interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L56)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-text-const-item-type-text-0-src-mq3-client-ui-shared-ml-2098914137"></a>
 ### ITEM_TYPE_TEXT
@@ -1601,7 +1601,7 @@ const ITEM_TYPE_TEXT = 0
 Menu-item type selecting text interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L36)
 
 <a id="constant-constant-mq3-client-ui-shared-item-type-yesno-const-item-type-yesno-11-src-mq3-client-ui-shared-ml-849459887"></a>
 ### ITEM_TYPE_YESNO
@@ -1613,7 +1613,7 @@ const ITEM_TYPE_YESNO = 11
 Menu-item type selecting yesno interaction and type-specific data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L58)
 
 <a id="function-function-mq3-client-ui-shared-item-updateeffects-function-item-updateeffects-dc-value-src-mq3-client-ui-shared-ml-483056990"></a>
 ### Item_UpdateEffects
@@ -1630,7 +1630,7 @@ Calls `mq3.compat.transcendental.cos`, `mq3.compat.transcendental.sin`, `mq3.cli
 | `value` | `dynamic` | — | Record read through `value.window`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1139)
 
 <a id="function-function-mq3-client-ui-shared-item-updateposition-function-item-updateposition-value-src-mq3-client-ui-shared-ml-481997411"></a>
 ### Item_UpdatePosition
@@ -1646,7 +1646,7 @@ Calls `mq3.client.ui_shared.Item_SetScreenCoords` from UI shared `Item_UpdatePos
 | `value` | `dynamic` | — | Record read through `value.parent`, `value.parent.window.rect.x`, `value.parent.window.rect.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L671)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L671)
 
 <a id="function-function-mq3-client-ui-shared-item-validatetypedata-function-item-validatetypedata-value-src-mq3-client-ui-shared-ml-1531697399"></a>
 ### Item_ValidateTypeData
@@ -1662,7 +1662,7 @@ Updates `value.typeData`, `value.typeData.maxChars`, `value.typeData.cursorPos` 
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.typeData`, `value.typeData.maxChars`, `value.typeData.cursorPos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L663)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L663)
 
 <a id="function-function-mq3-client-ui-shared-item-yesno-handlekey-function-item-yesno-handlekey-dc-value-key-src-mq3-client-ui-shared-ml-1308444729"></a>
 ### Item_YesNo_HandleKey
@@ -1680,7 +1680,7 @@ Updates `dc.cvars` during UI shared `Item_YesNo_HandleKey`.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI shared entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L947)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L947)
 
 <a id="function-function-mq3-client-ui-shared-item-yesno-paint-function-item-yesno-paint-dc-value-src-mq3-client-ui-shared-ml-824468394"></a>
 ### Item_YesNo_Paint
@@ -1697,7 +1697,7 @@ Calls `mq3.compat.textnumbers.atoi`, `mq3.client.ui_shared.pairGet`, `mq3.client
 | `value` | `dynamic` | — | Record read through `value.cvar`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1102)
 
 <a id="function-function-mq3-client-ui-shared-itemkeywords-function-itemkeywords-src-mq3-client-ui-shared-ml-1236742954"></a>
 ### itemKeywords
@@ -1709,7 +1709,7 @@ function itemKeywords()
 Provides the item keywords table used by UI shared.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1330)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1330)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-action-function-itemparse-action-value-handle-src-mq3-client-ui-shared-ml-1226349421"></a>
 ### ItemParse_action
@@ -1726,7 +1726,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_action`, returni
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1561)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1561)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-addcolorrange-function-itemparse-addcolorrange-value-handle-src-mq3-client-ui-shared-ml-1117831825"></a>
 ### ItemParse_addColorRange
@@ -1743,7 +1743,7 @@ Updates `value.colorRanges` during UI shared `ItemParse_addColorRange`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_addColorRange`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1602)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1602)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-align-function-itemparse-align-value-handle-src-mq3-client-ui-shared-ml-2098998849"></a>
 ### ItemParse_align
@@ -1760,7 +1760,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_align`, returnin
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1485)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1485)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-asset-model-function-itemparse-asset-model-value-handle-src-mq3-client-ui-shared-ml-1712260907"></a>
 ### ItemParse_asset_model
@@ -1777,7 +1777,7 @@ Calls `mq3.client.ui_shared.PC_String_Parse`, `mq3.client.ui_shared.putItem` fro
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_asset_model`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1389)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1389)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-asset-shader-function-itemparse-asset-shader-value-handle-src-mq3-client-ui-shared-ml-910422913"></a>
 ### ItemParse_asset_shader
@@ -1794,7 +1794,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_asset_shader`, r
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1393)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1393)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-autowrapped-function-itemparse-autowrapped-value-handle-src-mq3-client-ui-shared-ml-237877299"></a>
 ### ItemParse_autowrapped
@@ -1811,7 +1811,7 @@ Adapts `mq3.client.ui_shared.putItem` to UI shared `ItemParse_autowrapped`, retu
 | `handle` | `dynamic` | — | Accepted for compatibility with `ItemParse_autowrapped`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1437)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-backcolor-function-itemparse-backcolor-value-handle-src-mq3-client-ui-shared-ml-202384915"></a>
 ### ItemParse_backcolor
@@ -1828,7 +1828,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_backcolor`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1509)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1509)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-background-function-itemparse-background-value-handle-src-mq3-client-ui-shared-ml-1060739805"></a>
 ### ItemParse_background
@@ -1845,7 +1845,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_background`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1525)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1525)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-border-function-itemparse-border-value-handle-src-mq3-client-ui-shared-ml-968512749"></a>
 ### ItemParse_border
@@ -1862,7 +1862,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_border`, returni
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1469)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1469)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-bordercolor-function-itemparse-bordercolor-value-handle-src-mq3-client-ui-shared-ml-1208018577"></a>
 ### ItemParse_bordercolor
@@ -1879,7 +1879,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_bordercolor`, re
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1517)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1517)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-bordersize-function-itemparse-bordersize-value-handle-src-mq3-client-ui-shared-ml-1732751145"></a>
 ### ItemParse_bordersize
@@ -1896,7 +1896,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_bordersize`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1473)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1473)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-cinematic-function-itemparse-cinematic-value-handle-src-mq3-client-ui-shared-ml-1570828017"></a>
 ### ItemParse_cinematic
@@ -1913,7 +1913,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_cinematic`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1529)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1529)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-columns-function-itemparse-columns-value-handle-src-mq3-client-ui-shared-ml-347486717"></a>
 ### ItemParse_columns
@@ -1930,7 +1930,7 @@ Parses a count followed by list-box column position, width and character-limit t
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_columns`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1465)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-cvar-function-itemparse-cvar-value-handle-src-mq3-client-ui-shared-ml-578138517"></a>
 ### ItemParse_cvar
@@ -1947,7 +1947,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_cvar`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1573)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1573)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-cvarfloat-function-itemparse-cvarfloat-value-handle-src-mq3-client-ui-shared-ml-1829272939"></a>
 ### ItemParse_cvarFloat
@@ -1964,7 +1964,7 @@ Updates `value.cvar`, `value.typeData.defVal`, `value.typeData.minVal`, `value.t
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_cvarFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1585)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1585)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-cvarfloatlist-function-itemparse-cvarfloatlist-value-handle-src-mq3-client-ui-shared-ml-1629197947"></a>
 ### ItemParse_cvarFloatList
@@ -1981,7 +1981,7 @@ Adapts `mq3.client.ui_shared.parseList` to UI shared `ItemParse_cvarFloatList`, 
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1598)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1598)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-cvarstrlist-function-itemparse-cvarstrlist-value-handle-src-mq3-client-ui-shared-ml-1406966513"></a>
 ### ItemParse_cvarStrList
@@ -1998,7 +1998,7 @@ Adapts `mq3.client.ui_shared.parseList` to UI shared `ItemParse_cvarStrList`, re
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1594)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1594)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-cvartest-function-itemparse-cvartest-value-handle-src-mq3-client-ui-shared-ml-1000167749"></a>
 ### ItemParse_cvarTest
@@ -2015,7 +2015,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_cvarTest`, retur
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1569)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-decoration-function-itemparse-decoration-value-handle-src-mq3-client-ui-shared-ml-528694165"></a>
 ### ItemParse_decoration
@@ -2032,7 +2032,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_decoration`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1425)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1425)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-disablecvar-function-itemparse-disablecvar-value-handle-src-mq3-client-ui-shared-ml-409868587"></a>
 ### ItemParse_disableCvar
@@ -2049,7 +2049,7 @@ Adapts `mq3.client.ui_shared.parseCvarGate` to UI shared `ItemParse_disableCvar`
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseCvarGate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1620)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1620)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-doubleclick-function-itemparse-doubleclick-value-handle-src-mq3-client-ui-shared-ml-634843113"></a>
 ### ItemParse_doubleClick
@@ -2066,7 +2066,7 @@ Updates `value.typeData.doubleClick` during UI shared `ItemParse_doubleClick`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_doubleClick`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1533)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1533)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-elementheight-function-itemparse-elementheight-value-handle-src-mq3-client-ui-shared-ml-843492565"></a>
 ### ItemParse_elementheight
@@ -2083,7 +2083,7 @@ Updates `value.typeData.elementHeight` during UI shared `ItemParse_elementheight
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_elementheight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1453)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1453)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-elementtype-function-itemparse-elementtype-value-handle-src-mq3-client-ui-shared-ml-2032065183"></a>
 ### ItemParse_elementtype
@@ -2100,7 +2100,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_elementtype`, re
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1461)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1461)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-elementwidth-function-itemparse-elementwidth-value-handle-src-mq3-client-ui-shared-ml-1270997481"></a>
 ### ItemParse_elementwidth
@@ -2117,7 +2117,7 @@ Updates `value.typeData.elementWidth` during UI shared `ItemParse_elementwidth`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_elementwidth`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1449)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1449)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-enablecvar-function-itemparse-enablecvar-value-handle-src-mq3-client-ui-shared-ml-674453657"></a>
 ### ItemParse_enableCvar
@@ -2134,7 +2134,7 @@ Adapts `mq3.client.ui_shared.parseCvarGate` to UI shared `ItemParse_enableCvar`,
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseCvarGate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1616)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1616)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-feeder-function-itemparse-feeder-value-handle-src-mq3-client-ui-shared-ml-347448073"></a>
 ### ItemParse_feeder
@@ -2151,7 +2151,7 @@ Updates `value.typeData.feeder`, `value.special` during UI shared `ItemParse_fee
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_feeder`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1457)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-focussound-function-itemparse-focussound-value-handle-src-mq3-client-ui-shared-ml-1025612005"></a>
 ### ItemParse_focusSound
@@ -2168,7 +2168,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_focusSound`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1377)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1377)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-forecolor-function-itemparse-forecolor-value-handle-src-mq3-client-ui-shared-ml-945155033"></a>
 ### ItemParse_forecolor
@@ -2185,7 +2185,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_forecolor`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1513)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-group-function-itemparse-group-value-handle-src-mq3-client-ui-shared-ml-1297457425"></a>
 ### ItemParse_group
@@ -2202,7 +2202,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_group`, returnin
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1385)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1385)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-hidecvar-function-itemparse-hidecvar-value-handle-src-mq3-client-ui-shared-ml-191243869"></a>
 ### ItemParse_hideCvar
@@ -2219,7 +2219,7 @@ Adapts `mq3.client.ui_shared.parseCvarGate` to UI shared `ItemParse_hideCvar`, r
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseCvarGate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1628)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1628)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-horizontalscroll-function-itemparse-horizontalscroll-value-handle-src-mq3-client-ui-shared-ml-42608561"></a>
 ### ItemParse_horizontalscroll
@@ -2236,7 +2236,7 @@ Enables horizontal list-box scrolling and sets the corresponding window flag.
 | `handle` | `dynamic` | — | Accepted for compatibility with `ItemParse_horizontalscroll`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1441)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-leavefocus-function-itemparse-leavefocus-value-handle-src-mq3-client-ui-shared-ml-1418838129"></a>
 ### ItemParse_leaveFocus
@@ -2253,7 +2253,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_leaveFocus`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1541)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1541)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-maxchars-function-itemparse-maxchars-value-handle-src-mq3-client-ui-shared-ml-782229461"></a>
 ### ItemParse_maxChars
@@ -2270,7 +2270,7 @@ Updates `value.typeData.maxChars` during UI shared `ItemParse_maxChars`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_maxChars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1577)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1577)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-maxpaintchars-function-itemparse-maxpaintchars-value-handle-src-mq3-client-ui-shared-ml-1242416805"></a>
 ### ItemParse_maxPaintChars
@@ -2287,7 +2287,7 @@ Updates `value.typeData.maxPaintChars` during UI shared `ItemParse_maxPaintChars
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_maxPaintChars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1581)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1581)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-model-angle-function-itemparse-model-angle-value-handle-src-mq3-client-ui-shared-ml-1589802537"></a>
 ### ItemParse_model_angle
@@ -2304,7 +2304,7 @@ Updates `value.typeData.modelAngle` during UI shared `ItemParse_model_angle`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_model_angle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1413)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-model-fovx-function-itemparse-model-fovx-value-handle-src-mq3-client-ui-shared-ml-1010108037"></a>
 ### ItemParse_model_fovx
@@ -2321,7 +2321,7 @@ Updates `value.typeData.modelFovX` during UI shared `ItemParse_model_fovx`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_model_fovx`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1401)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1401)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-model-fovy-function-itemparse-model-fovy-value-handle-src-mq3-client-ui-shared-ml-2036185289"></a>
 ### ItemParse_model_fovy
@@ -2338,7 +2338,7 @@ Updates `value.typeData.modelFovY` during UI shared `ItemParse_model_fovy`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_model_fovy`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1405)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-model-origin-function-itemparse-model-origin-value-handle-src-mq3-client-ui-shared-ml-1081406853"></a>
 ### ItemParse_model_origin
@@ -2355,7 +2355,7 @@ Reads the three floating-point model-origin coordinates into the item's preview 
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_model_origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1397)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-model-rotation-function-itemparse-model-rotation-value-handle-src-mq3-client-ui-shared-ml-2123075041"></a>
 ### ItemParse_model_rotation
@@ -2372,7 +2372,7 @@ Updates `value.typeData.modelRotation` during UI shared `ItemParse_model_rotatio
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_model_rotation`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1409)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-mouseenter-function-itemparse-mouseenter-value-handle-src-mq3-client-ui-shared-ml-805822881"></a>
 ### ItemParse_mouseEnter
@@ -2389,7 +2389,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_mouseEnter`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1545)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1545)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-mouseentertext-function-itemparse-mouseentertext-value-handle-src-mq3-client-ui-shared-ml-1388275573"></a>
 ### ItemParse_mouseEnterText
@@ -2406,7 +2406,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_mouseEnterText`,
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1553)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1553)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-mouseexit-function-itemparse-mouseexit-value-handle-src-mq3-client-ui-shared-ml-1167315941"></a>
 ### ItemParse_mouseExit
@@ -2423,7 +2423,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_mouseExit`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1549)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1549)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-mouseexittext-function-itemparse-mouseexittext-value-handle-src-mq3-client-ui-shared-ml-952422295"></a>
 ### ItemParse_mouseExitText
@@ -2440,7 +2440,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_mouseExitText`, 
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1557)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-name-function-itemparse-name-value-handle-src-mq3-client-ui-shared-ml-776586997"></a>
 ### ItemParse_name
@@ -2457,7 +2457,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_name`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1373)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1373)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-notselectable-function-itemparse-notselectable-value-handle-src-mq3-client-ui-shared-ml-619972721"></a>
 ### ItemParse_notselectable
@@ -2474,7 +2474,7 @@ Updates `value.typeData.notselectable` during UI shared `ItemParse_notselectable
 | `handle` | `dynamic` | — | Accepted for compatibility with `ItemParse_notselectable`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1429)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-onfocus-function-itemparse-onfocus-value-handle-src-mq3-client-ui-shared-ml-1842334245"></a>
 ### ItemParse_onFocus
@@ -2491,7 +2491,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_onFocus`, return
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1537)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1537)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-outlinecolor-function-itemparse-outlinecolor-value-handle-src-mq3-client-ui-shared-ml-1293645369"></a>
 ### ItemParse_outlinecolor
@@ -2508,7 +2508,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_outlinecolor`, r
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1521)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1521)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-ownerdraw-function-itemparse-ownerdraw-value-handle-src-mq3-client-ui-shared-ml-2000445945"></a>
 ### ItemParse_ownerdraw
@@ -2525,7 +2525,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_ownerdraw`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1481)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1481)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-ownerdrawflag-function-itemparse-ownerdrawflag-value-handle-src-mq3-client-ui-shared-ml-462409229"></a>
 ### ItemParse_ownerdrawFlag
@@ -2542,7 +2542,7 @@ Updates `value.ownerDrawFlags` during UI shared `ItemParse_ownerdrawFlag`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `ItemParse_ownerdrawFlag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1606)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1606)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-rect-function-itemparse-rect-value-handle-src-mq3-client-ui-shared-ml-1172301709"></a>
 ### ItemParse_rect
@@ -2559,7 +2559,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_rect`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1417)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1417)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-showcvar-function-itemparse-showcvar-value-handle-src-mq3-client-ui-shared-ml-1126023401"></a>
 ### ItemParse_showCvar
@@ -2576,7 +2576,7 @@ Adapts `mq3.client.ui_shared.parseCvarGate` to UI shared `ItemParse_showCvar`, r
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseCvarGate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1624)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1624)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-special-function-itemparse-special-value-handle-src-mq3-client-ui-shared-ml-1948113053"></a>
 ### ItemParse_special
@@ -2593,7 +2593,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_special`, return
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1565)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1565)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-style-function-itemparse-style-value-handle-src-mq3-client-ui-shared-ml-1445025489"></a>
 ### ItemParse_style
@@ -2610,7 +2610,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_style`, returnin
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1421)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1421)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-text-function-itemparse-text-value-handle-src-mq3-client-ui-shared-ml-2051652561"></a>
 ### ItemParse_text
@@ -2627,7 +2627,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_text`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1381)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1381)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-textalign-function-itemparse-textalign-value-handle-src-mq3-client-ui-shared-ml-1438941947"></a>
 ### ItemParse_textalign
@@ -2644,7 +2644,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_textalign`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1489)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1489)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-textalignx-function-itemparse-textalignx-value-handle-src-mq3-client-ui-shared-ml-88138037"></a>
 ### ItemParse_textalignx
@@ -2661,7 +2661,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_textalignx`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1493)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1493)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-textaligny-function-itemparse-textaligny-value-handle-src-mq3-client-ui-shared-ml-1094023409"></a>
 ### ItemParse_textaligny
@@ -2678,7 +2678,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_textaligny`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1497)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1497)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-textscale-function-itemparse-textscale-value-handle-src-mq3-client-ui-shared-ml-298141221"></a>
 ### ItemParse_textscale
@@ -2695,7 +2695,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_textscale`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1501)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1501)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-textstyle-function-itemparse-textstyle-value-handle-src-mq3-client-ui-shared-ml-377177211"></a>
 ### ItemParse_textstyle
@@ -2712,7 +2712,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_textstyle`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1505)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1505)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-type-function-itemparse-type-value-handle-src-mq3-client-ui-shared-ml-1420019849"></a>
 ### ItemParse_type
@@ -2729,7 +2729,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_type`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1445)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-visible-function-itemparse-visible-value-handle-src-mq3-client-ui-shared-ml-861507559"></a>
 ### ItemParse_visible
@@ -2746,7 +2746,7 @@ Adapts `mq3.client.ui_shared.parseItem` to UI shared `ItemParse_visible`, return
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1477)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1477)
 
 <a id="function-function-mq3-client-ui-shared-itemparse-wrapped-function-itemparse-wrapped-value-handle-src-mq3-client-ui-shared-ml-1746529553"></a>
 ### ItemParse_wrapped
@@ -2763,7 +2763,7 @@ Adapts `mq3.client.ui_shared.putItem` to UI shared `ItemParse_wrapped`, returnin
 | `handle` | `dynamic` | — | Accepted for compatibility with `ItemParse_wrapped`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1433)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1433)
 
 <a id="function-function-mq3-client-ui-shared-itemparsekind-function-itemparsekind-value-handle-key-kind-src-mq3-client-ui-shared-ml-989161958"></a>
 ### itemParseKind
@@ -2782,7 +2782,7 @@ Updates `value.window.rectClient`, `value.window.rect`, `value.window.backColor`
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1300)
 
 <a id="constant-constant-mq3-client-ui-shared-k-alt-const-k-alt-136-src-mq3-client-ui-shared-ml-1364135153"></a>
 ### K_ALT
@@ -2794,7 +2794,7 @@ const K_ALT = 136
 Engine key code for the alt input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L94)
 
 <a id="constant-constant-mq3-client-ui-shared-k-backspace-const-k-backspace-127-src-mq3-client-ui-shared-ml-1901639823"></a>
 ### K_BACKSPACE
@@ -2806,7 +2806,7 @@ const K_BACKSPACE = 127
 Engine key code for the backspace input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L84)
 
 <a id="constant-constant-mq3-client-ui-shared-k-ctrl-const-k-ctrl-137-src-mq3-client-ui-shared-ml-1291355466"></a>
 ### K_CTRL
@@ -2818,7 +2818,7 @@ const K_CTRL = 137
 Engine key code for the ctrl input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L96)
 
 <a id="constant-constant-mq3-client-ui-shared-k-del-const-k-del-140-src-mq3-client-ui-shared-ml-881794188"></a>
 ### K_DEL
@@ -2830,7 +2830,7 @@ const K_DEL = 140
 Engine key code for the del input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L100)
 
 <a id="constant-constant-mq3-client-ui-shared-k-downarrow-const-k-downarrow-133-src-mq3-client-ui-shared-ml-481919458"></a>
 ### K_DOWNARROW
@@ -2842,7 +2842,7 @@ const K_DOWNARROW = 133
 Engine key code for the downarrow input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L88)
 
 <a id="constant-constant-mq3-client-ui-shared-k-end-const-k-end-144-src-mq3-client-ui-shared-ml-2114628196"></a>
 ### K_END
@@ -2854,7 +2854,7 @@ const K_END = 144
 Engine key code for the end input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L104)
 
 <a id="constant-constant-mq3-client-ui-shared-k-enter-const-k-enter-13-src-mq3-client-ui-shared-ml-1394583977"></a>
 ### K_ENTER
@@ -2866,7 +2866,7 @@ const K_ENTER = 13
 Engine key code for the enter input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L78)
 
 <a id="constant-constant-mq3-client-ui-shared-k-escape-const-k-escape-27-src-mq3-client-ui-shared-ml-1370217730"></a>
 ### K_ESCAPE
@@ -2878,7 +2878,7 @@ const K_ESCAPE = 27
 Engine key code for the escape input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
 
 <a id="constant-constant-mq3-client-ui-shared-k-f1-const-k-f1-145-src-mq3-client-ui-shared-ml-569239295"></a>
 ### K_F1
@@ -2890,7 +2890,7 @@ const K_F1 = 145
 Engine key code for the f1 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L106)
 
 <a id="constant-constant-mq3-client-ui-shared-k-f2-const-k-f2-146-src-mq3-client-ui-shared-ml-1543936108"></a>
 ### K_F2
@@ -2902,7 +2902,7 @@ const K_F2 = 146
 Engine key code for the f2 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L108)
 
 <a id="constant-constant-mq3-client-ui-shared-k-f3-const-k-f3-147-src-mq3-client-ui-shared-ml-559898405"></a>
 ### K_F3
@@ -2914,7 +2914,7 @@ const K_F3 = 147
 Engine key code for the f3 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L110)
 
 <a id="constant-constant-mq3-client-ui-shared-k-f4-const-k-f4-148-src-mq3-client-ui-shared-ml-1719568482"></a>
 ### K_F4
@@ -2926,7 +2926,7 @@ const K_F4 = 148
 Engine key code for the f4 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L112)
 
 <a id="constant-constant-mq3-client-ui-shared-k-f5-const-k-f5-149-src-mq3-client-ui-shared-ml-1809663363"></a>
 ### K_F5
@@ -2938,7 +2938,7 @@ const K_F5 = 149
 Engine key code for the f5 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L114)
 
 <a id="constant-constant-mq3-client-ui-shared-k-kp-pgdn-const-k-kp-pgdn-168-src-mq3-client-ui-shared-ml-2021606258"></a>
 ### K_KP_PGDN
@@ -2950,7 +2950,7 @@ const K_KP_PGDN = 168
 Engine key code for the kp pgdn input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L118)
 
 <a id="constant-constant-mq3-client-ui-shared-k-kp-pgup-const-k-kp-pgup-162-src-mq3-client-ui-shared-ml-2019448560"></a>
 ### K_KP_PGUP
@@ -2962,7 +2962,7 @@ const K_KP_PGUP = 162
 Engine key code for the kp pgup input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L116)
 
 <a id="constant-constant-mq3-client-ui-shared-k-leftarrow-const-k-leftarrow-134-src-mq3-client-ui-shared-ml-1202439343"></a>
 ### K_LEFTARROW
@@ -2974,7 +2974,7 @@ const K_LEFTARROW = 134
 Engine key code for the leftarrow input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L90)
 
 <a id="constant-constant-mq3-client-ui-shared-k-mouse1-const-k-mouse1-178-src-mq3-client-ui-shared-ml-1148140069"></a>
 ### K_MOUSE1
@@ -2986,7 +2986,7 @@ const K_MOUSE1 = 178
 Engine key code for the mouse1 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L120)
 
 <a id="constant-constant-mq3-client-ui-shared-k-mouse2-const-k-mouse2-179-src-mq3-client-ui-shared-ml-1537697584"></a>
 ### K_MOUSE2
@@ -2998,7 +2998,7 @@ const K_MOUSE2 = 179
 Engine key code for the mouse2 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L122)
 
 <a id="constant-constant-mq3-client-ui-shared-k-mouse3-const-k-mouse3-180-src-mq3-client-ui-shared-ml-157370750"></a>
 ### K_MOUSE3
@@ -3010,7 +3010,7 @@ const K_MOUSE3 = 180
 Engine key code for the mouse3 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L124)
 
 <a id="constant-constant-mq3-client-ui-shared-k-mouse4-const-k-mouse4-181-src-mq3-client-ui-shared-ml-1980115103"></a>
 ### K_MOUSE4
@@ -3022,7 +3022,7 @@ const K_MOUSE4 = 181
 Engine key code for the mouse4 input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L126)
 
 <a id="constant-constant-mq3-client-ui-shared-k-pgdn-const-k-pgdn-141-src-mq3-client-ui-shared-ml-211826103"></a>
 ### K_PGDN
@@ -3034,7 +3034,7 @@ const K_PGDN = 141
 Engine key code for the pgdn input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L102)
 
 <a id="constant-constant-mq3-client-ui-shared-k-rightarrow-const-k-rightarrow-135-src-mq3-client-ui-shared-ml-17608660"></a>
 ### K_RIGHTARROW
@@ -3046,7 +3046,7 @@ const K_RIGHTARROW = 135
 Engine key code for the rightarrow input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L92)
 
 <a id="constant-constant-mq3-client-ui-shared-k-shift-const-k-shift-138-src-mq3-client-ui-shared-ml-969663235"></a>
 ### K_SHIFT
@@ -3058,7 +3058,7 @@ const K_SHIFT = 138
 Engine key code for the shift input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L98)
 
 <a id="constant-constant-mq3-client-ui-shared-k-space-const-k-space-32-src-mq3-client-ui-shared-ml-1018321436"></a>
 ### K_SPACE
@@ -3070,7 +3070,7 @@ const K_SPACE = 32
 Engine key code for the space input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L82)
 
 <a id="constant-constant-mq3-client-ui-shared-k-tab-const-k-tab-9-src-mq3-client-ui-shared-ml-258683312"></a>
 ### K_TAB
@@ -3082,7 +3082,7 @@ const K_TAB = 9
 Engine key code for the tab input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L76)
 
 <a id="constant-constant-mq3-client-ui-shared-k-uparrow-const-k-uparrow-132-src-mq3-client-ui-shared-ml-349434085"></a>
 ### K_UPARROW
@@ -3094,7 +3094,7 @@ const K_UPARROW = 132
 Engine key code for the uparrow input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L86)
 
 <a id="function-function-mq3-client-ui-shared-keytext-function-keytext-key-src-mq3-client-ui-shared-ml-128258621"></a>
 ### keyText
@@ -3110,7 +3110,7 @@ Calls `decode` from UI shared `keyText`. The final path returns `decode(data)`.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI shared entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1028)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1028)
 
 <a id="function-function-mq3-client-ui-shared-keywordhash-add-function-keywordhash-add-table-key-src-mq3-client-ui-shared-ml-1269765545"></a>
 ### KeywordHash_Add
@@ -3127,7 +3127,7 @@ Adapts `mq3.client.ui_shared.pairSet` to UI shared `KeywordHash_Add`, returning 
 | `key` | `dynamic` | — | Argument 2, 3 of `mq3.client.ui_shared.pairSet`; passed as `key[0]`, `key[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1281)
 
 <a id="function-function-mq3-client-ui-shared-keywordhash-find-function-keywordhash-find-table-keyword-src-mq3-client-ui-shared-ml-24600831"></a>
 ### KeywordHash_Find
@@ -3144,7 +3144,7 @@ Adapts `mq3.client.ui_shared.pairGet` to UI shared `KeywordHash_Find`, returning
 | `keyword` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.pairGet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1285)
 
 <a id="function-function-mq3-client-ui-shared-keywordhash-key-function-keywordhash-key-keyword-src-mq3-client-ui-shared-ml-978626451"></a>
 ### KeywordHash_Key
@@ -3160,7 +3160,7 @@ Keyword hash and declarative parsers.
 | `keyword` | `dynamic` | — | Value used by `for i=0 to len(bytes(keyword))-1 c=bytes(keyword)[i]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1277)
 
 <a id="function-function-mq3-client-ui-shared-lerpcolor-function-lerpcolor-a-b-t-src-mq3-client-ui-shared-ml-67991391"></a>
 ### LerpColor
@@ -3178,7 +3178,7 @@ Linearly interpolates the four color components and clamps each result to the ra
 | `t` | `dynamic` | — | Value used by `r=clamp(a.r+t*(b.r-a.r),0.0,1.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L606)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L606)
 
 <a id="constant-constant-mq3-client-ui-shared-max-editfield-const-max-editfield-256-src-mq3-client-ui-shared-ml-998947382"></a>
 ### MAX_EDITFIELD
@@ -3190,7 +3190,7 @@ const MAX_EDITFIELD = 256
 Maximum editable text length supported by the UI field implementation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L128)
 
 <a id="constant-constant-mq3-client-ui-shared-max-menuitems-const-max-menuitems-96-src-mq3-client-ui-shared-ml-1971501354"></a>
 ### MAX_MENUITEMS
@@ -3202,7 +3202,7 @@ const MAX_MENUITEMS = 96
 Capacity limit for the menuitems collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L130)
 
 <a id="constant-constant-mq3-client-ui-shared-max-menus-const-max-menus-64-src-mq3-client-ui-shared-ml-572637055"></a>
 ### MAX_MENUS
@@ -3214,7 +3214,7 @@ const MAX_MENUS = 64
 Capacity limit for the menus collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L132)
 
 <a id="function-function-mq3-client-ui-shared-memory-function-memory-capacity-src-mq3-client-ui-shared-ml-825497194"></a>
 ### memory
@@ -3230,7 +3230,7 @@ Creates a `mq3.client.ui_shared.Memory` record. Assigns `capacity` from `capacit
 | `capacity` | `dynamic` | — | Value used to initialize `Memory.capacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L466)
 
 - [mq3.client.ui_shared.Memory](Type-mq3-client-ui-shared-memory-662869782.md) — struct
 <a id="function-function-mq3-client-ui-shared-menu-function-menu-src-mq3-client-ui-shared-ml-1628358782"></a>
@@ -3243,7 +3243,7 @@ function menu()
 Creates a `mq3.client.ui_shared.Menu` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L459)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L459)
 
 - [mq3.client.ui_shared.Menu](Type-mq3-client-ui-shared-menu-1007668034.md) — struct
 <a id="function-function-mq3-client-ui-shared-menu-cachecontents-function-menu-cachecontents-dc-value-src-mq3-client-ui-shared-ml-646464950"></a>
@@ -3261,7 +3261,7 @@ Calls `mq3.client.ui_shared.Window_CacheContents`, `mq3.client.ui_shared.Item_Ca
 | `value` | `dynamic` | — | Record read through `value.window`, `value.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1164)
 
 <a id="function-function-mq3-client-ui-shared-menu-clearfocus-function-menu-clearfocus-value-src-mq3-client-ui-shared-ml-1065973869"></a>
 ### Menu_ClearFocus
@@ -3277,7 +3277,7 @@ Updates `value.cursorItem` during UI shared `Menu_ClearFocus`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.cursorItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L705)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L705)
 
 <a id="function-function-mq3-client-ui-shared-menu-closecinematics-function-menu-closecinematics-dc-value-src-mq3-client-ui-shared-ml-681236446"></a>
 ### Menu_CloseCinematics
@@ -3294,7 +3294,7 @@ Calls `mq3.client.ui_shared.Window_CloseCinematic` from UI shared `Menu_CloseCin
 | `value` | `dynamic` | — | Record read through `value.window`, `value.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L929)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L929)
 
 <a id="function-function-mq3-client-ui-shared-menu-count-function-menu-count-dc-src-mq3-client-ui-shared-ml-2036735461"></a>
 ### Menu_Count
@@ -3310,7 +3310,7 @@ Returns the element/byte count of `dc.menus` for UI shared `Menu_Count`.
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L922)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L922)
 
 <a id="function-function-mq3-client-ui-shared-menu-fadeitembyname-function-menu-fadeitembyname-value-name-fadeout-src-mq3-client-ui-shared-ml-1161545800"></a>
 ### Menu_FadeItemByName
@@ -3328,7 +3328,7 @@ Calls `mq3.client.ui_shared.same` from UI shared `Menu_FadeItemByName`.
 | `fadeOut` | `dynamic` | — | Value used by `for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then if fadeOut then child.window.flags=(child....`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L783)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L783)
 
 <a id="function-function-mq3-client-ui-shared-menu-finditembyname-function-menu-finditembyname-value-name-src-mq3-client-ui-shared-ml-1448789518"></a>
 ### Menu_FindItemByName
@@ -3345,7 +3345,7 @@ Finds the first menu item whose window name matches case-insensitively, returnin
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L698)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L698)
 
 <a id="function-function-mq3-client-ui-shared-menu-getfocused-function-menu-getfocused-dc-src-mq3-client-ui-shared-ml-1134986895"></a>
 ### Menu_GetFocused
@@ -3361,7 +3361,7 @@ Evaluates UI shared `Menu_GetFocused` and returns `value`, `void` according to i
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L741)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L741)
 
 <a id="function-function-mq3-client-ui-shared-menu-getfocuseditem-function-menu-getfocuseditem-value-src-mq3-client-ui-shared-ml-2069598947"></a>
 ### Menu_GetFocusedItem
@@ -3377,7 +3377,7 @@ Evaluates UI shared `Menu_GetFocusedItem` and returns `value.items[value.cursorI
 | `value` | `dynamic` | — | Record read through `value.cursorItem`, `value.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L738)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L738)
 
 <a id="function-function-mq3-client-ui-shared-menu-getmatchingitembynumber-function-menu-getmatchingitembynumber-value-index-name-src-mq3-client-ui-shared-ml-279249170"></a>
 ### Menu_GetMatchingItemByNumber
@@ -3395,7 +3395,7 @@ Calls `mq3.client.ui_shared.same` from UI shared `Menu_GetMatchingItemByNumber`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L694)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L694)
 
 <a id="function-function-mq3-client-ui-shared-menu-handlekey-function-menu-handlekey-dc-value-key-down-src-mq3-client-ui-shared-ml-1531759733"></a>
 ### Menu_HandleKey
@@ -3414,7 +3414,7 @@ Calls `mq3.client.ui_shared.Menu_GetFocusedItem`, `mq3.client.ui_shared.Item_Han
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1211)
 
 <a id="function-function-mq3-client-ui-shared-menu-handlemousemove-function-menu-handlemousemove-dc-value-x-y-src-mq3-client-ui-shared-ml-770755295"></a>
 ### Menu_HandleMouseMove
@@ -3433,7 +3433,7 @@ Calls `mq3.client.ui_shared.Menu_HitTest`, `mq3.client.ui_shared.Item_MouseEnter
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Menu_HandleMouseMove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1217)
 
 <a id="function-function-mq3-client-ui-shared-menu-hittest-function-menu-hittest-value-x-y-src-mq3-client-ui-shared-ml-568638034"></a>
 ### Menu_HitTest
@@ -3451,7 +3451,7 @@ Searches visible menu items from back to front for the first rectangle containin
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Menu_HitTest`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L730)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L730)
 
 <a id="function-function-mq3-client-ui-shared-menu-init-function-menu-init-value-src-mq3-client-ui-shared-ml-2104435603"></a>
 ### Menu_Init
@@ -3467,7 +3467,7 @@ Updates `value.window`, `value.items`, `value.cursorItem`, `value.properties` du
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.window`, `value.items`, `value.cursorItem`, `value.properties`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L657)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L657)
 
 <a id="function-function-mq3-client-ui-shared-menu-itemsmatchinggroup-function-menu-itemsmatchinggroup-value-name-src-mq3-client-ui-shared-ml-1951874650"></a>
 ### Menu_ItemsMatchingGroup
@@ -3484,7 +3484,7 @@ Menu/item lookup, visibility and focus.
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L689)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L689)
 
 <a id="function-function-mq3-client-ui-shared-menu-new-function-menu-new-dc-handle-src-mq3-client-ui-shared-ml-1245998727"></a>
 ### Menu_New
@@ -3501,7 +3501,7 @@ Parses and appends a menu unless MAX_MENUS has been reached or the source is mal
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `Menu_New`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1355)
 
 <a id="function-function-mq3-client-ui-shared-menu-orbititembyname-function-menu-orbititembyname-value-name-x-y-cx-cy-time-src-mq3-client-ui-shared-ml-280419397"></a>
 ### Menu_OrbitItemByName
@@ -3523,7 +3523,7 @@ Calls `mq3.client.ui_shared.same`, `mq3.client.ui_shared.Item_UpdatePosition` fr
 | `time` | `dynamic` | — | Value assigned to `child.window.offsetTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L840)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L840)
 
 <a id="function-function-mq3-client-ui-shared-menu-overactiveitem-function-menu-overactiveitem-value-x-y-src-mq3-client-ui-shared-ml-464577816"></a>
 ### Menu_OverActiveItem
@@ -3541,7 +3541,7 @@ Computes `Menu_HitTest(value,x,y) is not void` for UI shared `Menu_OverActiveIte
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Menu_OverActiveItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L735)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L735)
 
 <a id="function-function-mq3-client-ui-shared-menu-paint-function-menu-paint-dc-value-forcepaint-src-mq3-client-ui-shared-ml-1007484301"></a>
 ### Menu_Paint
@@ -3559,7 +3559,7 @@ Calls `mq3.client.ui_shared.IsVisible`, `mq3.client.ui_shared.Window_Paint`, `mq
 | `forcePaint` | `dynamic` | — | Value used by `if not forcePaint and not IsVisible(value.window.flags) then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1157)
 
 <a id="function-function-mq3-client-ui-shared-menu-paintall-function-menu-paintall-dc-src-mq3-client-ui-shared-ml-960271719"></a>
 ### Menu_PaintAll
@@ -3575,7 +3575,7 @@ Calls `mq3.client.ui_shared.Menu_Paint` from UI shared `Menu_PaintAll`.
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1160)
 
 <a id="function-function-mq3-client-ui-shared-menu-parse-function-menu-parse-handle-value-src-mq3-client-ui-shared-ml-113959373"></a>
 ### Menu_Parse
@@ -3592,7 +3592,7 @@ Parses a menuDef block and its child items, applying supported properties and fi
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1351)
 
 <a id="function-function-mq3-client-ui-shared-menu-postparse-function-menu-postparse-value-src-mq3-client-ui-shared-ml-1012526267"></a>
 ### Menu_PostParse
@@ -3608,7 +3608,7 @@ Updates `value.window.rect` during UI shared `Menu_PostParse`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.window.rect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L677)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L677)
 
 <a id="function-function-mq3-client-ui-shared-menu-reset-function-menu-reset-dc-src-mq3-client-ui-shared-ml-2012079125"></a>
 ### Menu_Reset
@@ -3624,7 +3624,7 @@ Updates `dc.menus`, `dc.focus`, `dc.capture` during UI shared `Menu_Reset`.
 | `dc` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `dc.menus`, `dc.focus`, `dc.capture`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L925)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L925)
 
 <a id="function-function-mq3-client-ui-shared-menu-runclosescript-function-menu-runclosescript-dc-value-src-mq3-client-ui-shared-ml-1367755454"></a>
 ### Menu_RunCloseScript
@@ -3641,7 +3641,7 @@ Calls `mq3.client.ui_shared.item`, `mq3.client.ui_shared.Item_RunScript` from UI
 | `value` | `dynamic` | — | Record read through `value.onClose`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L901)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L901)
 
 <a id="function-function-mq3-client-ui-shared-menu-scrollfeeder-function-menu-scrollfeeder-dc-value-feeder-down-src-mq3-client-ui-shared-ml-11274723"></a>
 ### Menu_ScrollFeeder
@@ -3660,7 +3660,7 @@ Calls `mq3.client.ui_shared.Item_ListBox_HandleKey` from UI shared `Menu_ScrollF
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1266)
 
 <a id="function-function-mq3-client-ui-shared-menu-setfeederselection-function-menu-setfeederselection-dc-value-feeder-index-name-src-mq3-client-ui-shared-ml-967381764"></a>
 ### Menu_SetFeederSelection
@@ -3680,7 +3680,7 @@ Calls `mq3.client.ui_shared.same`, `mq3.client.ui_shared.emit` from UI shared `M
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1273)
 
 <a id="function-function-mq3-client-ui-shared-menu-setnextcursoritem-function-menu-setnextcursoritem-value-src-mq3-client-ui-shared-ml-1644874703"></a>
 ### Menu_SetNextCursorItem
@@ -3696,7 +3696,7 @@ Updates `value.cursorItem` during UI shared `Menu_SetNextCursorItem`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.cursorItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1205)
 
 <a id="function-function-mq3-client-ui-shared-menu-setprevcursoritem-function-menu-setprevcursoritem-value-src-mq3-client-ui-shared-ml-649778147"></a>
 ### Menu_SetPrevCursorItem
@@ -3712,7 +3712,7 @@ Keyboard, mouse and display capture.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.cursorItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1202)
 
 <a id="function-function-mq3-client-ui-shared-menu-setupkeywordhash-function-menu-setupkeywordhash-src-mq3-client-ui-shared-ml-95864214"></a>
 ### Menu_SetupKeywordHash
@@ -3724,7 +3724,7 @@ function Menu_SetupKeywordHash()
 Adapts `mq3.client.ui_shared.menuKeywords` to UI shared `Menu_SetupKeywordHash`, returning its result for `no arguments`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1289)
 
 <a id="function-function-mq3-client-ui-shared-menu-showitembyname-function-menu-showitembyname-value-name-show-src-mq3-client-ui-shared-ml-826327681"></a>
 ### Menu_ShowItemByName
@@ -3742,7 +3742,7 @@ Calls `mq3.client.ui_shared.same` from UI shared `Menu_ShowItemByName`.
 | `show` | `dynamic` | — | Value used by `for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then if show then child.window.flags=child.wind...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L778)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L778)
 
 <a id="function-function-mq3-client-ui-shared-menu-transitionitembyname-function-menu-transitionitembyname-value-name-fromrect-torect-time-amount-src-mq3-client-ui-shared-ml-1563927458"></a>
 ### Menu_TransitionItemByName
@@ -3763,7 +3763,7 @@ Calls `mq3.client.ui_shared.same`, `mq3.client.ui_shared.rect`, `mq3.client.ui_s
 | `amount` | `dynamic` | — | Value tested by `amount==0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L826)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L826)
 
 <a id="function-function-mq3-client-ui-shared-menu-updateposition-function-menu-updateposition-value-src-mq3-client-ui-shared-ml-786867687"></a>
 ### Menu_UpdatePosition
@@ -3779,7 +3779,7 @@ Calls `mq3.client.ui_shared.Item_UpdatePosition` from UI shared `Menu_UpdatePosi
 | `value` | `dynamic` | — | Record read through `value.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L674)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L674)
 
 <a id="function-function-mq3-client-ui-shared-menukeywords-function-menukeywords-src-mq3-client-ui-shared-ml-184041358"></a>
 ### menuKeywords
@@ -3791,7 +3791,7 @@ function menuKeywords()
 Provides the menu keywords table used by UI shared.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1347)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1347)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-backcolor-function-menuparse-backcolor-value-handle-src-mq3-client-ui-shared-ml-447069075"></a>
 ### MenuParse_backcolor
@@ -3808,7 +3808,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_backcolor`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1677)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1677)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-background-function-menuparse-background-value-handle-src-mq3-client-ui-shared-ml-1914331233"></a>
 ### MenuParse_background
@@ -3825,7 +3825,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_background`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1701)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1701)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-border-function-menuparse-border-value-handle-src-mq3-client-ui-shared-ml-2031599517"></a>
 ### MenuParse_border
@@ -3842,7 +3842,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_border`, returni
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1669)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1669)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-bordercolor-function-menuparse-bordercolor-value-handle-src-mq3-client-ui-shared-ml-741626721"></a>
 ### MenuParse_bordercolor
@@ -3859,7 +3859,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_bordercolor`, re
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1685)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1685)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-bordersize-function-menuparse-bordersize-value-handle-src-mq3-client-ui-shared-ml-1008170253"></a>
 ### MenuParse_borderSize
@@ -3876,7 +3876,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_borderSize`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1673)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1673)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-cinematic-function-menuparse-cinematic-value-handle-src-mq3-client-ui-shared-ml-800784753"></a>
 ### MenuParse_cinematic
@@ -3893,7 +3893,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_cinematic`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1705)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1705)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-disablecolor-function-menuparse-disablecolor-value-handle-src-mq3-client-ui-shared-ml-355065029"></a>
 ### MenuParse_disablecolor
@@ -3910,7 +3910,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_disablecolor`, r
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1693)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1693)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-fadeamount-function-menuparse-fadeamount-value-handle-src-mq3-client-ui-shared-ml-247809773"></a>
 ### MenuParse_fadeAmount
@@ -3927,7 +3927,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_fadeAmount`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1733)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1733)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-fadeclamp-function-menuparse-fadeclamp-value-handle-src-mq3-client-ui-shared-ml-584872305"></a>
 ### MenuParse_fadeClamp
@@ -3944,7 +3944,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_fadeClamp`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1729)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1729)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-fadecycle-function-menuparse-fadecycle-value-handle-src-mq3-client-ui-shared-ml-356174711"></a>
 ### MenuParse_fadeCycle
@@ -3961,7 +3961,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_fadeCycle`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1737)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1737)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-focuscolor-function-menuparse-focuscolor-value-handle-src-mq3-client-ui-shared-ml-1323773"></a>
 ### MenuParse_focuscolor
@@ -3978,7 +3978,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_focuscolor`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1689)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1689)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-font-function-menuparse-font-value-handle-src-mq3-client-ui-shared-ml-168048881"></a>
 ### MenuParse_font
@@ -3995,7 +3995,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_font`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1633)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1633)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-forecolor-function-menuparse-forecolor-value-handle-src-mq3-client-ui-shared-ml-1407130673"></a>
 ### MenuParse_forecolor
@@ -4012,7 +4012,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_forecolor`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1681)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1681)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-fullscreen-function-menuparse-fullscreen-value-handle-src-mq3-client-ui-shared-ml-1314801761"></a>
 ### MenuParse_fullscreen
@@ -4029,7 +4029,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_fullscreen`, ret
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1641)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1641)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-itemdef-function-menuparse-itemdef-value-handle-src-mq3-client-ui-shared-ml-203377791"></a>
 ### MenuParse_itemDef
@@ -4046,7 +4046,7 @@ Updates `value.items` during UI shared `MenuParse_itemDef`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `MenuParse_itemDef`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1741)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1741)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-name-function-menuparse-name-value-handle-src-mq3-client-ui-shared-ml-1099027001"></a>
 ### MenuParse_name
@@ -4063,7 +4063,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_name`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1637)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1637)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-onclose-function-menuparse-onclose-value-handle-src-mq3-client-ui-shared-ml-1914959869"></a>
 ### MenuParse_onClose
@@ -4080,7 +4080,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_onClose`, return
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1661)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1661)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-onesc-function-menuparse-onesc-value-handle-src-mq3-client-ui-shared-ml-1134661711"></a>
 ### MenuParse_onESC
@@ -4097,7 +4097,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_onESC`, returnin
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1665)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1665)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-onopen-function-menuparse-onopen-value-handle-src-mq3-client-ui-shared-ml-1309051617"></a>
 ### MenuParse_onOpen
@@ -4114,7 +4114,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_onOpen`, returni
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1657)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1657)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-outlinecolor-function-menuparse-outlinecolor-value-handle-src-mq3-client-ui-shared-ml-526445233"></a>
 ### MenuParse_outlinecolor
@@ -4131,7 +4131,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_outlinecolor`, r
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1697)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1697)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-outofbounds-function-menuparse-outofbounds-value-handle-src-mq3-client-ui-shared-ml-1453626239"></a>
 ### MenuParse_outOfBounds
@@ -4148,7 +4148,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_outOfBounds`, re
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1721)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1721)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-ownerdraw-function-menuparse-ownerdraw-value-handle-src-mq3-client-ui-shared-ml-1597756081"></a>
 ### MenuParse_ownerdraw
@@ -4165,7 +4165,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_ownerdraw`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1713)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1713)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-ownerdrawflag-function-menuparse-ownerdrawflag-value-handle-src-mq3-client-ui-shared-ml-99977689"></a>
 ### MenuParse_ownerdrawFlag
@@ -4182,7 +4182,7 @@ Updates `value.ownerDrawFlags` during UI shared `MenuParse_ownerdrawFlag`.
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `MenuParse_ownerdrawFlag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1709)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1709)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-popup-function-menuparse-popup-value-handle-src-mq3-client-ui-shared-ml-2138620787"></a>
 ### MenuParse_popup
@@ -4199,7 +4199,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_popup`, returnin
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1717)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1717)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-rect-function-menuparse-rect-value-handle-src-mq3-client-ui-shared-ml-962571909"></a>
 ### MenuParse_rect
@@ -4216,7 +4216,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_rect`, returning
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1645)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1645)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-soundloop-function-menuparse-soundloop-value-handle-src-mq3-client-ui-shared-ml-1519411929"></a>
 ### MenuParse_soundLoop
@@ -4233,7 +4233,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_soundLoop`, retu
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1725)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1725)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-style-function-menuparse-style-value-handle-src-mq3-client-ui-shared-ml-856592457"></a>
 ### MenuParse_style
@@ -4250,7 +4250,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_style`, returnin
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1649)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1649)
 
 <a id="function-function-mq3-client-ui-shared-menuparse-visible-function-menuparse-visible-value-handle-src-mq3-client-ui-shared-ml-822144439"></a>
 ### MenuParse_visible
@@ -4267,7 +4267,7 @@ Adapts `mq3.client.ui_shared.parseMenu` to UI shared `MenuParse_visible`, return
 | `handle` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.parseMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1653)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1653)
 
 <a id="function-function-mq3-client-ui-shared-menuparsekind-function-menuparsekind-value-handle-key-kind-src-mq3-client-ui-shared-ml-539905710"></a>
 ### menuParseKind
@@ -4286,7 +4286,7 @@ Updates `value.window.rect`, `value.window.backColor`, `value.window.foreColor`,
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1345)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1345)
 
 <a id="function-function-mq3-client-ui-shared-menus-activate-function-menus-activate-dc-value-src-mq3-client-ui-shared-ml-1310567838"></a>
 ### Menus_Activate
@@ -4303,7 +4303,7 @@ Updates `value.window.flags`, `dc.focus` during UI shared `Menus_Activate`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.window.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L912)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L912)
 
 <a id="function-function-mq3-client-ui-shared-menus-activatebyname-function-menus-activatebyname-dc-name-src-mq3-client-ui-shared-ml-312325420"></a>
 ### Menus_ActivateByName
@@ -4320,7 +4320,7 @@ Calls `mq3.client.ui_shared.Menus_FindByName`, `mq3.client.ui_shared.Menus_Activ
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L916)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L916)
 
 <a id="function-function-mq3-client-ui-shared-menus-anyfullscreenvisible-function-menus-anyfullscreenvisible-dc-src-mq3-client-ui-shared-ml-857006585"></a>
 ### Menus_AnyFullScreenVisible
@@ -4336,7 +4336,7 @@ Calls `mq3.client.ui_shared.IsVisible` from UI shared `Menus_AnyFullScreenVisibl
 | `dc` | `dynamic` | — | UI display context containing menu focus, cursor, assets and queued engine actions. Record read through `dc.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L919)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L919)
 
 <a id="function-function-mq3-client-ui-shared-menus-closeall-function-menus-closeall-dc-src-mq3-client-ui-shared-ml-303944097"></a>
 ### Menus_CloseAll
@@ -4352,7 +4352,7 @@ Updates `dc.focus` during UI shared `Menus_CloseAll`.
 | `dc` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `dc.focus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L908)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L908)
 
 <a id="function-function-mq3-client-ui-shared-menus-closebyname-function-menus-closebyname-dc-name-src-mq3-client-ui-shared-ml-1895165850"></a>
 ### Menus_CloseByName
@@ -4369,7 +4369,7 @@ Updates `dc.focus` during UI shared `Menus_CloseByName`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L905)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L905)
 
 <a id="function-function-mq3-client-ui-shared-menus-findbyname-function-menus-findbyname-dc-name-src-mq3-client-ui-shared-ml-440048276"></a>
 ### Menus_FindByName
@@ -4386,7 +4386,7 @@ Finds a display menu by case-insensitive window name, returning void if it is ab
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L702)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L702)
 
 <a id="function-function-mq3-client-ui-shared-menus-handleoobclick-function-menus-handleoobclick-dc-value-key-down-src-mq3-client-ui-shared-ml-1160875229"></a>
 ### Menus_HandleOOBClick
@@ -4405,7 +4405,7 @@ Calls `mq3.client.ui_shared.Menus_CloseByName` from UI shared `Menus_HandleOOBCl
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1234)
 
 <a id="function-function-mq3-client-ui-shared-menus-openbyname-function-menus-openbyname-dc-name-src-mq3-client-ui-shared-ml-1414316996"></a>
 ### Menus_OpenByName
@@ -4422,7 +4422,7 @@ Computes `Menus_ActivateByName(dc,name) is not void` for UI shared `Menus_OpenBy
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L897)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L897)
 
 <a id="function-function-mq3-client-ui-shared-menus-showbyname-function-menus-showbyname-dc-name-src-mq3-client-ui-shared-ml-1947413548"></a>
 ### Menus_ShowByName
@@ -4439,7 +4439,7 @@ Menu lifecycle.
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI shared resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L893)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L893)
 
 <a id="function-function-mq3-client-ui-shared-movecomponent-function-movecomponent-current-target-step-src-mq3-client-ui-shared-ml-277971346"></a>
 ### moveComponent
@@ -4457,7 +4457,7 @@ Evaluates UI shared `moveComponent` and returns `[current,1]`, `[target,1]`, `[c
 | `step` | `dynamic` | — | Value used by `if current<target then current=current+step`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1135)
 
 <a id="function-function-mq3-client-ui-shared-next-function-next-source-src-mq3-client-ui-shared-ml-1027390733"></a>
 ### next
@@ -4473,7 +4473,7 @@ Adapts `mq3.shared.parser.parseExt` to UI shared `next`, returning its result fo
 | `source` | `dynamic` | — | Record read through `source.scan`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L503)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L503)
 
 <a id="function-function-mq3-client-ui-shared-painttext-function-painttext-dc-value-text-kind-src-mq3-client-ui-shared-ml-404212227"></a>
 ### paintText
@@ -4492,7 +4492,7 @@ Calls `mq3.client.ui_shared.Item_TextColor`, `mq3.client.ui_shared.Item_SetTextE
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1082)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1082)
 
 <a id="function-function-mq3-client-ui-shared-pairget-function-pairget-pairs-key-otherwise-src-mq3-client-ui-shared-ml-1088856174"></a>
 ### pairGet
@@ -4510,7 +4510,7 @@ Looks up a case-insensitive key in a pair list, returning the supplied fallback 
 | `otherwise` | `dynamic` | — | Value used by `return otherwise`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L495)
 
 <a id="function-function-mq3-client-ui-shared-pairset-function-pairset-pairs-key-value-src-mq3-client-ui-shared-ml-211438399"></a>
 ### pairSet
@@ -4528,7 +4528,7 @@ Returns a pair list with matching case-insensitive keys replaced, or appends the
 | `value` | `dynamic` | — | Value used by `for each pair in pairs if same(pair[0],key) then result=result+[[key,value]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L500)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L500)
 
 <a id="function-function-mq3-client-ui-shared-parsecvargate-function-parsecvargate-value-handle-key-flag-src-mq3-client-ui-shared-ml-958948090"></a>
 ### parseCvarGate
@@ -4547,7 +4547,7 @@ Updates `value.enableCvar`, `value.cvarFlags` during UI shared `parseCvarGate`.
 | `flag` | `dynamic` | — | Value used by `value.cvarFlags=value.cvarFlags\|flag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1612)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1612)
 
 <a id="function-function-mq3-client-ui-shared-parseitem-function-parseitem-value-handle-key-kind-src-mq3-client-ui-shared-ml-462598102"></a>
 ### parseItem
@@ -4566,7 +4566,7 @@ Parse-entry wrappers retain the original public symbol surface.
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.ui_shared.itemParseKind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1362)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1362)
 
 <a id="function-function-mq3-client-ui-shared-parselist-function-parselist-value-handle-floatvalues-src-mq3-client-ui-shared-ml-1354686791"></a>
 ### parseList
@@ -4584,7 +4584,7 @@ Updates `value.typeData.settings`, `value.typeData.values` during UI shared `par
 | `floatValues` | `dynamic` | — | Value used by `if floatValues then value.typeData.values=value.typeData.values+[numbers.atof(raw)] else value.typeData.values=value.typeData.values+[raw] end...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1590)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1590)
 
 <a id="function-function-mq3-client-ui-shared-parsemenu-function-parsemenu-value-handle-key-kind-src-mq3-client-ui-shared-ml-1177033262"></a>
 ### parseMenu
@@ -4603,7 +4603,7 @@ Adapts `mq3.client.ui_shared.menuParseKind` to UI shared `parseMenu`, returning 
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.ui_shared.menuParseKind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1368)
 
 <a id="function-function-mq3-client-ui-shared-pc-color-parse-function-pc-color-parse-handle-src-mq3-client-ui-shared-ml-1082724388"></a>
 ### PC_Color_Parse
@@ -4619,7 +4619,7 @@ Adapts `mq3.client.ui_shared.Color_Parse` to UI shared `PC_Color_Parse`, returni
 | `handle` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.Color_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L557)
 
 <a id="function-function-mq3-client-ui-shared-pc-float-parse-function-pc-float-parse-handle-src-mq3-client-ui-shared-ml-1017356464"></a>
 ### PC_Float_Parse
@@ -4635,7 +4635,7 @@ Adapts `mq3.client.ui_shared.Float_Parse` to UI shared `PC_Float_Parse`, returni
 | `handle` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.Float_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L551)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L551)
 
 <a id="function-function-mq3-client-ui-shared-pc-int-parse-function-pc-int-parse-handle-src-mq3-client-ui-shared-ml-740338820"></a>
 ### PC_Int_Parse
@@ -4651,7 +4651,7 @@ Adapts `mq3.client.ui_shared.Int_Parse` to UI shared `PC_Int_Parse`, returning i
 | `handle` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.Int_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L554)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L554)
 
 <a id="function-function-mq3-client-ui-shared-pc-rect-parse-function-pc-rect-parse-handle-src-mq3-client-ui-shared-ml-1950185848"></a>
 ### PC_Rect_Parse
@@ -4667,7 +4667,7 @@ Adapts `mq3.client.ui_shared.Rect_Parse` to UI shared `PC_Rect_Parse`, returning
 | `handle` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.Rect_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L560)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L560)
 
 <a id="function-function-mq3-client-ui-shared-pc-script-parse-function-pc-script-parse-handle-src-mq3-client-ui-shared-ml-757369126"></a>
 ### PC_Script_Parse
@@ -4683,7 +4683,7 @@ Reads a brace-delimited UI script, preserving nested brace groups and returning 
 | `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `PC_Script_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L566)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L566)
 
 <a id="function-function-mq3-client-ui-shared-pc-sourceerror-function-pc-sourceerror-handle-message-src-mq3-client-ui-shared-ml-1029010795"></a>
 ### PC_SourceError
@@ -4700,7 +4700,7 @@ Updates `handle.errors` during UI shared `PC_SourceError`.
 | `message` | `dynamic` | — | Value used by `handle.errors=handle.errors+[handle.name+": "+message]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L574)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L574)
 
 <a id="function-function-mq3-client-ui-shared-pc-sourcewarning-function-pc-sourcewarning-handle-message-src-mq3-client-ui-shared-ml-176254687"></a>
 ### PC_SourceWarning
@@ -4717,7 +4717,7 @@ Updates `handle.warnings` during UI shared `PC_SourceWarning`.
 | `message` | `dynamic` | — | Value used by `handle.warnings=handle.warnings+[handle.name+": "+message]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L570)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L570)
 
 <a id="function-function-mq3-client-ui-shared-pc-string-parse-function-pc-string-parse-handle-src-mq3-client-ui-shared-ml-360669846"></a>
 ### PC_String_Parse
@@ -4733,7 +4733,7 @@ Adapts `mq3.client.ui_shared.String_Parse` to UI shared `PC_String_Parse`, retur
 | `handle` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.String_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L563)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L563)
 
 <a id="function-function-mq3-client-ui-shared-putitem-function-putitem-value-key-data-src-mq3-client-ui-shared-ml-940877522"></a>
 ### putItem
@@ -4751,7 +4751,7 @@ Updates `value.properties`, `value.window.name`, `value.window.group`, `value.te
 | `data` | `dynamic` | — | Value assigned to `value.window.name`, `value.window.group`, `value.text`, `value.type` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1294)
 
 <a id="function-function-mq3-client-ui-shared-putmenu-function-putmenu-value-key-data-src-mq3-client-ui-shared-ml-461218470"></a>
 ### putMenu
@@ -4769,7 +4769,7 @@ Updates `value.properties`, `value.window.name`, `value.fullScreen`, `value.wind
 | `data` | `dynamic` | — | Value assigned to `value.window.name`, `value.fullScreen`, `value.window.style`, `value.onOpen` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1339)
 
 <a id="function-function-mq3-client-ui-shared-rect-function-rect-x-y-w-h-src-mq3-client-ui-shared-ml-1362310986"></a>
 ### rect
@@ -4788,7 +4788,7 @@ Creates a `mq3.client.ui_shared.Rect` record. Assigns `x` from `x`, `y` from `y`
 | `h` | `dynamic` | — | Value used to initialize `Rect.h`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L445)
 
 - [mq3.client.ui_shared.Rect](Type-mq3-client-ui-shared-rect-1995140079.md) — struct
 <a id="function-function-mq3-client-ui-shared-rect-containspoint-function-rect-containspoint-value-x-y-src-mq3-client-ui-shared-ml-1775096458"></a>
@@ -4807,7 +4807,7 @@ Tests whether a point lies strictly inside the rectangle; points on any edge are
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `Rect_ContainsPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L586)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L586)
 
 <a id="function-function-mq3-client-ui-shared-rect-parse-function-rect-parse-source-src-mq3-client-ui-shared-ml-733439697"></a>
 ### Rect_Parse
@@ -4823,7 +4823,7 @@ Calls `mq3.client.ui_shared.next`, `mq3.compat.textnumbers.atof`, `mq3.client.ui
 | `source` | `dynamic` | — | Value used by `for i=0 to 3 token=next(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L545)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L545)
 
 <a id="function-function-mq3-client-ui-shared-rect-towindowcoords-function-rect-towindowcoords-value-window-src-mq3-client-ui-shared-ml-1719557759"></a>
 ### Rect_ToWindowCoords
@@ -4840,7 +4840,7 @@ Offsets a rectangle in place by its containing window's X/Y origin.
 | `window` | `dynamic` | — | Record read through `window.rect.x`, `window.rect.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L597)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L597)
 
 <a id="function-function-mq3-client-ui-shared-same-function-same-a-b-src-mq3-client-ui-shared-ml-243397819"></a>
 ### same
@@ -4857,7 +4857,7 @@ Compares two UI shared names using ASCII case-insensitive equality.
 | `b` | `dynamic` | — | Argument 2 of `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L482)
 
 <a id="function-function-mq3-client-ui-shared-script-close-function-script-close-dc-value-args-src-mq3-client-ui-shared-ml-269363745"></a>
 ### Script_Close
@@ -4875,7 +4875,7 @@ Calls `mq3.client.ui_shared.Menus_CloseByName`, `mq3.client.ui_shared.scriptValu
 | `args` | `dynamic` | — | Value used by `Menus_CloseByName(dc,scriptValue(args))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L818)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L818)
 
 <a id="function-function-mq3-client-ui-shared-script-conditionalopen-function-script-conditionalopen-dc-value-args-src-mq3-client-ui-shared-ml-1789939193"></a>
 ### Script_ConditionalOpen
@@ -4893,7 +4893,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.same`, `mq3.clie
 | `args` | `dynamic` | — | Value used by `cvar=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L813)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L813)
 
 <a id="function-function-mq3-client-ui-shared-script-exec-function-script-exec-dc-value-args-src-mq3-client-ui-shared-ml-799721799"></a>
 ### Script_Exec
@@ -4911,7 +4911,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.emit` from UI sh
 | `args` | `dynamic` | — | Value used by `command=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L870)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L870)
 
 <a id="function-function-mq3-client-ui-shared-script-fadein-function-script-fadein-dc-value-args-src-mq3-client-ui-shared-ml-814785479"></a>
 ### Script_FadeIn
@@ -4929,7 +4929,7 @@ Adapts `mq3.client.ui_shared.Menu_FadeItemByName` to UI shared `Script_FadeIn`, 
 | `args` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Menu_FadeItemByName`; passed as `scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L798)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L798)
 
 <a id="function-function-mq3-client-ui-shared-script-fadeout-function-script-fadeout-dc-value-args-src-mq3-client-ui-shared-ml-725848561"></a>
 ### Script_FadeOut
@@ -4947,7 +4947,7 @@ Adapts `mq3.client.ui_shared.Menu_FadeItemByName` to UI shared `Script_FadeOut`,
 | `args` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Menu_FadeItemByName`; passed as `scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L803)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L803)
 
 <a id="function-function-mq3-client-ui-shared-script-hide-function-script-hide-dc-value-args-src-mq3-client-ui-shared-ml-2041907497"></a>
 ### Script_Hide
@@ -4965,7 +4965,7 @@ Adapts `mq3.client.ui_shared.Menu_ShowItemByName` to UI shared `Script_Hide`, re
 | `args` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Menu_ShowItemByName`; passed as `scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L793)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L793)
 
 <a id="function-function-mq3-client-ui-shared-script-open-function-script-open-dc-value-args-src-mq3-client-ui-shared-ml-1262549697"></a>
 ### Script_Open
@@ -4983,7 +4983,7 @@ Calls `mq3.client.ui_shared.Menus_OpenByName`, `mq3.client.ui_shared.scriptValue
 | `args` | `dynamic` | — | Value used by `Menus_OpenByName(dc,scriptValue(args))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L808)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L808)
 
 <a id="function-function-mq3-client-ui-shared-script-orbit-function-script-orbit-dc-value-args-src-mq3-client-ui-shared-ml-848533553"></a>
 ### Script_Orbit
@@ -5001,7 +5001,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.Float_Parse`, `m
 | `args` | `dynamic` | — | Value used by `name=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L845)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L845)
 
 <a id="function-function-mq3-client-ui-shared-script-play-function-script-play-dc-value-args-src-mq3-client-ui-shared-ml-1561009873"></a>
 ### Script_Play
@@ -5019,7 +5019,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.emit` from UI sh
 | `args` | `dynamic` | — | Value used by `sound=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L875)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L875)
 
 <a id="function-function-mq3-client-ui-shared-script-playlooped-function-script-playlooped-dc-value-args-src-mq3-client-ui-shared-ml-477911583"></a>
 ### Script_playLooped
@@ -5037,7 +5037,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.emit` from UI sh
 | `args` | `dynamic` | — | Value used by `sound=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L880)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L880)
 
 <a id="function-function-mq3-client-ui-shared-script-setasset-function-script-setasset-dc-value-args-src-mq3-client-ui-shared-ml-756560905"></a>
 ### Script_SetAsset
@@ -5055,7 +5055,7 @@ Updates `value.window.background` during UI shared `Script_SetAsset`.
 | `args` | `dynamic` | — | Value used by `path=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L758)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L758)
 
 <a id="function-function-mq3-client-ui-shared-script-setbackground-function-script-setbackground-dc-value-args-src-mq3-client-ui-shared-ml-204599461"></a>
 ### Script_SetBackground
@@ -5073,7 +5073,7 @@ Adapts `mq3.client.ui_shared.Script_SetAsset` to UI shared `Script_SetBackground
 | `args` | `dynamic` | — | Argument 3 of `mq3.client.ui_shared.Script_SetAsset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L763)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L763)
 
 <a id="function-function-mq3-client-ui-shared-script-setcolor-function-script-setcolor-dc-value-args-src-mq3-client-ui-shared-ml-42536475"></a>
 ### Script_SetColor
@@ -5091,7 +5091,7 @@ Updates `value.window.backColor`, `value.window.foreColor`, `value.window.flags`
 | `args` | `dynamic` | — | Value used by `target=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L753)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L753)
 
 <a id="function-function-mq3-client-ui-shared-script-setcvar-function-script-setcvar-dc-value-args-src-mq3-client-ui-shared-ml-1934108297"></a>
 ### Script_SetCvar
@@ -5109,7 +5109,7 @@ Updates `dc.cvars` during UI shared `Script_SetCvar`.
 | `args` | `dynamic` | — | Value used by `name=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L865)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L865)
 
 <a id="function-function-mq3-client-ui-shared-script-setfocus-function-script-setfocus-dc-value-args-src-mq3-client-ui-shared-ml-386012945"></a>
 ### Script_SetFocus
@@ -5127,7 +5127,7 @@ Calls `mq3.client.ui_shared.Menu_FindItemByName`, `mq3.client.ui_shared.scriptVa
 | `args` | `dynamic` | — | Value used by `target=Menu_FindItemByName(value.parent,scriptValue(args))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L850)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L850)
 
 <a id="function-function-mq3-client-ui-shared-script-setitemcolor-function-script-setitemcolor-dc-value-args-src-mq3-client-ui-shared-ml-1767521797"></a>
 ### Script_SetItemColor
@@ -5145,7 +5145,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.Menu_FindItemByN
 | `args` | `dynamic` | — | Value used by `name=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L773)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L773)
 
 <a id="function-function-mq3-client-ui-shared-script-setplayerhead-function-script-setplayerhead-dc-value-args-src-mq3-client-ui-shared-ml-921709761"></a>
 ### Script_SetPlayerHead
@@ -5163,7 +5163,7 @@ Updates `dc.cvars` during UI shared `Script_SetPlayerHead`.
 | `args` | `dynamic` | — | Value used by `head=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L860)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L860)
 
 <a id="function-function-mq3-client-ui-shared-script-setplayermodel-function-script-setplayermodel-dc-value-args-src-mq3-client-ui-shared-ml-1502511709"></a>
 ### Script_SetPlayerModel
@@ -5181,7 +5181,7 @@ Updates `dc.cvars` during UI shared `Script_SetPlayerModel`.
 | `args` | `dynamic` | — | Value used by `model=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L855)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L855)
 
 <a id="function-function-mq3-client-ui-shared-script-setteamcolor-function-script-setteamcolor-dc-value-args-src-mq3-client-ui-shared-ml-1373914201"></a>
 ### Script_SetTeamColor
@@ -5199,7 +5199,7 @@ Updates `value.window.backColor` during UI shared `Script_SetTeamColor`.
 | `args` | `dynamic` | — | Accepted for compatibility with `Script_SetTeamColor`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L768)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L768)
 
 <a id="function-function-mq3-client-ui-shared-script-show-function-script-show-dc-value-args-src-mq3-client-ui-shared-ml-1399271031"></a>
 ### Script_Show
@@ -5217,7 +5217,7 @@ Adapts `mq3.client.ui_shared.Menu_ShowItemByName` to UI shared `Script_Show`, re
 | `args` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Menu_ShowItemByName`; passed as `scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L788)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L788)
 
 <a id="function-function-mq3-client-ui-shared-script-transition-function-script-transition-dc-value-args-src-mq3-client-ui-shared-ml-679360015"></a>
 ### Script_Transition
@@ -5235,7 +5235,7 @@ Calls `mq3.client.ui_shared.scriptValue`, `mq3.client.ui_shared.Rect_Parse`, `mq
 | `args` | `dynamic` | — | Value used by `name=scriptValue(args)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L831)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L831)
 
 <a id="function-function-mq3-client-ui-shared-scriptargs-function-scriptargs-text-src-mq3-client-ui-shared-ml-1642464995"></a>
 ### scriptArgs
@@ -5251,7 +5251,7 @@ Scripts.  Tokenization and command dispatch mirror the original command table.
 | `text` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.source`; passed as `"{ "+text+" }"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L745)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L745)
 
 <a id="function-function-mq3-client-ui-shared-scriptvalue-function-scriptvalue-args-src-mq3-client-ui-shared-ml-705442445"></a>
 ### scriptValue
@@ -5267,7 +5267,7 @@ Adapts `mq3.client.ui_shared.String_Parse` to UI shared `scriptValue`, returning
 | `args` | `dynamic` | — | Argument 1 of `mq3.client.ui_shared.String_Parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L748)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L748)
 
 <a id="function-function-mq3-client-ui-shared-scroll-listbox-autofunc-function-scroll-listbox-autofunc-dc-value-src-mq3-client-ui-shared-ml-816225324"></a>
 ### Scroll_ListBox_AutoFunc
@@ -5284,7 +5284,7 @@ Adapts `mq3.client.ui_shared.Item_ListBox_HandleKey` to UI shared `Scroll_ListBo
 | `value` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Item_ListBox_HandleKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1063)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1063)
 
 <a id="function-function-mq3-client-ui-shared-scroll-listbox-thumbfunc-function-scroll-listbox-thumbfunc-dc-value-src-mq3-client-ui-shared-ml-1884993950"></a>
 ### Scroll_ListBox_ThumbFunc
@@ -5301,7 +5301,7 @@ Updates `value.typeData.startPos` during UI shared `Scroll_ListBox_ThumbFunc`.
 | `value` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `value.typeData.startPos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1067)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1067)
 
 <a id="function-function-mq3-client-ui-shared-scroll-slider-thumbfunc-function-scroll-slider-thumbfunc-dc-value-src-mq3-client-ui-shared-ml-1761504174"></a>
 ### Scroll_Slider_ThumbFunc
@@ -5318,7 +5318,7 @@ Adapts `mq3.client.ui_shared.Item_Slider_HandleKey` to UI shared `Scroll_Slider_
 | `value` | `dynamic` | — | Argument 2 of `mq3.client.ui_shared.Item_Slider_HandleKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1071)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1071)
 
 <a id="constant-constant-mq3-client-ui-shared-scrollbar-size-const-scrollbar-size-16-src-mq3-client-ui-shared-ml-849433844"></a>
 ### SCROLLBAR_SIZE
@@ -5330,7 +5330,7 @@ const SCROLLBAR_SIZE = 16
 Width or height of the menu scrollbar controls in UI layout coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L134)
 
 <a id="function-function-mq3-client-ui-shared-source-function-source-text-name-src-mq3-client-ui-shared-ml-380555870"></a>
 ### source
@@ -5347,7 +5347,7 @@ Creates a `mq3.client.ui_shared.Source` record. Assigns `name` from `name`.
 | `name` | `dynamic` | — | Value used to initialize `Source.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L463)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L463)
 
 - [mq3.client.ui_shared.Source](Type-mq3-client-ui-shared-source-600485040.md) — struct
 <a id="function-function-mq3-client-ui-shared-string-alloc-function-string-alloc-state-value-src-mq3-client-ui-shared-ml-1201815704"></a>
@@ -5365,7 +5365,7 @@ Interns a nonempty UI string, reusing an existing entry or returning an empty st
 | `value` | `dynamic` | — | String to intern; its UTF-8 byte length plus the terminator is charged to the UI arena. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L521)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L521)
 
 <a id="function-function-mq3-client-ui-shared-string-init-function-string-init-state-src-mq3-client-ui-shared-ml-209605243"></a>
 ### String_Init
@@ -5381,7 +5381,7 @@ Updates `state.memory.strings` during UI shared `String_Init`.
 | `state` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `state.memory.strings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L527)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L527)
 
 <a id="function-function-mq3-client-ui-shared-string-parse-function-string-parse-source-src-mq3-client-ui-shared-ml-798225157"></a>
 ### String_Parse
@@ -5397,7 +5397,7 @@ Calls `mq3.client.ui_shared.next` from UI shared `String_Parse`. The final path 
 | `source` | `dynamic` | — | Value used by `token=next(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L548)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L548)
 
 <a id="function-function-mq3-client-ui-shared-string-report-function-string-report-state-src-mq3-client-ui-shared-ml-693613811"></a>
 ### String_Report
@@ -5413,7 +5413,7 @@ Returns the UI string count, consumed arena bytes and remaining arena bytes.
 | `state` | `dynamic` | — | Record read through `state.memory.strings`, `state.memory.used`, `state.memory.capacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L524)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L524)
 
 <a id="function-function-mq3-client-ui-shared-structure-function-structure-name-size-fields-src-mq3-client-ui-shared-ml-1602652537"></a>
 ### structure
@@ -5431,7 +5431,7 @@ Builds the UI shared `structure` sequence from `[name,size,fields]`.
 | `fields` | `dynamic` | — | Value used by `return [name,size,fields]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L532)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L532)
 
 <a id="function-function-mq3-client-ui-shared-textpart-function-textpart-text-start-count-src-mq3-client-ui-shared-ml-153237310"></a>
 ### textPart
@@ -5449,7 +5449,7 @@ Calls `std.string.substr` from UI shared `textPart`. The final path returns `str
 | `count` | `dynamic` | — | Value tested by `count<=0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L1025)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L1025)
 
 <a id="function-function-mq3-client-ui-shared-towindowcoords-function-towindowcoords-point-window-src-mq3-client-ui-shared-ml-4300678"></a>
 ### ToWindowCoords
@@ -5466,7 +5466,7 @@ Adds the containing window's X/Y origin to a two-component local point.
 | `window` | `dynamic` | — | Record read through `window.rect.x`, `window.rect.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L593)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L593)
 
 <a id="function-function-mq3-client-ui-shared-typedata-function-typedata-src-mq3-client-ui-shared-ml-1572909954"></a>
 ### typeData
@@ -5478,7 +5478,7 @@ function typeData()
 Creates a `mq3.client.ui_shared.TypeData` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L455)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L455)
 
 - [mq3.client.ui_shared.TypeData](Type-mq3-client-ui-shared-typedata-1209231461.md) — struct
 <a id="function-function-mq3-client-ui-shared-ui-alloc-function-ui-alloc-state-size-src-mq3-client-ui-shared-ml-1099347784"></a>
@@ -5496,7 +5496,7 @@ UI memory and interned strings.
 | `size` | `dynamic` | — | Requested bytes; successful allocations advance the arena to a 16-byte aligned offset. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L508)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L508)
 
 <a id="function-function-mq3-client-ui-shared-ui-initmemory-function-ui-initmemory-state-src-mq3-client-ui-shared-ml-793057379"></a>
 ### UI_InitMemory
@@ -5512,7 +5512,7 @@ Resets UI arena accounting, interned strings and the out-of-memory flag.
 | `state` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `state.used`, `state.strings`, `state.outOfMemory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L511)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L511)
 
 <a id="function-function-mq3-client-ui-shared-ui-outofmemory-function-ui-outofmemory-state-src-mq3-client-ui-shared-ml-76328251"></a>
 ### UI_OutOfMemory
@@ -5528,7 +5528,7 @@ Reads `state.outOfMemory` for UI shared `UI_OutOfMemory`.
 | `state` | `dynamic` | — | Record read through `state.outOfMemory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L514)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L514)
 
 <a id="function-function-mq3-client-ui-shared-window-function-window-src-mq3-client-ui-shared-ml-849991354"></a>
 ### window
@@ -5540,7 +5540,7 @@ function window()
 Creates a `mq3.client.ui_shared.Window` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L453)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L453)
 
 - [mq3.client.ui_shared.Window](Type-mq3-client-ui-shared-window-307264949.md) — struct
 <a id="function-function-mq3-client-ui-shared-window-cachecontents-function-window-cachecontents-dc-w-src-mq3-client-ui-shared-ml-551801158"></a>
@@ -5558,7 +5558,7 @@ Updates `dc.assets` during UI shared `Window_CacheContents`.
 | `w` | `dynamic` | — | Record read through `w.background`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L650)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L650)
 
 <a id="function-function-mq3-client-ui-shared-window-closecinematic-function-window-closecinematic-dc-w-src-mq3-client-ui-shared-ml-1579220530"></a>
 ### Window_CloseCinematic
@@ -5575,7 +5575,7 @@ Updates `w.cinematic` during UI shared `Window_CloseCinematic`.
 | `w` | `dynamic` | — | Mutable UI shared record/storage; this routine assigns `w.cinematic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L646)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L646)
 
 <a id="constant-constant-mq3-client-ui-shared-window-decoration-const-window-decoration-16-src-mq3-client-ui-shared-ml-1921397066"></a>
 ### WINDOW_DECORATION
@@ -5587,7 +5587,7 @@ const WINDOW_DECORATION = 16
 Window-state flag used to treat the window as noninteractive decoration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-shared-window-fadingin-const-window-fadingin-64-src-mq3-client-ui-shared-ml-377281611"></a>
 ### WINDOW_FADINGIN
@@ -5599,7 +5599,7 @@ const WINDOW_FADINGIN = 64
 Window-state flag used to advance the window's fade-in animation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-shared-window-fadingout-const-window-fadingout-32-src-mq3-client-ui-shared-ml-1801246518"></a>
 ### WINDOW_FADINGOUT
@@ -5611,7 +5611,7 @@ const WINDOW_FADINGOUT = 32
 Window-state flag used to advance the window's fade-out animation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-shared-window-forecolorset-const-window-forecolorset-512-src-mq3-client-ui-shared-ml-212445999"></a>
 ### WINDOW_FORECOLORSET
@@ -5623,7 +5623,7 @@ const WINDOW_FORECOLORSET = 512
 Window-state flag used to retain the window's explicitly specified foreground color.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-shared-window-hasfocus-const-window-hasfocus-2-src-mq3-client-ui-shared-ml-846900785"></a>
 ### WINDOW_HASFOCUS
@@ -5635,7 +5635,7 @@ const WINDOW_HASFOCUS = 2
 Window-state flag used to record that the window owns keyboard focus.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-shared-window-horizontal-const-window-horizontal-1024-src-mq3-client-ui-shared-ml-771198182"></a>
 ### WINDOW_HORIZONTAL
@@ -5647,7 +5647,7 @@ const WINDOW_HORIZONTAL = 1024
 Window-state flag used to use horizontal layout or scrolling for the window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-shared-window-intransition-const-window-intransition-256-src-mq3-client-ui-shared-ml-1648824510"></a>
 ### WINDOW_INTRANSITION
@@ -5659,7 +5659,7 @@ const WINDOW_INTRANSITION = 256
 Window-state flag used to advance a rectangle transition for the window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-shared-window-mouseover-const-window-mouseover-1-src-mq3-client-ui-shared-ml-670890194"></a>
 ### WINDOW_MOUSEOVER
@@ -5671,7 +5671,7 @@ const WINDOW_MOUSEOVER = 1
 Window-state flag used to record that the pointer is inside the window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-shared-window-mouseovertext-const-window-mouseovertext-128-src-mq3-client-ui-shared-ml-945718514"></a>
 ### WINDOW_MOUSEOVERTEXT
@@ -5683,7 +5683,7 @@ const WINDOW_MOUSEOVERTEXT = 128
 Window-state flag used to record that the pointer is inside the text rectangle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-shared-window-orbiting-const-window-orbiting-65536-src-mq3-client-ui-shared-ml-1640851546"></a>
 ### WINDOW_ORBITING
@@ -5695,7 +5695,7 @@ const WINDOW_ORBITING = 65536
 Window-state flag used to advance the window's orbit animation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L34)
 
 <a id="function-function-mq3-client-ui-shared-window-paint-function-window-paint-dc-w-fadeamount-fadeclamp-fadecycle-src-mq3-client-ui-shared-ml-359981721"></a>
 ### Window_Paint
@@ -5715,7 +5715,7 @@ Updates `w.flags`, `w.alpha`, `w.nextTime` during UI shared `Window_Paint`.
 | `fadeCycle` | `dynamic` | — | Value used by `if (w.flags&(WINDOW_FADINGIN\|WINDOW_FADINGOUT))!=0 then faded=Fade(w.flags,w.alpha,fadeClamp,w.nextTime,fadeCycle,(w.flags&WINDOW_FADINGIN)!=0...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L642)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L642)
 
 <a id="constant-constant-mq3-client-ui-shared-window-visible-const-window-visible-4-src-mq3-client-ui-shared-ml-811605111"></a>
 ### WINDOW_VISIBLE
@@ -5727,4 +5727,4 @@ const WINDOW_VISIBLE = 4
 Window-state flag used to include the window in menu rendering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L14)

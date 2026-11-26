@@ -12,7 +12,7 @@ struct Scratch
 `Scratch` record for aas routing cache, containing `areaQueue`, `areaQueued`, `areaTimes`, `areaOutgoing` and `portalQueue` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L276)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaOutgoing
 Temporary outgoing reachability lists used by the area solver.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L284)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-scratch-areaqueue-areaqueue-src-mq3-botlib-aas-routing-cache-ml-1589070533"></a>
 ### areaQueue
@@ -38,7 +38,7 @@ areaQueue
 Area indexes awaiting routing-cost propagation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L278)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-scratch-areaqueued-areaqueued-src-mq3-botlib-aas-routing-cache-ml-464381529"></a>
 ### areaQueued
@@ -50,7 +50,7 @@ areaQueued
 Membership flags for areas already queued for propagation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L280)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-scratch-areatimes-areatimes-src-mq3-botlib-aas-routing-cache-ml-789526861"></a>
 ### areaTimes
@@ -62,7 +62,7 @@ areaTimes
 Temporary travel costs accumulated for each area.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L282)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-scratch-portalqueue-portalqueue-src-mq3-botlib-aas-routing-cache-ml-1407699037"></a>
 ### portalQueue
@@ -74,7 +74,7 @@ portalQueue
 Portal updates awaiting cost propagation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L286)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-scratch-portalqueued-portalqueued-src-mq3-botlib-aas-routing-cache-ml-1952449279"></a>
 ### portalQueued
@@ -86,7 +86,7 @@ portalQueued
 Membership flags for portals already queued for propagation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L288)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-scratch-portalupdates-portalupdates-src-mq3-botlib-aas-routing-cache-ml-1049930837"></a>
 ### portalUpdates
@@ -98,4 +98,4 @@ portalUpdates
 Reusable update records indexed by portal number.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L290)

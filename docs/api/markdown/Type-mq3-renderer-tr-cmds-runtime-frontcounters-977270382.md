@@ -12,7 +12,7 @@ struct FrontCounters
 Data record for `mq3.renderer.tr_cmds_runtime.FrontCounters`; groups `leafs`, `spherePatchIn`, `spherePatchClip`, `spherePatchOut`, `boxPatchIn`, `boxPatchClip`, and 10 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 ## Members
 
@@ -26,7 +26,7 @@ boxMd3Clip
 Number of MD3 model box bounds classified as intersecting the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L44)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxmd3in-boxmd3in-src-mq3-renderer-tr-cmds-runtime-ml-2105565103"></a>
 ### boxMd3In
@@ -38,7 +38,7 @@ boxMd3In
 Number of MD3 model box bounds classified as fully inside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L42)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxmd3out-boxmd3out-src-mq3-renderer-tr-cmds-runtime-ml-1076766451"></a>
 ### boxMd3Out
@@ -50,7 +50,7 @@ boxMd3Out
 Number of MD3 model box bounds classified as outside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L46)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxpatchclip-boxpatchclip-src-mq3-renderer-tr-cmds-runtime-ml-617951937"></a>
 ### boxPatchClip
@@ -62,7 +62,7 @@ boxPatchClip
 Number of patch box bounds classified as intersecting the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxpatchin-boxpatchin-src-mq3-renderer-tr-cmds-runtime-ml-1292399143"></a>
 ### boxPatchIn
@@ -74,7 +74,7 @@ boxPatchIn
 Number of patch box bounds classified as fully inside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxpatchout-boxpatchout-src-mq3-renderer-tr-cmds-runtime-ml-212158455"></a>
 ### boxPatchOut
@@ -86,7 +86,7 @@ boxPatchOut
 Number of patch box bounds classified as outside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-dlightsurfaces-dlightsurfaces-src-mq3-renderer-tr-cmds-runtime-ml-1262727299"></a>
 ### dlightSurfaces
@@ -98,7 +98,7 @@ dlightSurfaces
 Number of surfaces considered for dynamic lighting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L48)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-dlightsurfacesculled-dlightsurfacesculled-src-mq3-renderer-tr-cmds-runtime-ml-1340832105"></a>
 ### dlightSurfacesCulled
@@ -110,7 +110,7 @@ dlightSurfacesCulled
 Number of surfaces rejected from dynamic-light processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L50)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-leafs-leafs-src-mq3-renderer-tr-cmds-runtime-ml-176001227"></a>
 ### leafs
@@ -122,7 +122,7 @@ leafs
 Number of BSP leaves visited by frontend world traversal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spheremd3clip-spheremd3clip-src-mq3-renderer-tr-cmds-runtime-ml-1506137527"></a>
 ### sphereMd3Clip
@@ -134,7 +134,7 @@ sphereMd3Clip
 Number of MD3 model sphere bounds classified as intersecting the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spheremd3in-spheremd3in-src-mq3-renderer-tr-cmds-runtime-ml-1887219247"></a>
 ### sphereMd3In
@@ -146,7 +146,7 @@ sphereMd3In
 Number of MD3 model sphere bounds classified as fully inside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L36)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spheremd3out-spheremd3out-src-mq3-renderer-tr-cmds-runtime-ml-1734769609"></a>
 ### sphereMd3Out
@@ -158,7 +158,7 @@ sphereMd3Out
 Number of MD3 model sphere bounds classified as outside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L40)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spherepatchclip-spherepatchclip-src-mq3-renderer-tr-cmds-runtime-ml-827061275"></a>
 ### spherePatchClip
@@ -170,7 +170,7 @@ spherePatchClip
 Number of patch sphere bounds classified as intersecting the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spherepatchin-spherepatchin-src-mq3-renderer-tr-cmds-runtime-ml-193033223"></a>
 ### spherePatchIn
@@ -182,7 +182,7 @@ spherePatchIn
 Number of patch sphere bounds classified as fully inside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spherepatchout-spherepatchout-src-mq3-renderer-tr-cmds-runtime-ml-721949565"></a>
 ### spherePatchOut
@@ -194,7 +194,7 @@ spherePatchOut
 Number of patch sphere bounds classified as outside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-zfar-zfar-src-mq3-renderer-tr-cmds-runtime-ml-640029805"></a>
 ### zFar
@@ -206,4 +206,4 @@ zFar
 Far clipping distance selected for the current view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L52)

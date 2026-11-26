@@ -28,7 +28,7 @@ Emit cvar commands in qcommon.cvar_commands.
 | `text` | `dynamic` | — | Message passed as `message` to `mq3.qcommon.command_buffer.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L11)
 
 <a id="function-function-mq3-qcommon-cvar-commands-flaggedset-function-flaggedset-commandstate-registry-flag-usage-src-mq3-qcommon-cvar-commands-ml-646480600"></a>
 ### flaggedSet
@@ -47,7 +47,7 @@ Compute flagged set in qcommon.cvar_commands.
 | `usage` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.cvar_commands.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L56)
 
 <a id="function-function-mq3-qcommon-cvar-commands-flagtext-function-flagtext-flags-src-mq3-qcommon-cvar-commands-ml-715333445"></a>
 ### flagText
@@ -63,7 +63,7 @@ Compute flag text in qcommon.cvar_commands; the normal completion returns `text`
 | `flags` | `dynamic` | — | Flags used in `(flags & cvar.ROM)` and `(flags & cvar.INIT)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L81)
 
 <a id="function-function-mq3-qcommon-cvar-commands-install-function-install-registry-commandstate-src-mq3-qcommon-cvar-commands-ml-1821431659"></a>
 ### install
@@ -83,7 +83,7 @@ Direct state writes: `commandState.cvarContextCommandFn`, `commandState.cvarComm
 | `commandState` | `dynamic` | — | Updated in place: `cvarContextCommandFn`, `cvarCommandContext`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L120)
 
 <a id="function-function-mq3-qcommon-cvar-commands-listcallback-function-listcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-822750745"></a>
 ### listCallback
@@ -100,7 +100,7 @@ Compute list callback in qcommon.cvar_commands.
 | `registry` | `dynamic` | — | Record exposing `variables`, `numIndexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L94)
 
 <a id="function-function-mq3-qcommon-cvar-commands-resetcallback-function-resetcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1038471749"></a>
 ### resetCallback
@@ -117,7 +117,7 @@ Reset callback in qcommon.cvar_commands.
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.set2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L75)
 
 <a id="function-function-mq3-qcommon-cvar-commands-restartcallback-function-restartcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1678590181"></a>
 ### restartCallback
@@ -136,7 +136,7 @@ Validation failures include `cvar_restart command is not bound`.
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.restart`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L109)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setarchivecallback-function-setarchivecallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-470931961"></a>
 ### setArchiveCallback
@@ -153,7 +153,7 @@ Return `mq3.qcommon.cvar_commands.flaggedSet(commandState, registry, cvar.ARCHIV
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar_commands.flaggedSet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L71)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setcallback-function-setcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-675265859"></a>
 ### setCallback
@@ -170,7 +170,7 @@ Set callback in qcommon.cvar_commands.
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.set2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L39)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setservercallback-function-setservercallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-632275277"></a>
 ### setServerCallback
@@ -187,7 +187,7 @@ Return `mq3.qcommon.cvar_commands.flaggedSet(commandState, registry, cvar.SERVER
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar_commands.flaggedSet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L67)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setusercallback-function-setusercallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1378146197"></a>
 ### setUserCallback
@@ -204,7 +204,7 @@ Return `mq3.qcommon.cvar_commands.flaggedSet(commandState, registry, cvar.USERIN
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar_commands.flaggedSet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L63)
 
 <a id="function-function-mq3-qcommon-cvar-commands-togglecallback-function-togglecallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1809536481"></a>
 ### toggleCallback
@@ -221,7 +221,7 @@ Compute toggle callback in qcommon.cvar_commands.
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L30)
 
 <a id="function-function-mq3-qcommon-cvar-commands-valuecommand-function-valuecommand-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1932293221"></a>
 ### valueCommand
@@ -238,4 +238,4 @@ Test value command in qcommon.cvar_commands; the normal completion returns `true
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L16)

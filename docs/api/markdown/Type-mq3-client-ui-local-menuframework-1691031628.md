@@ -12,7 +12,7 @@ struct MenuFramework
 Stores UI local menu framework record, including `cursor`, `cursor_prev`, `nitems`, `items`, `draw`, `key` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L111)
 
 ## Members
 
@@ -26,7 +26,7 @@ cursor
 Compatibility member corresponding to native `menuframework_s.cursor`; the original declaration is `int cursor`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L114)
 
 <a id="field-field-mq3-client-ui-local-menuframework-cursor-prev-cursor-prev-src-mq3-client-ui-local-ml-2033461346"></a>
 ### cursor_prev
@@ -38,7 +38,7 @@ cursor_prev
 Compatibility member corresponding to native `menuframework_s.cursor_prev`; the original declaration is `int cursor_prev`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L117)
 
 <a id="field-field-mq3-client-ui-local-menuframework-draw-draw-src-mq3-client-ui-local-ml-1570928322"></a>
 ### draw
@@ -50,7 +50,7 @@ draw
 Compatibility member corresponding to native `menuframework_s.draw`; the original declaration is `void (*draw) (void)`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L125)
 
 <a id="field-field-mq3-client-ui-local-menuframework-fullscreen-fullscreen-src-mq3-client-ui-local-ml-629038576"></a>
 ### fullscreen
@@ -62,7 +62,7 @@ fullscreen
 Whether the menu framework covers the entire UI instead of appearing over the underlying game view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L133)
 
 <a id="field-field-mq3-client-ui-local-menuframework-items-items-src-mq3-client-ui-local-ml-735485510"></a>
 ### items
@@ -74,7 +74,7 @@ items
 Compatibility member corresponding to native `menuframework_s.items`; the original declaration is `void *items[MAX_MENUITEMS]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L122)
 
 <a id="field-field-mq3-client-ui-local-menuframework-key-key-src-mq3-client-ui-local-ml-1064833510"></a>
 ### key
@@ -86,7 +86,7 @@ key
 Registered sound handle used for key; mirrors native `menuframework_s.key`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L127)
 
 <a id="field-field-mq3-client-ui-local-menuframework-nitems-nitems-src-mq3-client-ui-local-ml-211500722"></a>
 ### nitems
@@ -98,7 +98,7 @@ nitems
 Number of entries currently present in the menu or selection list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L119)
 
 <a id="field-field-mq3-client-ui-local-menuframework-showlogo-showlogo-src-mq3-client-ui-local-ml-502368162"></a>
 ### showlogo
@@ -110,7 +110,7 @@ showlogo
 Compatibility member corresponding to native `menuframework_s.showlogo`; the original declaration is `qboolean showlogo`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L136)
 
 <a id="field-field-mq3-client-ui-local-menuframework-wraparound-wraparound-src-mq3-client-ui-local-ml-578803536"></a>
 ### wrapAround
@@ -122,4 +122,4 @@ wrapAround
 Enables cyclic keyboard-focus navigation among the selectable entries of the original UI compatibility records.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L130)

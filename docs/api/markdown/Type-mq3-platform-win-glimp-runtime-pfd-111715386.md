@@ -12,7 +12,7 @@ struct PFD
 Data record for `mq3.platform.win_glimp_runtime.PFD`; groups `flags`, `pixelType`, `colorBits`, `depthBits`, `stencilBits`, `layerType`, and 1 further field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L39)
 
 ## Members
 
@@ -26,7 +26,7 @@ colorBits
 Color-buffer precision in bits.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L45)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-depthbits-depthbits-src-mq3-platform-win-glimp-runtime-ml-1116254399"></a>
 ### depthBits
@@ -38,7 +38,7 @@ depthBits
 Depth-buffer precision in bits.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L47)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-flags-flags-src-mq3-platform-win-glimp-runtime-ml-56640971"></a>
 ### flags
@@ -50,7 +50,7 @@ flags
 Windows pixel-format capability flags such as double buffering and OpenGL support.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L41)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-index-index-src-mq3-platform-win-glimp-runtime-ml-1192545759"></a>
 ### index
@@ -62,7 +62,7 @@ index
 Native Windows pixel-format index selected for the rendering window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L53)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-layertype-layertype-src-mq3-platform-win-glimp-runtime-ml-2134723311"></a>
 ### layerType
@@ -74,7 +74,7 @@ layerType
 Layer type selected by the Windows pixel-format descriptor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L51)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-pixeltype-pixeltype-src-mq3-platform-win-glimp-runtime-ml-1936182475"></a>
 ### pixelType
@@ -86,7 +86,7 @@ pixelType
 Pixel encoding selected by the Windows pixel-format descriptor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-stencilbits-stencilbits-src-mq3-platform-win-glimp-runtime-ml-670239991"></a>
 ### stencilBits
@@ -98,4 +98,4 @@ stencilBits
 Stencil-buffer precision in bits.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L49)

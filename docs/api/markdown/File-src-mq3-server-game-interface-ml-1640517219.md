@@ -26,7 +26,7 @@ Return `mq3.compat.numeric.i32(n.floatBits(value))` from `server.game_interface.
 | `value` | `dynamic` | — | Floating-point value to narrow and reinterpret. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L92)
 
 <a id="constant-constant-mq3-server-game-interface-max-gentities-const-max-gentities-1024-src-mq3-server-game-interface-ml-1980557458"></a>
 ### MAX_GENTITIES
@@ -38,7 +38,7 @@ const MAX_GENTITIES = 1024
 Maximum number of addressable game-entity slots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L15)
 
 <a id="function-function-mq3-server-game-interface-requirelayout-function-requirelayout-value-src-mq3-server-game-interface-ml-1186236999"></a>
 ### requireLayout
@@ -56,7 +56,7 @@ Validation failures include `server game interface: game data is not located`.
 | `value` | `dynamic` | — | Record exposing `gentitySize`, `gameClientSize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L119)
 
 <a id="function-function-mq3-server-game-interface-services-function-services-context-src-mq3-server-game-interface-ml-1809242439"></a>
 ### services
@@ -72,7 +72,7 @@ Create `mq3.server.game_interface.Services` with errorFn=void; printFn=void; sen
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.server.game_interface.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L88)
 
 - [mq3.server.game_interface.Services](Type-mq3-server-game-interface-services-1529200671.md) — struct
 <a id="constant-constant-mq3-server-game-interface-ss-dead-const-ss-dead-0-src-mq3-server-game-interface-ml-1548728809"></a>
@@ -85,7 +85,7 @@ const SS_DEAD = 0
 Server lifecycle state with no running map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L9)
 
 <a id="constant-constant-mq3-server-game-interface-ss-game-const-ss-game-2-src-mq3-server-game-interface-ml-2078206495"></a>
 ### SS_GAME
@@ -97,7 +97,7 @@ const SS_GAME = 2
 Server lifecycle state for an active game map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L13)
 
 <a id="constant-constant-mq3-server-game-interface-ss-loading-const-ss-loading-1-src-mq3-server-game-interface-ml-491855776"></a>
 ### SS_LOADING
@@ -109,7 +109,7 @@ const SS_LOADING = 1
 Server lifecycle state while a new map and game VM are loading.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L11)
 
 <a id="function-function-mq3-server-game-interface-state-function-state-maxclients-src-mq3-server-game-interface-ml-803760406"></a>
 ### state
@@ -125,7 +125,7 @@ Compute state in server.game_interface; the normal completion returns `State(0, 
 | `maxClients` | `dynamic` | — | Initial `maxClients` field stored in the returned or constructed `mq3.server.game_interface.State` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L55)
 
 - [mq3.server.game_interface.State](Type-mq3-server-game-interface-state-540958212.md) — struct
 <a id="function-function-mq3-server-game-interface-sv-adjustareaportalstate-function-sv-adjustareaportalstate-value-entitynumber-open-host-src-mq3-server-game-interface-ml-1196226157"></a>
@@ -147,7 +147,7 @@ Validation failures include `server game interface: missing area portal service`
 | `host` | `dynamic` | — | Record exposing `adjustAreaPortalFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L244)
 
 <a id="function-function-mq3-server-game-interface-sv-gameclientnum-function-sv-gameclientnum-value-number-src-mq3-server-game-interface-ml-422897704"></a>
 ### SV_GameClientNum
@@ -164,7 +164,7 @@ Compute game client num in server.game_interface; the normal completion returns 
 | `number` | `dynamic` | — | Number used in `(value.gameClientSize * number)` and `(value.gameClients + (value.gameClientSize * number))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L138)
 
 <a id="function-function-mq3-server-game-interface-sv-gamecommand-function-sv-gamecommand-value-host-src-mq3-server-game-interface-ml-1631773043"></a>
 ### SV_GameCommand
@@ -183,7 +183,7 @@ Validation failures include `server game interface: missing game command service
 | `host` | `dynamic` | — | Record exposing `gameCommandFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L255)
 
 <a id="function-function-mq3-server-game-interface-sv-gamedropclient-function-sv-gamedropclient-value-clientnum-reason-host-src-mq3-server-game-interface-ml-1340046830"></a>
 ### SV_GameDropClient
@@ -204,7 +204,7 @@ Validation failures include `server game interface: missing drop service`.
 | `host` | `dynamic` | — | Record exposing `dropClientFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L179)
 
 <a id="function-function-mq3-server-game-interface-sv-gameerror-function-sv-gameerror-host-text-src-mq3-server-game-interface-ml-35851695"></a>
 ### SV_GameError
@@ -223,7 +223,7 @@ Validation failures include `server game interface: missing services`.
 | `text` | `dynamic` | — | Text used in `error(7340, text)` and `host.errorFn(host.context, text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L99)
 
 <a id="function-function-mq3-server-game-interface-sv-gameprint-function-sv-gameprint-host-text-src-mq3-server-game-interface-ml-1418268043"></a>
 ### SV_GamePrint
@@ -242,7 +242,7 @@ Validation failures include `server game interface: missing services`.
 | `text` | `dynamic` | — | Text used in `host.printFn(host.context, text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L109)
 
 <a id="function-function-mq3-server-game-interface-sv-gamesendservercommand-function-sv-gamesendservercommand-value-clientnum-text-host-src-mq3-server-game-interface-ml-209199533"></a>
 ### SV_GameSendServerCommand
@@ -263,7 +263,7 @@ Validation failures include `server game interface: missing send service`.
 | `host` | `dynamic` | — | Record exposing `sendServerCommandFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L167)
 
 <a id="function-function-mq3-server-game-interface-sv-gentityforsventity-function-sv-gentityforsventity-value-serverentity-src-mq3-server-game-interface-ml-177123691"></a>
 ### SV_GEntityForSvEntity
@@ -282,7 +282,7 @@ Validation failures include `SV_GEntityForSvEntity: missing svEnt`.
 | `serverEntity` | `dynamic` | — | Record exposing `number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L155)
 
 <a id="function-function-mq3-server-game-interface-sv-gentitynum-function-sv-gentitynum-value-number-src-mq3-server-game-interface-ml-2079897400"></a>
 ### SV_GentityNum
@@ -299,7 +299,7 @@ Compute gentity num in server.game_interface; the normal completion returns `(va
 | `number` | `dynamic` | — | Number used in `(value.gentitySize * number)` and `(value.gentities + (value.gentitySize * number))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L132)
 
 <a id="function-function-mq3-server-game-interface-sv-getserverinfo-function-sv-getserverinfo-value-buffersize-src-mq3-server-game-interface-ml-1616540730"></a>
 ### SV_GetServerinfo
@@ -318,7 +318,7 @@ Validation failures include `SV_GetServerinfo: bufferSize < 1`.
 | `bufferSize` | `dynamic` | — | Buffer size used in `(bufferSize < 1)` and `(bufferSize - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L190)
 
 <a id="function-function-mq3-server-game-interface-sv-getusercmd-function-sv-getusercmd-value-clientnum-src-mq3-server-game-interface-ml-522523078"></a>
 ### SV_GetUsercmd
@@ -335,7 +335,7 @@ Get usercmd in server.game_interface; the normal completion returns `value.clien
 | `clientNum` | `dynamic` | — | Zero-based index into `value.clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L214)
 
 <a id="function-function-mq3-server-game-interface-sv-inpvsignoreportals-function-sv-inpvsignoreportals-p1-p2-host-src-mq3-server-game-interface-ml-1961146899"></a>
 ### SV_inPVSIgnorePortals
@@ -355,7 +355,7 @@ Validation failures include `server game interface: missing PVS service`.
 | `host` | `dynamic` | — | Record exposing `pointLeafnumFn`, `leafClusterFn`, `clusterPvsFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L225)
 
 <a id="function-function-mq3-server-game-interface-sv-locategamedata-function-sv-locategamedata-value-gentities-numgentities-sizeofgentity-clients-sizeofgameclient-src-mq3-server-game-interface-ml-1240975442"></a>
 ### SV_LocateGameData
@@ -379,7 +379,7 @@ Direct state writes: `value.gentities`, `value.gentitySize`, `value.numEntities`
 | `sizeofGameClient` | `dynamic` | — | Sizeof game client used in `(sizeofGameClient <= 0)` and `((((value == void) or (numGEntities < 0)) or (sizeofGEntity <= 0)) or (sizeofGameClient <= 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L206)
 
 <a id="function-function-mq3-server-game-interface-sv-numforgentity-function-sv-numforgentity-value-address-src-mq3-server-game-interface-ml-1519455021"></a>
 ### SV_NumForGentity
@@ -396,7 +396,7 @@ Compute num for gentity in server.game_interface; the normal completion returns 
 | `address` | `dynamic` | — | Address used in `(address - value.gentities)` and `((address - value.gentities) / value.gentitySize)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L126)
 
 <a id="function-function-mq3-server-game-interface-sv-sventityforgentity-function-sv-sventityforgentity-value-entitynumber-src-mq3-server-game-interface-ml-981619413"></a>
 ### SV_SvEntityForGentity
@@ -415,7 +415,7 @@ Validation failures include `SV_SvEntityForGentity: bad gEnt`.
 | `entityNumber` | `dynamic` | — | Zero-based index into `value.svEntities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L146)
 
 <a id="function-function-mq3-server-game-interface-sventity-function-sventity-number-src-mq3-server-game-interface-ml-985279479"></a>
 ### svEntity
@@ -431,6 +431,6 @@ Create `mq3.server.game_interface.SvEntity` with number=number; areanum=- 1; are
 | `number` | `dynamic` | — | Initial `number` field stored in the returned or constructed `mq3.server.game_interface.SvEntity` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L28)
 
 - [mq3.server.game_interface.SvEntity](Type-mq3-server-game-interface-sventity-1340921889.md) — struct

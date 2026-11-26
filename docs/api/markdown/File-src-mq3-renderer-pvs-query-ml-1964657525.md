@@ -29,4 +29,4 @@ Computes `inPVS` from `(mask[secondCluster>>3]&(1<<(secondCluster&7)))!=0` using
 | `secondPoint` | `dynamic` | — | Argument 2 supplied to `mq3.collision.world.pointLeafnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/pvs_query.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/pvs_query.ml#L14)

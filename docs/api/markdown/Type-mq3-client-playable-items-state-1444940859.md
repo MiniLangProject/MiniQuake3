@@ -12,7 +12,7 @@ struct State
 Stores playable items state, including `items`, `stats`, `pickupRadius`, `lastTime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L58)
 
 ## Members
 
@@ -26,7 +26,7 @@ items
 When constructing this record, `fromEntities` supplies `items` for this member. Used by `take` and `update` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L61)
 
 <a id="field-field-mq3-client-playable-items-state-lasttime-lasttime-src-mq3-client-playable-items-ml-1054606772"></a>
 ### lastTime
@@ -38,7 +38,7 @@ lastTime
 When constructing this record, `fromEntities` supplies `0` for this member. Used by `update` and `updateInventory` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L70)
 
 <a id="field-field-mq3-client-playable-items-state-pickupradius-pickupradius-src-mq3-client-playable-items-ml-1522238518"></a>
 ### pickupRadius
@@ -50,7 +50,7 @@ pickupRadius
 When constructing this record, `fromEntities` supplies `pickupRadius` for this member. Used by `update` and `updateInventory` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L67)
 
 <a id="field-field-mq3-client-playable-items-state-stats-stats-src-mq3-client-playable-items-ml-233022662"></a>
 ### stats
@@ -62,4 +62,4 @@ stats
 When constructing this record, `fromEntities` supplies `Stats(100,0,50,"weapon_machinegun")` for this member. Used by `setStats` and `take` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L64)

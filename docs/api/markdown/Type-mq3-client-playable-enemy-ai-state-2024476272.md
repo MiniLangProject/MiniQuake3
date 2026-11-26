@@ -12,7 +12,7 @@ struct State
 Stores playable enemy ai state, including `brains`, `lastTime`, `events`, `visibleCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L50)
 
 ## Members
 
@@ -26,7 +26,7 @@ brains
 When constructing this record, `state` supplies `brains` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L52)
 
 <a id="field-field-mq3-client-playable-enemy-ai-state-events-events-src-mq3-client-playable-enemy-ai-ml-791367724"></a>
 ### events
@@ -38,7 +38,7 @@ events
 When constructing this record, `state` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L56)
 
 <a id="field-field-mq3-client-playable-enemy-ai-state-lasttime-lasttime-src-mq3-client-playable-enemy-ai-ml-317419328"></a>
 ### lastTime
@@ -50,7 +50,7 @@ lastTime
 When constructing this record, `state` supplies `now` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L54)
 
 <a id="field-field-mq3-client-playable-enemy-ai-state-visiblecount-visiblecount-src-mq3-client-playable-enemy-ai-ml-1197222392"></a>
 ### visibleCount
@@ -62,4 +62,4 @@ visibleCount
 Number of enemies that can see the player during the current AI update; cleared before each visibility pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L59)

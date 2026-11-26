@@ -12,7 +12,7 @@ struct Sfx
 Sfx record for audio.snd_mem_runtime, containing `soundName`, `soundCompressed`, `soundCompressionMethod`, `soundData`, `soundLength`, `lastTimeUsed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L24)
 
 ## Members
 
@@ -26,7 +26,7 @@ lastTimeUsed
 Last-use timestamp used when selecting an old sound for eviction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L36)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-sfx-soundcompressed-soundcompressed-src-mq3-audio-snd-mem-runtime-ml-488343554"></a>
 ### soundCompressed
@@ -38,7 +38,7 @@ soundCompressed
 True when sound data is stored using a compressed representation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L28)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-sfx-soundcompressionmethod-soundcompressionmethod-src-mq3-audio-snd-mem-runtime-ml-330525586"></a>
 ### soundCompressionMethod
@@ -50,7 +50,7 @@ soundCompressionMethod
 Compression-method identifier used to decode the sound buffers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L30)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-sfx-sounddata-sounddata-src-mq3-audio-snd-mem-runtime-ml-1181234750"></a>
 ### soundData
@@ -62,7 +62,7 @@ soundData
 Head of the sample-buffer chain or loaded sample data for the sound.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L32)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-sfx-soundlength-soundlength-src-mq3-audio-snd-mem-runtime-ml-1369799066"></a>
 ### soundLength
@@ -74,7 +74,7 @@ soundLength
 Length of the sound in mono sample positions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L34)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-sfx-soundname-soundname-src-mq3-audio-snd-mem-runtime-ml-638003738"></a>
 ### soundName
@@ -86,4 +86,4 @@ soundName
 Quake asset path identifying the registered sound.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L26)

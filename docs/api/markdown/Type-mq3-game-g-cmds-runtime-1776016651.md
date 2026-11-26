@@ -12,7 +12,7 @@ struct Runtime
 `Runtime` record for g cmds, containing `level` and `commandState`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L21)
 
 ## Members
 
@@ -26,7 +26,7 @@ commandState
 Game command-dispatch state retained by the runtime or level.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L25)
 
 <a id="field-field-mq3-game-g-cmds-runtime-level-level-src-mq3-game-g-cmds-ml-1787926865"></a>
 ### level
@@ -38,4 +38,4 @@ level
 Game-level state shared with the operation or runtime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L23)

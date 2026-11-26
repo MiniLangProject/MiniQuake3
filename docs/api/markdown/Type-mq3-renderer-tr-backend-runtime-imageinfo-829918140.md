@@ -12,7 +12,7 @@ struct ImageInfo
 Data record for `mq3.renderer.tr_backend_runtime.ImageInfo`; groups `image`, `uploadWidth`, `uploadHeight`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L190)
 
 ## Members
 
@@ -26,7 +26,7 @@ image
 Registered image reference included in the backend image-display listing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L192)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-imageinfo-uploadheight-uploadheight-src-mq3-renderer-tr-backend-runtime-ml-1156741526"></a>
 ### uploadHeight
@@ -38,7 +38,7 @@ uploadHeight
 Height in pixels of the image submitted to the graphics driver.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L196)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-imageinfo-uploadwidth-uploadwidth-src-mq3-renderer-tr-backend-runtime-ml-1192972774"></a>
 ### uploadWidth
@@ -50,4 +50,4 @@ uploadWidth
 Width in pixels of the image submitted to the graphics driver.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L194)

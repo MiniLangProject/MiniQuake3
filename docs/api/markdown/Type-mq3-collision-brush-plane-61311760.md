@@ -12,7 +12,7 @@ struct Plane
 Plane record for collision.brush, containing `normal`, `distance`, `flags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L29)
 
 ## Members
 
@@ -26,7 +26,7 @@ distance
 Signed plane distance from the coordinate origin.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L33)
 
 <a id="field-field-mq3-collision-brush-plane-flags-flags-src-mq3-collision-brush-ml-709441941"></a>
 ### flags
@@ -38,7 +38,7 @@ flags
 Surface flags associated with this clipping plane.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L35)
 
 <a id="field-field-mq3-collision-brush-plane-normal-normal-src-mq3-collision-brush-ml-1693984071"></a>
 ### normal
@@ -50,4 +50,4 @@ normal
 Outward normal of the brush boundary plane used by convex clipping.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L31)

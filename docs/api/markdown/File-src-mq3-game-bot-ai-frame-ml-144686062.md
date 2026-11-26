@@ -33,7 +33,7 @@ Check whether the selected bot-state entry exists and is marked in use.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L260)
 
 <a id="function-function-mq3-game-bot-ai-frame-botentity-function-botentity-ent-index-src-mq3-game-bot-ai-frame-ml-1483302155"></a>
 ### botEntity
@@ -50,7 +50,7 @@ Build the `mq3.game.bot_ai_frame.BotEntityState` result for `botEntity`.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L225)
 
 - [mq3.game.bot_ai_frame.BotEntityState](Type-mq3-game-bot-ai-frame-botentitystate-560919205.md) — struct
 <a id="function-function-mq3-game-bot-ai-frame-commandclientstate-function-commandclientstate-services-clientnum-src-mq3-game-bot-ai-frame-ml-112755053"></a>
@@ -68,7 +68,7 @@ Forward `commandClientState` to `mq3.game.bot_ai_frame.getClientState` and retur
 | `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L196)
 
 <a id="function-function-mq3-game-bot-ai-frame-connected-function-connected-level-index-src-mq3-game-bot-ai-frame-ml-1110104196"></a>
 ### connected
@@ -85,7 +85,7 @@ Test `level.entities[index].client != void and level.entities[index].client.conn
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L268)
 
 <a id="function-function-mq3-game-bot-ai-frame-create-function-create-state-src-mq3-game-bot-ai-frame-ml-2050999901"></a>
 ### create
@@ -101,7 +101,7 @@ Apply `mq3.game.bot_ai_commands.create` and `mq3.game.bot_input.create` while ev
 | `state` | `dynamic` | — | Initial value stored in `mq3.game.bot_ai_frame.Services.lifecycleState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L157)
 
 <a id="function-function-mq3-game-bot-ai-frame-eligibleentity-function-eligibleentity-ent-src-mq3-game-bot-ai-frame-ml-783949097"></a>
 ### eligibleEntity
@@ -117,7 +117,7 @@ Select linked, client-visible entities for bot perception, excluding ordinary mi
 | `ent` | `dynamic` | — | Game entity; accesses `inuse`, `r` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L239)
 
 <a id="function-function-mq3-game-bot-ai-frame-getclientstate-function-getclientstate-level-clientnum-src-mq3-game-bot-ai-frame-ml-1576009423"></a>
 ### getClientState
@@ -134,7 +134,7 @@ Apply `mq3.game.bot_ai_frame.validSlot`, `mq3.game.playerstate.create` and `mq3.
 | `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L187)
 
 <a id="function-function-mq3-game-bot-ai-frame-getentitystate-function-getentitystate-level-entitynum-src-mq3-game-bot-ai-frame-ml-1969677219"></a>
 ### getEntityState
@@ -151,7 +151,7 @@ Apply `mq3.game.bot_ai_frame.validSlot`, `mq3.game.entitystate.create` and `mq3.
 | `entityNum` | `dynamic` | — | Entity number in the game or AAS entity table. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L203)
 
 <a id="function-function-mq3-game-bot-ai-frame-getsnapshotentity-function-getsnapshotentity-level-services-clientnum-sequence-src-mq3-game-bot-ai-frame-ml-841591236"></a>
 ### getSnapshotEntity
@@ -170,7 +170,7 @@ Use `services.snapshotEntityFn` to perform `getSnapshotEntity`. Return paths inc
 | `sequence` | `dynamic` | — | Value passed as argument 3 to `services.snapshotEntityFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L215)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-max-clients-const-max-clients-64-src-mq3-game-bot-ai-frame-ml-138227167"></a>
 ### MAX_CLIENTS
@@ -182,7 +182,7 @@ const MAX_CLIENTS = 64
 Maximum number of client slots represented by the original game protocol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L16)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-max-gentities-const-max-gentities-1024-src-mq3-game-bot-ai-frame-ml-2028950748"></a>
 ### MAX_GENTITIES
@@ -194,7 +194,7 @@ const MAX_GENTITIES = 1024
 Maximum number of entity slots represented by the original game protocol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L18)
 
 <a id="function-function-mq3-game-bot-ai-frame-need-function-need-callback-label-src-mq3-game-bot-ai-frame-ml-1854810419"></a>
 ### need
@@ -211,7 +211,7 @@ Require a bot frame service callback and identify a missing service in the resul
 | `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L170)
 
 <a id="function-function-mq3-game-bot-ai-frame-regularupdate-function-regularupdate-services-src-mq3-game-bot-ai-frame-ml-290245038"></a>
 ### regularUpdate
@@ -227,7 +227,7 @@ Set `services.regularUpdateTime` to `n.fadd(services.floatTimeFn(services),0.3)`
 | `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`, `regularUpdateTime` and `updateEntityItemsFn`. May update `services.regularUpdateTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L248)
 
 - [mq3.game.bot_ai_frame.Runtime](Type-mq3-game-bot-ai-frame-runtime-1021335758.md) — struct
 - [mq3.game.bot_ai_frame.Services](Type-mq3-game-bot-ai-frame-services-1932823690.md) — struct
@@ -241,7 +241,7 @@ const SOLID_BBOX = 1
 Bot entity-solid category indicating an explicit bounding box.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L22)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-solid-bsp-const-solid-bsp-2-src-mq3-game-bot-ai-frame-ml-907572499"></a>
 ### SOLID_BSP
@@ -253,7 +253,7 @@ const SOLID_BSP = 2
 Bot entity-solid category indicating a BSP brush model.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L24)
 
 <a id="function-function-mq3-game-bot-ai-frame-startframe-function-startframe-level-services-time-src-mq3-game-bot-ai-frame-ml-246449395"></a>
 ### startFrame
@@ -271,7 +271,7 @@ Update `services.commandServices.fightServices`, `services.commandServices.seekS
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L276)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-svf-noclient-const-svf-noclient-1-src-mq3-game-bot-ai-frame-ml-1584358430"></a>
 ### SVF_NOCLIENT
@@ -283,7 +283,7 @@ const SVF_NOCLIENT = 1
 Server entity-flag bit controlling noclient.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L20)
 
 - [mq3.game.bot_ai_frame.UserCommand](Type-mq3-game-bot-ai-frame-usercommand-1780820726.md) — struct
 <a id="function-function-mq3-game-bot-ai-frame-validslot-function-validslot-slot-limit-label-src-mq3-game-bot-ai-frame-ml-736637507"></a>
@@ -302,4 +302,4 @@ Require an integer bot-frame slot within the specified table limit.
 | `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L179)

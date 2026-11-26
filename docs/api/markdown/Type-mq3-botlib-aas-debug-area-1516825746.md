@@ -12,7 +12,7 @@ struct Area
 `Area` record for aas debug, containing `numFaces` and `firstFace`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L114)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstFace
 Starting offset of this area in the signed face-index array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L118)
 
 <a id="field-field-mq3-botlib-aas-debug-area-numfaces-numfaces-src-mq3-botlib-aas-debug-ml-846890700"></a>
 ### numFaces
@@ -38,4 +38,4 @@ numFaces
 Number of face records represented by this area or file inventory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L116)

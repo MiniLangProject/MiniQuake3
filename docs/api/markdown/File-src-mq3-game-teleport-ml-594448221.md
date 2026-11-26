@@ -33,7 +33,7 @@ Use `level.damageFn` to perform `killBox`.
 | `ent` | `dynamic` | — | Game entity; accesses `client` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/teleport.ml#L26)
 
 <a id="function-function-mq3-game-teleport-player-function-player-level-ent-origin-angles-src-mq3-game-teleport-ml-286361135"></a>
 ### player
@@ -52,7 +52,7 @@ Set `ent.r.currentOrigin` to `movement.copy(state.origin)` in `mq3.game.teleport
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/teleport.ml#L44)
 
 <a id="function-function-mq3-game-teleport-setclientviewangle-function-setclientviewangle-ent-angles-src-mq3-game-teleport-ml-1408772677"></a>
 ### setClientViewAngle
@@ -69,4 +69,4 @@ Update `ent.client.ps.delta_angles[axis]`, `ent.s.angles` and `ent.client.ps.vie
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/teleport.ml#L14)

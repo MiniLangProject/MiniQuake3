@@ -12,7 +12,7 @@ struct State
 `State` record for ai chat strings, containing `context`, `readFn`, `groups`, `loaded` and `fileReads`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L36)
 
 ## Members
 
@@ -26,7 +26,7 @@ context
 Caller-supplied data associated with loading the synonym groups used to normalize chat text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L38)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-filereads-filereads-src-mq3-botlib-ai-chat-strings-ml-1278716704"></a>
 ### fileReads
@@ -38,7 +38,7 @@ fileReads
 Number of source-file reads performed through the loading interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L46)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-groups-groups-src-mq3-botlib-ai-chat-strings-ml-199124860"></a>
 ### groups
@@ -50,7 +50,7 @@ groups
 Synonym groups used when normalizing and varying bot chat text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-loaded-loaded-src-mq3-botlib-ai-chat-strings-ml-527167206"></a>
 ### loaded
@@ -62,7 +62,7 @@ loaded
 True after the chat synonym file has been parsed into context groups.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L44)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-readfn-readfn-src-mq3-botlib-ai-chat-strings-ml-788054972"></a>
 ### readFn
@@ -74,4 +74,4 @@ readFn
 Host callback that reads synonym tables used by chat text normalization.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L40)

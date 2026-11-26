@@ -12,7 +12,7 @@ struct Services
 Stores UI host lifecycle host-service callbacks, including `context`, `fullscreenFn`, `refreshFn`, `menuFn`, `connectFn`, `cgameFn` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L55)
 
 ## Members
 
@@ -26,7 +26,7 @@ catcherFn
 Host callback for the catcher operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L74)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-cgamefn-cgamefn-src-mq3-client-ui-host-lifecycle-ml-2127020737"></a>
 ### cgameFn
@@ -38,7 +38,7 @@ cgameFn
 Host callback for the cgame operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L69)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-cinematicfn-cinematicfn-src-mq3-client-ui-host-lifecycle-ml-742587181"></a>
 ### cinematicFn
@@ -50,7 +50,7 @@ cinematicFn
 Host callback for the cinematic operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L72)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-connectfn-connectfn-src-mq3-client-ui-host-lifecycle-ml-170359453"></a>
 ### connectFn
@@ -62,7 +62,7 @@ connectFn
 Host callback for the connect operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L67)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-context-context-src-mq3-client-ui-host-lifecycle-ml-1359824693"></a>
 ### context
@@ -74,7 +74,7 @@ context
 Caller-supplied value forwarded unchanged to the service callbacks for UI virtual-machine lifecycle management.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L58)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-fullscreenfn-fullscreenfn-src-mq3-client-ui-host-lifecycle-ml-2076608175"></a>
 ### fullscreenFn
@@ -86,7 +86,7 @@ fullscreenFn
 Host callback for the fullscreen operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L61)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-menufn-menufn-src-mq3-client-ui-host-lifecycle-ml-1824215747"></a>
 ### menuFn
@@ -98,7 +98,7 @@ menuFn
 Host callback for the menu operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L65)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-refreshfn-refreshfn-src-mq3-client-ui-host-lifecycle-ml-988377693"></a>
 ### refreshFn
@@ -110,4 +110,4 @@ refreshFn
 Host callback for the refresh operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L63)

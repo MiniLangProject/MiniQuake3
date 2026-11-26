@@ -12,7 +12,7 @@ struct Runtime
 `Runtime` record for bot ai frame, containing `botthinkResidual` and `lastucmd`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L45)
 
 ## Members
 
@@ -26,7 +26,7 @@ botthinkResidual
 Accumulated time not yet consumed by a bot thinking step.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L47)
 
 <a id="field-field-mq3-game-bot-ai-frame-runtime-lastucmd-lastucmd-src-mq3-game-bot-ai-frame-ml-1547042091"></a>
 ### lastucmd
@@ -38,4 +38,4 @@ lastucmd
 User command generated or observed during the preceding bot frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L49)

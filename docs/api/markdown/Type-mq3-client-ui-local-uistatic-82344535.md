@@ -12,7 +12,7 @@ struct UIStatic
 Stores UI local ui static record, including `frametime`, `realtime`, `cursorx`, `cursory`, `menusp`, `activemenu` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L405)
 
 ## Members
 
@@ -26,7 +26,7 @@ activemenu
 Compatibility member corresponding to native `uiStatic_t.activemenu`; the original declaration is `menuframework_s* activemenu`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L419)
 
 <a id="field-field-mq3-client-ui-local-uistatic-bias-bias-src-mq3-client-ui-local-ml-1958813581"></a>
 ### bias
@@ -38,7 +38,7 @@ bias
 Horizontal adjustment used when centering the virtual UI on a wider display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L452)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L452)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charset-charset-src-mq3-client-ui-local-ml-1476406107"></a>
 ### charset
@@ -50,7 +50,7 @@ charset
 Renderer resource handle used for charset; mirrors native `uiStatic_t.charset`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L435)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L435)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charsetprop-charsetprop-src-mq3-client-ui-local-ml-1153035939"></a>
 ### charsetProp
@@ -62,7 +62,7 @@ charsetProp
 Renderer resource handle used for charset prop; mirrors native `uiStatic_t.charsetProp`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L437)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charsetpropb-charsetpropb-src-mq3-client-ui-local-ml-547232037"></a>
 ### charsetPropB
@@ -74,7 +74,7 @@ charsetPropB
 Renderer resource handle used for charset prop b; mirrors native `uiStatic_t.charsetPropB`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L441)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charsetpropglow-charsetpropglow-src-mq3-client-ui-local-ml-1578784839"></a>
 ### charsetPropGlow
@@ -86,7 +86,7 @@ charsetPropGlow
 Renderer resource handle used for charset prop glow; mirrors native `uiStatic_t.charsetPropGlow`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L439)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L439)
 
 <a id="field-field-mq3-client-ui-local-uistatic-cursor-cursor-src-mq3-client-ui-local-ml-741681671"></a>
 ### cursor
@@ -98,7 +98,7 @@ cursor
 Renderer resource handle used for cursor; mirrors native `uiStatic_t.cursor`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L443)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L443)
 
 <a id="field-field-mq3-client-ui-local-uistatic-cursorx-cursorx-src-mq3-client-ui-local-ml-927601543"></a>
 ### cursorx
@@ -110,7 +110,7 @@ cursorx
 Horizontal position of the UI pointer in the menu coordinate system.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L411)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L411)
 
 <a id="field-field-mq3-client-ui-local-uistatic-cursory-cursory-src-mq3-client-ui-local-ml-2071858603"></a>
 ### cursory
@@ -122,7 +122,7 @@ cursory
 Vertical position of the UI pointer in the menu coordinate system.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L413)
 
 <a id="field-field-mq3-client-ui-local-uistatic-debug-debug-src-mq3-client-ui-local-ml-35025827"></a>
 ### debug
@@ -134,7 +134,7 @@ debug
 Compatibility member corresponding to native `uiStatic_t.debug`; the original declaration is `qboolean debug`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L427)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L427)
 
 <a id="field-field-mq3-client-ui-local-uistatic-demoversion-demoversion-src-mq3-client-ui-local-ml-614669403"></a>
 ### demoversion
@@ -146,7 +146,7 @@ demoversion
 Compatibility member corresponding to native `uiStatic_t.demoversion`; the original declaration is `qboolean demoversion`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L455)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L455)
 
 <a id="field-field-mq3-client-ui-local-uistatic-firstdraw-firstdraw-src-mq3-client-ui-local-ml-22222395"></a>
 ### firstdraw
@@ -158,7 +158,7 @@ firstdraw
 Compatibility member corresponding to native `uiStatic_t.firstdraw`; the original declaration is `qboolean firstdraw`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L458)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L458)
 
 <a id="field-field-mq3-client-ui-local-uistatic-frametime-frametime-src-mq3-client-ui-local-ml-554511711"></a>
 ### frametime
@@ -170,7 +170,7 @@ frametime
 Elapsed client time in milliseconds since the preceding frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L407)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L407)
 
 <a id="field-field-mq3-client-ui-local-uistatic-glconfig-glconfig-src-mq3-client-ui-local-ml-781822141"></a>
 ### glconfig
@@ -182,7 +182,7 @@ glconfig
 Renderer configuration reported by the engine for the current display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L424)
 
 <a id="field-field-mq3-client-ui-local-uistatic-menubacknologoshader-menubacknologoshader-src-mq3-client-ui-local-ml-448866933"></a>
 ### menuBackNoLogoShader
@@ -194,7 +194,7 @@ menuBackNoLogoShader
 Shader resource selected for menu back no logo rendering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L433)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L433)
 
 <a id="field-field-mq3-client-ui-local-uistatic-menubackshader-menubackshader-src-mq3-client-ui-local-ml-581595233"></a>
 ### menuBackShader
@@ -206,7 +206,7 @@ menuBackShader
 Shader resource selected for menu back rendering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L431)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L431)
 
 <a id="field-field-mq3-client-ui-local-uistatic-menusp-menusp-src-mq3-client-ui-local-ml-492527815"></a>
 ### menusp
@@ -218,7 +218,7 @@ menusp
 Compatibility member corresponding to native `uiStatic_t.menusp`; the original declaration is `int menusp`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L416)
 
 <a id="field-field-mq3-client-ui-local-uistatic-rb-off-rb-off-src-mq3-client-ui-local-ml-650055147"></a>
 ### rb_off
@@ -230,7 +230,7 @@ rb_off
 Renderer resource handle used for rb off; mirrors native `uiStatic_t.rb_off`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L447)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L447)
 
 <a id="field-field-mq3-client-ui-local-uistatic-rb-on-rb-on-src-mq3-client-ui-local-ml-1082609539"></a>
 ### rb_on
@@ -242,7 +242,7 @@ rb_on
 Renderer resource handle used for rb on; mirrors native `uiStatic_t.rb_on`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L445)
 
 <a id="field-field-mq3-client-ui-local-uistatic-realtime-realtime-src-mq3-client-ui-local-ml-1702348281"></a>
 ### realtime
@@ -254,7 +254,7 @@ realtime
 Most recent UI refresh timestamp in milliseconds retained in the shared UI state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L409)
 
 <a id="field-field-mq3-client-ui-local-uistatic-scale-scale-src-mq3-client-ui-local-ml-1306799199"></a>
 ### scale
@@ -266,7 +266,7 @@ scale
 Compatibility member corresponding to native `uiStatic_t.scale`; the original declaration is `float scale`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L450)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L450)
 
 <a id="field-field-mq3-client-ui-local-uistatic-stack-stack-src-mq3-client-ui-local-ml-415449763"></a>
 ### stack
@@ -278,7 +278,7 @@ stack
 Compatibility member corresponding to native `uiStatic_t.stack`; the original declaration is `menuframework_s* stack[MAX_MENUDEPTH]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L422)
 
 <a id="field-field-mq3-client-ui-local-uistatic-whiteshader-whiteshader-src-mq3-client-ui-local-ml-415495515"></a>
 ### whiteShader
@@ -290,4 +290,4 @@ whiteShader
 Shader resource selected for white rendering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L429)

@@ -18,7 +18,7 @@ function cache()
 Preferences_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L134)
 
 <a id="function-function-mq3-client-ui-preferences-clamp-function-clamp-value-low-high-src-mq3-client-ui-preferences-ml-577242643"></a>
 ### clamp
@@ -36,7 +36,7 @@ Clamps `value` to the inclusive bounds `low` and `high` for UI preferences.
 | `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L84)
 
 <a id="function-function-mq3-client-ui-preferences-drawcrosshair-function-drawcrosshair-value-focus-grayed-blink-src-mq3-client-ui-preferences-ml-359995337"></a>
 ### drawCrosshair
@@ -55,7 +55,7 @@ Crosshair_Draw
 | `blink` | `dynamic` | — | Value used by `style="small+pulse" else if blink then color="highlight"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L126)
 
 <a id="function-function-mq3-client-ui-preferences-event-function-event-value-id-notification-src-mq3-client-ui-preferences-ml-1482222603"></a>
 ### event
@@ -73,7 +73,7 @@ Preferences_Event
 | `notification` | `dynamic` | — | Value used by `if notification!=QM_ACTIVATED then return value end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L105)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-allowdownload-const-id-allowdownload-137-src-mq3-client-ui-preferences-ml-1723092022"></a>
 ### ID_ALLOWDOWNLOAD
@@ -85,7 +85,7 @@ const ID_ALLOWDOWNLOAD = 137
 Menu control identifier routed to the allowdownload action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-back-const-id-back-138-src-mq3-client-ui-preferences-ml-1770467321"></a>
 ### ID_BACK
@@ -97,7 +97,7 @@ const ID_BACK = 138
 Event identifier of the Back control used to leave the gameplay-preferences menu and return to its parent menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-crosshair-const-id-crosshair-127-src-mq3-client-ui-preferences-ml-1314740575"></a>
 ### ID_CROSSHAIR
@@ -109,7 +109,7 @@ const ID_CROSSHAIR = 127
 Menu control identifier routed to the crosshair action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-drawteamoverlay-const-id-drawteamoverlay-136-src-mq3-client-ui-preferences-ml-1828743159"></a>
 ### ID_DRAWTEAMOVERLAY
@@ -121,7 +121,7 @@ const ID_DRAWTEAMOVERLAY = 136
 Menu control identifier routed to the drawteamoverlay action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-dynamiclights-const-id-dynamiclights-132-src-mq3-client-ui-preferences-ml-1730038553"></a>
 ### ID_DYNAMICLIGHTS
@@ -133,7 +133,7 @@ const ID_DYNAMICLIGHTS = 132
 Menu control identifier routed to the dynamiclights action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-ejectingbrass-const-id-ejectingbrass-130-src-mq3-client-ui-preferences-ml-977204383"></a>
 ### ID_EJECTINGBRASS
@@ -145,7 +145,7 @@ const ID_EJECTINGBRASS = 130
 Menu control identifier routed to the ejectingbrass action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-forcemodel-const-id-forcemodel-135-src-mq3-client-ui-preferences-ml-427721492"></a>
 ### ID_FORCEMODEL
@@ -157,7 +157,7 @@ const ID_FORCEMODEL = 135
 Menu control identifier routed to the forcemodel action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L25)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-highqualitysky-const-id-highqualitysky-129-src-mq3-client-ui-preferences-ml-1238413479"></a>
 ### ID_HIGHQUALITYSKY
@@ -169,7 +169,7 @@ const ID_HIGHQUALITYSKY = 129
 Menu control identifier routed to the highqualitysky action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-identifytarget-const-id-identifytarget-133-src-mq3-client-ui-preferences-ml-1798064166"></a>
 ### ID_IDENTIFYTARGET
@@ -181,7 +181,7 @@ const ID_IDENTIFYTARGET = 133
 Menu control identifier routed to the identifytarget action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-simpleitems-const-id-simpleitems-128-src-mq3-client-ui-preferences-ml-137094660"></a>
 ### ID_SIMPLEITEMS
@@ -193,7 +193,7 @@ const ID_SIMPLEITEMS = 128
 Menu control identifier routed to the simpleitems action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-synceveryframe-const-id-synceveryframe-134-src-mq3-client-ui-preferences-ml-225080173"></a>
 ### ID_SYNCEVERYFRAME
@@ -205,7 +205,7 @@ const ID_SYNCEVERYFRAME = 134
 Menu control identifier routed to the synceveryframe action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-wallmarks-const-id-wallmarks-131-src-mq3-client-ui-preferences-ml-728464814"></a>
 ### ID_WALLMARKS
@@ -217,7 +217,7 @@ const ID_WALLMARKS = 131
 Menu control identifier routed to the wallmarks action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L17)
 
 <a id="function-function-mq3-client-ui-preferences-init-function-init-value-src-mq3-client-ui-preferences-ml-1915486089"></a>
 ### init
@@ -233,7 +233,7 @@ Preferences_MenuInit
 | `value` | `dynamic` | — | Mutable UI preferences record/storage; this routine assigns `value.items`, `value.assets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L141)
 
 <a id="function-function-mq3-client-ui-preferences-open-function-open-value-src-mq3-client-ui-preferences-ml-1686092237"></a>
 ### open
@@ -249,7 +249,7 @@ UI_PreferencesMenu
 | `value` | `dynamic` | — | Mutable UI preferences record/storage; this routine assigns `value.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L150)
 
 - [mq3.client.ui_preferences.PreferenceItem](Type-mq3-client-ui-preferences-preferenceitem-2013934726.md) — struct
 - [mq3.client.ui_preferences.Preferences](Type-mq3-client-ui-preferences-preferences-546837250.md) — struct
@@ -263,7 +263,7 @@ const QM_ACTIVATED = 3
 Activation callback event accepted by the gameplay-preferences menu before it processes the selected control action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L7)
 
 <a id="function-function-mq3-client-ui-preferences-setmenuitems-function-setmenuitems-crosshair-simpleitems-brasstime-marks-identify-dynamiclights-fastsky-finish-forcemodel-teamoverlay-allowdownload-src-mq3-client-ui-preferences-ml-1670963060"></a>
 ### setMenuItems
@@ -289,4 +289,4 @@ Preferences_SetMenuItems
 | `allowDownload` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L97)

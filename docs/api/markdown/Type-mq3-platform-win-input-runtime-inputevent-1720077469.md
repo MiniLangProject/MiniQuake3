@@ -12,7 +12,7 @@ struct InputEvent
 Data record for `mq3.platform.win_input_runtime.InputEvent`; groups `time`, `type`, `value`, `value2`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L28)
 
 ## Members
 
@@ -26,7 +26,7 @@ time
 Millisecond timestamp attached to translated mouse, joystick, or MIDI input.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L30)
 
 <a id="field-field-mq3-platform-win-input-runtime-inputevent-type-type-src-mq3-platform-win-input-runtime-ml-2140030373"></a>
 ### type
@@ -38,7 +38,7 @@ type
 System-event category selecting how the accompanying values are interpreted.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L32)
 
 <a id="field-field-mq3-platform-win-input-runtime-inputevent-value-value-src-mq3-platform-win-input-runtime-ml-1863727737"></a>
 ### value
@@ -50,7 +50,7 @@ value
 Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L34)
 
 <a id="field-field-mq3-platform-win-input-runtime-inputevent-value2-value2-src-mq3-platform-win-input-runtime-ml-1976034939"></a>
 ### value2
@@ -62,4 +62,4 @@ value2
 Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L36)

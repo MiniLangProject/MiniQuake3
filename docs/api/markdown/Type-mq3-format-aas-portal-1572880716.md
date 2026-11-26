@@ -12,7 +12,7 @@ struct Portal
 Portal record for format.aas, containing `areaNum`, `frontCluster`, `backCluster`, `clusterAreaNums`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L326)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaNum
 Navigation area forming the portal between two serialized clusters.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L328)
 
 <a id="field-field-mq3-format-aas-portal-backcluster-backcluster-src-mq3-format-aas-ml-1150260579"></a>
 ### backCluster
@@ -38,7 +38,7 @@ backCluster
 Cluster at back of portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L332)
 
 <a id="field-field-mq3-format-aas-portal-clusterareanums-clusterareanums-src-mq3-format-aas-ml-218926151"></a>
 ### clusterAreaNums
@@ -50,7 +50,7 @@ clusterAreaNums
 Area indexes of this portal within its front and back clusters.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L334)
 
 <a id="field-field-mq3-format-aas-portal-frontcluster-frontcluster-src-mq3-format-aas-ml-235253137"></a>
 ### frontCluster
@@ -62,4 +62,4 @@ frontCluster
 Cluster at front of portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L330)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L330)

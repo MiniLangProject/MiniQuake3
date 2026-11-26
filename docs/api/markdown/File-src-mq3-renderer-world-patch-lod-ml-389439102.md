@@ -12,9 +12,9 @@ Reachable from entry: **yes**
 - `mq3/renderer/bsp_render_data.ml` as `render` → [src/mq3/renderer/bsp_render_data.ml](File-src-mq3-renderer-bsp-render-data-ml-926244912.md)
 - `mq3/renderer/patch_stitch.ml` as `patchStitch` → [src/mq3/renderer/patch_stitch.ml](File-src-mq3-renderer-patch-stitch-ml-2036325899.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/sort.ml` as `sorting` → `../MiniLangCompilerML/std/sort.ml` — external dependency
+- `std/ds/hashmap.ml` as `maps` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/sort.ml` as `sorting` → `../../a7594a0c0299/MiniLangCompilerML/std/sort.ml` — external dependency
 
 ## Declarations
 
@@ -34,7 +34,7 @@ Collects positive interior LOD-error values into the supplied threshold list.
 | `thresholds` | `dynamic` | — | Record providing `thresholds.add`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L124)
 
 <a id="function-function-mq3-renderer-world-patch-lod-axes-function-axes-grid-src-mq3-renderer-world-patch-lod-ml-568581798"></a>
 ### axes
@@ -50,7 +50,7 @@ Computes `axes` from `variants.toArray()` using `std.ds.list.List.withCapacity`,
 | `grid` | `dynamic` | — | Record providing `grid.width`, `grid.height`, `grid.widthLodError`, `grid.heightLodError`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L141)
 
 <a id="function-function-mq3-renderer-world-patch-lod-before-function-before-left-right-src-mq3-renderer-world-patch-lod-ml-2121927533"></a>
 ### before
@@ -67,7 +67,7 @@ Computes `left<right` for `mq3.renderer.world_patch_lod.before`.
 | `right` | `dynamic` | — | Input used in the result expression `left<right`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L119)
 
 <a id="function-function-mq3-renderer-world-patch-lod-fail-function-fail-message-src-mq3-renderer-world-patch-lod-ml-1632018331"></a>
 ### fail
@@ -83,7 +83,7 @@ Creates error `7490` with message `"World patch LOD: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7490,"World patch LOD: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L68)
 
 <a id="function-function-mq3-renderer-world-patch-lod-read-function-read-map-face-faceoffset-texture-patcherror-src-mq3-renderer-world-patch-lod-ml-1523984734"></a>
 ### read
@@ -103,7 +103,7 @@ Builds `mq3.renderer.world_patch_lod.WorldLodPatch` after updating `first[axis]`
 | `patchError` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.bsp_render_data.patchGrid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L76)
 
 <a id="function-function-mq3-renderer-world-patch-lod-select-function-select-patch-position-forward-curveerror-src-mq3-renderer-world-patch-lod-ml-106502577"></a>
 ### select
@@ -122,7 +122,7 @@ Computes `select` from `patch.variants[0].face` using `mq3.compat.numeric.fsub`,
 | `curveError` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.fdiv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L174)
 
 <a id="function-function-mq3-renderer-world-patch-lod-selectaxis-function-selectaxis-size-errors-threshold-src-mq3-renderer-world-patch-lod-ml-1045499209"></a>
 ### selectAxis
@@ -140,7 +140,7 @@ Returns `selected.toArray()` from `mq3.renderer.world_patch_lod.selectAxis`.
 | `threshold` | `dynamic` | — | Input tested by `size>2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L133)
 
 <a id="function-function-mq3-renderer-world-patch-lod-stitch-function-stitch-patches-src-mq3-renderer-world-patch-lod-ml-1605984232"></a>
 ### stitch
@@ -156,7 +156,7 @@ Builds `grid.control` in `mq3.renderer.world_patch_lod.stitch`; returns `true`.
 | `patches` | `dynamic` | — | Sequence traversed as `patch` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L93)
 
 <a id="function-function-mq3-renderer-world-patch-lod-triangles-function-triangles-patch-variant-face-src-mq3-renderer-world-patch-lod-ml-348996474"></a>
 ### triangles
@@ -174,7 +174,7 @@ Computes `triangles` from `result.toArray()` using `std.ds.list.List.withCapacit
 | `face` | `dynamic` | — | Argument 9 supplied to `mq3.renderer.bsp_render_data.appendPatchGrid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L160)
 
 - [mq3.renderer.world_patch_lod.WorldLodAxis](Type-mq3-renderer-world-patch-lod-worldlodaxis-27998858.md) — struct
 - [mq3.renderer.world_patch_lod.WorldLodPatch](Type-mq3-renderer-world-patch-lod-worldlodpatch-841667267.md) — struct

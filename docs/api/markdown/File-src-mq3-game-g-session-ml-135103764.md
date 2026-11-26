@@ -28,7 +28,7 @@ Forward `G_InitSessionData` to `mq3.game.session.initClient` and return the dele
 | `userinfo` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L19)
 
 <a id="function-function-mq3-game-g-session-g-initworldsession-function-g-initworldsession-level-src-mq3-game-g-session-ml-1709510328"></a>
 ### G_InitWorldSession
@@ -44,7 +44,7 @@ Forward `G_InitWorldSession` to `mq3.game.session.initWorld` and return the dele
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `newSession` and `gamePrintFn`. May update `level.newSession` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L22)
 
 <a id="function-function-mq3-game-g-session-g-readsessiondata-function-g-readsessiondata-level-client-src-mq3-game-g-session-ml-1942018597"></a>
 ### G_ReadSessionData
@@ -61,7 +61,7 @@ Forward `G_ReadSessionData` to `mq3.game.session.readClient` and return the dele
 | `client` | `dynamic` | — | Client state; accesses `team`, `spectatorTime`, `spectatorState`, `spectatorClient` and `wins` and related fields. May update `client.team`, `client.spectatorTime` and `client.spectatorState` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L14)
 
 <a id="function-function-mq3-game-g-session-g-writeclientsessiondata-function-g-writeclientsessiondata-level-client-src-mq3-game-g-session-ml-1121841965"></a>
 ### G_WriteClientSessionData
@@ -78,7 +78,7 @@ Forward `G_WriteClientSessionData` to `mq3.game.session.writeClient` and return 
 | `client` | `dynamic` | — | Client state; accesses `team`, `spectatorTime`, `spectatorState`, `spectatorClient` and `wins` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L10)
 
 <a id="function-function-mq3-game-g-session-g-writesessiondata-function-g-writesessiondata-level-src-mq3-game-g-session-ml-1070656748"></a>
 ### G_WriteSessionData
@@ -94,4 +94,4 @@ Forward `G_WriteSessionData` to `mq3.game.session.writeWorld` and return the del
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `maxclients` and `clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L25)

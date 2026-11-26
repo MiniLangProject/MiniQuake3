@@ -111,8 +111,8 @@ Reachable from entry: **yes**
 - `mq3/vm/syscall_qagame_world.ml` as `vmSyscallQagameWorld` → [src/mq3/vm/syscall_qagame_world.ml](File-src-mq3-vm-syscall-qagame-world-ml-663586900.md)
 - `mq3/vm/syscall_ui.ml` as `vmSyscallUi` → [src/mq3/vm/syscall_ui.ml](File-src-mq3-vm-syscall-ui-ml-839264043.md)
 - `mq3/vm/syscall_ui_media.ml` as `vmSyscallUiMedia` → [src/mq3/vm/syscall_ui_media.ml](File-src-mq3-vm-syscall-ui-media-ml-1111712958.md)
-- `std/fs.ml` as `fs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/fs.ml` as `fs` → `../../a7594a0c0299/MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -130,7 +130,7 @@ Format a three-component vector as a parenthesized comma-separated diagnostic st
 | `vector` | `dynamic` | — | Three-element vector in X, Y, Z order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/main.ml#L110)
 
 <a id="function-function-main-function-main-args-src-main-ml-776500952"></a>
 ### main
@@ -148,7 +148,7 @@ Validation failures include `could not determine the MiniQuake3 executable direc
 | `args` | `dynamic` | — | Command-line arguments excluding the executable; an empty list starts the retail menu beside the executable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/main.ml#L139)
 
 <a id="function-function-mapnamefrompath-function-mapnamefrompath-path-src-main-ml-1759387674"></a>
 ### mapNameFromPath
@@ -164,7 +164,7 @@ Extract the final path component and remove its last extension for use as the ma
 | `path` | `dynamic` | — | Map filename using either slash or backslash separators. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/main.ml#L127)
 
 <a id="function-function-printtrace-function-printtrace-result-src-main-ml-1040741020"></a>
 ### printTrace
@@ -180,4 +180,4 @@ Print the collision fraction, endpoint, plane, contents, surface flags, and soli
 | `result` | `dynamic` | — | Collision result with a trace record and endpos vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/main.ml#L116)

@@ -10,8 +10,8 @@ Reachable from entry: **yes**
 
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/renderer/tr_types.ml` as `trtypes` → [src/mq3/renderer/tr_types.ml](File-src-mq3-renderer-tr-types-ml-1757535937.md)
-- `std/array.ml` as `arrays` → `../MiniLangCompilerML/std/array.ml` — external dependency
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/array.ml` as `arrays` → `../../a7594a0c0299/MiniLangCompilerML/std/array.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
 
 ## Declarations
 
@@ -34,7 +34,7 @@ Calls `mq3.renderer.scene_queue.addDynamicLight` with `(state,origin,intensity,r
 | `b` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.scene_queue.addDynamicLight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L296)
 
 <a id="function-function-mq3-renderer-scene-queue-adddynamiclight-function-adddynamiclight-state-origin-intensity-r-g-b-additive-src-mq3-renderer-scene-queue-ml-786351881"></a>
 ### addDynamicLight
@@ -56,7 +56,7 @@ Queues a positive-intensity dynamic light when registered, within capacity, and 
 | `additive` | `dynamic` | — | Value used for `mq3.renderer.scene_queue.DLight.additive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L276)
 
 <a id="function-function-mq3-renderer-scene-queue-addentity-function-addentity-state-retype-payload-src-mq3-renderer-scene-queue-ml-1584531876"></a>
 ### addEntity
@@ -74,7 +74,7 @@ Appends a validated entity while the scene is registered and entity capacity rem
 | `payload` | `dynamic` | — | Value used for `mq3.renderer.scene_queue.RefEntity.payload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L247)
 
 <a id="function-function-mq3-renderer-scene-queue-addlight-function-addlight-state-origin-intensity-r-g-b-src-mq3-renderer-scene-queue-ml-1117335509"></a>
 ### addLight
@@ -95,7 +95,7 @@ Calls `mq3.renderer.scene_queue.addDynamicLight` with `(state,origin,intensity,r
 | `b` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.scene_queue.addDynamicLight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L288)
 
 <a id="function-function-mq3-renderer-scene-queue-addpolys-function-addpolys-state-hshader-numverts-vertices-numpolys-src-mq3-renderer-scene-queue-ml-1651337340"></a>
 ### addPolys
@@ -115,7 +115,7 @@ Calls `mq3.renderer.scene_queue.addPolysInternal` with `(state,hShader,numVerts,
 | `numPolys` | `dynamic` | — | Value forwarded as `numPolys` to `mq3.renderer.scene_queue.addPolysInternal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L233)
 
 <a id="function-function-mq3-renderer-scene-queue-addpolysdecoded-function-addpolysdecoded-state-hshader-numverts-vertices-numpolys-src-mq3-renderer-scene-queue-ml-1481041220"></a>
 ### addPolysDecoded
@@ -135,7 +135,7 @@ The QVM bridge freshly decodes these vertices and transfers ownership to the fra
 | `numPolys` | `dynamic` | — | Value forwarded as `numPolys` to `mq3.renderer.scene_queue.addPolysInternal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L241)
 
 <a id="function-function-mq3-renderer-scene-queue-addpolysinternal-function-addpolysinternal-state-hshader-numverts-vertices-numpolys-ownedvertices-src-mq3-renderer-scene-queue-ml-23727340"></a>
 ### addPolysInternal
@@ -156,7 +156,7 @@ Updates `state.numPolyVerts` in `mq3.renderer.scene_queue.addPolysInternal`; ret
 | `ownedVertices` | `dynamic` | — | Input tested by `not ownedVertices or numPolys!=1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L206)
 
 <a id="function-function-mq3-renderer-scene-queue-clearscene-function-clearscene-state-src-mq3-renderer-scene-queue-ml-1444860491"></a>
 ### clearScene
@@ -172,7 +172,7 @@ Updates `state.firstSceneDlight`, `state.firstSceneEntity`, `state.firstScenePol
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.firstSceneDlight`, `state.firstSceneEntity`, `state.firstScenePoly`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L181)
 
 <a id="function-function-mq3-renderer-scene-queue-color4-function-color4-value-src-mq3-renderer-scene-queue-ml-1725243383"></a>
 ### color4
@@ -188,7 +188,7 @@ Returns `[value[0],value[1],value[2],value[3]]` from `mq3.renderer.scene_queue.c
 | `value` | `dynamic` | — | Indexed input read at `0`, `1`, `2`, `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L165)
 
 <a id="function-function-mq3-renderer-scene-queue-create-function-create-maxpolys-maxpolyverts-src-mq3-renderer-scene-queue-ml-1481547801"></a>
 ### create
@@ -205,7 +205,7 @@ Builds `mq3.renderer.scene_queue.State` for `mq3.renderer.scene_queue.create`.
 | `maxPolyVerts` | `dynamic` | — | Initial value for `mq3.renderer.scene_queue.State.maxPolyVerts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L150)
 
 - [mq3.renderer.scene_queue.DecodedRefEntity](Type-mq3-renderer-scene-queue-decodedrefentity-1177171883.md) — struct
 <a id="function-function-mq3-renderer-scene-queue-decodeentity-function-decodeentity-value-src-mq3-renderer-scene-queue-ml-702629319"></a>
@@ -222,7 +222,7 @@ Builds `mq3.renderer.scene_queue.DecodedRefEntity` for `mq3.renderer.scene_queue
 | `value` | `dynamic` | — | Record providing `value.payload`, `value.reType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L262)
 
 <a id="function-function-mq3-renderer-scene-queue-diagnostic-function-diagnostic-state-text-src-mq3-renderer-scene-queue-ml-1302392970"></a>
 ### diagnostic
@@ -239,7 +239,7 @@ Returns `void` from `mq3.renderer.scene_queue.diagnostic`.
 | `text` | `dynamic` | — | Argument 2 supplied to `state.diagnosticFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L158)
 
 - [mq3.renderer.scene_queue.DLight](Type-mq3-renderer-scene-queue-dlight-1585828387.md) — struct
 <a id="constant-constant-mq3-renderer-scene-queue-entitynum-world-const-entitynum-world-1022-src-mq3-renderer-scene-queue-ml-192279744"></a>
@@ -252,7 +252,7 @@ const ENTITYNUM_WORLD = 1022
 Reserved entity number identifying static world geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L13)
 
 <a id="function-function-mq3-renderer-scene-queue-finishscene-function-finishscene-state-src-mq3-renderer-scene-queue-ml-610780225"></a>
 ### finishScene
@@ -268,7 +268,7 @@ Updates `state.firstSceneEntity`, `state.firstSceneDlight`, `state.firstScenePol
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.firstSceneEntity`, `state.firstSceneDlight`, `state.firstScenePoly`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L309)
 
 <a id="function-function-mq3-renderer-scene-queue-fogforvertices-function-fogforvertices-state-vertices-src-mq3-renderer-scene-queue-ml-771075434"></a>
 ### fogForVertices
@@ -285,7 +285,7 @@ Builds `mins[axis]`, `maxs[axis]` in `mq3.renderer.scene_queue.fogForVertices`; 
 | `vertices` | `dynamic` | — | Indexed input read at `0`, `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L188)
 
 <a id="constant-constant-mq3-renderer-scene-queue-glhw-permedia2-const-glhw-permedia2-trtypes-glhw-permedia2-src-mq3-renderer-scene-queue-ml-999765840"></a>
 ### GLHW_PERMEDIA2
@@ -297,7 +297,7 @@ const GLHW_PERMEDIA2 = trtypes.GLHW_PERMEDIA2
 Hardware category selecting Permedia2 blending workarounds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L21)
 
 <a id="constant-constant-mq3-renderer-scene-queue-glhw-ragepro-const-glhw-ragepro-trtypes-glhw-ragepro-src-mq3-renderer-scene-queue-ml-948313399"></a>
 ### GLHW_RAGEPRO
@@ -309,7 +309,7 @@ const GLHW_RAGEPRO = trtypes.GLHW_RAGEPRO
 Hardware category selecting Rage Pro alpha-texture workarounds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L19)
 
 <a id="constant-constant-mq3-renderer-scene-queue-glhw-riva128-const-glhw-riva128-trtypes-glhw-riva128-src-mq3-renderer-scene-queue-ml-918874440"></a>
 ### GLHW_RIVA128
@@ -321,7 +321,7 @@ const GLHW_RIVA128 = trtypes.GLHW_RIVA128
 Hardware category selecting RIVA 128 alpha-interpolation workarounds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L17)
 
 <a id="constant-constant-mq3-renderer-scene-queue-max-dlights-const-max-dlights-trtypes-max-dlights-src-mq3-renderer-scene-queue-ml-1828395978"></a>
 ### MAX_DLIGHTS
@@ -333,7 +333,7 @@ const MAX_DLIGHTS = trtypes.MAX_DLIGHTS
 Maximum number of dynamic lights represented by the renderer's light bit masks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L11)
 
 <a id="function-function-mq3-renderer-scene-queue-payloadvector-function-payloadvector-payload-offset-src-mq3-renderer-scene-queue-ml-2134815585"></a>
 ### payloadVector
@@ -350,7 +350,7 @@ QVM refEntity_t is a fixed 140-byte 32-bit ABI record from tr_types.h.
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L257)
 
 - [mq3.renderer.scene_queue.Poly](Type-mq3-renderer-scene-queue-poly-1534615021.md) — struct
 - [mq3.renderer.scene_queue.PolyVert](Type-mq3-renderer-scene-queue-polyvert-608300714.md) — struct
@@ -365,7 +365,7 @@ const RT_MAX_REF_ENTITY_TYPE = trtypes.RT_MAX_REF_ENTITY_TYPE
 Exclusive upper bound of valid renderer entity types; not a drawable entity kind.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L15)
 
 <a id="function-function-mq3-renderer-scene-queue-sceneentities-function-sceneentities-state-src-mq3-renderer-scene-queue-ml-1579397189"></a>
 ### sceneEntities
@@ -381,7 +381,7 @@ Calls `std.array.slice` with `(state.entities.buf,state.firstSceneEntity,state.e
 | `state` | `dynamic` | — | Record providing `state.entities`, `state.firstSceneEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L300)
 
 <a id="function-function-mq3-renderer-scene-queue-scenelights-function-scenelights-state-src-mq3-renderer-scene-queue-ml-1043036929"></a>
 ### sceneLights
@@ -397,7 +397,7 @@ Calls `std.array.slice` with `(state.dlights.buf,state.firstSceneDlight,state.dl
 | `state` | `dynamic` | — | Record providing `state.dlights`, `state.firstSceneDlight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L303)
 
 <a id="function-function-mq3-renderer-scene-queue-scenepolys-function-scenepolys-state-src-mq3-renderer-scene-queue-ml-558304059"></a>
 ### scenePolys
@@ -413,7 +413,7 @@ Calls `std.array.slice` with `(state.polys.buf,state.firstScenePoly,state.polys.
 | `state` | `dynamic` | — | Record providing `state.polys`, `state.firstScenePoly`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L306)
 
 - [mq3.renderer.scene_queue.State](Type-mq3-renderer-scene-queue-state-1633405832.md) — struct
 <a id="function-function-mq3-renderer-scene-queue-tex2-function-tex2-value-src-mq3-renderer-scene-queue-ml-461168707"></a>
@@ -430,7 +430,7 @@ Returns `[value[0],value[1]]` from `mq3.renderer.scene_queue.tex2`; earlier bran
 | `value` | `dynamic` | — | Indexed input read at `0`, `1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L168)
 
 <a id="function-function-mq3-renderer-scene-queue-toggleframe-function-toggleframe-state-src-mq3-renderer-scene-queue-ml-233938633"></a>
 ### toggleFrame
@@ -446,7 +446,7 @@ Updates `state.numPolyVerts`, `state.firstSceneEntity`, `state.firstSceneDlight`
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.numPolyVerts`, `state.firstSceneEntity`, `state.firstSceneDlight`, `state.firstScenePoly`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L175)
 
 <a id="function-function-mq3-renderer-scene-queue-vector3-function-vector3-value-label-src-mq3-renderer-scene-queue-ml-780292053"></a>
 ### vector3
@@ -463,7 +463,7 @@ Returns `[value[0],value[1],value[2]]` from `mq3.renderer.scene_queue.vector3`; 
 | `label` | `dynamic` | — | Input tested by `value==void or len(value)!=3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L162)
 
 <a id="function-function-mq3-renderer-scene-queue-vertex-function-vertex-value-src-mq3-renderer-scene-queue-ml-807412971"></a>
 ### vertex
@@ -479,6 +479,6 @@ Constructs `mq3.renderer.scene_queue.PolyVert` with `xyz` = `vector3(value.xyz,"
 | `value` | `dynamic` | — | Record providing `value.xyz`, `value.st`, `value.modulate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L171)
 
 - [mq3.renderer.scene_queue.View](Type-mq3-renderer-scene-queue-view-289640322.md) — struct

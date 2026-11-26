@@ -36,4 +36,4 @@ Set `level.clients[winner].wins` to `n.add32(level.clients[winner].wins,1)` in `
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_disconnect.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_disconnect.ml#L19)

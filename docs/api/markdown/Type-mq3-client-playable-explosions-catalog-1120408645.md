@@ -12,7 +12,7 @@ struct Catalog
 Stores playable explosions catalog record, including `textures`, `profiles`, `plasmaModel`, `firstTextureSlot`, `textureCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L49)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstTextureSlot
 First texture-cache slot reserved for this module's media resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L58)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-plasmamodel-plasmamodel-src-mq3-client-playable-explosions-ml-55650054"></a>
 ### plasmaModel
@@ -38,7 +38,7 @@ plasmaModel
 Model resource selected for the plasma presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L56)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-profiles-profiles-src-mq3-client-playable-explosions-ml-1994448230"></a>
 ### profiles
@@ -50,7 +50,7 @@ profiles
 When constructing this record, `load` supplies `profiles` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L54)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-texturecount-texturecount-src-mq3-client-playable-explosions-ml-1980541590"></a>
 ### textureCount
@@ -62,7 +62,7 @@ textureCount
 Number of texture resources or texture-cache slots represented by this media record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L60)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-textures-textures-src-mq3-client-playable-explosions-ml-1034877610"></a>
 ### textures
@@ -74,4 +74,4 @@ textures
 When constructing this record, `load` supplies `textures` for this member. Used by `textureFor` and `upload` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L52)

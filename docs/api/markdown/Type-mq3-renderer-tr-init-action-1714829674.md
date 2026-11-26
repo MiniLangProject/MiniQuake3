@@ -12,7 +12,7 @@ struct Action
 Data record for `mq3.renderer.tr_init.Action`; groups `boundary`, `kind`, `name`, `value`, `number`, `dispatched`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L12)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Host operation boundary at which this platform action is dispatched.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L14)
 
 <a id="field-field-mq3-renderer-tr-init-action-dispatched-dispatched-src-mq3-renderer-tr-init-ml-1937869357"></a>
 ### dispatched
@@ -38,7 +38,7 @@ dispatched
 Whether the recorded action was delivered to its host implementation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-init-action-kind-kind-src-mq3-renderer-tr-init-ml-505313583"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Renderer lifecycle operation to dispatch through the named platform boundary.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-init-action-name-name-src-mq3-renderer-tr-init-ml-2116970229"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Resource, command, or console-variable name targeted by the renderer lifecycle action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-init-action-number-number-src-mq3-renderer-tr-init-ml-1188490737"></a>
 ### number
@@ -74,7 +74,7 @@ number
 Numeric argument supplied to the platform action handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-init-action-value-value-src-mq3-renderer-tr-init-ml-1145189395"></a>
 ### value
@@ -86,4 +86,4 @@ value
 Value carried by the event, configuration item, or requested operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L20)

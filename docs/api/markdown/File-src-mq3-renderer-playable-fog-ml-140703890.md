@@ -33,7 +33,7 @@ Updates `catalog.textureSlot` in `mq3.renderer.playable_fog.assignTexture`; retu
 | `slot` | `dynamic` | — | Value assigned to `catalog.textureSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L142)
 
 <a id="constant-constant-mq3-renderer-playable-fog-brush-side-stride-const-brush-side-stride-8-src-mq3-renderer-playable-fog-ml-1928351033"></a>
 ### BRUSH_SIDE_STRIDE
@@ -45,7 +45,7 @@ const BRUSH_SIDE_STRIDE = 8
 Byte stride of one brush-side record in the BSP brush-side lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L18)
 
 <a id="constant-constant-mq3-renderer-playable-fog-brush-stride-const-brush-stride-12-src-mq3-renderer-playable-fog-ml-1112570926"></a>
 ### BRUSH_STRIDE
@@ -57,7 +57,7 @@ const BRUSH_STRIDE = 12
 Byte stride of one brush record in the BSP brush lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L16)
 
 <a id="function-function-mq3-renderer-playable-fog-build-function-build-renderdata-catalog-src-mq3-renderer-playable-fog-ml-1508265223"></a>
 ### build
@@ -74,7 +74,7 @@ Builds `mq3.renderer.playable_fog.FogBatch` after updating `positions[output]`, 
 | `catalog` | `dynamic` | — | Record providing `catalog.fogs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L190)
 
 - [mq3.renderer.playable_fog.Catalog](Type-mq3-renderer-playable-fog-catalog-1077776833.md) — struct
 <a id="function-function-mq3-renderer-playable-fog-coordinates-function-coordinates-fog-position-vieworigin-forward-src-mq3-renderer-playable-fog-ml-133259803"></a>
@@ -94,7 +94,7 @@ Computes `coordinates` from `[s,t]`.
 | `forward` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L164)
 
 <a id="function-function-mq3-renderer-playable-fog-density-function-density-fog-position-vieworigin-forward-src-mq3-renderer-playable-fog-ml-203399761"></a>
 ### density
@@ -113,7 +113,7 @@ Returns `fogFactor(uv[0],uv[1])` from `mq3.renderer.playable_fog.density`.
 | `forward` | `dynamic` | — | Value forwarded as `forward` to `mq3.renderer.playable_fog.coordinates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L185)
 
 <a id="function-function-mq3-renderer-playable-fog-draw-function-draw-batch-catalog-projection-src-mq3-renderer-playable-fog-ml-1873960262"></a>
 ### draw
@@ -131,7 +131,7 @@ Calls `mq3.renderer.playable_fog.drawTarget` with `(batch,catalog,projection,voi
 | `projection` | `dynamic` | — | Value forwarded as `projection` to `mq3.renderer.playable_fog.drawTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L236)
 
 <a id="function-function-mq3-renderer-playable-fog-drawtarget-function-drawtarget-batch-catalog-projection-area-src-mq3-renderer-playable-fog-ml-2135235563"></a>
 ### drawTarget
@@ -150,7 +150,7 @@ Updates view-dependent fog coordinates and draws the fog pass using alpha blendi
 | `area` | `dynamic` | — | Argument 3 supplied to `mq3.platform.playable_window.submitWorldTriangleBatchViewport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L227)
 
 <a id="function-function-mq3-renderer-playable-fog-drawviewport-function-drawviewport-batch-catalog-projection-area-src-mq3-renderer-playable-fog-ml-475046855"></a>
 ### drawViewport
@@ -169,7 +169,7 @@ Calls `mq3.renderer.playable_fog.drawTarget` with `(batch,catalog,projection,are
 | `area` | `dynamic` | — | Value forwarded as `area` to `mq3.renderer.playable_fog.drawTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L242)
 
 <a id="function-function-mq3-renderer-playable-fog-f32-function-f32-map-offset-src-mq3-renderer-playable-fog-ml-1087297979"></a>
 ### f32
@@ -186,7 +186,7 @@ Calls `mq3.compat.numeric.bitsFloat` with `(n.readU32(map.data,offset))` and ret
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L72)
 
 <a id="function-function-mq3-renderer-playable-fog-fail-function-fail-message-src-mq3-renderer-playable-fog-ml-1498685399"></a>
 ### fail
@@ -202,7 +202,7 @@ Creates error `7620` with message `"playable fog: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7620,"playable fog: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L64)
 
 - [mq3.renderer.playable_fog.Fog](Type-mq3-renderer-playable-fog-fog-528131882.md) — struct
 <a id="constant-constant-mq3-renderer-playable-fog-fog-stride-const-fog-stride-72-src-mq3-renderer-playable-fog-ml-1849207764"></a>
@@ -215,7 +215,7 @@ const FOG_STRIDE = 72
 Byte stride of one fog record in the BSP fog lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L14)
 
 <a id="constant-constant-mq3-renderer-playable-fog-fog-texture-height-const-fog-texture-height-32-src-mq3-renderer-playable-fog-ml-926204504"></a>
 ### FOG_TEXTURE_HEIGHT
@@ -227,7 +227,7 @@ const FOG_TEXTURE_HEIGHT = 32
 Height in pixels of the generated fog-density texture.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L24)
 
 <a id="constant-constant-mq3-renderer-playable-fog-fog-texture-width-const-fog-texture-width-256-src-mq3-renderer-playable-fog-ml-782583682"></a>
 ### FOG_TEXTURE_WIDTH
@@ -239,7 +239,7 @@ const FOG_TEXTURE_WIDTH = 256
 Width in pixels of the generated fog-density texture.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L22)
 
 - [mq3.renderer.playable_fog.FogBatch](Type-mq3-renderer-playable-fog-fogbatch-460027350.md) — struct
 <a id="function-function-mq3-renderer-playable-fog-fogfactor-function-fogfactor-s-t-src-mq3-renderer-playable-fog-ml-749491453"></a>
@@ -257,7 +257,7 @@ Computes `fogFactor` from `trans.sqrt(index/255.0)` using `mq3.compat.numeric.tr
 | `t` | `dynamic` | — | Input tested by `s<0.0 or t<1.0/32.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L119)
 
 <a id="function-function-mq3-renderer-playable-fog-i32-function-i32-map-offset-src-mq3-renderer-playable-fog-ml-662549357"></a>
 ### i32
@@ -274,7 +274,7 @@ Calls `mq3.compat.numeric.readI32` with `(map.data,offset)` and returns its resu
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L68)
 
 <a id="function-function-mq3-renderer-playable-fog-load-function-load-map-index-src-mq3-renderer-playable-fog-ml-600508042"></a>
 ### load
@@ -291,7 +291,7 @@ Builds `mq3.renderer.playable_fog.Catalog` using `mq3.renderer.shader_parser.par
 | `index` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.parseIndexed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L91)
 
 <a id="function-function-mq3-renderer-playable-fog-plane-function-plane-map-index-src-mq3-renderer-playable-fog-ml-493655426"></a>
 ### plane
@@ -308,7 +308,7 @@ Returns `[[f32(map,offset),f32(map,offset+4),f32(map,offset+8)],f32(map,offset+1
 | `index` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.playable_fog.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L86)
 
 <a id="constant-constant-mq3-renderer-playable-fog-plane-stride-const-plane-stride-16-src-mq3-renderer-playable-fog-ml-650648702"></a>
 ### PLANE_STRIDE
@@ -320,7 +320,7 @@ const PLANE_STRIDE = 16
 Byte stride of one plane record in the BSP plane lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="function-function-mq3-renderer-playable-fog-recordname-function-recordname-map-offset-src-mq3-renderer-playable-fog-ml-532111997"></a>
 ### recordName
@@ -337,7 +337,7 @@ Returns `decode(slice(map.data,offset,length))` from `mq3.renderer.playable_fog.
 | `offset` | `dynamic` | — | Argument 2 supplied to `slice`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L82)
 
 <a id="function-function-mq3-renderer-playable-fog-recordoffset-function-recordoffset-map-lump-index-stride-src-mq3-renderer-playable-fog-ml-1267007489"></a>
 ### recordOffset
@@ -356,7 +356,7 @@ Returns `map.offsets[lump]+index*stride` from `mq3.renderer.playable_fog.recordO
 | `stride` | `dynamic` | — | Input used in the result expression `map.offsets[lump]+index*stride`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L78)
 
 <a id="function-function-mq3-renderer-playable-fog-release-function-release-catalog-src-mq3-renderer-playable-fog-ml-1990053321"></a>
 ### release
@@ -372,7 +372,7 @@ Returns `void` from `mq3.renderer.playable_fog.release`.
 | `catalog` | `dynamic` | — | Record providing `catalog.textureSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L157)
 
 <a id="function-function-mq3-renderer-playable-fog-textureimage-function-textureimage-src-mq3-renderer-playable-fog-ml-541768800"></a>
 ### textureImage
@@ -384,7 +384,7 @@ function textureImage()
 Builds `pixels[(y*FOG_TEXTURE_WIDTH+x)*4+3]` in `mq3.renderer.playable_fog.textureImage`; returns `materials.Image(FOG_TEXTURE_WIDTH,FOG_TEXTURE_HEIGHT,pixels)`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L128)
 
 <a id="function-function-mq3-renderer-playable-fog-update-function-update-batch-catalog-vieworigin-forward-src-mq3-renderer-playable-fog-ml-1085563073"></a>
 ### update
@@ -403,7 +403,7 @@ Computes `update` from `batch.commands.count` using `mq3.compat.numeric.trunc32`
 | `forward` | `dynamic` | — | Value forwarded as `forward` to `mq3.renderer.playable_fog.coordinates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L209)
 
 <a id="function-function-mq3-renderer-playable-fog-upload-function-upload-catalog-src-mq3-renderer-playable-fog-ml-733589335"></a>
 ### upload
@@ -419,4 +419,4 @@ Uploads the fog lookup image to its assigned native texture slot.
 | `catalog` | `dynamic` | — | Record providing `catalog.textureSlot`, `catalog.texture`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L149)

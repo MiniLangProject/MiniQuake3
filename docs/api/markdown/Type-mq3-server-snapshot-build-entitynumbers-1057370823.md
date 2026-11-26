@@ -12,7 +12,7 @@ struct EntityNumbers
 EntityNumbers record for server.snapshot_build, containing `values`, `count`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L98)
 
 ## Members
 
@@ -26,7 +26,7 @@ count
 Number of valid entries represented by this result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L102)
 
 <a id="field-field-mq3-server-snapshot-build-entitynumbers-values-values-src-mq3-server-snapshot-build-ml-1013143664"></a>
 ### values
@@ -38,4 +38,4 @@ values
 Sorted entity numbers selected for the snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L100)

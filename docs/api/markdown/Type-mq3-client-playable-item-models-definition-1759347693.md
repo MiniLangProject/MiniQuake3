@@ -12,7 +12,7 @@ struct Definition
 Stores playable item models definition record, including `classname`, `category`, `modelPath`, `skinPath`, `scale`, `heightOffset` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
 
 ## Members
 
@@ -26,7 +26,7 @@ bobAmplitude
 When constructing this record, `item` supplies `DEFAULT_BOB_AMPLITUDE` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L42)
 
 <a id="field-field-mq3-client-playable-item-models-definition-category-category-src-mq3-client-playable-item-models-ml-1758506730"></a>
 ### category
@@ -38,7 +38,7 @@ category
 When constructing this record, `item` supplies `category` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L32)
 
 <a id="field-field-mq3-client-playable-item-models-definition-classname-classname-src-mq3-client-playable-item-models-ml-432532606"></a>
 ### classname
@@ -50,7 +50,7 @@ classname
 Native item classname that keys the world-model definition lookup.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L30)
 
 <a id="field-field-mq3-client-playable-item-models-definition-heightoffset-heightoffset-src-mq3-client-playable-item-models-ml-99870538"></a>
 ### heightOffset
@@ -62,7 +62,7 @@ heightOffset
 When constructing this record, `item` supplies `heightOffset` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L40)
 
 <a id="field-field-mq3-client-playable-item-models-definition-modelpath-modelpath-src-mq3-client-playable-item-models-ml-1746206674"></a>
 ### modelPath
@@ -74,7 +74,7 @@ modelPath
 Virtual path used to load the model resource for this client presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L34)
 
 <a id="field-field-mq3-client-playable-item-models-definition-scale-scale-src-mq3-client-playable-item-models-ml-854450266"></a>
 ### scale
@@ -86,7 +86,7 @@ scale
 When constructing this record, `item` supplies `scale` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L38)
 
 <a id="field-field-mq3-client-playable-item-models-definition-skinpath-skinpath-src-mq3-client-playable-item-models-ml-1498619370"></a>
 ### skinPath
@@ -98,7 +98,7 @@ skinPath
 When constructing this record, `item` supplies an empty string for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L36)
 
 <a id="field-field-mq3-client-playable-item-models-definition-spindegreespersecond-spindegreespersecond-src-mq3-client-playable-item-models-ml-1875312386"></a>
 ### spinDegreesPerSecond
@@ -110,4 +110,4 @@ spinDegreesPerSecond
 When constructing this record, `item` supplies `DEFAULT_SPIN_DEGREES_PER_SECOND` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L44)

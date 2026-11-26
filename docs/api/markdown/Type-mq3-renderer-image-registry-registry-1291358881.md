@@ -12,7 +12,7 @@ struct Registry
 Data record for `mq3.renderer.image_registry.Registry`; groups `images`, `buckets`, `config`, `services`, `activeTexture`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L128)
 
 ## Members
 
@@ -26,7 +26,7 @@ activeTexture
 Currently selected texture unit for image operations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L138)
 
 <a id="field-field-mq3-renderer-image-registry-registry-buckets-buckets-src-mq3-renderer-image-registry-ml-1675029128"></a>
 ### buckets
@@ -38,7 +38,7 @@ buckets
 Hash-table buckets used to locate entries by name.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L132)
 
 <a id="field-field-mq3-renderer-image-registry-registry-config-config-src-mq3-renderer-image-registry-ml-119404008"></a>
 ### config
@@ -50,7 +50,7 @@ config
 Configuration values used to initialize or drive this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L134)
 
 <a id="field-field-mq3-renderer-image-registry-registry-images-images-src-mq3-renderer-image-registry-ml-1706153172"></a>
 ### images
@@ -62,7 +62,7 @@ images
 Image resources or image-animation frames retained by the record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L130)
 
 <a id="field-field-mq3-renderer-image-registry-registry-services-services-src-mq3-renderer-image-registry-ml-1743179848"></a>
 ### services
@@ -74,4 +74,4 @@ services
 Injected host operations used by this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L136)

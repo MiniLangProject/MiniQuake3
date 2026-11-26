@@ -12,7 +12,7 @@ struct Bmodel
 Data record for `mq3.renderer.tr_light_runtime.Bmodel`; groups `bounds`, `surfaces`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L53)
 
 ## Members
 
@@ -26,7 +26,7 @@ bounds
 Minimum and maximum corners enclosing the object or surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L55)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-bmodel-surfaces-surfaces-src-mq3-renderer-tr-light-runtime-ml-1142396218"></a>
 ### surfaces
@@ -38,4 +38,4 @@ surfaces
 Surface records owned by the world, model, or drawing group.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L57)

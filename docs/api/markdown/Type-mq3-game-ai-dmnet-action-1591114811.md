@@ -12,7 +12,7 @@ struct Action
 `Action` record for ai dmnet, containing `boundary`, `kind`, `subject`, `detail` and `dispatched`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L111)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Decision/action boundary at which this bot operation was recorded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L113)
 
 <a id="field-field-mq3-game-ai-dmnet-action-detail-detail-src-mq3-game-ai-dmnet-ml-1721809499"></a>
 ### detail
@@ -38,7 +38,7 @@ detail
 Additional diagnostic or action detail supplied by the bot controller.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L119)
 
 <a id="field-field-mq3-game-ai-dmnet-action-dispatched-dispatched-src-mq3-game-ai-dmnet-ml-1958321731"></a>
 ### dispatched
@@ -50,7 +50,7 @@ dispatched
 Nonzero after the action has been delivered to its host callback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L121)
 
 <a id="field-field-mq3-game-ai-dmnet-action-kind-kind-src-mq3-game-ai-dmnet-ml-1053032717"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 Discriminator selecting the recorded bot action or decision event.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L115)
 
 <a id="field-field-mq3-game-ai-dmnet-action-subject-subject-src-mq3-game-ai-dmnet-ml-1911738081"></a>
 ### subject
@@ -74,4 +74,4 @@ subject
 Entity/client or other subject to which the recorded action applies.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L117)

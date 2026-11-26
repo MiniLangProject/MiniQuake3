@@ -29,7 +29,7 @@ Returns `[numeric.fadd(a[0],b[0]),numeric.fadd(a[1],b[1]),numeric.fadd(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L40)
 
 <a id="function-function-mq3-renderer-surface-beam-build-function-build-origin-oldorigin-src-mq3-renderer-surface-beam-ml-801556617"></a>
 ### build
@@ -46,7 +46,7 @@ Baseq3 emits a closed six-sided triangle strip through immediate OpenGL. Positio
 | `oldOrigin` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.surface_beam.valid3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L47)
 
 <a id="function-function-mq3-renderer-surface-beam-fail-function-fail-message-src-mq3-renderer-surface-beam-ml-1168489179"></a>
 ### fail
@@ -62,7 +62,7 @@ Creates error `7699` with message `"surface beam: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7699,"surface beam: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L29)
 
 - [mq3.renderer.surface_beam.Submission](Type-mq3-renderer-surface-beam-submission-530799788.md) — struct
 <a id="function-function-mq3-renderer-surface-beam-subtract-function-subtract-a-b-src-mq3-renderer-surface-beam-ml-440446203"></a>
@@ -80,7 +80,7 @@ Returns `[numeric.fsub(a[0],b[0]),numeric.fsub(a[1],b[1]),numeric.fsub(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L36)
 
 <a id="function-function-mq3-renderer-surface-beam-valid3-function-valid3-value-src-mq3-renderer-surface-beam-ml-1721876057"></a>
 ### valid3
@@ -96,6 +96,6 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.surface_beam.valid3`.
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L32)
 
 - [mq3.renderer.surface_beam.Vertex](Type-mq3-renderer-surface-beam-vertex-1363885814.md) — struct

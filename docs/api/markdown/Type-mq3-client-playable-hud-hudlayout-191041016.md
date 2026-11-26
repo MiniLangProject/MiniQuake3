@@ -12,7 +12,7 @@ struct HudLayout
 Stores playable HUD hud layout record, including `margin`, `valueY`, `labelY`, `statusY`, `helpY`, `crosshairSize`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L29)
 
 ## Members
 
@@ -26,7 +26,7 @@ crosshairSize
 When constructing this record, `layout` supplies `5*scale` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L41)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-helpy-helpy-src-mq3-client-playable-hud-ml-2105840444"></a>
 ### helpY
@@ -38,7 +38,7 @@ helpY
 When constructing this record, `layout` supplies `38` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L39)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-labely-labely-src-mq3-client-playable-hud-ml-762267342"></a>
 ### labelY
@@ -50,7 +50,7 @@ labelY
 When constructing this record, `layout` supplies `height-16*scale` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L35)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-margin-margin-src-mq3-client-playable-hud-ml-1383618892"></a>
 ### margin
@@ -62,7 +62,7 @@ margin
 When constructing this record, `layout` supplies `18` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L31)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-statusy-statusy-src-mq3-client-playable-hud-ml-1901066904"></a>
 ### statusY
@@ -74,7 +74,7 @@ statusY
 When constructing this record, `layout` supplies `16` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L37)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-valuey-valuey-src-mq3-client-playable-hud-ml-1262902244"></a>
 ### valueY
@@ -86,4 +86,4 @@ valueY
 When constructing this record, `layout` supplies `height-25*scale` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L33)

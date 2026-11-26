@@ -12,7 +12,7 @@ struct Texture
 Stores playable explosions texture record, including `name`, `image`, `slot`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L25)
 
 ## Members
 
@@ -26,7 +26,7 @@ image
 When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L30)
 
 <a id="field-field-mq3-client-playable-explosions-texture-name-name-src-mq3-client-playable-explosions-ml-2124335024"></a>
 ### name
@@ -38,7 +38,7 @@ name
 Virtual resource or definition name used to locate this entry in the client asset catalog.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L27)
 
 <a id="field-field-mq3-client-playable-explosions-texture-slot-slot-src-mq3-client-playable-explosions-ml-1993713430"></a>
 ### slot
@@ -50,4 +50,4 @@ slot
 Texture or media-cache slot assigned to this asset for renderer submission.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L32)

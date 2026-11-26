@@ -10,7 +10,7 @@ Reachable from entry: **yes**
 
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/vm/pc_parser.ml` as `pc` → [src/mq3/vm/pc_parser.ml](File-src-mq3-vm-pc-parser-ml-1324474776.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -29,7 +29,7 @@ Update `character.values[index]` during `applyDefaults`. Return paths include `c
 | `defaults` | `dynamic` | — | Defaults record; accesses `values`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L187)
 
 <a id="function-function-mq3-botlib-ai-characters-botpath-function-botpath-name-src-mq3-botlib-ai-characters-ml-1251753679"></a>
 ### botPath
@@ -45,7 +45,7 @@ Normalize a ai characters resource path by removing leading slashes and ensuring
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L105)
 
 - [mq3.botlib.ai_characters.Character](Type-mq3-botlib-ai-characters-character-418560778.md) — struct
 <a id="function-function-mq3-botlib-ai-characters-characterat-function-characterat-state-handle-src-mq3-botlib-ai-characters-ml-1515208985"></a>
@@ -63,7 +63,7 @@ Look up a one-based bot character handle, returning void when the state or handl
 | `handle` | `dynamic` | — | Handle identifying the allocated bot character. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L119)
 
 <a id="function-function-mq3-botlib-ai-characters-characteristic-function-characteristic-state-handle-index-src-mq3-botlib-ai-characters-ml-1416997369"></a>
 ### characteristic
@@ -81,7 +81,7 @@ Apply `mq3.botlib.ai_characters.characterAt` while evaluating `characteristic`.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L254)
 
 - [mq3.botlib.ai_characters.Characteristic](Type-mq3-botlib-ai-characters-characteristic-762300994.md) — struct
 <a id="function-function-mq3-botlib-ai-characters-characteristicbfloat-function-characteristicbfloat-state-handle-index-minimum-maximum-src-mq3-botlib-ai-characters-ml-1190373915"></a>
@@ -102,7 +102,7 @@ Apply `mq3.botlib.ai_characters.characteristicFloat` while evaluating `character
 | `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L272)
 
 <a id="function-function-mq3-botlib-ai-characters-characteristicbinteger-function-characteristicbinteger-state-handle-index-minimum-maximum-src-mq3-botlib-ai-characters-ml-1623104267"></a>
 ### characteristicBInteger
@@ -122,7 +122,7 @@ Apply `mq3.botlib.ai_characters.characteristicInteger` while evaluating `charact
 | `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L289)
 
 <a id="function-function-mq3-botlib-ai-characters-characteristicfloat-function-characteristicfloat-state-handle-index-src-mq3-botlib-ai-characters-ml-1725003463"></a>
 ### characteristicFloat
@@ -140,7 +140,7 @@ Apply `mq3.botlib.ai_characters.characteristic` while evaluating `characteristic
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L262)
 
 <a id="function-function-mq3-botlib-ai-characters-characteristicinteger-function-characteristicinteger-state-handle-index-src-mq3-botlib-ai-characters-ml-567537639"></a>
 ### characteristicInteger
@@ -158,7 +158,7 @@ Apply `mq3.botlib.ai_characters.characteristic` while evaluating `characteristic
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L279)
 
 <a id="function-function-mq3-botlib-ai-characters-characteristicstring-function-characteristicstring-state-handle-index-src-mq3-botlib-ai-characters-ml-1744199693"></a>
 ### characteristicString
@@ -176,7 +176,7 @@ Apply `mq3.botlib.ai_characters.characteristic` while evaluating `characteristic
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L296)
 
 <a id="function-function-mq3-botlib-ai-characters-create-function-create-maxclients-context-readfn-src-mq3-botlib-ai-characters-ml-594838103"></a>
 ### create
@@ -194,7 +194,7 @@ Build the `mq3.botlib.ai_characters.State` result for `create`. Return paths inc
 | `readFn` | `dynamic` | — | Callback that loads a named resource through the supplied context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L99)
 
 <a id="constant-constant-mq3-botlib-ai-characters-ct-float-const-ct-float-2-src-mq3-botlib-ai-characters-ml-630287919"></a>
 ### CT_FLOAT
@@ -206,7 +206,7 @@ const CT_FLOAT = 2
 Bot characteristic-value type for floating-point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L17)
 
 <a id="constant-constant-mq3-botlib-ai-characters-ct-integer-const-ct-integer-1-src-mq3-botlib-ai-characters-ml-1999964514"></a>
 ### CT_INTEGER
@@ -218,7 +218,7 @@ const CT_INTEGER = 1
 Bot characteristic-value type for integer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L15)
 
 <a id="constant-constant-mq3-botlib-ai-characters-ct-none-const-ct-none-0-src-mq3-botlib-ai-characters-ml-854836939"></a>
 ### CT_NONE
@@ -230,7 +230,7 @@ const CT_NONE = 0
 Bot characteristic-value type for none.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L13)
 
 <a id="constant-constant-mq3-botlib-ai-characters-ct-string-const-ct-string-3-src-mq3-botlib-ai-characters-ml-415817490"></a>
 ### CT_STRING
@@ -242,7 +242,7 @@ const CT_STRING = 3
 Bot characteristic-value type for string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L19)
 
 <a id="constant-constant-mq3-botlib-ai-characters-default-character-const-default-character-bots-default-c-c-src-mq3-botlib-ai-characters-ml-2049530438"></a>
 ### DEFAULT_CHARACTER
@@ -254,7 +254,7 @@ const DEFAULT_CHARACTER = "bots/default_c.c"
 Fallback bot character definition loaded when a requested characteristic is missing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L21)
 
 <a id="function-function-mq3-botlib-ai-characters-emptycharacteristic-function-emptycharacteristic-src-mq3-botlib-ai-characters-ml-15512530"></a>
 ### emptyCharacteristic
@@ -266,7 +266,7 @@ function emptyCharacteristic()
 Create a `mq3.botlib.ai_characters.Characteristic` record, initializing `type` as `CT_NONE`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L92)
 
 <a id="function-function-mq3-botlib-ai-characters-emptyvalues-function-emptyvalues-src-mq3-botlib-ai-characters-ml-218559576"></a>
 ### emptyValues
@@ -278,7 +278,7 @@ function emptyValues()
 Apply `mq3.botlib.ai_characters.emptyCharacteristic` while evaluating `emptyValues`. Return paths include `values`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L94)
 
 <a id="function-function-mq3-botlib-ai-characters-fail-function-fail-message-src-mq3-botlib-ai-characters-ml-1249746645"></a>
 ### fail
@@ -294,7 +294,7 @@ Construct error `7550` with diagnostic text `"AI character: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L90)
 
 <a id="function-function-mq3-botlib-ai-characters-findcached-function-findcached-state-filename-skill-src-mq3-botlib-ai-characters-ml-1045860609"></a>
 ### findCached
@@ -312,7 +312,7 @@ Find a cached character by filename and skill tolerance, accepting any cached sk
 | `skill` | `dynamic` | — | Bot skill value used to select or interpolate characteristics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L142)
 
 <a id="function-function-mq3-botlib-ai-characters-freecharacter-function-freecharacter-state-handle-src-mq3-botlib-ai-characters-ml-1375664903"></a>
 ### freeCharacter
@@ -329,7 +329,7 @@ Apply `mq3.botlib.ai_characters.freeHandle` while evaluating `freeCharacter`. Re
 | `handle` | `dynamic` | — | Handle identifying the allocated bot character. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L127)
 
 <a id="function-function-mq3-botlib-ai-characters-freehandle-function-freehandle-state-handle-src-mq3-botlib-ai-characters-ml-856407809"></a>
 ### freeHandle
@@ -346,7 +346,7 @@ Set `state.characters[handle]` to `void` in `mq3.botlib.ai_characters.freeHandle
 | `handle` | `dynamic` | — | Handle identifying the allocated bot character. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L123)
 
 <a id="function-function-mq3-botlib-ai-characters-freeslot-function-freeslot-state-src-mq3-botlib-ai-characters-ml-232889515"></a>
 ### freeSlot
@@ -362,7 +362,7 @@ Find the first unused one-based character slot, returning zero when the table is
 | `state` | `dynamic` | — | AI characters state; accesses `maxClients` and `characters`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L137)
 
 <a id="function-function-mq3-botlib-ai-characters-interpolate-function-interpolate-state-firsthandle-secondhandle-desiredskill-src-mq3-botlib-ai-characters-ml-106638342"></a>
 ### interpolate
@@ -381,7 +381,7 @@ Set `state.characters[slot]` to `result` in `mq3.botlib.ai_characters.interpolat
 | `desiredSkill` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L224)
 
 <a id="function-function-mq3-botlib-ai-characters-loadcached-function-loadcached-state-filename-skill-reload-src-mq3-botlib-ai-characters-ml-470981906"></a>
 ### loadCached
@@ -400,7 +400,7 @@ Set `state.characters[slot]` to `parsed.character` in `mq3.botlib.ai_characters.
 | `reload` | `dynamic` | — | Value used by `loadCached` in `if not reload then handle=findCached(state,filename,skill)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L198)
 
 <a id="function-function-mq3-botlib-ai-characters-loadcharacter-function-loadcharacter-state-filename-skill-src-mq3-botlib-ai-characters-ml-339382127"></a>
 ### loadCharacter
@@ -418,7 +418,7 @@ Apply `mq3.botlib.ai_characters.loadCharacterSkill`, `mq3.botlib.ai_characters.f
 | `skill` | `dynamic` | — | Bot skill value used to select or interpolate characteristics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L239)
 
 <a id="function-function-mq3-botlib-ai-characters-loadcharacterskill-function-loadcharacterskill-state-filename-skill-src-mq3-botlib-ai-characters-ml-625601933"></a>
 ### loadCharacterSkill
@@ -436,7 +436,7 @@ Apply `mq3.botlib.ai_characters.loadCached` and `mq3.botlib.ai_characters.applyD
 | `skill` | `dynamic` | — | Bot skill value used to select or interpolate characteristics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L215)
 
 - [mq3.botlib.ai_characters.Loader](Type-mq3-botlib-ai-characters-loader-1255715784.md) — struct
 <a id="function-function-mq3-botlib-ai-characters-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-characters-ml-598017954"></a>
@@ -454,7 +454,7 @@ Use `loader.readFn` to perform `loadText`.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L112)
 
 <a id="constant-constant-mq3-botlib-ai-characters-max-characteristics-const-max-characteristics-80-src-mq3-botlib-ai-characters-ml-1318302197"></a>
 ### MAX_CHARACTERISTICS
@@ -466,7 +466,7 @@ const MAX_CHARACTERISTICS = 80
 Number of indexed personality characteristics available to one bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-characters-numbertoken-function-numbertoken-token-label-src-mq3-botlib-ai-characters-ml-450946757"></a>
 ### numberToken
@@ -483,7 +483,7 @@ Require a numeric preprocessor token and report a labeled parse error for any ot
 | `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L148)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-characteristic-bfloat-const-op-characteristic-bfloat-503-src-mq3-botlib-ai-characters-ml-624974547"></a>
 ### OP_CHARACTERISTIC_BFLOAT
@@ -495,7 +495,7 @@ const OP_CHARACTERISTIC_BFLOAT = 503
 Bot-library syscall identifier for characteristic bfloat.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L30)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-characteristic-binteger-const-op-characteristic-binteger-505-src-mq3-botlib-ai-characters-ml-1162021765"></a>
 ### OP_CHARACTERISTIC_BINTEGER
@@ -507,7 +507,7 @@ const OP_CHARACTERISTIC_BINTEGER = 505
 Bot-library syscall identifier for characteristic binteger.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L34)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-characteristic-float-const-op-characteristic-float-502-src-mq3-botlib-ai-characters-ml-2138145746"></a>
 ### OP_CHARACTERISTIC_FLOAT
@@ -519,7 +519,7 @@ const OP_CHARACTERISTIC_FLOAT = 502
 Bot-library syscall identifier for characteristic floating-point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L28)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-characteristic-integer-const-op-characteristic-integer-504-src-mq3-botlib-ai-characters-ml-1845346452"></a>
 ### OP_CHARACTERISTIC_INTEGER
@@ -531,7 +531,7 @@ const OP_CHARACTERISTIC_INTEGER = 504
 Bot-library syscall identifier for characteristic integer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L32)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-characteristic-string-const-op-characteristic-string-506-src-mq3-botlib-ai-characters-ml-617368546"></a>
 ### OP_CHARACTERISTIC_STRING
@@ -543,7 +543,7 @@ const OP_CHARACTERISTIC_STRING = 506
 Bot-library syscall identifier for characteristic string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L36)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-free-character-const-op-free-character-501-src-mq3-botlib-ai-characters-ml-1547326839"></a>
 ### OP_FREE_CHARACTER
@@ -555,7 +555,7 @@ const OP_FREE_CHARACTER = 501
 Bot-library syscall identifier for free character.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L26)
 
 <a id="constant-constant-mq3-botlib-ai-characters-op-load-character-const-op-load-character-500-src-mq3-botlib-ai-characters-ml-1648560528"></a>
 ### OP_LOAD_CHARACTER
@@ -567,7 +567,7 @@ const OP_LOAD_CHARACTER = 500
 Bot-library syscall identifier for load character.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-characters-parsecharacter-function-parsecharacter-state-filename-wantedskill-src-mq3-botlib-ai-characters-ml-1185386746"></a>
 ### parseCharacter
@@ -585,7 +585,7 @@ Set `state.fileReads` to `state.fileReads+1` in `mq3.botlib.ai_characters.parseC
 | `wantedSkill` | `dynamic` | — | Value used by `parseCharacter` in `if wantedSkill>=0 and skillToken.intValue!=wantedSkill then skipped=skipBlock(registry,source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L159)
 
 - [mq3.botlib.ai_characters.Parsed](Type-mq3-botlib-ai-characters-parsed-1456683806.md) — struct
 <a id="function-function-mq3-botlib-ai-characters-setreloadcharacters-function-setreloadcharacters-state-value-src-mq3-botlib-ai-characters-ml-340714902"></a>
@@ -603,7 +603,7 @@ Set `state.reloadCharacters` to `value!=0` in `mq3.botlib.ai_characters.setReloa
 | `value` | `dynamic` | — | Value used by `setReloadCharacters` in `if state!=void then state.reloadCharacters=value!=0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L134)
 
 <a id="function-function-mq3-botlib-ai-characters-shutdown-function-shutdown-state-src-mq3-botlib-ai-characters-ml-762111347"></a>
 ### shutdown
@@ -619,7 +619,7 @@ Set `state.characters[handle]` to `void` in `mq3.botlib.ai_characters.shutdown`.
 | `state` | `dynamic` | — | AI characters state; accesses `maxClients` and `characters`. May update `state.characters[handle]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L130)
 
 <a id="function-function-mq3-botlib-ai-characters-skipblock-function-skipblock-registry-source-src-mq3-botlib-ai-characters-ml-841308160"></a>
 ### skipBlock
@@ -636,6 +636,6 @@ Apply `mq3.vm.pc_parser.read` while evaluating `skipBlock`.
 | `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L152)
 
 - [mq3.botlib.ai_characters.State](Type-mq3-botlib-ai-characters-state-1967703916.md) — struct

@@ -14,7 +14,7 @@ Reachable from entry: **yes**
 - `mq3/platform/playable_multitexture.ml` as `raster` → [src/mq3/platform/playable_multitexture.ml](File-src-mq3-platform-playable-multitexture-ml-346016672.md)
 - `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -42,7 +42,7 @@ Calls `mq3.client.baseq3_match_display.reserveGlyphBatch`, `mq3.platform.playabl
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L265)
 
 <a id="function-function-mq3-client-baseq3-match-display-appendstring-function-appendstring-media-text-x-y-charwidth-charheight-scalex-scaley-red-green-blue-shadow-src-mq3-client-baseq3-match-display-ml-862085028"></a>
 ### appendString
@@ -69,7 +69,7 @@ Calls `mq3.client.baseq3_match_display.isColorEscape`, `mq3.client.baseq3_match_
 | `shadow` | `dynamic` | — | Value used by `if shadow then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L286)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-atlas-columns-const-atlas-columns-16-src-mq3-client-baseq3-match-display-ml-1885458646"></a>
 ### ATLAS_COLUMNS
@@ -81,7 +81,7 @@ const ATLAS_COLUMNS = 16
 Number of glyph columns in the character-image atlas.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L24)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-atlas-rows-const-atlas-rows-16-src-mq3-client-baseq3-match-display-ml-1125046546"></a>
 ### ATLAS_ROWS
@@ -93,7 +93,7 @@ const ATLAS_ROWS = 16
 Number of glyph rows in the character-image atlas.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L26)
 
 <a id="function-function-mq3-client-baseq3-match-display-beginglyphbatch-function-beginglyphbatch-media-src-mq3-client-baseq3-match-display-ml-2022237590"></a>
 ### beginGlyphBatch
@@ -109,7 +109,7 @@ The original charset shader is SRC_ALPHA/ONE_MINUS_SRC_ALPHA, rgbGen vertex. Ret
 | `media` | `dynamic` | — | Mutable base Quake III match display record/storage; this routine assigns `media.glyphBatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L234)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-bigchar-height-const-bigchar-height-16-src-mq3-client-baseq3-match-display-ml-2041359132"></a>
 ### BIGCHAR_HEIGHT
@@ -121,7 +121,7 @@ const BIGCHAR_HEIGHT = 16
 Bigchar font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L20)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-bigchar-width-const-bigchar-width-16-src-mq3-client-baseq3-match-display-ml-1042797670"></a>
 ### BIGCHAR_WIDTH
@@ -133,7 +133,7 @@ const BIGCHAR_WIDTH = 16
 Bigchar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L18)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-center-default-duration-const-center-default-duration-3000-src-mq3-client-baseq3-match-display-ml-2129083506"></a>
 ### CENTER_DEFAULT_DURATION
@@ -145,7 +145,7 @@ const CENTER_DEFAULT_DURATION = 3000
 Default lifetime in milliseconds of a centered announcement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L30)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-center-default-y-const-center-default-y-144-src-mq3-client-baseq3-match-display-ml-2054595632"></a>
 ### CENTER_DEFAULT_Y
@@ -157,7 +157,7 @@ const CENTER_DEFAULT_Y = 144
 Default virtual-screen Y coordinate for centered announcements.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L28)
 
 <a id="function-function-mq3-client-baseq3-match-display-centeralpha-function-centeralpha-center-now-src-mq3-client-baseq3-match-display-ml-1018352969"></a>
 ### centerAlpha
@@ -174,7 +174,7 @@ Calls `mq3.compat.numeric.trunc32` from base Quake III match display `centerAlph
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L357)
 
 <a id="function-function-mq3-client-baseq3-match-display-centerprint-function-centerprint-text-startedat-y-charwidth-duration-src-mq3-client-baseq3-match-display-ml-464248312"></a>
 ### centerPrint
@@ -194,7 +194,7 @@ Calls `mq3.client.baseq3_match_display.CenterPrint`, `mq3.client.baseq3_match_di
 | `duration` | `dynamic` | — | Lifetime or interval in the same units as this operation's clock. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L346)
 
 - [mq3.client.baseq3_match_display.CenterPrint](Type-mq3-client-baseq3-match-display-centerprint-1937530893.md) — struct
 <a id="function-function-mq3-client-baseq3-match-display-colorfor-function-colorfor-code-src-mq3-client-baseq3-match-display-ml-1588965267"></a>
@@ -211,7 +211,7 @@ Evaluates base Quake III match display `colorFor` and returns `[0,0,0]`, `[255,0
 | `code` | `dynamic` | — | Value used by `index=(bytes(code)[0]-48)&7`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L164)
 
 <a id="function-function-mq3-client-baseq3-match-display-countdown-function-countdown-warmupend-now-src-mq3-client-baseq3-match-display-ml-308750623"></a>
 ### countdown
@@ -228,7 +228,7 @@ Calls `mq3.compat.numeric.trunc32`, `mq3.client.baseq3_match_display.Countdown` 
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L328)
 
 - [mq3.client.baseq3_match_display.Countdown](Type-mq3-client-baseq3-match-display-countdown-851695878.md) — struct
 <a id="function-function-mq3-client-baseq3-match-display-draw-function-draw-media-width-height-levelstarttime-now-showtimer-gametypename-warmupend-center-src-mq3-client-baseq3-match-display-ml-497197725"></a>
@@ -253,7 +253,7 @@ Integration entry point. The caller owns timing and can pass void for center.
 | `center` | `dynamic` | — | Value used by `if center!=void then drawCenter(media,center,now,width,height) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L463)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L463)
 
 <a id="function-function-mq3-client-baseq3-match-display-drawcenter-function-drawcenter-media-center-now-width-height-src-mq3-client-baseq3-match-display-ml-546543038"></a>
 ### drawCenter
@@ -273,7 +273,7 @@ Calls `mq3.client.baseq3_match_display.centerAlpha`, `std.string.split`, `slice`
 | `height` | `dynamic` | — | Height in the coordinate space used by `drawCenter`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L405)
 
 <a id="function-function-mq3-client-baseq3-match-display-drawglyph-function-drawglyph-media-character-x-y-charwidth-charheight-scalex-scaley-red-green-blue-src-mq3-client-baseq3-match-display-ml-1283183750"></a>
 ### drawGlyph
@@ -299,7 +299,7 @@ Calls `mq3.client.baseq3_match_display.glyphCell`, `mq3.client.baseq3_match_disp
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L188)
 
 <a id="function-function-mq3-client-baseq3-match-display-drawscoreboard-function-drawscoreboard-media-width-height-playerscore-enemyscore-playerdeaths-src-mq3-client-baseq3-match-display-ml-1946731072"></a>
 ### drawScoreboard
@@ -320,7 +320,7 @@ Calls `mq3.client.baseq3_match_display.scoreRows`, `mq3.client.cgame_scoreboard.
 | `playerDeaths` | `dynamic` | — | Value used by `rows=scoreRows(playerScore,enemyScore,playerDeaths)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L437)
 
 <a id="function-function-mq3-client-baseq3-match-display-drawstring-function-drawstring-media-text-x-y-charwidth-charheight-scalex-scaley-red-green-blue-shadow-src-mq3-client-baseq3-match-display-ml-1797250380"></a>
 ### drawString
@@ -347,7 +347,7 @@ Matches CG_DrawStringExt: color escapes consume no cell and every glyph gets the
 | `shadow` | `dynamic` | — | Value used by `if shadow then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L212)
 
 <a id="function-function-mq3-client-baseq3-match-display-drawtimer-function-drawtimer-media-levelstarttime-now-width-height-y-src-mq3-client-baseq3-match-display-ml-595394323"></a>
 ### drawTimer
@@ -368,7 +368,7 @@ Calls `mq3.client.baseq3_match_display.timerText`, `mq3.client.baseq3_match_disp
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawTimer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L371)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L371)
 
 <a id="function-function-mq3-client-baseq3-match-display-drawwarmup-function-drawwarmup-media-gametypename-warmupend-now-width-height-src-mq3-client-baseq3-match-display-ml-1307049247"></a>
 ### drawWarmup
@@ -389,7 +389,7 @@ Calls `mq3.client.baseq3_match_display.printLength`, `mq3.client.baseq3_match_di
 | `height` | `dynamic` | — | Height in the coordinate space used by `drawWarmup`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L384)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L384)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-fade-time-const-fade-time-200-src-mq3-client-baseq3-match-display-ml-1493585843"></a>
 ### FADE_TIME
@@ -401,7 +401,7 @@ const FADE_TIME = 200
 Duration in milliseconds of the standard CGame presentation fade.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L32)
 
 <a id="function-function-mq3-client-baseq3-match-display-fail-function-fail-message-src-mq3-client-baseq3-match-display-ml-588079187"></a>
 ### fail
@@ -417,7 +417,7 @@ Creates the base Quake III match display error `7583` with diagnostic text `"Bas
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"Baseq3 match display: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L104)
 
 <a id="function-function-mq3-client-baseq3-match-display-flushglyphbatch-function-flushglyphbatch-media-src-mq3-client-baseq3-match-display-ml-1153633068"></a>
 ### flushGlyphBatch
@@ -433,7 +433,7 @@ Calls `mq3.platform.playable_multitexture.setState`, `mq3.platform.playable_mult
 | `media` | `dynamic` | — | Record read through `media.glyphBatch`, `media.glyphBatch.count`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L305)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-giant-width-const-giant-width-32-src-mq3-client-baseq3-match-display-ml-716873652"></a>
 ### GIANT_WIDTH
@@ -445,7 +445,7 @@ const GIANT_WIDTH = 32
 Width of a giant-font character in virtual screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L22)
 
 <a id="function-function-mq3-client-baseq3-match-display-glyphcell-function-glyphcell-character-src-mq3-client-baseq3-match-display-ml-808247099"></a>
 ### glyphCell
@@ -461,7 +461,7 @@ Evaluates base Quake III match display `glyphCell` and returns `fail("glyph must
 | `character` | `dynamic` | — | Sequence whose length/content is inspected by `glyphCell`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L139)
 
 <a id="function-function-mq3-client-baseq3-match-display-glyphchannel-function-glyphchannel-value-src-mq3-client-baseq3-match-display-ml-517384461"></a>
 ### glyphChannel
@@ -477,7 +477,7 @@ Evaluates base Quake III match display `glyphChannel` and returns `0`, `255`, `v
 | `value` | `dynamic` | — | Value tested by `value<0`, `value>255` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L252)
 
 <a id="function-function-mq3-client-baseq3-match-display-iscolorescape-function-iscolorescape-text-index-src-mq3-client-baseq3-match-display-ml-500789197"></a>
 ### isColorEscape
@@ -494,7 +494,7 @@ Computes `index+1<len(text) and text[index]=="^" and text[index+1]!="^"` for bas
 | `index` | `dynamic` | — | Value used by `return index+1<len(text) and text[index]=="^" and text[index+1]!="^"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L148)
 
 <a id="function-function-mq3-client-baseq3-match-display-linecount-function-linecount-text-src-mq3-client-baseq3-match-display-ml-1186399839"></a>
 ### lineCount
@@ -510,7 +510,7 @@ Returns the element/byte count of `strings.split(text,"\n")` for base Quake III 
 | `text` | `dynamic` | — | Argument 1 of `len`; passed as `strings.split(text,"\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L338)
 
 <a id="function-function-mq3-client-baseq3-match-display-load-function-load-archive-textureslot-src-mq3-client-baseq3-match-display-ml-1639438747"></a>
 ### load
@@ -527,7 +527,7 @@ cgs.media.charsetShader is registered from this exact retail shader name.
 | `textureSlot` | `dynamic` | — | Value used by `if textureSlot<0 or textureSlot>=window.NATIVE_TEXTURE_SLOTS then return fail("texture slot outside native range") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L109)
 
 - [mq3.client.baseq3_match_display.Media](Type-mq3-client-baseq3-match-display-media-285686009.md) — struct
 <a id="function-function-mq3-client-baseq3-match-display-point-function-point-x-y-src-mq3-client-baseq3-match-display-ml-1606425021"></a>
@@ -545,7 +545,7 @@ Creates a `mq3.client.baseq3_match_display.Point` record. Assigns `x` from `x`, 
 | `y` | `dynamic` | — | Value used to initialize `Point.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L135)
 
 - [mq3.client.baseq3_match_display.Point](Type-mq3-client-baseq3-match-display-point-1995949791.md) — struct
 <a id="function-function-mq3-client-baseq3-match-display-printlength-function-printlength-text-src-mq3-client-baseq3-match-display-ml-1431851415"></a>
@@ -562,7 +562,7 @@ Calls `mq3.client.baseq3_match_display.isColorEscape` from base Quake III match 
 | `text` | `dynamic` | — | Text whose length/content is inspected by `printLength`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L154)
 
 <a id="function-function-mq3-client-baseq3-match-display-release-function-release-media-src-mq3-client-baseq3-match-display-ml-26205454"></a>
 ### release
@@ -578,7 +578,7 @@ Calls `mq3.platform.playable_window.releaseTexture` from base Quake III match di
 | `media` | `dynamic` | — | Record read through `media.slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L130)
 
 <a id="function-function-mq3-client-baseq3-match-display-reserveglyphbatch-function-reserveglyphbatch-media-src-mq3-client-baseq3-match-display-ml-1550498600"></a>
 ### reserveGlyphBatch
@@ -594,7 +594,7 @@ Updates `media.glyphBatch` during base Quake III match display `reserveGlyphBatc
 | `media` | `dynamic` | — | Mutable base Quake III match display record/storage; this routine assigns `media.glyphBatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L241)
 
 - [mq3.client.baseq3_match_display.ScoreRow](Type-mq3-client-baseq3-match-display-scorerow-843654465.md) — struct
 <a id="function-function-mq3-client-baseq3-match-display-scorerows-function-scorerows-playerscore-enemyscore-playerdeaths-src-mq3-client-baseq3-match-display-ml-1572668803"></a>
@@ -613,7 +613,7 @@ Calls `mq3.client.baseq3_match_display.ScoreRow` from base Quake III match displ
 | `playerDeaths` | `dynamic` | — | Value used by `if playerScore<0 or enemyScore<0 or playerDeaths<0 then return fail("non-negative scoreboard values required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L422)
 
 <a id="function-function-mq3-client-baseq3-match-display-timertext-function-timertext-levelstarttime-now-src-mq3-client-baseq3-match-display-ml-1535337089"></a>
 ### timerText
@@ -630,7 +630,7 @@ Calls `mq3.compat.numeric.trunc32` from base Quake III match display `timerText`
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L318)
 
 <a id="function-function-mq3-client-baseq3-match-display-upload-function-upload-media-src-mq3-client-baseq3-match-display-ml-1202689164"></a>
 ### upload
@@ -646,7 +646,7 @@ Calls `mq3.platform.playable_window.uploadTextureNoMip` from base Quake III matc
 | `media` | `dynamic` | — | Record read through `media.slot`, `media.image.pixels`, `media.image.width`, `media.image.height` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L122)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-virtual-height-const-virtual-height-480-src-mq3-client-baseq3-match-display-ml-2022432549"></a>
 ### VIRTUAL_HEIGHT
@@ -658,7 +658,7 @@ const VIRTUAL_HEIGHT = 480
 Height of the native UI's virtual coordinate space before scaling to the display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L16)
 
 <a id="constant-constant-mq3-client-baseq3-match-display-virtual-width-const-virtual-width-640-src-mq3-client-baseq3-match-display-ml-1352128323"></a>
 ### VIRTUAL_WIDTH
@@ -670,4 +670,4 @@ const VIRTUAL_WIDTH = 640
 Width of the native UI's virtual coordinate space before scaling to the display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L14)

@@ -12,7 +12,7 @@ struct Client
 Client record for server.netchan, containing `challenge`, `lastClientCommandString`, `reliableCommands`, `channel`, `queue`, `queueInitialized`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L19)
 
 ## Members
 
@@ -26,7 +26,7 @@ challenge
 Challenge value used to authenticate a connection attempt.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L21)
 
 <a id="field-field-mq3-server-netchan-client-channel-channel-src-mq3-server-netchan-ml-630918362"></a>
 ### channel
@@ -38,7 +38,7 @@ channel
 Sequenced network channel used to send this client's messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L27)
 
 <a id="field-field-mq3-server-netchan-client-lastclientcommandstring-lastclientcommandstring-src-mq3-server-netchan-ml-909787166"></a>
 ### lastClientCommandString
@@ -50,7 +50,7 @@ lastClientCommandString
 Text of the last processed reliable client command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L23)
 
 <a id="field-field-mq3-server-netchan-client-queue-queue-src-mq3-server-netchan-ml-79100502"></a>
 ### queue
@@ -62,7 +62,7 @@ queue
 Messages waiting for earlier fragments to finish transmitting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L29)
 
 <a id="field-field-mq3-server-netchan-client-queueinitialized-queueinitialized-src-mq3-server-netchan-ml-178960908"></a>
 ### queueInitialized
@@ -74,7 +74,7 @@ queueInitialized
 True after the pending-message queue has been initialized.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L31)
 
 <a id="field-field-mq3-server-netchan-client-reliablecommands-reliablecommands-src-mq3-server-netchan-ml-1563701746"></a>
 ### reliableCommands
@@ -86,4 +86,4 @@ reliableCommands
 Reliable command entries retained until the peer acknowledges them.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/netchan.ml#L25)

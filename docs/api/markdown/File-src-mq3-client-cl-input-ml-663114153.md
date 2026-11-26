@@ -31,7 +31,7 @@ Converts a NUL-terminated decimal C string to a signed 32-bit integer using the 
 
 **Returns:** The converted integer; a string with no initial numeric conversion yields zero.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L559)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L559)
 
 <a id="function-function-mq3-client-cl-input-cl-adjustangles-function-cl-adjustangles-state-src-mq3-client-cl-input-ml-1975365763"></a>
 ### CL_AdjustAngles
@@ -47,7 +47,7 @@ Adapts `mq3.client.input_command.adjustAngles` to engine client input `CL_Adjust
 | `state` | `dynamic` | — | Record read through `state.inputState`, `state.config`, `state.frameTime`, `state.frameMsec`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L433)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L433)
 
 <a id="function-function-mq3-client-cl-input-cl-cmdbuttons-function-cl-cmdbuttons-state-value-src-mq3-client-cl-input-ml-63949894"></a>
 ### CL_CmdButtons
@@ -64,7 +64,7 @@ Adapts `mq3.client.input_command.commandButtons` to engine client input `CL_CmdB
 | `value` | `dynamic` | — | Argument 2 of `mq3.client.input_command.commandButtons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L470)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L470)
 
 <a id="function-function-mq3-client-cl-input-cl-createcmd-function-cl-createcmd-state-src-mq3-client-cl-input-ml-1474617937"></a>
 ### CL_CreateCmd
@@ -80,7 +80,7 @@ Updates `state.inputState.viewangles[0]` during engine client input `CL_CreateCm
 | `state` | `dynamic` | — | Mutable engine client input record/storage; this routine assigns `state.inputState.viewangles[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L484)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L484)
 
 <a id="function-function-mq3-client-cl-input-cl-createnewcommands-function-cl-createnewcommands-state-frametime-src-mq3-client-cl-input-ml-427316241"></a>
 ### CL_CreateNewCommands
@@ -97,7 +97,7 @@ Updates `state.frameTime`, `state.frameMsec`, `state.sendState.frameMsec`, `stat
 | `frameTime` | `dynamic` | — | Value assigned to `state.frameTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L497)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L497)
 
 <a id="function-function-mq3-client-cl-input-cl-finishmove-function-cl-finishmove-state-value-src-mq3-client-cl-input-ml-921960012"></a>
 ### CL_FinishMove
@@ -114,7 +114,7 @@ Updates `value.weapon`, `value.serverTime`, `value.angles`, `value.viewangles` d
 | `value` | `dynamic` | — | Mutable engine client input record/storage; this routine assigns `value.weapon`, `value.serverTime`, `value.angles`, `value.viewangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L474)
 
 <a id="function-function-mq3-client-cl-input-cl-initinput-function-cl-initinput-state-src-mq3-client-cl-input-ml-12096777"></a>
 ### CL_InitInput
@@ -130,7 +130,7 @@ Updates `state.initialized` during engine client input `CL_InitInput`.
 | `state` | `dynamic` | — | Mutable engine client input record/storage; this routine assigns `state.initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L549)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L549)
 
 <a id="function-function-mq3-client-cl-input-cl-joystickevent-function-cl-joystickevent-state-axis-value-time-src-mq3-client-cl-input-ml-853441562"></a>
 ### CL_JoystickEvent
@@ -149,7 +149,7 @@ Updates `state.inputState.joystickAxis[axis]` during engine client input `CL_Joy
 | `time` | `dynamic` | — | Accepted for compatibility with `CL_JoystickEvent`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L453)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L453)
 
 <a id="function-function-mq3-client-cl-input-cl-joystickmove-function-cl-joystickmove-state-value-src-mq3-client-cl-input-ml-1032641602"></a>
 ### CL_JoystickMove
@@ -166,7 +166,7 @@ Adapts `mq3.client.input_command.joystickMove` to engine client input `CL_Joysti
 | `value` | `dynamic` | — | Argument 3 of `mq3.client.input_command.joystickMove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L462)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L462)
 
 <a id="function-function-mq3-client-cl-input-cl-keymove-function-cl-keymove-state-value-src-mq3-client-cl-input-ml-1314695104"></a>
 ### CL_KeyMove
@@ -183,7 +183,7 @@ Adapts `mq3.client.input_command.keyMove` to engine client input `CL_KeyMove`, r
 | `value` | `dynamic` | — | Argument 3 of `mq3.client.input_command.keyMove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L437)
 
 <a id="function-function-mq3-client-cl-input-cl-keystate-function-cl-keystate-state-value-src-mq3-client-cl-input-ml-2131410240"></a>
 ### CL_KeyState
@@ -200,7 +200,7 @@ Calls `mq3.client.input_command.keyState` from engine client input `CL_KeyState`
 | `value` | `dynamic` | — | Value used by `return input.keyState(value,state.frameTime,state.frameMsec)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L123)
 
 <a id="function-function-mq3-client-cl-input-cl-mouseevent-function-cl-mouseevent-state-dx-dy-time-src-mq3-client-cl-input-ml-928895489"></a>
 ### CL_MouseEvent
@@ -219,7 +219,7 @@ Calls `state.host.uiMouseFn`, `state.host.cgameMouseFn`, `mq3.client.input_comma
 | `time` | `dynamic` | — | Accepted for compatibility with `CL_MouseEvent`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L443)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L443)
 
 <a id="function-function-mq3-client-cl-input-cl-mousemove-function-cl-mousemove-state-value-src-mq3-client-cl-input-ml-903882160"></a>
 ### CL_MouseMove
@@ -236,7 +236,7 @@ Adapts `mq3.client.input_command.mouseMove` to engine client input `CL_MouseMove
 | `value` | `dynamic` | — | Argument 3 of `mq3.client.input_command.mouseMove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L466)
 
 <a id="function-function-mq3-client-cl-input-cl-readytosendpacket-function-cl-readytosendpacket-state-src-mq3-client-cl-input-ml-1644932909"></a>
 ### CL_ReadyToSendPacket
@@ -252,7 +252,7 @@ Adapts `mq3.client.send_cmd.ready` to engine client input `CL_ReadyToSendPacket`
 | `state` | `dynamic` | — | Record read through `state.sendState`, `state.sendHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L506)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L506)
 
 <a id="function-function-mq3-client-cl-input-cl-sendcmd-function-cl-sendcmd-state-frametime-src-mq3-client-cl-input-ml-1808036709"></a>
 ### CL_SendCmd
@@ -269,7 +269,7 @@ Calls `mq3.client.cl_input.CL_CreateNewCommands`, `mq3.client.cl_input.CL_ReadyT
 | `frameTime` | `dynamic` | — | Value used by `created=CL_CreateNewCommands(state,frameTime)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L513)
 
 <a id="function-function-mq3-client-cl-input-cl-writepacket-function-cl-writepacket-state-src-mq3-client-cl-input-ml-1518891581"></a>
 ### CL_WritePacket
@@ -285,7 +285,7 @@ Adapts `mq3.client.send_cmd.writePacket` to engine client input `CL_WritePacket`
 | `state` | `dynamic` | — | Record read through `state.sendState`, `state.sendHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L509)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L509)
 
 <a id="function-function-mq3-client-cl-input-create-function-create-commandstate-sendstate-sendhost-src-mq3-client-cl-input-ml-1213589561"></a>
 ### create
@@ -303,7 +303,7 @@ Creates a `mq3.client.cl_input.State` record. Assigns `sendState` from `sendStat
 | `sendHost` | `dynamic` | — | Value used to initialize `State.sendHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L90)
 
 <a id="function-function-mq3-client-cl-input-dispatchinputcommand-function-dispatchinputcommand-commandstate-state-src-mq3-client-cl-input-ml-1647361379"></a>
 ### dispatchInputCommand
@@ -320,7 +320,7 @@ Calls `mq3.qcommon.command_buffer.argv`, `mq3.qcommon.command_buffer.sameInsensi
 | `state` | `dynamic` | — | Record read through `state.inputState.up`, `state.inputState.down`, `state.inputState.left`, `state.inputState.right` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L525)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L525)
 
 <a id="function-function-mq3-client-cl-input-emit-function-emit-state-text-src-mq3-client-cl-input-ml-1093561306"></a>
 ### emit
@@ -337,7 +337,7 @@ Calls `state.host.printFn` from engine client input `emit`.
 | `text` | `dynamic` | — | Text consumed or emitted by `emit` in the engine client input path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L96)
 
 - [mq3.client.cl_input.Host](Type-mq3-client-cl-input-host-1945411211.md) — struct
 <a id="function-function-mq3-client-cl-input-hostservices-function-hostservices-src-mq3-client-cl-input-ml-1916266"></a>
@@ -350,7 +350,7 @@ function hostServices()
 Creates a `mq3.client.cl_input.Host` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L85)
 
 <a id="function-function-mq3-client-cl-input-in-backdown-function-in-backdown-state-key-time-src-mq3-client-cl-input-ml-1475151125"></a>
 ### IN_BackDown
@@ -368,7 +368,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_BackDown`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L193)
 
 <a id="function-function-mq3-client-cl-input-in-backup-function-in-backup-state-key-time-src-mq3-client-cl-input-ml-1867316091"></a>
 ### IN_BackUp
@@ -386,7 +386,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_BackUp`, return
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L198)
 
 <a id="function-function-mq3-client-cl-input-in-button0down-function-in-button0down-state-key-time-src-mq3-client-cl-input-ml-217238691"></a>
 ### IN_Button0Down
@@ -404,7 +404,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button0Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L264)
 
 <a id="function-function-mq3-client-cl-input-in-button0up-function-in-button0up-state-key-time-src-mq3-client-cl-input-ml-811283199"></a>
 ### IN_Button0Up
@@ -422,7 +422,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button0Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L269)
 
 <a id="function-function-mq3-client-cl-input-in-button10down-function-in-button10down-state-key-time-src-mq3-client-cl-input-ml-1165708585"></a>
 ### IN_Button10Down
@@ -440,7 +440,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button10Down`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L364)
 
 <a id="function-function-mq3-client-cl-input-in-button10up-function-in-button10up-state-key-time-src-mq3-client-cl-input-ml-266356751"></a>
 ### IN_Button10Up
@@ -458,7 +458,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button10Up`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L369)
 
 <a id="function-function-mq3-client-cl-input-in-button11down-function-in-button11down-state-key-time-src-mq3-client-cl-input-ml-463118807"></a>
 ### IN_Button11Down
@@ -476,7 +476,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button11Down`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L374)
 
 <a id="function-function-mq3-client-cl-input-in-button11up-function-in-button11up-state-key-time-src-mq3-client-cl-input-ml-362581649"></a>
 ### IN_Button11Up
@@ -494,7 +494,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button11Up`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L379)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L379)
 
 <a id="function-function-mq3-client-cl-input-in-button12down-function-in-button12down-state-key-time-src-mq3-client-cl-input-ml-973607397"></a>
 ### IN_Button12Down
@@ -512,7 +512,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button12Down`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L384)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L384)
 
 <a id="function-function-mq3-client-cl-input-in-button12up-function-in-button12up-state-key-time-src-mq3-client-cl-input-ml-158340247"></a>
 ### IN_Button12Up
@@ -530,7 +530,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button12Up`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L389)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L389)
 
 <a id="function-function-mq3-client-cl-input-in-button13down-function-in-button13down-state-key-time-src-mq3-client-cl-input-ml-472039383"></a>
 ### IN_Button13Down
@@ -548,7 +548,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button13Down`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L394)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L394)
 
 <a id="function-function-mq3-client-cl-input-in-button13up-function-in-button13up-state-key-time-src-mq3-client-cl-input-ml-848716789"></a>
 ### IN_Button13Up
@@ -566,7 +566,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button13Up`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L399)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L399)
 
 <a id="function-function-mq3-client-cl-input-in-button14down-function-in-button14down-state-key-time-src-mq3-client-cl-input-ml-612983305"></a>
 ### IN_Button14Down
@@ -584,7 +584,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button14Down`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L404)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L404)
 
 <a id="function-function-mq3-client-cl-input-in-button14up-function-in-button14up-state-key-time-src-mq3-client-cl-input-ml-239648455"></a>
 ### IN_Button14Up
@@ -602,7 +602,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button14Up`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L409)
 
 <a id="function-function-mq3-client-cl-input-in-button15down-function-in-button15down-state-key-time-src-mq3-client-cl-input-ml-1415846271"></a>
 ### IN_Button15Down
@@ -620,7 +620,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button15Down`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L414)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L414)
 
 <a id="function-function-mq3-client-cl-input-in-button15up-function-in-button15up-state-key-time-src-mq3-client-cl-input-ml-1139938881"></a>
 ### IN_Button15Up
@@ -638,7 +638,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button15Up`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L419)
 
 <a id="function-function-mq3-client-cl-input-in-button1down-function-in-button1down-state-key-time-src-mq3-client-cl-input-ml-1490930735"></a>
 ### IN_Button1Down
@@ -656,7 +656,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button1Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L274)
 
 <a id="function-function-mq3-client-cl-input-in-button1up-function-in-button1up-state-key-time-src-mq3-client-cl-input-ml-1867758023"></a>
 ### IN_Button1Up
@@ -674,7 +674,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button1Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L279)
 
 <a id="function-function-mq3-client-cl-input-in-button2down-function-in-button2down-state-key-time-src-mq3-client-cl-input-ml-176677743"></a>
 ### IN_Button2Down
@@ -692,7 +692,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button2Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L284)
 
 <a id="function-function-mq3-client-cl-input-in-button2up-function-in-button2up-state-key-time-src-mq3-client-cl-input-ml-849865315"></a>
 ### IN_Button2Up
@@ -710,7 +710,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button2Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L289)
 
 <a id="function-function-mq3-client-cl-input-in-button3down-function-in-button3down-state-key-time-src-mq3-client-cl-input-ml-1978869723"></a>
 ### IN_Button3Down
@@ -728,7 +728,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button3Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L294)
 
 <a id="function-function-mq3-client-cl-input-in-button3up-function-in-button3up-state-key-time-src-mq3-client-cl-input-ml-1785746715"></a>
 ### IN_Button3Up
@@ -746,7 +746,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button3Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L299)
 
 <a id="function-function-mq3-client-cl-input-in-button4down-function-in-button4down-state-key-time-src-mq3-client-cl-input-ml-724114195"></a>
 ### IN_Button4Down
@@ -764,7 +764,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button4Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L304)
 
 <a id="function-function-mq3-client-cl-input-in-button4up-function-in-button4up-state-key-time-src-mq3-client-cl-input-ml-1260391511"></a>
 ### IN_Button4Up
@@ -782,7 +782,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button4Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L309)
 
 <a id="function-function-mq3-client-cl-input-in-button5down-function-in-button5down-state-key-time-src-mq3-client-cl-input-ml-132919943"></a>
 ### IN_Button5Down
@@ -800,7 +800,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button5Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L314)
 
 <a id="function-function-mq3-client-cl-input-in-button5up-function-in-button5up-state-key-time-src-mq3-client-cl-input-ml-753887983"></a>
 ### IN_Button5Up
@@ -818,7 +818,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button5Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L319)
 
 <a id="function-function-mq3-client-cl-input-in-button6down-function-in-button6down-state-key-time-src-mq3-client-cl-input-ml-641492343"></a>
 ### IN_Button6Down
@@ -836,7 +836,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button6Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L324)
 
 <a id="function-function-mq3-client-cl-input-in-button6up-function-in-button6up-state-key-time-src-mq3-client-cl-input-ml-1481977635"></a>
 ### IN_Button6Up
@@ -854,7 +854,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button6Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L329)
 
 <a id="function-function-mq3-client-cl-input-in-button7down-function-in-button7down-state-key-time-src-mq3-client-cl-input-ml-664854235"></a>
 ### IN_Button7Down
@@ -872,7 +872,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button7Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L334)
 
 <a id="function-function-mq3-client-cl-input-in-button7up-function-in-button7up-state-key-time-src-mq3-client-cl-input-ml-35243835"></a>
 ### IN_Button7Up
@@ -890,7 +890,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button7Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L339)
 
 <a id="function-function-mq3-client-cl-input-in-button8down-function-in-button8down-state-key-time-src-mq3-client-cl-input-ml-655233043"></a>
 ### IN_Button8Down
@@ -908,7 +908,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button8Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L344)
 
 <a id="function-function-mq3-client-cl-input-in-button8up-function-in-button8up-state-key-time-src-mq3-client-cl-input-ml-112797087"></a>
 ### IN_Button8Up
@@ -926,7 +926,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button8Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L349)
 
 <a id="function-function-mq3-client-cl-input-in-button9down-function-in-button9down-state-key-time-src-mq3-client-cl-input-ml-803226447"></a>
 ### IN_Button9Down
@@ -944,7 +944,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_Button9Down`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L354)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L354)
 
 <a id="function-function-mq3-client-cl-input-in-button9up-function-in-button9up-state-key-time-src-mq3-client-cl-input-ml-825886327"></a>
 ### IN_Button9Up
@@ -962,7 +962,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_Button9Up`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L359)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L359)
 
 <a id="function-function-mq3-client-cl-input-in-buttondown-function-in-buttondown-state-key-time-src-mq3-client-cl-input-ml-603132655"></a>
 ### IN_ButtonDown
@@ -980,7 +980,7 @@ Adapts `mq3.client.cl_input.IN_Button1Down` to engine client input `IN_ButtonDow
 | `time` | `dynamic` | — | Argument 3 of `mq3.client.cl_input.IN_Button1Down`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L424)
 
 <a id="function-function-mq3-client-cl-input-in-buttonup-function-in-buttonup-state-key-time-src-mq3-client-cl-input-ml-1777897353"></a>
 ### IN_ButtonUp
@@ -998,7 +998,7 @@ Adapts `mq3.client.cl_input.IN_Button1Up` to engine client input `IN_ButtonUp`, 
 | `time` | `dynamic` | — | Argument 3 of `mq3.client.cl_input.IN_Button1Up`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L429)
 
 <a id="function-function-mq3-client-cl-input-in-centerview-function-in-centerview-state-src-mq3-client-cl-input-ml-2075232217"></a>
 ### IN_CenterView
@@ -1014,7 +1014,7 @@ Updates `state.inputState.viewangles[0]` during engine client input `IN_CenterVi
 | `state` | `dynamic` | — | Mutable engine client input record/storage; this routine assigns `state.inputState.viewangles[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L137)
 
 <a id="function-function-mq3-client-cl-input-in-downdown-function-in-downdown-state-key-time-src-mq3-client-cl-input-ml-1613746303"></a>
 ### IN_DownDown
@@ -1032,7 +1032,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_DownDown`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L153)
 
 <a id="function-function-mq3-client-cl-input-in-downup-function-in-downup-state-key-time-src-mq3-client-cl-input-ml-1746888677"></a>
 ### IN_DownUp
@@ -1050,7 +1050,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_DownUp`, return
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L158)
 
 <a id="function-function-mq3-client-cl-input-in-forwarddown-function-in-forwarddown-state-key-time-src-mq3-client-cl-input-ml-1822936743"></a>
 ### IN_ForwardDown
@@ -1068,7 +1068,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_ForwardDown`,
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L183)
 
 <a id="function-function-mq3-client-cl-input-in-forwardup-function-in-forwardup-state-key-time-src-mq3-client-cl-input-ml-281861623"></a>
 ### IN_ForwardUp
@@ -1086,7 +1086,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_ForwardUp`, ret
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L188)
 
 <a id="function-function-mq3-client-cl-input-in-keydown-function-in-keydown-state-value-key-time-src-mq3-client-cl-input-ml-1978309364"></a>
 ### IN_KeyDown
@@ -1105,7 +1105,7 @@ Calls `mq3.client.input_command.keyDown`, `mq3.client.cl_input.emit` from engine
 | `time` | `dynamic` | — | Value used by `result=input.keyDown(value,key,time)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L108)
 
 <a id="function-function-mq3-client-cl-input-in-keyup-function-in-keyup-state-value-key-time-src-mq3-client-cl-input-ml-1588015568"></a>
 ### IN_KeyUp
@@ -1124,7 +1124,7 @@ Calls `mq3.client.input_command.keyUp` from engine client input `IN_KeyUp`. The 
 | `time` | `dynamic` | — | Value used by `return input.keyUp(value,key,time,state.frameMsec)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L119)
 
 <a id="function-function-mq3-client-cl-input-in-leftdown-function-in-leftdown-state-key-time-src-mq3-client-cl-input-ml-1978050141"></a>
 ### IN_LeftDown
@@ -1142,7 +1142,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_LeftDown`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L163)
 
 <a id="function-function-mq3-client-cl-input-in-leftup-function-in-leftup-state-key-time-src-mq3-client-cl-input-ml-1560310639"></a>
 ### IN_LeftUp
@@ -1160,7 +1160,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_LeftUp`, return
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L168)
 
 <a id="function-function-mq3-client-cl-input-in-lookdowndown-function-in-lookdowndown-state-key-time-src-mq3-client-cl-input-ml-1559562917"></a>
 ### IN_LookdownDown
@@ -1178,7 +1178,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_LookdownDown`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L213)
 
 <a id="function-function-mq3-client-cl-input-in-lookdownup-function-in-lookdownup-state-key-time-src-mq3-client-cl-input-ml-1019546135"></a>
 ### IN_LookdownUp
@@ -1196,7 +1196,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_LookdownUp`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L218)
 
 <a id="function-function-mq3-client-cl-input-in-lookupdown-function-in-lookupdown-state-key-time-src-mq3-client-cl-input-ml-2114950607"></a>
 ### IN_LookupDown
@@ -1214,7 +1214,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_LookupDown`, 
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L203)
 
 <a id="function-function-mq3-client-cl-input-in-lookupup-function-in-lookupup-state-key-time-src-mq3-client-cl-input-ml-1067466941"></a>
 ### IN_LookupUp
@@ -1232,7 +1232,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_LookupUp`, retu
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L208)
 
 <a id="function-function-mq3-client-cl-input-in-mlookdown-function-in-mlookdown-state-key-time-src-mq3-client-cl-input-ml-540862171"></a>
 ### IN_MLookDown
@@ -1250,7 +1250,7 @@ Updates `state.inputState.mlooking` during engine client input `IN_MLookDown`.
 | `time` | `dynamic` | — | Accepted for compatibility with `IN_MLookDown`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L129)
 
 <a id="function-function-mq3-client-cl-input-in-mlookup-function-in-mlookup-state-key-time-src-mq3-client-cl-input-ml-1639537919"></a>
 ### IN_MLookUp
@@ -1268,7 +1268,7 @@ Updates `state.inputState.mlooking` during engine client input `IN_MLookUp`.
 | `time` | `dynamic` | — | Accepted for compatibility with `IN_MLookUp`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L134)
 
 <a id="function-function-mq3-client-cl-input-in-moveleftdown-function-in-moveleftdown-state-key-time-src-mq3-client-cl-input-ml-98211215"></a>
 ### IN_MoveleftDown
@@ -1286,7 +1286,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_MoveleftDown`
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L223)
 
 <a id="function-function-mq3-client-cl-input-in-moveleftup-function-in-moveleftup-state-key-time-src-mq3-client-cl-input-ml-1294903697"></a>
 ### IN_MoveleftUp
@@ -1304,7 +1304,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_MoveleftUp`, re
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L228)
 
 <a id="function-function-mq3-client-cl-input-in-moverightdown-function-in-moverightdown-state-key-time-src-mq3-client-cl-input-ml-1858751763"></a>
 ### IN_MoverightDown
@@ -1322,7 +1322,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_MoverightDown
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L233)
 
 <a id="function-function-mq3-client-cl-input-in-moverightup-function-in-moverightup-state-key-time-src-mq3-client-cl-input-ml-1052317235"></a>
 ### IN_MoverightUp
@@ -1340,7 +1340,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_MoverightUp`, r
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L238)
 
 <a id="function-function-mq3-client-cl-input-in-rightdown-function-in-rightdown-state-key-time-src-mq3-client-cl-input-ml-1557085927"></a>
 ### IN_RightDown
@@ -1358,7 +1358,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_RightDown`, r
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L173)
 
 <a id="function-function-mq3-client-cl-input-in-rightup-function-in-rightup-state-key-time-src-mq3-client-cl-input-ml-2078737495"></a>
 ### IN_RightUp
@@ -1376,7 +1376,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_RightUp`, retur
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L178)
 
 <a id="function-function-mq3-client-cl-input-in-speeddown-function-in-speeddown-state-key-time-src-mq3-client-cl-input-ml-627710603"></a>
 ### IN_SpeedDown
@@ -1394,7 +1394,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_SpeedDown`, r
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L243)
 
 <a id="function-function-mq3-client-cl-input-in-speedup-function-in-speedup-state-key-time-src-mq3-client-cl-input-ml-1435473623"></a>
 ### IN_SpeedUp
@@ -1412,7 +1412,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_SpeedUp`, retur
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L248)
 
 <a id="function-function-mq3-client-cl-input-in-strafedown-function-in-strafedown-state-key-time-src-mq3-client-cl-input-ml-1900598217"></a>
 ### IN_StrafeDown
@@ -1430,7 +1430,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_StrafeDown`, 
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L253)
 
 <a id="function-function-mq3-client-cl-input-in-strafeup-function-in-strafeup-state-key-time-src-mq3-client-cl-input-ml-1652192283"></a>
 ### IN_StrafeUp
@@ -1448,7 +1448,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_StrafeUp`, retu
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L258)
 
 <a id="function-function-mq3-client-cl-input-in-updown-function-in-updown-state-key-time-src-mq3-client-cl-input-ml-102686277"></a>
 ### IN_UpDown
@@ -1466,7 +1466,7 @@ Adapts `mq3.client.cl_input.IN_KeyDown` to engine client input `IN_UpDown`, retu
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L143)
 
 <a id="function-function-mq3-client-cl-input-in-upup-function-in-upup-state-key-time-src-mq3-client-cl-input-ml-1664034239"></a>
 ### IN_UpUp
@@ -1484,7 +1484,7 @@ Adapts `mq3.client.cl_input.IN_KeyUp` to engine client input `IN_UpUp`, returnin
 | `time` | `dynamic` | — | Argument 4 of `mq3.client.cl_input.IN_KeyUp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L148)
 
 <a id="function-function-mq3-client-cl-input-inputcommandnames-function-inputcommandnames-src-mq3-client-cl-input-ml-1924942912"></a>
 ### inputCommandNames
@@ -1496,7 +1496,7 @@ function inputCommandNames()
 Evaluates engine client input `inputCommandNames` and returns `names+["+mlook","-mlook"]` according to its guard/selection conditions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L542)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L542)
 
 <a id="constant-constant-mq3-client-cl-input-keycatch-cgame-const-keycatch-cgame-8-src-mq3-client-cl-input-ml-120102367"></a>
 ### KEYCATCH_CGAME
@@ -1508,7 +1508,7 @@ const KEYCATCH_CGAME = 8
 Input-capture bit that routes keyboard events to the cgame subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L15)
 
 <a id="constant-constant-mq3-client-cl-input-keycatch-ui-const-keycatch-ui-2-src-mq3-client-cl-input-ml-712430715"></a>
 ### KEYCATCH_UI
@@ -1520,7 +1520,7 @@ const KEYCATCH_UI = 2
 UI keyboard-capture mask used when marking commands and suppressing ordinary movement input while menus capture the keyboard.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L13)
 
 <a id="function-function-mq3-client-cl-input-magnitude-function-magnitude-value-src-mq3-client-cl-input-ml-1106446309"></a>
 ### magnitude
@@ -1536,7 +1536,7 @@ Evaluates engine client input `magnitude` and returns `0.0-value`, `value` accor
 | `value` | `dynamic` | — | Value tested by `value<0.0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L481)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L481)
 
 <a id="function-function-mq3-client-cl-input-parsearg-function-parsearg-commandstate-index-fallback-src-mq3-client-cl-input-ml-1681476556"></a>
 ### parseArg
@@ -1554,6 +1554,6 @@ Calls `mq3.qcommon.command_buffer.argc`, `mq3.client.cl_input.atoi`, `mq3.qcommo
 | `fallback` | `dynamic` | — | Value used by `if command.argc(commandState)<=index then return fallback end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L101)
 
 - [mq3.client.cl_input.State](Type-mq3-client-cl-input-state-457779714.md) — struct

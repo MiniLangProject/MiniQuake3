@@ -12,7 +12,7 @@ struct CommonError
 CommonError record for qcommon.common, containing `code`, `message`, `fatal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L113)
 
 ## Members
 
@@ -26,7 +26,7 @@ code
 Engine error-severity code associated with the failure.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L115)
 
 <a id="field-field-mq3-qcommon-common-commonerror-fatal-fatal-src-mq3-qcommon-common-ml-91346776"></a>
 ### fatal
@@ -38,7 +38,7 @@ fatal
 True when the failure requires terminating the application.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L119)
 
 <a id="field-field-mq3-qcommon-common-commonerror-message-message-src-mq3-qcommon-common-ml-1732638652"></a>
 ### message
@@ -50,4 +50,4 @@ message
 Text associated with the reported event or diagnostic.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L117)

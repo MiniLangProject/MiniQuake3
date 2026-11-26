@@ -23,7 +23,7 @@ const AAS_ID = 1396785477
 Magic value identifying the AAS navigation-file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L9)
 
 <a id="constant-constant-mq3-format-aas-aas-lumps-const-aas-lumps-lump-count-src-mq3-format-aas-ml-1915869759"></a>
 ### AAS_LUMPS
@@ -35,7 +35,7 @@ const AAS_LUMPS = LUMP_COUNT
 Number of entries in the AAS file lump directory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L53)
 
 <a id="constant-constant-mq3-format-aas-aas-version-const-aas-version-5-src-mq3-format-aas-ml-1672573822"></a>
 ### AAS_VERSION
@@ -47,7 +47,7 @@ const AAS_VERSION = 5
 Serialized format or interface version expected by AAS.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L13)
 
 <a id="constant-constant-mq3-format-aas-aas-version-old-const-aas-version-old-4-src-mq3-format-aas-ml-1460676701"></a>
 ### AAS_VERSION_OLD
@@ -59,7 +59,7 @@ const AAS_VERSION_OLD = 4
 Legacy AAS format version accepted by the navigation loader.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L11)
 
 <a id="constant-constant-mq3-format-aas-aasid-const-aasid-aas-id-src-mq3-format-aas-ml-1937881228"></a>
 ### AASID
@@ -71,7 +71,7 @@ const AASID = AAS_ID
 Magic value identifying the AAS navigation-file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L47)
 
 <a id="constant-constant-mq3-format-aas-aaslump-areas-const-aaslump-areas-lump-areas-src-mq3-format-aas-ml-715660202"></a>
 ### AASLUMP_AREAS
@@ -83,7 +83,7 @@ const AASLUMP_AREAS = LUMP_AREAS
 Lump-directory index for areas in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L69)
 
 <a id="constant-constant-mq3-format-aas-aaslump-areasettings-const-aaslump-areasettings-lump-areasettings-src-mq3-format-aas-ml-525454784"></a>
 ### AASLUMP_AREASETTINGS
@@ -95,7 +95,7 @@ const AASLUMP_AREASETTINGS = LUMP_AREASETTINGS
 Lump-directory index for areasettings in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L71)
 
 <a id="constant-constant-mq3-format-aas-aaslump-bboxes-const-aaslump-bboxes-lump-bboxes-src-mq3-format-aas-ml-398088565"></a>
 ### AASLUMP_BBOXES
@@ -107,7 +107,7 @@ const AASLUMP_BBOXES = LUMP_BBOXES
 Lump-directory index for bboxes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L55)
 
 <a id="constant-constant-mq3-format-aas-aaslump-clusters-const-aaslump-clusters-lump-clusters-src-mq3-format-aas-ml-904299101"></a>
 ### AASLUMP_CLUSTERS
@@ -119,7 +119,7 @@ const AASLUMP_CLUSTERS = LUMP_CLUSTERS
 Lump-directory index for clusters in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L81)
 
 <a id="constant-constant-mq3-format-aas-aaslump-edgeindex-const-aaslump-edgeindex-lump-edgeindex-src-mq3-format-aas-ml-1538349995"></a>
 ### AASLUMP_EDGEINDEX
@@ -131,7 +131,7 @@ const AASLUMP_EDGEINDEX = LUMP_EDGEINDEX
 Lump-directory index for edgeindex in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L63)
 
 <a id="constant-constant-mq3-format-aas-aaslump-edges-const-aaslump-edges-lump-edges-src-mq3-format-aas-ml-962538702"></a>
 ### AASLUMP_EDGES
@@ -143,7 +143,7 @@ const AASLUMP_EDGES = LUMP_EDGES
 Lump-directory index for edges in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L61)
 
 <a id="constant-constant-mq3-format-aas-aaslump-faceindex-const-aaslump-faceindex-lump-faceindex-src-mq3-format-aas-ml-136130615"></a>
 ### AASLUMP_FACEINDEX
@@ -155,7 +155,7 @@ const AASLUMP_FACEINDEX = LUMP_FACEINDEX
 Lump-directory index for faceindex in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L67)
 
 <a id="constant-constant-mq3-format-aas-aaslump-faces-const-aaslump-faces-lump-faces-src-mq3-format-aas-ml-1095050826"></a>
 ### AASLUMP_FACES
@@ -167,7 +167,7 @@ const AASLUMP_FACES = LUMP_FACES
 Lump-directory index for faces in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L65)
 
 <a id="constant-constant-mq3-format-aas-aaslump-nodes-const-aaslump-nodes-lump-nodes-src-mq3-format-aas-ml-326065177"></a>
 ### AASLUMP_NODES
@@ -179,7 +179,7 @@ const AASLUMP_NODES = LUMP_NODES
 Lump-directory index for nodes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L75)
 
 <a id="constant-constant-mq3-format-aas-aaslump-planes-const-aaslump-planes-lump-planes-src-mq3-format-aas-ml-1735503909"></a>
 ### AASLUMP_PLANES
@@ -191,7 +191,7 @@ const AASLUMP_PLANES = LUMP_PLANES
 Lump-directory index for planes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L59)
 
 <a id="constant-constant-mq3-format-aas-aaslump-portalindex-const-aaslump-portalindex-lump-portalindex-src-mq3-format-aas-ml-1460213750"></a>
 ### AASLUMP_PORTALINDEX
@@ -203,7 +203,7 @@ const AASLUMP_PORTALINDEX = LUMP_PORTALINDEX
 Lump-directory index for portalindex in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L79)
 
 <a id="constant-constant-mq3-format-aas-aaslump-portals-const-aaslump-portals-lump-portals-src-mq3-format-aas-ml-1048836959"></a>
 ### AASLUMP_PORTALS
@@ -215,7 +215,7 @@ const AASLUMP_PORTALS = LUMP_PORTALS
 Lump-directory index for portals in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L77)
 
 <a id="constant-constant-mq3-format-aas-aaslump-reachability-const-aaslump-reachability-lump-reachability-src-mq3-format-aas-ml-58608245"></a>
 ### AASLUMP_REACHABILITY
@@ -227,7 +227,7 @@ const AASLUMP_REACHABILITY = LUMP_REACHABILITY
 Lump-directory index for area reachability in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L73)
 
 <a id="constant-constant-mq3-format-aas-aaslump-vertexes-const-aaslump-vertexes-lump-vertexes-src-mq3-format-aas-ml-1609387142"></a>
 ### AASLUMP_VERTEXES
@@ -239,7 +239,7 @@ const AASLUMP_VERTEXES = LUMP_VERTEXES
 Lump-directory index for vertexes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L57)
 
 <a id="constant-constant-mq3-format-aas-aasversion-const-aasversion-aas-version-src-mq3-format-aas-ml-935249361"></a>
 ### AASVERSION
@@ -251,7 +251,7 @@ const AASVERSION = AAS_VERSION
 Serialized format or interface version expected by AAS.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L51)
 
 <a id="constant-constant-mq3-format-aas-aasversion-old-const-aasversion-old-aas-version-old-src-mq3-format-aas-ml-1677982375"></a>
 ### AASVERSION_OLD
@@ -263,7 +263,7 @@ const AASVERSION_OLD = AAS_VERSION_OLD
 Legacy AAS format version accepted by the navigation loader.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L49)
 
 <a id="function-function-mq3-format-aas-area-function-area-map-index-src-mq3-format-aas-ml-1803847756"></a>
 ### area
@@ -280,7 +280,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Area`, `mq3.format.aas.i32`
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L466)
 
 - [mq3.format.aas.Area](Type-mq3-format-aas-area-75941019.md) — struct
 <a id="constant-constant-mq3-format-aas-area-bridge-const-area-bridge-16-src-mq3-format-aas-ml-1238121210"></a>
@@ -293,7 +293,7 @@ const AREA_BRIDGE = 16
 Area ontop of a bridge.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L190)
 
 <a id="constant-constant-mq3-format-aas-area-disabled-const-area-disabled-8-src-mq3-format-aas-ml-1102338505"></a>
 ### AREA_DISABLED
@@ -305,7 +305,7 @@ const AREA_DISABLED = 8
 Area is disabled for routing when set.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L188)
 
 <a id="constant-constant-mq3-format-aas-area-grounded-const-area-grounded-1-src-mq3-format-aas-ml-882981062"></a>
 ### AREA_GROUNDED
@@ -317,7 +317,7 @@ const AREA_GROUNDED = 1
 Bot can stand on the ground.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L182)
 
 <a id="constant-constant-mq3-format-aas-area-ladder-const-area-ladder-2-src-mq3-format-aas-ml-666979567"></a>
 ### AREA_LADDER
@@ -329,7 +329,7 @@ const AREA_LADDER = 2
 Area contains one or more ladder faces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L184)
 
 <a id="constant-constant-mq3-format-aas-area-liquid-const-area-liquid-4-src-mq3-format-aas-ml-1982967205"></a>
 ### AREA_LIQUID
@@ -341,7 +341,7 @@ const AREA_LIQUID = 4
 Area contains a liquid.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L186)
 
 <a id="constant-constant-mq3-format-aas-area-settings-size-const-area-settings-size-28-src-mq3-format-aas-ml-1632800363"></a>
 ### AREA_SETTINGS_SIZE
@@ -353,7 +353,7 @@ const AREA_SETTINGS_SIZE = 28
 Serialized byte size of an AAS area-settings record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L207)
 
 <a id="constant-constant-mq3-format-aas-area-size-const-area-size-48-src-mq3-format-aas-ml-1194169761"></a>
 ### AREA_SIZE
@@ -365,7 +365,7 @@ const AREA_SIZE = 48
 Serialized byte size of an AAS area record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L205)
 
 <a id="constant-constant-mq3-format-aas-areacontents-clusterportal-const-areacontents-clusterportal-8-src-mq3-format-aas-ml-1259257123"></a>
 ### AREACONTENTS_CLUSTERPORTAL
@@ -377,7 +377,7 @@ const AREACONTENTS_CLUSTERPORTAL = 8
 AAS area-contents bit marking cluster portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L156)
 
 <a id="constant-constant-mq3-format-aas-areacontents-donotenter-const-areacontents-donotenter-256-src-mq3-format-aas-ml-982687988"></a>
 ### AREACONTENTS_DONOTENTER
@@ -389,7 +389,7 @@ const AREACONTENTS_DONOTENTER = 256
 AAS area-contents bit marking do-not-enter area.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L166)
 
 <a id="constant-constant-mq3-format-aas-areacontents-jumppad-const-areacontents-jumppad-128-src-mq3-format-aas-ml-1515167364"></a>
 ### AREACONTENTS_JUMPPAD
@@ -401,7 +401,7 @@ const AREACONTENTS_JUMPPAD = 128
 AAS area-contents bit marking jump pad.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L164)
 
 <a id="constant-constant-mq3-format-aas-areacontents-lava-const-areacontents-lava-2-src-mq3-format-aas-ml-1231017563"></a>
 ### AREACONTENTS_LAVA
@@ -413,7 +413,7 @@ const AREACONTENTS_LAVA = 2
 AAS area-contents bit marking lava.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L152)
 
 <a id="constant-constant-mq3-format-aas-areacontents-maxmodelnum-const-areacontents-maxmodelnum-255-src-mq3-format-aas-ml-989844217"></a>
 ### AREACONTENTS_MAXMODELNUM
@@ -425,7 +425,7 @@ const AREACONTENTS_MAXMODELNUM = 255
 Largest mover model number representable in area-contents flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L178)
 
 <a id="constant-constant-mq3-format-aas-areacontents-modelnum-const-areacontents-modelnum-4278190080-src-mq3-format-aas-ml-329827274"></a>
 ### AREACONTENTS_MODELNUM
@@ -437,7 +437,7 @@ const AREACONTENTS_MODELNUM = 4278190080
 Mask selecting the mover model number from area-contents flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L180)
 
 <a id="constant-constant-mq3-format-aas-areacontents-modelnumshift-const-areacontents-modelnumshift-24-src-mq3-format-aas-ml-896328375"></a>
 ### AREACONTENTS_MODELNUMSHIFT
@@ -449,7 +449,7 @@ const AREACONTENTS_MODELNUMSHIFT = 24
 Bit position at which a mover model number is stored in area contents.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L176)
 
 <a id="constant-constant-mq3-format-aas-areacontents-mover-const-areacontents-mover-1024-src-mq3-format-aas-ml-1444446550"></a>
 ### AREACONTENTS_MOVER
@@ -461,7 +461,7 @@ const AREACONTENTS_MOVER = 1024
 AAS area-contents bit marking mover.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L170)
 
 <a id="constant-constant-mq3-format-aas-areacontents-notteam1-const-areacontents-notteam1-2048-src-mq3-format-aas-ml-821061475"></a>
 ### AREACONTENTS_NOTTEAM1
@@ -473,7 +473,7 @@ const AREACONTENTS_NOTTEAM1 = 2048
 AAS area-contents bit marking team-one restriction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L172)
 
 <a id="constant-constant-mq3-format-aas-areacontents-notteam2-const-areacontents-notteam2-4096-src-mq3-format-aas-ml-1610329702"></a>
 ### AREACONTENTS_NOTTEAM2
@@ -485,7 +485,7 @@ const AREACONTENTS_NOTTEAM2 = 4096
 AAS area-contents bit marking team-two restriction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L174)
 
 <a id="constant-constant-mq3-format-aas-areacontents-routeportal-const-areacontents-routeportal-32-src-mq3-format-aas-ml-1848403564"></a>
 ### AREACONTENTS_ROUTEPORTAL
@@ -497,7 +497,7 @@ const AREACONTENTS_ROUTEPORTAL = 32
 AAS area-contents bit marking routing portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L160)
 
 <a id="constant-constant-mq3-format-aas-areacontents-slime-const-areacontents-slime-4-src-mq3-format-aas-ml-890672095"></a>
 ### AREACONTENTS_SLIME
@@ -509,7 +509,7 @@ const AREACONTENTS_SLIME = 4
 AAS area-contents bit marking slime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L154)
 
 <a id="constant-constant-mq3-format-aas-areacontents-teleportal-const-areacontents-teleportal-16-src-mq3-format-aas-ml-1953951806"></a>
 ### AREACONTENTS_TELEPORTAL
@@ -521,7 +521,7 @@ const AREACONTENTS_TELEPORTAL = 16
 AAS area-contents bit marking teleportal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L158)
 
 <a id="constant-constant-mq3-format-aas-areacontents-teleporter-const-areacontents-teleporter-64-src-mq3-format-aas-ml-786292659"></a>
 ### AREACONTENTS_TELEPORTER
@@ -533,7 +533,7 @@ const AREACONTENTS_TELEPORTER = 64
 AAS area-contents bit marking teleporter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L162)
 
 <a id="constant-constant-mq3-format-aas-areacontents-viewportal-const-areacontents-viewportal-512-src-mq3-format-aas-ml-438587801"></a>
 ### AREACONTENTS_VIEWPORTAL
@@ -545,7 +545,7 @@ const AREACONTENTS_VIEWPORTAL = 512
 AAS area-contents bit marking view portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L168)
 
 <a id="constant-constant-mq3-format-aas-areacontents-water-const-areacontents-water-1-src-mq3-format-aas-ml-641797714"></a>
 ### AREACONTENTS_WATER
@@ -557,7 +557,7 @@ const AREACONTENTS_WATER = 1
 AAS area-contents bit marking water.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L150)
 
 <a id="function-function-mq3-format-aas-areasettings-function-areasettings-map-index-src-mq3-format-aas-ml-1408605908"></a>
 ### areaSettings
@@ -574,7 +574,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.AreaSettings`, `mq3.format.
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L470)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L470)
 
 - [mq3.format.aas.AreaSettings](Type-mq3-format-aas-areasettings-162440038.md) — struct
 <a id="function-function-mq3-format-aas-bbox-function-bbox-map-index-src-mq3-format-aas-ml-967415512"></a>
@@ -592,7 +592,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.BBox`, `mq3.format.aas.i32`
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L442)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L442)
 
 - [mq3.format.aas.BBox](Type-mq3-format-aas-bbox-641438653.md) — struct
 <a id="constant-constant-mq3-format-aas-bbox-size-const-bbox-size-32-src-mq3-format-aas-ml-1168350004"></a>
@@ -605,7 +605,7 @@ const BBOX_SIZE = 32
 Serialized byte size of bbox in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L193)
 
 <a id="function-function-mq3-format-aas-checkbspchecksum-function-checkbspchecksum-map-expected-src-mq3-format-aas-ml-1182330228"></a>
 ### checkBspChecksum
@@ -622,7 +622,7 @@ Check bsp checksum in format.aas; the normal completion returns `true`.
 | `expected` | `dynamic` | — | Expected used in `(map.bspChecksum != expected)` and `((map == void) or (map.bspChecksum != expected))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L531)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L531)
 
 <a id="function-function-mq3-format-aas-cluster-function-cluster-map-index-src-mq3-format-aas-ml-1936897892"></a>
 ### cluster
@@ -639,7 +639,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Cluster`, `mq3.format.aas.i
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L490)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L490)
 
 - [mq3.format.aas.Cluster](Type-mq3-format-aas-cluster-1380852344.md) — struct
 <a id="constant-constant-mq3-format-aas-cluster-size-const-cluster-size-16-src-mq3-format-aas-ml-1429990880"></a>
@@ -652,7 +652,7 @@ const CLUSTER_SIZE = 16
 Serialized byte size of cluster in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L215)
 
 <a id="function-function-mq3-format-aas-ddata-function-ddata-data-src-mq3-format-aas-ml-617163118"></a>
 ### ddata
@@ -668,7 +668,7 @@ Compute ddata in format.aas; the normal completion returns `result`.
 | `data` | `dynamic` | — | Data used in `len(data)` and `typeof(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L550)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L550)
 
 <a id="function-function-mq3-format-aas-decodedheader-function-decodedheader-data-version-src-mq3-format-aas-ml-267961200"></a>
 ### decodedHeader
@@ -685,7 +685,7 @@ Compute decoded header in format.aas; the normal completion returns `header`.
 | `version` | `dynamic` | — | Version used in `(version == AAS_VERSION)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L429)
 
 <a id="function-function-mq3-format-aas-edge-function-edge-map-index-src-mq3-format-aas-ml-2063502856"></a>
 ### edge
@@ -702,7 +702,7 @@ Compute edge in format.aas; the normal completion returns `[i32(map.data, at, "e
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L450)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L450)
 
 <a id="constant-constant-mq3-format-aas-edge-size-const-edge-size-8-src-mq3-format-aas-ml-532984413"></a>
 ### EDGE_SIZE
@@ -714,7 +714,7 @@ const EDGE_SIZE = 8
 Serialized byte size of edge in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L199)
 
 <a id="function-function-mq3-format-aas-edgeindex-function-edgeindex-map-index-src-mq3-format-aas-ml-1959943374"></a>
 ### edgeIndex
@@ -731,7 +731,7 @@ Compute edge index in format.aas; the normal completion returns `i32(map.data, a
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L454)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L454)
 
 <a id="function-function-mq3-format-aas-encode-function-encode-map-src-mq3-format-aas-ml-67605492"></a>
 ### encode
@@ -747,7 +747,7 @@ Encode aas in format.aas; the normal completion returns `output`.
 | `map` | `dynamic` | — | Record exposing `bspChecksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L557)
 
 <a id="function-function-mq3-format-aas-f32-function-f32-data-offset-label-src-mq3-format-aas-ml-1745371125"></a>
 ### f32
@@ -765,7 +765,7 @@ Compute f 32 in format.aas; the normal completion returns `n.bitsFloat(value)`.
 | `label` | `dynamic` | — | Label used in `("truncated " + label)` and `fail(("truncated " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L395)
 
 <a id="function-function-mq3-format-aas-face-function-face-map-index-src-mq3-format-aas-ml-1316691416"></a>
 ### face
@@ -782,7 +782,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Face`, `mq3.format.aas.i32`
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L458)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L458)
 
 - [mq3.format.aas.Face](Type-mq3-format-aas-face-875082823.md) — struct
 <a id="constant-constant-mq3-format-aas-face-bridge-const-face-bridge-64-src-mq3-format-aas-ml-1454235907"></a>
@@ -795,7 +795,7 @@ const FACE_BRIDGE = 64
 Can walk over this face if bridge is closed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L148)
 
 <a id="constant-constant-mq3-format-aas-face-gap-const-face-gap-8-src-mq3-format-aas-ml-112001243"></a>
 ### FACE_GAP
@@ -807,7 +807,7 @@ const FACE_GAP = 8
 Gap in the ground.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L142)
 
 <a id="constant-constant-mq3-format-aas-face-ground-const-face-ground-4-src-mq3-format-aas-ml-1026308177"></a>
 ### FACE_GROUND
@@ -819,7 +819,7 @@ const FACE_GROUND = 4
 Standing on ground when in this face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L140)
 
 <a id="constant-constant-mq3-format-aas-face-ladder-const-face-ladder-2-src-mq3-format-aas-ml-51303743"></a>
 ### FACE_LADDER
@@ -831,7 +831,7 @@ const FACE_LADDER = 2
 AAS face-property bit marking ladder.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L138)
 
 <a id="constant-constant-mq3-format-aas-face-liquid-const-face-liquid-16-src-mq3-format-aas-ml-1282238698"></a>
 ### FACE_LIQUID
@@ -843,7 +843,7 @@ const FACE_LIQUID = 16
 Face seperating two areas with liquid.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L144)
 
 <a id="constant-constant-mq3-format-aas-face-liquidsurface-const-face-liquidsurface-32-src-mq3-format-aas-ml-533505492"></a>
 ### FACE_LIQUIDSURFACE
@@ -855,7 +855,7 @@ const FACE_LIQUIDSURFACE = 32
 Face seperating liquid and air.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L146)
 
 <a id="constant-constant-mq3-format-aas-face-size-const-face-size-24-src-mq3-format-aas-ml-1735604155"></a>
 ### FACE_SIZE
@@ -867,7 +867,7 @@ const FACE_SIZE = 24
 Serialized byte size of an AAS face record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L203)
 
 <a id="constant-constant-mq3-format-aas-face-solid-const-face-solid-1-src-mq3-format-aas-ml-1153827178"></a>
 ### FACE_SOLID
@@ -879,7 +879,7 @@ const FACE_SOLID = 1
 Just solid at the other side.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L136)
 
 <a id="function-function-mq3-format-aas-faceindex-function-faceindex-map-index-src-mq3-format-aas-ml-1749235178"></a>
 ### faceIndex
@@ -896,7 +896,7 @@ Compute face index in format.aas; the normal completion returns `i32(map.data, a
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L462)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L462)
 
 <a id="function-function-mq3-format-aas-fail-function-fail-message-src-mq3-format-aas-ml-1664961607"></a>
 ### fail
@@ -912,7 +912,7 @@ Create the format.aas error for `fail` with 7510 and the supplied diagnostic tex
 | `message` | `dynamic` | — | Message used in `("AAS: " + message)` and `error(7510, ("AAS: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L368)
 
 <a id="function-function-mq3-format-aas-header-function-header-map-src-mq3-format-aas-ml-451164932"></a>
 ### header
@@ -928,7 +928,7 @@ Compute header in format.aas; the normal completion returns `Header(AAS_ID, map.
 | `map` | `dynamic` | — | Record exposing `offsets`, `lengths`, `version`, `bspChecksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L535)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L535)
 
 - [mq3.format.aas.Header](Type-mq3-format-aas-header-899928079.md) — struct
 <a id="constant-constant-mq3-format-aas-header-size-const-header-size-124-src-mq3-format-aas-ml-1689934416"></a>
@@ -941,7 +941,7 @@ const HEADER_SIZE = 124
 Serialized byte size of header in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L15)
 
 <a id="function-function-mq3-format-aas-i32-function-i32-data-offset-label-src-mq3-format-aas-ml-1622329451"></a>
 ### i32
@@ -959,7 +959,7 @@ Compute i 32 in format.aas; the normal completion returns `value`.
 | `label` | `dynamic` | — | Label used in `("truncated " + label)` and `fail(("truncated " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L385)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L385)
 
 <a id="constant-constant-mq3-format-aas-index-size-const-index-size-4-src-mq3-format-aas-ml-1179747435"></a>
 ### INDEX_SIZE
@@ -971,7 +971,7 @@ const INDEX_SIZE = 4
 Serialized byte size of index in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L201)
 
 <a id="function-function-mq3-format-aas-indexedrange-function-indexedrange-first-count-limit-label-src-mq3-format-aas-ml-1473754500"></a>
 ### indexedRange
@@ -990,7 +990,7 @@ Test indexed range in format.aas; the normal completion returns `true`.
 | `label` | `dynamic` | — | Label used in `("invalid " + label)` and `(("invalid " + label) + " range")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L416)
 
 <a id="function-function-mq3-format-aas-load-function-load-data-src-mq3-format-aas-ml-734195262"></a>
 ### load
@@ -1006,7 +1006,7 @@ Load aas in format.aas; the normal completion returns `map`.
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.format.aas.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L513)
 
 - [mq3.format.aas.Lump](Type-mq3-format-aas-lump-1209201636.md) — struct
 <a id="constant-constant-mq3-format-aas-lump-areas-const-lump-areas-7-src-mq3-format-aas-ml-830829240"></a>
@@ -1019,7 +1019,7 @@ const LUMP_AREAS = 7
 Lump-directory index for areas in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L33)
 
 <a id="constant-constant-mq3-format-aas-lump-areasettings-const-lump-areasettings-8-src-mq3-format-aas-ml-1455468061"></a>
 ### LUMP_AREASETTINGS
@@ -1031,7 +1031,7 @@ const LUMP_AREASETTINGS = 8
 Lump-directory index for areasettings in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L35)
 
 <a id="constant-constant-mq3-format-aas-lump-bboxes-const-lump-bboxes-0-src-mq3-format-aas-ml-438463929"></a>
 ### LUMP_BBOXES
@@ -1043,7 +1043,7 @@ const LUMP_BBOXES = 0
 Lump-directory index for bboxes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L19)
 
 <a id="constant-constant-mq3-format-aas-lump-clusters-const-lump-clusters-13-src-mq3-format-aas-ml-1381156473"></a>
 ### LUMP_CLUSTERS
@@ -1055,7 +1055,7 @@ const LUMP_CLUSTERS = 13
 Lump-directory index for clusters in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L45)
 
 <a id="constant-constant-mq3-format-aas-lump-count-const-lump-count-14-src-mq3-format-aas-ml-65495178"></a>
 ### LUMP_COUNT
@@ -1067,7 +1067,7 @@ const LUMP_COUNT = 14
 Number of entries in the serialized map's lump directory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L17)
 
 <a id="constant-constant-mq3-format-aas-lump-edgeindex-const-lump-edgeindex-4-src-mq3-format-aas-ml-1946614259"></a>
 ### LUMP_EDGEINDEX
@@ -1079,7 +1079,7 @@ const LUMP_EDGEINDEX = 4
 Lump-directory index for edgeindex in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L27)
 
 <a id="constant-constant-mq3-format-aas-lump-edges-const-lump-edges-3-src-mq3-format-aas-ml-342998020"></a>
 ### LUMP_EDGES
@@ -1091,7 +1091,7 @@ const LUMP_EDGES = 3
 Lump-directory index for edges in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L25)
 
 <a id="constant-constant-mq3-format-aas-lump-faceindex-const-lump-faceindex-6-src-mq3-format-aas-ml-1524119825"></a>
 ### LUMP_FACEINDEX
@@ -1103,7 +1103,7 @@ const LUMP_FACEINDEX = 6
 Lump-directory index for faceindex in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L31)
 
 <a id="constant-constant-mq3-format-aas-lump-faces-const-lump-faces-5-src-mq3-format-aas-ml-410580626"></a>
 ### LUMP_FACES
@@ -1115,7 +1115,7 @@ const LUMP_FACES = 5
 Lump-directory index for faces in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L29)
 
 <a id="constant-constant-mq3-format-aas-lump-nodes-const-lump-nodes-10-src-mq3-format-aas-ml-1729566626"></a>
 ### LUMP_NODES
@@ -1127,7 +1127,7 @@ const LUMP_NODES = 10
 Lump-directory index for nodes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L39)
 
 <a id="constant-constant-mq3-format-aas-lump-planes-const-lump-planes-2-src-mq3-format-aas-ml-1314921763"></a>
 ### LUMP_PLANES
@@ -1139,7 +1139,7 @@ const LUMP_PLANES = 2
 Lump-directory index for planes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L23)
 
 <a id="constant-constant-mq3-format-aas-lump-portalindex-const-lump-portalindex-12-src-mq3-format-aas-ml-237914206"></a>
 ### LUMP_PORTALINDEX
@@ -1151,7 +1151,7 @@ const LUMP_PORTALINDEX = 12
 Lump-directory index for portalindex in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L43)
 
 <a id="constant-constant-mq3-format-aas-lump-portals-const-lump-portals-11-src-mq3-format-aas-ml-577444133"></a>
 ### LUMP_PORTALS
@@ -1163,7 +1163,7 @@ const LUMP_PORTALS = 11
 Lump-directory index for portals in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L41)
 
 <a id="constant-constant-mq3-format-aas-lump-reachability-const-lump-reachability-9-src-mq3-format-aas-ml-1650340246"></a>
 ### LUMP_REACHABILITY
@@ -1175,7 +1175,7 @@ const LUMP_REACHABILITY = 9
 Lump-directory index for area reachability in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L37)
 
 <a id="constant-constant-mq3-format-aas-lump-vertexes-const-lump-vertexes-1-src-mq3-format-aas-ml-765855314"></a>
 ### LUMP_VERTEXES
@@ -1187,7 +1187,7 @@ const LUMP_VERTEXES = 1
 Lump-directory index for vertexes in the serialized map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L21)
 
 <a id="function-function-mq3-format-aas-lumpdata-function-lumpdata-map-lump-src-mq3-format-aas-ml-1858223350"></a>
 ### lumpData
@@ -1204,7 +1204,7 @@ Compute lump data in format.aas; the normal completion returns `slice(map.data, 
 | `lump` | `dynamic` | — | Zero-based index into `map.offsets`, `map.lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L543)
 
 <a id="function-function-mq3-format-aas-lumpnames-function-lumpnames-src-mq3-format-aas-ml-839364286"></a>
 ### lumpNames
@@ -1216,7 +1216,7 @@ function lumpNames()
 List the 14 names in format.aas.lumpNames, beginning with `bboxes`, `vertexes`, `planes`, `edges`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L372)
 
 <a id="constant-constant-mq3-format-aas-max-traveltypes-const-max-traveltypes-32-src-mq3-format-aas-ml-1942063372"></a>
 ### MAX_TRAVELTYPES
@@ -1228,7 +1228,7 @@ const MAX_TRAVELTYPES = 32
 Number of slots reserved for the AAS travel-type lookup table.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L90)
 
 <a id="function-function-mq3-format-aas-node-function-node-map-index-src-mq3-format-aas-ml-1715953904"></a>
 ### node
@@ -1245,7 +1245,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Node`, `mq3.format.aas.i32`
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L478)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L478)
 
 - [mq3.format.aas.Node](Type-mq3-format-aas-node-1963883082.md) — struct
 <a id="constant-constant-mq3-format-aas-node-size-const-node-size-12-src-mq3-format-aas-ml-1764490274"></a>
@@ -1258,7 +1258,7 @@ const NODE_SIZE = 12
 Serialized byte size of node in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L211)
 
 <a id="function-function-mq3-format-aas-plane-function-plane-map-index-src-mq3-format-aas-ml-534067156"></a>
 ### plane
@@ -1275,7 +1275,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Plane`, `mq3.format.aas.vec
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L446)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L446)
 
 - [mq3.format.aas.Plane](Type-mq3-format-aas-plane-1144811296.md) — struct
 <a id="constant-constant-mq3-format-aas-plane-size-const-plane-size-20-src-mq3-format-aas-ml-660074749"></a>
@@ -1288,7 +1288,7 @@ const PLANE_SIZE = 20
 Serialized byte size of plane in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L197)
 
 <a id="function-function-mq3-format-aas-portal-function-portal-map-index-src-mq3-format-aas-ml-1613920308"></a>
 ### portal
@@ -1305,7 +1305,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Portal`, `mq3.format.aas.i3
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L482)
 
 - [mq3.format.aas.Portal](Type-mq3-format-aas-portal-1572880716.md) — struct
 <a id="constant-constant-mq3-format-aas-portal-size-const-portal-size-20-src-mq3-format-aas-ml-254041211"></a>
@@ -1318,7 +1318,7 @@ const PORTAL_SIZE = 20
 Serialized byte size of portal in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L213)
 
 <a id="function-function-mq3-format-aas-portalindex-function-portalindex-map-index-src-mq3-format-aas-ml-1441217348"></a>
 ### portalIndex
@@ -1335,7 +1335,7 @@ Compute portal index in format.aas; the normal completion returns `i32(map.data,
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L486)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L486)
 
 <a id="constant-constant-mq3-format-aas-presence-crouch-const-presence-crouch-4-src-mq3-format-aas-ml-622911269"></a>
 ### PRESENCE_CROUCH
@@ -1347,7 +1347,7 @@ const PRESENCE_CROUCH = 4
 AAS presence-mask value selecting crouch.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L88)
 
 <a id="constant-constant-mq3-format-aas-presence-none-const-presence-none-1-src-mq3-format-aas-ml-331633314"></a>
 ### PRESENCE_NONE
@@ -1359,7 +1359,7 @@ const PRESENCE_NONE = 1
 Complete code/botlib/aasfile.h public ABI.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L84)
 
 <a id="constant-constant-mq3-format-aas-presence-normal-const-presence-normal-2-src-mq3-format-aas-ml-1795714287"></a>
 ### PRESENCE_NORMAL
@@ -1371,7 +1371,7 @@ const PRESENCE_NORMAL = 2
 AAS presence-mask value selecting normal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L86)
 
 <a id="function-function-mq3-format-aas-reachability-function-reachability-map-index-src-mq3-format-aas-ml-173940504"></a>
 ### reachability
@@ -1388,7 +1388,7 @@ Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Reachability`, `mq3.format.
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L474)
 
 - [mq3.format.aas.Reachability](Type-mq3-format-aas-reachability-1665315537.md) — struct
 <a id="constant-constant-mq3-format-aas-reachability-size-const-reachability-size-44-src-mq3-format-aas-ml-875255229"></a>
@@ -1401,7 +1401,7 @@ const REACHABILITY_SIZE = 44
 Serialized byte size of area reachability in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L209)
 
 <a id="function-function-mq3-format-aas-recordoffset-function-recordoffset-map-lump-index-src-mq3-format-aas-ml-689345654"></a>
 ### recordOffset
@@ -1419,7 +1419,7 @@ Compute record offset in format.aas; the normal completion returns `(map.offsets
 | `index` | `dynamic` | — | Index used in `(index < 0)` and `(index * strides()[lump])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L405)
 
 <a id="function-function-mq3-format-aas-signedreference-function-signedreference-value-count-label-src-mq3-format-aas-ml-929920842"></a>
 ### signedReference
@@ -1437,7 +1437,7 @@ Test signed reference in format.aas; the normal completion returns `true`.
 | `label` | `dynamic` | — | Label used in `("invalid signed " + label)` and `(("invalid signed " + label) + " reference")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L423)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L423)
 
 <a id="function-function-mq3-format-aas-span-function-span-offset-size-limit-label-src-mq3-format-aas-ml-1635777785"></a>
 ### span
@@ -1456,7 +1456,7 @@ Test span in format.aas; the normal completion returns `true`.
 | `label` | `dynamic` | — | Label used in `(label + " outside file")` and `fail((label + " outside file"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L378)
 
 <a id="function-function-mq3-format-aas-strides-function-strides-src-mq3-format-aas-ml-1591856078"></a>
 ### strides
@@ -1468,7 +1468,7 @@ function strides()
 Compute format.aas.strides as `[BBOX_SIZE, VERTEX_SIZE, PLANE_SIZE, EDGE_SIZE, INDEX_SIZE, FACE_SIZE, INDEX_SIZE, AREA_SIZE, AREA_SETTINGS_SIZE, REACHABILITY_SIZE, NODE_SIZE, PORTAL_SIZE, INDEX_SIZE, CLUSTER_SIZE]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L370)
 
 <a id="constant-constant-mq3-format-aas-travel-barrierjump-const-travel-barrierjump-4-src-mq3-format-aas-ml-1743550575"></a>
 ### TRAVEL_BARRIERJUMP
@@ -1480,7 +1480,7 @@ const TRAVEL_BARRIERJUMP = 4
 Jumping onto a barrier.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L98)
 
 <a id="constant-constant-mq3-format-aas-travel-bfgjump-const-travel-bfgjump-13-src-mq3-format-aas-ml-1923706691"></a>
 ### TRAVEL_BFGJUMP
@@ -1492,7 +1492,7 @@ const TRAVEL_BFGJUMP = 13
 Bfg jumping required for travel.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L116)
 
 <a id="constant-constant-mq3-format-aas-travel-crouch-const-travel-crouch-3-src-mq3-format-aas-ml-1486833152"></a>
 ### TRAVEL_CROUCH
@@ -1504,7 +1504,7 @@ const TRAVEL_CROUCH = 3
 AAS movement-type identifier for crouch.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L96)
 
 <a id="constant-constant-mq3-format-aas-travel-doublejump-const-travel-doublejump-15-src-mq3-format-aas-ml-568753251"></a>
 ### TRAVEL_DOUBLEJUMP
@@ -1516,7 +1516,7 @@ const TRAVEL_DOUBLEJUMP = 15
 AAS movement-type identifier for double jump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
 
 <a id="constant-constant-mq3-format-aas-travel-elevator-const-travel-elevator-11-src-mq3-format-aas-ml-810788215"></a>
 ### TRAVEL_ELEVATOR
@@ -1528,7 +1528,7 @@ const TRAVEL_ELEVATOR = 11
 Travel by elevator.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L112)
 
 <a id="constant-constant-mq3-format-aas-travel-funcbob-const-travel-funcbob-19-src-mq3-format-aas-ml-2032776857"></a>
 ### TRAVEL_FUNCBOB
@@ -1540,7 +1540,7 @@ const TRAVEL_FUNCBOB = 19
 AAS movement-type identifier for bobbing mover.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L128)
 
 <a id="constant-constant-mq3-format-aas-travel-grapplehook-const-travel-grapplehook-14-src-mq3-format-aas-ml-909764652"></a>
 ### TRAVEL_GRAPPLEHOOK
@@ -1552,7 +1552,7 @@ const TRAVEL_GRAPPLEHOOK = 14
 Grappling hook required for travel.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
 
 <a id="constant-constant-mq3-format-aas-travel-invalid-const-travel-invalid-1-src-mq3-format-aas-ml-2057240520"></a>
 ### TRAVEL_INVALID
@@ -1564,7 +1564,7 @@ const TRAVEL_INVALID = 1
 AAS travel-type value for a reachability that cannot currently be traversed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L92)
 
 <a id="constant-constant-mq3-format-aas-travel-jump-const-travel-jump-5-src-mq3-format-aas-ml-596297286"></a>
 ### TRAVEL_JUMP
@@ -1576,7 +1576,7 @@ const TRAVEL_JUMP = 5
 AAS movement-type identifier for jump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L100)
 
 <a id="constant-constant-mq3-format-aas-travel-jumppad-const-travel-jumppad-18-src-mq3-format-aas-ml-506789622"></a>
 ### TRAVEL_JUMPPAD
@@ -1588,7 +1588,7 @@ const TRAVEL_JUMPPAD = 18
 AAS movement-type identifier for jump pad.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L126)
 
 <a id="constant-constant-mq3-format-aas-travel-ladder-const-travel-ladder-6-src-mq3-format-aas-ml-551893635"></a>
 ### TRAVEL_LADDER
@@ -1600,7 +1600,7 @@ const TRAVEL_LADDER = 6
 Climbing a ladder.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L102)
 
 <a id="constant-constant-mq3-format-aas-travel-rampjump-const-travel-rampjump-16-src-mq3-format-aas-ml-394492718"></a>
 ### TRAVEL_RAMPJUMP
@@ -1612,7 +1612,7 @@ const TRAVEL_RAMPJUMP = 16
 AAS movement-type identifier for ramp jump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
 
 <a id="constant-constant-mq3-format-aas-travel-rocketjump-const-travel-rocketjump-12-src-mq3-format-aas-ml-1804091930"></a>
 ### TRAVEL_ROCKETJUMP
@@ -1624,7 +1624,7 @@ const TRAVEL_ROCKETJUMP = 12
 Rocket jumping required for travel.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L114)
 
 <a id="constant-constant-mq3-format-aas-travel-strafejump-const-travel-strafejump-17-src-mq3-format-aas-ml-532761685"></a>
 ### TRAVEL_STRAFEJUMP
@@ -1636,7 +1636,7 @@ const TRAVEL_STRAFEJUMP = 17
 AAS movement-type identifier for strafe jump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L124)
 
 <a id="constant-constant-mq3-format-aas-travel-swim-const-travel-swim-8-src-mq3-format-aas-ml-223809909"></a>
 ### TRAVEL_SWIM
@@ -1648,7 +1648,7 @@ const TRAVEL_SWIM = 8
 AAS movement-type identifier for swim.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L106)
 
 <a id="constant-constant-mq3-format-aas-travel-teleport-const-travel-teleport-10-src-mq3-format-aas-ml-823634540"></a>
 ### TRAVEL_TELEPORT
@@ -1660,7 +1660,7 @@ const TRAVEL_TELEPORT = 10
 AAS movement-type identifier for teleport.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L110)
 
 <a id="constant-constant-mq3-format-aas-travel-walk-const-travel-walk-2-src-mq3-format-aas-ml-815134663"></a>
 ### TRAVEL_WALK
@@ -1672,7 +1672,7 @@ const TRAVEL_WALK = 2
 AAS movement-type identifier for walk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L94)
 
 <a id="constant-constant-mq3-format-aas-travel-walkoffledge-const-travel-walkoffledge-7-src-mq3-format-aas-ml-849890996"></a>
 ### TRAVEL_WALKOFFLEDGE
@@ -1684,7 +1684,7 @@ const TRAVEL_WALKOFFLEDGE = 7
 Walking of a ledge.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L104)
 
 <a id="constant-constant-mq3-format-aas-travel-waterjump-const-travel-waterjump-9-src-mq3-format-aas-ml-215115788"></a>
 ### TRAVEL_WATERJUMP
@@ -1696,7 +1696,7 @@ const TRAVEL_WATERJUMP = 9
 Jump out of the water.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L108)
 
 <a id="constant-constant-mq3-format-aas-travelflag-notteam1-const-travelflag-notteam1-16777216-src-mq3-format-aas-ml-1730541790"></a>
 ### TRAVELFLAG_NOTTEAM1
@@ -1708,7 +1708,7 @@ const TRAVELFLAG_NOTTEAM1 = 16777216
 Additional AAS travel restriction for team-one restriction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L132)
 
 <a id="constant-constant-mq3-format-aas-travelflag-notteam2-const-travelflag-notteam2-33554432-src-mq3-format-aas-ml-1867187248"></a>
 ### TRAVELFLAG_NOTTEAM2
@@ -1720,7 +1720,7 @@ const TRAVELFLAG_NOTTEAM2 = 33554432
 Additional AAS travel restriction for team-two restriction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L134)
 
 <a id="constant-constant-mq3-format-aas-traveltype-mask-const-traveltype-mask-16777215-src-mq3-format-aas-ml-1765712999"></a>
 ### TRAVELTYPE_MASK
@@ -1732,7 +1732,7 @@ const TRAVELTYPE_MASK = 16777215
 Mask selecting the movement-type identifier from an encoded AAS travel type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L130)
 
 <a id="function-function-mq3-format-aas-u16-function-u16-data-offset-label-src-mq3-format-aas-ml-66601223"></a>
 ### u16
@@ -1750,7 +1750,7 @@ Compute u 16 in format.aas; the normal completion returns `(data[offset] | (data
 | `label` | `dynamic` | — | Label used in `("truncated " + label)` and `fail(("truncated " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L390)
 
 <a id="function-function-mq3-format-aas-validatetopology-function-validatetopology-map-src-mq3-format-aas-ml-260760800"></a>
 ### validateTopology
@@ -1766,7 +1766,7 @@ Validate topology in format.aas; the normal completion returns `true`.
 | `map` | `dynamic` | — | Record exposing `counts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L494)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L494)
 
 <a id="function-function-mq3-format-aas-vec3-function-vec3-data-offset-label-src-mq3-format-aas-ml-1849871319"></a>
 ### vec3
@@ -1784,7 +1784,7 @@ Compute format.aas.vec3 as `[f32(data, offset, label), f32(data, (offset + 4), l
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.format.aas.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L400)
 
 <a id="function-function-mq3-format-aas-vertex-function-vertex-map-index-src-mq3-format-aas-ml-290524028"></a>
 ### vertex
@@ -1801,7 +1801,7 @@ Compute vertex in format.aas; the normal completion returns `vec3(map.data, at, 
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L438)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L438)
 
 <a id="constant-constant-mq3-format-aas-vertex-size-const-vertex-size-12-src-mq3-format-aas-ml-1567632094"></a>
 ### VERTEX_SIZE
@@ -1813,4 +1813,4 @@ const VERTEX_SIZE = 12
 Serialized byte size of vertex in this file format.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L195)

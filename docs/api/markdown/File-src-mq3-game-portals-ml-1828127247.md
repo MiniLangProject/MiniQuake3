@@ -33,7 +33,7 @@ Update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` during `came
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `s`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/portals.ml#L68)
 
 <a id="function-function-mq3-game-portals-locatecamera-function-locatecamera-level-ent-src-mq3-game-portals-ml-1504841795"></a>
 ### locateCamera
@@ -50,7 +50,7 @@ Update `ent.r.ownerNum`, `ent.s.frame`, `ent.s.powerups` and `ent.s.clientNum` a
 | `ent` | `dynamic` | — | Game entity; accesses `target`, `r` and `s`. May update `ent.r.ownerNum`, `ent.s.frame` and `ent.s.powerups` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/portals.ml#L16)
 
 <a id="function-function-mq3-game-portals-surface-function-surface-level-ent-src-mq3-game-portals-ml-1855125617"></a>
 ### surface
@@ -67,4 +67,4 @@ Update `ent.r.mins[axis]`, `ent.r.maxs[axis]`, `ent.r.svFlags` and `ent.s.eType`
 | `ent` | `dynamic` | — | Game entity; accesses `r`, `s`, `target`, `think` and `nextthink`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.r.svFlags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/portals.ml#L48)

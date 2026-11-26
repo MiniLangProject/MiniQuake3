@@ -10,7 +10,7 @@ Reachable from entry: **no**
 
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/compat/textnumbers.ml` as `textnum` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -32,7 +32,7 @@ Apply `mq3.game.spawn_values.setConfig` while evaluating `configIndex`. Return p
 | `create` | `dynamic` | — | Value used by `configIndex` in `if not create then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L47)
 
 <a id="function-function-mq3-game-spawn-values-getfloat-function-getfloat-state-key-fallback-src-mq3-game-spawn-values-ml-554110950"></a>
 ### getFloat
@@ -50,7 +50,7 @@ Apply `mq3.game.spawn_values.getString` while evaluating `getFloat`. Return path
 | `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L28)
 
 <a id="function-function-mq3-game-spawn-values-getint-function-getint-state-key-fallback-src-mq3-game-spawn-values-ml-263140546"></a>
 ### getInt
@@ -68,7 +68,7 @@ Apply `mq3.game.spawn_values.getString` while evaluating `getInt`. Return paths 
 | `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L21)
 
 <a id="function-function-mq3-game-spawn-values-getstring-function-getstring-state-key-fallback-src-mq3-game-spawn-values-ml-881266688"></a>
 ### getString
@@ -86,7 +86,7 @@ Look up a spawn key case-insensitively and return a found flag with either its t
 | `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L11)
 
 <a id="function-function-mq3-game-spawn-values-modelindex-function-modelindex-state-name-src-mq3-game-spawn-values-ml-737307678"></a>
 ### modelIndex
@@ -103,7 +103,7 @@ Forward `modelIndex` to `mq3.game.spawn_values.configIndex` and return the deleg
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L73)
 
 <a id="function-function-mq3-game-spawn-values-setconfig-function-setconfig-state-index-value-src-mq3-game-spawn-values-ml-1583478660"></a>
 ### setConfig
@@ -121,7 +121,7 @@ Set `state.configstrings[index]` to `""` and `state.configstrings[index]` to `va
 | `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L35)
 
 <a id="function-function-mq3-game-spawn-values-soundindex-function-soundindex-state-name-src-mq3-game-spawn-values-ml-1563858458"></a>
 ### soundIndex
@@ -138,4 +138,4 @@ Forward `soundIndex` to `mq3.game.spawn_values.configIndex` and return the deleg
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/spawn_values.ml#L67)

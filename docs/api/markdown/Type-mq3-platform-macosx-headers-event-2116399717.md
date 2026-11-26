@@ -12,7 +12,7 @@ struct Event
 Data record for `mq3.platform.macosx_headers.Event`; groups `time`, `kind`, `value1`, `value2`, `payload`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L55)
 
 ## Members
 
@@ -26,7 +26,7 @@ kind
 System-event category selecting how the accompanying values are interpreted.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L59)
 
 <a id="field-field-mq3-platform-macosx-headers-event-payload-payload-src-mq3-platform-macosx-headers-ml-1023198221"></a>
 ### payload
@@ -38,7 +38,7 @@ payload
 Operation-specific data interpreted according to the record's command or event type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L65)
 
 <a id="field-field-mq3-platform-macosx-headers-event-time-time-src-mq3-platform-macosx-headers-ml-322578263"></a>
 ### time
@@ -50,7 +50,7 @@ time
 Millisecond timestamp carried by the macOS platform event adapter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L57)
 
 <a id="field-field-mq3-platform-macosx-headers-event-value1-value1-src-mq3-platform-macosx-headers-ml-1508842365"></a>
 ### value1
@@ -62,7 +62,7 @@ value1
 Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L61)
 
 <a id="field-field-mq3-platform-macosx-headers-event-value2-value2-src-mq3-platform-macosx-headers-ml-406334355"></a>
 ### value2
@@ -74,4 +74,4 @@ value2
 Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L63)

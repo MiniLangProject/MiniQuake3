@@ -12,7 +12,7 @@ struct State
 `State` record for memory, containing `pool`, `allocPoint` and `debugAlloc`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/memory.ml#L9)
 
 ## Members
 
@@ -26,7 +26,7 @@ allocPoint
 Next free byte offset in the game allocation arena.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/memory.ml#L13)
 
 <a id="field-field-mq3-game-memory-state-debugalloc-debugalloc-src-mq3-game-memory-ml-1496950754"></a>
 ### debugAlloc
@@ -38,7 +38,7 @@ debugAlloc
 Diagnostic setting enabling game-arena allocation reporting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/memory.ml#L15)
 
 <a id="field-field-mq3-game-memory-state-pool-pool-src-mq3-game-memory-ml-778637814"></a>
 ### pool
@@ -50,4 +50,4 @@ pool
 Backing byte buffer of the fixed game allocation arena.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/memory.ml#L11)

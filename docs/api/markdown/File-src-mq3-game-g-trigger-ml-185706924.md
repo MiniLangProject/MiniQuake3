@@ -42,7 +42,7 @@ Update `self.s.origin2` and `self.s.origin2[2]` during `AimAtTarget`.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `r`, `target` and `s`. May update `self.s.origin2` and `self.s.origin2[2]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L144)
 
 <a id="function-function-mq3-game-g-trigger-between-function-between-value-minimum-maximum-src-mq3-game-g-trigger-ml-744869395"></a>
 ### between
@@ -60,7 +60,7 @@ Kept because the historical symbol inventory picked the word from the g_trigger.
 | `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L35)
 
 <a id="constant-constant-mq3-game-g-trigger-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-g-trigger-ml-1559554540"></a>
 ### CONTENTS_TRIGGER
@@ -72,7 +72,7 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 Collision-contents bit identifying trigger space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L23)
 
 <a id="constant-constant-mq3-game-g-trigger-frametime-const-frametime-100-src-mq3-game-g-trigger-ml-2096376290"></a>
 ### FRAMETIME
@@ -84,7 +84,7 @@ const FRAMETIME = 100
 Nominal game frame duration in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L27)
 
 <a id="function-function-mq3-game-g-trigger-func-timer-think-function-func-timer-think-level-self-src-mq3-game-g-trigger-ml-1824956066"></a>
 ### func_timer_think
@@ -101,7 +101,7 @@ Update `self.nextthink` during `func_timer_think`.
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `activator`, `nextthink`, `wait` and `random`. May update `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L279)
 
 <a id="function-function-mq3-game-g-trigger-func-timer-use-function-func-timer-use-level-self-other-activator-src-mq3-game-g-trigger-ml-359357253"></a>
 ### func_timer_use
@@ -120,7 +120,7 @@ Set `self.activator` to `activator` and `self.nextthink` to `0` in `mq3.game.g_t
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L291)
 
 <a id="function-function-mq3-game-g-trigger-hurt-touch-function-hurt-touch-level-self-other-trace-src-mq3-game-g-trigger-ml-18700875"></a>
 ### hurt_touch
@@ -139,7 +139,7 @@ Set `self.timestamp` to `n.add32(level.time,1000)` and `self.timestamp` to `n.ad
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `hurt_touch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L251)
 
 <a id="function-function-mq3-game-g-trigger-hurt-use-function-hurt-use-level-self-other-activator-src-mq3-game-g-trigger-ml-1243149985"></a>
 ### hurt_use
@@ -158,7 +158,7 @@ Apply `mq3.game.entities.unlink` and `mq3.game.entities.link` while evaluating `
 | `activator` | `dynamic` | — | Not read by this implementation; retained in the `hurt_use` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L241)
 
 <a id="function-function-mq3-game-g-trigger-inittrigger-function-inittrigger-level-self-src-mq3-game-g-trigger-ml-1957817082"></a>
 ### InitTrigger
@@ -175,7 +175,7 @@ Update `self.movedir`, `self.s.angles`, `self.r.contents` and `self.r.svFlags` d
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`, `movedir`, `model` and `r`. May update `self.movedir`, `self.s.angles` and `self.r.contents` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L42)
 
 <a id="function-function-mq3-game-g-trigger-multi-trigger-function-multi-trigger-level-ent-activator-src-mq3-game-g-trigger-ml-54969488"></a>
 ### multi_trigger
@@ -193,7 +193,7 @@ Update `ent.activator`, `ent.think`, `ent.nextthink` and `ent.touch` during `mul
 | `activator` | `dynamic` | — | Activator record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L63)
 
 <a id="function-function-mq3-game-g-trigger-multi-wait-function-multi-wait-level-ent-src-mq3-game-g-trigger-ml-1599389707"></a>
 ### multi_wait
@@ -210,7 +210,7 @@ Set `ent.nextthink` to `0` in `mq3.game.g_trigger.multi_wait`.
 | `ent` | `dynamic` | — | Game entity; accesses `nextthink`. May update `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L54)
 
 <a id="function-function-mq3-game-g-trigger-sp-func-timer-function-sp-func-timer-level-self-src-mq3-game-g-trigger-ml-848011862"></a>
 ### SP_func_timer
@@ -227,7 +227,7 @@ Update `self.random`, `self.wait`, `self.use` and `self.think` and related state
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `random`, `wait`, `use`, `think` and `s` and related fields. May update `self.random`, `self.wait` and `self.use` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L300)
 
 <a id="function-function-mq3-game-g-trigger-sp-target-push-function-sp-target-push-level-self-src-mq3-game-g-trigger-ml-525313290"></a>
 ### SP_target_push
@@ -244,7 +244,7 @@ Update `self.speed`, `self.s.origin2`, `self.s.angles` and `self.noise_index` an
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `speed`, `s`, `spawnflags`, `noise_index` and `target` and related fields. May update `self.speed`, `self.s.origin2` and `self.s.angles` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L195)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-always-function-sp-trigger-always-level-ent-src-mq3-game-g-trigger-ml-1078765967"></a>
 ### SP_trigger_always
@@ -261,7 +261,7 @@ Set `ent.nextthink` to `n.add32(level.time,300)` and `ent.think` to `trigger_alw
 | `ent` | `dynamic` | — | Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` and `ent.think` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L125)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-hurt-function-sp-trigger-hurt-level-self-src-mq3-game-g-trigger-ml-1087340914"></a>
 ### SP_trigger_hurt
@@ -278,7 +278,7 @@ Update `self.noise_index`, `self.touch`, `self.damage` and `self.r.contents` and
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `noise_index`, `touch`, `damage`, `r` and `spawnflags` and related fields. May update `self.noise_index`, `self.touch` and `self.damage` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L265)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-multiple-function-sp-trigger-multiple-level-ent-src-mq3-game-g-trigger-ml-644898245"></a>
 ### SP_trigger_multiple
@@ -295,7 +295,7 @@ Update `ent.wait`, `ent.random`, `ent.touch` and `ent.use` during `SP_trigger_mu
 | `ent` | `dynamic` | — | Game entity; accesses `wait`, `random`, `touch` and `use`. May update `ent.wait`, `ent.random` and `ent.touch` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L102)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-push-function-sp-trigger-push-level-self-src-mq3-game-g-trigger-ml-1230926440"></a>
 ### SP_trigger_push
@@ -312,7 +312,7 @@ Update `self.r.svFlags`, `self.s.eType`, `self.touch` and `self.think` and relat
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `r`, `s`, `touch`, `think` and `nextthink`. May update `self.r.svFlags`, `self.s.eType` and `self.touch` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L165)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-teleport-function-sp-trigger-teleport-level-self-src-mq3-game-g-trigger-ml-2080722026"></a>
 ### SP_trigger_teleport
@@ -329,7 +329,7 @@ Update `self.r.svFlags`, `self.s.eType` and `self.touch` during `SP_trigger_tele
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `spawnflags`, `r`, `s` and `touch`. May update `self.r.svFlags`, `self.s.eType` and `self.touch` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L226)
 
 <a id="constant-constant-mq3-game-g-trigger-svf-noclient-const-svf-noclient-1-src-mq3-game-g-trigger-ml-210703908"></a>
 ### SVF_NOCLIENT
@@ -341,7 +341,7 @@ const SVF_NOCLIENT = 1
 Server entity-flag bit controlling noclient.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L25)
 
 <a id="function-function-mq3-game-g-trigger-touch-multi-function-touch-multi-level-self-other-trace-src-mq3-game-g-trigger-ml-1139128053"></a>
 ### Touch_Multi
@@ -360,7 +360,7 @@ Apply `mq3.game.g_trigger.multi_trigger` while evaluating `Touch_Multi`. Return 
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `Touch_Multi` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L94)
 
 <a id="function-function-mq3-game-g-trigger-trigger-always-think-function-trigger-always-think-level-ent-src-mq3-game-g-trigger-ml-1021407515"></a>
 ### trigger_always_think
@@ -377,7 +377,7 @@ Apply `mq3.game.targets.useTargets` and `mq3.game.entities.free` while evaluatin
 | `ent` | `dynamic` | — | Game entity; accesses `targetShaderName`, `targetShaderNewName`, `target` and `inuse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L117)
 
 <a id="function-function-mq3-game-g-trigger-trigger-push-touch-function-trigger-push-touch-level-self-other-trace-src-mq3-game-g-trigger-ml-799395799"></a>
 ### trigger_push_touch
@@ -396,7 +396,7 @@ Apply `mq3.game.jumppad.touch` while evaluating `trigger_push_touch`.
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `trigger_push_touch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L135)
 
 <a id="function-function-mq3-game-g-trigger-trigger-teleporter-touch-function-trigger-teleporter-touch-level-self-other-trace-src-mq3-game-g-trigger-ml-245538223"></a>
 ### trigger_teleporter_touch
@@ -415,7 +415,7 @@ Apply `mq3.game.entities.pickTarget`, `mq3.game.entities.diagnostic` and `mq3.ga
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `trigger_teleporter_touch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L214)
 
 <a id="function-function-mq3-game-g-trigger-use-multi-function-use-multi-level-ent-other-activator-src-mq3-game-g-trigger-ml-631034130"></a>
 ### Use_Multi
@@ -434,7 +434,7 @@ Forward `Use_Multi` to `mq3.game.g_trigger.multi_trigger` and return the delegat
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L85)
 
 <a id="function-function-mq3-game-g-trigger-use-target-push-function-use-target-push-level-self-other-activator-src-mq3-game-g-trigger-ml-1567165669"></a>
 ### Use_target_push
@@ -453,4 +453,4 @@ Set `activator.client.ps.velocity` to `movement.copy(self.s.origin2)` and `activ
 | `activator` | `dynamic` | — | Activator record; accesses `client` and `fly_sound_debounce_time`. May update `activator.client.ps.velocity` and `activator.fly_sound_debounce_time` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L180)

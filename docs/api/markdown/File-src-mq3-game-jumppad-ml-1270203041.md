@@ -31,4 +31,4 @@ Update `ps.events[slot]`, `ps.eventParms[slot]`, `ps.eventSequence` and `ps.jump
 | `origin2` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/jumppad.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/jumppad.ml#L13)

@@ -12,7 +12,7 @@ struct Pipeline
 Pipeline record for server.pipeline, containing `runtime`, `runtimeLevel`, `client`, `server`, `downloadState`, `downloadServer`, and 7 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L11)
 
 ## Members
 
@@ -26,7 +26,7 @@ client
 Client-specific reliable-command and snapshot state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L17)
 
 <a id="field-field-mq3-server-pipeline-pipeline-clientnum-clientnum-src-mq3-server-pipeline-ml-1013092645"></a>
 ### clientNum
@@ -38,7 +38,7 @@ clientNum
 Server client-slot number associated with this runtime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L31)
 
 <a id="field-field-mq3-server-pipeline-pipeline-downloadhost-downloadhost-src-mq3-server-pipeline-ml-300483749"></a>
 ### downloadHost
@@ -50,7 +50,7 @@ downloadHost
 Host callbacks that open, read, and close downloadable files.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L25)
 
 <a id="field-field-mq3-server-pipeline-pipeline-downloadserver-downloadserver-src-mq3-server-pipeline-ml-59532903"></a>
 ### downloadServer
@@ -62,7 +62,7 @@ downloadServer
 Server download policy and timing values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L23)
 
 <a id="field-field-mq3-server-pipeline-pipeline-downloadstate-downloadstate-src-mq3-server-pipeline-ml-199825289"></a>
 ### downloadState
@@ -74,7 +74,7 @@ downloadState
 Current download window for this client.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L21)
 
 <a id="field-field-mq3-server-pipeline-pipeline-fragments-fragments-src-mq3-server-pipeline-ml-645985653"></a>
 ### fragments
@@ -86,7 +86,7 @@ fragments
 Outgoing fragments waiting to be transmitted.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L33)
 
 <a id="field-field-mq3-server-pipeline-pipeline-lan-lan-src-mq3-server-pipeline-ml-592338309"></a>
 ### lan
@@ -98,7 +98,7 @@ lan
 True when this connection is classified as belonging to the local network.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L37)
 
 <a id="field-field-mq3-server-pipeline-pipeline-local-local-src-mq3-server-pipeline-ml-658483945"></a>
 ### local
@@ -110,7 +110,7 @@ local
 True when this connection or destination is local to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L35)
 
 <a id="field-field-mq3-server-pipeline-pipeline-netchannel-netchannel-src-mq3-server-pipeline-ml-449437301"></a>
 ### netChannel
@@ -122,7 +122,7 @@ netChannel
 Sequenced channel carrying this client's outgoing messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L29)
 
 <a id="field-field-mq3-server-pipeline-pipeline-netruntime-netruntime-src-mq3-server-pipeline-ml-906480947"></a>
 ### netRuntime
@@ -134,7 +134,7 @@ netRuntime
 Host packet-transmission runtime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L27)
 
 <a id="field-field-mq3-server-pipeline-pipeline-runtime-runtime-src-mq3-server-pipeline-ml-491231977"></a>
 ### runtime
@@ -146,7 +146,7 @@ runtime
 Shared snapshot runtime used to build frames and access the snapshot-entity ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L13)
 
 <a id="field-field-mq3-server-pipeline-pipeline-runtimelevel-runtimelevel-src-mq3-server-pipeline-ml-181938417"></a>
 ### runtimeLevel
@@ -158,7 +158,7 @@ runtimeLevel
 Server level state shared by the snapshot and message pipeline.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L15)
 
 <a id="field-field-mq3-server-pipeline-pipeline-server-server-src-mq3-server-pipeline-ml-472002339"></a>
 ### server
@@ -170,4 +170,4 @@ server
 Server timing and snapshot state used when sending messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L19)

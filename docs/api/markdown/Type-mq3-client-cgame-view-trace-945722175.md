@@ -12,7 +12,7 @@ struct Trace
 Stores client game view trace record, including `fraction`, `endpos`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L154)
 
 ## Members
 
@@ -26,7 +26,7 @@ endpos
 Final world-space position reached by the collision trace.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L158)
 
 <a id="field-field-mq3-client-cgame-view-trace-fraction-fraction-src-mq3-client-cgame-view-ml-1674881138"></a>
 ### fraction
@@ -38,4 +38,4 @@ fraction
 When constructing this record, `nextTrace` supplies `1.0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L156)

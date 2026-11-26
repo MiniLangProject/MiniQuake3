@@ -12,7 +12,7 @@ struct ReachabilityAreas
 `ReachabilityAreas` record for be aas route, containing `firstArea` and `numAreas`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L31)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstArea
 First element of this reachability's range in the flattened area-index array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L33)
 
 <a id="field-field-mq3-botlib-be-aas-route-reachabilityareas-numareas-numareas-src-mq3-botlib-be-aas-route-ml-1999749032"></a>
 ### numAreas
@@ -38,4 +38,4 @@ numAreas
 Number of portal or navigation areas represented by the loaded map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L35)

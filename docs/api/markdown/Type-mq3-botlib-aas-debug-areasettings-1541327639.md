@@ -12,7 +12,7 @@ struct AreaSettings
 `AreaSettings` record for aas debug, containing `contents`, `cluster`, `numReachableAreas` and `firstReachableArea`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L121)
 
 ## Members
 
@@ -26,7 +26,7 @@ cluster
 Cluster the area belongs to, if negative it's a portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L125)
 
 <a id="field-field-mq3-botlib-aas-debug-areasettings-contents-contents-src-mq3-botlib-aas-debug-ml-487217861"></a>
 ### contents
@@ -38,7 +38,7 @@ contents
 Collision or AAS contents flags describing the represented volume.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L123)
 
 <a id="field-field-mq3-botlib-aas-debug-areasettings-firstreachablearea-firstreachablearea-src-mq3-botlib-aas-debug-ml-1619865141"></a>
 ### firstReachableArea
@@ -50,7 +50,7 @@ firstReachableArea
 First outgoing reachability index for this area in the shared reachability array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L129)
 
 <a id="field-field-mq3-botlib-aas-debug-areasettings-numreachableareas-numreachableareas-src-mq3-botlib-aas-debug-ml-784619317"></a>
 ### numReachableAreas
@@ -62,4 +62,4 @@ numReachableAreas
 Number of outgoing reachability records belonging to this AAS area.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L127)

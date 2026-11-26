@@ -12,7 +12,7 @@ struct Point
 Data record for `mq3.renderer.qvm_2d_batch.Point`; groups `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L21)
 
 ## Members
 
@@ -26,7 +26,7 @@ depth
 Depth of the projected point or fog region in its owning coordinate system.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L27)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-point-x-x-src-mq3-renderer-qvm-2d-batch-ml-278035563"></a>
 ### x
@@ -38,7 +38,7 @@ x
 Horizontal screen-space coordinate of the projected or drawn point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-point-y-y-src-mq3-renderer-qvm-2d-batch-ml-1144328399"></a>
 ### y
@@ -50,4 +50,4 @@ y
 Vertical screen-space coordinate of the projected or drawn point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L25)

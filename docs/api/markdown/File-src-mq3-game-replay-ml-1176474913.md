@@ -13,7 +13,7 @@ Reachable from entry: **yes**
 - `mq3/game/movement.ml` as `kernel` → [src/mq3/game/movement.ml](File-src-mq3-game-movement-ml-621504687.md)
 - `mq3/game/playerstate.ml` as `states` → [src/mq3/game/playerstate.ml](File-src-mq3-game-playerstate-ml-1407876292.md)
 - `mq3/game/pmove.ml` as `pm` → [src/mq3/game/pmove.ml](File-src-mq3-game-pmove-ml-1046301421.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -31,7 +31,7 @@ Parse movement replay rows as nine tab-separated signed 32-bit integers, skippin
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/replay.ml#L43)
 
 <a id="function-function-mq3-game-replay-create-function-create-world-origin-src-mq3-game-replay-ml-130067730"></a>
 ### create
@@ -48,7 +48,7 @@ Apply `mq3.game.playerstate.create`, `mq3.game.movement.copy` and `mq3.game.pmov
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/replay.ml#L30)
 
 <a id="function-function-mq3-game-replay-row-function-row-p-src-mq3-game-replay-ml-1858136656"></a>
 ### row
@@ -64,7 +64,7 @@ Serialize the selected player and movement-kernel fields as one tab-separated re
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/replay.ml#L66)
 
 <a id="function-function-mq3-game-replay-run-function-run-world-origin-text-src-mq3-game-replay-ml-2082399719"></a>
 ### run
@@ -82,7 +82,7 @@ Apply `mq3.game.replay.commands`, `mq3.game.replay.create` and `mq3.game.pmove.m
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/replay.ml#L80)
 
 <a id="function-function-mq3-game-replay-worldcontents-function-worldcontents-p-point-src-mq3-game-replay-ml-754382228"></a>
 ### worldContents
@@ -99,7 +99,7 @@ Forward `worldContents` to `mq3.collision.world.pointContents` and return the de
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/replay.ml#L24)
 
 <a id="function-function-mq3-game-replay-worldtrace-function-worldtrace-p-start-finish-src-mq3-game-replay-ml-1460069101"></a>
 ### worldTrace
@@ -117,4 +117,4 @@ Build the `mq3.game.movement.Collision` result for `worldTrace`. Return paths in
 | `finish` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/replay.ml#L15)

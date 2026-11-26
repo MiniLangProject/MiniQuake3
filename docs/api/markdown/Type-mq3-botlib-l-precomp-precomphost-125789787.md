@@ -12,7 +12,7 @@ struct PrecompHost
 `PrecompHost` record for l precomp, containing `loadFn`, `actionFn` and `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L86)
 
 ## Members
 
@@ -26,7 +26,7 @@ actionFn
 Host callback that dispatches a recorded subsystem action to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L90)
 
 <a id="field-field-mq3-botlib-l-precomp-precomphost-context-context-src-mq3-botlib-l-precomp-ml-350206915"></a>
 ### context
@@ -38,7 +38,7 @@ context
 Caller-supplied data associated with preprocessor source loading and preprocessing diagnostics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L92)
 
 <a id="field-field-mq3-botlib-l-precomp-precomphost-loadfn-loadfn-src-mq3-botlib-l-precomp-ml-944596955"></a>
 ### loadFn
@@ -50,4 +50,4 @@ loadFn
 Host callback that loads the requested resource through the host interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L88)

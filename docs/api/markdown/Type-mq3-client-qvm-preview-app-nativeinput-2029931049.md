@@ -12,7 +12,7 @@ struct NativeInput
 Stores QVM preview app native input record, including `mouse`, `keys`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L110)
 
 ## Members
 
@@ -26,7 +26,7 @@ keys
 When constructing this record, `runMatchWithLoading` supplies `keys` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L114)
 
 <a id="field-field-mq3-client-qvm-preview-app-nativeinput-mouse-mouse-src-mq3-client-qvm-preview-app-ml-1864777464"></a>
 ### mouse
@@ -38,4 +38,4 @@ mouse
 When constructing this record, `runMatchWithLoading` supplies `[0,0]` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L112)

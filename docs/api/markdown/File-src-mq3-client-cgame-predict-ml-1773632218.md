@@ -34,7 +34,7 @@ Updates `ps.events[slot]`, `ps.eventParms[slot]`, `ps.eventSequence` during clie
 | `parm` | `dynamic` | — | Value used by `ps.eventParms[slot]=parm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L232)
 
 <a id="function-function-mq3-client-cgame-predict-adjusted-function-adjusted-host-origin-ground-fromtime-totime-src-mq3-client-cgame-predict-ml-1117556732"></a>
 ### adjusted
@@ -54,7 +54,7 @@ Calls `mq3.client.cgame_predict.copy3`, `host.moverAdjustFn` from client game pr
 | `toTime` | `dynamic` | — | Value used by `return host.moverAdjustFn(host,origin,ground,fromTime,toTime)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L323)
 
 <a id="function-function-mq3-client-cgame-predict-buildsolidlist-function-buildsolidlist-state-current-next-nextframeteleport-thisframeteleport-src-mq3-client-cgame-predict-ml-1944321152"></a>
 ### buildSolidList
@@ -74,7 +74,7 @@ CG_BuildSolidList.  Snapshot entities already carry the state selected by CG_Set
 | `thisFrameTeleport` | `dynamic` | — | Value used by `if next!=void and not nextFrameTeleport and not thisFrameTeleport then chosen=next end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L140)
 
 <a id="function-function-mq3-client-cgame-predict-cangrabitem-function-cangrabitem-gametype-ent-ps-src-mq3-client-cgame-predict-ml-2066719582"></a>
 ### canGrabItem
@@ -92,7 +92,7 @@ Calls `mq3.client.cgame_predict.validItem`, `mq3.game.constants.itemType`, `mq3.
 | `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.ammo`, `ps.stats`, `ps.persistant`, `ps.powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L243)
 
 <a id="constant-constant-mq3-client-cgame-predict-cmd-backup-const-cmd-backup-64-src-mq3-client-cgame-predict-ml-832782479"></a>
 ### CMD_BACKUP
@@ -104,7 +104,7 @@ const CMD_BACKUP = 64
 Number of recent user commands retained in the command-history ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-predict-contents-body-const-contents-body-33554432-src-mq3-client-cgame-predict-ml-1329298476"></a>
 ### CONTENTS_BODY
@@ -116,7 +116,7 @@ const CONTENTS_BODY = 33554432
 Collision-content bit identifying body volumes or surfaces during client traces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L23)
 
 <a id="function-function-mq3-client-cgame-predict-copy3-function-copy3-value-src-mq3-client-cgame-predict-ml-137320633"></a>
 ### copy3
@@ -132,7 +132,7 @@ Copies the X, Y and Z components into a fresh client game predict vector.
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L131)
 
 <a id="function-function-mq3-client-cgame-predict-create-function-create-src-mq3-client-cgame-predict-ml-247696686"></a>
 ### create
@@ -144,7 +144,7 @@ function create()
 Creates a `mq3.client.cgame_predict.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L118)
 
 <a id="constant-constant-mq3-client-cgame-predict-ef-nodraw-const-ef-nodraw-128-src-mq3-client-cgame-predict-ml-1034047928"></a>
 ### EF_NODRAW
@@ -156,7 +156,7 @@ const EF_NODRAW = 128
 Entity-state flag selecting nodraw behavior in client presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L27)
 
 <a id="function-function-mq3-client-cgame-predict-entity-function-entity-source-src-mq3-client-cgame-predict-ml-1769309689"></a>
 ### entity
@@ -172,7 +172,7 @@ Creates a `mq3.client.cgame_predict.Entity` record. Assigns `state` from `source
 | `source` | `dynamic` | — | Record read through `source.origin`, `source.angles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L126)
 
 - [mq3.client.cgame_predict.Entity](Type-mq3-client-cgame-predict-entity-1308975735.md) — struct
 <a id="function-function-mq3-client-cgame-predict-interpolateplayerstate-function-interpolateplayerstate-current-next-time-grabangles-latestcommand-nextframeteleport-src-mq3-client-cgame-predict-ml-165785488"></a>
@@ -194,7 +194,7 @@ CG_InterpolatePlayerState.
 | `nextFrameTeleport` | `dynamic` | — | Value used by `if nextFrameTeleport or next==void or next.serverTime<=current.serverTime then return output end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L212)
 
 <a id="function-function-mq3-client-cgame-predict-latest-function-latest-commands-src-mq3-client-cgame-predict-ml-1697280428"></a>
 ### latest
@@ -210,7 +210,7 @@ Evaluates client game predict `latest` and returns `void`, `commands[len(command
 | `commands` | `dynamic` | — | Sequence read at `commands[len(commands)-1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L316)
 
 <a id="function-function-mq3-client-cgame-predict-lerpangle-function-lerpangle-first-second-fraction-src-mq3-client-cgame-predict-ml-274771106"></a>
 ### lerpAngle
@@ -228,7 +228,7 @@ Calls `mq3.compat.numeric.f32` from client game predict `lerpAngle`. The final p
 | `fraction` | `dynamic` | — | Interpolation or blend fraction between the endpoint values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L200)
 
 <a id="constant-constant-mq3-client-cgame-predict-mask-playersolid-const-mask-playersolid-33619969-src-mq3-client-cgame-predict-ml-1001955069"></a>
 ### MASK_PLAYERSOLID
@@ -240,7 +240,7 @@ const MASK_PLAYERSOLID = 33619969
 Combined collision-content mask used by player movement traces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L21)
 
 <a id="constant-constant-mq3-client-cgame-predict-pmf-follow-const-pmf-follow-4096-src-mq3-client-cgame-predict-ml-253021662"></a>
 ### PMF_FOLLOW
@@ -252,7 +252,7 @@ const PMF_FOLLOW = 4096
 Player-movement state flag indicating follow.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L25)
 
 <a id="function-function-mq3-client-cgame-predict-pointcontents-function-pointcontents-state-host-point-passentitynum-src-mq3-client-cgame-predict-ml-2133033035"></a>
 ### pointContents
@@ -271,7 +271,7 @@ CG_PointContents.
 | `passEntityNum` | `dynamic` | — | Value used by `if value.state.number==passEntityNum or value.state.solid!=SOLID_BMODEL then continue end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L183)
 
 <a id="function-function-mq3-client-cgame-predict-predict-function-predict-state-current-next-time-oldtime-commands-demoplayback-nopredict-synchronousclients-nextframeteleport-thisframeteleport-gametype-predictitems-pmovefixed-pmovemsec-host-src-mq3-client-cgame-predict-ml-1875758669"></a>
 ### predict
@@ -302,7 +302,7 @@ CG_PredictPlayerState.  This is deliberately an observer: all state is a deep co
 | `host` | `dynamic` | — | host record passed to the client game predict helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L346)
 
 <a id="function-function-mq3-client-cgame-predict-predictionpoint-function-predictionpoint-p-point-src-mq3-client-cgame-predict-ml-555319654"></a>
 ### predictionPoint
@@ -319,7 +319,7 @@ Calls `mq3.client.cgame_predict.pointContents` from client game predict `predict
 | `point` | `dynamic` | — | Value used by `return pointContents(run.observer,run.services,point,p.ps.clientNum)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L311)
 
 <a id="function-function-mq3-client-cgame-predict-predictiontrace-function-predictiontrace-p-start-finish-src-mq3-client-cgame-predict-ml-1279944035"></a>
 ### predictionTrace
@@ -337,7 +337,7 @@ Calls `mq3.client.cgame_predict.trace` from client game predict `predictionTrace
 | `finish` | `dynamic` | — | Value used by `return trace(run.observer,run.services,start,p.k.mins,p.k.maxs,finish,p.ps.clientNum,p.k.mask)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L305)
 
 - [mq3.client.cgame_predict.RunContext](Type-mq3-client-cgame-predict-runcontext-629411760.md) — struct
 <a id="function-function-mq3-client-cgame-predict-services-function-services-context-src-mq3-client-cgame-predict-ml-473591055"></a>
@@ -354,7 +354,7 @@ Creates a `mq3.client.cgame_predict.Services` record. Assigns `context` from `co
 | `context` | `dynamic` | — | Value used to initialize `Services.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L123)
 
 - [mq3.client.cgame_predict.Services](Type-mq3-client-cgame-predict-services-648933540.md) — struct
 <a id="constant-constant-mq3-client-cgame-predict-solid-bmodel-const-solid-bmodel-16777215-src-mq3-client-cgame-predict-ml-274043939"></a>
@@ -367,7 +367,7 @@ const SOLID_BMODEL = 16777215
 Encoded solid value indicating that the entity uses an inline brush collision model.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L19)
 
 - [mq3.client.cgame_predict.State](Type-mq3-client-cgame-predict-state-1394042129.md) — struct
 <a id="function-function-mq3-client-cgame-predict-touchitem-function-touchitem-state-value-time-gametype-predictitems-src-mq3-client-cgame-predict-ml-1840538280"></a>
@@ -388,7 +388,7 @@ CG_TouchItem.  The shared trajectory and item rules are the same native BG_Playe
 | `predictItems` | `dynamic` | — | Value used by `if not predictItems then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L266)
 
 <a id="function-function-mq3-client-cgame-predict-touchtriggerprediction-function-touchtriggerprediction-state-host-time-gametype-predictitems-mins-maxs-src-mq3-client-cgame-predict-ml-680916901"></a>
 ### touchTriggerPrediction
@@ -410,7 +410,7 @@ CG_TouchTriggerPrediction.  Contact against inline trigger models remains an eng
 | `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L286)
 
 <a id="function-function-mq3-client-cgame-predict-trace-function-trace-state-host-start-mins-maxs-finish-skipnumber-mask-src-mq3-client-cgame-predict-ml-2057655358"></a>
 ### trace
@@ -433,7 +433,7 @@ CG_ClipMoveToEntities / CG_Trace.  Collision details stay owned by the engine ca
 | `mask` | `dynamic` | — | Value used by `result=host.worldTraceFn(host,start,mins,maxs,finish,mask)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L162)
 
 <a id="function-function-mq3-client-cgame-predict-validitem-function-validitem-index-src-mq3-client-cgame-predict-ml-2122961976"></a>
 ### validItem
@@ -449,4 +449,4 @@ Computes `typeof(index)=="int" and index>0 and index<36` for client game predict
 | `index` | `dynamic` | — | Value used by `return typeof(index)=="int" and index>0 and index<36`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L238)

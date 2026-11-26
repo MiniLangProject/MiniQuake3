@@ -12,7 +12,7 @@ struct Item
 Stores playable items menu item, including `classname`, `kind`, `origin`, `amount`, `cap`, `respawnMs` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L23)
 
 ## Members
 
@@ -26,7 +26,7 @@ active
 When constructing this record, `fromEntities` supplies `true` for this member. Used by `take` and `update` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L40)
 
 <a id="field-field-mq3-client-playable-items-item-amount-amount-src-mq3-client-playable-items-ml-1186958288"></a>
 ### amount
@@ -38,7 +38,7 @@ amount
 When constructing this record, `fromEntities` supplies `def[1]` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L31)
 
 <a id="field-field-mq3-client-playable-items-item-cap-cap-src-mq3-client-playable-items-ml-1311084364"></a>
 ### cap
@@ -50,7 +50,7 @@ cap
 When constructing this record, `fromEntities` supplies `def[2]` for this member. Used by `canTake` and `take` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L34)
 
 <a id="field-field-mq3-client-playable-items-item-classname-classname-src-mq3-client-playable-items-ml-1394792860"></a>
 ### classname
@@ -62,7 +62,7 @@ classname
 Native item classname used to select this world's pickup behavior and presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L25)
 
 <a id="field-field-mq3-client-playable-items-item-kind-kind-src-mq3-client-playable-items-ml-1290073356"></a>
 ### kind
@@ -74,7 +74,7 @@ kind
 Item category selecting pickup behavior or the type-specific UI control implementation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L27)
 
 <a id="field-field-mq3-client-playable-items-item-origin-origin-src-mq3-client-playable-items-ml-668584452"></a>
 ### origin
@@ -86,7 +86,7 @@ origin
 World-space pickup position used for the player's item-collection distance test.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L29)
 
 <a id="field-field-mq3-client-playable-items-item-respawnat-respawnat-src-mq3-client-playable-items-ml-342920220"></a>
 ### respawnAt
@@ -98,7 +98,7 @@ respawnAt
 Client simulation timestamp at which the entity becomes eligible to respawn.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L42)
 
 <a id="field-field-mq3-client-playable-items-item-respawnms-respawnms-src-mq3-client-playable-items-ml-636244516"></a>
 ### respawnMs
@@ -110,7 +110,7 @@ respawnMs
 When constructing this record, `fromEntities` supplies `def[3]` for this member. Used by `take` and `takeInventory` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L37)
 
 <a id="field-field-mq3-client-playable-items-item-weapon-weapon-src-mq3-client-playable-items-ml-560706216"></a>
 ### weapon
@@ -122,4 +122,4 @@ weapon
 Weapon classname selected when this weapon pickup is collected; empty for other pickup kinds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L44)

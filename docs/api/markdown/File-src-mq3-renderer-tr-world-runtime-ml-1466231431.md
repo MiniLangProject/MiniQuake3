@@ -27,7 +27,7 @@ Computes `boxCull(bounds,frustum)==CULL_OUT` for `mq3.renderer.tr_world_runtime.
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.boxCull`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L251)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-boxcull-function-boxcull-bounds-frustum-src-mq3-renderer-tr-world-runtime-ml-39396059"></a>
 ### boxCull
@@ -44,7 +44,7 @@ Classifies a box against all frustum planes, stopping when any plane rejects it.
 | `frustum` | `dynamic` | — | Sequence traversed as `plane` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L151)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-boxonplaneside-function-boxonplaneside-bounds-plane-src-mq3-renderer-tr-world-runtime-ml-1487526049"></a>
 ### boxOnPlaneSide
@@ -61,7 +61,7 @@ Classifies an axis-aligned box as inside, outside, or crossing one plane using e
 | `plane` | `dynamic` | — | Record providing `plane.normal`, `plane.dist`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L142)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-contents-node-const-contents-node-1-src-mq3-renderer-tr-world-runtime-ml-1641656829"></a>
 ### CONTENTS_NODE
@@ -73,7 +73,7 @@ const CONTENTS_NODE = -1
 Negative marker identifying an internal BSP node rather than a leaf.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L14)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-contents-solid-const-contents-solid-1-src-mq3-renderer-tr-world-runtime-ml-359723650"></a>
 ### CONTENTS_SOLID
@@ -85,7 +85,7 @@ const CONTENTS_SOLID = 1
 Contents bit identifying solid collision geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L16)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-ct-back-sided-const-ct-back-sided-1-src-mq3-renderer-tr-world-runtime-ml-1077533372"></a>
 ### CT_BACK_SIDED
@@ -97,7 +97,7 @@ const CT_BACK_SIDED = 1
 Cull type that keeps the back-facing side of a surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-ct-front-sided-const-ct-front-sided-0-src-mq3-renderer-tr-world-runtime-ml-467848413"></a>
 ### CT_FRONT_SIDED
@@ -109,7 +109,7 @@ const CT_FRONT_SIDED = 0
 Cull type that keeps the front-facing side of a surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-ct-two-sided-const-ct-two-sided-2-src-mq3-renderer-tr-world-runtime-ml-8554833"></a>
 ### CT_TWO_SIDED
@@ -121,7 +121,7 @@ const CT_TWO_SIDED = 2
 Cull type that renders both sides of a surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L22)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-cull-clip-const-cull-clip-1-src-mq3-renderer-tr-world-runtime-ml-2081231456"></a>
 ### CULL_CLIP
@@ -133,7 +133,7 @@ const CULL_CLIP = 1
 Bounds classification indicating that the object intersects the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L10)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-cull-in-const-cull-in-0-src-mq3-renderer-tr-world-runtime-ml-94011709"></a>
 ### CULL_IN
@@ -145,7 +145,7 @@ const CULL_IN = 0
 Bounds classification indicating that the object lies entirely inside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L8)
 
 <a id="constant-constant-mq3-renderer-tr-world-runtime-cull-out-const-cull-out-2-src-mq3-renderer-tr-world-runtime-ml-58517223"></a>
 ### CULL_OUT
@@ -157,7 +157,7 @@ const CULL_OUT = 2
 Bounds classification indicating that the object lies entirely outside the view frustum.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L12)
 
 - [mq3.renderer.tr_world_runtime.Dlight](Type-mq3-renderer-tr-world-runtime-dlight-1642492651.md) — struct
 <a id="function-function-mq3-renderer-tr-world-runtime-dot-function-dot-a-b-src-mq3-renderer-tr-world-runtime-ml-1470481443"></a>
@@ -175,7 +175,7 @@ Computes `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `mq3.renderer.tr_world_runtime.dot`
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L137)
 
 - [mq3.renderer.tr_world_runtime.DrawSurface](Type-mq3-renderer-tr-world-runtime-drawsurface-299049956.md) — struct
 <a id="function-function-mq3-renderer-tr-world-runtime-expandbounds-function-expandbounds-bounds-mins-maxs-src-mq3-renderer-tr-world-runtime-ml-1348843865"></a>
@@ -194,7 +194,7 @@ Updates `bounds[0][axis]`, `bounds[1][axis]` in `mq3.renderer.tr_world_runtime.e
 | `maxs` | `dynamic` | — | Indexed input read at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L329)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-fail-function-fail-message-src-mq3-renderer-tr-world-runtime-ml-892235471"></a>
 ### fail
@@ -210,7 +210,7 @@ Creates error `7793` with message `"tr_world: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7793,"tr_world: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L133)
 
 - [mq3.renderer.tr_world_runtime.MarkResult](Type-mq3-renderer-tr-world-runtime-markresult-1501242355.md) — struct
 - [mq3.renderer.tr_world_runtime.Node](Type-mq3-renderer-tr-world-runtime-node-1276201439.md) — struct
@@ -239,7 +239,7 @@ Rejects an off-frustum brush model and collects each remaining drawable world-su
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.boundsOutside`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L264)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-addworldsurface-function-r-addworldsurface-surface-surfaceindex-dlightbits-lights-viewcount-nocull-nocurves-faceplanecull-vieworigin-frustum-src-mq3-renderer-tr-world-runtime-ml-1564394417"></a>
 ### R_AddWorldSurface
@@ -264,7 +264,7 @@ Builds `mq3.renderer.tr_world_runtime.DrawSurface` after updating `surface.viewC
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.R_CullSurface`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L241)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-addworldsurfaces-function-r-addworldsurfaces-cache-camera-config-src-mq3-renderer-tr-world-runtime-ml-1546764547"></a>
 ### R_AddWorldSurfaces
@@ -282,7 +282,7 @@ Productive world entry: the retained selector performs the same leaf/PVS, frustu
 | `config` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.world_surface_selection.prepareCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L376)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L376)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-clusterpvs-function-r-clusterpvs-world-cluster-src-mq3-renderer-tr-world-runtime-ml-1173839248"></a>
 ### R_ClusterPVS
@@ -299,7 +299,7 @@ Returns `slice(world.vis,cluster*world.clusterBytes,world.clusterBytes)` from `m
 | `cluster` | `dynamic` | — | Input tested by `world.vis==void or cluster<0 or cluster>=world.numClusters`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L284)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-cullgrid-function-r-cullgrid-surface-nocurves-worldentity-frustum-src-mq3-renderer-tr-world-runtime-ml-2108707363"></a>
 ### R_CullGrid
@@ -318,7 +318,7 @@ Rejects disabled curves or patch grids whose sphere and, when needed, box lie ou
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.sphereCull`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L171)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-cullsurface-function-r-cullsurface-surface-nocull-nocurves-faceplanecull-vieworigin-frustum-src-mq3-renderer-tr-world-runtime-ml-1145776463"></a>
 ### R_CullSurface
@@ -339,7 +339,7 @@ Computes `R_CullSurface` from `distance>surface.plane.dist+8.0` using `mq3.rende
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.R_CullGrid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L184)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-culltrisurf-function-r-culltrisurf-surface-frustum-src-mq3-renderer-tr-world-runtime-ml-533547113"></a>
 ### R_CullTriSurf
@@ -356,7 +356,7 @@ Computes `boxCull(surface.bounds,frustum)==CULL_OUT` for `mq3.renderer.tr_world_
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.boxCull`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L165)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-dlightface-function-r-dlightface-surface-dlightbits-lights-src-mq3-renderer-tr-world-runtime-ml-954389206"></a>
 ### R_DlightFace
@@ -374,7 +374,7 @@ Updates `surface.dlightBits` in `mq3.renderer.tr_world_runtime.R_DlightFace`; re
 | `lights` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L198)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-dlightgrid-function-r-dlightgrid-surface-dlightbits-lights-src-mq3-renderer-tr-world-runtime-ml-1394621282"></a>
 ### R_DlightGrid
@@ -392,7 +392,7 @@ Updates `surface.dlightBits` in `mq3.renderer.tr_world_runtime.R_DlightGrid`; re
 | `lights` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L206)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-dlightsurface-function-r-dlightsurface-surface-dlightbits-lights-src-mq3-renderer-tr-world-runtime-ml-2033887026"></a>
 ### R_DlightSurface
@@ -410,7 +410,7 @@ Updates `surface.dlightBits` in `mq3.renderer.tr_world_runtime.R_DlightSurface`;
 | `lights` | `dynamic` | — | Value forwarded as `lights` to `mq3.renderer.tr_world_runtime.R_DlightFace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L223)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-dlighttrisurf-function-r-dlighttrisurf-surface-dlightbits-lights-src-mq3-renderer-tr-world-runtime-ml-1064100454"></a>
 ### R_DlightTrisurf
@@ -428,7 +428,7 @@ Updates `surface.dlightBits` in `mq3.renderer.tr_world_runtime.R_DlightTrisurf`;
 | `lights` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L218)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-inpvs-function-r-inpvs-world-p1-p2-src-mq3-renderer-tr-world-runtime-ml-1834913803"></a>
 ### R_inPVS
@@ -446,7 +446,7 @@ Computes `R_inPVS` from `(mask[cluster>>3]&(1<<(cluster&7)))!=0` using `mq3.rend
 | `p2` | `dynamic` | — | Value forwarded as `point` to `mq3.renderer.tr_world_runtime.R_PointInLeaf`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L293)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-markleaves-function-r-markleaves-world-pvsorigin-areamask-lockpvs-novis-areamaskmodified-showclustermodified-src-mq3-renderer-tr-world-runtime-ml-137000151"></a>
 ### R_MarkLeaves
@@ -468,7 +468,7 @@ Builds `mq3.renderer.tr_world_runtime.MarkResult` after updating `world.visCount
 | `showClusterModified` | `dynamic` | — | Input tested by `world.viewCluster==cluster and not areaMaskModified and not showClusterModified`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L306)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-pointinleaf-function-r-pointinleaf-world-point-src-mq3-renderer-tr-world-runtime-ml-1683161484"></a>
 ### R_PointInLeaf
@@ -485,7 +485,7 @@ Walks BSP child planes to locate a point's leaf, with index/cycle guards for mal
 | `point` | `dynamic` | — | Value forwarded as `a` to `mq3.renderer.tr_world_runtime.dot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L273)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-r-recursiveworldnode-function-r-recursiveworldnode-world-nodeindex-planebits-dlightbits-lights-viewcount-nocull-nocurves-faceplanecull-vieworigin-frustum-src-mq3-renderer-tr-world-runtime-ml-1434659151"></a>
 ### R_RecursiveWorldNode
@@ -511,7 +511,7 @@ Starts BSP visibility traversal with empty draw results and expanding bounds, th
 | `frustum` | `dynamic` | — | Value forwarded as `frustum` to `mq3.renderer.tr_world_runtime.recurseNode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L366)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-recursenode-function-recursenode-world-nodeindex-planebits-dlightbits-lights-viewcount-nocull-nocurves-faceplanecull-vieworigin-frustum-result-src-mq3-renderer-tr-world-runtime-ml-868631652"></a>
 ### recurseNode
@@ -538,7 +538,7 @@ Updates `result.leafs`, `result.draws` in `mq3.renderer.tr_world_runtime.recurse
 | `result` | `dynamic` | — | Mutable record or buffer; this call updates `result.leafs`, `result.draws`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L343)
 
 <a id="function-function-mq3-renderer-tr-world-runtime-spherecull-function-spherecull-origin-radius-frustum-src-mq3-renderer-tr-world-runtime-ml-11174358"></a>
 ### sphereCull
@@ -556,7 +556,7 @@ Classifies a bounding sphere against all frustum planes using signed distance an
 | `frustum` | `dynamic` | — | Sequence traversed as `plane` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L158)
 
 - [mq3.renderer.tr_world_runtime.Surface](Type-mq3-renderer-tr-world-runtime-surface-1206481274.md) — struct
 - [mq3.renderer.tr_world_runtime.Traversal](Type-mq3-renderer-tr-world-runtime-traversal-403890391.md) — struct

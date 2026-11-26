@@ -10,7 +10,7 @@ Reachable from entry: **no**
 
 - `mq3/compat/textnumbers.ml` as `textNumbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
 - `mq3/shared/info.ml` as `arenaInfo` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -24,7 +24,7 @@ const ARENAS_PER_TIER = 4
 Number of arenas grouped into one single-player progression tier.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-sp-arena-exec-append-const-exec-append-2-src-mq3-client-ui-sp-arena-ml-1121505725"></a>
 ### EXEC_APPEND
@@ -36,7 +36,7 @@ const EXEC_APPEND = 2
 Console execution mode that appends text to the pending command buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
 
 - [mq3.client.ui_sp_arena.Result](Type-mq3-client-ui-sp-arena-result-1369793754.md) — struct
 <a id="function-function-mq3-client-ui-sp-arena-services-function-services-context-variablevaluefn-setvaluefn-numtiersfn-executetextfn-src-mq3-client-ui-sp-arena-ml-1077336476"></a>
@@ -57,7 +57,7 @@ Creates a `mq3.client.ui_sp_arena.Services` record. Assigns `context` from `cont
 | `executeTextFn` | `dynamic` | — | Value used to initialize `Services.executeTextFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L51)
 
 - [mq3.client.ui_sp_arena.Services](Type-mq3-client-ui-sp-arena-services-942175455.md) — struct
 <a id="function-function-mq3-client-ui-sp-arena-start-function-start-host-infotext-src-mq3-client-ui-sp-arena-ml-934303825"></a>
@@ -75,4 +75,4 @@ UI_SPArena_Start. Host callbacks are the four original trap/UI boundaries.
 | `infoText` | `dynamic` | — | Value used by `level=textNumbers.atoi(arenaInfo.value(infoText,"num"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L58)

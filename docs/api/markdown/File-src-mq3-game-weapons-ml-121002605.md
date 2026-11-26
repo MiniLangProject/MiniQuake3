@@ -37,7 +37,7 @@ Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapon
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L160)
 
 <a id="function-function-mq3-game-weapons-bounceprojectile-function-bounceprojectile-start-impact-dir-endout-src-mq3-game-weapons-ml-2082710700"></a>
 ### bounceProjectile
@@ -56,7 +56,7 @@ Set `endout[axis]` to `n.fadd(impact[axis],n.fmul(8192.0,bounced[axis]))` in `mq
 | `endout` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L75)
 
 <a id="function-function-mq3-game-weapons-calcmuzzlepoint-function-calcmuzzlepoint-ent-forward-right-up-output-src-mq3-game-weapons-ml-1316326524"></a>
 ### calcMuzzlePoint
@@ -76,7 +76,7 @@ Update `output[axis]` and `output[2]` during `calcMuzzlePoint`. Return paths inc
 | `output` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L45)
 
 <a id="function-function-mq3-game-weapons-calcmuzzlepointorigin-function-calcmuzzlepointorigin-ent-origin-forward-right-up-output-src-mq3-game-weapons-ml-923559486"></a>
 ### calcMuzzlePointOrigin
@@ -97,7 +97,7 @@ Forward `calcMuzzlePointOrigin` to `mq3.game.weapons.calcMuzzlePoint` and return
 | `output` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L65)
 
 <a id="function-function-mq3-game-weapons-checkgauntlet-function-checkgauntlet-level-ent-src-mq3-game-weapons-ml-833972343"></a>
 ### checkGauntlet
@@ -114,7 +114,7 @@ Apply `mq3.game.weapons.weaponClient`, `mq3.game.weapon_state.get` and `mq3.game
 | `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L96)
 
 <a id="function-function-mq3-game-weapons-fire-function-fire-level-ent-src-mq3-game-weapons-ml-1399069775"></a>
 ### fire
@@ -131,7 +131,7 @@ Apply `mq3.game.weapons.weaponClient`, `mq3.game.weapon_state.get` and `mq3.game
 | `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L180)
 
 <a id="function-function-mq3-game-weapons-gauntlet-function-gauntlet-level-ent-src-mq3-game-weapons-ml-513973947"></a>
 ### gauntlet
@@ -148,7 +148,7 @@ Return `void` for `gauntlet`.
 | `ent` | `dynamic` | — | Not read by this implementation; retained in the `gauntlet` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L88)
 
 <a id="function-function-mq3-game-weapons-grapple-function-grapple-level-ent-src-mq3-game-weapons-ml-1996687401"></a>
 ### grapple
@@ -165,7 +165,7 @@ Apply `mq3.game.weapons.weaponClient`, `mq3.game.weapon_state.get` and `mq3.game
 | `ent` | `dynamic` | — | Game entity; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L169)
 
 <a id="function-function-mq3-game-weapons-grenade-function-grenade-level-ent-src-mq3-game-weapons-ml-686986183"></a>
 ### grenade
@@ -182,7 +182,7 @@ Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapon
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L132)
 
 <a id="function-function-mq3-game-weapons-plasma-function-plasma-level-ent-src-mq3-game-weapons-ml-1920326259"></a>
 ### plasma
@@ -199,7 +199,7 @@ Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapon
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L151)
 
 <a id="function-function-mq3-game-weapons-rocket-function-rocket-level-ent-src-mq3-game-weapons-ml-1155687471"></a>
 ### rocket
@@ -216,7 +216,7 @@ Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapon
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L142)
 
 <a id="function-function-mq3-game-weapons-weaponaim-function-weaponaim-state-angles-src-mq3-game-weapons-ml-1122322505"></a>
 ### weaponAim
@@ -233,7 +233,7 @@ Update `state.forward[axis]`, `state.right[axis]` and `state.up[axis]` during `w
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L27)
 
 <a id="function-function-mq3-game-weapons-weaponclient-function-weaponclient-ent-src-mq3-game-weapons-ml-485236891"></a>
 ### weaponClient
@@ -249,7 +249,7 @@ Require and return a client state for a player weapon operation.
 | `ent` | `dynamic` | — | Game entity; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L19)
 
 <a id="function-function-mq3-game-weapons-weaponscalemissile-function-weaponscalemissile-state-missile-src-mq3-game-weapons-ml-339648111"></a>
 ### weaponScaleMissile
@@ -266,4 +266,4 @@ Set `missile.damage` to `n.trunc32(n.fmul(missile.damage,state.quadFactor))` and
 | `missile` | `dynamic` | — | Missile record; accesses `damage` and `splashDamage`. May update `missile.damage` and `missile.splashDamage` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L123)

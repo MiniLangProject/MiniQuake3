@@ -12,7 +12,7 @@ struct Asset
 Stores playable menu asset record, including `key`, `imageName`, `image`, `slot`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L25)
 
 ## Members
 
@@ -26,7 +26,7 @@ image
 When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L33)
 
 <a id="field-field-mq3-client-playable-menu-asset-imagename-imagename-src-mq3-client-playable-menu-ml-2120901743"></a>
 ### imageName
@@ -38,7 +38,7 @@ imageName
 Resolved menu artwork path associated with the loaded image and native texture slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L30)
 
 <a id="field-field-mq3-client-playable-menu-asset-key-key-src-mq3-client-playable-menu-ml-801702171"></a>
 ### key
@@ -50,7 +50,7 @@ key
 When constructing this record, `load` supplies `item[0]` for this member. Used by `find` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L28)
 
 <a id="field-field-mq3-client-playable-menu-asset-slot-slot-src-mq3-client-playable-menu-ml-1868735159"></a>
 ### slot
@@ -62,4 +62,4 @@ slot
 Texture or media-cache slot assigned to this asset for renderer submission.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L35)

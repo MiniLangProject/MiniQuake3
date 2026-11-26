@@ -12,7 +12,7 @@ struct Event
 Stores playable enemy ai event record, including `damage`, `side`, `attacker`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L62)
 
 ## Members
 
@@ -26,7 +26,7 @@ attacker
 When constructing this record, `stepWithTrace` supplies `index` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L68)
 
 <a id="field-field-mq3-client-playable-enemy-ai-event-damage-damage-src-mq3-client-playable-enemy-ai-ml-1032184273"></a>
 ### damage
@@ -38,7 +38,7 @@ damage
 Damage amount applied or reported by the weapon, projectile, or hit result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L64)
 
 <a id="field-field-mq3-client-playable-enemy-ai-event-side-side-src-mq3-client-playable-enemy-ai-ml-815191677"></a>
 ### side
@@ -50,4 +50,4 @@ side
 When constructing this record, `stepWithTrace` supplies `brain.strafeSide` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L66)

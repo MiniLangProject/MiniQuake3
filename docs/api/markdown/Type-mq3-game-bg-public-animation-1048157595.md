@@ -12,7 +12,7 @@ struct Animation
 `Animation` record for bg public, containing `firstFrame`, `numFrames`, `loopFrames`, `frameLerp` and `initialLerp` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L206)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstFrame
 First model frame of this animation sequence.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L208)
 
 <a id="field-field-mq3-game-bg-public-animation-flipflop-flipflop-src-mq3-game-bg-public-ml-1410093341"></a>
 ### flipflop
@@ -38,7 +38,7 @@ flipflop
 Nonzero when the animation returns through its frames toward its starting pose.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L220)
 
 <a id="field-field-mq3-game-bg-public-animation-framelerp-framelerp-src-mq3-game-bg-public-ml-1888171481"></a>
 ### frameLerp
@@ -50,7 +50,7 @@ frameLerp
 Time in milliseconds between consecutive animation frames.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L214)
 
 <a id="field-field-mq3-game-bg-public-animation-initiallerp-initiallerp-src-mq3-game-bg-public-ml-1446631573"></a>
 ### initialLerp
@@ -62,7 +62,7 @@ initialLerp
 Time in milliseconds used to reach the first animation frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L216)
 
 <a id="field-field-mq3-game-bg-public-animation-loopframes-loopframes-src-mq3-game-bg-public-ml-1178713717"></a>
 ### loopFrames
@@ -74,7 +74,7 @@ loopFrames
 Number of trailing animation frames repeated during looping.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L212)
 
 <a id="field-field-mq3-game-bg-public-animation-numframes-numframes-src-mq3-game-bg-public-ml-1796182413"></a>
 ### numFrames
@@ -86,7 +86,7 @@ numFrames
 Number of model frames in the animation sequence.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L210)
 
 <a id="field-field-mq3-game-bg-public-animation-reversed-reversed-src-mq3-game-bg-public-ml-1555338297"></a>
 ### reversed
@@ -98,4 +98,4 @@ reversed
 Nonzero when the animation plays in reverse order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_public.ml#L218)

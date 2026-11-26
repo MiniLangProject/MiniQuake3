@@ -31,7 +31,7 @@ Writes the culling mode at byte offset 64 of a 72-byte native world-face record.
 
 **Returns:** 1 when written; 0 for an invalid record or a mode outside 0..2.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L26)
 
 <a id="function-function-mq3-renderer-native-world-selection-filter-function-filter-cache-visible-camera-cfg-axes-frustum-src-mq3-renderer-native-world-selection-ml-1504617740"></a>
 ### filter
@@ -52,7 +52,7 @@ Runs native world-face selection using cached bounds, visible face indices, came
 | `frustum` | `dynamic` | — | Record providing `frustum.slopeX`, `frustum.slopeY`, `frustum.radiusScaleX`, `frustum.radiusScaleY`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L85)
 
 <a id="extern_function-extern-function-mq3-renderer-native-world-selection-filternative-extern-function-filternative-records-as-ptr-recordbytes-as-i32-facecount-as-i32-visible-as-ptr-visiblebytes-as-i32-visiblecount-as-i32-output-as-ptr-outputbytes-as-i32-previous-as-ptr-previousbytes-as-i32-x-as-double-y-as-double-z-as-double-fx-as-double-fy-as-double-fz-as-double-rx-as-double-ry-as-double-rz-as-double-ux-as-double-uy-as-double-uz-as-double-neardistance-as-double-fardistance-as-double-slopex-as-double-slopey-as-double-radiusscalex-as-double-radiusscaley-as-double-backfacecull-as-i32-from-miniquake3-qvm-dll-symbol-mq3-world-filter-returns-i32-src-mq3-renderer-native-world-selection-ml-1208568251"></a>
 ### filterNative
@@ -98,7 +98,7 @@ Filters visible BSP face indices by distance, frustum, and backface tests, then 
 
 **Returns:** 1 when selection completes; 0 for invalid buffers/indices or triangle-count overflow.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L58)
 
 <a id="function-function-mq3-renderer-native-world-selection-packindexes-function-packindexes-indexes-src-mq3-renderer-native-world-selection-ml-1428091162"></a>
 ### packIndexes
@@ -114,7 +114,7 @@ Returns `result` from `mq3.renderer.native_world_selection.packIndexes`.
 | `indexes` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L75)
 
 <a id="function-function-mq3-renderer-native-world-selection-setcullmode-function-setcullmode-records-index-mode-src-mq3-renderer-native-world-selection-ml-2086223443"></a>
 ### setCullMode
@@ -132,7 +132,7 @@ Calls `mq3.renderer.native_world_selection.cullModeNative` with `(nativeBytesPtr
 | `mode` | `dynamic` | — | Value forwarded as `mode` to `mq3.renderer.native_world_selection.cullModeNative`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L72)
 
 <a id="function-function-mq3-renderer-native-world-selection-store-function-store-records-index-kind-triangles-center-radius-normal-src-mq3-renderer-native-world-selection-ml-1981308951"></a>
 ### store
@@ -154,7 +154,7 @@ Calls `mq3.renderer.native_world_selection.storeNative` with `(nativeBytesPtr(re
 | `normal` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L67)
 
 <a id="extern_function-extern-function-mq3-renderer-native-world-selection-storenative-extern-function-storenative-records-as-ptr-bytes-as-i32-index-as-i32-kind-as-i32-triangles-as-i32-x-as-double-y-as-double-z-as-double-radius-as-double-nx-as-double-ny-as-double-nz-as-double-from-miniquake3-qvm-dll-symbol-mq3-world-store-face-returns-i32-src-mq3-renderer-native-world-selection-ml-1151340585"></a>
 ### storeNative
@@ -183,4 +183,4 @@ Stores bounds, normal, kind, and triangle count in one 72-byte native world-face
 
 **Returns:** 1 when written; 0 for invalid pointers, record bounds, or triangle count.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_world_selection.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_world_selection.ml#L19)

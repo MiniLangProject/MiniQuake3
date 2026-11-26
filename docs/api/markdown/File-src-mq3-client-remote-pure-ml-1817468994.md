@@ -15,12 +15,12 @@ Reachable from entry: **yes**
 - `mq3/qcommon/filesystem.ml` as `pureFilesystem` → [src/mq3/qcommon/filesystem.ml](File-src-mq3-qcommon-filesystem-ml-1002992993.md)
 - `mq3/qcommon/md4.ml` as `pureMd4` → [src/mq3/qcommon/md4.ml](File-src-mq3-qcommon-md4-ml-1589067711.md)
 - `mq3/shared/info.ml` as `pureInfo` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/ds/hashmap.ml` as `pureMap` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
-- `std/ds/list.ml` as `pureList` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/fs.ml` as `pureFs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
-- `std/sort.ml` as `pureSort` → `../MiniLangCompilerML/std/sort.ml` — external dependency
-- `std/string.ml` as `pureStrings` → `../MiniLangCompilerML/std/string.ml` — external dependency
-- `std/string_builder.ml` as `pureBuilder` → `../MiniLangCompilerML/std/string_builder.ml` — external dependency
+- `std/ds/hashmap.ml` as `pureMap` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/list.ml` as `pureList` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/fs.ml` as `pureFs` → `../../a7594a0c0299/MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/sort.ml` as `pureSort` → `../../a7594a0c0299/MiniLangCompilerML/std/sort.ml` — external dependency
+- `std/string.ml` as `pureStrings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string_builder.ml` as `pureBuilder` → `../../a7594a0c0299/MiniLangCompilerML/std/string_builder.ml` — external dependency
 
 ## Declarations
 
@@ -38,7 +38,7 @@ Calls `mq3.qcommon.command_buffer.create`, `mq3.qcommon.command_buffer.tokenizeS
 | `text` | `dynamic` | — | Text consumed or emitted by `advertisedChecksums` in the remote pure path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L39)
 
 <a id="function-function-mq3-client-remote-pure-checksumforentry-function-checksumforentry-archive-packages-name-src-mq3-client-remote-pure-ml-383097346"></a>
 ### checksumForEntry
@@ -56,7 +56,7 @@ Calls `mq3.format.pk3.findEntry` from remote pure `checksumForEntry`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding remote pure resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L58)
 
 <a id="constant-constant-mq3-client-remote-pure-max-pure-packages-const-max-pure-packages-128-src-mq3-client-remote-pure-ml-1719307360"></a>
 ### MAX_PURE_PACKAGES
@@ -68,7 +68,7 @@ const MAX_PURE_PACKAGES = 128
 Capacity limit for the pure packages collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L19)
 
 - [mq3.client.remote_pure.Package](Type-mq3-client-remote-pure-package-1918540364.md) — struct
 - [mq3.client.remote_pure.Verification](Type-mq3-client-remote-pure-verification-1456252319.md) — struct
@@ -90,4 +90,4 @@ Calls `mq3.client.remote_pure.advertisedChecksums`, `mq3.shared.info.value`, `st
 | `map` | `dynamic` | — | map record passed to the remote pure helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L73)

@@ -34,7 +34,7 @@ Initialize the reentrant QVM control block and reserve the vmMain argument frame
 
 **Returns:** 1 after initialization, or 0 when the control buffer, stack, or instruction budget is invalid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L26)
 
 <a id="function-function-mq3-vm-native-exec-call-function-call-vm-args-src-mq3-vm-native-exec-ml-276052838"></a>
 ### call
@@ -53,7 +53,7 @@ Direct state writes: `vm.steps`, `vm.breaks`, `vm.programStack`.
 | `args` | `dynamic` | — | At most ten vmMain integer arguments; omitted slots are filled with zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L60)
 
 <a id="constant-constant-mq3-vm-native-exec-control-bytes-const-control-bytes-1080-src-mq3-vm-native-exec-ml-486636992"></a>
 ### CONTROL_BYTES
@@ -65,7 +65,7 @@ const CONTROL_BYTES = 1080
 Byte size used for control storage or binary layout in mq3.vm.native_exec.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L39)
 
 <a id="function-function-mq3-vm-native-exec-fail-function-fail-text-src-mq3-vm-native-exec-ml-360682263"></a>
 ### fail
@@ -81,7 +81,7 @@ Create the vm.native_exec error for `fail` with 3400 and the supplied diagnostic
 | `text` | `dynamic` | — | Text used in `("QVM: " + text)` and `error(3400, ("QVM: " + text))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L42)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-plansizenative-extern-function-plansizenative-image-as-ptr-count-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-plan-size-returns-i32-src-mq3-vm-native-exec-ml-535154572"></a>
 ### planSizeNative
@@ -100,7 +100,7 @@ Measure the decoded QVM instruction-plan allocation from the image header.
 
 **Returns:** The required plan size in bytes, or -1 for an invalid image header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L9)
 
 <a id="function-function-mq3-vm-native-exec-prepare-function-prepare-image-src-mq3-vm-native-exec-ml-1914730287"></a>
 ### prepare
@@ -116,7 +116,7 @@ Prepare native exec in vm.native_exec; the normal completion returns `plan`.
 | `image` | `dynamic` | — | Image used in `len(image)` and `nativeBytesPtr(image)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L45)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-preparenative-extern-function-preparenative-image-as-ptr-count-as-i32-plan-as-ptr-capacity-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-prepare-returns-i32-src-mq3-vm-native-exec-ml-931716567"></a>
 ### prepareNative
@@ -137,7 +137,7 @@ Validate QVM instructions and branches while constructing a native dispatch plan
 
 **Returns:** 1 on success; -1 for invalid buffers/header, -2 for invalid instructions, or -3 for an invalid branch target.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L16)
 
 <a id="function-function-mq3-vm-native-exec-restorestack-function-restorestack-vm-saved-src-mq3-vm-native-exec-ml-318707870"></a>
 ### restoreStack
@@ -156,7 +156,7 @@ Direct state writes: `vm.programStack`.
 | `saved` | `dynamic` | — | Saved operand used by `restoreStack`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L54)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-runnative-extern-function-runnative-plan-as-ptr-planbytes-as-i32-data-as-ptr-databytes-as-i32-control-as-ptr-controlbytes-as-i32-value-as-i32-resume-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-run-returns-i32-src-mq3-vm-native-exec-ml-1364553667"></a>
 ### runNative
@@ -181,4 +181,4 @@ Execute or resume a prepared QVM until completion, a syscall continuation, or an
 
 **Returns:** 0 for normal return, a positive syscall-continuation status, or a negative validation/execution error; the control block carries the result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L37)

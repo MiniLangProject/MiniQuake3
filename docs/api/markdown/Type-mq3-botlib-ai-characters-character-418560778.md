@@ -12,7 +12,7 @@ struct Character
 `Character` record for ai characters, containing `filename`, `skill` and `values`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L50)
 
 ## Members
 
@@ -26,7 +26,7 @@ filename
 Path of the file associated with this operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L52)
 
 <a id="field-field-mq3-botlib-ai-characters-character-skill-skill-src-mq3-botlib-ai-characters-ml-573401652"></a>
 ### skill
@@ -38,7 +38,7 @@ skill
 Bot skill level used when selecting or interpolating characteristics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L54)
 
 <a id="field-field-mq3-botlib-ai-characters-character-values-values-src-mq3-botlib-ai-characters-ml-1490981392"></a>
 ### values
@@ -50,4 +50,4 @@ values
 Characteristic values indexed by their configured characteristic number.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L56)

@@ -12,7 +12,7 @@ struct Reachability
 `Reachability` record for aas debug, containing `areaNum`, `faceNum`, `edgeNum`, `start` and `finish` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L132)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaNum
 Destination navigation area highlighted for this debug connection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L134)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-edgenum-edgenum-src-mq3-botlib-aas-debug-ml-1001437026"></a>
 ### edgeNum
@@ -38,7 +38,7 @@ edgeNum
 Index of the AAS edge associated with the movement link.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L138)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-facenum-facenum-src-mq3-botlib-aas-debug-ml-1095118322"></a>
 ### faceNum
@@ -50,7 +50,7 @@ faceNum
 Index of the AAS face associated with the movement link.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L136)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-finish-finish-src-mq3-botlib-aas-debug-ml-504172188"></a>
 ### finish
@@ -62,7 +62,7 @@ finish
 Arrival point drawn for this navigation connection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L142)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-start-start-src-mq3-botlib-aas-debug-ml-112773910"></a>
 ### start
@@ -74,7 +74,7 @@ start
 Departure point drawn for this navigation connection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L140)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-traveltime-traveltime-src-mq3-botlib-aas-debug-ml-520575868"></a>
 ### travelTime
@@ -86,7 +86,7 @@ travelTime
 AAS travel cost assigned to traversing this movement link.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L146)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-traveltype-traveltype-src-mq3-botlib-aas-debug-ml-1880275130"></a>
 ### travelType
@@ -98,4 +98,4 @@ travelType
 Encoded AAS movement type required to traverse this link.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L144)

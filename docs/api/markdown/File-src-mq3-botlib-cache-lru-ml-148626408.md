@@ -8,7 +8,7 @@ Reachable from entry: **yes**
 
 ## Imports
 
-- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/hashmap.ml` as `maps` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
 
 ## Declarations
 
@@ -27,7 +27,7 @@ Update `state.previous[slot]`, `state.next[slot]`, `state.next[state.newest]` an
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L34)
 
 <a id="function-function-mq3-botlib-cache-lru-clear-function-clear-state-src-mq3-botlib-cache-lru-ml-1764260091"></a>
 ### clear
@@ -43,7 +43,7 @@ Reset the routing cache LRU bookkeeping and release all recorded slots.
 | `state` | `dynamic` | — | Cache lru state; accesses `count`, `keys`, `previous`, `next` and `positions` and related fields. May update `state.keys[slot]`, `state.previous[slot]` and `state.next[slot]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L72)
 
 <a id="function-function-mq3-botlib-cache-lru-create-function-create-capacity-src-mq3-botlib-cache-lru-ml-1126451574"></a>
 ### create
@@ -59,7 +59,7 @@ Build the `mq3.botlib.cache_lru.State` result for `create`.
 | `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L27)
 
 <a id="function-function-mq3-botlib-cache-lru-reserve-function-reserve-state-key-src-mq3-botlib-cache-lru-ml-1080681222"></a>
 ### reserve
@@ -76,7 +76,7 @@ Set `state.count` to `state.count+1` and `state.keys[slot]` to `key` in `mq3.bot
 | `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L59)
 
 - [mq3.botlib.cache_lru.State](Type-mq3-botlib-cache-lru-state-1176927479.md) — struct
 <a id="function-function-mq3-botlib-cache-lru-touch-function-touch-state-key-src-mq3-botlib-cache-lru-ml-1748647972"></a>
@@ -94,7 +94,7 @@ Use `state.positions.getOr` to perform `touch`. Return paths include `touchSlot(
 | `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L52)
 
 <a id="function-function-mq3-botlib-cache-lru-touchslot-function-touchslot-state-slot-src-mq3-botlib-cache-lru-ml-1591503319"></a>
 ### touchSlot
@@ -111,4 +111,4 @@ Update `state.next[before]`, `state.oldest` and `state.previous[after]` during `
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L42)

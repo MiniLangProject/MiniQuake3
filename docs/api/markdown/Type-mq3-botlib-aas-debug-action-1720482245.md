@@ -12,7 +12,7 @@ struct Action
 `Action` record for aas debug, containing `boundary`, `kind`, `id`, `color` and `points` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L70)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Subsystem boundary at which this host action must be dispatched.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L72)
 
 <a id="field-field-mq3-botlib-aas-debug-action-color-color-src-mq3-botlib-aas-debug-ml-822143935"></a>
 ### color
@@ -38,7 +38,7 @@ color
 Color components associated with the vertex or debug primitive.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L78)
 
 <a id="field-field-mq3-botlib-aas-debug-action-dispatched-dispatched-src-mq3-botlib-aas-debug-ml-2022434785"></a>
 ### dispatched
@@ -50,7 +50,7 @@ dispatched
 True after the recorded action has been delivered to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L84)
 
 <a id="field-field-mq3-botlib-aas-debug-action-id-id-src-mq3-botlib-aas-debug-ml-1310384569"></a>
 ### id
@@ -62,7 +62,7 @@ id
 Handle of the debug line or polygon affected by the action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L76)
 
 <a id="field-field-mq3-botlib-aas-debug-action-kind-kind-src-mq3-botlib-aas-debug-ml-1242844295"></a>
 ### kind
@@ -74,7 +74,7 @@ kind
 Discriminator selecting a navigation debug-drawing operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L74)
 
 <a id="field-field-mq3-botlib-aas-debug-action-points-points-src-mq3-botlib-aas-debug-ml-36505113"></a>
 ### points
@@ -86,7 +86,7 @@ points
 XYZ points defining the debug shape, polygon, or winding.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L80)
 
 <a id="field-field-mq3-botlib-aas-debug-action-values-values-src-mq3-botlib-aas-debug-ml-1900303727"></a>
 ### values
@@ -98,4 +98,4 @@ values
 Additional scalar drawing parameters associated with the debug action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L82)

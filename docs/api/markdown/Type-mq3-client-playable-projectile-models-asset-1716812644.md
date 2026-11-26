@@ -12,7 +12,7 @@ struct Asset
 Stores playable projectile models asset record, including `style`, `kind`, `modelPath`, `shaderName`, `modelAsset`, `textureSlot` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L45)
 
 ## Members
 
@@ -26,7 +26,7 @@ image
 When constructing this record, `loadSprite` supplies `texture.image` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L62)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-imagename-imagename-src-mq3-client-playable-projectile-models-ml-1699355881"></a>
 ### imageName
@@ -38,7 +38,7 @@ imageName
 Resolved image path used by this loaded projectile sprite or model material.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L60)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-kind-kind-src-mq3-client-playable-projectile-models-ml-1735072033"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Effect or media category selecting the matching geometry, texture, or presentation behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L49)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-modelasset-modelasset-src-mq3-client-playable-projectile-models-ml-361708723"></a>
 ### modelAsset
@@ -62,7 +62,7 @@ modelAsset
 When constructing this record, `loadSprite` supplies an absent (`void`) value for this member. Used by `renderModel` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L56)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-modelpath-modelpath-src-mq3-client-playable-projectile-models-ml-1325124217"></a>
 ### modelPath
@@ -74,7 +74,7 @@ modelPath
 Virtual path used to load the model resource for this client presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L51)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-radius-radius-src-mq3-client-playable-projectile-models-ml-1651556273"></a>
 ### radius
@@ -86,7 +86,7 @@ radius
 World-space billboard radius retained with a loaded projectile sprite asset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L64)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-shadername-shadername-src-mq3-client-playable-projectile-models-ml-397051201"></a>
 ### shaderName
@@ -98,7 +98,7 @@ shaderName
 Virtual shader name used to register or resolve the displayed resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L53)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-style-style-src-mq3-client-playable-projectile-models-ml-1570485021"></a>
 ### style
@@ -110,7 +110,7 @@ style
 Projectile style used as the lookup key for this loaded render asset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L47)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-textureslot-textureslot-src-mq3-client-playable-projectile-models-ml-1697459081"></a>
 ### textureSlot
@@ -122,4 +122,4 @@ textureSlot
 Texture-cache slot assigned to the resource for renderer submission.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L58)

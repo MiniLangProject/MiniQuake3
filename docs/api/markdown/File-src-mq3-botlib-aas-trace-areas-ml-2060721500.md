@@ -9,7 +9,7 @@ Reachable from entry: **yes**
 ## Imports
 
 - `mq3/format/aas.ml` as `aas` → [src/mq3/format/aas.ml](File-src-mq3-format-aas-ml-835678928.md)
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
 
 ## Declarations
 
@@ -27,7 +27,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas trac
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L30)
 
 <a id="function-function-mq3-botlib-aas-trace-areas-dot-function-dot-a-b-src-mq3-botlib-aas-trace-areas-ml-803666653"></a>
 ### dot
@@ -44,7 +44,7 @@ Return `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `dot`.
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L34)
 
 - [mq3.botlib.aas_trace_areas.Result](Type-mq3-botlib-aas-trace-areas-result-1579758851.md) — struct
 - [mq3.botlib.aas_trace_areas.Segment](Type-mq3-botlib-aas-trace-areas-segment-148974843.md) — struct
@@ -65,4 +65,4 @@ Trace a line segment through AAS areas and retain the crossed area numbers and i
 | `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L41)

@@ -12,7 +12,7 @@ struct ReplyKey
 `ReplyKey` record for ai chat output, containing `flags`, `text` and `pieces`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L61)
 
 ## Members
 
@@ -26,7 +26,7 @@ flags
 Reply-key matching conditions combined from KEY flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-chat-output-replykey-pieces-pieces-src-mq3-botlib-ai-chat-output-ml-273085988"></a>
 ### pieces
@@ -38,7 +38,7 @@ pieces
 Ordered literal and variable components of the match template.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L67)
 
 <a id="field-field-mq3-botlib-ai-chat-output-replykey-text-text-src-mq3-botlib-ai-chat-output-ml-1810729540"></a>
 ### text
@@ -50,4 +50,4 @@ text
 Literal text, bot name, or other criterion used by this reply key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L65)

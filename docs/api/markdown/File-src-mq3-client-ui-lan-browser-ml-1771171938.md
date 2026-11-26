@@ -9,7 +9,7 @@ Reachable from entry: **yes**
 ## Imports
 
 - `mq3/shared/info.ml` as `info` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Calls `mq3.client.ui_lan_browser.list`, `mq3.client.ui_lan_browser.maximum`, `mq
 | `address` | `dynamic` | — | Value used by `wanted=canonicalAddress(address)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L150)
 
 <a id="function-function-mq3-client-ui-lan-browser-address-function-address-state-source-index-src-mq3-client-ui-lan-browser-ml-354410860"></a>
 ### address
@@ -48,7 +48,7 @@ Calls `mq3.client.ui_lan_browser.at` from UI LAN browser `address`. The final pa
 | `index` | `dynamic` | — | Value used by `value=at(state,source,index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L181)
 
 <a id="function-function-mq3-client-ui-lan-browser-appenddiscovered-function-appenddiscovered-state-source-address-nettype-src-mq3-client-ui-lan-browser-ml-738932439"></a>
 ### appendDiscovered
@@ -67,7 +67,7 @@ Calls `mq3.client.ui_lan_browser.list`, `mq3.client.ui_lan_browser.maximum`, `mq
 | `netType` | `dynamic` | — | Value assigned to `value.netType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L288)
 
 <a id="function-function-mq3-client-ui-lan-browser-applyinfo-function-applyinfo-value-text-pingtime-src-mq3-client-ui-lan-browser-ml-1064513775"></a>
 ### applyInfo
@@ -85,7 +85,7 @@ CL_SetServerInfo and CL_SetServerInfoByAddress.  The packet ingress keeps parsin
 | `pingTime` | `dynamic` | — | Value assigned to `value.ping`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L260)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-as-favorites-const-as-favorites-3-src-mq3-client-ui-lan-browser-ml-2078959360"></a>
 ### AS_FAVORITES
@@ -97,7 +97,7 @@ const AS_FAVORITES = 3
 Server-browser source selector for the favorites server list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-as-global-const-as-global-2-src-mq3-client-ui-lan-browser-ml-1844789695"></a>
 ### AS_GLOBAL
@@ -109,7 +109,7 @@ const AS_GLOBAL = 2
 Server-browser source selector for the global server list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-as-local-const-as-local-0-src-mq3-client-ui-lan-browser-ml-1685236807"></a>
 ### AS_LOCAL
@@ -121,7 +121,7 @@ const AS_LOCAL = 0
 Server-browser source selector for the local server list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-as-mplayer-const-as-mplayer-1-src-mq3-client-ui-lan-browser-ml-1766649624"></a>
 ### AS_MPLAYER
@@ -133,7 +133,7 @@ const AS_MPLAYER = 1
 Server-browser source selector for the mplayer server list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L12)
 
 <a id="function-function-mq3-client-ui-lan-browser-at-function-at-state-source-index-src-mq3-client-ui-lan-browser-ml-1771207180"></a>
 ### at
@@ -151,7 +151,7 @@ Calls `mq3.client.ui_lan_browser.list` from UI LAN browser `at`. The final path 
 | `index` | `dynamic` | — | Value tested by `values==void or index<0 or index>=len(values)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L176)
 
 <a id="function-function-mq3-client-ui-lan-browser-canonicaladdress-function-canonicaladdress-address-src-mq3-client-ui-lan-browser-ml-1358750228"></a>
 ### canonicalAddress
@@ -167,7 +167,7 @@ NET_CompareAdr compares the parsed address. For the UI-owned catalog the canonic
 | `address` | `dynamic` | — | Argument 1 of `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L144)
 
 <a id="function-function-mq3-client-ui-lan-browser-clearping-function-clearping-state-index-src-mq3-client-ui-lan-browser-ml-625344569"></a>
 ### clearPing
@@ -184,7 +184,7 @@ Updates `state.pings` during UI LAN browser `clearPing`.
 | `index` | `dynamic` | — | Value tested by `index<0 or index>=len(state.pings)`, `cursor!=index` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L241)
 
 <a id="function-function-mq3-client-ui-lan-browser-cloneserver-function-cloneserver-value-src-mq3-client-ui-lan-browser-ml-149528305"></a>
 ### cloneServer
@@ -200,7 +200,7 @@ Creates a `mq3.client.ui_lan_browser.Server` record.
 | `value` | `dynamic` | — | Record read through `value.address`, `value.hostName`, `value.mapName`, `value.clients` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L361)
 
 <a id="function-function-mq3-client-ui-lan-browser-compare-function-compare-state-source-sortkey-sortdir-first-second-src-mq3-client-ui-lan-browser-ml-1297730594"></a>
 ### compare
@@ -221,7 +221,7 @@ Calls `mq3.client.ui_lan_browser.at`, `mq3.client.ui_lan_browser.compareText`, `
 | `second` | `dynamic` | — | Value used by `b=at(state,source,second)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L391)
 
 <a id="function-function-mq3-client-ui-lan-browser-comparenumber-function-comparenumber-left-right-src-mq3-client-ui-lan-browser-ml-1998077213"></a>
 ### compareNumber
@@ -238,7 +238,7 @@ Evaluates UI LAN browser `compareNumber` and returns `-1`, `1`, `0` according to
 | `right` | `dynamic` | — | Value used by `if left<right then return -1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L383)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L383)
 
 <a id="function-function-mq3-client-ui-lan-browser-comparetext-function-comparetext-left-right-src-mq3-client-ui-lan-browser-ml-1360135361"></a>
 ### compareText
@@ -255,7 +255,7 @@ Calls `std.string.toLowerAscii` from UI LAN browser `compareText`. The final pat
 | `right` | `dynamic` | — | Value used by `b=bytes(strings.toLowerAscii(right))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L375)
 
 <a id="function-function-mq3-client-ui-lan-browser-completeping-function-completeping-state-index-time-text-src-mq3-client-ui-lan-browser-ml-207643817"></a>
 ### completePing
@@ -274,7 +274,7 @@ Updates `state.pings[index].time`, `state.pings[index].info` during UI LAN brows
 | `text` | `dynamic` | — | Text consumed or emitted by `completePing` in the UI LAN browser path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L306)
 
 <a id="function-function-mq3-client-ui-lan-browser-copylist-function-copylist-values-src-mq3-client-ui-lan-browser-ml-1333005802"></a>
 ### copyList
@@ -290,7 +290,7 @@ Calls `mq3.client.ui_lan_browser.cloneServer` from UI LAN browser `copyList`. Th
 | `values` | `dynamic` | — | Value used by `for each value in values result=result+[cloneServer(value)] end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L364)
 
 <a id="function-function-mq3-client-ui-lan-browser-count-function-count-state-source-src-mq3-client-ui-lan-browser-ml-1967735078"></a>
 ### count
@@ -307,7 +307,7 @@ Calls `mq3.client.ui_lan_browser.list` from UI LAN browser `count`. The final pa
 | `source` | `dynamic` | — | Value used by `values=list(state,source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L171)
 
 <a id="function-function-mq3-client-ui-lan-browser-create-function-create-src-mq3-client-ui-lan-browser-ml-1159607720"></a>
 ### create
@@ -319,7 +319,7 @@ function create()
 Creates a `mq3.client.ui_lan_browser.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L101)
 
 <a id="function-function-mq3-client-ui-lan-browser-findaddress-function-findaddress-state-source-address-src-mq3-client-ui-lan-browser-ml-583682922"></a>
 ### findAddress
@@ -337,7 +337,7 @@ Calls `mq3.client.ui_lan_browser.list`, `mq3.client.ui_lan_browser.canonicalAddr
 | `address` | `dynamic` | — | Value used by `wanted=canonicalAddress(address)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L296)
 
 <a id="function-function-mq3-client-ui-lan-browser-getping-function-getping-state-index-src-mq3-client-ui-lan-browser-ml-1317512691"></a>
 ### getPing
@@ -354,7 +354,7 @@ Evaluates UI LAN browser `getPing` and returns `["",0]`, `[value.address,value.t
 | `index` | `dynamic` | — | Value tested by `index<0 or index>=len(state.pings)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L248)
 
 <a id="function-function-mq3-client-ui-lan-browser-getpinginfo-function-getpinginfo-state-index-src-mq3-client-ui-lan-browser-ml-2145446535"></a>
 ### getPingInfo
@@ -371,7 +371,7 @@ Evaluates UI LAN browser `getPingInfo` and returns `""`, `state.pings[index].inf
 | `index` | `dynamic` | — | Value tested by `index<0 or index>=len(state.pings)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L252)
 
 <a id="function-function-mq3-client-ui-lan-browser-isvisible-function-isvisible-state-source-index-src-mq3-client-ui-lan-browser-ml-1071210960"></a>
 ### isVisible
@@ -389,7 +389,7 @@ Calls `mq3.client.ui_lan_browser.at` from UI LAN browser `isVisible`. The final 
 | `index` | `dynamic` | — | Value used by `value=at(state,source,index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L223)
 
 <a id="function-function-mq3-client-ui-lan-browser-list-function-list-state-source-src-mq3-client-ui-lan-browser-ml-102505168"></a>
 ### list
@@ -406,7 +406,7 @@ Evaluates UI LAN browser `list` and returns `state.local`, `state.mplayer`, `sta
 | `source` | `dynamic` | — | Value used by `if source==AS_LOCAL then return state.local end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L115)
 
 <a id="function-function-mq3-client-ui-lan-browser-load-function-load-state-src-mq3-client-ui-lan-browser-ml-751885397"></a>
 ### load
@@ -422,7 +422,7 @@ Updates `state.globalServers`, `state.mplayer`, `state.favorites` during UI LAN 
 | `state` | `dynamic` | — | Mutable UI LAN browser record/storage; this routine assigns `state.globalServers`, `state.mplayer`, `state.favorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L370)
 
 <a id="function-function-mq3-client-ui-lan-browser-markvisible-function-markvisible-state-source-index-visible-src-mq3-client-ui-lan-browser-ml-1901509688"></a>
 ### markVisible
@@ -441,7 +441,7 @@ Calls `mq3.client.ui_lan_browser.list` from UI LAN browser `markVisible`.
 | `visible` | `dynamic` | — | Value assigned to `item.visible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L213)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-max-global-servers-const-max-global-servers-4096-src-mq3-client-ui-lan-browser-ml-334393828"></a>
 ### MAX_GLOBAL_SERVERS
@@ -453,7 +453,7 @@ const MAX_GLOBAL_SERVERS = 4096
 Capacity limit for the global servers collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-max-other-servers-const-max-other-servers-128-src-mq3-client-ui-lan-browser-ml-1784532126"></a>
 ### MAX_OTHER_SERVERS
@@ -465,7 +465,7 @@ const MAX_OTHER_SERVERS = 128
 Capacity limit for the other servers collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L18)
 
 <a id="function-function-mq3-client-ui-lan-browser-maximum-function-maximum-source-src-mq3-client-ui-lan-browser-ml-644950333"></a>
 ### maximum
@@ -481,7 +481,7 @@ Evaluates UI LAN browser `maximum` and returns `MAX_GLOBAL_SERVERS`, `MAX_OTHER_
 | `source` | `dynamic` | — | Value used by `if source==AS_GLOBAL then return MAX_GLOBAL_SERVERS end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L135)
 
 <a id="function-function-mq3-client-ui-lan-browser-ping-function-ping-address-time-text-src-mq3-client-ui-lan-browser-ml-1909808234"></a>
 ### ping
@@ -499,7 +499,7 @@ Creates a `mq3.client.ui_lan_browser.Ping` record. Assigns `address` from `addre
 | `text` | `dynamic` | — | Value used to initialize `Ping.info`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L110)
 
 - [mq3.client.ui_lan_browser.Ping](Type-mq3-client-ui-lan-browser-ping-601544490.md) — struct
 <a id="function-function-mq3-client-ui-lan-browser-pingcount-function-pingcount-state-src-mq3-client-ui-lan-browser-ml-1059203135"></a>
@@ -516,7 +516,7 @@ Returns the element/byte count of `state.pings` for UI LAN browser `pingCount`.
 | `state` | `dynamic` | — | Record read through `state.pings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L237)
 
 <a id="function-function-mq3-client-ui-lan-browser-putinfo-function-putinfo-text-key-value-src-mq3-client-ui-lan-browser-ml-135323025"></a>
 ### putInfo
@@ -534,7 +534,7 @@ Calls `mq3.shared.info.setValue` from UI LAN browser `putInfo`. The final path r
 | `value` | `dynamic` | — | Value used by `result=info.setValue(text,key,value,void,void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L192)
 
 <a id="function-function-mq3-client-ui-lan-browser-queueping-function-queueping-state-address-time-text-src-mq3-client-ui-lan-browser-ml-1370943203"></a>
 ### queuePing
@@ -553,7 +553,7 @@ Updates `state.pings` during UI LAN browser `queuePing`.
 | `text` | `dynamic` | — | Text consumed or emitted by `queuePing` in the UI LAN browser path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L234)
 
 <a id="function-function-mq3-client-ui-lan-browser-remove-function-remove-state-source-address-src-mq3-client-ui-lan-browser-ml-1033172396"></a>
 ### remove
@@ -571,7 +571,7 @@ Calls `mq3.client.ui_lan_browser.list`, `mq3.client.ui_lan_browser.canonicalAddr
 | `address` | `dynamic` | — | Value used by `wanted=canonicalAddress(address)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L160)
 
 <a id="function-function-mq3-client-ui-lan-browser-resetpings-function-resetpings-state-source-src-mq3-client-ui-lan-browser-ml-1057042944"></a>
 ### resetPings
@@ -588,7 +588,7 @@ Calls `mq3.client.ui_lan_browser.list` from UI LAN browser `resetPings`.
 | `source` | `dynamic` | — | Value used by `values=list(state,source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L227)
 
 <a id="function-function-mq3-client-ui-lan-browser-save-function-save-state-src-mq3-client-ui-lan-browser-ml-1923534929"></a>
 ### save
@@ -604,7 +604,7 @@ Updates `state.cachedGlobal`, `state.cachedMplayer`, `state.cachedFavorites` dur
 | `state` | `dynamic` | — | Mutable UI LAN browser record/storage; this routine assigns `state.cachedGlobal`, `state.cachedMplayer`, `state.cachedFavorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L367)
 
 <a id="function-function-mq3-client-ui-lan-browser-server-function-server-address-name-src-mq3-client-ui-lan-browser-ml-1564022899"></a>
 ### server
@@ -621,7 +621,7 @@ Creates a `mq3.client.ui_lan_browser.Server` record. Assigns `address` from `add
 | `name` | `dynamic` | — | Value used to initialize `Server.hostName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L105)
 
 - [mq3.client.ui_lan_browser.Server](Type-mq3-client-ui-lan-browser-server-540404005.md) — struct
 <a id="function-function-mq3-client-ui-lan-browser-serverinfo-function-serverinfo-state-source-index-src-mq3-client-ui-lan-browser-ml-550674008"></a>
@@ -640,7 +640,7 @@ Calls `mq3.client.ui_lan_browser.at`, `mq3.client.ui_lan_browser.putInfo` from U
 | `index` | `dynamic` | — | Value used by `value=at(state,source,index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L199)
 
 <a id="function-function-mq3-client-ui-lan-browser-serverping-function-serverping-state-source-index-src-mq3-client-ui-lan-browser-ml-179712864"></a>
 ### serverPing
@@ -658,7 +658,7 @@ Calls `mq3.client.ui_lan_browser.at` from UI LAN browser `serverPing`. The final
 | `index` | `dynamic` | — | Value used by `value=at(state,source,index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L186)
 
 <a id="function-function-mq3-client-ui-lan-browser-serverstatus-function-serverstatus-state-address-src-mq3-client-ui-lan-browser-ml-1117081183"></a>
 ### serverStatus
@@ -675,7 +675,7 @@ Calls `mq3.client.ui_lan_browser.canonicalAddress`, `mq3.client.ui_lan_browser.l
 | `address` | `dynamic` | — | Value used by `wanted=canonicalAddress(address)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L353)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L353)
 
 <a id="function-function-mq3-client-ui-lan-browser-setinfobyaddress-function-setinfobyaddress-state-address-text-pingtime-src-mq3-client-ui-lan-browser-ml-1070468729"></a>
 ### setInfoByAddress
@@ -694,7 +694,7 @@ Calls `mq3.client.ui_lan_browser.canonicalAddress`, `mq3.client.ui_lan_browser.l
 | `pingTime` | `dynamic` | — | Value used by `if canonicalAddress(value.address)==wanted then if applyInfo(value,text,pingTime) then updated=updated+1 end if end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L274)
 
 <a id="function-function-mq3-client-ui-lan-browser-setlist-function-setlist-state-source-values-src-mq3-client-ui-lan-browser-ml-1906569722"></a>
 ### setList
@@ -712,7 +712,7 @@ Updates `state.local`, `state.mplayer`, `state.globalServers`, `state.favorites`
 | `values` | `dynamic` | — | Value assigned to `state.local`, `state.mplayer`, `state.globalServers`, `state.favorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L126)
 
 <a id="function-function-mq3-client-ui-lan-browser-setstatusbyaddress-function-setstatusbyaddress-state-address-text-src-mq3-client-ui-lan-browser-ml-1603131616"></a>
 ### setStatusByAddress
@@ -730,7 +730,7 @@ Calls `mq3.client.ui_lan_browser.canonicalAddress`, `mq3.client.ui_lan_browser.l
 | `text` | `dynamic` | — | Value assigned to `value.status`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L314)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-sort-clients-const-sort-clients-2-src-mq3-client-ui-lan-browser-ml-1819184455"></a>
 ### SORT_CLIENTS
@@ -742,7 +742,7 @@ const SORT_CLIENTS = 2
 Server-browser sort key comparing the clients column.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-sort-game-const-sort-game-3-src-mq3-client-ui-lan-browser-ml-1515107406"></a>
 ### SORT_GAME
@@ -754,7 +754,7 @@ const SORT_GAME = 3
 Server-browser sort key comparing the game column.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-sort-host-const-sort-host-0-src-mq3-client-ui-lan-browser-ml-1244616389"></a>
 ### SORT_HOST
@@ -766,7 +766,7 @@ const SORT_HOST = 0
 Server-browser sort key comparing the host column.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-sort-map-const-sort-map-1-src-mq3-client-ui-lan-browser-ml-139004192"></a>
 ### SORT_MAP
@@ -778,7 +778,7 @@ const SORT_MAP = 1
 Server-browser sort key comparing the map column.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-lan-browser-sort-ping-const-sort-ping-4-src-mq3-client-ui-lan-browser-ml-369899817"></a>
 ### SORT_PING
@@ -790,7 +790,7 @@ const SORT_PING = 4
 Server-browser sort key comparing the ping column.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L30)
 
 - [mq3.client.ui_lan_browser.State](Type-mq3-client-ui-lan-browser-state-53623607.md) — struct
 <a id="function-function-mq3-client-ui-lan-browser-updateserver-function-updateserver-state-source-index-mapname-clients-maxclients-pingtime-minping-maxping-game-gametype-nettype-punkbuster-status-src-mq3-client-ui-lan-browser-ml-321227874"></a>
@@ -820,7 +820,7 @@ A transport calls updateServer when an infoResponse arrives. Keeping this mutati
 | `status` | `dynamic` | — | Value assigned to `value.status`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L338)
 
 <a id="function-function-mq3-client-ui-lan-browser-updatevisiblepings-function-updatevisiblepings-state-source-src-mq3-client-ui-lan-browser-ml-880824152"></a>
 ### updateVisiblePings
@@ -837,7 +837,7 @@ Calls `mq3.client.ui_lan_browser.list` from UI LAN browser `updateVisiblePings`.
 | `source` | `dynamic` | — | Value used by `values=list(state,source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L346)
 
 <a id="function-function-mq3-client-ui-lan-browser-validsource-function-validsource-source-src-mq3-client-ui-lan-browser-ml-1723870859"></a>
 ### validSource
@@ -853,4 +853,4 @@ Computes `source>=AS_LOCAL and source<=AS_FAVORITES` for UI LAN browser `validSo
 | `source` | `dynamic` | — | Value used by `return source>=AS_LOCAL and source<=AS_FAVORITES`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L138)

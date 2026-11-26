@@ -12,7 +12,7 @@ struct AreaCache
 `AreaCache` record for aas routing cache, containing `cluster`, `goalAreaNum`, `travelFlags`, `travelTimes` and `reachabilities` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L75)
 
 ## Members
 
@@ -26,7 +26,7 @@ cluster
 AAS cluster for which these within-cluster costs were computed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L77)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-areacache-generation-generation-src-mq3-botlib-aas-routing-cache-ml-12553306"></a>
 ### generation
@@ -38,7 +38,7 @@ generation
 Generation counter used to distinguish refreshed state from older entries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L87)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-areacache-goalareanum-goalareanum-src-mq3-botlib-aas-routing-cache-ml-151407266"></a>
 ### goalAreaNum
@@ -50,7 +50,7 @@ goalAreaNum
 AAS area containing the destination of this route or goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L79)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-areacache-reachabilities-reachabilities-src-mq3-botlib-aas-routing-cache-ml-184561868"></a>
 ### reachabilities
@@ -62,7 +62,7 @@ reachabilities
 Reachabilities used for routing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L85)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-areacache-serial-serial-src-mq3-botlib-aas-routing-cache-ml-1189689926"></a>
 ### serial
@@ -74,7 +74,7 @@ serial
 Serial number identifying the current update or allocation generation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L89)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-areacache-travelflags-travelflags-src-mq3-botlib-aas-routing-cache-ml-1402411226"></a>
 ### travelFlags
@@ -86,7 +86,7 @@ travelFlags
 Combined AAS travel permissions used to select routes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L81)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-areacache-traveltimes-traveltimes-src-mq3-botlib-aas-routing-cache-ml-1283337026"></a>
 ### travelTimes
@@ -98,4 +98,4 @@ travelTimes
 Travel time for every area (variable sized).
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L83)

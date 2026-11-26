@@ -12,7 +12,7 @@ struct Point
 Stores base Quake III console background point record, including `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L40)
 
 ## Members
 
@@ -26,7 +26,7 @@ depth
 When constructing this record, `point` supplies `0.0001` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L46)
 
 <a id="field-field-mq3-client-baseq3-console-background-point-x-x-src-mq3-client-baseq3-console-background-ml-1957315425"></a>
 ### x
@@ -38,7 +38,7 @@ x
 Horizontal coordinate of a console-background texture vertex in the target window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L42)
 
 <a id="field-field-mq3-client-baseq3-console-background-point-y-y-src-mq3-client-baseq3-console-background-ml-490553613"></a>
 ### y
@@ -50,4 +50,4 @@ y
 Vertical coordinate of a console-background texture vertex in the target window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L44)

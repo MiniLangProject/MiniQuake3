@@ -12,7 +12,7 @@ struct FaceBatch
 Data record for `mq3.renderer.mark_fragments.FaceBatch`; groups `faces`, `triangles`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L84)
 
 ## Members
 
@@ -26,7 +26,7 @@ faces
 BSP faces retained for the current geometry or visibility selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L86)
 
 <a id="field-field-mq3-renderer-mark-fragments-facebatch-triangles-triangles-src-mq3-renderer-mark-fragments-ml-921933436"></a>
 ### triangles
@@ -38,4 +38,4 @@ triangles
 Triangle records or index triplets represented by this geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L88)

@@ -12,7 +12,7 @@ struct DrawView
 Stores engine client console draw view record, including `mode`, `solid`, `notify`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L102)
 
 ## Members
 
@@ -26,7 +26,7 @@ mode
 When constructing this record, `Con_DrawConsole` supplies `"solid"` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L104)
 
 <a id="field-field-mq3-client-cl-console-drawview-notify-notify-src-mq3-client-cl-console-ml-256419894"></a>
 ### notify
@@ -38,7 +38,7 @@ notify
 When constructing this record, `Con_DrawConsole` supplies an absent (`void`) value for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L110)
 
 <a id="field-field-mq3-client-cl-console-drawview-solid-solid-src-mq3-client-cl-console-ml-1585872016"></a>
 ### solid
@@ -50,4 +50,4 @@ solid
 When constructing this record, `Con_DrawConsole` supplies `Con_DrawSolidConsole(state,1.0,videoWidth,videoHeight,version)` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L107)

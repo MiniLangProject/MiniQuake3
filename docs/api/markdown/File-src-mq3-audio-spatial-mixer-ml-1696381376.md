@@ -10,7 +10,7 @@ Reachable from entry: **yes**
 
 - `mq3/compat/numeric.ml` as `numeric` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
 
 ## Declarations
 
@@ -33,7 +33,7 @@ Return `mq3.audio.spatial_mixer.addSharedLoop(state, id, ("#" + str(id)), origin
 | `globalSound` | `dynamic` | — | Global sound passed as `globalSound` to `mq3.audio.spatial_mixer.addSharedLoop`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L130)
 
 <a id="function-function-mq3-audio-spatial-mixer-addsharedloop-function-addsharedloop-state-id-key-origin-sound-volume-globalsound-src-mq3-audio-spatial-mixer-ml-2011147434"></a>
 ### addSharedLoop
@@ -55,7 +55,7 @@ Register an enabled looping source at cursor zero and return its zero-based sour
 | `globalSound` | `dynamic` | — | True gives both output channels the full source gain, bypassing spatial attenuation and panning. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L114)
 
 - [mq3.audio.spatial_mixer.Chunk](Type-mq3-audio-spatial-mixer-chunk-559152199.md) — struct
 <a id="function-function-mq3-audio-spatial-mixer-create-function-create-outputrate-chunkframes-src-mq3-audio-spatial-mixer-ml-624026912"></a>
@@ -73,7 +73,7 @@ Create an empty loop mixer, or report error 7620 for an unsupported rate or chun
 | `chunkFrames` | `dynamic` | — | Output frames per render call, from 1 through MAX_FRAMES; each frame occupies four PCM bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L98)
 
 <a id="function-function-mq3-audio-spatial-mixer-fail-function-fail-message-src-mq3-audio-spatial-mixer-ml-1451982677"></a>
 ### fail
@@ -89,7 +89,7 @@ Create the audio.spatial_mixer error for `fail` with 7620 and the supplied diagn
 | `message` | `dynamic` | — | Message used in `("spatial mixer: " + message)` and `error(7620, ("spatial mixer: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L93)
 
 - [mq3.audio.spatial_mixer.Group](Type-mq3-audio-spatial-mixer-group-1052340149.md) — struct
 <a id="constant-constant-mq3-audio-spatial-mixer-max-frames-const-max-frames-4096-src-mq3-audio-spatial-mixer-ml-83727282"></a>
@@ -102,7 +102,7 @@ const MAX_FRAMES = 4096
 Maximum number of stereo output frames produced by one mixer chunk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
 
 <a id="constant-constant-mq3-audio-spatial-mixer-max-sources-const-max-sources-64-src-mq3-audio-spatial-mixer-ml-1754303249"></a>
 ### MAX_SOURCES
@@ -114,7 +114,7 @@ const MAX_SOURCES = 64
 Maximum number of loop sources registered with the spatial mixer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="function-function-mq3-audio-spatial-mixer-monosample-function-monosample-sound-frame-src-mq3-audio-spatial-mixer-ml-1555219978"></a>
 ### monoSample
@@ -131,7 +131,7 @@ Compute mono sample in audio.spatial_mixer; the normal completion returns `((lef
 | `frame` | `dynamic` | — | Frame used in `(frame % frames)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L176)
 
 <a id="function-function-mq3-audio-spatial-mixer-render-function-render-state-listener-right-src-mq3-audio-spatial-mixer-ml-1940948907"></a>
 ### render
@@ -149,7 +149,7 @@ Mix one stereo PCM chunk, advancing only enabled sources with a positive spatial
 | `right` | `dynamic` | — | Listener's right vector; its length must lie from 0.99 through 1.01. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L210)
 
 <a id="function-function-mq3-audio-spatial-mixer-setenabled-function-setenabled-state-id-enabled-src-mq3-audio-spatial-mixer-ml-2018008191"></a>
 ### setEnabled
@@ -167,7 +167,7 @@ Change a registered source's enabled flag, returning true when found or false fo
 | `enabled` | `dynamic` | — | Whether subsequent render calls should consider the source. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L137)
 
 <a id="function-function-mq3-audio-spatial-mixer-signed16-function-signed16-data-offset-src-mq3-audio-spatial-mixer-ml-1490208529"></a>
 ### signed16
@@ -184,7 +184,7 @@ Compute signed 16 in audio.spatial_mixer; the normal completion returns `value`.
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L169)
 
 <a id="constant-constant-mq3-audio-spatial-mixer-sound-attenuate-const-sound-attenuate-0-0008-src-mq3-audio-spatial-mixer-ml-996329553"></a>
 ### SOUND_ATTENUATE
@@ -196,7 +196,7 @@ const SOUND_ATTENUATE = 0.0008
 Linear gain reduction per world unit beyond the full-volume distance.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L13)
 
 <a id="constant-constant-mq3-audio-spatial-mixer-sound-fullvolume-const-sound-fullvolume-80-src-mq3-audio-spatial-mixer-ml-888494599"></a>
 ### SOUND_FULLVOLUME
@@ -208,7 +208,7 @@ const SOUND_FULLVOLUME = 80
 Distance in world units within which distance attenuation is not applied.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L11)
 
 - [mq3.audio.spatial_mixer.Source](Type-mq3-audio-spatial-mixer-source-419957791.md) — struct
 - [mq3.audio.spatial_mixer.Spatial](Type-mq3-audio-spatial-mixer-spatial-1639915850.md) — struct
@@ -230,7 +230,7 @@ Compute stereo gains using linear distance attenuation and the listener's right-
 | `globalSound` | `dynamic` | — | Whether to bypass positional attenuation and panning. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L152)
 
 - [mq3.audio.spatial_mixer.State](Type-mq3-audio-spatial-mixer-state-1239949287.md) — struct
 <a id="function-function-mq3-audio-spatial-mixer-write16-function-write16-output-offset-value-src-mq3-audio-spatial-mixer-ml-495538765"></a>
@@ -251,4 +251,4 @@ Direct state writes: `output elements`.
 | `value` | `dynamic` | — | Floating-point value to convert to signed 32-bit integer semantics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L195)

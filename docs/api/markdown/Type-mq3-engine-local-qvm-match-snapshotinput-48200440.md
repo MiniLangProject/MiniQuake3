@@ -12,7 +12,7 @@ struct SnapshotInput
 SnapshotInput record for engine.local_qvm_match, containing `world`, `host`, `decodedEntities`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2244)
 
 ## Members
 
@@ -26,7 +26,7 @@ decodedEntities
 Entity records decoded from the current snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2250)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshotinput-host-host-src-mq3-engine-local-qvm-match-ml-1710234033"></a>
 ### host
@@ -38,7 +38,7 @@ host
 Host address or host-service adapter associated with the operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2248)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshotinput-world-world-src-mq3-engine-local-qvm-match-ml-444565093"></a>
 ### world
@@ -50,4 +50,4 @@ world
 Loaded world geometry and associated scene state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2246)

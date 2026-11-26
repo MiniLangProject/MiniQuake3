@@ -12,7 +12,7 @@ struct Impact
 Stores playable enemy projectiles impact record, including `projectileId`, `attacker`, `kind`, `point`, `normal`, `damage` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L60)
 
 ## Members
 
@@ -26,7 +26,7 @@ at
 When constructing this record, `appendImpact` supplies `now` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L76)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-attacker-attacker-src-mq3-client-playable-enemy-projectiles-ml-1681046927"></a>
 ### attacker
@@ -38,7 +38,7 @@ attacker
 When constructing this record, `appendImpact` supplies `projectile.attacker` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L64)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-damage-damage-src-mq3-client-playable-enemy-projectiles-ml-1892729059"></a>
 ### damage
@@ -50,7 +50,7 @@ damage
 Damage amount applied or reported by the weapon, projectile, or hit result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L72)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-kind-kind-src-mq3-client-playable-enemy-projectiles-ml-1651676069"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 Effect or media category selecting the matching geometry, texture, or presentation behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L66)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-normal-normal-src-mq3-client-playable-enemy-projectiles-ml-487313611"></a>
 ### normal
@@ -74,7 +74,7 @@ normal
 Collision-plane normal at an enemy projectile impact, forwarded to impact presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L70)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-point-point-src-mq3-client-playable-enemy-projectiles-ml-604366105"></a>
 ### point
@@ -86,7 +86,7 @@ point
 When constructing this record, `appendImpact` supplies `copyPoint(point)` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L68)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-projectileid-projectileid-src-mq3-client-playable-enemy-projectiles-ml-944292709"></a>
 ### projectileId
@@ -98,7 +98,7 @@ projectileId
 Stable projectile identifier used to associate movement, trails, and impact presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L62)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-side-side-src-mq3-client-playable-enemy-projectiles-ml-339624879"></a>
 ### side
@@ -110,4 +110,4 @@ side
 When constructing this record, `appendImpact` supplies `projectile.side` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L74)

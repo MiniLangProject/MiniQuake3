@@ -30,7 +30,7 @@ Use `state.botLibVarSetFn` to perform `botLibVar`.
 | `value` | `dynamic` | — | Value passed as argument 3 to `state.botLibVarSetFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L383)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L383)
 
 - [mq3.game.bot_lifecycle.BotState](Type-mq3-game-bot-lifecycle-botstate-1141153540.md) — struct
 <a id="function-function-mq3-game-bot-lifecycle-create-function-create-registry-src-mq3-game-bot-lifecycle-ml-1645017815"></a>
@@ -47,7 +47,7 @@ Build the `mq3.game.bot_lifecycle.State` result for `create`.
 | `registry` | `dynamic` | — | Initial value stored in `mq3.game.bot_lifecycle.State.registry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L316)
 
 <a id="function-function-mq3-game-bot-lifecycle-createbot-function-createbot-client-src-mq3-game-bot-lifecycle-ml-1114290541"></a>
 ### createBot
@@ -63,7 +63,7 @@ Create a `mq3.game.bot_lifecycle.BotState` record, initializing `inuse` as `true
 | `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_lifecycle.BotState.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L326)
 
 <a id="function-function-mq3-game-bot-lifecycle-cvareffect-function-cvareffect-state-kind-key-value-src-mq3-game-bot-lifecycle-ml-1916731171"></a>
 ### cvarEffect
@@ -82,7 +82,7 @@ Use `state.cvarEffectFn` to perform `cvarEffect`.
 | `value` | `dynamic` | — | Value passed as argument 4 to `state.cvarEffectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L335)
 
 <a id="function-function-mq3-game-bot-lifecycle-endmatch-function-endmatch-state-src-mq3-game-bot-lifecycle-ml-1799126469"></a>
 ### endMatch
@@ -98,7 +98,7 @@ Set `state.interbreedMatchCount` to `n.add32(state.interbreedMatchCount,1)` and 
 | `state` | `dynamic` | — | Bot lifecycle state; accesses `interbreed`, `interbreedMatchCount`, `interbreedcycle` and `interbreedwrite`. May update `state.interbreedMatchCount` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L583)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L583)
 
 <a id="function-function-mq3-game-bot-lifecycle-initlibrary-function-initlibrary-state-src-mq3-game-bot-lifecycle-ml-444314811"></a>
 ### initLibrary
@@ -114,7 +114,7 @@ Use `state.botLibSetupFn` to perform `initLibrary`. Return paths include `state.
 | `state` | `dynamic` | — | Bot lifecycle state; accesses `developer` and `botLibSetupFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L390)
 
 <a id="function-function-mq3-game-bot-lifecycle-interbreedbots-function-interbreedbots-state-src-mq3-game-bot-lifecycle-ml-1675249965"></a>
 ### interbreedBots
@@ -130,7 +130,7 @@ Use `state.geneticSelectionFn`, `state.interbreedGoalFn` and `state.mutateGoalFn
 | `state` | `dynamic` | — | Bot lifecycle state; accesses `botstates`, `geneticSelectionFn`, `interbreedGoalFn` and `mutateGoalFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L558)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L558)
 
 <a id="function-function-mq3-game-bot-lifecycle-loadmap-function-loadmap-state-restart-src-mq3-game-bot-lifecycle-ml-1497086434"></a>
 ### loadMap
@@ -147,7 +147,7 @@ Use `state.botLibLoadMapFn` and `state.deathmatchSetupFn` to perform `loadMap`.
 | `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L499)
 
 <a id="constant-constant-mq3-game-bot-lifecycle-max-clients-const-max-clients-64-src-mq3-game-bot-lifecycle-ml-1966335303"></a>
 ### MAX_CLIENTS
@@ -159,7 +159,7 @@ const MAX_CLIENTS = 64
 Maximum number of client slots represented by the original game protocol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L11)
 
 <a id="constant-constant-mq3-game-bot-lifecycle-max-gentities-const-max-gentities-1024-src-mq3-game-bot-lifecycle-ml-1149872298"></a>
 ### MAX_GENTITIES
@@ -171,7 +171,7 @@ const MAX_GENTITIES = 1024
 Maximum number of entity slots represented by the original game protocol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L13)
 
 <a id="function-function-mq3-game-bot-lifecycle-querycvar-function-querycvar-state-name-capacity-src-mq3-game-bot-lifecycle-ml-241355000"></a>
 ### queryCvar
@@ -189,7 +189,7 @@ Apply `mq3.game.bot_lifecycle.cvarEffect`, `mq3.qcommon.cvar.find` and `mq3.shar
 | `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L356)
 
 <a id="function-function-mq3-game-bot-lifecycle-rank-function-rank-bot-src-mq3-game-bot-lifecycle-ml-1897762733"></a>
 ### rank
@@ -205,7 +205,7 @@ Forward `rank` to `mq3.compat.numeric.f32` and return the delegated result.
 | `bot` | `dynamic` | — | Bot AI state; accesses `numKills` and `numDeaths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L534)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L534)
 
 <a id="function-function-mq3-game-bot-lifecycle-registercvar-function-registercvar-state-snapshot-name-defaultvalue-flags-src-mq3-game-bot-lifecycle-ml-1728268099"></a>
 ### registerCvar
@@ -225,7 +225,7 @@ Register a bot lifecycle cvar through the configured host services and retain it
 | `flags` | `dynamic` | — | Initial value stored in `mq3.qcommon.cvar.Cvar.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L346)
 
 <a id="function-function-mq3-game-bot-lifecycle-required-function-required-state-callback-label-src-mq3-game-bot-lifecycle-ml-957825630"></a>
 ### required
@@ -243,7 +243,7 @@ Require a bot lifecycle callback and report the missing service by name.
 | `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L460)
 
 <a id="function-function-mq3-game-bot-lifecycle-resetstate-function-resetstate-state-bot-src-mq3-game-bot-lifecycle-ml-118040456"></a>
 ### resetState
@@ -260,7 +260,7 @@ Update `bot.setupcount`, `bot.checkpoints`, `bot.patrolpoints` and `bot.walker` 
 | `bot` | `dynamic` | — | Bot AI state; accesses `checkpoints`, `patrolpoints`, `setupcount`, `walker` and `numKills` and related fields. May update `bot.setupcount`, `bot.checkpoints` and `bot.patrolpoints` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L468)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L468)
 
 <a id="function-function-mq3-game-bot-lifecycle-setcvar-function-setcvar-state-name-value-src-mq3-game-bot-lifecycle-ml-1359916419"></a>
 ### setCvar
@@ -278,7 +278,7 @@ Apply `mq3.game.bot_lifecycle.cvarEffect` and `mq3.qcommon.cvar.set2` while eval
 | `value` | `dynamic` | — | Value passed as argument 4 to `state.cvarEffectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L375)
 
 <a id="function-function-mq3-game-bot-lifecycle-setup-function-setup-state-restart-src-mq3-game-bot-lifecycle-ml-615696140"></a>
 ### setup
@@ -295,7 +295,7 @@ Set `state.botstates` to `array(MAX_CLIENTS,void)` in `mq3.game.bot_lifecycle.se
 | `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L438)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L438)
 
 <a id="function-function-mq3-game-bot-lifecycle-shutdown-function-shutdown-state-restart-src-mq3-game-bot-lifecycle-ml-2101214770"></a>
 ### shutdown
@@ -312,7 +312,7 @@ Use `state.shutdownClientFn` and `state.botLibShutdownFn` to perform `shutdown`.
 | `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L516)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L516)
 
 - [mq3.game.bot_lifecycle.State](Type-mq3-game-bot-lifecycle-state-939171775.md) — struct
 <a id="function-function-mq3-game-bot-lifecycle-updatecvar-function-updatecvar-state-snapshot-name-src-mq3-game-bot-lifecycle-ml-1906683300"></a>
@@ -331,7 +331,7 @@ Apply `mq3.game.bot_lifecycle.cvarEffect` and `mq3.qcommon.cvar.updateVm` while 
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L367)
 
 <a id="function-function-mq3-game-bot-lifecycle-writeinterbreeded-function-writeinterbreeded-state-filename-src-mq3-game-bot-lifecycle-ml-50112198"></a>
 ### writeInterbreeded
@@ -348,4 +348,4 @@ Use `state.saveGoalFn` to perform `writeInterbreeded`.
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L542)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L542)

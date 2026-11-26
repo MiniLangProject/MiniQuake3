@@ -25,7 +25,7 @@ function artList()
 Lists the 14 UI player settings art list strings in their declared order, beginning with `"menu/art/frame2_l"`, `"menu/art/frame1_r"`, `"menu/art/model_0"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L118)
 
 <a id="function-function-mq3-client-ui-player-settings-bitmap-function-bitmap-name-id-x-y-flags-width-height-src-mq3-client-ui-player-settings-ml-826462485"></a>
 ### bitmap
@@ -47,7 +47,7 @@ Calls `mq3.client.ui_qmenu.item` from UI player settings `bitmap`. The final pat
 | `height` | `dynamic` | — | Value assigned to `item.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L258)
 
 <a id="function-function-mq3-client-ui-player-settings-cleanname-function-cleanname-text-src-mq3-client-ui-player-settings-ml-1401713421"></a>
 ### cleanName
@@ -63,7 +63,7 @@ Calls `mq3.client.ui_player_settings.isColor`, `decode` from UI player settings 
 | `text` | `dynamic` | — | Text consumed or emitted by `cleanName` in the UI player settings path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L152)
 
 <a id="function-function-mq3-client-ui-player-settings-color-function-color-index-src-mq3-client-ui-player-settings-ml-578201534"></a>
 ### color
@@ -79,7 +79,7 @@ Evaluates UI player settings `color` and returns `table[index]` according to its
 | `index` | `dynamic` | — | Value tested by `index<0 or index>7` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L145)
 
 <a id="function-function-mq3-client-ui-player-settings-create-function-create-source-src-mq3-client-ui-player-settings-ml-317987183"></a>
 ### create
@@ -95,7 +95,7 @@ Creates a `mq3.client.ui_player_settings.State` record. Assigns `source` from `s
 | `source` | `dynamic` | — | Value used to initialize `State.source`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L140)
 
 - [mq3.client.ui_player_settings.DrawCommand](Type-mq3-client-ui-player-settings-drawcommand-126187478.md) — struct
 <a id="function-function-mq3-client-ui-player-settings-emit-function-emit-value-boundary-kind-name-text-number-x-y-width-height-retailactive-src-mq3-client-ui-player-settings-ml-234755341"></a>
@@ -122,7 +122,7 @@ Appends a UI player settings action record to the queued engine requests.
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L137)
 
 <a id="function-function-mq3-client-ui-player-settings-gamecodetoui-function-gamecodetoui-src-mq3-client-ui-player-settings-ml-1163053798"></a>
 ### gameCodeToUi
@@ -134,7 +134,7 @@ function gameCodeToUi()
 Builds the UI player settings `gameCodeToUi` sequence from `[4,2,3,0,5,1,6]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L122)
 
 <a id="function-function-mq3-client-ui-player-settings-handicapitems-function-handicapitems-src-mq3-client-ui-player-settings-ml-1043368722"></a>
 ### handicapItems
@@ -146,7 +146,7 @@ function handicapItems()
 Lists the 20 UI player settings handicap items strings in their declared order, beginning with `"None"`, `"95"`, `"90"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L120)
 
 - [mq3.client.ui_player_settings.HostAction](Type-mq3-client-ui-player-settings-hostaction-719199375.md) — struct
 <a id="constant-constant-mq3-client-ui-player-settings-id-back-const-id-back-13-src-mq3-client-ui-player-settings-ml-905494743"></a>
@@ -159,7 +159,7 @@ const ID_BACK = 13
 Event identifier of the Back control used to leave the player name, handicap, and color menu and return to its parent menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-effects-const-id-effects-12-src-mq3-client-ui-player-settings-ml-393659260"></a>
 ### ID_EFFECTS
@@ -171,7 +171,7 @@ const ID_EFFECTS = 12
 Menu control identifier routed to the effects action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-handicap-const-id-handicap-11-src-mq3-client-ui-player-settings-ml-392081797"></a>
 ### ID_HANDICAP
@@ -183,7 +183,7 @@ const ID_HANDICAP = 11
 Menu control identifier routed to the handicap action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-model-const-id-model-14-src-mq3-client-ui-player-settings-ml-539032172"></a>
 ### ID_MODEL
@@ -195,7 +195,7 @@ const ID_MODEL = 14
 Menu control identifier routed to the model action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-name-const-id-name-10-src-mq3-client-ui-player-settings-ml-1553721784"></a>
 ### ID_NAME
@@ -207,7 +207,7 @@ const ID_NAME = 10
 Menu control identifier routed to the name action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L12)
 
 <a id="function-function-mq3-client-ui-player-settings-iscolor-function-iscolor-data-index-src-mq3-client-ui-player-settings-ml-476159566"></a>
 ### isColor
@@ -224,7 +224,7 @@ Computes `index+1<len(data) and data[index]==94 and data[index+1]!=94` for UI pl
 | `index` | `dynamic` | — | Value used by `return index+1<len(data) and data[index]==94 and data[index+1]!=94`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L149)
 
 <a id="constant-constant-mq3-client-ui-player-settings-max-namelength-const-max-namelength-20-src-mq3-client-ui-player-settings-ml-1689016783"></a>
 ### MAX_NAMELENGTH
@@ -236,7 +236,7 @@ const MAX_NAMELENGTH = 20
 Length limit used for a player or menu display name.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-cache-function-playersettings-cache-value-retailactive-src-mq3-client-ui-player-settings-ml-407397140"></a>
 ### PlayerSettings_Cache
@@ -253,7 +253,7 @@ PlayerSettings_Cache
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L281)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-draweffects-function-playersettings-draweffects-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-414216980"></a>
 ### PlayerSettings_DrawEffects
@@ -271,7 +271,7 @@ PlayerSettings_DrawEffects
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L199)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-drawhandicap-function-playersettings-drawhandicap-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-2041816990"></a>
 ### PlayerSettings_DrawHandicap
@@ -289,7 +289,7 @@ PlayerSettings_DrawHandicap
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L191)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-drawname-function-playersettings-drawname-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-61264592"></a>
 ### PlayerSettings_DrawName
@@ -307,7 +307,7 @@ PlayerSettings_DrawName
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L181)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-drawplayer-function-playersettings-drawplayer-value-model-retailactive-src-mq3-client-ui-player-settings-ml-996159589"></a>
 ### PlayerSettings_DrawPlayer
@@ -325,7 +325,7 @@ PlayerSettings_DrawPlayer
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L207)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-menuevent-function-playersettings-menuevent-value-id-event-retailactive-src-mq3-client-ui-player-settings-ml-1704063411"></a>
 ### PlayerSettings_MenuEvent
@@ -344,7 +344,7 @@ PlayerSettings_MenuEvent
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L244)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-menuinit-function-playersettings-menuinit-value-name-color1-model-handicap-retailactive-src-mq3-client-ui-player-settings-ml-1415609718"></a>
 ### PlayerSettings_MenuInit
@@ -365,7 +365,7 @@ PlayerSettings_MenuInit
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L267)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-menukey-function-playersettings-menukey-value-key-cursorx-cursory-retailactive-src-mq3-client-ui-player-settings-ml-1059907116"></a>
 ### PlayerSettings_MenuKey
@@ -385,7 +385,7 @@ PlayerSettings_MenuKey
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L225)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-savechanges-function-playersettings-savechanges-value-retailactive-src-mq3-client-ui-player-settings-ml-436882608"></a>
 ### PlayerSettings_SaveChanges
@@ -402,7 +402,7 @@ PlayerSettings_SaveChanges
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L215)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-setmenuitems-function-playersettings-setmenuitems-value-name-color1-model-handicap-src-mq3-client-ui-player-settings-ml-1340257475"></a>
 ### PlayerSettings_SetMenuItems
@@ -422,7 +422,7 @@ PlayerSettings_SetMenuItems
 | `handicap` | `dynamic` | — | Value used by `h=handicap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L235)
 
 - [mq3.client.ui_player_settings.State](Type-mq3-client-ui-player-settings-state-674577228.md) — struct
 <a id="function-function-mq3-client-ui-player-settings-ui-playersettingsmenu-function-ui-playersettingsmenu-value-name-color1-model-handicap-retailactive-src-mq3-client-ui-player-settings-ml-1648696094"></a>
@@ -444,7 +444,7 @@ UI_PlayerSettingsMenu
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L290)
 
 <a id="function-function-mq3-client-ui-player-settings-uitogamecode-function-uitogamecode-src-mq3-client-ui-player-settings-ml-2043921718"></a>
 ### uiToGameCode
@@ -456,7 +456,7 @@ function uiToGameCode()
 Builds the UI player settings `uiToGameCode` sequence from `[4,6,2,3,1,5,7]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L124)
 
 <a id="function-function-mq3-client-ui-player-settings-visiblenamecommands-function-visiblenamecommands-text-focus-basex-y-style-src-mq3-client-ui-player-settings-ml-1056592356"></a>
 ### visibleNameCommands
@@ -476,4 +476,4 @@ Calls `mq3.client.ui_player_settings.color`, `mq3.client.ui_player_settings.isCo
 | `style` | `dynamic` | — | Value used by `else rows=rows+[DrawCommand("char",decode(bytes([data[at]])),x,y,8,16,style,current,"")]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L169)

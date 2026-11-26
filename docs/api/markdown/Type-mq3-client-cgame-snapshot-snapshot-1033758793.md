@@ -12,7 +12,7 @@ struct Snapshot
 Stores client game snapshot snapshot metadata and contents, including `number`, `serverTime`, `snapFlags`, `serverCommandSequence`, `playerState`, `entities`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L20)
 
 ## Members
 
@@ -26,7 +26,7 @@ entities
 Entity-state or renderer-entity entries represented by the current snapshot or scene.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L32)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-number-number-src-mq3-client-cgame-snapshot-ml-2097320217"></a>
 ### number
@@ -38,7 +38,7 @@ number
 When constructing this record, `wrap` supplies `number` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L22)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-playerstate-playerstate-src-mq3-client-cgame-snapshot-ml-967150519"></a>
 ### playerState
@@ -50,7 +50,7 @@ playerState
 Player-state record associated with this client snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L30)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-servercommandsequence-servercommandsequence-src-mq3-client-cgame-snapshot-ml-208651743"></a>
 ### serverCommandSequence
@@ -62,7 +62,7 @@ serverCommandSequence
 Reliable server-command sequence executed when this snapshot is installed or becomes current.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L28)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-servertime-servertime-src-mq3-client-cgame-snapshot-ml-1723063307"></a>
 ### serverTime
@@ -74,7 +74,7 @@ serverTime
 Server simulation time in milliseconds used to order and transition client-game snapshots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L24)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-snapflags-snapflags-src-mq3-client-cgame-snapshot-ml-2024108955"></a>
 ### snapFlags
@@ -83,7 +83,7 @@ Server simulation time in milliseconds used to order and transition client-game 
 snapFlags
 ```
 
-Snapshot flags describing rate delay and dropped-command conditions.
+Snapshot bits for rate delay, inactive server state and the server-count toggle used on restarts.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_snapshot.ml#L26)

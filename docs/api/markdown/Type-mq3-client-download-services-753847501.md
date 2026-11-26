@@ -12,7 +12,7 @@ struct Services
 Stores download host-service callbacks, including `cvarValueFn`, `cvarStringFn`, `reliableFn`, `openFn`, `writeFn`, `closeFn` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L28)
 
 ## Members
 
@@ -26,7 +26,7 @@ closeFn
 Host callback for the close operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L43)
 
 <a id="field-field-mq3-client-download-services-context-context-src-mq3-client-download-ml-1391683747"></a>
 ### context
@@ -38,7 +38,7 @@ context
 Caller-supplied value forwarded unchanged to the service callbacks for server-directed file downloads.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L54)
 
 <a id="field-field-mq3-client-download-services-cvarstringfn-cvarstringfn-src-mq3-client-download-ml-1380720405"></a>
 ### cvarStringFn
@@ -50,7 +50,7 @@ cvarStringFn
 Host callback for the cvar string operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L34)
 
 <a id="field-field-mq3-client-download-services-cvarvaluefn-cvarvaluefn-src-mq3-client-download-ml-1526834339"></a>
 ### cvarValueFn
@@ -62,7 +62,7 @@ cvarValueFn
 Host callback for the cvar value operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L31)
 
 <a id="field-field-mq3-client-download-services-nextfn-nextfn-src-mq3-client-download-ml-1362973037"></a>
 ### nextFn
@@ -74,7 +74,7 @@ nextFn
 Host callback for the next operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L49)
 
 <a id="field-field-mq3-client-download-services-openfn-openfn-src-mq3-client-download-ml-1392865427"></a>
 ### openFn
@@ -86,7 +86,7 @@ openFn
 Host callback for the open operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L39)
 
 <a id="field-field-mq3-client-download-services-packetfn-packetfn-src-mq3-client-download-ml-1325644907"></a>
 ### packetFn
@@ -98,7 +98,7 @@ packetFn
 Host callback for the packet operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L47)
 
 <a id="field-field-mq3-client-download-services-printfn-printfn-src-mq3-client-download-ml-1447575075"></a>
 ### printFn
@@ -110,7 +110,7 @@ printFn
 Host callback for the print operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L51)
 
 <a id="field-field-mq3-client-download-services-reliablefn-reliablefn-src-mq3-client-download-ml-564708239"></a>
 ### reliableFn
@@ -122,7 +122,7 @@ reliableFn
 Host callback for the reliable operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L37)
 
 <a id="field-field-mq3-client-download-services-renamefn-renamefn-src-mq3-client-download-ml-887505199"></a>
 ### renameFn
@@ -134,7 +134,7 @@ renameFn
 Host callback for the rename operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L45)
 
 <a id="field-field-mq3-client-download-services-writefn-writefn-src-mq3-client-download-ml-1849665671"></a>
 ### writeFn
@@ -146,4 +146,4 @@ writeFn
 Host callback for the write operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/download.ml#L41)

@@ -32,7 +32,7 @@ Update `s.eType`, `s.number`, `s.pos.trType` and `s.pos.trBase` and related stat
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L23)
 
 <a id="function-function-mq3-game-snapshot-extrapolate-function-extrapolate-ps-s-time-snap-src-mq3-game-snapshot-ml-1481170021"></a>
 ### extrapolate
@@ -51,7 +51,7 @@ Forward `extrapolate` to `mq3.game.snapshot.convert` and return the delegated re
 | `snap` | `dynamic` | — | Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L63)
 
 <a id="function-function-mq3-game-snapshot-fromplayer-function-fromplayer-ps-s-snap-src-mq3-game-snapshot-ml-1398061538"></a>
 ### fromPlayer
@@ -69,7 +69,7 @@ Forward `fromPlayer` to `mq3.game.snapshot.convert` and return the delegated res
 | `snap` | `dynamic` | — | Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L55)
 
 <a id="function-function-mq3-game-snapshot-snapvector-function-snapvector-v-src-mq3-game-snapshot-ml-916038790"></a>
 ### snapVector
@@ -85,4 +85,4 @@ Round vector components to the integer coordinates used by network entity snapsh
 | `v` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L10)

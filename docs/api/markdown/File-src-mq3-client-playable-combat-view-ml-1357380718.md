@@ -28,7 +28,7 @@ Evaluates playable combat view `clampNonnegative` and returns `0`, `value` accor
 | `value` | `dynamic` | — | Value tested by `value<0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L90)
 
 - [mq3.client.playable_combat_view.CombatLayout](Type-mq3-client-playable-combat-view-combatlayout-1835032184.md) — struct
 - [mq3.client.playable_combat_view.CombatPulse](Type-mq3-client-playable-combat-view-combatpulse-789671119.md) — struct
@@ -43,7 +43,7 @@ const DAMAGE_MARK_MS = 350
 Duration or timeout in milliseconds controlling damage mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L16)
 
 <a id="function-function-mq3-client-playable-combat-view-draw-function-draw-view-width-height-now-src-mq3-client-playable-combat-view-ml-482320340"></a>
 ### draw
@@ -62,7 +62,7 @@ Calls `mq3.client.playable_combat_view.layout`, `mq3.client.playable_combat_view
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L248)
 
 <a id="function-function-mq3-client-playable-combat-view-drawdamagemark-function-drawdamagemark-view-placement-intensity-src-mq3-client-playable-combat-view-ml-1327745281"></a>
 ### drawDamageMark
@@ -80,7 +80,7 @@ Calls `mq3.client.playable_combat_view.line` from playable combat view `drawDama
 | `intensity` | `dynamic` | — | Value used by `if intensity<=0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L231)
 
 <a id="function-function-mq3-client-playable-combat-view-drawfeedback-function-drawfeedback-view-width-height-now-src-mq3-client-playable-combat-view-ml-1329043324"></a>
 ### drawFeedback
@@ -99,7 +99,7 @@ HUD/feedback pass for callers which draw the actual first-person MD3 weapon.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L268)
 
 <a id="function-function-mq3-client-playable-combat-view-drawhitmark-function-drawhitmark-placement-intensity-src-mq3-client-playable-combat-view-ml-43804948"></a>
 ### drawHitMark
@@ -116,7 +116,7 @@ Calls `mq3.client.playable_combat_view.line` from playable combat view `drawHitM
 | `intensity` | `dynamic` | — | Value used by `if intensity<=0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L219)
 
 <a id="function-function-mq3-client-playable-combat-view-drawtransientfeedback-function-drawtransientfeedback-view-width-height-now-src-mq3-client-playable-combat-view-ml-839980806"></a>
 ### drawTransientFeedback
@@ -135,7 +135,7 @@ Crosshair hit and damage feedback layered over the retail Baseq3 HUD.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L287)
 
 <a id="function-function-mq3-client-playable-combat-view-drawweapon-function-drawweapon-placement-recoil-muzzle-src-mq3-client-playable-combat-view-ml-1152438232"></a>
 ### drawWeapon
@@ -153,7 +153,7 @@ Calls `mq3.client.playable_combat_view.line` from playable combat view `drawWeap
 | `muzzle` | `dynamic` | — | Value used by `if muzzle>0 then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L189)
 
 <a id="function-function-mq3-client-playable-combat-view-fire-function-fire-view-now-src-mq3-client-playable-combat-view-ml-49933155"></a>
 ### fire
@@ -170,7 +170,7 @@ Updates `view.lastFire`, `view.shots` during playable combat view `fire`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L103)
 
 <a id="constant-constant-mq3-client-playable-combat-view-fire-flash-ms-const-fire-flash-ms-90-src-mq3-client-playable-combat-view-ml-498942254"></a>
 ### FIRE_FLASH_MS
@@ -182,7 +182,7 @@ const FIRE_FLASH_MS = 90
 Duration or timeout in milliseconds controlling fire flash.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L10)
 
 <a id="constant-constant-mq3-client-playable-combat-view-hit-mark-ms-const-hit-mark-ms-160-src-mq3-client-playable-combat-view-ml-30200342"></a>
 ### HIT_MARK_MS
@@ -194,7 +194,7 @@ const HIT_MARK_MS = 160
 Duration or timeout in milliseconds controlling hit mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-combat-view-kill-mark-ms-const-kill-mark-ms-900-src-mq3-client-playable-combat-view-ml-22698664"></a>
 ### KILL_MARK_MS
@@ -206,7 +206,7 @@ const KILL_MARK_MS = 900
 Duration or timeout in milliseconds controlling kill mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L18)
 
 <a id="function-function-mq3-client-playable-combat-view-layout-function-layout-width-height-src-mq3-client-playable-combat-view-ml-1258685395"></a>
 ### layout
@@ -223,7 +223,7 @@ Calls `mq3.client.playable_combat_view.CombatLayout` from playable combat view `
 | `height` | `dynamic` | — | Height in the coordinate space used by `layout`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L165)
 
 <a id="function-function-mq3-client-playable-combat-view-line-function-line-x0-y0-x1-y1-red-green-blue-src-mq3-client-playable-combat-view-ml-1242087762"></a>
 ### line
@@ -245,7 +245,7 @@ Calls `mq3.platform.playable_window.lineNative`, `mq3.compat.numeric.trunc32` fr
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L180)
 
 <a id="function-function-mq3-client-playable-combat-view-pulse-function-pulse-view-now-src-mq3-client-playable-combat-view-ml-1370894261"></a>
 ### pulse
@@ -262,7 +262,7 @@ Calls `mq3.client.playable_combat_view.CombatPulse`, `mq3.client.playable_combat
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L157)
 
 <a id="constant-constant-mq3-client-playable-combat-view-recoil-ms-const-recoil-ms-180-src-mq3-client-playable-combat-view-ml-373605748"></a>
 ### RECOIL_MS
@@ -274,7 +274,7 @@ const RECOIL_MS = 180
 Duration or timeout in milliseconds controlling recoil.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L12)
 
 <a id="function-function-mq3-client-playable-combat-view-registerdeath-function-registerdeath-view-src-mq3-client-playable-combat-view-ml-370603003"></a>
 ### registerDeath
@@ -290,7 +290,7 @@ Updates `view.deaths` during playable combat view `registerDeath`.
 | `view` | `dynamic` | — | Mutable playable combat view record/storage; this routine assigns `view.deaths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L139)
 
 <a id="function-function-mq3-client-playable-combat-view-registerhit-function-registerhit-view-now-src-mq3-client-playable-combat-view-ml-2056477135"></a>
 ### registerHit
@@ -307,7 +307,7 @@ Updates `view.lastHit`, `view.hits` during playable combat view `registerHit`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L111)
 
 <a id="function-function-mq3-client-playable-combat-view-registerkill-function-registerkill-view-now-score-src-mq3-client-playable-combat-view-ml-350839167"></a>
 ### registerKill
@@ -325,7 +325,7 @@ Updates `view.lastKill`, `view.kills`, `view.score` during playable combat view 
 | `score` | `dynamic` | — | Value assigned to `view.score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L132)
 
 <a id="function-function-mq3-client-playable-combat-view-remaining-function-remaining-now-start-duration-src-mq3-client-playable-combat-view-ml-1331388720"></a>
 ### remaining
@@ -343,7 +343,7 @@ Evaluates playable combat view `remaining` and returns `0`, `((duration-elapsed)
 | `duration` | `dynamic` | — | Lifetime or interval in the same units as this operation's clock. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L148)
 
 <a id="function-function-mq3-client-playable-combat-view-setscore-function-setscore-view-value-src-mq3-client-playable-combat-view-ml-992597322"></a>
 ### setScore
@@ -360,7 +360,7 @@ Updates `view.score` during playable combat view `setScore`.
 | `value` | `dynamic` | — | Value assigned to `view.score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L95)
 
 <a id="function-function-mq3-client-playable-combat-view-state-function-state-weaponname-src-mq3-client-playable-combat-view-ml-712871985"></a>
 ### state
@@ -376,7 +376,7 @@ Calls `mq3.client.playable_combat_view.CombatView` from playable combat view `st
 | `weaponName` | `dynamic` | — | Sequence whose length/content is inspected by `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L83)
 
 <a id="function-function-mq3-client-playable-combat-view-takedamage-function-takedamage-view-now-amount-side-src-mq3-client-playable-combat-view-ml-156668940"></a>
 ### takeDamage
@@ -395,4 +395,4 @@ Updates `view.lastDamage`, `view.damageAmount`, `view.damageSide` during playabl
 | `side` | `dynamic` | — | Value used by `if side<0 then view.damageSide=-1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L121)

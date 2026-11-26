@@ -29,7 +29,7 @@ Evaluates playable projectile view `alive` and returns `false`, `value.state==ST
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L144)
 
 <a id="function-function-mq3-client-playable-projectile-view-basecolor-function-basecolor-style-src-mq3-client-playable-projectile-view-ml-574336553"></a>
 ### baseColor
@@ -45,7 +45,7 @@ Evaluates playable projectile view `baseColor` and returns `[255,104,32]`, `[72,
 | `style` | `dynamic` | — | Value used by `if style==STYLE_ROCKET then return [255,104,32] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L160)
 
 <a id="function-function-mq3-client-playable-projectile-view-command-function-command-kind-a-b-radius-rgb-src-mq3-client-playable-projectile-view-ml-1673583684"></a>
 ### command
@@ -65,7 +65,7 @@ Creates a `mq3.client.playable_projectile_view.EffectCommand` record. Assigns `k
 | `rgb` | `dynamic` | — | Value used to initialize `EffectCommand.red`, `EffectCommand.green`, `EffectCommand.blue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L183)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-command-cross-const-command-cross-3-src-mq3-client-playable-projectile-view-ml-2031364198"></a>
 ### COMMAND_CROSS
@@ -77,7 +77,7 @@ const COMMAND_CROSS = 3
 Effect command kind selecting the cross rendering operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-command-glow-const-command-glow-2-src-mq3-client-playable-projectile-view-ml-1223447331"></a>
 ### COMMAND_GLOW
@@ -89,7 +89,7 @@ const COMMAND_GLOW = 2
 Effect command kind selecting the glow rendering operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L24)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-command-line-const-command-line-1-src-mq3-client-playable-projectile-view-ml-425412818"></a>
 ### COMMAND_LINE
@@ -101,7 +101,7 @@ const COMMAND_LINE = 1
 Effect command kind selecting the line rendering operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L22)
 
 <a id="function-function-mq3-client-playable-projectile-view-copypoint-function-copypoint-value-src-mq3-client-playable-projectile-view-ml-590866091"></a>
 ### copyPoint
@@ -117,7 +117,7 @@ Copies three vector components with float32 rounding for playable projectile vie
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L77)
 
 <a id="function-function-mq3-client-playable-projectile-view-cross-function-cross-center-radius-rgb-src-mq3-client-playable-projectile-view-ml-352006314"></a>
 ### cross
@@ -135,7 +135,7 @@ Adapts `mq3.client.playable_projectile_view.command` to playable projectile view
 | `rgb` | `dynamic` | — | Argument 5 of `mq3.client.playable_projectile_view.command`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L198)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-default-impact-milliseconds-const-default-impact-milliseconds-360-src-mq3-client-playable-projectile-view-ml-1276426628"></a>
 ### DEFAULT_IMPACT_MILLISECONDS
@@ -147,7 +147,7 @@ const DEFAULT_IMPACT_MILLISECONDS = 360
 Default impact duration in milliseconds when the caller supplies no override.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L28)
 
 <a id="function-function-mq3-client-playable-projectile-view-defaultimpact-function-defaultimpact-entityid-style-position-normal-eventat-src-mq3-client-playable-projectile-view-ml-1528156092"></a>
 ### defaultImpact
@@ -167,7 +167,7 @@ Adapts `mq3.client.playable_projectile_view.impact` to playable projectile view 
 | `eventAt` | `dynamic` | — | Argument 5 of `mq3.client.playable_projectile_view.impact`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L125)
 
 <a id="function-function-mq3-client-playable-projectile-view-draw-function-draw-commands-src-mq3-client-playable-projectile-view-ml-1042480400"></a>
 ### draw
@@ -183,7 +183,7 @@ Calls `mq3.client.playable_projectile_view.drawCommand` from playable projectile
 | `commands` | `dynamic` | — | Value used by `for each entry in commands count=count+drawCommand(entry) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L293)
 
 <a id="function-function-mq3-client-playable-projectile-view-drawcommand-function-drawcommand-entry-src-mq3-client-playable-projectile-view-ml-938201474"></a>
 ### drawCommand
@@ -199,7 +199,7 @@ Calls `mq3.platform.playable_window.drawLine`, `mq3.client.playable_projectile_v
 | `entry` | `dynamic` | — | Record read through `entry.kind`, `entry.a`, `entry.b`, `entry.red` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L273)
 
 - [mq3.client.playable_projectile_view.EffectCommand](Type-mq3-client-playable-projectile-view-effectcommand-1953427621.md) — struct
 <a id="function-function-mq3-client-playable-projectile-view-fadedcolor-function-fadedcolor-style-fraction-src-mq3-client-playable-projectile-view-ml-2058211071"></a>
@@ -217,7 +217,7 @@ Calls `mq3.client.playable_projectile_view.baseColor`, `mq3.compat.numeric.trunc
 | `fraction` | `dynamic` | — | Interpolation or blend fraction between the endpoint values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L171)
 
 <a id="function-function-mq3-client-playable-projectile-view-fadefraction-function-fadefraction-value-nowmilliseconds-src-mq3-client-playable-projectile-view-ml-1908807575"></a>
 ### fadeFraction
@@ -234,7 +234,7 @@ Calls `mq3.client.playable_projectile_view.alive`, `mq3.compat.numeric.fdiv`, `m
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L152)
 
 <a id="function-function-mq3-client-playable-projectile-view-flying-function-flying-entityid-style-previousposition-position-sampledat-src-mq3-client-playable-projectile-view-ml-1884269331"></a>
 ### flying
@@ -254,7 +254,7 @@ Adapts `mq3.client.playable_projectile_view.snapshot` to playable projectile vie
 | `sampledAt` | `dynamic` | — | Argument 7 of `mq3.client.playable_projectile_view.snapshot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L104)
 
 <a id="function-function-mq3-client-playable-projectile-view-framecommands-function-framecommands-camera-snapshots-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-projectile-view-ml-1674794154"></a>
 ### frameCommands
@@ -276,7 +276,7 @@ Calls `mq3.client.playable_projectile_view.snapshotCommands` from playable proje
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L250)
 
 <a id="function-function-mq3-client-playable-projectile-view-glow-function-glow-center-radius-rgb-src-mq3-client-playable-projectile-view-ml-2052194090"></a>
 ### glow
@@ -294,7 +294,7 @@ Adapts `mq3.client.playable_projectile_view.command` to playable projectile view
 | `rgb` | `dynamic` | — | Argument 5 of `mq3.client.playable_projectile_view.command`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L193)
 
 <a id="function-function-mq3-client-playable-projectile-view-glowradius-function-glowradius-depth-src-mq3-client-playable-projectile-view-ml-59415781"></a>
 ### glowRadius
@@ -310,7 +310,7 @@ Calls `mq3.compat.numeric.trunc32` from playable projectile view `glowRadius`. T
 | `depth` | `dynamic` | — | Value used by `radius=numeric.trunc32(180.0/depth)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L202)
 
 <a id="function-function-mq3-client-playable-projectile-view-impact-function-impact-entityid-style-position-normal-eventat-durationmilliseconds-src-mq3-client-playable-projectile-view-ml-1304075264"></a>
 ### impact
@@ -331,7 +331,7 @@ Adapts `mq3.client.playable_projectile_view.snapshot` to playable projectile vie
 | `durationMilliseconds` | `dynamic` | — | Argument 8 of `mq3.client.playable_projectile_view.snapshot`; passed as `eventAt+durationMilliseconds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L115)
 
 <a id="function-function-mq3-client-playable-projectile-view-impacttip-function-impacttip-value-src-mq3-client-playable-projectile-view-ml-570884051"></a>
 ### impactTip
@@ -347,7 +347,7 @@ Evaluates playable projectile view `impactTip` and returns `[value.position[0]+v
 | `value` | `dynamic` | — | Record read through `value.position`, `value.normal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L211)
 
 <a id="function-function-mq3-client-playable-projectile-view-line-function-line-a-b-rgb-src-mq3-client-playable-projectile-view-ml-846245178"></a>
 ### line
@@ -365,7 +365,7 @@ Adapts `mq3.client.playable_projectile_view.command` to playable projectile view
 | `rgb` | `dynamic` | — | Argument 5 of `mq3.client.playable_projectile_view.command`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L188)
 
 <a id="function-function-mq3-client-playable-projectile-view-livesnapshots-function-livesnapshots-snapshots-nowmilliseconds-src-mq3-client-playable-projectile-view-ml-1278291241"></a>
 ### liveSnapshots
@@ -382,7 +382,7 @@ Calls `mq3.client.playable_projectile_view.alive` from playable projectile view 
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L259)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-max-impact-milliseconds-const-max-impact-milliseconds-1200-src-mq3-client-playable-projectile-view-ml-1382009998"></a>
 ### MAX_IMPACT_MILLISECONDS
@@ -394,7 +394,7 @@ const MAX_IMPACT_MILLISECONDS = 1200
 Upper duration bound in milliseconds for impact processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L30)
 
 - [mq3.client.playable_projectile_view.ProjectileSnapshot](Type-mq3-client-playable-projectile-view-projectilesnapshot-827156542.md) — struct
 <a id="function-function-mq3-client-playable-projectile-view-retailimpact-function-retailimpact-entityid-style-position-normal-eventat-src-mq3-client-playable-projectile-view-ml-1138597554"></a>
@@ -415,7 +415,7 @@ CG_MissileHitWall keeps rocket explosions for 1000 ms and the remaining Baseq3 p
 | `eventAt` | `dynamic` | — | Value used by `return impact(entityId,style,position,normal,eventAt,duration)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L136)
 
 <a id="function-function-mq3-client-playable-projectile-view-screenpoint-function-screenpoint-center-dx-dy-src-mq3-client-playable-projectile-view-ml-524249052"></a>
 ### screenPoint
@@ -433,7 +433,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable projectile view `scr
 | `dy` | `dynamic` | — | Argument 2 of `mq3.client.playable_viewer.ScreenPoint`; passed as `center.y+dy`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L269)
 
 <a id="function-function-mq3-client-playable-projectile-view-snapshot-function-snapshot-entityid-style-previousposition-position-normal-state-eventat-expiresat-src-mq3-client-playable-projectile-view-ml-1380406294"></a>
 ### snapshot
@@ -456,7 +456,7 @@ Calls `mq3.client.playable_projectile_view.validPoint`, `mq3.client.playable_pro
 | `expiresAt` | `dynamic` | — | Value used by `if state==STATE_FLYING and expiresAt!=0 then return error(7583,"flying projectile snapshot cannot have an expiry") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L88)
 
 <a id="function-function-mq3-client-playable-projectile-view-snapshotcommands-function-snapshotcommands-camera-value-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-projectile-view-ml-2038627024"></a>
 ### snapshotCommands
@@ -478,7 +478,7 @@ Calls `mq3.client.playable_projectile_view.alive`, `mq3.client.playable_projecti
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L224)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-state-flying-const-state-flying-1-src-mq3-client-playable-projectile-view-ml-905700072"></a>
 ### STATE_FLYING
@@ -490,7 +490,7 @@ const STATE_FLYING = 1
 Projectile state while the projectile continues moving through the world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L10)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-state-impact-const-state-impact-2-src-mq3-client-playable-projectile-view-ml-376660897"></a>
 ### STATE_IMPACT
@@ -502,7 +502,7 @@ const STATE_IMPACT = 2
 Projectile state after collision, while its impact presentation is active.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L12)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-style-bfg-const-style-bfg-4-src-mq3-client-playable-projectile-view-ml-54477981"></a>
 ### STYLE_BFG
@@ -514,7 +514,7 @@ const STYLE_BFG = 4
 Projectile presentation style selecting the bfg model, trail, and impact family.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L20)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-style-grenade-const-style-grenade-3-src-mq3-client-playable-projectile-view-ml-1139008734"></a>
 ### STYLE_GRENADE
@@ -526,7 +526,7 @@ const STYLE_GRENADE = 3
 Projectile presentation style selecting the grenade model, trail, and impact family.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L18)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-style-plasma-const-style-plasma-2-src-mq3-client-playable-projectile-view-ml-1637703765"></a>
 ### STYLE_PLASMA
@@ -538,7 +538,7 @@ const STYLE_PLASMA = 2
 Projectile presentation style selecting the plasma model, trail, and impact family.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L16)
 
 <a id="constant-constant-mq3-client-playable-projectile-view-style-rocket-const-style-rocket-1-src-mq3-client-playable-projectile-view-ml-1404600350"></a>
 ### STYLE_ROCKET
@@ -550,7 +550,7 @@ const STYLE_ROCKET = 1
 Projectile presentation style selecting the rocket model, trail, and impact family.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L14)
 
 <a id="function-function-mq3-client-playable-projectile-view-validpoint-function-validpoint-value-src-mq3-client-playable-projectile-view-ml-211022125"></a>
 ### validPoint
@@ -566,4 +566,4 @@ Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_view.ml#L74)

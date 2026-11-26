@@ -25,7 +25,7 @@ const BIGCHAR_WIDTH = 16
 Bigchar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L21)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-color-function-color-index-src-mq3-client-cl-scrn-runtime-ml-446577968"></a>
 ### color
@@ -41,7 +41,7 @@ Evaluates engine client scrn runtime `color` and returns `table[index&7]` accord
 | `index` | `dynamic` | — | Value used by `return table[index&7]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L160)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-create-function-create-renderstate-uilifecycle-host-width-height-charsetshader-whiteshader-src-mq3-client-cl-scrn-runtime-ml-1828062129"></a>
 ### create
@@ -63,7 +63,7 @@ Calls `mq3.renderer.tr_cmds_runtime.create`, `mq3.client.cl_scrn_runtime.service
 | `whiteShader` | `dynamic` | — | Value used by `return State(renderState,uiLifecycle,host,width,height,charSetShader,whiteShader,false,0,0,0,32,1,0,0,values,lifecycle.CA_DISCONNECTED,0,true,...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L147)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-draw-function-draw-state-x-y-w-h-s1-t1-s2-t2-shader-src-mq3-client-cl-scrn-runtime-ml-1162637334"></a>
 ### draw
@@ -88,7 +88,7 @@ Adapts `mq3.renderer.tr_cmds_runtime.RE_StretchPic` to engine client scrn runtim
 | `shader` | `dynamic` | — | Argument 10 of `mq3.renderer.tr_cmds_runtime.RE_StretchPic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L192)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-emit-function-emit-state-kind-value-src-mq3-client-cl-scrn-runtime-ml-1220430106"></a>
 ### emit
@@ -106,7 +106,7 @@ Calls `state.services.diagnosticFn` from engine client scrn runtime `emit`.
 | `value` | `dynamic` | — | Value used by `if state.services.diagnosticFn!=void then state.services.diagnosticFn(state.services.context,kind,value) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L157)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-fail-function-fail-message-src-mq3-client-cl-scrn-runtime-ml-2062802491"></a>
 ### fail
@@ -122,7 +122,7 @@ Creates the engine client scrn runtime error `7810` with diagnostic text `"cl_sc
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cl_scrn: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L135)
 
 - [mq3.client.cl_scrn_runtime.GraphSample](Type-mq3-client-cl-scrn-runtime-graphsample-2007097154.md) — struct
 <a id="function-function-mq3-client-cl-scrn-runtime-iscolor-function-iscolor-data-index-src-mq3-client-cl-scrn-runtime-ml-1121084036"></a>
@@ -140,7 +140,7 @@ Computes `index+1<len(data) and data[index]==94 and data[index+1]!=94` for engin
 | `index` | `dynamic` | — | Value used by `return index+1<len(data) and data[index]==94 and data[index+1]!=94`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L167)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-adjustfrom640-function-scr-adjustfrom640-state-x-y-w-h-src-mq3-client-cl-scrn-runtime-ml-678919345"></a>
 ### SCR_AdjustFrom640
@@ -160,7 +160,7 @@ SCR_AdjustFrom640 -- independent x/y scaling is intentional Baseq3 behavior.
 | `h` | `dynamic` | — | Height in the coordinate space used by `SCR_AdjustFrom640`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L175)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-debuggraph-function-scr-debuggraph-state-value-colorindex-src-mq3-client-cl-scrn-runtime-ml-920279991"></a>
 ### SCR_DebugGraph
@@ -178,7 +178,7 @@ Updates `state.graphValues[index].value`, `state.graphValues[index].color`, `sta
 | `colorIndex` | `dynamic` | — | Value used by `state.graphValues[index].color=colorIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L320)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawbigstring-function-scr-drawbigstring-state-x-y-text-alpha-src-mq3-client-cl-scrn-runtime-ml-1601716335"></a>
 ### SCR_DrawBigString
@@ -198,7 +198,7 @@ Adapts `mq3.client.cl_scrn_runtime.SCR_DrawStringExt` to engine client scrn runt
 | `alpha` | `dynamic` | — | Opacity or blend weight used by the visual effect. Forwarded to `mq3.client.cl_scrn_runtime.SCR_DrawStringExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L275)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawbigstringcolor-function-scr-drawbigstringcolor-state-x-y-text-rgba-src-mq3-client-cl-scrn-runtime-ml-234282723"></a>
 ### SCR_DrawBigStringColor
@@ -218,7 +218,7 @@ Adapts `mq3.client.cl_scrn_runtime.SCR_DrawStringExt` to engine client scrn runt
 | `rgba` | `dynamic` | — | Argument 6 of `mq3.client.cl_scrn_runtime.SCR_DrawStringExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L282)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawchar-function-scr-drawchar-state-x-y-size-ch-src-mq3-client-cl-scrn-runtime-ml-1598655442"></a>
 ### SCR_DrawChar
@@ -238,7 +238,7 @@ Calls `mq3.client.cl_scrn_runtime.SCR_AdjustFrom640`, `mq3.client.cl_scrn_runtim
 | `ch` | `dynamic` | — | Value used by `ch=ch&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L231)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawdebuggraph-function-scr-drawdebuggraph-state-src-mq3-client-cl-scrn-runtime-ml-1773741677"></a>
 ### SCR_DrawDebugGraph
@@ -254,7 +254,7 @@ Calls `mq3.renderer.tr_cmds_runtime.RE_SetColor`, `mq3.client.cl_scrn_runtime.co
 | `state` | `dynamic` | — | Record read through `state.vidWidth`, `state.vidHeight`, `state.renderer`, `state.graphheight` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L325)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawdemorecording-function-scr-drawdemorecording-state-src-mq3-client-cl-scrn-runtime-ml-1470082651"></a>
 ### SCR_DrawDemoRecording
@@ -270,7 +270,7 @@ Calls `state.services.fileTellFn`, `mq3.compat.numeric.quotient`, `mq3.client.cl
 | `state` | `dynamic` | — | Record read through `state.demoRecording`, `state.spDemoRecording`, `state.services.fileTellFn`, `state.services.context` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L311)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawnamedpic-function-scr-drawnamedpic-state-x-y-width-height-picname-src-mq3-client-cl-scrn-runtime-ml-1784469350"></a>
 ### SCR_DrawNamedPic
@@ -291,7 +291,7 @@ Calls `state.services.registerShaderFn`, `mq3.client.cl_scrn_runtime.SCR_AdjustF
 | `picname` | `dynamic` | — | Value used by `shader=state.services.registerShaderFn(state.services.context,picname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L200)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawpic-function-scr-drawpic-state-x-y-width-height-shader-src-mq3-client-cl-scrn-runtime-ml-1988694532"></a>
 ### SCR_DrawPic
@@ -312,7 +312,7 @@ Calls `mq3.client.cl_scrn_runtime.SCR_AdjustFrom640`, `mq3.client.cl_scrn_runtim
 | `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L222)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawscreenfield-function-scr-drawscreenfield-state-stereoframe-src-mq3-client-cl-scrn-runtime-ml-959997518"></a>
 ### SCR_DrawScreenField
@@ -329,7 +329,7 @@ Updates `state.currentStereo` during engine client scrn runtime `SCR_DrawScreenF
 | `stereoFrame` | `dynamic` | — | Value assigned to `state.currentStereo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L342)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawsmallchar-function-scr-drawsmallchar-state-x-y-ch-src-mq3-client-cl-scrn-runtime-ml-791976585"></a>
 ### SCR_DrawSmallChar
@@ -348,7 +348,7 @@ Calls `mq3.client.cl_scrn_runtime.draw` from engine client scrn runtime `SCR_Dra
 | `ch` | `dynamic` | — | Value used by `ch=ch&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L241)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawsmallstringext-function-scr-drawsmallstringext-state-x-y-text-setcolor-forcecolor-src-mq3-client-cl-scrn-runtime-ml-1777313438"></a>
 ### SCR_DrawSmallStringExt
@@ -369,7 +369,7 @@ Calls `mq3.renderer.tr_cmds_runtime.RE_SetColor`, `mq3.client.cl_scrn_runtime.is
 | `forceColor` | `dynamic` | — | Value used by `if not forceColor then rgba=color(data[index+1])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L290)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-drawstringext-function-scr-drawstringext-state-x-y-size-text-setcolor-forcecolor-src-mq3-client-cl-scrn-runtime-ml-566526671"></a>
 ### SCR_DrawStringExt
@@ -391,7 +391,7 @@ Calls `mq3.renderer.tr_cmds_runtime.RE_SetColor`, `mq3.client.cl_scrn_runtime.is
 | `forceColor` | `dynamic` | — | Value used by `if not forceColor then rgba=color(data[index+1])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L254)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-fillrect-function-scr-fillrect-state-x-y-width-height-rgba-src-mq3-client-cl-scrn-runtime-ml-2120011551"></a>
 ### SCR_FillRect
@@ -412,7 +412,7 @@ Calls `mq3.renderer.tr_cmds_runtime.RE_SetColor`, `mq3.client.cl_scrn_runtime.SC
 | `rgba` | `dynamic` | — | Value used by `renderer.RE_SetColor(state.renderer,rgba)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L212)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-getbigstringwidth-function-scr-getbigstringwidth-text-src-mq3-client-cl-scrn-runtime-ml-931290451"></a>
 ### SCR_GetBigStringWidth
@@ -428,7 +428,7 @@ Computes `SCR_Strlen(text)*BIGCHAR_WIDTH` for engine client scrn runtime `SCR_Ge
 | `text` | `dynamic` | — | Text consumed or emitted by `SCR_GetBigStringWidth` in the engine client scrn runtime path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L307)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-init-function-scr-init-state-src-mq3-client-cl-scrn-runtime-ml-277580753"></a>
 ### SCR_Init
@@ -444,7 +444,7 @@ Updates `state.timegraph`, `state.debuggraph`, `state.graphheight`, `state.graph
 | `state` | `dynamic` | — | Mutable engine client scrn runtime record/storage; this routine assigns `state.timegraph`, `state.debuggraph`, `state.graphheight`, `state.graphscale` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L335)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-strlen-function-scr-strlen-text-src-mq3-client-cl-scrn-runtime-ml-944599567"></a>
 ### SCR_Strlen
@@ -460,7 +460,7 @@ Calls `mq3.client.cl_scrn_runtime.isColor` from engine client scrn runtime `SCR_
 | `text` | `dynamic` | — | Text consumed or emitted by `SCR_Strlen` in the engine client scrn runtime path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L302)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-scr-updatescreen-function-scr-updatescreen-state-src-mq3-client-cl-scrn-runtime-ml-40089921"></a>
 ### SCR_UpdateScreen
@@ -476,7 +476,7 @@ Updates `state.recursive` during engine client scrn runtime `SCR_UpdateScreen`.
 | `state` | `dynamic` | — | Mutable engine client scrn runtime record/storage; this routine assigns `state.recursive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L356)
 
 <a id="constant-constant-mq3-client-cl-scrn-runtime-screen-height-const-screen-height-480-src-mq3-client-cl-scrn-runtime-ml-1199265897"></a>
 ### SCREEN_HEIGHT
@@ -488,7 +488,7 @@ const SCREEN_HEIGHT = 480
 Height of the native UI coordinate space used by the screen-scaling adapter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L15)
 
 <a id="constant-constant-mq3-client-cl-scrn-runtime-screen-width-const-screen-width-640-src-mq3-client-cl-scrn-runtime-ml-1443537603"></a>
 ### SCREEN_WIDTH
@@ -500,7 +500,7 @@ const SCREEN_WIDTH = 640
 Width of the native UI coordinate space used by the screen-scaling adapter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L13)
 
 <a id="function-function-mq3-client-cl-scrn-runtime-services-function-services-context-src-mq3-client-cl-scrn-runtime-ml-1973680319"></a>
 ### services
@@ -516,7 +516,7 @@ Creates a `mq3.client.cl_scrn_runtime.Services` record. Assigns `context` from `
 | `context` | `dynamic` | — | Value used to initialize `Services.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L138)
 
 - [mq3.client.cl_scrn_runtime.Services](Type-mq3-client-cl-scrn-runtime-services-1553853860.md) — struct
 <a id="constant-constant-mq3-client-cl-scrn-runtime-smallchar-height-const-smallchar-height-16-src-mq3-client-cl-scrn-runtime-ml-79639782"></a>
@@ -529,7 +529,7 @@ const SMALLCHAR_HEIGHT = 16
 Smallchar font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L19)
 
 <a id="constant-constant-mq3-client-cl-scrn-runtime-smallchar-width-const-smallchar-width-8-src-mq3-client-cl-scrn-runtime-ml-1999448545"></a>
 ### SMALLCHAR_WIDTH
@@ -541,7 +541,7 @@ const SMALLCHAR_WIDTH = 8
 Smallchar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L17)
 
 - [mq3.client.cl_scrn_runtime.State](Type-mq3-client-cl-scrn-runtime-state-2108439569.md) — struct
 <a id="constant-constant-mq3-client-cl-scrn-runtime-stereo-center-const-stereo-center-0-src-mq3-client-cl-scrn-runtime-ml-1772628449"></a>
@@ -554,7 +554,7 @@ const STEREO_CENTER = 0
 Stereo-view selector for the centered, non-offset camera view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L23)
 
 <a id="constant-constant-mq3-client-cl-scrn-runtime-stereo-left-const-stereo-left-1-src-mq3-client-cl-scrn-runtime-ml-256493450"></a>
 ### STEREO_LEFT
@@ -566,7 +566,7 @@ const STEREO_LEFT = 1
 Stereo-view selector for the left-eye camera view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L25)
 
 <a id="constant-constant-mq3-client-cl-scrn-runtime-stereo-right-const-stereo-right-2-src-mq3-client-cl-scrn-runtime-ml-711524263"></a>
 ### STEREO_RIGHT
@@ -578,4 +578,4 @@ const STEREO_RIGHT = 2
 Stereo-view selector for the right-eye camera view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_scrn_runtime.ml#L27)

@@ -12,7 +12,7 @@ struct Runtime
 Stores network handshake runtime wiring and state, including `group`, `server`, `slots`, `lastError`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L27)
 
 ## Members
 
@@ -26,7 +26,7 @@ group
 When constructing this record, `create` supplies `groupState` for this member. Used by `reconcile` and `setTime` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L30)
 
 <a id="field-field-mq3-client-network-handshake-runtime-lasterror-lasterror-src-mq3-client-network-handshake-ml-619756911"></a>
 ### lastError
@@ -38,7 +38,7 @@ lastError
 When constructing this record, `create` supplies an empty string for this member. Used by `reconcile` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L39)
 
 <a id="field-field-mq3-client-network-handshake-runtime-server-server-src-mq3-client-network-handshake-ml-1621324581"></a>
 ### server
@@ -50,7 +50,7 @@ server
 When constructing this record, `create` supplies `serverState` for this member. Used by `bindServer` and `reconcile` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L33)
 
 <a id="field-field-mq3-client-network-handshake-runtime-slots-slots-src-mq3-client-network-handshake-ml-1061653803"></a>
 ### slots
@@ -62,4 +62,4 @@ slots
 When constructing this record, `create` supplies `slots` for this member. Used by `findSlot` and `bindServer` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L36)

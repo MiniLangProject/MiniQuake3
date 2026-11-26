@@ -12,7 +12,7 @@ struct Block
 Block record for audio.snd_compressed_paint, containing `data`, `size`, `sample`, `index`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L20)
 
 ## Members
 
@@ -26,7 +26,7 @@ data
 Encoded bytes for this compressed sound block.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L22)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-block-index-index-src-mq3-audio-snd-compressed-paint-ml-566716486"></a>
 ### index
@@ -38,7 +38,7 @@ index
 Index into the ADPCM step-size table.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L28)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-block-sample-sample-src-mq3-audio-snd-compressed-paint-ml-1152489850"></a>
 ### sample
@@ -50,7 +50,7 @@ sample
 Previous reconstructed sample used as the ADPCM predictor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L26)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-block-size-size-src-mq3-audio-snd-compressed-paint-ml-1982796496"></a>
 ### size
@@ -62,4 +62,4 @@ size
 Number of logical mono samples represented by the block.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L24)

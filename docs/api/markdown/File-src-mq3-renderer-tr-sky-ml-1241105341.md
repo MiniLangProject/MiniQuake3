@@ -26,7 +26,7 @@ Returns `value` from `mq3.renderer.tr_sky.absolute`; earlier branches return `0.
 | `value` | `dynamic` | — | Input tested by `value<0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L104)
 
 <a id="function-function-mq3-renderer-tr-sky-absoluteindex-function-absoluteindex-value-src-mq3-renderer-tr-sky-ml-1459490731"></a>
 ### absoluteIndex
@@ -42,7 +42,7 @@ Returns `value` from `mq3.renderer.tr_sky.absoluteIndex`; earlier branches retur
 | `value` | `dynamic` | — | Input tested by `value<0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L107)
 
 <a id="extern_function-extern-function-mq3-renderer-tr-sky-acos-extern-function-acos-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-renderer-tr-sky-ml-402378492"></a>
 ### acos
@@ -60,7 +60,7 @@ Computes the inverse cosine through the C runtime.
 
 **Returns:** The angle in radians for the supplied cosine.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L12)
 
 <a id="function-function-mq3-renderer-tr-sky-addskypolygon-function-addskypolygon-bounds-vecs-src-mq3-renderer-tr-sky-ml-1836738620"></a>
 ### addSkyPolygon
@@ -77,7 +77,7 @@ Updates `bounds.minS[axis]`, `bounds.maxS[axis]`, `bounds.minT[axis]`, `bounds.m
 | `vecs` | `dynamic` | — | Sequence traversed as `value` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L119)
 
 - [mq3.renderer.tr_sky.Bounds](Type-mq3-renderer-tr-sky-bounds-470777616.md) — struct
 <a id="extern_function-extern-function-mq3-renderer-tr-sky-ceil-extern-function-ceil-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-renderer-tr-sky-ml-1503698102"></a>
@@ -96,7 +96,7 @@ Rounds a floating-point value toward positive infinity through the C runtime.
 
 **Returns:** The least integral floating-point value no smaller than the input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L20)
 
 <a id="function-function-mq3-renderer-tr-sky-clearskybox-function-clearskybox-src-mq3-renderer-tr-sky-ml-1453012416"></a>
 ### clearSkyBox
@@ -108,7 +108,7 @@ function clearSkyBox()
 Constructs `mq3.renderer.tr_sky.Bounds` with `minS` = `array(6,9999.0)`, `minT` = `array(6,9999.0)`, `maxS` = `array(6,-9999.0)`, `maxT` = `array(6,-9999.0)`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L98)
 
 <a id="function-function-mq3-renderer-tr-sky-clipskypolygon-function-clipskypolygon-bounds-vecs-stage-src-mq3-renderer-tr-sky-ml-1287058832"></a>
 ### clipSkyPolygon
@@ -126,7 +126,7 @@ Computes `clipSkyPolygon` from `clipSkyPolygon(bounds,second,stage+1)` using `mq
 | `stage` | `dynamic` | — | Input tested by `stage==6`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L142)
 
 - [mq3.renderer.tr_sky.CloudTable](Type-mq3-renderer-tr-sky-cloudtable-2136303114.md) — struct
 <a id="function-function-mq3-renderer-tr-sky-copy3-function-copy3-value-src-mq3-renderer-tr-sky-ml-1785229313"></a>
@@ -143,7 +143,7 @@ Returns `[value[0],value[1],value[2]]` for `mq3.renderer.tr_sky.copy3`.
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L110)
 
 <a id="function-function-mq3-renderer-tr-sky-dot-function-dot-a-b-src-mq3-renderer-tr-sky-ml-830669627"></a>
 ### dot
@@ -160,7 +160,7 @@ Computes `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `mq3.renderer.tr_sky.dot`.
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L114)
 
 <a id="function-function-mq3-renderer-tr-sky-drawskybox-function-drawskybox-shader-bounds-zfar-src-mq3-renderer-tr-sky-ml-2054625809"></a>
 ### drawSkyBox
@@ -178,7 +178,7 @@ Builds only visible quantized skybox sides using the renderer's cube-face textur
 | `zFar` | `dynamic` | — | Value forwarded as `zFar` to `mq3.renderer.tr_sky.drawSkySide`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L230)
 
 <a id="function-function-mq3-renderer-tr-sky-drawskyside-function-drawskyside-image-axis-mins-maxs-zfar-src-mq3-renderer-tr-sky-ml-1784329749"></a>
 ### drawSkySide
@@ -198,7 +198,7 @@ Builds `mq3.renderer.tr_sky.SkySide` for `mq3.renderer.tr_sky.drawSkySide`.
 | `zFar` | `dynamic` | — | Value forwarded as `zFar` to `mq3.renderer.tr_sky.makeSkyVec`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L219)
 
 <a id="function-function-mq3-renderer-tr-sky-fillcloudbox-function-fillcloudbox-shader-bounds-zfar-origin-table-stage-mesh-src-mq3-renderer-tr-sky-ml-1754791264"></a>
 ### fillCloudBox
@@ -220,7 +220,7 @@ Computes `fillCloudBox` from `fillCloudySkySide(mesh,axis,range[0],range[1],zFar
 | `mesh` | `dynamic` | — | Value forwarded as `mesh` to `mq3.renderer.tr_sky.fillCloudySkySide`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L267)
 
 <a id="function-function-mq3-renderer-tr-sky-fillcloudyskyside-function-fillcloudyskyside-mesh-axis-mins-maxs-zfar-origin-table-addindexes-src-mq3-renderer-tr-sky-ml-1270721226"></a>
 ### fillCloudySkySide
@@ -243,7 +243,7 @@ Updates `mesh.vertices`, `mesh.indexes` in `mq3.renderer.tr_sky.fillCloudySkySid
 | `addIndexes` | `dynamic` | — | Input tested by `addIndexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L248)
 
 <a id="extern_function-extern-function-mq3-renderer-tr-sky-floor-extern-function-floor-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-renderer-tr-sky-ml-1424871076"></a>
 ### floor
@@ -261,7 +261,7 @@ Rounds a floating-point value toward negative infinity through the C runtime.
 
 **Returns:** The greatest integral floating-point value no larger than the input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L16)
 
 <a id="constant-constant-mq3-renderer-tr-sky-half-sky-subdivisions-const-half-sky-subdivisions-4-src-mq3-renderer-tr-sky-ml-1237018045"></a>
 ### HALF_SKY_SUBDIVISIONS
@@ -273,7 +273,7 @@ const HALF_SKY_SUBDIVISIONS = 4
 Half of the skybox subdivision count, used to center the face grid.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L25)
 
 <a id="function-function-mq3-renderer-tr-sky-makeskyvec-function-makeskyvec-s-t-axis-zfar-skymin-skymax-src-mq3-renderer-tr-sky-ml-429113513"></a>
 ### makeSkyVec
@@ -294,7 +294,7 @@ Builds `mq3.renderer.tr_sky.SkyVertex` after updating `xyz[j]`.
 | `skyMax` | `dynamic` | — | Input tested by `u<skyMin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L189)
 
 <a id="constant-constant-mq3-renderer-tr-sky-max-clip-verts-const-max-clip-verts-64-src-mq3-renderer-tr-sky-ml-1816867371"></a>
 ### MAX_CLIP_VERTS
@@ -306,7 +306,7 @@ const MAX_CLIP_VERTS = 64
 Maximum number of vertices retained while clipping a sky polygon.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L29)
 
 - [mq3.renderer.tr_sky.Mesh](Type-mq3-renderer-tr-sky-mesh-151315812.md) — struct
 <a id="constant-constant-mq3-renderer-tr-sky-on-epsilon-const-on-epsilon-0-1-src-mq3-renderer-tr-sky-ml-1238834828"></a>
@@ -319,7 +319,7 @@ const ON_EPSILON = 0.1
 Tolerance used when classifying sky vertices against clipping planes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L27)
 
 <a id="function-function-mq3-renderer-tr-sky-perpendicular-function-perpendicular-direction-src-mq3-renderer-tr-sky-ml-414884837"></a>
 ### perpendicular
@@ -335,7 +335,7 @@ Computes `perpendicular` from `[value[0]/length,value[1]/length,value[2]/length]
 | `direction` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.tr_sky.dot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L310)
 
 <a id="function-function-mq3-renderer-tr-sky-quantizedbounds-function-quantizedbounds-bounds-axis-mint-src-mq3-renderer-tr-sky-ml-612849022"></a>
 ### quantizedBounds
@@ -353,7 +353,7 @@ Computes `quantizedBounds` from `[[minS,minY],[maxS,maxY]]` using `mq3.compat.nu
 | `minT` | `dynamic` | — | Indexed input read at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L203)
 
 <a id="function-function-mq3-renderer-tr-sky-rbclipskypolygons-function-rbclipskypolygons-points-indexes-vieworigin-src-mq3-renderer-tr-sky-ml-1696729654"></a>
 ### rbClipSkyPolygons
@@ -371,7 +371,7 @@ Computes `rbClipSkyPolygons` from `clearSkyBox()` using `mq3.renderer.tr_sky.cle
 | `viewOrigin` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L170)
 
 <a id="function-function-mq3-renderer-tr-sky-rbdrawsun-function-rbdrawsun-skyrendered-drawsun-zfar-direction-src-mq3-renderer-tr-sky-ml-1406378740"></a>
 ### rbDrawSun
@@ -390,7 +390,7 @@ Builds `mq3.renderer.tr_sky.Mesh` for `mq3.renderer.tr_sky.rbDrawSun`.
 | `direction` | `dynamic` | — | Value forwarded as `direction` to `mq3.renderer.tr_sky.perpendicular`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L320)
 
 <a id="function-function-mq3-renderer-tr-sky-rbstageiteratorsky-function-rbstageiteratorsky-points-indexes-vieworigin-shader-zfar-fastsky-showsky-table-drawsun-sundirection-src-mq3-renderer-tr-sky-ml-517538792"></a>
 ### rbStageIteratorSky
@@ -415,7 +415,7 @@ Builds `mq3.renderer.tr_sky.StageResult` for `mq3.renderer.tr_sky.rbStageIterato
 | `sunDirection` | `dynamic` | — | Value forwarded as `direction` to `mq3.renderer.tr_sky.rbDrawSun`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L338)
 
 <a id="function-function-mq3-renderer-tr-sky-rbuildclouddata-function-rbuildclouddata-shader-bounds-zfar-origin-table-src-mq3-renderer-tr-sky-ml-26407033"></a>
 ### rBuildCloudData
@@ -435,7 +435,7 @@ Returns `mesh` from `mq3.renderer.tr_sky.rBuildCloudData`; earlier branches retu
 | `table` | `dynamic` | — | Value forwarded as `table` to `mq3.renderer.tr_sky.fillCloudBox`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L282)
 
 <a id="function-function-mq3-renderer-tr-sky-rinitskytexcoords-function-rinitskytexcoords-heightcloud-src-mq3-renderer-tr-sky-ml-554269500"></a>
 ### rInitSkyTexCoords
@@ -451,7 +451,7 @@ Builds `mq3.renderer.tr_sky.CloudTable` after updating `coords[axis]`, `factors[
 | `heightCloud` | `dynamic` | — | Cloud-shell height above the 4096-unit world sphere used to compute intersection coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L290)
 
 <a id="constant-constant-mq3-renderer-tr-sky-sky-subdivisions-const-sky-subdivisions-8-src-mq3-renderer-tr-sky-ml-1485093627"></a>
 ### SKY_SUBDIVISIONS
@@ -463,7 +463,7 @@ const SKY_SUBDIVISIONS = 8
 Number of subdivisions used when tessellating a skybox face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L23)
 
 - [mq3.renderer.tr_sky.SkyShader](Type-mq3-renderer-tr-sky-skyshader-1590844103.md) — struct
 - [mq3.renderer.tr_sky.SkySide](Type-mq3-renderer-tr-sky-skyside-570681949.md) — struct

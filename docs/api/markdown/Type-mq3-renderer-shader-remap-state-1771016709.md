@@ -12,7 +12,7 @@ struct State
 Data record for `mq3.renderer.shader_remap.State`; groups `entries`, `revision`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L19)
 
 ## Members
 
@@ -26,7 +26,7 @@ entries
 Records currently stored in this index, registry, or cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L21)
 
 <a id="field-field-mq3-renderer-shader-remap-state-revision-revision-src-mq3-renderer-shader-remap-ml-1028821312"></a>
 ### revision
@@ -38,4 +38,4 @@ revision
 Generation number used to detect changes in cached data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L23)

@@ -30,4 +30,4 @@ Apply `mq3.vm.syscall_common.argument`, `mq3.botlib.ai_resource_pools.allocChatS
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_syscalls.ml#L13)

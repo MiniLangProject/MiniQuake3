@@ -12,7 +12,7 @@ struct Trace
 Stores client game players trace record, including `fraction`, `endpos`, `normal`, `startsolid`, `allsolid`, `surfaceFlags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L273)
 
 ## Members
 
@@ -26,7 +26,7 @@ allsolid
 True when the trace remains fully enclosed by solid geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L283)
 
 <a id="field-field-mq3-client-cgame-players-trace-endpos-endpos-src-mq3-client-cgame-players-ml-1459580376"></a>
 ### endpos
@@ -38,7 +38,7 @@ endpos
 Final world-space position reached by the collision trace.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L277)
 
 <a id="field-field-mq3-client-cgame-players-trace-fraction-fraction-src-mq3-client-cgame-players-ml-1058646870"></a>
 ### fraction
@@ -50,7 +50,7 @@ fraction
 Fraction of the requested trace distance completed before the first collision.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L275)
 
 <a id="field-field-mq3-client-cgame-players-trace-normal-normal-src-mq3-client-cgame-players-ml-1457929856"></a>
 ### normal
@@ -62,7 +62,7 @@ normal
 Ground-trace plane normal available to player-shadow and contact-effect calculations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L279)
 
 <a id="field-field-mq3-client-cgame-players-trace-startsolid-startsolid-src-mq3-client-cgame-players-ml-287360644"></a>
 ### startsolid
@@ -74,7 +74,7 @@ startsolid
 True when the collision trace begins inside solid geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L281)
 
 <a id="field-field-mq3-client-cgame-players-trace-surfaceflags-surfaceflags-src-mq3-client-cgame-players-ml-1205933238"></a>
 ### surfaceFlags
@@ -86,4 +86,4 @@ surfaceFlags
 Surface-property bits returned by the collision trace.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L285)

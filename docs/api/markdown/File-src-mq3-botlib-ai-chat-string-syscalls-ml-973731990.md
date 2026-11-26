@@ -33,7 +33,7 @@ Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_string_syscalls.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_string_syscalls.ml#L25)
 
 <a id="function-function-mq3-botlib-ai-chat-string-syscalls-mutate-function-mutate-vm-address-value-label-src-mq3-botlib-ai-chat-string-syscalls-ml-319469836"></a>
 ### mutate
@@ -52,4 +52,4 @@ Apply `mq3.vm.syscall_common.pointer` and `mq3.vm.syscall_common.writeBuffer` wh
 | `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_string_syscalls.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_string_syscalls.ml#L15)

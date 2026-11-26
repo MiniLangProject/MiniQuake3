@@ -12,7 +12,7 @@ struct Destination
 Data record for `mq3.renderer.tr_image_runtime.Destination`; groups `bytes`, `capacity`, `used`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L48)
 
 ## Members
 
@@ -26,7 +26,7 @@ bytes
 Backing byte buffer receiving the encoded image.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L50)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-destination-capacity-capacity-src-mq3-renderer-tr-image-runtime-ml-1109166481"></a>
 ### capacity
@@ -38,7 +38,7 @@ capacity
 Allocated byte capacity of the encoded-image output buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L52)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-destination-used-used-src-mq3-renderer-tr-image-runtime-ml-72570427"></a>
 ### used
@@ -50,4 +50,4 @@ used
 Number of encoded output bytes currently written to the destination buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L54)

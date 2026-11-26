@@ -12,7 +12,7 @@ struct UploadLevel
 Data record for `mq3.renderer.image_registry.UploadLevel`; groups `width`, `height`, `pixels`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L62)
 
 ## Members
 
@@ -26,7 +26,7 @@ height
 Height in pixels of this mip level of the texture upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L66)
 
 <a id="field-field-mq3-renderer-image-registry-uploadlevel-pixels-pixels-src-mq3-renderer-image-registry-ml-1429045028"></a>
 ### pixels
@@ -38,7 +38,7 @@ pixels
 Decoded pixel data for the image or upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L68)
 
 <a id="field-field-mq3-renderer-image-registry-uploadlevel-width-width-src-mq3-renderer-image-registry-ml-1778478054"></a>
 ### width
@@ -50,4 +50,4 @@ width
 Width in pixels of this mip level of the texture upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L64)

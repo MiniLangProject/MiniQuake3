@@ -1,0 +1,353 @@
+{
+  "source_revision": "3136e627a1265024f4793bf02086048815b28780",
+  "source_tree": "4d91b674a14b73493e11f7dda3573ac53adee928",
+  "published_parent_heads": {
+    "master": "fb350eccd1f3f666559d362204d8071fd74c6fdd",
+    "main": "b4389b7121e1ed178be239ab4bbaae99162bb7cc",
+    "fix/network-protocol68-20261117": "14ffb68722322086e6bc91e168ae81a00e27f9b6"
+  },
+  "repository_default_branch": "main",
+  "source_integrity": {
+    "baseline_commit": "b598a9ac1c3283244ee14f1f391fadaf457bce32",
+    "source_files": 603,
+    "unchanged_files": 595,
+    "comment_changed_files": [
+      "src/mq3/client/cgame_snapshot.ml",
+      "src/mq3/client/gamestate.ml",
+      "src/mq3/client/network_ingress.ml",
+      "src/mq3/client/remote_session.ml",
+      "src/mq3/client/server_command_stream.ml",
+      "src/mq3/qcommon/received_message.ml",
+      "src/mq3/server/netchan.ml",
+      "src/mq3/server/network_ingress.ml"
+    ],
+    "errors": [],
+    "method": "Compare all nonblank non-comment-only lines exactly; normalize whitespace only within Session field declaration to permit per-field documentation",
+    "equal": true
+  },
+  "generator": {
+    "version": "0.4.9",
+    "source_revision": "a9a058215cde15459d42525a4a3e0d5ff2108f05",
+    "sha256": "c93e4a45e65e06f8096bf146a3c4f9b360523c6816216a783af122b53f81c55a",
+    "compiler_imports_revision": "c1f402d66e7021bd2137e68b5d919569f10f3959",
+    "strict": true,
+    "include_timestamp": false,
+    "repository_ref": "main"
+  },
+  "generation": {
+    "exit_code": 0,
+    "elapsed_seconds": 563.373,
+    "started_at_utc": "2026-11-26T21:16:51.304202+00:00",
+    "finished_at_utc": "2026-11-26T21:26:14.678460+00:00",
+    "peak_sampled_rss_bytes": 426962944
+  },
+  "analysis": {
+    "project_source_files": 603,
+    "loaded_files": 616,
+    "symbols": 35257,
+    "warnings": 0,
+    "errors": 0
+  },
+  "coverage": {
+    "API declarations": {
+      "documented": 14473,
+      "total": 14473
+    },
+    "Constants": {
+      "documented": 7136,
+      "total": 7136
+    },
+    "Fields": {
+      "documented": 13274,
+      "total": 13274
+    },
+    "Overall": {
+      "documented": 67564,
+      "total": 67564
+    },
+    "Parameters": {
+      "documented": 32681,
+      "total": 32681
+    }
+  },
+  "generated_source_refs": {
+    "main": 69766
+  },
+  "output_validation": {
+    "generated_files": 5623,
+    "manifests": [
+      {
+        "format": "html",
+        "files": 2813
+      },
+      {
+        "format": "markdown",
+        "files": 2810
+      }
+    ],
+    "local_links": 259803,
+    "fragment_references": 200128,
+    "json_files": 1,
+    "svg_files": 4,
+    "expected_source_revision": "3136e627a1265024f4793bf02086048815b28780",
+    "expected_generator_version": "0.4.9",
+    "defects": 0,
+    "errors": []
+  },
+  "output_installation": {
+    "method": "Copy each verified generated file; remove only obsolete manifest-listed files",
+    "all_installed_file_sha256_equal": true,
+    "bytes_including_manifests": 111702699
+  },
+  "integration_validation": {
+    "status": "passed",
+    "tested_source_commit": "b598a9ac1c3283244ee14f1f391fadaf457bce32",
+    "tested_tree": "99d6e76dc7d5e0b75979482a31740fc98853a2fd",
+    "parents_preserved": {
+      "master": "fb350eccd1f3f666559d362204d8071fd74c6fdd",
+      "main": "b4389b7121e1ed178be239ab4bbaae99162bb7cc",
+      "fix/network-protocol68-20261117": "14ffb68722322086e6bc91e168ae81a00e27f9b6"
+    },
+    "merge_commits": [
+      "61722832d21d380e043d747f4231f0e8e600c202",
+      "b598a9ac1c3283244ee14f1f391fadaf457bce32"
+    ],
+    "fix_branch_merge_changed_tree": false,
+    "component_contracts": 245,
+    "component_programs_built_and_run": 15,
+    "component_failures": [],
+    "original_c_differential_records": 64,
+    "original_c_comparisons": [
+      {
+        "name": "configstring_update",
+        "build_exit": 0,
+        "run_exit": 0,
+        "records": 8,
+        "matches_minilang": true
+      },
+      {
+        "name": "cgame_snapshot",
+        "build_exit": 0,
+        "run_exit": 0,
+        "records": 4,
+        "matches_minilang": true
+      },
+      {
+        "name": "netchan",
+        "build_exit": 0,
+        "run_exit": 0,
+        "records": 29,
+        "matches_minilang": true
+      },
+      {
+        "name": "server_netchan",
+        "build_exit": 0,
+        "run_exit": 0,
+        "records": 13,
+        "matches_minilang": true
+      },
+      {
+        "name": "client_netchan",
+        "build_exit": 0,
+        "run_exit": 0,
+        "records": 9,
+        "matches_minilang": true
+      },
+      {
+        "name": "gamestate",
+        "build_exit": 0,
+        "run_exit": 0,
+        "records": 1,
+        "matches_minilang": true
+      }
+    ],
+    "python_original_server_evidence_tests": {
+      "count": 9,
+      "passed": true
+    },
+    "compiler_version": "MiniLang 1.3.11",
+    "component_platform": "Linux x64",
+    "component_adaptations": "Only FFI library names in an isolated source mirror; numeric ABI compiled from unchanged native/abi.c. No host-service stubs.",
+    "oracle_adaptations": "Only harness linkage declarations and va signature adjusted for GCC; extracted original engine function bodies unchanged.",
+    "comment_only_changes_after_test": {
+      "baseline_commit": "b598a9ac1c3283244ee14f1f391fadaf457bce32",
+      "source_files": 603,
+      "unchanged_files": 595,
+      "comment_changed_files": [
+        "src/mq3/client/cgame_snapshot.ml",
+        "src/mq3/client/gamestate.ml",
+        "src/mq3/client/network_ingress.ml",
+        "src/mq3/client/remote_session.ml",
+        "src/mq3/client/server_command_stream.ml",
+        "src/mq3/qcommon/received_message.ml",
+        "src/mq3/server/netchan.ml",
+        "src/mq3/server/network_ingress.ml"
+      ],
+      "errors": [],
+      "method": "Compare all nonblank non-comment-only lines exactly; normalize whitespace only within Session field declaration to permit per-field documentation",
+      "equal": true
+    },
+    "limits": [
+      "No Windows runtime, Windows native DLL compilation or pinned MiniLang1.3.9 release build.",
+      "No live UDP/original-server acceptance rerun.",
+      "No new retail gameplay, graphics, audio or performance acceptance.",
+      "Separate uncommitted audit workspace was neither merged nor modified."
+    ],
+    "full_game_cross_compilation": {
+      "passed": true,
+      "compiler": "MiniLang 1.3.11 Linux-hosted compiler",
+      "target": "windows-x64",
+      "source_snapshot_commit": "b598a9ac1c3283244ee14f1f391fadaf457bce32",
+      "source_adaptations": "none",
+      "binary_bytes": 94947328,
+      "binary_sha256": "d65117cf76b909c616f63f97351eaaee904c5b743a93cb70a641993edd5f919e",
+      "log": "build/consolidation-validation/game-cross-build.log",
+      "scope": "Complete MiniLang game code emitted and linked as an x86-64 PE; does not compile Windows native DLLs or execute the game."
+    }
+  },
+  "component_compiler_sha256": "7a61fe5447d0e81d700c834c7f02dce2259c0bd2418050b056653bea742b8c67",
+  "component_results": [
+    {
+      "name": "configstring_update_oracle",
+      "build_exit": 0,
+      "build_seconds": 3.196,
+      "run_exit": 0,
+      "run_seconds": 0.024,
+      "records": 8,
+      "output": "[see configstring_update_oracle.log]"
+    },
+    {
+      "name": "gamestate_oracle",
+      "build_exit": 0,
+      "build_seconds": 3.27,
+      "run_exit": 0,
+      "run_seconds": 0.01,
+      "records": 1,
+      "output": "state|seq=77|client=3|feed=305419896|count=1123|off=1,22|c1=\\sv_serverid\\42.done|long=1100,a,z|base=7,9,123|connect=0|paused=0|hooks=CSFDP|restart=305419896\n"
+    },
+    {
+      "name": "gamestate_contracts",
+      "build_exit": 0,
+      "build_seconds": 2.633,
+      "run_exit": 0,
+      "run_seconds": 0.078,
+      "records": 1,
+      "output": "PASS: 12 gamestate contracts\n"
+    },
+    {
+      "name": "server_command_stream_contracts",
+      "build_exit": 0,
+      "build_seconds": 0.454,
+      "run_exit": 0,
+      "run_seconds": 0.002,
+      "records": 1,
+      "output": "PASS: 26 server command-stream contracts\n"
+    },
+    {
+      "name": "cgame_snapshot_oracle",
+      "build_exit": 0,
+      "build_seconds": 2.039,
+      "run_exit": 0,
+      "run_seconds": 0.001,
+      "records": 4,
+      "output": "reset-old|3|0|0|0|1000|1,2,3|1|0\nreset-live|3|0|0|7|1000|1,2,3|2|0\ntransition-reset|8|1|0|7|1000|4,0,0|2|1\ntransition-interp|9|1|0|7|1000|4,0,0|2|2\n"
+    },
+    {
+      "name": "cgame_snapshot_contracts",
+      "build_exit": 0,
+      "build_seconds": 2.326,
+      "run_exit": 0,
+      "run_seconds": 0.002,
+      "records": 1,
+      "output": "PASS: 20 native cg_snapshot contracts\n"
+    },
+    {
+      "name": "server_netchan_oracle",
+      "build_exit": 0,
+      "build_seconds": 1.326,
+      "run_exit": 0,
+      "run_seconds": 0.014,
+      "records": 13,
+      "output": "[see server_netchan_oracle.log]"
+    },
+    {
+      "name": "server_netchan_contracts",
+      "build_exit": 0,
+      "build_seconds": 1.252,
+      "run_exit": 0,
+      "run_seconds": 0.007,
+      "records": 1,
+      "output": "PASS: 26 server-netchan contracts\n"
+    },
+    {
+      "name": "client_netchan_oracle",
+      "build_exit": 0,
+      "build_seconds": 1.174,
+      "run_exit": 0,
+      "run_seconds": 0.006,
+      "records": 9,
+      "output": "[see client_netchan_oracle.log]"
+    },
+    {
+      "name": "client_netchan_contracts",
+      "build_exit": 0,
+      "build_seconds": 0.91,
+      "run_exit": 0,
+      "run_seconds": 0.007,
+      "records": 1,
+      "output": "PASS: 18 client netchan contracts\n"
+    },
+    {
+      "name": "netchan_oracle",
+      "build_exit": 0,
+      "build_seconds": 0.66,
+      "run_exit": 0,
+      "run_seconds": 0.003,
+      "records": 29,
+      "output": "[see netchan_oracle.log]"
+    },
+    {
+      "name": "netchan_contracts",
+      "build_exit": 0,
+      "build_seconds": 1.173,
+      "run_exit": 0,
+      "run_seconds": 0.002,
+      "records": 1,
+      "output": "PASS: 29 netchan contracts\n"
+    },
+    {
+      "name": "network_fragment_ingress_contracts",
+      "build_exit": 0,
+      "build_seconds": 6.74,
+      "run_exit": 0,
+      "run_seconds": 0.045,
+      "records": 1,
+      "output": "PASS: 25 bidirectional fragmented ingress contracts\n"
+    },
+    {
+      "name": "remote_session_commands_contracts",
+      "build_exit": 0,
+      "build_seconds": 6.746,
+      "run_exit": 0,
+      "run_seconds": 0.021,
+      "records": 1,
+      "output": "PASS: 71 remote-session command and packed-gamestate contracts\n"
+    },
+    {
+      "name": "connectionless_contracts",
+      "build_exit": 0,
+      "build_seconds": 1.901,
+      "run_exit": 0,
+      "run_seconds": 0.004,
+      "records": 1,
+      "output": "PASS: 18 connectionless contracts\n"
+    }
+  ],
+  "post_generation_source_integrity": {
+    "published_source_revision": "3136e627a1265024f4793bf02086048815b28780",
+    "identical_tree_local_snapshot": "1139f22ba05678c5ec04802fad44c2723d54576a",
+    "method": "Compare Git blob SHA-1 of every source file with the identical-tree source snapshot",
+    "source_files_checked": 603,
+    "mismatches": []
+  }
+}

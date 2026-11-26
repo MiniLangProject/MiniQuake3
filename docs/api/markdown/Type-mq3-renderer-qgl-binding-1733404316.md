@@ -12,7 +12,7 @@ struct Binding
 Data record for `mq3.renderer.qgl.Binding`; groups `name`, `address`, `extension`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L25)
 
 ## Members
 
@@ -26,7 +26,7 @@ address
 Network address used to identify the remote or local endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L29)
 
 <a id="field-field-mq3-renderer-qgl-binding-extension-extension-src-mq3-renderer-qgl-ml-953338362"></a>
 ### extension
@@ -38,7 +38,7 @@ extension
 Whether the graphics entry point belongs to an optional extension.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L31)
 
 <a id="field-field-mq3-renderer-qgl-binding-name-name-src-mq3-renderer-qgl-ml-664990752"></a>
 ### name
@@ -50,4 +50,4 @@ name
 OpenGL function name whose native entry-point address is bound by the registry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L27)

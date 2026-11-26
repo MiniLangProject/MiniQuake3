@@ -12,7 +12,7 @@ struct Services
 Services record for server.packet_event, containing `connectionlessRuntime`, `connectionlessHost`, `processFn`, `executeFn`, `disconnectFn`, `diagnosticFn`, and 1 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L47)
 
 ## Members
 
@@ -26,7 +26,7 @@ connectionlessHost
 Host services used by the connectionless packet dispatcher.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L51)
 
 <a id="field-field-mq3-server-packet-event-services-connectionlessruntime-connectionlessruntime-src-mq3-server-packet-event-ml-767673521"></a>
 ### connectionlessRuntime
@@ -38,7 +38,7 @@ connectionlessRuntime
 Runtime used to dispatch out-of-band packets.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L49)
 
 <a id="field-field-mq3-server-packet-event-services-context-context-src-mq3-server-packet-event-ml-1338596297"></a>
 ### context
@@ -50,7 +50,7 @@ context
 Caller-supplied data associated with sequenced packet processing, message execution, and disconnect handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L62)
 
 <a id="field-field-mq3-server-packet-event-services-diagnosticfn-diagnosticfn-src-mq3-server-packet-event-ml-1495102835"></a>
 ### diagnosticFn
@@ -62,7 +62,7 @@ diagnosticFn
 Host callback that reports subsystem diagnostics to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L59)
 
 <a id="field-field-mq3-server-packet-event-services-disconnectfn-disconnectfn-src-mq3-server-packet-event-ml-425342577"></a>
 ### disconnectFn
@@ -74,7 +74,7 @@ disconnectFn
 Host callback that processes a client disconnection through the host network lifecycle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L57)
 
 <a id="field-field-mq3-server-packet-event-services-executefn-executefn-src-mq3-server-packet-event-ml-437630917"></a>
 ### executeFn
@@ -86,7 +86,7 @@ executeFn
 Host callback that executes a routed command or operation on the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L55)
 
 <a id="field-field-mq3-server-packet-event-services-processfn-processfn-src-mq3-server-packet-event-ml-1419703421"></a>
 ### processFn
@@ -98,4 +98,4 @@ processFn
 Host callback that processes a sequenced incoming client packet.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L53)

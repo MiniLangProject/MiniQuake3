@@ -12,7 +12,7 @@ struct PingFrame
 PingFrame record for server.client_pings, containing `messageSent`, `messageAcked`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L15)
 
 ## Members
 
@@ -26,7 +26,7 @@ messageAcked
 Server timestamp when this snapshot message was acknowledged, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L19)
 
 <a id="field-field-mq3-server-client-pings-pingframe-messagesent-messagesent-src-mq3-server-client-pings-ml-244498618"></a>
 ### messageSent
@@ -38,4 +38,4 @@ messageSent
 Server timestamp when this snapshot message was transmitted, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L17)

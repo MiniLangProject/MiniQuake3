@@ -18,7 +18,7 @@ Reachable from entry: **no**
 - `mq3/game/tournament.ml` as `tournament` → [src/mq3/game/tournament.ml](File-src-mq3-game-tournament-ml-590125009.md)
 - `mq3/game/votes.ml` as `votes` → [src/mq3/game/votes.ml](File-src-mq3-game-votes-ml-1007667129.md)
 - `mq3/shared/info.ml` as `infoStrings` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -38,7 +38,7 @@ Set `ent.client.switchTeamTime` to `n.add32(level.time,5000)` in `mq3.game.team_
 | `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L79)
 
 <a id="function-function-mq3-game-team-changes-setteam-function-setteam-level-ent-request-src-mq3-game-team-changes-ml-634986294"></a>
 ### setTeam
@@ -56,7 +56,7 @@ Update `ent.flags`, `ent.health` and `level.playerDieFn` during `setTeam`.
 | `request` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L21)
 
 <a id="function-function-mq3-game-team-changes-stopfollowing-function-stopfollowing-level-ent-src-mq3-game-team-changes-ml-1375538395"></a>
 ### stopFollowing
@@ -73,4 +73,4 @@ Set `ent.r.svFlags` to `ent.r.svFlags & ~8` in `mq3.game.team_changes.stopFollow
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `slot` and `r`. May update `ent.r.svFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L68)

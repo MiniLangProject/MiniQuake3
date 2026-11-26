@@ -12,7 +12,7 @@ struct Address
 Data record for `mq3.platform.unix_runtime.Address`; groups `type`, `host`, `port`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L38)
 
 ## Members
 
@@ -26,7 +26,7 @@ host
 Host address or host-service adapter associated with the operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-unix-runtime-address-port-port-src-mq3-platform-unix-runtime-ml-1339615363"></a>
 ### port
@@ -38,7 +38,7 @@ port
 Transport port number associated with the endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L44)
 
 <a id="field-field-mq3-platform-unix-runtime-address-type-type-src-mq3-platform-unix-runtime-ml-2083850369"></a>
 ### type
@@ -50,4 +50,4 @@ type
 Network address kind selecting loopback, IPv4, broadcast, or another supported transport.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/unix_runtime.ml#L40)

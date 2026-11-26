@@ -12,7 +12,7 @@ struct Vertex
 Stores playable sky vertex record, including `point`, `uv`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L111)
 
 ## Members
 
@@ -26,7 +26,7 @@ point
 When constructing this record, `vertex` supplies `viewer.ScreenPoint(x,y,depth)` for this member. Used by `retainedBatchPrepared` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L114)
 
 <a id="field-field-mq3-client-playable-sky-vertex-uv-uv-src-mq3-client-playable-sky-ml-1953839259"></a>
 ### uv
@@ -38,4 +38,4 @@ uv
 When constructing this record, `vertex` supplies `mapped` for this member. Used by `retainedBatchPrepared` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L117)

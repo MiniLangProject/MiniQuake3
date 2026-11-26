@@ -28,7 +28,7 @@ Append bytes in vm.jit_compat; the normal completion returns `output`.
 | `right` | `dynamic` | — | Right used in `len(right)` and `(len(right) > 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L43)
 
 <a id="function-function-mq3-vm-jit-compat-asmcall-function-asmcall-compiled-args-src-mq3-vm-jit-compat-ml-1561794650"></a>
 ### AsmCall
@@ -45,7 +45,7 @@ Return `mq3.vm.jit_compat.VM_CallCompiled(compiled, args)` from `vm.jit_compat.A
 | `args` | `dynamic` | — | Args passed as `args` to `mq3.vm.jit_compat.VM_CallCompiled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L212)
 
 <a id="function-function-mq3-vm-jit-compat-callasmcall-function-callasmcall-compiled-args-src-mq3-vm-jit-compat-ml-1274961410"></a>
 ### callAsmCall
@@ -62,7 +62,7 @@ Return `mq3.vm.jit_compat.VM_CallCompiled(compiled, args)` from `vm.jit_compat.c
 | `args` | `dynamic` | — | Args passed as `args` to `mq3.vm.jit_compat.VM_CallCompiled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L208)
 
 - [mq3.vm.jit_compat.Compiled](Type-mq3-vm-jit-compat-compiled-2079298270.md) — struct
 <a id="function-function-mq3-vm-jit-compat-constant1-function-constant1-machine-instruction-src-mq3-vm-jit-compat-ml-960505147"></a>
@@ -82,7 +82,7 @@ Validation failures include `JIT instruction is invalid`; `JIT constant is outsi
 | `instruction` | `dynamic` | — | Zero-based index into `machine.addresses`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L92)
 
 <a id="function-function-mq3-vm-jit-compat-constant4-function-constant4-machine-instruction-src-mq3-vm-jit-compat-ml-1966959877"></a>
 ### Constant4
@@ -101,7 +101,7 @@ Validation failures include `JIT instruction is invalid`; `JIT constant is outsi
 | `instruction` | `dynamic` | — | Zero-based index into `machine.addresses`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L103)
 
 <a id="function-function-mq3-vm-jit-compat-emit1-function-emit1-output-value-src-mq3-vm-jit-compat-ml-1228832342"></a>
 ### Emit1
@@ -118,7 +118,7 @@ Return `mq3.vm.jit_compat.appendBytes(output, bytes([(value & 255)]))` from `vm.
 | `value` | `dynamic` | — | Value used in `(value & 255)` and `bytes([(value & 255)])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L52)
 
 <a id="function-function-mq3-vm-jit-compat-emit2-function-emit2-output-value-src-mq3-vm-jit-compat-ml-515668496"></a>
 ### Emit2
@@ -135,7 +135,7 @@ Emit 2 in vm.jit_compat; the normal completion returns `Emit1(result, (value >> 
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.jit_compat.Emit1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L56)
 
 <a id="function-function-mq3-vm-jit-compat-emit4-function-emit4-output-value-src-mq3-vm-jit-compat-ml-1907684692"></a>
 ### Emit4
@@ -152,7 +152,7 @@ Emit 4 in vm.jit_compat; the normal completion returns `Emit2(result, (value >> 
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.jit_compat.Emit2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L60)
 
 <a id="function-function-mq3-vm-jit-compat-emitaddedi4-function-emitaddedi4-output-src-mq3-vm-jit-compat-ml-2122976811"></a>
 ### EmitAddEDI4
@@ -168,7 +168,7 @@ Return `mq3.vm.jit_compat.EmitString(output, "83 C7 04")` from `vm.jit_compat.Em
 | `output` | `dynamic` | — | Output passed as `output` to `mq3.vm.jit_compat.EmitString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L118)
 
 <a id="function-function-mq3-vm-jit-compat-emitcommand-function-emitcommand-output-command-src-mq3-vm-jit-compat-ml-979081334"></a>
 ### EmitCommand
@@ -187,7 +187,7 @@ Validation failures include `JIT command is invalid`.
 | `command` | `dynamic` | — | Command used in `(command == 1)` and `(command == 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L124)
 
 <a id="function-function-mq3-vm-jit-compat-emitmoveaxedi-function-emitmoveaxedi-output-src-mq3-vm-jit-compat-ml-359953389"></a>
 ### EmitMovEAXEDI
@@ -203,7 +203,7 @@ Original x86 peephole entry points. These produce their exact byte forms.
 | `output` | `dynamic` | — | Output passed as `output` to `mq3.vm.jit_compat.EmitString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L112)
 
 <a id="function-function-mq3-vm-jit-compat-emitmovebxedi-function-emitmovebxedi-output-src-mq3-vm-jit-compat-ml-244448235"></a>
 ### EmitMovEBXEDI
@@ -219,7 +219,7 @@ Return `mq3.vm.jit_compat.EmitString(output, "89 1F")` from `vm.jit_compat.EmitM
 | `output` | `dynamic` | — | Output passed as `output` to `mq3.vm.jit_compat.EmitString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L115)
 
 <a id="function-function-mq3-vm-jit-compat-emitstring-function-emitstring-output-text-src-mq3-vm-jit-compat-ml-1833155276"></a>
 ### EmitString
@@ -238,7 +238,7 @@ Validation failures include `JIT hex string has an odd digit`.
 | `text` | `dynamic` | — | Text used in `bytes(text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L66)
 
 <a id="function-function-mq3-vm-jit-compat-fltop-function-fltop-value-src-mq3-vm-jit-compat-ml-1783165767"></a>
 ### fltop
@@ -254,7 +254,7 @@ Return `mq3.compat.numeric.bitsFloat(value)` from `vm.jit_compat.fltop`.
 | `value` | `dynamic` | — | Low 32 bits containing an IEEE-754 binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L165)
 
 <a id="function-function-mq3-vm-jit-compat-fltopandsecond-function-fltopandsecond-top-second-src-mq3-vm-jit-compat-ml-331258699"></a>
 ### fltopandsecond
@@ -271,7 +271,7 @@ Compute vm.jit_compat.fltopandsecond as `[n.bitsFloat(top), n.bitsFloat(second)]
 | `second` | `dynamic` | — | Low 32 bits containing an IEEE-754 binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L169)
 
 <a id="function-function-mq3-vm-jit-compat-hex-function-hex-letter-src-mq3-vm-jit-compat-ml-1971413600"></a>
 ### Hex
@@ -289,7 +289,7 @@ Validation failures include `JIT hex digit is invalid`.
 | `letter` | `dynamic` | — | Letter used in `(letter - 48)` and `(letter - 55)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L80)
 
 <a id="function-function-mq3-vm-jit-compat-inst-function-inst-opcode-destreg-areg-breg-src-mq3-vm-jit-compat-ml-1537588507"></a>
 ### Inst
@@ -308,7 +308,7 @@ PowerPC instruction constructors preserve the original bit layouts.
 | `bReg` | `dynamic` | — | B reg used in `(bReg << 11)` and `(((opcode \| (destReg << 21)) \| (aReg << 16)) \| (bReg << 11))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L136)
 
 <a id="function-function-mq3-vm-jit-compat-inst4-function-inst4-opcode-destreg-areg-breg-flags-src-mq3-vm-jit-compat-ml-538623868"></a>
 ### Inst4
@@ -328,7 +328,7 @@ Return `mq3.compat.numeric.i32((Inst(opcode, destReg, aReg, bReg) | flags))` fro
 | `flags` | `dynamic` | — | Flags used in `(Inst(opcode, destReg, aReg, bReg) \| flags)` and `n.i32((Inst(opcode, destReg, aReg, bReg) \| flags))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L143)
 
 <a id="function-function-mq3-vm-jit-compat-instimm-function-instimm-opcode-destreg-areg-immediate-src-mq3-vm-jit-compat-ml-205189556"></a>
 ### InstImm
@@ -347,7 +347,7 @@ Return `mq3.compat.numeric.i32((((opcode | (destReg << 21)) | (aReg << 16)) | (i
 | `immediate` | `dynamic` | — | Immediate used in `(immediate & 65535)` and `(((opcode \| (destReg << 21)) \| (aReg << 16)) \| (immediate & 65535))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L149)
 
 <a id="function-function-mq3-vm-jit-compat-instimmu-function-instimmu-opcode-destreg-areg-immediate-src-mq3-vm-jit-compat-ml-366942554"></a>
 ### InstImmU
@@ -366,7 +366,7 @@ Return `mq3.vm.jit_compat.InstImm(opcode, destReg, aReg, immediate)` from `vm.ji
 | `immediate` | `dynamic` | — | Immediate passed as `immediate` to `mq3.vm.jit_compat.InstImm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L155)
 
 <a id="function-function-mq3-vm-jit-compat-loadopstack-function-loadopstack-values-src-mq3-vm-jit-compat-ml-1513942286"></a>
 ### loadOpStack
@@ -382,7 +382,7 @@ Compute vm.jit_compat.loadOpStack as `values`.
 | `values` | `dynamic` | — | Value returned unchanged by this function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L172)
 
 <a id="function-function-mq3-vm-jit-compat-ltop-function-ltop-value-src-mq3-vm-jit-compat-ml-1218419321"></a>
 ### ltop
@@ -398,7 +398,7 @@ Compute vm.jit_compat.ltop as `value`.
 | `value` | `dynamic` | — | Value returned unchanged by this function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L158)
 
 <a id="function-function-mq3-vm-jit-compat-ltopandsecond-function-ltopandsecond-top-second-src-mq3-vm-jit-compat-ml-537243203"></a>
 ### ltopandsecond
@@ -415,7 +415,7 @@ Compute vm.jit_compat.ltopandsecond as `[top, second]`.
 | `second` | `dynamic` | — | Second operand used by `ltopandsecond`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L162)
 
 <a id="function-function-mq3-vm-jit-compat-makefloat-function-makefloat-value-src-mq3-vm-jit-compat-ml-1564224745"></a>
 ### makeFloat
@@ -431,7 +431,7 @@ Return `mq3.compat.numeric.bitsFloat(value)` from `vm.jit_compat.makeFloat`.
 | `value` | `dynamic` | — | Low 32 bits containing an IEEE-754 binary32 encoding. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L178)
 
 <a id="function-function-mq3-vm-jit-compat-makeinteger-function-makeinteger-value-src-mq3-vm-jit-compat-ml-817872025"></a>
 ### makeInteger
@@ -447,7 +447,7 @@ Return `mq3.compat.numeric.i32(value)` from `vm.jit_compat.makeInteger`.
 | `value` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L181)
 
 <a id="function-function-mq3-vm-jit-compat-ppcnewsymbols-function-ppcnewsymbols-src-mq3-vm-jit-compat-ml-1176208526"></a>
 ### ppcNewSymbols
@@ -459,7 +459,7 @@ function ppcNewSymbols()
 List the 18 names in vm.jit_compat.ppcNewSymbols, beginning with `AsmCall`, `Constant1`, `Constant4`, `Emit4`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L38)
 
 <a id="function-function-mq3-vm-jit-compat-ppcsymbols-function-ppcsymbols-src-mq3-vm-jit-compat-ml-196747434"></a>
 ### ppcSymbols
@@ -471,7 +471,7 @@ function ppcSymbols()
 List the 14 names in vm.jit_compat.ppcSymbols, beginning with `AsmCall`, `Constant1`, `Constant4`, `Emit4`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L36)
 
 <a id="function-function-mq3-vm-jit-compat-spillopstack-function-spillopstack-values-src-mq3-vm-jit-compat-ml-506768308"></a>
 ### spillOpStack
@@ -487,7 +487,7 @@ Compute vm.jit_compat.spillOpStack as `values`.
 | `values` | `dynamic` | — | Value returned unchanged by this function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L175)
 
 <a id="function-function-mq3-vm-jit-compat-vm-callcompiled-function-vm-callcompiled-compiled-args-src-mq3-vm-jit-compat-ml-663988186"></a>
 ### VM_CallCompiled
@@ -506,7 +506,7 @@ Validation failures include `compiled QVM is missing`.
 | `args` | `dynamic` | — | Args passed as `args` to `mq3.vm.interpreter.callFast`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L201)
 
 <a id="function-function-mq3-vm-jit-compat-vm-compile-function-vm-compile-image-callback-architecture-src-mq3-vm-jit-compat-ml-152917345"></a>
 ### VM_Compile
@@ -526,7 +526,7 @@ Validation failures include `unsupported JIT architecture`.
 | `architecture` | `dynamic` | — | Initial `architecture` field stored in the returned or constructed `mq3.vm.jit_compat.Compiled` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L189)
 
 <a id="function-function-mq3-vm-jit-compat-x86symbols-function-x86symbols-src-mq3-vm-jit-compat-ml-738593150"></a>
 ### x86Symbols
@@ -538,4 +538,4 @@ function x86Symbols()
 List the 15 names in vm.jit_compat.x86Symbols, beginning with `AsmCall`, `Constant1`, `Constant4`, `Emit1`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/jit_compat.ml#L34)

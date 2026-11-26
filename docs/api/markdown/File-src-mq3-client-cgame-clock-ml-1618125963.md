@@ -29,7 +29,7 @@ Calls `mq3.client.cgame_time.create`, `mq3.client.cgame_time.services`, `mq3.cli
 | `snapshotServerTime` | `dynamic` | — | Value assigned to `state.snapServerTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L34)
 
 <a id="function-function-mq3-client-cgame-clock-fail-function-fail-message-src-mq3-client-cgame-clock-ml-1249441597"></a>
 ### fail
@@ -45,7 +45,7 @@ Creates the client game clock error `7691` with diagnostic text `"cgame clock: "
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cgame clock: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L28)
 
 <a id="function-function-mq3-client-cgame-clock-frame-function-frame-clock-realtime-src-mq3-client-cgame-clock-ml-1929941099"></a>
 ### frame
@@ -62,7 +62,7 @@ Updates `clock.state.realtime` during client game clock `frame`.
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L83)
 
 - [mq3.client.cgame_clock.FrameTime](Type-mq3-client-cgame-clock-frametime-890492891.md) — struct
 <a id="function-function-mq3-client-cgame-clock-publishsnapshot-function-publishsnapshot-clock-snapshotnumber-servertime-snapflags-src-mq3-client-cgame-clock-ml-900447888"></a>
@@ -82,7 +82,7 @@ Updates `clock.snapshotNumber`, `clock.state.snapServerTime`, `clock.state.snapF
 | `snapFlags` | `dynamic` | — | Snapshot flags controlling validity, interpolation and server restarts. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L48)
 
 <a id="function-function-mq3-client-cgame-clock-setpaused-function-setpaused-clock-serverpaused-clientpaused-serverrunning-src-mq3-client-cgame-clock-ml-1490183122"></a>
 ### setPaused
@@ -101,7 +101,7 @@ Updates `clock.state.serverPaused`, `clock.state.clientPaused`, `clock.state.ser
 | `serverRunning` | `dynamic` | — | Value assigned to `clock.state.serverRunning`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L74)
 
 <a id="function-function-mq3-client-cgame-clock-settimenudge-function-settimenudge-clock-value-src-mq3-client-cgame-clock-ml-1306256899"></a>
 ### setTimeNudge
@@ -118,4 +118,4 @@ Updates `clock.state.timeNudge` during client game clock `setTimeNudge`.
 | `value` | `dynamic` | — | Value assigned to `clock.state.timeNudge`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L64)

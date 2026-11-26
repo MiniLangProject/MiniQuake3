@@ -12,7 +12,7 @@ struct Vertex
 Data record for `mq3.renderer.surface_polychain.Vertex`; groups `xyz`, `st`, `modulate`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L12)
 
 ## Members
 
@@ -26,7 +26,7 @@ modulate
 Per-vertex RGBA color bytes that modulate the sampled texture.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-polychain-vertex-st-st-src-mq3-renderer-surface-polychain-ml-527012657"></a>
 ### st
@@ -38,7 +38,7 @@ st
 Two-dimensional texture coordinates associated with the vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L16)
 
 <a id="field-field-mq3-renderer-surface-polychain-vertex-xyz-xyz-src-mq3-renderer-surface-polychain-ml-1795513323"></a>
 ### xyz
@@ -50,4 +50,4 @@ xyz
 Three-dimensional position of this vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L14)

@@ -12,7 +12,7 @@ struct State
 `State` record for cache lru, containing `positions`, `keys`, `previous`, `next` and `oldest` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L7)
 
 ## Members
 
@@ -26,7 +26,7 @@ capacity
 Maximum number of entries allowed in the managed collection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L23)
 
 <a id="field-field-mq3-botlib-cache-lru-state-count-count-src-mq3-botlib-cache-lru-ml-47970092"></a>
 ### count
@@ -38,7 +38,7 @@ count
 Number of valid entries represented by this result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L21)
 
 <a id="field-field-mq3-botlib-cache-lru-state-keys-keys-src-mq3-botlib-cache-lru-ml-1750076936"></a>
 ### keys
@@ -50,7 +50,7 @@ keys
 Cache keys stored in each ordering slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L11)
 
 <a id="field-field-mq3-botlib-cache-lru-state-newest-newest-src-mq3-botlib-cache-lru-ml-1906133632"></a>
 ### newest
@@ -62,7 +62,7 @@ newest
 Most recently used live slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L19)
 
 <a id="field-field-mq3-botlib-cache-lru-state-next-next-src-mq3-botlib-cache-lru-ml-1193359206"></a>
 ### next
@@ -74,7 +74,7 @@ next
 Next slot in the least-recently-used ordering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L15)
 
 <a id="field-field-mq3-botlib-cache-lru-state-oldest-oldest-src-mq3-botlib-cache-lru-ml-861363318"></a>
 ### oldest
@@ -86,7 +86,7 @@ oldest
 Least recently used live slot, selected first for eviction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L17)
 
 <a id="field-field-mq3-botlib-cache-lru-state-positions-positions-src-mq3-botlib-cache-lru-ml-216382804"></a>
 ### positions
@@ -98,7 +98,7 @@ positions
 Lookup from cache keys to their linked-list slots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L9)
 
 <a id="field-field-mq3-botlib-cache-lru-state-previous-previous-src-mq3-botlib-cache-lru-ml-1030006566"></a>
 ### previous
@@ -110,4 +110,4 @@ previous
 Previous slot in the least-recently-used ordering.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L13)

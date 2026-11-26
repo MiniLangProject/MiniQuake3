@@ -12,7 +12,7 @@ struct ItemMarker
 Stores playable effects item marker record, including `classname`, `origin`, `active`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L32)
 
 ## Members
 
@@ -26,7 +26,7 @@ active
 When constructing this record, `item` supplies `true` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L38)
 
 <a id="field-field-mq3-client-playable-effects-itemmarker-classname-classname-src-mq3-client-playable-effects-ml-802239334"></a>
 ### classname
@@ -38,7 +38,7 @@ classname
 Item classname used to choose the appearance of the projected pickup marker.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L34)
 
 <a id="field-field-mq3-client-playable-effects-itemmarker-origin-origin-src-mq3-client-playable-effects-ml-1815826510"></a>
 ### origin
@@ -50,4 +50,4 @@ origin
 World-space item position projected to place the pickup marker on screen.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L36)

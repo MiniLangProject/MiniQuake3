@@ -12,7 +12,7 @@ struct State
 Data record for `mq3.renderer.qvm_video_materials.State`; groups `cinematics`, `firstScratchSlot`, `scratchSlotCount`, `bindings`, `failedBindings`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L39)
 
 ## Members
 
@@ -26,7 +26,7 @@ bindings
 Bindings associating names or handles with their backing resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-cinematics-cinematics-src-mq3-renderer-qvm-video-materials-ml-1941919796"></a>
 ### cinematics
@@ -38,7 +38,7 @@ cinematics
 Active cinematic handles, decoded frames, and playback state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-failedbindings-failedbindings-src-mq3-renderer-qvm-video-materials-ml-45074198"></a>
 ### failedBindings
@@ -50,7 +50,7 @@ failedBindings
 Cinematic or texture bindings that failed to initialize.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L49)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-firstscratchslot-firstscratchslot-src-mq3-renderer-qvm-video-materials-ml-354431808"></a>
 ### firstScratchSlot
@@ -62,7 +62,7 @@ firstScratchSlot
 First texture slot reserved for cinematic frame uploads.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-scratchslotcount-scratchslotcount-src-mq3-renderer-qvm-video-materials-ml-1041925298"></a>
 ### scratchSlotCount
@@ -74,4 +74,4 @@ scratchSlotCount
 Number of texture slots reserved for cinematic frame uploads.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L45)

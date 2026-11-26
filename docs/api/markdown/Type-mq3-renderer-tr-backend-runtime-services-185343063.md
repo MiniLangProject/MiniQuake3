@@ -12,7 +12,7 @@ struct Services
 Callback table for `mq3.renderer.tr_backend_runtime.Services`; exposes `eventFn`, `surfaceFn`, `screenshotFn`, `sleepFn`, `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L206)
 
 ## Members
 
@@ -26,7 +26,7 @@ context
 Render-backend host state supplied to event, surface, screenshot, and sleep callbacks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L216)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-services-eventfn-eventfn-src-mq3-renderer-tr-backend-runtime-ml-1403626451"></a>
 ### eventFn
@@ -38,7 +38,7 @@ eventFn
 Host callback used to perform event operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L208)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-services-screenshotfn-screenshotfn-src-mq3-renderer-tr-backend-runtime-ml-144360619"></a>
 ### screenshotFn
@@ -50,7 +50,7 @@ screenshotFn
 Host callback used to perform screenshot operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L212)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-services-sleepfn-sleepfn-src-mq3-renderer-tr-backend-runtime-ml-657107563"></a>
 ### sleepFn
@@ -62,7 +62,7 @@ sleepFn
 Host callback used to perform sleep operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L214)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-services-surfacefn-surfacefn-src-mq3-renderer-tr-backend-runtime-ml-428025411"></a>
 ### surfaceFn
@@ -74,4 +74,4 @@ surfaceFn
 Host callback used to perform surface operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L210)

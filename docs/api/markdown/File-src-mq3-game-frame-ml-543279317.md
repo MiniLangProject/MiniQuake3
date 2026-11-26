@@ -43,7 +43,7 @@ Update `level.framenum`, `level.previousTime` and `level.time` during `run`.
 | `levelTime` | `dynamic` | — | Current server game time in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/frame.ml#L74)
 
 <a id="function-function-mq3-game-frame-runentities-function-runentities-level-src-mq3-game-frame-ml-1513590918"></a>
 ### runEntities
@@ -59,7 +59,7 @@ Use `level.runEntityFn` to perform `runEntities`.
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities`, `time` and `runEntityFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/frame.ml#L24)
 
 <a id="function-function-mq3-game-frame-stage-function-stage-level-kind-arg-src-mq3-game-frame-ml-1465696878"></a>
 ### stage
@@ -77,4 +77,4 @@ Use `level.frameStageFn` to perform `stage`.
 | `arg` | `dynamic` | — | Value passed as argument 3 to `level.frameStageFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/frame.ml#L65)

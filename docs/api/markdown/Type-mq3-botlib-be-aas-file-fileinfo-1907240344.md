@@ -12,7 +12,7 @@ struct FileInfo
 `FileInfo` record for be aas file, containing `version`, `numVertexes`, `numPlanes`, `numEdges` and `edgeIndexSize` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L68)
 
 ## Members
 
@@ -26,7 +26,7 @@ edgeIndexSize
 Number of signed edge references in the AAS edge-index lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L78)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-faceindexsize-faceindexsize-src-mq3-botlib-be-aas-file-ml-2006501215"></a>
 ### faceIndexSize
@@ -38,7 +38,7 @@ faceIndexSize
 Number of signed face references in the AAS face-index lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L82)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-groundedareas-groundedareas-src-mq3-botlib-be-aas-file-ml-731262231"></a>
 ### groundedAreas
@@ -50,7 +50,7 @@ groundedAreas
 Number of AAS areas marked as grounded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L98)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numareas-numareas-src-mq3-botlib-be-aas-file-ml-714418279"></a>
 ### numAreas
@@ -62,7 +62,7 @@ numAreas
 Number of portal or navigation areas represented by the loaded map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L84)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numareasettings-numareasettings-src-mq3-botlib-be-aas-file-ml-1729636103"></a>
 ### numAreaSettings
@@ -74,7 +74,7 @@ numAreaSettings
 Number of area settings represented by this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L86)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numclusters-numclusters-src-mq3-botlib-be-aas-file-ml-1416295739"></a>
 ### numClusters
@@ -86,7 +86,7 @@ numClusters
 Number of visibility clusters associated with this entity or map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L96)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numedges-numedges-src-mq3-botlib-be-aas-file-ml-400817575"></a>
 ### numEdges
@@ -98,7 +98,7 @@ numEdges
 Number of edge records represented by this face or file inventory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L76)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numfaces-numfaces-src-mq3-botlib-be-aas-file-ml-1076762351"></a>
 ### numFaces
@@ -110,7 +110,7 @@ numFaces
 Number of face records represented by this area or file inventory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L80)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numnodes-numnodes-src-mq3-botlib-be-aas-file-ml-1113108001"></a>
 ### numNodes
@@ -122,7 +122,7 @@ numNodes
 Number of nodes represented by this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L90)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numplanes-numplanes-src-mq3-botlib-be-aas-file-ml-707481435"></a>
 ### numPlanes
@@ -134,7 +134,7 @@ numPlanes
 Number of planes represented by this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L74)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numportals-numportals-src-mq3-botlib-be-aas-file-ml-878824001"></a>
 ### numPortals
@@ -146,7 +146,7 @@ numPortals
 Number of cluster portals.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L92)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numvertexes-numvertexes-src-mq3-botlib-be-aas-file-ml-1806116255"></a>
 ### numVertexes
@@ -158,7 +158,7 @@ numVertexes
 Number of vertexes represented by this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L72)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-portalindexsize-portalindexsize-src-mq3-botlib-be-aas-file-ml-532968243"></a>
 ### portalIndexSize
@@ -170,7 +170,7 @@ portalIndexSize
 Number of portal references in the AAS portal-index lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L94)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-reachabilitysize-reachabilitysize-src-mq3-botlib-be-aas-file-ml-878969687"></a>
 ### reachabilitySize
@@ -182,7 +182,7 @@ reachabilitySize
 Number of records in the AAS reachability lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L88)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-version-version-src-mq3-botlib-be-aas-file-ml-968936715"></a>
 ### version
@@ -194,4 +194,4 @@ version
 AAS file-format version reported by the loaded map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L70)

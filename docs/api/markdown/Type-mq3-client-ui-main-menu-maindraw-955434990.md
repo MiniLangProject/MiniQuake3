@@ -12,7 +12,7 @@ struct MainDraw
 Stores UI main menu main draw record, including `bannerModel`, `yaw`, `errorMessage`, `demoVersion`, `actions`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L40)
 
 ## Members
 
@@ -26,7 +26,7 @@ actions
 Host requests queued while drawing the main menu and opening its selected destination, retained in request order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L51)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-bannermodel-bannermodel-src-mq3-client-ui-main-menu-ml-995494562"></a>
 ### bannerModel
@@ -38,7 +38,7 @@ bannerModel
 Model resource selected for the banner presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L42)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-demoversion-demoversion-src-mq3-client-ui-main-menu-ml-1595049846"></a>
 ### demoVersion
@@ -50,7 +50,7 @@ demoVersion
 When constructing this record, `draw` supplies `demoVersion` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L48)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-errormessage-errormessage-src-mq3-client-ui-main-menu-ml-1714780304"></a>
 ### errorMessage
@@ -62,7 +62,7 @@ errorMessage
 When constructing this record, `draw` supplies `menu.errorMessage` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L46)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-yaw-yaw-src-mq3-client-ui-main-menu-ml-1426532182"></a>
 ### yaw
@@ -74,4 +74,4 @@ yaw
 When constructing this record, `draw` supplies `yaw` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L44)

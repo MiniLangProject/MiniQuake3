@@ -12,7 +12,7 @@ struct Catalog
 Stores playable marks catalog record, including `textures`, `firstTextureSlot`, `textureCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L46)
 
 ## Members
 
@@ -26,7 +26,7 @@ firstTextureSlot
 First texture-cache slot reserved for this module's media resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L51)
 
 <a id="field-field-mq3-client-playable-marks-catalog-texturecount-texturecount-src-mq3-client-playable-marks-ml-906255356"></a>
 ### textureCount
@@ -38,7 +38,7 @@ textureCount
 Number of texture resources or texture-cache slots represented by this media record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L53)
 
 <a id="field-field-mq3-client-playable-marks-catalog-textures-textures-src-mq3-client-playable-marks-ml-1809414200"></a>
 ### textures
@@ -50,4 +50,4 @@ textures
 When constructing this record, `load` supplies `textures` for this member. Used by `upload` and `release` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L49)

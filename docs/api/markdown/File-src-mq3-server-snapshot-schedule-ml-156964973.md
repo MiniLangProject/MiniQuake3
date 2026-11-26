@@ -26,7 +26,7 @@ Create `mq3.server.snapshot_schedule.Client` with state=0; nextSnapshotTime=0; r
 | `slot` | `dynamic` | — | Initial `slot` field stored in the returned or constructed `mq3.server.snapshot_schedule.Client` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L36)
 
 - [mq3.server.snapshot_schedule.Client](Type-mq3-server-snapshot-schedule-client-1766125092.md) — struct
 <a id="function-function-mq3-server-snapshot-schedule-netchan-function-netchan-src-mq3-server-snapshot-schedule-ml-934463200"></a>
@@ -39,7 +39,7 @@ function netchan()
 Create `mq3.server.snapshot_schedule.Netchan` with unsentFragments=false; unsentLength=0; unsentFragmentStart=0.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L16)
 
 - [mq3.server.snapshot_schedule.Netchan](Type-mq3-server-snapshot-schedule-netchan-1273267814.md) — struct
 <a id="function-function-mq3-server-snapshot-schedule-sendclientmessages-function-sendclientmessages-clients-servertime-maxrate-host-src-mq3-server-snapshot-schedule-ml-1823974230"></a>
@@ -59,7 +59,7 @@ SV_SendClientMessages. Snapshot construction/transmission stays behind the callb
 | `host` | `dynamic` | — | Service record with sendClientSnapshotFn and transmitNextFragmentFn callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L64)
 
 <a id="function-function-mq3-server-snapshot-schedule-services-function-services-sendclientsnapshotfn-transmitnextfragmentfn-context-src-mq3-server-snapshot-schedule-ml-500152765"></a>
 ### services
@@ -77,6 +77,6 @@ Create `mq3.server.snapshot_schedule.Services` with sendClientSnapshotFn=sendCli
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.server.snapshot_schedule.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L53)
 
 - [mq3.server.snapshot_schedule.Services](Type-mq3-server-snapshot-schedule-services-1471977631.md) — struct

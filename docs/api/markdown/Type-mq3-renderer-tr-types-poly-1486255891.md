@@ -12,7 +12,7 @@ struct Poly
 Data record for `mq3.renderer.tr_types.Poly`; groups `hShader`, `numVerts`, `verts`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L95)
 
 ## Members
 
@@ -26,7 +26,7 @@ hShader
 Registered shader handle used to draw the polygon.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L97)
 
 <a id="field-field-mq3-renderer-tr-types-poly-numverts-numverts-src-mq3-renderer-tr-types-ml-1056823413"></a>
 ### numVerts
@@ -38,7 +38,7 @@ numVerts
 Number of vertices stored in the polygon or model surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L99)
 
 <a id="field-field-mq3-renderer-tr-types-poly-verts-verts-src-mq3-renderer-tr-types-ml-705654321"></a>
 ### verts
@@ -50,4 +50,4 @@ verts
 Polygon vertex array supplied through the public renderer scene interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L101)

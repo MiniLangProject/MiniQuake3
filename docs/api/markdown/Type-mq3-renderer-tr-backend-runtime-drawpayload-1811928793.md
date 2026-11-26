@@ -12,7 +12,7 @@ struct DrawPayload
 Data record for `mq3.renderer.tr_backend_runtime.DrawPayload`; groups `refdef`, `viewParms`, `drawSurfs`, `shaders`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L155)
 
 ## Members
 
@@ -26,7 +26,7 @@ drawSurfs
 Surfaces queued for ordering and drawing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L161)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-drawpayload-refdef-refdef-src-mq3-renderer-tr-backend-runtime-ml-382084901"></a>
 ### refdef
@@ -38,7 +38,7 @@ refdef
 Camera, viewport, timing, and rendering flags for the view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L157)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-drawpayload-shaders-shaders-src-mq3-renderer-tr-backend-runtime-ml-533493421"></a>
 ### shaders
@@ -50,7 +50,7 @@ shaders
 Shader records available to resolve the queued drawing surfaces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L163)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-drawpayload-viewparms-viewparms-src-mq3-renderer-tr-backend-runtime-ml-1208789"></a>
 ### viewParms
@@ -62,4 +62,4 @@ viewParms
 Derived camera matrices, clipping planes, and viewport settings.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L159)

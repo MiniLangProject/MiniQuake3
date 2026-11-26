@@ -12,7 +12,7 @@ struct Services
 Stores system info host-service callbacks, including `cheatResetFn`, `loadedPaksFn`, `referencedPaksFn`, `setCvarFn`, `getCvarFn`, `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L21)
 
 ## Members
 
@@ -26,7 +26,7 @@ cheatResetFn
 Host callback for the cheat reset operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L24)
 
 <a id="field-field-mq3-client-system-info-services-context-context-src-mq3-client-system-info-ml-1848293241"></a>
 ### context
@@ -38,7 +38,7 @@ context
 Caller-supplied value forwarded unchanged to the service callbacks for server system-info configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L39)
 
 <a id="field-field-mq3-client-system-info-services-getcvarfn-getcvarfn-src-mq3-client-system-info-ml-2062030121"></a>
 ### getCvarFn
@@ -50,7 +50,7 @@ getCvarFn
 Host callback for the get cvar operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L36)
 
 <a id="field-field-mq3-client-system-info-services-loadedpaksfn-loadedpaksfn-src-mq3-client-system-info-ml-1970453201"></a>
 ### loadedPaksFn
@@ -62,7 +62,7 @@ loadedPaksFn
 Host callback for the loaded paks operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L27)
 
 <a id="field-field-mq3-client-system-info-services-referencedpaksfn-referencedpaksfn-src-mq3-client-system-info-ml-250251697"></a>
 ### referencedPaksFn
@@ -74,7 +74,7 @@ referencedPaksFn
 Host callback for the referenced paks operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L30)
 
 <a id="field-field-mq3-client-system-info-services-setcvarfn-setcvarfn-src-mq3-client-system-info-ml-694940993"></a>
 ### setCvarFn
@@ -86,4 +86,4 @@ setCvarFn
 Host callback for the set cvar operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L33)

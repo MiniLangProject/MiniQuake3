@@ -12,7 +12,7 @@ struct Bits
 Bits record for format.deflate, containing `data`, `offset`, `value`, `available`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L6)
 
 ## Members
 
@@ -26,7 +26,7 @@ available
 Number of unread bits currently present in the bit buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L14)
 
 <a id="field-field-mq3-format-deflate-bits-data-data-src-mq3-format-deflate-ml-646808097"></a>
 ### data
@@ -38,7 +38,7 @@ data
 Compressed input bytes consumed by the bit reader.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L8)
 
 <a id="field-field-mq3-format-deflate-bits-offset-offset-src-mq3-format-deflate-ml-788487407"></a>
 ### offset
@@ -50,7 +50,7 @@ offset
 Index of the next compressed byte to load.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L10)
 
 <a id="field-field-mq3-format-deflate-bits-value-value-src-mq3-format-deflate-ml-1804780001"></a>
 ### value
@@ -62,4 +62,4 @@ value
 Buffered low-order compressed bits awaiting consumption.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L12)

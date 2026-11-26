@@ -31,7 +31,7 @@ Apply `mq3.botlib.ai_resource_pools.moveState` while evaluating `add`.
 | `type` | `dynamic` | — | Value used by `add` in `if type==AVOID_CLEAR then state.numAvoidSpots=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-always-const-avoid-always-1-src-mq3-botlib-ai-avoid-spots-ml-689660804"></a>
 ### AVOID_ALWAYS
@@ -43,7 +43,7 @@ const AVOID_ALWAYS = 1
 Avoidance-spot mode that always rejects paths through the spot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-clear-const-avoid-clear-0-src-mq3-botlib-ai-avoid-spots-ml-1633109713"></a>
 ### AVOID_CLEAR
@@ -55,7 +55,7 @@ const AVOID_CLEAR = 0
 Avoidance-spot mode that removes the previously registered spots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-dontblock-const-avoid-dontblock-2-src-mq3-botlib-ai-avoid-spots-ml-1784997587"></a>
 ### AVOID_DONTBLOCK
@@ -67,7 +67,7 @@ const AVOID_DONTBLOCK = 2
 Avoidance-spot mode that influences path choice without blocking all movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-op-add-avoid-spot-const-op-add-avoid-spot-574-src-mq3-botlib-ai-avoid-spots-ml-157969529"></a>
 ### OP_ADD_AVOID_SPOT
@@ -79,4 +79,4 @@ const OP_ADD_AVOID_SPOT = 574
 Bot-library syscall identifier for add avoid spot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L10)

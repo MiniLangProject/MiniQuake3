@@ -18,7 +18,7 @@ function cgameNames()
 List the 102 names in vm.qvm_assembly_abi.cgameNames, beginning with `trap_Print`, `trap_Error`, `trap_Milliseconds`, `trap_Cvar_Register`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L7)
 
 <a id="function-function-mq3-vm-qvm-assembly-abi-cgameordinals-function-cgameordinals-src-mq3-vm-qvm-assembly-abi-ml-1702992352"></a>
 ### cgameOrdinals
@@ -30,7 +30,7 @@ function cgameOrdinals()
 Provide the cgame ordinals lookup table in vm.qvm_assembly_abi.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L9)
 
 <a id="function-function-mq3-vm-qvm-assembly-abi-gameduplicate546count-function-gameduplicate546count-src-mq3-vm-qvm-assembly-abi-ml-526684176"></a>
 ### gameDuplicate546Count
@@ -42,7 +42,7 @@ function gameDuplicate546Count()
 The original table intentionally assigns -546 to two adjacent imports.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L24)
 
 <a id="function-function-mq3-vm-qvm-assembly-abi-gamenames-function-gamenames-src-mq3-vm-qvm-assembly-abi-ml-1052233082"></a>
 ### gameNames
@@ -54,7 +54,7 @@ function gameNames()
 List the 194 names in vm.qvm_assembly_abi.gameNames, beginning with `trap_Printf`, `trap_Error`, `trap_Milliseconds`, `trap_Cvar_Register`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L11)
 
 <a id="function-function-mq3-vm-qvm-assembly-abi-gameordinals-function-gameordinals-src-mq3-vm-qvm-assembly-abi-ml-824688118"></a>
 ### gameOrdinals
@@ -66,7 +66,7 @@ function gameOrdinals()
 Provide the game ordinals lookup table in vm.qvm_assembly_abi.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L13)
 
 <a id="function-function-mq3-vm-qvm-assembly-abi-isbuiltinordinal-function-isbuiltinordinal-ordinal-src-mq3-vm-qvm-assembly-abi-ml-2042940085"></a>
 ### isBuiltinOrdinal
@@ -82,7 +82,7 @@ Compute vm.qvm_assembly_abi.isBuiltinOrdinal as `(ordinal <= - 101)`.
 | `ordinal` | `dynamic` | — | Ordinal used in `(ordinal <= - 101)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L22)
 
 <a id="function-function-mq3-vm-qvm-assembly-abi-syscallnumber-function-syscallnumber-ordinal-src-mq3-vm-qvm-assembly-abi-ml-2056795393"></a>
 ### syscallNumber
@@ -100,4 +100,4 @@ Validation failures include `QVM import ordinal must be negative`.
 | `ordinal` | `dynamic` | — | Ordinal used in `(0 - ordinal)` and `(ordinal >= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/qvm_assembly_abi.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/qvm_assembly_abi.ml#L19)

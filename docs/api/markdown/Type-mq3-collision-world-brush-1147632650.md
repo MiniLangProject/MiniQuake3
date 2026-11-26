@@ -12,7 +12,7 @@ struct Brush
 Brush record for collision.world, containing `planes`, `packedPlanes`, `contents`, `mins`, `maxs`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L82)
 
 ## Members
 
@@ -26,7 +26,7 @@ contents
 Collision or AAS contents flags describing the represented volume.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L88)
 
 <a id="field-field-mq3-collision-world-brush-maxs-maxs-src-mq3-collision-world-ml-1592212165"></a>
 ### maxs
@@ -38,7 +38,7 @@ maxs
 Maximum XYZ corner of the static convex brush in world coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L92)
 
 <a id="field-field-mq3-collision-world-brush-mins-mins-src-mq3-collision-world-ml-54727869"></a>
 ### mins
@@ -50,7 +50,7 @@ mins
 Minimum XYZ corner of the static convex brush in world coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L90)
 
 <a id="field-field-mq3-collision-world-brush-packedplanes-packedplanes-src-mq3-collision-world-ml-1272363205"></a>
 ### packedPlanes
@@ -62,7 +62,7 @@ packedPlanes
 Compact plane representation used by accelerated brush traces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L86)
 
 <a id="field-field-mq3-collision-world-brush-planes-planes-src-mq3-collision-world-ml-1030623793"></a>
 ### planes
@@ -74,4 +74,4 @@ planes
 Plane records used to classify or clip the represented geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L84)

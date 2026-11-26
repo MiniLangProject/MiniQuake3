@@ -12,7 +12,7 @@ struct Md4Weight
 Md4Weight record for format.qfiles, containing `boneIndex`, `boneWeight`, `offset`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L337)
 
 ## Members
 
@@ -26,7 +26,7 @@ boneIndex
 Index into the surface bone-reference table for this skinning influence.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L339)
 
 <a id="field-field-mq3-format-qfiles-md4weight-boneweight-boneweight-src-mq3-format-qfiles-ml-1892407656"></a>
 ### boneWeight
@@ -38,7 +38,7 @@ boneWeight
 Fraction of the vertex position contributed by this bone influence.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L341)
 
 <a id="field-field-mq3-format-qfiles-md4weight-offset-offset-src-mq3-format-qfiles-ml-1744249498"></a>
 ### offset
@@ -50,4 +50,4 @@ offset
 Bone-local XYZ position transformed by this skinning weight.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L343)

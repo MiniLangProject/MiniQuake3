@@ -12,7 +12,7 @@ struct Component
 `Component` record for ai chat profiles, containing `kind`, `text` and `number`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L40)
 
 ## Members
 
@@ -26,7 +26,7 @@ kind
 Template component discriminator selecting literal, variable, or random text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-component-number-number-src-mq3-botlib-ai-chat-profiles-ml-1454111862"></a>
 ### number
@@ -38,7 +38,7 @@ number
 Captured-variable index used by a variable-substitution component.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L46)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-component-text-text-src-mq3-botlib-ai-chat-profiles-ml-127951422"></a>
 ### text
@@ -50,4 +50,4 @@ text
 Literal text or random-list name associated with the component.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L44)

@@ -12,7 +12,7 @@ struct Orientation
 Stores UI players missionpack orientation record, including `origin`, `axis`, `found`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_players_missionpack.ml#L169)
 
 ## Members
 
@@ -26,7 +26,7 @@ axis
 Three orientation basis vectors used to transform the rendered object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_players_missionpack.ml#L173)
 
 <a id="field-field-mq3-client-ui-players-missionpack-orientation-found-found-src-mq3-client-ui-players-missionpack-ml-1160761799"></a>
 ### found
@@ -38,7 +38,7 @@ found
 True when the requested model attachment tag was found and the returned transform is valid.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_players_missionpack.ml#L175)
 
 <a id="field-field-mq3-client-ui-players-missionpack-orientation-origin-origin-src-mq3-client-ui-players-missionpack-ml-1010103827"></a>
 ### origin
@@ -50,4 +50,4 @@ origin
 Model-local attachment-tag origin used to join Missionpack preview model parts.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_players_missionpack.ml#L171)

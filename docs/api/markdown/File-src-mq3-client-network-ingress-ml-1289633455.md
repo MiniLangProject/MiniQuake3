@@ -24,7 +24,7 @@ Reachable from entry: **yes**
 function clientPacket(runtime, address, data)
 ```
 
-Wraps a UDP datagram in message storage, runs client packet processing, and records its result and packet count.
+Wraps a UDP datagram in message storage, runs client packet processing, and records its result and packet count. Reuses the runtime Huffman codec and advertises reassembly capacity including the four-byte sequence prefix. Missing input returns error 6994; datagrams beyond `MAX_MSGLEN` return error 7981 before packet accounting. Otherwise returns the packet-event result and retains it in `lastPacketResult`.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -33,7 +33,7 @@ Wraps a UDP datagram in message storage, runs client packet processing, and reco
 | `data` | `dynamic` | — | Received UDP datagram bytes, wrapped in message storage large enough for netchan reassembly. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L134)
 
 <a id="function-function-mq3-client-network-ingress-create-function-create-connectionstate-netchanruntime-protocol-hostservices-src-mq3-client-network-ingress-ml-88483758"></a>
 ### create
@@ -52,7 +52,7 @@ Connect client packet handling, netchan decoding, and protocol parsing to one in
 | `hostServices` | `dynamic` | — | Ingress Services containing connectionless support and optional recording/server callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L107)
 
 <a id="function-function-mq3-client-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-client-network-ingress-ml-583708552"></a>
 ### createPump
@@ -71,7 +71,7 @@ Create a UDP pump whose client and server callbacks are bound to this ingress ru
 | `capacity` | `dynamic` | — | Receive-buffer size in bytes per endpoint, from 1 through 65,535. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L171)
 
 <a id="function-function-mq3-client-network-ingress-parse-function-parse-packethost-state-msg-src-mq3-client-network-ingress-ml-797369456"></a>
 ### parse
@@ -89,7 +89,7 @@ Parse a server payload and synchronize snapshot sequencing and reliable server-c
 | `msg` | `dynamic` | — | Mutable message positioned at the server payload after netchan processing. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L73)
 
 <a id="function-function-mq3-client-network-ingress-process-function-process-packethost-state-msg-src-mq3-client-network-ingress-ml-696061568"></a>
 ### process
@@ -107,7 +107,7 @@ Pass a sequenced server packet through the client netchan decoder and return its
 | `msg` | `dynamic` | — | Mutable received message whose payload and read cursor are processed by the netchan. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L60)
 
 <a id="function-function-mq3-client-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-client-network-ingress-ml-353274470"></a>
 ### receiveClient
@@ -125,7 +125,7 @@ Adapt the pump's client datagram callback to ingress packet processing. Returns 
 | `data` | `dynamic` | — | Received UDP datagram bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L151)
 
 <a id="function-function-mq3-client-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-client-network-ingress-ml-1814103582"></a>
 ### receiveServer
@@ -143,7 +143,7 @@ Pass a server-side datagram to `serverPacketFn(services, address, data)` when co
 | `data` | `dynamic` | — | Received UDP datagram bytes for the server endpoint. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L160)
 
 <a id="function-function-mq3-client-network-ingress-recorddemo-function-recorddemo-packethost-state-msg-headerbytes-src-mq3-client-network-ingress-ml-998594900"></a>
 ### recordDemo
@@ -162,7 +162,7 @@ Forward a received server message to the installed demo recorder and return its 
 | `headerBytes` | `dynamic` | — | Number of transport/header bytes preceding the payload to record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L94)
 
 - [mq3.client.network_ingress.Runtime](Type-mq3-client-network-ingress-runtime-464646655.md) — struct
 <a id="function-function-mq3-client-network-ingress-services-function-services-connectionlesshost-src-mq3-client-network-ingress-ml-807274063"></a>
@@ -179,7 +179,7 @@ Create the ingress service bundle with demo and server-packet callbacks initiall
 | `connectionlessHost` | `dynamic` | — | Client connectionless service bundle required later by `create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L51)
 
 - [mq3.client.network_ingress.Services](Type-mq3-client-network-ingress-services-622981985.md) — struct
 <a id="function-function-mq3-client-network-ingress-setrealtime-function-setrealtime-runtime-realtime-src-mq3-client-network-ingress-ml-735561797"></a>
@@ -197,4 +197,4 @@ Updates both packet-event and snapshot-parser clocks to the supplied client real
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L120)

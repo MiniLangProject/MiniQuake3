@@ -313,7 +313,8 @@ suite was run, nor does it prove binary identity with an older build.
 ## Documentation
 
 - [MiniDoc API reference](docs/api/markdown/README.md)
-- [Current documentation coverage and semantic verification](docs/verification/MINIDOC_COVERAGE_2026-11-26.md)
+- [Main consolidation, current API coverage and integration verification](docs/verification/2026-11-26-main-consolidation.md)
+- [Earlier documentation coverage and semantic review](docs/verification/MINIDOC_COVERAGE_2026-11-26.md)
 - [MiniDoc warning cleanup and verification](docs/verification/MINIDOC_WARNINGS_2026-11-26.md)
 - [Audit corrections and validation scope](docs/AUDIT_FIXES_2026-11-17.md)
 - [Port plan](docs/PORTPLAN.md) and [current parity audit](docs/PARITY_AUDIT.md)
@@ -343,10 +344,11 @@ rewriting the generated HTML and Markdown. The Python verifier checks both outpu
 manifests, local links, anchors, search-result targets, and complete HTML/SVG/JSON
 files. Commit source documentation changes and their regenerated reference pages.
 
-The [coverage report](docs/verification/MINIDOC_COVERAGE_2026-11-26.md) separates
-comment coverage from semantic review: a comment on every declaration does not
-prove that every description is correct. Source contracts and generated pages
-must continue to be reviewed against their implementations.
+The [current coverage and consolidation report](docs/verification/2026-11-26-main-consolidation.md)
+records the combined source and its generated reference. It separates comment
+coverage from semantic review: a comment on every declaration does not prove
+that every description is correct. Source contracts and generated pages must
+continue to be reviewed against their implementations.
 
 Some historical engineering documents are still in German. This README is
 the English entry point; the detailed reports retain their original evidence

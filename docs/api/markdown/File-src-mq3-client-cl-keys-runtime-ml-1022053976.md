@@ -26,7 +26,7 @@ const BIGCHAR_WIDTH = 16
 Bigchar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L54)
 
 <a id="function-function-mq3-client-cl-keys-runtime-bindcallback-function-bindcallback-commandstate-state-src-mq3-client-cl-keys-runtime-ml-1426325575"></a>
 ### bindCallback
@@ -43,7 +43,7 @@ Adapts `mq3.client.cl_keys_runtime.Key_Bind_f` to engine client keys runtime `bi
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_keys_runtime.Key_Bind_f`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L258)
 
 <a id="function-function-mq3-client-cl-keys-runtime-bindlistcallback-function-bindlistcallback-commandstate-state-src-mq3-client-cl-keys-runtime-ml-1750347971"></a>
 ### bindListCallback
@@ -60,7 +60,7 @@ Adapts `mq3.client.cl_keys_runtime.Key_Bindlist_f` to engine client keys runtime
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_keys_runtime.Key_Bindlist_f`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L270)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-active-const-ca-active-8-src-mq3-client-cl-keys-runtime-ml-535608961"></a>
 ### CA_ACTIVE
@@ -72,7 +72,7 @@ const CA_ACTIVE = 8
 Connection-state value for normal gameplay after game-state loading, defined for routing escape and key events according to connection progress.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L48)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-authorizing-const-ca-authorizing-2-src-mq3-client-cl-keys-runtime-ml-1017580671"></a>
 ### CA_AUTHORIZING
@@ -84,7 +84,7 @@ const CA_AUTHORIZING = 2
 Client connection state while waiting for authorization to contact the server.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L34)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-challenging-const-ca-challenging-4-src-mq3-client-cl-keys-runtime-ml-192506597"></a>
 ### CA_CHALLENGING
@@ -96,7 +96,7 @@ const CA_CHALLENGING = 4
 Client connection state while replying to the server challenge and requesting connection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L38)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-cinematic-const-ca-cinematic-9-src-mq3-client-cl-keys-runtime-ml-1043436340"></a>
 ### CA_CINEMATIC
@@ -108,7 +108,7 @@ const CA_CINEMATIC = 9
 Client connection state used for fullscreen cinematic playback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L50)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-connected-const-ca-connected-5-src-mq3-client-cl-keys-runtime-ml-1549974480"></a>
 ### CA_CONNECTED
@@ -120,7 +120,7 @@ const CA_CONNECTED = 5
 Native post-handshake connection state retained by the keyboard runtime for compatibility with client connection-state values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L41)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-connecting-const-ca-connecting-3-src-mq3-client-cl-keys-runtime-ml-1719912504"></a>
 ### CA_CONNECTING
@@ -132,7 +132,7 @@ const CA_CONNECTING = 3
 Client connection state while requesting a challenge from the server.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-disconnected-const-ca-disconnected-1-src-mq3-client-cl-keys-runtime-ml-1264287638"></a>
 ### CA_DISCONNECTED
@@ -144,7 +144,7 @@ const CA_DISCONNECTED = 1
 Client connection state with no active server connection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L32)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-loading-const-ca-loading-6-src-mq3-client-cl-keys-runtime-ml-1020425299"></a>
 ### CA_LOADING
@@ -156,7 +156,7 @@ const CA_LOADING = 6
 Client connection state while level media and game state are being loaded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L43)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-primed-const-ca-primed-7-src-mq3-client-cl-keys-runtime-ml-1239880500"></a>
 ### CA_PRIMED
@@ -168,7 +168,7 @@ const CA_PRIMED = 7
 Client connection state with game state loaded, awaiting a playable snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L45)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-ca-uninitialized-const-ca-uninitialized-0-src-mq3-client-cl-keys-runtime-ml-1303176427"></a>
 ### CA_UNINITIALIZED
@@ -180,7 +180,7 @@ const CA_UNINITIALIZED = 0
 connstate_t is a public ABI shared with client.h and ui_public.h.  Keep the explicit Baseq3 ordinals here because routing below depends on the otherwise easy-to-confuse DISCONNECTED, PRIMED and CINEMATIC values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L30)
 
 <a id="function-function-mq3-client-cl-keys-runtime-cl-addkeyupcommands-function-cl-addkeyupcommands-state-key-binding-time-src-mq3-client-cl-keys-runtime-ml-1921208796"></a>
 ### CL_AddKeyUpCommands
@@ -199,7 +199,7 @@ Calls `mq3.client.key_binding_dispatch.commands`, `mq3.client.cl_keys_runtime.ev
 | `time` | `dynamic` | — | Value used by `values=dispatch.commands(binding,key,false,time)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L287)
 
 <a id="function-function-mq3-client-cl-keys-runtime-cl-charevent-function-cl-charevent-state-key-src-mq3-client-cl-keys-runtime-ml-528571750"></a>
 ### CL_CharEvent
@@ -216,7 +216,7 @@ Calls `mq3.client.cl_keys_runtime.Field_CharEvent`, `mq3.client.cl_keys_runtime.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding engine client keys runtime entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L331)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L331)
 
 <a id="function-function-mq3-client-cl-keys-runtime-cl-initkeycommands-function-cl-initkeycommands-state-src-mq3-client-cl-keys-runtime-ml-8926205"></a>
 ### CL_InitKeyCommands
@@ -232,7 +232,7 @@ Updates `state.initialized` during engine client keys runtime `CL_InitKeyCommand
 | `state` | `dynamic` | — | Mutable engine client keys runtime record/storage; this routine assigns `state.initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L273)
 
 <a id="function-function-mq3-client-cl-keys-runtime-cl-keyevent-function-cl-keyevent-state-key-down-time-src-mq3-client-cl-keys-runtime-ml-88225819"></a>
 ### CL_KeyEvent
@@ -251,7 +251,7 @@ Updates `state.repeats[key]`, `state.anyKeyDown`, `state.consoleState.catcher` d
 | `time` | `dynamic` | — | Value used by `CL_AddKeyUpCommands(state,key,Key_GetBinding(state,key),time)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L304)
 
 <a id="function-function-mq3-client-cl-keys-runtime-commandargs-function-commandargs-commandstate-src-mq3-client-cl-keys-runtime-ml-49194536"></a>
 ### commandArgs
@@ -267,7 +267,7 @@ Calls `mq3.qcommon.command_buffer.argc`, `mq3.qcommon.command_buffer.argv` from 
 | `commandState` | `dynamic` | — | commandState record passed to the engine client keys runtime helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L254)
 
 <a id="function-function-mq3-client-cl-keys-runtime-console-key-function-console-key-state-key-src-mq3-client-cl-keys-runtime-ml-1354349744"></a>
 ### Console_Key
@@ -284,7 +284,7 @@ Calls `mq3.client.console_input.consoleKey`, `mq3.client.cl_keys_runtime.Key_IsD
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding engine client keys runtime entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L293)
 
 <a id="function-function-mq3-client-cl-keys-runtime-create-function-create-width-services-src-mq3-client-cl-keys-runtime-ml-4125854"></a>
 ### create
@@ -301,7 +301,7 @@ Calls `mq3.vm.cgame_key_traps.create`, `mq3.client.console_input.create`, `mq3.q
 | `services` | `dynamic` | — | services record passed to the engine client keys runtime helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L125)
 
 - [mq3.client.cl_keys_runtime.DrawResult](Type-mq3-client-cl-keys-runtime-drawresult-1131225577.md) — struct
 <a id="function-function-mq3-client-cl-keys-runtime-event-function-event-state-kind-key-down-text-src-mq3-client-cl-keys-runtime-ml-629666933"></a>
@@ -322,7 +322,7 @@ Updates `state.events` during engine client keys runtime `event`.
 | `text` | `dynamic` | — | Text consumed or emitted by `event` in the engine client keys runtime path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L134)
 
 - [mq3.client.cl_keys_runtime.Event](Type-mq3-client-cl-keys-runtime-event-1815038642.md) — struct
 <a id="function-function-mq3-client-cl-keys-runtime-field-bigdraw-function-field-bigdraw-state-edit-x-y-width-showcursor-realtime-src-mq3-client-cl-keys-runtime-ml-293768140"></a>
@@ -345,7 +345,7 @@ Adapts `mq3.client.cl_keys_runtime.Field_VariableSizeDraw` to engine client keys
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. Forwarded to `mq3.client.cl_keys_runtime.Field_VariableSizeDraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L225)
 
 <a id="function-function-mq3-client-cl-keys-runtime-field-charevent-function-field-charevent-state-edit-ch-src-mq3-client-cl-keys-runtime-ml-1696486586"></a>
 ### Field_CharEvent
@@ -363,7 +363,7 @@ Updates `state.consoleState.overstrike` during engine client keys runtime `Field
 | `ch` | `dynamic` | — | Value used by `result=console.charEvent(state.consoleState,edit,ch)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L188)
 
 <a id="function-function-mq3-client-cl-keys-runtime-field-draw-function-field-draw-state-edit-x-y-width-showcursor-realtime-src-mq3-client-cl-keys-runtime-ml-1739680726"></a>
 ### Field_Draw
@@ -385,7 +385,7 @@ Adapts `mq3.client.cl_keys_runtime.Field_VariableSizeDraw` to engine client keys
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. Forwarded to `mq3.client.cl_keys_runtime.Field_VariableSizeDraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L216)
 
 <a id="function-function-mq3-client-cl-keys-runtime-field-keydownevent-function-field-keydownevent-state-edit-key-src-mq3-client-cl-keys-runtime-ml-2126842630"></a>
 ### Field_KeyDownEvent
@@ -403,7 +403,7 @@ Updates `state.consoleState.overstrike` during engine client keys runtime `Field
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding engine client keys runtime entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L181)
 
 <a id="function-function-mq3-client-cl-keys-runtime-field-paste-function-field-paste-state-edit-src-mq3-client-cl-keys-runtime-ml-482491021"></a>
 ### Field_Paste
@@ -420,7 +420,7 @@ Updates `state.consoleState.overstrike` during engine client keys runtime `Field
 | `edit` | `dynamic` | — | Value used by `result=console.paste(state.consoleState,edit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L176)
 
 <a id="function-function-mq3-client-cl-keys-runtime-field-variablesizedraw-function-field-variablesizedraw-state-edit-x-y-width-size-showcursor-realtime-src-mq3-client-cl-keys-runtime-ml-1197225153"></a>
 ### Field_VariableSizeDraw
@@ -443,7 +443,7 @@ Updates `edit.scroll` during engine client keys runtime `Field_VariableSizeDraw`
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L203)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-k-char-flag-const-k-char-flag-1024-src-mq3-client-cl-keys-runtime-ml-228322554"></a>
 ### K_CHAR_FLAG
@@ -455,7 +455,7 @@ const K_CHAR_FLAG = 1024
 Engine key code for the char flag input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L24)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-k-escape-const-k-escape-27-src-mq3-client-cl-keys-runtime-ml-1956572326"></a>
 ### K_ESCAPE
@@ -467,7 +467,7 @@ const K_ESCAPE = 27
 Engine key code for the escape input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L26)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-bind-f-function-key-bind-f-state-args-src-mq3-client-cl-keys-runtime-ml-672434202"></a>
 ### Key_Bind_f
@@ -484,7 +484,7 @@ Calls `mq3.client.cl_keys_runtime.event`, `mq3.client.cl_keys_runtime.Key_String
 | `args` | `dynamic` | — | Sequence read at `args[1]`, `args[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L240)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-bindlist-f-function-key-bindlist-f-state-args-src-mq3-client-cl-keys-runtime-ml-221110018"></a>
 ### Key_Bindlist_f
@@ -501,7 +501,7 @@ Calls `mq3.client.cl_keys_runtime.Key_GetBinding`, `mq3.client.cl_keys_runtime.e
 | `args` | `dynamic` | — | Accepted for compatibility with `Key_Bindlist_f`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L251)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-clearstates-function-key-clearstates-state-src-mq3-client-cl-keys-runtime-ml-686519135"></a>
 ### Key_ClearStates
@@ -517,7 +517,7 @@ Updates `state.anyKeyDown`, `state.repeats[key]` during engine client keys runti
 | `state` | `dynamic` | — | Mutable engine client keys runtime record/storage; this routine assigns `state.anyKeyDown`, `state.repeats[key]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L340)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-getbinding-function-key-getbinding-state-keynum-src-mq3-client-cl-keys-runtime-ml-748935614"></a>
 ### Key_GetBinding
@@ -534,7 +534,7 @@ Calls `mq3.client.cl_keys_runtime.valid`, `mq3.vm.cgame_key_traps.getBinding` fr
 | `keynum` | `dynamic` | — | Quake III key number identifying the keyboard or mouse input. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L160)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-getkey-function-key-getkey-state-binding-src-mq3-client-cl-keys-runtime-ml-1141464760"></a>
 ### Key_GetKey
@@ -551,7 +551,7 @@ Calls `mq3.vm.cgame_key_traps.getKey` from engine client keys runtime `Key_GetKe
 | `binding` | `dynamic` | — | Command text associated with an input key. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L164)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-getoverstrikemode-function-key-getoverstrikemode-state-src-mq3-client-cl-keys-runtime-ml-1759495011"></a>
 ### Key_GetOverstrikeMode
@@ -567,7 +567,7 @@ Calls `mq3.vm.cgame_key_traps.getOverstrike` from engine client keys runtime `Ke
 | `state` | `dynamic` | — | Record read through `state.keyState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L167)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-isdown-function-key-isdown-state-keynum-src-mq3-client-cl-keys-runtime-ml-127213190"></a>
 ### Key_IsDown
@@ -584,7 +584,7 @@ Calls `mq3.client.cl_keys_runtime.valid`, `mq3.vm.cgame_key_traps.isDown` from e
 | `keynum` | `dynamic` | — | Quake III key number identifying the keyboard or mouse input. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L145)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-keynumtostring-function-key-keynumtostring-keynum-src-mq3-client-cl-keys-runtime-ml-1818288765"></a>
 ### Key_KeynumToString
@@ -600,7 +600,7 @@ Adapts `mq3.vm.cgame_key_traps.keynumToString` to engine client keys runtime `Ke
 | `keynum` | `dynamic` | — | Quake III key number identifying the keyboard or mouse input. Forwarded to `mq3.vm.cgame_key_traps.keynumToString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L151)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-setbinding-function-key-setbinding-state-keynum-binding-src-mq3-client-cl-keys-runtime-ml-202958485"></a>
 ### Key_SetBinding
@@ -618,7 +618,7 @@ Updates `state.archiveModified` during engine client keys runtime `Key_SetBindin
 | `binding` | `dynamic` | — | Command text associated with an input key. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L156)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-setoverstrikemode-function-key-setoverstrikemode-state-value-src-mq3-client-cl-keys-runtime-ml-2088898198"></a>
 ### Key_SetOverstrikeMode
@@ -635,7 +635,7 @@ Updates `state.consoleState.overstrike` during engine client keys runtime `Key_S
 | `value` | `dynamic` | — | Value assigned to `state.consoleState.overstrike`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L171)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-stringtokeynum-function-key-stringtokeynum-text-src-mq3-client-cl-keys-runtime-ml-164435867"></a>
 ### Key_StringToKeynum
@@ -651,7 +651,7 @@ Adapts `mq3.vm.cgame_key_traps.stringToKeynum` to engine client keys runtime `Ke
 | `text` | `dynamic` | — | Argument 1 of `mq3.vm.cgame_key_traps.stringToKeynum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L148)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-unbind-f-function-key-unbind-f-state-args-src-mq3-client-cl-keys-runtime-ml-1672942594"></a>
 ### Key_Unbind_f
@@ -668,7 +668,7 @@ Calls `mq3.client.cl_keys_runtime.event`, `mq3.client.cl_keys_runtime.Key_String
 | `args` | `dynamic` | — | Sequence read at `args[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L230)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-unbindall-f-function-key-unbindall-f-state-args-src-mq3-client-cl-keys-runtime-ml-1277646554"></a>
 ### Key_Unbindall_f
@@ -685,7 +685,7 @@ Calls `mq3.client.cl_keys_runtime.Key_GetBinding`, `mq3.client.cl_keys_runtime.K
 | `args` | `dynamic` | — | Accepted for compatibility with `Key_Unbindall_f`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L236)
 
 <a id="function-function-mq3-client-cl-keys-runtime-key-writebindings-function-key-writebindings-state-src-mq3-client-cl-keys-runtime-ml-260832015"></a>
 ### Key_WriteBindings
@@ -701,7 +701,7 @@ Calls `mq3.client.key_bindings_config.bindingText` from engine client keys runti
 | `state` | `dynamic` | — | Record read through `state.bindingState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L247)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-keycatch-cgame-const-keycatch-cgame-8-src-mq3-client-cl-keys-runtime-ml-1945909839"></a>
 ### KEYCATCH_CGAME
@@ -713,7 +713,7 @@ const KEYCATCH_CGAME = 8
 Input-capture bit that routes keyboard events to the cgame subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L22)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-keycatch-console-const-keycatch-console-1-src-mq3-client-cl-keys-runtime-ml-46491076"></a>
 ### KEYCATCH_CONSOLE
@@ -725,7 +725,7 @@ const KEYCATCH_CONSOLE = 1
 Input-capture bit that routes keyboard events to the console subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L15)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-keycatch-message-const-keycatch-message-4-src-mq3-client-cl-keys-runtime-ml-1517830967"></a>
 ### KEYCATCH_MESSAGE
@@ -737,7 +737,7 @@ const KEYCATCH_MESSAGE = 4
 Input-capture bit that routes keyboard events to the message subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L20)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-keycatch-ui-const-keycatch-ui-2-src-mq3-client-cl-keys-runtime-ml-646528759"></a>
 ### KEYCATCH_UI
@@ -749,7 +749,7 @@ const KEYCATCH_UI = 2
 UI keyboard-capture mask used when routing key and character events to the UI rather than gameplay bindings.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L18)
 
 <a id="constant-constant-mq3-client-cl-keys-runtime-max-keys-const-max-keys-256-src-mq3-client-cl-keys-runtime-ml-392530224"></a>
 ### MAX_KEYS
@@ -761,7 +761,7 @@ const MAX_KEYS = 256
 Capacity limit for the keys collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L13)
 
 <a id="function-function-mq3-client-cl-keys-runtime-message-key-function-message-key-state-key-src-mq3-client-cl-keys-runtime-ml-989388504"></a>
 ### Message_Key
@@ -778,7 +778,7 @@ Calls `mq3.client.console_input.messageKey`, `mq3.client.cl_keys_runtime.Key_IsD
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding engine client keys runtime entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L297)
 
 - [mq3.client.cl_keys_runtime.Runtime](Type-mq3-client-cl-keys-runtime-runtime-1167656110.md) — struct
 <a id="constant-constant-mq3-client-cl-keys-runtime-smallchar-width-const-smallchar-width-8-src-mq3-client-cl-keys-runtime-ml-812394485"></a>
@@ -791,7 +791,7 @@ const SMALLCHAR_WIDTH = 8
 Smallchar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L52)
 
 <a id="function-function-mq3-client-cl-keys-runtime-synccatcher-function-synccatcher-state-src-mq3-client-cl-keys-runtime-ml-2080463875"></a>
 ### syncCatcher
@@ -807,7 +807,7 @@ Updates `state.keyState.catcher` during engine client keys runtime `syncCatcher`
 | `state` | `dynamic` | — | Mutable engine client keys runtime record/storage; this routine assigns `state.keyState.catcher`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L137)
 
 <a id="function-function-mq3-client-cl-keys-runtime-unbindallcallback-function-unbindallcallback-commandstate-state-src-mq3-client-cl-keys-runtime-ml-1813836791"></a>
 ### unbindAllCallback
@@ -824,7 +824,7 @@ Adapts `mq3.client.cl_keys_runtime.Key_Unbindall_f` to engine client keys runtim
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_keys_runtime.Key_Unbindall_f`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L266)
 
 <a id="function-function-mq3-client-cl-keys-runtime-unbindcallback-function-unbindcallback-commandstate-state-src-mq3-client-cl-keys-runtime-ml-14068923"></a>
 ### unbindCallback
@@ -841,7 +841,7 @@ Adapts `mq3.client.cl_keys_runtime.Key_Unbind_f` to engine client keys runtime `
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_keys_runtime.Key_Unbind_f`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L262)
 
 <a id="function-function-mq3-client-cl-keys-runtime-valid-function-valid-key-src-mq3-client-cl-keys-runtime-ml-1844684815"></a>
 ### valid
@@ -857,7 +857,7 @@ Computes `key>=0 and key<MAX_KEYS` for engine client keys runtime `valid`.
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding engine client keys runtime entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L140)
 
 <a id="function-function-mq3-client-cl-keys-runtime-visiblelength-function-visiblelength-text-src-mq3-client-cl-keys-runtime-ml-1917283183"></a>
 ### visibleLength
@@ -873,4 +873,4 @@ Counts displayed characters while skipping Quake color escape sequences.
 | `text` | `dynamic` | — | Text consumed or emitted by `visibleLength` in the engine client keys runtime path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L193)

@@ -15,7 +15,7 @@ Reachable from entry: **no**
 - `mq3/game/snapshot.ml` as `snapshot` → [src/mq3/game/snapshot.ml](File-src-mq3-game-snapshot-ml-1144176980.md)
 - `mq3/game/spawn_tables.ml` as `tables` → [src/mq3/game/spawn_tables.ml](File-src-mq3-game-spawn-tables-ml-2143892395.md)
 - `mq3/game/trajectory.ml` as `trajectory` → [src/mq3/game/trajectory.ml](File-src-mq3-game-trajectory-ml-1278285327.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -35,7 +35,7 @@ Update `ps.events[slot]`, `ps.eventParms[slot]` and `ps.eventSequence` during `B
 | `ps` | `dynamic` | — | Player movement state; accesses `eventSequence`, `events` and `eventParms`. May update `ps.events[slot]`, `ps.eventParms[slot]` and `ps.eventSequence` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L99)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-canitembegrabbed-function-bg-canitembegrabbed-gametype-ent-ps-src-mq3-game-bg-misc-runtime-ml-1032948388"></a>
 ### BG_CanItemBeGrabbed
@@ -53,7 +53,7 @@ Forward `BG_CanItemBeGrabbed` to `mq3.game.items.canGrab` and return the delegat
 | `ps` | `dynamic` | — | Items state; accesses `ammo`, `stats`, `persistant` and `powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L110)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-evaluatetrajectory-function-bg-evaluatetrajectory-tr-attime-src-mq3-game-bg-misc-runtime-ml-409656176"></a>
 ### BG_EvaluateTrajectory
@@ -70,7 +70,7 @@ Forward `BG_EvaluateTrajectory` to `mq3.game.trajectory.evaluate` and return the
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L114)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-evaluatetrajectorydelta-function-bg-evaluatetrajectorydelta-tr-attime-src-mq3-game-bg-misc-runtime-ml-1187858548"></a>
 ### BG_EvaluateTrajectoryDelta
@@ -87,7 +87,7 @@ Forward `BG_EvaluateTrajectoryDelta` to `mq3.game.trajectory.evaluateDelta` and 
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L118)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditem-function-bg-finditem-pickupname-missionpack-src-mq3-game-bg-misc-runtime-ml-1818610354"></a>
 ### BG_FindItem
@@ -104,7 +104,7 @@ Apply `mq3.game.bg_misc_runtime.pickupNames` while evaluating `BG_FindItem`.
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L87)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditemforholdable-function-bg-finditemforholdable-holdable-missionpack-src-mq3-game-bg-misc-runtime-ml-1475369892"></a>
 ### BG_FindItemForHoldable
@@ -121,7 +121,7 @@ Apply `mq3.game.bg_misc_runtime.itemLimit`, `mq3.game.bg_misc_runtime.resolvedIt
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L67)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditemforpowerup-function-bg-finditemforpowerup-powerup-missionpack-src-mq3-game-bg-misc-runtime-ml-841053173"></a>
 ### BG_FindItemForPowerup
@@ -138,7 +138,7 @@ Apply `mq3.game.bg_misc_runtime.itemLimit`, `mq3.game.bg_misc_runtime.resolvedIt
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L56)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditemforweapon-function-bg-finditemforweapon-weapon-missionpack-src-mq3-game-bg-misc-runtime-ml-464824589"></a>
 ### BG_FindItemForWeapon
@@ -155,7 +155,7 @@ Apply `mq3.game.bg_misc_runtime.itemLimit`, `mq3.game.bg_misc_runtime.resolvedIt
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L77)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-playerstatetoentitystate-function-bg-playerstatetoentitystate-ps-state-snap-src-mq3-game-bg-misc-runtime-ml-2055416120"></a>
 ### BG_PlayerStateToEntityState
@@ -173,7 +173,7 @@ Forward `BG_PlayerStateToEntityState` to `mq3.game.snapshot.fromPlayer` and retu
 | `snap` | `dynamic` | — | Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L123)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-playerstatetoentitystateextrapolate-function-bg-playerstatetoentitystateextrapolate-ps-state-time-snap-src-mq3-game-bg-misc-runtime-ml-268610709"></a>
 ### BG_PlayerStateToEntityStateExtraPolate
@@ -192,7 +192,7 @@ Forward `BG_PlayerStateToEntityStateExtraPolate` to `mq3.game.snapshot.extrapola
 | `snap` | `dynamic` | — | Value used by `convert` in `if snap then snapVector(s.pos.trBase) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L129)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-playertouchesitem-function-bg-playertouchesitem-ps-item-attime-src-mq3-game-bg-misc-runtime-ml-2007886104"></a>
 ### BG_PlayerTouchesItem
@@ -210,7 +210,7 @@ Forward `BG_PlayerTouchesItem` to `mq3.game.trajectory.playerTouchesItem` and re
 | `atTime` | `dynamic` | — | Game time in milliseconds at which the trajectory is evaluated. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L134)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-touchjumppad-function-bg-touchjumppad-ps-item-src-mq3-game-bg-misc-runtime-ml-137969032"></a>
 ### BG_TouchJumpPad
@@ -227,7 +227,7 @@ Forward `BG_TouchJumpPad` to `mq3.game.jumppad.touch` and return the delegated r
 | `item` | `dynamic` | — | Item record; accesses `number` and `origin2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L138)
 
 <a id="function-function-mq3-game-bg-misc-runtime-itemlimit-function-itemlimit-missionpack-src-mq3-game-bg-misc-runtime-ml-1179471973"></a>
 ### itemLimit
@@ -243,7 +243,7 @@ Apply `mq3.game.spawn_tables.missionpackItems` and `mq3.game.spawn_tables.items`
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L16)
 
 <a id="function-function-mq3-game-bg-misc-runtime-pickupnames-function-pickupnames-missionpack-src-mq3-game-bg-misc-runtime-ml-291806533"></a>
 ### pickupNames
@@ -259,7 +259,7 @@ Return the pinned pickup-name table, extending it with Team Arena items when req
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L39)
 
 <a id="function-function-mq3-game-bg-misc-runtime-resolveditemtag-function-resolveditemtag-index-missionpack-src-mq3-game-bg-misc-runtime-ml-1114484141"></a>
 ### resolvedItemTag
@@ -276,7 +276,7 @@ Apply `mq3.game.constants.missionpackItemTag` and `mq3.game.constants.itemTag` w
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L32)
 
 <a id="function-function-mq3-game-bg-misc-runtime-resolveditemtype-function-resolveditemtype-index-missionpack-src-mq3-game-bg-misc-runtime-ml-1781793147"></a>
 ### resolvedItemType
@@ -293,4 +293,4 @@ Apply `mq3.game.constants.missionpackItemType` and `mq3.game.constants.itemType`
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L24)

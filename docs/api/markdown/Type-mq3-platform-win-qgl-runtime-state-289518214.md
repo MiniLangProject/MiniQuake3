@@ -12,7 +12,7 @@ struct State
 Data record for `mq3.platform.win_qgl_runtime.State`; groups `loaded`, `driver`, `logging`, `logCounter`, `logOpen`, `logLines`, and 1 further field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L100)
 
 ## Members
 
@@ -26,7 +26,7 @@ calls
 Graphics entry-point calls recorded by the adapter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L114)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-driver-driver-src-mq3-platform-win-qgl-runtime-ml-300290186"></a>
 ### driver
@@ -38,7 +38,7 @@ driver
 Graphics driver selected or loaded by the platform layer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L104)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-loaded-loaded-src-mq3-platform-win-qgl-runtime-ml-605543988"></a>
 ### loaded
@@ -50,7 +50,7 @@ loaded
 Whether the selected OpenGL driver library is loaded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L102)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-logcounter-logcounter-src-mq3-platform-win-qgl-runtime-ml-145709498"></a>
 ### logCounter
@@ -62,7 +62,7 @@ logCounter
 Number of frames or operations included in graphics-call logging.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L108)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-logging-logging-src-mq3-platform-win-qgl-runtime-ml-730964546"></a>
 ### logging
@@ -74,7 +74,7 @@ logging
 Whether graphics or platform call logging is enabled.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L106)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-loglines-loglines-src-mq3-platform-win-qgl-runtime-ml-794003488"></a>
 ### logLines
@@ -86,7 +86,7 @@ logLines
 Graphics-call log lines accumulated by the adapter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L112)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-logopen-logopen-src-mq3-platform-win-qgl-runtime-ml-315071282"></a>
 ### logOpen
@@ -98,4 +98,4 @@ logOpen
 Whether the graphics-call log is open.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L110)

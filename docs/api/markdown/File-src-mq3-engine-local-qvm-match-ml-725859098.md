@@ -146,9 +146,9 @@ Reachable from entry: **yes**
 - `mq3/vm/syscall_qagame_world.ml` as `qworld` → [src/mq3/vm/syscall_qagame_world.ml](File-src-mq3-vm-syscall-qagame-world-ml-663586900.md)
 - `mq3/vm/syscall_ui.ml` as `uiSyscall` → [src/mq3/vm/syscall_ui.ml](File-src-mq3-vm-syscall-ui-ml-839264043.md)
 - `mq3/vm/syscall_ui_media.ml` as `uiMedia` → [src/mq3/vm/syscall_ui_media.ml](File-src-mq3-vm-syscall-ui-media-ml-1111712958.md)
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/fs.ml` as `fs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/fs.ml` as `fs` → `../../a7594a0c0299/MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -167,7 +167,7 @@ Compute aas movement area contents in engine.local_qvm_match; the normal complet
 | `area` | `dynamic` | — | Area num passed as `areaNum` to `mq3.botlib.aas_runtime.areaInfo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1134)
 
 <a id="function-function-mq3-engine-local-qvm-match-aasmovementpointarea-function-aasmovementpointarea-context-point-src-mq3-engine-local-qvm-match-ml-774880463"></a>
 ### aasMovementPointArea
@@ -184,7 +184,7 @@ Return `mq3.botlib.aas_runtime.pointAreaNum(context.aas, point)` from `engine.lo
 | `point` | `dynamic` | — | Point passed as `point` to `mq3.botlib.aas_runtime.pointAreaNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1126)
 
 <a id="function-function-mq3-engine-local-qvm-match-aasmovementpointpresence-function-aasmovementpointpresence-context-point-src-mq3-engine-local-qvm-match-ml-440481975"></a>
 ### aasMovementPointPresence
@@ -201,7 +201,7 @@ Return `mq3.botlib.aas_runtime.pointPresenceType(context.aas, point)` from `engi
 | `point` | `dynamic` | — | Point passed as `point` to `mq3.botlib.aas_runtime.pointPresenceType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1130)
 
 <a id="function-function-mq3-engine-local-qvm-match-aasmovementtrace-function-aasmovementtrace-context-start-finish-presence-passentity-src-mq3-engine-local-qvm-match-ml-1974726373"></a>
 ### aasMovementTrace
@@ -221,7 +221,7 @@ Apply `mq3.botlib.aas_runtime.presenceTypeBoundingBox`, `mq3.botlib.aas_client_t
 | `passEntity` | `dynamic` | — | Pass entity used in `(passEntity >= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1111)
 
 <a id="function-function-mq3-engine-local-qvm-match-aasmovementtraceareas-function-aasmovementtraceareas-context-start-finish-maximum-src-mq3-engine-local-qvm-match-ml-443296884"></a>
 ### aasMovementTraceAreas
@@ -240,7 +240,7 @@ Return `mq3.botlib.aas_trace_areas.trace(context.aas, start, finish, maximum)` f
 | `maximum` | `dynamic` | — | Maximum passed as `maximum` to `mq3.botlib.aas_trace_areas.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1142)
 
 <a id="function-function-mq3-engine-local-qvm-match-aaspointcontents-function-aaspointcontents-context-point-src-mq3-engine-local-qvm-match-ml-1187176623"></a>
 ### aasPointContents
@@ -257,7 +257,7 @@ Return `mq3.engine.local_qvm_match.pointContents(context, point, - 1)` from `eng
 | `point` | `dynamic` | — | Point passed as `point` to `mq3.engine.local_qvm_match.pointContents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1104)
 
 <a id="function-function-mq3-engine-local-qvm-match-addcgamepolys-function-addcgamepolys-context-vm-base-multiple-src-mq3-engine-local-qvm-match-ml-1801010937"></a>
 ### addCgamePolys
@@ -276,7 +276,7 @@ Add cgame polys in engine.local_qvm_match; the normal completion returns `0`.
 | `multiple` | `dynamic` | — | Multiple operand used by `addCgamePolys`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2732)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2732)
 
 <a id="function-function-mq3-engine-local-qvm-match-addcommand-function-addcommand-context-name-src-mq3-engine-local-qvm-match-ml-637601798"></a>
 ### addCommand
@@ -295,7 +295,7 @@ Direct state writes: `context.console`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.command_buffer.addCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2541)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2541)
 
 <a id="function-function-mq3-engine-local-qvm-match-adjustportal-function-adjustportal-context-entity-isopen-src-mq3-engine-local-qvm-match-ml-826965394"></a>
 ### adjustPortal
@@ -313,7 +313,7 @@ Compute adjust portal in engine.local_qvm_match.
 | `isOpen` | `dynamic` | — | Open passed as `open` to `mq3.collision.visibility.adjustAreaPortalState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L929)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L929)
 
 <a id="function-function-mq3-engine-local-qvm-match-allocatebot-function-allocatebot-context-src-mq3-engine-local-qvm-match-ml-382069247"></a>
 ### allocateBot
@@ -331,7 +331,7 @@ Direct state writes: `context.botAllocations`.
 | `context` | `dynamic` | — | Record exposing `clientStates`, `botServer`, `botAllocations`, `gameEntities`, `entityStride`, `machineRuntime`. Updated in place: `botAllocations`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L958)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L958)
 
 <a id="function-function-mq3-engine-local-qvm-match-anykeydown-function-anykeydown-value-src-mq3-engine-local-qvm-match-ml-953703605"></a>
 ### anyKeyDown
@@ -347,7 +347,7 @@ Test any key down in engine.local_qvm_match; the normal completion returns `fals
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3238)
 
 <a id="function-function-mq3-engine-local-qvm-match-applysavedclientstate-function-applysavedclientstate-context-settings-src-mq3-engine-local-qvm-match-ml-202179382"></a>
 ### applySavedClientState
@@ -364,7 +364,7 @@ Apply saved client state in engine.local_qvm_match.
 | `settings` | `dynamic` | — | Record exposing `bindings`, `userinfos`, `pendingBotCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1709)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1709)
 
 <a id="function-function-mq3-engine-local-qvm-match-applysavedcvars-function-applysavedcvars-registry-settings-src-mq3-engine-local-qvm-match-ml-1350225616"></a>
 ### applySavedCvars
@@ -381,7 +381,7 @@ Apply saved cvars in engine.local_qvm_match.
 | `settings` | `dynamic` | — | Record exposing `cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1692)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1692)
 
 <a id="function-function-mq3-engine-local-qvm-match-areasconnected-function-areasconnected-context-a-b-src-mq3-engine-local-qvm-match-ml-752668534"></a>
 ### areasConnected
@@ -399,7 +399,7 @@ Return `mq3.collision.visibility.areasConnected(context.collisionWorld.visibilit
 | `b` | `dynamic` | — | Area 2 passed as `area2` to `mq3.collision.visibility.areasConnected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L939)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L939)
 
 <a id="function-function-mq3-engine-local-qvm-match-attachinputclear-function-attachinputclear-value-context-callback-src-mq3-engine-local-qvm-match-ml-1378851915"></a>
 ### attachInputClear
@@ -417,7 +417,7 @@ Test attach input clear in engine.local_qvm_match; the normal completion returns
 | `callback` | `dynamic` | — | Callback invoked for callback; the call sites below define the callback arguments. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3195)
 
 <a id="function-function-mq3-engine-local-qvm-match-beginclientmessage-function-beginclientmessage-value-team-playernum-src-mq3-engine-local-qvm-match-ml-1363789491"></a>
 ### beginClientMessage
@@ -435,7 +435,7 @@ Begin client message in engine.local_qvm_match; the normal completion returns `t
 | `playerNum` | `dynamic` | — | Player num passed as `playerNum` to `mq3.client.console_input.beginMessage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3303)
 
 <a id="function-function-mq3-engine-local-qvm-match-beginrendererframe-function-beginrendererframe-value-src-mq3-engine-local-qvm-match-ml-394307333"></a>
 ### beginRendererFrame
@@ -451,7 +451,7 @@ R_ToggleSmpFrame owns frame capacities; RE_ClearScene only separates views withi
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3037)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3037)
 
 <a id="function-function-mq3-engine-local-qvm-match-bestreachablejumppadarea-function-bestreachablejumppadarea-context-itemorigin-itemmins-itemmaxs-src-mq3-engine-local-qvm-match-ml-635631610"></a>
 ### bestReachableJumpPadArea
@@ -470,7 +470,7 @@ Compute best reachable jump pad area in engine.local_qvm_match; the normal compl
 | `itemMaxs` | `dynamic` | — | Item maxs used in `itemMaxs[0]` and `itemMaxs[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1174)
 
 <a id="function-function-mq3-engine-local-qvm-match-bindingconfigtext-function-bindingconfigtext-value-src-mq3-engine-local-qvm-match-ml-784112661"></a>
 ### bindingConfigText
@@ -486,7 +486,7 @@ Compute binding config text in engine.local_qvm_match; the normal completion ret
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3228)
 
 <a id="function-function-mq3-engine-local-qvm-match-boot-function-boot-archive-map-now-src-mq3-engine-local-qvm-match-ml-323668418"></a>
 ### boot
@@ -504,7 +504,7 @@ Return `mq3.engine.local_qvm_match.bootConfigured(archive, map, now, "", false)`
 | `now` | `dynamic` | — | Now passed as `now` to `mq3.engine.local_qvm_match.bootConfigured`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1926)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1926)
 
 - [mq3.engine.local_qvm_match.Boot](Type-mq3-engine-local-qvm-match-boot-1321265160.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-bootcgame-function-bootcgame-value-src-mq3-engine-local-qvm-match-ml-337881419"></a>
@@ -523,7 +523,7 @@ Direct state writes: `value.cgame`.
 | `value` | `dynamic` | — | Record exposing `context`, `runtime`. Updated in place: `cgame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2999)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2999)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootconfigured-function-bootconfigured-archive-map-now-qvmroot-botsenabled-src-mq3-engine-local-qvm-match-ml-584350289"></a>
 ### bootConfigured
@@ -543,7 +543,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamed(archive, map, now, qvmRoo
 | `botsEnabled` | `dynamic` | — | Bots enabled passed as `botsEnabled` to `mq3.engine.local_qvm_match.bootConfiguredNamed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1873)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1873)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootconfigurednamed-function-bootconfigurednamed-archive-map-now-qvmroot-botsenabled-mapname-src-mq3-engine-local-qvm-match-ml-1136606466"></a>
 ### bootConfiguredNamed
@@ -564,7 +564,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings(archive, map,
 | `mapName` | `dynamic` | — | Map name passed as `mapName` to `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1866)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1866)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootconfigurednamedmode-function-bootconfigurednamedmode-archive-map-now-qvmroot-botsenabled-mapname-startgame-src-mq3-engine-local-qvm-match-ml-2121695874"></a>
 ### bootConfiguredNamedMode
@@ -586,7 +586,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings(archive, map,
 | `startGame` | `dynamic` | — | Start game passed as `startGame` to `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1858)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1858)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootconfigurednamedmodesettings-function-bootconfigurednamedmodesettings-archive-map-now-qvmroot-botsenabled-mapname-startgame-settings-src-mq3-engine-local-qvm-match-ml-2025761987"></a>
 ### bootConfiguredNamedModeSettings
@@ -609,7 +609,7 @@ Compute boot configured named mode settings in engine.local_qvm_match; the norma
 | `settings` | `dynamic` | — | Settings passed as `settings` to `mq3.engine.local_qvm_match.applySavedCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1752)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1752)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootserverstream-function-bootserverstream-archive-map-mapname-qvmroot-settings-protocol-demoplaying-sourcename-now-src-mq3-engine-local-qvm-match-ml-1249129575"></a>
 ### bootServerStream
@@ -633,7 +633,7 @@ Compute boot server stream in engine.local_qvm_match; the normal completion retu
 | `now` | `dynamic` | — | Now passed as `now` to `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3121)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootui-function-bootui-value-src-mq3-engine-local-qvm-match-ml-1504093417"></a>
 ### bootUi
@@ -651,7 +651,7 @@ Direct state writes: `value.ui`.
 | `value` | `dynamic` | — | Record exposing `context`, `runtime`. Updated in place: `ui`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3606)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3606)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootuishell-function-bootuishell-archive-map-now-qvmroot-src-mq3-engine-local-qvm-match-ml-652689664"></a>
 ### bootUiShell
@@ -670,7 +670,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamedMode(archive, map, now, qv
 | `qvmRoot` | `dynamic` | — | Qvm root passed as `qvmRoot` to `mq3.engine.local_qvm_match.bootConfiguredNamedMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1901)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1901)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootuishellsettings-function-bootuishellsettings-archive-map-now-qvmroot-settings-src-mq3-engine-local-qvm-match-ml-1972640281"></a>
 ### bootUiShellSettings
@@ -690,7 +690,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings(archive, map,
 | `settings` | `dynamic` | — | Settings passed as `settings` to `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1908)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1908)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootwithbots-function-bootwithbots-archive-map-now-qvmroot-src-mq3-engine-local-qvm-match-ml-2143698944"></a>
 ### bootWithBots
@@ -709,7 +709,7 @@ Return `mq3.engine.local_qvm_match.bootConfigured(archive, map, now, qvmRoot, tr
 | `qvmRoot` | `dynamic` | — | Qvm root passed as `qvmRoot` to `mq3.engine.local_qvm_match.bootConfigured`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1914)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1914)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootwithbotsnamed-function-bootwithbotsnamed-archive-map-mapname-now-qvmroot-src-mq3-engine-local-qvm-match-ml-243510117"></a>
 ### bootWithBotsNamed
@@ -729,7 +729,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamed(archive, map, now, qvmRoo
 | `qvmRoot` | `dynamic` | — | Qvm root passed as `qvmRoot` to `mq3.engine.local_qvm_match.bootConfiguredNamed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1921)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1921)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootwithqvms-function-bootwithqvms-archive-map-now-qvmroot-src-mq3-engine-local-qvm-match-ml-1141174360"></a>
 ### bootWithQvms
@@ -748,7 +748,7 @@ Return `mq3.engine.local_qvm_match.bootConfigured(archive, map, now, qvmRoot, fa
 | `qvmRoot` | `dynamic` | — | Qvm root passed as `qvmRoot` to `mq3.engine.local_qvm_match.bootConfigured`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1880)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1880)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootwithqvmssettings-function-bootwithqvmssettings-archive-map-now-qvmroot-settings-src-mq3-engine-local-qvm-match-ml-1952430347"></a>
 ### bootWithQvmsSettings
@@ -768,7 +768,7 @@ Return `mq3.engine.local_qvm_match.bootWithQvmsSettingsNamed(archive, map, "q3dm
 | `settings` | `dynamic` | — | Settings passed as `settings` to `mq3.engine.local_qvm_match.bootWithQvmsSettingsNamed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1895)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1895)
 
 <a id="function-function-mq3-engine-local-qvm-match-bootwithqvmssettingsnamed-function-bootwithqvmssettingsnamed-archive-map-mapname-now-qvmroot-settings-src-mq3-engine-local-qvm-match-ml-68362326"></a>
 ### bootWithQvmsSettingsNamed
@@ -789,7 +789,7 @@ Return `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings(archive, map,
 | `settings` | `dynamic` | — | Settings passed as `settings` to `mq3.engine.local_qvm_match.bootConfiguredNamedModeSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1888)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1888)
 
 <a id="function-function-mq3-engine-local-qvm-match-botcachedirectory-function-botcachedirectory-context-src-mq3-engine-local-qvm-match-ml-505267375"></a>
 ### botCacheDirectory
@@ -805,7 +805,7 @@ Compute bot cache directory in engine.local_qvm_match; the normal completion ret
 | `context` | `dynamic` | — | Record exposing `archive`, `qvmRoot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1042)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1042)
 
 <a id="function-function-mq3-engine-local-qvm-match-botcharacterread-function-botcharacterread-context-path-src-mq3-engine-local-qvm-match-ml-1327606166"></a>
 ### botCharacterRead
@@ -822,7 +822,7 @@ Compute bot character read in engine.local_qvm_match; the normal completion retu
 | `path` | `dynamic` | — | Name passed as `name` to `mq3.format.pk3.read`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L989)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L989)
 
 <a id="function-function-mq3-engine-local-qvm-match-botclientcommand-function-botclientcommand-context-client-text-src-mq3-engine-local-qvm-match-ml-1379008527"></a>
 ### botClientCommand
@@ -842,7 +842,7 @@ Direct state writes: `context.console`.
 | `text` | `dynamic` | — | Text used in `("bot " + text)` and `(context.console + [[client, ("bot " + text)]])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L985)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L985)
 
 <a id="function-function-mq3-engine-local-qvm-match-botenable-function-botenable-context-src-mq3-engine-local-qvm-match-ml-132581767"></a>
 ### botEnable
@@ -858,7 +858,7 @@ Compute bot enable in engine.local_qvm_match; the normal completion returns `var
 | `context` | `dynamic` | — | Record exposing `cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1005)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1005)
 
 <a id="function-function-mq3-engine-local-qvm-match-botlibfloat-function-botlibfloat-context-name-fallback-src-mq3-engine-local-qvm-match-ml-1238094220"></a>
 ### botlibFloat
@@ -876,7 +876,7 @@ Compute botlib float in engine.local_qvm_match; the normal completion returns `n
 | `fallback` | `dynamic` | — | Value returned unchanged by this function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1147)
 
 <a id="function-function-mq3-engine-local-qvm-match-botlibloadmap-function-botlibloadmap-context-vm-base-src-mq3-engine-local-qvm-match-ml-603341739"></a>
 ### botlibLoadMap
@@ -896,7 +896,7 @@ Direct state writes: `context.aas`, `context.aasRouter`, `context.aasRouteCache`
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1063)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1063)
 
 <a id="function-function-mq3-engine-local-qvm-match-botlibtext-function-botlibtext-context-name-fallback-src-mq3-engine-local-qvm-match-ml-34714036"></a>
 ### botlibText
@@ -914,7 +914,7 @@ Compute botlib text in engine.local_qvm_match; the normal completion returns `va
 | `fallback` | `dynamic` | — | Value returned unchanged by this function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1537)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1537)
 
 <a id="function-function-mq3-engine-local-qvm-match-botlibvarget-function-botlibvarget-context-vm-base-src-mq3-engine-local-qvm-match-ml-13759683"></a>
 ### botlibVarGet
@@ -932,7 +932,7 @@ Compute botlib var get in engine.local_qvm_match; the normal completion returns 
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1019)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1019)
 
 <a id="function-function-mq3-engine-local-qvm-match-botlibvarset-function-botlibvarset-context-vm-base-src-mq3-engine-local-qvm-match-ml-76222187"></a>
 ### botlibVarSet
@@ -950,7 +950,7 @@ Compute botlib var set in engine.local_qvm_match; the normal completion returns 
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1010)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1010)
 
 <a id="function-function-mq3-engine-local-qvm-match-callvm-function-callvm-machineruntime-slot-args-src-mq3-engine-local-qvm-match-ml-801183644"></a>
 ### callVm
@@ -968,7 +968,7 @@ Return `mq3.vm.runtime.call(machineRuntime, slot, args)` from `engine.local_qvm_
 | `args` | `dynamic` | — | Args passed as `args` to `mq3.vm.runtime.call`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L539)
 
 <a id="function-function-mq3-engine-local-qvm-match-capturerenderview-function-capturerenderview-context-vm-address-src-mq3-engine-local-qvm-match-ml-660870890"></a>
 ### captureRenderView
@@ -988,7 +988,7 @@ Direct state writes: `context.latestRefdef`, `context.renderViews`.
 | `address` | `dynamic` | — | Address passed as `address` to `mq3.engine.local_qvm_match.decodeRefdef`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2795)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2795)
 
 <a id="function-function-mq3-engine-local-qvm-match-captureusersettings-function-captureusersettings-value-src-mq3-engine-local-qvm-match-ml-1701576985"></a>
 ### captureUserSettings
@@ -1004,7 +1004,7 @@ Compute capture user settings in engine.local_qvm_match; the normal completion r
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1675)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1675)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgameboxtrace-function-cgameboxtrace-context-vm-base-capsule-transformed-src-mq3-engine-local-qvm-match-ml-2066624661"></a>
 ### cgameBoxTrace
@@ -1026,7 +1026,7 @@ Direct state writes: `context.cgameCollisionQueries`.
 | `transformed` | `dynamic` | — | Transformed passed as `transformed` to `mq3.engine.local_qvm_match.cgameBoxTraceReference`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2685)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2685)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgameboxtracecached-function-cgameboxtracecached-context-vm-base-capsule-transformed-src-mq3-engine-local-qvm-match-ml-903773633"></a>
 ### cgameBoxTraceCached
@@ -1048,7 +1048,7 @@ Direct state writes: `context.cgameCollisionQueries`.
 | `transformed` | `dynamic` | — | Transformed passed as `transformed` to `mq3.vm.cgame_collision_cache.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2698)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2698)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgameboxtracereference-function-cgameboxtracereference-context-vm-base-capsule-transformed-src-mq3-engine-local-qvm-match-ml-1146774447"></a>
 ### cgameBoxTraceReference
@@ -1068,7 +1068,7 @@ Compute cgame box trace reference in engine.local_qvm_match; the normal completi
 | `transformed` | `dynamic` | — | Transformed operand used by `cgameBoxTraceReference`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2667)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2667)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamemarkfragments-function-cgamemarkfragments-context-vm-base-src-mq3-engine-local-qvm-match-ml-110443655"></a>
 ### cgameMarkFragments
@@ -1086,7 +1086,7 @@ Return `mq3.engine.local_qvm_match.cgameMarkFragmentsReference(context, vm, base
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.engine.local_qvm_match.cgameMarkFragmentsReference`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2828)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2828)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamemarkfragmentscached-function-cgamemarkfragmentscached-context-vm-base-src-mq3-engine-local-qvm-match-ml-570378819"></a>
 ### cgameMarkFragmentsCached
@@ -1104,7 +1104,7 @@ Compute cgame mark fragments cached in engine.local_qvm_match; the normal comple
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.engine.local_qvm_match.cgameMarkFragmentsReference`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2833)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2833)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamemarkfragmentsprepared-function-cgamemarkfragmentsprepared-context-vm-base-src-mq3-engine-local-qvm-match-ml-851539507"></a>
 ### cgameMarkFragmentsPrepared
@@ -1122,7 +1122,7 @@ Return `mq3.engine.local_qvm_match.writeCgameMarks(context, vm, base, context.ma
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.engine.local_qvm_match.writeCgameMarks`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2807)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2807)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamemarkfragmentsreference-function-cgamemarkfragmentsreference-context-vm-base-src-mq3-engine-local-qvm-match-ml-2119160267"></a>
 ### cgameMarkFragmentsReference
@@ -1140,7 +1140,7 @@ Return `mq3.engine.local_qvm_match.writeCgameMarks(context, vm, base, void)` fro
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.engine.local_qvm_match.writeCgameMarks`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2802)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2802)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamenullablevector-function-cgamenullablevector-vm-base-index-label-src-mq3-engine-local-qvm-match-ml-41087550"></a>
 ### cgameNullableVector
@@ -1159,7 +1159,7 @@ Compute cgame nullable vector in engine.local_qvm_match; the normal completion r
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.readFloatVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2651)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2651)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamesensitivity-function-cgamesensitivity-value-src-mq3-engine-local-qvm-match-ml-1466267409"></a>
 ### cgameSensitivity
@@ -1175,7 +1175,7 @@ Compute cgame sensitivity in engine.local_qvm_match; the normal completion retur
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2635)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2635)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgameservercommand-function-cgameservercommand-context-number-src-mq3-engine-local-qvm-match-ml-228804768"></a>
 ### cgameServerCommand
@@ -1192,7 +1192,7 @@ Compute cgame server command in engine.local_qvm_match; the normal completion re
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.client.server_command_stream.get`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2601)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2601)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgametraceresult-function-cgametraceresult-result-src-mq3-engine-local-qvm-match-ml-1442706097"></a>
 ### cgameTraceResult
@@ -1208,7 +1208,7 @@ Apply `mq3.vm.syscall_qagame_world.TraceResult` for cgame trace result in engine
 | `result` | `dynamic` | — | Record exposing `trace`, `endpos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2657)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2657)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgameusercmdvalue-function-cgameusercmdvalue-value-src-mq3-engine-local-qvm-match-ml-1508790027"></a>
 ### cgameUserCmdValue
@@ -1224,7 +1224,7 @@ Compute cgame user cmd value in engine.local_qvm_match; the normal completion re
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2632)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2632)
 
 <a id="function-function-mq3-engine-local-qvm-match-cgamevector-function-cgamevector-vm-base-index-label-src-mq3-engine-local-qvm-match-ml-1847396348"></a>
 ### cgameVector
@@ -1243,7 +1243,7 @@ Return `mq3.vm.syscall_common.readFloatVector(vm, common.argument(vm, base, inde
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.readFloatVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2645)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2645)
 
 <a id="function-function-mq3-engine-local-qvm-match-chatoutputrandom-function-chatoutputrandom-context-src-mq3-engine-local-qvm-match-ml-1306914647"></a>
 ### chatOutputRandom
@@ -1259,7 +1259,7 @@ Return `mq3.botlib.ai_goal_selection.randomFloat(context.aiGoalSelection)` from 
 | `context` | `dynamic` | — | Record exposing `aiGoalSelection`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1261)
 
 <a id="function-function-mq3-engine-local-qvm-match-clearclient-function-clearclient-context-index-src-mq3-engine-local-qvm-match-ml-1544100829"></a>
 ### clearClient
@@ -1276,7 +1276,7 @@ Compute engine.local_qvm_match.clearClient as `void`.
 | `index` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1002)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1002)
 
 <a id="function-function-mq3-engine-local-qvm-match-clearconsolecommand-function-clearconsolecommand-commandstate-context-src-mq3-engine-local-qvm-match-ml-1775372043"></a>
 ### clearConsoleCommand
@@ -1293,7 +1293,7 @@ Clear console command in engine.local_qvm_match; the normal completion returns `
 | `context` | `dynamic` | — | Context passed as `context` to `mq3.engine.local_qvm_match.syncConsoleRuntime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L682)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L682)
 
 <a id="function-function-mq3-engine-local-qvm-match-clearscene-function-clearscene-context-src-mq3-engine-local-qvm-match-ml-1775677323"></a>
 ### clearScene
@@ -1309,7 +1309,7 @@ Clear scene in engine.local_qvm_match.
 | `context` | `dynamic` | — | Record exposing `scene`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2575)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2575)
 
 <a id="function-function-mq3-engine-local-qvm-match-clientconsolestate-function-clientconsolestate-value-src-mq3-engine-local-qvm-match-ml-136856505"></a>
 ### clientConsoleState
@@ -1325,7 +1325,7 @@ Compute client console state in engine.local_qvm_match; the normal completion re
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3280)
 
 <a id="function-function-mq3-engine-local-qvm-match-clientconsoleview-function-clientconsoleview-value-now-framemsec-version-src-mq3-engine-local-qvm-match-ml-1904545932"></a>
 ### clientConsoleView
@@ -1344,7 +1344,7 @@ Compute client console view in engine.local_qvm_match; the normal completion ret
 | `version` | `dynamic` | — | Version passed as `version` to `mq3.client.cl_console.Con_DrawConsole`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3293)
 
 <a id="function-function-mq3-engine-local-qvm-match-clientgamecommand-function-clientgamecommand-commandstate-src-mq3-engine-local-qvm-match-ml-874618004"></a>
 ### clientGameCommand
@@ -1360,7 +1360,7 @@ qcommon/Cmd_ExecuteString callback chain.  These callbacks deliberately use the 
 | `commandState` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1952)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1952)
 
 <a id="function-function-mq3-engine-local-qvm-match-clientmessageescape-function-clientmessageescape-value-src-mq3-engine-local-qvm-match-ml-526109015"></a>
 ### clientMessageEscape
@@ -1376,7 +1376,7 @@ Compute client message escape in engine.local_qvm_match; the normal completion r
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3263)
 
 <a id="function-function-mq3-engine-local-qvm-match-clienttextchar-function-clienttextchar-value-ch-src-mq3-engine-local-qvm-match-ml-107557400"></a>
 ### clientTextChar
@@ -1393,7 +1393,7 @@ Compute client text char in engine.local_qvm_match; the normal completion return
 | `ch` | `dynamic` | — | Ch passed as `ch` to `mq3.client.console_input.charEvent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3270)
 
 <a id="function-function-mq3-engine-local-qvm-match-clienttextkey-function-clienttextkey-value-key-shift-ctrl-src-mq3-engine-local-qvm-match-ml-218702227"></a>
 ### clientTextKey
@@ -1412,7 +1412,7 @@ Compute client text key in engine.local_qvm_match; the normal completion returns
 | `ctrl` | `dynamic` | — | Ctrl passed as `ctrl` to `mq3.client.console_input.consoleKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3257)
 
 <a id="function-function-mq3-engine-local-qvm-match-clienttextstate-function-clienttextstate-value-src-mq3-engine-local-qvm-match-ml-1079973739"></a>
 ### clientTextState
@@ -1428,7 +1428,7 @@ Compute client text state in engine.local_qvm_match; the normal completion retur
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3277)
 
 <a id="function-function-mq3-engine-local-qvm-match-clientusercmd-function-clientusercmd-context-number-src-mq3-engine-local-qvm-match-ml-1514128640"></a>
 ### clientUsercmd
@@ -1445,7 +1445,7 @@ Compute client usercmd in engine.local_qvm_match; the normal completion returns 
 | `number` | `dynamic` | — | Command number passed as `commandNumber` to `mq3.client.command_ring.get`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2617)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2617)
 
 <a id="function-function-mq3-engine-local-qvm-match-closefile-function-closefile-context-handle-src-mq3-engine-local-qvm-match-ml-1578851621"></a>
 ### closeFile
@@ -1462,7 +1462,7 @@ Close file in engine.local_qvm_match.
 | `handle` | `dynamic` | — | Handle used in `(handle > 0)` and `(handle < len(context.files))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L776)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L776)
 
 <a id="function-function-mq3-engine-local-qvm-match-commandclearnotify-function-commandclearnotify-context-src-mq3-engine-local-qvm-match-ml-528796023"></a>
 ### commandClearNotify
@@ -1480,7 +1480,7 @@ Direct state writes: `context.prints`.
 | `context` | `dynamic` | — | Updated in place: `prints`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2585)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2585)
 
 <a id="function-function-mq3-engine-local-qvm-match-commandclearusercmds-function-commandclearusercmds-context-src-mq3-engine-local-qvm-match-ml-768901575"></a>
 ### commandClearUsercmds
@@ -1496,7 +1496,7 @@ Return `mq3.client.command_ring.clear(context.usercmdHistory)` from `engine.loca
 | `context` | `dynamic` | — | Record exposing `usercmdHistory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2588)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2588)
 
 <a id="function-function-mq3-engine-local-qvm-match-commandcloseconsole-function-commandcloseconsole-context-src-mq3-engine-local-qvm-match-ml-1591450635"></a>
 ### commandCloseConsole
@@ -1514,7 +1514,7 @@ Direct state writes: `context.uiKeyCatcher`.
 | `context` | `dynamic` | — | Record exposing `uiKeyCatcher`. Updated in place: `uiKeyCatcher`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2593)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2593)
 
 <a id="function-function-mq3-engine-local-qvm-match-commandconfigstring-function-commandconfigstring-context-index-value-src-mq3-engine-local-qvm-match-ml-109333880"></a>
 ### commandConfigstring
@@ -1532,7 +1532,7 @@ Compute command configstring in engine.local_qvm_match.
 | `value` | `dynamic` | — | Value operand used by `commandConfigstring`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2580)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2580)
 
 <a id="function-function-mq3-engine-local-qvm-match-commandqueueconsole-function-commandqueueconsole-context-text-src-mq3-engine-local-qvm-match-ml-1192343152"></a>
 ### commandQueueConsole
@@ -1549,7 +1549,7 @@ Return `mq3.qcommon.command_buffer.addText(context.commandState, text)` from `en
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.addText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2597)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2597)
 
 <a id="function-function-mq3-engine-local-qvm-match-configureaasmovement-function-configureaasmovement-context-src-mq3-engine-local-qvm-match-ml-1686499879"></a>
 ### configureAasMovement
@@ -1565,7 +1565,7 @@ Compute configure aas movement in engine.local_qvm_match.
 | `context` | `dynamic` | — | Record exposing `aasMovement`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1150)
 
 <a id="function-function-mq3-engine-local-qvm-match-connectlocal-function-connectlocal-value-clientnum-src-mq3-engine-local-qvm-match-ml-1954352468"></a>
 ### connectLocal
@@ -1582,7 +1582,7 @@ Compute connect local in engine.local_qvm_match.
 | `clientNum` | `dynamic` | — | Client num passed as `clientNum` to `mq3.server.game_vm.clientConnect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1931)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1931)
 
 <a id="function-function-mq3-engine-local-qvm-match-consolecommand-function-consolecommand-context-when-text-src-mq3-engine-local-qvm-match-ml-692367342"></a>
 ### consoleCommand
@@ -1602,7 +1602,7 @@ Direct state writes: `context.console`.
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.executeText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L616)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L616)
 
 <a id="function-function-mq3-engine-local-qvm-match-consolecrosshairplayer-function-consolecrosshairplayer-context-src-mq3-engine-local-qvm-match-ml-1497602495"></a>
 ### consoleCrosshairPlayer
@@ -1618,7 +1618,7 @@ Return `mq3.client.cgame_main.crosshairPlayer(context.nativeMain)` from `engine.
 | `context` | `dynamic` | — | Record exposing `nativeMain`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L693)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L693)
 
 <a id="function-function-mq3-engine-local-qvm-match-consoleinputcommand-function-consoleinputcommand-context-text-src-mq3-engine-local-qvm-match-ml-461989738"></a>
 ### consoleInputCommand
@@ -1635,7 +1635,7 @@ Return `mq3.qcommon.command_buffer.addText(context.commandState, text)` from `en
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.addText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L631)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L631)
 
 <a id="function-function-mq3-engine-local-qvm-match-consoleinputreliable-function-consoleinputreliable-context-text-src-mq3-engine-local-qvm-match-ml-2129379486"></a>
 ### consoleInputReliable
@@ -1652,7 +1652,7 @@ Compute console input reliable in engine.local_qvm_match.
 | `text` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.sendClientCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L635)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L635)
 
 <a id="function-function-mq3-engine-local-qvm-match-consolelastattacker-function-consolelastattacker-context-src-mq3-engine-local-qvm-match-ml-1590058407"></a>
 ### consoleLastAttacker
@@ -1668,7 +1668,7 @@ Return `mq3.client.cgame_main.lastAttacker(context.nativeMain)` from `engine.loc
 | `context` | `dynamic` | — | Record exposing `nativeMain`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L696)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L696)
 
 <a id="function-function-mq3-engine-local-qvm-match-consolescroll-function-consolescroll-context-operation-count-src-mq3-engine-local-qvm-match-ml-1297647875"></a>
 ### consoleScroll
@@ -1686,7 +1686,7 @@ Test console scroll in engine.local_qvm_match; the normal completion returns `fa
 | `count` | `dynamic` | — | Count used in `(count < 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L648)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L648)
 
 <a id="function-function-mq3-engine-local-qvm-match-consolestartdemoloop-function-consolestartdemoloop-context-src-mq3-engine-local-qvm-match-ml-627893551"></a>
 ### consoleStartDemoLoop
@@ -1702,7 +1702,7 @@ Return `mq3.qcommon.command_buffer.executeText(context.commandState, commands.EX
 | `context` | `dynamic` | — | Record exposing `commandState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L658)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L658)
 
 - [mq3.engine.local_qvm_match.Context](Type-mq3-engine-local-qvm-match-context-431375763.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-currentcmdnumber-function-currentcmdnumber-context-src-mq3-engine-local-qvm-match-ml-587439623"></a>
@@ -1719,7 +1719,7 @@ Compute engine.local_qvm_match.currentCmdNumber as `context.commandNumber`.
 | `context` | `dynamic` | — | Record exposing `commandNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2613)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2613)
 
 <a id="function-function-mq3-engine-local-qvm-match-currentsnapshot-function-currentsnapshot-context-src-mq3-engine-local-qvm-match-ml-1293429613"></a>
 ### currentSnapshot
@@ -1735,7 +1735,7 @@ Compute current snapshot in engine.local_qvm_match; the normal completion return
 | `context` | `dynamic` | — | Record exposing `now`, `latestSnapshot`, `snapshotNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2465)
 
 <a id="function-function-mq3-engine-local-qvm-match-decoderefdef-function-decoderefdef-vm-address-src-mq3-engine-local-qvm-match-ml-2107954831"></a>
 ### decodeRefdef
@@ -1752,7 +1752,7 @@ Decode refdef in engine.local_qvm_match.
 | `address` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2705)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2705)
 
 <a id="function-function-mq3-engine-local-qvm-match-desktopfilepath-function-desktopfilepath-root-name-src-mq3-engine-local-qvm-match-ml-803694561"></a>
 ### desktopFilePath
@@ -1769,7 +1769,7 @@ Compute desktop file path in engine.local_qvm_match; the normal completion retur
 | `name` | `dynamic` | — | Name used in `typeof(name)` and `(name == "")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L701)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L701)
 
 <a id="function-function-mq3-engine-local-qvm-match-drawcgame-function-drawcgame-value-servertime-src-mq3-engine-local-qvm-match-ml-256344661"></a>
 ### drawCgame
@@ -1786,7 +1786,7 @@ Compute draw cgame in engine.local_qvm_match; the normal completion returns `dra
 | `serverTime` | `dynamic` | — | Server time passed as `serverTime` to `mq3.client.cgame_vm.drawActiveFrame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3046)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3046)
 
 <a id="function-function-mq3-engine-local-qvm-match-drawcgameproductive-function-drawcgameproductive-value-servertime-src-mq3-engine-local-qvm-match-ml-1049306615"></a>
 ### drawCgameProductive
@@ -1803,7 +1803,7 @@ The native cgame mirror above is a differential-audit observer. Running it and r
 | `serverTime` | `dynamic` | — | Server time passed as `serverTime` to `mq3.engine.local_qvm_match.drawCgameProductiveInFrame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3058)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3058)
 
 <a id="function-function-mq3-engine-local-qvm-match-drawcgameproductiveinframe-function-drawcgameproductiveinframe-value-servertime-src-mq3-engine-local-qvm-match-ml-979713663"></a>
 ### drawCgameProductiveInFrame
@@ -1820,7 +1820,7 @@ Compute draw cgame productive in frame in engine.local_qvm_match; the normal com
 | `serverTime` | `dynamic` | — | Server time passed as `serverTime` to `mq3.client.cgame_vm.drawActiveFrame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3067)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3067)
 
 <a id="function-function-mq3-engine-local-qvm-match-dropclient-function-dropclient-context-client-text-src-mq3-engine-local-qvm-match-ml-1799816351"></a>
 ### dropClient
@@ -1840,7 +1840,7 @@ Direct state writes: `context.console`.
 | `text` | `dynamic` | — | Text used in `("drop " + text)` and `(context.console + [[client, ("drop " + text)]])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L800)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L800)
 
 <a id="function-function-mq3-engine-local-qvm-match-dumpconsolecommand-function-dumpconsolecommand-commandstate-context-src-mq3-engine-local-qvm-match-ml-1292129205"></a>
 ### dumpConsoleCommand
@@ -1857,7 +1857,7 @@ Compute dump console command in engine.local_qvm_match; the normal completion re
 | `context` | `dynamic` | — | Context passed as `context` to `mq3.engine.local_qvm_match.syncConsoleRuntime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L686)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L686)
 
 <a id="function-function-mq3-engine-local-qvm-match-emiterror-function-emiterror-context-text-src-mq3-engine-local-qvm-match-ml-1545631316"></a>
 ### emitError
@@ -1876,7 +1876,7 @@ Direct state writes: `context.errors`.
 | `text` | `dynamic` | — | Text used in `(context.errors + [text])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L609)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L609)
 
 <a id="function-function-mq3-engine-local-qvm-match-emitprint-function-emitprint-context-text-src-mq3-engine-local-qvm-match-ml-133921438"></a>
 ### emitPrint
@@ -1895,7 +1895,7 @@ Direct state writes: `context.prints`.
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.client.cl_console.CL_ConsolePrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L594)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L594)
 
 <a id="function-function-mq3-engine-local-qvm-match-encodesnapshot-function-encodesnapshot-context-value-output-src-mq3-engine-local-qvm-match-ml-1050993905"></a>
 ### encodeSnapshot
@@ -1915,7 +1915,7 @@ Direct state writes: `output elements`.
 | `output` | `dynamic` | — | Mutable sequence written at `(12 + index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2419)
 
 <a id="function-function-mq3-engine-local-qvm-match-entitiesinbox-function-entitiesinbox-context-mins-maxs-capacity-src-mq3-engine-local-qvm-match-ml-650954407"></a>
 ### entitiesInBox
@@ -1934,7 +1934,7 @@ Return `mq3.server.world.areaEntities(context.spatialScene, mins, maxs, capacity
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.server.world.areaEntities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1641)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1641)
 
 <a id="function-function-mq3-engine-local-qvm-match-entitycontact-function-entitycontact-context-mins-maxs-entity-capsule-src-mq3-engine-local-qvm-match-ml-928910147"></a>
 ### entityContact
@@ -1954,7 +1954,7 @@ Compute entity contact in engine.local_qvm_match; the normal completion returns 
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.server.world.entityContact`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1648)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1648)
 
 <a id="function-function-mq3-engine-local-qvm-match-entityindex-function-entityindex-context-entity-src-mq3-engine-local-qvm-match-ml-855360328"></a>
 ### entityIndex
@@ -1971,7 +1971,7 @@ Compute entity index in engine.local_qvm_match; the normal completion returns `i
 | `entity` | `dynamic` | — | Entity used in `(entity < context.gameEntities)` and `(entity - context.gameEntities)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L850)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L850)
 
 <a id="function-function-mq3-engine-local-qvm-match-entitystring-function-entitystring-context-src-mq3-engine-local-qvm-match-ml-1613439367"></a>
 ### entityString
@@ -1987,7 +1987,7 @@ Compute engine.local_qvm_match.entityString as `context.entityParser`.
 | `context` | `dynamic` | — | Record exposing `entityParser`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L998)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L998)
 
 <a id="function-function-mq3-engine-local-qvm-match-entitytoken-function-entitytoken-context-src-mq3-engine-local-qvm-match-ml-61423423"></a>
 ### entityToken
@@ -2003,7 +2003,7 @@ Compute entity token in engine.local_qvm_match; the normal completion returns `q
 | `context` | `dynamic` | — | Record exposing `entityParser`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L992)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L992)
 
 <a id="function-function-mq3-engine-local-qvm-match-executeclientconsole-function-executeclientconsole-value-text-src-mq3-engine-local-qvm-match-ml-69117668"></a>
 ### executeClientConsole
@@ -2020,7 +2020,7 @@ Execute client console in engine.local_qvm_match; the normal completion returns 
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.executeText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1996)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1996)
 
 <a id="function-function-mq3-engine-local-qvm-match-executegameconsole-function-executegameconsole-value-text-src-mq3-engine-local-qvm-match-ml-1522386408"></a>
 ### executeGameConsole
@@ -2037,7 +2037,7 @@ Execute game console in engine.local_qvm_match; the normal completion returns `g
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1943)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1943)
 
 <a id="function-function-mq3-engine-local-qvm-match-extendedcgame-function-extendedcgame-context-vm-base-op-src-mq3-engine-local-qvm-match-ml-1756676450"></a>
 ### extendedCgame
@@ -2058,7 +2058,7 @@ Direct state writes: `context.cgameCollisionQueries`, `context.soundCommands`, `
 | `op` | `dynamic` | — | Op used in `str(op)` and `(op == 18)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2901)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2901)
 
 <a id="function-function-mq3-engine-local-qvm-match-extendedcgamehost-function-extendedcgamehost-context-vm-base-op-src-mq3-engine-local-qvm-match-ml-1827315910"></a>
 ### extendedCgameHost
@@ -2077,7 +2077,7 @@ Compute extended cgame host in engine.local_qvm_match; the normal completion ret
 | `op` | `dynamic` | — | Op passed as `op` to `mq3.engine.local_qvm_match.extendedCgame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2985)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2985)
 
 <a id="function-function-mq3-engine-local-qvm-match-extendedqagame-function-extendedqagame-context-vm-base-op-src-mq3-engine-local-qvm-match-ml-882377538"></a>
 ### extendedQagame
@@ -2098,7 +2098,7 @@ Direct state writes: `context.lastBotTrap`, `context.aas`, `context.aasRouter`, 
 | `op` | `dynamic` | — | Op passed as `op` to `mq3.botlib.server_imports.SV_BotDispatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1575)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1575)
 
 <a id="function-function-mq3-engine-local-qvm-match-extendedui-function-extendedui-context-vm-base-op-src-mq3-engine-local-qvm-match-ml-458952590"></a>
 ### extendedUi
@@ -2117,7 +2117,7 @@ Compute extended ui in engine.local_qvm_match; the normal completion returns `er
 | `op` | `dynamic` | — | Op used in `str(op)` and `(op == 22)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3579)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3579)
 
 <a id="function-function-mq3-engine-local-qvm-match-fail-function-fail-message-src-mq3-engine-local-qvm-match-ml-440115659"></a>
 ### fail
@@ -2133,7 +2133,7 @@ Create the engine.local_qvm_match error for `fail` with 7640 and the supplied di
 | `message` | `dynamic` | — | Message used in `("local QVM match: " + message)` and `error(7640, ("local QVM match: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L513)
 
 - [mq3.engine.local_qvm_match.FileCursor](Type-mq3-engine-local-qvm-match-filecursor-2065435908.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-forwardclientcommand-function-forwardclientcommand-commandstate-text-src-mq3-engine-local-qvm-match-ml-45950409"></a>
@@ -2151,7 +2151,7 @@ Test forward client command in engine.local_qvm_match; the normal completion ret
 | `text` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.sendClientCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1989)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1989)
 
 <a id="function-function-mq3-engine-local-qvm-match-freebot-function-freebot-context-index-src-mq3-engine-local-qvm-match-ml-1772130699"></a>
 ### freeBot
@@ -2170,7 +2170,7 @@ Direct state writes: `context.botFrees`.
 | `index` | `dynamic` | — | Client passed as `client` to `mq3.botlib.server_bridge.resetClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L973)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L973)
 
 <a id="function-function-mq3-engine-local-qvm-match-freevm-function-freevm-machineruntime-slot-src-mq3-engine-local-qvm-match-ml-1885899123"></a>
 ### freeVm
@@ -2187,7 +2187,7 @@ Return `mq3.vm.runtime.free(machineRuntime, slot)` from `engine.local_qvm_match.
 | `slot` | `dynamic` | — | Slot passed as `slot` to `mq3.vm.runtime.free`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L547)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L547)
 
 <a id="function-function-mq3-engine-local-qvm-match-gamemachine-function-gamemachine-context-src-mq3-engine-local-qvm-match-ml-804133277"></a>
 ### gameMachine
@@ -2203,7 +2203,7 @@ Compute game machine in engine.local_qvm_match; the normal completion returns `c
 | `context` | `dynamic` | — | Record exposing `machineRuntime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L857)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L857)
 
 <a id="function-function-mq3-engine-local-qvm-match-gamestatebytes-function-gamestatebytes-context-src-mq3-engine-local-qvm-match-ml-1541280295"></a>
 ### gameStateBytes
@@ -2219,7 +2219,7 @@ Compute game state bytes in engine.local_qvm_match; the normal completion return
 | `context` | `dynamic` | — | Record exposing `configstrings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2394)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2394)
 
 <a id="function-function-mq3-engine-local-qvm-match-getconfigstring-function-getconfigstring-context-index-src-mq3-engine-local-qvm-match-ml-1464641735"></a>
 ### getConfigstring
@@ -2236,7 +2236,7 @@ Get configstring in engine.local_qvm_match; the normal completion returns `conte
 | `index` | `dynamic` | — | Zero-based index into `context.configstrings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L828)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L828)
 
 <a id="function-function-mq3-engine-local-qvm-match-getserverinfo-function-getserverinfo-context-src-mq3-engine-local-qvm-match-ml-725572425"></a>
 ### getServerinfo
@@ -2252,7 +2252,7 @@ Get serverinfo in engine.local_qvm_match; the normal completion returns `cvar.in
 | `context` | `dynamic` | — | Record exposing `serverStream`, `configstrings`, `cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L840)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L840)
 
 <a id="function-function-mq3-engine-local-qvm-match-getusercmd-function-getusercmd-context-index-src-mq3-engine-local-qvm-match-ml-773685125"></a>
 ### getUsercmd
@@ -2269,7 +2269,7 @@ Get usercmd in engine.local_qvm_match; the normal completion returns `context.us
 | `index` | `dynamic` | — | Zero-based index into `context.usercmds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1655)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1655)
 
 <a id="function-function-mq3-engine-local-qvm-match-getuserinfo-function-getuserinfo-context-index-src-mq3-engine-local-qvm-match-ml-1945770719"></a>
 ### getUserinfo
@@ -2286,7 +2286,7 @@ Get userinfo in engine.local_qvm_match; the normal completion returns `context.u
 | `index` | `dynamic` | — | Zero-based index into `context.userinfos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L832)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L832)
 
 <a id="function-function-mq3-engine-local-qvm-match-glconfigbytes-function-glconfigbytes-context-src-mq3-engine-local-qvm-match-ml-1996777791"></a>
 ### glconfigBytes
@@ -2302,7 +2302,7 @@ Compute glconfig bytes in engine.local_qvm_match; the normal completion returns 
 | `context` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2408)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalselectionitemquery-function-goalselectionitemquery-context-area-origin-travelflags-src-mq3-engine-local-qvm-match-ml-729227931"></a>
 ### goalSelectionItemQuery
@@ -2321,7 +2321,7 @@ Return `mq3.botlib.aas_routing_cache.itemQuery(context.aasRouteCache, area, orig
 | `travelFlags` | `dynamic` | — | Flags passed as `flags` to `mq3.botlib.aas_routing_cache.itemQuery`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1276)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalselectiontrace-function-goalselectiontrace-context-start-finish-viewer-contents-src-mq3-engine-local-qvm-match-ml-1873800996"></a>
 ### goalSelectionTrace
@@ -2341,7 +2341,7 @@ Compute goal selection trace in engine.local_qvm_match; the normal completion re
 | `contents` | `dynamic` | — | Mask passed as `mask` to `mq3.server.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1285)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalselectiontraveltime-function-goalselectiontraveltime-context-area-origin-goalarea-travelflags-src-mq3-engine-local-qvm-match-ml-421463085"></a>
 ### goalSelectionTravelTime
@@ -2361,7 +2361,7 @@ Compute goal selection travel time in engine.local_qvm_match; the normal complet
 | `travelFlags` | `dynamic` | — | Travel flags passed as `travelFlags` to `mq3.botlib.aas_routing_cache.itemTravelTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1268)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalstatelog-function-goalstatelog-context-text-src-mq3-engine-local-qvm-match-ml-1430711742"></a>
 ### goalStateLog
@@ -2378,7 +2378,7 @@ Compute goal state log in engine.local_qvm_match.
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.engine.local_qvm_match.emitPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1253)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalstatename-function-goalstatename-context-number-src-mq3-engine-local-qvm-match-ml-95324134"></a>
 ### goalStateName
@@ -2395,7 +2395,7 @@ Return `mq3.botlib.ai_level_items.goalName(context.aiLevelItems, number)` from `
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.botlib.ai_level_items.goalName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1249)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalstateprint-function-goalstateprint-context-level-text-src-mq3-engine-local-qvm-match-ml-1362916070"></a>
 ### goalStatePrint
@@ -2413,7 +2413,7 @@ Compute goal state print in engine.local_qvm_match.
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.engine.local_qvm_match.emitPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1258)
 
 <a id="function-function-mq3-engine-local-qvm-match-goalstatetime-function-goalstatetime-context-src-mq3-engine-local-qvm-match-ml-1670057989"></a>
 ### goalStateTime
@@ -2429,7 +2429,7 @@ Return `mq3.botlib.aas_runtime.getTime(context.aas)` from `engine.local_qvm_matc
 | `context` | `dynamic` | — | Record exposing `aas`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1245)
 
 <a id="function-function-mq3-engine-local-qvm-match-imageloader-function-imageloader-services-path-src-mq3-engine-local-qvm-match-ml-1742200491"></a>
 ### imageLoader
@@ -2446,7 +2446,7 @@ Compute image loader in engine.local_qvm_match; the normal completion returns `d
 | `path` | `dynamic` | — | Name passed as `name` to `mq3.format.pk3.findEntry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L518)
 
 <a id="function-function-mq3-engine-local-qvm-match-inpvs-function-inpvs-context-a-b-ignoreportals-src-mq3-engine-local-qvm-match-ml-1399134845"></a>
 ### inPvs
@@ -2465,7 +2465,7 @@ Compute in pvs in engine.local_qvm_match; the normal completion returns `visibil
 | `ignorePortals` | `dynamic` | — | Ignore portals operand used by `inPvs`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L919)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L919)
 
 <a id="function-function-mq3-engine-local-qvm-match-jumppadtarget-function-jumppadtarget-context-name-src-mq3-engine-local-qvm-match-ml-335011986"></a>
 ### jumpPadTarget
@@ -2482,7 +2482,7 @@ Compute jump pad target in engine.local_qvm_match.
 | `name` | `dynamic` | — | Name used in `(name == "")` and `(targetName[1] == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1161)
 
 <a id="function-function-mq3-engine-local-qvm-match-keybinding-function-keybinding-value-key-src-mq3-engine-local-qvm-match-ml-55130962"></a>
 ### keyBinding
@@ -2499,7 +2499,7 @@ Compute key binding in engine.local_qvm_match; the normal completion returns `cg
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.vm.cgame_key_traps.getBinding`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3216)
 
 <a id="function-function-mq3-engine-local-qvm-match-keycatcher-function-keycatcher-value-src-mq3-engine-local-qvm-match-ml-2061816365"></a>
 ### keyCatcher
@@ -2515,7 +2515,7 @@ Compute key catcher in engine.local_qvm_match; the normal completion returns `cg
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3235)
 
 <a id="function-function-mq3-engine-local-qvm-match-keyisdown-function-keyisdown-value-key-src-mq3-engine-local-qvm-match-ml-1446136528"></a>
 ### keyIsDown
@@ -2532,7 +2532,7 @@ Compute key is down in engine.local_qvm_match; the normal completion returns `cg
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.vm.cgame_key_traps.isDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3245)
 
 <a id="function-function-mq3-engine-local-qvm-match-lerpmodeltag-function-lerpmodeltag-context-vm-base-src-mq3-engine-local-qvm-match-ml-1449103363"></a>
 ### lerpModelTag
@@ -2552,7 +2552,7 @@ Direct state writes: `context.cgameTagQueries`.
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2769)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2769)
 
 <a id="function-function-mq3-engine-local-qvm-match-levelitemplace-function-levelitemplace-context-origin-mins-maxs-floating-src-mq3-engine-local-qvm-match-ml-299943881"></a>
 ### levelItemPlace
@@ -2572,7 +2572,7 @@ Compute level item place in engine.local_qvm_match; the normal completion return
 | `floating` | `dynamic` | — | Floating used in `(floating and ((pointContents(context, origin, - 1) & aasClientMovement.CONTENTS_WATER) == 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1206)
 
 <a id="function-function-mq3-engine-local-qvm-match-lightforpoint-function-lightforpoint-context-vm-base-src-mq3-engine-local-qvm-match-ml-474732301"></a>
 ### lightForPoint
@@ -2590,7 +2590,7 @@ Compute light for point in engine.local_qvm_match; the normal completion returns
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.engine.local_qvm_match.cgameVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2784)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2784)
 
 <a id="function-function-mq3-engine-local-qvm-match-linkentity-function-linkentity-context-entity-src-mq3-engine-local-qvm-match-ml-1275015506"></a>
 ### linkEntity
@@ -2607,7 +2607,7 @@ Compute link entity in engine.local_qvm_match.
 | `entity` | `dynamic` | — | Entity passed as `entity` to `mq3.engine.local_qvm_match.entityIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L943)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L943)
 
 <a id="function-function-mq3-engine-local-qvm-match-loadbindingconfig-function-loadbindingconfig-value-text-src-mq3-engine-local-qvm-match-ml-1706957758"></a>
 ### loadBindingConfig
@@ -2624,7 +2624,7 @@ Load binding config in engine.local_qvm_match; the normal completion returns `bi
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.client.key_bindings_config.loadText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3232)
 
 <a id="function-function-mq3-engine-local-qvm-match-loadclientvm-function-loadclientvm-machineruntime-name-syscall-interpret-src-mq3-engine-local-qvm-match-ml-967047420"></a>
 ### loadClientVm
@@ -2643,7 +2643,7 @@ Return `mq3.vm.runtime.loadMode(machineRuntime, name, syscall, interpret)` from 
 | `interpret` | `dynamic` | — | Mode passed as `mode` to `mq3.vm.runtime.loadMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L553)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L553)
 
 <a id="function-function-mq3-engine-local-qvm-match-loadvm-function-loadvm-machineruntime-name-syscall-src-mq3-engine-local-qvm-match-ml-2128710009"></a>
 ### loadVm
@@ -2661,7 +2661,7 @@ Return `mq3.vm.runtime.load(machineRuntime, name, syscall)` from `engine.local_q
 | `syscall` | `dynamic` | — | Syscall passed as `syscall` to `mq3.vm.runtime.load`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L534)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L534)
 
 <a id="function-function-mq3-engine-local-qvm-match-loadworld-function-loadworld-context-name-src-mq3-engine-local-qvm-match-ml-454792854"></a>
 ### loadWorld
@@ -2678,7 +2678,7 @@ Load world in engine.local_qvm_match.
 | `name` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2569)
 
 <a id="function-function-mq3-engine-local-qvm-match-locategamedata-function-locategamedata-context-entities-count-entitystride-clients-clientstride-src-mq3-engine-local-qvm-match-ml-814056349"></a>
 ### locateGameData
@@ -2701,7 +2701,7 @@ Direct state writes: `context.gameEntities`, `context.gameClients`, `context.ent
 | `clientStride` | `dynamic` | — | Client stride operand used by `locateGameData`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L791)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L791)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-max-clients-const-max-clients-64-src-mq3-engine-local-qvm-match-ml-288321111"></a>
 ### MAX_CLIENTS
@@ -2713,7 +2713,7 @@ const MAX_CLIENTS = 64
 Maximum number of client slots supported by this interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L151)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-max-configstrings-const-max-configstrings-1024-src-mq3-engine-local-qvm-match-ml-1651310406"></a>
 ### MAX_CONFIGSTRINGS
@@ -2725,7 +2725,7 @@ const MAX_CONFIGSTRINGS = 1024
 Number of server configuration-string slots exposed through VM traps.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L149)
 
 <a id="function-function-mq3-engine-local-qvm-match-memoryremaining-function-memoryremaining-context-src-mq3-engine-local-qvm-match-ml-225921405"></a>
 ### memoryRemaining
@@ -2741,7 +2741,7 @@ Compute engine.local_qvm_match.memoryRemaining as `((8 * 1024) * 1024)`.
 | `context` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2638)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2638)
 
 <a id="function-function-mq3-engine-local-qvm-match-messagemode2command-function-messagemode2command-commandstate-context-src-mq3-engine-local-qvm-match-ml-2115037371"></a>
 ### messageMode2Command
@@ -2758,7 +2758,7 @@ Test message mode2 command in engine.local_qvm_match; the normal completion retu
 | `context` | `dynamic` | — | Record exposing `clientTextInput`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L670)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L670)
 
 <a id="function-function-mq3-engine-local-qvm-match-messagemode3command-function-messagemode3command-commandstate-context-src-mq3-engine-local-qvm-match-ml-1595644193"></a>
 ### messageMode3Command
@@ -2775,7 +2775,7 @@ Compute message mode3 command in engine.local_qvm_match; the normal completion r
 | `context` | `dynamic` | — | Context passed as `context` to `mq3.engine.local_qvm_match.syncConsoleRuntime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L674)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L674)
 
 <a id="function-function-mq3-engine-local-qvm-match-messagemode4command-function-messagemode4command-commandstate-context-src-mq3-engine-local-qvm-match-ml-1759989851"></a>
 ### messageMode4Command
@@ -2792,7 +2792,7 @@ Compute message mode4 command in engine.local_qvm_match; the normal completion r
 | `context` | `dynamic` | — | Context passed as `context` to `mq3.engine.local_qvm_match.syncConsoleRuntime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L678)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L678)
 
 <a id="function-function-mq3-engine-local-qvm-match-messagemodecommand-function-messagemodecommand-commandstate-context-src-mq3-engine-local-qvm-match-ml-2112941377"></a>
 ### messageModeCommand
@@ -2809,7 +2809,7 @@ Test message mode command in engine.local_qvm_match; the normal completion retur
 | `context` | `dynamic` | — | Record exposing `clientTextInput`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L666)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L666)
 
 <a id="function-function-mq3-engine-local-qvm-match-milliseconds-function-milliseconds-context-src-mq3-engine-local-qvm-match-ml-1955536695"></a>
 ### milliseconds
@@ -2825,7 +2825,7 @@ Compute engine.local_qvm_match.milliseconds as `context.now`.
 | `context` | `dynamic` | — | Record exposing `now`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L588)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L588)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveagainstladder-function-moveagainstladder-context-origin-src-mq3-engine-local-qvm-match-ml-529565289"></a>
 ### moveAgainstLadder
@@ -2842,7 +2842,7 @@ Return `mq3.botlib.aas_sample.againstLadder(context.aas, origin)` from `engine.l
 | `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.botlib.aas_sample.againstLadder`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1321)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1321)
 
 <a id="function-function-mq3-engine-local-qvm-match-movebarrierjump-function-movebarrierjump-context-state-direction-speed-src-mq3-engine-local-qvm-match-ml-1750704202"></a>
 ### moveBarrierJump
@@ -2861,7 +2861,7 @@ Test move barrier jump in engine.local_qvm_match; the normal completion returns 
 | `speed` | `dynamic` | — | Right floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1465)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveblocktrace-function-moveblocktrace-context-state-direction-checkbottom-src-mq3-engine-local-qvm-match-ml-1301637198"></a>
 ### moveBlockTrace
@@ -2880,7 +2880,7 @@ Compute move block trace in engine.local_qvm_match; the normal completion return
 | `checkBottom` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1355)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveclienttrace-function-moveclienttrace-context-start-finish-presence-passentity-src-mq3-engine-local-qvm-match-ml-198940815"></a>
 ### moveClientTrace
@@ -2900,7 +2900,7 @@ Compute move client trace in engine.local_qvm_match; the normal completion retur
 | `passEntity` | `dynamic` | — | Pass entity passed as `passEntity` to `mq3.engine.local_qvm_match.aasMovementTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1309)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveelevatorstate-function-moveelevatorstate-context-state-reach-src-mq3-engine-local-qvm-match-ml-542055223"></a>
 ### moveElevatorState
@@ -2918,7 +2918,7 @@ Compute move elevator state in engine.local_qvm_match; the normal completion ret
 | `reach` | `dynamic` | — | Record exposing `faceNum`, `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1425)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1425)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveentitymodel-function-moveentitymodel-context-entity-src-mq3-engine-local-qvm-match-ml-623848808"></a>
 ### moveEntityModel
@@ -2935,7 +2935,7 @@ Compute engine.local_qvm_match.moveEntityModel as `aasEntities.info(context.aasE
 | `entity` | `dynamic` | — | Number passed as `number` to `mq3.botlib.aas_entities.info`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1386)
 
 <a id="function-function-mq3-engine-local-qvm-match-movefuncbobstate-function-movefuncbobstate-context-state-reach-src-mq3-engine-local-qvm-match-ml-2095778743"></a>
 ### moveFuncBobState
@@ -2953,7 +2953,7 @@ Compute move func bob state in engine.local_qvm_match; the normal completion ret
 | `reach` | `dynamic` | — | Record exposing `faceNum`, `edgeNum`, `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1444)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1444)
 
 <a id="function-function-mq3-engine-local-qvm-match-movegapdistance-function-movegapdistance-context-origin-direction-entitynum-src-mq3-engine-local-qvm-match-ml-350431031"></a>
 ### moveGapDistance
@@ -2972,7 +2972,7 @@ Compute move gap distance in engine.local_qvm_match; the normal completion retur
 | `entityNum` | `dynamic` | — | Pass entity passed as `passEntity` to `mq3.engine.local_qvm_match.aasMovementTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1327)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1327)
 
 <a id="function-function-mq3-engine-local-qvm-match-movegrappleconfig-function-movegrappleconfig-context-src-mq3-engine-local-qvm-match-ml-1551463511"></a>
 ### moveGrappleConfig
@@ -2988,7 +2988,7 @@ Delegate `moveGrappleConfig` to `mq3.botlib.ai_move_runtime.GrappleConfig` and r
 | `context` | `dynamic` | — | Record exposing `botlib`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1540)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1540)
 
 <a id="function-function-mq3-engine-local-qvm-match-movegrapplestate-function-movegrapplestate-context-state-reach-src-mq3-engine-local-qvm-match-ml-380816871"></a>
 ### moveGrappleState
@@ -3006,7 +3006,7 @@ Compute move grapple state in engine.local_qvm_match; the normal completion retu
 | `reach` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1547)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1547)
 
 <a id="function-function-mq3-engine-local-qvm-match-movegrappletrace-function-movegrappletrace-context-eye-target-entitynum-src-mq3-engine-local-qvm-match-ml-1100686500"></a>
 ### moveGrappleTrace
@@ -3025,7 +3025,7 @@ Compute move grapple trace in engine.local_qvm_match; the normal completion retu
 | `entityNum` | `dynamic` | — | Pass entity passed as `passEntity` to `mq3.server.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1556)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1556)
 
 <a id="function-function-mq3-engine-local-qvm-match-movegravity-function-movegravity-context-src-mq3-engine-local-qvm-match-ml-461993685"></a>
 ### moveGravity
@@ -3041,7 +3041,7 @@ Compute engine.local_qvm_match.moveGravity as `context.aasMovement.settings.grav
 | `context` | `dynamic` | — | Record exposing `aasMovement`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1372)
 
 <a id="function-function-mq3-engine-local-qvm-match-movegroundtrace-function-movegroundtrace-context-start-mins-maxs-finish-client-contents-src-mq3-engine-local-qvm-match-ml-1509971335"></a>
 ### moveGroundTrace
@@ -3063,7 +3063,7 @@ Compute move ground trace in engine.local_qvm_match; the normal completion retur
 | `contents` | `dynamic` | — | Mask passed as `mask` to `mq3.server.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1296)
 
 <a id="function-function-mq3-engine-local-qvm-match-movehorizontalvelocityforjump-function-movehorizontalvelocityforjump-context-zvelocity-start-finish-src-mq3-engine-local-qvm-match-ml-208483177"></a>
 ### moveHorizontalVelocityForJump
@@ -3082,7 +3082,7 @@ Compute move horizontal velocity for jump in engine.local_qvm_match; the normal 
 | `finish` | `dynamic` | — | Finish used in `finish[2]` and `finish[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1378)
 
 <a id="function-function-mq3-engine-local-qvm-match-movejumprunstart-function-movejumprunstart-context-state-reach-src-mq3-engine-local-qvm-match-ml-1027010903"></a>
 ### moveJumpRunStart
@@ -3100,7 +3100,7 @@ Compute move jump run start in engine.local_qvm_match; the normal completion ret
 | `reach` | `dynamic` | — | Record exposing `start`, `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1365)
 
 <a id="function-function-mq3-engine-local-qvm-match-movemodelreachability-function-movemodelreachability-context-model-src-mq3-engine-local-qvm-match-ml-678885428"></a>
 ### moveModelReachability
@@ -3117,7 +3117,7 @@ Compute move model reachability in engine.local_qvm_match; the normal completion
 | `model` | `dynamic` | — | Model used in `(reach.faceNum == model)` and `((reach.faceNum & 65535) == model)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1406)
 
 <a id="function-function-mq3-engine-local-qvm-match-movemodeltype-function-movemodeltype-context-model-src-mq3-engine-local-qvm-match-ml-969456706"></a>
 ### moveModelType
@@ -3134,7 +3134,7 @@ Compute move model type in engine.local_qvm_match; the normal completion returns
 | `model` | `dynamic` | — | Model used in `str(model)` and `(model <= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1390)
 
 <a id="function-function-mq3-engine-local-qvm-match-movemoverinfo-function-movemoverinfo-context-model-src-mq3-engine-local-qvm-match-ml-1725431362"></a>
 ### moveMoverInfo
@@ -3151,7 +3151,7 @@ Compute move mover info in engine.local_qvm_match.
 | `model` | `dynamic` | — | Model used in `(info.modelindex == model)` and `(info.valid and (info.modelindex == model))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1417)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1417)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveonground-function-moveonground-context-origin-presence-passentity-src-mq3-engine-local-qvm-match-ml-2077500068"></a>
 ### moveOnGround
@@ -3170,7 +3170,7 @@ Return `mq3.botlib.aas_client_movement.onGround(context.aasMovement, origin, pre
 | `passEntity` | `dynamic` | — | Pass entity passed as `passEntity` to `mq3.botlib.aas_client_movement.onGround`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1317)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveroutereachability-function-moveroutereachability-context-area-origin-goalarea-travelflags-src-mq3-engine-local-qvm-match-ml-1797848199"></a>
 ### moveRouteReachability
@@ -3190,7 +3190,7 @@ Compute move route reachability in engine.local_qvm_match; the normal completion
 | `travelFlags` | `dynamic` | — | Travel flags passed as `travelFlags` to `mq3.botlib.aas_routing_cache.areaReachabilityToGoalArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1518)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveroutetraveltime-function-moveroutetraveltime-context-area-origin-goalarea-travelflags-src-mq3-engine-local-qvm-match-ml-599602779"></a>
 ### moveRouteTravelTime
@@ -3210,7 +3210,7 @@ Return `mq3.botlib.aas_routing_cache.weightedTravelTime(context.aasRouteCache, a
 | `travelFlags` | `dynamic` | — | Travel flags passed as `travelFlags` to `mq3.botlib.aas_routing_cache.weightedTravelTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1527)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1527)
 
 <a id="function-function-mq3-engine-local-qvm-match-movesignedrandom-function-movesignedrandom-context-src-mq3-engine-local-qvm-match-ml-1301812439"></a>
 ### moveSignedRandom
@@ -3226,7 +3226,7 @@ Return `mq3.compat.numeric.fsub(n.fmul(2.0, aiGoalSelection.randomFloat(context.
 | `context` | `dynamic` | — | Record exposing `aiGoalSelection`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1532)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1532)
 
 <a id="function-function-mq3-engine-local-qvm-match-moveswimming-function-moveswimming-context-origin-src-mq3-engine-local-qvm-match-ml-758884141"></a>
 ### moveSwimming
@@ -3243,7 +3243,7 @@ Return `mq3.botlib.aas_movement_queries.swimming(context, aasPointContents, orig
 | `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.botlib.aas_movement_queries.swimming`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1302)
 
 <a id="function-function-mq3-engine-local-qvm-match-movewalkdirection-function-movewalkdirection-context-state-direction-speed-type-src-mq3-engine-local-qvm-match-ml-1945047140"></a>
 ### moveWalkDirection
@@ -3265,7 +3265,7 @@ Direct state writes: `state.moveFlags`.
 | `type` | `dynamic` | — | Type used in `(type & aiMoveRuntime.MOVE_JUMP)` and `(type & aiMoveRuntime.MOVE_CROUCH)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1479)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1479)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictioncommands-function-nativepredictioncommands-context-src-mq3-engine-local-qvm-match-ml-1374941635"></a>
 ### nativePredictionCommands
@@ -3281,7 +3281,7 @@ Compute native prediction commands in engine.local_qvm_match; the normal complet
 | `context` | `dynamic` | — | Record exposing `commandNumber`, `usercmdHistory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2183)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionentitypoint-function-nativepredictionentitypoint-host-value-point-src-mq3-engine-local-qvm-match-ml-516348009"></a>
 ### nativePredictionEntityPoint
@@ -3299,7 +3299,7 @@ Compute native prediction entity point in engine.local_qvm_match; the normal com
 | `point` | `dynamic` | — | Point passed as `point` to `mq3.collision.world.transformedPointContents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2159)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionentitytrace-function-nativepredictionentitytrace-host-value-start-mins-maxs-finish-mask-src-mq3-engine-local-qvm-match-ml-1840573042"></a>
 ### nativePredictionEntityTrace
@@ -3321,7 +3321,7 @@ Compute native prediction entity trace in engine.local_qvm_match; the normal com
 | `mask` | `dynamic` | — | Mask passed as `mask` to `mq3.collision.world.transformedTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2145)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionmover-function-nativepredictionmover-host-origin-ground-fromtime-totime-src-mq3-engine-local-qvm-match-ml-672250450"></a>
 ### nativePredictionMover
@@ -3341,7 +3341,7 @@ Compute engine.local_qvm_match.nativePredictionMover as `[origin[0], origin[1], 
 | `toTime` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2175)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionresult-function-nativepredictionresult-result-entitynum-src-mq3-engine-local-qvm-match-ml-185078944"></a>
 ### nativePredictionResult
@@ -3358,7 +3358,7 @@ Return `mq3.game.movement.Collision(result.trace, result.endpos, entityNum)` fro
 | `entityNum` | `dynamic` | — | Initial `entityNum` field stored in the returned or constructed `mq3.game.movement.Collision` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2126)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionservices-function-nativepredictionservices-context-src-mq3-engine-local-qvm-match-ml-2124931471"></a>
 ### nativePredictionServices
@@ -3374,7 +3374,7 @@ Compute native prediction services in engine.local_qvm_match; the normal complet
 | `context` | `dynamic` | — | Context passed as `context` to `mq3.client.cgame_predict.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2178)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictiontriggertouch-function-nativepredictiontriggertouch-host-value-origin-mins-maxs-src-mq3-engine-local-qvm-match-ml-1601793763"></a>
 ### nativePredictionTriggerTouch
@@ -3394,7 +3394,7 @@ Compute native prediction trigger touch in engine.local_qvm_match; the normal co
 | `maxs` | `dynamic` | — | Maxs passed as `maxs` to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2166)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionworldpoint-function-nativepredictionworldpoint-host-point-src-mq3-engine-local-qvm-match-ml-96913658"></a>
 ### nativePredictionWorldPoint
@@ -3411,7 +3411,7 @@ Return `mq3.collision.world.pointContents(host.context.collisionWorld, point, 0)
 | `point` | `dynamic` | — | Point passed as `point` to `mq3.collision.world.pointContents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2154)
 
 <a id="function-function-mq3-engine-local-qvm-match-nativepredictionworldtrace-function-nativepredictionworldtrace-host-start-mins-maxs-finish-mask-src-mq3-engine-local-qvm-match-ml-1372553475"></a>
 ### nativePredictionWorldTrace
@@ -3432,7 +3432,7 @@ Compute native prediction world trace in engine.local_qvm_match; the normal comp
 | `mask` | `dynamic` | — | Mask passed as `mask` to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2134)
 
 <a id="function-function-mq3-engine-local-qvm-match-observenativeeffects-function-observenativeeffects-context-renderstart-hudstart-retailactive-src-mq3-engine-local-qvm-match-ml-1025155027"></a>
 ### observeNativeEffects
@@ -3451,7 +3451,7 @@ Feed the native cg_effects mirror from the semantic event stream.  These calls e
 | `retailActive` | `dynamic` | — | Retail active passed as `retailActive` to `mq3.client.cgame_effects.spawnEffect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2194)
 
 <a id="function-function-mq3-engine-local-qvm-match-observenativeweapons-function-observenativeweapons-context-renderstart-retailactive-ps-src-mq3-engine-local-qvm-match-ml-1376903713"></a>
 ### observeNativeWeapons
@@ -3470,7 +3470,7 @@ Run weapon side effects from the same decoded event records.  The native mirror 
 | `ps` | `dynamic` | — | Record exposing `stats`, `ammo`, `weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2225)
 
 <a id="function-function-mq3-engine-local-qvm-match-openfile-function-openfile-context-name-mode-src-mq3-engine-local-qvm-match-ml-1982578695"></a>
 ### openFile
@@ -3490,7 +3490,7 @@ Direct state writes: `context.files`, `context.nextFile`.
 | `mode` | `dynamic` | — | Mode used in `(mode < 1)` and `(mode > 3)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L718)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L718)
 
 <a id="function-function-mq3-engine-local-qvm-match-pcadddefine-function-pcadddefine-context-vm-base-src-mq3-engine-local-qvm-match-ml-280882925"></a>
 ### pcAddDefine
@@ -3508,7 +3508,7 @@ Return `mq3.botlib.be_interface.PC_AddGlobalDefine(context.pcRegistry, common.re
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2852)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2852)
 
 <a id="function-function-mq3-engine-local-qvm-match-pcfreesource-function-pcfreesource-context-vm-base-src-mq3-engine-local-qvm-match-ml-1877721907"></a>
 ### pcFreeSource
@@ -3526,7 +3526,7 @@ Return `mq3.botlib.be_interface.PC_FreeSourceHandle(context.pcRegistry, common.a
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2862)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2862)
 
 <a id="function-function-mq3-engine-local-qvm-match-pcload-function-pcload-context-name-src-mq3-engine-local-qvm-match-ml-55216186"></a>
 ### pcLoad
@@ -3543,7 +3543,7 @@ Compute pc load in engine.local_qvm_match; the normal completion returns `data`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.format.pk3.read`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L780)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L780)
 
 <a id="function-function-mq3-engine-local-qvm-match-pcloadsource-function-pcloadsource-context-vm-base-src-mq3-engine-local-qvm-match-ml-2020522047"></a>
 ### pcLoadSource
@@ -3561,7 +3561,7 @@ Return `mq3.botlib.be_interface.PC_LoadSourceHandle(context.pcRegistry, common.r
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2857)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2857)
 
 <a id="function-function-mq3-engine-local-qvm-match-pcreadtoken-function-pcreadtoken-context-vm-base-src-mq3-engine-local-qvm-match-ml-630226163"></a>
 ### pcReadToken
@@ -3579,7 +3579,7 @@ Compute pc read token in engine.local_qvm_match; the normal completion returns `
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2867)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2867)
 
 <a id="function-function-mq3-engine-local-qvm-match-pcsourceline-function-pcsourceline-context-vm-base-src-mq3-engine-local-qvm-match-ml-1917035147"></a>
 ### pcSourceLine
@@ -3597,7 +3597,7 @@ Compute pc source line in engine.local_qvm_match; the normal completion returns 
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2875)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2875)
 
 <a id="function-function-mq3-engine-local-qvm-match-pointcontents-function-pointcontents-context-point-passentity-src-mq3-engine-local-qvm-match-ml-86696553"></a>
 ### pointContents
@@ -3615,7 +3615,7 @@ Return `mq3.server.world.pointContents(context.spatialScene, point, passEntity)`
 | `passEntity` | `dynamic` | — | Pass entity passed as `passEntity` to `mq3.server.world.pointContents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1635)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1635)
 
 <a id="function-function-mq3-engine-local-qvm-match-predictvisibletrace-function-predictvisibletrace-context-start-finish-passentity-contents-src-mq3-engine-local-qvm-match-ml-1550091172"></a>
 ### predictVisibleTrace
@@ -3635,7 +3635,7 @@ Compute predict visible trace in engine.local_qvm_match; the normal completion r
 | `contents` | `dynamic` | — | Mask passed as `mask` to `mq3.server.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1565)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1565)
 
 <a id="function-function-mq3-engine-local-qvm-match-publishbotsnapshots-function-publishbotsnapshots-value-src-mq3-engine-local-qvm-match-ml-739252831"></a>
 ### publishBotSnapshots
@@ -3651,7 +3651,7 @@ Compute publish bot snapshots in engine.local_qvm_match; the normal completion r
 | `value` | `dynamic` | — | Record exposing `game`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2358)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2358)
 
 <a id="function-function-mq3-engine-local-qvm-match-publishbotsnapshotsprepared-function-publishbotsnapshotsprepared-value-input-src-mq3-engine-local-qvm-match-ml-1073173251"></a>
 ### publishBotSnapshotsPrepared
@@ -3668,7 +3668,7 @@ Compute publish bot snapshots prepared in engine.local_qvm_match; the normal com
 | `input` | `dynamic` | — | Record exposing `world`, `host`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2369)
 
 <a id="function-function-mq3-engine-local-qvm-match-qagamefilelist-function-qagamefilelist-context-vm-base-src-mq3-engine-local-qvm-match-ml-1145772491"></a>
 ### qagameFileList
@@ -3686,7 +3686,7 @@ Compute qagame file list in engine.local_qvm_match; the normal completion return
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1027)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1027)
 
 <a id="function-function-mq3-engine-local-qvm-match-qagamerealtime-function-qagamerealtime-context-src-mq3-engine-local-qvm-match-ml-1958816979"></a>
 ### qagameRealTime
@@ -3702,7 +3702,7 @@ Return `mq3.vm.cgame_misc_traps.sampleRealTime()` from `engine.local_qvm_match.q
 | `context` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1733)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1733)
 
 <a id="function-function-mq3-engine-local-qvm-match-qagameseek-function-qagameseek-context-handle-offset-origin-src-mq3-engine-local-qvm-match-ml-262310994"></a>
 ### qagameSeek
@@ -3721,7 +3721,7 @@ Return `mq3.qcommon.memory_file_seek.seek(context.files, handle, offset, origin)
 | `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.qcommon.memory_file_seek.seek`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1741)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1741)
 
 <a id="function-function-mq3-engine-local-qvm-match-queueinputcommand-function-queueinputcommand-value-text-src-mq3-engine-local-qvm-match-ml-1578977576"></a>
 ### queueInputCommand
@@ -3738,7 +3738,7 @@ Queue input command in engine.local_qvm_match; the normal completion returns `tr
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.addText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3225)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-absmax-const-r-absmax-476-src-mq3-engine-local-qvm-match-ml-1217611740"></a>
 ### R_ABSMAX
@@ -3750,7 +3750,7 @@ const R_ABSMAX = 476
 Byte offset of the absolute maximum bounds field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L173)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-absmin-const-r-absmin-464-src-mq3-engine-local-qvm-match-ml-797543911"></a>
 ### R_ABSMIN
@@ -3762,7 +3762,7 @@ const R_ABSMIN = 464
 Byte offset of the absolute minimum bounds field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L171)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-bmodel-const-r-bmodel-432-src-mq3-engine-local-qvm-match-ml-1349772606"></a>
 ### R_BMODEL
@@ -3774,7 +3774,7 @@ const R_BMODEL = 432
 Byte offset of the brush-model flag field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L163)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-contents-const-r-contents-460-src-mq3-engine-local-qvm-match-ml-1403037075"></a>
 ### R_CONTENTS
@@ -3786,7 +3786,7 @@ const R_CONTENTS = 460
 Byte offset of the contents flags field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L169)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-currentangles-const-r-currentangles-500-src-mq3-engine-local-qvm-match-ml-66871386"></a>
 ### R_CURRENTANGLES
@@ -3798,7 +3798,7 @@ const R_CURRENTANGLES = 500
 Byte offset of the current angles field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L177)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-currentorigin-const-r-currentorigin-488-src-mq3-engine-local-qvm-match-ml-1746609945"></a>
 ### R_CURRENTORIGIN
@@ -3810,7 +3810,7 @@ const R_CURRENTORIGIN = 488
 Byte offset of the current origin field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L175)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-linkcount-const-r-linkcount-420-src-mq3-engine-local-qvm-match-ml-1788208971"></a>
 ### R_LINKCOUNT
@@ -3822,7 +3822,7 @@ const R_LINKCOUNT = 420
 Byte offset of the link count field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L157)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-linked-const-r-linked-416-src-mq3-engine-local-qvm-match-ml-2077103600"></a>
 ### R_LINKED
@@ -3834,7 +3834,7 @@ const R_LINKED = 416
 The pinned 1.32b g_public.h intentionally embeds entityState_t at the start of entityShared_t. gentity_t consequently contains s followed by r.s and the engine-owned shared fields below. These are QVM byte offsets, not host layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L155)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-maxs-const-r-maxs-448-src-mq3-engine-local-qvm-match-ml-2042709915"></a>
 ### R_MAXS
@@ -3846,7 +3846,7 @@ const R_MAXS = 448
 Byte offset of the local maximum bounds field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L167)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-mins-const-r-mins-436-src-mq3-engine-local-qvm-match-ml-2056096262"></a>
 ### R_MINS
@@ -3858,7 +3858,7 @@ const R_MINS = 436
 Byte offset of the local minimum bounds field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L165)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-ownernum-const-r-ownernum-512-src-mq3-engine-local-qvm-match-ml-1093719155"></a>
 ### R_OWNERNUM
@@ -3870,7 +3870,7 @@ const R_OWNERNUM = 512
 Byte offset of the owner entity number field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L179)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-singleclient-const-r-singleclient-428-src-mq3-engine-local-qvm-match-ml-1036301873"></a>
 ### R_SINGLECLIENT
@@ -3882,7 +3882,7 @@ const R_SINGLECLIENT = 428
 Byte offset of the single-client selector field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L161)
 
 <a id="constant-constant-mq3-engine-local-qvm-match-r-svflags-const-r-svflags-424-src-mq3-engine-local-qvm-match-ml-467328867"></a>
 ### R_SVFLAGS
@@ -3894,7 +3894,7 @@ const R_SVFLAGS = 424
 Byte offset of the server flags field in the QVM shared-entity record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L159)
 
 <a id="function-function-mq3-engine-local-qvm-match-readfile-function-readfile-context-handle-count-src-mq3-engine-local-qvm-match-ml-167213814"></a>
 ### readFile
@@ -3912,7 +3912,7 @@ Read file in engine.local_qvm_match; the normal completion returns `result`.
 | `count` | `dynamic` | — | Count used in `(count < 0)` and `(count > available)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L758)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L758)
 
 <a id="function-function-mq3-engine-local-qvm-match-readloadedaas-function-readloadedaas-host-name-src-mq3-engine-local-qvm-match-ml-1619772469"></a>
 ### readLoadedAas
@@ -3929,7 +3929,7 @@ Compute engine.local_qvm_match.readLoadedAas as `host[0]`.
 | `name` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1039)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1039)
 
 <a id="function-function-mq3-engine-local-qvm-match-readvector-function-readvector-data-at-src-mq3-engine-local-qvm-match-ml-1219529373"></a>
 ### readVector
@@ -3946,7 +3946,7 @@ Compute engine.local_qvm_match.readVector as `[n.bitsFloat(n.readI32(data, at)),
 | `at` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L864)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L864)
 
 <a id="function-function-mq3-engine-local-qvm-match-recordlocalusercmd-function-recordlocalusercmd-context-clientnum-command-src-mq3-engine-local-qvm-match-ml-563564517"></a>
 ### recordLocalUsercmd
@@ -3966,7 +3966,7 @@ Direct state writes: `context.commandNumber`.
 | `command` | `dynamic` | — | Command passed as `command` to `mq3.client.command_ring.store`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2007)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2007)
 
 - [mq3.engine.local_qvm_match.Refdef](Type-mq3-engine-local-qvm-match-refdef-2029122708.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-refreshserverstream-function-refreshserverstream-value-now-src-mq3-engine-local-qvm-match-ml-900506955"></a>
@@ -3984,7 +3984,7 @@ Test refresh server stream in engine.local_qvm_match; the normal completion retu
 | `now` | `dynamic` | — | Now operand used by `refreshServerStream`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3078)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3078)
 
 <a id="function-function-mq3-engine-local-qvm-match-refreshui-function-refreshui-value-time-src-mq3-engine-local-qvm-match-ml-1895122644"></a>
 ### refreshUi
@@ -4001,7 +4001,7 @@ Compute refresh ui in engine.local_qvm_match; the normal completion returns `res
 | `time` | `dynamic` | — | Value passed as `value` to `mq3.client.ui_lan_queries.setRealtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3625)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3625)
 
 <a id="function-function-mq3-engine-local-qvm-match-registerasset-function-registerasset-context-name-src-mq3-engine-local-qvm-match-ml-377597408"></a>
 ### registerAsset
@@ -4018,7 +4018,7 @@ Return `mq3.engine.local_qvm_match.registerTypedAsset(context, "asset", name)` f
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.registerTypedAsset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2493)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2493)
 
 <a id="function-function-mq3-engine-local-qvm-match-registermodel-function-registermodel-context-name-src-mq3-engine-local-qvm-match-ml-1308069742"></a>
 ### registerModel
@@ -4037,7 +4037,7 @@ Direct state writes: `context.modelAssets`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.typedAssetHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2499)
 
 <a id="function-function-mq3-engine-local-qvm-match-registerqvmfont-function-registerqvmfont-context-vm-base-src-mq3-engine-local-qvm-match-ml-245636643"></a>
 ### registerQvmFont
@@ -4055,7 +4055,7 @@ Register qvm font in engine.local_qvm_match; the normal completion returns `0`.
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2842)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2842)
 
 <a id="function-function-mq3-engine-local-qvm-match-registershader-function-registershader-context-name-src-mq3-engine-local-qvm-match-ml-2053519810"></a>
 ### registerShader
@@ -4072,7 +4072,7 @@ Return `mq3.engine.local_qvm_match.registerShaderKind(context, "shader", name)` 
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.registerShaderKind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2531)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2531)
 
 <a id="function-function-mq3-engine-local-qvm-match-registershaderkind-function-registershaderkind-context-kind-name-src-mq3-engine-local-qvm-match-ml-448790880"></a>
 ### registerShaderKind
@@ -4090,7 +4090,7 @@ Register shader kind in engine.local_qvm_match; the normal completion returns `r
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.renderer.shader_remap.handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2524)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2524)
 
 <a id="function-function-mq3-engine-local-qvm-match-registershadernomip-function-registershadernomip-context-name-src-mq3-engine-local-qvm-match-ml-459574268"></a>
 ### registerShaderNoMip
@@ -4107,7 +4107,7 @@ Return `mq3.engine.local_qvm_match.registerShaderKind(context, "shaderNoMip", na
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.registerShaderKind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2535)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2535)
 
 <a id="function-function-mq3-engine-local-qvm-match-registerskin-function-registerskin-context-name-src-mq3-engine-local-qvm-match-ml-362935286"></a>
 ### registerSkin
@@ -4124,7 +4124,7 @@ Return `mq3.engine.local_qvm_match.registerTypedAsset(context, "skin", name)` fr
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.engine.local_qvm_match.registerTypedAsset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2519)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2519)
 
 <a id="function-function-mq3-engine-local-qvm-match-registertypedasset-function-registertypedasset-context-kind-name-src-mq3-engine-local-qvm-match-ml-231397380"></a>
 ### registerTypedAsset
@@ -4144,7 +4144,7 @@ Direct state writes: `context.assets`, `context.assetKinds`.
 | `name` | `dynamic` | — | Name used in `(context.assets + [name])` and `(context.assets[index] == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2475)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2475)
 
 <a id="function-function-mq3-engine-local-qvm-match-remaprenderershader-function-remaprenderershader-context-oldname-newname-timeoffset-src-mq3-engine-local-qvm-match-ml-881650414"></a>
 ### remapRendererShader
@@ -4163,7 +4163,7 @@ Compute remap renderer shader in engine.local_qvm_match; the normal completion r
 | `timeOffset` | `dynamic` | — | Offset passed as `offset` to `mq3.renderer.shader_remap.apply`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2885)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2885)
 
 <a id="function-function-mq3-engine-local-qvm-match-removecommand-function-removecommand-context-name-src-mq3-engine-local-qvm-match-ml-1992684496"></a>
 ### removeCommand
@@ -4180,7 +4180,7 @@ Remove command in engine.local_qvm_match.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.command_buffer.removeCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2551)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2551)
 
 <a id="function-function-mq3-engine-local-qvm-match-renderermodel-function-renderermodel-context-handle-src-mq3-engine-local-qvm-match-ml-828308817"></a>
 ### rendererModel
@@ -4197,7 +4197,7 @@ Compute renderer model in engine.local_qvm_match; the normal completion returns 
 | `handle` | `dynamic` | — | Handle used in `(handle - 1)` and `(handle <= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2749)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2749)
 
 <a id="function-function-mq3-engine-local-qvm-match-renderermodelbounds-function-renderermodelbounds-context-handle-src-mq3-engine-local-qvm-match-ml-1857690883"></a>
 ### rendererModelBounds
@@ -4214,7 +4214,7 @@ Compute renderer model bounds in engine.local_qvm_match; the normal completion r
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.engine.local_qvm_match.rendererModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2756)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2756)
 
 - [mq3.engine.local_qvm_match.RenderView](Type-mq3-engine-local-qvm-match-renderview-918227297.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-restartvm-function-restartvm-machineruntime-slot-src-mq3-engine-local-qvm-match-ml-1865379647"></a>
@@ -4232,7 +4232,7 @@ Return `mq3.vm.runtime.restart(machineRuntime, slot)` from `engine.local_qvm_mat
 | `slot` | `dynamic` | — | Slot passed as `slot` to `mq3.vm.runtime.restart`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L543)
 
 <a id="function-function-mq3-engine-local-qvm-match-runbotframe-function-runbotframe-value-hosttime-src-mq3-engine-local-qvm-match-ml-974368614"></a>
 ### runBotFrame
@@ -4249,7 +4249,7 @@ Compute run bot frame in engine.local_qvm_match.
 | `hostTime` | `dynamic` | — | Time passed as `time` to `mq3.botlib.server_bridge.setTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2060)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2060)
 
 <a id="function-function-mq3-engine-local-qvm-match-runframe-function-runframe-value-servertime-src-mq3-engine-local-qvm-match-ml-1623437759"></a>
 ### runFrame
@@ -4266,7 +4266,7 @@ Return `mq3.engine.local_qvm_match.runServerFrame(value, serverTime)` from `engi
 | `serverTime` | `dynamic` | — | Server time passed as `serverTime` to `mq3.engine.local_qvm_match.runServerFrame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2042)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2042)
 
 <a id="function-function-mq3-engine-local-qvm-match-runserverframe-function-runserverframe-value-servertime-src-mq3-engine-local-qvm-match-ml-1200788951"></a>
 ### runServerFrame
@@ -4283,7 +4283,7 @@ Return `mq3.engine.local_qvm_match.runServerTickMode(value, serverTime, true)` f
 | `serverTime` | `dynamic` | — | Server time passed as `serverTime` to `mq3.engine.local_qvm_match.runServerTickMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2048)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2048)
 
 <a id="function-function-mq3-engine-local-qvm-match-runservertick-function-runservertick-value-servertime-src-mq3-engine-local-qvm-match-ml-816372353"></a>
 ### runServerTick
@@ -4300,7 +4300,7 @@ Return `mq3.engine.local_qvm_match.runServerTickMode(value, serverTime, false)` 
 | `serverTime` | `dynamic` | — | Server time passed as `serverTime` to `mq3.engine.local_qvm_match.runServerTickMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2054)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2054)
 
 <a id="function-function-mq3-engine-local-qvm-match-runservertickmode-function-runservertickmode-value-servertime-bottick-src-mq3-engine-local-qvm-match-ml-1066505801"></a>
 ### runServerTickMode
@@ -4318,7 +4318,7 @@ Compute run server tick mode in engine.local_qvm_match; the normal completion re
 | `botTick` | `dynamic` | — | Bot tick operand used by `runServerTickMode`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2077)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2077)
 
 <a id="function-function-mq3-engine-local-qvm-match-savebotroutes-function-savebotroutes-context-src-mq3-engine-local-qvm-match-ml-467087635"></a>
 ### saveBotRoutes
@@ -4334,7 +4334,7 @@ Compute save bot routes in engine.local_qvm_match.
 | `context` | `dynamic` | — | Record exposing `aasRouteCache`, `aasCachePath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1049)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1049)
 
 <a id="function-function-mq3-engine-local-qvm-match-sectorlistcommand-function-sectorlistcommand-commandstate-context-src-mq3-engine-local-qvm-match-ml-622313723"></a>
 ### sectorListCommand
@@ -4351,7 +4351,7 @@ Compute engine.local_qvm_match.sectorListCommand as `(serverWorld.SV_SectorList_
 | `context` | `dynamic` | — | Record exposing `spatialScene`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L690)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L690)
 
 <a id="function-function-mq3-engine-local-qvm-match-seedcvars-function-seedcvars-registry-src-mq3-engine-local-qvm-match-ml-192257151"></a>
 ### seedCvars
@@ -4367,7 +4367,7 @@ Compute seed cvars in engine.local_qvm_match.
 | `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.client.qvm_frame_input.registerConfig`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1662)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1662)
 
 <a id="function-function-mq3-engine-local-qvm-match-seeddesktopbindings-function-seeddesktopbindings-context-src-mq3-engine-local-qvm-match-ml-877106781"></a>
 ### seedDesktopBindings
@@ -4383,7 +4383,7 @@ Initial desktop controls. Saved menu bindings replace these on map changes.
 | `context` | `dynamic` | — | Record exposing `cgameKeys`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1723)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1723)
 
 <a id="function-function-mq3-engine-local-qvm-match-sendclientcommand-function-sendclientcommand-context-name-src-mq3-engine-local-qvm-match-ml-1366753590"></a>
 ### sendClientCommand
@@ -4402,7 +4402,7 @@ Direct state writes: `context.console`.
 | `name` | `dynamic` | — | Name used in `("client " + name)` and `context.pendingClientCommands.add(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2557)
 
 <a id="function-function-mq3-engine-local-qvm-match-sendservercommand-function-sendservercommand-context-client-text-src-mq3-engine-local-qvm-match-ml-502127967"></a>
 ### sendServerCommand
@@ -4422,7 +4422,7 @@ Direct state writes: `context.console`.
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.client.server_command_stream.queue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L812)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L812)
 
 <a id="function-function-mq3-engine-local-qvm-match-servergamecommand-function-servergamecommand-commandstate-src-mq3-engine-local-qvm-match-ml-1200573004"></a>
 ### serverGameCommand
@@ -4438,7 +4438,7 @@ Compute server game command in engine.local_qvm_match; the normal completion ret
 | `commandState` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1976)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1976)
 
 <a id="function-function-mq3-engine-local-qvm-match-setbrushmodel-function-setbrushmodel-context-entity-name-src-mq3-engine-local-qvm-match-ml-2001194077"></a>
 ### setBrushModel
@@ -4456,7 +4456,7 @@ Set brush model in engine.local_qvm_match.
 | `name` | `dynamic` | — | Name used in `name[0]` and `len(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L905)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L905)
 
 <a id="function-function-mq3-engine-local-qvm-match-setconfigstring-function-setconfigstring-context-index-text-src-mq3-engine-local-qvm-match-ml-1876967942"></a>
 ### setConfigstring
@@ -4474,7 +4474,7 @@ Set configstring in engine.local_qvm_match.
 | `text` | `dynamic` | — | Text operand used by `setConfigstring`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L824)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L824)
 
 <a id="function-function-mq3-engine-local-qvm-match-setkeybinding-function-setkeybinding-value-key-text-src-mq3-engine-local-qvm-match-ml-1527451675"></a>
 ### setKeyBinding
@@ -4492,7 +4492,7 @@ Set key binding in engine.local_qvm_match; the normal completion returns `cgameK
 | `text` | `dynamic` | — | Value passed as `value` to `mq3.vm.cgame_key_traps.setBinding`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3221)
 
 <a id="function-function-mq3-engine-local-qvm-match-setkeydown-function-setkeydown-value-key-down-src-mq3-engine-local-qvm-match-ml-842274354"></a>
 ### setKeyDown
@@ -4510,7 +4510,7 @@ Set key down in engine.local_qvm_match; the normal completion returns `cgameKeys
 | `down` | `dynamic` | — | Value passed as `value` to `mq3.vm.cgame_key_traps.setDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3212)
 
 <a id="function-function-mq3-engine-local-qvm-match-setuiconnection-function-setuiconnection-value-connstate-connectpacketcount-servername-messagestring-src-mq3-engine-local-qvm-match-ml-786082209"></a>
 ### setUiConnection
@@ -4530,7 +4530,7 @@ Set ui connection in engine.local_qvm_match.
 | `messageString` | `dynamic` | — | Message string passed as `messageString` to `mq3.client.ui_host_lifecycle.createClientState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3637)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3637)
 
 <a id="function-function-mq3-engine-local-qvm-match-setuimenu-function-setuimenu-value-menu-src-mq3-engine-local-qvm-match-ml-1320664122"></a>
 ### setUiMenu
@@ -4547,7 +4547,7 @@ Set ui menu in engine.local_qvm_match; the normal completion returns `uiVm.setAc
 | `menu` | `dynamic` | — | Menu passed as `menu` to `mq3.client.ui_vm.setActiveMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3629)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3629)
 
 <a id="function-function-mq3-engine-local-qvm-match-setuiupdateinfo-function-setuiupdateinfo-value-updateinfostring-src-mq3-engine-local-qvm-match-ml-1701241043"></a>
 ### setUiUpdateInfo
@@ -4564,7 +4564,7 @@ Set ui update info in engine.local_qvm_match.
 | `updateInfoString` | `dynamic` | — | Update info string used in `typeof(updateInfoString)` and `(typeof(updateInfoString) != "string")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3645)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3645)
 
 <a id="function-function-mq3-engine-local-qvm-match-setusercmdvalue-function-setusercmdvalue-context-value-sensitivity-src-mq3-engine-local-qvm-match-ml-439539003"></a>
 ### setUsercmdValue
@@ -4582,7 +4582,7 @@ Return `mq3.client.cgame_usercmd.set(context.cgameUsercmd, value, sensitivity)` 
 | `sensitivity` | `dynamic` | — | Sensitivity passed as `sensitivity` to `mq3.client.cgame_usercmd.set`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2629)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2629)
 
 <a id="function-function-mq3-engine-local-qvm-match-setuserinfo-function-setuserinfo-context-index-text-src-mq3-engine-local-qvm-match-ml-14628622"></a>
 ### setUserinfo
@@ -4600,7 +4600,7 @@ Set userinfo in engine.local_qvm_match.
 | `text` | `dynamic` | — | Text operand used by `setUserinfo`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L837)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L837)
 
 <a id="function-function-mq3-engine-local-qvm-match-shutdown-function-shutdown-value-src-mq3-engine-local-qvm-match-ml-1820924873"></a>
 ### shutdown
@@ -4616,7 +4616,7 @@ Compute shutdown in engine.local_qvm_match.
 | `value` | `dynamic` | — | Record exposing `context`, `ui`, `cgame`, `game`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3652)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3652)
 
 <a id="function-function-mq3-engine-local-qvm-match-signed16-function-signed16-value-src-mq3-engine-local-qvm-match-ml-1428695893"></a>
 ### signed16
@@ -4632,7 +4632,7 @@ Compute signed 16 in engine.local_qvm_match; the normal completion returns `resu
 | `value` | `dynamic` | — | Value used in `(value & 65535)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1439)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1439)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshot-function-snapshot-value-clientnum-src-mq3-engine-local-qvm-match-ml-1473650044"></a>
 ### snapshot
@@ -4649,7 +4649,7 @@ Compute snapshot in engine.local_qvm_match; the normal completion returns `resul
 | `clientNum` | `dynamic` | — | Client num passed as `clientNum` to `mq3.engine.local_qvm_match.snapshotCore`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2295)
 
 - [mq3.engine.local_qvm_match.Snapshot](Type-mq3-engine-local-qvm-match-snapshot-1670007188.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-snapshotareasconnected-function-snapshotareasconnected-host-first-second-src-mq3-engine-local-qvm-match-ml-1853250142"></a>
@@ -4668,7 +4668,7 @@ Return `mq3.collision.visibility.areasConnected(host.context.collisionWorld.visi
 | `second` | `dynamic` | — | Area 2 passed as `area2` to `mq3.collision.visibility.areasConnected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2121)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotbytes-function-snapshotbytes-context-number-src-mq3-engine-local-qvm-match-ml-1570091802"></a>
 ### snapshotBytes
@@ -4685,7 +4685,7 @@ Compute snapshot bytes in engine.local_qvm_match; the normal completion returns 
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.engine.local_qvm_match.streamSnapshotBytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2443)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2443)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotbytesscratch-function-snapshotbytesscratch-context-number-src-mq3-engine-local-qvm-match-ml-1742620964"></a>
 ### snapshotBytesScratch
@@ -4702,7 +4702,7 @@ syscall_cgame copies the result into QVM memory synchronously. Keep one host buf
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.engine.local_qvm_match.streamSnapshotBytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2454)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2454)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotclusterpvs-function-snapshotclusterpvs-host-cluster-src-mq3-engine-local-qvm-match-ml-237423286"></a>
 ### snapshotClusterPvs
@@ -4719,7 +4719,7 @@ Return `mq3.collision.visibility.clusterPVS(host.context.collisionWorld.visibili
 | `cluster` | `dynamic` | — | Cluster passed as `cluster` to `mq3.collision.visibility.clusterPVS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2116)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotcore-function-snapshotcore-value-clientnum-src-mq3-engine-local-qvm-match-ml-1586285384"></a>
 ### snapshotCore
@@ -4736,7 +4736,7 @@ Compute snapshot core in engine.local_qvm_match; the normal completion returns `
 | `clientNum` | `dynamic` | — | Client num passed as `clientNum` to `mq3.engine.local_qvm_match.snapshotCorePrepared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2273)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotcoreprepared-function-snapshotcoreprepared-value-clientnum-input-src-mq3-engine-local-qvm-match-ml-564173704"></a>
 ### snapshotCorePrepared
@@ -4754,7 +4754,7 @@ Compute snapshot core prepared in engine.local_qvm_match; the normal completion 
 | `input` | `dynamic` | — | Record exposing `world`, `host`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2281)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotinput-function-snapshotinput-value-src-mq3-engine-local-qvm-match-ml-1169512333"></a>
 ### snapshotInput
@@ -4770,7 +4770,7 @@ Compute snapshot input in engine.local_qvm_match; the normal completion returns 
 | `value` | `dynamic` | — | Record exposing `game`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2254)
 
 - [mq3.engine.local_qvm_match.SnapshotInput](Type-mq3-engine-local-qvm-match-snapshotinput-48200440.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-snapshotleafarea-function-snapshotleafarea-host-leaf-src-mq3-engine-local-qvm-match-ml-1153079088"></a>
@@ -4788,7 +4788,7 @@ Return `mq3.collision.visibility.leafArea(host.context.collisionWorld.visibility
 | `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.visibility.leafArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2103)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotleafcluster-function-snapshotleafcluster-host-leaf-src-mq3-engine-local-qvm-match-ml-371741920"></a>
 ### snapshotLeafCluster
@@ -4805,7 +4805,7 @@ Return `mq3.collision.visibility.leafCluster(host.context.collisionWorld.visibil
 | `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.visibility.leafCluster`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2107)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotpointleaf-function-snapshotpointleaf-host-origin-src-mq3-engine-local-qvm-match-ml-737119374"></a>
 ### snapshotPointLeaf
@@ -4822,7 +4822,7 @@ Return `mq3.collision.world.pointLeafnum(host.context.collisionWorld, origin)` f
 | `origin` | `dynamic` | — | Point passed as `point` to `mq3.collision.world.pointLeafnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2099)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2099)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotproductive-function-snapshotproductive-value-clientnum-src-mq3-engine-local-qvm-match-ml-945293176"></a>
 ### snapshotProductive
@@ -4839,7 +4839,7 @@ Production snapshots are consumed by the authoritative retail cgame QVM. Differe
 | `clientNum` | `dynamic` | — | Client num passed as `clientNum` to `mq3.engine.local_qvm_match.snapshotCorePrepared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2347)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2347)
 
 <a id="function-function-mq3-engine-local-qvm-match-snapshotwriteareabits-function-snapshotwriteareabits-host-bits-area-src-mq3-engine-local-qvm-match-ml-43747119"></a>
 ### snapshotWriteAreaBits
@@ -4857,7 +4857,7 @@ Return `mq3.collision.visibility.writeAreaBits(host.context.collisionWorld.visib
 | `area` | `dynamic` | — | Area passed as `area` to `mq3.collision.visibility.writeAreaBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2112)
 
 - [mq3.engine.local_qvm_match.SoundCommand](Type-mq3-engine-local-qvm-match-soundcommand-396981036.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-soundevent-function-soundevent-kind-entity-channel-handle-origin-velocity-axis-flag-text-text2-src-mq3-engine-local-qvm-match-ml-169641728"></a>
@@ -4883,7 +4883,7 @@ Create `mq3.engine.local_qvm_match.SoundCommand` with kind=kind; entity=entity; 
 | `text2` | `dynamic` | — | Initial `text2` field stored in the returned or constructed `mq3.engine.local_qvm_match.SoundCommand` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2726)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2726)
 
 <a id="function-function-mq3-engine-local-qvm-match-soundvector-function-soundvector-vm-address-label-src-mq3-engine-local-qvm-match-ml-362516767"></a>
 ### soundVector
@@ -4901,7 +4901,7 @@ Compute sound vector in engine.local_qvm_match; the normal completion returns `c
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.readFloatVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2714)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2714)
 
 <a id="function-function-mq3-engine-local-qvm-match-streamsnapshotbytes-function-streamsnapshotbytes-context-number-output-src-mq3-engine-local-qvm-match-ml-2128290889"></a>
 ### streamSnapshotBytes
@@ -4919,7 +4919,7 @@ Compute stream snapshot bytes in engine.local_qvm_match; the normal completion r
 | `output` | `dynamic` | — | Output passed as `output` to `mq3.client.cl_cgame_runtime.encodeSnapshot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2434)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2434)
 
 <a id="function-function-mq3-engine-local-qvm-match-submitusercmd-function-submitusercmd-value-clientnum-command-src-mq3-engine-local-qvm-match-ml-1770195777"></a>
 ### submitUsercmd
@@ -4937,7 +4937,7 @@ Compute submit usercmd in engine.local_qvm_match; the normal completion returns 
 | `command` | `dynamic` | — | Record exposing `serverTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2023)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2023)
 
 <a id="function-function-mq3-engine-local-qvm-match-submitusercmdathosttime-function-submitusercmdathosttime-value-clientnum-command-hosttime-src-mq3-engine-local-qvm-match-ml-785168868"></a>
 ### submitUsercmdAtHostTime
@@ -4956,7 +4956,7 @@ Compute submit usercmd at host time in engine.local_qvm_match; the normal comple
 | `hostTime` | `dynamic` | — | Host time used in `(hostTime < 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2031)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2031)
 
 <a id="function-function-mq3-engine-local-qvm-match-syncclienttextinput-function-syncclienttextinput-value-src-mq3-engine-local-qvm-match-ml-1966487803"></a>
 ### syncClientTextInput
@@ -4972,7 +4972,7 @@ Synchronize client text input in engine.local_qvm_match; the normal completion r
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3248)
 
 <a id="function-function-mq3-engine-local-qvm-match-syncconsoleinputcatcher-function-syncconsoleinputcatcher-context-src-mq3-engine-local-qvm-match-ml-1474879751"></a>
 ### syncConsoleInputCatcher
@@ -4990,7 +4990,7 @@ Direct state writes: `context.uiKeyCatcher`.
 | `context` | `dynamic` | — | Record exposing `clientTextInput`, `cgameKeys`. Updated in place: `uiKeyCatcher`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L640)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L640)
 
 <a id="function-function-mq3-engine-local-qvm-match-syncconsoleruntime-function-syncconsoleruntime-context-src-mq3-engine-local-qvm-match-ml-635375083"></a>
 ### syncConsoleRuntime
@@ -5006,7 +5006,7 @@ Synchronize console runtime in engine.local_qvm_match; the normal completion ret
 | `context` | `dynamic` | — | Record exposing `clientTextInput`, `now`, `uiClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L643)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L643)
 
 <a id="function-function-mq3-engine-local-qvm-match-syncspatialentity-function-syncspatialentity-context-index-src-mq3-engine-local-qvm-match-ml-1314439605"></a>
 ### syncSpatialEntity
@@ -5023,7 +5023,7 @@ Synchronize spatial entity in engine.local_qvm_match; the normal completion retu
 | `index` | `dynamic` | — | Zero-based index into `context.spatialScene.entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L878)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L878)
 
 <a id="function-function-mq3-engine-local-qvm-match-takestreamcommands-function-takestreamcommands-value-src-mq3-engine-local-qvm-match-ml-71196225"></a>
 ### takeStreamCommands
@@ -5039,7 +5039,7 @@ Compute take stream commands in engine.local_qvm_match; the normal completion re
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3104)
 
 <a id="function-function-mq3-engine-local-qvm-match-toggleclientconsole-function-toggleclientconsole-value-src-mq3-engine-local-qvm-match-ml-989849529"></a>
 ### toggleClientConsole
@@ -5055,7 +5055,7 @@ Compute toggle client console in engine.local_qvm_match; the normal completion r
 | `value` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3298)
 
 <a id="function-function-mq3-engine-local-qvm-match-toggleconsolecommand-function-toggleconsolecommand-commandstate-context-src-mq3-engine-local-qvm-match-ml-1566587545"></a>
 ### toggleConsoleCommand
@@ -5072,7 +5072,7 @@ Test toggle console command in engine.local_qvm_match; the normal completion ret
 | `context` | `dynamic` | — | Record exposing `clientTextInput`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L662)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L662)
 
 <a id="function-function-mq3-engine-local-qvm-match-traceworld-function-traceworld-context-start-mins-maxs-finish-passentity-mask-capsule-src-mq3-engine-local-qvm-match-ml-288896713"></a>
 ### traceWorld
@@ -5095,7 +5095,7 @@ Trace world in engine.local_qvm_match.
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.server.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1627)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1627)
 
 <a id="function-function-mq3-engine-local-qvm-match-typedassethandle-function-typedassethandle-context-kind-name-src-mq3-engine-local-qvm-match-ml-434623608"></a>
 ### typedAssetHandle
@@ -5113,7 +5113,7 @@ Compute typed asset handle in engine.local_qvm_match; the normal completion retu
 | `name` | `dynamic` | — | Name used in `(context.assets[index] == name)` and `((context.assetKinds[index] == kind) and (context.assets[index] == name))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2487)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2487)
 
 <a id="function-function-mq3-engine-local-qvm-match-uibinding-function-uibinding-context-key-src-mq3-engine-local-qvm-match-ml-985437138"></a>
 ### uiBinding
@@ -5130,7 +5130,7 @@ Return `mq3.vm.cgame_key_traps.getBinding(context.cgameKeys, key)` from `engine.
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.vm.cgame_key_traps.getBinding`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3164)
 
 <a id="function-function-mq3-engine-local-qvm-match-uicdkey-function-uicdkey-context-src-mq3-engine-local-qvm-match-ml-1386187599"></a>
 ### uiCdKey
@@ -5146,7 +5146,7 @@ Compute engine.local_qvm_match.uiCdKey as `"0000000000000000"`.
 | `context` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3524)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3524)
 
 <a id="function-function-mq3-engine-local-qvm-match-uicinematicdraw-function-uicinematicdraw-context-handle-src-mq3-engine-local-qvm-match-ml-1678928419"></a>
 ### uiCinematicDraw
@@ -5163,7 +5163,7 @@ Compute ui cinematic draw in engine.local_qvm_match.
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.client.cinematic_runtime.draw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3564)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3564)
 
 <a id="function-function-mq3-engine-local-qvm-match-uicinematicextents-function-uicinematicextents-context-handle-x-y-w-h-src-mq3-engine-local-qvm-match-ml-278143737"></a>
 ### uiCinematicExtents
@@ -5184,7 +5184,7 @@ Compute ui cinematic extents in engine.local_qvm_match.
 | `h` | `dynamic` | — | Height passed as `height` to `mq3.client.cinematic_runtime.setExtents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3572)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3572)
 
 <a id="function-function-mq3-engine-local-qvm-match-uicinematicrun-function-uicinematicrun-context-handle-src-mq3-engine-local-qvm-match-ml-579014365"></a>
 ### uiCinematicRun
@@ -5201,7 +5201,7 @@ Return `mq3.client.cinematic_runtime.run(context.cinematics, handle, context.now
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.client.cinematic_runtime.run`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3560)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3560)
 
 <a id="function-function-mq3-engine-local-qvm-match-uicinematicstop-function-uicinematicstop-context-handle-src-mq3-engine-local-qvm-match-ml-1591900091"></a>
 ### uiCinematicStop
@@ -5218,7 +5218,7 @@ Return `mq3.client.cinematic_runtime.stop(context.cinematics, handle)` from `eng
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.client.cinematic_runtime.stop`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3556)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3556)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiclearkeys-function-uiclearkeys-context-src-mq3-engine-local-qvm-match-ml-324857193"></a>
 ### uiClearKeys
@@ -5234,7 +5234,7 @@ Return `mq3.vm.cgame_key_traps.clearStates(context.cgameKeys)` from `engine.loca
 | `context` | `dynamic` | — | Record exposing `cgameKeys`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3183)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiclearkeysproductive-function-uiclearkeysproductive-context-src-mq3-engine-local-qvm-match-ml-766082535"></a>
 ### uiClearKeysProductive
@@ -5250,7 +5250,7 @@ Compute ui clear keys productive in engine.local_qvm_match; the normal completio
 | `context` | `dynamic` | — | Record exposing `inputClearFn`, `inputClearContext`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3186)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiclientstate-function-uiclientstate-context-src-mq3-engine-local-qvm-match-ml-1228788311"></a>
 ### uiClientState
@@ -5266,7 +5266,7 @@ Return `mq3.client.ui_host_lifecycle.encodeClientState(context.uiClient)` from `
 | `context` | `dynamic` | — | Record exposing `uiClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3152)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiclipboard-function-uiclipboard-context-src-mq3-engine-local-qvm-match-ml-447647351"></a>
 ### uiClipboard
@@ -5282,7 +5282,7 @@ Compute engine.local_qvm_match.uiClipboard as `""`.
 | `context` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3149)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiconfigstring-function-uiconfigstring-context-index-src-mq3-engine-local-qvm-match-ml-1171305321"></a>
 ### uiConfigString
@@ -5299,7 +5299,7 @@ Compute ui config string in engine.local_qvm_match; the normal completion return
 | `index` | `dynamic` | — | Zero-based index into `context.configstrings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3156)
 
 <a id="function-function-mq3-engine-local-qvm-match-uidesktopmodlist-function-uidesktopmodlist-dataroot-src-mq3-engine-local-qvm-match-ml-1197026554"></a>
 ### uiDesktopModList
@@ -5315,7 +5315,7 @@ Compute ui desktop mod list in engine.local_qvm_match; the normal completion ret
 | `dataRoot` | `dynamic` | — | Data root used in `(dataRoot == "")` and `fs.joinPath(dataRoot, "..")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3313)
 
 <a id="function-function-mq3-engine-local-qvm-match-uifilelist-function-uifilelist-context-path-extension-src-mq3-engine-local-qvm-match-ml-1002450825"></a>
 ### uiFileList
@@ -5333,7 +5333,7 @@ Compute ui file list in engine.local_qvm_match; the normal completion returns `r
 | `extension` | `dynamic` | — | Extension used in `strings.toLowerAscii(extension)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3365)
 
 <a id="function-function-mq3-engine-local-qvm-match-uigamecommand-function-uigamecommand-commandstate-src-mq3-engine-local-qvm-match-ml-2108986878"></a>
 ### uiGameCommand
@@ -5349,7 +5349,7 @@ Compute ui game command in engine.local_qvm_match; the normal completion returns
 | `commandState` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1982)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1982)
 
 <a id="function-function-mq3-engine-local-qvm-match-uigetcatcher-function-uigetcatcher-context-src-mq3-engine-local-qvm-match-ml-480860967"></a>
 ### uiGetCatcher
@@ -5365,7 +5365,7 @@ Return `mq3.vm.cgame_key_traps.getCatcher(context.cgameKeys)` from `engine.local
 | `context` | `dynamic` | — | Record exposing `cgameKeys`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3201)
 
 <a id="function-function-mq3-engine-local-qvm-match-uigetoverstrike-function-uigetoverstrike-context-src-mq3-engine-local-qvm-match-ml-419309727"></a>
 ### uiGetOverstrike
@@ -5381,7 +5381,7 @@ Return `mq3.vm.cgame_key_traps.getOverstrike(context.cgameKeys)` from `engine.lo
 | `context` | `dynamic` | — | Record exposing `cgameKeys`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3176)
 
 <a id="function-function-mq3-engine-local-qvm-match-uikeydown-function-uikeydown-context-key-src-mq3-engine-local-qvm-match-ml-546377958"></a>
 ### uiKeyDown
@@ -5398,7 +5398,7 @@ Return `mq3.vm.cgame_key_traps.isDown(context.cgameKeys, key)` from `engine.loca
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.vm.cgame_key_traps.isDown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3173)
 
 <a id="function-function-mq3-engine-local-qvm-match-uikeyname-function-uikeyname-context-key-src-mq3-engine-local-qvm-match-ml-518397648"></a>
 ### uiKeyName
@@ -5415,7 +5415,7 @@ Return `mq3.vm.cgame_key_traps.keynumToString(key)` from `engine.local_qvm_match
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.vm.cgame_key_traps.keynumToString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3160)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanadd-function-uilanadd-context-source-name-address-src-mq3-engine-local-qvm-match-ml-1968397871"></a>
 ### uiLanAdd
@@ -5434,7 +5434,7 @@ Return `mq3.client.ui_lan_browser.add(context.uiLan, source, name, address)` fro
 | `address` | `dynamic` | — | Address passed as `address` to `mq3.client.ui_lan_browser.add`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3412)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanclearping-function-uilanclearping-context-index-src-mq3-engine-local-qvm-match-ml-263155101"></a>
 ### uiLanClearPing
@@ -5451,7 +5451,7 @@ Return `mq3.client.ui_lan_browser.clearPing(context.uiLan, index)` from `engine.
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.clearPing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3424)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilancompare-function-uilancompare-context-source-sortkey-sortdir-first-second-src-mq3-engine-local-qvm-match-ml-1627882684"></a>
 ### uiLanCompare
@@ -5472,7 +5472,7 @@ Return `mq3.client.ui_lan_browser.compare(context.uiLan, source, sortKey, sortDi
 | `second` | `dynamic` | — | Second passed as `second` to `mq3.client.ui_lan_browser.compare`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3488)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3488)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanisvisible-function-uilanisvisible-context-source-index-src-mq3-engine-local-qvm-match-ml-536471492"></a>
 ### uiLanIsVisible
@@ -5490,7 +5490,7 @@ Return `mq3.client.ui_lan_browser.isVisible(context.uiLan, source, index)` from 
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.isVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3462)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3462)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanload-function-uilanload-context-src-mq3-engine-local-qvm-match-ml-768982545"></a>
 ### uiLanLoad
@@ -5506,7 +5506,7 @@ Return `mq3.client.ui_lan_cache.load(context.uiLan, context.uiLanCacheHost)` fro
 | `context` | `dynamic` | — | Record exposing `uiLan`, `uiLanCacheHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3403)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3403)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanmarkvisible-function-uilanmarkvisible-context-source-index-visible-src-mq3-engine-local-qvm-match-ml-333825758"></a>
 ### uiLanMarkVisible
@@ -5525,7 +5525,7 @@ Return `mq3.client.ui_lan_browser.markVisible(context.uiLan, source, index, visi
 | `visible` | `dynamic` | — | Visible passed as `visible` to `mq3.client.ui_lan_browser.markVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3457)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanping-function-uilanping-context-index-src-mq3-engine-local-qvm-match-ml-1529683"></a>
 ### uiLanPing
@@ -5542,7 +5542,7 @@ Return `mq3.client.ui_lan_browser.getPing(context.uiLan, index)` from `engine.lo
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.getPing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3428)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanpingcount-function-uilanpingcount-context-src-mq3-engine-local-qvm-match-ml-2014966563"></a>
 ### uiLanPingCount
@@ -5558,7 +5558,7 @@ Return `mq3.client.ui_lan_browser.pingCount(context.uiLan)` from `engine.local_q
 | `context` | `dynamic` | — | Record exposing `uiLan`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3420)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3420)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanpinginfo-function-uilanpinginfo-context-index-src-mq3-engine-local-qvm-match-ml-41741463"></a>
 ### uiLanPingInfo
@@ -5575,7 +5575,7 @@ Return `mq3.client.ui_lan_browser.getPingInfo(context.uiLan, index)` from `engin
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.getPingInfo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3432)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3432)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanremove-function-uilanremove-context-source-address-src-mq3-engine-local-qvm-match-ml-663335026"></a>
 ### uiLanRemove
@@ -5593,7 +5593,7 @@ Return `mq3.client.ui_lan_browser.remove(context.uiLan, source, address)` from `
 | `address` | `dynamic` | — | Address passed as `address` to `mq3.client.ui_lan_browser.remove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3417)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3417)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanresetpings-function-uilanresetpings-context-source-src-mq3-engine-local-qvm-match-ml-1752763802"></a>
 ### uiLanResetPings
@@ -5610,7 +5610,7 @@ Return `mq3.client.ui_lan_browser.resetPings(context.uiLan, source)` from `engin
 | `source` | `dynamic` | — | Source passed as `source` to `mq3.client.ui_lan_browser.resetPings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3473)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3473)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilansave-function-uilansave-context-src-mq3-engine-local-qvm-match-ml-529591739"></a>
 ### uiLanSave
@@ -5626,7 +5626,7 @@ Return `mq3.client.ui_lan_cache.save(context.uiLan, context.uiLanCacheHost)` fro
 | `context` | `dynamic` | — | Record exposing `uiLan`, `uiLanCacheHost`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3406)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanserveraddress-function-uilanserveraddress-context-source-index-src-mq3-engine-local-qvm-match-ml-1154254868"></a>
 ### uiLanServerAddress
@@ -5644,7 +5644,7 @@ Return `mq3.client.ui_lan_browser.address(context.uiLan, source, index)` from `e
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3441)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanservercount-function-uilanservercount-context-source-src-mq3-engine-local-qvm-match-ml-967307644"></a>
 ### uiLanServerCount
@@ -5661,7 +5661,7 @@ Return `mq3.client.ui_lan_browser.count(context.uiLan, source)` from `engine.loc
 | `source` | `dynamic` | — | Source passed as `source` to `mq3.client.ui_lan_browser.count`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3436)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3436)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanserverinfo-function-uilanserverinfo-context-source-index-src-mq3-engine-local-qvm-match-ml-135954884"></a>
 ### uiLanServerInfo
@@ -5679,7 +5679,7 @@ Return `mq3.client.ui_lan_browser.serverInfo(context.uiLan, source, index)` from
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.serverInfo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3446)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3446)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanserverping-function-uilanserverping-context-source-index-src-mq3-engine-local-qvm-match-ml-1177729924"></a>
 ### uiLanServerPing
@@ -5697,7 +5697,7 @@ Return `mq3.client.ui_lan_browser.serverPing(context.uiLan, source, index)` from
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.client.ui_lan_browser.serverPing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3451)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3451)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanserverstatus-function-uilanserverstatus-context-address-src-mq3-engine-local-qvm-match-ml-1193607833"></a>
 ### uiLanServerStatus
@@ -5714,7 +5714,7 @@ Compute ui lan server status in engine.local_qvm_match; the normal completion re
 | `address` | `dynamic` | — | Address passed as `address` to `mq3.client.ui_lan_browser.serverStatus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3477)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3477)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilanupdatepings-function-uilanupdatepings-context-source-src-mq3-engine-local-qvm-match-ml-569583000"></a>
 ### uiLanUpdatePings
@@ -5731,7 +5731,7 @@ Compute ui lan update pings in engine.local_qvm_match; the normal completion ret
 | `source` | `dynamic` | — | Source passed as `source` to `mq3.client.ui_lan_browser.updateVisiblePings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3466)
 
 <a id="function-function-mq3-engine-local-qvm-match-uilocalsound-function-uilocalsound-context-handle-channel-src-mq3-engine-local-qvm-match-ml-1837573318"></a>
 ### uiLocalSound
@@ -5751,7 +5751,7 @@ Direct state writes: `context.soundCommands`.
 | `channel` | `dynamic` | — | Channel passed as `channel` to `mq3.engine.local_qvm_match.soundEvent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3500)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3500)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiloosedemos-function-uiloosedemos-result-dataroot-wanted-src-mq3-engine-local-qvm-match-ml-1083808136"></a>
 ### uiLooseDemos
@@ -5769,7 +5769,7 @@ Compute ui loose demos in engine.local_qvm_match; the normal completion returns 
 | `wanted` | `dynamic` | — | Wanted used in `(wanted == "")` and `strings.endsWith(lowerName, wanted)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3350)
 
 <a id="function-function-mq3-engine-local-qvm-match-uipb-function-uipb-context-status-src-mq3-engine-local-qvm-match-ml-604421649"></a>
 ### uiPb
@@ -5786,7 +5786,7 @@ Compute engine.local_qvm_match.uiPb as `void`.
 | `status` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3543)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiplaycinematic-function-uiplaycinematic-context-name-x-y-w-h-bits-src-mq3-engine-local-qvm-match-ml-281931764"></a>
 ### uiPlayCinematic
@@ -5808,7 +5808,7 @@ Return `mq3.client.cinematic_runtime.play(context.cinematics, name, x, y, w, h, 
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.client.cinematic_runtime.play`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3552)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3552)
 
 <a id="function-function-mq3-engine-local-qvm-match-uirealtime-function-uirealtime-context-src-mq3-engine-local-qvm-match-ml-294429287"></a>
 ### uiRealTime
@@ -5824,7 +5824,7 @@ Compute engine.local_qvm_match.uiRealTime as `[n.quotient(context.now, 1000), by
 | `context` | `dynamic` | — | Record exposing `now`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3515)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3515)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiregistersound-function-uiregistersound-context-name-compressed-src-mq3-engine-local-qvm-match-ml-906267845"></a>
 ### uiRegisterSound
@@ -5842,7 +5842,7 @@ Return `mq3.engine.local_qvm_match.registerTypedAsset(context, "sound", name)` f
 | `compressed` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3493)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3493)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiremap-function-uiremap-context-oldname-newname-timeoffset-src-mq3-engine-local-qvm-match-ml-1087033818"></a>
 ### uiRemap
@@ -5861,7 +5861,7 @@ Compute ui remap in engine.local_qvm_match.
 | `timeOffset` | `dynamic` | — | Time offset passed as `timeOffset` to `mq3.engine.local_qvm_match.remapRendererShader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3521)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3521)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiseek-function-uiseek-context-handle-offset-origin-src-mq3-engine-local-qvm-match-ml-2077635546"></a>
 ### uiSeek
@@ -5880,7 +5880,7 @@ Compute engine.local_qvm_match.uiSeek as `- 1`.
 | `origin` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3539)
 
 <a id="function-function-mq3-engine-local-qvm-match-uisetbinding-function-uisetbinding-context-key-text-src-mq3-engine-local-qvm-match-ml-460410493"></a>
 ### uiSetBinding
@@ -5898,7 +5898,7 @@ Compute ui set binding in engine.local_qvm_match.
 | `text` | `dynamic` | — | Value passed as `value` to `mq3.vm.cgame_key_traps.setBinding`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3169)
 
 <a id="function-function-mq3-engine-local-qvm-match-uisetcatcher-function-uisetcatcher-context-value-src-mq3-engine-local-qvm-match-ml-1330758810"></a>
 ### uiSetCatcher
@@ -5917,7 +5917,7 @@ Direct state writes: `context.uiKeyCatcher`.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.cgame_key_traps.setCatcher`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3207)
 
 <a id="function-function-mq3-engine-local-qvm-match-uisetcdkey-function-uisetcdkey-context-key-src-mq3-engine-local-qvm-match-ml-561483280"></a>
 ### uiSetCdKey
@@ -5934,7 +5934,7 @@ Compute engine.local_qvm_match.uiSetCdKey as `void`.
 | `key` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3528)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3528)
 
 <a id="function-function-mq3-engine-local-qvm-match-uisetcolor-function-uisetcolor-context-color-src-mq3-engine-local-qvm-match-ml-1271296320"></a>
 ### uiSetColor
@@ -5951,7 +5951,7 @@ Return `mq3.renderer.command_queue.setColor(context.renderQueue, color)` from `e
 | `color` | `dynamic` | — | Rgba passed as `rgba` to `mq3.renderer.command_queue.setColor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3395)
 
 <a id="function-function-mq3-engine-local-qvm-match-uisetoverstrike-function-uisetoverstrike-context-value-src-mq3-engine-local-qvm-match-ml-306075018"></a>
 ### uiSetOverstrike
@@ -5968,7 +5968,7 @@ Return `mq3.vm.cgame_key_traps.setOverstrike(context.cgameKeys, value)` from `en
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.cgame_key_traps.setOverstrike`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3180)
 
 <a id="function-function-mq3-engine-local-qvm-match-uistartmusic-function-uistartmusic-context-intro-trackloop-src-mq3-engine-local-qvm-match-ml-420019570"></a>
 ### uiStartMusic
@@ -5988,7 +5988,7 @@ Direct state writes: `context.soundCommands`.
 | `trackLoop` | `dynamic` | — | Text 2 passed as `text2` to `mq3.engine.local_qvm_match.soundEvent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3512)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3512)
 
 <a id="function-function-mq3-engine-local-qvm-match-uistopmusic-function-uistopmusic-context-src-mq3-engine-local-qvm-match-ml-479295153"></a>
 ### uiStopMusic
@@ -6006,7 +6006,7 @@ Direct state writes: `context.soundCommands`.
 | `context` | `dynamic` | — | Record exposing `soundCommands`. Updated in place: `soundCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3505)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3505)
 
 <a id="function-function-mq3-engine-local-qvm-match-uistretchpic-function-uistretchpic-context-values-shader-src-mq3-engine-local-qvm-match-ml-1881177806"></a>
 ### uiStretchPic
@@ -6024,7 +6024,7 @@ Return `mq3.renderer.command_queue.stretchPicValues(context.renderQueue, values,
 | `shader` | `dynamic` | — | Shader handle passed as `shaderHandle` to `mq3.renderer.command_queue.stretchPicValues`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3400)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiunique-function-uiunique-values-value-src-mq3-engine-local-qvm-match-ml-359805103"></a>
 ### uiUnique
@@ -6041,7 +6041,7 @@ Compute ui unique in engine.local_qvm_match; the normal completion returns `(val
 | `value` | `dynamic` | — | Value used in `(values + [value])` and `strings.toLowerAscii(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3307)
 
 <a id="function-function-mq3-engine-local-qvm-match-uiverifycdkey-function-uiverifycdkey-context-key-checksum-src-mq3-engine-local-qvm-match-ml-1345454823"></a>
 ### uiVerifyCdKey
@@ -6059,7 +6059,7 @@ Compute engine.local_qvm_match.uiVerifyCdKey as `true`.
 | `checksum` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3533)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3533)
 
 <a id="function-function-mq3-engine-local-qvm-match-unlinkentity-function-unlinkentity-context-entity-src-mq3-engine-local-qvm-match-ml-835707934"></a>
 ### unlinkEntity
@@ -6076,7 +6076,7 @@ Compute unlink entity in engine.local_qvm_match.
 | `entity` | `dynamic` | — | Entity passed as `entity` to `mq3.engine.local_qvm_match.entityIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L950)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L950)
 
 <a id="function-function-mq3-engine-local-qvm-match-updateaasentity-function-updateaasentity-context-vm-base-src-mq3-engine-local-qvm-match-ml-330797949"></a>
 ### updateAasEntity
@@ -6094,7 +6094,7 @@ Update aas entity in engine.local_qvm_match; the normal completion returns `aasE
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1091)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1091)
 
 <a id="function-function-mq3-engine-local-qvm-match-updateclientconsole-function-updateclientconsole-value-now-framemsec-src-mq3-engine-local-qvm-match-ml-598295128"></a>
 ### updateClientConsole
@@ -6112,7 +6112,7 @@ Update client console in engine.local_qvm_match; the normal completion returns `
 | `frameMsec` | `dynamic` | — | Frame msec operand used by `updateClientConsole`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L3285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L3285)
 
 <a id="function-function-mq3-engine-local-qvm-match-updatescreen-function-updatescreen-context-src-mq3-engine-local-qvm-match-ml-1325828907"></a>
 ### updateScreen
@@ -6128,7 +6128,7 @@ Compute engine.local_qvm_match.updateScreen as `void`.
 | `context` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2565)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2565)
 
 - [mq3.engine.local_qvm_match.UserSettings](Type-mq3-engine-local-qvm-match-usersettings-1631405870.md) — struct
 <a id="function-function-mq3-engine-local-qvm-match-vminfocommand-function-vminfocommand-commandstate-machineruntime-src-mq3-engine-local-qvm-match-ml-298854993"></a>
@@ -6146,7 +6146,7 @@ Compute info command in engine.local_qvm_match.
 | `machineRuntime` | `dynamic` | — | Runtime passed as `runtime` to `mq3.vm.runtime.info`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L574)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L574)
 
 <a id="function-function-mq3-engine-local-qvm-match-vmprofilecommand-function-vmprofilecommand-commandstate-machineruntime-src-mq3-engine-local-qvm-match-ml-1955188885"></a>
 ### vmProfileCommand
@@ -6163,7 +6163,7 @@ Compute profile command in engine.local_qvm_match.
 | `machineRuntime` | `dynamic` | — | Runtime passed as `runtime` to `mq3.vm.runtime.profile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L566)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L566)
 
 <a id="function-function-mq3-engine-local-qvm-match-vmruntimeaddcommand-function-vmruntimeaddcommand-host-name-machineruntime-src-mq3-engine-local-qvm-match-ml-677537586"></a>
 ### vmRuntimeAddCommand
@@ -6181,7 +6181,7 @@ Compute runtime add command in engine.local_qvm_match; the normal completion ret
 | `machineRuntime` | `dynamic` | — | Context passed as `context` to `mq3.qcommon.command_buffer.addContextCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L582)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L582)
 
 <a id="function-function-mq3-engine-local-qvm-match-vmruntimedeveloper-function-vmruntimedeveloper-host-src-mq3-engine-local-qvm-match-ml-1928387616"></a>
 ### vmRuntimeDeveloper
@@ -6197,7 +6197,7 @@ Compute engine.local_qvm_match.vmRuntimeDeveloper as `(cvar.variableIntegerValue
 | `host` | `dynamic` | — | Record exposing `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L562)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L562)
 
 <a id="function-function-mq3-engine-local-qvm-match-vmruntimeregister-function-vmruntimeregister-host-name-value-flags-src-mq3-engine-local-qvm-match-ml-943298985"></a>
 ### vmRuntimeRegister
@@ -6216,7 +6216,7 @@ Compute runtime register in engine.local_qvm_match.
 | `flags` | `dynamic` | — | Flags passed as `flags` to `mq3.qcommon.cvar.get`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L559)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L559)
 
 <a id="function-function-mq3-engine-local-qvm-match-writecgamemarks-function-writecgamemarks-context-vm-base-cache-src-mq3-engine-local-qvm-match-ml-1128144419"></a>
 ### writeCgameMarks
@@ -6235,7 +6235,7 @@ Write cgame marks in engine.local_qvm_match; the normal completion returns `len(
 | `cache` | `dynamic` | — | Cache passed as `cache` to `mq3.renderer.mark_fragments.projectWithCache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2813)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2813)
 
 <a id="function-function-mq3-engine-local-qvm-match-writefile-function-writefile-context-handle-data-src-mq3-engine-local-qvm-match-ml-1585405023"></a>
 ### writeFile
@@ -6253,7 +6253,7 @@ Write file in engine.local_qvm_match; the normal completion returns `len(data)`.
 | `data` | `dynamic` | — | Data used in `len(data)` and `fs.appendAllBytes(path, data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L767)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L767)
 
 <a id="function-function-mq3-engine-local-qvm-match-writespatialentity-function-writespatialentity-context-index-src-mq3-engine-local-qvm-match-ml-1908738781"></a>
 ### writeSpatialEntity
@@ -6270,7 +6270,7 @@ Write spatial entity in engine.local_qvm_match.
 | `index` | `dynamic` | — | Zero-based index into `context.spatialScene.entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L893)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L893)
 
 <a id="function-function-mq3-engine-local-qvm-match-writevector-function-writevector-data-at-value-src-mq3-engine-local-qvm-match-ml-823677804"></a>
 ### writeVector
@@ -6288,7 +6288,7 @@ Write vector in engine.local_qvm_match.
 | `value` | `dynamic` | — | Value used in `value[axis]` and `n.floatBits(value[axis])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L871)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L871)
 
 <a id="function-function-mq3-engine-local-qvm-match-writewords-function-writewords-output-offset-words-src-mq3-engine-local-qvm-match-ml-965889647"></a>
 ### writeWords
@@ -6306,4 +6306,4 @@ Write words in engine.local_qvm_match.
 | `words` | `dynamic` | — | Words used in `len(words)` and `words[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L2387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L2387)

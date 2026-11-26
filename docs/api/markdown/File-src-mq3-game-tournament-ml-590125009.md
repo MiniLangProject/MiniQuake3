@@ -30,7 +30,7 @@ Set `level.spawner.warmupTime` to `-1` in `mq3.game.tournament.addPlayer`. Retur
 | `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `intermissiontime`, `maxclients`, `clients` and `spawner` and related fields. May update `level.spawner.warmupTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L13)
 
 <a id="function-function-mq3-game-tournament-adjustscores-function-adjustscores-level-src-mq3-game-tournament-ml-2020151254"></a>
 ### adjustScores
@@ -46,7 +46,7 @@ Set `level.clients[slot].wins` to `n.add32(level.clients[slot].wins,1)` and `lev
 | `level` | `dynamic` | — | Game-level state; accesses `clients`. May update `level.clients[slot].wins` and `level.clients[slot].losses` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L56)
 
 <a id="function-function-mq3-game-tournament-check-function-check-level-src-mq3-game-tournament-ml-500497606"></a>
 ### check
@@ -62,7 +62,7 @@ Set `level.warmupModificationCount` to `level.warmupCvarModificationCount` and `
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `numPlayingClients`, `tournamentAddFn`, `warmupCvarModificationCount` and `warmupModificationCount` and related fields. May update `level.warmupModificationCount` and `level.spawner.warmupTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L110)
 
 <a id="function-function-mq3-game-tournament-rankedslot-function-rankedslot-level-index-src-mq3-game-tournament-ml-476136828"></a>
 ### rankedSlot
@@ -79,7 +79,7 @@ Read a sorted tournament client slot and reject values outside persistent client
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L30)
 
 <a id="function-function-mq3-game-tournament-removeloser-function-removeloser-level-src-mq3-game-tournament-ml-1583491424"></a>
 ### removeLoser
@@ -95,7 +95,7 @@ Forward `removeLoser` to `mq3.game.tournament.removeRanked` and return the deleg
 | `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `clients` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L46)
 
 <a id="function-function-mq3-game-tournament-removeranked-function-removeranked-level-index-src-mq3-game-tournament-ml-1726826956"></a>
 ### removeRanked
@@ -112,7 +112,7 @@ Apply `mq3.game.tournament.rankedSlot` and `mq3.game.team_changes.setTeam` while
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L38)
 
 <a id="function-function-mq3-game-tournament-removewinner-function-removewinner-level-src-mq3-game-tournament-ml-962020266"></a>
 ### removeWinner
@@ -128,7 +128,7 @@ Forward `removeWinner` to `mq3.game.tournament.removeRanked` and return the dele
 | `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `clients` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L51)
 
 <a id="function-function-mq3-game-tournament-restart-function-restart-level-src-mq3-game-tournament-ml-1258596064"></a>
 ### restart
@@ -144,7 +144,7 @@ Set `level.spawner.warmupTime` to `n.add32(level.spawner.warmupTime,10000)` and 
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `cvarSetFn`, `consoleCommandFn` and `restarted`. May update `level.spawner.warmupTime` and `level.restarted` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L100)
 
 <a id="function-function-mq3-game-tournament-setwarmup-function-setwarmup-level-value-writelog-src-mq3-game-tournament-ml-554457554"></a>
 ### setWarmup
@@ -162,7 +162,7 @@ Set `level.spawner.warmupTime` to `n.i32(value)` in `mq3.game.tournament.setWarm
 | `writeLog` | `dynamic` | — | Value used by `setWarmup` in `if writeLog then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L89)
 
 <a id="function-function-mq3-game-tournament-teamcount-function-teamcount-level-ignoreclientnum-team-src-mq3-game-tournament-ml-1994846166"></a>
 ### teamCount
@@ -180,4 +180,4 @@ Count connected clients on the requested team while excluding the specified clie
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L72)

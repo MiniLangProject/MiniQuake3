@@ -11,7 +11,7 @@ Reachable from entry: **no**
 - `mq3/client/ui_qmenu.ml` as `qmenu` → [src/mq3/client/ui_qmenu.ml](File-src-mq3-client-ui-qmenu-ml-201905758.md)
 - `mq3/compat/textnumbers.ml` as `numbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
 - `mq3/shared/info.ml` as `info` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -26,7 +26,7 @@ const ART_BACK0 = "menu/art/back_0"
 Virtual shader or image asset name used for the menu's back0 artwork.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-teamorders-art-back1-const-art-back1-menu-art-back-1-src-mq3-client-ui-teamorders-ml-1690832194"></a>
 ### ART_BACK1
@@ -38,7 +38,7 @@ const ART_BACK1 = "menu/art/back_1"
 Virtual shader or image asset name used for the menu's back1 artwork.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-teamorders-art-frame-const-art-frame-menu-art-addbotframe-src-mq3-client-ui-teamorders-ml-1015141256"></a>
 ### ART_FRAME
@@ -50,7 +50,7 @@ const ART_FRAME = "menu/art/addbotframe"
 Virtual shader or image asset name used for the menu's frame artwork.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L12)
 
 <a id="function-function-mq3-client-ui-teamorders-bitmap-function-bitmap-name-id-x-y-flags-w-h-src-mq3-client-ui-teamorders-ml-23330199"></a>
 ### bitmap
@@ -72,7 +72,7 @@ Calls `mq3.client.ui_qmenu.item` from UI teamorders `bitmap`. The final path ret
 | `h` | `dynamic` | — | Value assigned to `value.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L212)
 
 <a id="function-function-mq3-client-ui-teamorders-clean-function-clean-text-src-mq3-client-ui-teamorders-ml-633328969"></a>
 ### clean
@@ -88,7 +88,7 @@ Calls `decode` from UI teamorders `clean`. The final path returns `result`.
 | `text` | `dynamic` | — | Text consumed or emitted by `clean` in the UI teamorders path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L128)
 
 <a id="function-function-mq3-client-ui-teamorders-create-function-create-retailactive-src-mq3-client-ui-teamorders-ml-435214601"></a>
 ### create
@@ -104,7 +104,7 @@ Creates a `mq3.client.ui_teamorders.State` record. Assigns `retailActive` from `
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L111)
 
 <a id="function-function-mq3-client-ui-teamorders-ctfmessages-function-ctfmessages-src-mq3-client-ui-teamorders-ml-1171768500"></a>
 ### ctfMessages
@@ -116,7 +116,7 @@ function ctfMessages()
 Lists the 7 UI teamorders ctf messages strings in their declared order, beginning with `"i am the leader"`, `"%s defend the base"`, `"%s follow me"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L104)
 
 <a id="function-function-mq3-client-ui-teamorders-ctforders-function-ctforders-src-mq3-client-ui-teamorders-ml-763334010"></a>
 ### ctfOrders
@@ -128,7 +128,7 @@ function ctfOrders()
 Lists the 7 UI teamorders ctf orders strings in their declared order, beginning with `"I Am the Leader"`, `"Defend the Base"`, `"Follow Me"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L102)
 
 <a id="function-function-mq3-client-ui-teamorders-emit-function-emit-state-boundary-kind-name-text-x-y-number-src-mq3-client-ui-teamorders-ml-52420655"></a>
 ### emit
@@ -151,7 +151,7 @@ Appends a UI teamorders action record to the queued engine requests. Retail-QVM 
 | `number` | `dynamic` | — | Value used by `action=Action(boundary,kind,name,text,x,y,number,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L121)
 
 <a id="constant-constant-mq3-client-ui-teamorders-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-teamorders-ml-852458041"></a>
 ### GT_CTF
@@ -163,7 +163,7 @@ const GT_CTF = 4
 Native game-type value for capture the flag, used when choosing the team-order choices appropriate to the current game mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-teamorders-gt-team-const-gt-team-3-src-mq3-client-ui-teamorders-ml-1173981140"></a>
 ### GT_TEAM
@@ -175,7 +175,7 @@ const GT_TEAM = 3
 Native game-type value for team deathmatch, used when choosing the team-order choices appropriate to the current game mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L25)
 
 <a id="constant-constant-mq3-client-ui-teamorders-id-list-bots-const-id-list-bots-10-src-mq3-client-ui-teamorders-ml-1424193668"></a>
 ### ID_LIST_BOTS
@@ -187,7 +187,7 @@ const ID_LIST_BOTS = 10
 Menu control identifier routed to the list bots action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-teamorders-id-list-ctf-orders-const-id-list-ctf-orders-11-src-mq3-client-ui-teamorders-ml-996547485"></a>
 ### ID_LIST_CTF_ORDERS
@@ -199,7 +199,7 @@ const ID_LIST_CTF_ORDERS = 11
 Menu control identifier routed to the list ctf orders action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-teamorders-id-list-team-orders-const-id-list-team-orders-12-src-mq3-client-ui-teamorders-ml-65023630"></a>
 ### ID_LIST_TEAM_ORDERS
@@ -211,7 +211,7 @@ const ID_LIST_TEAM_ORDERS = 12
 Menu control identifier routed to the list team orders action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L22)
 
 <a id="function-function-mq3-client-ui-teamorders-playerinfo-function-playerinfo-playerinfos-index-src-mq3-client-ui-teamorders-ml-1250004024"></a>
 ### playerInfo
@@ -228,7 +228,7 @@ Evaluates UI teamorders `playerInfo` and returns `""`, `playerInfos[index]` acco
 | `index` | `dynamic` | — | Value tested by `index<0 or index>=len(playerInfos)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L143)
 
 <a id="function-function-mq3-client-ui-teamorders-replacetarget-function-replacetarget-format-target-src-mq3-client-ui-teamorders-ml-1372215774"></a>
 ### replaceTarget
@@ -245,7 +245,7 @@ Calls `std.string.indexOf`, `std.string.substr` from UI teamorders `replaceTarge
 | `target` | `dynamic` | — | Value used by `return strings.substr(format,0,at)+target+strings.substr(format,at+2,len(format)-at-2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L162)
 
 - [mq3.client.ui_teamorders.State](Type-mq3-client-ui-teamorders-state-2023851947.md) — struct
 <a id="constant-constant-mq3-client-ui-teamorders-team-spectator-const-team-spectator-3-src-mq3-client-ui-teamorders-ml-1944550244"></a>
@@ -258,7 +258,7 @@ const TEAM_SPECTATOR = 3
 Native team identifier for spectator, used by player and team presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L30)
 
 <a id="function-function-mq3-client-ui-teamorders-teammessages-function-teammessages-src-mq3-client-ui-teamorders-ml-1205892906"></a>
 ### teamMessages
@@ -270,7 +270,7 @@ function teamMessages()
 Lists the 6 UI teamorders team messages strings in their declared order, beginning with `"i am the leader"`, `"%s follow me"`, `"%s roam"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L108)
 
 <a id="function-function-mq3-client-ui-teamorders-teamorders-function-teamorders-src-mq3-client-ui-teamorders-ml-1273397110"></a>
 ### teamOrders
@@ -282,7 +282,7 @@ function teamOrders()
 Lists the 6 UI teamorders team orders strings in their declared order, beginning with `"I Am the Leader"`, `"Follow Me"`, `"Roam"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L106)
 
 <a id="function-function-mq3-client-ui-teamorders-truncate-function-truncate-text-maxbytes-src-mq3-client-ui-teamorders-ml-990341900"></a>
 ### truncate
@@ -299,7 +299,7 @@ Calls `decode`, `slice` from UI teamorders `truncate`. The final path returns `t
 | `maxBytes` | `dynamic` | — | Value used by `if len(data)>=maxBytes then return decode(slice(data,0,maxBytes-1)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L125)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-function-ui-teamordersmenu-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-2119942771"></a>
 ### UI_TeamOrdersMenu
@@ -318,7 +318,7 @@ UI_TeamOrdersMenu
 | `playerInfos` | `dynamic` | — | Value used by `UI_TeamOrdersMenu_Init(state,serverInfo,clientNum,playerInfos)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L237)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-backevent-function-ui-teamordersmenu-backevent-state-event-src-mq3-client-ui-teamorders-ml-1637606155"></a>
 ### UI_TeamOrdersMenu_BackEvent
@@ -335,7 +335,7 @@ UI_TeamOrdersMenu_BackEvent
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L148)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-buildbotlist-function-ui-teamordersmenu-buildbotlist-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-1917485875"></a>
 ### UI_TeamOrdersMenu_BuildBotList
@@ -354,7 +354,7 @@ UI_TeamOrdersMenu_BuildBotList
 | `playerInfos` | `dynamic` | — | Sequence whose length/content is inspected by `UI_TeamOrdersMenu_BuildBotList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L199)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-cache-function-ui-teamordersmenu-cache-state-src-mq3-client-ui-teamorders-ml-2103296275"></a>
 ### UI_TeamOrdersMenu_Cache
@@ -370,7 +370,7 @@ UI_TeamOrdersMenu_Cache
 | `state` | `dynamic` | — | Shared UI teamorders state passed to the helper calls in `UI_TeamOrdersMenu_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L216)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-f-function-ui-teamordersmenu-f-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-531872185"></a>
 ### UI_TeamOrdersMenu_f
@@ -389,7 +389,7 @@ UI_TeamOrdersMenu_f
 | `playerInfos` | `dynamic` | — | Value used by `team=numbers.atoi(info.value(playerInfo(playerInfos,clientNum),"t"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L244)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-init-function-ui-teamordersmenu-init-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-371978075"></a>
 ### UI_TeamOrdersMenu_Init
@@ -408,7 +408,7 @@ UI_TeamOrdersMenu_Init
 | `playerInfos` | `dynamic` | — | Value used by `UI_TeamOrdersMenu_BuildBotList(state,serverInfo,clientNum,playerInfos)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L223)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-key-function-ui-teamordersmenu-key-state-key-cursorx-cursory-src-mq3-client-ui-teamorders-ml-1620726999"></a>
 ### UI_TeamOrdersMenu_Key
@@ -427,7 +427,7 @@ UI_TeamOrdersMenu_Key
 | `cursory` | `dynamic` | — | Value used by `if current==void or current.menuPosition!=state.list.menuPosition then return qmenu.Menu_DefaultKey(state.menu,key,cursorx,cursory) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L179)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-listdraw-function-ui-teamordersmenu-listdraw-state-src-mq3-client-ui-teamorders-ml-692649973"></a>
 ### UI_TeamOrdersMenu_ListDraw
@@ -443,7 +443,7 @@ UI_TeamOrdersMenu_ListDraw
 | `state` | `dynamic` | — | Record read through `state.menu.cursor`, `state.list.menuPosition`, `state.list.y`, `state.list.numitems` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L190)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-listevent-function-ui-teamordersmenu-listevent-state-event-src-mq3-client-ui-teamorders-ml-1821193677"></a>
 ### UI_TeamOrdersMenu_ListEvent
@@ -460,7 +460,7 @@ UI_TeamOrdersMenu_ListEvent
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L167)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-setlist-function-ui-teamordersmenu-setlist-state-id-src-mq3-client-ui-teamorders-ml-330205372"></a>
 ### UI_TeamOrdersMenu_SetList
@@ -477,4 +477,4 @@ UI_TeamOrdersMenu_SetList
 | `id` | `dynamic` | — | Value assigned to `state.list.id`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L155)

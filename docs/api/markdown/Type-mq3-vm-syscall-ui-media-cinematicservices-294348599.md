@@ -12,7 +12,7 @@ struct CinematicServices
 CinematicServices record for vm.syscall_ui_media, containing `playFn`, `stopFn`, `runFn`, `drawFn`, `setExtentsFn`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L24)
 
 ## Members
 
@@ -26,7 +26,7 @@ drawFn
 Injected callback for draw; invoked through the CinematicServices service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L32)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-playfn-playfn-src-mq3-vm-syscall-ui-media-ml-615760310"></a>
 ### playFn
@@ -38,7 +38,7 @@ playFn
 Injected callback for play; invoked through the CinematicServices service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L26)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-runfn-runfn-src-mq3-vm-syscall-ui-media-ml-429200734"></a>
 ### runFn
@@ -50,7 +50,7 @@ runFn
 Injected callback for run; invoked through the CinematicServices service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L30)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-setextentsfn-setextentsfn-src-mq3-vm-syscall-ui-media-ml-529225660"></a>
 ### setExtentsFn
@@ -62,7 +62,7 @@ setExtentsFn
 Injected callback for set extents; invoked through the CinematicServices service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L34)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-stopfn-stopfn-src-mq3-vm-syscall-ui-media-ml-110873858"></a>
 ### stopFn
@@ -74,4 +74,4 @@ stopFn
 Injected callback for stop; invoked through the CinematicServices service/state record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L28)

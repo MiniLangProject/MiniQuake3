@@ -12,9 +12,9 @@ Reachable from entry: **yes**
 - `mq3/renderer/portal_view.ml` as `portalView` → [src/mq3/renderer/portal_view.ml](File-src-mq3-renderer-portal-view-ml-1859210863.md)
 - `mq3/renderer/world_surface_selection.ml` as `worldSelection` → [src/mq3/renderer/world_surface_selection.ml](File-src-mq3-renderer-world-surface-selection-ml-1945526598.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/ds/set.ml` as `sets` → `../MiniLangCompilerML/std/ds/set.ml` — external dependency
-- `std/sort.ml` as `sorting` → `../MiniLangCompilerML/std/sort.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/ds/set.ml` as `sets` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/set.ml` — external dependency
+- `std/sort.ml` as `sorting` → `../../a7594a0c0299/MiniLangCompilerML/std/sort.ml` — external dependency
 
 ## Declarations
 
@@ -33,7 +33,7 @@ Computes `left.distanceSquared<right.distanceSquared or (left.distanceSquared==r
 | `right` | `dynamic` | — | Record providing `right.distanceSquared`, `right.faceIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L125)
 
 <a id="function-function-mq3-renderer-portal-render-pass-cachedworldbatch-function-cachedworldbatch-cache-faces-normal-dist-src-mq3-renderer-portal-render-pass-ml-1123776111"></a>
 ### cachedWorldBatch
@@ -52,7 +52,7 @@ Updates `cache.hits` in `mq3.renderer.portal_render_pass.cachedWorldBatch`; retu
 | `dist` | `dynamic` | — | Input tested by `cache.batch==void or cache.dist!=dist or cache.normal[0]!=normal[0] or cache.normal[1]!=normal[1] or cache.normal[2]!=normal[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L85)
 
 <a id="function-function-mq3-renderer-portal-render-pass-compose-function-compose-services-portal-src-mq3-renderer-portal-render-pass-ml-42640574"></a>
 ### compose
@@ -69,7 +69,7 @@ Computes `compose` from `drawn+value` using `services.drawPortalFn`, `services.c
 | `portal` | `dynamic` | — | Argument 2 supplied to `services.drawPortalFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L216)
 
 - [mq3.renderer.portal_render_pass.ComposeServices](Type-mq3-renderer-portal-render-pass-composeservices-375393362.md) — struct
 <a id="function-function-mq3-renderer-portal-render-pass-fail-function-fail-message-src-mq3-renderer-portal-render-pass-ml-736748327"></a>
@@ -86,7 +86,7 @@ Creates error `7702` with message `"portal render pass: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7702,"portal render pass: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L105)
 
 - [mq3.renderer.portal_render_pass.Plan](Type-mq3-renderer-portal-render-pass-plan-1216886981.md) — struct
 <a id="function-function-mq3-renderer-portal-render-pass-planefor-function-planefor-triangle-vieworigin-src-mq3-renderer-portal-render-pass-ml-970024339"></a>
@@ -104,7 +104,7 @@ Builds `mq3.renderer.portal_render_pass.Surface` using `mq3.shared.math.VectorLe
 | `viewOrigin` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.portal_render_pass.squaredDistance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L113)
 
 <a id="function-function-mq3-renderer-portal-render-pass-prepare-function-prepare-renderdata-catalog-geometry-sourcerefdef-isportal-src-mq3-renderer-portal-render-pass-ml-2049993458"></a>
 ### prepare
@@ -124,7 +124,7 @@ Baseq3 renders at most the first viable portal view in a main view and refuses r
 | `isPortal` | `dynamic` | — | Input tested by `isPortal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L168)
 
 - [mq3.renderer.portal_render_pass.Refdef](Type-mq3-renderer-portal-render-pass-refdef-994927790.md) — struct
 <a id="function-function-mq3-renderer-portal-render-pass-squareddistance-function-squareddistance-a-b-src-mq3-renderer-portal-render-pass-ml-931224495"></a>
@@ -142,7 +142,7 @@ Returns `x*x+y*y+z*z` from `mq3.renderer.portal_render_pass.squaredDistance`.
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L109)
 
 <a id="function-function-mq3-renderer-portal-render-pass-storeworldbatch-function-storeworldbatch-cache-faces-normal-dist-batch-src-mq3-renderer-portal-render-pass-ml-1284737083"></a>
 ### storeWorldBatch
@@ -162,7 +162,7 @@ Updates `cache.faces`, `cache.normal`, `cache.dist`, `cache.batch`, `cache.build
 | `batch` | `dynamic` | — | Value assigned to `cache.batch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L97)
 
 - [mq3.renderer.portal_render_pass.Surface](Type-mq3-renderer-portal-render-pass-surface-600674701.md) — struct
 <a id="function-function-mq3-renderer-portal-render-pass-trianglefacesview-function-trianglefacesview-triangle-vieworigin-src-mq3-renderer-portal-render-pass-ml-830017621"></a>
@@ -180,7 +180,7 @@ SurfIsOffscreen counts only triangles whose first vertex faces the eye. A surfac
 | `viewOrigin` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L155)
 
 <a id="function-function-mq3-renderer-portal-render-pass-triangleinfrustum-function-triangleinfrustum-triangle-refdef-slopex-slopey-src-mq3-renderer-portal-render-pass-ml-647433721"></a>
 ### triangleInFrustum
@@ -199,7 +199,7 @@ tr_main.c:SurfIsOffscreen rejects a portal surface when every vertex is outside 
 | `slopeY` | `dynamic` | — | Input tested by `up>=depth*slopeY`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L136)
 
 <a id="function-function-mq3-renderer-portal-render-pass-worldbatchcache-function-worldbatchcache-src-mq3-renderer-portal-render-pass-ml-513195180"></a>
 ### worldBatchCache
@@ -211,6 +211,6 @@ function worldBatchCache()
 Constructs `mq3.renderer.portal_render_pass.WorldBatchCache` with `faces` = `void`, `normal` = `void`, `dist` = `0.0`, `batch` = `void` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_render_pass.ml#L79)
 
 - [mq3.renderer.portal_render_pass.WorldBatchCache](Type-mq3-renderer-portal-render-pass-worldbatchcache-1725520348.md) — struct

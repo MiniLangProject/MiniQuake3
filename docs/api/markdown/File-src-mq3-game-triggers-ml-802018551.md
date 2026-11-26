@@ -37,7 +37,7 @@ Apply `mq3.game.jumppad.touch` while evaluating `pushTouch`.
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `pushTouch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L18)
 
 <a id="function-function-mq3-game-triggers-teleportertouch-function-teleportertouch-level-self-other-trace-src-mq3-game-triggers-ml-77343593"></a>
 ### teleporterTouch
@@ -56,7 +56,7 @@ Apply `mq3.game.entities.pickTarget`, `mq3.game.teleport.player` and `mq3.game.e
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `teleporterTouch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L27)
 
 <a id="function-function-mq3-game-triggers-touch-function-touch-level-ent-src-mq3-game-triggers-ml-187947799"></a>
 ### touch
@@ -73,4 +73,4 @@ Set `ent.client.ps.jumppad_frame` to `0` and `ent.client.ps.jumppad_ent` to `0` 
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `r` and `touch`. May update `ent.client.ps.jumppad_frame` and `ent.client.ps.jumppad_ent` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L38)

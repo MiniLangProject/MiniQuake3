@@ -26,7 +26,7 @@ Updates `state.qglErrors` in `mq3.platform.macosx_headers._glGetError`; returns 
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.qglErrors`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L296)
 
 <a id="function-function-mq3-platform-macosx-headers-cgfix-getlastmousedelta-function-cgfix-getlastmousedelta-state-src-mq3-platform-macosx-headers-ml-2133358787"></a>
 ### CGFix_GetLastMouseDelta
@@ -42,7 +42,7 @@ Returns `[state.mouseDelta[0],state.mouseDelta[1]]` for `mq3.platform.macosx_hea
 | `state` | `dynamic` | — | Record providing `state.mouseDelta`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L140)
 
 <a id="function-function-mq3-platform-macosx-headers-cgfix-initialize-function-cgfix-initialize-state-src-mq3-platform-macosx-headers-ml-1539498593"></a>
 ### CGFix_Initialize
@@ -58,7 +58,7 @@ Updates `state.mouseInitialized`, `state.mouseDelta` in `mq3.platform.macosx_hea
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.mouseInitialized`, `state.mouseDelta`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L132)
 
 <a id="function-function-mq3-platform-macosx-headers-cgfix-recordmousedelta-function-cgfix-recordmousedelta-state-dx-dy-src-mq3-platform-macosx-headers-ml-1377914794"></a>
 ### CGFix_RecordMouseDelta
@@ -76,7 +76,7 @@ Updates `state.mouseDelta` in `mq3.platform.macosx_headers.CGFix_RecordMouseDelt
 | `dy` | `dynamic` | — | Input tested by `state.mouseInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L137)
 
 <a id="function-function-mq3-platform-macosx-headers-cgsnotify-function-cgsnotify-state-type-data-datalength-argument-src-mq3-platform-macosx-headers-ml-1681154302"></a>
 ### CGSNotify
@@ -96,7 +96,7 @@ Updates `state.notifications` in `mq3.platform.macosx_headers.CGSNotify`; return
 | `argument` | `dynamic` | — | Input used by `state.notifications=state.notifications+[[type,data,dataLength,argument]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L148)
 
 <a id="function-function-mq3-platform-macosx-headers-contains-function-contains-values-needle-src-mq3-platform-macosx-headers-ml-641182199"></a>
 ### contains
@@ -113,7 +113,7 @@ Returns `false` from `mq3.platform.macosx_headers.contains`; earlier branches re
 | `needle` | `dynamic` | — | Input used by `for each value in values if value==needle then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L278)
 
 <a id="function-function-mq3-platform-macosx-headers-controllersymbols-function-controllersymbols-src-mq3-platform-macosx-headers-ml-972793292"></a>
 ### controllerSymbols
@@ -125,7 +125,7 @@ function controllerSymbols()
 Lists the 4 declared names for `mq3.platform.macosx_headers.controllerSymbols`, including `paste`, `requestTerminate`, `showBanner`, `quakeMain`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L13)
 
 <a id="function-function-mq3-platform-macosx-headers-create-function-create-src-mq3-platform-macosx-headers-ml-741607102"></a>
 ### create
@@ -137,7 +137,7 @@ function create()
 Constructs `mq3.platform.macosx_headers.State` with `mouseInitialized` = `false`, `mouseDelta` = `[0,0]`, `notifications` = `[]`, `bannerVisible` = `false` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L126)
 
 <a id="function-function-mq3-platform-macosx-headers-displaysymbols-function-displaysymbols-src-mq3-platform-macosx-headers-ml-1123919766"></a>
 ### displaySymbols
@@ -149,7 +149,7 @@ function displaySymbols()
 Lists the 9 declared names for `mq3.platform.macosx_headers.displaySymbols`, including `Sys_GetMatchingDisplayMode`, `Sys_StoreGammaTables`, `Sys_GetGammaTable`, `Sys_SetScreenFade`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L15)
 
 - [mq3.platform.macosx_headers.Event](Type-mq3-platform-macosx-headers-event-2116399717.md) — struct
 <a id="function-function-mq3-platform-macosx-headers-eventrecord-function-eventrecord-type-time-location-flags-data-src-mq3-platform-macosx-headers-ml-1373800055"></a>
@@ -170,7 +170,7 @@ Returns `[type,time,location,flags,data]` for `mq3.platform.macosx_headers.event
 | `data` | `dynamic` | — | Input used in the result expression `[type,time,location,flags,data]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L155)
 
 - [mq3.platform.macosx_headers.GammaTable](Type-mq3-platform-macosx-headers-gammatable-1261009872.md) — struct
 <a id="function-function-mq3-platform-macosx-headers-glimpheadersymbols-function-glimpheadersymbols-src-mq3-platform-macosx-headers-ml-2034023074"></a>
@@ -183,7 +183,7 @@ function glimpHeaderSymbols()
 Returns `[]` for the `mq3.platform.macosx_headers.glimpHeaderSymbols` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L17)
 
 <a id="function-function-mq3-platform-macosx-headers-glstamp-function-glstamp-state-name-data-src-mq3-platform-macosx-headers-ml-472525854"></a>
 ### GLSTAMP
@@ -201,7 +201,7 @@ Updates `state.timerStamps` in `mq3.platform.macosx_headers.GLSTAMP`.
 | `data` | `dynamic` | — | Input tested by `state.timers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L316)
 
 <a id="function-function-mq3-platform-macosx-headers-initializetimers-function-initializetimers-state-src-mq3-platform-macosx-headers-ml-799151169"></a>
 ### InitializeTimers
@@ -217,7 +217,7 @@ Updates `state.timers`, `state.timerStack`, `state.timerStamps` in `mq3.platform
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.timers`, `state.timerStack`, `state.timerStamps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L304)
 
 <a id="constant-constant-mq3-platform-macosx-headers-kcgseventnotificationleftmousedragged-const-kcgseventnotificationleftmousedragged-716-src-mq3-platform-macosx-headers-ml-1606502191"></a>
 ### kCGSEventNotificationLeftMouseDragged
@@ -229,7 +229,7 @@ const kCGSEventNotificationLeftMouseDragged = 716
 Core Graphics Services notification identifier for dragging with the left mouse button.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L35)
 
 <a id="constant-constant-mq3-platform-macosx-headers-kcgseventnotificationmousemoved-const-kcgseventnotificationmousemoved-715-src-mq3-platform-macosx-headers-ml-1693275036"></a>
 ### kCGSEventNotificationMouseMoved
@@ -241,7 +241,7 @@ const kCGSEventNotificationMouseMoved = 715
 Core Graphics Services notification identifier for mouse movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L33)
 
 <a id="constant-constant-mq3-platform-macosx-headers-kcgseventnotificationothermousedragged-const-kcgseventnotificationothermousedragged-737-src-mq3-platform-macosx-headers-ml-2098446122"></a>
 ### kCGSEventNotificationOtherMouseDragged
@@ -253,7 +253,7 @@ const kCGSEventNotificationOtherMouseDragged = 737
 Core Graphics Services notification identifier for dragging with another mouse button.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L39)
 
 <a id="constant-constant-mq3-platform-macosx-headers-kcgseventnotificationrightmousedragged-const-kcgseventnotificationrightmousedragged-717-src-mq3-platform-macosx-headers-ml-1151261120"></a>
 ### kCGSEventNotificationRightMouseDragged
@@ -265,7 +265,7 @@ const kCGSEventNotificationRightMouseDragged = 717
 Core Graphics Services notification identifier for dragging with the right mouse button.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L37)
 
 <a id="function-function-mq3-platform-macosx-headers-localsymbols-function-localsymbols-src-mq3-platform-macosx-headers-ml-2090440518"></a>
 ### localSymbols
@@ -277,7 +277,7 @@ function localSymbols()
 Lists the 12 declared names for `mq3.platform.macosx_headers.localSymbols`, including `Sys_InitInput`, `Sys_ShutdownInput`, `Sys_SetMouseInputRect`, `Sys_DisplayToUse`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L19)
 
 <a id="function-function-mq3-platform-macosx-headers-mousedeltasymbols-function-mousedeltasymbols-src-mq3-platform-macosx-headers-ml-2071444170"></a>
 ### mouseDeltaSymbols
@@ -289,7 +289,7 @@ function mouseDeltaSymbols()
 Lists the 2 declared names for `mq3.platform.macosx_headers.mouseDeltaSymbols`, including `CGFix_Initialize`, `CGFix_GetLastMouseDelta`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L9)
 
 <a id="function-function-mq3-platform-macosx-headers-osx-getcglcontext-function-osx-getcglcontext-state-src-mq3-platform-macosx-headers-ml-1503586221"></a>
 ### OSX_GetCGLContext
@@ -305,7 +305,7 @@ Computes `state.cglContext` for `mq3.platform.macosx_headers.OSX_GetCGLContext`.
 | `state` | `dynamic` | — | Record providing `state.cglContext`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L258)
 
 <a id="function-function-mq3-platform-macosx-headers-osx-getnsglcontext-function-osx-getnsglcontext-state-src-mq3-platform-macosx-headers-ml-344148089"></a>
 ### OSX_GetNSGLContext
@@ -321,7 +321,7 @@ Computes `state.context` for `mq3.platform.macosx_headers.OSX_GetNSGLContext`.
 | `state` | `dynamic` | — | Record providing `state.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L255)
 
 <a id="function-function-mq3-platform-macosx-headers-osx-glcontextclearcurrent-function-osx-glcontextclearcurrent-state-src-mq3-platform-macosx-headers-ml-1403769231"></a>
 ### OSX_GLContextClearCurrent
@@ -337,7 +337,7 @@ Updates `state.contextCurrent` in `mq3.platform.macosx_headers.OSX_GLContextClea
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.contextCurrent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L267)
 
 <a id="function-function-mq3-platform-macosx-headers-osx-glcontextiscurrent-function-osx-glcontextiscurrent-state-src-mq3-platform-macosx-headers-ml-795709337"></a>
 ### OSX_GLContextIsCurrent
@@ -353,7 +353,7 @@ Computes `state.contextCurrent` for `mq3.platform.macosx_headers.OSX_GLContextIs
 | `state` | `dynamic` | — | Record providing `state.contextCurrent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L261)
 
 <a id="function-function-mq3-platform-macosx-headers-osx-glcontextsetcurrent-function-osx-glcontextsetcurrent-state-src-mq3-platform-macosx-headers-ml-1738413397"></a>
 ### OSX_GLContextSetCurrent
@@ -369,7 +369,7 @@ Updates `state.contextCurrent` in `mq3.platform.macosx_headers.OSX_GLContextSetC
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.contextCurrent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L264)
 
 <a id="function-function-mq3-platform-macosx-headers-osx-setglcontext-function-osx-setglcontext-state-context-cglcontext-src-mq3-platform-macosx-headers-ml-2131557047"></a>
 ### OSX_SetGLContext
@@ -387,7 +387,7 @@ Updates `state.context`, `state.cglContext` in `mq3.platform.macosx_headers.OSX_
 | `cglContext` | `dynamic` | — | Value assigned to `state.cglContext`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L252)
 
 <a id="function-function-mq3-platform-macosx-headers-otstart-function-otstart-state-node-src-mq3-platform-macosx-headers-ml-930298983"></a>
 ### OTSTART
@@ -404,7 +404,7 @@ Updates `state.timerStack` in `mq3.platform.macosx_headers.OTSTART`.
 | `node` | `dynamic` | — | Input tested by `state.timers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L308)
 
 <a id="function-function-mq3-platform-macosx-headers-otstop-function-otstop-state-src-mq3-platform-macosx-headers-ml-27814621"></a>
 ### OTSTOP
@@ -420,7 +420,7 @@ Updates `state.timerStack` in `mq3.platform.macosx_headers.OTSTOP`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.timerStack`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L311)
 
 <a id="function-function-mq3-platform-macosx-headers-paste-function-paste-state-text-src-mq3-platform-macosx-headers-ml-1579863156"></a>
 ### paste
@@ -437,7 +437,7 @@ Updates `state.clipboard`, `state.events` in `mq3.platform.macosx_headers.paste`
 | `text` | `dynamic` | — | Value assigned to `state.clipboard`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L160)
 
 <a id="function-function-mq3-platform-macosx-headers-privateapisymbols-function-privateapisymbols-src-mq3-platform-macosx-headers-ml-1259983818"></a>
 ### privateApiSymbols
@@ -449,7 +449,7 @@ function privateApiSymbols()
 Returns `[]` for the `mq3.platform.macosx_headers.privateApiSymbols` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L11)
 
 <a id="function-function-mq3-platform-macosx-headers-qglcall-function-qglcall-state-name-arguments-src-mq3-platform-macosx-headers-ml-2028582964"></a>
 ### qglCall
@@ -467,7 +467,7 @@ Updates `state.qglBeginStarted`, `state.qglCalls` in `mq3.platform.macosx_header
 | `arguments` | `dynamic` | — | Input used by `state.qglCalls=state.qglCalls+[[name,arguments]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L283)
 
 <a id="function-function-mq3-platform-macosx-headers-qglcheckerror-function-qglcheckerror-state-message-src-mq3-platform-macosx-headers-ml-1534191334"></a>
 ### QGLCheckError
@@ -484,7 +484,7 @@ Updates `state.events` in `mq3.platform.macosx_headers.QGLCheckError`; returns `
 | `message` | `dynamic` | — | Value used for `mq3.platform.macosx_headers.Event.payload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L300)
 
 <a id="function-function-mq3-platform-macosx-headers-qglraiseerror-function-qglraiseerror-state-code-src-mq3-platform-macosx-headers-ml-832272872"></a>
 ### QGLRaiseError
@@ -501,7 +501,7 @@ Updates `state.qglErrors` in `mq3.platform.macosx_headers.QGLRaiseError`.
 | `code` | `dynamic` | — | Input used by `state.qglErrors=state.qglErrors+[code]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L293)
 
 <a id="function-function-mq3-platform-macosx-headers-qglsymbols-function-qglsymbols-src-mq3-platform-macosx-headers-ml-687951702"></a>
 ### qglSymbols
@@ -513,7 +513,7 @@ function qglSymbols()
 Returns `result` from `mq3.platform.macosx_headers.qglSymbols`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L21)
 
 <a id="function-function-mq3-platform-macosx-headers-quakemain-function-quakemain-state-frames-src-mq3-platform-macosx-headers-ml-138026059"></a>
 ### quakeMain
@@ -530,7 +530,7 @@ Updates `state.quakeFrames` in `mq3.platform.macosx_headers.quakeMain`; returns 
 | `frames` | `dynamic` | — | Input used by `state.quakeFrames=state.quakeFrames+frames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L170)
 
 <a id="function-function-mq3-platform-macosx-headers-requestterminate-function-requestterminate-state-src-mq3-platform-macosx-headers-ml-681648705"></a>
 ### requestTerminate
@@ -546,7 +546,7 @@ Updates `state.terminateRequested` in `mq3.platform.macosx_headers.requestTermin
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.terminateRequested`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L163)
 
 <a id="function-function-mq3-platform-macosx-headers-showbanner-function-showbanner-state-src-mq3-platform-macosx-headers-ml-733296633"></a>
 ### showBanner
@@ -562,7 +562,7 @@ Updates `state.bannerVisible` in `mq3.platform.macosx_headers.showBanner`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.bannerVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L166)
 
 - [mq3.platform.macosx_headers.State](Type-mq3-platform-macosx-headers-state-87376264.md) — struct
 <a id="function-function-mq3-platform-macosx-headers-sys-annoyingbanner-function-sys-annoyingbanner-state-src-mq3-platform-macosx-headers-ml-1023207065"></a>
@@ -579,7 +579,7 @@ Calls `mq3.platform.macosx_headers.showBanner` with `(state)` and returns its re
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.macosx_headers.showBanner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L238)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-displaytouse-function-sys-displaytouse-state-src-mq3-platform-macosx-headers-ml-2013571817"></a>
 ### Sys_DisplayToUse
@@ -595,7 +595,7 @@ Computes `state.display` for `mq3.platform.macosx_headers.Sys_DisplayToUse`.
 | `state` | `dynamic` | — | Record providing `state.display`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L227)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-fadescreen-function-sys-fadescreen-state-display-src-mq3-platform-macosx-headers-ml-305188603"></a>
 ### Sys_FadeScreen
@@ -612,7 +612,7 @@ Updates `state.fadedDisplays` in `mq3.platform.macosx_headers.Sys_FadeScreen`.
 | `display` | `dynamic` | — | Value forwarded as `needle` to `mq3.platform.macosx_headers.contains`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L199)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-fadescreens-function-sys-fadescreens-state-src-mq3-platform-macosx-headers-ml-427469887"></a>
 ### Sys_FadeScreens
@@ -628,7 +628,7 @@ Returns `void` from `mq3.platform.macosx_headers.Sys_FadeScreens`.
 | `state` | `dynamic` | — | Record providing `state.displayModes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L202)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-getgammatable-function-sys-getgammatable-state-display-src-mq3-platform-macosx-headers-ml-1312701945"></a>
 ### Sys_GetGammaTable
@@ -645,7 +645,7 @@ Returns `void` from `mq3.platform.macosx_headers.Sys_GetGammaTable`; earlier bra
 | `display` | `dynamic` | — | Input used by `for each table in state.gammaTables if table.display==display then return table`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L190)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-getmatchingdisplaymode-function-sys-getmatchingdisplaymode-state-allowstretchedmodes-src-mq3-platform-macosx-headers-ml-2115360264"></a>
 ### Sys_GetMatchingDisplayMode
@@ -662,7 +662,7 @@ Selects the first allowed display mode, optionally permitting stretched modes; r
 | `allowStretchedModes` | `dynamic` | — | Input tested by `allowStretchedModes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L175)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-hide-function-sys-hide-state-src-mq3-platform-macosx-headers-ml-1659715789"></a>
 ### Sys_Hide
@@ -678,7 +678,7 @@ Updates `state.hidden` in `mq3.platform.macosx_headers.Sys_Hide`; returns `true`
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.hidden`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L244)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-initinput-function-sys-initinput-state-src-mq3-platform-macosx-headers-ml-19191437"></a>
 ### Sys_InitInput
@@ -694,7 +694,7 @@ Updates `state.inputInitialized` in `mq3.platform.macosx_headers.Sys_InitInput`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L217)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-ishidden-function-sys-ishidden-state-src-mq3-platform-macosx-headers-ml-744627245"></a>
 ### Sys_IsHidden
@@ -710,7 +710,7 @@ Computes `state.hidden` for `mq3.platform.macosx_headers.Sys_IsHidden`.
 | `state` | `dynamic` | — | Record providing `state.hidden`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L241)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-pausegl-function-sys-pausegl-state-src-mq3-platform-macosx-headers-ml-1111914823"></a>
 ### Sys_PauseGL
@@ -726,7 +726,7 @@ Updates `state.pauseCount`, `state.contextCurrent` in `mq3.platform.macosx_heade
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.pauseCount`, `state.contextCurrent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L270)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-queevent-function-sys-queevent-state-time-kind-value1-value2-payload-src-mq3-platform-macosx-headers-ml-1179938985"></a>
 ### Sys_QueEvent
@@ -747,7 +747,7 @@ Updates `state.events` in `mq3.platform.macosx_headers.Sys_QueEvent`.
 | `payload` | `dynamic` | — | Value used for `mq3.platform.macosx_headers.Event.payload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L235)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-releasealldisplays-function-sys-releasealldisplays-state-src-mq3-platform-macosx-headers-ml-1239127109"></a>
 ### Sys_ReleaseAllDisplays
@@ -763,7 +763,7 @@ Updates `state.fadedDisplays`, `state.displayModes` in `mq3.platform.macosx_head
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.fadedDisplays`, `state.displayModes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L213)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-resumegl-function-sys-resumegl-state-src-mq3-platform-macosx-headers-ml-1501534349"></a>
 ### Sys_ResumeGL
@@ -779,7 +779,7 @@ Updates `state.pauseCount` in `mq3.platform.macosx_headers.Sys_ResumeGL`; return
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.pauseCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L273)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-setmouseinputrect-function-sys-setmouseinputrect-state-rect-src-mq3-platform-macosx-headers-ml-944839509"></a>
 ### Sys_SetMouseInputRect
@@ -796,7 +796,7 @@ Updates `state.mouseRect` in `mq3.platform.macosx_headers.Sys_SetMouseInputRect`
 | `rect` | `dynamic` | — | Value assigned to `state.mouseRect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L224)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-setscreenfade-function-sys-setscreenfade-state-table-fraction-src-mq3-platform-macosx-headers-ml-1776240795"></a>
 ### Sys_SetScreenFade
@@ -814,7 +814,7 @@ Updates `state.fadeFraction` in `mq3.platform.macosx_headers.Sys_SetScreenFade`;
 | `fraction` | `dynamic` | — | Value assigned to `state.fadeFraction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L195)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-shutdowninput-function-sys-shutdowninput-state-src-mq3-platform-macosx-headers-ml-1922235293"></a>
 ### Sys_ShutdownInput
@@ -830,7 +830,7 @@ Updates `state.inputInitialized` in `mq3.platform.macosx_headers.Sys_ShutdownInp
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L220)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-storegammatables-function-sys-storegammatables-state-tables-src-mq3-platform-macosx-headers-ml-1895905472"></a>
 ### Sys_StoreGammaTables
@@ -847,7 +847,7 @@ Updates `state.gammaTables` in `mq3.platform.macosx_headers.Sys_StoreGammaTables
 | `tables` | `dynamic` | — | Value assigned to `state.gammaTables`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L186)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-unfadescreen-function-sys-unfadescreen-state-display-table-src-mq3-platform-macosx-headers-ml-1894115631"></a>
 ### Sys_UnfadeScreen
@@ -865,7 +865,7 @@ Updates `state.fadedDisplays` in `mq3.platform.macosx_headers.Sys_UnfadeScreen`;
 | `table` | `dynamic` | — | Input used in the result expression `table`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L207)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-unfadescreens-function-sys-unfadescreens-state-src-mq3-platform-macosx-headers-ml-52931589"></a>
 ### Sys_UnfadeScreens
@@ -881,7 +881,7 @@ Updates `state.fadedDisplays` in `mq3.platform.macosx_headers.Sys_UnfadeScreens`
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.fadedDisplays`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L210)
 
 <a id="function-function-mq3-platform-macosx-headers-sys-unhide-function-sys-unhide-state-src-mq3-platform-macosx-headers-ml-803985409"></a>
 ### Sys_Unhide
@@ -897,7 +897,7 @@ Updates `state.hidden` in `mq3.platform.macosx_headers.Sys_Unhide`; returns `tru
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.hidden`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L247)
 
 <a id="function-function-mq3-platform-macosx-headers-timersymbols-function-timersymbols-src-mq3-platform-macosx-headers-ml-227252106"></a>
 ### timerSymbols
@@ -909,4 +909,4 @@ function timerSymbols()
 Lists the 19 declared names for `mq3.platform.macosx_headers.timerSymbols`, including `rootNode`, `markFragmentsNode1`, `markFragmentsNode2`, `markFragmentsGrid`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/macosx_headers.ml#L30)

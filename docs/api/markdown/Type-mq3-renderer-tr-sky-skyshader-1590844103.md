@@ -12,7 +12,7 @@ struct SkyShader
 Data record for `mq3.renderer.tr_sky.SkyShader`; groups `outerbox`, `cloudHeight`, `stages`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L73)
 
 ## Members
 
@@ -26,7 +26,7 @@ cloudHeight
 Height used to project moving cloud texture coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L77)
 
 <a id="field-field-mq3-renderer-tr-sky-skyshader-outerbox-outerbox-src-mq3-renderer-tr-sky-ml-1440508937"></a>
 ### outerbox
@@ -38,7 +38,7 @@ outerbox
 Six images forming the outer skybox.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L75)
 
 <a id="field-field-mq3-renderer-tr-sky-skyshader-stages-stages-src-mq3-renderer-tr-sky-ml-384800459"></a>
 ### stages
@@ -50,4 +50,4 @@ stages
 Ordered material stages evaluated when the shader is drawn.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L79)

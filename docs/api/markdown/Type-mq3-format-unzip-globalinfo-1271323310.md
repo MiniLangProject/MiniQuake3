@@ -12,7 +12,7 @@ struct GlobalInfo
 GlobalInfo record for format.unzip, containing `numberEntry`, `sizeComment`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L56)
 
 ## Members
 
@@ -26,7 +26,7 @@ numberEntry
 Number of entries recorded in the ZIP central directory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L58)
 
 <a id="field-field-mq3-format-unzip-globalinfo-sizecomment-sizecomment-src-mq3-format-unzip-ml-1306651522"></a>
 ### sizeComment
@@ -38,4 +38,4 @@ sizeComment
 Length of the archive comment in bytes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L60)

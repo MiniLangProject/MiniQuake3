@@ -12,7 +12,7 @@ struct AreaSettings
 AreaSettings record for format.aas, containing `contents`, `flags`, `presenceType`, `cluster`, `clusterAreaNum`, `numReachableAreas`, and 1 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L285)
 
 ## Members
 
@@ -26,7 +26,7 @@ cluster
 Cluster the area belongs to, if negative it's a portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L293)
 
 <a id="field-field-mq3-format-aas-areasettings-clusterareanum-clusterareanum-src-mq3-format-aas-ml-162957895"></a>
 ### clusterAreaNum
@@ -38,7 +38,7 @@ clusterAreaNum
 Number of the area in the cluster.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L295)
 
 <a id="field-field-mq3-format-aas-areasettings-contents-contents-src-mq3-format-aas-ml-1298242425"></a>
 ### contents
@@ -50,7 +50,7 @@ contents
 Collision or AAS contents flags describing the represented volume.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L287)
 
 <a id="field-field-mq3-format-aas-areasettings-firstreachablearea-firstreachablearea-src-mq3-format-aas-ml-1335604441"></a>
 ### firstReachableArea
@@ -62,7 +62,7 @@ firstReachableArea
 First outgoing reachability index for this area in the shared reachability array.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L299)
 
 <a id="field-field-mq3-format-aas-areasettings-flags-flags-src-mq3-format-aas-ml-1175603209"></a>
 ### flags
@@ -74,7 +74,7 @@ flags
 AAS area-property flags controlling movement and route availability.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L289)
 
 <a id="field-field-mq3-format-aas-areasettings-numreachableareas-numreachableareas-src-mq3-format-aas-ml-455500681"></a>
 ### numReachableAreas
@@ -86,7 +86,7 @@ numReachableAreas
 Number of outgoing reachability records belonging to this AAS area.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L297)
 
 <a id="field-field-mq3-format-aas-areasettings-presencetype-presencetype-src-mq3-format-aas-ml-1413703663"></a>
 ### presenceType
@@ -98,4 +98,4 @@ presenceType
 Presence-type mask describing the bot hull or stance allowed here.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/aas.ml#L291)

@@ -27,7 +27,7 @@ Compute builtin index in server.client_command_dispatch; the normal completion r
 | `name` | `dynamic` | — | Name used in `(names[index] == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L36)
 
 <a id="function-function-mq3-server-client-command-dispatch-builtinnames-function-builtinnames-src-mq3-server-client-command-dispatch-ml-1231020014"></a>
 ### builtinNames
@@ -39,7 +39,7 @@ function builtinNames()
 List the 8 names in server.client_command_dispatch.builtinNames, beginning with `userinfo`, `disconnect`, `cp`, `vdr`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L32)
 
 <a id="function-function-mq3-server-client-command-dispatch-execute-function-execute-host-clientstate-text-clientok-serverstate-src-mq3-server-client-command-dispatch-ml-834217692"></a>
 ### execute
@@ -61,7 +61,7 @@ Validation failures include `client command dispatch: missing input`; `client co
 | `serverState` | `dynamic` | — | Server state used in `(serverState == SS_GAME)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L50)
 
 <a id="function-function-mq3-server-client-command-dispatch-services-function-services-src-mq3-server-client-command-dispatch-ml-115334554"></a>
 ### services
@@ -73,7 +73,7 @@ function services()
 Create `mq3.server.client_command_dispatch.Services` with builtinFn=void; downloadFn=void; gameFn=void; ignoredFn=void; context=void; downloadContext=void; lifecycleRuntime=void.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L29)
 
 - [mq3.server.client_command_dispatch.Services](Type-mq3-server-client-command-dispatch-services-1762339519.md) — struct
 <a id="constant-constant-mq3-server-client-command-dispatch-ss-game-const-ss-game-2-src-mq3-server-client-command-dispatch-ml-447169141"></a>
@@ -86,4 +86,4 @@ const SS_GAME = 2
 Server lifecycle state for an active game map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L9)

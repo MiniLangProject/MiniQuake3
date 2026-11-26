@@ -26,4 +26,4 @@ Use `level.gamePrintFn` to perform `findTeams`.
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities` and `gamePrintFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/initialization.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/initialization.ml#L9)

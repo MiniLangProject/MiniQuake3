@@ -12,7 +12,7 @@ struct Flare
 Data record for `mq3.renderer.playable_flares.Flare`; groups `faceIndex`, `textureIndex`, `fogIndex`, `origin`, `color`, `normal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L27)
 
 ## Members
 
@@ -26,7 +26,7 @@ color
 BSP-authored tint of the flare surface before view-dependent fading.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L37)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-faceindex-faceindex-src-mq3-renderer-playable-flares-ml-895810663"></a>
 ### faceIndex
@@ -38,7 +38,7 @@ faceIndex
 Index of the source BSP face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L29)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-fogindex-fogindex-src-mq3-renderer-playable-flares-ml-1469461375"></a>
 ### fogIndex
@@ -50,7 +50,7 @@ fogIndex
 Index of the fog volume affecting the surface or primitive.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L33)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-normal-normal-src-mq3-renderer-playable-flares-ml-565684749"></a>
 ### normal
@@ -62,7 +62,7 @@ normal
 Map-authored flare-facing direction used to scale visibility from the current eye position.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L39)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-origin-origin-src-mq3-renderer-playable-flares-ml-754343067"></a>
 ### origin
@@ -74,7 +74,7 @@ origin
 Map-authored world position from which the flare is projected into the view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L35)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-textureindex-textureindex-src-mq3-renderer-playable-flares-ml-2130020817"></a>
 ### textureIndex
@@ -86,4 +86,4 @@ textureIndex
 Index identifying the texture or BSP shader assigned to the surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L31)

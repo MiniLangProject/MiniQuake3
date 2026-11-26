@@ -28,7 +28,7 @@ Releases a Win32 handle owned by the caller.
 
 **Returns:** True if the handle was closed; false on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/file.ml#L18)
 
 <a id="extern_function-extern-function-mq3-platform-file-createfilew-extern-function-createfilew-name-as-wstr-access-as-u32-share-as-u32-security-as-ptr-creation-as-u32-attributes-as-u32-templatehandle-as-ptr-from-kernel32-dll-returns-ptr-src-mq3-platform-file-ml-433807682"></a>
 ### CreateFileW
@@ -52,7 +52,7 @@ Opens or creates a Win32 file using a UTF-16 path and the supplied access/share 
 
 **Returns:** A file handle; INVALID_HANDLE_VALUE (-1) on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/file.ml#L14)
 
 <a id="extern_function-extern-function-mq3-platform-file-getfilesizeex-extern-function-getfilesizeex-handle-as-ptr-result-as-bytes-from-kernel32-dll-returns-bool-src-mq3-platform-file-ml-2107832562"></a>
 ### GetFileSizeEx
@@ -71,7 +71,7 @@ Writes the 64-bit byte length of an open file into the caller-provided buffer.
 
 **Returns:** True when the file size was written; false on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/file.ml#L23)
 
 <a id="extern_function-extern-function-mq3-platform-file-readfile-extern-function-readfile-handle-as-ptr-buffer-as-ptr-count-as-u32-transferred-as-bytes-overlapped-as-ptr-from-kernel32-dll-returns-bool-src-mq3-platform-file-ml-441956998"></a>
 ### ReadFile
@@ -93,7 +93,7 @@ Reads bytes from a Win32 file into native storage and records the transferred by
 
 **Returns:** True when the native read succeeds; false on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/file.ml#L38)
 
 <a id="function-function-mq3-platform-file-readrange-function-readrange-path-offset-count-src-mq3-platform-file-ml-1541978289"></a>
 ### readRange
@@ -111,7 +111,7 @@ Computes `readRange` from `bytes(count, 0)` using `mq3.platform.file.CreateFileW
 | `count` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/file.ml#L44)
 
 <a id="extern_function-extern-function-mq3-platform-file-setfilepointerex-extern-function-setfilepointerex-handle-as-ptr-offset-as-i64-position-as-ptr-origin-as-u32-from-kernel32-dll-returns-bool-src-mq3-platform-file-ml-747388909"></a>
 ### SetFilePointerEx
@@ -132,4 +132,4 @@ Moves the Win32 file position by a signed 64-bit displacement.
 
 **Returns:** True when the file position was changed; false on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/file.ml#L30)

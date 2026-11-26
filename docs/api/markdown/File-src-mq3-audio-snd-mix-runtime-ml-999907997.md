@@ -29,7 +29,7 @@ Create the audio.snd_mix_runtime error for `compressionError` with 7669 and the 
 | `name` | `dynamic` | — | Name used in `(name + ": incompatible compressed sound")` and `error(7669, (name + ": incompatible compressed sound"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L15)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-paintcompressed-function-paintcompressed-name-method-paint-sound-count-sampleoffset-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-mix-runtime-ml-1325523239"></a>
 ### paintCompressed
@@ -57,7 +57,7 @@ Paint compressed in audio.snd_mix_runtime.
 | `oldDopplerScale` | `dynamic` | — | Old doppler scale passed as `oldDopplerScale` to `mq3.audio.snd_compressed_paint.paint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L76)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-paintchannelfrom16-function-s-paintchannelfrom16-paint-samples-count-sampleoffset-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-mix-runtime-ml-1247140839"></a>
 ### S_PaintChannelFrom16
@@ -83,7 +83,7 @@ Return `mq3.audio.channel_paint.paint16(samples, count, sampleOffset, bufferOffs
 | `oldDopplerScale` | `dynamic` | — | Nonnegative scale used to adjust the starting source offset. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L58)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-paintchannelfromadpcm-function-s-paintchannelfromadpcm-paint-sound-count-sampleoffset-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-mix-runtime-ml-228616871"></a>
 ### S_PaintChannelFromADPCM
@@ -109,7 +109,7 @@ Delegate `S_PaintChannelFromADPCM` to `mq3.audio.snd_mix_runtime.paintCompressed
 | `oldDopplerScale` | `dynamic` | — | Old doppler scale passed as `oldDopplerScale` to `mq3.audio.snd_mix_runtime.paintCompressed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L109)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-paintchannelfrommulaw-function-s-paintchannelfrommulaw-paint-sound-count-sampleoffset-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-mix-runtime-ml-1785727881"></a>
 ### S_PaintChannelFromMuLaw
@@ -135,7 +135,7 @@ Delegate `S_PaintChannelFromMuLaw` to `mq3.audio.snd_mix_runtime.paintCompressed
 | `oldDopplerScale` | `dynamic` | — | Old doppler scale passed as `oldDopplerScale` to `mq3.audio.snd_mix_runtime.paintCompressed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L125)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-paintchannelfromwavelet-function-s-paintchannelfromwavelet-paint-sound-count-sampleoffset-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-mix-runtime-ml-1556501309"></a>
 ### S_PaintChannelFromWavelet
@@ -161,7 +161,7 @@ Delegate `S_PaintChannelFromWavelet` to `mq3.audio.snd_mix_runtime.paintCompress
 | `oldDopplerScale` | `dynamic` | — | Old doppler scale passed as `oldDopplerScale` to `mq3.audio.snd_mix_runtime.paintCompressed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L93)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-paintchannels-function-s-paintchannels-paint-sound-compressed-paintedtime-endtime-startsample-leftvolume-rightvolume-sndvolume-looping-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-mix-runtime-ml-1695738449"></a>
 ### S_PaintChannels
@@ -189,7 +189,7 @@ One managed call represents the original global-channel loop for one channel. Ho
 | `oldDopplerScale` | `dynamic` | — | Old doppler scale passed as `oldDopplerScale` to `mq3.audio.snd_paint_pipeline.paintSfxLoopDoppler`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L145)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-transferpaintbuffer-function-s-transferpaintbuffer-paint-paintedtime-endtime-samplebits-channels-dmasamples-output-src-mq3-audio-snd-mix-runtime-ml-1657525890"></a>
 ### S_TransferPaintBuffer
@@ -211,7 +211,7 @@ Return `mq3.audio.mixer_transfer.transfer(paint, paintedTime, endTime, sampleBit
 | `output` | `dynamic` | — | Output passed as `output` to `mq3.audio.mixer_transfer.transfer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L42)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-transferstereo16-function-s-transferstereo16-paint-paintedtime-endtime-dmasamples-output-src-mq3-audio-snd-mix-runtime-ml-1705795590"></a>
 ### S_TransferStereo16
@@ -231,7 +231,7 @@ Return `mq3.audio.mixer_transfer.transfer(paint, paintedTime, endTime, 16, 2, dm
 | `output` | `dynamic` | — | Output passed as `output` to `mq3.audio.mixer_transfer.transfer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L30)
 
 <a id="function-function-mq3-audio-snd-mix-runtime-s-writelinearblaststereo16-function-s-writelinearblaststereo16-paint-frames-src-mq3-audio-snd-mix-runtime-ml-615443824"></a>
 ### S_WriteLinearBlastStereo16
@@ -248,4 +248,4 @@ Return `mq3.audio.snd_paint_pipeline.transfer16(paint, frames)` from `audio.snd_
 | `frames` | `dynamic` | — | Frames passed as `frames` to `mq3.audio.snd_paint_pipeline.transfer16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mix_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mix_runtime.ml#L20)

@@ -12,7 +12,7 @@ struct Config
 Stores UI controls config record, including `name`, `defaultValue`, `value`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L205)
 
 ## Members
 
@@ -26,7 +26,7 @@ defaultValue
 When constructing this record, `initCvars` supplies `fallback` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L209)
 
 <a id="field-field-mq3-client-ui-controls-config-name-name-src-mq3-client-ui-controls-ml-2044538401"></a>
 ### name
@@ -38,7 +38,7 @@ name
 Engine configuration-variable name used to read, update, or register this setting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L207)
 
 <a id="field-field-mq3-client-ui-controls-config-value-value-src-mq3-client-ui-controls-ml-89467935"></a>
 ### value
@@ -50,4 +50,4 @@ value
 Current or default setting value held by this configuration variable or UI control.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L211)

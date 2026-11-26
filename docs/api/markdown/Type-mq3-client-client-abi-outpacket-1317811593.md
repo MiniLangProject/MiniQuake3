@@ -12,7 +12,7 @@ struct OutPacket
 Stores client ABI out packet record, including `p_cmdNumber`, `p_serverTime`, `p_realtime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L37)
 
 ## Members
 
@@ -26,7 +26,7 @@ p_cmdNumber
 Client user-command sequence number when the outgoing packet was sent.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L39)
 
 <a id="field-field-mq3-client-client-abi-outpacket-p-realtime-p-realtime-src-mq3-client-client-abi-ml-1250492353"></a>
 ### p_realtime
@@ -38,7 +38,7 @@ p_realtime
 Client realtime timestamp when the outgoing packet was sent.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L43)
 
 <a id="field-field-mq3-client-client-abi-outpacket-p-servertime-p-servertime-src-mq3-client-client-abi-ml-884193535"></a>
 ### p_serverTime
@@ -50,4 +50,4 @@ p_serverTime
 Server time in the user command carried by the outgoing packet.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L41)

@@ -12,7 +12,7 @@ struct ElementaryInput
 `ElementaryInput` record for elementary actions, containing `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L110)
 
 ## Members
 
@@ -26,7 +26,7 @@ actionflags
 One of the ACTION_? flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L120)
 
 <a id="field-field-mq3-botlib-elementary-actions-elementaryinput-dir-dir-src-mq3-botlib-elementary-actions-ml-1989403151"></a>
 ### dir
@@ -38,7 +38,7 @@ dir
 Normalized movement direction requested by the bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L114)
 
 <a id="field-field-mq3-botlib-elementary-actions-elementaryinput-speed-speed-src-mq3-botlib-elementary-actions-ml-1426250431"></a>
 ### speed
@@ -50,7 +50,7 @@ speed
 Speed in the range [0, 400].
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L116)
 
 <a id="field-field-mq3-botlib-elementary-actions-elementaryinput-thinktime-thinktime-src-mq3-botlib-elementary-actions-ml-1666867855"></a>
 ### thinktime
@@ -62,7 +62,7 @@ thinktime
 Time interval over which the bot input should be applied.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L112)
 
 <a id="field-field-mq3-botlib-elementary-actions-elementaryinput-viewangles-viewangles-src-mq3-botlib-elementary-actions-ml-1408498121"></a>
 ### viewangles
@@ -74,7 +74,7 @@ viewangles
 Pitch, yaw, and roll angles describing the current view direction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L118)
 
 <a id="field-field-mq3-botlib-elementary-actions-elementaryinput-weapon-weapon-src-mq3-botlib-elementary-actions-ml-1056970867"></a>
 ### weapon
@@ -86,4 +86,4 @@ weapon
 Weapon identifier selected by the bot or user command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/elementary_actions.ml#L122)

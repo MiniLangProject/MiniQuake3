@@ -12,7 +12,7 @@ struct State
 State record for vm.cgame_key_traps, containing `down`, `bindings`, `catcher`, `overstrike`, `bindingSerial`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L33)
 
 ## Members
 
@@ -26,7 +26,7 @@ bindings
 Command strings associated with keyboard keys.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L37)
 
 <a id="field-field-mq3-vm-cgame-key-traps-state-bindingserial-bindingserial-src-mq3-vm-cgame-key-traps-ml-823392158"></a>
 ### bindingSerial
@@ -38,7 +38,7 @@ bindingSerial
 Revision counter incremented when keyboard bindings change.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L43)
 
 <a id="field-field-mq3-vm-cgame-key-traps-state-catcher-catcher-src-mq3-vm-cgame-key-traps-ml-1075746702"></a>
 ### catcher
@@ -50,7 +50,7 @@ catcher
 Key-catcher mask selecting the component that receives input.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L39)
 
 <a id="field-field-mq3-vm-cgame-key-traps-state-down-down-src-mq3-vm-cgame-key-traps-ml-1066720034"></a>
 ### down
@@ -62,7 +62,7 @@ down
 Per-key pressed/released states.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L35)
 
 <a id="field-field-mq3-vm-cgame-key-traps-state-overstrike-overstrike-src-mq3-vm-cgame-key-traps-ml-2063438646"></a>
 ### overstrike
@@ -74,4 +74,4 @@ overstrike
 Nonzero when text editing overwrites existing characters instead of inserting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L41)

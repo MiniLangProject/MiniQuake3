@@ -18,7 +18,7 @@ function init()
 Returns `void` from `mq3.platform.playable_audio.init`; earlier branches return `error(7491,"preview audio initialization failed")`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L30)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-initnative-extern-function-initnative-from-playable-audio-dll-symbol-playable-audio-init-returns-i32-src-mq3-platform-playable-audio-ml-911026293"></a>
 ### initNative
@@ -32,7 +32,7 @@ Enables the native pool of PCM playback voices.
 
 **Returns:** 1 after enabling the voice pool.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L7)
 
 <a id="function-function-mq3-platform-playable-audio-play-function-play-sound-src-mq3-platform-playable-audio-ml-1332525019"></a>
 ### play
@@ -48,7 +48,7 @@ Starts one-shot playback of a validated PCM sound and converts native rejection 
 | `sound` | `dynamic` | — | Record providing `sound.samples`, `sound.sampleRate`, `sound.channels`, `sound.bitsPerSample`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L36)
 
 <a id="function-function-mq3-platform-playable-audio-playloop-function-playloop-sound-src-mq3-platform-playable-audio-ml-61207847"></a>
 ### playLoop
@@ -64,7 +64,7 @@ Starts continuous playback of a validated PCM sound and converts native rejectio
 | `sound` | `dynamic` | — | Record providing `sound.samples`, `sound.sampleRate`, `sound.channels`, `sound.bitsPerSample`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L43)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-playloopnative-extern-function-playloopnative-samples-as-ptr-bytecount-as-i32-samplerate-as-i32-channels-as-i32-bitspersample-as-i32-from-playable-audio-dll-symbol-playable-audio-play-pcm-loop-returns-i32-src-mq3-platform-playable-audio-ml-81802106"></a>
 ### playLoopNative
@@ -86,7 +86,7 @@ Copies a PCM clip into a native voice and enables continuous loop playback.
 
 **Returns:** 1 when loop playback starts; 0 for invalid input or an output/allocation failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L23)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-playnative-extern-function-playnative-samples-as-ptr-bytecount-as-i32-samplerate-as-i32-channels-as-i32-bitspersample-as-i32-from-playable-audio-dll-symbol-playable-audio-play-pcm-returns-i32-src-mq3-platform-playable-audio-ml-137993979"></a>
 ### playNative
@@ -108,7 +108,7 @@ Copies and plays a PCM clip once through a native WinMM voice.
 
 **Returns:** 1 when playback starts; 0 for invalid input or an output/allocation failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L15)
 
 <a id="function-function-mq3-platform-playable-audio-shutdown-function-shutdown-src-mq3-platform-playable-audio-ml-872174812"></a>
 ### shutdown
@@ -120,7 +120,7 @@ function shutdown()
 Returns `void` from `mq3.platform.playable_audio.shutdown`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L51)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-shutdownnative-extern-function-shutdownnative-from-playable-audio-dll-symbol-playable-audio-shutdown-returns-void-src-mq3-platform-playable-audio-ml-863945913"></a>
 ### shutdownNative
@@ -132,7 +132,7 @@ extern function shutdownNative() from "playable_audio.dll" symbol "playable_audi
 Closes all preview voices and disables the native PCM playback pool.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L27)
 
 <a id="function-function-mq3-platform-playable-audio-stop-function-stop-src-mq3-platform-playable-audio-ml-530504160"></a>
 ### stop
@@ -144,7 +144,7 @@ function stop()
 Returns `void` from `mq3.platform.playable_audio.stop`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L49)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-stopnative-extern-function-stopnative-from-playable-audio-dll-symbol-playable-audio-stop-returns-void-src-mq3-platform-playable-audio-ml-1055421371"></a>
 ### stopNative
@@ -156,4 +156,4 @@ extern function stopNative() from "playable_audio.dll" symbol "playable_audio_st
 Stops every native preview voice and frees its copied PCM samples.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L25)

@@ -12,7 +12,7 @@ struct EntityResult
 Stores engine client client game runtime entity result record, including `found`, `value`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L67)
 
 ## Members
 
@@ -26,7 +26,7 @@ found
 True when the requested parse-entity state is still present in the history ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L69)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-entityresult-value-value-src-mq3-client-cl-cgame-runtime-ml-892800145"></a>
 ### value
@@ -38,4 +38,4 @@ value
 Parsed entity-state record returned by a successful history lookup; absent when the requested entity has expired from the ring buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L72)

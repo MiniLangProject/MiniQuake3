@@ -28,7 +28,7 @@ Group active loop sounds by matching source while accumulating their spatialized
 | `listenerAxis` | `dynamic` | — | Listener axis passed as `listenerAxis` to `mq3.audio.snd_spatialize.spatialize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_loop_channels.ml#L53)
 
 - [mq3.audio.snd_loop_channels.Entry](Type-mq3-audio-snd-loop-channels-entry-1333255851.md) — struct
 - [mq3.audio.snd_loop_channels.Group](Type-mq3-audio-snd-loop-channels-group-732355124.md) — struct
@@ -42,4 +42,4 @@ const MAX_CHANNELS = 96
 Maximum number of simultaneously allocated sound channels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_loop_channels.ml#L8)

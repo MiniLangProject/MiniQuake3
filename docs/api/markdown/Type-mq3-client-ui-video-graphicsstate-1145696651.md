@@ -12,7 +12,7 @@ struct GraphicsState
 Stores UI video graphics state record, including `mode`, `fullscreen`, `tq`, `lighting`, `colorDepth`, `textureBits` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L185)
 
 ## Members
 
@@ -26,7 +26,7 @@ actions
 Host requests queued while listing renderer capabilities and applying graphics configuration changes, retained in request order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L228)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-applyvisible-applyvisible-src-mq3-client-ui-video-ml-1930715487"></a>
 ### applyVisible
@@ -38,7 +38,7 @@ applyVisible
 When constructing this record, `graphicsState` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L210)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-assets-assets-src-mq3-client-ui-video-ml-1066033001"></a>
 ### assets
@@ -50,7 +50,7 @@ assets
 Media resources retained for registering and drawing the artwork used by the graphics-options and driver-information menus.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L225)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-choices-choices-src-mq3-client-ui-video-ml-161605135"></a>
 ### choices
@@ -62,7 +62,7 @@ choices
 When constructing this record, `graphicsState` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L220)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-colordepth-colordepth-src-mq3-client-ui-video-ml-1211919327"></a>
 ### colorDepth
@@ -74,7 +74,7 @@ colorDepth
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L196)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-colordepthgrayed-colordepthgrayed-src-mq3-client-ui-video-ml-818342763"></a>
 ### colorDepthGrayed
@@ -86,7 +86,7 @@ colorDepthGrayed
 When constructing this record, `graphicsState` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L214)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-driver-driver-src-mq3-client-ui-video-ml-1099707191"></a>
 ### driver
@@ -98,7 +98,7 @@ driver
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L204)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-driverhidden-driverhidden-src-mq3-client-ui-video-ml-1315710491"></a>
 ### driverHidden
@@ -110,7 +110,7 @@ driverHidden
 When constructing this record, `graphicsState` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L216)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-extensions-extensions-src-mq3-client-ui-video-ml-503564023"></a>
 ### extensions
@@ -122,7 +122,7 @@ extensions
 Graphics extension information exposed by the renderer or selected by the video-settings UI.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L206)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-filter-filter-src-mq3-client-ui-video-ml-1023723859"></a>
 ### filter
@@ -134,7 +134,7 @@ filter
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L202)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-fullscreen-fullscreen-src-mq3-client-ui-video-ml-1749616601"></a>
 ### fullscreen
@@ -146,7 +146,7 @@ fullscreen
 Current fullscreen choice in the graphics menu, applied to the renderer when settings are accepted.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L190)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-fullscreengrayed-fullscreengrayed-src-mq3-client-ui-video-ml-1668172841"></a>
 ### fullscreenGrayed
@@ -158,7 +158,7 @@ fullscreenGrayed
 When constructing this record, `graphicsState` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L212)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-geometry-geometry-src-mq3-client-ui-video-ml-212394767"></a>
 ### geometry
@@ -170,7 +170,7 @@ geometry
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L200)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-initial-initial-src-mq3-client-ui-video-ml-1141042187"></a>
 ### initial
@@ -182,7 +182,7 @@ initial
 When constructing this record, `graphicsState` supplies `base` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L218)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-items-items-src-mq3-client-ui-video-ml-1155103715"></a>
 ### items
@@ -194,7 +194,7 @@ items
 When constructing this record, `graphicsState` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L222)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-lighting-lighting-src-mq3-client-ui-video-ml-2004340423"></a>
 ### lighting
@@ -206,7 +206,7 @@ lighting
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L194)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-mode-mode-src-mq3-client-ui-video-ml-670737729"></a>
 ### mode
@@ -218,7 +218,7 @@ mode
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L187)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-preset-preset-src-mq3-client-ui-video-ml-1992073673"></a>
 ### preset
@@ -230,7 +230,7 @@ preset
 When constructing this record, `graphicsState` supplies `4` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L208)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-texturebits-texturebits-src-mq3-client-ui-video-ml-2060954387"></a>
 ### textureBits
@@ -242,7 +242,7 @@ textureBits
 Requested color precision for texture storage.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L198)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-tq-tq-src-mq3-client-ui-video-ml-2061067145"></a>
 ### tq
@@ -254,4 +254,4 @@ tq
 When constructing this record, `graphicsState` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L192)

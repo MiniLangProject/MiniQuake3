@@ -32,7 +32,7 @@ Constructs `mq3.platform.desktop_frame_host.Config` from `clientEndpoint`, `serv
 | `maxFrameMsec` | `dynamic` | — | Initial value for `mq3.platform.desktop_frame_host.Config.maxFrameMsec`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L108)
 
 - [mq3.platform.desktop_frame_host.Config](Type-mq3-platform-desktop-frame-host-config-803989000.md) — struct
 <a id="function-function-mq3-platform-desktop-frame-host-frame-function-frame-runtime-now-src-mq3-platform-desktop-frame-host-ml-1000851294"></a>
@@ -50,7 +50,7 @@ Quake's event loop consumes input before advancing server and client state. Time
 | `now` | `dynamic` | — | Initial value for `mq3.platform.desktop_frame_host.FrameResult.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L258)
 
 - [mq3.platform.desktop_frame_host.FrameResult](Type-mq3-platform-desktop-frame-host-frameresult-1279231830.md) — struct
 <a id="function-function-mq3-platform-desktop-frame-host-livebind-function-livebind-services-socket-endpoint-src-mq3-platform-desktop-frame-host-ml-806206712"></a>
@@ -69,7 +69,7 @@ Calls `mq3.platform.udp.bind` with `(socket,endpoint)` and returns its result.
 | `endpoint` | `dynamic` | — | Argument 2 supplied to `mq3.platform.udp.bind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L122)
 
 <a id="function-function-mq3-platform-desktop-frame-host-livecleanup-function-livecleanup-services-src-mq3-platform-desktop-frame-host-ml-967184588"></a>
 ### liveCleanup
@@ -85,7 +85,7 @@ Calls `mq3.platform.udp.cleanup` with `()` and returns its result.
 | `services` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L129)
 
 <a id="function-function-mq3-platform-desktop-frame-host-liveclientframe-function-liveclientframe-services-time-msec-src-mq3-platform-desktop-frame-host-ml-1239549973"></a>
 ### liveClientFrame
@@ -103,7 +103,7 @@ Returns `void` from `mq3.platform.desktop_frame_host.liveClientFrame`; earlier b
 | `msec` | `dynamic` | — | Argument 3 supplied to `services.context.clientFrameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L164)
 
 <a id="function-function-mq3-platform-desktop-frame-host-liveclose-function-liveclose-services-socket-src-mq3-platform-desktop-frame-host-ml-414597249"></a>
 ### liveClose
@@ -120,7 +120,7 @@ Calls `mq3.platform.udp.close` with `(socket)` and returns its result.
 | `socket` | `dynamic` | — | Argument 1 supplied to `mq3.platform.udp.close`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L126)
 
 - [mq3.platform.desktop_frame_host.LiveContext](Type-mq3-platform-desktop-frame-host-livecontext-1514691407.md) — struct
 <a id="function-function-mq3-platform-desktop-frame-host-livecreatepump-function-livecreatepump-services-clientsocket-serversocket-capacity-src-mq3-platform-desktop-frame-host-ml-427874900"></a>
@@ -140,7 +140,7 @@ Calls `mq3.server.network_ingress.createPump` with `(services.context.ingress,cl
 | `capacity` | `dynamic` | — | Argument 4 supplied to `mq3.server.network_ingress.createPump`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L135)
 
 <a id="function-function-mq3-platform-desktop-frame-host-livedrain-function-livedrain-services-pump-budget-src-mq3-platform-desktop-frame-host-ml-1401026991"></a>
 ### liveDrain
@@ -158,7 +158,7 @@ Calls `mq3.qcommon.network_pump.drain` with `(pump,budget)` and returns its resu
 | `budget` | `dynamic` | — | Argument 2 supplied to `mq3.qcommon.network_pump.drain`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L151)
 
 <a id="function-function-mq3-platform-desktop-frame-host-liveopen-function-liveopen-services-src-mq3-platform-desktop-frame-host-ml-1585003188"></a>
 ### liveOpen
@@ -174,7 +174,7 @@ Calls `mq3.platform.udp.open` with `()` and returns its result.
 | `services` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L117)
 
 <a id="function-function-mq3-platform-desktop-frame-host-liveserverframe-function-liveserverframe-services-time-msec-src-mq3-platform-desktop-frame-host-ml-1766536669"></a>
 ### liveServerFrame
@@ -192,7 +192,7 @@ Returns `void` from `mq3.platform.desktop_frame_host.liveServerFrame`; earlier b
 | `msec` | `dynamic` | — | Argument 3 supplied to `services.context.serverFrameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L156)
 
 <a id="function-function-mq3-platform-desktop-frame-host-liveservices-function-liveservices-ingress-framecontext-serverframefn-clientframefn-src-mq3-platform-desktop-frame-host-ml-1234287623"></a>
 ### liveServices
@@ -211,7 +211,7 @@ Builds `mq3.platform.desktop_frame_host.Services` for `mq3.platform.desktop_fram
 | `clientFrameFn` | `dynamic` | — | Value used for `mq3.platform.desktop_frame_host.LiveContext.clientFrameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L174)
 
 <a id="function-function-mq3-platform-desktop-frame-host-liveserviceswithcommon-function-liveserviceswithcommon-ingress-framecontext-commonframefn-serverframefn-clientframefn-src-mq3-platform-desktop-frame-host-ml-1558860983"></a>
 ### liveServicesWithCommon
@@ -231,7 +231,7 @@ Builds `mq3.platform.desktop_frame_host.Services` for `mq3.platform.desktop_fram
 | `clientFrameFn` | `dynamic` | — | Value used for `mq3.platform.desktop_frame_host.LiveContext.clientFrameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L187)
 
 <a id="function-function-mq3-platform-desktop-frame-host-livesettime-function-livesettime-services-time-src-mq3-platform-desktop-frame-host-ml-2062618579"></a>
 ### liveSetTime
@@ -248,7 +248,7 @@ Returns `networkIngress.setTime(services.context.ingress,time)` from `mq3.platfo
 | `time` | `dynamic` | — | Argument 2 supplied to `services.context.commonFrameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L141)
 
 <a id="function-function-mq3-platform-desktop-frame-host-livestartup-function-livestartup-services-src-mq3-platform-desktop-frame-host-ml-2009566982"></a>
 ### liveStartup
@@ -264,7 +264,7 @@ Calls `mq3.platform.udp.startup` with `()` and returns its result.
 | `services` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L114)
 
 - [mq3.platform.desktop_frame_host.Runtime](Type-mq3-platform-desktop-frame-host-runtime-94095142.md) — struct
 - [mq3.platform.desktop_frame_host.Services](Type-mq3-platform-desktop-frame-host-services-2034917618.md) — struct
@@ -282,7 +282,7 @@ Release every resource that was acquired. Keep attempting later cleanup steps if
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.active`, `runtime.clientSocket`, `runtime.serverSocket`, `runtime.udpStarted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L216)
 
 <a id="function-function-mq3-platform-desktop-frame-host-start-function-start-configuration-services-initialtime-src-mq3-platform-desktop-frame-host-ml-1951148619"></a>
 ### start
@@ -300,7 +300,7 @@ Builds `runtime.udpStarted`, `runtime.clientSocket`, `runtime.serverSocket`, `ru
 | `initialTime` | `dynamic` | — | Value used for `mq3.platform.desktop_frame_host.Runtime.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L240)
 
 <a id="function-function-mq3-platform-desktop-frame-host-validconfig-function-validconfig-value-src-mq3-platform-desktop-frame-host-ml-1158748125"></a>
 ### validConfig
@@ -316,7 +316,7 @@ Checks endpoint presence, UDP capacities/budgets, frame timing, and endpoint por
 | `value` | `dynamic` | — | Record providing `value.clientEndpoint`, `value.serverEndpoint`, `value.packetCapacity`, `value.packetBudget`, `value.maxFrameMsec`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L196)
 
 <a id="function-function-mq3-platform-desktop-frame-host-validservices-function-validservices-value-src-mq3-platform-desktop-frame-host-ml-1228461997"></a>
 ### validServices
@@ -332,4 +332,4 @@ Computes `validServices` from `value!=void and value.startupFn!=void and value.o
 | `value` | `dynamic` | — | Record providing `value.startupFn`, `value.openFn`, `value.bindFn`, `value.closeFn`, `value.cleanupFn`, `value.createPumpFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L207)

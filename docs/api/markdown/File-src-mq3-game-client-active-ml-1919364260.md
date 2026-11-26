@@ -43,7 +43,7 @@ const AWARD_MASK = 231496
 Player-award identifier selecting the mask reward.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L41)
 
 <a id="constant-constant-mq3-game-client-active-button-attack-const-button-attack-1-src-mq3-game-client-active-ml-891113766"></a>
 ### BUTTON_ATTACK
@@ -55,7 +55,7 @@ const BUTTON_ATTACK = 1
 User-command button-mask bit requesting attack.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L29)
 
 <a id="constant-constant-mq3-game-client-active-button-gesture-const-button-gesture-8-src-mq3-game-client-active-ml-982936047"></a>
 ### BUTTON_GESTURE
@@ -67,7 +67,7 @@ const BUTTON_GESTURE = 8
 User-command button-mask bit requesting gesture.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L35)
 
 <a id="constant-constant-mq3-game-client-active-button-talk-const-button-talk-2-src-mq3-game-client-active-ml-520809367"></a>
 ### BUTTON_TALK
@@ -79,7 +79,7 @@ const BUTTON_TALK = 2
 User-command button-mask bit requesting talk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L31)
 
 <a id="constant-constant-mq3-game-client-active-button-use-holdable-const-button-use-holdable-4-src-mq3-game-client-active-ml-1627713997"></a>
 ### BUTTON_USE_HOLDABLE
@@ -91,7 +91,7 @@ const BUTTON_USE_HOLDABLE = 4
 User-command button-mask bit requesting use holdable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L33)
 
 <a id="function-function-mq3-game-client-active-clientevents-function-clientevents-level-ent-oldeventsequence-src-mq3-game-client-active-ml-519273269"></a>
 ### clientEvents
@@ -109,7 +109,7 @@ Set `ent.pain_debounce_time` to `n.add32(level.time,200)` and `ent.health` to `n
 | `oldEventSequence` | `dynamic` | — | Player event sequence value before processing the current command. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L201)
 
 <a id="function-function-mq3-game-client-active-command-function-command-client-src-mq3-game-client-active-ml-1825057625"></a>
 ### command
@@ -125,7 +125,7 @@ Create a `mq3.game.pmove.Command` record, initializing `serverTime` as `client.c
 | `client` | `dynamic` | — | Client state; accesses `cmdServerTime`, `cmdAngles`, `cmdButtons`, `cmdWeapon` and `cmdForwardmove` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L85)
 
 <a id="function-function-mq3-game-client-active-configuremove-function-configuremove-level-ent-cmd-src-mq3-game-client-active-ml-2051820087"></a>
 ### configureMove
@@ -143,7 +143,7 @@ Apply `mq3.game.pmove.create` and `mq3.game.client_active.missionpack` while eva
 | `cmd` | `dynamic` | — | Input user command; accesses `serverTime`, `angles`, `buttons`, `weapon` and `forwardmove` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L244)
 
 <a id="constant-constant-mq3-game-client-active-contents-body-const-contents-body-headers-contents-body-src-mq3-game-client-active-ml-1834261942"></a>
 ### CONTENTS_BODY
@@ -155,7 +155,7 @@ const CONTENTS_BODY = headers.CONTENTS_BODY
 Collision-contents bit identifying body space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L47)
 
 <a id="constant-constant-mq3-game-client-active-contents-botclip-const-contents-botclip-headers-contents-botclip-src-mq3-game-client-active-ml-267128645"></a>
 ### CONTENTS_BOTCLIP
@@ -167,7 +167,7 @@ const CONTENTS_BOTCLIP = headers.CONTENTS_BOTCLIP
 Collision-contents bit identifying botclip space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L49)
 
 <a id="constant-constant-mq3-game-client-active-df-no-falling-const-df-no-falling-8-src-mq3-game-client-active-ml-1522598429"></a>
 ### DF_NO_FALLING
@@ -179,7 +179,7 @@ const DF_NO_FALLING = 8
 Deathmatch-option bit enabling no falling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L53)
 
 <a id="constant-constant-mq3-game-client-active-df-no-footsteps-const-df-no-footsteps-32-src-mq3-game-client-active-ml-1856824772"></a>
 ### DF_NO_FOOTSTEPS
@@ -191,7 +191,7 @@ const DF_NO_FOOTSTEPS = 32
 Deathmatch-option bit enabling no footsteps.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L55)
 
 <a id="function-function-mq3-game-client-active-droppedflag-function-droppedflag-level-ent-powerup-item-src-mq3-game-client-active-ml-1347638024"></a>
 ### droppedFlag
@@ -210,7 +210,7 @@ Set `ent.client.ps.powerups[powerup]` to `0` in `mq3.game.client_active.droppedF
 | `item` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L187)
 
 <a id="constant-constant-mq3-game-client-active-ef-firing-const-ef-firing-256-src-mq3-game-client-active-ml-2018815044"></a>
 ### EF_FIRING
@@ -222,7 +222,7 @@ const EF_FIRING = 256
 Network entity-flag bit indicating firing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L37)
 
 <a id="constant-constant-mq3-game-client-active-ef-talk-const-ef-talk-4096-src-mq3-game-client-active-ml-535921598"></a>
 ### EF_TALK
@@ -234,7 +234,7 @@ const EF_TALK = 4096
 Network entity-flag bit indicating talk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L39)
 
 <a id="constant-constant-mq3-game-client-active-fl-force-gesture-const-fl-force-gesture-32768-src-mq3-game-client-active-ml-1199874623"></a>
 ### FL_FORCE_GESTURE
@@ -246,7 +246,7 @@ const FL_FORCE_GESTURE = 32768
 Game entity-flag bit enabling or marking force gesture.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L43)
 
 <a id="constant-constant-mq3-game-client-active-gt-harvester-const-gt-harvester-7-src-mq3-game-client-active-ml-1495214450"></a>
 ### GT_HARVESTER
@@ -258,7 +258,7 @@ const GT_HARVESTER = 7
 Game-mode identifier selecting harvester rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L65)
 
 <a id="function-function-mq3-game-client-active-impacts-function-impacts-level-ent-p-src-mq3-game-client-active-ml-1540312835"></a>
 ### impacts
@@ -276,7 +276,7 @@ Use `ent.touch` to perform `impacts`.
 | `p` | `dynamic` | — | Player movement context; accesses `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L165)
 
 <a id="function-function-mq3-game-client-active-inactivitytimer-function-inactivitytimer-level-client-slot-src-mq3-game-client-active-ml-1281027879"></a>
 ### inactivityTimer
@@ -294,7 +294,7 @@ Update `client.inactivityTime` and `client.inactivityWarning` during `inactivity
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L102)
 
 <a id="function-function-mq3-game-client-active-intermissionthink-function-intermissionthink-client-src-mq3-game-client-active-ml-1078590035"></a>
 ### intermissionThink
@@ -310,7 +310,7 @@ Update `client.ps.eFlags`, `client.oldbuttons`, `client.buttons` and `client.rea
 | `client` | `dynamic` | — | Client state; accesses `ps`, `oldbuttons`, `buttons`, `cmdButtons` and `readyToExit`. May update `client.ps.eFlags`, `client.oldbuttons` and `client.buttons` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L91)
 
 <a id="constant-constant-mq3-game-client-active-mask-playersolid-const-mask-playersolid-33619969-src-mq3-game-client-active-ml-2115738373"></a>
 ### MASK_PLAYERSOLID
@@ -322,7 +322,7 @@ const MASK_PLAYERSOLID = 33619969
 Combined CONTENTS_* mask used for playersolid collision queries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L51)
 
 <a id="function-function-mq3-game-client-active-missionpack-function-missionpack-level-src-mq3-game-client-active-ml-624338406"></a>
 ### missionpack
@@ -338,7 +338,7 @@ Test `level.spawner != void and level.spawner.missionpack` as the condition for 
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L69)
 
 <a id="function-function-mq3-game-client-active-persistenttag-function-persistenttag-level-client-src-mq3-game-client-active-ml-1665602147"></a>
 ### persistentTag
@@ -355,7 +355,7 @@ Apply `mq3.game.client_active.missionpack` and `mq3.game.constants.missionpackIt
 | `client` | `dynamic` | — | Client state; accesses `ps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L76)
 
 <a id="constant-constant-mq3-game-client-active-pmf-invulexpand-const-pmf-invulexpand-16384-src-mq3-game-client-active-ml-1668016441"></a>
 ### PMF_INVULEXPAND
@@ -367,7 +367,7 @@ const PMF_INVULEXPAND = 16384
 Player movement-state bit indicating invulexpand.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L63)
 
 <a id="function-function-mq3-game-client-active-realthink-function-realthink-level-ent-src-mq3-game-client-active-ml-1823520583"></a>
 ### realThink
@@ -384,7 +384,7 @@ Update `ent.flags`, `ent.r.mins`, `ent.r.maxs` and `ent.eventTime` and related s
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `slot`, `flags`, `r` and `eventTime` and related fields. May update `ent.flags`, `ent.r.mins` and `ent.r.maxs` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L297)
 
 <a id="function-function-mq3-game-client-active-runclient-function-runclient-level-ent-src-mq3-game-client-active-ml-508576171"></a>
 ### runClient
@@ -401,7 +401,7 @@ Set `ent.client.cmdServerTime` to `level.time` in `mq3.game.client_active.runCli
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `client`. May update `ent.client.cmdServerTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L391)
 
 <a id="constant-constant-mq3-game-client-active-spectator-follow-const-spectator-follow-2-src-mq3-game-client-active-ml-1446589147"></a>
 ### SPECTATOR_FOLLOW
@@ -413,7 +413,7 @@ const SPECTATOR_FOLLOW = 2
 Spectator-state identifier selecting follow.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L57)
 
 <a id="constant-constant-mq3-game-client-active-spectator-scoreboard-const-spectator-scoreboard-3-src-mq3-game-client-active-ml-1952050222"></a>
 ### SPECTATOR_SCOREBOARD
@@ -425,7 +425,7 @@ const SPECTATOR_SCOREBOARD = 3
 Spectator-state identifier selecting scoreboard.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L59)
 
 <a id="function-function-mq3-game-client-active-spectatorthink-function-spectatorthink-level-ent-cmd-src-mq3-game-client-active-ml-1494162125"></a>
 ### spectatorThink
@@ -443,7 +443,7 @@ Set `ent.s.origin` to `movement.copy(client.ps.origin)` in `mq3.game.client_acti
 | `cmd` | `dynamic` | — | Input user command; accesses `buttons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L279)
 
 <a id="constant-constant-mq3-game-client-active-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-client-active-ml-1399983428"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -455,7 +455,7 @@ const STAT_PERSISTANT_POWERUP = 7
 Player-state statistics index storing persistant powerup.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L61)
 
 <a id="function-function-mq3-game-client-active-stuckinotherclient-function-stuckinotherclient-level-ent-src-mq3-game-client-active-ml-570327575"></a>
 ### stuckInOtherClient
@@ -472,7 +472,7 @@ Test whether the entity overlaps a different live client using their absolute co
 | `ent` | `dynamic` | — | Game entity; accesses `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L263)
 
 <a id="constant-constant-mq3-game-client-active-svf-bot-const-svf-bot-8-src-mq3-game-client-active-ml-1665417617"></a>
 ### SVF_BOT
@@ -484,7 +484,7 @@ const SVF_BOT = 8
 Server entity-flag bit controlling bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L45)
 
 <a id="function-function-mq3-game-client-active-think-function-think-level-clientnum-src-mq3-game-client-active-ml-298440747"></a>
 ### think
@@ -501,7 +501,7 @@ Use `level.usercmdFn` to perform `think`.
 | `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L380)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L380)
 
 <a id="function-function-mq3-game-client-active-timeractions-function-timeractions-level-ent-msec-src-mq3-game-client-active-ml-150807335"></a>
 ### timerActions
@@ -519,4 +519,4 @@ Update `ent.health` during `timerActions`.
 | `msec` | `dynamic` | — | Elapsed time in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L125)

@@ -9,7 +9,7 @@ Reachable from entry: **no**
 ## Imports
 
 - `mq3/compat/textnumbers.ml` as `numbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -24,7 +24,7 @@ const AUTHORIZE_SERVER_NAME = "authorize.quake3arena.com"
 Host name of the legacy client-authorization service.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L42)
 
 <a id="function-function-mq3-server-operator-commands-banclient-function-banclient-state-value-src-mq3-server-operator-commands-ml-106888248"></a>
 ### banClient
@@ -43,7 +43,7 @@ Direct state writes: `state.authorizeType`, `state.authorizeIp`.
 | `value` | `dynamic` | — | Record exposing `ip`, `name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L301)
 
 <a id="function-function-mq3-server-operator-commands-cleanname-function-cleanname-name-src-mq3-server-operator-commands-ml-1689234371"></a>
 ### cleanName
@@ -59,7 +59,7 @@ Compute clean name in server.operator_commands; the normal completion returns `d
 | `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L229)
 
 <a id="function-function-mq3-server-operator-commands-client-function-client-state-name-addresstype-address-ip-qport-rate-ping-lastpackettime-score-src-mq3-server-operator-commands-ml-2049127178"></a>
 ### client
@@ -84,7 +84,7 @@ Create `mq3.server.operator_commands.Client` with state=state; name=name; userin
 | `score` | `dynamic` | — | Initial `score` field stored in the returned or constructed `mq3.server.operator_commands.Client` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L164)
 
 - [mq3.server.operator_commands.Client](Type-mq3-server-operator-commands-client-1675369449.md) — struct
 <a id="function-function-mq3-server-operator-commands-cmd-argv-function-cmd-argv-state-index-src-mq3-server-operator-commands-ml-1110235531"></a>
@@ -102,7 +102,7 @@ Compute cmd argv in server.operator_commands; the normal completion returns `sta
 | `index` | `dynamic` | — | Zero-based index into `state.args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L203)
 
 <a id="function-function-mq3-server-operator-commands-cmdargs-function-cmdargs-state-src-mq3-server-operator-commands-ml-1424585503"></a>
 ### cmdArgs
@@ -118,7 +118,7 @@ Compute cmd args in server.operator_commands; the normal completion returns `tex
 | `state` | `dynamic` | — | Record exposing `rawArgs`, `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L206)
 
 <a id="function-function-mq3-server-operator-commands-create-function-create-src-mq3-server-operator-commands-ml-1167802602"></a>
 ### create
@@ -130,7 +130,7 @@ function create()
 Create `mq3.server.operator_commands.State` with running=false; dedicated=false; args=[]; rawArgs=""; 25 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L166)
 
 <a id="constant-constant-mq3-server-operator-commands-cs-active-const-cs-active-4-src-mq3-server-operator-commands-ml-2007215429"></a>
 ### CS_ACTIVE
@@ -142,7 +142,7 @@ const CS_ACTIVE = 4
 Client-state value identifying an in-game client included in operator status and player management.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L18)
 
 <a id="constant-constant-mq3-server-operator-commands-cs-connected-const-cs-connected-2-src-mq3-server-operator-commands-ml-1110721141"></a>
 ### CS_CONNECTED
@@ -154,7 +154,7 @@ const CS_CONNECTED = 2
 Client lifecycle state after connection but before gamestate priming.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L14)
 
 <a id="constant-constant-mq3-server-operator-commands-cs-free-const-cs-free-0-src-mq3-server-operator-commands-ml-625889537"></a>
 ### CS_FREE
@@ -166,7 +166,7 @@ const CS_FREE = 0
 Client-state value identifying an empty slot excluded from operator player queries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L10)
 
 <a id="constant-constant-mq3-server-operator-commands-cs-primed-const-cs-primed-3-src-mq3-server-operator-commands-ml-727265884"></a>
 ### CS_PRIMED
@@ -178,7 +178,7 @@ const CS_PRIMED = 3
 Client lifecycle state after gamestate delivery and before entering active play.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L16)
 
 <a id="constant-constant-mq3-server-operator-commands-cs-warmup-const-cs-warmup-5-src-mq3-server-operator-commands-ml-1197086010"></a>
 ### CS_WARMUP
@@ -190,7 +190,7 @@ const CS_WARMUP = 5
 Server time when the match will be restarted.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L40)
 
 <a id="constant-constant-mq3-server-operator-commands-cs-zombie-const-cs-zombie-1-src-mq3-server-operator-commands-ml-1179118298"></a>
 ### CS_ZOMBIE
@@ -202,7 +202,7 @@ const CS_ZOMBIE = 1
 Client lifecycle state retaining a recently disconnected client for final messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L12)
 
 <a id="function-function-mq3-server-operator-commands-cvar-function-cvar-state-name-fallback-src-mq3-server-operator-commands-ml-1222287434"></a>
 ### cvar
@@ -220,7 +220,7 @@ Compute cvar in server.operator_commands; the normal completion returns `state.c
 | `fallback` | `dynamic` | — | Value returned unchanged by this function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L215)
 
 <a id="function-function-mq3-server-operator-commands-cvarindex-function-cvarindex-state-name-src-mq3-server-operator-commands-ml-1619065652"></a>
 ### cvarIndex
@@ -237,7 +237,7 @@ Compute cvar index in server.operator_commands; the normal completion returns `-
 | `name` | `dynamic` | — | Name used in `(state.cvars[index][0] == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L210)
 
 <a id="function-function-mq3-server-operator-commands-drop-function-drop-state-value-reason-src-mq3-server-operator-commands-ml-69688824"></a>
 ### drop
@@ -257,7 +257,7 @@ Direct state writes: `value.state`, `value.lastPacketTime`.
 | `reason` | `dynamic` | — | Text passed as `text` to `mq3.server.operator_commands.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L254)
 
 <a id="function-function-mq3-server-operator-commands-emit-function-emit-state-boundary-kind-target-text-values-src-mq3-server-operator-commands-ml-1620648369"></a>
 ### emit
@@ -280,7 +280,7 @@ Direct state writes: `state.actions`.
 | `values` | `dynamic` | — | Initial `values` field stored in the returned or constructed `mq3.server.operator_commands.Action` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L185)
 
 <a id="constant-constant-mq3-server-operator-commands-gt-ffa-const-gt-ffa-0-src-mq3-server-operator-commands-ml-880347205"></a>
 ### GT_FFA
@@ -292,7 +292,7 @@ const GT_FFA = 0
 Game-mode identifier for free-for-all play.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L36)
 
 <a id="constant-constant-mq3-server-operator-commands-gt-single-player-const-gt-single-player-2-src-mq3-server-operator-commands-ml-479259073"></a>
 ### GT_SINGLE_PLAYER
@@ -304,7 +304,7 @@ const GT_SINGLE_PLAYER = 2
 Game-mode identifier for single-player progression.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L38)
 
 <a id="function-function-mq3-server-operator-commands-hostprotected-function-hostprotected-state-value-src-mq3-server-operator-commands-ml-1758458140"></a>
 ### hostProtected
@@ -321,7 +321,7 @@ Test host protected in server.operator_commands; the normal completion returns `
 | `value` | `dynamic` | — | Record exposing `addressType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L258)
 
 <a id="function-function-mq3-server-operator-commands-infoprint-function-infoprint-state-title-value-src-mq3-server-operator-commands-ml-1617164702"></a>
 ### infoPrint
@@ -339,7 +339,7 @@ Compute info print in server.operator_commands; the normal completion returns `v
 | `value` | `dynamic` | — | Text passed as `text` to `mq3.server.operator_commands.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L342)
 
 <a id="function-function-mq3-server-operator-commands-leftpad-function-leftpad-text-width-src-mq3-server-operator-commands-ml-613189505"></a>
 ### leftPad
@@ -356,7 +356,7 @@ Compute left pad in server.operator_commands; the normal completion returns `res
 | `width` | `dynamic` | — | Width used in `(len(bytes(result)) < width)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L319)
 
 <a id="function-function-mq3-server-operator-commands-mapexists-function-mapexists-state-path-src-mq3-server-operator-commands-ml-1874198804"></a>
 ### mapExists
@@ -373,7 +373,7 @@ Test map exists in server.operator_commands; the normal completion returns `fals
 | `path` | `dynamic` | — | B passed as `b` to `mq3.server.operator_commands.same`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L226)
 
 <a id="constant-constant-mq3-server-operator-commands-na-bad-const-na-bad-1-src-mq3-server-operator-commands-ml-501162714"></a>
 ### NA_BAD
@@ -385,7 +385,7 @@ const NA_BAD = 1
 Network-address kind indicating an invalid or unsupported endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L22)
 
 <a id="constant-constant-mq3-server-operator-commands-na-bot-const-na-bot-0-src-mq3-server-operator-commands-ml-507170197"></a>
 ### NA_BOT
@@ -397,7 +397,7 @@ const NA_BOT = 0
 Network-address kind reserved for an in-process bot client.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L20)
 
 <a id="constant-constant-mq3-server-operator-commands-na-ip-const-na-ip-4-src-mq3-server-operator-commands-ml-825124093"></a>
 ### NA_IP
@@ -409,7 +409,7 @@ const NA_IP = 4
 Network-address kind for an IPv4 endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L26)
 
 <a id="constant-constant-mq3-server-operator-commands-na-loopback-const-na-loopback-2-src-mq3-server-operator-commands-ml-762711179"></a>
 ### NA_LOOPBACK
@@ -421,7 +421,7 @@ const NA_LOOPBACK = 2
 Network-address kind for local loopback delivery.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L24)
 
 <a id="function-function-mq3-server-operator-commands-playerbyname-function-playerbyname-state-name-src-mq3-server-operator-commands-ml-845118648"></a>
 ### playerByName
@@ -438,7 +438,7 @@ Compute player by name in server.operator_commands.
 | `name` | `dynamic` | — | B passed as `b` to `mq3.server.operator_commands.same`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L235)
 
 <a id="function-function-mq3-server-operator-commands-playerbynum-function-playerbynum-state-text-src-mq3-server-operator-commands-ml-263661184"></a>
 ### playerByNum
@@ -455,7 +455,7 @@ Compute player by num in server.operator_commands; the normal completion returns
 | `text` | `dynamic` | — | Null-terminated narrow numeric text accepted by the C runtime. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L243)
 
 <a id="constant-constant-mq3-server-operator-commands-port-authorize-const-port-authorize-27952-src-mq3-server-operator-commands-ml-98888268"></a>
 ### PORT_AUTHORIZE
@@ -467,7 +467,7 @@ const PORT_AUTHORIZE = 27952
 Default UDP port used by the authorization service.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L44)
 
 <a id="function-function-mq3-server-operator-commands-rightpad-function-rightpad-text-width-src-mq3-server-operator-commands-ml-265144885"></a>
 ### rightPad
@@ -484,7 +484,7 @@ Compute right pad in server.operator_commands; the normal completion returns `re
 | `width` | `dynamic` | — | Width used in `(len(bytes(result)) < width)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L323)
 
 <a id="function-function-mq3-server-operator-commands-same-function-same-a-b-src-mq3-server-operator-commands-ml-2049543095"></a>
 ### same
@@ -501,7 +501,7 @@ Compute server.operator_commands.same as `(strings.toLowerAscii(a) == strings.to
 | `b` | `dynamic` | — | B used in `strings.toLowerAscii(b)` and `(strings.toLowerAscii(a) == strings.toLowerAscii(b))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L195)
 
 <a id="function-function-mq3-server-operator-commands-say-function-say-state-text-src-mq3-server-operator-commands-ml-1116188278"></a>
 ### say
@@ -520,7 +520,7 @@ Direct state writes: `state.prints`.
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.server.operator_commands.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L191)
 
 <a id="function-function-mq3-server-operator-commands-setcvar-function-setcvar-state-name-value-src-mq3-server-operator-commands-ml-2035191383"></a>
 ### setCvar
@@ -540,7 +540,7 @@ Direct state writes: `state.cvars`.
 | `value` | `dynamic` | — | Text passed as `text` to `mq3.server.operator_commands.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L222)
 
 <a id="function-function-mq3-server-operator-commands-sethost-function-sethost-state-context-callback-src-mq3-server-operator-commands-ml-2141898343"></a>
 ### setHost
@@ -560,7 +560,7 @@ Direct state writes: `state.hostContext`, `state.hostFn`.
 | `callback` | `dynamic` | — | Callback invoked for callback; the call sites below define the callback arguments. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L175)
 
 <a id="constant-constant-mq3-server-operator-commands-snapflag-servercount-const-snapflag-servercount-4-src-mq3-server-operator-commands-ml-1871457433"></a>
 ### SNAPFLAG_SERVERCOUNT
@@ -572,7 +572,7 @@ const SNAPFLAG_SERVERCOUNT = 4
 Toggled every map_restart so transitions can be detected.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L34)
 
 <a id="constant-constant-mq3-server-operator-commands-ss-dead-const-ss-dead-0-src-mq3-server-operator-commands-ml-250779921"></a>
 ### SS_DEAD
@@ -584,7 +584,7 @@ const SS_DEAD = 0
 Server lifecycle state with no running map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
 
 <a id="constant-constant-mq3-server-operator-commands-ss-game-const-ss-game-2-src-mq3-server-operator-commands-ml-917184919"></a>
 ### SS_GAME
@@ -596,7 +596,7 @@ const SS_GAME = 2
 Server lifecycle state for an active game map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L32)
 
 <a id="constant-constant-mq3-server-operator-commands-ss-loading-const-ss-loading-1-src-mq3-server-operator-commands-ml-1780709378"></a>
 ### SS_LOADING
@@ -608,7 +608,7 @@ const SS_LOADING = 1
 Server lifecycle state while a new map and game VM are loading.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L30)
 
 <a id="function-function-mq3-server-operator-commands-starts-function-starts-a-b-src-mq3-server-operator-commands-ml-1073006123"></a>
 ### starts
@@ -625,7 +625,7 @@ Compute starts in server.operator_commands; the normal completion returns `(slic
 | `b` | `dynamic` | — | B used in `strings.toLowerAscii(b)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L199)
 
 - [mq3.server.operator_commands.State](Type-mq3-server-operator-commands-state-2040661727.md) — struct
 <a id="function-function-mq3-server-operator-commands-sv-addoperatorcommands-function-sv-addoperatorcommands-state-src-mq3-server-operator-commands-ml-2080448873"></a>
@@ -644,7 +644,7 @@ Direct state writes: `state.commandsInitialized`, `state.commandNames`.
 | `state` | `dynamic` | — | Record exposing `commandsInitialized`, `dedicated`, `commandNames`. Updated in place: `commandsInitialized`, `commandNames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L362)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L362)
 
 <a id="function-function-mq3-server-operator-commands-sv-ban-f-function-sv-ban-f-state-src-mq3-server-operator-commands-ml-1188583545"></a>
 ### SV_Ban_f
@@ -660,7 +660,7 @@ Compute ban f in server.operator_commands; the normal completion returns `banCli
 | `state` | `dynamic` | — | Record exposing `running`, `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L308)
 
 <a id="function-function-mq3-server-operator-commands-sv-bannum-f-function-sv-bannum-f-state-src-mq3-server-operator-commands-ml-126743289"></a>
 ### SV_BanNum_f
@@ -676,7 +676,7 @@ Compute ban num f in server.operator_commands; the normal completion returns `ba
 | `state` | `dynamic` | — | Record exposing `running`, `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L311)
 
 <a id="function-function-mq3-server-operator-commands-sv-consay-f-function-sv-consay-f-state-src-mq3-server-operator-commands-ml-629540549"></a>
 ### SV_ConSay_f
@@ -692,7 +692,7 @@ Test con say f in server.operator_commands; the normal completion returns `true`
 | `state` | `dynamic` | — | Record exposing `running`, `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L332)
 
 <a id="function-function-mq3-server-operator-commands-sv-dumpuser-f-function-sv-dumpuser-f-state-src-mq3-server-operator-commands-ml-958702457"></a>
 ### SV_DumpUser_f
@@ -708,7 +708,7 @@ Test dump user f in server.operator_commands; the normal completion returns `tru
 | `state` | `dynamic` | — | Record exposing `running`, `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L351)
 
 <a id="function-function-mq3-server-operator-commands-sv-heartbeat-f-function-sv-heartbeat-f-state-src-mq3-server-operator-commands-ml-576334217"></a>
 ### SV_Heartbeat_f
@@ -726,7 +726,7 @@ Direct state writes: `state.nextHeartbeat`.
 | `state` | `dynamic` | — | Record exposing `nextHeartbeat`. Updated in place: `nextHeartbeat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L337)
 
 <a id="function-function-mq3-server-operator-commands-sv-kick-f-function-sv-kick-f-state-src-mq3-server-operator-commands-ml-610688843"></a>
 ### SV_Kick_f
@@ -742,7 +742,7 @@ Test kick f in server.operator_commands; the normal completion returns `true`.
 | `state` | `dynamic` | — | Record exposing `running`, `args`, `clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L289)
 
 <a id="function-function-mq3-server-operator-commands-sv-kicknum-f-function-sv-kicknum-f-state-src-mq3-server-operator-commands-ml-1414369857"></a>
 ### SV_KickNum_f
@@ -758,7 +758,7 @@ Test kick num f in server.operator_commands; the normal completion returns `true
 | `state` | `dynamic` | — | Record exposing `running`, `args`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L314)
 
 <a id="function-function-mq3-server-operator-commands-sv-killserver-f-function-sv-killserver-f-state-src-mq3-server-operator-commands-ml-2146667081"></a>
 ### SV_KillServer_f
@@ -776,7 +776,7 @@ Direct state writes: `state.running`.
 | `state` | `dynamic` | — | Updated in place: `running`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L356)
 
 <a id="function-function-mq3-server-operator-commands-sv-map-f-function-sv-map-f-state-src-mq3-server-operator-commands-ml-1182137077"></a>
 ### SV_Map_f
@@ -794,7 +794,7 @@ Direct state writes: `state.cvars`, `state.gametype`, `state.mapname`.
 | `state` | `dynamic` | — | Record exposing `cvars`, `gametype`. Updated in place: `cvars`, `gametype`, `mapname`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L264)
 
 <a id="function-function-mq3-server-operator-commands-sv-maprestart-f-function-sv-maprestart-f-state-src-mq3-server-operator-commands-ml-493332601"></a>
 ### SV_MapRestart_f
@@ -812,7 +812,7 @@ Direct state writes: `state.restartTime`, `state.configstrings`, `state.mapname`
 | `state` | `dynamic` | — | Record exposing `frameTime`, `serverId`, `running`, `restartTime`, `args`, `time`, `configstrings` and further fields. Updated in place: `restartTime`, `configstrings`, `mapname`, `snapFlag`, `serverId`, `serverState` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L276)
 
 <a id="function-function-mq3-server-operator-commands-sv-removeoperatorcommands-function-sv-removeoperatorcommands-state-src-mq3-server-operator-commands-ml-1948320697"></a>
 ### SV_RemoveOperatorCommands
@@ -828,7 +828,7 @@ Compute server.operator_commands.SV_RemoveOperatorCommands as `0`.
 | `state` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L367)
 
 <a id="function-function-mq3-server-operator-commands-sv-serverinfo-f-function-sv-serverinfo-f-state-src-mq3-server-operator-commands-ml-322697865"></a>
 ### SV_Serverinfo_f
@@ -844,7 +844,7 @@ Return `mq3.server.operator_commands.infoPrint(state, "Server info settings:", c
 | `state` | `dynamic` | — | State passed as `state` to `mq3.server.operator_commands.infoPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L345)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L345)
 
 <a id="function-function-mq3-server-operator-commands-sv-status-f-function-sv-status-f-state-src-mq3-server-operator-commands-ml-1359708471"></a>
 ### SV_Status_f
@@ -860,7 +860,7 @@ Compute status f in server.operator_commands; the normal completion returns `tex
 | `state` | `dynamic` | — | Record exposing `running`, `mapname`, `clients`, `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L326)
 
 <a id="function-function-mq3-server-operator-commands-sv-systeminfo-f-function-sv-systeminfo-f-state-src-mq3-server-operator-commands-ml-456536153"></a>
 ### SV_Systeminfo_f
@@ -876,4 +876,4 @@ Return `mq3.server.operator_commands.infoPrint(state, "System info settings:", c
 | `state` | `dynamic` | — | State passed as `state` to `mq3.server.operator_commands.infoPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L348)

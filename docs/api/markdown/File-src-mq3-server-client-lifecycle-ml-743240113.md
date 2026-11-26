@@ -34,7 +34,7 @@ Return `mq3.shared.info.copy(value, 32)` from `server.client_lifecycle.boundedNa
 | `value` | `dynamic` | — | Text passed as `text` to `mq3.shared.info.copy`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L181)
 
 <a id="function-function-mq3-server-client-lifecycle-call2-function-call2-callback-host-a-b-src-mq3-server-client-lifecycle-ml-247173484"></a>
 ### call2
@@ -53,7 +53,7 @@ Compute call 2 in server.client_lifecycle.
 | `b` | `dynamic` | — | B used in `callback(host, a, b)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L170)
 
 <a id="function-function-mq3-server-client-lifecycle-call3-function-call3-callback-host-a-b-c-src-mq3-server-client-lifecycle-ml-191686421"></a>
 ### call3
@@ -73,7 +73,7 @@ Compute call 3 in server.client_lifecycle.
 | `c` | `dynamic` | — | C used in `callback(host, a, b, c)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L177)
 
 - [mq3.server.client_lifecycle.Client](Type-mq3-server-client-lifecycle-client-2065191686.md) — struct
 <a id="function-function-mq3-server-client-lifecycle-cliententerworld-function-cliententerworld-server-client-clientnum-cmd-host-src-mq3-server-client-lifecycle-ml-1543160679"></a>
@@ -96,7 +96,7 @@ Direct state writes: `client.state`, `client.gentityNumber`, `client.deltaMessag
 | `host` | `dynamic` | — | Record exposing `gameBeginFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L324)
 
 <a id="function-function-mq3-server-client-lifecycle-commandargs-function-commandargs-parser-src-mq3-server-client-lifecycle-ml-340338609"></a>
 ### commandArgs
@@ -112,7 +112,7 @@ Compute command args in server.client_lifecycle; the normal completion returns `
 | `parser` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.argc`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L374)
 
 <a id="function-function-mq3-server-client-lifecycle-contains-function-contains-values-wanted-src-mq3-server-client-lifecycle-ml-468848807"></a>
 ### contains
@@ -129,7 +129,7 @@ Test client lifecycle in server.client_lifecycle; the normal completion returns 
 | `wanted` | `dynamic` | — | Wanted used in `(value == wanted)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L236)
 
 <a id="function-function-mq3-server-client-lifecycle-createclient-function-createclient-src-mq3-server-client-lifecycle-ml-1266657790"></a>
 ### createClient
@@ -141,7 +141,7 @@ function createClient()
 Create `mq3.server.client_lifecycle.Client` with state=CS_FREE; name=""; userinfo=""; addressText=""; 19 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L89)
 
 <a id="function-function-mq3-server-client-lifecycle-createserver-function-createserver-clientcount-src-mq3-server-client-lifecycle-ml-2146492190"></a>
 ### createServer
@@ -157,7 +157,7 @@ Create server in server.client_lifecycle; the normal completion returns `Server(
 | `clientCount` | `dynamic` | — | Client count used in `(clientCount - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L126)
 
 <a id="constant-constant-mq3-server-client-lifecycle-cs-active-const-cs-active-4-src-mq3-server-client-lifecycle-ml-539603781"></a>
 ### CS_ACTIVE
@@ -169,7 +169,7 @@ const CS_ACTIVE = 4
 Client-state value identifying a client that has completed entry into the game world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L26)
 
 <a id="constant-constant-mq3-server-client-lifecycle-cs-connected-const-cs-connected-2-src-mq3-server-client-lifecycle-ml-1341573177"></a>
 ### CS_CONNECTED
@@ -181,7 +181,7 @@ const CS_CONNECTED = 2
 Client lifecycle state after connection but before gamestate priming.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L22)
 
 <a id="constant-constant-mq3-server-client-lifecycle-cs-free-const-cs-free-0-src-mq3-server-client-lifecycle-ml-1045330745"></a>
 ### CS_FREE
@@ -193,7 +193,7 @@ const CS_FREE = 0
 Client-state value identifying a slot with no live client lifecycle to manage.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L18)
 
 <a id="constant-constant-mq3-server-client-lifecycle-cs-primed-const-cs-primed-3-src-mq3-server-client-lifecycle-ml-1315003270"></a>
 ### CS_PRIMED
@@ -205,7 +205,7 @@ const CS_PRIMED = 3
 Client lifecycle state after gamestate delivery and before entering active play.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L24)
 
 <a id="constant-constant-mq3-server-client-lifecycle-cs-zombie-const-cs-zombie-1-src-mq3-server-client-lifecycle-ml-1450685176"></a>
 ### CS_ZOMBIE
@@ -217,7 +217,7 @@ const CS_ZOMBIE = 1
 Client lifecycle state retaining a recently disconnected client for final messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L20)
 
 <a id="function-function-mq3-server-client-lifecycle-dispatchbuiltin-function-dispatchbuiltin-runtime-client-name-parser-src-mq3-server-client-lifecycle-ml-671201433"></a>
 ### dispatchBuiltin
@@ -236,7 +236,7 @@ Productive callback for client_command_dispatch.Services.builtinFn.
 | `parser` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.argv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L380)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L380)
 
 <a id="function-function-mq3-server-client-lifecycle-dropclient-function-dropclient-server-client-clientnum-reason-host-src-mq3-server-client-lifecycle-ml-389149843"></a>
 ### dropClient
@@ -258,7 +258,7 @@ Direct state writes: `client.state`, `client.userinfo`.
 | `host` | `dynamic` | — | Record exposing `challengeDisconnectFn`, `closeDownloadFn`, `broadcastFn`, `gameDisconnectFn`, `sendCommandFn`, `botFreeFn`, `setUserinfoFn` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L344)
 
 <a id="constant-constant-mq3-server-client-lifecycle-max-msglen-const-max-msglen-16384-src-mq3-server-client-lifecycle-ml-1812458653"></a>
 ### MAX_MSGLEN
@@ -270,7 +270,7 @@ const MAX_MSGLEN = 16384
 Maximum byte length of a complete sequenced network message.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="function-function-mq3-server-client-lifecycle-packetbytes-function-packetbytes-msg-src-mq3-server-client-lifecycle-ml-1500669035"></a>
 ### packetBytes
@@ -286,7 +286,7 @@ Compute packet bytes in server.client_lifecycle; the normal completion returns `
 | `msg` | `dynamic` | — | Record exposing `cursize`, `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L291)
 
 <a id="function-function-mq3-server-client-lifecycle-resetpureclient-function-resetpureclient-client-src-mq3-server-client-lifecycle-ml-461837369"></a>
 ### resetPureClient
@@ -304,7 +304,7 @@ Direct state writes: `client.pureAuthentic`, `client.gotCP`.
 | `client` | `dynamic` | — | Updated in place: `pureAuthentic`, `gotCP`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L228)
 
 <a id="function-function-mq3-server-client-lifecycle-runtime-function-runtime-server-host-clientnum-src-mq3-server-client-lifecycle-ml-1514735826"></a>
 ### runtime
@@ -322,7 +322,7 @@ Create `mq3.server.client_lifecycle.Runtime` with server=server; host=host; clie
 | `clientNum` | `dynamic` | — | Initial `clientNum` field stored in the returned or constructed `mq3.server.client_lifecycle.Runtime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L400)
 
 - [mq3.server.client_lifecycle.Runtime](Type-mq3-server-client-lifecycle-runtime-68527011.md) — struct
 <a id="function-function-mq3-server-client-lifecycle-sendclientgamestate-function-sendclientgamestate-server-client-clientnum-host-src-mq3-server-client-lifecycle-ml-1050279875"></a>
@@ -344,7 +344,7 @@ Direct state writes: `client.state`, `client.pureAuthentic`, `client.gotCP`, `cl
 | `host` | `dynamic` | — | Record exposing `transmitFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L299)
 
 - [mq3.server.client_lifecycle.Server](Type-mq3-server-client-lifecycle-server-1562721514.md) — struct
 <a id="function-function-mq3-server-client-lifecycle-services-function-services-src-mq3-server-client-lifecycle-ml-586833726"></a>
@@ -357,7 +357,7 @@ function services()
 Create `mq3.server.client_lifecycle.Services` with context=void; transmitFn=void; snapshotFn=void; dropFn=void; 10 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L164)
 
 - [mq3.server.client_lifecycle.Services](Type-mq3-server-client-lifecycle-services-1455886397.md) — struct
 <a id="function-function-mq3-server-client-lifecycle-sv-cliententerworld-function-sv-cliententerworld-server-client-clientnum-cmd-host-src-mq3-server-client-lifecycle-ml-1290002293"></a>
@@ -378,7 +378,7 @@ Return `mq3.server.client_lifecycle.clientEnterWorld(server, client, clientNum, 
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.server.client_lifecycle.clientEnterWorld`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L334)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-disconnect-f-function-sv-disconnect-f-server-client-clientnum-host-src-mq3-server-client-lifecycle-ml-1933778373"></a>
 ### SV_Disconnect_f
@@ -397,7 +397,7 @@ Return `mq3.server.client_lifecycle.dropClient(server, client, clientNum, "disco
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.server.client_lifecycle.dropClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L370)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-dropclient-function-sv-dropclient-server-client-clientnum-reason-host-src-mq3-server-client-lifecycle-ml-1196432779"></a>
 ### SV_DropClient
@@ -417,7 +417,7 @@ Return `mq3.server.client_lifecycle.dropClient(server, client, clientNum, reason
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.server.client_lifecycle.dropClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L364)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-resetpureclient-f-function-sv-resetpureclient-f-client-src-mq3-server-client-lifecycle-ml-2000707433"></a>
 ### SV_ResetPureClient_f
@@ -433,7 +433,7 @@ Return `mq3.server.client_lifecycle.resetPureClient(client)` from `server.client
 | `client` | `dynamic` | — | Client passed as `client` to `mq3.server.client_lifecycle.resetPureClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L231)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-sendclientgamestate-function-sv-sendclientgamestate-server-client-clientnum-host-src-mq3-server-client-lifecycle-ml-1167420067"></a>
 ### SV_SendClientGameState
@@ -452,7 +452,7 @@ Return `mq3.server.client_lifecycle.sendClientGameState(server, client, clientNu
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.server.client_lifecycle.sendClientGameState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L314)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-updateuserinfo-f-function-sv-updateuserinfo-f-server-client-text-host-clientnum-src-mq3-server-client-lifecycle-ml-140518660"></a>
 ### SV_UpdateUserinfo_f
@@ -472,7 +472,7 @@ Return `mq3.server.client_lifecycle.updateUserinfo(server, client, text, host, c
 | `clientNum` | `dynamic` | — | Client num passed as `clientNum` to `mq3.server.client_lifecycle.updateUserinfo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L223)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-userinfochanged-function-sv-userinfochanged-server-client-src-mq3-server-client-lifecycle-ml-398398870"></a>
 ### SV_UserinfoChanged
@@ -489,7 +489,7 @@ Return `mq3.server.client_lifecycle.userinfoChanged(client, server.dedicated, se
 | `client` | `dynamic` | — | Client passed as `client` to `mq3.server.client_lifecycle.userinfoChanged`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L203)
 
 <a id="function-function-mq3-server-client-lifecycle-sv-verifypaks-f-function-sv-verifypaks-f-server-client-args-host-clientnum-src-mq3-server-client-lifecycle-ml-103516218"></a>
 ### SV_VerifyPaks_f
@@ -509,7 +509,7 @@ Return `mq3.server.client_lifecycle.verifyPaks(server, client, args, host, clien
 | `clientNum` | `dynamic` | — | Client num passed as `clientNum` to `mq3.server.client_lifecycle.verifyPaks`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L287)
 
 <a id="constant-constant-mq3-server-client-lifecycle-svc-baseline-const-svc-baseline-4-src-mq3-server-client-lifecycle-ml-1043458391"></a>
 ### SVC_BASELINE
@@ -521,7 +521,7 @@ const SVC_BASELINE = 4
 Server-to-client opcode introducing an entity state used as a delta baseline.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L32)
 
 <a id="constant-constant-mq3-server-client-lifecycle-svc-configstring-const-svc-configstring-3-src-mq3-server-client-lifecycle-ml-56736800"></a>
 ### SVC_CONFIGSTRING
@@ -533,7 +533,7 @@ const SVC_CONFIGSTRING = 3
 Server-to-client opcode introducing an indexed configuration string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L30)
 
 <a id="constant-constant-mq3-server-client-lifecycle-svc-eof-const-svc-eof-8-src-mq3-server-client-lifecycle-ml-1943557945"></a>
 ### SVC_EOF
@@ -545,7 +545,7 @@ const SVC_EOF = 8
 Server-to-client opcode marking the end of a message.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L34)
 
 <a id="constant-constant-mq3-server-client-lifecycle-svc-gamestate-const-svc-gamestate-2-src-mq3-server-client-lifecycle-ml-2077129547"></a>
 ### SVC_GAMESTATE
@@ -557,7 +557,7 @@ const SVC_GAMESTATE = 2
 Server-to-client opcode introducing the initial configuration and entity baselines.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L28)
 
 <a id="function-function-mq3-server-client-lifecycle-updateuserinfo-function-updateuserinfo-server-client-text-host-clientnum-src-mq3-server-client-lifecycle-ml-736024346"></a>
 ### updateUserinfo
@@ -579,7 +579,7 @@ Direct state writes: `client.userinfo`.
 | `clientNum` | `dynamic` | — | A passed as `a` to `mq3.server.client_lifecycle.call2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L213)
 
 <a id="function-function-mq3-server-client-lifecycle-userinfochanged-function-userinfochanged-client-dedicated-lanforcerate-src-mq3-server-client-lifecycle-ml-1872953778"></a>
 ### userinfoChanged
@@ -599,7 +599,7 @@ Direct state writes: `client.name`, `client.rate`, `client.userinfo`, `client.sn
 | `lanForceRate` | `dynamic` | — | Lan force rate used in `(lanForceRate == 1)` and `((client.lan and (dedicated != 2)) and (lanForceRate == 1))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L188)
 
 <a id="function-function-mq3-server-client-lifecycle-verifypaks-function-verifypaks-server-client-args-host-clientnum-src-mq3-server-client-lifecycle-ml-400857572"></a>
 ### verifyPaks
@@ -621,4 +621,4 @@ Direct state writes: `client.gotCP`, `client.pureAuthentic`, `client.nextSnapsho
 | `clientNum` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_lifecycle.ml#L245)

@@ -12,7 +12,7 @@ Reachable from entry: **yes**
 - `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/bsp_render_data.ml` as `renderData` → [src/mq3/renderer/bsp_render_data.ml](File-src-mq3-renderer-bsp-render-data-ml-926244912.md)
 - `mq3/renderer/playable_world_batch.ml` as `worldBatch` → [src/mq3/renderer/playable_world_batch.ml](File-src-mq3-renderer-playable-world-batch-ml-1411140007.md)
-- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/hashmap.ml` as `maps` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
 
 ## Declarations
 
@@ -32,7 +32,7 @@ Builds `origins[index]`, `axes[index]`, `bounds[index]` in `mq3.renderer.qvm_sce
 | `lightCatalog` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_world_batch.attachDynamicLightsOriented`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L251)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-attachfog-function-attachfog-prepared-catalog-src-mq3-renderer-qvm-scene-batch-ml-796632042"></a>
 ### attachFog
@@ -49,7 +49,7 @@ Computes `attachFog` from `attached+depthAttached` using `mq3.renderer.playable_
 | `catalog` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_world_batch.attachFog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L240)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-build-function-build-catalog-src-mq3-renderer-qvm-scene-batch-ml-1897744505"></a>
 ### build
@@ -65,7 +65,7 @@ Calls `mq3.renderer.qvm_scene_batch.buildWithGeometry` with `(catalog,void)` and
 | `catalog` | `dynamic` | — | Value forwarded as `catalog` to `mq3.renderer.qvm_scene_batch.buildWithGeometry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L232)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-buildshadowbatch-function-buildshadowbatch-catalog-scenegeometry-existing-src-mq3-renderer-qvm-scene-batch-ml-262391222"></a>
 ### buildShadowBatch
@@ -83,7 +83,7 @@ Computes `buildShadowBatch` from `existing` using `mq3.renderer.qvm_scene_batch.
 | `existing` | `dynamic` | — | Input used by `batch=existing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L101)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-buildwithgeometry-function-buildwithgeometry-catalog-scenegeometry-src-mq3-renderer-qvm-scene-batch-ml-2077358701"></a>
 ### buildWithGeometry
@@ -100,7 +100,7 @@ Calls `mq3.renderer.qvm_scene_batch.refreshWithGeometry` with `(Prepared(void,vo
 | `sceneGeometry` | `dynamic` | — | Value forwarded as `sceneGeometry` to `mq3.renderer.qvm_scene_batch.refreshWithGeometry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L227)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-convert-function-convert-catalog-src-mq3-renderer-qvm-scene-batch-ml-761945963"></a>
 ### convert
@@ -116,7 +116,7 @@ Returns `prepared.geometry` from `mq3.renderer.qvm_scene_batch.convert`; earlier
 | `catalog` | `dynamic` | — | Record providing `catalog.triangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L190)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-convertedvertex-function-convertedvertex-triangle-corner-sourceindex-src-mq3-renderer-qvm-scene-batch-ml-878015248"></a>
 ### convertedVertex
@@ -134,7 +134,7 @@ Forwards `convertedVertex` to `mq3.renderer.bsp_render_data.RenderVertex` and re
 | `sourceIndex` | `dynamic` | — | Argument 9 supplied to `mq3.renderer.bsp_render_data.RenderVertex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L41)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-depthhack-inline-function-depthhack-triangle-returns-bool-src-mq3-renderer-qvm-scene-batch-ml-1905490860"></a>
 ### depthHack
@@ -152,7 +152,7 @@ Tests the RF_DEPTHHACK render flag on a source triangle.
 
 **Returns:** True when RF_DEPTHHACK is set.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L56)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-draw-function-draw-prepared-projection-nowmilliseconds-src-mq3-renderer-qvm-scene-batch-ml-862212894"></a>
 ### draw
@@ -170,7 +170,7 @@ Computes `draw` from `drawn+depthDrawn` using `mq3.renderer.playable_world_batch
 | `nowMilliseconds` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_world_batch.drawMaterials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L268)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawlit-function-drawlit-prepared-projection-nowmilliseconds-lights-src-mq3-renderer-qvm-scene-batch-ml-253185767"></a>
 ### drawLit
@@ -189,7 +189,7 @@ Computes `drawLit` from `drawn+depthDrawn` using `mq3.renderer.playable_world_ba
 | `lights` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_world_batch.drawMaterialsLit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L294)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawlitviewport-function-drawlitviewport-prepared-projection-area-nowmilliseconds-lights-src-mq3-renderer-qvm-scene-batch-ml-1712990510"></a>
 ### drawLitViewport
@@ -209,7 +209,7 @@ Computes `drawLitViewport` from `drawn+depthDrawn` using `mq3.renderer.playable_
 | `lights` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_world_batch.drawMaterialsLitViewport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L308)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawlitviewportshadows-function-drawlitviewportshadows-prepared-projection-area-nowmilliseconds-lights-mirror-src-mq3-renderer-qvm-scene-batch-ml-476187121"></a>
 ### drawLitViewportShadows
@@ -230,7 +230,7 @@ Computes `drawLitViewportShadows` from `drawn+shadows` using `mq3.renderer.qvm_s
 | `mirror` | `dynamic` | — | Value forwarded as `mirror` to `mq3.renderer.qvm_scene_batch.drawStencilShadows`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L346)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawstencilshadows-function-drawstencilshadows-prepared-projection-area-mirror-src-mq3-renderer-qvm-scene-batch-ml-1125882752"></a>
 ### drawStencilShadows
@@ -249,7 +249,7 @@ RB_ShadowTessEnd increments front-facing volume sides and decrements back sides;
 | `mirror` | `dynamic` | — | Input tested by `mirror`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L323)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-drawviewport-function-drawviewport-prepared-projection-area-nowmilliseconds-src-mq3-renderer-qvm-scene-batch-ml-752104675"></a>
 ### drawViewport
@@ -268,7 +268,7 @@ Computes `drawViewport` from `drawn+depthDrawn` using `mq3.renderer.playable_wor
 | `nowMilliseconds` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_world_batch.drawMaterialsViewport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L281)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-fail-function-fail-message-src-mq3-renderer-qvm-scene-batch-ml-313133781"></a>
 ### fail
@@ -284,7 +284,7 @@ Creates error `7681` with message `"QVM scene batch: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7681,"QVM scene batch: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L36)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-policyopaque-function-policyopaque-policies-entityindex-surfaceindex-src-mq3-renderer-qvm-scene-batch-ml-1360262994"></a>
 ### policyOpaque
@@ -302,7 +302,7 @@ Computes `policies.get(shadowPolicyKey(entityIndex,surfaceIndex))==true` for `mq
 | `surfaceIndex` | `dynamic` | — | Value forwarded as `surfaceIndex` to `mq3.renderer.qvm_scene_batch.shadowPolicyKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L94)
 
 - [mq3.renderer.qvm_scene_batch.Prepared](Type-mq3-renderer-qvm-scene-batch-prepared-1944088064.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-batch-preparegeometry-function-preparegeometry-prepared-catalog-src-mq3-renderer-qvm-scene-batch-ml-528132954"></a>
@@ -320,7 +320,7 @@ Each view owns its vertex records. Preserve catalog order within each pass and a
 | `catalog` | `dynamic` | — | Record providing `catalog.triangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L158)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-preparematerials-function-preparematerials-previous-geometry-catalog-skyflags-src-mq3-renderer-qvm-scene-batch-ml-1292875292"></a>
 ### prepareMaterials
@@ -339,7 +339,7 @@ Computes `prepareMaterials` from `worldBatch.buildMaterials(geometry,catalog,sky
 | `skyFlags` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_world_batch.refreshMaterials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L200)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-batch-projection-shadow-shader-const-projection-shadow-shader-mq3-projectionshadow-src-mq3-renderer-qvm-scene-batch-ml-1453794458"></a>
 ### PROJECTION_SHADOW_SHADER
@@ -351,7 +351,7 @@ const PROJECTION_SHADOW_SHADER = "$mq3/projectionShadow"
 Builtin shader name used for projected entity shadows.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L14)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-receivesdynamiclight-inline-function-receivesdynamiclight-catalog-resolved-returns-bool-src-mq3-renderer-qvm-scene-batch-ml-127327499"></a>
 ### receivesDynamicLight
@@ -370,7 +370,7 @@ Tests whether a resolved triangle requests dynamic lighting and references an op
 
 **Returns:** True when the source requests dynamic lighting and its valid material has sort <= 3.0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L65)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-refresh-function-refresh-prepared-catalog-src-mq3-renderer-qvm-scene-batch-ml-669271742"></a>
 ### refresh
@@ -387,7 +387,7 @@ Calls `mq3.renderer.qvm_scene_batch.refreshWithGeometry` with `(prepared,catalog
 | `catalog` | `dynamic` | — | Value forwarded as `catalog` to `mq3.renderer.qvm_scene_batch.refreshWithGeometry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L236)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-refreshwithgeometry-function-refreshwithgeometry-prepared-catalog-scenegeometry-src-mq3-renderer-qvm-scene-batch-ml-713365208"></a>
 ### refreshWithGeometry
@@ -405,7 +405,7 @@ Updates `prepared.batch`, `prepared.depthHackBatch`, `prepared.shadowBatch`, `pr
 | `sceneGeometry` | `dynamic` | — | Value forwarded as `sceneGeometry` to `mq3.renderer.qvm_scene_batch.buildShadowBatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L213)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-release-function-release-catalog-src-mq3-renderer-qvm-scene-batch-ml-1740659479"></a>
 ### release
@@ -421,7 +421,7 @@ Calls `mq3.renderer.playable_world_batch.releaseMaterials` with `(catalog)` and 
 | `catalog` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_world_batch.releaseMaterials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L263)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-renderable-function-renderable-resolved-returns-bool-src-mq3-renderer-qvm-scene-batch-ml-2006936455"></a>
 ### renderable
@@ -439,7 +439,7 @@ Rejects unresolved projection-shadow triangles while retaining ordinary unresolv
 
 **Returns:** True for a resolved material or a non-projection-shadow triangle.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L60)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-batch-rf-depthhack-const-rf-depthhack-8-src-mq3-renderer-qvm-scene-batch-ml-429110291"></a>
 ### RF_DEPTHHACK
@@ -451,7 +451,7 @@ const RF_DEPTHHACK = 8
 Entity-rendering flag that uses the shortened depth range for first-person weapons.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L12)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-shadowpolicies-function-shadowpolicies-catalog-src-mq3-renderer-qvm-scene-batch-ml-1650763977"></a>
 ### shadowPolicies
@@ -467,7 +467,7 @@ RB_ShadowTessEnd only receives opaque surfaces (SS_OPAQUE) outside fog. Cache th
 | `catalog` | `dynamic` | — | Record providing `catalog.triangles`, `catalog.materials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L78)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-shadowpolicykey-function-shadowpolicykey-entityindex-surfaceindex-src-mq3-renderer-qvm-scene-batch-ml-1338077182"></a>
 ### shadowPolicyKey
@@ -484,7 +484,7 @@ Computes `entityIndex*1048576+surfaceIndex` for `mq3.renderer.qvm_scene_batch.sh
 | `surfaceIndex` | `dynamic` | — | Input used in the result expression `entityIndex*1048576+surfaceIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L72)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-sizegeometry-function-sizegeometry-previous-count-as-int-src-mq3-renderer-qvm-scene-batch-ml-147975257"></a>
 ### sizeGeometry
@@ -501,7 +501,7 @@ Builds `triangles[i]` in `mq3.renderer.qvm_scene_batch.sizeGeometry`; returns `r
 | `count` | `int` | — | Argument 1 supplied to `array`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L116)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-sourcevertexid-function-sourcevertexid-triangle-corner-as-int-fallback-as-int-returns-int-src-mq3-renderer-qvm-scene-batch-ml-747956651"></a>
 ### sourceVertexId
@@ -521,7 +521,7 @@ Uses a valid nonnegative source vertex ID when available, otherwise preserving t
 
 **Returns:** The stored nonnegative vertex ID, or fallback.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L49)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-updateconvertedvertex-function-updateconvertedvertex-target-triangle-corner-as-int-sourceindex-as-int-src-mq3-renderer-qvm-scene-batch-ml-433793717"></a>
 ### updateConvertedVertex
@@ -540,7 +540,7 @@ Updates `target.position`, `target.baseUV`, `target.lightmapUV`, `target.normal`
 | `sourceIndex` | `int` | — | Value assigned to `target.sourceIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L133)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-upload-function-upload-catalog-src-mq3-renderer-qvm-scene-batch-ml-2011520225"></a>
 ### upload
@@ -556,7 +556,7 @@ Calls `mq3.renderer.playable_world_batch.uploadMaterials` with `(catalog)` and r
 | `catalog` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_world_batch.uploadMaterials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L260)
 
 <a id="function-function-mq3-renderer-qvm-scene-batch-writetriangle-function-writetriangle-geometry-index-as-int-resolved-fallbackbase-as-int-src-mq3-renderer-qvm-scene-batch-ml-1594069203"></a>
 ### writeTriangle
@@ -575,4 +575,4 @@ Updates `geometry.triangles[index]` in `mq3.renderer.qvm_scene_batch.writeTriang
 | `fallbackBase` | `int` | — | Input used by `fallback=fallbackBase+index*3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/qvm_scene_batch.ml#L142)

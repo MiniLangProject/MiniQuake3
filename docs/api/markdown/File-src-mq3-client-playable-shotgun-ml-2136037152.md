@@ -31,7 +31,7 @@ Copies three vector components with float32 rounding for playable shotgun.
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L78)
 
 <a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-count-const-default-shotgun-count-11-src-mq3-client-playable-shotgun-ml-120540715"></a>
 ### DEFAULT_SHOTGUN_COUNT
@@ -43,7 +43,7 @@ const DEFAULT_SHOTGUN_COUNT = 11
 Fallback shotgun count setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-damage-const-default-shotgun-damage-10-src-mq3-client-playable-shotgun-ml-1067252832"></a>
 ### DEFAULT_SHOTGUN_DAMAGE
@@ -55,7 +55,7 @@ const DEFAULT_SHOTGUN_DAMAGE = 10
 Fallback shotgun damage setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L21)
 
 <a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-spread-const-default-shotgun-spread-700-src-mq3-client-playable-shotgun-ml-859614816"></a>
 ### DEFAULT_SHOTGUN_SPREAD
@@ -67,7 +67,7 @@ const DEFAULT_SHOTGUN_SPREAD = 700
 Fallback shotgun spread setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L15)
 
 <a id="function-function-mq3-client-playable-shotgun-fail-function-fail-message-src-mq3-client-playable-shotgun-ml-1057269955"></a>
 ### fail
@@ -83,7 +83,7 @@ Creates the playable shotgun error `7595` with diagnostic text `"playable shotgu
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"playable shotgun: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L72)
 
 <a id="function-function-mq3-client-playable-shotgun-fire-function-fire-world-targetstate-origin-origin2-seed-now-src-mq3-client-playable-shotgun-ml-1165289031"></a>
 ### fire
@@ -104,7 +104,7 @@ Calls `mq3.client.playable_shotgun.fireWithTrace` from playable shotgun `fire`. 
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L161)
 
 <a id="function-function-mq3-client-playable-shotgun-firewithtrace-function-firewithtrace-tracefn-context-targetstate-origin-origin2-seed-now-src-mq3-client-playable-shotgun-ml-315736729"></a>
 ### fireWithTrace
@@ -126,7 +126,7 @@ The BSP endpoint bounds playableTargets.applyShot, so a wall always shields a ta
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L135)
 
 <a id="constant-constant-mq3-client-playable-shotgun-pattern-range-const-pattern-range-131072-src-mq3-client-playable-shotgun-ml-1130570749"></a>
 ### PATTERN_RANGE
@@ -138,7 +138,7 @@ const PATTERN_RANGE = 131072
 Forward ray distance used to construct the deterministic shotgun pellet pattern.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L23)
 
 <a id="function-function-mq3-client-playable-shotgun-patternendpoints-function-patternendpoints-origin-origin2-seed-src-mq3-client-playable-shotgun-ml-10554679"></a>
 ### patternEndpoints
@@ -156,7 +156,7 @@ This is ShotgunPattern's client/server-shared deterministic spread loop. origin2
 | `seed` | `dynamic` | — | Value used by `randomState=qmath.RandomState(numeric.i32(seed))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L93)
 
 - [mq3.client.playable_shotgun.Pellet](Type-mq3-client-playable-shotgun-pellet-1813882538.md) — struct
 <a id="constant-constant-mq3-client-playable-shotgun-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-shotgun-ml-410773535"></a>
@@ -169,7 +169,7 @@ const SHOT_MASK = 100663297
 code/game/bg_public.h and code/game/g_weapon.c.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L12)
 
 <a id="function-function-mq3-client-playable-shotgun-tracepellets-function-tracepellets-tracefn-context-origin-endpoints-src-mq3-client-playable-shotgun-ml-1518935824"></a>
 ### tracePellets
@@ -188,7 +188,7 @@ Calls `traceFn`, `mq3.client.playable_shotgun.copyPoint`, `mq3.client.playable_s
 | `endpoints` | `dynamic` | — | Value used by `for each intended in endpoints`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L114)
 
 <a id="function-function-mq3-client-playable-shotgun-validpoint-function-validpoint-value-src-mq3-client-playable-shotgun-ml-1700336745"></a>
 ### validPoint
@@ -204,7 +204,7 @@ Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L75)
 
 <a id="function-function-mq3-client-playable-shotgun-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-shotgun-ml-1251212770"></a>
 ### worldPointTrace
@@ -222,4 +222,4 @@ Adapts `mq3.collision.world.boxTrace` to playable shotgun `worldPointTrace`, ret
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L84)

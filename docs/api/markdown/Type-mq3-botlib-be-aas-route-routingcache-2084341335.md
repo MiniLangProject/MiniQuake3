@@ -12,7 +12,7 @@ struct RoutingCache
 `RoutingCache` record for be aas route, containing `size`, `cluster`, `areaNum`, `travelFlags` and `travelTimes` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L38)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaNum
 Goal area for which this legacy routing-cache record stores travel costs.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L44)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-cluster-cluster-src-mq3-botlib-be-aas-route-ml-1358482991"></a>
 ### cluster
@@ -38,7 +38,7 @@ cluster
 Cluster the cache is for.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L42)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-linked-linked-src-mq3-botlib-be-aas-route-ml-912715157"></a>
 ### linked
@@ -50,7 +50,7 @@ linked
 True when this entity or resource is linked into the world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L54)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-payloadtype-payloadtype-src-mq3-botlib-be-aas-route-ml-1843024655"></a>
 ### payloadType
@@ -62,7 +62,7 @@ payloadType
 Discriminator selecting the area or portal routing-table payload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L56)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-reachabilities-reachabilities-src-mq3-botlib-be-aas-route-ml-342612673"></a>
 ### reachabilities
@@ -74,7 +74,7 @@ reachabilities
 Reachabilities used for routing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L50)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-size-size-src-mq3-botlib-be-aas-route-ml-1485163241"></a>
 ### size
@@ -86,7 +86,7 @@ size
 Size of the routing cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L40)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-time-time-src-mq3-botlib-be-aas-route-ml-1559646441"></a>
 ### time
@@ -98,7 +98,7 @@ time
 Last time accessed or updated.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L52)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-travelflags-travelflags-src-mq3-botlib-be-aas-route-ml-1199593215"></a>
 ### travelFlags
@@ -110,7 +110,7 @@ travelFlags
 Combined AAS travel permissions used to select routes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L46)
 
 <a id="field-field-mq3-botlib-be-aas-route-routingcache-traveltimes-traveltimes-src-mq3-botlib-be-aas-route-ml-517596479"></a>
 ### travelTimes
@@ -122,4 +122,4 @@ travelTimes
 Travel time for every area (variable sized).
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_aas_route.ml#L48)

@@ -12,7 +12,7 @@ Reachable from entry: **yes**
 - `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
 - `mq3/renderer/shader_parser.ml` as `shaderParser` → [src/mq3/renderer/shader_parser.ml](File-src-mq3-renderer-shader-parser-ml-2114769074.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -33,7 +33,7 @@ Calls `mq3.platform.playable_multitexture.setAlphaTest`, `mq3.platform.playable_
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L106)
 
 <a id="function-function-mq3-client-baseq3-console-background-drawlayer-function-drawlayer-layer-width-height-now-src-mq3-client-baseq3-console-background-ml-1499912194"></a>
 ### drawLayer
@@ -52,7 +52,7 @@ Calls `mq3.platform.playable_multitexture.setState`, `mq3.client.baseq3_console_
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L92)
 
 <a id="function-function-mq3-client-baseq3-console-background-fail-function-fail-message-src-mq3-client-baseq3-console-background-ml-1320637069"></a>
 ### fail
@@ -68,7 +68,7 @@ Creates the base Quake III console background error `7745` with diagnostic text 
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"Baseq3 console background: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L51)
 
 - [mq3.client.baseq3_console_background.Layer](Type-mq3-client-baseq3-console-background-layer-1829146384.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-load-function-load-archive-firsttextureslot-src-mq3-client-baseq3-console-background-ml-1284111481"></a>
@@ -86,7 +86,7 @@ Calls `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.shader_p
 | `firstTextureSlot` | `dynamic` | — | First texture slot reserved for this asset collection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L55)
 
 - [mq3.client.baseq3_console_background.Media](Type-mq3-client-baseq3-console-background-media-1898967553.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-point-function-point-x-y-src-mq3-client-baseq3-console-background-ml-633670739"></a>
@@ -104,7 +104,7 @@ Creates a `mq3.client.baseq3_console_background.Point` record. Assigns `x` from 
 | `y` | `dynamic` | — | Value used to initialize `Point.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L86)
 
 - [mq3.client.baseq3_console_background.Point](Type-mq3-client-baseq3-console-background-point-1935872503.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-release-function-release-media-src-mq3-client-baseq3-console-background-ml-1858720838"></a>
@@ -121,7 +121,7 @@ Calls `mq3.platform.playable_window.releaseTexture` from base Quake III console 
 | `media` | `dynamic` | — | Record read through `media.layers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L82)
 
 <a id="constant-constant-mq3-client-baseq3-console-background-required-textures-const-required-textures-2-src-mq3-client-baseq3-console-background-ml-2127943845"></a>
 ### REQUIRED_TEXTURES
@@ -133,7 +133,7 @@ const REQUIRED_TEXTURES = 2
 Number of texture slots required by the module's fixed media layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L14)
 
 <a id="constant-constant-mq3-client-baseq3-console-background-shader-name-const-shader-name-console-src-mq3-client-baseq3-console-background-ml-1560070400"></a>
 ### SHADER_NAME
@@ -145,7 +145,7 @@ const SHADER_NAME = "console"
 Virtual shader name selected for this module's background surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L12)
 
 <a id="function-function-mq3-client-baseq3-console-background-upload-function-upload-media-src-mq3-client-baseq3-console-background-ml-986991424"></a>
 ### upload
@@ -161,4 +161,4 @@ Calls `mq3.platform.playable_window.uploadTextureNoMip`, `mq3.client.baseq3_cons
 | `media` | `dynamic` | — | Record read through `media.layers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L75)

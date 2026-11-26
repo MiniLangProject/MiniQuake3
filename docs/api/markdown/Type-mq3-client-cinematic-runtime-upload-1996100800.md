@@ -12,7 +12,7 @@ struct Upload
 Stores cinematic runtime upload record, including `handle`, `frame`, `dirty`, `shader`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L63)
 
 ## Members
 
@@ -26,7 +26,7 @@ dirty
 When constructing this record, `upload` supplies `clip.dirty` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L69)
 
 <a id="field-field-mq3-client-cinematic-runtime-upload-frame-frame-src-mq3-client-cinematic-runtime-ml-2059939260"></a>
 ### frame
@@ -38,7 +38,7 @@ frame
 Latest decoded RoQ video frame whose pixels and dimensions are supplied to the texture upload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L67)
 
 <a id="field-field-mq3-client-cinematic-runtime-upload-handle-handle-src-mq3-client-cinematic-runtime-ml-1508171272"></a>
 ### handle
@@ -50,7 +50,7 @@ handle
 When constructing this record, `upload` supplies `handle` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L65)
 
 <a id="field-field-mq3-client-cinematic-runtime-upload-shader-shader-src-mq3-client-cinematic-runtime-ml-1778940430"></a>
 ### shader
@@ -62,4 +62,4 @@ shader
 True when the decoded frame belongs to a cinematic opened for shader-texture playback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L71)

@@ -12,7 +12,7 @@ struct RankedPlayer
 RankedPlayer record for server.rankings, containing `context`, `gameId`, `match`, `playerId`, `token`, `status`, and 3 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L72)
 
 ## Members
 
@@ -26,7 +26,7 @@ context
 Open ranking-service context handle owned by this player, or zero after cleanup.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L74)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-finalstatus-finalstatus-src-mq3-server-rankings-ml-458403439"></a>
 ### finalStatus
@@ -38,7 +38,7 @@ finalStatus
 Status retained after the player leaves the ranked match.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L86)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-gameid-gameid-src-mq3-server-rankings-ml-455963485"></a>
 ### gameId
@@ -50,7 +50,7 @@ gameId
 Ranking-service game identifier associated with the player.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L76)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-match-match-src-mq3-server-rankings-ml-145333655"></a>
 ### match
@@ -62,7 +62,7 @@ match
 Ranking-service match handle associated with the player.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L78)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-name-name-src-mq3-server-rankings-ml-218136565"></a>
 ### name
@@ -74,7 +74,7 @@ name
 Player name registered with the ranking service.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L90)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-playerid-playerid-src-mq3-server-rankings-ml-1647856199"></a>
 ### playerId
@@ -86,7 +86,7 @@ playerId
 Persistent player identifier returned by the ranking service.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L80)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-rank-rank-src-mq3-server-rankings-ml-1828147847"></a>
 ### rank
@@ -98,7 +98,7 @@ rank
 Rank value assigned to the player by the ranking service.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L88)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-status-status-src-mq3-server-rankings-ml-1275673591"></a>
 ### status
@@ -110,7 +110,7 @@ status
 Current ranking-client authentication or participation status.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L84)
 
 <a id="field-field-mq3-server-rankings-rankedplayer-token-token-src-mq3-server-rankings-ml-654005703"></a>
 ### token
@@ -122,4 +122,4 @@ token
 Authentication token returned by the ranking service.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/rankings.ml#L82)

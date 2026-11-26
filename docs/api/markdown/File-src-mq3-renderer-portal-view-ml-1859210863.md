@@ -29,7 +29,7 @@ Creates error `7700` with message `"portal view: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7700,"portal view: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L45)
 
 <a id="function-function-mq3-renderer-portal-view-mirrorpoint-function-mirrorpoint-input-surface-camera-src-mq3-renderer-portal-view-ml-519798500"></a>
 ### mirrorPoint
@@ -47,7 +47,7 @@ Maps a point from the portal surface basis into the destination camera basis and
 | `camera` | `dynamic` | — | Record providing `camera.axis`, `camera.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L61)
 
 <a id="function-function-mq3-renderer-portal-view-mirrorvector-function-mirrorvector-input-surface-camera-src-mq3-renderer-portal-view-ml-289715938"></a>
 ### mirrorVector
@@ -65,7 +65,7 @@ Returns `transformed` from `mq3.renderer.portal_view.mirrorVector`.
 | `camera` | `dynamic` | — | Record providing `camera.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L70)
 
 <a id="function-function-mq3-renderer-portal-view-negate-function-negate-value-src-mq3-renderer-portal-view-ml-288891243"></a>
 ### negate
@@ -81,7 +81,7 @@ Returns `[numeric.fneg(value[0]),numeric.fneg(value[1]),numeric.fneg(value[2])]`
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L55)
 
 - [mq3.renderer.portal_view.Orientation](Type-mq3-renderer-portal-view-orientation-274468229.md) — struct
 <a id="function-function-mq3-renderer-portal-view-portalorientation-function-portalorientation-normal-dist-entities-timemilliseconds-src-mq3-renderer-portal-view-ml-1751186467"></a>
@@ -101,7 +101,7 @@ Builds `cameraAxis[1]`, `cameraAxis[2]` in `mq3.renderer.portal_view.portalOrien
 | `timeMilliseconds` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.fdiv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L81)
 
 <a id="function-function-mq3-renderer-portal-view-prepare-function-prepare-normal-dist-entities-timemilliseconds-vieworigin-viewaxis-src-mq3-renderer-portal-view-ml-1100148852"></a>
 ### prepare
@@ -122,7 +122,7 @@ Builds `mq3.renderer.portal_view.View` using `mq3.shared.math.DotProduct`.
 | `viewAxis` | `dynamic` | — | Indexed input read at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L115)
 
 <a id="constant-constant-mq3-renderer-portal-view-rt-portalsurface-const-rt-portalsurface-7-src-mq3-renderer-portal-view-ml-1260486484"></a>
 ### RT_PORTALSURFACE
@@ -134,7 +134,7 @@ const RT_PORTALSURFACE = 7
 Renderer entity type carrying portal-view information without directly drawing geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L12)
 
 <a id="function-function-mq3-renderer-portal-view-subtract-function-subtract-a-b-src-mq3-renderer-portal-view-ml-1613707131"></a>
 ### subtract
@@ -151,7 +151,7 @@ Returns `[numeric.fsub(a[0],b[0]),numeric.fsub(a[1],b[1]),numeric.fsub(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L52)
 
 <a id="function-function-mq3-renderer-portal-view-valid3-function-valid3-value-src-mq3-renderer-portal-view-ml-961817619"></a>
 ### valid3
@@ -167,6 +167,6 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.portal_view.valid3`.
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L48)
 
 - [mq3.renderer.portal_view.View](Type-mq3-renderer-portal-view-view-430910756.md) — struct

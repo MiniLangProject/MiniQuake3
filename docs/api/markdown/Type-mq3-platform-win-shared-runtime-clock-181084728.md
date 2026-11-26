@@ -12,7 +12,7 @@ struct Clock
 Data record for `mq3.platform.win_shared_runtime.Clock`; groups `initialized`, `timeBase`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L35)
 
 ## Members
 
@@ -26,7 +26,7 @@ initialized
 Whether initialization completed successfully.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L37)
 
 <a id="field-field-mq3-platform-win-shared-runtime-clock-timebase-timebase-src-mq3-platform-win-shared-runtime-ml-764798779"></a>
 ### timeBase
@@ -38,4 +38,4 @@ timeBase
 Clock origin subtracted to produce elapsed platform milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L39)

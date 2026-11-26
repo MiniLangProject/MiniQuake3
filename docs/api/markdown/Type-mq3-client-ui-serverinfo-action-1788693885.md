@@ -12,7 +12,7 @@ struct Action
 Stores UI serverinfo queued engine action, including `boundary`, `kind`, `name`, `text`, `x`, `y` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L26)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Host service category recorded with a request emitted while displaying current server cvars and handling the dialog controls.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L29)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-dispatched-dispatched-src-mq3-client-ui-serverinfo-ml-1314663809"></a>
 ### dispatched
@@ -38,7 +38,7 @@ dispatched
 True when this request is marked for native dispatch while displaying current server cvars and handling the dialog controls; false when its native effect is suppressed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L49)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-kind-kind-src-mq3-client-ui-serverinfo-ml-1295877075"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Operation selector telling the host how to interpret a request emitted while displaying current server cvars and handling the dialog controls.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L32)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-name-name-src-mq3-client-ui-serverinfo-ml-1529558229"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Favorite-server cvar, drawing color, menu target, or artwork resource selected by the server-information action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L35)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-number-number-src-mq3-client-ui-serverinfo-ml-747823281"></a>
 ### number
@@ -74,7 +74,7 @@ number
 Numeric argument interpreted by the selected host operation while displaying current server cvars and handling the dialog controls.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L46)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-text-text-src-mq3-client-ui-serverinfo-ml-1918709737"></a>
 ### text
@@ -86,7 +86,7 @@ text
 Server-info label or value to draw, or the server address written into a favorite slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L37)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-x-x-src-mq3-client-ui-serverinfo-ml-613888655"></a>
 ### x
@@ -98,7 +98,7 @@ x
 Horizontal position of this queued drawing operation in the virtual layout used by the server-information dialog.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L40)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-y-y-src-mq3-client-ui-serverinfo-ml-1999345755"></a>
 ### y
@@ -110,4 +110,4 @@ y
 Vertical position of this queued drawing operation in the virtual layout used by the server-information dialog.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L43)

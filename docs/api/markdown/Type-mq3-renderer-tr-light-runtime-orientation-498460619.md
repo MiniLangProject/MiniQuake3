@@ -12,7 +12,7 @@ struct Orientation
 Data record for `mq3.renderer.tr_light_runtime.Orientation`; groups `origin`, `axis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L28)
 
 ## Members
 
@@ -26,7 +26,7 @@ axis
 Object basis used to rotate incoming light directions into entity-local space.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-orientation-origin-origin-src-mq3-renderer-tr-light-runtime-ml-428850275"></a>
 ### origin
@@ -38,4 +38,4 @@ origin
 Entity origin used to transform world lighting into the object's local coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L30)

@@ -36,7 +36,7 @@ Increment the owning client's accuracy-hit count and reject missiles without a c
 | `ent` | `dynamic` | — | Game entity; accesses `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L29)
 
 <a id="function-function-mq3-game-missiles-bounce-function-bounce-level-ent-hit-src-mq3-game-missiles-ml-1775339680"></a>
 ### bounce
@@ -54,7 +54,7 @@ Update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]`, `ent.r.currentOrigin[axis
 | `hit` | `dynamic` | — | Hit record; accesses `trace` and `endpos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L71)
 
 <a id="function-function-mq3-game-missiles-explode-function-explode-level-ent-src-mq3-game-missiles-ml-1318663987"></a>
 ### explode
@@ -71,7 +71,7 @@ Set `ent.s.eType` to `c.ET_GENERAL` and `ent.freeAfterEvent` to `true` in `mq3.g
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `freeAfterEvent`, `splashDamage`, `r` and `parent` and related fields. May update `ent.s.eType` and `ent.freeAfterEvent` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L91)
 
 <a id="function-function-mq3-game-missiles-fire-function-fire-level-self-start-dir-weapon-src-mq3-game-missiles-ml-2085538035"></a>
 ### fire
@@ -91,7 +91,7 @@ Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.snapshot
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L168)
 
 <a id="function-function-mq3-game-missiles-hookclient-function-hookclient-ent-src-mq3-game-missiles-ml-715130013"></a>
 ### hookClient
@@ -107,7 +107,7 @@ Require and return the parent client of a grappling-hook entity.
 | `ent` | `dynamic` | — | Game entity; accesses `parent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L37)
 
 <a id="function-function-mq3-game-missiles-hookfree-function-hookfree-level-ent-src-mq3-game-missiles-ml-1084910121"></a>
 ### hookFree
@@ -124,7 +124,7 @@ Apply `mq3.game.missiles.hookClient` and `mq3.game.entities.free` while evaluati
 | `ent` | `dynamic` | — | Game entity; accesses `parent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L44)
 
 <a id="function-function-mq3-game-missiles-hookpoint-function-hookpoint-other-src-mq3-game-missiles-ml-1114785480"></a>
 ### hookPoint
@@ -140,7 +140,7 @@ Calculate the hooked entity's bounding-box center relative to its current world 
 | `other` | `dynamic` | — | Other record; accesses `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L50)
 
 <a id="function-function-mq3-game-missiles-hookthink-function-hookthink-level-ent-src-mq3-game-missiles-ml-371921023"></a>
 ### hookThink
@@ -157,7 +157,7 @@ Apply `mq3.game.missiles.hookPoint`, `mq3.game.missiles.snapTowards` and `mq3.ga
 | `ent` | `dynamic` | — | Game entity; accesses `enemy` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L60)
 
 <a id="function-function-mq3-game-missiles-impact-function-impact-level-ent-hit-src-mq3-game-missiles-ml-1409096684"></a>
 ### impact
@@ -175,7 +175,7 @@ Update `ent.enemy`, `ent.s.eType`, `ent.think` and `ent.nextthink` and related s
 | `hit` | `dynamic` | — | Hit record; accesses `trace`, `entityNum` and `endpos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L104)
 
 <a id="function-function-mq3-game-missiles-run-function-run-level-ent-src-mq3-game-missiles-ml-50430007"></a>
 ### run
@@ -192,7 +192,7 @@ Set `ent.r.currentOrigin` to `movement.copy(hit.endpos)` and `ent.parent.client.
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `r`, `target_ent`, `clipmask` and `parent`. May update `ent.r.currentOrigin` and `ent.parent.client.hook` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L142)
 
 <a id="function-function-mq3-game-missiles-snaptowards-function-snaptowards-v-towards-src-mq3-game-missiles-ml-1913883608"></a>
 ### snapTowards
@@ -209,4 +209,4 @@ Set `v[axis]` to `n.f32(value)` in `mq3.game.missiles.snapTowards`.
 | `towards` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L18)

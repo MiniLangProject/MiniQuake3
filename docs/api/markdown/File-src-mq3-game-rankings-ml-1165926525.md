@@ -31,7 +31,7 @@ Set `state.actions` to `state.actions+[Action(kind,client,text,value)]` in `mq3.
 | `value` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Action.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L393)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L393)
 
 - [mq3.game.rankings.Action](Type-mq3-game-rankings-action-447411339.md) — struct
 <a id="function-function-mq3-game-rankings-ammoordinal-function-ammoordinal-weapon-src-mq3-game-rankings-ml-2120407572"></a>
@@ -48,7 +48,7 @@ Map ammunition-bearing weapon identifiers to the ranking service's ammunition or
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L474)
 
 <a id="function-function-mq3-game-rankings-client-function-client-src-mq3-game-rankings-ml-1278078994"></a>
 ### client
@@ -60,7 +60,7 @@ function client()
 Create a `mq3.game.rankings.Client` record, initializing `present` as `true`, `inuse` as `true` and `team` as `TEAM_SPECTATOR`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L365)
 
 - [mq3.game.rankings.Client](Type-mq3-game-rankings-client-1131561538.md) — struct
 <a id="function-function-mq3-game-rankings-create-function-create-maxclients-src-mq3-game-rankings-ml-1494739024"></a>
@@ -77,7 +77,7 @@ Build the `mq3.game.rankings.State` result for `create`.
 | `maxclients` | `dynamic` | — | Initial value stored in `mq3.game.rankings.State.maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L368)
 
 <a id="function-function-mq3-game-rankings-cvarvalue-function-cvarvalue-state-name-src-mq3-game-rankings-ml-701522140"></a>
 ### cvarValue
@@ -94,7 +94,7 @@ Look up a ranking cvar by exact name, returning an empty string when it is absen
 | `name` | `dynamic` | — | Lookup text matched against `pair[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L537)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L537)
 
 <a id="function-function-mq3-game-rankings-damagespecific-function-damagespecific-base-weapon-src-mq3-game-rankings-ml-393363047"></a>
 ### damageSpecific
@@ -111,7 +111,7 @@ Apply `mq3.game.rankings.ordinal` while evaluating `damageSpecific`. Return path
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L408)
 
 <a id="constant-constant-mq3-game-rankings-ef-award-excellent-const-ef-award-excellent-8-src-mq3-game-rankings-ml-1164174615"></a>
 ### EF_AWARD_EXCELLENT
@@ -123,7 +123,7 @@ const EF_AWARD_EXCELLENT = 8
 Network entity-flag bit indicating award excellent.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L101)
 
 <a id="constant-constant-mq3-game-rankings-ef-award-impressive-const-ef-award-impressive-32768-src-mq3-game-rankings-ml-827984257"></a>
 ### EF_AWARD_IMPRESSIVE
@@ -135,7 +135,7 @@ const EF_AWARD_IMPRESSIVE = 32768
 Network entity-flag bit indicating award impressive.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L103)
 
 <a id="constant-constant-mq3-game-rankings-entitynum-world-const-entitynum-world-1022-src-mq3-game-rankings-ml-1367783808"></a>
 ### ENTITYNUM_WORLD
@@ -147,7 +147,7 @@ const ENTITYNUM_WORLD = 1022
 Reserved entity number representing the BSP world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L36)
 
 <a id="function-function-mq3-game-rankings-g-rankcapture-function-g-rankcapture-state-self-src-mq3-game-rankings-ml-125845127"></a>
 ### G_RankCapture
@@ -164,7 +164,7 @@ G_RankCapture
 | `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L518)
 
 <a id="function-function-mq3-game-rankings-g-rankclientdisconnect-function-g-rankclientdisconnect-state-self-src-mq3-game-rankings-ml-1121146903"></a>
 ### G_RankClientDisconnect
@@ -181,7 +181,7 @@ G_RankClientDisconnect
 | `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L527)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L527)
 
 <a id="function-function-mq3-game-rankings-g-rankdamage-function-g-rankdamage-state-self-attacker-damage-mod-src-mq3-game-rankings-ml-1769369905"></a>
 ### G_RankDamage
@@ -201,7 +201,7 @@ G_RankDamage
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L443)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L443)
 
 <a id="function-function-mq3-game-rankings-g-rankfireweapon-function-g-rankfireweapon-state-self-weapon-src-mq3-game-rankings-ml-1274395783"></a>
 ### G_RankFireWeapon
@@ -219,7 +219,7 @@ G_RankFireWeapon
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L435)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L435)
 
 <a id="function-function-mq3-game-rankings-g-rankgameover-function-g-rankgameover-state-src-mq3-game-rankings-ml-2102443957"></a>
 ### G_RankGameOver
@@ -235,7 +235,7 @@ G_RankGameOver
 | `state` | `dynamic` | — | Rankings state; accesses `warmupTime`, `maxclients`, `gametype`, `fraglimit` and `timelimit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L530)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L530)
 
 <a id="function-function-mq3-game-rankings-g-rankpickupammo-function-g-rankpickupammo-state-self-weapon-quantity-src-mq3-game-rankings-ml-1503905478"></a>
 ### G_RankPickupAmmo
@@ -254,7 +254,7 @@ G_RankPickupAmmo
 | `quantity` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L480)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L480)
 
 <a id="function-function-mq3-game-rankings-g-rankpickuparmor-function-g-rankpickuparmor-state-self-quantity-src-mq3-game-rankings-ml-387427940"></a>
 ### G_RankPickupArmor
@@ -272,7 +272,7 @@ G_RankPickupArmor
 | `quantity` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L490)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L490)
 
 <a id="function-function-mq3-game-rankings-g-rankpickuphealth-function-g-rankpickuphealth-state-self-quantity-src-mq3-game-rankings-ml-1214381054"></a>
 ### G_RankPickupHealth
@@ -290,7 +290,7 @@ G_RankPickupHealth
 | `quantity` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L485)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L485)
 
 <a id="function-function-mq3-game-rankings-g-rankpickupholdable-function-g-rankpickupholdable-state-self-holdable-src-mq3-game-rankings-ml-2111205246"></a>
 ### G_RankPickupHoldable
@@ -308,7 +308,7 @@ G_RankPickupHoldable
 | `holdable` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L504)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L504)
 
 <a id="function-function-mq3-game-rankings-g-rankpickuppowerup-function-g-rankpickuppowerup-state-self-powerup-src-mq3-game-rankings-ml-1198232075"></a>
 ### G_RankPickupPowerup
@@ -326,7 +326,7 @@ G_RankPickupPowerup
 | `powerup` | `dynamic` | — | Value used by `G_RankPickupPowerup` in `if powerup==PW_REDFLAG or powerup==PW_BLUEFLAG then reportInt(state,self,-1,QGR_KEY_FLAG_PICKUP,1,true)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L495)
 
 <a id="function-function-mq3-game-rankings-g-rankpickupweapon-function-g-rankpickupweapon-state-self-weapon-src-mq3-game-rankings-ml-222798095"></a>
 ### G_RankPickupWeapon
@@ -344,7 +344,7 @@ G_RankPickupWeapon
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L471)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L471)
 
 <a id="function-function-mq3-game-rankings-g-rankplayerdie-function-g-rankplayerdie-state-self-attacker-mod-src-mq3-game-rankings-ml-643505048"></a>
 ### G_RankPlayerDie
@@ -363,7 +363,7 @@ G_RankPlayerDie
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L459)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L459)
 
 <a id="function-function-mq3-game-rankings-g-rankreward-function-g-rankreward-state-self-award-src-mq3-game-rankings-ml-744140406"></a>
 ### G_RankReward
@@ -381,7 +381,7 @@ G_RankReward
 | `award` | `dynamic` | — | Value used by `G_RankReward` in `if state.warmupTime==0 then if award==EF_AWARD_IMPRESSIVE then reportInt(state,self,-1,1111090000,1,true) else i...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L514)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L514)
 
 <a id="function-function-mq3-game-rankings-g-rankrunframe-function-g-rankrunframe-state-src-mq3-game-rankings-ml-1224638061"></a>
 ### G_RankRunFrame
@@ -397,7 +397,7 @@ G_RankRunFrame
 | `state` | `dynamic` | — | Rankings state; accesses `initialized`, `rankBeginFn`, `rankPollFn`, `active` and `maxclients` and related fields. May update `state.initialized`, `state.timelimit` and `state.cvars` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L426)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L426)
 
 <a id="function-function-mq3-game-rankings-g-rankuseholdable-function-g-rankuseholdable-state-self-holdable-src-mq3-game-rankings-ml-79371254"></a>
 ### G_RankUseHoldable
@@ -415,7 +415,7 @@ G_RankUseHoldable
 | `holdable` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L509)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L509)
 
 <a id="function-function-mq3-game-rankings-g-rankuserteamname-function-g-rankuserteamname-state-self-teamname-src-mq3-game-rankings-ml-1049545117"></a>
 ### G_RankUserTeamName
@@ -433,7 +433,7 @@ G_RankUserTeamName
 | `teamName` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L523)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L523)
 
 <a id="function-function-mq3-game-rankings-g-rankweapontime-function-g-rankweapontime-state-self-weapon-src-mq3-game-rankings-ml-763914995"></a>
 ### G_RankWeaponTime
@@ -451,7 +451,7 @@ G_RankWeaponTime
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L466)
 
 <a id="constant-constant-mq3-game-rankings-gt-team-const-gt-team-3-src-mq3-game-rankings-ml-1050414298"></a>
 ### GT_TEAM
@@ -463,7 +463,7 @@ const GT_TEAM = 3
 Game-mode identifier selecting team rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L38)
 
 <a id="function-function-mq3-game-rankings-hazardkey-function-hazardkey-mod-src-mq3-game-rankings-ml-2099279354"></a>
 ### hazardKey
@@ -479,7 +479,7 @@ Map environmental death causes to the corresponding ranking hazard key.
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L453)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L453)
 
 <a id="function-function-mq3-game-rankings-hazardmod-function-hazardmod-mod-src-mq3-game-rankings-ml-1270735188"></a>
 ### hazardMod
@@ -495,7 +495,7 @@ Test `mod==MOD_WATER or mod==MOD_SLIME or mod==MOD_LAVA or mod==MOD_CRUSH or mod
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L417)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L417)
 
 <a id="constant-constant-mq3-game-rankings-hi-invulnerability-const-hi-invulnerability-5-src-mq3-game-rankings-ml-1647746232"></a>
 ### HI_INVULNERABILITY
@@ -507,7 +507,7 @@ const HI_INVULNERABILITY = 5
 Holdable-item identifier selecting invulnerability.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L99)
 
 <a id="constant-constant-mq3-game-rankings-hi-kamikaze-const-hi-kamikaze-3-src-mq3-game-rankings-ml-1486171338"></a>
 ### HI_KAMIKAZE
@@ -519,7 +519,7 @@ const HI_KAMIKAZE = 3
 Holdable-item identifier selecting kamikaze.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L95)
 
 <a id="constant-constant-mq3-game-rankings-hi-medkit-const-hi-medkit-2-src-mq3-game-rankings-ml-848368767"></a>
 ### HI_MEDKIT
@@ -531,7 +531,7 @@ const HI_MEDKIT = 2
 Holdable-item identifier selecting medkit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L93)
 
 <a id="constant-constant-mq3-game-rankings-hi-portal-const-hi-portal-4-src-mq3-game-rankings-ml-756751629"></a>
 ### HI_PORTAL
@@ -543,7 +543,7 @@ const HI_PORTAL = 4
 Holdable-item identifier selecting portal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L97)
 
 <a id="constant-constant-mq3-game-rankings-hi-teleporter-const-hi-teleporter-1-src-mq3-game-rankings-ml-188635316"></a>
 ### HI_TELEPORTER
@@ -555,7 +555,7 @@ const HI_TELEPORTER = 1
 Holdable-item identifier selecting teleporter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L91)
 
 <a id="function-function-mq3-game-rankings-holdablekey-function-holdablekey-holdable-use-src-mq3-game-rankings-ml-1842765072"></a>
 ### holdableKey
@@ -572,7 +572,7 @@ Choose the ranking key for pickup or use of the selected holdable item.
 | `use` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L499)
 
 <a id="constant-constant-mq3-game-rankings-mod-bfg-const-mod-bfg-12-src-mq3-game-rankings-ml-614287534"></a>
 ### MOD_BFG
@@ -584,7 +584,7 @@ const MOD_BFG = 12
 Cause-of-death identifier attributing damage or a kill to BFG.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L130)
 
 <a id="constant-constant-mq3-game-rankings-mod-bfg-splash-const-mod-bfg-splash-13-src-mq3-game-rankings-ml-2021868397"></a>
 ### MOD_BFG_SPLASH
@@ -596,7 +596,7 @@ const MOD_BFG_SPLASH = 13
 Cause-of-death identifier attributing damage or a kill to BFG splash.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L132)
 
 <a id="constant-constant-mq3-game-rankings-mod-crush-const-mod-crush-17-src-mq3-game-rankings-ml-418597403"></a>
 ### MOD_CRUSH
@@ -608,7 +608,7 @@ const MOD_CRUSH = 17
 Cause-of-death identifier attributing damage or a kill to crush.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L140)
 
 <a id="constant-constant-mq3-game-rankings-mod-falling-const-mod-falling-19-src-mq3-game-rankings-ml-1206720653"></a>
 ### MOD_FALLING
@@ -620,7 +620,7 @@ const MOD_FALLING = 19
 Cause-of-death identifier attributing damage or a kill to falling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L144)
 
 <a id="constant-constant-mq3-game-rankings-mod-gauntlet-const-mod-gauntlet-2-src-mq3-game-rankings-ml-1935008703"></a>
 ### MOD_GAUNTLET
@@ -632,7 +632,7 @@ const MOD_GAUNTLET = 2
 Cause-of-death identifier attributing damage or a kill to gauntlet.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L110)
 
 <a id="constant-constant-mq3-game-rankings-mod-grapple-const-mod-grapple-28-src-mq3-game-rankings-ml-747351089"></a>
 ### MOD_GRAPPLE
@@ -644,7 +644,7 @@ const MOD_GRAPPLE = 28
 Cause-of-death identifier attributing damage or a kill to grapple.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L150)
 
 <a id="constant-constant-mq3-game-rankings-mod-grenade-const-mod-grenade-4-src-mq3-game-rankings-ml-624683901"></a>
 ### MOD_GRENADE
@@ -656,7 +656,7 @@ const MOD_GRENADE = 4
 Cause-of-death identifier attributing damage or a kill to grenade.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L114)
 
 <a id="constant-constant-mq3-game-rankings-mod-grenade-splash-const-mod-grenade-splash-5-src-mq3-game-rankings-ml-80471268"></a>
 ### MOD_GRENADE_SPLASH
@@ -668,7 +668,7 @@ const MOD_GRENADE_SPLASH = 5
 Cause-of-death identifier attributing damage or a kill to grenade splash.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L116)
 
 <a id="constant-constant-mq3-game-rankings-mod-lava-const-mod-lava-16-src-mq3-game-rankings-ml-1660954786"></a>
 ### MOD_LAVA
@@ -680,7 +680,7 @@ const MOD_LAVA = 16
 Cause-of-death identifier attributing damage or a kill to lava.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L138)
 
 <a id="constant-constant-mq3-game-rankings-mod-lightning-const-mod-lightning-11-src-mq3-game-rankings-ml-972638245"></a>
 ### MOD_LIGHTNING
@@ -692,7 +692,7 @@ const MOD_LIGHTNING = 11
 Cause-of-death identifier attributing damage or a kill to lightning gun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L128)
 
 <a id="constant-constant-mq3-game-rankings-mod-machinegun-const-mod-machinegun-3-src-mq3-game-rankings-ml-418086076"></a>
 ### MOD_MACHINEGUN
@@ -704,7 +704,7 @@ const MOD_MACHINEGUN = 3
 Cause-of-death identifier attributing damage or a kill to machine gun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L112)
 
 <a id="constant-constant-mq3-game-rankings-mod-plasma-const-mod-plasma-8-src-mq3-game-rankings-ml-1155091289"></a>
 ### MOD_PLASMA
@@ -716,7 +716,7 @@ const MOD_PLASMA = 8
 Cause-of-death identifier attributing damage or a kill to plasma.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L122)
 
 <a id="constant-constant-mq3-game-rankings-mod-plasma-splash-const-mod-plasma-splash-9-src-mq3-game-rankings-ml-31854028"></a>
 ### MOD_PLASMA_SPLASH
@@ -728,7 +728,7 @@ const MOD_PLASMA_SPLASH = 9
 Cause-of-death identifier attributing damage or a kill to plasma splash.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L124)
 
 <a id="constant-constant-mq3-game-rankings-mod-railgun-const-mod-railgun-10-src-mq3-game-rankings-ml-762275016"></a>
 ### MOD_RAILGUN
@@ -740,7 +740,7 @@ const MOD_RAILGUN = 10
 Cause-of-death identifier attributing damage or a kill to railgun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L126)
 
 <a id="constant-constant-mq3-game-rankings-mod-rocket-const-mod-rocket-6-src-mq3-game-rankings-ml-673250327"></a>
 ### MOD_ROCKET
@@ -752,7 +752,7 @@ const MOD_ROCKET = 6
 Cause-of-death identifier attributing damage or a kill to rocket.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L118)
 
 <a id="constant-constant-mq3-game-rankings-mod-rocket-splash-const-mod-rocket-splash-7-src-mq3-game-rankings-ml-1020494974"></a>
 ### MOD_ROCKET_SPLASH
@@ -764,7 +764,7 @@ const MOD_ROCKET_SPLASH = 7
 Cause-of-death identifier attributing damage or a kill to rocket splash.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L120)
 
 <a id="constant-constant-mq3-game-rankings-mod-shotgun-const-mod-shotgun-1-src-mq3-game-rankings-ml-1171250972"></a>
 ### MOD_SHOTGUN
@@ -776,7 +776,7 @@ const MOD_SHOTGUN = 1
 Cause-of-death identifier attributing damage or a kill to shotgun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L108)
 
 <a id="constant-constant-mq3-game-rankings-mod-slime-const-mod-slime-15-src-mq3-game-rankings-ml-1242251981"></a>
 ### MOD_SLIME
@@ -788,7 +788,7 @@ const MOD_SLIME = 15
 Cause-of-death identifier attributing damage or a kill to slime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
 
 <a id="constant-constant-mq3-game-rankings-mod-suicide-const-mod-suicide-20-src-mq3-game-rankings-ml-308212577"></a>
 ### MOD_SUICIDE
@@ -800,7 +800,7 @@ const MOD_SUICIDE = 20
 Cause-of-death identifier attributing damage or a kill to suicide.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L146)
 
 <a id="constant-constant-mq3-game-rankings-mod-telefrag-const-mod-telefrag-18-src-mq3-game-rankings-ml-1905377208"></a>
 ### MOD_TELEFRAG
@@ -812,7 +812,7 @@ const MOD_TELEFRAG = 18
 Cause-of-death identifier attributing damage or a kill to telefrag.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L142)
 
 <a id="constant-constant-mq3-game-rankings-mod-trigger-hurt-const-mod-trigger-hurt-22-src-mq3-game-rankings-ml-165749643"></a>
 ### MOD_TRIGGER_HURT
@@ -824,7 +824,7 @@ const MOD_TRIGGER_HURT = 22
 Cause-of-death identifier attributing damage or a kill to trigger hurt.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L148)
 
 <a id="constant-constant-mq3-game-rankings-mod-unknown-const-mod-unknown-0-src-mq3-game-rankings-ml-1999171817"></a>
 ### MOD_UNKNOWN
@@ -836,7 +836,7 @@ const MOD_UNKNOWN = 0
 Cause-of-death identifier attributing damage or a kill to unknown.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L106)
 
 <a id="constant-constant-mq3-game-rankings-mod-water-const-mod-water-14-src-mq3-game-rankings-ml-495841608"></a>
 ### MOD_WATER
@@ -848,7 +848,7 @@ const MOD_WATER = 14
 Cause-of-death identifier attributing damage or a kill to water.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L134)
 
 <a id="function-function-mq3-game-rankings-ordinal-function-ordinal-weapon-src-mq3-game-rankings-ml-994955192"></a>
 ### ordinal
@@ -864,7 +864,7 @@ Map weapon identifiers to the ranking service's weapon ordinal values.
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L400)
 
 <a id="constant-constant-mq3-game-rankings-pw-ammoregen-const-pw-ammoregen-13-src-mq3-game-rankings-ml-1823992703"></a>
 ### PW_AMMOREGEN
@@ -876,7 +876,7 @@ const PW_AMMOREGEN = 13
 Powerup-table index identifying ammoregen.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L89)
 
 <a id="constant-constant-mq3-game-rankings-pw-battlesuit-const-pw-battlesuit-2-src-mq3-game-rankings-ml-730281215"></a>
 ### PW_BATTLESUIT
@@ -888,7 +888,7 @@ const PW_BATTLESUIT = 2
 Powerup-table index identifying battlesuit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L69)
 
 <a id="constant-constant-mq3-game-rankings-pw-blueflag-const-pw-blueflag-8-src-mq3-game-rankings-ml-1660976985"></a>
 ### PW_BLUEFLAG
@@ -900,7 +900,7 @@ const PW_BLUEFLAG = 8
 Powerup-table index identifying blueflag.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L81)
 
 <a id="constant-constant-mq3-game-rankings-pw-doubler-const-pw-doubler-12-src-mq3-game-rankings-ml-136485782"></a>
 ### PW_DOUBLER
@@ -912,7 +912,7 @@ const PW_DOUBLER = 12
 Powerup-table index identifying doubler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L87)
 
 <a id="constant-constant-mq3-game-rankings-pw-flight-const-pw-flight-6-src-mq3-game-rankings-ml-1371166959"></a>
 ### PW_FLIGHT
@@ -924,7 +924,7 @@ const PW_FLIGHT = 6
 Powerup-table index identifying flight.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L77)
 
 <a id="constant-constant-mq3-game-rankings-pw-guard-const-pw-guard-11-src-mq3-game-rankings-ml-267604901"></a>
 ### PW_GUARD
@@ -936,7 +936,7 @@ const PW_GUARD = 11
 Powerup-table index identifying guard.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L85)
 
 <a id="constant-constant-mq3-game-rankings-pw-haste-const-pw-haste-3-src-mq3-game-rankings-ml-1140917770"></a>
 ### PW_HASTE
@@ -948,7 +948,7 @@ const PW_HASTE = 3
 Powerup-table index identifying haste.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L71)
 
 <a id="constant-constant-mq3-game-rankings-pw-invis-const-pw-invis-4-src-mq3-game-rankings-ml-5791109"></a>
 ### PW_INVIS
@@ -960,7 +960,7 @@ const PW_INVIS = 4
 Powerup-table index identifying invis.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L73)
 
 <a id="constant-constant-mq3-game-rankings-pw-quad-const-pw-quad-1-src-mq3-game-rankings-ml-2014252988"></a>
 ### PW_QUAD
@@ -972,7 +972,7 @@ const PW_QUAD = 1
 Powerup-table index identifying quad.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L67)
 
 <a id="constant-constant-mq3-game-rankings-pw-redflag-const-pw-redflag-7-src-mq3-game-rankings-ml-1400532630"></a>
 ### PW_REDFLAG
@@ -984,7 +984,7 @@ const PW_REDFLAG = 7
 Powerup-table index identifying redflag.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L79)
 
 <a id="constant-constant-mq3-game-rankings-pw-regen-const-pw-regen-5-src-mq3-game-rankings-ml-1264443968"></a>
 ### PW_REGEN
@@ -996,7 +996,7 @@ const PW_REGEN = 5
 Powerup-table index identifying regen.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L75)
 
 <a id="constant-constant-mq3-game-rankings-pw-scout-const-pw-scout-10-src-mq3-game-rankings-ml-589928774"></a>
 ### PW_SCOUT
@@ -1008,7 +1008,7 @@ const PW_SCOUT = 10
 Powerup-table index identifying scout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L83)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-armor-const-qgr-key-armor-internal-qgr-key-armor-src-mq3-game-rankings-ml-647884136"></a>
 ### QGR_KEY_ARMOR
@@ -1020,7 +1020,7 @@ const QGR_KEY_ARMOR = internal.QGR_KEY_ARMOR
 Ranking-report key used to identify armor statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L211)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-armor-total-const-qgr-key-armor-total-internal-qgr-key-armor-total-src-mq3-game-rankings-ml-2001195247"></a>
 ### QGR_KEY_ARMOR_TOTAL
@@ -1032,7 +1032,7 @@ const QGR_KEY_ARMOR_TOTAL = internal.QGR_KEY_ARMOR_TOTAL
 Ranking-report key used to identify armor total statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L213)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-boxes-const-qgr-key-boxes-internal-qgr-key-boxes-src-mq3-game-rankings-ml-609535954"></a>
 ### QGR_KEY_BOXES
@@ -1044,7 +1044,7 @@ const QGR_KEY_BOXES = internal.QGR_KEY_BOXES
 Ranking-report key used to identify boxes statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L203)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-damage-given-const-qgr-key-damage-given-internal-qgr-key-damage-given-src-mq3-game-rankings-ml-1472256448"></a>
 ### QGR_KEY_DAMAGE_GIVEN
@@ -1056,7 +1056,7 @@ const QGR_KEY_DAMAGE_GIVEN = internal.QGR_KEY_DAMAGE_GIVEN
 Ranking-report key for damage dealt.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L191)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-damage-taken-const-qgr-key-damage-taken-internal-qgr-key-damage-taken-src-mq3-game-rankings-ml-1338029170"></a>
 ### QGR_KEY_DAMAGE_TAKEN
@@ -1068,7 +1068,7 @@ const QGR_KEY_DAMAGE_TAKEN = internal.QGR_KEY_DAMAGE_TAKEN
 Ranking-report key for damage received.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L193)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-dedicated-const-qgr-key-dedicated-internal-qgr-key-dedicated-src-mq3-game-rankings-ml-969626670"></a>
 ### QGR_KEY_DEDICATED
@@ -1080,7 +1080,7 @@ const QGR_KEY_DEDICATED = internal.QGR_KEY_DEDICATED
 Ranking-report key used to identify dedicated statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L177)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-flag-capture-const-qgr-key-flag-capture-internal-qgr-key-flag-capture-src-mq3-game-rankings-ml-503537512"></a>
 ### QGR_KEY_FLAG_CAPTURE
@@ -1092,7 +1092,7 @@ const QGR_KEY_FLAG_CAPTURE = internal.QGR_KEY_FLAG_CAPTURE
 Ranking-report key used to identify flag capture statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L257)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-flag-pickup-const-qgr-key-flag-pickup-internal-qgr-key-flag-pickup-src-mq3-game-rankings-ml-1265341248"></a>
 ### QGR_KEY_FLAG_PICKUP
@@ -1104,7 +1104,7 @@ const QGR_KEY_FLAG_PICKUP = internal.QGR_KEY_FLAG_PICKUP
 Ranking-report key used to identify flag pickup statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L255)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-frag-const-qgr-key-frag-internal-qgr-key-frag-src-mq3-game-rankings-ml-1475654895"></a>
 ### QGR_KEY_FRAG
@@ -1116,7 +1116,7 @@ const QGR_KEY_FRAG = internal.QGR_KEY_FRAG
 Ranking-report key for kills scored.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L181)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-fraglimit-const-qgr-key-fraglimit-internal-qgr-key-fraglimit-src-mq3-game-rankings-ml-755698080"></a>
 ### QGR_KEY_FRAGLIMIT
@@ -1128,7 +1128,7 @@ const QGR_KEY_FRAGLIMIT = internal.QGR_KEY_FRAGLIMIT
 Ranking-report key used to identify frag limit statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L165)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-gametype-const-qgr-key-gametype-internal-qgr-key-gametype-src-mq3-game-rankings-ml-2062282433"></a>
 ### QGR_KEY_GAMETYPE
@@ -1140,7 +1140,7 @@ const QGR_KEY_GAMETYPE = internal.QGR_KEY_GAMETYPE
 Ranking-report key for the selected game mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L163)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-hazard-death-const-qgr-key-hazard-death-internal-qgr-key-hazard-death-src-mq3-game-rankings-ml-1106867550"></a>
 ### QGR_KEY_HAZARD_DEATH
@@ -1152,7 +1152,7 @@ const QGR_KEY_HAZARD_DEATH = internal.QGR_KEY_HAZARD_DEATH
 Ranking-report key used to identify hazard death statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L237)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-health-const-qgr-key-health-internal-qgr-key-health-src-mq3-game-rankings-ml-145033553"></a>
 ### QGR_KEY_HEALTH
@@ -1164,7 +1164,7 @@ const QGR_KEY_HEALTH = internal.QGR_KEY_HEALTH
 Ranking-report key used to identify health statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L207)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-health-total-const-qgr-key-health-total-internal-qgr-key-health-total-src-mq3-game-rankings-ml-1308562780"></a>
 ### QGR_KEY_HEALTH_TOTAL
@@ -1176,7 +1176,7 @@ const QGR_KEY_HEALTH_TOTAL = internal.QGR_KEY_HEALTH_TOTAL
 Ranking-report key used to identify health total statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L209)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-hit-given-const-qgr-key-hit-given-internal-qgr-key-hit-given-src-mq3-game-rankings-ml-1620340640"></a>
 ### QGR_KEY_HIT_GIVEN
@@ -1188,7 +1188,7 @@ const QGR_KEY_HIT_GIVEN = internal.QGR_KEY_HIT_GIVEN
 Ranking-report key for hits delivered.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L187)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-hit-taken-const-qgr-key-hit-taken-internal-qgr-key-hit-taken-src-mq3-game-rankings-ml-1259359726"></a>
 ### QGR_KEY_HIT_TAKEN
@@ -1200,7 +1200,7 @@ const QGR_KEY_HIT_TAKEN = internal.QGR_KEY_HIT_TAKEN
 Ranking-report key for hits received.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L189)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-hostname-const-qgr-key-hostname-internal-qgr-key-hostname-src-mq3-game-rankings-ml-217062490"></a>
 ### QGR_KEY_HOSTNAME
@@ -1212,7 +1212,7 @@ const QGR_KEY_HOSTNAME = internal.QGR_KEY_HOSTNAME
 Ranking-report key for the server host name.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L157)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-invulnerability-const-qgr-key-invulnerability-internal-qgr-key-invulnerability-src-mq3-game-rankings-ml-501476728"></a>
 ### QGR_KEY_INVULNERABILITY
@@ -1224,7 +1224,7 @@ const QGR_KEY_INVULNERABILITY = internal.QGR_KEY_INVULNERABILITY
 Ranking-report key used to identify invulnerability statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L233)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-invulnerability-use-const-qgr-key-invulnerability-use-internal-qgr-key-invulnerability-use-src-mq3-game-rankings-ml-1883506460"></a>
 ### QGR_KEY_INVULNERABILITY_USE
@@ -1236,7 +1236,7 @@ const QGR_KEY_INVULNERABILITY_USE = internal.QGR_KEY_INVULNERABILITY_USE
 Ranking-report key used to identify invulnerability use statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L235)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-kamikaze-const-qgr-key-kamikaze-internal-qgr-key-kamikaze-src-mq3-game-rankings-ml-1816028"></a>
 ### QGR_KEY_KAMIKAZE
@@ -1248,7 +1248,7 @@ const QGR_KEY_KAMIKAZE = internal.QGR_KEY_KAMIKAZE
 Ranking-report key used to identify kamikaze statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L225)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-kamikaze-use-const-qgr-key-kamikaze-use-internal-qgr-key-kamikaze-use-src-mq3-game-rankings-ml-1610080704"></a>
 ### QGR_KEY_KAMIKAZE_USE
@@ -1260,7 +1260,7 @@ const QGR_KEY_KAMIKAZE_USE = internal.QGR_KEY_KAMIKAZE_USE
 Ranking-report key used to identify kamikaze use statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L227)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-map-const-qgr-key-map-internal-qgr-key-map-src-mq3-game-rankings-ml-482013199"></a>
 ### QGR_KEY_MAP
@@ -1272,7 +1272,7 @@ const QGR_KEY_MAP = internal.QGR_KEY_MAP
 Ranking-report key for the played map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L159)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-match-rating-const-qgr-key-match-rating-internal-qgr-key-match-rating-src-mq3-game-rankings-ml-664526316"></a>
 ### QGR_KEY_MATCH_RATING
@@ -1284,7 +1284,7 @@ const QGR_KEY_MATCH_RATING = internal.QGR_KEY_MATCH_RATING
 Ranking-report key for the match rating.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L153)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-maxclients-const-qgr-key-maxclients-internal-qgr-key-maxclients-src-mq3-game-rankings-ml-508209701"></a>
 ### QGR_KEY_MAXCLIENTS
@@ -1296,7 +1296,7 @@ const QGR_KEY_MAXCLIENTS = internal.QGR_KEY_MAXCLIENTS
 Ranking-report key used to identify client limit statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L169)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-maxping-const-qgr-key-maxping-internal-qgr-key-maxping-src-mq3-game-rankings-ml-1150779579"></a>
 ### QGR_KEY_MAXPING
@@ -1308,7 +1308,7 @@ const QGR_KEY_MAXPING = internal.QGR_KEY_MAXPING
 Ranking-report key used to identify maximum ping statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L175)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-maxrate-const-qgr-key-maxrate-internal-qgr-key-maxrate-src-mq3-game-rankings-ml-597318877"></a>
 ### QGR_KEY_MAXRATE
@@ -1320,7 +1320,7 @@ const QGR_KEY_MAXRATE = internal.QGR_KEY_MAXRATE
 Ranking-report key used to identify maximum network rate statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L171)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-medkit-const-qgr-key-medkit-internal-qgr-key-medkit-src-mq3-game-rankings-ml-718066429"></a>
 ### QGR_KEY_MEDKIT
@@ -1332,7 +1332,7 @@ const QGR_KEY_MEDKIT = internal.QGR_KEY_MEDKIT
 Ranking-report key used to identify medkit statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L217)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-medkit-use-const-qgr-key-medkit-use-internal-qgr-key-medkit-use-src-mq3-game-rankings-ml-1908085313"></a>
 ### QGR_KEY_MEDKIT_USE
@@ -1344,7 +1344,7 @@ const QGR_KEY_MEDKIT_USE = internal.QGR_KEY_MEDKIT_USE
 Ranking-report key used to identify medkit use statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L219)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-minping-const-qgr-key-minping-internal-qgr-key-minping-src-mq3-game-rankings-ml-1246362957"></a>
 ### QGR_KEY_MINPING
@@ -1356,7 +1356,7 @@ const QGR_KEY_MINPING = internal.QGR_KEY_MINPING
 Ranking-report key used to identify minimum ping statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L173)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-mod-const-qgr-key-mod-internal-qgr-key-mod-src-mq3-game-rankings-ml-1894699149"></a>
 ### QGR_KEY_MOD
@@ -1368,7 +1368,7 @@ const QGR_KEY_MOD = internal.QGR_KEY_MOD
 Ranking-report key for the game modification.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L161)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-pickup-weapon-const-qgr-key-pickup-weapon-internal-qgr-key-pickup-weapon-src-mq3-game-rankings-ml-1287582234"></a>
 ### QGR_KEY_PICKUP_WEAPON
@@ -1380,7 +1380,7 @@ const QGR_KEY_PICKUP_WEAPON = internal.QGR_KEY_PICKUP_WEAPON
 Ranking-report key for weapon pickups.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L199)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-played-with-const-qgr-key-played-with-internal-qgr-key-played-with-src-mq3-game-rankings-ml-1064498021"></a>
 ### QGR_KEY_PLAYED_WITH
@@ -1392,7 +1392,7 @@ const QGR_KEY_PLAYED_WITH = internal.QGR_KEY_PLAYED_WITH
 Ranking-report key for the pairing of participating players.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L155)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-portal-const-qgr-key-portal-internal-qgr-key-portal-src-mq3-game-rankings-ml-2020525389"></a>
 ### QGR_KEY_PORTAL
@@ -1404,7 +1404,7 @@ const QGR_KEY_PORTAL = internal.QGR_KEY_PORTAL
 Ranking-report key used to identify portal statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L229)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-portal-use-const-qgr-key-portal-use-internal-qgr-key-portal-use-src-mq3-game-rankings-ml-1031101889"></a>
 ### QGR_KEY_PORTAL_USE
@@ -1416,7 +1416,7 @@ const QGR_KEY_PORTAL_USE = internal.QGR_KEY_PORTAL_USE
 Ranking-report key used to identify portal use statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L231)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-powerup-const-qgr-key-powerup-internal-qgr-key-powerup-src-mq3-game-rankings-ml-611225325"></a>
 ### QGR_KEY_POWERUP
@@ -1428,7 +1428,7 @@ const QGR_KEY_POWERUP = internal.QGR_KEY_POWERUP
 Ranking-report key used to identify powerup statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L215)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-rounds-const-qgr-key-rounds-internal-qgr-key-rounds-src-mq3-game-rankings-ml-2045223830"></a>
 ### QGR_KEY_ROUNDS
@@ -1440,7 +1440,7 @@ const QGR_KEY_ROUNDS = internal.QGR_KEY_ROUNDS
 Ranking-report key used to identify rounds statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L205)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-shot-fired-const-qgr-key-shot-fired-internal-qgr-key-shot-fired-src-mq3-game-rankings-ml-1667896144"></a>
 ### QGR_KEY_SHOT_FIRED
@@ -1452,7 +1452,7 @@ const QGR_KEY_SHOT_FIRED = internal.QGR_KEY_SHOT_FIRED
 Ranking-report key for shots fired.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L185)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-splash-given-const-qgr-key-splash-given-internal-qgr-key-splash-given-src-mq3-game-rankings-ml-830689626"></a>
 ### QGR_KEY_SPLASH_GIVEN
@@ -1464,7 +1464,7 @@ const QGR_KEY_SPLASH_GIVEN = internal.QGR_KEY_SPLASH_GIVEN
 Ranking-report key for splash damage dealt.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L195)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-splash-taken-const-qgr-key-splash-taken-internal-qgr-key-splash-taken-src-mq3-game-rankings-ml-1206117648"></a>
 ### QGR_KEY_SPLASH_TAKEN
@@ -1476,7 +1476,7 @@ const QGR_KEY_SPLASH_TAKEN = internal.QGR_KEY_SPLASH_TAKEN
 Ranking-report key for splash damage received.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L197)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-suicide-const-qgr-key-suicide-internal-qgr-key-suicide-src-mq3-game-rankings-ml-1595891285"></a>
 ### QGR_KEY_SUICIDE
@@ -1488,7 +1488,7 @@ const QGR_KEY_SUICIDE = internal.QGR_KEY_SUICIDE
 Ranking-report key for self-inflicted deaths.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L183)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-team-name-const-qgr-key-team-name-internal-qgr-key-team-name-src-mq3-game-rankings-ml-2130158614"></a>
 ### QGR_KEY_TEAM_NAME
@@ -1500,7 +1500,7 @@ const QGR_KEY_TEAM_NAME = internal.QGR_KEY_TEAM_NAME
 Ranking-report key used to identify team name statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L253)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-damage-given-const-qgr-key-teammate-damage-given-internal-qgr-key-teammate-damage-given-src-mq3-game-rankings-ml-192784547"></a>
 ### QGR_KEY_TEAMMATE_DAMAGE_GIVEN
@@ -1512,7 +1512,7 @@ const QGR_KEY_TEAMMATE_DAMAGE_GIVEN = internal.QGR_KEY_TEAMMATE_DAMAGE_GIVEN
 Ranking-report key used to identify teammate damage given statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L245)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-damage-taken-const-qgr-key-teammate-damage-taken-internal-qgr-key-teammate-damage-taken-src-mq3-game-rankings-ml-1608240721"></a>
 ### QGR_KEY_TEAMMATE_DAMAGE_TAKEN
@@ -1524,7 +1524,7 @@ const QGR_KEY_TEAMMATE_DAMAGE_TAKEN = internal.QGR_KEY_TEAMMATE_DAMAGE_TAKEN
 Ranking-report key used to identify teammate damage taken statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L247)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-frag-const-qgr-key-teammate-frag-internal-qgr-key-teammate-frag-src-mq3-game-rankings-ml-648061438"></a>
 ### QGR_KEY_TEAMMATE_FRAG
@@ -1536,7 +1536,7 @@ const QGR_KEY_TEAMMATE_FRAG = internal.QGR_KEY_TEAMMATE_FRAG
 Ranking-report key used to identify teammate frag statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L239)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-hit-given-const-qgr-key-teammate-hit-given-internal-qgr-key-teammate-hit-given-src-mq3-game-rankings-ml-304538379"></a>
 ### QGR_KEY_TEAMMATE_HIT_GIVEN
@@ -1548,7 +1548,7 @@ const QGR_KEY_TEAMMATE_HIT_GIVEN = internal.QGR_KEY_TEAMMATE_HIT_GIVEN
 Ranking-report key used to identify teammate hit given statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L241)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-hit-taken-const-qgr-key-teammate-hit-taken-internal-qgr-key-teammate-hit-taken-src-mq3-game-rankings-ml-484551653"></a>
 ### QGR_KEY_TEAMMATE_HIT_TAKEN
@@ -1560,7 +1560,7 @@ const QGR_KEY_TEAMMATE_HIT_TAKEN = internal.QGR_KEY_TEAMMATE_HIT_TAKEN
 Ranking-report key used to identify teammate hit taken statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L243)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-splash-given-const-qgr-key-teammate-splash-given-internal-qgr-key-teammate-splash-given-src-mq3-game-rankings-ml-703412657"></a>
 ### QGR_KEY_TEAMMATE_SPLASH_GIVEN
@@ -1572,7 +1572,7 @@ const QGR_KEY_TEAMMATE_SPLASH_GIVEN = internal.QGR_KEY_TEAMMATE_SPLASH_GIVEN
 Ranking-report key used to identify teammate splash given statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L249)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teammate-splash-taken-const-qgr-key-teammate-splash-taken-internal-qgr-key-teammate-splash-taken-src-mq3-game-rankings-ml-2030230027"></a>
 ### QGR_KEY_TEAMMATE_SPLASH_TAKEN
@@ -1584,7 +1584,7 @@ const QGR_KEY_TEAMMATE_SPLASH_TAKEN = internal.QGR_KEY_TEAMMATE_SPLASH_TAKEN
 Ranking-report key used to identify teammate splash taken statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L251)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teleporter-const-qgr-key-teleporter-internal-qgr-key-teleporter-src-mq3-game-rankings-ml-1735524619"></a>
 ### QGR_KEY_TELEPORTER
@@ -1596,7 +1596,7 @@ const QGR_KEY_TELEPORTER = internal.QGR_KEY_TELEPORTER
 Ranking-report key used to identify teleporter statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L221)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-teleporter-use-const-qgr-key-teleporter-use-internal-qgr-key-teleporter-use-src-mq3-game-rankings-ml-1081181591"></a>
 ### QGR_KEY_TELEPORTER_USE
@@ -1608,7 +1608,7 @@ const QGR_KEY_TELEPORTER_USE = internal.QGR_KEY_TELEPORTER_USE
 Ranking-report key used to identify teleporter use statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L223)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-time-const-qgr-key-time-internal-qgr-key-time-src-mq3-game-rankings-ml-1716474830"></a>
 ### QGR_KEY_TIME
@@ -1620,7 +1620,7 @@ const QGR_KEY_TIME = internal.QGR_KEY_TIME
 Ranking-report key for time spent using the tracked item or weapon.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L201)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-timelimit-const-qgr-key-timelimit-internal-qgr-key-timelimit-src-mq3-game-rankings-ml-824713437"></a>
 ### QGR_KEY_TIMELIMIT
@@ -1632,7 +1632,7 @@ const QGR_KEY_TIMELIMIT = internal.QGR_KEY_TIMELIMIT
 Ranking-report key used to identify time limit statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L167)
 
 <a id="constant-constant-mq3-game-rankings-qgr-key-version-const-qgr-key-version-internal-qgr-key-version-src-mq3-game-rankings-ml-1972064641"></a>
 ### QGR_KEY_VERSION
@@ -1644,7 +1644,7 @@ const QGR_KEY_VERSION = internal.QGR_KEY_VERSION
 Ranking-report key used to identify version statistics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L179)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-active-const-qgr-status-active-2-src-mq3-game-rankings-ml-1791136051"></a>
 ### QGR_STATUS_ACTIVE
@@ -1656,7 +1656,7 @@ const QGR_STATUS_ACTIVE = 2
 Ranking protocol value selecting status active.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L14)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-bad-password-const-qgr-status-bad-password-7-src-mq3-game-rankings-ml-433750154"></a>
 ### QGR_STATUS_BAD_PASSWORD
@@ -1668,7 +1668,7 @@ const QGR_STATUS_BAD_PASSWORD = 7
 Ranking protocol value selecting status bad password.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L20)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-error-const-qgr-status-error-12-src-mq3-game-rankings-ml-1160140684"></a>
 ### QGR_STATUS_ERROR
@@ -1680,7 +1680,7 @@ const QGR_STATUS_ERROR = 12
 Ranking protocol value selecting status error.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L28)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-invaliduser-const-qgr-status-invaliduser-11-src-mq3-game-rankings-ml-1521726275"></a>
 ### QGR_STATUS_INVALIDUSER
@@ -1692,7 +1692,7 @@ const QGR_STATUS_INVALIDUSER = 11
 Ranking protocol value selecting status invaliduser.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L26)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-new-const-qgr-status-new-0-src-mq3-game-rankings-ml-70655719"></a>
 ### QGR_STATUS_NEW
@@ -1704,7 +1704,7 @@ const QGR_STATUS_NEW = 0
 Ranking protocol value selecting status new.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L10)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-no-membership-const-qgr-status-no-membership-9-src-mq3-game-rankings-ml-1462095954"></a>
 ### QGR_STATUS_NO_MEMBERSHIP
@@ -1716,7 +1716,7 @@ const QGR_STATUS_NO_MEMBERSHIP = 9
 Ranking protocol value selecting status no membership.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L22)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-no-user-const-qgr-status-no-user-6-src-mq3-game-rankings-ml-1386339579"></a>
 ### QGR_STATUS_NO_USER
@@ -1728,7 +1728,7 @@ const QGR_STATUS_NO_USER = 6
 Ranking protocol value selecting status no user.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L18)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-pending-const-qgr-status-pending-4-src-mq3-game-rankings-ml-942145989"></a>
 ### QGR_STATUS_PENDING
@@ -1740,7 +1740,7 @@ const QGR_STATUS_PENDING = 4
 Ranking protocol value selecting status pending.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L16)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-spectator-const-qgr-status-spectator-1-src-mq3-game-rankings-ml-2026159196"></a>
 ### QGR_STATUS_SPECTATOR
@@ -1752,7 +1752,7 @@ const QGR_STATUS_SPECTATOR = 1
 Ranking protocol value selecting status spectator.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L12)
 
 <a id="constant-constant-mq3-game-rankings-qgr-status-timeout-const-qgr-status-timeout-10-src-mq3-game-rankings-ml-1001067568"></a>
 ### QGR_STATUS_TIMEOUT
@@ -1764,7 +1764,7 @@ const QGR_STATUS_TIMEOUT = 10
 Ranking protocol value selecting status timeout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L24)
 
 - [mq3.game.rankings.Report](Type-mq3-game-rankings-report-2143402279.md) — struct
 <a id="function-function-mq3-game-rankings-reportint-function-reportint-state-index1-index2-key-value-accum-src-mq3-game-rankings-ml-1049819423"></a>
@@ -1786,7 +1786,7 @@ Set `state.reports` to `state.reports+[Report(false,index1,index2,key,value,"",a
 | `accum` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.accum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L379)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L379)
 
 <a id="function-function-mq3-game-rankings-reportstr-function-reportstr-state-index1-index2-key-value-src-mq3-game-rankings-ml-2126423070"></a>
 ### reportStr
@@ -1806,7 +1806,7 @@ Set `state.reports` to `state.reports+[Report(true,index1,index2,key,0,value,fal
 | `value` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L386)
 
 <a id="function-function-mq3-game-rankings-sameteam-function-sameteam-state-a-b-src-mq3-game-rankings-ml-686813550"></a>
 ### sameTeam
@@ -1824,7 +1824,7 @@ Test `a>=0 and b>=0 and a<state.maxclients and b<state.maxclients and state.clie
 | `b` | `dynamic` | — | Operand used to evaluate the returned expression `a>=0 and b>=0 and a<state.maxclients and b<state.maxclients and state.clients[a].team==state.clients[b].team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L422)
 
 <a id="function-function-mq3-game-rankings-specific-function-specific-base-weapon-src-mq3-game-rankings-ml-477731331"></a>
 ### specific
@@ -1841,7 +1841,7 @@ Return `base+ordinal(weapon)*100` for `specific`.
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L404)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L404)
 
 <a id="constant-constant-mq3-game-rankings-spectator-free-const-spectator-free-1-src-mq3-game-rankings-ml-342905530"></a>
 ### SPECTATOR_FREE
@@ -1853,7 +1853,7 @@ const SPECTATOR_FREE = 1
 Spectator-state identifier selecting free.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L32)
 
 <a id="function-function-mq3-game-rankings-splashmod-function-splashmod-mod-src-mq3-game-rankings-ml-1051146726"></a>
 ### splashMod
@@ -1869,7 +1869,7 @@ Test `mod==MOD_GRENADE_SPLASH or mod==MOD_ROCKET_SPLASH or mod==MOD_PLASMA_SPLAS
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L414)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L414)
 
 - [mq3.game.rankings.State](Type-mq3-game-rankings-state-1265489706.md) — struct
 <a id="function-function-mq3-game-rankings-status-function-status-state-index-src-mq3-game-rankings-ml-645810565"></a>
@@ -1887,7 +1887,7 @@ Use `state.statusFn` to perform `status`. Return paths include `state.clients[in
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L397)
 
 <a id="constant-constant-mq3-game-rankings-svf-bot-const-svf-bot-8-src-mq3-game-rankings-ml-2065643281"></a>
 ### SVF_BOT
@@ -1899,7 +1899,7 @@ const SVF_BOT = 8
 Server entity-flag bit controlling bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L34)
 
 <a id="constant-constant-mq3-game-rankings-team-spectator-const-team-spectator-3-src-mq3-game-rankings-ml-595515050"></a>
 ### TEAM_SPECTATOR
@@ -1911,7 +1911,7 @@ const TEAM_SPECTATOR = 3
 Team identifier selecting the spectator team/category.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L30)
 
 <a id="function-function-mq3-game-rankings-weaponformod-function-weaponformod-mod-src-mq3-game-rankings-ml-313546352"></a>
 ### weaponForMod
@@ -1927,7 +1927,7 @@ Map a means-of-death code to the weapon responsible for the ranking event.
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L411)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L411)
 
 <a id="constant-constant-mq3-game-rankings-wp-bfg-const-wp-bfg-9-src-mq3-game-rankings-ml-2056522508"></a>
 ### WP_BFG
@@ -1939,7 +1939,7 @@ const WP_BFG = 9
 Weapon identifier selecting BFG.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L57)
 
 <a id="constant-constant-mq3-game-rankings-wp-chaingun-const-wp-chaingun-13-src-mq3-game-rankings-ml-292676443"></a>
 ### WP_CHAINGUN
@@ -1951,7 +1951,7 @@ const WP_CHAINGUN = 13
 Weapon identifier selecting chaingun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L65)
 
 <a id="constant-constant-mq3-game-rankings-wp-gauntlet-const-wp-gauntlet-1-src-mq3-game-rankings-ml-1873160152"></a>
 ### WP_GAUNTLET
@@ -1963,7 +1963,7 @@ const WP_GAUNTLET = 1
 Weapon identifier selecting gauntlet.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L41)
 
 <a id="constant-constant-mq3-game-rankings-wp-grappling-hook-const-wp-grappling-hook-10-src-mq3-game-rankings-ml-2100415044"></a>
 ### WP_GRAPPLING_HOOK
@@ -1975,7 +1975,7 @@ const WP_GRAPPLING_HOOK = 10
 Weapon identifier selecting grappling hook.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L59)
 
 <a id="constant-constant-mq3-game-rankings-wp-grenade-launcher-const-wp-grenade-launcher-4-src-mq3-game-rankings-ml-1975996337"></a>
 ### WP_GRENADE_LAUNCHER
@@ -1987,7 +1987,7 @@ const WP_GRENADE_LAUNCHER = 4
 Weapon identifier selecting grenade launcher.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L47)
 
 <a id="constant-constant-mq3-game-rankings-wp-lightning-const-wp-lightning-6-src-mq3-game-rankings-ml-355681793"></a>
 ### WP_LIGHTNING
@@ -1999,7 +1999,7 @@ const WP_LIGHTNING = 6
 Weapon identifier selecting lightning gun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L51)
 
 <a id="constant-constant-mq3-game-rankings-wp-machinegun-const-wp-machinegun-2-src-mq3-game-rankings-ml-1767286191"></a>
 ### WP_MACHINEGUN
@@ -2011,7 +2011,7 @@ const WP_MACHINEGUN = 2
 Weapon identifier selecting machine gun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L43)
 
 <a id="constant-constant-mq3-game-rankings-wp-nailgun-const-wp-nailgun-11-src-mq3-game-rankings-ml-1395443799"></a>
 ### WP_NAILGUN
@@ -2023,7 +2023,7 @@ const WP_NAILGUN = 11
 Weapon identifier selecting nailgun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L61)
 
 <a id="constant-constant-mq3-game-rankings-wp-plasmagun-const-wp-plasmagun-8-src-mq3-game-rankings-ml-654348071"></a>
 ### WP_PLASMAGUN
@@ -2035,7 +2035,7 @@ const WP_PLASMAGUN = 8
 Weapon identifier selecting plasma gun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L55)
 
 <a id="constant-constant-mq3-game-rankings-wp-prox-launcher-const-wp-prox-launcher-12-src-mq3-game-rankings-ml-1122580936"></a>
 ### WP_PROX_LAUNCHER
@@ -2047,7 +2047,7 @@ const WP_PROX_LAUNCHER = 12
 Weapon identifier selecting prox launcher.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L63)
 
 <a id="constant-constant-mq3-game-rankings-wp-railgun-const-wp-railgun-7-src-mq3-game-rankings-ml-1790683264"></a>
 ### WP_RAILGUN
@@ -2059,7 +2059,7 @@ const WP_RAILGUN = 7
 Weapon identifier selecting railgun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L53)
 
 <a id="constant-constant-mq3-game-rankings-wp-rocket-launcher-const-wp-rocket-launcher-5-src-mq3-game-rankings-ml-297740508"></a>
 ### WP_ROCKET_LAUNCHER
@@ -2071,7 +2071,7 @@ const WP_ROCKET_LAUNCHER = 5
 Weapon identifier selecting rocket launcher.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L49)
 
 <a id="constant-constant-mq3-game-rankings-wp-shotgun-const-wp-shotgun-3-src-mq3-game-rankings-ml-897782560"></a>
 ### WP_SHOTGUN
@@ -2083,4 +2083,4 @@ const WP_SHOTGUN = 3
 Weapon identifier selecting shotgun.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L45)

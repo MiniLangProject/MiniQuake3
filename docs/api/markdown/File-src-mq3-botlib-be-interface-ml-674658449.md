@@ -25,7 +25,7 @@ function aasExports()
 Return the ordered aas exports table for be interface: 22 entries beginning with `["AAS_EntityInfo","AAS_EntityInfo"]` and `["AAS_Initialized","AAS_Initialized"]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L259)
 
 <a id="function-function-mq3-botlib-be-interface-aiexports-function-aiexports-src-mq3-botlib-be-interface-ml-721689012"></a>
 ### aiExports
@@ -37,7 +37,7 @@ function aiExports()
 Return the ordered ai exports table for be interface: 75 entries beginning with `["BotLoadCharacter","BotLoadCharacter"]` and `["BotFreeCharacter","BotFreeCharacter"]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L263)
 
 - [mq3.botlib.be_interface.Api](Type-mq3-botlib-be-interface-api-1768285179.md) — struct
 <a id="constant-constant-mq3-botlib-be-interface-blerr-invalidentitynumber-const-blerr-invalidentitynumber-publicheaders-blerr-invalidentitynumber-src-mq3-botlib-be-interface-ml-1712564057"></a>
@@ -50,7 +50,7 @@ const BLERR_INVALIDENTITYNUMBER = publicHeaders.BLERR_INVALIDENTITYNUMBER
 Bot-library error indicating an out-of-range entity number.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L21)
 
 <a id="constant-constant-mq3-botlib-be-interface-blerr-librarynotsetup-const-blerr-librarynotsetup-publicheaders-blerr-librarynotsetup-src-mq3-botlib-be-interface-ml-304496869"></a>
 ### BLERR_LIBRARYNOTSETUP
@@ -62,7 +62,7 @@ const BLERR_LIBRARYNOTSETUP = publicHeaders.BLERR_LIBRARYNOTSETUP
 Bot-library error indicating that setup has not completed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L19)
 
 <a id="constant-constant-mq3-botlib-be-interface-blerr-noerror-const-blerr-noerror-publicheaders-blerr-noerror-src-mq3-botlib-be-interface-ml-374925519"></a>
 ### BLERR_NOERROR
@@ -74,7 +74,7 @@ const BLERR_NOERROR = publicHeaders.BLERR_NOERROR
 Bot-library status indicating successful completion.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L17)
 
 <a id="function-function-mq3-botlib-be-interface-botexporttest-function-botexporttest-parm0-parm1-parm2-parm3-src-mq3-botlib-be-interface-ml-186296480"></a>
 ### BotExportTest
@@ -93,7 +93,7 @@ Return `0` for `BotExportTest`.
 | `parm3` | `dynamic` | — | Not read by this implementation; retained in the `BotExportTest` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L227)
 
 <a id="constant-constant-mq3-botlib-be-interface-botlib-api-version-const-botlib-api-version-publicheaders-botlib-api-version-src-mq3-botlib-be-interface-ml-772952670"></a>
 ### BOTLIB_API_VERSION
@@ -105,7 +105,7 @@ const BOTLIB_API_VERSION = publicHeaders.BOTLIB_API_VERSION
 Serialized format or interface version expected by be interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L15)
 
 <a id="function-function-mq3-botlib-be-interface-botlibsetup-function-botlibsetup-state-src-mq3-botlib-be-interface-ml-801838051"></a>
 ### BotLibSetup
@@ -121,7 +121,7 @@ Test `state!=void and state.setup` as the condition for `BotLibSetup`.
 | `state` | `dynamic` | — | Be interface state; accesses `setup`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L132)
 
 <a id="function-function-mq3-botlib-be-interface-eaexports-function-eaexports-src-mq3-botlib-be-interface-ml-1451714588"></a>
 ### eaExports
@@ -133,7 +133,7 @@ function eaExports()
 Return the ordered ea exports table for be interface: 24 entries beginning with `["EA_Command","EA_Command"]` and `["EA_Say","EA_Say"]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L261)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibloadmap-function-export-botlibloadmap-state-mapname-service-src-mq3-botlib-be-interface-ml-1445466105"></a>
 ### Export_BotLibLoadMap
@@ -151,7 +151,7 @@ Set `state.mapName` to `mapName` and `state.mapLoads` to `state.mapLoads+1` in `
 | `service` | `dynamic` | — | Service record; accesses `aasLoadMapFn`, `initLevelItemsFn` and `setBrushModelTypesFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L190)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibsetup-function-export-botlibsetup-state-service-src-mq3-botlib-be-interface-ml-801424302"></a>
 ### Export_BotLibSetup
@@ -168,7 +168,7 @@ Update `state.developer`, `state.setup`, `state.maxclients` and `state.maxentiti
 | `service` | `dynamic` | — | Service record; accesses `aasSetupFn`, `eaSetupFn`, `weaponSetupFn`, `goalSetupFn` and `chatSetupFn` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L137)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibshutdown-function-export-botlibshutdown-state-service-registry-src-mq3-botlib-be-interface-ml-1146898295"></a>
 ### Export_BotLibShutdown
@@ -186,7 +186,7 @@ Apply `mq3.botlib.be_interface.BotLibSetup`, `mq3.botlib.be_interface.services` 
 | `registry` | `dynamic` | — | Registry record; accesses `defines`. May update `registry.defines` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L153)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibstartframe-function-export-botlibstartframe-state-time-service-src-mq3-botlib-be-interface-ml-1869798413"></a>
 ### Export_BotLibStartFrame
@@ -204,7 +204,7 @@ Set `state.time` to `time` and `state.frames` to `state.frames+1` in `mq3.botlib
 | `service` | `dynamic` | — | Service record; accesses `aasStartFrameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L180)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibupdateentity-function-export-botlibupdateentity-state-entity-present-service-src-mq3-botlib-be-interface-ml-841227422"></a>
 ### Export_BotLibUpdateEntity
@@ -223,7 +223,7 @@ Set `state.entityUpdates` to `state.entityUpdates+1` and `state.removedEntities`
 | `service` | `dynamic` | — | Service record; accesses `aasUpdateEntityFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L204)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibupdateentityplain-function-export-botlibupdateentityplain-state-entity-present-src-mq3-botlib-be-interface-ml-800070015"></a>
 ### Export_BotLibUpdateEntityPlain
@@ -241,7 +241,7 @@ The QVM host has no aasUpdateEntity callback: it applies the entity state immedi
 | `present` | `dynamic` | — | Value used by `Export_BotLibUpdateEntityPlain` in `if not present then state.removedEntities=state.removedEntities+1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L217)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibvarget-function-export-botlibvarget-state-name-size-src-mq3-botlib-be-interface-ml-642749375"></a>
 ### Export_BotLibVarGet
@@ -259,7 +259,7 @@ Apply `mq3.botlib.lifecycle_runtime.varGet` while evaluating `Export_BotLibVarGe
 | `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L172)
 
 <a id="function-function-mq3-botlib-be-interface-export-botlibvarset-function-export-botlibvarset-state-name-value-src-mq3-botlib-be-interface-ml-1707202181"></a>
 ### Export_BotLibVarSet
@@ -277,7 +277,7 @@ Forward `Export_BotLibVarSet` to `mq3.botlib.lifecycle_runtime.varSet` and retur
 | `value` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L167)
 
 <a id="function-function-mq3-botlib-be-interface-getbotlibapi-function-getbotlibapi-apiversion-importvalid-src-mq3-botlib-be-interface-ml-618187637"></a>
 ### GetBotLibAPI
@@ -294,7 +294,7 @@ Build the `mq3.botlib.be_interface.Api` result for `GetBotLibAPI`. Return paths 
 | `importValid` | `dynamic` | — | Value used by `GetBotLibAPI` in `if not importValid or apiVersion!=BOTLIB_API_VERSION then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L268)
 
 <a id="function-function-mq3-botlib-be-interface-invoke-function-invoke-service-callback-src-mq3-botlib-be-interface-ml-1491904436"></a>
 ### invoke
@@ -311,7 +311,7 @@ Call an optional host service with its context and normalize missing or void res
 | `callback` | `dynamic` | — | Callback invoked by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L95)
 
 <a id="function-function-mq3-botlib-be-interface-invoke1-function-invoke1-service-callback-value-src-mq3-botlib-be-interface-ml-1550701497"></a>
 ### invoke1
@@ -329,7 +329,7 @@ Call an optional one-argument host service and normalize missing or void results
 | `value` | `dynamic` | — | Value passed as argument 2 to `callback`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L103)
 
 <a id="function-function-mq3-botlib-be-interface-invoke2-function-invoke2-service-callback-first-second-src-mq3-botlib-be-interface-ml-333135776"></a>
 ### invoke2
@@ -348,7 +348,7 @@ Call an optional two-argument host service and normalize missing or void results
 | `second` | `dynamic` | — | Value passed as argument 3 to `callback`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L112)
 
 <a id="function-function-mq3-botlib-be-interface-pc-addglobaldefine-function-pc-addglobaldefine-registry-text-src-mq3-botlib-be-interface-ml-2064370058"></a>
 ### PC_AddGlobalDefine
@@ -365,7 +365,7 @@ Forward `PC_AddGlobalDefine` to `mq3.vm.pc_parser.addDefine` and return the dele
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L232)
 
 <a id="function-function-mq3-botlib-be-interface-pc-checkopensourcehandles-function-pc-checkopensourcehandles-registry-src-mq3-botlib-be-interface-ml-1367890269"></a>
 ### PC_CheckOpenSourceHandles
@@ -381,7 +381,7 @@ Count open source handles in the shared preprocessor registry.
 | `registry` | `dynamic` | — | Registry record; accesses `sources`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L251)
 
 <a id="function-function-mq3-botlib-be-interface-pc-freesourcehandle-function-pc-freesourcehandle-registry-handle-src-mq3-botlib-be-interface-ml-403825917"></a>
 ### PC_FreeSourceHandle
@@ -398,7 +398,7 @@ Forward `PC_FreeSourceHandle` to `mq3.vm.pc_parser.free` and return the delegate
 | `handle` | `dynamic` | — | Handle identifying the allocated preprocessor source. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L240)
 
 <a id="function-function-mq3-botlib-be-interface-pc-loadsourcehandle-function-pc-loadsourcehandle-registry-name-src-mq3-botlib-be-interface-ml-2108239588"></a>
 ### PC_LoadSourceHandle
@@ -415,7 +415,7 @@ Forward `PC_LoadSourceHandle` to `mq3.vm.pc_parser.load` and return the delegate
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L236)
 
 <a id="function-function-mq3-botlib-be-interface-pc-readtokenhandle-function-pc-readtokenhandle-registry-handle-src-mq3-botlib-be-interface-ml-538967307"></a>
 ### PC_ReadTokenHandle
@@ -432,7 +432,7 @@ Forward `PC_ReadTokenHandle` to `mq3.vm.pc_parser.read` and return the delegated
 | `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L244)
 
 <a id="function-function-mq3-botlib-be-interface-pc-sourcefileandline-function-pc-sourcefileandline-registry-handle-src-mq3-botlib-be-interface-ml-2034179423"></a>
 ### PC_SourceFileAndLine
@@ -449,7 +449,7 @@ Forward `PC_SourceFileAndLine` to `mq3.vm.pc_parser.location` and return the del
 | `handle` | `dynamic` | — | Handle identifying the allocated preprocessor source. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L248)
 
 <a id="function-function-mq3-botlib-be-interface-services-function-services-context-src-mq3-botlib-be-interface-ml-192793695"></a>
 ### services
@@ -465,7 +465,7 @@ Create a `mq3.botlib.be_interface.Services` record, initializing `context` from 
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L91)
 
 - [mq3.botlib.be_interface.Services](Type-mq3-botlib-be-interface-services-1301193177.md) — struct
 <a id="function-function-mq3-botlib-be-interface-sys-milliseconds-function-sys-milliseconds-clockvalue-clockspersecond-src-mq3-botlib-be-interface-ml-1840429163"></a>
@@ -483,7 +483,7 @@ Sys_MilliSeconds uses clock() rather than wall time in the original.  The determ
 | `clocksPerSecond` | `dynamic` | — | Operand used to evaluate the returned expression `n.trunc32(clockValue*1000/clocksPerSecond)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L121)
 
 <a id="function-function-mq3-botlib-be-interface-topexports-function-topexports-src-mq3-botlib-be-interface-ml-1899186698"></a>
 ### topExports
@@ -495,7 +495,7 @@ function topExports()
 Return the ordered top exports table for be interface: 13 entries beginning with `["BotLibSetup","Export_BotLibSetup"]` and `["BotLibShutdown","Export_BotLibShutdown"]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L257)
 
 <a id="function-function-mq3-botlib-be-interface-validclientnumber-function-validclientnumber-state-number-src-mq3-botlib-be-interface-ml-423096340"></a>
 ### ValidClientNumber
@@ -512,7 +512,7 @@ Test `state!=void and number>=0 and number<=state.maxclients` as the condition f
 | `number` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and number>=0 and number<=state.maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L125)
 
 <a id="function-function-mq3-botlib-be-interface-validentitynumber-function-validentitynumber-state-number-src-mq3-botlib-be-interface-ml-28021468"></a>
 ### ValidEntityNumber
@@ -529,4 +529,4 @@ Test `state!=void and number>=0 and number<=state.maxentities` as the condition 
 | `number` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and number>=0 and number<=state.maxentities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L129)

@@ -12,7 +12,7 @@ struct MenuKeyResult
 Stores UI mfield menu key result record, including `sound`, `key`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L105)
 
 ## Members
 
@@ -26,7 +26,7 @@ key
 When constructing this record, `MenuField_Key` supplies `qmenu.K_TAB` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L109)
 
 <a id="field-field-mq3-client-ui-mfield-menukeyresult-sound-sound-src-mq3-client-ui-mfield-ml-916051736"></a>
 ### sound
@@ -38,4 +38,4 @@ sound
 Menu SOUND_* feedback code selected while editing the field, such as the rejection buzz.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L107)

@@ -12,7 +12,7 @@ struct Hunk
 Hunk record for qcommon.common, containing `capacity`, `lowPermanent`, `highPermanent`, `lowTemp`, `highTemp`, `markLow`, and 6 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L152)
 
 ## Members
 
@@ -26,7 +26,7 @@ allocations
 Managed allocations owned by the hunk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L172)
 
 <a id="field-field-mq3-qcommon-common-hunk-capacity-capacity-src-mq3-qcommon-common-ml-245751811"></a>
 ### capacity
@@ -38,7 +38,7 @@ capacity
 Maximum number of entries allowed in the managed collection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L154)
 
 <a id="field-field-mq3-qcommon-common-hunk-highpermanent-highpermanent-src-mq3-qcommon-common-ml-1323505147"></a>
 ### highPermanent
@@ -50,7 +50,7 @@ highPermanent
 Permanent bytes allocated from the high hunk bank.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L158)
 
 <a id="field-field-mq3-qcommon-common-hunk-hightemp-hightemp-src-mq3-qcommon-common-ml-409928787"></a>
 ### highTemp
@@ -62,7 +62,7 @@ highTemp
 Temporary bytes allocated from the high hunk bank.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L162)
 
 <a id="field-field-mq3-qcommon-common-hunk-lowpermanent-lowpermanent-src-mq3-qcommon-common-ml-1884547011"></a>
 ### lowPermanent
@@ -74,7 +74,7 @@ lowPermanent
 Permanent bytes allocated from the low hunk bank.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L156)
 
 <a id="field-field-mq3-qcommon-common-hunk-lowtemp-lowtemp-src-mq3-qcommon-common-ml-1892947859"></a>
 ### lowTemp
@@ -86,7 +86,7 @@ lowTemp
 Temporary bytes allocated from the low hunk bank.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L160)
 
 <a id="field-field-mq3-qcommon-common-hunk-markhandle-markhandle-src-mq3-qcommon-common-ml-1955686509"></a>
 ### markHandle
@@ -98,7 +98,7 @@ markHandle
 Allocation handle saved at the hunk mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L168)
 
 <a id="field-field-mq3-qcommon-common-hunk-markhigh-markhigh-src-mq3-qcommon-common-ml-173894385"></a>
 ### markHigh
@@ -110,7 +110,7 @@ markHigh
 High-bank allocation position saved at the hunk mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L166)
 
 <a id="field-field-mq3-qcommon-common-hunk-marklow-marklow-src-mq3-qcommon-common-ml-733329331"></a>
 ### markLow
@@ -122,7 +122,7 @@ markLow
 Low-bank allocation position saved at the hunk mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L164)
 
 <a id="field-field-mq3-qcommon-common-hunk-nexthandle-nexthandle-src-mq3-qcommon-common-ml-1852868949"></a>
 ### nextHandle
@@ -134,7 +134,7 @@ nextHandle
 Handle to assign to the next allocated managed resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L170)
 
 <a id="field-field-mq3-qcommon-common-hunk-permanentbank-permanentbank-src-mq3-qcommon-common-ml-1028934131"></a>
 ### permanentBank
@@ -146,7 +146,7 @@ permanentBank
 Bank selected for subsequent permanent hunk allocations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L174)
 
 <a id="field-field-mq3-qcommon-common-hunk-tempbank-tempbank-src-mq3-qcommon-common-ml-1754639195"></a>
 ### tempBank
@@ -158,4 +158,4 @@ tempBank
 Bank selected for subsequent temporary hunk allocations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L176)

@@ -29,7 +29,7 @@ Forward `ClientEndFrame` to `mq3.game.client_frame.endFrame` and return the dele
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `health`. May update `ent.s.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L82)
 
 <a id="function-function-mq3-game-g-active-clientevents-function-clientevents-level-ent-oldeventsequence-src-mq3-game-g-active-ml-1980291045"></a>
 ### ClientEvents
@@ -47,7 +47,7 @@ Forward `ClientEvents` to `mq3.game.client_active.clientEvents` and return the d
 | `oldEventSequence` | `dynamic` | — | Player event sequence value before processing the current command. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L54)
 
 <a id="function-function-mq3-game-g-active-clientimpacts-function-clientimpacts-level-ent-pm-src-mq3-game-g-active-ml-1762240560"></a>
 ### ClientImpacts
@@ -65,7 +65,7 @@ Forward `ClientImpacts` to `mq3.game.client_active.impacts` and return the deleg
 | `pm` | `dynamic` | — | Player movement context; accesses `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L27)
 
 <a id="function-function-mq3-game-g-active-clientinactivitytimer-function-clientinactivitytimer-level-client-slot-src-mq3-game-g-active-ml-247891397"></a>
 ### ClientInactivityTimer
@@ -83,7 +83,7 @@ Forward `ClientInactivityTimer` to `mq3.game.client_active.inactivityTimer` and 
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L41)
 
 <a id="function-function-mq3-game-g-active-clientintermissionthink-function-clientintermissionthink-client-src-mq3-game-g-active-ml-1847601497"></a>
 ### ClientIntermissionThink
@@ -99,7 +99,7 @@ Forward `ClientIntermissionThink` to `mq3.game.client_active.intermissionThink` 
 | `client` | `dynamic` | — | Client state; accesses `ps`, `oldbuttons`, `buttons`, `cmdButtons` and `readyToExit`. May update `client.ps.eFlags`, `client.oldbuttons` and `client.buttons` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L49)
 
 <a id="function-function-mq3-game-g-active-clientthink-function-clientthink-level-clientnum-src-mq3-game-g-active-ml-374278821"></a>
 ### ClientThink
@@ -116,7 +116,7 @@ Forward `ClientThink` to `mq3.game.client_active.think` and return the delegated
 | `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L70)
 
 <a id="function-function-mq3-game-g-active-clientthink-real-function-clientthink-real-level-ent-src-mq3-game-g-active-ml-343006707"></a>
 ### ClientThink_real
@@ -133,7 +133,7 @@ Forward `ClientThink_real` to `mq3.game.client_active.realThink` and return the 
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `slot`, `flags`, `r` and `eventTime` and related fields. May update `ent.flags`, `ent.r.mins` and `ent.r.maxs` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L66)
 
 <a id="function-function-mq3-game-g-active-clienttimeractions-function-clienttimeractions-level-ent-msec-src-mq3-game-g-active-ml-2123601223"></a>
 ### ClientTimerActions
@@ -151,7 +151,7 @@ Forward `ClientTimerActions` to `mq3.game.client_active.timerActions` and return
 | `msec` | `dynamic` | — | Elapsed time in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L46)
 
 <a id="function-function-mq3-game-g-active-g-runclient-function-g-runclient-level-ent-src-mq3-game-g-active-ml-522133603"></a>
 ### G_RunClient
@@ -168,7 +168,7 @@ Forward `G_RunClient` to `mq3.game.client_active.runClient` and return the deleg
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `client`. May update `ent.client.cmdServerTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L74)
 
 <a id="function-function-mq3-game-g-active-g-setclientsound-function-g-setclientsound-level-ent-src-mq3-game-g-active-ml-304867895"></a>
 ### G_SetClientSound
@@ -185,7 +185,7 @@ Forward `G_SetClientSound` to `mq3.game.client_frame.setClientSound` and return 
 | `ent` | `dynamic` | — | Game entity; accesses `waterlevel`, `watertype` and `client`. May update `ent.client.ps.loopSound` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L22)
 
 <a id="function-function-mq3-game-g-active-g-touchtriggers-function-g-touchtriggers-level-ent-src-mq3-game-g-active-ml-902422343"></a>
 ### G_TouchTriggers
@@ -202,7 +202,7 @@ Forward `G_TouchTriggers` to `mq3.game.triggers.touch` and return the delegated 
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `r` and `touch`. May update `ent.client.ps.jumppad_frame` and `ent.client.ps.jumppad_ent` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L31)
 
 <a id="function-function-mq3-game-g-active-p-damagefeedback-function-p-damagefeedback-level-player-src-mq3-game-g-active-ml-1518947679"></a>
 ### P_DamageFeedback
@@ -219,7 +219,7 @@ Forward `P_DamageFeedback` to `mq3.game.client_frame.damageFeedback` and return 
 | `player` | `dynamic` | — | Player entity; accesses `client`, `pain_debounce_time`, `flags` and `health`. May update `player.pain_debounce_time` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L14)
 
 <a id="function-function-mq3-game-g-active-p-worldeffects-function-p-worldeffects-level-ent-src-mq3-game-g-active-ml-933939259"></a>
 ### P_WorldEffects
@@ -236,7 +236,7 @@ Forward `P_WorldEffects` to `mq3.game.client_frame.worldEffects` and return the 
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `waterlevel`, `health`, `damage` and `pain_debounce_time` and related fields. May update `ent.damage` and `ent.pain_debounce_time` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L18)
 
 <a id="function-function-mq3-game-g-active-sendpendingpredictableevents-function-sendpendingpredictableevents-level-ps-src-mq3-game-g-active-ml-630463059"></a>
 ### SendPendingPredictableEvents
@@ -253,7 +253,7 @@ Forward `SendPendingPredictableEvents` to `mq3.game.client_frame.sendPendingPred
 | `ps` | `dynamic` | — | Player movement state; accesses `entityEventSequence`, `eventSequence`, `events`, `externalEvent` and `origin` and related fields. May update `ps.externalEvent` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L62)
 
 <a id="function-function-mq3-game-g-active-spectatorclientendframe-function-spectatorclientendframe-level-ent-src-mq3-game-g-active-ml-1937696207"></a>
 ### SpectatorClientEndFrame
@@ -270,7 +270,7 @@ Forward `SpectatorClientEndFrame` to `mq3.game.client_frame.spectatorEndFrame` a
 | `ent` | `dynamic` | — | Game entity; accesses `client` and `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L78)
 
 <a id="function-function-mq3-game-g-active-spectatorthink-function-spectatorthink-level-ent-cmd-src-mq3-game-g-active-ml-1517558069"></a>
 ### SpectatorThink
@@ -288,7 +288,7 @@ Forward `SpectatorThink` to `mq3.game.client_active.spectatorThink` and return t
 | `cmd` | `dynamic` | — | Input user command; accesses `buttons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L36)
 
 <a id="function-function-mq3-game-g-active-stuckinotherclient-function-stuckinotherclient-level-ent-src-mq3-game-g-active-ml-2131903663"></a>
 ### StuckInOtherClient
@@ -305,4 +305,4 @@ Forward `StuckInOtherClient` to `mq3.game.client_active.stuckInOtherClient` and 
 | `ent` | `dynamic` | — | Game entity; accesses `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_active.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_active.ml#L58)

@@ -12,7 +12,7 @@ struct ManagedWinding
 ManagedWinding record for collision.winding, containing `points`, `capacity`, `freed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L27)
 
 ## Members
 
@@ -26,7 +26,7 @@ capacity
 Maximum number of entries allowed in the managed collection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L31)
 
 <a id="field-field-mq3-collision-winding-managedwinding-freed-freed-src-mq3-collision-winding-ml-1600244428"></a>
 ### freed
@@ -38,7 +38,7 @@ freed
 True after this managed resource has been released.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L33)
 
 <a id="field-field-mq3-collision-winding-managedwinding-points-points-src-mq3-collision-winding-ml-71190350"></a>
 ### points
@@ -50,4 +50,4 @@ points
 XYZ points defining the debug shape, polygon, or winding.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L29)

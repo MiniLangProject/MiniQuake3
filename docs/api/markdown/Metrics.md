@@ -8,19 +8,19 @@ Static metrics are calculated from target-specific preprocessed MiniLang files i
 
 | Metric | Value |
 | --- | ---: |
-| Blank lines | 5553 |
-| Clone groups | 97 |
-| Cognitive complexity | 52008 (maximum per function: 600) |
-| Comment lines | 74120 |
-| Cyclomatic complexity | 49996 (average: 3.95, maximum: 249) |
-| Documentation coverage | 100% (67480 of 67480 documentation items) |
-| Duplicated lines | 552 (0.62%) |
-| Files | 601 |
-| Functions | 12649 |
-| Maintainability index | 9.76 / 100 |
-| Physical lines | 168163 |
-| Source lines | 88490 |
-| Statements | 101494 |
+| Blank lines | 5575 |
+| Clone groups | 103 |
+| Cognitive complexity | 52099 (maximum per function: 600) |
+| Comment lines | 74275 |
+| Cyclomatic complexity | 50090 (average: 3.95, maximum: 249) |
+| Documentation coverage | 100% (67564 of 67564 documentation items) |
+| Duplicated lines | 564 (0.64%) |
+| Files | 603 |
+| Functions | 12669 |
+| Maintainability index | 9.77 / 100 |
+| Physical lines | 168567 |
+| Source lines | 88717 |
+| Statements | 101715 |
 
 ## Documentation coverage
 
@@ -28,19 +28,19 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 
 | Category | Documented | Total | Coverage |
 | --- | ---: | ---: | ---: |
-| API declarations | 14452 | 14452 | 100% |
-| Constants | 7135 | 7135 | 100% |
+| API declarations | 14473 | 14473 | 100% |
+| Constants | 7136 | 7136 | 100% |
 | Enum variants | 0 | 0 | 100% |
-| Fields | 13257 | 13257 | 100% |
+| Fields | 13274 | 13274 | 100% |
 | Globals | 0 | 0 | 100% |
-| Overall | 67480 | 67480 | 100% |
-| Parameters | 32636 | 32636 | 100% |
+| Overall | 67564 | 67564 | 100% |
+| Parameters | 32681 | 32681 | 100% |
 
 ## Halstead metrics
 
 | Distinct operators | Distinct operands | Total operators | Total operands | Vocabulary | Length | Volume | Difficulty | Effort | Estimated defects |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 58 | 43285 | 750435 | 549803 | 43343 | 1300238 | 20028230.85 | 368.36 | 7377517863.5 | 6676.08 |
+| 58 | 43321 | 751678 | 550864 | 43379 | 1302542 | 20065280.7 | 368.76 | 7399274781.52 | 6688.43 |
 
 ## Files
 
@@ -192,7 +192,7 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`src/mq3/client/client_abi.ml`](File-src-mq3-client-client-abi-ml-362324391.md) | 165 | 11 | 12 / 1.09 / 2 | 1 / 1 | 0 (0%) | 7775.19 | 22.77 |
 | [`src/mq3/client/client_main.ml`](File-src-mq3-client-client-main-ml-798872826.md) | 383 | 94 | 238 / 2.53 / 12 | 171 / 14 | 0 (0%) | 54253.71 | 0 |
 | [`src/mq3/client/command_ring.ml`](File-src-mq3-client-command-ring-ml-1850754325.md) | 33 | 5 | 16 / 3.2 / 5 | 11 / 4 | 0 (0%) | 1776.48 | 41.97 |
-| [`src/mq3/client/connectionless.ml`](File-src-mq3-client-connectionless-ml-1561502254.md) | 135 | 8 | 69 / 8.63 / 26 | 81 / 33 | 0 (0%) | 10125.09 | 16.2 |
+| [`src/mq3/client/connectionless.ml`](File-src-mq3-client-connectionless-ml-1561502254.md) | 135 | 8 | 70 / 8.75 / 26 | 82 / 33 | 0 (0%) | 10170.33 | 16.05 |
 | [`src/mq3/client/console_input.ml`](File-src-mq3-client-console-input-ml-896040399.md) | 168 | 20 | 121 / 6.05 / 41 | 125 / 48 | 0 (0%) | 17635.04 | 5.45 |
 | [`src/mq3/client/console_input_display.ml`](File-src-mq3-client-console-input-display-ml-1771363644.md) | 38 | 4 | 16 / 4 / 6 | 14 / 7 | 0 (0%) | 3860.95 | 38.27 |
 | [`src/mq3/client/demo.ml`](File-src-mq3-client-demo-ml-1236155596.md) | 99 | 10 | 39 / 3.9 / 11 | 34 / 11 | 0 (0%) | 7380.95 | 24.14 |
@@ -202,7 +202,7 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`src/mq3/client/download.ml`](File-src-mq3-client-download-ml-170988721.md) | 81 | 4 | 39 / 9.75 / 35 | 62 / 61 | 0 (0%) | 4949.67 | 27.25 |
 | [`src/mq3/client/frame.ml`](File-src-mq3-client-frame-ml-2110176474.md) | 128 | 8 | 39 / 4.88 / 19 | 42 / 24 | 0 (0%) | 6516.06 | 22.08 |
 | [`src/mq3/client/frame_timing.ml`](File-src-mq3-client-frame-timing-ml-1638282389.md) | 29 | 5 | 14 / 2.8 / 7 | 12 / 9 | 0 (0%) | 1618.13 | 43.75 |
-| [`src/mq3/client/gamestate.ml`](File-src-mq3-client-gamestate-ml-1690167636.md) | 79 | 4 | 29 / 7.25 / 21 | 41 / 36 | 0 (0%) | 4814.1 | 28.92 |
+| [`src/mq3/client/gamestate.ml`](File-src-mq3-client-gamestate-ml-1690167636.md) | 102 | 5 | 44 / 8.8 / 20 | 62 / 32 | 0 (0%) | 6737.13 | 23.46 |
 | [`src/mq3/client/input_command.ml`](File-src-mq3-client-input-command-ml-1980603655.md) | 150 | 18 | 85 / 4.72 / 13 | 69 / 12 | 0 (0%) | 17488.71 | 11.39 |
 | [`src/mq3/client/input_command_events.ml`](File-src-mq3-client-input-command-events-ml-1691230747.md) | 99 | 10 | 98 / 9.8 / 26 | 96 / 25 | 0 (0%) | 9388.43 | 15.47 |
 | [`src/mq3/client/key_binding_dispatch.ml`](File-src-mq3-client-key-binding-dispatch-ml-676068433.md) | 39 | 3 | 26 / 8.67 / 14 | 30 / 15 | 0 (0%) | 2829.11 | 37.63 |
@@ -211,7 +211,7 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`src/mq3/client/map_loading.ml`](File-src-mq3-client-map-loading-ml-2006073650.md) | 151 | 10 | 67 / 6.7 / 19 | 83 / 28 | 0 (0%) | 14614.56 | 14.29 |
 | [`src/mq3/client/netchan.ml`](File-src-mq3-client-netchan-ml-1745063016.md) | 76 | 9 | 19 / 2.11 / 6 | 15 / 10 | 0 (0%) | 4592.54 | 30.77 |
 | [`src/mq3/client/network_handshake.ml`](File-src-mq3-client-network-handshake-ml-1823279509.md) | 123 | 13 | 71 / 5.46 / 10 | 79 / 16 | 0 (0%) | 9728.78 | 16.94 |
-| [`src/mq3/client/network_ingress.ml`](File-src-mq3-client-network-ingress-ml-1289633455.md) | 81 | 10 | 27 / 2.7 / 6 | 17 / 5 | 0 (0%) | 4359.09 | 29.25 |
+| [`src/mq3/client/network_ingress.ml`](File-src-mq3-client-network-ingress-ml-1289633455.md) | 82 | 10 | 28 / 2.8 / 6 | 18 / 5 | 0 (0%) | 4514.27 | 28.9 |
 | [`src/mq3/client/network_match_loop.ml`](File-src-mq3-client-network-match-loop-ml-1892407048.md) | 194 | 27 | 109 / 4.04 / 18 | 95 / 24 | 0 (0%) | 16515.43 | 5.9 |
 | [`src/mq3/client/original_ui_session.ml`](File-src-mq3-client-original-ui-session-ml-619334882.md) | 193 | 21 | 87 / 4.14 / 22 | 108 / 46 | 0 (0%) | 17409.85 | 8.75 |
 | [`src/mq3/client/packet_event.ml`](File-src-mq3-client-packet-event-ml-580908436.md) | 51 | 4 | 22 / 5.5 / 18 | 20 / 19 | 0 (0%) | 2667.38 | 35.8 |
@@ -257,8 +257,9 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`src/mq3/client/qvm_preview_app.ml`](File-src-mq3-client-qvm-preview-app-ml-1410259322.md) | 676 | 47 | 467 / 9.94 / 218 | 735 / 416 | 0 (0%) | 133634.05 | 0 |
 | [`src/mq3/client/remote_play.ml`](File-src-mq3-client-remote-play-ml-1364331402.md) | 307 | 24 | 115 / 4.79 / 22 | 115 / 27 | 0 (0%) | 21178.6 | 0 |
 | [`src/mq3/client/remote_pure.ml`](File-src-mq3-client-remote-pure-ml-1817468994.md) | 107 | 3 | 24 / 8 / 16 | 30 / 22 | 0 (0%) | 6238.41 | 25.93 |
+| [`src/mq3/client/remote_session.ml`](File-src-mq3-client-remote-session-ml-2090039014.md) | 173 | 18 | 72 / 4 / 23 | 62 / 28 | 0 (0%) | 15310.91 | 12.19 |
 | [`src/mq3/client/send_cmd.ml`](File-src-mq3-client-send-cmd-ml-1342588170.md) | 165 | 13 | 69 / 5.31 / 19 | 63 / 21 | 0 (0%) | 13426.34 | 13.44 |
-| [`src/mq3/client/server_command_stream.ml`](File-src-mq3-client-server-command-stream-ml-1493457615.md) | 101 | 7 | 48 / 6.86 / 25 | 58 / 41 | 0 (0%) | 6306.97 | 23.22 |
+| [`src/mq3/client/server_command_stream.ml`](File-src-mq3-client-server-command-stream-ml-1493457615.md) | 103 | 7 | 49 / 7 / 25 | 59 / 41 | 0 (0%) | 6407.94 | 22.85 |
 | [`src/mq3/client/server_message.ml`](File-src-mq3-client-server-message-ml-749329636.md) | 104 | 7 | 48 / 6.86 / 27 | 65 / 50 | 0 (0%) | 6411.59 | 22.89 |
 | [`src/mq3/client/server_stream.ml`](File-src-mq3-client-server-stream-ml-1251342773.md) | 36 | 5 | 12 / 2.4 / 7 | 7 / 6 | 0 (0%) | 1859.62 | 41.54 |
 | [`src/mq3/client/snapshot_command.ml`](File-src-mq3-client-snapshot-command-ml-285373799.md) | 126 | 11 | 44 / 4 / 18 | 39 / 18 | 0 (0%) | 8829.91 | 20.63 |
@@ -509,8 +510,9 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`src/mq3/qcommon/message_state_delta.ml`](File-src-mq3-qcommon-message-state-delta-ml-255612102.md) | 158 | 16 | 88 / 5.5 / 19 | 119 / 29 | 0 (0%) | 18288.02 | 10.36 |
 | [`src/mq3/qcommon/msg.ml`](File-src-mq3-qcommon-msg-ml-766500529.md) | 73 | 48 | 60 / 1.25 / 5 | 16 / 7 | 0 (0%) | 8901.76 | 23.63 |
 | [`src/mq3/qcommon/net_transport.ml`](File-src-mq3-qcommon-net-transport-ml-1557933377.md) | 162 | 31 | 92 / 2.97 / 11 | 66 / 11 | 0 (0%) | 14827.43 | 10.22 |
-| [`src/mq3/qcommon/netchan.ml`](File-src-mq3-qcommon-netchan-ml-1381353623.md) | 146 | 12 | 61 / 5.08 / 20 | 67 / 32 | 0 (0%) | 12021.53 | 16.01 |
+| [`src/mq3/qcommon/netchan.ml`](File-src-mq3-qcommon-netchan-ml-1381353623.md) | 146 | 12 | 56 / 4.67 / 18 | 54 / 26 | 0 (0%) | 11697.26 | 16.77 |
 | [`src/mq3/qcommon/network_pump.ml`](File-src-mq3-qcommon-network-pump-ml-493477247.md) | 57 | 4 | 26 / 6.5 / 12 | 29 / 17 | 0 (0%) | 3258.68 | 33.6 |
+| [`src/mq3/qcommon/received_message.ml`](File-src-mq3-qcommon-received-message-ml-265262813.md) | 18 | 1 | 6 / 6 / 6 | 6 / 6 | 0 (0%) | 901.92 | 51.12 |
 | [`src/mq3/qcommon/startup_commands.ml`](File-src-mq3-qcommon-startup-commands-ml-835791996.md) | 67 | 6 | 29 / 4.83 / 8 | 35 / 11 | 0 (0%) | 3968.83 | 31.07 |
 | [`src/mq3/renderer/bsp_preview.ml`](File-src-mq3-renderer-bsp-preview-ml-563591503.md) | 107 | 11 | 75 / 6.82 / 32 | 125 / 81 | 6 (5.61%) | 9312.32 | 17.85 |
 | [`src/mq3/renderer/bsp_render_data.ml`](File-src-mq3-renderer-bsp-render-data-ml-926244912.md) | 356 | 38 | 203 / 5.34 / 54 | 362 / 155 | 6 (1.69%) | 43438.93 | 0 |
@@ -603,8 +605,8 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`src/mq3/server/game_vm.ml`](File-src-mq3-server-game-vm-ml-2099996303.md) | 109 | 17 | 53 / 3.12 / 8 | 39 / 8 | 0 (0%) | 8004.72 | 21.1 |
 | [`src/mq3/server/init_runtime.ml`](File-src-mq3-server-init-runtime-ml-863108862.md) | 276 | 32 | 107 / 3.34 / 14 | 103 / 17 | 0 (0%) | 31559.79 | 0.86 |
 | [`src/mq3/server/main_runtime.ml`](File-src-mq3-server-main-runtime-ml-68872411.md) | 220 | 28 | 104 / 3.71 / 12 | 104 / 25 | 0 (0%) | 20150.61 | 4.78 |
-| [`src/mq3/server/netchan.ml`](File-src-mq3-server-netchan-ml-1084677692.md) | 121 | 11 | 47 / 4.27 / 6 | 51 / 12 | 12 (9.92%) | 9778.16 | 20.3 |
-| [`src/mq3/server/network_ingress.ml`](File-src-mq3-server-network-ingress-ml-1810419035.md) | 106 | 12 | 32 / 2.67 / 8 | 22 / 8 | 0 (0%) | 5299.49 | 25.44 |
+| [`src/mq3/server/netchan.ml`](File-src-mq3-server-netchan-ml-1084677692.md) | 130 | 11 | 49 / 4.45 / 9 | 62 / 17 | 24 (18.46%) | 9331.39 | 19.5 |
+| [`src/mq3/server/network_ingress.ml`](File-src-mq3-server-network-ingress-ml-1810419035.md) | 107 | 12 | 33 / 2.75 / 8 | 23 / 8 | 0 (0%) | 5302.59 | 25.21 |
 | [`src/mq3/server/oob_connect.ml`](File-src-mq3-server-oob-connect-ml-829458266.md) | 162 | 19 | 87 / 4.58 / 35 | 98 / 60 | 0 (0%) | 17231.36 | 10.44 |
 | [`src/mq3/server/operator_commands.ml`](File-src-mq3-server-operator-commands-ml-2061061336.md) | 154 | 37 | 143 / 3.86 / 15 | 152 / 24 | 0 (0%) | 29280.01 | 1.77 |
 | [`src/mq3/server/packet_event.ml`](File-src-mq3-server-packet-event-ml-761376352.md) | 83 | 8 | 37 / 4.63 / 22 | 48 / 39 | 0 (0%) | 4696.69 | 27.45 |
@@ -4110,7 +4112,7 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.client.connectionless.addressEqual`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-addressequal-function-addressequal-a-b-includeport-src-mq3-client-connectionless-ml-864182974) | `src/mq3/client/connectionless.ml:138` | 6 | 9 | 10 | 12 | 3 | 554.53 | 62.47 |
 | [`mq3.client.connectionless.checkForResend`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-checkforresend-function-checkforresend-state-host-src-mq3-client-connectionless-ml-240059339) | `src/mq3/client/connectionless.ml:162` | 21 | 31 | 15 | 17 | 2 | 1826.67 | 46.3 |
 | [`mq3.client.connectionless.create`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-create-function-create-address-src-mq3-client-connectionless-ml-1941720080) | `src/mq3/client/connectionless.ml:112` | 3 | 1 | 1 | 0 | 0 | 129.45 | 74.67 |
-| [`mq3.client.connectionless.disconnectPacket`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-disconnectpacket-function-disconnectpacket-state-host-source-src-mq3-client-connectionless-ml-211632334) | `src/mq3/client/connectionless.ml:149` | 9 | 12 | 6 | 5 | 1 | 509.48 | 59.42 |
+| [`mq3.client.connectionless.disconnectPacket`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-disconnectpacket-function-disconnectpacket-state-host-source-src-mq3-client-connectionless-ml-211632334) | `src/mq3/client/connectionless.ml:149` | 9 | 12 | 7 | 6 | 1 | 548.83 | 59.06 |
 | [`mq3.client.connectionless.dispatch`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-dispatch-function-dispatch-state-host-source-msg-src-mq3-client-connectionless-ml-1798771667) | `src/mq3/client/connectionless.ml:189` | 36 | 50 | 26 | 33 | 2 | 3110.73 | 38.1 |
 | [`mq3.client.connectionless.lowerAscii`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-lowerascii-function-lowerascii-text-src-mq3-client-connectionless-ml-258004247) | `src/mq3/client/connectionless.ml:120` | 5 | 8 | 5 | 7 | 3 | 330 | 66.45 |
 | [`mq3.client.connectionless.services`](File-src-mq3-client-connectionless-ml-1561502254.md#function-function-mq3-client-connectionless-services-function-services-src-mq3-client-connectionless-ml-406009708) | `src/mq3/client/connectionless.ml:116` | 1 | 1 | 1 | 0 | 0 | 117.29 | 85.38 |
@@ -4204,9 +4206,10 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.client.frame_timing.record`](File-src-mq3-client-frame-timing-ml-1638282389.md#function-function-mq3-client-frame-timing-record-function-record-bins-milliseconds-src-mq3-client-frame-timing-ml-457851186) | `src/mq3/client/frame_timing.ml:27` | 6 | 7 | 3 | 2 | 1 | 318.95 | 65.09 |
 | [`mq3.client.frame_timing.remaining`](File-src-mq3-client-frame-timing-ml-1638282389.md#function-function-mq3-client-frame-timing-remaining-function-remaining-started-finished-budget-src-mq3-client-frame-timing-ml-1375372798) | `src/mq3/client/frame_timing.ml:19` | 5 | 4 | 2 | 1 | 1 | 133.44 | 69.6 |
 | [`mq3.client.gamestate.clear`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-clear-function-clear-state-src-mq3-client-gamestate-ml-1719538979) | `src/mq3/client/gamestate.ml:73` | 5 | 8 | 1 | 0 | 0 | 300.83 | 67.26 |
-| [`mq3.client.gamestate.configString`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-configstring-function-configstring-state-index-src-mq3-client-gamestate-ml-89968791) | `src/mq3/client/gamestate.ml:82` | 10 | 9 | 6 | 5 | 1 | 461.82 | 58.72 |
+| [`mq3.client.gamestate.configString`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-configstring-function-configstring-state-index-src-mq3-client-gamestate-ml-89968791) | `src/mq3/client/gamestate.ml:82` | 8 | 9 | 6 | 5 | 1 | 461.82 | 60.84 |
 | [`mq3.client.gamestate.create`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-create-function-create-src-mq3-client-gamestate-ml-422794250) | `src/mq3/client/gamestate.ml:67` | 3 | 1 | 1 | 0 | 0 | 216 | 73.11 |
-| [`mq3.client.gamestate.parse`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-parse-function-parse-state-msg-src-mq3-client-gamestate-ml-9521342) | `src/mq3/client/gamestate.ml:96` | 33 | 48 | 21 | 36 | 4 | 2700.75 | 40.02 |
+| [`mq3.client.gamestate.parse`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-parse-function-parse-state-msg-src-mq3-client-gamestate-ml-9521342) | `src/mq3/client/gamestate.ml:128` | 33 | 47 | 20 | 32 | 3 | 2622.67 | 40.25 |
+| [`mq3.client.gamestate.updateConfigString`](File-src-mq3-client-gamestate-ml-1690167636.md#function-function-mq3-client-gamestate-updateconfigstring-function-updateconfigstring-state-index-value-src-mq3-client-gamestate-ml-342217550) | `src/mq3/client/gamestate.ml:99` | 25 | 34 | 16 | 25 | 3 | 1578 | 44.96 |
 | [`mq3.client.input_command.accumulateMouse`](File-src-mq3-client-input-command-ml-1980603655.md#function-function-mq3-client-input-command-accumulatemouse-function-accumulatemouse-state-dx-dy-src-mq3-client-input-command-ml-351532332) | `src/mq3/client/input_command.ml:226` | 4 | 5 | 4 | 3 | 1 | 397.46 | 68.13 |
 | [`mq3.client.input_command.adjustAngles`](File-src-mq3-client-input-command-ml-1980603655.md#function-function-mq3-client-input-command-adjustangles-function-adjustangles-state-config-frametime-framemsec-src-mq3-client-input-command-ml-2084204174) | `src/mq3/client/input_command.ml:250` | 5 | 9 | 3 | 2 | 1 | 1017.93 | 63.29 |
 | [`mq3.client.input_command.angleShort`](File-src-mq3-client-input-command-ml-1980603655.md#function-function-mq3-client-input-command-angleshort-function-angleshort-value-src-mq3-client-input-command-ml-1984569151) | `src/mq3/client/input_command.ml:175` | 1 | 1 | 1 | 0 | 0 | 80 | 86.54 |
@@ -4282,13 +4285,13 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.client.network_handshake.resend`](File-src-mq3-client-network-handshake-ml-1823279509.md#function-function-mq3-client-network-handshake-resend-function-resend-state-src-mq3-client-network-handshake-ml-881788647) | `src/mq3/client/network_handshake.ml:142` | 9 | 12 | 5 | 6 | 2 | 435.58 | 60.03 |
 | [`mq3.client.network_handshake.sameEndpoint`](File-src-mq3-client-network-handshake-ml-1823279509.md#function-function-mq3-client-network-handshake-sameendpoint-function-sameendpoint-left-right-src-mq3-client-network-handshake-ml-791477271) | `src/mq3/client/network_handshake.ml:58` | 3 | 1 | 1 | 0 | 0 | 74.01 | 76.37 |
 | [`mq3.client.network_handshake.setTime`](File-src-mq3-client-network-handshake-ml-1823279509.md#function-function-mq3-client-network-handshake-settime-function-settime-state-time-src-mq3-client-network-handshake-ml-853469366) | `src/mq3/client/network_handshake.ml:134` | 5 | 7 | 3 | 2 | 1 | 307.16 | 66.93 |
-| [`mq3.client.network_ingress.clientPacket`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-clientpacket-function-clientpacket-runtime-address-data-src-mq3-client-network-ingress-ml-1520193426) | `src/mq3/client/network_ingress.ml:131` | 8 | 9 | 4 | 3 | 1 | 553.48 | 60.55 |
+| [`mq3.client.network_ingress.clientPacket`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-clientpacket-function-clientpacket-runtime-address-data-src-mq3-client-network-ingress-ml-1520193426) | `src/mq3/client/network_ingress.ml:134` | 9 | 11 | 5 | 4 | 1 | 667.43 | 58.74 |
 | [`mq3.client.network_ingress.create`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-create-function-create-connectionstate-netchanruntime-protocol-hostservices-src-mq3-client-network-ingress-ml-88483758) | `src/mq3/client/network_ingress.ml:107` | 9 | 12 | 6 | 5 | 1 | 644.82 | 58.71 |
-| [`mq3.client.network_ingress.createPump`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-client-network-ingress-ml-583708552) | `src/mq3/client/network_ingress.ml:167` | 4 | 3 | 2 | 1 | 1 | 199.04 | 70.5 |
+| [`mq3.client.network_ingress.createPump`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-client-network-ingress-ml-583708552) | `src/mq3/client/network_ingress.ml:171` | 4 | 3 | 2 | 1 | 1 | 199.04 | 70.5 |
 | [`mq3.client.network_ingress.parse`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-parse-function-parse-packethost-state-msg-src-mq3-client-network-ingress-ml-797369456) | `src/mq3/client/network_ingress.ml:73` | 9 | 8 | 3 | 2 | 1 | 415 | 60.45 |
 | [`mq3.client.network_ingress.process`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-process-function-process-packethost-state-msg-src-mq3-client-network-ingress-ml-696061568) | `src/mq3/client/network_ingress.ml:60` | 5 | 4 | 3 | 2 | 1 | 249.12 | 67.57 |
-| [`mq3.client.network_ingress.receiveClient`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-client-network-ingress-ml-353274470) | `src/mq3/client/network_ingress.ml:147` | 3 | 1 | 1 | 0 | 0 | 69.19 | 76.57 |
-| [`mq3.client.network_ingress.receiveServer`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-client-network-ingress-ml-1814103582) | `src/mq3/client/network_ingress.ml:156` | 4 | 3 | 2 | 1 | 1 | 159.41 | 71.18 |
+| [`mq3.client.network_ingress.receiveClient`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-client-network-ingress-ml-353274470) | `src/mq3/client/network_ingress.ml:151` | 3 | 1 | 1 | 0 | 0 | 69.19 | 76.57 |
+| [`mq3.client.network_ingress.receiveServer`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-client-network-ingress-ml-1814103582) | `src/mq3/client/network_ingress.ml:160` | 4 | 3 | 2 | 1 | 1 | 159.41 | 71.18 |
 | [`mq3.client.network_ingress.recordDemo`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-recorddemo-function-recorddemo-packethost-state-msg-headerbytes-src-mq3-client-network-ingress-ml-998594900) | `src/mq3/client/network_ingress.ml:94` | 5 | 4 | 3 | 2 | 1 | 264.7 | 67.39 |
 | [`mq3.client.network_ingress.services`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-services-function-services-connectionlesshost-src-mq3-client-network-ingress-ml-807274063) | `src/mq3/client/network_ingress.ml:51` | 3 | 1 | 1 | 0 | 0 | 59.79 | 77.02 |
 | [`mq3.client.network_ingress.setRealtime`](File-src-mq3-client-network-ingress-ml-1289633455.md#function-function-mq3-client-network-ingress-setrealtime-function-setrealtime-runtime-realtime-src-mq3-client-network-ingress-ml-735561797) | `src/mq3/client/network_ingress.ml:120` | 6 | 5 | 2 | 1 | 1 | 191.76 | 66.77 |
@@ -5029,6 +5032,24 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.client.remote_pure.advertisedChecksums`](File-src-mq3-client-remote-pure-ml-1817468994.md#function-function-mq3-client-remote-pure-advertisedchecksums-function-advertisedchecksums-text-src-mq3-client-remote-pure-ml-1310539513) | `src/mq3/client/remote_pure.ml:39` | 14 | 13 | 4 | 4 | 2 | 562.54 | 55.2 |
 | [`mq3.client.remote_pure.checksumForEntry`](File-src-mq3-client-remote-pure-ml-1817468994.md#function-function-mq3-client-remote-pure-checksumforentry-function-checksumforentry-archive-packages-name-src-mq3-client-remote-pure-ml-383097346) | `src/mq3/client/remote_pure.ml:58` | 8 | 7 | 4 | 4 | 2 | 346.79 | 61.98 |
 | [`mq3.client.remote_pure.verify`](File-src-mq3-client-remote-pure-ml-1817468994.md#function-function-mq3-client-remote-pure-verify-function-verify-basedirectory-systeminfo-checksumfeed-serverid-map-src-mq3-client-remote-pure-ml-80632912) | `src/mq3/client/remote_pure.ml:73` | 62 | 58 | 16 | 22 | 3 | 3751.33 | 33.72 |
+| [`mq3.client.remote_session.acceptUnpureGamestate`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-acceptunpuregamestate-function-acceptunpuregamestate-session-src-mq3-client-remote-session-ml-564270512) | `src/mq3/client/remote_session.ml:242` | 8 | 12 | 5 | 4 | 1 | 622.38 | 60.06 |
+| [`mq3.client.remote_session.clearUsercmds`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-clearusercmds-function-clearusercmds-session-src-mq3-client-remote-session-ml-1760289186) | `src/mq3/client/remote_session.ml:108` | 4 | 3 | 2 | 1 | 1 | 158.32 | 71.2 |
+| [`mq3.client.remote_session.configstringChanged`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-configstringchanged-function-configstringchanged-session-index-value-src-mq3-client-remote-session-ml-159799683) | `src/mq3/client/remote_session.ml:124` | 3 | 1 | 1 | 0 | 0 | 101.58 | 75.41 |
+| [`mq3.client.remote_session.create`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-create-function-create-socket-address-qport-initialuserinfo-src-mq3-client-remote-session-ml-449787888) | `src/mq3/client/remote_session.ml:169` | 18 | 29 | 5 | 4 | 1 | 2027.26 | 48.79 |
+| [`mq3.client.remote_session.disconnected`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-disconnected-function-disconnected-host-state-show-text-src-mq3-client-remote-session-ml-524651653) | `src/mq3/client/remote_session.ml:104` | 1 | 1 | 1 | 0 | 0 | 83.76 | 86.4 |
+| [`mq3.client.remote_session.gameStateReady`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-gamestateready-function-gamestateready-state-src-mq3-client-remote-session-ml-1587625689) | `src/mq3/client/remote_session.ml:145` | 13 | 17 | 3 | 2 | 1 | 996.66 | 54.3 |
+| [`mq3.client.remote_session.poll`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-poll-function-poll-session-realtime-maxpackets-src-mq3-client-remote-session-ml-1098273350) | `src/mq3/client/remote_session.ml:220` | 13 | 17 | 7 | 8 | 2 | 689.14 | 54.89 |
+| [`mq3.client.remote_session.printed`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-printed-function-printed-host-state-text-src-mq3-client-remote-session-ml-945542436) | `src/mq3/client/remote_session.ml:86` | 1 | 2 | 1 | 0 | 0 | 84 | 86.39 |
+| [`mq3.client.remote_session.queueCommand`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-queuecommand-function-queuecommand-session-text-src-mq3-client-remote-session-ml-654566655) | `src/mq3/client/remote_session.ml:291` | 8 | 9 | 5 | 4 | 1 | 528.54 | 60.56 |
+| [`mq3.client.remote_session.restarted`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-restarted-function-restarted-session-src-mq3-client-remote-session-ml-1121853344) | `src/mq3/client/remote_session.ml:115` | 3 | 3 | 1 | 0 | 0 | 93.77 | 75.65 |
+| [`mq3.client.remote_session.runServerCommands`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-runservercommands-function-runservercommands-session-throughsequence-src-mq3-client-remote-session-ml-160079792) | `src/mq3/client/remote_session.ml:261` | 22 | 32 | 23 | 28 | 3 | 1915.63 | 44.64 |
+| [`mq3.client.remote_session.sendFrame`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-sendframe-function-sendframe-session-servertime-src-mq3-client-remote-session-ml-308379772) | `src/mq3/client/remote_session.ml:306` | 11 | 13 | 4 | 3 | 1 | 696.48 | 56.84 |
+| [`mq3.client.remote_session.sendOob`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-sendoob-function-sendoob-host-state-address-text-src-mq3-client-remote-session-ml-1429231202) | `src/mq3/client/remote_session.ml:68` | 1 | 1 | 1 | 0 | 0 | 112 | 85.52 |
+| [`mq3.client.remote_session.sendOobData`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-sendoobdata-function-sendoobdata-host-state-address-data-src-mq3-client-remote-session-ml-2036651333) | `src/mq3/client/remote_session.ml:75` | 1 | 1 | 1 | 0 | 0 | 112 | 85.52 |
+| [`mq3.client.remote_session.stop`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-stop-function-stop-session-text-src-mq3-client-remote-session-ml-1528590779) | `src/mq3/client/remote_session.ml:93` | 5 | 5 | 1 | 0 | 0 | 180.09 | 68.83 |
+| [`mq3.client.remote_session.synchronize`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-synchronize-function-synchronize-session-src-mq3-client-remote-session-ml-530578160) | `src/mq3/client/remote_session.ml:193` | 19 | 23 | 7 | 6 | 1 | 1289.24 | 49.39 |
+| [`mq3.client.remote_session.systemInfoChanged`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-systeminfochanged-function-systeminfochanged-session-src-mq3-client-remote-session-ml-2090104266) | `src/mq3/client/remote_session.ml:131` | 8 | 6 | 3 | 2 | 1 | 388.35 | 61.77 |
+| [`mq3.client.remote_session.userinfo`](File-src-mq3-client-remote-session-ml-2090039014.md#function-function-mq3-client-remote-session-userinfo-function-userinfo-host-state-src-mq3-client-remote-session-ml-1452365771) | `src/mq3/client/remote_session.ml:80` | 1 | 1 | 1 | 0 | 0 | 51.89 | 87.86 |
 | [`mq3.client.send_cmd.commandCopy`](File-src-mq3-client-send-cmd-ml-1342588170.md#function-function-mq3-client-send-cmd-commandcopy-function-commandcopy-value-src-mq3-client-send-cmd-ml-393416185) | `src/mq3/client/send_cmd.ml:175` | 4 | 3 | 2 | 1 | 1 | 326.9 | 68.99 |
 | [`mq3.client.send_cmd.create`](File-src-mq3-client-send-cmd-ml-1342588170.md#function-function-mq3-client-send-cmd-create-function-create-src-mq3-client-send-cmd-ml-371260116) | `src/mq3/client/send_cmd.ml:180` | 6 | 9 | 3 | 2 | 1 | 742.77 | 62.52 |
 | [`mq3.client.send_cmd.createNewCommand`](File-src-mq3-client-send-cmd-ml-1342588170.md#function-function-mq3-client-send-cmd-createnewcommand-function-createnewcommand-state-frametime-host-src-mq3-client-send-cmd-ml-748147797) | `src/mq3/client/send_cmd.ml:214` | 8 | 15 | 4 | 3 | 1 | 718.97 | 59.76 |
@@ -5043,12 +5064,12 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.client.send_cmd.writePacket`](File-src-mq3-client-send-cmd-ml-1342588170.md#function-function-mq3-client-send-cmd-writepacket-function-writepacket-state-host-src-mq3-client-send-cmd-ml-1991051129) | `src/mq3/client/send_cmd.ml:240` | 33 | 53 | 19 | 21 | 2 | 3836.78 | 39.22 |
 | [`mq3.client.send_cmd.zeroCommand`](File-src-mq3-client-send-cmd-ml-1342588170.md#function-function-mq3-client-send-cmd-zerocommand-function-zerocommand-src-mq3-client-send-cmd-ml-10821858) | `src/mq3/client/send_cmd.ml:172` | 1 | 1 | 1 | 0 | 0 | 100.32 | 85.85 |
 | [`mq3.client.server_command_stream.create`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-create-function-create-commandstate-configstrings-src-mq3-client-server-command-stream-ml-1444738370) | `src/mq3/client/server_command_stream.ml:72` | 6 | 7 | 4 | 3 | 1 | 370.17 | 64.5 |
-| [`mq3.client.server_command_stream.get`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-get-function-get-state-host-number-src-mq3-client-server-command-stream-ml-1604669394) | `src/mq3/client/server_command_stream.ml:124` | 46 | 56 | 25 | 41 | 3 | 3066.14 | 35.95 |
+| [`mq3.client.server_command_stream.get`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-get-function-get-state-host-number-src-mq3-client-server-command-stream-ml-1604669394) | `src/mq3/client/server_command_stream.ml:129` | 46 | 56 | 25 | 41 | 3 | 3066.14 | 35.95 |
 | [`mq3.client.server_command_stream.queue`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-queue-function-queue-state-text-src-mq3-client-server-command-stream-ml-1667189820) | `src/mq3/client/server_command_stream.ml:82` | 6 | 5 | 3 | 2 | 1 | 269.21 | 65.61 |
 | [`mq3.client.server_command_stream.services`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-services-function-services-src-mq3-client-server-command-stream-ml-35372526) | `src/mq3/client/server_command_stream.ml:68` | 1 | 1 | 1 | 0 | 0 | 83.05 | 86.43 |
 | [`mq3.client.server_command_stream.setSequence`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-setsequence-function-setsequence-state-sequence-commands-src-mq3-client-server-command-stream-ml-926277336) | `src/mq3/client/server_command_stream.ml:93` | 6 | 6 | 6 | 5 | 1 | 340 | 64.49 |
-| [`mq3.client.server_command_stream.tooLong`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-toolong-function-toolong-prefix-value-extra-src-mq3-client-server-command-stream-ml-564194421) | `src/mq3/client/server_command_stream.ml:116` | 3 | 1 | 1 | 0 | 0 | 121.11 | 74.87 |
-| [`mq3.client.server_command_stream.updateConfigstring`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-updateconfigstring-function-updateconfigstring-state-host-src-mq3-client-server-command-stream-ml-2004200445) | `src/mq3/client/server_command_stream.ml:103` | 8 | 10 | 8 | 7 | 1 | 616.12 | 59.69 |
+| [`mq3.client.server_command_stream.tooLong`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-toolong-function-toolong-prefix-value-extra-src-mq3-client-server-command-stream-ml-564194421) | `src/mq3/client/server_command_stream.ml:121` | 3 | 1 | 1 | 0 | 0 | 121.11 | 74.87 |
+| [`mq3.client.server_command_stream.updateConfigstring`](File-src-mq3-client-server-command-stream-ml-1493457615.md#function-function-mq3-client-server-command-stream-updateconfigstring-function-updateconfigstring-state-host-src-mq3-client-server-command-stream-ml-2004200445) | `src/mq3/client/server_command_stream.ml:106` | 10 | 12 | 9 | 8 | 1 | 685.77 | 57.12 |
 | [`mq3.client.server_message.create`](File-src-mq3-client-server-message-ml-749329636.md#function-function-mq3-client-server-message-create-function-create-snapshotstate-src-mq3-client-server-message-ml-832218357) | `src/mq3/client/server_message.ml:62` | 4 | 3 | 2 | 1 | 1 | 240.81 | 69.92 |
 | [`mq3.client.server_message.emitShownet`](File-src-mq3-client-server-message-ml-749329636.md#function-function-mq3-client-server-message-emitshownet-function-emitshownet-state-line-src-mq3-client-server-message-ml-1528918005) | `src/mq3/client/server_message.ml:90` | 5 | 4 | 2 | 1 | 1 | 180.09 | 68.69 |
 | [`mq3.client.server_message.pad3`](File-src-mq3-client-server-message-ml-749329636.md#function-function-mq3-client-server-message-pad3-function-pad3-value-src-mq3-client-server-message-ml-495164361) | `src/mq3/client/server_message.ml:69` | 5 | 4 | 2 | 1 | 1 | 130.8 | 69.66 |
@@ -10833,13 +10854,13 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.qcommon.net_transport.validAddress`](File-src-mq3-qcommon-net-transport-ml-1557933377.md#function-function-mq3-qcommon-net-transport-validaddress-function-validaddress-address-count-src-mq3-qcommon-net-transport-ml-91107803) | `src/mq3/qcommon/net_transport.ml:85` | 3 | 1 | 1 | 0 | 0 | 88 | 75.84 |
 | [`mq3.qcommon.netchan.emit`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-emit-function-emit-runtime-channel-packet-src-mq3-qcommon-netchan-ml-1067817283) | `src/mq3/qcommon/netchan.ml:136` | 4 | 4 | 2 | 1 | 1 | 205.13 | 70.41 |
 | [`mq3.qcommon.netchan.init`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-init-function-init-port-src-mq3-qcommon-netchan-ml-931423395) | `src/mq3/qcommon/netchan.ml:91` | 3 | 1 | 1 | 0 | 0 | 64.53 | 76.79 |
-| [`mq3.qcommon.netchan.process`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-process-function-process-channel-data-maxsize-src-mq3-qcommon-netchan-ml-643219896) | `src/mq3/qcommon/netchan.ml:200` | 29 | 50 | 20 | 32 | 3 | 2606.09 | 41.49 |
+| [`mq3.qcommon.netchan.process`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-process-function-process-channel-data-maxsize-src-mq3-qcommon-netchan-ml-643219896) | `src/mq3/qcommon/netchan.ml:200` | 29 | 48 | 18 | 26 | 2 | 2447.18 | 41.95 |
 | [`mq3.qcommon.netchan.readShort`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-readshort-function-readshort-data-offset-src-mq3-qcommon-netchan-ml-1892004011) | `src/mq3/qcommon/netchan.ml:124` | 5 | 4 | 2 | 1 | 1 | 178.81 | 68.71 |
 | [`mq3.qcommon.netchan.rejected`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-rejected-function-rejected-data-readcount-src-mq3-qcommon-netchan-ml-985126109) | `src/mq3/qcommon/netchan.ml:190` | 3 | 1 | 1 | 0 | 0 | 102.8 | 75.37 |
 | [`mq3.qcommon.netchan.scramblePacket`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-scramblepacket-function-scramblepacket-data-src-mq3-qcommon-netchan-ml-176520908) | `src/mq3/qcommon/netchan.ml:237` | 10 | 23 | 7 | 6 | 1 | 1306.59 | 55.43 |
 | [`mq3.qcommon.netchan.setup`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-setup-function-setup-sock-address-qport-src-mq3-qcommon-netchan-ml-218128106) | `src/mq3/qcommon/netchan.ml:99` | 3 | 1 | 1 | 0 | 0 | 200 | 73.35 |
-| [`mq3.qcommon.netchan.transmit`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-transmit-function-transmit-runtime-channel-data-src-mq3-qcommon-netchan-ml-1030911527) | `src/mq3/qcommon/netchan.ml:172` | 14 | 25 | 9 | 12 | 3 | 1139.86 | 52.38 |
-| [`mq3.qcommon.netchan.transmitNextFragment`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-transmitnextfragment-function-transmitnextfragment-runtime-channel-src-mq3-qcommon-netchan-ml-644208431) | `src/mq3/qcommon/netchan.ml:147` | 16 | 25 | 9 | 9 | 2 | 1318.23 | 50.68 |
+| [`mq3.qcommon.netchan.transmit`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-transmit-function-transmit-runtime-channel-data-src-mq3-qcommon-netchan-ml-1030911527) | `src/mq3/qcommon/netchan.ml:172` | 14 | 23 | 7 | 7 | 2 | 1022.05 | 52.98 |
+| [`mq3.qcommon.netchan.transmitNextFragment`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-transmitnextfragment-function-transmitnextfragment-runtime-channel-src-mq3-qcommon-netchan-ml-644208431) | `src/mq3/qcommon/netchan.ml:147` | 16 | 24 | 8 | 7 | 1 | 1231.5 | 51.02 |
 | [`mq3.qcommon.netchan.unscramblePacket`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-unscramblepacket-function-unscramblepacket-data-src-mq3-qcommon-netchan-ml-1014647252) | `src/mq3/qcommon/netchan.ml:252` | 10 | 25 | 7 | 6 | 1 | 1358.92 | 55.31 |
 | [`mq3.qcommon.netchan.writeLong`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-writelong-function-writelong-data-offset-value-src-mq3-qcommon-netchan-ml-1836131760) | `src/mq3/qcommon/netchan.ml:117` | 3 | 2 | 1 | 0 | 0 | 116 | 75 |
 | [`mq3.qcommon.netchan.writeShort`](File-src-mq3-qcommon-netchan-ml-1381353623.md#function-function-mq3-qcommon-netchan-writeshort-function-writeshort-data-offset-value-src-mq3-qcommon-netchan-ml-528833118) | `src/mq3/qcommon/netchan.ml:109` | 3 | 3 | 1 | 0 | 0 | 162.52 | 73.98 |
@@ -10847,6 +10868,7 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.qcommon.network_pump.drain`](File-src-mq3-qcommon-network-pump-ml-493477247.md#function-function-mq3-qcommon-network-pump-drain-function-drain-runtime-maxpackets-src-mq3-qcommon-network-pump-ml-2080990963) | `src/mq3/qcommon/network_pump.ml:108` | 8 | 9 | 5 | 5 | 2 | 299.32 | 62.29 |
 | [`mq3.qcommon.network_pump.pumpOnce`](File-src-mq3-qcommon-network-pump-ml-493477247.md#function-function-mq3-qcommon-network-pump-pumponce-function-pumponce-runtime-src-mq3-qcommon-network-pump-ml-271500050) | `src/mq3/qcommon/network_pump.ml:94` | 6 | 10 | 4 | 3 | 1 | 310.23 | 65.04 |
 | [`mq3.qcommon.network_pump.receiveSide`](File-src-mq3-qcommon-network-pump-ml-493477247.md#function-function-mq3-qcommon-network-pump-receiveside-function-receiveside-runtime-side-src-mq3-qcommon-network-pump-ml-1670796535) | `src/mq3/qcommon/network_pump.ml:72` | 15 | 28 | 12 | 17 | 3 | 1362.73 | 50.78 |
+| [`mq3.qcommon.received_message.create`](File-src-mq3-qcommon-received-message-ml-265262813.md#function-function-mq3-qcommon-received-message-create-function-create-data-src-mq3-qcommon-received-message-ml-1529664728) | `src/mq3/qcommon/received_message.ml:16` | 14 | 14 | 6 | 6 | 2 | 704.27 | 54.25 |
 | [`mq3.qcommon.startup_commands.addStartupCommands`](File-src-mq3-qcommon-startup-commands-ml-835791996.md#function-function-mq3-qcommon-startup-commands-addstartupcommands-function-addstartupcommands-state-src-mq3-qcommon-startup-commands-ml-1197527755) | `src/mq3/qcommon/startup_commands.ml:98` | 9 | 9 | 4 | 5 | 2 | 350 | 60.83 |
 | [`mq3.qcommon.startup_commands.create`](File-src-mq3-qcommon-startup-commands-ml-835791996.md#function-function-mq3-qcommon-startup-commands-create-function-create-commandstate-src-mq3-qcommon-startup-commands-ml-2113834346) | `src/mq3/qcommon/startup_commands.ml:29` | 1 | 1 | 1 | 0 | 0 | 75.28 | 86.72 |
 | [`mq3.qcommon.startup_commands.parseCommandLine`](File-src-mq3-qcommon-startup-commands-ml-835791996.md#function-function-mq3-qcommon-startup-commands-parsecommandline-function-parsecommandline-state-commandline-src-mq3-qcommon-startup-commands-ml-760689904) | `src/mq3/qcommon/startup_commands.ml:36` | 14 | 19 | 8 | 11 | 3 | 1030.99 | 52.82 |
@@ -12457,28 +12479,28 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 | [`mq3.server.main_runtime.SVC_RemoteCommand`](File-src-mq3-server-main-runtime-ml-68872411.md#function-function-mq3-server-main-runtime-svc-remotecommand-function-svc-remotecommand-state-host-address-raw-args-src-mq3-server-main-runtime-ml-113775764) | `src/mq3/server/main_runtime.ml:372` | 10 | 23 | 8 | 10 | 3 | 1065.39 | 55.91 |
 | [`mq3.server.main_runtime.SVC_Status`](File-src-mq3-server-main-runtime-ml-68872411.md#function-function-mq3-server-main-runtime-svc-status-function-svc-status-state-host-address-challenge-src-mq3-server-main-runtime-ml-842789034) | `src/mq3/server/main_runtime.ml:312` | 10 | 15 | 6 | 8 | 3 | 843.33 | 56.89 |
 | [`mq3.server.netchan.client`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-client-function-client-challenge-channel-src-mq3-server-netchan-ml-1661064526) | `src/mq3/server/netchan.ml:37` | 3 | 1 | 1 | 0 | 0 | 152.93 | 74.16 |
-| [`mq3.server.netchan.cloneMessage`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-clonemessage-function-clonemessage-source-src-mq3-server-netchan-ml-1814923741) | `src/mq3/server/netchan.ml:53` | 7 | 11 | 3 | 3 | 2 | 495 | 62.29 |
+| [`mq3.server.netchan.cloneMessage`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-clonemessage-function-clonemessage-source-src-mq3-server-netchan-ml-1814923741) | `src/mq3/server/netchan.ml:53` | 7 | 10 | 2 | 1 | 1 | 437.45 | 62.8 |
 | [`mq3.server.netchan.commandByte`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-commandbyte-function-commandbyte-raw-index-src-mq3-server-netchan-ml-172155614) | `src/mq3/server/netchan.ml:64` | 7 | 8 | 6 | 5 | 1 | 343.13 | 63 |
-| [`mq3.server.netchan.decode`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-decode-function-decode-clientstate-msg-src-mq3-server-netchan-ml-932391113) | `src/mq3/server/netchan.ml:121` | 1 | 1 | 1 | 0 | 0 | 53.15 | 87.78 |
-| [`mq3.server.netchan.decodeMessage`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-decodemessage-function-decodemessage-clientstate-msg-src-mq3-server-netchan-ml-845423083) | `src/mq3/server/netchan.ml:97` | 18 | 27 | 4 | 4 | 2 | 1459 | 49.92 |
-| [`mq3.server.netchan.encode`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-encode-function-encode-clientstate-msg-src-mq3-server-netchan-ml-823417689) | `src/mq3/server/netchan.ml:76` | 16 | 23 | 4 | 4 | 2 | 1060.74 | 52.01 |
-| [`mq3.server.netchan.process`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-process-function-process-clientstate-data-maxsize-src-mq3-server-netchan-ml-1302344345) | `src/mq3/server/netchan.ml:183` | 12 | 17 | 6 | 7 | 2 | 961.1 | 54.77 |
+| [`mq3.server.netchan.decode`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-decode-function-decode-clientstate-msg-src-mq3-server-netchan-ml-932391113) | `src/mq3/server/netchan.ml:135` | 1 | 1 | 1 | 0 | 0 | 53.15 | 87.78 |
+| [`mq3.server.netchan.decodeMessage`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-decodemessage-function-decodemessage-clientstate-msg-src-mq3-server-netchan-ml-845423083) | `src/mq3/server/netchan.ml:105` | 23 | 28 | 8 | 16 | 4 | 1405.58 | 47.18 |
+| [`mq3.server.netchan.encode`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-encode-function-encode-clientstate-msg-src-mq3-server-netchan-ml-823417689) | `src/mq3/server/netchan.ml:76` | 22 | 29 | 9 | 17 | 4 | 1329.76 | 47.63 |
+| [`mq3.server.netchan.process`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-process-function-process-clientstate-data-maxsize-src-mq3-server-netchan-ml-1302344345) | `src/mq3/server/netchan.ml:199` | 10 | 11 | 2 | 1 | 1 | 569.8 | 58.62 |
 | [`mq3.server.netchan.requireClient`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-requireclient-function-requireclient-clientstate-src-mq3-server-netchan-ml-462414806) | `src/mq3/server/netchan.ml:45` | 5 | 5 | 5 | 4 | 1 | 247.59 | 67.32 |
-| [`mq3.server.netchan.transmit`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-transmit-function-transmit-runtime-clientstate-msg-src-mq3-server-netchan-ml-935185241) | `src/mq3/server/netchan.ml:129` | 12 | 13 | 5 | 6 | 2 | 715.19 | 55.8 |
-| [`mq3.server.netchan.transmitNextFragment`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-transmitnextfragment-function-transmitnextfragment-runtime-clientstate-src-mq3-server-netchan-ml-1992000058) | `src/mq3/server/netchan.ml:165` | 13 | 15 | 6 | 12 | 4 | 802.54 | 54.56 |
-| [`mq3.server.netchan.transmitPayload`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-transmitpayload-function-transmitpayload-runtime-clientstate-payload-src-mq3-server-netchan-ml-1500947300) | `src/mq3/server/netchan.ml:148` | 11 | 14 | 6 | 6 | 2 | 750.06 | 56.34 |
-| [`mq3.server.network_ingress.binding`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-binding-function-binding-packetclient-messageclient-src-mq3-server-network-ingress-ml-732670641) | `src/mq3/server/network_ingress.ml:74` | 4 | 3 | 3 | 2 | 1 | 141.78 | 71.4 |
-| [`mq3.server.network_ingress.create`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-create-function-create-serverstate-bindings-hostservices-src-mq3-server-network-ingress-ml-978198232) | `src/mq3/server/network_ingress.ml:142` | 18 | 22 | 8 | 8 | 2 | 1155.66 | 50.1 |
-| [`mq3.server.network_ingress.createPump`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-server-network-ingress-ml-1795197464) | `src/mq3/server/network_ingress.ml:210` | 4 | 3 | 2 | 1 | 1 | 199.04 | 70.5 |
-| [`mq3.server.network_ingress.disconnect`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-disconnect-function-disconnect-packethost-address-text-src-mq3-server-network-ingress-ml-1208567347) | `src/mq3/server/network_ingress.ml:120` | 5 | 4 | 2 | 1 | 1 | 221.65 | 68.06 |
-| [`mq3.server.network_ingress.executeClient`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-executeclient-function-executeclient-packethost-packetclient-msg-src-mq3-server-network-ingress-ml-485836762) | `src/mq3/server/network_ingress.ml:101` | 10 | 10 | 2 | 1 | 1 | 483.31 | 59.12 |
-| [`mq3.server.network_ingress.findBinding`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-findbinding-function-findbinding-runtime-packetclient-src-mq3-server-network-ingress-ml-1007899529) | `src/mq3/server/network_ingress.ml:87` | 6 | 4 | 3 | 3 | 2 | 131.69 | 67.78 |
-| [`mq3.server.network_ingress.packetDiagnostic`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-packetdiagnostic-function-packetdiagnostic-packethost-packetclient-address-src-mq3-server-network-ingress-ml-1331730677) | `src/mq3/server/network_ingress.ml:130` | 5 | 4 | 2 | 1 | 1 | 190.16 | 68.53 |
-| [`mq3.server.network_ingress.receiveClient`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-server-network-ingress-ml-1673744334) | `src/mq3/server/network_ingress.ml:190` | 4 | 3 | 2 | 1 | 1 | 159.41 | 71.18 |
-| [`mq3.server.network_ingress.receiveServer`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-server-network-ingress-ml-1089833030) | `src/mq3/server/network_ingress.ml:199` | 3 | 1 | 1 | 0 | 0 | 69.19 | 76.57 |
-| [`mq3.server.network_ingress.serverPacket`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-serverpacket-function-serverpacket-runtime-address-data-src-mq3-server-network-ingress-ml-1505597234) | `src/mq3/server/network_ingress.ml:178` | 7 | 8 | 4 | 3 | 1 | 471.89 | 62.3 |
-| [`mq3.server.network_ingress.services`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-services-function-services-src-mq3-server-network-ingress-ml-825236030) | `src/mq3/server/network_ingress.ml:80` | 3 | 1 | 1 | 0 | 0 | 98.27 | 75.51 |
-| [`mq3.server.network_ingress.setTime`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-settime-function-settime-runtime-time-src-mq3-server-network-ingress-ml-59637469) | `src/mq3/server/network_ingress.ml:166` | 4 | 4 | 2 | 1 | 1 | 142.62 | 71.51 |
+| [`mq3.server.netchan.transmit`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-transmit-function-transmit-runtime-clientstate-msg-src-mq3-server-netchan-ml-935185241) | `src/mq3/server/netchan.ml:143` | 12 | 12 | 4 | 4 | 2 | 650.74 | 56.22 |
+| [`mq3.server.netchan.transmitNextFragment`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-transmitnextfragment-function-transmitnextfragment-runtime-clientstate-src-mq3-server-netchan-ml-1992000058) | `src/mq3/server/netchan.ml:179` | 13 | 14 | 5 | 8 | 3 | 745.07 | 54.92 |
+| [`mq3.server.netchan.transmitPayload`](File-src-mq3-server-netchan-ml-1084677692.md#function-function-mq3-server-netchan-transmitpayload-function-transmitpayload-runtime-clientstate-payload-src-mq3-server-netchan-ml-1500947300) | `src/mq3/server/netchan.ml:162` | 11 | 14 | 6 | 6 | 2 | 750.06 | 56.34 |
+| [`mq3.server.network_ingress.binding`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-binding-function-binding-packetclient-messageclient-src-mq3-server-network-ingress-ml-732670641) | `src/mq3/server/network_ingress.ml:75` | 4 | 3 | 3 | 2 | 1 | 141.78 | 71.4 |
+| [`mq3.server.network_ingress.create`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-create-function-create-serverstate-bindings-hostservices-src-mq3-server-network-ingress-ml-978198232) | `src/mq3/server/network_ingress.ml:143` | 18 | 22 | 8 | 8 | 2 | 1155.66 | 50.1 |
+| [`mq3.server.network_ingress.createPump`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-server-network-ingress-ml-1795197464) | `src/mq3/server/network_ingress.ml:211` | 4 | 3 | 2 | 1 | 1 | 199.04 | 70.5 |
+| [`mq3.server.network_ingress.disconnect`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-disconnect-function-disconnect-packethost-address-text-src-mq3-server-network-ingress-ml-1208567347) | `src/mq3/server/network_ingress.ml:121` | 5 | 4 | 2 | 1 | 1 | 221.65 | 68.06 |
+| [`mq3.server.network_ingress.executeClient`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-executeclient-function-executeclient-packethost-packetclient-msg-src-mq3-server-network-ingress-ml-485836762) | `src/mq3/server/network_ingress.ml:102` | 10 | 10 | 2 | 1 | 1 | 483.31 | 59.12 |
+| [`mq3.server.network_ingress.findBinding`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-findbinding-function-findbinding-runtime-packetclient-src-mq3-server-network-ingress-ml-1007899529) | `src/mq3/server/network_ingress.ml:88` | 6 | 4 | 3 | 3 | 2 | 131.69 | 67.78 |
+| [`mq3.server.network_ingress.packetDiagnostic`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-packetdiagnostic-function-packetdiagnostic-packethost-packetclient-address-src-mq3-server-network-ingress-ml-1331730677) | `src/mq3/server/network_ingress.ml:131` | 5 | 4 | 2 | 1 | 1 | 190.16 | 68.53 |
+| [`mq3.server.network_ingress.receiveClient`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-server-network-ingress-ml-1673744334) | `src/mq3/server/network_ingress.ml:191` | 4 | 3 | 2 | 1 | 1 | 159.41 | 71.18 |
+| [`mq3.server.network_ingress.receiveServer`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-server-network-ingress-ml-1089833030) | `src/mq3/server/network_ingress.ml:200` | 3 | 1 | 1 | 0 | 0 | 69.19 | 76.57 |
+| [`mq3.server.network_ingress.serverPacket`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-serverpacket-function-serverpacket-runtime-address-data-src-mq3-server-network-ingress-ml-1505597234) | `src/mq3/server/network_ingress.ml:179` | 7 | 9 | 5 | 4 | 1 | 433.82 | 62.43 |
+| [`mq3.server.network_ingress.services`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-services-function-services-src-mq3-server-network-ingress-ml-825236030) | `src/mq3/server/network_ingress.ml:81` | 3 | 1 | 1 | 0 | 0 | 98.27 | 75.51 |
+| [`mq3.server.network_ingress.setTime`](File-src-mq3-server-network-ingress-ml-1810419035.md#function-function-mq3-server-network-ingress-settime-function-settime-runtime-time-src-mq3-server-network-ingress-ml-59637469) | `src/mq3/server/network_ingress.ml:167` | 4 | 4 | 2 | 1 | 1 | 142.62 | 71.51 |
 | [`mq3.server.oob_connect.address`](File-src-mq3-server-oob-connect-ml-829458266.md#function-function-mq3-server-oob-connect-address-function-address-type-ip-port-src-mq3-server-oob-connect-ml-1308801208) | `src/mq3/server/oob_connect.ml:35` | 1 | 1 | 1 | 0 | 0 | 69.19 | 86.98 |
 | [`mq3.server.oob_connect.atoi`](File-src-mq3-server-oob-connect-ml-829458266.md#function-function-mq3-server-oob-connect-atoi-function-atoi-text-src-mq3-server-oob-connect-ml-1662370743) | `src/mq3/server/oob_connect.ml:251` | 1 | 11 | 6 | 5 | 1 | 518.06 | 80.19 |
 | [`mq3.server.oob_connect.authorizeDiagnostic`](File-src-mq3-server-oob-connect-ml-829458266.md#function-function-mq3-server-oob-connect-authorizediagnostic-function-authorizediagnostic-runtime-text-src-mq3-server-oob-connect-ml-715940559) | `src/mq3/server/oob_connect.ml:218` | 1 | 3 | 2 | 1 | 1 | 116 | 85.28 |
@@ -13306,7 +13328,7 @@ Coverage is split by documentation contract so strong API summaries cannot hide 
 
 A clone group is an exact sequence of 6 normalized, contiguous code lines found more than once. Comments and formatting whitespace are ignored. Duplicated-line totals count overlapping windows only once.
 
-Found 97 clone group(s). At most 97 groups are shown.
+Found 103 clone group(s). At most 103 groups are shown.
 
 <details>
 <summary>Clone 1 — 2 occurrences</summary>
@@ -14749,20 +14771,110 @@ Found 97 clone group(s). At most 97 groups are shown.
 <details>
 <summary>Clone 96 — 2 occurrences</summary>
 
-    pair = commandByte ( raw , index ) ; key = ( key ^ ( pair [ 0 ] << ( offset & 1 ) ) ) & 255 ; index = pair [ 1 ]
+    value = 0
+    if len ( raw ) > 0 then
+    if index >= len ( raw ) or raw [ index ] == 0 then index = 0 end if
+    value = raw [ index ] ; index = index + 1
+    if value > 127 or value == 37 then value = 46 end if
+    end if
+
+- [`src/mq3/server/netchan.ml:119`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:87`](File-src-mq3-server-netchan-ml-1084677692.md)
+
+</details>
+
+<details>
+<summary>Clone 97 — 2 occurrences</summary>
+
+    if len ( raw ) > 0 then
+    if index >= len ( raw ) or raw [ index ] == 0 then index = 0 end if
+    value = raw [ index ] ; index = index + 1
+    if value > 127 or value == 37 then value = 46 end if
+    end if
+    key = ( key ^ ( value << ( offset & 1 ) ) ) & 255
+
+- [`src/mq3/server/netchan.ml:120`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:88`](File-src-mq3-server-netchan-ml-1084677692.md)
+
+</details>
+
+<details>
+<summary>Clone 98 — 2 occurrences</summary>
+
+    if index >= len ( raw ) or raw [ index ] == 0 then index = 0 end if
+    value = raw [ index ] ; index = index + 1
+    if value > 127 or value == 37 then value = 46 end if
+    end if
+    key = ( key ^ ( value << ( offset & 1 ) ) ) & 255
+    msg . data [ offset ] = ( msg . data [ offset ] ^ key ) & 255
+
+- [`src/mq3/server/netchan.ml:121`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:89`](File-src-mq3-server-netchan-ml-1084677692.md)
+
+</details>
+
+<details>
+<summary>Clone 99 — 2 occurrences</summary>
+
+    value = raw [ index ] ; index = index + 1
+    if value > 127 or value == 37 then value = 46 end if
+    end if
+    key = ( key ^ ( value << ( offset & 1 ) ) ) & 255
+    msg . data [ offset ] = ( msg . data [ offset ] ^ key ) & 255
+    end for
+
+- [`src/mq3/server/netchan.ml:122`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:90`](File-src-mq3-server-netchan-ml-1084677692.md)
+
+</details>
+
+<details>
+<summary>Clone 100 — 2 occurrences</summary>
+
+    if value > 127 or value == 37 then value = 46 end if
+    end if
+    key = ( key ^ ( value << ( offset & 1 ) ) ) & 255
+    msg . data [ offset ] = ( msg . data [ offset ] ^ key ) & 255
+    end for
+    end if
+
+- [`src/mq3/server/netchan.ml:123`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:91`](File-src-mq3-server-netchan-ml-1084677692.md)
+
+</details>
+
+<details>
+<summary>Clone 101 — 2 occurrences</summary>
+
+    end if
+    key = ( key ^ ( value << ( offset & 1 ) ) ) & 255
+    msg . data [ offset ] = ( msg . data [ offset ] ^ key ) & 255
+    end for
+    end if
+    return msg
+
+- [`src/mq3/server/netchan.ml:124`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:92`](File-src-mq3-server-netchan-ml-1084677692.md)
+
+</details>
+
+<details>
+<summary>Clone 102 — 2 occurrences</summary>
+
+    key = ( key ^ ( value << ( offset & 1 ) ) ) & 255
     msg . data [ offset ] = ( msg . data [ offset ] ^ key ) & 255
     end for
     end if
     return msg
     end function
 
-- [`src/mq3/server/netchan.ml:111`](File-src-mq3-server-netchan-ml-1084677692.md)
-- [`src/mq3/server/netchan.ml:86`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:125`](File-src-mq3-server-netchan-ml-1084677692.md)
+- [`src/mq3/server/netchan.ml:93`](File-src-mq3-server-netchan-ml-1084677692.md)
 
 </details>
 
 <details>
-<summary>Clone 97 — 2 occurrences</summary>
+<summary>Clone 103 — 2 occurrences</summary>
 
     case 10 return fsOpen ( vm , base , host ) end case
     case 11 return fsRead ( vm , base , host ) end case

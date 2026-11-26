@@ -12,7 +12,7 @@ struct TeamItem
 Stores UI team team item record, including `id`, `label`, `y`, `grayed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_team.ml#L29)
 
 ## Members
 
@@ -26,7 +26,7 @@ grayed
 When constructing this record, `init` supplies `teamDisabled` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_team.ml#L37)
 
 <a id="field-field-mq3-client-ui-team-teamitem-id-id-src-mq3-client-ui-team-ml-1407682549"></a>
 ### id
@@ -38,7 +38,7 @@ id
 Event-routing identifier of this selectable control in the team-selection menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_team.ml#L31)
 
 <a id="field-field-mq3-client-ui-team-teamitem-label-label-src-mq3-client-ui-team-ml-2046672015"></a>
 ### label
@@ -50,7 +50,7 @@ label
 Human-readable caption painted beside or inside the UI control.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_team.ml#L33)
 
 <a id="field-field-mq3-client-ui-team-teamitem-y-y-src-mq3-client-ui-team-ml-1244478683"></a>
 ### y
@@ -62,4 +62,4 @@ y
 Vertical position of this menu control in the virtual layout used by the team-selection menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_team.ml#L35)

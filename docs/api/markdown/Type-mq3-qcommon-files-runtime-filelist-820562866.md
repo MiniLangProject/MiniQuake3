@@ -12,7 +12,7 @@ struct FileList
 FileList record for qcommon.files_runtime, containing `count`, `names`, `packed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/files_runtime.ml#L62)
 
 ## Members
 
@@ -26,7 +26,7 @@ count
 Number of valid entries represented by this result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/files_runtime.ml#L64)
 
 <a id="field-field-mq3-qcommon-files-runtime-filelist-names-names-src-mq3-qcommon-files-runtime-ml-1768745213"></a>
 ### names
@@ -38,7 +38,7 @@ names
 Matching virtual filenames returned by the directory enumeration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/files_runtime.ml#L66)
 
 <a id="field-field-mq3-qcommon-files-runtime-filelist-packed-packed-src-mq3-qcommon-files-runtime-ml-1701257145"></a>
 ### packed
@@ -50,4 +50,4 @@ packed
 NUL-separated filename bytes prepared for VM ABI output.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/files_runtime.ml#L68)

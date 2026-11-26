@@ -12,7 +12,7 @@ struct Triangle
 Stores playable projectile models triangle record, including `positions`, `texCoords`, `normals`, `textureSlot`, `imageName`, `shaderName` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L89)
 
 ## Members
 
@@ -26,7 +26,7 @@ imageName
 Image path identifying the texture used by this emitted projectile triangle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L99)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-lightorigin-lightorigin-src-mq3-client-playable-projectile-models-ml-153321069"></a>
 ### lightOrigin
@@ -38,7 +38,7 @@ lightOrigin
 When constructing this record, `wrapModelTriangle` supplies `source.lightOrigin` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L107)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-normals-normals-src-mq3-client-playable-projectile-models-ml-1251458773"></a>
 ### normals
@@ -50,7 +50,7 @@ normals
 When constructing this record, `wrapModelTriangle` supplies `source.normals` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L95)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-positions-positions-src-mq3-client-playable-projectile-models-ml-108680289"></a>
 ### positions
@@ -62,7 +62,7 @@ positions
 Ordered positions used to build the stored trail or spatial history.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L91)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-shadername-shadername-src-mq3-client-playable-projectile-models-ml-1459259925"></a>
 ### shaderName
@@ -74,7 +74,7 @@ shaderName
 Virtual shader name used to register or resolve the displayed resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L101)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-style-style-src-mq3-client-playable-projectile-models-ml-1648420561"></a>
 ### style
@@ -86,7 +86,7 @@ style
 Projectile style identifying the render asset that produced this textured triangle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L103)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-surfaceindex-surfaceindex-src-mq3-client-playable-projectile-models-ml-562890571"></a>
 ### surfaceIndex
@@ -98,7 +98,7 @@ surfaceIndex
 When constructing this record, `wrapModelTriangle` supplies `source.surfaceIndex` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L105)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-texcoords-texcoords-src-mq3-client-playable-projectile-models-ml-55631641"></a>
 ### texCoords
@@ -110,7 +110,7 @@ texCoords
 When constructing this record, `wrapModelTriangle` supplies `source.texCoords` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L93)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-textureslot-textureslot-src-mq3-client-playable-projectile-models-ml-510372957"></a>
 ### textureSlot
@@ -122,4 +122,4 @@ textureSlot
 Texture-cache slot assigned to the resource for renderer submission.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L97)

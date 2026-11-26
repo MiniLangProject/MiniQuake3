@@ -18,7 +18,7 @@ function cache()
 UI_SetupMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L74)
 
 <a id="function-function-mq3-client-ui-setup-event-function-event-menu-id-eventcode-src-mq3-client-ui-setup-ml-1451175135"></a>
 ### event
@@ -36,7 +36,7 @@ UI_SetupMenu_Event
 | `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L62)
 
 <a id="constant-constant-mq3-client-ui-setup-id-back-const-id-back-18-src-mq3-client-ui-setup-ml-1122189580"></a>
 ### ID_BACK
@@ -48,7 +48,7 @@ const ID_BACK = 18
 Event identifier of the Back control used to leave the player and system setup menu and return to its parent menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-setup-id-cdkey-const-id-cdkey-14-src-mq3-client-ui-setup-ml-1665842990"></a>
 ### ID_CDKEY
@@ -60,7 +60,7 @@ const ID_CDKEY = 14
 Menu control identifier routed to the cdkey action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-setup-id-customizecontrols-const-id-customizecontrols-11-src-mq3-client-ui-setup-ml-222263037"></a>
 ### ID_CUSTOMIZECONTROLS
@@ -72,7 +72,7 @@ const ID_CUSTOMIZECONTROLS = 11
 Menu control identifier routed to the customizecontrols action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-setup-id-customizeplayer-const-id-customizeplayer-10-src-mq3-client-ui-setup-ml-1019892334"></a>
 ### ID_CUSTOMIZEPLAYER
@@ -84,7 +84,7 @@ const ID_CUSTOMIZEPLAYER = 10
 Menu control identifier routed to the customizeplayer action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-setup-id-defaults-const-id-defaults-17-src-mq3-client-ui-setup-ml-1991617843"></a>
 ### ID_DEFAULTS
@@ -96,7 +96,7 @@ const ID_DEFAULTS = 17
 Menu control identifier routed to the defaults action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-setup-id-game-const-id-game-13-src-mq3-client-ui-setup-ml-1583372911"></a>
 ### ID_GAME
@@ -108,7 +108,7 @@ const ID_GAME = 13
 Menu control identifier routed to the game action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-setup-id-systemconfig-const-id-systemconfig-12-src-mq3-client-ui-setup-ml-125994518"></a>
 ### ID_SYSTEMCONFIG
@@ -120,7 +120,7 @@ const ID_SYSTEMCONFIG = 12
 Menu control identifier routed to the systemconfig action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L13)
 
 <a id="function-function-mq3-client-ui-setup-init-function-init-paused-src-mq3-client-ui-setup-ml-1399909720"></a>
 ### init
@@ -136,7 +136,7 @@ UI_SetupMenu_Init
 | `paused` | `dynamic` | — | Value used by `if not paused then items=items+[SetupItem(ID_DEFAULTS,"DEFAULTS",304)] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L77)
 
 <a id="function-function-mq3-client-ui-setup-open-function-open-paused-src-mq3-client-ui-setup-ml-537575684"></a>
 ### open
@@ -152,7 +152,7 @@ UI_SetupMenu
 | `paused` | `dynamic` | — | Value used by `menu=init(paused)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L85)
 
 <a id="constant-constant-mq3-client-ui-setup-qm-activated-const-qm-activated-3-src-mq3-client-ui-setup-ml-1581072936"></a>
 ### QM_ACTIVATED
@@ -164,7 +164,7 @@ const QM_ACTIVATED = 3
 Activation callback event accepted by the player and system setup menu before it processes the selected control action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L7)
 
 <a id="function-function-mq3-client-ui-setup-resetdefaultsaction-function-resetdefaultsaction-menu-result-src-mq3-client-ui-setup-ml-248999154"></a>
 ### resetDefaultsAction
@@ -181,7 +181,7 @@ Setup_ResetDefaults_Action
 | `result` | `dynamic` | — | Value used by `if result then menu.commands=menu.commands+["exec default.cfg\\n","cvar_restart\\n","vid_restart\\n"] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L55)
 
 <a id="function-function-mq3-client-ui-setup-resetdefaultsdraw-function-resetdefaultsdraw-src-mq3-client-ui-setup-ml-491392836"></a>
 ### resetDefaultsDraw
@@ -193,7 +193,7 @@ function resetDefaultsDraw()
 Setup_ResetDefaults_Draw
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L57)
 
 - [mq3.client.ui_setup.SetupItem](Type-mq3-client-ui-setup-setupitem-266284445.md) — struct
 - [mq3.client.ui_setup.SetupMenu](Type-mq3-client-ui-setup-setupmenu-335050865.md) — struct

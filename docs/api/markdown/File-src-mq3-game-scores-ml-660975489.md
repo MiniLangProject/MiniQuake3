@@ -34,7 +34,7 @@ Set `ent.client.ps.persistant[c.PERS_SCORE]` to `n.add32(ent.client.ps.persistan
 | `score` | `dynamic` | — | Value used by `scorePlum` in `plum.s.time = score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L278)
 
 <a id="function-function-mq3-game-scores-calculateranks-function-calculateranks-level-src-mq3-game-scores-ml-1417113350"></a>
 ### calculateRanks
@@ -50,7 +50,7 @@ Update `level.follow1`, `level.follow2`, `level.numConnectedClients` and `level.
 | `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `follow1`, `follow2`, `numConnectedClients` and `numNonSpectatorClients` and related fields. May update `level.follow1`, `level.follow2` and `level.numConnectedClients` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L209)
 
 <a id="function-function-mq3-game-scores-checkexitrules-function-checkexitrules-level-src-mq3-game-scores-ml-1413703838"></a>
 ### checkExitRules
@@ -66,7 +66,7 @@ Set `level.intermissionQueued` to `0` in `mq3.game.scores.checkExitRules`.
 | `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `intermissionQueued`, `time`, `timelimit` and `spawner` and related fields. May update `level.intermissionQueued` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L176)
 
 <a id="function-function-mq3-game-scores-checkintermissionexit-function-checkintermissionexit-level-src-mq3-game-scores-ml-1625981458"></a>
 ### checkIntermissionExit
@@ -82,7 +82,7 @@ Update `level.readyToExit` and `level.exitTime` during `checkIntermissionExit`. 
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `maxclientsCvar`, `clients`, `entities` and `time` and related fields. May update `level.readyToExit` and `level.exitTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L149)
 
 <a id="function-function-mq3-game-scores-clientat-function-clientat-level-slot-src-mq3-game-scores-ml-2025992818"></a>
 ### clientAt
@@ -99,7 +99,7 @@ Read the persistent client record for a validated slot from zero through sixty-t
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L21)
 
 <a id="function-function-mq3-game-scores-clientlimit-function-clientlimit-limit-src-mq3-game-scores-ml-1296174359"></a>
 ### clientLimit
@@ -115,7 +115,7 @@ Validate a scoreboard client limit against the native sixty-four-client storage 
 | `limit` | `dynamic` | — | Operand used to evaluate the returned expression `limit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L14)
 
 <a id="function-function-mq3-game-scores-commandscore-function-commandscore-level-ent-src-mq3-game-scores-ml-1307509465"></a>
 ### commandScore
@@ -132,7 +132,7 @@ Forward `commandScore` to `mq3.game.scores.scoreboard` and return the delegated 
 | `ent` | `dynamic` | — | Game entity; accesses `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L109)
 
 <a id="function-function-mq3-game-scores-compareranks-function-compareranks-level-a-b-src-mq3-game-scores-ml-238853681"></a>
 ### compareRanks
@@ -150,7 +150,7 @@ Apply `mq3.game.scores.clientAt` while evaluating `compareRanks`.
 | `b` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L68)
 
 <a id="function-function-mq3-game-scores-integerdivide-function-integerdivide-a-b-src-mq3-game-scores-ml-583329763"></a>
 ### integerDivide
@@ -167,7 +167,7 @@ Divide signed 32-bit integers with truncation toward zero, rejecting zero diviso
 | `b` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L28)
 
 <a id="function-function-mq3-game-scores-logexit-function-logexit-level-reason-src-mq3-game-scores-ml-779340210"></a>
 ### logExit
@@ -184,7 +184,7 @@ Set `level.intermissionQueued` to `level.time` in `mq3.game.scores.logExit`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L132)
 
 <a id="function-function-mq3-game-scores-logline-function-logline-level-message-src-mq3-game-scores-ml-1635572171"></a>
 ### logLine
@@ -201,7 +201,7 @@ Use `level.gameLogFn` to perform `logLine`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L50)
 
 <a id="function-function-mq3-game-scores-matchboundary-function-matchboundary-level-kind-src-mq3-game-scores-ml-1664341838"></a>
 ### matchBoundary
@@ -218,7 +218,7 @@ Use `level.matchTransitionFn` to perform `matchBoundary`.
 | `kind` | `dynamic` | — | Value passed as argument 2 to `level.matchTransitionFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L58)
 
 <a id="function-function-mq3-game-scores-scoreboard-function-scoreboard-level-ent-src-mq3-game-scores-ml-915626053"></a>
 ### scoreboard
@@ -235,7 +235,7 @@ Apply `mq3.game.scores.clientLimit`, `mq3.game.scores.clientAt` and `mq3.game.sc
 | `ent` | `dynamic` | — | Game entity; accesses `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L88)
 
 <a id="function-function-mq3-game-scores-scoreistied-function-scoreistied-level-src-mq3-game-scores-ml-766300914"></a>
 ### scoreIsTied
@@ -251,7 +251,7 @@ Apply `mq3.game.scores.clientAt` while evaluating `scoreIsTied`.
 | `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `spawner`, `teamScores` and `sortedClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L124)
 
 <a id="function-function-mq3-game-scores-scoreplum-function-scoreplum-level-ent-origin-score-src-mq3-game-scores-ml-2301185"></a>
 ### scorePlum
@@ -270,7 +270,7 @@ Apply `mq3.game.entities.tempEntity` while evaluating `scorePlum`.
 | `score` | `dynamic` | — | Value used by `scorePlum` in `plum.s.time = score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L267)
 
 <a id="function-function-mq3-game-scores-send-function-send-level-slot-message-src-mq3-game-scores-ml-94416859"></a>
 ### send
@@ -288,7 +288,7 @@ Use `level.serverCommandFn` to perform `send`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L42)
 
 <a id="function-function-mq3-game-scores-sendall-function-sendall-level-src-mq3-game-scores-ml-172062144"></a>
 ### sendAll
@@ -304,4 +304,4 @@ Apply `mq3.game.scores.clientLimit` and `mq3.game.scores.scoreboard` while evalu
 | `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `clients` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/scores.ml#L114)

@@ -22,7 +22,7 @@ Reachable from entry: **no**
 - `mq3/game/teleport.ml` as `utilityTeleport` → [src/mq3/game/teleport.ml](File-src-mq3-game-teleport-ml-594448221.md)
 - `mq3/game/votes.ml` as `utilityVotes` → [src/mq3/game/votes.ml](File-src-mq3-game-votes-ml-1007667129.md)
 - `mq3/shared/info.ml` as `utilityInfo` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -41,7 +41,7 @@ Apply `mq3.game.utility_commands.utilitySend` while evaluating `cheatsOk`.
 | `ent` | `dynamic` | — | Game entity; accesses `health`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L34)
 
 <a id="function-function-mq3-game-utility-commands-give-function-give-level-ent-argv-src-mq3-game-utility-commands-ml-1727088847"></a>
 ### give
@@ -59,7 +59,7 @@ Update `ent.health`, `ent.client.ps.stats[c.STAT_WEAPONS]`, `ent.client.ps.ammo[
 | `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L67)
 
 <a id="function-function-mq3-game-utility-commands-god-function-god-level-ent-src-mq3-game-utility-commands-ml-99440033"></a>
 ### god
@@ -76,7 +76,7 @@ Set `ent.flags` to `ent.flags ^ 0x10` in `mq3.game.utility_commands.god`. Return
 | `ent` | `dynamic` | — | Game entity; accesses `flags`. May update `ent.flags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L116)
 
 <a id="function-function-mq3-game-utility-commands-kill-function-kill-level-ent-src-mq3-game-utility-commands-ml-855012329"></a>
 ### kill
@@ -93,7 +93,7 @@ Update `ent.flags`, `ent.client.ps.stats[c.STAT_HEALTH]` and `ent.health` during
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `health` and `flags`. May update `ent.flags`, `ent.client.ps.stats[c.STAT_HEALTH]` and `ent.health` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L184)
 
 <a id="function-function-mq3-game-utility-commands-levelshot-function-levelshot-level-ent-src-mq3-game-utility-commands-ml-1389349949"></a>
 ### levelshot
@@ -110,7 +110,7 @@ Apply `mq3.game.utility_commands.cheatsOk`, `mq3.game.utility_commands.utilitySe
 | `ent` | `dynamic` | — | Game entity; accesses `health`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L148)
 
 <a id="function-function-mq3-game-utility-commands-noclip-function-noclip-level-ent-src-mq3-game-utility-commands-ml-886016401"></a>
 ### noclip
@@ -127,7 +127,7 @@ Set `ent.client.noclip` to `not ent.client.noclip` in `mq3.game.utility_commands
 | `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.noclip` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L136)
 
 <a id="function-function-mq3-game-utility-commands-notarget-function-notarget-level-ent-src-mq3-game-utility-commands-ml-1274736257"></a>
 ### notarget
@@ -144,7 +144,7 @@ Set `ent.flags` to `ent.flags ^ 0x20` in `mq3.game.utility_commands.notarget`. R
 | `ent` | `dynamic` | — | Game entity; accesses `flags`. May update `ent.flags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L126)
 
 <a id="function-function-mq3-game-utility-commands-setviewpos-function-setviewpos-level-ent-argv-src-mq3-game-utility-commands-ml-2049844847"></a>
 ### setViewpos
@@ -162,7 +162,7 @@ Apply `mq3.game.utility_commands.utilitySend`, `mq3.game.command_args.argument` 
 | `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L195)
 
 <a id="function-function-mq3-game-utility-commands-stats-function-stats-level-ent-src-mq3-game-utility-commands-ml-80388627"></a>
 ### stats
@@ -179,7 +179,7 @@ Return `void` for `stats`.
 | `ent` | `dynamic` | — | Not read by this implementation; retained in the `stats` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L210)
 
 <a id="function-function-mq3-game-utility-commands-teamtask-function-teamtask-level-ent-argv-src-mq3-game-utility-commands-ml-886612863"></a>
 ### teamTask
@@ -197,7 +197,7 @@ Use `level.userinfoFn` and `level.userinfoSetFn` to perform `teamTask`. Return p
 | `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L168)
 
 <a id="function-function-mq3-game-utility-commands-utilityfinditem-function-utilityfinditem-name-src-mq3-game-utility-commands-ml-1772081585"></a>
 ### utilityFindItem
@@ -213,7 +213,7 @@ Apply `mq3.shared.info.textBytes` while evaluating `utilityFindItem`.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L47)
 
 <a id="function-function-mq3-game-utility-commands-utilityinfodiagnostic-function-utilityinfodiagnostic-level-message-src-mq3-game-utility-commands-ml-295682813"></a>
 ### utilityInfoDiagnostic
@@ -230,7 +230,7 @@ Use `level.gamePrintFn` to perform `utilityInfoDiagnostic`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L159)
 
 <a id="function-function-mq3-game-utility-commands-utilitysend-function-utilitysend-level-ent-message-src-mq3-game-utility-commands-ml-1418839774"></a>
 ### utilitySend
@@ -248,4 +248,4 @@ Use `level.serverCommandFn` to perform `utilitySend`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L25)

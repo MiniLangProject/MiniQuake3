@@ -12,7 +12,7 @@ struct ServerEndpoint
 Stores remote play server endpoint record, including `host`, `port`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L32)
 
 ## Members
 
@@ -26,7 +26,7 @@ host
 Host-adapter callbacks and context used to execute the module's engine operations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L34)
 
 <a id="field-field-mq3-client-remote-play-serverendpoint-port-port-src-mq3-client-remote-play-ml-866610981"></a>
 ### port
@@ -38,4 +38,4 @@ port
 When constructing this record, `parseEndpoint` supplies `port` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L36)

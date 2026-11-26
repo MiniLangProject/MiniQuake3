@@ -12,7 +12,7 @@ struct Result
 Stores client game console commands operation result, including `handled`, `cvarSets`, `consoleCommands`, `clientCommands`, `prints`, `sounds` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L96)
 
 ## Members
 
@@ -26,7 +26,7 @@ centerPrint
 Text of the current centered announcement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L110)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-clientcommands-clientcommands-src-mq3-client-cgame-console-commands-ml-1596514642"></a>
 ### clientCommands
@@ -38,7 +38,7 @@ clientCommands
 When constructing this record, `result` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L104)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-consolecommands-consolecommands-src-mq3-client-cgame-console-commands-ml-337403932"></a>
 ### consoleCommands
@@ -50,7 +50,7 @@ consoleCommands
 When constructing this record, `result` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L102)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-cvarsets-cvarsets-src-mq3-client-cgame-console-commands-ml-1967196146"></a>
 ### cvarSets
@@ -62,7 +62,7 @@ cvarSets
 When constructing this record, `result` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L100)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-handled-handled-src-mq3-client-cgame-console-commands-ml-1253357820"></a>
 ### handled
@@ -74,7 +74,7 @@ handled
 When constructing this record, `result` supplies `handled` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L98)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-menuactions-menuactions-src-mq3-client-cgame-console-commands-ml-1248605852"></a>
 ### menuActions
@@ -86,7 +86,7 @@ menuActions
 When constructing this record, `result` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L112)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-prints-prints-src-mq3-client-cgame-console-commands-ml-1769610900"></a>
 ### prints
@@ -98,7 +98,7 @@ prints
 When constructing this record, `result` supplies an empty list for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L106)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-sounds-sounds-src-mq3-client-cgame-console-commands-ml-2033110400"></a>
 ### sounds
@@ -110,4 +110,4 @@ sounds
 Registered sound resources associated with the player model or media group.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L108)

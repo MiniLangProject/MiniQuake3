@@ -12,7 +12,7 @@ struct MapState
 MapState record for collision.world, containing `world`, `name`, `checksum`, `lastChecksum`, `curves`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L158)
 
 ## Members
 
@@ -26,7 +26,7 @@ checksum
 Checksum used to validate or identify the represented data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L164)
 
 <a id="field-field-mq3-collision-world-mapstate-curves-curves-src-mq3-collision-world-ml-1294631170"></a>
 ### curves
@@ -38,7 +38,7 @@ curves
 True when collision tests include curved patch surfaces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L168)
 
 <a id="field-field-mq3-collision-world-mapstate-lastchecksum-lastchecksum-src-mq3-collision-world-ml-1825247572"></a>
 ### lastChecksum
@@ -50,7 +50,7 @@ lastChecksum
 Checksum returned for the most recently loaded collision map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L166)
 
 <a id="field-field-mq3-collision-world-mapstate-name-name-src-mq3-collision-world-ml-1743693572"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Map name used to identify the cached collision world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L162)
 
 <a id="field-field-mq3-collision-world-mapstate-world-world-src-mq3-collision-world-ml-727005214"></a>
 ### world
@@ -74,4 +74,4 @@ world
 Collision or navigation world used by this operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L160)

@@ -12,7 +12,7 @@ struct Dll
 Data record for `mq3.platform.win_main_runtime.Dll`; groups `handle`, `entryPoint`, `path`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L115)
 
 ## Members
 
@@ -26,7 +26,7 @@ entryPoint
 Loaded module entry point used to call into the dynamic library.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L119)
 
 <a id="field-field-mq3-platform-win-main-runtime-dll-handle-handle-src-mq3-platform-win-main-runtime-ml-1375517641"></a>
 ### handle
@@ -38,7 +38,7 @@ handle
 Resource handle used to identify the registered or opened object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L117)
 
 <a id="field-field-mq3-platform-win-main-runtime-dll-path-path-src-mq3-platform-win-main-runtime-ml-801766839"></a>
 ### path
@@ -50,4 +50,4 @@ path
 Filesystem or virtual asset path associated with this record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L121)

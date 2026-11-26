@@ -33,7 +33,7 @@ Forward `AddScore` to `mq3.game.scores.addScore` and return the delegated result
 | `score` | `dynamic` | — | Value used by `scorePlum` in `plum.s.time = score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L22)
 
 <a id="function-function-mq3-game-g-combat-body-die-function-body-die-level-self-inflictor-attacker-damage-meansofdeath-src-mq3-game-g-combat-ml-274273967"></a>
 ### body_die
@@ -54,7 +54,7 @@ Forward `body_die` to `mq3.game.bodies.die` and return the delegated result.
 | `meansOfDeath` | `dynamic` | — | Value passed as argument 6 to `mq3.game.bodies.die`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L53)
 
 <a id="function-function-mq3-game-g-combat-candamage-function-candamage-level-targ-origin-src-mq3-game-g-combat-ml-253745374"></a>
 ### CanDamage
@@ -72,7 +72,7 @@ Forward `CanDamage` to `mq3.game.combat.canDamage` and return the delegated resu
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L117)
 
 <a id="function-function-mq3-game-g-combat-checkalmostcapture-function-checkalmostcapture-level-self-attacker-src-mq3-game-g-combat-ml-632171599"></a>
 ### CheckAlmostCapture
@@ -90,7 +90,7 @@ Forward `CheckAlmostCapture` to `mq3.game.deaths.checkAlmostCapture` and return 
 | `attacker` | `dynamic` | — | Entity credited with the attack. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L66)
 
 <a id="function-function-mq3-game-g-combat-checkalmostscored-function-checkalmostscored-level-self-attacker-src-mq3-game-g-combat-ml-385712851"></a>
 ### CheckAlmostScored
@@ -108,7 +108,7 @@ Forward `CheckAlmostScored` to `mq3.game.deaths.checkAlmostScored` and return th
 | `attacker` | `dynamic` | — | Entity credited with the attack. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L71)
 
 <a id="function-function-mq3-game-g-combat-checkarmor-function-checkarmor-ent-damage-dflags-src-mq3-game-g-combat-ml-582022887"></a>
 ### CheckArmor
@@ -126,7 +126,7 @@ Forward `CheckArmor` to `mq3.game.combat.checkArmor` and return the delegated re
 | `dflags` | `dynamic` | — | Value used by `checkArmor` in `if amount == 0 or ent.client == void or (dflags & DAMAGE_NO_ARMOR) != 0 then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L86)
 
 <a id="function-function-mq3-game-g-combat-g-damage-function-g-damage-level-targ-inflictor-attacker-dir-point-damage-dflags-mod-src-mq3-game-g-combat-ml-1675295966"></a>
 ### G_Damage
@@ -150,7 +150,7 @@ Forward `G_Damage` to `mq3.game.combat.damage` and return the delegated result.
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L112)
 
 <a id="function-function-mq3-game-g-combat-g-invulnerabilityeffect-function-g-invulnerabilityeffect-level-targ-dir-point-impactpoint-bouncedir-src-mq3-game-g-combat-ml-221165362"></a>
 ### G_InvulnerabilityEffect
@@ -171,7 +171,7 @@ Forward `G_InvulnerabilityEffect` to `mq3.game.combat.invulnerabilityEffect` and
 | `bouncedir` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L101)
 
 <a id="function-function-mq3-game-g-combat-g-radiusdamage-function-g-radiusdamage-level-origin-attacker-damage-radius-ignore-mod-src-mq3-game-g-combat-ml-300050910"></a>
 ### G_RadiusDamage
@@ -193,7 +193,7 @@ Forward `G_RadiusDamage` to `mq3.game.combat.radiusDamage` and return the delega
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L126)
 
 <a id="function-function-mq3-game-g-combat-gibentity-function-gibentity-level-self-killer-src-mq3-game-g-combat-ml-289174525"></a>
 ### GibEntity
@@ -211,7 +211,7 @@ Forward `GibEntity` to `mq3.game.bodies.gib` and return the delegated result.
 | `killer` | `dynamic` | — | Integer parameter stored alongside the emitted event. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L45)
 
 <a id="function-function-mq3-game-g-combat-kamikaze-deathactivate-function-kamikaze-deathactivate-level-ent-src-mq3-game-g-combat-ml-1798222787"></a>
 ### Kamikaze_DeathActivate
@@ -228,7 +228,7 @@ Forward `Kamikaze_DeathActivate` to `mq3.game.combat_missionpack.Kamikaze_DeathA
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `activator` and `s`. May update `ent.s.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L57)
 
 <a id="function-function-mq3-game-g-combat-kamikaze-deathtimer-function-kamikaze-deathtimer-level-self-src-mq3-game-g-combat-ml-891075846"></a>
 ### Kamikaze_DeathTimer
@@ -245,7 +245,7 @@ Forward `Kamikaze_DeathTimer` to `mq3.game.combat_missionpack.Kamikaze_DeathTime
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L61)
 
 <a id="function-function-mq3-game-g-combat-lookatkiller-function-lookatkiller-level-self-inflictor-attacker-src-mq3-game-g-combat-ml-467972557"></a>
 ### LookAtKiller
@@ -264,7 +264,7 @@ Forward `LookAtKiller` to `mq3.game.bodies.lookAtKiller` and return the delegate
 | `attacker` | `dynamic` | — | Entity credited with the attack. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L40)
 
 <a id="function-function-mq3-game-g-combat-player-die-function-player-die-level-self-inflictor-attacker-damage-meansofdeath-src-mq3-game-g-combat-ml-132442971"></a>
 ### player_die
@@ -285,7 +285,7 @@ Forward `player_die` to `mq3.game.deaths.playerDie` and return the delegated res
 | `meansOfDeath` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L79)
 
 <a id="function-function-mq3-game-g-combat-raysphereintersections-function-raysphereintersections-origin-radius-point-dir-intersections-src-mq3-game-g-combat-ml-731931553"></a>
 ### RaySphereIntersections
@@ -305,7 +305,7 @@ Forward `RaySphereIntersections` to `mq3.game.combat.raySphereIntersections` and
 | `intersections` | `dynamic` | — | Array or byte sequence accessed at `0` and `1`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L93)
 
 <a id="function-function-mq3-game-g-combat-scoreplum-function-scoreplum-level-ent-origin-score-src-mq3-game-g-combat-ml-581838305"></a>
 ### ScorePlum
@@ -324,7 +324,7 @@ Forward `ScorePlum` to `mq3.game.scores.scorePlum` and return the delegated resu
 | `score` | `dynamic` | — | Value used by `scorePlum` in `plum.s.time = score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L16)
 
 <a id="function-function-mq3-game-g-combat-tossclientcubes-function-tossclientcubes-level-self-src-mq3-game-g-combat-ml-1809154428"></a>
 ### TossClientCubes
@@ -341,7 +341,7 @@ Forward `TossClientCubes` to `mq3.game.combat_missionpack.TossClientCubes` and r
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `client`. May update `self.client.ps.generic1` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L30)
 
 <a id="function-function-mq3-game-g-combat-tossclientitems-function-tossclientitems-level-self-src-mq3-game-g-combat-ml-671179180"></a>
 ### TossClientItems
@@ -358,7 +358,7 @@ Forward `TossClientItems` to `mq3.game.deaths.tossClientItems` and return the de
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `client` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L26)
 
 <a id="function-function-mq3-game-g-combat-tossclientpersistantpowerups-function-tossclientpersistantpowerups-level-ent-src-mq3-game-g-combat-ml-1643911835"></a>
 ### TossClientPersistantPowerups
@@ -375,4 +375,4 @@ Forward `TossClientPersistantPowerups` to `mq3.game.combat_missionpack.TossClien
 | `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `ent.client.persistantPowerup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_combat.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_combat.ml#L34)

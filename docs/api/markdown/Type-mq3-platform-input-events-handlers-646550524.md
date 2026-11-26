@@ -12,7 +12,7 @@ struct Handlers
 Callback table for `mq3.platform.input_events.Handlers`; exposes `context`, `keyFn`, `charFn`, `mouseFn`, `joystickFn`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L52)
 
 ## Members
 
@@ -26,7 +26,7 @@ charFn
 Host callback used to perform char operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L58)
 
 <a id="field-field-mq3-platform-input-events-handlers-context-context-src-mq3-platform-input-events-ml-682106152"></a>
 ### context
@@ -38,7 +38,7 @@ context
 Input-consumer state passed to the keyboard, character, mouse, and joystick handlers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L54)
 
 <a id="field-field-mq3-platform-input-events-handlers-joystickfn-joystickfn-src-mq3-platform-input-events-ml-1592895296"></a>
 ### joystickFn
@@ -50,7 +50,7 @@ joystickFn
 Host callback used to perform joystick operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L62)
 
 <a id="field-field-mq3-platform-input-events-handlers-keyfn-keyfn-src-mq3-platform-input-events-ml-1068430624"></a>
 ### keyFn
@@ -62,7 +62,7 @@ keyFn
 Host callback used to perform key operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L56)
 
 <a id="field-field-mq3-platform-input-events-handlers-mousefn-mousefn-src-mq3-platform-input-events-ml-496852816"></a>
 ### mouseFn
@@ -74,4 +74,4 @@ mouseFn
 Host callback used to perform mouse operations for this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L60)

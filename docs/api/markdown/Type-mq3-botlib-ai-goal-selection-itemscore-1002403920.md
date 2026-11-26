@@ -12,7 +12,7 @@ struct ItemScore
 `ItemScore` record for ai goal selection, containing `weight` and `time`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L83)
 
 ## Members
 
@@ -26,7 +26,7 @@ time
 Route travel cost used when scoring this candidate item goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L87)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-itemscore-weight-weight-src-mq3-botlib-ai-goal-selection-ml-1381547744"></a>
 ### weight
@@ -38,4 +38,4 @@ weight
 Final item desirability after inventory weighting and route-cost scaling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L85)

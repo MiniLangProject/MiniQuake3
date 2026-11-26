@@ -12,7 +12,7 @@ struct CampResult
 `CampResult` record for ai map goals, containing `next` and `goal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L55)
 
 ## Members
 
@@ -26,7 +26,7 @@ goal
 Bot goal record describing the location to reach.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L59)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campresult-next-next-src-mq3-botlib-ai-map-goals-ml-562579971"></a>
 ### next
@@ -38,4 +38,4 @@ next
 Enumeration index to use when requesting the following camp goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L57)

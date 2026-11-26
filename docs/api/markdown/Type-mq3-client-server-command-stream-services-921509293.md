@@ -12,7 +12,7 @@ struct Services
 Stores server command stream host-service callbacks, including `context`, `configstringFn`, `systemInfoFn`, `clearNotifyFn`, `clearUsercmdsFn`, `closeConsoleFn` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L18)
 
 ## Members
 
@@ -26,7 +26,7 @@ clearNotifyFn
 Host callback for the clear notify operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L30)
 
 <a id="field-field-mq3-client-server-command-stream-services-clearusercmdsfn-clearusercmdsfn-src-mq3-client-server-command-stream-ml-1184587613"></a>
 ### clearUsercmdsFn
@@ -38,7 +38,7 @@ clearUsercmdsFn
 Host callback for the clear usercmds operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L33)
 
 <a id="field-field-mq3-client-server-command-stream-services-closeconsolefn-closeconsolefn-src-mq3-client-server-command-stream-ml-1794709571"></a>
 ### closeConsoleFn
@@ -50,7 +50,7 @@ closeConsoleFn
 Host callback for the close console operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L36)
 
 <a id="field-field-mq3-client-server-command-stream-services-configstringfn-configstringfn-src-mq3-client-server-command-stream-ml-103712943"></a>
 ### configstringFn
@@ -62,7 +62,7 @@ configstringFn
 Host callback for the configstring operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L24)
 
 <a id="field-field-mq3-client-server-command-stream-services-context-context-src-mq3-client-server-command-stream-ml-719759785"></a>
 ### context
@@ -74,7 +74,7 @@ context
 Caller-supplied value forwarded unchanged to the service callbacks for reliable server-command delivery.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L21)
 
 <a id="field-field-mq3-client-server-command-stream-services-queueconsolefn-queueconsolefn-src-mq3-client-server-command-stream-ml-2057323217"></a>
 ### queueConsoleFn
@@ -86,7 +86,7 @@ queueConsoleFn
 Host callback for the queue console operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L39)
 
 <a id="field-field-mq3-client-server-command-stream-services-serverrunning-serverrunning-src-mq3-client-server-command-stream-ml-379297225"></a>
 ### serverRunning
@@ -98,7 +98,7 @@ serverRunning
 True when a local game server is running in the same engine instance.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L41)
 
 <a id="field-field-mq3-client-server-command-stream-services-systeminfofn-systeminfofn-src-mq3-client-server-command-stream-ml-211130187"></a>
 ### systemInfoFn
@@ -110,4 +110,4 @@ systemInfoFn
 Host callback for the system info operation; an unset callback leaves that host operation unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L27)

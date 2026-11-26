@@ -12,7 +12,7 @@ struct DisplayMode
 Data record for `mq3.platform.playable_window.DisplayMode`; groups `width`, `height`, `fullscreen`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L650)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L650)
 
 ## Members
 
@@ -26,7 +26,7 @@ fullscreen
 Whether the selected video mode occupies the full display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L656)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L656)
 
 <a id="field-field-mq3-platform-playable-window-displaymode-height-height-src-mq3-platform-playable-window-ml-289485122"></a>
 ### height
@@ -38,7 +38,7 @@ height
 Height in pixels of the enumerated native display mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L654)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L654)
 
 <a id="field-field-mq3-platform-playable-window-displaymode-width-width-src-mq3-platform-playable-window-ml-914381136"></a>
 ### width
@@ -50,4 +50,4 @@ width
 Width in pixels of the enumerated native display mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L652)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L652)

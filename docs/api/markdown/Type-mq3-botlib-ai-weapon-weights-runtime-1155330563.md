@@ -12,7 +12,7 @@ struct Runtime
 `Runtime` record for ai weapon weights, containing `context`, `readFn`, `fuzzyRuntime`, `config` and `fileReads`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L120)
 
 ## Members
 
@@ -26,7 +26,7 @@ config
 Configuration object supplying the settings used by this runtime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L129)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-context-context-src-mq3-botlib-ai-weapon-weights-ml-1888761943"></a>
 ### context
@@ -38,7 +38,7 @@ context
 Caller-supplied data associated with loading projectile, weapon, and fuzzy weapon-weight definitions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L123)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-filereads-filereads-src-mq3-botlib-ai-weapon-weights-ml-44893723"></a>
 ### fileReads
@@ -50,7 +50,7 @@ fileReads
 Number of source-file reads performed through the loading interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L131)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-fuzzyruntime-fuzzyruntime-src-mq3-botlib-ai-weapon-weights-ml-2088612663"></a>
 ### fuzzyRuntime
@@ -62,7 +62,7 @@ fuzzyRuntime
 Fuzzy-weight evaluator used to score available weapons.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L127)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-readfn-readfn-src-mq3-botlib-ai-weapon-weights-ml-1613414103"></a>
 ### readFn
@@ -74,4 +74,4 @@ readFn
 Host callback that reads weapon, projectile, and weapon-weight configuration files.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L125)

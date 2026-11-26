@@ -12,7 +12,7 @@ struct Huff
 Huff record for qcommon.huffman, containing `nodes`, `loc`, `tree`, `lhead`, `ltail`, `blocNode`, and 3 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L33)
 
 ## Members
 
@@ -26,7 +26,7 @@ blocNode
 Next unused slot in the fixed node pool.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L45)
 
 <a id="field-field-mq3-qcommon-huffman-huff-blocptrs-blocptrs-src-mq3-qcommon-huffman-ml-1833152602"></a>
 ### blocPtrs
@@ -38,7 +38,7 @@ blocPtrs
 Next unused slot in the weight-group pointer pool.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L49)
 
 <a id="field-field-mq3-qcommon-huffman-huff-freelist-freelist-src-mq3-qcommon-huffman-ml-389810560"></a>
 ### freelist
@@ -50,7 +50,7 @@ freelist
 Reusable slots in the weight-group pointer pool.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L51)
 
 <a id="field-field-mq3-qcommon-huffman-huff-headvalues-headvalues-src-mq3-qcommon-huffman-ml-854981692"></a>
 ### headValues
@@ -62,7 +62,7 @@ headValues
 Head-node references for groups of equal Huffman weight.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L47)
 
 <a id="field-field-mq3-qcommon-huffman-huff-lhead-lhead-src-mq3-qcommon-huffman-ml-1073988464"></a>
 ### lhead
@@ -74,7 +74,7 @@ lhead
 First node in the Huffman weight-order list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L41)
 
 <a id="field-field-mq3-qcommon-huffman-huff-loc-loc-src-mq3-qcommon-huffman-ml-912979240"></a>
 ### loc
@@ -86,7 +86,7 @@ loc
 Lookup table from byte symbols to their current tree nodes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L37)
 
 <a id="field-field-mq3-qcommon-huffman-huff-ltail-ltail-src-mq3-qcommon-huffman-ml-244095760"></a>
 ### ltail
@@ -98,7 +98,7 @@ ltail
 Last node in the Huffman weight-order list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L43)
 
 <a id="field-field-mq3-qcommon-huffman-huff-nodes-nodes-src-mq3-qcommon-huffman-ml-1807401136"></a>
 ### nodes
@@ -110,7 +110,7 @@ nodes
 BSP nodes used to partition the collision or navigation world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L35)
 
 <a id="field-field-mq3-qcommon-huffman-huff-tree-tree-src-mq3-qcommon-huffman-ml-1606710864"></a>
 ### tree
@@ -122,4 +122,4 @@ tree
 Index of the root of the adaptive Huffman tree.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L39)

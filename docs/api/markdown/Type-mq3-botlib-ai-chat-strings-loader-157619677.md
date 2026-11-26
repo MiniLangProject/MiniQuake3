@@ -12,7 +12,7 @@ struct Loader
 `Loader` record for ai chat strings, containing `state`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L31)
 
 ## Members
 
@@ -26,4 +26,4 @@ state
 Owning chat runtime supplying the file callback and file-read accounting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L33)

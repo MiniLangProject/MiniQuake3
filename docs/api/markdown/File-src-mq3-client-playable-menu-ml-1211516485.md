@@ -12,7 +12,7 @@ Reachable from entry: **yes**
 - `mq3/platform/playable_multitexture.ml` as `multitexture` → [src/mq3/platform/playable_multitexture.ml](File-src-mq3-platform-playable-multitexture-ml-346016672.md)
 - `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Evaluates playable menu `action` and returns `ACTION_SINGLE_PLAYER`, `ACTION_MUL
 | `index` | `dynamic` | — | Value tested by `index==0`, `if index==1` and additional values before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L88)
 
 <a id="constant-constant-mq3-client-playable-menu-action-cinematics-const-action-cinematics-cinematics-src-mq3-client-playable-menu-ml-787634643"></a>
 ### ACTION_CINEMATICS
@@ -42,7 +42,7 @@ const ACTION_CINEMATICS = "cinematics"
 Main-menu action identifier selecting the cinematics destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L78)
 
 <a id="constant-constant-mq3-client-playable-menu-action-demos-const-action-demos-demos-src-mq3-client-playable-menu-ml-1390165263"></a>
 ### ACTION_DEMOS
@@ -54,7 +54,7 @@ const ACTION_DEMOS = "demos"
 Main-menu action identifier selecting the demos destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L76)
 
 <a id="constant-constant-mq3-client-playable-menu-action-exit-const-action-exit-exit-src-mq3-client-playable-menu-ml-1335161457"></a>
 ### ACTION_EXIT
@@ -66,7 +66,7 @@ const ACTION_EXIT = "exit"
 Main-menu action identifier selecting the exit destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L82)
 
 <a id="constant-constant-mq3-client-playable-menu-action-mods-const-action-mods-mods-src-mq3-client-playable-menu-ml-278492086"></a>
 ### ACTION_MODS
@@ -78,7 +78,7 @@ const ACTION_MODS = "mods"
 Main-menu action identifier selecting the mods destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L80)
 
 <a id="constant-constant-mq3-client-playable-menu-action-multiplayer-const-action-multiplayer-multiplayer-src-mq3-client-playable-menu-ml-100601951"></a>
 ### ACTION_MULTIPLAYER
@@ -90,7 +90,7 @@ const ACTION_MULTIPLAYER = "multiplayer"
 Main-menu action identifier selecting the multiplayer destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L72)
 
 <a id="constant-constant-mq3-client-playable-menu-action-none-const-action-none-src-mq3-client-playable-menu-ml-1480892577"></a>
 ### ACTION_NONE
@@ -102,7 +102,7 @@ const ACTION_NONE = ""
 Main-menu action identifier selecting the none destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L68)
 
 <a id="constant-constant-mq3-client-playable-menu-action-setup-const-action-setup-setup-src-mq3-client-playable-menu-ml-2005480694"></a>
 ### ACTION_SETUP
@@ -114,7 +114,7 @@ const ACTION_SETUP = "setup"
 Main-menu action identifier selecting the setup destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L74)
 
 <a id="constant-constant-mq3-client-playable-menu-action-single-player-const-action-single-player-single-player-src-mq3-client-playable-menu-ml-710829287"></a>
 ### ACTION_SINGLE_PLAYER
@@ -126,7 +126,7 @@ const ACTION_SINGLE_PLAYER = "single_player"
 Main-menu action identifier selecting the single player destination or operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L70)
 
 - [mq3.client.playable_menu.Asset](Type-mq3-client-playable-menu-asset-1847687973.md) — struct
 <a id="constant-constant-mq3-client-playable-menu-banner-gap-width-const-banner-gap-width-4-src-mq3-client-playable-menu-ml-1954981853"></a>
@@ -139,7 +139,7 @@ const BANNER_GAP_WIDTH = 4
 Horizontal gap between adjacent banner-font glyphs.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-menu-banner-height-const-banner-height-36-src-mq3-client-playable-menu-ml-170641064"></a>
 ### BANNER_HEIGHT
@@ -151,7 +151,7 @@ const BANNER_HEIGHT = 36
 Height of a banner-font glyph in virtual menu coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L21)
 
 <a id="function-function-mq3-client-playable-menu-bannerglyph-function-bannerglyph-character-src-mq3-client-playable-menu-ml-578451945"></a>
 ### bannerGlyph
@@ -167,7 +167,7 @@ Evaluates playable menu `bannerGlyph` and returns `[0,0,12]`, `glyphs[index]`, `
 | `character` | `dynamic` | — | Value used by `if character==" " then return [0,0,12] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L168)
 
 <a id="function-function-mq3-client-playable-menu-bannerwidth-function-bannerwidth-text-scale-src-mq3-client-playable-menu-ml-1400172085"></a>
 ### bannerWidth
@@ -184,7 +184,7 @@ Calls `mq3.client.playable_menu.bannerGlyph` from playable menu `bannerWidth`. T
 | `scale` | `dynamic` | — | Value used by `if glyph[2]>=0 then width=width+(glyph[2]+BANNER_GAP_WIDTH)*scale end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L185)
 
 - [mq3.client.playable_menu.Catalog](Type-mq3-client-playable-menu-catalog-1866962430.md) — struct
 <a id="function-function-mq3-client-playable-menu-descriptor-function-descriptor-key-name-src-mq3-client-playable-menu-ml-64183908"></a>
@@ -202,7 +202,7 @@ Builds the playable menu `descriptor` sequence from `[key,name]`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable menu resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L119)
 
 <a id="function-function-mq3-client-playable-menu-descriptors-function-descriptors-src-mq3-client-playable-menu-ml-1548885114"></a>
 ### descriptors
@@ -214,7 +214,7 @@ function descriptors()
 Builds the playable menu `descriptors` sequence from `[descriptor("font","menu/art/font1_prop"),descriptor("glow","menu/art/font1_prop_glo"),descriptor("banner","menu/art/font2_prop"),descriptor("cursor","menu/art/3_cursor2")]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L121)
 
 <a id="function-function-mq3-client-playable-menu-draw-function-draw-width-height-src-mq3-client-playable-menu-ml-1253583109"></a>
 ### draw
@@ -231,7 +231,7 @@ Calls `mq3.client.playable_menu.drawText` from playable menu `draw`.
 | `height` | `dynamic` | — | Height in the coordinate space used by `draw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L319)
 
 <a id="function-function-mq3-client-playable-menu-drawbanner-function-drawbanner-asset-text-centerx-y-scale-scalex-scaley-src-mq3-client-playable-menu-ml-1715345480"></a>
 ### drawBanner
@@ -253,7 +253,7 @@ Calls `mq3.client.playable_menu.bannerWidth`, `mq3.client.playable_menu.bannerGl
 | `scaleY` | `dynamic` | — | Value used by `if glyph[2]>0 then drawQuad(asset.slot,x,y*scaleY,width*scaleX,BANNER_HEIGHT*scale*scaleY,glyph[0]/256.0,glyph[1]/256.0,(glyph[0]+glyph[2])/25...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L237)
 
 <a id="function-function-mq3-client-playable-menu-drawprop-function-drawprop-asset-text-centerx-y-scale-scalex-scaley-red-green-blue-src-mq3-client-playable-menu-ml-790729098"></a>
 ### drawProp
@@ -278,7 +278,7 @@ Calls `mq3.client.playable_menu.textWidth`, `mq3.client.playable_menu.propGlyph`
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L221)
 
 <a id="function-function-mq3-client-playable-menu-drawquad-function-drawquad-slot-x-y-width-height-u0-v0-u1-v1-red-green-blue-src-mq3-client-playable-menu-ml-814589228"></a>
 ### drawQuad
@@ -305,7 +305,7 @@ Calls `mq3.client.playable_menu.point`, `mq3.platform.playable_window.drawTriang
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L206)
 
 <a id="function-function-mq3-client-playable-menu-drawretail-function-drawretail-catalog-width-height-now-src-mq3-client-playable-menu-ml-753609362"></a>
 ### drawRetail
@@ -324,7 +324,7 @@ Adapts `mq3.client.playable_menu.drawRetailState` to playable menu `drawRetail`,
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. Forwarded to `mq3.client.playable_menu.drawRetailState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L276)
 
 <a id="function-function-mq3-client-playable-menu-drawretailstate-function-drawretailstate-catalog-value-width-height-now-src-mq3-client-playable-menu-ml-1141493269"></a>
 ### drawRetailState
@@ -344,7 +344,7 @@ Calls `mq3.client.playable_menu.draw`, `mq3.platform.playable_multitexture.setSt
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L256)
 
 <a id="function-function-mq3-client-playable-menu-drawtext-function-drawtext-text-x-y-scale-red-green-blue-src-mq3-client-playable-menu-ml-2111565008"></a>
 ### drawText
@@ -366,7 +366,7 @@ Calls `mq3.client.playable_menu.glyph`, `mq3.platform.playable_window.lineNative
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L311)
 
 <a id="function-function-mq3-client-playable-menu-entryy-function-entryy-index-src-mq3-client-playable-menu-ml-750657792"></a>
 ### entryY
@@ -382,7 +382,7 @@ Computes `134.0+34.0*index` for playable menu `entryY`.
 | `index` | `dynamic` | — | Value used by `return 134.0+34.0*index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L249)
 
 <a id="function-function-mq3-client-playable-menu-fail-function-fail-message-src-mq3-client-playable-menu-ml-1431429473"></a>
 ### fail
@@ -398,7 +398,7 @@ Creates the playable menu error `7590` with diagnostic text `"Baseq3 menu: "+mes
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"Baseq3 menu: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L115)
 
 <a id="function-function-mq3-client-playable-menu-find-function-find-catalog-key-src-mq3-client-playable-menu-ml-2011752040"></a>
 ### find
@@ -415,7 +415,7 @@ Searches the playable menu collection for find, returning `void` when no entry m
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable menu entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L141)
 
 <a id="function-function-mq3-client-playable-menu-glyph-function-glyph-character-src-mq3-client-playable-menu-ml-201706149"></a>
 ### glyph
@@ -431,7 +431,7 @@ Dependency-free bitmap fallback for runs without the retail PK3.
 | `character` | `dynamic` | — | Value used by `if character=="A" then return [14,17,17,31,17,17,17] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L280)
 
 <a id="function-function-mq3-client-playable-menu-load-function-load-archive-firsttextureslot-maxtextureslots-src-mq3-client-playable-menu-ml-385709619"></a>
 ### load
@@ -449,7 +449,7 @@ Calls `mq3.client.playable_menu.descriptors`, `mq3.renderer.playable_materials.l
 | `maxTextureSlots` | `dynamic` | — | Maximum number of texture slots available to the renderer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L126)
 
 <a id="function-function-mq3-client-playable-menu-menuentries-function-menuentries-src-mq3-client-playable-menu-ml-961688792"></a>
 ### menuEntries
@@ -461,7 +461,7 @@ function menuEntries()
 Lists the 7 playable menu menu entries strings in their declared order, beginning with `"SINGLE PLAYER"`, `"MULTIPLAYER"`, `"SETUP"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L246)
 
 <a id="function-function-mq3-client-playable-menu-point-function-point-x-y-src-mq3-client-playable-menu-ml-914531183"></a>
 ### point
@@ -478,7 +478,7 @@ Creates a `mq3.client.playable_menu.Point` record. Assigns `x` from `x`, `y` fro
 | `y` | `dynamic` | — | Value used to initialize `Point.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L192)
 
 - [mq3.client.playable_menu.Point](Type-mq3-client-playable-menu-point-1076532699.md) — struct
 <a id="constant-constant-mq3-client-playable-menu-prop-gap-width-const-prop-gap-width-3-src-mq3-client-playable-menu-ml-479879238"></a>
@@ -491,7 +491,7 @@ const PROP_GAP_WIDTH = 3
 Prop font metric controlling gap width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-menu-prop-height-const-prop-height-27-src-mq3-client-playable-menu-ml-2055187678"></a>
 ### PROP_HEIGHT
@@ -503,7 +503,7 @@ const PROP_HEIGHT = 27
 Prop font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L17)
 
 <a id="function-function-mq3-client-playable-menu-propglyph-function-propglyph-character-src-mq3-client-playable-menu-ml-870897763"></a>
 ### propGlyph
@@ -519,7 +519,7 @@ Exact atlas coordinates from q3_ui/ui_atoms.c for the uppercase alphabet.
 | `character` | `dynamic` | — | Value used by `if character==" " then return [0,0,8] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L159)
 
 <a id="function-function-mq3-client-playable-menu-release-function-release-catalog-src-mq3-client-playable-menu-ml-2028066343"></a>
 ### release
@@ -535,7 +535,7 @@ Calls `mq3.platform.playable_window.releaseTexture` from playable menu `release`
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L155)
 
 <a id="constant-constant-mq3-client-playable-menu-required-textures-const-required-textures-4-src-mq3-client-playable-menu-ml-93414391"></a>
 ### REQUIRED_TEXTURES
@@ -547,7 +547,7 @@ const REQUIRED_TEXTURES = 4
 Number of texture slots required by the module's fixed media layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L11)
 
 <a id="function-function-mq3-client-playable-menu-state-function-state-src-mq3-client-playable-menu-ml-587427068"></a>
 ### state
@@ -559,7 +559,7 @@ function state()
 Creates a `mq3.client.playable_menu.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L85)
 
 - [mq3.client.playable_menu.State](Type-mq3-client-playable-menu-state-1700260740.md) — struct
 <a id="function-function-mq3-client-playable-menu-step-function-step-value-updown-downdown-enterdown-src-mq3-client-playable-menu-ml-1850430116"></a>
@@ -579,7 +579,7 @@ Updates `value.selected`, `value.lastUp`, `value.lastDown`, `value.lastEnter` du
 | `enterDown` | `dynamic` | — | Value assigned to `value.lastEnter`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L103)
 
 <a id="function-function-mq3-client-playable-menu-textwidth-function-textwidth-text-scale-src-mq3-client-playable-menu-ml-704985287"></a>
 ### textWidth
@@ -596,7 +596,7 @@ Calls `mq3.client.playable_menu.propGlyph` from playable menu `textWidth`. The f
 | `scale` | `dynamic` | — | Value used by `if glyph[2]>=0 then width=width+(glyph[2]+PROP_GAP_WIDTH)*scale end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L178)
 
 <a id="function-function-mq3-client-playable-menu-upload-function-upload-catalog-src-mq3-client-playable-menu-ml-223408997"></a>
 ### upload
@@ -612,7 +612,7 @@ Calls `mq3.platform.playable_window.uploadTextureNoMip`, `mq3.client.playable_me
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L148)
 
 <a id="constant-constant-mq3-client-playable-menu-virtual-height-const-virtual-height-480-src-mq3-client-playable-menu-ml-1168059983"></a>
 ### VIRTUAL_HEIGHT
@@ -624,7 +624,7 @@ const VIRTUAL_HEIGHT = 480
 Height of the native UI's virtual coordinate space before scaling to the display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-menu-virtual-width-const-virtual-width-640-src-mq3-client-playable-menu-ml-1982404257"></a>
 ### VIRTUAL_WIDTH
@@ -636,4 +636,4 @@ const VIRTUAL_WIDTH = 640
 Width of the native UI's virtual coordinate space before scaling to the display.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L13)

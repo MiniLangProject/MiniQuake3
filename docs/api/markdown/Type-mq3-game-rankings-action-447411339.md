@@ -12,7 +12,7 @@ struct Action
 `Action` record for rankings, containing `kind`, `client`, `text` and `value`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L302)
 
 ## Members
 
@@ -26,7 +26,7 @@ client
 Client slot associated with the recorded ranking-service action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L306)
 
 <a id="field-field-mq3-game-rankings-action-kind-kind-src-mq3-game-rankings-ml-272760741"></a>
 ### kind
@@ -38,7 +38,7 @@ kind
 Discriminator selecting the recorded bot action or decision event.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L304)
 
 <a id="field-field-mq3-game-rankings-action-text-text-src-mq3-game-rankings-ml-2068102107"></a>
 ### text
@@ -50,7 +50,7 @@ text
 Text payload supplied to the recorded command, chat, or host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L308)
 
 <a id="field-field-mq3-game-rankings-action-value-value-src-mq3-game-rankings-ml-1692647269"></a>
 ### value
@@ -62,4 +62,4 @@ value
 Numeric/result payload supplied to the recorded host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L310)

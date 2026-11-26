@@ -29,7 +29,7 @@ Calls `mq3.client.command_ring.AdvanceResult`, `mq3.compat.numeric.i32` from com
 | `commandNumber` | `dynamic` | — | Value used by `if connectionState<CA_PRIMED then return AdvanceResult(false,0,oldFrameTime,commandNumber,-1) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L37)
 
 - [mq3.client.command_ring.AdvanceResult](Type-mq3-client-command-ring-advanceresult-836658100.md) — struct
 <a id="constant-constant-mq3-client-command-ring-ca-primed-const-ca-primed-7-src-mq3-client-command-ring-ml-40888798"></a>
@@ -42,7 +42,7 @@ const CA_PRIMED = 7
 Client connection state with game state loaded, awaiting a playable snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L9)
 
 <a id="function-function-mq3-client-command-ring-clear-function-clear-commands-src-mq3-client-command-ring-ml-1599684594"></a>
 ### clear
@@ -58,7 +58,7 @@ Updates `commands[index]` during command ring `clear`.
 | `commands` | `dynamic` | — | Mutable sequence; this routine writes `commands[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L67)
 
 <a id="constant-constant-mq3-client-command-ring-cmd-backup-const-cmd-backup-64-src-mq3-client-command-ring-ml-1447291733"></a>
 ### CMD_BACKUP
@@ -70,7 +70,7 @@ const CMD_BACKUP = 64
 Number of recent user commands retained in the command-history ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L11)
 
 <a id="constant-constant-mq3-client-command-ring-cmd-mask-const-cmd-mask-63-src-mq3-client-command-ring-ml-1179558806"></a>
 ### CMD_MASK
@@ -82,7 +82,7 @@ const CMD_MASK = 63
 Mask that maps a user-command sequence number into the command-history ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L13)
 
 <a id="function-function-mq3-client-command-ring-create-function-create-src-mq3-client-command-ring-ml-1544894542"></a>
 ### create
@@ -94,7 +94,7 @@ function create()
 Creates an array from `CMD_BACKUP, void` for command ring `create`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L30)
 
 <a id="function-function-mq3-client-command-ring-get-function-get-commands-currentnumber-commandnumber-src-mq3-client-command-ring-ml-1934642780"></a>
 ### get
@@ -112,7 +112,7 @@ A future command is a protocol/engine error in Baseq3. A command that has alread
 | `commandNumber` | `dynamic` | — | Value used by `if commandNumber>currentNumber then return error(7730,"client command ring: future command") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L58)
 
 <a id="function-function-mq3-client-command-ring-store-function-store-commands-commandnumber-command-src-mq3-client-command-ring-ml-2094089815"></a>
 ### store
@@ -130,4 +130,4 @@ Updates `commands[commandNumber&CMD_MASK]` during command ring `store`.
 | `command` | `dynamic` | — | Value used by `commands[commandNumber&CMD_MASK]=command`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L48)

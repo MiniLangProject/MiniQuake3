@@ -30,7 +30,7 @@ Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output_syscalls.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-chat-output-syscalls-optionalstring-function-optionalstring-vm-pointer-src-mq3-botlib-ai-chat-output-syscalls-ml-994288460"></a>
 ### optionalString
@@ -47,7 +47,7 @@ Apply `mq3.vm.syscall_common.readString` while evaluating `optionalString`. Retu
 | `pointer` | `dynamic` | — | Value used by `pointer` in `if value==0 then return fail(label+" is NULL") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-chat-output-syscalls-variables-function-variables-vm-base-start-src-mq3-botlib-ai-chat-output-syscalls-ml-348445676"></a>
 ### variables
@@ -65,4 +65,4 @@ Apply `mq3.botlib.ai_chat_output_syscalls.optionalString` and `mq3.vm.syscall_co
 | `start` | `dynamic` | — | Value used by `variables` in `for index=0 to 7 value=optionalString(vm,common.argument(vm,base,start+index))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output_syscalls.ml#L16)

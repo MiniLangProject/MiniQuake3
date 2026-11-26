@@ -12,7 +12,7 @@ struct Sfx
 Sfx record for audio.snd_dma_runtime, containing `handle`, `soundName`, `soundLength`, `soundData`, `defaultSound`, `inMemory`, and 2 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L18)
 
 ## Members
 
@@ -26,7 +26,7 @@ defaultSound
 True when a fallback sound substitutes for an asset that could not be loaded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L28)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-handle-handle-src-mq3-audio-snd-dma-runtime-ml-451614214"></a>
 ### handle
@@ -38,7 +38,7 @@ handle
 Registered sound handle used to resolve the sound asset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L20)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-inmemory-inmemory-src-mq3-audio-snd-dma-runtime-ml-533792238"></a>
 ### inMemory
@@ -50,7 +50,7 @@ inMemory
 True when the sound sample data is currently resident in memory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L30)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-lasttimeused-lasttimeused-src-mq3-audio-snd-dma-runtime-ml-165122458"></a>
 ### lastTimeUsed
@@ -62,7 +62,7 @@ lastTimeUsed
 Last-use timestamp used when selecting an old sound for eviction.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L34)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-soundcompressed-soundcompressed-src-mq3-audio-snd-dma-runtime-ml-1618853894"></a>
 ### soundCompressed
@@ -74,7 +74,7 @@ soundCompressed
 True when sound data is stored using a compressed representation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L32)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-sounddata-sounddata-src-mq3-audio-snd-dma-runtime-ml-1936352162"></a>
 ### soundData
@@ -86,7 +86,7 @@ soundData
 Head of the sample-buffer chain or loaded sample data for the sound.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L26)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-soundlength-soundlength-src-mq3-audio-snd-dma-runtime-ml-82110446"></a>
 ### soundLength
@@ -98,7 +98,7 @@ soundLength
 Length of the sound in mono sample positions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L24)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-soundname-soundname-src-mq3-audio-snd-dma-runtime-ml-1654435150"></a>
 ### soundName
@@ -110,4 +110,4 @@ soundName
 Quake asset path identifying the registered sound.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L22)

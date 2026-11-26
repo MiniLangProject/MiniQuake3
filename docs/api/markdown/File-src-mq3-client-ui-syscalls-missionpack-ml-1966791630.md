@@ -28,7 +28,7 @@ Calls `mq3.client.ui_syscalls_missionpack.invoke` from UI syscalls missionpack `
 | `arguments` | `dynamic` | — | Value used by `invoke(state,opcode,arguments)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L231)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-dllentry-function-dllentry-syscallptr-context-src-mq3-client-ui-syscalls-missionpack-ml-784372018"></a>
 ### dllEntry
@@ -45,7 +45,7 @@ Calls `mq3.client.ui_syscalls_missionpack.State` from UI syscalls missionpack `d
 | `context` | `dynamic` | — | context record passed to the UI syscalls missionpack helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L212)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-invoke-function-invoke-state-opcode-arguments-src-mq3-client-ui-syscalls-missionpack-ml-1566701121"></a>
 ### invoke
@@ -63,7 +63,7 @@ Updates `state.calls`, `state.lastOpcode`, `state.lastArguments` during UI sysca
 | `arguments` | `dynamic` | — | Value assigned to `state.lastArguments`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L221)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-passfloat-function-passfloat-x-src-mq3-client-ui-syscalls-missionpack-ml-1834682972"></a>
 ### PASSFLOAT
@@ -79,7 +79,7 @@ Adapts `mq3.compat.numeric.i32` to UI syscalls missionpack `PASSFLOAT`, returnin
 | `x` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.i32`; passed as `n.floatBits(x)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L235)
 
 - [mq3.client.ui_syscalls_missionpack.State](Type-mq3-client-ui-syscalls-missionpack-state-1696984629.md) — struct
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-argc-function-trap-argc-state-src-mq3-client-ui-syscalls-missionpack-ml-1584027283"></a>
@@ -96,7 +96,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L299)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-argv-function-trap-argv-state-index-buffer-bufferlength-src-mq3-client-ui-syscalls-missionpack-ml-496819107"></a>
 ### trap_Argv
@@ -115,7 +115,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `bufferLength` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[index,buffer,bufferLength]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L305)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cin-drawcinematic-function-trap-cin-drawcinematic-state-handle-src-mq3-client-ui-syscalls-missionpack-ml-644879787"></a>
 ### trap_CIN_DrawCinematic
@@ -132,7 +132,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L666)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L666)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cin-playcinematic-function-trap-cin-playcinematic-state-name-x-y-w-h-bits-src-mq3-client-ui-syscalls-missionpack-ml-2023971800"></a>
 ### trap_CIN_PlayCinematic
@@ -154,7 +154,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `bits` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[name,x,y,w,h,bits]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L654)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L654)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cin-runcinematic-function-trap-cin-runcinematic-state-handle-src-mq3-client-ui-syscalls-missionpack-ml-1655183273"></a>
 ### trap_CIN_RunCinematic
@@ -171,7 +171,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L662)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L662)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cin-setextents-function-trap-cin-setextents-state-handle-x-y-w-h-src-mq3-client-ui-syscalls-missionpack-ml-289157819"></a>
 ### trap_CIN_SetExtents
@@ -192,7 +192,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `h` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[handle,x,y,w,h]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L674)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L674)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cin-stopcinematic-function-trap-cin-stopcinematic-state-handle-src-mq3-client-ui-syscalls-missionpack-ml-707022759"></a>
 ### trap_CIN_StopCinematic
@@ -209,7 +209,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L658)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L658)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cm-lerptag-function-trap-cm-lerptag-state-tag-model-startframe-endframe-frac-tagname-src-mq3-client-ui-syscalls-missionpack-ml-1002333852"></a>
 ### trap_CM_LerpTag
@@ -231,7 +231,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `tagName` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[tag,model,startFrame,endFrame,PASSFLOAT(frac),tagName]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L431)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L431)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cmd-executetext-function-trap-cmd-executetext-state-execwhen-text-src-mq3-client-ui-syscalls-missionpack-ml-94257967"></a>
 ### trap_Cmd_ExecuteText
@@ -249,7 +249,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `text` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[execWhen,text]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L310)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-create-function-trap-cvar-create-state-varname-varvalue-flags-src-mq3-client-ui-syscalls-missionpack-ml-555442004"></a>
 ### trap_Cvar_Create
@@ -268,7 +268,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `flags` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[varName,varValue,flags]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L289)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-infostringbuffer-function-trap-cvar-infostringbuffer-state-bit-buffer-bufsize-src-mq3-client-ui-syscalls-missionpack-ml-814298468"></a>
 ### trap_Cvar_InfoStringBuffer
@@ -287,7 +287,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `bufsize` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[bit,buffer,bufsize]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L295)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-register-function-trap-cvar-register-state-cvar-varname-value-flags-src-mq3-client-ui-syscalls-missionpack-ml-2066539891"></a>
 ### trap_Cvar_Register
@@ -307,7 +307,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `flags` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[cvar,varName,value,flags]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L255)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-reset-function-trap-cvar-reset-state-name-src-mq3-client-ui-syscalls-missionpack-ml-2084521592"></a>
 ### trap_Cvar_Reset
@@ -324,7 +324,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `name` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L283)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-set-function-trap-cvar-set-state-varname-value-src-mq3-client-ui-syscalls-missionpack-ml-1844923358"></a>
 ### trap_Cvar_Set
@@ -342,7 +342,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `value` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[varName,value]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L264)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-setvalue-function-trap-cvar-setvalue-state-varname-value-src-mq3-client-ui-syscalls-missionpack-ml-1191582076"></a>
 ### trap_Cvar_SetValue
@@ -360,7 +360,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `value` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[varName,PASSFLOAT(value)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L279)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-update-function-trap-cvar-update-state-cvar-src-mq3-client-ui-syscalls-missionpack-ml-2107908871"></a>
 ### trap_Cvar_Update
@@ -377,7 +377,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `cvar` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[cvar]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L259)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-variablestringbuffer-function-trap-cvar-variablestringbuffer-state-varname-buffer-bufsize-src-mq3-client-ui-syscalls-missionpack-ml-1926139061"></a>
 ### trap_Cvar_VariableStringBuffer
@@ -396,7 +396,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `bufsize` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[varName,buffer,bufsize]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L274)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-cvar-variablevalue-function-trap-cvar-variablevalue-state-varname-src-mq3-client-ui-syscalls-missionpack-ml-448703457"></a>
 ### trap_Cvar_VariableValue
@@ -413,7 +413,7 @@ Adapts `mq3.compat.numeric.bitsFloat` to UI syscalls missionpack `trap_Cvar_Vari
 | `varName` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.bitsFloat`; passed as `invoke(state,UI_CVAR_VARIABLEVALUE,[varName])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L268)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-error-function-trap-error-state-string-src-mq3-client-ui-syscalls-missionpack-ml-367164062"></a>
 ### trap_Error
@@ -430,7 +430,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `string` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[string]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L244)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-fs-fclosefile-function-trap-fs-fclosefile-state-handle-src-mq3-client-ui-syscalls-missionpack-ml-1709768271"></a>
 ### trap_FS_FCloseFile
@@ -447,7 +447,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L333)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-fs-fopenfile-function-trap-fs-fopenfile-state-qpath-handle-mode-src-mq3-client-ui-syscalls-missionpack-ml-1439407368"></a>
 ### trap_FS_FOpenFile
@@ -466,7 +466,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `mode` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[qpath,handle,mode]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L317)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-fs-getfilelist-function-trap-fs-getfilelist-state-path-extension-listbuf-bufsize-src-mq3-client-ui-syscalls-missionpack-ml-2057824134"></a>
 ### trap_FS_GetFileList
@@ -486,7 +486,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `bufsize` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[path,extension,listbuf,bufsize]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L340)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-fs-read-function-trap-fs-read-state-buffer-length-handle-src-mq3-client-ui-syscalls-missionpack-ml-1312168777"></a>
 ### trap_FS_Read
@@ -505,7 +505,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[buffer,length,handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L323)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-fs-seek-function-trap-fs-seek-state-handle-offset-origin-src-mq3-client-ui-syscalls-missionpack-ml-1207812652"></a>
 ### trap_FS_Seek
@@ -524,7 +524,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L346)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-fs-write-function-trap-fs-write-state-buffer-length-handle-src-mq3-client-ui-syscalls-missionpack-ml-170096727"></a>
 ### trap_FS_Write
@@ -543,7 +543,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[buffer,length,handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L329)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-getcdkey-function-trap-getcdkey-state-buffer-buflen-src-mq3-client-ui-syscalls-missionpack-ml-509781103"></a>
 ### trap_GetCDKey
@@ -561,7 +561,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buflen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[buffer,buflen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L612)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L612)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-getclientstate-function-trap-getclientstate-state-clientstate-src-mq3-client-ui-syscalls-missionpack-ml-533466551"></a>
 ### trap_GetClientState
@@ -578,7 +578,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `clientState` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[clientState]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L499)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-getclipboarddata-function-trap-getclipboarddata-state-buffer-bufsize-src-mq3-client-ui-syscalls-missionpack-ml-1438215961"></a>
 ### trap_GetClipboardData
@@ -596,7 +596,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `bufsize` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[buffer,bufsize]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L495)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-getconfigstring-function-trap-getconfigstring-state-index-buffer-bufsize-src-mq3-client-ui-syscalls-missionpack-ml-703764827"></a>
 ### trap_GetConfigString
@@ -615,7 +615,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `bufsize` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[index,buffer,bufsize]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L509)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L509)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-getglconfig-function-trap-getglconfig-state-glconfig-src-mq3-client-ui-syscalls-missionpack-ml-1737145406"></a>
 ### trap_GetGlconfig
@@ -632,7 +632,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `glconfig` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[glconfig]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L503)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L503)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-clearstates-function-trap-key-clearstates-state-src-mq3-client-ui-syscalls-missionpack-ml-1607181741"></a>
 ### trap_Key_ClearStates
@@ -648,7 +648,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L482)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-getbindingbuf-function-trap-key-getbindingbuf-state-keynum-buffer-buflen-src-mq3-client-ui-syscalls-missionpack-ml-2139954176"></a>
 ### trap_Key_GetBindingBuf
@@ -667,7 +667,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buflen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[keynum,buffer,buflen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L463)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L463)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-getcatcher-function-trap-key-getcatcher-state-src-mq3-client-ui-syscalls-missionpack-ml-1595182613"></a>
 ### trap_Key_GetCatcher
@@ -683,7 +683,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L485)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L485)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-getoverstrikemode-function-trap-key-getoverstrikemode-state-src-mq3-client-ui-syscalls-missionpack-ml-1501896649"></a>
 ### trap_Key_GetOverstrikeMode
@@ -699,7 +699,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L475)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L475)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-isdown-function-trap-key-isdown-state-keynum-src-mq3-client-ui-syscalls-missionpack-ml-986155658"></a>
 ### trap_Key_IsDown
@@ -716,7 +716,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `keynum` | `dynamic` | — | Quake III key number identifying the keyboard or mouse input. Forwarded to `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L472)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L472)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-keynumtostringbuf-function-trap-key-keynumtostringbuf-state-keynum-buffer-buflen-src-mq3-client-ui-syscalls-missionpack-ml-659496800"></a>
 ### trap_Key_KeynumToStringBuf
@@ -735,7 +735,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buflen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[keynum,buffer,buflen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L457)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-setbinding-function-trap-key-setbinding-state-keynum-binding-src-mq3-client-ui-syscalls-missionpack-ml-1833234243"></a>
 ### trap_Key_SetBinding
@@ -753,7 +753,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `binding` | `dynamic` | — | Command text associated with an input key. Forwarded to `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L468)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L468)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-setcatcher-function-trap-key-setcatcher-state-catcher-src-mq3-client-ui-syscalls-missionpack-ml-1647670223"></a>
 ### trap_Key_SetCatcher
@@ -770,7 +770,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `catcher` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[catcher]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L489)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L489)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-key-setoverstrikemode-function-trap-key-setoverstrikemode-state-value-src-mq3-client-ui-syscalls-missionpack-ml-971823388"></a>
 ### trap_Key_SetOverstrikeMode
@@ -787,7 +787,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `value` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[value]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L479)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L479)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-addserver-function-trap-lan-addserver-state-source-name-address-src-mq3-client-ui-syscalls-missionpack-ml-1011866429"></a>
 ### trap_LAN_AddServer
@@ -806,7 +806,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `address` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[source,name,address]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L590)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L590)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-clearping-function-trap-lan-clearping-state-index-src-mq3-client-ui-syscalls-missionpack-ml-576129903"></a>
 ### trap_LAN_ClearPing
@@ -823,7 +823,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L556)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L556)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-compareservers-function-trap-lan-compareservers-state-source-sortkey-sortdir-first-second-src-mq3-client-ui-syscalls-missionpack-ml-1472519556"></a>
 ### trap_LAN_CompareServers
@@ -844,7 +844,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `second` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[source,sortKey,sortDir,first,second]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L603)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L603)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getping-function-trap-lan-getping-state-index-buffer-buflen-pingtime-src-mq3-client-ui-syscalls-missionpack-ml-537092310"></a>
 ### trap_LAN_GetPing
@@ -864,7 +864,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `pingtime` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[index,buffer,buflen,pingtime]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L563)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L563)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getpinginfo-function-trap-lan-getpinginfo-state-index-buffer-buflen-src-mq3-client-ui-syscalls-missionpack-ml-1930826097"></a>
 ### trap_LAN_GetPingInfo
@@ -883,7 +883,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buflen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[index,buffer,buflen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L569)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getpingqueuecount-function-trap-lan-getpingqueuecount-state-src-mq3-client-ui-syscalls-missionpack-ml-2067243229"></a>
 ### trap_LAN_GetPingQueueCount
@@ -899,7 +899,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L536)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L536)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getserveraddressstring-function-trap-lan-getserveraddressstring-state-source-index-buffer-buflen-src-mq3-client-ui-syscalls-missionpack-ml-605731484"></a>
 ### trap_LAN_GetServerAddressString
@@ -919,7 +919,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buflen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[source,index,buffer,buflen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L521)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L521)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getservercount-function-trap-lan-getservercount-state-source-src-mq3-client-ui-syscalls-missionpack-ml-1154491734"></a>
 ### trap_LAN_GetServerCount
@@ -936,7 +936,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `source` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[source]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L514)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L514)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getserverinfo-function-trap-lan-getserverinfo-state-source-index-buffer-buflen-src-mq3-client-ui-syscalls-missionpack-ml-692961956"></a>
 ### trap_LAN_GetServerInfo
@@ -956,7 +956,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buflen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[source,index,buffer,buflen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L528)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L528)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-getserverping-function-trap-lan-getserverping-state-source-index-src-mq3-client-ui-syscalls-missionpack-ml-157703550"></a>
 ### trap_LAN_GetServerPing
@@ -974,7 +974,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[source,index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L533)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L533)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-loadcachedservers-function-trap-lan-loadcachedservers-state-src-mq3-client-ui-syscalls-missionpack-ml-992822989"></a>
 ### trap_LAN_LoadCachedServers
@@ -990,7 +990,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L548)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L548)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-markservervisible-function-trap-lan-markservervisible-state-source-index-visible-src-mq3-client-ui-syscalls-missionpack-ml-83759980"></a>
 ### trap_LAN_MarkServerVisible
@@ -1009,7 +1009,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `visible` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[source,index,visible]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L575)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L575)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-removeserver-function-trap-lan-removeserver-state-source-address-src-mq3-client-ui-syscalls-missionpack-ml-397962464"></a>
 ### trap_LAN_RemoveServer
@@ -1027,7 +1027,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `address` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[source,address]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L595)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L595)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-resetpings-function-trap-lan-resetpings-state-index-src-mq3-client-ui-syscalls-missionpack-ml-227246531"></a>
 ### trap_LAN_ResetPings
@@ -1044,7 +1044,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L552)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L552)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-savecachedservers-function-trap-lan-savecachedservers-state-src-mq3-client-ui-syscalls-missionpack-ml-1500794181"></a>
 ### trap_LAN_SaveCachedServers
@@ -1060,7 +1060,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L545)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L545)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-serverisvisible-function-trap-lan-serverisvisible-state-source-index-src-mq3-client-ui-syscalls-missionpack-ml-227973142"></a>
 ### trap_LAN_ServerIsVisible
@@ -1078,7 +1078,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `index` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[source,index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L580)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L580)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-serverstatus-function-trap-lan-serverstatus-state-address-status-maxlen-src-mq3-client-ui-syscalls-missionpack-ml-824638864"></a>
 ### trap_LAN_ServerStatus
@@ -1097,7 +1097,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `maxLen` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[address,status,maxLen]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L542)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L542)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-lan-updatevisiblepings-function-trap-lan-updatevisiblepings-state-source-src-mq3-client-ui-syscalls-missionpack-ml-2128126510"></a>
 ### trap_LAN_UpdateVisiblePings
@@ -1114,7 +1114,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `source` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[source]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L584)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L584)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-memoryremaining-function-trap-memoryremaining-state-src-mq3-client-ui-syscalls-missionpack-ml-1120210257"></a>
 ### trap_MemoryRemaining
@@ -1130,7 +1130,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L607)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L607)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-milliseconds-function-trap-milliseconds-state-src-mq3-client-ui-syscalls-missionpack-ml-591327165"></a>
 ### trap_Milliseconds
@@ -1146,7 +1146,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L247)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-pc-addglobaldefine-function-trap-pc-addglobaldefine-state-define-src-mq3-client-ui-syscalls-missionpack-ml-1426517774"></a>
 ### trap_PC_AddGlobalDefine
@@ -1163,7 +1163,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `define` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[define]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L621)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L621)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-pc-freesource-function-trap-pc-freesource-state-handle-src-mq3-client-ui-syscalls-missionpack-ml-1672551027"></a>
 ### trap_PC_FreeSource
@@ -1180,7 +1180,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `handle` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L629)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L629)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-pc-loadsource-function-trap-pc-loadsource-state-filename-src-mq3-client-ui-syscalls-missionpack-ml-38799322"></a>
 ### trap_PC_LoadSource
@@ -1197,7 +1197,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. Forwarded to `mq3.client.ui_syscalls_missionpack.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L625)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L625)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-pc-readtoken-function-trap-pc-readtoken-state-handle-token-src-mq3-client-ui-syscalls-missionpack-ml-1770892456"></a>
 ### trap_PC_ReadToken
@@ -1215,7 +1215,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `token` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[handle,token]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L634)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L634)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-pc-sourcefileandline-function-trap-pc-sourcefileandline-state-handle-filename-line-src-mq3-client-ui-syscalls-missionpack-ml-947631958"></a>
 ### trap_PC_SourceFileAndLine
@@ -1234,7 +1234,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `line` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[handle,filename,line]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L640)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L640)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-print-function-trap-print-state-string-src-mq3-client-ui-syscalls-missionpack-ml-1482282246"></a>
 ### trap_Print
@@ -1251,7 +1251,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `string` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[string]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L240)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-addlighttoscene-function-trap-r-addlighttoscene-state-origin-intensity-r-g-b-src-mq3-client-ui-syscalls-missionpack-ml-1646328963"></a>
 ### trap_R_AddLightToScene
@@ -1272,7 +1272,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `b` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[origin,PASSFLOAT(intensity),PASSFLOAT(r),PASSFLOAT(g),PASSFLOAT(b)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L386)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-addpolytoscene-function-trap-r-addpolytoscene-state-shader-numverts-verts-src-mq3-client-ui-syscalls-missionpack-ml-1128645812"></a>
 ### trap_R_AddPolyToScene
@@ -1291,7 +1291,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `verts` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[shader,numVerts,verts]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L378)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-addrefentitytoscene-function-trap-r-addrefentitytoscene-state-entity-src-mq3-client-ui-syscalls-missionpack-ml-998011456"></a>
 ### trap_R_AddRefEntityToScene
@@ -1308,7 +1308,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `entity` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[entity]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L372)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-clearscene-function-trap-r-clearscene-state-src-mq3-client-ui-syscalls-missionpack-ml-1258017401"></a>
 ### trap_R_ClearScene
@@ -1324,7 +1324,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L368)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-drawstretchpic-function-trap-r-drawstretchpic-state-x-y-w-h-s1-t1-s2-t2-shader-src-mq3-client-ui-syscalls-missionpack-ml-1265991658"></a>
 ### trap_R_DrawStretchPic
@@ -1349,7 +1349,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `shader` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[PASSFLOAT(x),PASSFLOAT(y),PASSFLOAT(w),PASSFLOAT(h),PASSFLOAT(s1),PASSFLOAT(t1),PASSFLOAT(s2),PASSFLOAT(t2),shader]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L406)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-modelbounds-function-trap-r-modelbounds-state-model-mins-maxs-src-mq3-client-ui-syscalls-missionpack-ml-261202838"></a>
 ### trap_R_ModelBounds
@@ -1368,7 +1368,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. Forwarded to `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L412)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-registerfont-function-trap-r-registerfont-state-fontname-pointsize-font-src-mq3-client-ui-syscalls-missionpack-ml-783258633"></a>
 ### trap_R_RegisterFont
@@ -1387,7 +1387,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `font` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[fontName,pointSize,font]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L361)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-registermodel-function-trap-r-registermodel-state-name-src-mq3-client-ui-syscalls-missionpack-ml-1317650620"></a>
 ### trap_R_RegisterModel
@@ -1404,7 +1404,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `name` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L351)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-registershadernomip-function-trap-r-registershadernomip-state-name-src-mq3-client-ui-syscalls-missionpack-ml-995549200"></a>
 ### trap_R_RegisterShaderNoMip
@@ -1421,7 +1421,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `name` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L365)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-registerskin-function-trap-r-registerskin-state-name-src-mq3-client-ui-syscalls-missionpack-ml-1128038802"></a>
 ### trap_R_RegisterSkin
@@ -1438,7 +1438,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `name` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L355)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-remapshader-function-trap-r-remapshader-state-oldshader-newshader-timeoffset-src-mq3-client-ui-syscalls-missionpack-ml-982608222"></a>
 ### trap_R_RemapShader
@@ -1457,7 +1457,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `timeOffset` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[oldShader,newShader,timeOffset]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L418)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L418)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-renderscene-function-trap-r-renderscene-state-refdef-src-mq3-client-ui-syscalls-missionpack-ml-61132737"></a>
 ### trap_R_RenderScene
@@ -1474,7 +1474,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `refdef` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[refdef]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L390)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-r-setcolor-function-trap-r-setcolor-state-rgba-src-mq3-client-ui-syscalls-missionpack-ml-897118883"></a>
 ### trap_R_SetColor
@@ -1491,7 +1491,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `rgba` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[rgba]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L394)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L394)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-realtime-function-trap-realtime-state-qtime-src-mq3-client-ui-syscalls-missionpack-ml-426173511"></a>
 ### trap_RealTime
@@ -1508,7 +1508,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `qtime` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[qtime]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L645)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L645)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-s-registersound-function-trap-s-registersound-state-sample-compressed-src-mq3-client-ui-syscalls-missionpack-ml-868489916"></a>
 ### trap_S_RegisterSound
@@ -1526,7 +1526,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `compressed` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[sample,compressed]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L442)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L442)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-s-startbackgroundtrack-function-trap-s-startbackgroundtrack-state-intro-loopname-src-mq3-client-ui-syscalls-missionpack-ml-230462144"></a>
 ### trap_S_StartBackgroundTrack
@@ -1544,7 +1544,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `loopName` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[intro,loopName]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L450)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L450)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-s-startlocalsound-function-trap-s-startlocalsound-state-sfx-channelnum-src-mq3-client-ui-syscalls-missionpack-ml-1768364481"></a>
 ### trap_S_StartLocalSound
@@ -1562,7 +1562,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `channelNum` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[sfx,channelNum]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L437)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-s-stopbackgroundtrack-function-trap-s-stopbackgroundtrack-state-src-mq3-client-ui-syscalls-missionpack-ml-539547353"></a>
 ### trap_S_StopBackgroundTrack
@@ -1578,7 +1578,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L445)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-setcdkey-function-trap-setcdkey-state-buffer-src-mq3-client-ui-syscalls-missionpack-ml-1507685439"></a>
 ### trap_SetCDKey
@@ -1595,7 +1595,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `buffer` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[buffer]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L616)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L616)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-setpbclstatus-function-trap-setpbclstatus-state-status-src-mq3-client-ui-syscalls-missionpack-ml-851223219"></a>
 ### trap_SetPbClStatus
@@ -1612,7 +1612,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `status` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.callVoid`; passed as `[status]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L683)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L683)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-updatescreen-function-trap-updatescreen-state-src-mq3-client-ui-syscalls-missionpack-ml-481499031"></a>
 ### trap_UpdateScreen
@@ -1628,7 +1628,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.callVoid` to UI syscalls missionpack 
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_syscalls_missionpack.callVoid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L421)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L421)
 
 <a id="function-function-mq3-client-ui-syscalls-missionpack-trap-verifycdkey-function-trap-verifycdkey-state-key-checksum-src-mq3-client-ui-syscalls-missionpack-ml-1478808531"></a>
 ### trap_VerifyCDKey
@@ -1646,7 +1646,7 @@ Adapts `mq3.client.ui_syscalls_missionpack.invoke` to UI syscalls missionpack `t
 | `checksum` | `dynamic` | — | Argument 3 of `mq3.client.ui_syscalls_missionpack.invoke`; passed as `[key,checksum]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L679)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L679)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-argc-const-ui-argc-10-src-mq3-client-ui-syscalls-missionpack-ml-1428007968"></a>
 ### UI_ARGC
@@ -1658,7 +1658,7 @@ const UI_ARGC = 10
 UI engine-syscall ordinal used to query the number of console-command arguments.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L34)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-argv-const-ui-argv-11-src-mq3-client-ui-syscalls-missionpack-ml-1758815267"></a>
 ### UI_ARGV
@@ -1670,7 +1670,7 @@ const UI_ARGV = 11
 UI engine-syscall ordinal used to read a console-command argument.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L36)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cin-drawcinematic-const-ui-cin-drawcinematic-78-src-mq3-client-ui-syscalls-missionpack-ml-501677170"></a>
 ### UI_CIN_DRAWCINEMATIC
@@ -1682,7 +1682,7 @@ const UI_CIN_DRAWCINEMATIC = 78
 UI engine-syscall ordinal used to draw the current cinematic frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L170)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cin-playcinematic-const-ui-cin-playcinematic-75-src-mq3-client-ui-syscalls-missionpack-ml-960644341"></a>
 ### UI_CIN_PLAYCINEMATIC
@@ -1694,7 +1694,7 @@ const UI_CIN_PLAYCINEMATIC = 75
 UI engine-syscall ordinal used to open and start a cinematic stream.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L164)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cin-runcinematic-const-ui-cin-runcinematic-77-src-mq3-client-ui-syscalls-missionpack-ml-329433847"></a>
 ### UI_CIN_RUNCINEMATIC
@@ -1706,7 +1706,7 @@ const UI_CIN_RUNCINEMATIC = 77
 UI engine-syscall ordinal used to advance a cinematic decoder.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L168)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cin-setextents-const-ui-cin-setextents-79-src-mq3-client-ui-syscalls-missionpack-ml-25391505"></a>
 ### UI_CIN_SETEXTENTS
@@ -1718,7 +1718,7 @@ const UI_CIN_SETEXTENTS = 79
 UI engine-syscall ordinal used to set a cinematic's screen rectangle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L172)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cin-stopcinematic-const-ui-cin-stopcinematic-76-src-mq3-client-ui-syscalls-missionpack-ml-919980828"></a>
 ### UI_CIN_STOPCINEMATIC
@@ -1730,7 +1730,7 @@ const UI_CIN_STOPCINEMATIC = 76
 UI engine-syscall ordinal used to stop a cinematic stream.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L166)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cm-lerptag-const-ui-cm-lerptag-29-src-mq3-client-ui-syscalls-missionpack-ml-1684443408"></a>
 ### UI_CM_LERPTAG
@@ -1742,7 +1742,7 @@ const UI_CM_LERPTAG = 29
 UI engine-syscall ordinal used to interpolate a model attachment tag for the UI preview.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L72)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cm-loadmodel-const-ui-cm-loadmodel-30-src-mq3-client-ui-syscalls-missionpack-ml-1271513902"></a>
 ### UI_CM_LOADMODEL
@@ -1754,7 +1754,7 @@ const UI_CM_LOADMODEL = 30
 UI engine-syscall ordinal used to load a collision model.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L74)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cmd-executetext-const-ui-cmd-executetext-12-src-mq3-client-ui-syscalls-missionpack-ml-976565188"></a>
 ### UI_CMD_EXECUTETEXT
@@ -1766,7 +1766,7 @@ const UI_CMD_EXECUTETEXT = 12
 UI engine-syscall ordinal used to execute or queue console-command text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L38)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-create-const-ui-cvar-create-8-src-mq3-client-ui-syscalls-missionpack-ml-954914671"></a>
 ### UI_CVAR_CREATE
@@ -1778,7 +1778,7 @@ const UI_CVAR_CREATE = 8
 UI engine-syscall ordinal used to create a configuration variable with a default value and flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-infostringbuffer-const-ui-cvar-infostringbuffer-9-src-mq3-client-ui-syscalls-missionpack-ml-1252102182"></a>
 ### UI_CVAR_INFOSTRINGBUFFER
@@ -1790,7 +1790,7 @@ const UI_CVAR_INFOSTRINGBUFFER = 9
 UI engine-syscall ordinal used to collect configuration variables into an info string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-register-const-ui-cvar-register-50-src-mq3-client-ui-syscalls-missionpack-ml-160392664"></a>
 ### UI_CVAR_REGISTER
@@ -1802,7 +1802,7 @@ const UI_CVAR_REGISTER = 50
 UI engine-syscall ordinal used to register a configuration variable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L114)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-reset-const-ui-cvar-reset-7-src-mq3-client-ui-syscalls-missionpack-ml-64523928"></a>
 ### UI_CVAR_RESET
@@ -1814,7 +1814,7 @@ const UI_CVAR_RESET = 7
 UI engine-syscall ordinal used to restore a configuration variable's default value.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-set-const-ui-cvar-set-3-src-mq3-client-ui-syscalls-missionpack-ml-132427916"></a>
 ### UI_CVAR_SET
@@ -1826,7 +1826,7 @@ const UI_CVAR_SET = 3
 UI engine-syscall ordinal used to set a configuration variable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-setvalue-const-ui-cvar-setvalue-6-src-mq3-client-ui-syscalls-missionpack-ml-1101129311"></a>
 ### UI_CVAR_SETVALUE
@@ -1838,7 +1838,7 @@ const UI_CVAR_SETVALUE = 6
 UI engine-syscall ordinal used to set a configuration variable from a numeric value.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-update-const-ui-cvar-update-51-src-mq3-client-ui-syscalls-missionpack-ml-345881175"></a>
 ### UI_CVAR_UPDATE
@@ -1850,7 +1850,7 @@ const UI_CVAR_UPDATE = 51
 UI engine-syscall ordinal used to refresh a mirrored configuration variable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L116)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-variablestringbuffer-const-ui-cvar-variablestringbuffer-5-src-mq3-client-ui-syscalls-missionpack-ml-1156918082"></a>
 ### UI_CVAR_VARIABLESTRINGBUFFER
@@ -1862,7 +1862,7 @@ const UI_CVAR_VARIABLESTRINGBUFFER = 5
 UI engine-syscall ordinal used to read a configuration variable as text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-cvar-variablevalue-const-ui-cvar-variablevalue-4-src-mq3-client-ui-syscalls-missionpack-ml-2003590549"></a>
 ### UI_CVAR_VARIABLEVALUE
@@ -1874,7 +1874,7 @@ const UI_CVAR_VARIABLEVALUE = 4
 UI engine-syscall ordinal used to read a configuration variable as a number.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-error-const-ui-error-0-src-mq3-client-ui-syscalls-missionpack-ml-1113383837"></a>
 ### UI_ERROR
@@ -1886,7 +1886,7 @@ const UI_ERROR = 0
 UI engine-syscall ordinal used to raise an engine error.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-fs-fclosefile-const-ui-fs-fclosefile-16-src-mq3-client-ui-syscalls-missionpack-ml-231316914"></a>
 ### UI_FS_FCLOSEFILE
@@ -1898,7 +1898,7 @@ const UI_FS_FCLOSEFILE = 16
 UI engine-syscall ordinal used to close a virtual file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L46)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-fs-fopenfile-const-ui-fs-fopenfile-13-src-mq3-client-ui-syscalls-missionpack-ml-1395580125"></a>
 ### UI_FS_FOPENFILE
@@ -1910,7 +1910,7 @@ const UI_FS_FOPENFILE = 13
 UI engine-syscall ordinal used to open a file in the virtual filesystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L40)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-fs-getfilelist-const-ui-fs-getfilelist-17-src-mq3-client-ui-syscalls-missionpack-ml-167133809"></a>
 ### UI_FS_GETFILELIST
@@ -1922,7 +1922,7 @@ const UI_FS_GETFILELIST = 17
 UI engine-syscall ordinal used to enumerate virtual filesystem entries.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L48)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-fs-read-const-ui-fs-read-14-src-mq3-client-ui-syscalls-missionpack-ml-1273745488"></a>
 ### UI_FS_READ
@@ -1934,7 +1934,7 @@ const UI_FS_READ = 14
 UI engine-syscall ordinal used to read bytes from a virtual file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L42)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-fs-seek-const-ui-fs-seek-86-src-mq3-client-ui-syscalls-missionpack-ml-974664251"></a>
 ### UI_FS_SEEK
@@ -1946,7 +1946,7 @@ const UI_FS_SEEK = 86
 UI engine-syscall ordinal used to seek within a virtual file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L187)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-fs-write-const-ui-fs-write-15-src-mq3-client-ui-syscalls-missionpack-ml-920839511"></a>
 ### UI_FS_WRITE
@@ -1958,7 +1958,7 @@ const UI_FS_WRITE = 15
 UI engine-syscall ordinal used to write bytes to a virtual file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L44)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-get-cdkey-const-ui-get-cdkey-53-src-mq3-client-ui-syscalls-missionpack-ml-558986759"></a>
 ### UI_GET_CDKEY
@@ -1970,7 +1970,7 @@ const UI_GET_CDKEY = 53
 UI engine-syscall ordinal used to read the configured product key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L120)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-getclientstate-const-ui-getclientstate-44-src-mq3-client-ui-syscalls-missionpack-ml-1918060389"></a>
 ### UI_GETCLIENTSTATE
@@ -1982,7 +1982,7 @@ const UI_GETCLIENTSTATE = 44
 UI engine-syscall ordinal used to read the engine's connection-state summary.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L102)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-getclipboarddata-const-ui-getclipboarddata-42-src-mq3-client-ui-syscalls-missionpack-ml-800663331"></a>
 ### UI_GETCLIPBOARDDATA
@@ -1994,7 +1994,7 @@ const UI_GETCLIPBOARDDATA = 42
 UI engine-syscall ordinal used to read available clipboard text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L98)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-getconfigstring-const-ui-getconfigstring-45-src-mq3-client-ui-syscalls-missionpack-ml-201843728"></a>
 ### UI_GETCONFIGSTRING
@@ -2006,7 +2006,7 @@ const UI_GETCONFIGSTRING = 45
 UI engine-syscall ordinal used to read one server configuration string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L104)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-getglconfig-const-ui-getglconfig-43-src-mq3-client-ui-syscalls-missionpack-ml-1769364326"></a>
 ### UI_GETGLCONFIG
@@ -2018,7 +2018,7 @@ const UI_GETGLCONFIG = 43
 UI engine-syscall ordinal used to read the renderer configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L100)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-clearstates-const-ui-key-clearstates-39-src-mq3-client-ui-syscalls-missionpack-ml-590811123"></a>
 ### UI_KEY_CLEARSTATES
@@ -2030,7 +2030,7 @@ const UI_KEY_CLEARSTATES = 39
 UI engine-syscall ordinal used to release all tracked key states.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L92)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-getbindingbuf-const-ui-key-getbindingbuf-34-src-mq3-client-ui-syscalls-missionpack-ml-458693070"></a>
 ### UI_KEY_GETBINDINGBUF
@@ -2042,7 +2042,7 @@ const UI_KEY_GETBINDINGBUF = 34
 UI engine-syscall ordinal used to read the command bound to an engine key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L82)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-getcatcher-const-ui-key-getcatcher-40-src-mq3-client-ui-syscalls-missionpack-ml-493331273"></a>
 ### UI_KEY_GETCATCHER
@@ -2054,7 +2054,7 @@ const UI_KEY_GETCATCHER = 40
 UI engine-syscall ordinal used to read the active input-capture bitmask.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L94)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-getoverstrikemode-const-ui-key-getoverstrikemode-37-src-mq3-client-ui-syscalls-missionpack-ml-153824245"></a>
 ### UI_KEY_GETOVERSTRIKEMODE
@@ -2066,7 +2066,7 @@ const UI_KEY_GETOVERSTRIKEMODE = 37
 UI engine-syscall ordinal used to query whether text editing uses overwrite mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L88)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-isdown-const-ui-key-isdown-36-src-mq3-client-ui-syscalls-missionpack-ml-970093316"></a>
 ### UI_KEY_ISDOWN
@@ -2078,7 +2078,7 @@ const UI_KEY_ISDOWN = 36
 UI engine-syscall ordinal used to query whether an engine key is currently pressed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L86)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-keynumtostringbuf-const-ui-key-keynumtostringbuf-33-src-mq3-client-ui-syscalls-missionpack-ml-2128321471"></a>
 ### UI_KEY_KEYNUMTOSTRINGBUF
@@ -2090,7 +2090,7 @@ const UI_KEY_KEYNUMTOSTRINGBUF = 33
 UI engine-syscall ordinal used to convert an engine key code to a display name.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L80)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-setbinding-const-ui-key-setbinding-35-src-mq3-client-ui-syscalls-missionpack-ml-495286117"></a>
 ### UI_KEY_SETBINDING
@@ -2102,7 +2102,7 @@ const UI_KEY_SETBINDING = 35
 UI engine-syscall ordinal used to set the command bound to an engine key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L84)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-setcatcher-const-ui-key-setcatcher-41-src-mq3-client-ui-syscalls-missionpack-ml-819250258"></a>
 ### UI_KEY_SETCATCHER
@@ -2114,7 +2114,7 @@ const UI_KEY_SETCATCHER = 41
 UI engine-syscall ordinal used to replace the active input-capture bitmask.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L96)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-key-setoverstrikemode-const-ui-key-setoverstrikemode-38-src-mq3-client-ui-syscalls-missionpack-ml-1957385872"></a>
 ### UI_KEY_SETOVERSTRIKEMODE
@@ -2126,7 +2126,7 @@ const UI_KEY_SETOVERSTRIKEMODE = 38
 UI engine-syscall ordinal used to change text-editing overwrite mode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L90)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-addserver-const-ui-lan-addserver-73-src-mq3-client-ui-syscalls-missionpack-ml-476426167"></a>
 ### UI_LAN_ADDSERVER
@@ -2138,7 +2138,7 @@ const UI_LAN_ADDSERVER = 73
 UI server-browser syscall ordinal used to add a server to a browser source list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L160)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-clearping-const-ui-lan-clearping-47-src-mq3-client-ui-syscalls-missionpack-ml-2049935458"></a>
 ### UI_LAN_CLEARPING
@@ -2150,7 +2150,7 @@ const UI_LAN_CLEARPING = 47
 UI server-browser syscall ordinal used to release a completed or canceled ping request slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L108)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-compareservers-const-ui-lan-compareservers-85-src-mq3-client-ui-syscalls-missionpack-ml-540543122"></a>
 ### UI_LAN_COMPARESERVERS
@@ -2162,7 +2162,7 @@ const UI_LAN_COMPARESERVERS = 85
 UI server-browser syscall ordinal used to compare two browser servers using a selected sort key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L185)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getping-const-ui-lan-getping-48-src-mq3-client-ui-syscalls-missionpack-ml-2003796181"></a>
 ### UI_LAN_GETPING
@@ -2174,7 +2174,7 @@ const UI_LAN_GETPING = 48
 UI server-browser syscall ordinal used to read the address and latency from a ping request slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L110)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getpinginfo-const-ui-lan-getpinginfo-49-src-mq3-client-ui-syscalls-missionpack-ml-4206286"></a>
 ### UI_LAN_GETPINGINFO
@@ -2186,7 +2186,7 @@ const UI_LAN_GETPINGINFO = 49
 UI server-browser syscall ordinal used to read server-info text returned by a ping request.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L112)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getpingqueuecount-const-ui-lan-getpingqueuecount-46-src-mq3-client-ui-syscalls-missionpack-ml-1009156199"></a>
 ### UI_LAN_GETPINGQUEUECOUNT
@@ -2198,7 +2198,7 @@ const UI_LAN_GETPINGQUEUECOUNT = 46
 UI server-browser syscall ordinal used to query the number of outstanding browser ping requests.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L106)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getserveraddressstring-const-ui-lan-getserveraddressstring-66-src-mq3-client-ui-syscalls-missionpack-ml-105765513"></a>
 ### UI_LAN_GETSERVERADDRESSSTRING
@@ -2210,7 +2210,7 @@ const UI_LAN_GETSERVERADDRESSSTRING = 66
 UI server-browser syscall ordinal used to read a browser server's network address.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L146)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getservercount-const-ui-lan-getservercount-65-src-mq3-client-ui-syscalls-missionpack-ml-1953806116"></a>
 ### UI_LAN_GETSERVERCOUNT
@@ -2222,7 +2222,7 @@ const UI_LAN_GETSERVERCOUNT = 65
 UI server-browser syscall ordinal used to query the number of servers in a browser source list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L144)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getserverinfo-const-ui-lan-getserverinfo-67-src-mq3-client-ui-syscalls-missionpack-ml-1121615336"></a>
 ### UI_LAN_GETSERVERINFO
@@ -2234,7 +2234,7 @@ const UI_LAN_GETSERVERINFO = 67
 UI server-browser syscall ordinal used to read a browser server's info-string properties.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L148)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-getserverping-const-ui-lan-getserverping-83-src-mq3-client-ui-syscalls-missionpack-ml-901783910"></a>
 ### UI_LAN_GETSERVERPING
@@ -2246,7 +2246,7 @@ const UI_LAN_GETSERVERPING = 83
 UI server-browser syscall ordinal used to read a browser server's measured latency.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L180)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-loadcachedservers-const-ui-lan-loadcachedservers-71-src-mq3-client-ui-syscalls-missionpack-ml-313959337"></a>
 ### UI_LAN_LOADCACHEDSERVERS
@@ -2258,7 +2258,7 @@ const UI_LAN_LOADCACHEDSERVERS = 71
 UI server-browser syscall ordinal used to restore saved browser and favorite-server lists.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L156)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-markservervisible-const-ui-lan-markservervisible-68-src-mq3-client-ui-syscalls-missionpack-ml-1876388327"></a>
 ### UI_LAN_MARKSERVERVISIBLE
@@ -2270,7 +2270,7 @@ const UI_LAN_MARKSERVERVISIBLE = 68
 UI server-browser syscall ordinal used to include or exclude a server from visible ping updates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L150)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-removeserver-const-ui-lan-removeserver-74-src-mq3-client-ui-syscalls-missionpack-ml-495835854"></a>
 ### UI_LAN_REMOVESERVER
@@ -2282,7 +2282,7 @@ const UI_LAN_REMOVESERVER = 74
 UI server-browser syscall ordinal used to remove a server from a browser source list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L162)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-resetpings-const-ui-lan-resetpings-70-src-mq3-client-ui-syscalls-missionpack-ml-862456938"></a>
 ### UI_LAN_RESETPINGS
@@ -2294,7 +2294,7 @@ const UI_LAN_RESETPINGS = 70
 UI server-browser syscall ordinal used to clear latency results for a browser source list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L154)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-savecachedservers-const-ui-lan-savecachedservers-72-src-mq3-client-ui-syscalls-missionpack-ml-1792398774"></a>
 ### UI_LAN_SAVECACHEDSERVERS
@@ -2306,7 +2306,7 @@ const UI_LAN_SAVECACHEDSERVERS = 72
 UI server-browser syscall ordinal used to persist browser and favorite-server lists.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L158)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-serverisvisible-const-ui-lan-serverisvisible-84-src-mq3-client-ui-syscalls-missionpack-ml-1870731815"></a>
 ### UI_LAN_SERVERISVISIBLE
@@ -2318,7 +2318,7 @@ const UI_LAN_SERVERISVISIBLE = 84
 UI server-browser syscall ordinal used to query whether a server participates in visible ping updates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L183)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-serverstatus-const-ui-lan-serverstatus-82-src-mq3-client-ui-syscalls-missionpack-ml-1461150667"></a>
 ### UI_LAN_SERVERSTATUS
@@ -2330,7 +2330,7 @@ const UI_LAN_SERVERSTATUS = 82
 UI server-browser syscall ordinal used to request or read a server-status response.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L178)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-lan-updatevisiblepings-const-ui-lan-updatevisiblepings-69-src-mq3-client-ui-syscalls-missionpack-ml-1084252608"></a>
 ### UI_LAN_UPDATEVISIBLEPINGS
@@ -2342,7 +2342,7 @@ const UI_LAN_UPDATEVISIBLEPINGS = 69
 UI server-browser syscall ordinal used to advance pending pings for visible browser servers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L152)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-memory-remaining-const-ui-memory-remaining-52-src-mq3-client-ui-syscalls-missionpack-ml-65290122"></a>
 ### UI_MEMORY_REMAINING
@@ -2354,7 +2354,7 @@ const UI_MEMORY_REMAINING = 52
 UI engine-syscall ordinal used to query remaining VM memory.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L118)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-milliseconds-const-ui-milliseconds-2-src-mq3-client-ui-syscalls-missionpack-ml-184404611"></a>
 ### UI_MILLISECONDS
@@ -2366,7 +2366,7 @@ const UI_MILLISECONDS = 2
 UI engine-syscall ordinal used to query the engine millisecond timer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-pc-add-global-define-const-ui-pc-add-global-define-57-src-mq3-client-ui-syscalls-missionpack-ml-955900225"></a>
 ### UI_PC_ADD_GLOBAL_DEFINE
@@ -2378,7 +2378,7 @@ const UI_PC_ADD_GLOBAL_DEFINE = 57
 UI engine-syscall ordinal used to add a preprocessor definition to the script parser.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L128)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-pc-free-source-const-ui-pc-free-source-59-src-mq3-client-ui-syscalls-missionpack-ml-211300031"></a>
 ### UI_PC_FREE_SOURCE
@@ -2390,7 +2390,7 @@ const UI_PC_FREE_SOURCE = 59
 UI engine-syscall ordinal used to release a script-parser source handle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L132)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-pc-load-source-const-ui-pc-load-source-58-src-mq3-client-ui-syscalls-missionpack-ml-607662424"></a>
 ### UI_PC_LOAD_SOURCE
@@ -2402,7 +2402,7 @@ const UI_PC_LOAD_SOURCE = 58
 UI engine-syscall ordinal used to open a script-parser source handle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L130)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-pc-read-token-const-ui-pc-read-token-60-src-mq3-client-ui-syscalls-missionpack-ml-2088352687"></a>
 ### UI_PC_READ_TOKEN
@@ -2414,7 +2414,7 @@ const UI_PC_READ_TOKEN = 60
 UI engine-syscall ordinal used to read the next preprocessed source token.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L134)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-pc-source-file-and-line-const-ui-pc-source-file-and-line-61-src-mq3-client-ui-syscalls-missionpack-ml-2114273866"></a>
 ### UI_PC_SOURCE_FILE_AND_LINE
@@ -2426,7 +2426,7 @@ const UI_PC_SOURCE_FILE_AND_LINE = 61
 UI engine-syscall ordinal used to query the source location for a parser handle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L136)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-print-const-ui-print-1-src-mq3-client-ui-syscalls-missionpack-ml-642418804"></a>
 ### UI_PRINT
@@ -2438,7 +2438,7 @@ const UI_PRINT = 1
 UI engine-syscall ordinal used to print text through the engine console.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-addlighttoscene-const-ui-r-addlighttoscene-24-src-mq3-client-ui-syscalls-missionpack-ml-1714450217"></a>
 ### UI_R_ADDLIGHTTOSCENE
@@ -2450,7 +2450,7 @@ const UI_R_ADDLIGHTTOSCENE = 24
 UI engine-syscall ordinal used to append a dynamic light to the pending scene.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L62)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-addpolytoscene-const-ui-r-addpolytoscene-23-src-mq3-client-ui-syscalls-missionpack-ml-761054566"></a>
 ### UI_R_ADDPOLYTOSCENE
@@ -2462,7 +2462,7 @@ const UI_R_ADDPOLYTOSCENE = 23
 UI engine-syscall ordinal used to append a polygon to the pending scene.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L60)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-addrefentitytoscene-const-ui-r-addrefentitytoscene-22-src-mq3-client-ui-syscalls-missionpack-ml-766472539"></a>
 ### UI_R_ADDREFENTITYTOSCENE
@@ -2474,7 +2474,7 @@ const UI_R_ADDREFENTITYTOSCENE = 22
 UI engine-syscall ordinal used to append a renderer entity to the pending scene.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L58)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-clearscene-const-ui-r-clearscene-21-src-mq3-client-ui-syscalls-missionpack-ml-2047895844"></a>
 ### UI_R_CLEARSCENE
@@ -2486,7 +2486,7 @@ const UI_R_CLEARSCENE = 21
 UI engine-syscall ordinal used to clear the renderer's pending scene.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L56)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-drawstretchpic-const-ui-r-drawstretchpic-27-src-mq3-client-ui-syscalls-missionpack-ml-1495023226"></a>
 ### UI_R_DRAWSTRETCHPIC
@@ -2498,7 +2498,7 @@ const UI_R_DRAWSTRETCHPIC = 27
 UI engine-syscall ordinal used to draw a shader-backed rectangle with texture coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L68)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-modelbounds-const-ui-r-modelbounds-56-src-mq3-client-ui-syscalls-missionpack-ml-1097378560"></a>
 ### UI_R_MODELBOUNDS
@@ -2510,7 +2510,7 @@ const UI_R_MODELBOUNDS = 56
 UI engine-syscall ordinal used to query a model's axis-aligned bounds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L126)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-registerfont-const-ui-r-registerfont-55-src-mq3-client-ui-syscalls-missionpack-ml-750674303"></a>
 ### UI_R_REGISTERFONT
@@ -2522,7 +2522,7 @@ const UI_R_REGISTERFONT = 55
 UI engine-syscall ordinal used to register a font resource and its glyph metrics.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L124)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-registermodel-const-ui-r-registermodel-18-src-mq3-client-ui-syscalls-missionpack-ml-257119338"></a>
 ### UI_R_REGISTERMODEL
@@ -2534,7 +2534,7 @@ const UI_R_REGISTERMODEL = 18
 UI engine-syscall ordinal used to register a model resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L50)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-registershadernomip-const-ui-r-registershadernomip-20-src-mq3-client-ui-syscalls-missionpack-ml-704151011"></a>
 ### UI_R_REGISTERSHADERNOMIP
@@ -2546,7 +2546,7 @@ const UI_R_REGISTERSHADERNOMIP = 20
 UI engine-syscall ordinal used to register a shader without mipmapped image sampling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L54)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-registerskin-const-ui-r-registerskin-19-src-mq3-client-ui-syscalls-missionpack-ml-1170725075"></a>
 ### UI_R_REGISTERSKIN
@@ -2558,7 +2558,7 @@ const UI_R_REGISTERSKIN = 19
 UI engine-syscall ordinal used to register a skin resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L52)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-remap-shader-const-ui-r-remap-shader-80-src-mq3-client-ui-syscalls-missionpack-ml-1236733293"></a>
 ### UI_R_REMAP_SHADER
@@ -2570,7 +2570,7 @@ const UI_R_REMAP_SHADER = 80
 UI engine-syscall ordinal used to remap a shader to a replacement shader and time offset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L174)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-renderscene-const-ui-r-renderscene-25-src-mq3-client-ui-syscalls-missionpack-ml-41129530"></a>
 ### UI_R_RENDERSCENE
@@ -2582,7 +2582,7 @@ const UI_R_RENDERSCENE = 25
 UI engine-syscall ordinal used to render the accumulated scene through a view definition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L64)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-r-setcolor-const-ui-r-setcolor-26-src-mq3-client-ui-syscalls-missionpack-ml-306722281"></a>
 ### UI_R_SETCOLOR
@@ -2594,7 +2594,7 @@ const UI_R_SETCOLOR = 26
 UI engine-syscall ordinal used to set the color modulation used by subsequent 2D drawing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L66)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-real-time-const-ui-real-time-64-src-mq3-client-ui-syscalls-missionpack-ml-2129098011"></a>
 ### UI_REAL_TIME
@@ -2606,7 +2606,7 @@ const UI_REAL_TIME = 64
 UI engine-syscall ordinal used to read the host calendar and clock.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L142)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-s-registersound-const-ui-s-registersound-31-src-mq3-client-ui-syscalls-missionpack-ml-1448977577"></a>
 ### UI_S_REGISTERSOUND
@@ -2618,7 +2618,7 @@ const UI_S_REGISTERSOUND = 31
 UI engine-syscall ordinal used to register a sound resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L76)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-s-startbackgroundtrack-const-ui-s-startbackgroundtrack-63-src-mq3-client-ui-syscalls-missionpack-ml-2143501614"></a>
 ### UI_S_STARTBACKGROUNDTRACK
@@ -2630,7 +2630,7 @@ const UI_S_STARTBACKGROUNDTRACK = 63
 UI engine-syscall ordinal used to start the background music introduction and loop tracks.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L140)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-s-startlocalsound-const-ui-s-startlocalsound-32-src-mq3-client-ui-syscalls-missionpack-ml-1109873684"></a>
 ### UI_S_STARTLOCALSOUND
@@ -2642,7 +2642,7 @@ const UI_S_STARTLOCALSOUND = 32
 UI engine-syscall ordinal used to play a non-positional local sound.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L78)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-s-stopbackgroundtrack-const-ui-s-stopbackgroundtrack-62-src-mq3-client-ui-syscalls-missionpack-ml-913642355"></a>
 ### UI_S_STOPBACKGROUNDTRACK
@@ -2654,7 +2654,7 @@ const UI_S_STOPBACKGROUNDTRACK = 62
 UI engine-syscall ordinal used to stop background music playback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L138)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-set-cdkey-const-ui-set-cdkey-54-src-mq3-client-ui-syscalls-missionpack-ml-476638118"></a>
 ### UI_SET_CDKEY
@@ -2666,7 +2666,7 @@ const UI_SET_CDKEY = 54
 UI engine-syscall ordinal used to write the configured product key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L122)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-set-pbclstatus-const-ui-set-pbclstatus-87-src-mq3-client-ui-syscalls-missionpack-ml-145176644"></a>
 ### UI_SET_PBCLSTATUS
@@ -2678,7 +2678,7 @@ const UI_SET_PBCLSTATUS = 87
 UI engine-syscall ordinal used to set the legacy client anti-cheat status flag.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L189)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-updatescreen-const-ui-updatescreen-28-src-mq3-client-ui-syscalls-missionpack-ml-523046807"></a>
 ### UI_UPDATESCREEN
@@ -2690,7 +2690,7 @@ const UI_UPDATESCREEN = 28
 UI engine-syscall ordinal used to request an immediate screen update.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L70)
 
 <a id="constant-constant-mq3-client-ui-syscalls-missionpack-ui-verify-cdkey-const-ui-verify-cdkey-81-src-mq3-client-ui-syscalls-missionpack-ml-1137759838"></a>
 ### UI_VERIFY_CDKEY
@@ -2702,4 +2702,4 @@ const UI_VERIFY_CDKEY = 81
 UI engine-syscall ordinal used to validate a product key.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_syscalls_missionpack.ml#L176)

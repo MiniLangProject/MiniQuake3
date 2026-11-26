@@ -12,7 +12,7 @@ struct State
 Stores UI connect state, including `client`, `realtime`, `downloadName`, `downloadSize`, `downloadCount`, `downloadTime` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L109)
 
 ## Members
 
@@ -26,7 +26,7 @@ actions
 Host requests queued while drawing connection status and download progress, retained in request order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L132)
 
 <a id="field-field-mq3-client-ui-connect-state-cachecalls-cachecalls-src-mq3-client-ui-connect-ml-1557003988"></a>
 ### cacheCalls
@@ -38,7 +38,7 @@ cacheCalls
 When constructing this record, `create` supplies `0` for this member. Used by `drawConnectScreen` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L138)
 
 <a id="field-field-mq3-client-ui-connect-state-client-client-src-mq3-client-ui-connect-ml-253154324"></a>
 ### client
@@ -50,7 +50,7 @@ client
 Player slot associated with this score or client-side record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L111)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadcount-downloadcount-src-mq3-client-ui-connect-ml-1745805430"></a>
 ### downloadCount
@@ -62,7 +62,7 @@ downloadCount
 Number of bytes accumulated for the active download.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L120)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadname-downloadname-src-mq3-client-ui-connect-ml-512218252"></a>
 ### downloadName
@@ -74,7 +74,7 @@ downloadName
 When constructing this record, `create` supplies an empty string for this member. Used by `configure` and `drawConnectScreen` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L116)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadsize-downloadsize-src-mq3-client-ui-connect-ml-1551163600"></a>
 ### downloadSize
@@ -86,7 +86,7 @@ downloadSize
 Expected total size in bytes of the active download.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L118)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadtime-downloadtime-src-mq3-client-ui-connect-ml-601644368"></a>
 ### downloadTime
@@ -98,7 +98,7 @@ downloadTime
 When constructing this record, `create` supplies `0` for this member. Used by `displayDownloadInfo` and `configure` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L123)
 
 <a id="field-field-mq3-client-ui-connect-state-lastconnstate-lastconnstate-src-mq3-client-ui-connect-ml-415694946"></a>
 ### lastConnState
@@ -110,7 +110,7 @@ lastConnState
 When constructing this record, `create` supplies `CA_UNINITIALIZED` for this member. Used by `drawConnectScreen` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L126)
 
 <a id="field-field-mq3-client-ui-connect-state-lastloadingtext-lastloadingtext-src-mq3-client-ui-connect-ml-1813914738"></a>
 ### lastLoadingText
@@ -122,7 +122,7 @@ lastLoadingText
 When constructing this record, `create` supplies an empty string for this member. Used by `drawConnectScreen` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L129)
 
 <a id="field-field-mq3-client-ui-connect-state-realtime-realtime-src-mq3-client-ui-connect-ml-244763532"></a>
 ### realtime
@@ -134,7 +134,7 @@ realtime
 Current UI clock in milliseconds used to derive download rate and remaining-time estimates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L113)
 
 <a id="field-field-mq3-client-ui-connect-state-retailactive-retailactive-src-mq3-client-ui-connect-ml-1915171760"></a>
 ### retailActive
@@ -146,4 +146,4 @@ retailActive
 True when the retail QVM owns the connection and download-progress screen, so the native observer records requests without emitting duplicate host effects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L135)

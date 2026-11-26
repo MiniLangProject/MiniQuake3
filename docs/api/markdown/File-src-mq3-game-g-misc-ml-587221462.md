@@ -35,7 +35,7 @@ Forward `DropPortalDestination` to `mq3.game.active_portals.DropPortalDestinatio
 | `player` | `dynamic` | — | Player entity; accesses `s`, `r` and `client`. May update `player.client.portalID` and `player.client.ps.stats[c.STAT_HOLDABLE_ITEM]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L121)
 
 <a id="function-function-mq3-game-g-misc-dropportalsource-function-dropportalsource-level-player-src-mq3-game-g-misc-ml-143565687"></a>
 ### DropPortalSource
@@ -52,7 +52,7 @@ Forward `DropPortalSource` to `mq3.game.active_portals.DropPortalSource` and ret
 | `player` | `dynamic` | — | Player entity; accesses `s`, `r` and `client`. May update `player.client.portalID` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L125)
 
 <a id="function-function-mq3-game-g-misc-initshooter-function-initshooter-level-ent-weapon-src-mq3-game-g-misc-ml-262737391"></a>
 ### InitShooter
@@ -70,7 +70,7 @@ Update `ent.use`, `ent.s.weapon`, `ent.movedir` and `ent.s.angles` and related s
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L76)
 
 <a id="function-function-mq3-game-g-misc-initshooter-finish-function-initshooter-finish-level-ent-src-mq3-game-g-misc-ml-1157559027"></a>
 ### InitShooter_Finish
@@ -87,7 +87,7 @@ Forward `InitShooter_Finish` to `mq3.game.shooters.finish` and return the delega
 | `ent` | `dynamic` | — | Game entity; accesses `enemy`, `target`, `think` and `nextthink`. May update `ent.enemy`, `ent.think` and `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L71)
 
 <a id="function-function-mq3-game-g-misc-locatecamera-function-locatecamera-level-ent-src-mq3-game-g-misc-ml-1259599395"></a>
 ### locateCamera
@@ -104,7 +104,7 @@ Forward `locateCamera` to `mq3.game.portals.locateCamera` and return the delegat
 | `ent` | `dynamic` | — | Game entity; accesses `target`, `r` and `s`. May update `ent.r.ownerNum`, `ent.s.frame` and `ent.s.powerups` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L52)
 
 <a id="function-function-mq3-game-g-misc-portaldie-function-portaldie-level-self-inflictor-attacker-damage-mod-src-mq3-game-g-misc-ml-935123164"></a>
 ### PortalDie
@@ -125,7 +125,7 @@ Forward `PortalDie` to `mq3.game.active_portals.PortalDie` and return the delega
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L105)
 
 <a id="function-function-mq3-game-g-misc-portalenable-function-portalenable-level-self-src-mq3-game-g-misc-ml-882320964"></a>
 ### PortalEnable
@@ -142,7 +142,7 @@ Forward `PortalEnable` to `mq3.game.active_portals.PortalEnable` and return the 
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `touch`, `think` and `nextthink`. May update `self.touch`, `self.think` and `self.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L115)
 
 <a id="function-function-mq3-game-g-misc-portaltouch-function-portaltouch-level-self-other-trace-src-mq3-game-g-misc-ml-179340073"></a>
 ### PortalTouch
@@ -161,7 +161,7 @@ Forward `PortalTouch` to `mq3.game.active_portals.PortalTouch` and return the de
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.active_portals.PortalTouch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L111)
 
 <a id="function-function-mq3-game-g-misc-sp-info-camp-function-sp-info-camp-level-self-src-mq3-game-g-misc-ml-1799089132"></a>
 ### SP_info_camp
@@ -178,7 +178,7 @@ Forward `SP_info_camp` to `mq3.game.entities.setOrigin` and return the delegated
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L27)
 
 <a id="function-function-mq3-game-g-misc-sp-info-notnull-function-sp-info-notnull-level-self-src-mq3-game-g-misc-ml-1807520362"></a>
 ### SP_info_notnull
@@ -195,7 +195,7 @@ Forward `SP_info_notnull` to `mq3.game.entities.setOrigin` and return the delega
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L35)
 
 <a id="function-function-mq3-game-g-misc-sp-info-null-function-sp-info-null-level-self-src-mq3-game-g-misc-ml-1104674348"></a>
 ### SP_info_null
@@ -212,7 +212,7 @@ Forward `SP_info_null` to `mq3.game.entities.free` and return the delegated resu
 | `self` | `dynamic` | — | Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `self.r`, `self.s` and `self.client` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L31)
 
 <a id="function-function-mq3-game-g-misc-sp-light-function-sp-light-level-self-src-mq3-game-g-misc-ml-348666276"></a>
 ### SP_light
@@ -229,7 +229,7 @@ Forward `SP_light` to `mq3.game.entities.free` and return the delegated result.
 | `self` | `dynamic` | — | Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `self.r`, `self.s` and `self.client` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L39)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-model-function-sp-misc-model-level-ent-src-mq3-game-g-misc-ml-1626153467"></a>
 ### SP_misc_model
@@ -246,7 +246,7 @@ Forward `SP_misc_model` to `mq3.game.entities.free` and return the delegated res
 | `ent` | `dynamic` | — | Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `ent.r`, `ent.s` and `ent.client` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L47)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-portal-camera-function-sp-misc-portal-camera-level-ent-src-mq3-game-g-misc-ml-1109399809"></a>
 ### SP_misc_portal_camera
@@ -263,7 +263,7 @@ Forward `SP_misc_portal_camera` to `mq3.game.portals.camera` and return the dele
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `s`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L60)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-portal-surface-function-sp-misc-portal-surface-level-ent-src-mq3-game-g-misc-ml-364312011"></a>
 ### SP_misc_portal_surface
@@ -280,7 +280,7 @@ Forward `SP_misc_portal_surface` to `mq3.game.portals.surface` and return the de
 | `ent` | `dynamic` | — | Game entity; accesses `r`, `s`, `target`, `think` and `nextthink`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.r.svFlags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L56)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-teleporter-dest-function-sp-misc-teleporter-dest-level-ent-src-mq3-game-g-misc-ml-584507579"></a>
 ### SP_misc_teleporter_dest
@@ -297,7 +297,7 @@ Return `void` for `SP_misc_teleporter_dest`.
 | `ent` | `dynamic` | — | Not read by this implementation; retained in the `SP_misc_teleporter_dest` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L43)
 
 <a id="function-function-mq3-game-g-misc-sp-shooter-grenade-function-sp-shooter-grenade-level-ent-src-mq3-game-g-misc-ml-1562060383"></a>
 ### SP_shooter_grenade
@@ -314,7 +314,7 @@ Forward `SP_shooter_grenade` to `mq3.game.g_misc.InitShooter` and return the del
 | `ent` | `dynamic` | — | Game entity; accesses `use`, `s`, `movedir`, `random` and `target` and related fields. May update `ent.use`, `ent.s.weapon` and `ent.movedir` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L96)
 
 <a id="function-function-mq3-game-g-misc-sp-shooter-plasma-function-sp-shooter-plasma-level-ent-src-mq3-game-g-misc-ml-831234849"></a>
 ### SP_shooter_plasma
@@ -331,7 +331,7 @@ Forward `SP_shooter_plasma` to `mq3.game.g_misc.InitShooter` and return the dele
 | `ent` | `dynamic` | — | Game entity; accesses `use`, `s`, `movedir`, `random` and `target` and related fields. May update `ent.use`, `ent.s.weapon` and `ent.movedir` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L92)
 
 <a id="function-function-mq3-game-g-misc-sp-shooter-rocket-function-sp-shooter-rocket-level-ent-src-mq3-game-g-misc-ml-440994653"></a>
 ### SP_shooter_rocket
@@ -348,7 +348,7 @@ Forward `SP_shooter_rocket` to `mq3.game.g_misc.InitShooter` and return the dele
 | `ent` | `dynamic` | — | Game entity; accesses `use`, `s`, `movedir`, `random` and `target` and related fields. May update `ent.use`, `ent.s.weapon` and `ent.movedir` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L88)
 
 <a id="function-function-mq3-game-g-misc-teleportplayer-function-teleportplayer-level-player-origin-angles-src-mq3-game-g-misc-ml-1029969885"></a>
 ### TeleportPlayer
@@ -367,7 +367,7 @@ Forward `TeleportPlayer` to `mq3.game.teleport.player` and return the delegated 
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L22)
 
 <a id="function-function-mq3-game-g-misc-use-shooter-function-use-shooter-level-ent-other-activator-src-mq3-game-g-misc-ml-1234446942"></a>
 ### Use_Shooter
@@ -386,7 +386,7 @@ Forward `Use_Shooter` to `mq3.game.shooters.use` and return the delegated result
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L67)
 
 <a id="function-function-mq3-game-g-misc-useportalholdable-function-useportalholdable-level-player-src-mq3-game-g-misc-ml-537346467"></a>
 ### UsePortalHoldable
@@ -403,7 +403,7 @@ Apply `mq3.game.g_misc.DropPortalSource` and `mq3.game.g_misc.DropPortalDestinat
 | `player` | `dynamic` | — | Player entity; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L129)
 
 <a id="function-function-mq3-game-g-misc-utilities-function-utilities-level-ent-src-mq3-game-g-misc-ml-642879279"></a>
 ### utilities
@@ -420,4 +420,4 @@ function utilities(level, ent)
 | `ent` | `dynamic` | — | Not read by this implementation; retained in the `utilities` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L140)

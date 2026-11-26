@@ -26,7 +26,7 @@ Saturate an integer sample to the signed 16-bit PCM range.
 | `value` | `dynamic` | — | Value used in `(value > 32767)` and `(value < - 32768)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L21)
 
 <a id="function-function-mq3-audio-mixer-transfer-fail-function-fail-message-src-mq3-audio-mixer-transfer-ml-1495100951"></a>
 ### fail
@@ -42,7 +42,7 @@ Create the audio.mixer_transfer error for `fail` with 7240 and the supplied diag
 | `message` | `dynamic` | — | Message used in `("audio mixer transfer: " + message)` and `error(7240, ("audio mixer transfer: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L9)
 
 <a id="function-function-mq3-audio-mixer-transfer-poweroftwo-function-poweroftwo-value-src-mq3-audio-mixer-transfer-ml-2110100685"></a>
 ### powerOfTwo
@@ -58,7 +58,7 @@ Compute audio.mixer_transfer.powerOfTwo as `((value > 0) and ((value & (value - 
 | `value` | `dynamic` | — | Value used in `(value > 0)` and `(value - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L15)
 
 <a id="function-function-mq3-audio-mixer-transfer-transfer-function-transfer-paint-paintedtime-endtime-samplebits-channels-dmasamples-output-src-mq3-audio-mixer-transfer-ml-1807417656"></a>
 ### transfer
@@ -80,4 +80,4 @@ The paint array is interleaved [left,right,...], in the original 24.8 mix scale.
 | `output` | `dynamic` | — | Mutable sequence written at `outIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L37)

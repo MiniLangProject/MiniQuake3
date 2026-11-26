@@ -12,7 +12,7 @@ struct State
 Stores client game players state, including `time`, `frameTime`, `gametype`, `localClientNum`, `renderingThirdPerson`, `shadows` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L295)
 
 ## Members
 
@@ -26,7 +26,7 @@ actions
 Host requests queued while loading player media and submitting animated body parts and powerup effects, retained in request order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L334)
 
 <a id="field-field-mq3-client-cgame-players-state-animspeed-animspeed-src-mq3-client-cgame-players-ml-1174480226"></a>
 ### animSpeed
@@ -38,7 +38,7 @@ animSpeed
 When constructing this record, `create` supplies `1` for this member. Used by `runLerpFrame` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L318)
 
 <a id="field-field-mq3-client-cgame-players-state-clients-clients-src-mq3-client-cgame-players-ml-1793414022"></a>
 ### clients
@@ -50,7 +50,7 @@ clients
 Client model, skin, identity, and animation information indexed by player slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L328)
 
 <a id="field-field-mq3-client-cgame-players-state-drawfriend-drawfriend-src-mq3-client-cgame-players-ml-1311279850"></a>
 ### drawFriend
@@ -62,7 +62,7 @@ drawFriend
 When constructing this record, `create` supplies `true` for this member. Used by `playerSprites` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L312)
 
 <a id="field-field-mq3-client-cgame-players-state-enablebreath-enablebreath-src-mq3-client-cgame-players-ml-211855932"></a>
 ### enableBreath
@@ -74,7 +74,7 @@ enableBreath
 When constructing this record, `create` supplies `false` for this member. Used by `breathPuffs` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L323)
 
 <a id="field-field-mq3-client-cgame-players-state-enabledust-enabledust-src-mq3-client-cgame-players-ml-1388679728"></a>
 ### enableDust
@@ -86,7 +86,7 @@ enableDust
 When constructing this record, `create` supplies `false` for this member. Used by `dustTrail` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L326)
 
 <a id="field-field-mq3-client-cgame-players-state-files-files-src-mq3-client-cgame-players-ml-24097406"></a>
 ### files
@@ -98,7 +98,7 @@ files
 When constructing this record, `create` supplies an empty list for this member. Used by `fileExists` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L331)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L331)
 
 <a id="field-field-mq3-client-cgame-players-state-frametime-frametime-src-mq3-client-cgame-players-ml-1816518282"></a>
 ### frameTime
@@ -110,7 +110,7 @@ frameTime
 Elapsed frame-time slot retained with the player-presentation state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L299)
 
 <a id="field-field-mq3-client-cgame-players-state-gametype-gametype-src-mq3-client-cgame-players-ml-1351917954"></a>
 ### gametype
@@ -122,7 +122,7 @@ gametype
 Game-rule identifier controlling team model skins and teammate marker sprites.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L301)
 
 <a id="field-field-mq3-client-cgame-players-state-localclientnum-localclientnum-src-mq3-client-cgame-players-ml-1461133770"></a>
 ### localClientNum
@@ -134,7 +134,7 @@ localClientNum
 When constructing this record, `create` supplies `0` for this member. Used by `breathPuffs` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L304)
 
 <a id="field-field-mq3-client-cgame-players-state-noplayeranims-noplayeranims-src-mq3-client-cgame-players-ml-1527844990"></a>
 ### noPlayerAnims
@@ -146,7 +146,7 @@ noPlayerAnims
 When constructing this record, `create` supplies `false` for this member. Used by `playerAnimation` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L315)
 
 <a id="field-field-mq3-client-cgame-players-state-renderingthirdperson-renderingthirdperson-src-mq3-client-cgame-players-ml-531074566"></a>
 ### renderingThirdPerson
@@ -158,7 +158,7 @@ renderingThirdPerson
 True while the camera uses a third-person, chase, or death view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L306)
 
 <a id="field-field-mq3-client-cgame-players-state-shadows-shadows-src-mq3-client-cgame-players-ml-1424013270"></a>
 ### shadows
@@ -170,7 +170,7 @@ shadows
 When constructing this record, `create` supplies `1` for this member. Used by `playerShadow` and `playerSplash` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L309)
 
 <a id="field-field-mq3-client-cgame-players-state-swingspeed-swingspeed-src-mq3-client-cgame-players-ml-62427784"></a>
 ### swingSpeed
@@ -182,7 +182,7 @@ swingSpeed
 When constructing this record, `create` supplies `0.3` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L320)
 
 <a id="field-field-mq3-client-cgame-players-state-time-time-src-mq3-client-cgame-players-ml-1105499184"></a>
 ### time
@@ -194,4 +194,4 @@ time
 Current client-game time in milliseconds used for player animation and player-attached effects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L297)

@@ -10,8 +10,8 @@ Reachable from entry: **yes**
 
 - `mq3/client/ui_lan_browser.ml` as `lan` → [src/mq3/client/ui_lan_browser.ml](File-src-mq3-client-ui-lan-browser-ml-1771171938.md)
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
-- `std/fs.ml` as `fs` → `../MiniLangCompilerML/std/fs.ml` — external dependency
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/fs.ml` as `fs` → `../../a7594a0c0299/MiniLangCompilerML/std/fs.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Calls `mq3.compat.numeric.readI32` from UI LAN cache `addressText`. The final pa
 | `offset` | `dynamic` | — | Value used by `addressType=n.readI32(data,offset)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L126)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-cache-name-const-cache-name-servercache-dat-src-mq3-client-ui-lan-cache-ml-688146815"></a>
 ### CACHE_NAME
@@ -42,7 +42,7 @@ const CACHE_NAME = "servercache.dat"
 Filename used to persist the native server-browser cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-cache-size-const-cache-size-header-size-payload-size-src-mq3-client-ui-lan-cache-ml-679378927"></a>
 ### CACHE_SIZE
@@ -54,7 +54,7 @@ const CACHE_SIZE = HEADER_SIZE + PAYLOAD_SIZE
 Total byte length of the persisted cache header and server-list payload.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L26)
 
 <a id="function-function-mq3-client-ui-lan-cache-copytext-function-copytext-data-offset-capacity-src-mq3-client-ui-lan-cache-ml-1528705911"></a>
 ### copyText
@@ -72,7 +72,7 @@ Calls `decode`, `slice` from UI LAN cache `copyText`. The final path returns `de
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L84)
 
 <a id="function-function-mq3-client-ui-lan-cache-decodeinto-function-decodeinto-state-data-src-mq3-client-ui-lan-cache-ml-574582485"></a>
 ### decodeInto
@@ -89,7 +89,7 @@ Baseq3 resets all three counts before opening the file and rejects a cache whose
 | `data` | `dynamic` | — | Payload whose length/content is inspected by `decodeInto`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L203)
 
 - [mq3.client.ui_lan_cache.DiskContext](Type-mq3-client-ui-lan-cache-diskcontext-1727176568.md) — struct
 <a id="function-function-mq3-client-ui-lan-cache-diskread-function-diskread-context-name-src-mq3-client-ui-lan-cache-ml-295489448"></a>
@@ -107,7 +107,7 @@ Adapts `std.fs.readAllBytes` to UI LAN cache `diskRead`, returning its result fo
 | `name` | `dynamic` | — | Argument 1 of `std.fs.readAllBytes`; passed as `path(context.root,name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L70)
 
 <a id="function-function-mq3-client-ui-lan-cache-diskservices-function-diskservices-root-src-mq3-client-ui-lan-cache-ml-1493323656"></a>
 ### diskServices
@@ -123,7 +123,7 @@ Adapts `mq3.client.ui_lan_cache.services` to UI LAN cache `diskServices`, return
 | `root` | `dynamic` | — | Argument 3 of `mq3.client.ui_lan_cache.services`; passed as `DiskContext(root)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L78)
 
 <a id="function-function-mq3-client-ui-lan-cache-diskwrite-function-diskwrite-context-name-data-src-mq3-client-ui-lan-cache-ml-1016337724"></a>
 ### diskWrite
@@ -141,7 +141,7 @@ Adapts `std.fs.writeAllBytes` to UI LAN cache `diskWrite`, returning its result 
 | `data` | `dynamic` | — | Argument 2 of `std.fs.writeAllBytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L75)
 
 <a id="function-function-mq3-client-ui-lan-cache-encode-function-encode-state-src-mq3-client-ui-lan-cache-ml-521403589"></a>
 ### encode
@@ -157,7 +157,7 @@ LAN_SaveServersToCache writes three counts, the combined fixed-array size, then 
 | `state` | `dynamic` | — | Record read through `state.globalServers`, `state.mplayer`, `state.favorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L188)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-global-bytes-const-global-bytes-lan-max-global-servers-server-info-size-src-mq3-client-ui-lan-cache-ml-1651761703"></a>
 ### GLOBAL_BYTES
@@ -169,7 +169,7 @@ const GLOBAL_BYTES = lan.MAX_GLOBAL_SERVERS * SERVER_INFO_SIZE
 Byte count used when storing or marshalling the global data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-header-size-const-header-size-16-src-mq3-client-ui-lan-cache-ml-1295565400"></a>
 ### HEADER_SIZE
@@ -181,7 +181,7 @@ const HEADER_SIZE = 16
 Byte length of the persisted server-cache header.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L18)
 
 <a id="function-function-mq3-client-ui-lan-cache-load-function-load-state-host-src-mq3-client-ui-lan-cache-ml-569120291"></a>
 ### load
@@ -198,7 +198,7 @@ Calls `mq3.client.ui_lan_cache.reset`, `host.readFn`, `mq3.client.ui_lan_cache.d
 | `host` | `dynamic` | — | Record read through `host.readFn`, `host.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L223)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-na-bad-const-na-bad-1-src-mq3-client-ui-lan-cache-ml-211642820"></a>
 ### NA_BAD
@@ -210,7 +210,7 @@ const NA_BAD = 1
 Network-address kind identifying a bad destination.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-na-broadcast-const-na-broadcast-3-src-mq3-client-ui-lan-cache-ml-661203602"></a>
 ### NA_BROADCAST
@@ -222,7 +222,7 @@ const NA_BROADCAST = 3
 Network-address kind identifying a broadcast destination.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L33)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-na-ip-const-na-ip-4-src-mq3-client-ui-lan-cache-ml-1603151249"></a>
 ### NA_IP
@@ -234,7 +234,7 @@ const NA_IP = 4
 Network-address kind identifying a ip destination.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L35)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-na-loopback-const-na-loopback-2-src-mq3-client-ui-lan-cache-ml-2123308407"></a>
 ### NA_LOOPBACK
@@ -246,7 +246,7 @@ const NA_LOOPBACK = 2
 Network-address kind identifying a loopback destination.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-netadr-size-const-netadr-size-20-src-mq3-client-ui-lan-cache-ml-324155203"></a>
 ### NETADR_SIZE
@@ -258,7 +258,7 @@ const NETADR_SIZE = 20
 Size in bytes of the native network-address record used by the compatibility ABI.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-other-bytes-const-other-bytes-lan-max-other-servers-server-info-size-src-mq3-client-ui-lan-cache-ml-1139137762"></a>
 ### OTHER_BYTES
@@ -270,7 +270,7 @@ const OTHER_BYTES = lan.MAX_OTHER_SERVERS * SERVER_INFO_SIZE
 Byte count used when storing or marshalling the other data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L22)
 
 <a id="function-function-mq3-client-ui-lan-cache-parsedaddress-function-parsedaddress-text-src-mq3-client-ui-lan-cache-ml-2064311561"></a>
 ### parsedAddress
@@ -286,7 +286,7 @@ Calls `std.string.lastIndexOf`, `decode`, `slice` and additional helpers from UI
 | `text` | `dynamic` | — | Text consumed or emitted by `parsedAddress` in the UI LAN cache path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L110)
 
 <a id="function-function-mq3-client-ui-lan-cache-parseoctet-function-parseoctet-text-src-mq3-client-ui-lan-cache-ml-835914207"></a>
 ### parseOctet
@@ -302,7 +302,7 @@ Calls `toNumber` from UI LAN cache `parseOctet`. The final path returns `value`.
 | `text` | `dynamic` | — | Text consumed or emitted by `parseOctet` in the UI LAN cache path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L101)
 
 <a id="function-function-mq3-client-ui-lan-cache-path-function-path-root-name-src-mq3-client-ui-lan-cache-ml-733943587"></a>
 ### path
@@ -319,7 +319,7 @@ Evaluates UI LAN cache `path` and returns `name`, `root+name`, `root+"/"+name` a
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI LAN cache resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L62)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-payload-size-const-payload-size-global-bytes-other-bytes-other-bytes-src-mq3-client-ui-lan-cache-ml-638434686"></a>
 ### PAYLOAD_SIZE
@@ -331,7 +331,7 @@ const PAYLOAD_SIZE = GLOBAL_BYTES + OTHER_BYTES + OTHER_BYTES
 Byte length of the server-list record blocks stored after the cache header.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L24)
 
 <a id="function-function-mq3-client-ui-lan-cache-readlist-function-readlist-data-offset-count-src-mq3-client-ui-lan-cache-ml-183880550"></a>
 ### readList
@@ -349,7 +349,7 @@ Calls `mq3.client.ui_lan_cache.readServer` from UI LAN cache `readList`. The fin
 | `count` | `dynamic` | — | Value tested by `count>0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L176)
 
 <a id="function-function-mq3-client-ui-lan-cache-readserver-function-readserver-data-offset-src-mq3-client-ui-lan-cache-ml-1519746311"></a>
 ### readServer
@@ -366,7 +366,7 @@ Calls `mq3.client.ui_lan_browser.server`, `mq3.client.ui_lan_cache.addressText`,
 | `offset` | `dynamic` | — | Value used by `value=lan.server(addressText(data,offset),copyText(data,offset+20,32))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L157)
 
 <a id="function-function-mq3-client-ui-lan-cache-reset-function-reset-state-src-mq3-client-ui-lan-cache-ml-1214343975"></a>
 ### reset
@@ -382,7 +382,7 @@ Updates `state.globalServers`, `state.mplayer`, `state.favorites` during UI LAN 
 | `state` | `dynamic` | — | Mutable UI LAN cache record/storage; this routine assigns `state.globalServers`, `state.mplayer`, `state.favorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L181)
 
 <a id="function-function-mq3-client-ui-lan-cache-save-function-save-state-host-src-mq3-client-ui-lan-cache-ml-1923147063"></a>
 ### save
@@ -399,7 +399,7 @@ Calls `host.writeFn`, `mq3.client.ui_lan_cache.encode` from UI LAN cache `save`.
 | `host` | `dynamic` | — | Record read through `host.writeFn`, `host.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L216)
 
 <a id="constant-constant-mq3-client-ui-lan-cache-server-info-size-const-server-info-size-152-src-mq3-client-ui-lan-cache-ml-1533432927"></a>
 ### SERVER_INFO_SIZE
@@ -411,7 +411,7 @@ const SERVER_INFO_SIZE = 152
 Size in bytes reserved for a native server-information record during ABI marshalling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L16)
 
 <a id="function-function-mq3-client-ui-lan-cache-services-function-services-readfn-writefn-context-src-mq3-client-ui-lan-cache-ml-925872950"></a>
 ### services
@@ -429,7 +429,7 @@ Creates a `mq3.client.ui_lan_cache.Services` record. Assigns `readFn` from `read
 | `context` | `dynamic` | — | Value used to initialize `Services.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L57)
 
 - [mq3.client.ui_lan_cache.Services](Type-mq3-client-ui-lan-cache-services-1443445716.md) — struct
 <a id="function-function-mq3-client-ui-lan-cache-writeaddress-function-writeaddress-data-offset-text-src-mq3-client-ui-lan-cache-ml-2125158224"></a>
@@ -448,7 +448,7 @@ Updates `data[offset+4]`, `data[offset+5]`, `data[offset+6]`, `data[offset+7]` a
 | `text` | `dynamic` | — | Text consumed or emitted by `writeAddress` in the UI LAN cache path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L137)
 
 <a id="function-function-mq3-client-ui-lan-cache-writelist-function-writelist-data-offset-values-capacity-src-mq3-client-ui-lan-cache-ml-1904547495"></a>
 ### writeList
@@ -467,7 +467,7 @@ Calls `mq3.client.ui_lan_cache.writeServer` from UI LAN cache `writeList`.
 | `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L168)
 
 <a id="function-function-mq3-client-ui-lan-cache-writeserver-function-writeserver-data-offset-value-src-mq3-client-ui-lan-cache-ml-572686560"></a>
 ### writeServer
@@ -485,7 +485,7 @@ Calls `mq3.client.ui_lan_cache.writeAddress`, `mq3.client.ui_lan_cache.writeText
 | `value` | `dynamic` | — | Record read through `value.address`, `value.hostName`, `value.mapName`, `value.game` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L146)
 
 <a id="function-function-mq3-client-ui-lan-cache-writetext-function-writetext-data-offset-capacity-text-src-mq3-client-ui-lan-cache-ml-1346507292"></a>
 ### writeText
@@ -504,4 +504,4 @@ Calls `copyBytes` from UI LAN cache `writeText`.
 | `text` | `dynamic` | — | Text consumed or emitted by `writeText` in the UI LAN cache path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_cache.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_lan_cache.ml#L93)

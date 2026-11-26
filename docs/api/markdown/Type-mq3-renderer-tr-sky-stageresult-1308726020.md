@@ -12,7 +12,7 @@ struct StageResult
 Data record for `mq3.renderer.tr_sky.StageResult`; groups `skybox`, `clouds`, `sun`, `skyRendered`, `depthMin`, `depthMax`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L82)
 
 ## Members
 
@@ -26,7 +26,7 @@ clouds
 Cloud-layer geometry prepared for the current view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L86)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-depthmax-depthmax-src-mq3-renderer-tr-sky-ml-1030315290"></a>
 ### depthMax
@@ -38,7 +38,7 @@ depthMax
 Upper bound of the depth range used by this rendering pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L94)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-depthmin-depthmin-src-mq3-renderer-tr-sky-ml-308098414"></a>
 ### depthMin
@@ -50,7 +50,7 @@ depthMin
 Lower bound of the depth range used by this rendering pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L92)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-skybox-skybox-src-mq3-renderer-tr-sky-ml-1791152220"></a>
 ### skybox
@@ -62,7 +62,7 @@ skybox
 Skybox geometry prepared for the current view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L84)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-skyrendered-skyrendered-src-mq3-renderer-tr-sky-ml-1986158048"></a>
 ### skyRendered
@@ -74,7 +74,7 @@ skyRendered
 Whether sky geometry was emitted for this shader stage.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L90)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-sun-sun-src-mq3-renderer-tr-sky-ml-580876372"></a>
 ### sun
@@ -86,4 +86,4 @@ sun
 Sun geometry prepared for the current view.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L88)

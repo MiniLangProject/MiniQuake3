@@ -12,7 +12,7 @@ struct DisplayListCall
 Data record for `mq3.renderer.tr_surface_runtime.DisplayListCall`; groups `listNum`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L46)
 
 ## Members
 
@@ -26,4 +26,4 @@ listNum
 Graphics display-list identifier selected for execution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L48)

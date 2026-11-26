@@ -11,7 +11,7 @@ Reachable from entry: **no**
 - `mq3/botlib/aas_entities.ml` as `aasEntities` → [src/mq3/botlib/aas_entities.ml](File-src-mq3-botlib-aas-entities-ml-525847367.md)
 - `mq3/botlib/aas_runtime.ml` as `aasRuntime` → [src/mq3/botlib/aas_runtime.ml](File-src-mq3-botlib-aas-runtime-ml-1322908116.md)
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Use `state.services.continueReachabilityFn` to perform `AAS_ContinueInit`.
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L176)
 
 <a id="function-function-mq3-botlib-aas-main-aas-error-function-aas-error-state-message-src-mq3-botlib-aas-main-ml-1091664122"></a>
 ### AAS_Error
@@ -47,7 +47,7 @@ Record or dispatch `"fatal"` actions in `AAS_Error`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L118)
 
 <a id="function-function-mq3-botlib-aas-main-aas-indexfrommodel-function-aas-indexfrommodel-state-modelname-src-mq3-botlib-aas-main-ml-1349556571"></a>
 ### AAS_IndexFromModel
@@ -64,7 +64,7 @@ Record or dispatch `"error"` actions in `AAS_IndexFromModel`.
 | `modelname` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L152)
 
 <a id="function-function-mq3-botlib-aas-main-aas-indexfromstring-function-aas-indexfromstring-state-indexname-stringindex-numindexes-string-src-mq3-botlib-aas-main-ml-956988540"></a>
 ### AAS_IndexFromString
@@ -84,7 +84,7 @@ Record or dispatch `"error"` actions in `AAS_IndexFromString`.
 | `string` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L137)
 
 <a id="function-function-mq3-botlib-aas-main-aas-initialized-function-aas-initialized-state-src-mq3-botlib-aas-main-ml-1320945733"></a>
 ### AAS_Initialized
@@ -100,7 +100,7 @@ Test `state!=void and state.initialized` as the condition for `AAS_Initialized`.
 | `state` | `dynamic` | — | AAS main state; accesses `initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L169)
 
 <a id="function-function-mq3-botlib-aas-main-aas-loaded-function-aas-loaded-state-src-mq3-botlib-aas-main-ml-851503961"></a>
 ### AAS_Loaded
@@ -116,7 +116,7 @@ Test `state!=void and state.loaded` as the condition for `AAS_Loaded`.
 | `state` | `dynamic` | — | AAS main state; accesses `loaded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L166)
 
 <a id="function-function-mq3-botlib-aas-main-aas-loadfiles-function-aas-loadfiles-state-mapname-runtime-src-mq3-botlib-aas-main-ml-1289944340"></a>
 ### AAS_LoadFiles
@@ -134,7 +134,7 @@ Update `state.mapname`, `state.filename`, `state.runtime` and `state.loaded` dur
 | `runtime` | `dynamic` | — | AAS main runtime; accesses `initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L203)
 
 <a id="function-function-mq3-botlib-aas-main-aas-loadmap-function-aas-loadmap-state-mapname-runtime-src-mq3-botlib-aas-main-ml-283858186"></a>
 ### AAS_LoadMap
@@ -152,7 +152,7 @@ Set `state.initialized` to `false` and `state.loaded` to `false` in `mq3.botlib.
 | `runtime` | `dynamic` | — | AAS main runtime; accesses `initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L211)
 
 <a id="function-function-mq3-botlib-aas-main-aas-modelfromindex-function-aas-modelfromindex-state-index-src-mq3-botlib-aas-main-ml-1514827861"></a>
 ### AAS_ModelFromIndex
@@ -169,7 +169,7 @@ Record or dispatch `"error"` actions in `AAS_ModelFromIndex`.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L145)
 
 <a id="function-function-mq3-botlib-aas-main-aas-projectpointontovector-function-aas-projectpointontovector-point-vstart-vend-src-mq3-botlib-aas-main-ml-802019099"></a>
 ### AAS_ProjectPointOntoVector
@@ -187,7 +187,7 @@ Project a point onto the infinite line through the supplied endpoints, retaining
 | `vEnd` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L196)
 
 <a id="function-function-mq3-botlib-aas-main-aas-setinitialized-function-aas-setinitialized-state-src-mq3-botlib-aas-main-ml-1526682069"></a>
 ### AAS_SetInitialized
@@ -203,7 +203,7 @@ Record or dispatch `"message"` actions in `AAS_SetInitialized`.
 | `state` | `dynamic` | — | AAS main state; accesses `initialized`. May update `state.initialized` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L172)
 
 <a id="function-function-mq3-botlib-aas-main-aas-setup-function-aas-setup-state-src-mq3-botlib-aas-main-ml-939129467"></a>
 ### AAS_Setup
@@ -219,7 +219,7 @@ Update `state.entities`, `state.numframes`, `state.time` and `state.initialized`
 | `state` | `dynamic` | — | AAS main state; accesses `entities`, `maxentities`, `numframes`, `time` and `initialized` and related fields. May update `state.entities`, `state.numframes` and `state.time` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L218)
 
 <a id="function-function-mq3-botlib-aas-main-aas-shutdown-function-aas-shutdown-state-src-mq3-botlib-aas-main-ml-1202137357"></a>
 ### AAS_Shutdown
@@ -235,7 +235,7 @@ Record or dispatch `"message"` actions in `AAS_Shutdown`.
 | `state` | `dynamic` | — | AAS main state; accesses `services`, `runtime`, `entities`, `maxentities` and `loaded` and related fields. May update `state.runtime`, `state.entities` and `state.loaded` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L223)
 
 <a id="function-function-mq3-botlib-aas-main-aas-startframe-function-aas-startframe-state-time-src-mq3-botlib-aas-main-ml-969516712"></a>
 ### AAS_StartFrame
@@ -252,7 +252,7 @@ Update `state.time`, `state.entities.time`, `state.frameroutingupdates` and `sta
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L184)
 
 <a id="function-function-mq3-botlib-aas-main-aas-stringfromindex-function-aas-stringfromindex-state-indexname-stringindex-numindexes-index-src-mq3-botlib-aas-main-ml-112488729"></a>
 ### AAS_StringFromIndex
@@ -272,7 +272,7 @@ Record or dispatch `"error"` actions in `AAS_StringFromIndex`. Return paths incl
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L125)
 
 <a id="function-function-mq3-botlib-aas-main-aas-time-function-aas-time-state-src-mq3-botlib-aas-main-ml-922919861"></a>
 ### AAS_Time
@@ -288,7 +288,7 @@ Return the AAS frame time, or zero when no AAS state is available.
 | `state` | `dynamic` | — | AAS main state; accesses `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L191)
 
 <a id="function-function-mq3-botlib-aas-main-aas-updatestringindexes-function-aas-updatestringindexes-state-numconfigstrings-configstrings-src-mq3-botlib-aas-main-ml-226694741"></a>
 ### AAS_UpdateStringIndexes
@@ -306,7 +306,7 @@ Set `state.configstrings[index]` to `configstrings[index]` and `state.indexesSet
 | `configstrings` | `dynamic` | — | Array or byte sequence accessed at `index`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L160)
 
 <a id="constant-constant-mq3-botlib-aas-main-blerr-noaasfile-const-blerr-noaasfile-3-src-mq3-botlib-aas-main-ml-1622374066"></a>
 ### BLERR_NOAASFILE
@@ -318,7 +318,7 @@ const BLERR_NOAASFILE = 3
 Bot-library error indicating that no AAS navigation map is loaded.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L14)
 
 <a id="constant-constant-mq3-botlib-aas-main-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-aas-main-ml-1798628865"></a>
 ### BLERR_NOERROR
@@ -330,7 +330,7 @@ const BLERR_NOERROR = 0
 Bot-library status indicating successful completion.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L12)
 
 <a id="function-function-mq3-botlib-aas-main-create-function-create-maxclients-maxentities-src-mq3-botlib-aas-main-ml-1131172611"></a>
 ### create
@@ -347,7 +347,7 @@ Build the `mq3.botlib.aas_main.State` result for `create`.
 | `maxentities` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_main.State.maxentities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L101)
 
 <a id="constant-constant-mq3-botlib-aas-main-cs-models-const-cs-models-32-src-mq3-botlib-aas-main-ml-1782773368"></a>
 ### CS_MODELS
@@ -359,7 +359,7 @@ const CS_MODELS = 32
 First configuration-string slot reserved for registered model names.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L16)
 
 <a id="function-function-mq3-botlib-aas-main-emit-function-emit-state-kind-text-src-mq3-botlib-aas-main-ml-747201432"></a>
 ### emit
@@ -377,7 +377,7 @@ Use `state.services.printFn` to perform `emit`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L113)
 
 <a id="function-function-mq3-botlib-aas-main-invoke-function-invoke-state-callback-src-mq3-botlib-aas-main-ml-1480696330"></a>
 ### invoke
@@ -394,7 +394,7 @@ Invoke an optional AAS service with its host context, returning void when the se
 | `callback` | `dynamic` | — | Callback invoked by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L108)
 
 <a id="constant-constant-mq3-botlib-aas-main-max-configstrings-const-max-configstrings-1024-src-mq3-botlib-aas-main-ml-1713099878"></a>
 ### MAX_CONFIGSTRINGS
@@ -406,7 +406,7 @@ const MAX_CONFIGSTRINGS = 1024
 Number of indexed configuration-string slots in the game protocol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L20)
 
 <a id="constant-constant-mq3-botlib-aas-main-max-models-const-max-models-256-src-mq3-botlib-aas-main-ml-586923814"></a>
 ### MAX_MODELS
@@ -418,7 +418,7 @@ const MAX_MODELS = 256
 These are sent over the net as 8 bits.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L18)
 
 <a id="function-function-mq3-botlib-aas-main-services-function-services-context-src-mq3-botlib-aas-main-ml-1624178551"></a>
 ### services
@@ -434,7 +434,7 @@ Create a `mq3.botlib.aas_main.Services` record, initializing `context` from `con
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L97)
 
 - [mq3.botlib.aas_main.Services](Type-mq3-botlib-aas-main-services-380357013.md) — struct
 - [mq3.botlib.aas_main.State](Type-mq3-botlib-aas-main-state-188456918.md) — struct

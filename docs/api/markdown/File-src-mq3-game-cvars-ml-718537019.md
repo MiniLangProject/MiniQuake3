@@ -28,7 +28,7 @@ Set `level.gameCvars` to `state` and `level.cvarSetFn` to `set` in `mq3.game.cva
 | `buildDate` | `dynamic` | — | Value used by `entries` in `["","gamedate",buildDate,64,0,false,false],`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L45)
 
 <a id="function-function-mq3-game-cvars-modulestate-function-modulestate-level-src-mq3-game-cvars-ml-1952350476"></a>
 ### moduleState
@@ -44,7 +44,7 @@ Require and return the game cvar module state attached to the level.
 | `level` | `dynamic` | — | Game-level state; accesses `gameCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L72)
 
 <a id="function-function-mq3-game-cvars-observecvar-function-observecvar-state-kind-index-key-value-src-mq3-game-cvars-ml-920422813"></a>
 ### observeCvar
@@ -64,7 +64,7 @@ Use `state.effectFn` to perform `observeCvar`.
 | `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L82)
 
 <a id="function-function-mq3-game-cvars-rebind-function-rebind-level-state-src-mq3-game-cvars-ml-1205747123"></a>
 ### rebind
@@ -81,7 +81,7 @@ Update `state.level`, `level.gameCvars`, `level.spawner.cvars` and `level.cvarMa
 | `state` | `dynamic` | — | Cvars state; accesses `level`, `registry`, `passwordState` and `rows`. May update `state.level` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L60)
 
 <a id="function-function-mq3-game-cvars-register-function-register-level-src-mq3-game-cvars-ml-1715765482"></a>
 ### register
@@ -97,7 +97,7 @@ Set `level.warmupModificationCount` to `level.warmupCvarModificationCount` in `m
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `cvarSetFn`, `warmupModificationCount` and `warmupCvarModificationCount`. May update `level.warmupModificationCount` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L208)
 
 <a id="function-function-mq3-game-cvars-remapteamshaders-function-remapteamshaders-level-src-mq3-game-cvars-ml-457204498"></a>
 ### remapTeamShaders
@@ -113,7 +113,7 @@ Return `void` for `remapTeamShaders`.
 | `level` | `dynamic` | — | Not read by this implementation; retained in the `remapTeamShaders` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L202)
 
 - [mq3.game.cvars.Row](Type-mq3-game-cvars-row-1047596923.md) — struct
 <a id="function-function-mq3-game-cvars-set-function-set-level-key-value-src-mq3-game-cvars-ml-821160706"></a>
@@ -132,7 +132,7 @@ Apply `mq3.game.cvars.moduleState`, `mq3.game.cvars.observeCvar` and `mq3.qcommo
 | `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L90)
 
 - [mq3.game.cvars.State](Type-mq3-game-cvars-state-907703542.md) — struct
 <a id="function-function-mq3-game-cvars-syncvalue-function-syncvalue-level-row-src-mq3-game-cvars-ml-613341856"></a>
@@ -150,7 +150,7 @@ Update `level.cheats`, `level.dedicated`, `level.spawner.gametype` and `level.sp
 | `row` | `dynamic` | — | Row record; accesses `vm` and `vmName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L97)
 
 <a id="function-function-mq3-game-cvars-update-function-update-level-src-mq3-game-cvars-ml-1323711670"></a>
 ### update
@@ -166,4 +166,4 @@ Use `level.serverCommandFn` to perform `update`.
 | `level` | `dynamic` | — | Game-level state; accesses `serverCommandFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L228)

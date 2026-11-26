@@ -25,7 +25,7 @@ const BOT_GOAL_SIZE = 56
 Byte size of the bot goal record in the bot VM ABI or serialized representation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-dispatch-function-dispatch-runtime-vm-base-op-src-mq3-botlib-ai-goal-state-syscalls-ml-1611876787"></a>
 ### dispatch
@@ -44,7 +44,7 @@ Apply `mq3.botlib.ai_goal_state.resetAvoidGoals`, `mq3.vm.syscall_common.argumen
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L44)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-readgoal-function-readgoal-vm-address-src-mq3-botlib-ai-goal-state-syscalls-ml-742361983"></a>
 ### readGoal
@@ -61,7 +61,7 @@ Build the `mq3.botlib.ai_resource_pools.Goal` result for `readGoal`.
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L25)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-vector-function-vector-data-address-src-mq3-botlib-ai-goal-state-syscalls-ml-77616868"></a>
 ### vector
@@ -78,7 +78,7 @@ Return a new array `[n.bitsFloat(n.readI32(data,address)),n.bitsFloat(n.readI32(
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L16)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-writegoal-function-writegoal-vm-address-goal-src-mq3-botlib-ai-goal-state-syscalls-ml-1894277060"></a>
 ### writeGoal
@@ -96,7 +96,7 @@ Apply `mq3.vm.syscall_common.pointer` and `mq3.botlib.ai_goal_state_syscalls.wri
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L33)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-goal-state-syscalls-ml-536031715"></a>
 ### writeVector
@@ -114,4 +114,4 @@ Write three float bit patterns to consecutive VM memory words for ai goal state 
 | `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L21)

@@ -12,7 +12,7 @@ struct GameEntity
 GameEntity record for server.client_pings, containing `svFlags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L27)
 
 ## Members
 
@@ -26,4 +26,4 @@ svFlags
 Server-side visibility and entity-behavior flags.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_pings.ml#L29)

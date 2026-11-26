@@ -33,7 +33,7 @@ Calls `mq3.client.playable_target_render.bodyColor`, `mq3.client.playable_target
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L173)
 
 <a id="function-function-mq3-client-playable-target-render-bodycolor-function-bodycolor-value-nowmilliseconds-src-mq3-client-playable-target-render-ml-589483819"></a>
 ### bodyColor
@@ -50,7 +50,7 @@ Calls `mq3.client.playable_target_render.healthFraction` from playable target re
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L118)
 
 <a id="function-function-mq3-client-playable-target-render-clampwidth-function-clampwidth-value-src-mq3-client-playable-target-render-ml-1860776641"></a>
 ### clampWidth
@@ -66,7 +66,7 @@ Calls `mq3.compat.numeric.trunc32` from playable target render `clampWidth`. The
 | `value` | `dynamic` | — | Value used by `result=numeric.trunc32(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L132)
 
 <a id="function-function-mq3-client-playable-target-render-deadlines-function-deadlines-feet-head-value-nowmilliseconds-src-mq3-client-playable-target-render-ml-1831693761"></a>
 ### deadLines
@@ -85,7 +85,7 @@ Calls `mq3.client.playable_target_render.bodyColor`, `mq3.client.playable_target
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L157)
 
 <a id="constant-constant-mq3-client-playable-target-render-default-hit-flash-milliseconds-const-default-hit-flash-milliseconds-120-src-mq3-client-playable-target-render-ml-1083911954"></a>
 ### DEFAULT_HIT_FLASH_MILLISECONDS
@@ -97,7 +97,7 @@ const DEFAULT_HIT_FLASH_MILLISECONDS = 120
 Default hit flash duration in milliseconds when the caller supplies no override.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-target-render-default-max-health-const-default-max-health-100-src-mq3-client-playable-target-render-ml-1225626024"></a>
 ### DEFAULT_MAX_HEALTH
@@ -109,7 +109,7 @@ const DEFAULT_MAX_HEALTH = 100
 Fallback max health setting used when constructing the native client simulation or effect configuration.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-target-render-default-respawn-milliseconds-const-default-respawn-milliseconds-3000-src-mq3-client-playable-target-render-ml-585010952"></a>
 ### DEFAULT_RESPAWN_MILLISECONDS
@@ -121,7 +121,7 @@ const DEFAULT_RESPAWN_MILLISECONDS = 3000
 Default respawn duration in milliseconds when the caller supplies no override.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L13)
 
 <a id="function-function-mq3-client-playable-target-render-draw-function-draw-lines-src-mq3-client-playable-target-render-ml-1030780707"></a>
 ### draw
@@ -137,7 +137,7 @@ Calls `mq3.platform.playable_window.drawLine` from playable target render `draw`
 | `lines` | `dynamic` | — | Sequence whose length/content is inspected by `draw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L230)
 
 <a id="function-function-mq3-client-playable-target-render-framelines-function-framelines-camera-targets-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-target-render-ml-627809639"></a>
 ### frameLines
@@ -159,7 +159,7 @@ Calls `mq3.client.playable_target_render.targetLines` from playable target rende
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L222)
 
 <a id="function-function-mq3-client-playable-target-render-healthfraction-function-healthfraction-value-src-mq3-client-playable-target-render-ml-1502439169"></a>
 ### healthFraction
@@ -175,7 +175,7 @@ Calls `mq3.compat.numeric.fdiv`, `mq3.compat.numeric.f32` from playable target r
 | `value` | `dynamic` | — | Record read through `value.maxHealth`, `value.health`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L73)
 
 <a id="function-function-mq3-client-playable-target-render-hit-function-hit-value-damage-nowmilliseconds-src-mq3-client-playable-target-render-ml-1328898300"></a>
 ### hit
@@ -193,7 +193,7 @@ Updates `value.health`, `value.hitFlashUntil`, `value.alive`, `value.respawnAt` 
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L91)
 
 <a id="function-function-mq3-client-playable-target-render-line-function-line-a-b-rgb-src-mq3-client-playable-target-render-ml-2014525334"></a>
 ### line
@@ -211,7 +211,7 @@ Creates a `mq3.client.playable_target_render.LineCommand` record. Assigns `a` fr
 | `rgb` | `dynamic` | — | Value used to initialize `LineCommand.red`, `LineCommand.green`, `LineCommand.blue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L58)
 
 - [mq3.client.playable_target_render.LineCommand](Type-mq3-client-playable-target-render-linecommand-959595227.md) — struct
 <a id="function-function-mq3-client-playable-target-render-point-function-point-x-y-depth-src-mq3-client-playable-target-render-ml-243916132"></a>
@@ -230,7 +230,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable target render `point
 | `depth` | `dynamic` | — | Argument 3 of `mq3.client.playable_viewer.ScreenPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L53)
 
 - [mq3.client.playable_target_render.PreviewTarget](Type-mq3-client-playable-target-render-previewtarget-1864519357.md) — struct
 <a id="function-function-mq3-client-playable-target-render-respawnremaining-function-respawnremaining-value-nowmilliseconds-src-mq3-client-playable-target-render-ml-1276139193"></a>
@@ -248,7 +248,7 @@ Evaluates playable target render `respawnRemaining` and returns `0`, `value.resp
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L82)
 
 <a id="function-function-mq3-client-playable-target-render-target-function-target-origin-health-maxhealth-src-mq3-client-playable-target-render-ml-1572670796"></a>
 ### target
@@ -266,7 +266,7 @@ Calls `mq3.client.playable_target_render.validPoint`, `mq3.client.playable_targe
 | `maxHealth` | `dynamic` | — | Value used by `if maxHealth<=0 then return error(7531,"preview target maximum health must be positive") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L64)
 
 <a id="function-function-mq3-client-playable-target-render-targetlines-function-targetlines-camera-value-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-target-render-ml-199673304"></a>
 ### targetLines
@@ -288,7 +288,7 @@ Calls `mq3.client.playable_target_render.validPoint`, `mq3.client.playable_viewe
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L201)
 
 <a id="function-function-mq3-client-playable-target-render-update-function-update-value-nowmilliseconds-src-mq3-client-playable-target-render-ml-1901322761"></a>
 ### update
@@ -305,7 +305,7 @@ Updates `value.health`, `value.alive`, `value.respawnAt`, `value.hitFlashUntil` 
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L106)
 
 <a id="function-function-mq3-client-playable-target-render-validpoint-function-validpoint-point-src-mq3-client-playable-target-render-ml-1791595834"></a>
 ### validPoint
@@ -321,7 +321,7 @@ Computes `point!=void and len(point)==3` for playable target render `validPoint`
 | `point` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L48)
 
 <a id="function-function-mq3-client-playable-target-render-visiblebounds-function-visiblebounds-feet-head-width-height-src-mq3-client-playable-target-render-ml-1975889459"></a>
 ### visibleBounds
@@ -340,4 +340,4 @@ Tests projected head/feet against the viewport with 64-pixel horizontal and 96-p
 | `height` | `dynamic` | — | Height in the coordinate space used by `visibleBounds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_target_render.ml#L144)

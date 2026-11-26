@@ -12,7 +12,7 @@ struct Tag
 Data record for `mq3.renderer.model_tags.Tag`; groups `name`, `origin`, `axis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L10)
 
 ## Members
 
@@ -26,7 +26,7 @@ axis
 Attachment-tag basis vectors stored for one MD3 model frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L16)
 
 <a id="field-field-mq3-renderer-model-tags-tag-name-name-src-mq3-renderer-model-tags-ml-1884220583"></a>
 ### name
@@ -38,7 +38,7 @@ name
 MD3 attachment label used to locate a tag such as tag_torso or tag_weapon.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L12)
 
 <a id="field-field-mq3-renderer-model-tags-tag-origin-origin-src-mq3-renderer-model-tags-ml-1798116121"></a>
 ### origin
@@ -50,4 +50,4 @@ origin
 Attachment-tag translation in the coordinate system of its MD3 model frame.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L14)

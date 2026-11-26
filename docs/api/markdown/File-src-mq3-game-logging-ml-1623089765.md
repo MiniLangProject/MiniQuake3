@@ -27,7 +27,7 @@ Perform signed integer division with truncation toward zero for game log timesta
 | `divisor` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.quotient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/logging.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/logging.ml#L10)
 
 <a id="function-function-mq3-game-logging-write-function-write-level-payload-src-mq3-game-logging-ml-833326284"></a>
 ### write
@@ -44,4 +44,4 @@ Use `level.gamePrintFn` and `level.logWriteFn` to perform `write`.
 | `payload` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/logging.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/logging.ml#L17)

@@ -30,4 +30,4 @@ Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` 
 | `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spot_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spot_syscalls.ml#L13)

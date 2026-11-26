@@ -12,7 +12,7 @@ struct Draw
 Stores client game info draw record, including `kind`, `x`, `y`, `width`, `height`, `text` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L48)
 
 ## Members
 
@@ -26,7 +26,7 @@ asset
 When constructing this record, `drawLoadingIcons` supplies `handle` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L62)
 
 <a id="field-field-mq3-client-cgame-info-draw-height-height-src-mq3-client-cgame-info-ml-806122535"></a>
 ### height
@@ -38,7 +38,7 @@ height
 Height of the loading-screen image or detail overlay in virtual screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L58)
 
 <a id="field-field-mq3-client-cgame-info-draw-kind-kind-src-mq3-client-cgame-info-ml-1191082189"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Drawing primitive or presentation category selecting how this record is rendered.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L50)
 
 <a id="field-field-mq3-client-cgame-info-draw-text-text-src-mq3-client-cgame-info-ml-1603546607"></a>
 ### text
@@ -62,7 +62,7 @@ text
 Status or information string drawn on the map-loading screen.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L60)
 
 <a id="field-field-mq3-client-cgame-info-draw-width-width-src-mq3-client-cgame-info-ml-596196557"></a>
 ### width
@@ -74,7 +74,7 @@ width
 Width of the loading-screen image or detail overlay in virtual screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L56)
 
 <a id="field-field-mq3-client-cgame-info-draw-x-x-src-mq3-client-cgame-info-ml-373546241"></a>
 ### x
@@ -86,7 +86,7 @@ x
 Horizontal coordinate of a loading-information drawing command in the virtual screen layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L52)
 
 <a id="field-field-mq3-client-cgame-info-draw-y-y-src-mq3-client-cgame-info-ml-2145411605"></a>
 ### y
@@ -98,4 +98,4 @@ y
 Vertical coordinate of a loading-information drawing command in the virtual screen layout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L54)

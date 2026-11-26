@@ -58,9 +58,9 @@ Reachable from entry: **yes**
 - `mq3/renderer/world_surface_selection.ml` as `worldSelection` → [src/mq3/renderer/world_surface_selection.ml](File-src-mq3-renderer-world-surface-selection-ml-1945526598.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
 - `mq3/vm/syscall_qagame_world.ml` as `qworld` → [src/mq3/vm/syscall_qagame_world.ml](File-src-mq3-vm-syscall-qagame-world-ml-663586900.md)
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
-- `std/time.ml` as `time` → `../MiniLangCompilerML/std/time.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
+- `std/time.ml` as `time` → `../../a7594a0c0299/MiniLangCompilerML/std/time.ml` — external dependency
 
 ## Declarations
 
@@ -80,7 +80,7 @@ Calls `mq3.engine.local_qvm_match.runServerTick`, `mq3.engine.local_qvm_match.sn
 | `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L393)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L393)
 
 <a id="function-function-mq3-client-qvm-preview-app-applyinputevent-function-applyinputevent-bridge-matchstate-event-src-mq3-client-qvm-preview-app-ml-717691221"></a>
 ### applyInputEvent
@@ -98,7 +98,7 @@ Calls `mq3.engine.local_qvm_match.keyCatcher`, `mq3.engine.local_qvm_match.clien
 | `event` | `dynamic` | — | Record read through `event.type`, `event.value`, `event.value2`, `event.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L274)
 
 <a id="function-function-mq3-client-qvm-preview-app-attachworldeffects-function-attachworldeffects-batch-triangles-fogcatalog-dlightcatalog-dlightreceiveflags-src-mq3-client-qvm-preview-app-ml-1732177889"></a>
 ### attachWorldEffects
@@ -118,7 +118,7 @@ Calls `mq3.renderer.playable_world_batch.attachFog`, `mq3.renderer.playable_worl
 | `dlightReceiveFlags` | `dynamic` | — | Value used by `if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L433)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L433)
 
 <a id="function-function-mq3-client-qvm-preview-app-bootframe-function-bootframe-archive-map-qvmroot-src-mq3-client-qvm-preview-app-ml-1136985614"></a>
 ### bootFrame
@@ -136,7 +136,7 @@ Adapts `mq3.client.qvm_preview_app.bootFrameSettings` to QVM preview app `bootFr
 | `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L577)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L577)
 
 <a id="function-function-mq3-client-qvm-preview-app-bootframesettings-function-bootframesettings-archive-map-qvmroot-settings-src-mq3-client-qvm-preview-app-ml-439464879"></a>
 ### bootFrameSettings
@@ -155,7 +155,7 @@ Adapts `mq3.client.qvm_preview_app.bootFrameSettingsNamed` to QVM preview app `b
 | `settings` | `dynamic` | — | Argument 5 of `mq3.client.qvm_preview_app.bootFrameSettingsNamed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L572)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L572)
 
 <a id="function-function-mq3-client-qvm-preview-app-bootframesettingsnamed-function-bootframesettingsnamed-archive-map-mapname-qvmroot-settings-src-mq3-client-qvm-preview-app-ml-874531042"></a>
 ### bootFrameSettingsNamed
@@ -175,7 +175,7 @@ Calls `mq3.engine.local_qvm_match.bootWithQvmsSettingsNamed`, `mq3.engine.local_
 | `settings` | `dynamic` | — | Value used by `state=match.bootWithQvmsSettingsNamed(archive,map,mapName,1000,qvmRoot,settings)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L548)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L548)
 
 <a id="function-function-mq3-client-qvm-preview-app-bootmatch-function-bootmatch-archive-map-mapname-qvmroot-settings-source-src-mq3-client-qvm-preview-app-ml-787280379"></a>
 ### bootMatch
@@ -196,7 +196,7 @@ Calls `mq3.client.qvm_preview_app.bootFrameSettingsNamed`, `mq3.engine.local_qvm
 | `source` | `dynamic` | — | Record read through `source.protocol`, `source.demo`, `source.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L586)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L586)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-cinematic-texture-first-slot-const-cinematic-texture-first-slot-4055-src-mq3-client-qvm-preview-app-ml-1695752903"></a>
 ### CINEMATIC_TEXTURE_FIRST_SLOT
@@ -208,7 +208,7 @@ const CINEMATIC_TEXTURE_FIRST_SLOT = 4055
 Texture-cache slot or starting slot reserved for the cinematic rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="function-function-mq3-client-qvm-preview-app-clearclientinput-function-clearclientinput-bridge-src-mq3-client-qvm-preview-app-ml-7971657"></a>
 ### clearClientInput
@@ -224,7 +224,7 @@ Adapts `mq3.client.qvm_preview_app.releaseGameInput` to QVM preview app `clearCl
 | `bridge` | `dynamic` | — | Argument 1 of `mq3.client.qvm_preview_app.releaseGameInput`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L335)
 
 - [mq3.client.qvm_preview_app.ClientInputBridge](Type-mq3-client-qvm-preview-app-clientinputbridge-886912792.md) — struct
 <a id="function-function-mq3-client-qvm-preview-app-collectcinematicaudio-function-collectcinematicaudio-state-audio-src-mq3-client-qvm-preview-app-ml-242520023"></a>
@@ -242,7 +242,7 @@ Calls `mq3.client.cinematic_runtime.takeAudio`, `mq3.audio.qvm_playback.queueRaw
 | `audio` | `dynamic` | — | Value used by `for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L530)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L530)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-console-background-texture-slot-const-console-background-texture-slot-4052-src-mq3-client-qvm-preview-app-ml-1551661290"></a>
 ### CONSOLE_BACKGROUND_TEXTURE_SLOT
@@ -254,7 +254,7 @@ const CONSOLE_BACKGROUND_TEXTURE_SLOT = 4052
 Texture-cache slot or starting slot reserved for the console background rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L71)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-console-font-texture-slot-const-console-font-texture-slot-4054-src-mq3-client-qvm-preview-app-ml-1607473704"></a>
 ### CONSOLE_FONT_TEXTURE_SLOT
@@ -266,7 +266,7 @@ const CONSOLE_FONT_TEXTURE_SLOT = 4054
 Texture-cache slot or starting slot reserved for the console font rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L73)
 
 <a id="function-function-mq3-client-qvm-preview-app-consolecolor-function-consolecolor-index-src-mq3-client-qvm-preview-app-ml-1812814962"></a>
 ### consoleColor
@@ -282,7 +282,7 @@ Evaluates QVM preview app `consoleColor` and returns `[0,0,0]`, `[255,0,0]`, `[0
 | `index` | `dynamic` | — | Value tested by `index==0`, `index==1` and additional values before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L338)
 
 <a id="function-function-mq3-client-qvm-preview-app-drawcinematics-function-drawcinematics-state-mode-src-mq3-client-qvm-preview-app-ml-1324354788"></a>
 ### drawCinematics
@@ -299,7 +299,7 @@ Calls `mq3.client.cinematic_runtime.takeDraws`, `mq3.client.cinematic_runtime.pr
 | `mode` | `dynamic` | — | Record read through `mode.width`, `mode.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L512)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L512)
 
 <a id="function-function-mq3-client-qvm-preview-app-drawconsolefield-function-drawconsolefield-media-field-scalex-scaley-src-mq3-client-qvm-preview-app-ml-1392223159"></a>
 ### drawConsoleField
@@ -318,7 +318,7 @@ Calls `mq3.client.baseq3_match_display.appendString` from QVM preview app `drawC
 | `scaleY` | `dynamic` | — | Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L355)
 
 <a id="function-function-mq3-client-qvm-preview-app-drawconsoleglyph-function-drawconsoleglyph-media-glyph-scalex-scaley-src-mq3-client-qvm-preview-app-ml-1785230289"></a>
 ### drawConsoleGlyph
@@ -337,7 +337,7 @@ Calls `mq3.client.qvm_preview_app.consoleColor`, `mq3.client.baseq3_match_displa
 | `scaleY` | `dynamic` | — | Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L347)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L347)
 
 <a id="function-function-mq3-client-qvm-preview-app-drawframe-function-drawframe-state-clientclock-realtime-demotime-src-mq3-client-qvm-preview-app-ml-914415569"></a>
 ### drawFrame
@@ -356,7 +356,7 @@ Calls `mq3.engine.local_qvm_match.beginRendererFrame`, `mq3.client.cgame_clock.f
 | `demoTime` | `dynamic` | — | Value used by `drawTime=demoTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L405)
 
 <a id="function-function-mq3-client-qvm-preview-app-drawproductiveconsole-function-drawproductiveconsole-media-background-matchstate-width-height-now-src-mq3-client-qvm-preview-app-ml-1382357431"></a>
 ### drawProductiveConsole
@@ -377,7 +377,7 @@ Calls `mq3.engine.local_qvm_match.clientConsoleState`, `mq3.client.console_input
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L365)
 
 <a id="function-function-mq3-client-qvm-preview-app-ensureplayablebindings-function-ensureplayablebindings-state-src-mq3-client-qvm-preview-app-ml-95324173"></a>
 ### ensurePlayableBindings
@@ -393,7 +393,7 @@ Calls `mq3.engine.local_qvm_match.keyBinding`, `mq3.engine.local_qvm_match.setKe
 | `state` | `dynamic` | — | Shared QVM preview app state passed to the helper calls in `ensurePlayableBindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L383)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L383)
 
 <a id="function-function-mq3-client-qvm-preview-app-fail-function-fail-message-src-mq3-client-qvm-preview-app-ml-962886303"></a>
 ### fail
@@ -409,7 +409,7 @@ Creates the QVM preview app error `7682` with diagnostic text `"QVM preview: "+m
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"QVM preview: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L162)
 
 <a id="function-function-mq3-client-qvm-preview-app-framepercentile-function-framepercentile-histogram-count-percent-src-mq3-client-qvm-preview-app-ml-1426739320"></a>
 ### framePercentile
@@ -427,7 +427,7 @@ Adapts `mq3.client.frame_timing.percentile` to QVM preview app `framePercentile`
 | `percent` | `dynamic` | — | Argument 3 of `mq3.client.frame_timing.percentile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L167)
 
 <a id="function-function-mq3-client-qvm-preview-app-largestview-function-largestview-views-src-mq3-client-qvm-preview-app-ml-1166095238"></a>
 ### largestView
@@ -443,7 +443,7 @@ Evaluates QVM preview app `largestView` and returns `void`, `result` according t
 | `views` | `dynamic` | — | Sequence read at `views[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L182)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-max-qvm-2d-texture-slots-const-max-qvm-2d-texture-slots-980-src-mq3-client-qvm-preview-app-ml-1327128116"></a>
 ### MAX_QVM_2D_TEXTURE_SLOTS
@@ -455,7 +455,7 @@ const MAX_QVM_2D_TEXTURE_SLOTS = 980
 Capacity limit for the qvm 2 d texture slots collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L69)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-max-qvm-texture-slots-const-max-qvm-texture-slots-1024-src-mq3-client-qvm-preview-app-ml-2139207022"></a>
 ### MAX_QVM_TEXTURE_SLOTS
@@ -467,7 +467,7 @@ const MAX_QVM_TEXTURE_SLOTS = 1024
 Capacity limit for the qvm texture slots collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L64)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-md3-frame-cache-entries-const-md3-frame-cache-entries-32-src-mq3-client-qvm-preview-app-ml-1096608212"></a>
 ### MD3_FRAME_CACHE_ENTRIES
@@ -479,7 +479,7 @@ const MD3_FRAME_CACHE_ENTRIES = 32
 Retention bound, not a scene/triangle budget: evicted poses are recomputed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L81)
 
 <a id="function-function-mq3-client-qvm-preview-app-movementaxis-function-movementaxis-positive-negative-src-mq3-client-qvm-preview-app-ml-20105338"></a>
 ### movementAxis
@@ -496,7 +496,7 @@ Evaluates QVM preview app `movementAxis` and returns `127`, `-127`, `0` accordin
 | `negative` | `dynamic` | — | Value used by `if positive and not negative then return 127 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L240)
 
 - [mq3.client.qvm_preview_app.NativeInput](Type-mq3-client-qvm-preview-app-nativeinput-2029931049.md) — struct
 <a id="function-function-mq3-client-qvm-preview-app-nativekeydown-function-nativekeydown-input-key-src-mq3-client-qvm-preview-app-ml-655810527"></a>
@@ -514,7 +514,7 @@ Calls `mq3.client.ui_input_latch.keyDown`, `mq3.platform.playable_window.inputKe
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding QVM preview app entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L248)
 
 <a id="function-function-mq3-client-qvm-preview-app-nativemousedelta-function-nativemousedelta-input-src-mq3-client-qvm-preview-app-ml-1028687110"></a>
 ### nativeMouseDelta
@@ -530,7 +530,7 @@ Reads `input.mouse` for QVM preview app `nativeMouseDelta`.
 | `input` | `dynamic` | — | Record read through `input.mouse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L254)
 
 <a id="function-function-mq3-client-qvm-preview-app-observenativeinputevents-function-observenativeinputevents-input-events-src-mq3-client-qvm-preview-app-ml-802665141"></a>
 ### observeNativeInputEvents
@@ -547,7 +547,7 @@ Calls `mq3.client.ui_input_latch.observe` from QVM preview app `observeNativeInp
 | `events` | `dynamic` | — | Value used by `for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L258)
 
 - [mq3.client.qvm_preview_app.PipelineProfile](Type-mq3-client-qvm-preview-app-pipelineprofile-146312419.md) — struct
 - [mq3.client.qvm_preview_app.PreparedPortal](Type-mq3-client-qvm-preview-app-preparedportal-1948659867.md) — struct
@@ -586,7 +586,7 @@ Updates `portalCache.clippedFaces` during QVM preview app `preparePortal`.
 | `lodBias` | `dynamic` | — | Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L460)
 
 <a id="function-function-mq3-client-qvm-preview-app-prepareportals-function-prepareportals-preparedviews-selectedworld-portalcache-worldcatalog-qvmcatalog-archive-modelassets-assetnames-kinds-framecache-grid-videomanager-worldcache-worldconfig-skyflags-fogcatalog-dlightcatalog-dlightreceiveflags-shadowmode-lodscale-lodbias-src-mq3-client-qvm-preview-app-ml-1825222794"></a>
 ### preparePortals
@@ -622,7 +622,7 @@ Calls `std.ds.list.List.withCapacity`, `mq3.client.qvm_preview_app.preparePortal
 | `lodBias` | `dynamic` | — | Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L506)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L506)
 
 <a id="function-function-mq3-client-qvm-preview-app-prepareviews-function-prepareviews-views-catalog-archive-modelassets-assetnames-kinds-framecache-grid-videomanager-previousviews-profile-fogcatalog-dlightcatalog-shadowmode-lodscale-lodbias-mode-src-mq3-client-qvm-preview-app-ml-702764398"></a>
 ### prepareViews
@@ -654,7 +654,7 @@ Updates `profile.expansion`, `profile.material`, `profile.batch` during QVM prev
 | `mode` | `dynamic` | — | Record read through `mode.width`, `mode.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L216)
 
 <a id="function-function-mq3-client-qvm-preview-app-queueexpandedinput-function-queueexpandedinput-matchstate-framestate-expanded-src-mq3-client-qvm-preview-app-ml-1802369317"></a>
 ### queueExpandedInput
@@ -672,7 +672,7 @@ Calls `mq3.client.qvm_frame_input.handlesAction`, `mq3.engine.local_qvm_match.qu
 | `expanded` | `dynamic` | — | Value used by `if expanded is error then return expanded end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L266)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-qvm-2d-texture-first-slot-const-qvm-2d-texture-first-slot-3072-src-mq3-client-qvm-preview-app-ml-954539603"></a>
 ### QVM_2D_TEXTURE_FIRST_SLOT
@@ -684,7 +684,7 @@ const QVM_2D_TEXTURE_FIRST_SLOT = 3072
 Texture-cache slot or starting slot reserved for the qvm 2 d rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L66)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-qvm-texture-first-slot-const-qvm-texture-first-slot-2048-src-mq3-client-qvm-preview-app-ml-587016905"></a>
 ### QVM_TEXTURE_FIRST_SLOT
@@ -696,7 +696,7 @@ const QVM_TEXTURE_FIRST_SLOT = 2048
 Texture-cache slot or starting slot reserved for the qvm rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L62)
 
 <a id="function-function-mq3-client-qvm-preview-app-refdefcamera-function-refdefcamera-refdef-src-mq3-client-qvm-preview-app-ml-123126834"></a>
 ### refdefCamera
@@ -712,7 +712,7 @@ Calls `mq3.shared.math.vectoangles`, `mq3.client.playable_viewer.camera` from QV
 | `refdef` | `dynamic` | — | Record read through `refdef.viewaxis`, `refdef.vieworg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L195)
 
 <a id="function-function-mq3-client-qvm-preview-app-refreshuiframe-function-refreshuiframe-ui-servertime-src-mq3-client-qvm-preview-app-ml-902152318"></a>
 ### refreshUiFrame
@@ -729,7 +729,7 @@ Updates `ui.frameCount` during QVM preview app `refreshUiFrame`.
 | `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L314)
 
 <a id="function-function-mq3-client-qvm-preview-app-releasecinematics-function-releasecinematics-src-mq3-client-qvm-preview-app-ml-1685856072"></a>
 ### releaseCinematics
@@ -741,7 +741,7 @@ function releaseCinematics()
 Calls `mq3.platform.playable_window.releaseTexture` from QVM preview app `releaseCinematics`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L539)
 
 <a id="function-function-mq3-client-qvm-preview-app-releasegameinput-function-releasegameinput-bridge-time-src-mq3-client-qvm-preview-app-ml-613051542"></a>
 ### releaseGameInput
@@ -758,7 +758,7 @@ Calls `mq3.engine.local_qvm_match.keyIsDown`, `mq3.client.qvm_frame_input.applyB
 | `time` | `dynamic` | — | Value used by `expanded=frameInput.applyBound(bridge.frame,bridge.plan,time,window.INPUT_KEY,key,0,match.keyBinding(bridge.matchState,key),match.keyCatcher(b...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L323)
 
 <a id="function-function-mq3-client-qvm-preview-app-requestedquit-function-requestedquit-state-src-mq3-client-qvm-preview-app-ml-1441453187"></a>
 ### requestedQuit
@@ -774,7 +774,7 @@ Calls `std.string.toLowerAscii`, `std.string.replaceAll`, `std.string.split` and
 | `state` | `dynamic` | — | Record read through `state.context`, `state.context.console`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L172)
 
 <a id="function-function-mq3-client-qvm-preview-app-run-function-run-archive-map-qvmroot-src-mq3-client-qvm-preview-app-ml-492092014"></a>
 ### run
@@ -792,7 +792,7 @@ Adapts `mq3.client.qvm_preview_app.runLimited` to QVM preview app `run`, returni
 | `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimited`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L1026)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L1026)
 
 <a id="function-function-mq3-client-qvm-preview-app-rundesktopmatch-function-rundesktopmatch-archive-map-mapname-qvmroot-settings-session-src-mq3-client-qvm-preview-app-ml-1785129682"></a>
 ### runDesktopMatch
@@ -813,7 +813,7 @@ Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runDesktopMatch
 | `session` | `dynamic` | — | Argument 7 of `mq3.client.qvm_preview_app.runMatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L976)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L976)
 
 <a id="function-function-mq3-client-qvm-preview-app-rundesktopstream-function-rundesktopstream-archive-map-mapname-qvmroot-settings-session-source-src-mq3-client-qvm-preview-app-ml-1664250057"></a>
 ### runDesktopStream
@@ -835,7 +835,7 @@ Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runDesktopStrea
 | `source` | `dynamic` | — | Argument 8 of `mq3.client.qvm_preview_app.runMatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L985)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L985)
 
 <a id="function-function-mq3-client-qvm-preview-app-runlimited-function-runlimited-archive-map-qvmroot-maxframes-src-mq3-client-qvm-preview-app-ml-1574487700"></a>
 ### runLimited
@@ -854,7 +854,7 @@ Adapts `mq3.client.qvm_preview_app.runLimitedSettings` to QVM preview app `runLi
 | `maxFrames` | `dynamic` | — | Argument 4 of `mq3.client.qvm_preview_app.runLimitedSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L1008)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L1008)
 
 <a id="function-function-mq3-client-qvm-preview-app-runlimitedsettings-function-runlimitedsettings-archive-map-qvmroot-maxframes-settings-src-mq3-client-qvm-preview-app-ml-1012234959"></a>
 ### runLimitedSettings
@@ -874,7 +874,7 @@ Adapts `mq3.client.qvm_preview_app.runLimitedSettingsNamed` to QVM preview app `
 | `settings` | `dynamic` | — | Argument 6 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L1002)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L1002)
 
 <a id="function-function-mq3-client-qvm-preview-app-runlimitedsettingsnamed-function-runlimitedsettingsnamed-archive-map-mapname-qvmroot-maxframes-settings-src-mq3-client-qvm-preview-app-ml-946218626"></a>
 ### runLimitedSettingsNamed
@@ -895,7 +895,7 @@ Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runLimitedSetti
 | `settings` | `dynamic` | — | Argument 6 of `mq3.client.qvm_preview_app.runMatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L995)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L995)
 
 <a id="function-function-mq3-client-qvm-preview-app-runmatch-function-runmatch-archive-map-mapname-qvmroot-maxframes-settings-session-source-src-mq3-client-qvm-preview-app-ml-1388974959"></a>
 ### runMatch
@@ -918,7 +918,7 @@ Calls `mq3.platform.playable_window.open`, `mq3.client.map_loading.create`, `mq3
 | `source` | `dynamic` | — | Record read through `source.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L652)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L652)
 
 <a id="function-function-mq3-client-qvm-preview-app-runmatchwithloading-function-runmatchwithloading-archive-map-mapname-qvmroot-maxframes-settings-session-source-screen-initialwidth-initialheight-src-mq3-client-qvm-preview-app-ml-1787234940"></a>
 ### runMatchWithLoading
@@ -944,7 +944,7 @@ Updates `session.videoWidth`, `session.videoHeight`, `session.action`, `session.
 | `initialHeight` | `dynamic` | — | Value used by `loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L687)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L687)
 
 <a id="function-function-mq3-client-qvm-preview-app-runwithsettings-function-runwithsettings-archive-map-qvmroot-settings-src-mq3-client-qvm-preview-app-ml-1966946263"></a>
 ### runWithSettings
@@ -963,7 +963,7 @@ Adapts `mq3.client.qvm_preview_app.runLimitedSettings` to QVM preview app `runWi
 | `settings` | `dynamic` | — | Argument 5 of `mq3.client.qvm_preview_app.runLimitedSettings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L1014)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L1014)
 
 <a id="function-function-mq3-client-qvm-preview-app-runwithsettingsnamed-function-runwithsettingsnamed-archive-map-mapname-qvmroot-settings-src-mq3-client-qvm-preview-app-ml-101609094"></a>
 ### runWithSettingsNamed
@@ -983,7 +983,7 @@ Adapts `mq3.client.qvm_preview_app.runLimitedSettingsNamed` to QVM preview app `
 | `settings` | `dynamic` | — | Argument 6 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L1021)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L1021)
 
 - [mq3.client.qvm_preview_app.ScreenPoint](Type-mq3-client-qvm-preview-app-screenpoint-1997150010.md) — struct
 <a id="function-function-mq3-client-qvm-preview-app-selectioncamera-function-selectioncamera-view-src-mq3-client-qvm-preview-app-ml-657531987"></a>
@@ -1000,7 +1000,7 @@ Calls `mq3.shared.math.vectoangles`, `mq3.client.playable_viewer.camera` from QV
 | `view` | `dynamic` | — | Record read through `view.refdef.viewaxis`, `view.refdef.vieworg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L190)
 
 <a id="function-function-mq3-client-qvm-preview-app-sendstreamframe-function-sendstreamframe-state-source-created-now-src-mq3-client-qvm-preview-app-ml-407189168"></a>
 ### sendStreamFrame
@@ -1019,7 +1019,7 @@ Updates `source.systemInfo` during QVM preview app `sendStreamFrame`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L624)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L624)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-source-height-const-source-height-720-src-mq3-client-qvm-preview-app-ml-1988144262"></a>
 ### SOURCE_HEIGHT
@@ -1031,7 +1031,7 @@ const SOURCE_HEIGHT = 720
 Nominal source-view height used when scaling QVM presentation into the preview target.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L79)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-source-width-const-source-width-1280-src-mq3-client-qvm-preview-app-ml-1418421168"></a>
 ### SOURCE_WIDTH
@@ -1043,7 +1043,7 @@ const SOURCE_WIDTH = 1280
 Nominal source-view width used when scaling QVM presentation into the preview target.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L77)
 
 <a id="function-function-mq3-client-qvm-preview-app-stoploading-function-stoploading-screen-state-session-result-src-mq3-client-qvm-preview-app-ml-1751609184"></a>
 ### stopLoading
@@ -1062,7 +1062,7 @@ Updates `session.action` during QVM preview app `stopLoading`.
 | `result` | `dynamic` | — | Value used by `if result is error then return result end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L666)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L666)
 
 - [mq3.client.qvm_preview_app.StreamSource](Type-mq3-client-qvm-preview-app-streamsource-1230160357.md) — struct
 <a id="function-function-mq3-client-qvm-preview-app-updatestream-function-updatestream-state-source-clientclock-servertime-demotime-src-mq3-client-qvm-preview-app-ml-417134119"></a>
@@ -1083,7 +1083,7 @@ Calls `mq3.client.demo_playback.advance`, `mq3.client.remote_play.pump`, `mq3.en
 | `demoTime` | `dynamic` | — | Value used by `read=try(demos.advance(source.transport,demoTime,serverTime))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L605)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L605)
 
 <a id="function-function-mq3-client-qvm-preview-app-uploadlightmaps-function-uploadlightmaps-map-src-mq3-client-qvm-preview-app-ml-1440600492"></a>
 ### uploadLightmaps
@@ -1099,7 +1099,7 @@ Calls `mq3.renderer.bsp_render_data.lightmapRgba`, `mq3.platform.playable_window
 | `map` | `dynamic` | — | Record read through `map.counts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L419)
 
 <a id="constant-constant-mq3-client-qvm-preview-app-world-texture-first-slot-const-world-texture-first-slot-256-src-mq3-client-qvm-preview-app-ml-311842162"></a>
 ### WORLD_TEXTURE_FIRST_SLOT
@@ -1111,4 +1111,4 @@ const WORLD_TEXTURE_FIRST_SLOT = 256
 Texture-cache slot or starting slot reserved for the world rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L60)

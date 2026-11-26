@@ -28,7 +28,7 @@ Read one argument from the game command token list with the command parser's mis
 | `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/command_args.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/command_args.ml#L11)
 
 <a id="function-function-mq3-game-command-args-concat-function-concat-argv-start-src-mq3-game-command-args-ml-122410886"></a>
 ### concat
@@ -45,4 +45,4 @@ Join the selected game command arguments into the text consumed by command handl
 | `start` | `dynamic` | — | Value used by `concat` in `index = start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/command_args.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/command_args.ml#L19)

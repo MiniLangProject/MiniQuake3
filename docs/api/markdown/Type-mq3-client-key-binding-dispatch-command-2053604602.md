@@ -12,7 +12,7 @@ struct Command
 Stores key binding dispatch command data, including `text`, `action`, `button`, `down`, `key`, `time`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L9)
 
 ## Members
 
@@ -26,7 +26,7 @@ action
 When constructing this record, `emit` supplies `action` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L14)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-button-button-src-mq3-client-key-binding-dispatch-ml-417592566"></a>
 ### button
@@ -38,7 +38,7 @@ button
 When constructing this record, `emit` supplies `true` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L16)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-down-down-src-mq3-client-key-binding-dispatch-ml-2136099518"></a>
 ### down
@@ -50,7 +50,7 @@ down
 When constructing this record, `emit` supplies `down` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L18)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-key-key-src-mq3-client-key-binding-dispatch-ml-991787674"></a>
 ### key
@@ -62,7 +62,7 @@ key
 When constructing this record, `emit` supplies `key` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L20)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-text-text-src-mq3-client-key-binding-dispatch-ml-101926256"></a>
 ### text
@@ -74,7 +74,7 @@ text
 Expanded console command ready for execution, including button press or release arguments when required.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L12)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-time-time-src-mq3-client-key-binding-dispatch-ml-2076790008"></a>
 ### time
@@ -86,4 +86,4 @@ time
 Input event timestamp in milliseconds appended to generated button press or release commands.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L22)

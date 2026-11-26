@@ -12,7 +12,7 @@ struct Playback
 Stores demo playback record, including `serverMessageSequence`, `lastPacketTime`, `offset`, `completed`, `truncated`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/demo.ml#L101)
 
 ## Members
 
@@ -26,7 +26,7 @@ completed
 When constructing this record, `playback` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/demo.ml#L109)
 
 <a id="field-field-mq3-client-demo-playback-lastpackettime-lastpackettime-src-mq3-client-demo-ml-1275242632"></a>
 ### lastPacketTime
@@ -38,7 +38,7 @@ lastPacketTime
 Client timestamp of the latest received server packet, used to detect timeouts.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/demo.ml#L105)
 
 <a id="field-field-mq3-client-demo-playback-offset-offset-src-mq3-client-demo-ml-1937030924"></a>
 ### offset
@@ -50,7 +50,7 @@ offset
 When constructing this record, `playback` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/demo.ml#L107)
 
 <a id="field-field-mq3-client-demo-playback-servermessagesequence-servermessagesequence-src-mq3-client-demo-ml-1047018022"></a>
 ### serverMessageSequence
@@ -62,7 +62,7 @@ serverMessageSequence
 Highest server network-message sequence observed by the client.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/demo.ml#L103)
 
 <a id="field-field-mq3-client-demo-playback-truncated-truncated-src-mq3-client-demo-ml-1552549034"></a>
 ### truncated
@@ -74,4 +74,4 @@ truncated
 When constructing this record, `playback` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/demo.ml#L111)

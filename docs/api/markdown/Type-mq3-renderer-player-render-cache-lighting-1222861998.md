@@ -12,7 +12,7 @@ struct Lighting
 Data record for `mq3.renderer.player_render_cache.Lighting`; groups `direction`, `ambient`, `directed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L59)
 
 ## Members
 
@@ -26,7 +26,7 @@ ambient
 Ambient light contribution sampled or applied by the renderer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L63)
 
 <a id="field-field-mq3-renderer-player-render-cache-lighting-directed-directed-src-mq3-renderer-player-render-cache-ml-468090261"></a>
 ### directed
@@ -38,7 +38,7 @@ directed
 Directional light contribution sampled or applied by the renderer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L65)
 
 <a id="field-field-mq3-renderer-player-render-cache-lighting-direction-direction-src-mq3-renderer-player-render-cache-ml-1024649925"></a>
 ### direction
@@ -50,4 +50,4 @@ direction
 Direction of the dominant light contribution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L61)

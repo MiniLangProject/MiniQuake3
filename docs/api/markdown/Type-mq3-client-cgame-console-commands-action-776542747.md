@@ -12,7 +12,7 @@ struct Action
 Typed host boundary used by the fully native command dispatcher.  The retail QVM host sets retailActive so the native mirror can still be checked without sending a command, changing a Cvar, or drawing the same UI twice.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L362)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L362)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Host service category recorded with a request emitted while executing local CGame commands, including score, view, and weapon-selection requests.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L365)
 
 <a id="field-field-mq3-client-cgame-console-commands-action-dispatched-dispatched-src-mq3-client-cgame-console-commands-ml-1064161919"></a>
 ### dispatched
@@ -38,7 +38,7 @@ dispatched
 True when this request is marked for native dispatch while executing local CGame commands, including score, view, and weapon-selection requests; false when its native effect is suppressed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L381)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L381)
 
 <a id="field-field-mq3-client-cgame-console-commands-action-kind-kind-src-mq3-client-cgame-console-commands-ml-492482569"></a>
 ### kind
@@ -50,7 +50,7 @@ kind
 Operation selector telling the host how to interpret a request emitted while executing local CGame commands, including score, view, and weapon-selection requests.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L368)
 
 <a id="field-field-mq3-client-cgame-console-commands-action-name-name-src-mq3-client-cgame-console-commands-ml-163811555"></a>
 ### name
@@ -62,7 +62,7 @@ name
 Cvar, console command, client command, or sound resource targeted by the client-game command effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L371)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L371)
 
 <a id="field-field-mq3-client-cgame-console-commands-action-number-number-src-mq3-client-cgame-console-commands-ml-1545559863"></a>
 ### number
@@ -74,7 +74,7 @@ number
 Numeric argument interpreted by the selected host operation while executing local CGame commands, including score, view, and weapon-selection requests.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L378)
 
 <a id="field-field-mq3-client-cgame-console-commands-action-text-text-src-mq3-client-cgame-console-commands-ml-567591687"></a>
 ### text
@@ -86,7 +86,7 @@ text
 Cvar value, executable command text, or console message produced by a client-game console command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L373)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L373)
 
 <a id="field-field-mq3-client-cgame-console-commands-action-text2-text2-src-mq3-client-cgame-console-commands-ml-2019747409"></a>
 ### text2
@@ -98,4 +98,4 @@ text2
 When constructing this record, `emit` supplies `text2` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L375)

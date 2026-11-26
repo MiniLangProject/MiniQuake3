@@ -28,7 +28,7 @@ Compute cached in vm.font_abi.
 | `pointSize` | `dynamic` | — | Point size used in `(item.pointSize == pointSize)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L77)
 
 - [mq3.vm.font_abi.Cached](Type-mq3-vm-font-abi-cached-1606670249.md) — struct
 <a id="function-function-mq3-vm-font-abi-create-function-create-archive-src-mq3-vm-font-abi-ml-874868678"></a>
@@ -45,7 +45,7 @@ Create `mq3.vm.font_abi.Registry` with archive=archive; fonts=[].
 | `archive` | `dynamic` | — | Initial `archive` field stored in the returned or constructed `mq3.vm.font_abi.Registry` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L62)
 
 <a id="function-function-mq3-vm-font-abi-cstring-function-cstring-data-offset-capacity-src-mq3-vm-font-abi-ml-1913894193"></a>
 ### cString
@@ -63,7 +63,7 @@ Compute c string in vm.font_abi; the normal completion returns `decode(slice(dat
 | `capacity` | `dynamic` | — | Capacity used in `(count < capacity)` and `((count < capacity) and (data[(offset + count)] != 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L70)
 
 <a id="function-function-mq3-vm-font-abi-fail-function-fail-message-src-mq3-vm-font-abi-ml-241031899"></a>
 ### fail
@@ -79,7 +79,7 @@ Create the vm.font_abi error for `fail` with 7690 and the supplied diagnostic te
 | `message` | `dynamic` | — | Message used in `("font ABI: " + message)` and `error(7690, ("font ABI: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L59)
 
 <a id="constant-constant-mq3-vm-font-abi-font-info-size-const-font-info-size-20548-src-mq3-vm-font-abi-ml-152635872"></a>
 ### FONT_INFO_SIZE
@@ -91,7 +91,7 @@ const FONT_INFO_SIZE = 20548
 Byte size used for font info storage or binary layout in mq3.vm.font_abi.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L25)
 
 <a id="constant-constant-mq3-vm-font-abi-font-name-bytes-const-font-name-bytes-64-src-mq3-vm-font-abi-ml-1894725621"></a>
 ### FONT_NAME_BYTES
@@ -103,7 +103,7 @@ const FONT_NAME_BYTES = 64
 Byte size used for font name storage or binary layout in mq3.vm.font_abi.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L23)
 
 <a id="constant-constant-mq3-vm-font-abi-font-name-offset-const-font-name-offset-20484-src-mq3-vm-font-abi-ml-1848321063"></a>
 ### FONT_NAME_OFFSET
@@ -115,7 +115,7 @@ const FONT_NAME_OFFSET = 20484
 Byte offset of the font-name buffer inside a legacy fontInfo record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L21)
 
 <a id="constant-constant-mq3-vm-font-abi-glyph-handle-offset-const-glyph-handle-offset-44-src-mq3-vm-font-abi-ml-1876648171"></a>
 ### GLYPH_HANDLE_OFFSET
@@ -127,7 +127,7 @@ const GLYPH_HANDLE_OFFSET = 44
 Byte offset of the renderer handle inside a legacy glyphInfo record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L13)
 
 <a id="constant-constant-mq3-vm-font-abi-glyph-scale-offset-const-glyph-scale-offset-20480-src-mq3-vm-font-abi-ml-1781576319"></a>
 ### GLYPH_SCALE_OFFSET
@@ -139,7 +139,7 @@ const GLYPH_SCALE_OFFSET = 20480
 Byte offset of glyphScale after the fontInfo glyph table.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L19)
 
 <a id="constant-constant-mq3-vm-font-abi-glyph-shader-bytes-const-glyph-shader-bytes-32-src-mq3-vm-font-abi-ml-269427162"></a>
 ### GLYPH_SHADER_BYTES
@@ -151,7 +151,7 @@ const GLYPH_SHADER_BYTES = 32
 Byte size used for glyph shader storage or binary layout in mq3.vm.font_abi.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L17)
 
 <a id="constant-constant-mq3-vm-font-abi-glyph-shader-offset-const-glyph-shader-offset-48-src-mq3-vm-font-abi-ml-209467811"></a>
 ### GLYPH_SHADER_OFFSET
@@ -163,7 +163,7 @@ const GLYPH_SHADER_OFFSET = 48
 Byte offset of the shader-name buffer inside a legacy glyphInfo record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L15)
 
 <a id="constant-constant-mq3-vm-font-abi-glyph-size-const-glyph-size-80-src-mq3-vm-font-abi-ml-1943078817"></a>
 ### GLYPH_SIZE
@@ -175,7 +175,7 @@ const GLYPH_SIZE = 80
 Byte size used for glyph storage or binary layout in mq3.vm.font_abi.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L11)
 
 <a id="constant-constant-mq3-vm-font-abi-glyphs-per-font-const-glyphs-per-font-256-src-mq3-vm-font-abi-ml-244117122"></a>
 ### GLYPHS_PER_FONT
@@ -187,7 +187,7 @@ const GLYPHS_PER_FONT = 256
 Number of character-glyph records stored in one legacy font description.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L9)
 
 <a id="function-function-mq3-vm-font-abi-load-function-load-registry-shadercontext-registershaderfn-fontname-pointsize-src-mq3-vm-font-abi-ml-1082352744"></a>
 ### load
@@ -209,7 +209,7 @@ Direct state writes: `registry.fonts`.
 | `pointSize` | `dynamic` | — | Point size passed as `pointSize` to `mq3.vm.font_abi.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L101)
 
 <a id="function-function-mq3-vm-font-abi-pathfor-function-pathfor-pointsize-src-mq3-vm-font-abi-ml-309573383"></a>
 ### pathFor
@@ -225,7 +225,7 @@ Compute path for in vm.font_abi; the normal completion returns `(("fonts/fontIma
 | `pointSize` | `dynamic` | — | Point size used in `str(pointSize)` and `(pointSize <= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L65)
 
 - [mq3.vm.font_abi.Registry](Type-mq3-vm-font-abi-registry-911501124.md) — struct
 - [mq3.vm.font_abi.Result](Type-mq3-vm-font-abi-result-762768042.md) — struct
@@ -246,4 +246,4 @@ Direct state writes: `data elements`.
 | `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L87)

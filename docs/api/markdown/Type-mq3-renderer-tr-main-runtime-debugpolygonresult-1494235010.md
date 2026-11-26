@@ -12,7 +12,7 @@ struct DebugPolygonResult
 Data record for `mq3.renderer.tr_main_runtime.DebugPolygonResult`; groups `solid`, `outline`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L84)
 
 ## Members
 
@@ -26,7 +26,7 @@ outline
 Outline geometry used by the debug polygon pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L88)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpolygonresult-solid-solid-src-mq3-renderer-tr-main-runtime-ml-1986114183"></a>
 ### solid
@@ -38,4 +38,4 @@ solid
 Filled geometry used by the debug polygon pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L86)

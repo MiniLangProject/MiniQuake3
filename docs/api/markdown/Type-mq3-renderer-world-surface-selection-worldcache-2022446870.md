@@ -12,7 +12,7 @@ struct WorldCache
 Data record for `mq3.renderer.world_surface_selection.WorldCache`; groups `map`, `faceCenters`, `faceRadii`, `faceTriangleCounts`, `faceKinds`, `faceNormals`, and 15 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L126)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaMask
 Area-visibility mask; set bits suppress rendering of the associated areas.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L166)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-cullmodes-cullmodes-src-mq3-renderer-world-surface-selection-ml-2063468463"></a>
 ### cullModes
@@ -38,7 +38,7 @@ cullModes
 Resolved face-culling mode for each material or face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L142)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facecenters-facecenters-src-mq3-renderer-world-surface-selection-ml-887004719"></a>
 ### faceCenters
@@ -50,7 +50,7 @@ faceCenters
 Cached center position of each BSP face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L130)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facekinds-facekinds-src-mq3-renderer-world-surface-selection-ml-444916047"></a>
 ### faceKinds
@@ -62,7 +62,7 @@ faceKinds
 BSP surface type associated with each face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L136)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facenormals-facenormals-src-mq3-renderer-world-surface-selection-ml-1422472803"></a>
 ### faceNormals
@@ -74,7 +74,7 @@ faceNormals
 Cached normals used for planar-face culling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L138)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-faceradii-faceradii-src-mq3-renderer-world-surface-selection-ml-1479071075"></a>
 ### faceRadii
@@ -86,7 +86,7 @@ faceRadii
 Cached bounding-sphere radius of each BSP face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L132)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facetextureindexes-facetextureindexes-src-mq3-renderer-world-surface-selection-ml-2081506011"></a>
 ### faceTextureIndexes
@@ -98,7 +98,7 @@ faceTextureIndexes
 BSP shader or texture index associated with each face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L140)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-facetrianglecounts-facetrianglecounts-src-mq3-renderer-world-surface-selection-ml-1353956521"></a>
 ### faceTriangleCounts
@@ -110,7 +110,7 @@ faceTriangleCounts
 Cached triangle workload associated with each BSP face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L134)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-map-map-src-mq3-renderer-world-surface-selection-ml-496776915"></a>
 ### map
@@ -122,7 +122,7 @@ map
 Parsed BSP map used by geometry, visibility, or lighting operations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L128)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativefaces-nativefaces-src-mq3-renderer-world-surface-selection-ml-388038791"></a>
 ### nativeFaces
@@ -134,7 +134,7 @@ nativeFaces
 Packed native representation of BSP face metadata used by visibility selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L156)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativeoutput-nativeoutput-src-mq3-renderer-world-surface-selection-ml-1526441859"></a>
 ### nativeOutput
@@ -146,7 +146,7 @@ nativeOutput
 Native output buffer written by accelerated world-surface selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L160)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativeprevious-nativeprevious-src-mq3-renderer-world-surface-selection-ml-1941901395"></a>
 ### nativePrevious
@@ -158,7 +158,7 @@ nativePrevious
 Native buffer retaining the previous visible-face selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L162)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativeselected-nativeselected-src-mq3-renderer-world-surface-selection-ml-1919492771"></a>
 ### nativeSelected
@@ -170,7 +170,7 @@ nativeSelected
 Native buffer retaining the currently selected faces.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L164)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-nativevisible-nativevisible-src-mq3-renderer-world-surface-selection-ml-1826166367"></a>
 ### nativeVisible
@@ -182,7 +182,7 @@ nativeVisible
 Native visibility buffer used by accelerated world-surface selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L158)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-patcherror-patcherror-src-mq3-renderer-world-surface-selection-ml-881132579"></a>
 ### patchError
@@ -194,7 +194,7 @@ patchError
 Permitted geometric error when tessellating curved patches.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L146)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-patches-patches-src-mq3-renderer-world-surface-selection-ml-1620611075"></a>
 ### patches
@@ -206,7 +206,7 @@ patches
 Curved world patches and their cached detail variants.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L168)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-pvsclustercount-pvsclustercount-src-mq3-renderer-world-surface-selection-ml-255371267"></a>
 ### pvsClusterCount
@@ -218,7 +218,7 @@ pvsClusterCount
 Number of visibility clusters represented by the cached PVS state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L154)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-pvsfaces-pvsfaces-src-mq3-renderer-world-surface-selection-ml-87053337"></a>
 ### pvsFaces
@@ -230,7 +230,7 @@ pvsFaces
 Face indices retained by the cached visibility-cluster query.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L150)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-pvsrejected-pvsrejected-src-mq3-renderer-world-surface-selection-ml-1302994383"></a>
 ### pvsRejected
@@ -242,7 +242,7 @@ pvsRejected
 Number of faces rejected by the cached visibility-cluster query.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L152)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-totaltrianglecount-totaltrianglecount-src-mq3-renderer-world-surface-selection-ml-1737036257"></a>
 ### totalTriangleCount
@@ -254,7 +254,7 @@ totalTriangleCount
 Total number of triangles represented by the cached world geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L148)
 
 <a id="field-field-mq3-renderer-world-surface-selection-worldcache-trianglesbyface-trianglesbyface-src-mq3-renderer-world-surface-selection-ml-256942667"></a>
 ### trianglesByFace
@@ -266,4 +266,4 @@ trianglesByFace
 Cached triangle geometry indexed by BSP face.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L144)

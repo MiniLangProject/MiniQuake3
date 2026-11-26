@@ -12,7 +12,7 @@ struct Dlight
 Data record for `mq3.renderer.tr_light_runtime.Dlight`; groups `origin`, `transformed`, `radius`, `color`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L35)
 
 ## Members
 
@@ -26,7 +26,7 @@ color
 RGB light intensity accumulated into an entity's dynamic-light contribution.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L43)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-dlight-origin-origin-src-mq3-renderer-tr-light-runtime-ml-283622183"></a>
 ### origin
@@ -38,7 +38,7 @@ origin
 Untransformed world-space center of the dynamic light.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-dlight-radius-radius-src-mq3-renderer-tr-light-runtime-ml-1365769295"></a>
 ### radius
@@ -50,7 +50,7 @@ radius
 Radius used for the light, sprite, beam, or bounded object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-dlight-transformed-transformed-src-mq3-renderer-tr-light-runtime-ml-728643827"></a>
 ### transformed
@@ -62,4 +62,4 @@ transformed
 Dynamic-light origin expressed in the current entity's coordinate system.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L39)

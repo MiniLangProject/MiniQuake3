@@ -12,7 +12,7 @@ struct Frames
 Data record for `mq3.renderer.md3_entity.Frames`; groups `frame`, `oldFrame`, `wrapped`, `repaired`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L19)
 
 ## Members
 
@@ -26,7 +26,7 @@ frame
 Current model animation-frame index.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L21)
 
 <a id="field-field-mq3-renderer-md3-entity-frames-oldframe-oldframe-src-mq3-renderer-md3-entity-ml-958933165"></a>
 ### oldFrame
@@ -38,7 +38,7 @@ oldFrame
 Previous animation frame used for interpolation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L23)
 
 <a id="field-field-mq3-renderer-md3-entity-frames-repaired-repaired-src-mq3-renderer-md3-entity-ml-942348501"></a>
 ### repaired
@@ -50,7 +50,7 @@ repaired
 Whether an invalid animation-frame selection was replaced by a safe fallback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L27)
 
 <a id="field-field-mq3-renderer-md3-entity-frames-wrapped-wrapped-src-mq3-renderer-md3-entity-ml-377119521"></a>
 ### wrapped
@@ -62,4 +62,4 @@ wrapped
 Whether an animation-frame index was wrapped into the model's valid range.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L25)

@@ -12,7 +12,7 @@ Reachable from entry: **yes**
 - `mq3/compat/textnumbers.ml` as `numbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
 - `mq3/shared/info.ml` as `info` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
 - `mq3/shared/parser.ml` as `parser` → [src/mq3/shared/parser.ml](File-src-mq3-shared-parser-ml-1977832534.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -26,7 +26,7 @@ const BIG_INFO_STRING = 8192
 Byte limit for an extended backslash-delimited information string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L17)
 
 <a id="function-function-mq3-shared-q-shared-runtime-bigfloat-function-bigfloat-value-src-mq3-shared-q-shared-runtime-ml-1758565757"></a>
 ### bigFloat
@@ -42,7 +42,7 @@ Return `mq3.shared.q_shared_runtime.floatSwap(value)` from `shared.q_shared_runt
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.floatSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L108)
 
 <a id="function-function-mq3-shared-q-shared-runtime-biglong-function-biglong-value-src-mq3-shared-q-shared-runtime-ml-2075835201"></a>
 ### bigLong
@@ -58,7 +58,7 @@ Return `mq3.shared.q_shared_runtime.longSwap(value)` from `shared.q_shared_runti
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.longSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L96)
 
 <a id="function-function-mq3-shared-q-shared-runtime-biglong64-function-biglong64-value-src-mq3-shared-q-shared-runtime-ml-730695457"></a>
 ### bigLong64
@@ -74,7 +74,7 @@ Return `mq3.shared.q_shared_runtime.long64Swap(value)` from `shared.q_shared_run
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.long64Swap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L102)
 
 <a id="function-function-mq3-shared-q-shared-runtime-bigshort-function-bigshort-value-src-mq3-shared-q-shared-runtime-ml-1350979465"></a>
 ### bigShort
@@ -90,7 +90,7 @@ Return `mq3.shared.q_shared_runtime.shortSwap(value)` from `shared.q_shared_runt
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.shortSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L90)
 
 <a id="function-function-mq3-shared-q-shared-runtime-charat-function-charat-data-index-src-mq3-shared-q-shared-runtime-ml-2017878420"></a>
 ### charAt
@@ -107,7 +107,7 @@ Compute char at in shared.q_shared_runtime; the normal completion returns `data[
 | `index` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L223)
 
 <a id="function-function-mq3-shared-q-shared-runtime-colorat-function-colorat-data-index-src-mq3-shared-q-shared-runtime-ml-1664833844"></a>
 ### colorAt
@@ -124,7 +124,7 @@ Compute shared.q_shared_runtime.colorAt as `(((((index + 1) < len(data)) and (da
 | `index` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L260)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-beginparsesession-function-com-beginparsesession-name-text-src-mq3-shared-q-shared-runtime-ml-430746086"></a>
 ### com_BeginParseSession
@@ -141,7 +141,7 @@ Create `mq3.shared.q_shared_runtime.ParseSession` with name=name; state=parser.c
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.shared.parser.create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L118)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-clamp-function-com-clamp-minimum-maximum-value-src-mq3-shared-q-shared-runtime-ml-1392430465"></a>
 ### com_Clamp
@@ -159,7 +159,7 @@ Clamp q shared runtime in shared.q_shared_runtime; the normal completion returns
 | `value` | `dynamic` | — | Value used in `(value < minimum)` and `(value > maximum)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L41)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-compress-function-com-compress-text-src-mq3-shared-q-shared-runtime-ml-347875813"></a>
 ### com_Compress
@@ -175,7 +175,7 @@ Compress q shared runtime in shared.q_shared_runtime; the normal completion retu
 | `text` | `dynamic` | — | Text used in `bytes(text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L151)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-defaultextension-function-com-defaultextension-path-maxsize-extension-src-mq3-shared-q-shared-runtime-ml-1381815305"></a>
 ### com_DefaultExtension
@@ -193,7 +193,7 @@ Compute default extension in shared.q_shared_runtime; the normal completion retu
 | `extension` | `dynamic` | — | Extension used in `com_sprintf(maxSize, "%s%s", [path, extension])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L52)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-getcurrentparseline-function-com-getcurrentparseline-session-src-mq3-shared-q-shared-runtime-ml-1989639508"></a>
 ### com_GetCurrentParseLine
@@ -209,7 +209,7 @@ Get current parse line in shared.q_shared_runtime; the normal completion returns
 | `session` | `dynamic` | — | Record exposing `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L121)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-matchtoken-function-com-matchtoken-session-match-src-mq3-shared-q-shared-runtime-ml-703774623"></a>
 ### com_MatchToken
@@ -226,7 +226,7 @@ Compute match token in shared.q_shared_runtime; the normal completion returns `t
 | `match` | `dynamic` | — | Match used in `(token != match)` and `((("MatchToken: " + token) + " != ") + match)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L168)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-parse-function-com-parse-session-src-mq3-shared-q-shared-runtime-ml-1101824586"></a>
 ### com_Parse
@@ -242,7 +242,7 @@ Return `mq3.shared.q_shared_runtime.com_ParseExt(session, true)` from `shared.q_
 | `session` | `dynamic` | — | Session passed as `session` to `mq3.shared.q_shared_runtime.com_ParseExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L128)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-parseerror-function-com-parseerror-session-message-src-mq3-shared-q-shared-runtime-ml-217153577"></a>
 ### com_ParseError
@@ -259,7 +259,7 @@ Return `mq3.shared.q_shared_runtime.diagnostic(session, "ERROR", message)` from 
 | `message` | `dynamic` | — | Message passed as `message` to `mq3.shared.q_shared_runtime.diagnostic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L139)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-parseext-function-com-parseext-session-allowlinebreaks-src-mq3-shared-q-shared-runtime-ml-1254293473"></a>
 ### com_ParseExt
@@ -276,7 +276,7 @@ Return `mq3.shared.parser.parseExt(session.state, allowLineBreaks)` from `shared
 | `allowLineBreaks` | `dynamic` | — | Allow line breaks passed as `allowLineBreaks` to `mq3.shared.parser.parseExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L125)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-parseinfos-function-com-parseinfos-text-maximum-src-mq3-shared-q-shared-runtime-ml-1112421279"></a>
 ### com_ParseInfos
@@ -293,7 +293,7 @@ Parse infos in shared.q_shared_runtime; the normal completion returns `result`.
 | `maximum` | `dynamic` | — | Maximum used in `(len(result) < maximum)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L193)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-parsewarning-function-com-parsewarning-session-message-src-mq3-shared-q-shared-runtime-ml-1201264829"></a>
 ### com_ParseWarning
@@ -310,7 +310,7 @@ Return `mq3.shared.q_shared_runtime.diagnostic(session, "WARNING", message)` fro
 | `message` | `dynamic` | — | Message passed as `message` to `mq3.shared.q_shared_runtime.diagnostic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L143)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-skippath-function-com-skippath-path-src-mq3-shared-q-shared-runtime-ml-1074159597"></a>
 ### com_SkipPath
@@ -326,7 +326,7 @@ Compute skip path in shared.q_shared_runtime; the normal completion returns `dec
 | `path` | `dynamic` | — | Path used in `bytes(path)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L44)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-sprintf-function-com-sprintf-size-format-arguments-src-mq3-shared-q-shared-runtime-ml-1114639702"></a>
 ### com_sprintf
@@ -346,7 +346,7 @@ Validation failures include `Com_sprintf bigbuffer overflow`.
 | `arguments` | `dynamic` | — | Arguments passed as `arguments` to `mq3.shared.q_shared_runtime.formatText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L309)
 
 <a id="function-function-mq3-shared-q-shared-runtime-com-stripextension-function-com-stripextension-path-src-mq3-shared-q-shared-runtime-ml-171928713"></a>
 ### com_StripExtension
@@ -362,7 +362,7 @@ Compute strip extension in shared.q_shared_runtime; the normal completion return
 | `path` | `dynamic` | — | Path used in `bytes(path)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L47)
 
 <a id="function-function-mq3-shared-q-shared-runtime-diagnostic-function-diagnostic-session-kind-message-src-mq3-shared-q-shared-runtime-ml-1444752179"></a>
 ### diagnostic
@@ -382,7 +382,7 @@ Direct state writes: `session.diagnostics`.
 | `message` | `dynamic` | — | Message operand used by `diagnostic`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L135)
 
 <a id="function-function-mq3-shared-q-shared-runtime-floatnoswap-function-floatnoswap-value-src-mq3-shared-q-shared-runtime-ml-1956176825"></a>
 ### floatNoSwap
@@ -398,7 +398,7 @@ Return `mq3.compat.numeric.f32(value)` from `shared.q_shared_runtime.floatNoSwap
 | `value` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L87)
 
 <a id="function-function-mq3-shared-q-shared-runtime-floatswap-function-floatswap-value-src-mq3-shared-q-shared-runtime-ml-657557171"></a>
 ### floatSwap
@@ -414,7 +414,7 @@ Return `mq3.compat.numeric.bitsFloat(n.u32(longSwap(n.floatBits(value))))` from 
 | `value` | `dynamic` | — | Floating-point value to narrow and reinterpret. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L84)
 
 <a id="function-function-mq3-shared-q-shared-runtime-formattext-function-formattext-format-arguments-src-mq3-shared-q-shared-runtime-ml-1092783821"></a>
 ### formatText
@@ -433,7 +433,7 @@ Validation failures include `missing format argument`.
 | `arguments` | `dynamic` | — | Arguments used in `len(arguments)` and `arguments[argument]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L293)
 
 <a id="function-function-mq3-shared-q-shared-runtime-formatunsigned-function-formatunsigned-value-src-mq3-shared-q-shared-runtime-ml-640353809"></a>
 ### formatUnsigned
@@ -449,7 +449,7 @@ Compute format unsigned in shared.q_shared_runtime; the normal completion return
 | `value` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L279)
 
 <a id="function-function-mq3-shared-q-shared-runtime-formatvalue-function-formatvalue-code-value-src-mq3-shared-q-shared-runtime-ml-1690324194"></a>
 ### formatValue
@@ -466,7 +466,7 @@ Compute format value in shared.q_shared_runtime; the normal completion returns `
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.formatUnsigned`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L287)
 
 <a id="function-function-mq3-shared-q-shared-runtime-hextext-function-hextext-value-upper-src-mq3-shared-q-shared-runtime-ml-1189932505"></a>
 ### hexText
@@ -483,7 +483,7 @@ Compute hex text in shared.q_shared_runtime; the normal completion returns `resu
 | `upper` | `dynamic` | — | Upper operand used by `hexText`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L283)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-nextpair-function-info-nextpair-text-head-src-mq3-shared-q-shared-runtime-ml-1399670055"></a>
 ### info_NextPair
@@ -500,7 +500,7 @@ Compute info next pair in shared.q_shared_runtime; the normal completion returns
 | `head` | `dynamic` | — | Head operand used by `info_NextPair`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L324)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-removekey-function-info-removekey-text-key-src-mq3-shared-q-shared-runtime-ml-1912484566"></a>
 ### info_RemoveKey
@@ -517,7 +517,7 @@ Return `mq3.shared.q_shared_runtime.infoRemove(text, key, MAX_INFO_STRING)` from
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.shared.q_shared_runtime.infoRemove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L341)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-removekey-big-function-info-removekey-big-text-key-src-mq3-shared-q-shared-runtime-ml-1064915386"></a>
 ### info_RemoveKey_Big
@@ -534,7 +534,7 @@ Return `mq3.shared.q_shared_runtime.infoRemove(text, key, BIG_INFO_STRING)` from
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.shared.q_shared_runtime.infoRemove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L345)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L345)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-setvalueforkey-function-info-setvalueforkey-text-key-value-src-mq3-shared-q-shared-runtime-ml-1180234665"></a>
 ### info_SetValueForKey
@@ -552,7 +552,7 @@ Return `mq3.shared.q_shared_runtime.infoSet(text, key, value, MAX_INFO_STRING)` 
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.infoSet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L366)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-setvalueforkey-big-function-info-setvalueforkey-big-text-key-value-src-mq3-shared-q-shared-runtime-ml-106544315"></a>
 ### info_SetValueForKey_Big
@@ -570,7 +570,7 @@ Return `mq3.shared.q_shared_runtime.infoSet(text, key, value, BIG_INFO_STRING)` 
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.infoSet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L371)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L371)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-validate-function-info-validate-text-src-mq3-shared-q-shared-runtime-ml-944125203"></a>
 ### info_Validate
@@ -586,7 +586,7 @@ Return `mq3.shared.info.valid(text)` from `shared.q_shared_runtime.info_Validate
 | `text` | `dynamic` | — | Info passed as `info` to `mq3.shared.info.valid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L348)
 
 <a id="function-function-mq3-shared-q-shared-runtime-info-valueforkey-function-info-valueforkey-text-key-src-mq3-shared-q-shared-runtime-ml-397515378"></a>
 ### info_ValueForKey
@@ -603,7 +603,7 @@ Return `mq3.shared.info.value(text, key)` from `shared.q_shared_runtime.info_Val
 | `key` | `dynamic` | — | Key passed as `key` to `mq3.shared.info.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L320)
 
 - [mq3.shared.q_shared_runtime.InfoPair](Type-mq3-shared-q-shared-runtime-infopair-1480999945.md) — struct
 <a id="function-function-mq3-shared-q-shared-runtime-inforemove-function-inforemove-text-key-capacity-src-mq3-shared-q-shared-runtime-ml-610132486"></a>
@@ -624,7 +624,7 @@ Validation failures include `Info_RemoveKey oversize`.
 | `capacity` | `dynamic` | — | Capacity used in `(len(bytes(text)) >= capacity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L334)
 
 <a id="function-function-mq3-shared-q-shared-runtime-infoset-function-infoset-text-key-value-capacity-src-mq3-shared-q-shared-runtime-ml-562922457"></a>
 ### infoSet
@@ -645,7 +645,7 @@ Validation failures include `Info_SetValueForKey oversize`.
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.shared.q_shared_runtime.infoRemove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L356)
 
 <a id="function-function-mq3-shared-q-shared-runtime-littlefloat-function-littlefloat-value-src-mq3-shared-q-shared-runtime-ml-437083201"></a>
 ### littleFloat
@@ -661,7 +661,7 @@ Return `mq3.shared.q_shared_runtime.floatNoSwap(value)` from `shared.q_shared_ru
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.floatNoSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L111)
 
 <a id="function-function-mq3-shared-q-shared-runtime-littlelong-function-littlelong-value-src-mq3-shared-q-shared-runtime-ml-1421478977"></a>
 ### littleLong
@@ -677,7 +677,7 @@ Return `mq3.shared.q_shared_runtime.longNoSwap(value)` from `shared.q_shared_run
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.longNoSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L99)
 
 <a id="function-function-mq3-shared-q-shared-runtime-littlelong64-function-littlelong64-value-src-mq3-shared-q-shared-runtime-ml-699743429"></a>
 ### littleLong64
@@ -693,7 +693,7 @@ Return `mq3.shared.q_shared_runtime.long64NoSwap(value)` from `shared.q_shared_r
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.long64NoSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L105)
 
 <a id="function-function-mq3-shared-q-shared-runtime-littleshort-function-littleshort-value-src-mq3-shared-q-shared-runtime-ml-200791757"></a>
 ### littleShort
@@ -709,7 +709,7 @@ Return `mq3.shared.q_shared_runtime.shortNoSwap(value)` from `shared.q_shared_ru
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.shortNoSwap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L93)
 
 <a id="function-function-mq3-shared-q-shared-runtime-long64bytes-function-long64bytes-value-src-mq3-shared-q-shared-runtime-ml-894253139"></a>
 ### long64Bytes
@@ -727,7 +727,7 @@ Validation failures include `qint64 requires eight bytes`.
 | `value` | `dynamic` | — | Value used in `len(value)` and `typeof(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L72)
 
 <a id="function-function-mq3-shared-q-shared-runtime-long64noswap-function-long64noswap-value-src-mq3-shared-q-shared-runtime-ml-263791645"></a>
 ### long64NoSwap
@@ -743,7 +743,7 @@ Compute long64 no swap in shared.q_shared_runtime; the normal completion returns
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.long64Bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L81)
 
 <a id="function-function-mq3-shared-q-shared-runtime-long64swap-function-long64swap-value-src-mq3-shared-q-shared-runtime-ml-1227627385"></a>
 ### long64Swap
@@ -759,7 +759,7 @@ Compute long64 swap in shared.q_shared_runtime; the normal completion returns `o
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.long64Bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L78)
 
 <a id="function-function-mq3-shared-q-shared-runtime-longnoswap-function-longnoswap-value-src-mq3-shared-q-shared-runtime-ml-888067857"></a>
 ### longNoSwap
@@ -775,7 +775,7 @@ Return `mq3.compat.numeric.i32(value)` from `shared.q_shared_runtime.longNoSwap`
 | `value` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L67)
 
 <a id="function-function-mq3-shared-q-shared-runtime-longswap-function-longswap-value-src-mq3-shared-q-shared-runtime-ml-559507065"></a>
 ### longSwap
@@ -791,7 +791,7 @@ Compute long swap in shared.q_shared_runtime; the normal completion returns `n.i
 | `value` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L64)
 
 <a id="constant-constant-mq3-shared-q-shared-runtime-max-info-string-const-max-info-string-1024-src-mq3-shared-q-shared-runtime-ml-63577798"></a>
 ### MAX_INFO_STRING
@@ -803,7 +803,7 @@ const MAX_INFO_STRING = 1024
 Byte limit for a normal backslash-delimited information string.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L15)
 
 <a id="constant-constant-mq3-shared-q-shared-runtime-max-token-chars-const-max-token-chars-1024-src-mq3-shared-q-shared-runtime-ml-609410814"></a>
 ### MAX_TOKEN_CHARS
@@ -815,7 +815,7 @@ const MAX_TOKEN_CHARS = 1024
 Maximum character-buffer size for one parsed token.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L13)
 
 <a id="function-function-mq3-shared-q-shared-runtime-parse1dmatrix-function-parse1dmatrix-session-x-src-mq3-shared-q-shared-runtime-ml-1861670708"></a>
 ### parse1DMatrix
@@ -832,7 +832,7 @@ Compute parse1 d matrix in shared.q_shared_runtime; the normal completion return
 | `x` | `dynamic` | — | X used in `(x - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L178)
 
 <a id="function-function-mq3-shared-q-shared-runtime-parse2dmatrix-function-parse2dmatrix-session-y-x-src-mq3-shared-q-shared-runtime-ml-916205597"></a>
 ### parse2DMatrix
@@ -850,7 +850,7 @@ Compute parse2 d matrix in shared.q_shared_runtime; the normal completion return
 | `x` | `dynamic` | — | X passed as `x` to `mq3.shared.q_shared_runtime.parse1DMatrix`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L183)
 
 <a id="function-function-mq3-shared-q-shared-runtime-parse3dmatrix-function-parse3dmatrix-session-z-y-x-src-mq3-shared-q-shared-runtime-ml-1692927055"></a>
 ### parse3DMatrix
@@ -869,7 +869,7 @@ Compute parse3 d matrix in shared.q_shared_runtime; the normal completion return
 | `x` | `dynamic` | — | X passed as `x` to `mq3.shared.q_shared_runtime.parse2DMatrix`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L189)
 
 - [mq3.shared.q_shared_runtime.ParseSession](Type-mq3-shared-q-shared-runtime-parsesession-1465678512.md) — struct
 <a id="function-function-mq3-shared-q-shared-runtime-q-cleanstr-function-q-cleanstr-text-src-mq3-shared-q-shared-runtime-ml-1810049373"></a>
@@ -886,7 +886,7 @@ Compute clean str in shared.q_shared_runtime; the normal completion returns `dec
 | `text` | `dynamic` | — | Text used in `bytes(text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L266)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-isalpha-function-q-isalpha-value-src-mq3-shared-q-shared-runtime-ml-780684833"></a>
 ### q_isalpha
@@ -902,7 +902,7 @@ Compute shared.q_shared_runtime.q_isalpha as `(q_islower(value) or q_isupper(val
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.q_islower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L209)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-islower-function-q-islower-value-src-mq3-shared-q-shared-runtime-ml-258992311"></a>
 ### q_islower
@@ -918,7 +918,7 @@ Compute shared.q_shared_runtime.q_islower as `((value >= 97) and (value <= 122))
 | `value` | `dynamic` | — | Value used in `(value >= 97)` and `(value <= 122)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L203)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-isprint-function-q-isprint-value-src-mq3-shared-q-shared-runtime-ml-31430019"></a>
 ### q_isprint
@@ -934,7 +934,7 @@ Compute shared.q_shared_runtime.q_isprint as `((value >= 32) and (value <= 126))
 | `value` | `dynamic` | — | Value used in `(value >= 32)` and `(value <= 126)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L200)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-isupper-function-q-isupper-value-src-mq3-shared-q-shared-runtime-ml-1679027129"></a>
 ### q_isupper
@@ -950,7 +950,7 @@ Compute shared.q_shared_runtime.q_isupper as `((value >= 65) and (value <= 90))`
 | `value` | `dynamic` | — | Value used in `(value >= 65)` and `(value <= 90)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L206)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-printstrlen-function-q-printstrlen-text-src-mq3-shared-q-shared-runtime-ml-1488369535"></a>
 ### q_PrintStrlen
@@ -966,7 +966,7 @@ Compute print strlen in shared.q_shared_runtime; the normal completion returns `
 | `text` | `dynamic` | — | Text used in `bytes(text)` and `(text == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L263)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-strcat-function-q-strcat-destination-size-source-src-mq3-shared-q-shared-runtime-ml-1853257924"></a>
 ### q_strcat
@@ -986,7 +986,7 @@ Validation failures include `Q_strcat already overflowed`.
 | `source` | `dynamic` | — | Text passed as `text` to `mq3.shared.q_shared_runtime.q_strncpyz`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L256)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-stricmp-function-q-stricmp-first-second-src-mq3-shared-q-shared-runtime-ml-341469726"></a>
 ### q_stricmp
@@ -1003,7 +1003,7 @@ Compute stricmp in shared.q_shared_runtime; the normal completion returns `q_str
 | `second` | `dynamic` | — | Second passed as `second` to `mq3.shared.q_shared_runtime.q_stricmpn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L243)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-stricmpn-function-q-stricmpn-first-second-count-src-mq3-shared-q-shared-runtime-ml-1437385555"></a>
 ### q_stricmpn
@@ -1021,7 +1021,7 @@ Apply `mq3.shared.q_shared_runtime.charAt`, `mq3.shared.q_shared_runtime.upperBy
 | `count` | `dynamic` | — | Count operand used by `q_stricmpn`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L231)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-strlwr-function-q-strlwr-text-src-mq3-shared-q-shared-runtime-ml-446240853"></a>
 ### q_strlwr
@@ -1037,7 +1037,7 @@ Compute strlwr in shared.q_shared_runtime; the normal completion returns `decode
 | `text` | `dynamic` | — | Text used in `bytes(text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L246)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-strncmp-function-q-strncmp-first-second-count-src-mq3-shared-q-shared-runtime-ml-1037798661"></a>
 ### q_strncmp
@@ -1055,7 +1055,7 @@ Apply `mq3.shared.q_shared_runtime.charAt` for strncmp in shared.q_shared_runtim
 | `count` | `dynamic` | — | Count operand used by `q_strncmp`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L239)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-strncpyz-function-q-strncpyz-text-size-src-mq3-shared-q-shared-runtime-ml-1677436264"></a>
 ### q_strncpyz
@@ -1074,7 +1074,7 @@ Validation failures include `Q_strncpyz invalid argument`.
 | `size` | `dynamic` | — | Size used in `(size < 1)` and `(size - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L219)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-strrchr-function-q-strrchr-text-value-src-mq3-shared-q-shared-runtime-ml-2031166488"></a>
 ### q_strrchr
@@ -1091,7 +1091,7 @@ Compute strrchr in shared.q_shared_runtime; the normal completion returns `resul
 | `value` | `dynamic` | — | Value used in `(value & 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L213)
 
 <a id="function-function-mq3-shared-q-shared-runtime-q-strupr-function-q-strupr-text-src-mq3-shared-q-shared-runtime-ml-623847689"></a>
 ### q_strupr
@@ -1107,7 +1107,7 @@ Compute strupr in shared.q_shared_runtime; the normal completion returns `decode
 | `text` | `dynamic` | — | Text used in `bytes(text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L249)
 
 <a id="function-function-mq3-shared-q-shared-runtime-shortnoswap-function-shortnoswap-value-src-mq3-shared-q-shared-runtime-ml-1631140045"></a>
 ### shortNoSwap
@@ -1123,7 +1123,7 @@ Return `mq3.compat.numeric.i16(value)` from `shared.q_shared_runtime.shortNoSwap
 | `value` | `dynamic` | — | Integer whose low 16 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L61)
 
 <a id="function-function-mq3-shared-q-shared-runtime-shortswap-function-shortswap-value-src-mq3-shared-q-shared-runtime-ml-1642147035"></a>
 ### shortSwap
@@ -1139,7 +1139,7 @@ Compute short swap in shared.q_shared_runtime; the normal completion returns `n.
 | `value` | `dynamic` | — | Value used in `(value >> 8)` and `(value & 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L58)
 
 <a id="function-function-mq3-shared-q-shared-runtime-skipbracedsection-function-skipbracedsection-session-src-mq3-shared-q-shared-runtime-ml-1838925606"></a>
 ### skipBracedSection
@@ -1155,7 +1155,7 @@ Compute skip braced section in shared.q_shared_runtime; the normal completion re
 | `session` | `dynamic` | — | Record exposing `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L171)
 
 <a id="function-function-mq3-shared-q-shared-runtime-skiprestofline-function-skiprestofline-session-src-mq3-shared-q-shared-runtime-ml-536949716"></a>
 ### skipRestOfLine
@@ -1171,7 +1171,7 @@ Compute skip rest of line in shared.q_shared_runtime; the normal completion retu
 | `session` | `dynamic` | — | Record exposing `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L174)
 
 <a id="function-function-mq3-shared-q-shared-runtime-skipwhitespace-function-skipwhitespace-session-src-mq3-shared-q-shared-runtime-ml-339154620"></a>
 ### skipWhitespace
@@ -1187,7 +1187,7 @@ Compute skip whitespace in shared.q_shared_runtime; the normal completion return
 | `session` | `dynamic` | — | Record exposing `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L146)
 
 <a id="function-function-mq3-shared-q-shared-runtime-swap-init-function-swap-init-src-mq3-shared-q-shared-runtime-ml-2613382"></a>
 ### swap_Init
@@ -1199,7 +1199,7 @@ function swap_Init()
 Compute shared.q_shared_runtime.swap_Init as `"little"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L113)
 
 <a id="function-function-mq3-shared-q-shared-runtime-upperbyte-function-upperbyte-value-src-mq3-shared-q-shared-runtime-ml-1791526889"></a>
 ### upperByte
@@ -1215,7 +1215,7 @@ Compute upper byte in shared.q_shared_runtime; the normal completion returns `va
 | `value` | `dynamic` | — | Value used in `(value - 32)` and `(value >= 97)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L226)
 
 <a id="function-function-mq3-shared-q-shared-runtime-va-function-va-format-arguments-src-mq3-shared-q-shared-runtime-ml-1286883481"></a>
 ### va
@@ -1234,4 +1234,4 @@ Validation failures include `va buffer overflow`.
 | `arguments` | `dynamic` | — | Arguments passed as `arguments` to `mq3.shared.q_shared_runtime.formatText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L315)

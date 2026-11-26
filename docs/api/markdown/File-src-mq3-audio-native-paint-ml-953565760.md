@@ -22,7 +22,7 @@ Create the audio.native_paint error for `fail` with 7717 and the supplied diagno
 | `message` | `dynamic` | — | Message used in `("native audio paint: " + message)` and `error(7717, ("native audio paint: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L62)
 
 <a id="function-function-mq3-audio-native-paint-finish-function-finish-paint-frames-src-mq3-audio-native-paint-ml-981532958"></a>
 ### finish
@@ -39,7 +39,7 @@ Convert accumulated int32 stereo frames to clipped signed-16-bit PCM and report 
 | `frames` | `dynamic` | — | Number of stereo frames; requires at least frames * 8 paint bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L99)
 
 <a id="extern_function-extern-function-mq3-audio-native-paint-finishnative-extern-function-finishnative-paint-as-ptr-paintbytes-as-i32-output-as-ptr-outputbytes-as-i32-frames-as-i32-from-playable-ambient-dll-symbol-playable-ambient-finish-mix-returns-i32-src-mq3-audio-native-paint-ml-1922812805"></a>
 ### finishNative
@@ -61,7 +61,7 @@ Clamp the stereo int32 paint buffer to interleaved signed 16-bit PCM.
 
 **Returns:** The peak magnitude after the eight-bit mixer shift but before clipping, or -1 if either buffer is too short.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L50)
 
 <a id="function-function-mq3-audio-native-paint-mixpcm-function-mixpcm-paint-sound-sourceframes-sampleoffset-count-bufferoffset-leftvolume-rightvolume-soundvolume-looping-doppler-dopplerscale-olddopplerscale-src-mq3-audio-native-paint-ml-1253465518"></a>
 ### mixPcm
@@ -89,7 +89,7 @@ Mix effect PCM into the stereo accumulator, averaging stereo input to mono befor
 | `oldDopplerScale` | `dynamic` | — | Previous Doppler ratio applied to the starting source position. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L77)
 
 <a id="extern_function-extern-function-mq3-audio-native-paint-mixpcmnative-extern-function-mixpcmnative-paint-as-ptr-paintbytes-as-i32-samples-as-ptr-samplebytes-as-i32-channels-as-i32-bitspersample-as-i32-blockalign-as-i32-sourceframes-as-i32-sampleoffset-as-i32-count-as-i32-bufferoffset-as-i32-leftvolume-as-i32-rightvolume-as-i32-soundvolume-as-i32-looping-as-i32-doppler-as-i32-dopplerscale-as-double-olddopplerscale-as-double-from-playable-ambient-dll-symbol-playable-ambient-mix-pcm-returns-i32-src-mq3-audio-native-paint-ml-854260035"></a>
 ### mixPcmNative
@@ -124,7 +124,7 @@ Mix PCM frames into an interleaved signed-int32 stereo paint buffer through play
 
 **Returns:** The number of mixed frames, or a negative value when the request is invalid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L26)
 
 <a id="function-function-mq3-audio-native-paint-mixstream-function-mixstream-paint-sound-sourceframes-outputrate-cursor-count-bufferoffset-src-mq3-audio-native-paint-ml-733696571"></a>
 ### mixStream
@@ -146,7 +146,7 @@ Resample streaming PCM into the stereo accumulator while preserving left/right s
 | `bufferOffset` | `dynamic` | — | First destination stereo frame in paint. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L91)
 
 <a id="extern_function-extern-function-mq3-audio-native-paint-mixstreamnative-extern-function-mixstreamnative-paint-as-ptr-paintbytes-as-i32-samples-as-ptr-samplebytes-as-i32-channels-as-i32-bitspersample-as-i32-blockalign-as-i32-sourceframes-as-i32-samplerate-as-i32-outputrate-as-i32-cursor-as-double-count-as-i32-bufferoffset-as-i32-from-playable-ambient-dll-symbol-playable-ambient-mix-stream-returns-double-src-mq3-audio-native-paint-ml-226780032"></a>
 ### mixStreamNative
@@ -176,6 +176,6 @@ Resample streaming PCM into the stereo paint buffer and return the advanced sour
 
 **Returns:** The advanced fractional source-frame cursor, or a negative value for an invalid request.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L42)
 
 - [mq3.audio.native_paint.Result](Type-mq3-audio-native-paint-result-342928289.md) — struct

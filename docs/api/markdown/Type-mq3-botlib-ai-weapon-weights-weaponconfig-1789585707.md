@@ -12,7 +12,7 @@ struct WeaponConfig
 `WeaponConfig` record for ai weapon weights, containing `weapons` and `projectiles`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L106)
 
 ## Members
 
@@ -26,7 +26,7 @@ projectiles
 Loaded projectile definitions referenced by weapon descriptions.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L110)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-weaponconfig-weapons-weapons-src-mq3-botlib-ai-weapon-weights-ml-610280095"></a>
 ### weapons
@@ -38,4 +38,4 @@ weapons
 Loaded weapon definitions indexed by weapon number.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L108)

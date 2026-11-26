@@ -29,7 +29,7 @@ Returns `[numeric.fadd(a[0],b[0]),numeric.fadd(a[1],b[1]),numeric.fadd(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L43)
 
 <a id="function-function-mq3-renderer-surface-trails-fail-function-fail-message-src-mq3-renderer-surface-trails-ml-1189106719"></a>
 ### fail
@@ -45,7 +45,7 @@ Creates error `7697` with message `"surface trails: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7697,"surface trails: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L29)
 
 <a id="function-function-mq3-renderer-surface-trails-lightning-function-lightning-start-finish-vieworigin-color-src-mq3-renderer-surface-trails-ml-1952416787"></a>
 ### lightning
@@ -64,7 +64,7 @@ Builds `mq3.renderer.surface_trails.Submission` using `mq3.shared.math.VectorNor
 | `color` | `dynamic` | — | Value forwarded as `color` to `mq3.renderer.surface_trails.railCoreRaw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L188)
 
 <a id="function-function-mq3-renderer-surface-trails-makenormalvectors-function-makenormalvectors-forward-src-mq3-renderer-surface-trails-ml-452319043"></a>
 ### makeNormalVectors
@@ -80,7 +80,7 @@ Computes `makeNormalVectors` from `[right,qmath.CrossProduct(right,forward)]` us
 | `forward` | `dynamic` | — | Argument 2 supplied to `mq3.shared.math.DotProduct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L78)
 
 <a id="function-function-mq3-renderer-surface-trails-matrixmultiply-function-matrixmultiply-a-b-src-mq3-renderer-surface-trails-ml-2046813871"></a>
 ### matrixMultiply
@@ -97,7 +97,7 @@ Builds `result[i]` in `mq3.renderer.surface_trails.matrixMultiply`; returns `res
 | `b` | `dynamic` | — | Nested indexed data; outer entries read at `0`, `1`, `2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L165)
 
 <a id="function-function-mq3-renderer-surface-trails-perpendicularvector-function-perpendicularvector-source-src-mq3-renderer-surface-trails-ml-166650751"></a>
 ### perpendicularVector
@@ -113,7 +113,7 @@ Builds `temporary[position]` in `mq3.renderer.surface_trails.perpendicularVector
 | `source` | `dynamic` | — | Argument 1 supplied to `mq3.shared.math.DotProduct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L155)
 
 <a id="function-function-mq3-renderer-surface-trails-quarter-function-quarter-value-src-mq3-renderer-surface-trails-ml-186267113"></a>
 ### quarter
@@ -129,7 +129,7 @@ Calls `mq3.compat.numeric.trunc32` with `(numeric.fmul(value,0.25))` and returns
 | `value` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L52)
 
 <a id="function-function-mq3-renderer-surface-trails-quartercolor-function-quartercolor-color-src-mq3-renderer-surface-trails-ml-1927920703"></a>
 ### quarterColor
@@ -145,7 +145,7 @@ Returns `[quarter(color[0]),quarter(color[1]),quarter(color[2]),color[3]]` for `
 | `color` | `dynamic` | — | Indexed input read at `0`, `1`, `2`, `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L55)
 
 <a id="function-function-mq3-renderer-surface-trails-railcore-function-railcore-start-finish-vieworigin-spanwidth-color-src-mq3-renderer-surface-trails-ml-1873738987"></a>
 ### railCore
@@ -165,7 +165,7 @@ Computes `railCore` from `railCoreRaw(start,finish,right,lengthValue,spanWidth,c
 | `color` | `dynamic` | — | Value forwarded as `color` to `mq3.renderer.surface_trails.railCoreRaw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L122)
 
 <a id="function-function-mq3-renderer-surface-trails-railcoreraw-function-railcoreraw-start-finish-up-lengthvalue-spanwidth-color-src-mq3-renderer-surface-trails-ml-1939559870"></a>
 ### railCoreRaw
@@ -186,7 +186,7 @@ Direct equivalent of DoRailCore. len is the integral result retained by the orig
 | `color` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.surface_trails.validColor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L65)
 
 <a id="function-function-mq3-renderer-surface-trails-raildiscs-function-raildiscs-numsegments-start-direction-right-up-spanwidth-color-src-mq3-renderer-surface-trails-ml-1548511497"></a>
 ### railDiscs
@@ -208,7 +208,7 @@ Direct equivalent of DoRailDiscs, retaining its one-segment shortening for shots
 | `color` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.surface_trails.validColor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L93)
 
 <a id="function-function-mq3-renderer-surface-trails-railrings-function-railrings-start-finish-segmentlength-spanwidth-color-src-mq3-renderer-surface-trails-ml-1149449777"></a>
 ### railRings
@@ -228,7 +228,7 @@ Computes `railRings` from `railDiscs(segments,start,step,basis[0],basis[1],spanW
 | `color` | `dynamic` | — | Value forwarded as `color` to `mq3.renderer.surface_trails.railDiscs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L145)
 
 <a id="function-function-mq3-renderer-surface-trails-ringcount-function-ringcount-start-finish-segmentlength-src-mq3-renderer-surface-trails-ml-453353358"></a>
 ### ringCount
@@ -246,7 +246,7 @@ Computes `ringCount` from `numeric.trunc32(numeric.fdiv(lengthValue,numeric.f32(
 | `segmentLength` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L134)
 
 <a id="function-function-mq3-renderer-surface-trails-rotatearoundvector-function-rotatearoundvector-direction-point-degrees-src-mq3-renderer-surface-trails-ml-289058154"></a>
 ### rotateAroundVector
@@ -264,7 +264,7 @@ Builds an orthogonal basis and rotates a point around the supplied direction by 
 | `degrees` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L174)
 
 - [mq3.renderer.surface_trails.Submission](Type-mq3-renderer-surface-trails-submission-173069698.md) — struct
 <a id="function-function-mq3-renderer-surface-trails-subtract-function-subtract-a-b-src-mq3-renderer-surface-trails-ml-1572854171"></a>
@@ -282,7 +282,7 @@ Returns `[numeric.fsub(a[0],b[0]),numeric.fsub(a[1],b[1]),numeric.fsub(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L39)
 
 <a id="function-function-mq3-renderer-surface-trails-valid3-function-valid3-value-src-mq3-renderer-surface-trails-ml-215534521"></a>
 ### valid3
@@ -298,7 +298,7 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.surface_trails.valid3
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L32)
 
 <a id="function-function-mq3-renderer-surface-trails-validcolor-function-validcolor-value-src-mq3-renderer-surface-trails-ml-1955680861"></a>
 ### validColor
@@ -314,7 +314,7 @@ Computes `value!=void and len(value)==4` for `mq3.renderer.surface_trails.validC
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L35)
 
 <a id="function-function-mq3-renderer-surface-trails-vertex-function-vertex-point-u-v-color-src-mq3-renderer-surface-trails-ml-1229419560"></a>
 ### vertex
@@ -333,6 +333,6 @@ Constructs `mq3.renderer.surface_trails.Vertex` with `uv` = `[numeric.f32(u),num
 | `color` | `dynamic` | — | Initial value for `mq3.renderer.surface_trails.Vertex.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L49)
 
 - [mq3.renderer.surface_trails.Vertex](Type-mq3-renderer-surface-trails-vertex-1307026004.md) — struct

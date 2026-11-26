@@ -37,7 +37,7 @@ Set `level.podium1.nextthink` to `level.time` and `level.podium1.think` to `cele
 | `argv` | `dynamic` | — | Not read by this implementation; retained in the `abortPodium` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L213)
 
 <a id="constant-constant-mq3-game-arenas-anim-togglebit-const-anim-togglebit-128-src-mq3-game-arenas-ml-1489311742"></a>
 ### ANIM_TOGGLEBIT
@@ -49,7 +49,7 @@ const ANIM_TOGGLEBIT = 128
 Animation bit toggled to restart an animation even when its index is unchanged.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L26)
 
 <a id="function-function-mq3-game-arenas-celebratestart-function-celebratestart-level-player-src-mq3-game-arenas-ml-441193319"></a>
 ### celebrateStart
@@ -66,7 +66,7 @@ Update `player.s.torsoAnim`, `player.nextthink` and `player.think` during `celeb
 | `player` | `dynamic` | — | Player entity; accesses `s`, `nextthink` and `think`. May update `player.s.torsoAnim`, `player.nextthink` and `player.think` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L163)
 
 <a id="function-function-mq3-game-arenas-celebratestop-function-celebratestop-level-player-src-mq3-game-arenas-ml-368978369"></a>
 ### celebrateStop
@@ -83,7 +83,7 @@ Set `player.s.torsoAnim` to `((player.s.torsoAnim & ANIM_TOGGLEBIT)^ANIM_TOGGLEB
 | `player` | `dynamic` | — | Player entity; accesses `s`. May update `player.s.torsoAnim` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L153)
 
 <a id="function-function-mq3-game-arenas-clientlimit-function-clientlimit-limit-src-mq3-game-arenas-ml-1036826327"></a>
 ### clientLimit
@@ -99,7 +99,7 @@ Validate the arena client limit against the native sixty-four-client storage cap
 | `limit` | `dynamic` | — | Operand used to evaluate the returned expression `limit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L32)
 
 <a id="constant-constant-mq3-game-arenas-contents-body-const-contents-body-headers-contents-body-src-mq3-game-arenas-ml-1035965384"></a>
 ### CONTENTS_BODY
@@ -111,7 +111,7 @@ const CONTENTS_BODY = headers.CONTENTS_BODY
 Collision-contents bit identifying body space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L22)
 
 <a id="constant-constant-mq3-game-arenas-contents-playerclip-const-contents-playerclip-headers-contents-playerclip-src-mq3-game-arenas-ml-169709941"></a>
 ### CONTENTS_PLAYERCLIP
@@ -123,7 +123,7 @@ const CONTENTS_PLAYERCLIP = headers.CONTENTS_PLAYERCLIP
 Collision-contents bit identifying playerclip space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L20)
 
 <a id="constant-constant-mq3-game-arenas-contents-solid-const-contents-solid-headers-contents-solid-src-mq3-game-arenas-ml-115381813"></a>
 ### CONTENTS_SOLID
@@ -135,7 +135,7 @@ const CONTENTS_SOLID = headers.CONTENTS_SOLID
 Collision-contents bit identifying solid space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L18)
 
 <a id="function-function-mq3-game-arenas-cvarinteger-function-cvarinteger-level-name-src-mq3-game-arenas-ml-1996026689"></a>
 ### cvarInteger
@@ -152,7 +152,7 @@ Apply `mq3.qcommon.cvar.find` while evaluating `cvarInteger`. Return paths inclu
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L40)
 
 <a id="constant-constant-mq3-game-arenas-entitynum-world-const-entitynum-world-1022-src-mq3-game-arenas-ml-1017198498"></a>
 ### ENTITYNUM_WORLD
@@ -164,7 +164,7 @@ const ENTITYNUM_WORLD = 1022
 Reserved entity number representing the BSP world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L24)
 
 <a id="function-function-mq3-game-arenas-facefrompodium-function-facefrompodium-level-podium-ent-src-mq3-game-arenas-ml-1756913819"></a>
 ### faceFromPodium
@@ -182,7 +182,7 @@ Set `ent.s.apos.trBase` to `angles` in `mq3.game.arenas.faceFromPodium`. Return 
 | `ent` | `dynamic` | — | Game entity; accesses `s`. May update `ent.s.apos.trBase` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L122)
 
 <a id="function-function-mq3-game-arenas-padpoint-function-padpoint-pad-offset-angles-src-mq3-game-arenas-ml-1320660318"></a>
 ### padPoint
@@ -200,7 +200,7 @@ Transform a podium-local offset into world coordinates using the podium origin a
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L113)
 
 <a id="function-function-mq3-game-arenas-podiumplacementthink-function-podiumplacementthink-level-podium-src-mq3-game-arenas-ml-1662847054"></a>
 ### podiumPlacementThink
@@ -217,7 +217,7 @@ Set `podium.nextthink` to `n.add32(level.time,100)` in `mq3.game.arenas.podiumPl
 | `podium` | `dynamic` | — | Podium record; accesses `nextthink`. May update `podium.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L172)
 
 <a id="function-function-mq3-game-arenas-spawnmodelonvictorypad-function-spawnmodelonvictorypad-level-pad-offset-ent-place-src-mq3-game-arenas-ml-228826084"></a>
 ### spawnModelOnVictoryPad
@@ -237,7 +237,7 @@ Apply `mq3.game.entities.spawn`, `mq3.game.entitystate.copy` and `mq3.game.arena
 | `place` | `dynamic` | — | Value used by `spawnModelOnVictoryPad` in `body.count = place`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L134)
 
 <a id="function-function-mq3-game-arenas-spawnmodelsonvictorypads-function-spawnmodelsonvictorypads-level-src-mq3-game-arenas-ml-870222102"></a>
 ### spawnModelsOnVictoryPads
@@ -253,7 +253,7 @@ Update `level.podium1`, `level.podium2` and `level.podium3` during `spawnModelsO
 | `level` | `dynamic` | — | Game-level state; accesses `podium1`, `podium2`, `podium3`, `sortedClients` and `entities` and related fields. May update `level.podium1`, `level.podium2` and `level.podium3` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L195)
 
 <a id="function-function-mq3-game-arenas-spawnpodium-function-spawnpodium-level-src-mq3-game-arenas-ml-206452580"></a>
 ### spawnPodium
@@ -269,7 +269,7 @@ Apply `mq3.game.entities.spawn`, `mq3.game.spawn_values.modelIndex` and `mq3.gam
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`, `intermission_angle`, `intermission_origin` and `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L183)
 
 <a id="constant-constant-mq3-game-arenas-timer-gesture-const-timer-gesture-internal-timer-gesture-src-mq3-game-arenas-ml-1032549759"></a>
 ### TIMER_GESTURE
@@ -281,7 +281,7 @@ const TIMER_GESTURE = internal.TIMER_GESTURE
 Gesture animation duration in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L28)
 
 <a id="function-function-mq3-game-arenas-updatetournamentinfo-function-updatetournamentinfo-level-src-mq3-game-arenas-ml-635633058"></a>
 ### updateTournamentInfo
@@ -297,4 +297,4 @@ Use `level.consoleCommandFn` to perform `updateTournamentInfo`.
 | `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `entities`, `clients`, `spawner` and `numNonSpectatorClients` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/arenas.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/arenas.ml#L49)

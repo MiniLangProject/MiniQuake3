@@ -16,7 +16,7 @@ Reachable from entry: **yes**
 - `mq3/platform/playable_window.ml` as `window` → [src/mq3/platform/playable_window.ml](File-src-mq3-platform-playable-window-ml-933960264.md)
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/array.ml` as `arrays` → `../MiniLangCompilerML/std/array.ml` — external dependency
+- `std/array.ml` as `arrays` → `../../a7594a0c0299/MiniLangCompilerML/std/array.ml` — external dependency
 
 ## Declarations
 
@@ -39,7 +39,7 @@ Updates `state.marks` during playable marks `append`.
 | `bornAt` | `dynamic` | — | Value used by `if state==void or profile==void or not valid3(origin) or not valid3(normal) or bornAt<0 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L176)
 
 <a id="function-function-mq3-client-playable-marks-axes-function-axes-mark-src-mq3-client-playable-marks-ml-2108852705"></a>
 ### axes
@@ -55,7 +55,7 @@ Calls `mq3.client.playable_marks.perpendicular`, `mq3.shared.math.CrossProduct`,
 | `mark` | `dynamic` | — | Record read through `mark.normal`, `mark.orientation`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L205)
 
 - [mq3.client.playable_marks.Catalog](Type-mq3-client-playable-marks-catalog-509575647.md) — struct
 <a id="function-function-mq3-client-playable-marks-color-function-color-mark-now-src-mq3-client-playable-marks-ml-876139729"></a>
@@ -73,7 +73,7 @@ Calls `mq3.compat.numeric.trunc32` from playable marks `color`. The final path r
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L225)
 
 <a id="function-function-mq3-client-playable-marks-copy3-function-copy3-value-src-mq3-client-playable-marks-ml-852386001"></a>
 ### copy3
@@ -89,7 +89,7 @@ Copies three vector components with float32 rounding for playable marks.
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L94)
 
 <a id="function-function-mq3-client-playable-marks-create-function-create-src-mq3-client-playable-marks-ml-506741060"></a>
 ### create
@@ -101,7 +101,7 @@ function create()
 Creates a `mq3.client.playable_marks.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L88)
 
 <a id="function-function-mq3-client-playable-marks-draw-function-draw-state-catalog-projection-now-src-mq3-client-playable-marks-ml-337404235"></a>
 ### draw
@@ -120,7 +120,7 @@ Calls `mq3.platform.playable_window.createTriangleBatch`, `mq3.platform.playable
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L237)
 
 <a id="function-function-mq3-client-playable-marks-fail-function-fail-message-src-mq3-client-playable-marks-ml-1529968831"></a>
 ### fail
@@ -136,7 +136,7 @@ Creates the playable marks error `7640` with diagnostic text `"playable marks: "
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"playable marks: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L86)
 
 <a id="function-function-mq3-client-playable-marks-haskey-function-haskey-state-key-bornat-src-mq3-client-playable-marks-ml-1266124462"></a>
 ### hasKey
@@ -154,7 +154,7 @@ Evaluates playable marks `hasKey` and returns `true`, `false` according to its g
 | `bornAt` | `dynamic` | — | Value used by `for each mark in state.marks if mark.key==key and mark.bornAt==bornAt then return true end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L165)
 
 <a id="constant-constant-mq3-client-playable-marks-kind-bullet-const-kind-bullet-1-src-mq3-client-playable-marks-ml-1917662620"></a>
 ### KIND_BULLET
@@ -166,7 +166,7 @@ const KIND_BULLET = 1
 Effect or media category selecting the bullet presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-marks-kind-burn-const-kind-burn-2-src-mq3-client-playable-marks-ml-1949921763"></a>
 ### KIND_BURN
@@ -178,7 +178,7 @@ const KIND_BURN = 2
 Effect or media category selecting the burn presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L25)
 
 <a id="constant-constant-mq3-client-playable-marks-kind-energy-const-kind-energy-4-src-mq3-client-playable-marks-ml-771415585"></a>
 ### KIND_ENERGY
@@ -190,7 +190,7 @@ const KIND_ENERGY = 4
 Effect or media category selecting the energy presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L29)
 
 <a id="constant-constant-mq3-client-playable-marks-kind-hole-const-kind-hole-3-src-mq3-client-playable-marks-ml-1455659698"></a>
 ### KIND_HOLE
@@ -202,7 +202,7 @@ const KIND_HOLE = 3
 Effect or media category selecting the hole presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
 
 <a id="function-function-mq3-client-playable-marks-load-function-load-archive-firsttextureslot-maxtextureslots-src-mq3-client-playable-marks-ml-1567310659"></a>
 ### load
@@ -220,7 +220,7 @@ Calls `mq3.client.playable_marks.textureName`, `mq3.renderer.playable_materials.
 | `maxTextureSlots` | `dynamic` | — | Maximum number of texture slots available to the renderer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L110)
 
 - [mq3.client.playable_marks.Mark](Type-mq3-client-playable-marks-mark-1824883361.md) — struct
 <a id="constant-constant-mq3-client-playable-marks-mark-fade-time-const-mark-fade-time-1000-src-mq3-client-playable-marks-ml-278481820"></a>
@@ -233,7 +233,7 @@ const MARK_FADE_TIME = 1000
 Duration in milliseconds of the final impact-mark fade-out phase.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-marks-mark-total-time-const-mark-total-time-10000-src-mq3-client-playable-marks-ml-1779024868"></a>
 ### MARK_TOTAL_TIME
@@ -245,7 +245,7 @@ const MARK_TOTAL_TIME = 10000
 Total lifetime in milliseconds of a persistent impact mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-marks-max-marks-const-max-marks-256-src-mq3-client-playable-marks-ml-339257162"></a>
 ### MAX_MARKS
@@ -257,7 +257,7 @@ const MAX_MARKS = 256
 Capacity limit for the marks collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L21)
 
 <a id="function-function-mq3-client-playable-marks-orientation-function-orientation-key-bornat-src-mq3-client-playable-marks-ml-672507689"></a>
 ### orientation
@@ -274,7 +274,7 @@ Computes `((numeric.i32(key*97+bornAt*17) & 1023)*360.0)/1024.0` for playable ma
 | `bornAt` | `dynamic` | — | Value used by `return ((numeric.i32(key*97+bornAt*17) & 1023)*360.0)/1024.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L160)
 
 <a id="function-function-mq3-client-playable-marks-perpendicular-function-perpendicular-normal-src-mq3-client-playable-marks-ml-508542703"></a>
 ### perpendicular
@@ -290,7 +290,7 @@ Calls `mq3.shared.math.CrossProduct`, `mq3.shared.math.VectorNormalize` from pla
 | `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L199)
 
 <a id="constant-constant-mq3-client-playable-marks-pi-const-pi-3-141593-src-mq3-client-playable-marks-ml-830521811"></a>
 ### PI
@@ -302,7 +302,7 @@ const PI = 3.141593
 Circle constant used to convert or evaluate angles in trigonometric calculations.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L31)
 
 <a id="function-function-mq3-client-playable-marks-point-function-point-mark-axis1-axis2-x-y-src-mq3-client-playable-marks-ml-943101083"></a>
 ### point
@@ -322,7 +322,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable marks `point`, retur
 | `y` | `dynamic` | — | Argument 1, 2, 3 of `mq3.client.playable_viewer.ScreenPoint`; passed as `mark.origin[0]+axis1[0]*x+axis2[0]*y`, `mark.origin[1]+axis1[1]*x+axis2[1]*y`, `mark.origin[2]+axis1[2]*x+axis2[2]*y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L216)
 
 <a id="function-function-mq3-client-playable-marks-projectileprofile-function-projectileprofile-style-src-mq3-client-playable-marks-ml-1535585529"></a>
 ### projectileProfile
@@ -338,7 +338,7 @@ Evaluates playable marks `projectileProfile` and returns `[KIND_BURN,64.0,false]
 | `style` | `dynamic` | — | Value used by `if style==projectileView.STYLE_ROCKET or style==projectileView.STYLE_GRENADE then return [KIND_BURN,64.0,false] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L150)
 
 <a id="function-function-mq3-client-playable-marks-release-function-release-catalog-src-mq3-client-playable-marks-ml-1750274097"></a>
 ### release
@@ -354,7 +354,7 @@ Calls `mq3.platform.playable_window.releaseTexture` from playable marks `release
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L129)
 
 - [mq3.client.playable_marks.State](Type-mq3-client-playable-marks-state-1635688085.md) — struct
 - [mq3.client.playable_marks.Texture](Type-mq3-client-playable-marks-texture-116477787.md) — struct
@@ -373,7 +373,7 @@ Evaluates playable marks `textureFor` and returns `texture`, `void` according to
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L133)
 
 <a id="function-function-mq3-client-playable-marks-texturename-function-texturename-kind-src-mq3-client-playable-marks-ml-256855866"></a>
 ### textureName
@@ -389,7 +389,7 @@ Evaluates playable marks `textureName` and returns `"gfx/damage/bullet_mrk"`, `"
 | `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L98)
 
 <a id="function-function-mq3-client-playable-marks-update-function-update-state-snapshots-shoteffects-now-src-mq3-client-playable-marks-ml-746290136"></a>
 ### update
@@ -408,7 +408,7 @@ Updates `state.marks` during playable marks `update`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L189)
 
 <a id="function-function-mq3-client-playable-marks-upload-function-upload-catalog-src-mq3-client-playable-marks-ml-173336687"></a>
 ### upload
@@ -424,7 +424,7 @@ Calls `mq3.platform.playable_window.uploadTextureNoMip` from playable marks `upl
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L122)
 
 <a id="function-function-mq3-client-playable-marks-valid3-function-valid3-value-src-mq3-client-playable-marks-ml-56066361"></a>
 ### valid3
@@ -440,7 +440,7 @@ Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `valid3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L91)
 
 <a id="function-function-mq3-client-playable-marks-weaponprofile-function-weaponprofile-classname-src-mq3-client-playable-marks-ml-1722064021"></a>
 ### weaponProfile
@@ -456,4 +456,4 @@ Evaluates playable marks `weaponProfile` and returns `[KIND_BULLET,8.0,false]`, 
 | `classname` | `dynamic` | — | Value used by `if classname=="weapon_machinegun" then return [KIND_BULLET,8.0,false] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L137)

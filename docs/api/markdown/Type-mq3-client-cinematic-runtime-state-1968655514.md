@@ -12,7 +12,7 @@ struct State
 Stores cinematic runtime state, including `archive`, `handles`, `drawQueue`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L137)
 
 ## Members
 
@@ -26,7 +26,7 @@ archive
 When constructing this record, `create` supplies `archive` for this member. Used by `play` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L140)
 
 <a id="field-field-mq3-client-cinematic-runtime-state-drawqueue-drawqueue-src-mq3-client-cinematic-runtime-ml-1853461602"></a>
 ### drawQueue
@@ -38,7 +38,7 @@ drawQueue
 When constructing this record, `create` supplies `lists.List.withCapacity(16)` for this member. Used by `draw` and `takeDraws` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L146)
 
 <a id="field-field-mq3-client-cinematic-runtime-state-handles-handles-src-mq3-client-cinematic-runtime-ml-1882888438"></a>
 ### handles
@@ -50,4 +50,4 @@ handles
 When constructing this record, `create` supplies `array(MAX_HANDLES,void)` for this member. Used by `validHandle` and `freeHandle` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L143)

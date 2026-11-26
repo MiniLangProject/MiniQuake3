@@ -12,7 +12,7 @@ struct DebugPolygon
 `DebugPolygon` record for server imports, containing `inuse`, `color` and `points`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L58)
 
 ## Members
 
@@ -26,7 +26,7 @@ color
 Color components associated with the vertex or debug primitive.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L62)
 
 <a id="field-field-mq3-botlib-server-imports-debugpolygon-inuse-inuse-src-mq3-botlib-server-imports-ml-368818112"></a>
 ### inuse
@@ -38,7 +38,7 @@ inuse
 True when this debug polygon or managed entry owns an active slot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L60)
 
 <a id="field-field-mq3-botlib-server-imports-debugpolygon-points-points-src-mq3-botlib-server-imports-ml-1514280338"></a>
 ### points
@@ -50,4 +50,4 @@ points
 XYZ points defining the debug shape, polygon, or winding.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L64)

@@ -12,7 +12,7 @@ struct VertexResult
 Data record for `mq3.renderer.playable_dynamic_lights.VertexResult`; groups `uv`, `color`, `clip`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L37)
 
 ## Members
 
@@ -26,7 +26,7 @@ clip
 Clipping flags identifying vertices outside the light's projected region.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-vertexresult-color-color-src-mq3-renderer-playable-dynamic-lights-ml-1939745818"></a>
 ### color
@@ -38,7 +38,7 @@ color
 Computed dynamic-light color contribution for the projected surface vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-vertexresult-uv-uv-src-mq3-renderer-playable-dynamic-lights-ml-890641288"></a>
 ### uv
@@ -50,4 +50,4 @@ uv
 Texture coordinates associated with this vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L39)

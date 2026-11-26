@@ -12,7 +12,7 @@ struct Result
 Stores client game servercmds operation result, including `handled`, `actions`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L230)
 
 ## Members
 
@@ -26,7 +26,7 @@ actions
 Host requests queued while applying reliable server commands and playing server-directed feedback, retained in request order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L235)
 
 <a id="field-field-mq3-client-cgame-servercmds-result-handled-handled-src-mq3-client-cgame-servercmds-ml-174784156"></a>
 ### handled
@@ -38,4 +38,4 @@ handled
 When constructing this record, `result` supplies `handled` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L232)

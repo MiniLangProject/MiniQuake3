@@ -11,7 +11,7 @@ Reachable from entry: **yes**
 - `mq3/platform/udp.ml` as `udp` → [src/mq3/platform/udp.ml](File-src-mq3-platform-udp-ml-646757928.md)
 - `mq3/qcommon/huffman.ml` as `huffman` → [src/mq3/qcommon/huffman.ml](File-src-mq3-qcommon-huffman-ml-898182869.md)
 - `mq3/qcommon/netchan.ml` as `netchan` → [src/mq3/qcommon/netchan.ml](File-src-mq3-qcommon-netchan-ml-1381353623.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -32,7 +32,7 @@ Validation failures include `net transport: unsupported address`.
 | `address` | `dynamic` | — | Record exposing `type`, `ip`, `port`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L201)
 
 <a id="function-function-mq3-qcommon-net-transport-addresstostring-function-addresstostring-address-src-mq3-qcommon-net-transport-ml-1430742938"></a>
 ### addressToString
@@ -48,7 +48,7 @@ Compute address to string in qcommon.net_transport; the normal completion return
 | `address` | `dynamic` | — | Record exposing `type`, `ip`, `port`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L128)
 
 <a id="function-function-mq3-qcommon-net-transport-attach-function-attach-runtime-socket-src-mq3-qcommon-net-transport-ml-7827483"></a>
 ### attach
@@ -67,7 +67,7 @@ Direct state writes: `runtime.context`, `runtime.sendPacketFn`.
 | `socket` | `dynamic` | — | Socket passed as `socket` to `mq3.qcommon.net_transport.create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L273)
 
 <a id="function-function-mq3-qcommon-net-transport-attachloopback-function-attachloopback-runtime-loopbacks-src-mq3-qcommon-net-transport-ml-887664398"></a>
 ### attachLoopback
@@ -86,7 +86,7 @@ Direct state writes: `runtime.context`, `runtime.sendPacketFn`.
 | `loopbacks` | `dynamic` | — | Loopbacks passed as `loopbacks` to `mq3.qcommon.net_transport.createLoopback`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L292)
 
 <a id="function-function-mq3-qcommon-net-transport-attachshared-function-attachshared-runtime-socket-loopbacks-src-mq3-qcommon-net-transport-ml-2040505237"></a>
 ### attachShared
@@ -106,7 +106,7 @@ Direct state writes: `runtime.context`, `runtime.sendPacketFn`.
 | `loopbacks` | `dynamic` | — | Loopbacks passed as `loopbacks` to `mq3.qcommon.net_transport.createShared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L283)
 
 <a id="function-function-mq3-qcommon-net-transport-blankaddress-function-blankaddress-kind-src-mq3-qcommon-net-transport-ml-1043269426"></a>
 ### blankAddress
@@ -122,7 +122,7 @@ Return `mq3.qcommon.netchan.Address(kind, [0, 0, 0, 0], 0)` from `qcommon.net_tr
 | `kind` | `dynamic` | — | Initial `type` field stored in the returned or constructed `mq3.qcommon.netchan.Address` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L76)
 
 <a id="function-function-mq3-qcommon-net-transport-compareaddress-function-compareaddress-first-second-src-mq3-qcommon-net-transport-ml-641286284"></a>
 ### compareAddress
@@ -139,7 +139,7 @@ Compute qcommon.net_transport.compareAddress as `(compareBaseAddress(first, seco
 | `second` | `dynamic` | — | Record exposing `port`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L104)
 
 <a id="function-function-mq3-qcommon-net-transport-comparebaseaddress-function-comparebaseaddress-first-second-src-mq3-qcommon-net-transport-ml-135103324"></a>
 ### compareBaseAddress
@@ -156,7 +156,7 @@ Test compare base address in qcommon.net_transport; the normal completion return
 | `second` | `dynamic` | — | Record exposing `type`, `ip`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L92)
 
 <a id="function-function-mq3-qcommon-net-transport-create-function-create-socket-src-mq3-qcommon-net-transport-ml-1764602757"></a>
 ### create
@@ -174,7 +174,7 @@ Validation failures include `net transport: missing socket`.
 | `socket` | `dynamic` | — | Initial `socket` field stored in the returned or constructed `mq3.qcommon.net_transport.Transport` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L229)
 
 <a id="function-function-mq3-qcommon-net-transport-createloopback-function-createloopback-loopbacks-src-mq3-qcommon-net-transport-ml-1615181576"></a>
 ### createLoopback
@@ -192,7 +192,7 @@ Validation failures include `net transport: missing loopback transport`.
 | `loopbacks` | `dynamic` | — | Initial `loopbacks` field stored in the returned or constructed `mq3.qcommon.net_transport.Transport` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L248)
 
 <a id="function-function-mq3-qcommon-net-transport-createloopbacks-function-createloopbacks-src-mq3-qcommon-net-transport-ml-749058508"></a>
 ### createLoopbacks
@@ -204,7 +204,7 @@ function createLoopbacks()
 Create `mq3.qcommon.net_transport.Loopbacks` with queues=[LoopQueue(array(MAX_LOOPBACK, void), 0, 0), LoopQueue(array(MAX_LOOPBACK, void), 0, 0)].
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L78)
 
 <a id="function-function-mq3-qcommon-net-transport-createshared-function-createshared-socket-loopbacks-src-mq3-qcommon-net-transport-ml-1489881911"></a>
 ### createShared
@@ -223,7 +223,7 @@ Validation failures include `net transport: missing shared transport`.
 | `loopbacks` | `dynamic` | — | Initial `loopbacks` field stored in the returned or constructed `mq3.qcommon.net_transport.Transport` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L239)
 
 <a id="function-function-mq3-qcommon-net-transport-endpointtoaddress-function-endpointtoaddress-endpoint-src-mq3-qcommon-net-transport-ml-1497338589"></a>
 ### endpointToAddress
@@ -241,7 +241,7 @@ Validation failures include `net transport: missing endpoint`.
 | `endpoint` | `dynamic` | — | Record exposing `address`, `port`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L220)
 
 <a id="function-function-mq3-qcommon-net-transport-getlooppacket-function-getlooppacket-loopbacks-sock-capacity-src-mq3-qcommon-net-transport-ml-1322598344"></a>
 ### getLoopPacket
@@ -261,7 +261,7 @@ Validation failures include `net transport: invalid loopback receive`; `net tran
 | `capacity` | `dynamic` | — | Capacity used in `(capacity < 1)` and `(len(data) > capacity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L188)
 
 <a id="function-function-mq3-qcommon-net-transport-hexbyte-function-hexbyte-value-src-mq3-qcommon-net-transport-ml-14974673"></a>
 ### hexByte
@@ -277,7 +277,7 @@ Compute hex byte in qcommon.net_transport; the normal completion returns `decode
 | `value` | `dynamic` | — | Value used in `(value >> 4)` and `(value & 15)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L114)
 
 <a id="function-function-mq3-qcommon-net-transport-ipxtostring-function-ipxtostring-values-port-src-mq3-qcommon-net-transport-ml-531144863"></a>
 ### ipxToString
@@ -294,7 +294,7 @@ Apply `mq3.qcommon.net_transport.hexByte` for ipx to string in qcommon.net_trans
 | `port` | `dynamic` | — | Port used in `str(port)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L121)
 
 <a id="function-function-mq3-qcommon-net-transport-islocaladdress-function-islocaladdress-address-src-mq3-qcommon-net-transport-ml-698580210"></a>
 ### isLocalAddress
@@ -310,7 +310,7 @@ Compute qcommon.net_transport.isLocalAddress as `((address != void) and (address
 | `address` | `dynamic` | — | Record exposing `type`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L110)
 
 - [mq3.qcommon.net_transport.Loopbacks](Type-mq3-qcommon-net-transport-loopbacks-2141534891.md) — struct
 - [mq3.qcommon.net_transport.LoopMessage](Type-mq3-qcommon-net-transport-loopmessage-1709381836.md) — struct
@@ -325,7 +325,7 @@ const MAX_LOOPBACK = 16
 Number of packet slots in each local loopback queue.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L27)
 
 <a id="constant-constant-mq3-qcommon-net-transport-max-packetlen-const-max-packetlen-1400-src-mq3-qcommon-net-transport-ml-1111098622"></a>
 ### MAX_PACKETLEN
@@ -337,7 +337,7 @@ const MAX_PACKETLEN = 1400
 Maximum byte length of an individual network datagram.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L29)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-bad-const-na-bad-1-src-mq3-qcommon-net-transport-ml-368575434"></a>
 ### NA_BAD
@@ -349,7 +349,7 @@ const NA_BAD = 1
 Network-address kind indicating an invalid or unsupported endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L13)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-bot-const-na-bot-0-src-mq3-qcommon-net-transport-ml-1399234719"></a>
 ### NA_BOT
@@ -361,7 +361,7 @@ const NA_BOT = 0
 Network-address kind reserved for an in-process bot client.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L11)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-broadcast-const-na-broadcast-3-src-mq3-qcommon-net-transport-ml-1880602404"></a>
 ### NA_BROADCAST
@@ -373,7 +373,7 @@ const NA_BROADCAST = 3
 Network-address kind for an IPv4 broadcast destination.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L17)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-broadcast-ipx-const-na-broadcast-ipx-6-src-mq3-qcommon-net-transport-ml-1846107497"></a>
 ### NA_BROADCAST_IPX
@@ -385,7 +385,7 @@ const NA_BROADCAST_IPX = 6
 Legacy network-address kind for IPX broadcast delivery.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L23)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-ip-const-na-ip-4-src-mq3-qcommon-net-transport-ml-1656798883"></a>
 ### NA_IP
@@ -397,7 +397,7 @@ const NA_IP = 4
 Network-address kind for an IPv4 endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L19)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-ipx-const-na-ipx-5-src-mq3-qcommon-net-transport-ml-1216819554"></a>
 ### NA_IPX
@@ -409,7 +409,7 @@ const NA_IPX = 5
 Legacy network-address kind for an IPX endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L21)
 
 <a id="constant-constant-mq3-qcommon-net-transport-na-loopback-const-na-loopback-2-src-mq3-qcommon-net-transport-ml-727319733"></a>
 ### NA_LOOPBACK
@@ -421,7 +421,7 @@ const NA_LOOPBACK = 2
 Network-address kind for local loopback delivery.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L15)
 
 <a id="function-function-mq3-qcommon-net-transport-nativeresolve-function-nativeresolve-context-name-src-mq3-qcommon-net-transport-ml-1483018548"></a>
 ### nativeResolve
@@ -438,7 +438,7 @@ Compute native resolve in qcommon.net_transport; the normal completion returns `
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.net_transport.resolveIPv4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L162)
 
 <a id="function-function-mq3-qcommon-net-transport-outofbanddata-function-outofbanddata-socket-address-data-src-mq3-qcommon-net-transport-ml-2059595517"></a>
 ### outOfBandData
@@ -456,7 +456,7 @@ Compute out of band data in qcommon.net_transport; the normal completion returns
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.qcommon.net_transport.outOfBandDataPacket`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L341)
 
 <a id="function-function-mq3-qcommon-net-transport-outofbanddatapacket-function-outofbanddatapacket-data-src-mq3-qcommon-net-transport-ml-1981526808"></a>
 ### outOfBandDataPacket
@@ -472,7 +472,7 @@ Compute out of band data packet in qcommon.net_transport; the normal completion 
 | `data` | `dynamic` | — | Data used in `(bytes([255, 255, 255, 255]) + data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L330)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L330)
 
 <a id="function-function-mq3-qcommon-net-transport-outofbandprint-function-outofbandprint-socket-address-text-src-mq3-qcommon-net-transport-ml-1160157850"></a>
 ### outOfBandPrint
@@ -490,7 +490,7 @@ Compute out of band print in qcommon.net_transport; the normal completion return
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.net_transport.outOfBandPrintPacket`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L324)
 
 <a id="function-function-mq3-qcommon-net-transport-outofbandprintpacket-function-outofbandprintpacket-text-src-mq3-qcommon-net-transport-ml-1838799303"></a>
 ### outOfBandPrintPacket
@@ -506,7 +506,7 @@ Compute qcommon.net_transport.outOfBandPrintPacket as `(bytes([255, 255, 255, 25
 | `text` | `dynamic` | — | Text used in `bytes(text)` and `(bytes([255, 255, 255, 255]) + bytes(text))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L318)
 
 - [mq3.qcommon.net_transport.Packet](Type-mq3-qcommon-net-transport-packet-1610243603.md) — struct
 <a id="constant-constant-mq3-qcommon-net-transport-port-server-const-port-server-27960-src-mq3-qcommon-net-transport-ml-119512519"></a>
@@ -519,7 +519,7 @@ const PORT_SERVER = 27960
 Default UDP port used by a Quake III game server.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L25)
 
 <a id="function-function-mq3-qcommon-net-transport-receive-function-receive-socket-capacity-src-mq3-qcommon-net-transport-ml-591526667"></a>
 ### receive
@@ -536,7 +536,7 @@ Receive net transport in qcommon.net_transport; the normal completion returns `P
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.platform.udp.receiveFrom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L299)
 
 <a id="function-function-mq3-qcommon-net-transport-receivebuffered-function-receivebuffered-socket-data-metadata-capacity-src-mq3-qcommon-net-transport-ml-1736307460"></a>
 ### receiveBuffered
@@ -555,7 +555,7 @@ Receive buffered in qcommon.net_transport; the normal completion returns `Packet
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.platform.udp.receiveFromBuffered`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L310)
 
 <a id="function-function-mq3-qcommon-net-transport-resolved-function-resolved-ok-address-src-mq3-qcommon-net-transport-ml-1653230260"></a>
 ### resolved
@@ -572,7 +572,7 @@ Create `mq3.qcommon.net_transport.AddressResult` with ok=ok; address=address.
 | `address` | `dynamic` | — | Initial `address` field stored in the returned or constructed `mq3.qcommon.net_transport.AddressResult` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L141)
 
 <a id="function-function-mq3-qcommon-net-transport-resolveipv4-function-resolveipv4-name-port-src-mq3-qcommon-net-transport-ml-1481434166"></a>
 ### resolveIPv4
@@ -591,7 +591,7 @@ Validation failures include `net transport: invalid resolved port`.
 | `port` | `dynamic` | — | Initial `port` field stored in the returned or constructed `mq3.qcommon.netchan.Address` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L211)
 
 <a id="function-function-mq3-qcommon-net-transport-sendlooppacket-function-sendlooppacket-loopbacks-sock-data-src-mq3-qcommon-net-transport-ml-1604708740"></a>
 ### sendLoopPacket
@@ -611,7 +611,7 @@ Validation failures include `net transport: invalid loopback send`; `net transpo
 | `data` | `dynamic` | — | Data used in `len(data)` and `bytes(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L176)
 
 <a id="function-function-mq3-qcommon-net-transport-sendpacket-function-sendpacket-runtime-sock-data-address-src-mq3-qcommon-net-transport-ml-1903283400"></a>
 ### sendPacket
@@ -632,7 +632,7 @@ Validation failures include `net transport: missing runtime`.
 | `address` | `dynamic` | — | Record exposing `type`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L260)
 
 <a id="function-function-mq3-qcommon-net-transport-stringtoaddress-function-stringtoaddress-text-src-mq3-qcommon-net-transport-ml-1422326739"></a>
 ### stringToAddress
@@ -648,7 +648,7 @@ Return `mq3.qcommon.net_transport.stringToAddressWith(text, nativeResolve, void)
 | `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.net_transport.stringToAddressWith`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L168)
 
 <a id="function-function-mq3-qcommon-net-transport-stringtoaddresswith-function-stringtoaddresswith-text-resolvefn-context-src-mq3-qcommon-net-transport-ml-1716046816"></a>
 ### stringToAddressWith
@@ -666,7 +666,7 @@ Compute string to address with in qcommon.net_transport; the normal completion r
 | `context` | `dynamic` | — | Context used in `resolveFn(context, base)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L147)
 
 - [mq3.qcommon.net_transport.Transport](Type-mq3-qcommon-net-transport-transport-2024000260.md) — struct
 <a id="function-function-mq3-qcommon-net-transport-validaddress-function-validaddress-address-count-src-mq3-qcommon-net-transport-ml-91107803"></a>
@@ -684,4 +684,4 @@ Compute qcommon.net_transport.validAddress as `((address != void) and (len(addre
 | `count` | `dynamic` | — | Count used in `(len(address.ip) >= count)` and `((address != void) and (len(address.ip) >= count))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L85)

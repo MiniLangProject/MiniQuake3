@@ -33,7 +33,7 @@ Direct state writes: `serverState.snapshotEntities`, `serverState.snapshotCapaci
 | `serverState` | `dynamic` | — | Updated in place: `snapshotEntities`, `snapshotCapacity`, `nextSnapshotEntities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L66)
 
 <a id="function-function-mq3-server-pipeline-create-function-create-level-clientnum-ringcapacity-baselines-downloadstate-downloadserver-downloadhost-netruntime-netchannel-src-mq3-server-pipeline-ml-422114260"></a>
 ### create
@@ -59,7 +59,7 @@ Validation failures include `server pipeline: bad client`.
 | `netChannel` | `dynamic` | — | Record exposing `outgoingSequence`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L52)
 
 <a id="function-function-mq3-server-pipeline-host-function-host-pipe-src-mq3-server-pipeline-ml-2086071502"></a>
 ### host
@@ -75,7 +75,7 @@ Return `mq3.server.snapshot_send.services(buildSnapshot, writeDownload, transmit
 | `pipe` | `dynamic` | — | Context passed as `context` to `mq3.server.snapshot_send.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L114)
 
 <a id="function-function-mq3-server-pipeline-islan-function-islan-host-clientstate-src-mq3-server-pipeline-ml-59647920"></a>
 ### isLan
@@ -92,7 +92,7 @@ Compute server.pipeline.isLan as `host.context.lan`.
 | `clientState` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L111)
 
 <a id="function-function-mq3-server-pipeline-islocal-function-islocal-host-clientstate-src-mq3-server-pipeline-ml-2049157268"></a>
 ### isLocal
@@ -109,7 +109,7 @@ Compute server.pipeline.isLocal as `host.context.local`.
 | `clientState` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L107)
 
 - [mq3.server.pipeline.Pipeline](Type-mq3-server-pipeline-pipeline-1212532013.md) — struct
 <a id="function-function-mq3-server-pipeline-sendsnapshot-function-sendsnapshot-pipe-level-time-src-mq3-server-pipeline-ml-1353536231"></a>
@@ -131,7 +131,7 @@ Direct state writes: `pipe.runtimeLevel`.
 | `time` | `dynamic` | — | Time operand used by `sendSnapshot`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L123)
 
 <a id="function-function-mq3-server-pipeline-transmit-function-transmit-host-clientstate-payload-src-mq3-server-pipeline-ml-1466365306"></a>
 ### transmit
@@ -151,7 +151,7 @@ Direct state writes: `clientState.outgoingSequence`.
 | `payload` | `dynamic` | — | Data passed as `data` to `mq3.qcommon.netchan.transmit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L95)
 
 <a id="function-function-mq3-server-pipeline-writedownload-function-writedownload-host-clientstate-msg-src-mq3-server-pipeline-ml-1701712815"></a>
 ### writeDownload
@@ -169,4 +169,4 @@ Runtime level is attached only for the synchronous duration of sendSnapshot.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.server.download.writeToClient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L81)

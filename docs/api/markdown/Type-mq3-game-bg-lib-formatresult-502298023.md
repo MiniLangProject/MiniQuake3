@@ -12,7 +12,7 @@ struct FormatResult
 `FormatResult` record for bg lib, containing `text` and `count`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L52)
 
 ## Members
 
@@ -26,7 +26,7 @@ count
 Number of characters produced by formatting.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L56)
 
 <a id="field-field-mq3-game-bg-lib-formatresult-text-text-src-mq3-game-bg-lib-ml-130569715"></a>
 ### text
@@ -38,4 +38,4 @@ text
 Formatted output text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L54)

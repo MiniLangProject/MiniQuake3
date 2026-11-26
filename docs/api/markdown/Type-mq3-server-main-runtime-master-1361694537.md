@@ -12,7 +12,7 @@ struct Master
 Master record for server.main_runtime, containing `name`, `value`, `modified`, `address`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L69)
 
 ## Members
 
@@ -26,7 +26,7 @@ address
 Network address associated with the client or packet.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L77)
 
 <a id="field-field-mq3-server-main-runtime-master-modified-modified-src-mq3-server-main-runtime-ml-1712689383"></a>
 ### modified
@@ -38,7 +38,7 @@ modified
 True when the configured address needs to be resolved again.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L75)
 
 <a id="field-field-mq3-server-main-runtime-master-name-name-src-mq3-server-main-runtime-ml-1671176807"></a>
 ### name
@@ -50,7 +50,7 @@ name
 Configuration-variable name for this master-server entry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L71)
 
 <a id="field-field-mq3-server-main-runtime-master-value-value-src-mq3-server-main-runtime-ml-426941657"></a>
 ### value
@@ -62,4 +62,4 @@ value
 Configured textual address of this master-server endpoint.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L73)

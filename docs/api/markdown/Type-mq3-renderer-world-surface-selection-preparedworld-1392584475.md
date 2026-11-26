@@ -12,7 +12,7 @@ struct PreparedWorld
 Data record for `mq3.renderer.world_surface_selection.PreparedWorld`; groups `selection`, `renderData`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L108)
 
 ## Members
 
@@ -26,7 +26,7 @@ renderData
 Prepared triangle and vertex data used to render the world or model.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L112)
 
 <a id="field-field-mq3-renderer-world-surface-selection-preparedworld-selection-selection-src-mq3-renderer-world-surface-selection-ml-1305328450"></a>
 ### selection
@@ -38,4 +38,4 @@ selection
 Visible-world selection used to prepare the drawing data.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L110)

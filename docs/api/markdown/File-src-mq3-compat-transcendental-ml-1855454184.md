@@ -25,7 +25,7 @@ Compute the quadrant-aware angle of the vector (x, y), in radians.
 
 **Returns:** The principal angle in radians, with the quadrant determined by both arguments.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L21)
 
 <a id="extern_function-extern-function-mq3-compat-transcendental-cos-extern-function-cos-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-compat-transcendental-ml-457032284"></a>
 ### cos
@@ -43,7 +43,7 @@ Compute the cosine of an angle in radians.
 
 **Returns:** The cosine value.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L12)
 
 <a id="extern_function-extern-function-mq3-compat-transcendental-sin-extern-function-sin-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-compat-transcendental-ml-1975410708"></a>
 ### sin
@@ -61,7 +61,7 @@ Compute the sine of an angle in radians.
 
 **Returns:** The sine value.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L8)
 
 <a id="extern_function-extern-function-mq3-compat-transcendental-sqrt-extern-function-sqrt-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-compat-transcendental-ml-1962844888"></a>
 ### sqrt
@@ -79,4 +79,4 @@ Compute a double-precision square root through the C runtime.
 
 **Returns:** The square-root result, with C-runtime domain handling for negative inputs.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L16)

@@ -12,7 +12,7 @@ struct Dheader
 Dheader record for format.qfiles, containing `ident`, `version`, `lumps`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L444)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L444)
 
 ## Members
 
@@ -26,7 +26,7 @@ ident
 Magic value identifying the BSP map.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L446)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L446)
 
 <a id="field-field-mq3-format-qfiles-dheader-lumps-lumps-src-mq3-format-qfiles-ml-1534832074"></a>
 ### lumps
@@ -38,7 +38,7 @@ lumps
 Directory records locating the BSP map data sections.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L450)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L450)
 
 <a id="field-field-mq3-format-qfiles-dheader-version-version-src-mq3-format-qfiles-ml-1444822298"></a>
 ### version
@@ -50,4 +50,4 @@ version
 BSP map-format version.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L448)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L448)

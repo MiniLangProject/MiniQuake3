@@ -22,7 +22,7 @@ function draw()
 UI_CreditMenu_Draw
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L60)
 
 - [mq3.client.ui_credits.Draw](Type-mq3-client-ui-credits-draw-1322397722.md) — struct
 <a id="constant-constant-mq3-client-ui-credits-exec-append-const-exec-append-2-src-mq3-client-ui-credits-ml-1920411779"></a>
@@ -35,7 +35,7 @@ const EXEC_APPEND = 2
 Console execution mode that appends text to the pending command buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L9)
 
 <a id="function-function-mq3-client-ui-credits-gap-function-gap-y-scale-src-mq3-client-ui-credits-ml-924004559"></a>
 ### gap
@@ -52,7 +52,7 @@ Adapts `mq3.compat.numeric.trunc32` to UI credits `gap`, returning its result fo
 | `scale` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.trunc32`; passed as `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L58)
 
 <a id="constant-constant-mq3-client-ui-credits-k-char-flag-const-k-char-flag-1024-src-mq3-client-ui-credits-ml-1700404100"></a>
 ### K_CHAR_FLAG
@@ -64,7 +64,7 @@ const K_CHAR_FLAG = 1024
 Engine key code for the char flag input, used by menu and client key-event handling.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L7)
 
 <a id="function-function-mq3-client-ui-credits-key-function-key-keycode-src-mq3-client-ui-credits-ml-282366824"></a>
 ### key
@@ -80,7 +80,7 @@ UI_CreditMenu_Key
 | `keyCode` | `dynamic` | — | Value used by `if (keyCode&K_CHAR_FLAG)!=0 then return [] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L74)
 
 <a id="function-function-mq3-client-ui-credits-open-function-open-src-mq3-client-ui-credits-ml-1611727752"></a>
 ### open
@@ -92,7 +92,7 @@ function open()
 UI_CreditMenu
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L76)
 
 <a id="constant-constant-mq3-client-ui-credits-prop-height-const-prop-height-27-src-mq3-client-ui-credits-ml-1593660612"></a>
 ### PROP_HEIGHT
@@ -104,7 +104,7 @@ const PROP_HEIGHT = 27
 Prop font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-credits-prop-small-size-scale-const-prop-small-size-scale-0-75-src-mq3-client-ui-credits-ml-1134170079"></a>
 ### PROP_SMALL_SIZE_SCALE
@@ -116,7 +116,7 @@ const PROP_SMALL_SIZE_SCALE = 0.75
 Prop font metric controlling small size scale in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L17)
 
 <a id="function-function-mq3-client-ui-credits-row-function-row-text-y-color-proportional-src-mq3-client-ui-credits-ml-1160213058"></a>
 ### row
@@ -135,7 +135,7 @@ Creates a `mq3.client.ui_credits.Draw` record. Assigns `text` from `text`, `y` f
 | `proportional` | `dynamic` | — | Value used to initialize `Draw.proportional`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L54)
 
 <a id="constant-constant-mq3-client-ui-credits-smallchar-height-const-smallchar-height-16-src-mq3-client-ui-credits-ml-944834052"></a>
 ### SMALLCHAR_HEIGHT
@@ -147,7 +147,7 @@ const SMALLCHAR_HEIGHT = 16
 Smallchar font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L19)
 
 - [mq3.client.ui_credits.State](Type-mq3-client-ui-credits-state-2081450621.md) — struct
 <a id="constant-constant-mq3-client-ui-credits-ui-center-const-ui-center-1-src-mq3-client-ui-credits-ml-1552967744"></a>
@@ -160,7 +160,7 @@ const UI_CENTER = 1
 UI text-style flag selecting horizontally centered text.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-credits-ui-smallfont-const-ui-smallfont-16-src-mq3-client-ui-credits-ml-1590258892"></a>
 ### UI_SMALLFONT
@@ -172,4 +172,4 @@ const UI_SMALLFONT = 16
 UI text-style flag selecting the small fixed-width font.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)

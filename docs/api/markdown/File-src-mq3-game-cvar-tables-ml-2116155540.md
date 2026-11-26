@@ -22,4 +22,4 @@ Return the ordered entries table for cvar tables: 46 entries beginning with `["g
 | `buildDate` | `dynamic` | — | Value used by `entries` in `["","gamedate",buildDate,64,0,false,false],`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_tables.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/cvar_tables.ml#L7)

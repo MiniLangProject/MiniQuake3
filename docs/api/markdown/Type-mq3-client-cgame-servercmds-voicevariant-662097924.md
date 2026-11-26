@@ -12,7 +12,7 @@ struct VoiceVariant
 Stores client game servercmds voice variant record, including `sound`, `chat`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L167)
 
 ## Members
 
@@ -26,7 +26,7 @@ chat
 When constructing this record, `parseVoiceChats` supplies `chat` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L171)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicevariant-sound-sound-src-mq3-client-cgame-servercmds-ml-1254983666"></a>
 ### sound
@@ -38,4 +38,4 @@ sound
 Registered voice sound, or its virtual asset path when no sound-registration callback is supplied.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L169)

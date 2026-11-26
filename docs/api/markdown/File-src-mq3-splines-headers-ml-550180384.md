@@ -10,7 +10,7 @@ Reachable from entry: **no**
 
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/compat/transcendental.ml` as `trig` → [src/mq3/compat/transcendental.ml](File-src-mq3-compat-transcendental-ml-1855454184.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -29,7 +29,7 @@ Add bounds in splines.headers; the normal completion returns `(first or second)`
 | `other` | `dynamic` | — | Record exposing `cleared`, `mins`, `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L297)
 
 <a id="function-function-mq3-splines-headers-addpoint-function-addpoint-value-point-src-mq3-splines-headers-ml-823491591"></a>
 ### AddPoint
@@ -48,7 +48,7 @@ Direct state writes: `value.mins`, `value.maxs`, `value.cleared`.
 | `point` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L287)
 
 <a id="function-function-mq3-splines-headers-addunique-function-addunique-list-value-src-mq3-splines-headers-ml-340075739"></a>
 ### AddUnique
@@ -65,7 +65,7 @@ Add unique in splines.headers; the normal completion returns `Append(list, value
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.Find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L366)
 
 <a id="function-function-mq3-splines-headers-angles-function-angles-pitch-yaw-roll-src-mq3-splines-headers-ml-660442356"></a>
 ### angles
@@ -83,7 +83,7 @@ Create `mq3.splines.headers.Angles` with pitch=n.f32(pitch); yaw=n.f32(yaw); rol
 | `roll` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L96)
 
 - [mq3.splines.headers.Angles](Type-mq3-splines-headers-angles-169651934.md) — struct
 <a id="function-function-mq3-splines-headers-angles-t-function-angles-t-pitch-yaw-roll-src-mq3-splines-headers-ml-1077658176"></a>
@@ -102,7 +102,7 @@ Return `mq3.splines.headers.angles(pitch, yaw, roll)` from `splines.headers.angl
 | `roll` | `dynamic` | — | Roll passed as `roll` to `mq3.splines.headers.angles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L117)
 
 <a id="function-function-mq3-splines-headers-append-function-append-left-right-src-mq3-splines-headers-ml-424941295"></a>
 ### append
@@ -119,7 +119,7 @@ Compute splines.headers.append as `(idStr(left) + idStr(right))`.
 | `right` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.idStr`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L416)
 
 <a id="function-function-mq3-splines-headers-append-function-append-list-value-src-mq3-splines-headers-ml-1240408647"></a>
 ### Append
@@ -138,7 +138,7 @@ Direct state writes: `list.values`.
 | `value` | `dynamic` | — | Value used in `(list.values + [value])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L358)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L358)
 
 <a id="function-function-mq3-splines-headers-bounds-function-bounds-src-mq3-splines-headers-ml-2146052874"></a>
 ### bounds
@@ -150,7 +150,7 @@ function bounds()
 Create `mq3.splines.headers.Bounds` with mins=vec3(1000000000.0, 1000000000.0, 1000000000.0); maxs=vec3(- 1000000000.0, - 1000000000.0, - 1000000000.0); cleared=true.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L279)
 
 - [mq3.splines.headers.Bounds](Type-mq3-splines-headers-bounds-2092755403.md) — struct
 <a id="function-function-mq3-splines-headers-center-function-center-value-src-mq3-splines-headers-ml-1728259971"></a>
@@ -167,7 +167,7 @@ Compute center in splines.headers; the normal completion returns `vecScale(vecAd
 | `value` | `dynamic` | — | Record exposing `cleared`, `mins`, `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L300)
 
 <a id="function-function-mq3-splines-headers-clear-function-clear-src-mq3-splines-headers-ml-1614368656"></a>
 ### Clear
@@ -179,7 +179,7 @@ function Clear()
 Return `mq3.splines.headers.mat3(Zero(), Zero(), Zero())` from `splines.headers.Clear`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L249)
 
 <a id="function-function-mq3-splines-headers-condense-function-condense-list-src-mq3-splines-headers-ml-679216258"></a>
 ### Condense
@@ -197,7 +197,7 @@ Direct state writes: `list.size`.
 | `list` | `dynamic` | — | Record exposing `values`, `size`. Updated in place: `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L385)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L385)
 
 <a id="function-function-mq3-splines-headers-containspoint-function-containspoint-value-point-src-mq3-splines-headers-ml-1648258941"></a>
 ### ContainsPoint
@@ -214,7 +214,7 @@ Compute splines.headers.ContainsPoint as `((((((not value.cleared and (point.x >
 | `point` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L307)
 
 <a id="function-function-mq3-splines-headers-cross-function-cross-a-b-src-mq3-splines-headers-ml-451105677"></a>
 ### Cross
@@ -231,7 +231,7 @@ Return `mq3.splines.headers.vec3(((a.y * b.z) - (a.z * b.y)), ((a.z * b.x) - (a.
 | `b` | `dynamic` | — | Record exposing `z`, `y`, `x`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L160)
 
 <a id="constant-constant-mq3-splines-headers-deg2rad-const-deg2rad-0-017453-src-mq3-splines-headers-ml-383803905"></a>
 ### DEG2RAD
@@ -243,7 +243,7 @@ const DEG2RAD = 0.017453
 Multiplicative factor that converts degrees to radians.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L13)
 
 <a id="function-function-mq3-splines-headers-dot-function-dot-a-b-src-mq3-splines-headers-ml-1336791551"></a>
 ### dot
@@ -260,7 +260,7 @@ Return `mq3.compat.numeric.f32((((a.x * b.x) + (a.y * b.y)) + (a.z * b.z)))` fro
 | `b` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L156)
 
 <a id="constant-constant-mq3-splines-headers-equal-epsilon-const-equal-epsilon-0-001-src-mq3-splines-headers-ml-59653128"></a>
 ### EQUAL_EPSILON
@@ -272,7 +272,7 @@ const EQUAL_EPSILON = 0.001
 Tolerance used when comparing floating-point geometric values for equality.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L11)
 
 <a id="function-function-mq3-splines-headers-find-function-find-list-value-src-mq3-splines-headers-ml-58990371"></a>
 ### Find
@@ -289,7 +289,7 @@ Find headers in splines.headers; the normal completion returns `- 1`.
 | `value` | `dynamic` | — | Value used in `(list.values[index] == value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L362)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L362)
 
 <a id="function-function-mq3-splines-headers-identity-function-identity-src-mq3-splines-headers-ml-1890231058"></a>
 ### Identity
@@ -301,7 +301,7 @@ function Identity()
 Return `mq3.splines.headers.mat3(vec3(1, 0, 0), vec3(0, 1, 0), vec3(0, 0, 1))` from `splines.headers.Identity`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L247)
 
 <a id="function-function-mq3-splines-headers-idlist-function-idlist-granularity-src-mq3-splines-headers-ml-1650056778"></a>
 ### idList
@@ -319,7 +319,7 @@ Validation failures include `list granularity must be positive`.
 | `granularity` | `dynamic` | — | Initial `granularity` field stored in the returned or constructed `mq3.splines.headers.ListState` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L320)
 
 <a id="function-function-mq3-splines-headers-idsqrt-function-idsqrt-value-src-mq3-splines-headers-ml-359900391"></a>
 ### idSqrt
@@ -335,7 +335,7 @@ Return `mq3.compat.transcendental.sqrt(value)` from `splines.headers.idSqrt`.
 | `value` | `dynamic` | — | Floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L137)
 
 <a id="function-function-mq3-splines-headers-idstr-function-idstr-value-src-mq3-splines-headers-ml-908681843"></a>
 ### idStr
@@ -351,7 +351,7 @@ Compute id str in splines.headers; the normal completion returns `str(value)`.
 | `value` | `dynamic` | — | Value used in `str(value)` and `(value == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L412)
 
 <a id="function-function-mq3-splines-headers-idvec3-t-function-idvec3-t-x-y-z-src-mq3-splines-headers-ml-130667621"></a>
 ### idVec3_t
@@ -369,7 +369,7 @@ Return `mq3.splines.headers.vec3(x, y, z)` from `splines.headers.idVec3_t`.
 | `z` | `dynamic` | — | Z passed as `z` to `mq3.splines.headers.vec3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L112)
 
 <a id="function-function-mq3-splines-headers-intersectsbounds-function-intersectsbounds-a-b-src-mq3-splines-headers-ml-1526263877"></a>
 ### IntersectsBounds
@@ -386,7 +386,7 @@ Compute splines.headers.IntersectsBounds as `(((((((not a.cleared and not b.clea
 | `b` | `dynamic` | — | Record exposing `cleared`, `mins`, `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L311)
 
 <a id="function-function-mq3-splines-headers-inversemultiply-function-inversemultiply-inverse-b-src-mq3-splines-headers-ml-1602284576"></a>
 ### InverseMultiply
@@ -403,7 +403,7 @@ Return `mq3.splines.headers.matrixMultiply(Transpose(inverse), b)` from `splines
 | `b` | `dynamic` | — | B passed as `b` to `mq3.splines.headers.matrixMultiply`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L273)
 
 <a id="function-function-mq3-splines-headers-iscleared-function-iscleared-value-src-mq3-splines-headers-ml-192916687"></a>
 ### IsCleared
@@ -419,7 +419,7 @@ Compute splines.headers.IsCleared as `value.cleared`.
 | `value` | `dynamic` | — | Record exposing `cleared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L314)
 
 <a id="function-function-mq3-splines-headers-length-function-length-value-src-mq3-splines-headers-ml-769976047"></a>
 ### Length
@@ -435,7 +435,7 @@ Return `mq3.compat.numeric.f32(idSqrt((((value.x * value.x) + (value.y * value.y
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L163)
 
 <a id="function-function-mq3-splines-headers-lerpvector-function-lerpvector-a-b-fraction-src-mq3-splines-headers-ml-1879149239"></a>
 ### LerpVector
@@ -453,7 +453,7 @@ Return `mq3.splines.headers.vecAdd(a, vecScale(vecSub(b, a), fraction))` from `s
 | `fraction` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.vecScale`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L187)
 
 <a id="function-function-mq3-splines-headers-listclear-function-listclear-list-src-mq3-splines-headers-ml-1838611908"></a>
 ### listClear
@@ -471,7 +471,7 @@ Direct state writes: `list.values`, `list.size`.
 | `list` | `dynamic` | — | Updated in place: `values`, `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L390)
 
 - [mq3.splines.headers.ListState](Type-mq3-splines-headers-liststate-1658866379.md) — struct
 <a id="function-function-mq3-splines-headers-mat3-function-mat3-a-b-c-src-mq3-splines-headers-ml-1711671758"></a>
@@ -490,7 +490,7 @@ Create `mq3.splines.headers.Mat3` with rows=[a, b, c].
 | `c` | `dynamic` | — | C used in `Mat3([a, b, c])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L107)
 
 - [mq3.splines.headers.Mat3](Type-mq3-splines-headers-mat3-1263765969.md) — struct
 <a id="function-function-mq3-splines-headers-mat3-t-function-mat3-t-a-b-c-src-mq3-splines-headers-ml-394888950"></a>
@@ -509,7 +509,7 @@ Return `mq3.splines.headers.mat3(a, b, c)` from `splines.headers.mat3_t`.
 | `c` | `dynamic` | — | C passed as `c` to `mq3.splines.headers.mat3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L128)
 
 <a id="function-function-mq3-splines-headers-mathanglessymbols-function-mathanglessymbols-src-mq3-splines-headers-ml-436544284"></a>
 ### mathAnglesSymbols
@@ -521,7 +521,7 @@ function mathAnglesSymbols()
 List the 4 names in splines.headers.mathAnglesSymbols, beginning with `Zero`, `angles_t`, `set`, `vec3_p`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L71)
 
 <a id="function-function-mq3-splines-headers-mathmatrixsymbols-function-mathmatrixsymbols-src-mq3-splines-headers-ml-1700226862"></a>
 ### mathMatrixSymbols
@@ -533,7 +533,7 @@ function mathMatrixSymbols()
 List the 5 names in splines.headers.mathMatrixSymbols, beginning with `Identity`, `InverseMultiply`, `OrthoNormalize`, `SkewSymmetric`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L73)
 
 <a id="function-function-mq3-splines-headers-mathquaternionsymbols-function-mathquaternionsymbols-src-mq3-splines-headers-ml-270081312"></a>
 ### mathQuaternionSymbols
@@ -545,7 +545,7 @@ function mathQuaternionSymbols()
 List the 5 names in splines.headers.mathQuaternionSymbols, beginning with `Length`, `Normalize`, `quat_t`, `set`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L75)
 
 <a id="function-function-mq3-splines-headers-mathvectorsymbols-function-mathvectorsymbols-src-mq3-splines-headers-ml-853352498"></a>
 ### mathVectorSymbols
@@ -557,7 +557,7 @@ function mathVectorSymbols()
 List the 18 names in splines.headers.mathVectorSymbols, beginning with `AddBounds`, `AddPoint`, `Bounds`, `Center`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L77)
 
 <a id="function-function-mq3-splines-headers-matrixmultiply-function-matrixmultiply-a-b-src-mq3-splines-headers-ml-407598345"></a>
 ### matrixMultiply
@@ -574,7 +574,7 @@ Apply `mq3.splines.headers.Transpose`, `mq3.splines.headers.mat3`, `mq3.splines.
 | `b` | `dynamic` | — | Matrix passed as `matrix` to `mq3.splines.headers.Transpose`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L262)
 
 <a id="function-function-mq3-splines-headers-matvec-function-matvec-matrix-value-src-mq3-splines-headers-ml-686377808"></a>
 ### matVec
@@ -591,7 +591,7 @@ Delegate `matVec` to `mq3.splines.headers.vec3` and return its result.
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L253)
 
 <a id="function-function-mq3-splines-headers-newbounds-function-newbounds-src-mq3-splines-headers-ml-1683247480"></a>
 ### newBounds
@@ -603,7 +603,7 @@ function newBounds()
 Return `mq3.splines.headers.bounds()` from `splines.headers.newBounds`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L281)
 
 <a id="function-function-mq3-splines-headers-normalize-function-normalize-value-src-mq3-splines-headers-ml-521558269"></a>
 ### Normalize
@@ -619,7 +619,7 @@ Normalize headers in splines.headers; the normal completion returns `vecScale(va
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L166)
 
 <a id="function-function-mq3-splines-headers-normalize180-function-normalize180-value-src-mq3-splines-headers-ml-2146473691"></a>
 ### Normalize180
@@ -635,7 +635,7 @@ Return `mq3.splines.headers.angles(normalizeAngle180(value.pitch), normalizeAngl
 | `value` | `dynamic` | — | Record exposing `pitch`, `yaw`, `roll`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L221)
 
 <a id="function-function-mq3-splines-headers-normalize360-function-normalize360-value-src-mq3-splines-headers-ml-436122003"></a>
 ### Normalize360
@@ -651,7 +651,7 @@ Return `mq3.splines.headers.angles(normalizeAngle360(value.pitch), normalizeAngl
 | `value` | `dynamic` | — | Record exposing `pitch`, `yaw`, `roll`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L218)
 
 <a id="function-function-mq3-splines-headers-normalizeangle180-function-normalizeangle180-value-src-mq3-splines-headers-ml-619133181"></a>
 ### normalizeAngle180
@@ -667,7 +667,7 @@ Normalize angle 180 in splines.headers; the normal completion returns `n.f32(res
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.normalizeAngle360`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L215)
 
 <a id="function-function-mq3-splines-headers-normalizeangle360-function-normalizeangle360-value-src-mq3-splines-headers-ml-302685897"></a>
 ### normalizeAngle360
@@ -683,7 +683,7 @@ Normalize angle 360 in splines.headers; the normal completion returns `n.f32(res
 | `value` | `dynamic` | — | Value used in `(value / 360.0)` and `n.trunc32((value / 360.0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L210)
 
 <a id="function-function-mq3-splines-headers-num-function-num-list-src-mq3-splines-headers-ml-387780150"></a>
 ### Num
@@ -699,7 +699,7 @@ Return `len(list.values)` from `splines.headers.Num`.
 | `list` | `dynamic` | — | Record exposing `values`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L323)
 
 <a id="function-function-mq3-splines-headers-orthonormalize-function-orthonormalize-matrix-src-mq3-splines-headers-ml-476242035"></a>
 ### OrthoNormalize
@@ -715,7 +715,7 @@ Compute ortho normalize in splines.headers; the normal completion returns `mat3(
 | `matrix` | `dynamic` | — | Record exposing `rows`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L267)
 
 <a id="function-function-mq3-splines-headers-q-fabs-function-q-fabs-value-src-mq3-splines-headers-ml-28014795"></a>
 ### Q_fabs
@@ -731,7 +731,7 @@ Compute fabs in splines.headers; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value < 0.0)` and `(0.0 - value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L140)
 
 <a id="function-function-mq3-splines-headers-qsharedsymbols-function-qsharedsymbols-src-mq3-splines-headers-ml-1441709814"></a>
 ### qSharedSymbols
@@ -743,7 +743,7 @@ function qSharedSymbols()
 List the 0 names in splines.headers.qSharedSymbols.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L79)
 
 <a id="function-function-mq3-splines-headers-quat-function-quat-x-y-z-w-src-mq3-splines-headers-ml-1938556974"></a>
 ### quat
@@ -762,7 +762,7 @@ Create `mq3.splines.headers.Quat` with x=n.f32(x); y=n.f32(y); z=n.f32(z); w=n.f
 | `w` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L102)
 
 - [mq3.splines.headers.Quat](Type-mq3-splines-headers-quat-1945641945.md) — struct
 <a id="function-function-mq3-splines-headers-quat-t-function-quat-t-x-y-z-w-src-mq3-splines-headers-ml-1526001338"></a>
@@ -782,7 +782,7 @@ Return `mq3.splines.headers.quat(x, y, z, w)` from `splines.headers.quat_t`.
 | `w` | `dynamic` | — | W passed as `w` to `mq3.splines.headers.quat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L123)
 
 <a id="function-function-mq3-splines-headers-quatlength-function-quatlength-value-src-mq3-splines-headers-ml-625237203"></a>
 ### quatLength
@@ -798,7 +798,7 @@ Return `mq3.compat.numeric.f32(trig.sqrt(((((value.x * value.x) + (value.y * val
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`, `w`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L238)
 
 <a id="function-function-mq3-splines-headers-quatnormalize-function-quatnormalize-value-src-mq3-splines-headers-ml-677511459"></a>
 ### quatNormalize
@@ -814,7 +814,7 @@ Compute quat normalize in splines.headers; the normal completion returns `quat((
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`, `w`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L241)
 
 <a id="constant-constant-mq3-splines-headers-rad2deg-const-rad2deg-57-29578-src-mq3-splines-headers-ml-1978442748"></a>
 ### RAD2DEG
@@ -826,7 +826,7 @@ const RAD2DEG = 57.29578
 Multiplicative factor that converts radians to degrees.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L15)
 
 <a id="function-function-mq3-splines-headers-radius-function-radius-value-src-mq3-splines-headers-ml-755852979"></a>
 ### Radius
@@ -842,7 +842,7 @@ Compute radius in splines.headers; the normal completion returns `Length(vecSub(
 | `value` | `dynamic` | — | Record exposing `cleared`, `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L303)
 
 <a id="function-function-mq3-splines-headers-remove-function-remove-list-value-src-mq3-splines-headers-ml-632185735"></a>
 ### Remove
@@ -859,7 +859,7 @@ Return `mq3.splines.headers.RemoveIndex(list, Find(list, value))` from `splines.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.Find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L380)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L380)
 
 <a id="function-function-mq3-splines-headers-removeindex-function-removeindex-list-index-src-mq3-splines-headers-ml-1981805090"></a>
 ### RemoveIndex
@@ -878,7 +878,7 @@ Direct state writes: `list.values`.
 | `index` | `dynamic` | — | Index used in `(index < 0)` and `(current != index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L372)
 
 <a id="function-function-mq3-splines-headers-resize-function-resize-list-size-src-mq3-splines-headers-ml-1381724127"></a>
 ### Resize
@@ -898,7 +898,7 @@ Direct state writes: `list.values`, `list.size`.
 | `size` | `dynamic` | — | Size used in `(size < 0)` and `(size < len(list.values))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L333)
 
 <a id="function-function-mq3-splines-headers-setgranularity-function-setgranularity-list-granularity-src-mq3-splines-headers-ml-458846002"></a>
 ### SetGranularity
@@ -918,7 +918,7 @@ Direct state writes: `list.granularity`.
 | `granularity` | `dynamic` | — | Granularity used in `(granularity <= 0)` and `(len(list.values) + granularity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L352)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L352)
 
 <a id="function-function-mq3-splines-headers-setnum-function-setnum-list-count-src-mq3-splines-headers-ml-123657449"></a>
 ### SetNum
@@ -938,7 +938,7 @@ Direct state writes: `list.values`.
 | `count` | `dynamic` | — | Count used in `(count < 0)` and `(count > list.size)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L340)
 
 <a id="function-function-mq3-splines-headers-size-function-size-list-src-mq3-splines-headers-ml-974769126"></a>
 ### Size
@@ -954,7 +954,7 @@ Compute splines.headers.Size as `list.size`.
 | `list` | `dynamic` | — | Record exposing `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L326)
 
 <a id="function-function-mq3-splines-headers-skewsymmetric-function-skewsymmetric-value-src-mq3-splines-headers-ml-1726996401"></a>
 ### SkewSymmetric
@@ -970,7 +970,7 @@ Return `mq3.splines.headers.mat3(vec3(0.0, (0.0 - value.z), value.y), vec3(value
 | `value` | `dynamic` | — | Record exposing `z`, `y`, `x`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L276)
 
 <a id="function-function-mq3-splines-headers-snap-function-snap-value-src-mq3-splines-headers-ml-504230423"></a>
 ### Snap
@@ -986,7 +986,7 @@ Return `mq3.splines.headers.vec3(n.trunc32(value.x), n.trunc32(value.y), n.trunc
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L174)
 
 <a id="function-function-mq3-splines-headers-snapcomponent-function-snapcomponent-value-toward-src-mq3-splines-headers-ml-809983698"></a>
 ### snapComponent
@@ -1003,7 +1003,7 @@ Compute snap component in splines.headers; the normal completion returns `base`.
 | `toward` | `dynamic` | — | Toward used in `(toward > value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L178)
 
 <a id="function-function-mq3-splines-headers-snaptowards-function-snaptowards-value-toward-src-mq3-splines-headers-ml-1298789888"></a>
 ### SnapTowards
@@ -1020,7 +1020,7 @@ Return `mq3.splines.headers.vec3(snapComponent(value.x, toward.x), snapComponent
 | `toward` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L182)
 
 <a id="function-function-mq3-splines-headers-sort-function-sort-list-compare-context-src-mq3-splines-headers-ml-955760552"></a>
 ### Sort
@@ -1040,7 +1040,7 @@ Validation failures include `list comparator is missing`.
 | `context` | `dynamic` | — | Context used in `compare(context, list.values[(cursor - 1)], list.values[cursor])` and `(compare(context, list.values[(cursor - 1)], list.values[cursor]) > 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L397)
 
 <a id="function-function-mq3-splines-headers-splinessymbols-function-splinessymbols-src-mq3-splines-headers-ml-846921806"></a>
 ### splinesSymbols
@@ -1052,7 +1052,7 @@ function splinesSymbols()
 List the 0 names in splines.headers.splinesSymbols.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L81)
 
 <a id="function-function-mq3-splines-headers-toforward-function-toforward-value-src-mq3-splines-headers-ml-1867508667"></a>
 ### toForward
@@ -1068,7 +1068,7 @@ Compute splines.headers.toForward as `toVectors(value)[0]`.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.toVectors`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L234)
 
 <a id="function-function-mq3-splines-headers-tolower-function-tolower-value-src-mq3-splines-headers-ml-1066838843"></a>
 ### tolower
@@ -1084,7 +1084,7 @@ Return `std.string.toLowerAscii(idStr(value))` from `splines.headers.tolower`.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.idStr`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L419)
 
 <a id="function-function-mq3-splines-headers-topitch-function-topitch-value-src-mq3-splines-headers-ml-1697850457"></a>
 ### toPitch
@@ -1100,7 +1100,7 @@ Compute to pitch in splines.headers; the normal completion returns `n.f32(pitch)
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L201)
 
 <a id="function-function-mq3-splines-headers-toupper-function-toupper-value-src-mq3-splines-headers-ml-502935433"></a>
 ### toupper
@@ -1116,7 +1116,7 @@ Compute toupper in splines.headers; the normal completion returns `decode(raw)`.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.idStr`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L422)
 
 <a id="function-function-mq3-splines-headers-tovectors-function-tovectors-value-src-mq3-splines-headers-ml-185490557"></a>
 ### toVectors
@@ -1132,7 +1132,7 @@ Compute to vectors in splines.headers; the normal completion returns `[forward, 
 | `value` | `dynamic` | — | Record exposing `pitch`, `yaw`, `roll`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L224)
 
 <a id="function-function-mq3-splines-headers-toyaw-function-toyaw-value-src-mq3-splines-headers-ml-572182379"></a>
 ### toYaw
@@ -1148,7 +1148,7 @@ Compute to yaw in splines.headers; the normal completion returns `n.f32(yaw)`.
 | `value` | `dynamic` | — | Record exposing `x`, `y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L195)
 
 <a id="function-function-mq3-splines-headers-transpose-function-transpose-matrix-src-mq3-splines-headers-ml-1312540753"></a>
 ### Transpose
@@ -1164,7 +1164,7 @@ Return `mq3.splines.headers.mat3(vec3(matrix.rows[0].x, matrix.rows[1].x, matrix
 | `matrix` | `dynamic` | — | Record exposing `rows`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L258)
 
 <a id="function-function-mq3-splines-headers-utillistsymbols-function-utillistsymbols-src-mq3-splines-headers-ml-2109216284"></a>
 ### utilListSymbols
@@ -1176,7 +1176,7 @@ function utilListSymbols()
 List the 14 names in splines.headers.utilListSymbols, beginning with `AddUnique`, `Append`, `Clear`, `Condense`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L83)
 
 <a id="function-function-mq3-splines-headers-utilstrsymbols-function-utilstrsymbols-src-mq3-splines-headers-ml-1855036358"></a>
 ### utilStrSymbols
@@ -1188,7 +1188,7 @@ function utilStrSymbols()
 List the 4 names in splines.headers.utilStrSymbols, beginning with `append`, `idStr`, `tolower`, `toupper`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L85)
 
 <a id="function-function-mq3-splines-headers-vec3-function-vec3-x-y-z-src-mq3-splines-headers-ml-1352988225"></a>
 ### vec3
@@ -1206,7 +1206,7 @@ Create `mq3.splines.headers.Vec3` with x=n.f32(x); y=n.f32(y); z=n.f32(z).
 | `z` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L91)
 
 - [mq3.splines.headers.Vec3](Type-mq3-splines-headers-vec3-1821645369.md) — struct
 <a id="function-function-mq3-splines-headers-vec4-function-vec4-value-src-mq3-splines-headers-ml-996977211"></a>
@@ -1223,7 +1223,7 @@ Compute splines.headers.vec4 as `[value.x, value.y, value.z, value.w]`.
 | `value` | `dynamic` | — | Record exposing `x`, `y`, `z`, `w`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L244)
 
 <a id="function-function-mq3-splines-headers-vec4-t-function-vec4-t-x-y-z-w-src-mq3-splines-headers-ml-797039878"></a>
 ### vec4_t
@@ -1242,7 +1242,7 @@ Compute splines.headers.vec4_t as `[n.f32(x), n.f32(y), n.f32(z), n.f32(w)]`.
 | `w` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L134)
 
 <a id="function-function-mq3-splines-headers-vecadd-function-vecadd-a-b-src-mq3-splines-headers-ml-1484252301"></a>
 ### vecAdd
@@ -1259,7 +1259,7 @@ Return `mq3.splines.headers.vec3((a.x + b.x), (a.y + b.y), (a.z + b.z))` from `s
 | `b` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L144)
 
 <a id="function-function-mq3-splines-headers-vecscale-function-vecscale-a-value-src-mq3-splines-headers-ml-1142699330"></a>
 ### vecScale
@@ -1276,7 +1276,7 @@ Return `mq3.splines.headers.vec3((a.x * value), (a.y * value), (a.z * value))` f
 | `value` | `dynamic` | — | Value used in `(a.x * value)` and `(a.y * value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L152)
 
 <a id="function-function-mq3-splines-headers-vecsub-function-vecsub-a-b-src-mq3-splines-headers-ml-373001197"></a>
 ### vecSub
@@ -1293,7 +1293,7 @@ Return `mq3.splines.headers.vec3((a.x - b.x), (a.y - b.y), (a.z - b.z))` from `s
 | `b` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L148)
 
 <a id="function-function-mq3-splines-headers-vectorequal-function-vectorequal-a-b-src-mq3-splines-headers-ml-541684591"></a>
 ### vectorEqual
@@ -1310,7 +1310,7 @@ Compute splines.headers.vectorEqual as `(((Q_fabs((a.x - b.x)) <= EQUAL_EPSILON)
 | `b` | `dynamic` | — | Record exposing `x`, `y`, `z`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L191)
 
 <a id="function-function-mq3-splines-headers-vectortoangles-function-vectortoangles-value-src-mq3-splines-headers-ml-2084899283"></a>
 ### vectorToAngles
@@ -1326,7 +1326,7 @@ Return `mq3.splines.headers.angles((0.0 - toPitch(value)), toYaw(value), 0.0)` f
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.splines.headers.toPitch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L207)
 
 <a id="function-function-mq3-splines-headers-zero-function-zero-src-mq3-splines-headers-ml-1736498906"></a>
 ### Zero
@@ -1338,4 +1338,4 @@ function Zero()
 Return `mq3.splines.headers.vec3(0.0, 0.0, 0.0)` from `splines.headers.Zero`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L171)

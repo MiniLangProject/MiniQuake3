@@ -12,7 +12,7 @@ struct CombatView
 Stores playable combat view combat view record, including `weaponName`, `score`, `kills`, `deaths`, `shots`, `hits` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L21)
 
 ## Members
 
@@ -26,7 +26,7 @@ damageAmount
 Nonnegative damage from the latest damage event, shown by the temporary damage indicator.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L43)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-damageside-damageside-src-mq3-client-playable-combat-view-ml-2056208622"></a>
 ### damageSide
@@ -38,7 +38,7 @@ damageSide
 Signed side of the latest incoming damage: negative for left, positive for right, and zero for an unspecified side.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L46)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-deaths-deaths-src-mq3-client-playable-combat-view-ml-622927632"></a>
 ### deaths
@@ -50,7 +50,7 @@ deaths
 Recorded player deaths displayed beside the kill count in the combat overlay.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L29)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-hits-hits-src-mq3-client-playable-combat-view-ml-962879002"></a>
 ### hits
@@ -62,7 +62,7 @@ hits
 Number of successful hit notifications recorded by the combat-feedback tracker.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L33)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-kills-kills-src-mq3-client-playable-combat-view-ml-1152830114"></a>
 ### kills
@@ -74,7 +74,7 @@ kills
 Recorded kills displayed beside the death count in the combat overlay.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L27)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lastdamage-lastdamage-src-mq3-client-playable-combat-view-ml-374632840"></a>
 ### lastDamage
@@ -86,7 +86,7 @@ lastDamage
 When constructing this record, `state` supplies `-1000000` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L39)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lastfire-lastfire-src-mq3-client-playable-combat-view-ml-45000034"></a>
 ### lastFire
@@ -98,7 +98,7 @@ lastFire
 When constructing this record, `state` supplies `-1000000` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L35)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lasthit-lasthit-src-mq3-client-playable-combat-view-ml-174614158"></a>
 ### lastHit
@@ -110,7 +110,7 @@ lastHit
 When constructing this record, `state` supplies `-1000000` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L37)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lastkill-lastkill-src-mq3-client-playable-combat-view-ml-274569842"></a>
 ### lastKill
@@ -122,7 +122,7 @@ lastKill
 When constructing this record, `state` supplies `-1000000` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L41)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-score-score-src-mq3-client-playable-combat-view-ml-1994629602"></a>
 ### score
@@ -134,7 +134,7 @@ score
 Current combat score exposed to the playable presentation layer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L25)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-shots-shots-src-mq3-client-playable-combat-view-ml-1737106430"></a>
 ### shots
@@ -146,7 +146,7 @@ shots
 Number of firing events recorded by the combat-feedback tracker.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L31)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-weaponname-weaponname-src-mq3-client-playable-combat-view-ml-475462788"></a>
 ### weaponName
@@ -158,4 +158,4 @@ weaponName
 When constructing this record, `state` supplies `weaponName` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L23)

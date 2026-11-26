@@ -31,7 +31,7 @@ These signatures match client_message.Services and can be installed directly in 
 | `msg` | `dynamic` | — | Network message read at the current cursor: an int32 sequence followed by a C string. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L109)
 
 <a id="function-function-mq3-server-client-input-create-function-create-commandhost-dispatchhost-moveserver-movehost-serverstate-src-mq3-server-client-input-ml-13658252"></a>
 ### create
@@ -54,7 +54,7 @@ Direct state writes: `commandHost.context`, `commandHost.executeFn`.
 | `serverState` | `dynamic` | — | Initial `serverState` field stored in the returned or constructed `mq3.server.client_input.Runtime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L87)
 
 <a id="function-function-mq3-server-client-input-createclient-function-createclient-src-mq3-server-client-input-ml-1209894494"></a>
 ### createClient
@@ -66,7 +66,7 @@ function createClient()
 Create client in server.client_input.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L61)
 
 <a id="function-function-mq3-server-client-input-executetext-function-executetext-commandhost-clientstate-text-clientok-src-mq3-server-client-input-ml-1851392709"></a>
 ### executeText
@@ -85,7 +85,7 @@ Execute text in server.client_input; the normal completion returns `commandDispa
 | `clientOk` | `dynamic` | — | Client ok passed as `clientOk` to `mq3.server.client_command_dispatch.execute`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L73)
 
 - [mq3.server.client_input.Runtime](Type-mq3-server-client-input-runtime-753799615.md) — struct
 <a id="function-function-mq3-server-client-input-settime-function-settime-runtime-time-src-mq3-server-client-input-ml-573087527"></a>
@@ -105,7 +105,7 @@ Validation failures include `client input: missing runtime`.
 | `time` | `dynamic` | — | Time operand used by `setTime`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L99)
 
 <a id="function-function-mq3-server-client-input-usermovefn-function-usermovefn-messagehost-clientstate-msg-isdelta-src-mq3-server-client-input-ml-1558293192"></a>
 ### userMoveFn
@@ -126,4 +126,4 @@ Validation failures include `client input: missing runtime`.
 | `isDelta` | `dynamic` | — | Is delta passed as `isDelta` to `mq3.server.user_move.execute`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L121)

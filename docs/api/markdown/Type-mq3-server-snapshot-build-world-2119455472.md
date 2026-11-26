@@ -12,7 +12,7 @@ struct World
 World record for server.snapshot_build, containing `active`, `snapshotCounter`, `entities`, `ring`, `ringCapacity`, `nextSnapshotEntities`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L70)
 
 ## Members
 
@@ -26,7 +26,7 @@ active
 True while this entry participates in the active runtime.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L72)
 
 <a id="field-field-mq3-server-snapshot-build-world-entities-entities-src-mq3-server-snapshot-build-ml-299091115"></a>
 ### entities
@@ -38,7 +38,7 @@ entities
 Game or BSP entity records tracked by this subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L76)
 
 <a id="field-field-mq3-server-snapshot-build-world-nextsnapshotentities-nextsnapshotentities-src-mq3-server-snapshot-build-ml-1670057821"></a>
 ### nextSnapshotEntities
@@ -50,7 +50,7 @@ nextSnapshotEntities
 Next absolute insertion position in the circular snapshot-entity buffer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L82)
 
 <a id="field-field-mq3-server-snapshot-build-world-ring-ring-src-mq3-server-snapshot-build-ml-314733749"></a>
 ### ring
@@ -62,7 +62,7 @@ ring
 Circular storage retaining entity states referenced by sent snapshots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L78)
 
 <a id="field-field-mq3-server-snapshot-build-world-ringcapacity-ringcapacity-src-mq3-server-snapshot-build-ml-1366379389"></a>
 ### ringCapacity
@@ -74,7 +74,7 @@ ringCapacity
 Number of entity-state slots in the snapshot ring.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L80)
 
 <a id="field-field-mq3-server-snapshot-build-world-snapshotcounter-snapshotcounter-src-mq3-server-snapshot-build-ml-1948865013"></a>
 ### snapshotCounter
@@ -86,4 +86,4 @@ snapshotCounter
 Generation marker used to avoid adding an entity twice to one snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L74)

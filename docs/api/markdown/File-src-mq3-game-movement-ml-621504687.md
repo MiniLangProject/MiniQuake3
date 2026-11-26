@@ -31,7 +31,7 @@ Accelerate toward the requested movement direction, limiting the added speed to 
 | `accel` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L152)
 
 <a id="function-function-mq3-game-movement-addevent-function-addevent-state-event-src-mq3-game-movement-ml-217927101"></a>
 ### addEvent
@@ -48,7 +48,7 @@ Update `state.events[slot]`, `state.eventParms[slot]` and `state.eventSequence` 
 | `event` | `dynamic` | — | Player or entity event identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L101)
 
 <a id="function-function-mq3-game-movement-addtouchent-function-addtouchent-state-entity-src-mq3-game-movement-ml-1890416392"></a>
 ### addTouchEnt
@@ -65,7 +65,7 @@ Set `state.touches` to `state.touches+[entity]` in `mq3.game.movement.addTouchEn
 | `entity` | `dynamic` | — | Value used by `addTouchEnt` in `if entity == 1022 or len(state.touches) == 32 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L89)
 
 <a id="function-function-mq3-game-movement-clipvelocity-function-clipvelocity-velocity-normal-overbounce-src-mq3-game-movement-ml-1294174308"></a>
 ### clipVelocity
@@ -83,7 +83,7 @@ Project velocity along a collision plane using the supplied overbounce factor.
 | `overbounce` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L113)
 
 <a id="function-function-mq3-game-movement-cmdscale-function-cmdscale-state-forward-right-up-src-mq3-game-movement-ml-1793007649"></a>
 ### cmdScale
@@ -102,7 +102,7 @@ Normalize signed movement command axes to preserve the player speed limit during
 | `up` | `dynamic` | — | Value used by `cmdScale` in `for each input in [forward,right,up]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L167)
 
 - [mq3.game.movement.Collision](Type-mq3-game-movement-collision-582373361.md) — struct
 <a id="function-function-mq3-game-movement-copy-function-copy-v-src-mq3-game-movement-ml-1543934706"></a>
@@ -119,7 +119,7 @@ Copy the three components of a movement vector into an independent array.
 | `v` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L82)
 
 <a id="function-function-mq3-game-movement-create-function-create-tracefn-context-src-mq3-game-movement-ml-1081605290"></a>
 ### create
@@ -136,7 +136,7 @@ Create a `mq3.game.movement.Movement` record, initializing `origin` as `[0.0,0.0
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L76)
 
 <a id="function-function-mq3-game-movement-friction-function-friction-state-src-mq3-game-movement-ml-843375885"></a>
 ### friction
@@ -152,7 +152,7 @@ Apply ground or water friction to the movement velocity while preserving the mov
 | `state` | `dynamic` | — | Movement state; accesses `velocity`, `walking`, `waterlevel`, `groundFlags` and `pmFlags` and related fields. May update `state.velocity[0]`, `state.velocity[1]` and `state.velocity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L121)
 
 - [mq3.game.movement.Movement](Type-mq3-game-movement-movement-782007670.md) — struct
 <a id="function-function-mq3-game-movement-slidemove-function-slidemove-state-gravity-src-mq3-game-movement-ml-35594123"></a>
@@ -170,7 +170,7 @@ Update `state.velocity[2]`, `state.velocity`, `state.origin` and `state.velocity
 | `gravity` | `dynamic` | — | Value used by `slideMove` in `if gravity then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L185)
 
 <a id="function-function-mq3-game-movement-stepslidemove-function-stepslidemove-state-gravity-src-mq3-game-movement-ml-1481808387"></a>
 ### stepSlideMove
@@ -187,4 +187,4 @@ Update `state.origin` and `state.velocity` during `stepSlideMove`.
 | `gravity` | `dynamic` | — | Value used by `slideMove` in `if gravity then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movement.ml#L268)

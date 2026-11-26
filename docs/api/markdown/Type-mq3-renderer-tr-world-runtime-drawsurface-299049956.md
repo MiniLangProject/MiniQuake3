@@ -12,7 +12,7 @@ struct DrawSurface
 Data record for `mq3.renderer.tr_world_runtime.DrawSurface`; groups `surfaceIndex`, `fogIndex`, `dlighted`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L104)
 
 ## Members
 
@@ -26,7 +26,7 @@ dlighted
 Whether dynamic lights affect the selected draw surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L110)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-drawsurface-fogindex-fogindex-src-mq3-renderer-tr-world-runtime-ml-2139171122"></a>
 ### fogIndex
@@ -38,7 +38,7 @@ fogIndex
 Index of the fog volume affecting the surface or primitive.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L108)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-drawsurface-surfaceindex-surfaceindex-src-mq3-renderer-tr-world-runtime-ml-1846546440"></a>
 ### surfaceIndex
@@ -50,4 +50,4 @@ surfaceIndex
 Index of the source surface within the model or world.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L106)

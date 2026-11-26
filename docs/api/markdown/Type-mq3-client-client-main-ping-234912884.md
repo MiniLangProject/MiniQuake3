@@ -12,7 +12,7 @@ struct Ping
 Stores client main ping record, including `address`, `start`, `time`, `info`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L79)
 
 ## Members
 
@@ -26,7 +26,7 @@ address
 When constructing this record, `CL_GetFreePing` supplies an empty string for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L81)
 
 <a id="field-field-mq3-client-client-main-ping-info-info-src-mq3-client-client-main-ml-180547709"></a>
 ### info
@@ -38,7 +38,7 @@ info
 When constructing this record, `CL_GetFreePing` supplies an empty string for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L87)
 
 <a id="field-field-mq3-client-client-main-ping-start-start-src-mq3-client-client-main-ml-705323613"></a>
 ### start
@@ -50,7 +50,7 @@ start
 When constructing this record, `CL_GetFreePing` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L83)
 
 <a id="field-field-mq3-client-client-main-ping-time-time-src-mq3-client-client-main-ml-1480406983"></a>
 ### time
@@ -62,4 +62,4 @@ time
 Ping timing value used to record latency or completion of the browser request.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L85)

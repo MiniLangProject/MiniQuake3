@@ -26,7 +26,7 @@ Reachable from entry: **no**
 - `mq3/server/world.ml` as `sv` → [src/mq3/server/world.ml](File-src-mq3-server-world-ml-118313937.md)
 - `mq3/shared/directions.ml` as `dirs` → [src/mq3/shared/directions.ml](File-src-mq3-shared-directions-ml-575237557.md)
 - `mq3/shared/math.ml` as `q` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -46,7 +46,7 @@ Apply `mq3.game.events.add` while evaluating `addSound`.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L57)
 
 <a id="function-function-mq3-game-movers-adjustareaportal-function-adjustareaportal-level-ent-open-src-mq3-game-movers-ml-1371141107"></a>
 ### adjustAreaPortal
@@ -64,7 +64,7 @@ Apply `mq3.collision.visibility.adjustAreaPortalState` while evaluating `adjustA
 | `open` | `dynamic` | — | Value used by `adjustAreaPortalState` in `if not open then change = -1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L66)
 
 <a id="function-function-mq3-game-movers-beginmoving-function-beginmoving-level-ent-src-mq3-game-movers-ml-1003239193"></a>
 ### beginMoving
@@ -81,7 +81,7 @@ Set `ent.s.pos.trTime` to `level.time` and `ent.s.pos.trType` to `c.TR_LINEAR_ST
 | `ent` | `dynamic` | — | Game entity; accesses `s`. May update `ent.s.pos.trTime` and `ent.s.pos.trType` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L344)
 
 <a id="function-function-mq3-game-movers-blockeddoor-function-blockeddoor-level-ent-other-src-mq3-game-movers-ml-1903548999"></a>
 ### blockedDoor
@@ -99,7 +99,7 @@ Apply `mq3.game.items.itemType`, `mq3.game.items.droppedFlagThink` and `mq3.game
 | `other` | `dynamic` | — | Other record; accesses `client`, `s` and `item`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L189)
 
 <a id="function-function-mq3-game-movers-checkproxmineposition-function-checkproxmineposition-level-check-src-mq3-game-movers-ml-809025116"></a>
 ### checkProxMinePosition
@@ -116,7 +116,7 @@ Apply `mq3.server.world.trace` while evaluating `checkProxMinePosition`. Return 
 | `check` | `dynamic` | — | Check record; accesses `s` and `movedir`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L538)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L538)
 
 <a id="function-function-mq3-game-movers-createrotationmatrix-function-createrotationmatrix-angles-src-mq3-game-movers-ml-583999296"></a>
 ### createRotationMatrix
@@ -132,7 +132,7 @@ Forward `createRotationMatrix` to `mq3.collision.world.rotationMatrix` and retur
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L518)
 
 <a id="function-function-mq3-game-movers-dispatch-function-dispatch-level-ent-src-mq3-game-movers-ml-1758993147"></a>
 ### dispatch
@@ -149,7 +149,7 @@ Apply `mq3.game.movers.spawnDoor`, `mq3.game.movers.spawnPlat` and `mq3.game.mov
 | `ent` | `dynamic` | — | Game entity; accesses `classname`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L452)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L452)
 
 <a id="constant-constant-mq3-game-movers-ef-mover-stop-const-ef-mover-stop-1024-src-mq3-game-movers-ml-1994655780"></a>
 ### EF_MOVER_STOP
@@ -161,7 +161,7 @@ const EF_MOVER_STOP = 1024
 Network entity-flag bit indicating mover stop.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L38)
 
 <a id="function-function-mq3-game-movers-explodeproxmine-function-explodeproxmine-level-check-src-mq3-game-movers-ml-1281639292"></a>
 ### explodeProxMine
@@ -178,7 +178,7 @@ Set `check.s.loopSound` to `0` and `check.activator` to `void` in `mq3.game.move
 | `check` | `dynamic` | — | Check record; accesses `s` and `activator`. May update `check.s.loopSound` and `check.activator` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L569)
 
 <a id="function-function-mq3-game-movers-findpath-function-findpath-level-name-start-src-mq3-game-movers-ml-646453783"></a>
 ### findPath
@@ -196,7 +196,7 @@ Find the next active path_corner with a matching target name, beginning at the s
 | `start` | `dynamic` | — | Value used by `findPath` in `i = start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L351)
 
 <a id="constant-constant-mq3-game-movers-fl-teamslave-const-fl-teamslave-1024-src-mq3-game-movers-ml-1009017736"></a>
 ### FL_TEAMSLAVE
@@ -208,7 +208,7 @@ const FL_TEAMSLAVE = 1024
 Game entity-flag bit enabling or marking teamslave.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L34)
 
 <a id="function-function-mq3-game-movers-initmover-function-initmover-level-ent-src-mq3-game-movers-ml-8984917"></a>
 ### initMover
@@ -225,7 +225,7 @@ Update `ent.s.modelindex2`, `ent.s.loopSound`, `ent.s.constantLight` and `ent.us
 | `ent` | `dynamic` | — | Game entity; accesses `model2`, `s`, `use`, `reached` and `moverState` and related fields. May update `ent.s.modelindex2`, `ent.s.loopSound` and `ent.s.constantLight` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L160)
 
 <a id="function-function-mq3-game-movers-matchteam-function-matchteam-level-leader-state-time-src-mq3-game-movers-ml-176545297"></a>
 ### matchTeam
@@ -244,7 +244,7 @@ Apply `mq3.game.movers.setMoverState` while evaluating `matchTeam`.
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L99)
 
 <a id="function-function-mq3-game-movers-movedirvector-function-movedirvector-angles-src-mq3-game-movers-ml-367107130"></a>
 ### movedirVector
@@ -260,7 +260,7 @@ Forward `movedirVector` to `mq3.shared.directions.movedirVector` and return the 
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L272)
 
 <a id="constant-constant-mq3-game-movers-mover-1to2-const-mover-1to2-2-src-mq3-game-movers-ml-1978110885"></a>
 ### MOVER_1TO2
@@ -272,7 +272,7 @@ const MOVER_1TO2 = 2
 Mover-state identifier representing the 1 to2 position or transition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L30)
 
 <a id="constant-constant-mq3-game-movers-mover-2to1-const-mover-2to1-3-src-mq3-game-movers-ml-1205727276"></a>
 ### MOVER_2TO1
@@ -284,7 +284,7 @@ const MOVER_2TO1 = 3
 Mover-state identifier representing the 2 to1 position or transition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L32)
 
 <a id="constant-constant-mq3-game-movers-mover-pos1-const-mover-pos1-0-src-mq3-game-movers-ml-390573165"></a>
 ### MOVER_POS1
@@ -296,7 +296,7 @@ const MOVER_POS1 = 0
 Mover-state identifier representing the pos1 position or transition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L26)
 
 <a id="constant-constant-mq3-game-movers-mover-pos2-const-mover-pos2-1-src-mq3-game-movers-ml-940497554"></a>
 ### MOVER_POS2
@@ -308,7 +308,7 @@ const MOVER_POS2 = 1
 Mover-state identifier representing the pos2 position or transition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L28)
 
 <a id="function-function-mq3-game-movers-moveteam-function-moveteam-level-leader-src-mq3-game-movers-ml-1908835103"></a>
 ### moveTeam
@@ -325,7 +325,7 @@ Use `leader.blocked` to perform `moveTeam`.
 | `leader` | `dynamic` | — | Leader record; accesses `blocked`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L699)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L699)
 
 <a id="function-function-mq3-game-movers-overlaps-function-overlaps-first-second-src-mq3-game-movers-ml-474707450"></a>
 ### overlaps
@@ -342,7 +342,7 @@ Test strict overlap of two entities' absolute collision bounds on all three axes
 | `second` | `dynamic` | — | Second record; accesses `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L488)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L488)
 
 <a id="function-function-mq3-game-movers-positionblocked-function-positionblocked-level-ent-src-mq3-game-movers-ml-1435050149"></a>
 ### positionBlocked
@@ -359,7 +359,7 @@ Test `testEntityPosition(level,ent) != void` as the condition for `positionBlock
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `client`, `clipmask` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L498)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L498)
 
 <a id="function-function-mq3-game-movers-pushpart-function-pushpart-level-pusher-move-anglemove-records-src-mq3-game-movers-ml-599691392"></a>
 ### pushPart
@@ -379,7 +379,7 @@ Update `pusher.r.currentOrigin` and `pusher.r.currentAngles` during `pushPart`. 
 | `records` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `pushPart`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L628)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L628)
 
 <a id="function-function-mq3-game-movers-reachedbinary-function-reachedbinary-level-ent-src-mq3-game-movers-ml-2002812105"></a>
 ### reachedBinary
@@ -396,7 +396,7 @@ Update `ent.s.loopSound`, `ent.think`, `ent.nextthink` and `ent.activator` durin
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `soundLoop`, `moverState`, `soundPos2` and `think` and related fields. May update `ent.s.loopSound`, `ent.think` and `ent.nextthink` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L118)
 
 <a id="function-function-mq3-game-movers-reachedtrain-function-reachedtrain-level-ent-src-mq3-game-movers-ml-1593303447"></a>
 ### reachedTrain
@@ -413,7 +413,7 @@ Update `ent.nextTrain`, `ent.pos1`, `ent.pos2` and `ent.s.pos.trDuration` and re
 | `ent` | `dynamic` | — | Game entity; accesses `nextTrain`, `pos1`, `pos2`, `speed` and `s` and related fields. May update `ent.nextTrain`, `ent.pos1` and `ent.pos2` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L362)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L362)
 
 <a id="function-function-mq3-game-movers-restorepush-function-restorepush-level-record-src-mq3-game-movers-ml-1869291627"></a>
 ### restorePush
@@ -430,7 +430,7 @@ Apply `mq3.game.movement.copy` and `mq3.game.entities.link` while evaluating `re
 | `record` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L616)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L616)
 
 <a id="function-function-mq3-game-movers-returntopos1-function-returntopos1-level-ent-src-mq3-game-movers-ml-1115847371"></a>
 ### returnToPos1
@@ -447,7 +447,7 @@ Set `ent.s.loopSound` to `ent.soundLoop` in `mq3.game.movers.returnToPos1`.
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `soundLoop` and `sound2to1`. May update `ent.s.loopSound` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L110)
 
 <a id="function-function-mq3-game-movers-rollbackteam-function-rollbackteam-level-leader-records-src-mq3-game-movers-ml-238603227"></a>
 ### rollbackTeam
@@ -465,7 +465,7 @@ Apply `mq3.game.movers.restorePush`, `mq3.game.trajectory.evaluate` and `mq3.gam
 | `records` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L683)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L683)
 
 <a id="function-function-mq3-game-movers-rotatepoint-function-rotatepoint-point-matrix-src-mq3-game-movers-ml-127347833"></a>
 ### rotatePoint
@@ -482,7 +482,7 @@ Forward `rotatePoint` to `mq3.collision.world.rotatePoint` and return the delega
 | `matrix` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L531)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L531)
 
 <a id="function-function-mq3-game-movers-run-function-run-level-ent-src-mq3-game-movers-ml-1401736345"></a>
 ### run
@@ -499,7 +499,7 @@ Apply `mq3.game.movers.moveTeam` and `mq3.game.entities.runThink` while evaluati
 | `ent` | `dynamic` | — | Game entity; accesses `flags` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L725)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L725)
 
 <a id="function-function-mq3-game-movers-setbrushmodel-function-setbrushmodel-level-ent-name-src-mq3-game-movers-ml-934317306"></a>
 ### setBrushModel
@@ -517,7 +517,7 @@ Update `ent.s.modelindex`, `ent.r.mins`, `ent.r.maxs` and `ent.r.bmodel` and rel
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L44)
 
 <a id="function-function-mq3-game-movers-setmoverstate-function-setmoverstate-level-ent-state-time-src-mq3-game-movers-ml-990327645"></a>
 ### setMoverState
@@ -536,7 +536,7 @@ Update `ent.moverState`, `ent.s.pos.trTime`, `ent.s.pos.trBase` and `ent.s.pos.t
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L76)
 
 <a id="function-function-mq3-game-movers-setuptrain-function-setuptrain-level-ent-src-mq3-game-movers-ml-968968075"></a>
 ### setupTrain
@@ -553,7 +553,7 @@ Set `ent.nextTrain` to `findPath(level,ent.target,0)` in `mq3.game.movers.setupT
 | `ent` | `dynamic` | — | Game entity; accesses `nextTrain`, `target` and `r`. May update `ent.nextTrain` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L375)
 
 <a id="function-function-mq3-game-movers-spawnbobbing-function-spawnbobbing-level-ent-src-mq3-game-movers-ml-645805043"></a>
 ### spawnBobbing
@@ -570,7 +570,7 @@ Update `ent.speed`, `ent.damage`, `ent.s.pos.trBase` and `ent.r.currentOrigin` a
 | `ent` | `dynamic` | — | Game entity; accesses `speed`, `damage`, `model`, `s` and `r` and related fields. May update `ent.speed`, `ent.damage` and `ent.s.pos.trBase` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L417)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L417)
 
 <a id="function-function-mq3-game-movers-spawnbutton-function-spawnbutton-level-ent-src-mq3-game-movers-ml-1214759097"></a>
 ### spawnButton
@@ -587,7 +587,7 @@ Update `ent.sound1to2`, `ent.speed`, `ent.wait` and `ent.pos1` and related state
 | `ent` | `dynamic` | — | Game entity; accesses `sound1to2`, `speed`, `wait`, `pos1` and `s` and related fields. May update `ent.sound1to2`, `ent.speed` and `ent.wait` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L331)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L331)
 
 <a id="function-function-mq3-game-movers-spawndoor-function-spawndoor-level-ent-src-mq3-game-movers-ml-1460367493"></a>
 ### spawnDoor
@@ -604,7 +604,7 @@ Update `ent.sound1to2`, `ent.sound2to1`, `ent.soundPos1` and `ent.soundPos2` and
 | `ent` | `dynamic` | — | Game entity; accesses `sound1to2`, `sound2to1`, `soundPos1`, `soundPos2` and `blocked` and related fields. May update `ent.sound1to2`, `ent.sound2to1` and `ent.soundPos1` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L252)
 
 <a id="function-function-mq3-game-movers-spawndoortrigger-function-spawndoortrigger-level-ent-src-mq3-game-movers-ml-453564407"></a>
 ### spawnDoorTrigger
@@ -621,7 +621,7 @@ Apply `mq3.game.movement.copy`, `mq3.game.entities.spawn` and `mq3.game.entities
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `moverState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L230)
 
 <a id="function-function-mq3-game-movers-spawnpathcorner-function-spawnpathcorner-level-ent-src-mq3-game-movers-ml-1150615781"></a>
 ### spawnPathCorner
@@ -638,7 +638,7 @@ Apply `mq3.game.entities.diagnostic`, `mq3.game.entities.vtos` and `mq3.game.ent
 | `ent` | `dynamic` | — | Game entity; accesses `targetname` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L441)
 
 <a id="function-function-mq3-game-movers-spawnpendulum-function-spawnpendulum-level-ent-src-mq3-game-movers-ml-99858505"></a>
 ### spawnPendulum
@@ -655,7 +655,7 @@ Update `ent.damage`, `ent.s.pos.trDuration`, `ent.s.pos.trBase` and `ent.r.curre
 | `ent` | `dynamic` | — | Game entity; accesses `damage`, `model`, `r` and `s`. May update `ent.damage`, `ent.s.pos.trDuration` and `ent.s.pos.trBase` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L427)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L427)
 
 <a id="function-function-mq3-game-movers-spawnplat-function-spawnplat-level-ent-src-mq3-game-movers-ml-1605394715"></a>
 ### spawnPlat
@@ -672,7 +672,7 @@ Update `ent.sound1to2`, `ent.sound2to1`, `ent.soundPos1` and `ent.soundPos2` and
 | `ent` | `dynamic` | — | Game entity; accesses `sound1to2`, `sound2to1`, `soundPos1`, `soundPos2` and `s` and related fields. May update `ent.sound1to2`, `ent.sound2to1` and `ent.soundPos1` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L309)
 
 <a id="function-function-mq3-game-movers-spawnplattrigger-function-spawnplattrigger-level-ent-src-mq3-game-movers-ml-1975672715"></a>
 ### spawnPlatTrigger
@@ -689,7 +689,7 @@ Apply `mq3.game.entities.spawn` and `mq3.game.entities.link` while evaluating `s
 | `ent` | `dynamic` | — | Game entity; accesses `pos1` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L297)
 
 <a id="function-function-mq3-game-movers-spawnrotating-function-spawnrotating-level-ent-src-mq3-game-movers-ml-1750764685"></a>
 ### spawnRotating
@@ -706,7 +706,7 @@ Update `ent.speed`, `ent.damage`, `ent.s.apos.trType` and `ent.s.apos.trDelta[2]
 | `ent` | `dynamic` | — | Game entity; accesses `speed`, `damage`, `s`, `spawnflags` and `model` and related fields. May update `ent.speed`, `ent.damage` and `ent.s.apos.trType` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L409)
 
 <a id="function-function-mq3-game-movers-spawnstatic-function-spawnstatic-level-ent-src-mq3-game-movers-ml-2106763473"></a>
 ### spawnStatic
@@ -723,7 +723,7 @@ Set `ent.s.pos.trBase` to `movement.copy(ent.s.origin)` and `ent.r.currentOrigin
 | `ent` | `dynamic` | — | Game entity; accesses `model`, `s` and `r`. May update `ent.s.pos.trBase` and `ent.r.currentOrigin` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L403)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L403)
 
 <a id="function-function-mq3-game-movers-spawntrain-function-spawntrain-level-ent-src-mq3-game-movers-ml-465963579"></a>
 ### spawnTrain
@@ -740,7 +740,7 @@ Update `ent.s.angles`, `ent.damage`, `ent.speed` and `ent.reached` and related s
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `spawnflags`, `damage`, `speed` and `target` and related fields. May update `ent.s.angles`, `ent.damage` and `ent.speed` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L390)
 
 <a id="constant-constant-mq3-game-movers-svf-use-current-origin-const-svf-use-current-origin-128-src-mq3-game-movers-ml-1774452552"></a>
 ### SVF_USE_CURRENT_ORIGIN
@@ -752,7 +752,7 @@ const SVF_USE_CURRENT_ORIGIN = 128
 Server entity-flag bit controlling use current origin.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L36)
 
 <a id="function-function-mq3-game-movers-testentityposition-function-testentityposition-level-ent-src-mq3-game-movers-ml-27744615"></a>
 ### testEntityPosition
@@ -769,7 +769,7 @@ Apply `mq3.server.world.trace` while evaluating `testEntityPosition`. Return pat
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `client`, `clipmask` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L505)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L505)
 
 <a id="function-function-mq3-game-movers-thinkmatchteam-function-thinkmatchteam-level-ent-src-mq3-game-movers-ml-794975891"></a>
 ### thinkMatchTeam
@@ -786,7 +786,7 @@ Forward `thinkMatchTeam` to `mq3.game.movers.matchTeam` and return the delegated
 | `ent` | `dynamic` | — | Game entity; accesses `moverState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L223)
 
 <a id="function-function-mq3-game-movers-touchbutton-function-touchbutton-level-ent-other-trace-src-mq3-game-movers-ml-767379086"></a>
 ### touchButton
@@ -805,7 +805,7 @@ Apply `mq3.game.movers.useBinary` while evaluating `touchButton`.
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `touchButton` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L325)
 
 <a id="function-function-mq3-game-movers-touchdoortrigger-function-touchdoortrigger-level-ent-other-trace-src-mq3-game-movers-ml-119485512"></a>
 ### touchDoorTrigger
@@ -824,7 +824,7 @@ Apply `mq3.game.teleport.player` and `mq3.game.movers.useBinary` while evaluatin
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `touchDoorTrigger` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L204)
 
 <a id="function-function-mq3-game-movers-touchplat-function-touchplat-level-ent-other-trace-src-mq3-game-movers-ml-1775867480"></a>
 ### touchPlat
@@ -843,7 +843,7 @@ Set `ent.nextthink` to `n.add32(level.time,1000)` in `mq3.game.movers.touchPlat`
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `touchPlat` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L281)
 
 <a id="function-function-mq3-game-movers-touchplattrigger-function-touchplattrigger-level-ent-other-trace-src-mq3-game-movers-ml-934353128"></a>
 ### touchPlatTrigger
@@ -862,7 +862,7 @@ Apply `mq3.game.movers.useBinary` while evaluating `touchPlatTrigger`.
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `touchPlatTrigger` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L290)
 
 <a id="function-function-mq3-game-movers-transposematrix-function-transposematrix-matrix-src-mq3-game-movers-ml-1009330493"></a>
 ### transposeMatrix
@@ -878,7 +878,7 @@ Forward `transposeMatrix` to `mq3.collision.world.transpose` and return the dele
 | `matrix` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L524)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L524)
 
 <a id="function-function-mq3-game-movers-trypush-function-trypush-level-check-pusher-move-anglemove-src-mq3-game-movers-ml-653254772"></a>
 ### tryPush
@@ -898,7 +898,7 @@ Update `check.s.pos.trBase[axis]`, `check.client.ps.origin[axis]`, `check.client
 | `angleMove` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L581)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L581)
 
 <a id="function-function-mq3-game-movers-trypushingproxmine-function-trypushingproxmine-level-check-pusher-move-anglemove-src-mq3-game-movers-ml-1216677654"></a>
 ### tryPushingProxMine
@@ -918,7 +918,7 @@ Update `check.s.pos.trBase[axis]` and `check.r.currentOrigin` during `tryPushing
 | `angleMove` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L551)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L551)
 
 <a id="function-function-mq3-game-movers-usebinary-function-usebinary-level-ent-other-activator-src-mq3-game-movers-ml-2026124606"></a>
 ### useBinary
@@ -937,4 +937,4 @@ Update `ent.activator`, `ent.s.loopSound` and `ent.nextthink` during `useBinary`
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movers.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/movers.ml#L137)

@@ -12,7 +12,7 @@ struct Surface
 Data record for `mq3.renderer.tr_backend_runtime.Surface`; groups `sort`, `surface`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L148)
 
 ## Members
 
@@ -26,7 +26,7 @@ sort
 Packed draw-order key containing the shader, entity, fog, and dynamic-light selectors.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L150)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-surface-surface-surface-src-mq3-renderer-tr-backend-runtime-ml-435848520"></a>
 ### surface
@@ -38,4 +38,4 @@ surface
 Surface record, handle, or identifier associated with the drawing operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L152)

@@ -12,7 +12,7 @@ struct Entry
 Data record for `mq3.renderer.shader_remap.Entry`; groups `oldName`, `newName`, `timeOffset`, `handles`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L8)
 
 ## Members
 
@@ -26,7 +26,7 @@ handles
 Registered shader handles affected by the remapping entry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L16)
 
 <a id="field-field-mq3-renderer-shader-remap-entry-newname-newname-src-mq3-renderer-shader-remap-ml-167938929"></a>
 ### newName
@@ -38,7 +38,7 @@ newName
 Shader name selected as the remapping destination.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L12)
 
 <a id="field-field-mq3-renderer-shader-remap-entry-oldname-oldname-src-mq3-renderer-shader-remap-ml-1450005945"></a>
 ### oldName
@@ -50,7 +50,7 @@ oldName
 Original shader name that is replaced by the remap.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L10)
 
 <a id="field-field-mq3-renderer-shader-remap-entry-timeoffset-timeoffset-src-mq3-renderer-shader-remap-ml-1010319729"></a>
 ### timeOffset
@@ -62,4 +62,4 @@ timeOffset
 Offset in seconds applied to the material's shader time.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/shader_remap.ml#L14)

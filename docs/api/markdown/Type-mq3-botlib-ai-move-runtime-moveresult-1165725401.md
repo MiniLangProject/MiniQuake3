@@ -12,7 +12,7 @@ struct MoveResult
 `MoveResult` record for ai move runtime, containing `failure`, `type`, `blocked`, `blockEntity` and `travelType` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L253)
 
 ## Members
 
@@ -26,7 +26,7 @@ blocked
 True when an obstacle prevents the requested movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L259)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-blockentity-blockentity-src-mq3-botlib-ai-move-runtime-ml-2105361781"></a>
 ### blockEntity
@@ -38,7 +38,7 @@ blockEntity
 Entity blocking the bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L261)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-failure-failure-src-mq3-botlib-ai-move-runtime-ml-1755120445"></a>
 ### failure
@@ -50,7 +50,7 @@ failure
 Failure indicator returned by the movement or navigation operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L255)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-flags-flags-src-mq3-botlib-ai-move-runtime-ml-769898661"></a>
 ### flags
@@ -62,7 +62,7 @@ flags
 Movement-result flags requesting view, weapon, or waiting behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L265)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-idealviewangles-idealviewangles-src-mq3-botlib-ai-move-runtime-ml-1691172785"></a>
 ### idealViewAngles
@@ -74,7 +74,7 @@ idealViewAngles
 Ideal viewangles for the movement.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L271)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-movedir-movedir-src-mq3-botlib-ai-move-runtime-ml-1899835185"></a>
 ### moveDir
@@ -86,7 +86,7 @@ moveDir
 Direction requested by the bot movement result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L269)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-traveltype-traveltype-src-mq3-botlib-ai-move-runtime-ml-2049909821"></a>
 ### travelType
@@ -98,7 +98,7 @@ travelType
 Encoded AAS movement type required to traverse this link.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L263)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-type-type-src-mq3-botlib-ai-move-runtime-ml-548540029"></a>
 ### type
@@ -110,7 +110,7 @@ type
 Failure or blocked type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L257)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-moveresult-weapon-weapon-src-mq3-botlib-ai-move-runtime-ml-1377583485"></a>
 ### weapon
@@ -122,4 +122,4 @@ weapon
 Weapon identifier selected by the bot or user command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L267)

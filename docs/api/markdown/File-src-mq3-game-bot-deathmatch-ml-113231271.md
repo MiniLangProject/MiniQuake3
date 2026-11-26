@@ -19,7 +19,7 @@ Reachable from entry: **no**
 - `mq3/game/constants.ml` as `c` → [src/mq3/game/constants.ml](File-src-mq3-game-constants-ml-318947761.md)
 - `mq3/game/game_headers.ml` as `headers` → [src/mq3/game/game_headers.ml](File-src-mq3-game-game-headers-ml-1243119809.md)
 - `mq3/shared/info.ml` as `info` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -39,7 +39,7 @@ Bot1FCTFCarryingFlag
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L300)
 
 <a id="function-function-mq3-game-bot-deathmatch-bot1fctfretreatgoals-function-bot1fctfretreatgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1944254869"></a>
 ### bot1FCTFRetreatGoals
@@ -57,7 +57,7 @@ Forward `bot1FCTFRetreatGoals` to `mq3.game.bot_deathmatch.strategicGoal` and re
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L429)
 
 <a id="function-function-mq3-game-bot-deathmatch-bot1fctfseekgoals-function-bot1fctfseekgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-185102035"></a>
 ### bot1FCTFSeekGoals
@@ -75,7 +75,7 @@ Forward `bot1FCTFSeekGoals` to `mq3.game.bot_deathmatch.strategicGoal` and retur
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L424)
 
 <a id="function-function-mq3-game-bot-deathmatch-botaggression-function-botaggression-state-bot-src-mq3-game-bot-deathmatch-ml-240340650"></a>
 ### botAggression
@@ -92,7 +92,7 @@ Forward `botAggression` to `mq3.game.bot_combat_ai.aggression` and return the de
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory` and `weaponnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L595)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L595)
 
 <a id="function-function-mq3-game-bot-deathmatch-botaiblocked-function-botaiblocked-state-bot-moveresult-activate-retailactive-src-mq3-game-bot-deathmatch-ml-1978529396"></a>
 ### botAIBlocked
@@ -112,7 +112,7 @@ Record or dispatch `"blocked"` actions in `botAIBlocked`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L796)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L796)
 
 <a id="function-function-mq3-game-bot-deathmatch-botaimatenemy-function-botaimatenemy-state-bot-src-mq3-game-bot-deathmatch-ml-1969641930"></a>
 ### botAimAtEnemy
@@ -129,7 +129,7 @@ Forward `botAimAtEnemy` to `mq3.game.bot_combat_ai.aimAtEnemy` and return the de
 | `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `aimTarget`, `idealViewangles`, `eye` and `character` and related fields. May update `bot.aimTarget` and `bot.idealViewangles` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L704)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L704)
 
 <a id="function-function-mq3-game-bot-deathmatch-botaipredictobstacles-function-botaipredictobstacles-state-bot-value-src-mq3-game-bot-deathmatch-ml-448560291"></a>
 ### botAIPredictObstacles
@@ -147,7 +147,7 @@ Forward `botAIPredictObstacles` to `mq3.game.bot_navigation.predictObstacles` an
 | `value` | `dynamic` | — | Bot navigation goal; accesses `areanum` and `entitynum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L801)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L801)
 
 <a id="function-function-mq3-game-bot-deathmatch-botalternateroute-function-botalternateroute-state-bot-value-src-mq3-game-bot-deathmatch-ml-1765522703"></a>
 ### botAlternateRoute
@@ -165,7 +165,7 @@ Forward `botAlternateRoute` to `mq3.game.bot_navigation.alternateRoute` and retu
 | `value` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `value.areanum`, `value.entitynum` and `value.origin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L856)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L856)
 
 <a id="function-function-mq3-game-bot-deathmatch-botattackmove-function-botattackmove-state-bot-tfl-src-mq3-game-bot-deathmatch-ml-1175284880"></a>
 ### botAttackMove
@@ -183,7 +183,7 @@ Forward `botAttackMove` to `mq3.game.bot_combat_ai.attackMove` and return the de
 | `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L652)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L652)
 
 <a id="function-function-mq3-game-bot-deathmatch-botbattleuseitems-function-botbattleuseitems-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-808326125"></a>
 ### botBattleUseItems
@@ -201,7 +201,7 @@ Record or dispatch `"use-item"` actions in `botBattleUseItems`. Return paths inc
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L533)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L533)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcanandwantstorocketjump-function-botcanandwantstorocketjump-state-bot-src-mq3-game-bot-deathmatch-ml-1698342004"></a>
 ### botCanAndWantsToRocketJump
@@ -218,7 +218,7 @@ Forward `botCanAndWantsToRocketJump` to `mq3.game.bot_combat_ai.canAndWantsToRoc
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory` and `character`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L615)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L615)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckair-function-botcheckair-state-bot-src-mq3-game-bot-deathmatch-ml-904599490"></a>
 ### botCheckAir
@@ -235,7 +235,7 @@ Set `bot.lastairTime` to `state.now` in `mq3.game.bot_deathmatch.botCheckAir`.
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory`, `eye` and `lastairTime`. May update `bot.lastairTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L851)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L851)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckattack-function-botcheckattack-state-bot-src-mq3-game-bot-deathmatch-ml-70231672"></a>
 ### botCheckAttack
@@ -252,7 +252,7 @@ Forward `botCheckAttack` to `mq3.game.bot_combat_ai.checkAttack` and return the 
 | `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `character`, `enemySightTime`, `teleportTime` and `weaponchangeTime` and related fields. May update `bot.firethrottlewaitTime`, `bot.firethrottleshootTime` and `bot.combatFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L708)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L708)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckconsolemessages-function-botcheckconsolemessages-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1083829489"></a>
 ### botCheckConsoleMessages
@@ -270,7 +270,7 @@ Console/snapshot event layer.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L807)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L807)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckevents-function-botcheckevents-state-bot-value-retailactive-src-mq3-game-bot-deathmatch-ml-442325290"></a>
 ### botCheckEvents
@@ -289,7 +289,7 @@ Record or dispatch `"obituary-death"`, `"obituary-kill"` and `"event"` actions i
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L834)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L834)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckforgrenades-function-botcheckforgrenades-state-bot-value-retailactive-src-mq3-game-bot-deathmatch-ml-1818137784"></a>
 ### botCheckForGrenades
@@ -308,7 +308,7 @@ Record or dispatch `"avoid-spot"` actions in `botCheckForGrenades`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L813)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L813)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckforkamikazebody-function-botcheckforkamikazebody-state-bot-value-src-mq3-game-bot-deathmatch-ml-431481745"></a>
 ### botCheckForKamikazeBody
@@ -326,7 +326,7 @@ Set `state.kamikazeBodies[bot.client]` to `value.number` in `mq3.game.bot_deathm
 | `value` | `dynamic` | — | Value record; accesses `flags` and `number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L828)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L828)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckforproxmines-function-botcheckforproxmines-state-bot-value-retailactive-src-mq3-game-bot-deathmatch-ml-690709970"></a>
 ### botCheckForProxMines
@@ -345,7 +345,7 @@ Record or dispatch `"avoid-spot"` actions in `botCheckForProxMines`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L819)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L819)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcheckitempickup-function-botcheckitempickup-state-bot-oldinventory-retailactive-src-mq3-game-bot-deathmatch-ml-1002456626"></a>
 ### botCheckItemPickup
@@ -364,7 +364,7 @@ Record or dispatch `"item-pickup-check"` actions in `botCheckItemPickup`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L528)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L528)
 
 <a id="function-function-mq3-game-bot-deathmatch-botchecksnapshot-function-botchecksnapshot-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1865030049"></a>
 ### botCheckSnapshot
@@ -382,7 +382,7 @@ Record or dispatch `"avoid-clear"` actions in `botCheckSnapshot`. Return paths i
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L844)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L844)
 
 <a id="function-function-mq3-game-bot-deathmatch-botchooseweapon-function-botchooseweapon-state-bot-src-mq3-game-bot-deathmatch-ml-979478320"></a>
 ### botChooseWeapon
@@ -399,7 +399,7 @@ Existing native inventory/combat/navigation implementations.
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`, `client`, `weaponnum`, `ws` and `inventory` and related fields. May update `bot.weaponchangeTime` and `bot.weaponnum` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L509)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L509)
 
 <a id="function-function-mq3-game-bot-deathmatch-botclearactivategoalstack-function-botclearactivategoalstack-state-bot-src-mq3-game-bot-deathmatch-ml-1136574640"></a>
 ### botClearActivateGoalStack
@@ -416,7 +416,7 @@ Forward `botClearActivateGoalStack` to `mq3.game.bot_navigation.clearActivateGoa
 | `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L762)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L762)
 
 <a id="function-function-mq3-game-bot-deathmatch-botcreatewaypoint-function-botcreatewaypoint-state-name-origin-areanum-src-mq3-game-bot-deathmatch-ml-305032633"></a>
 ### botCreateWayPoint
@@ -435,7 +435,7 @@ Set `state.waypoints` to `[value]+state.waypoints` in `mq3.game.bot_deathmatch.b
 | `areanum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L579)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L579)
 
 <a id="function-function-mq3-game-bot-deathmatch-botctfcarryingflag-function-botctfcarryingflag-state-bot-src-mq3-game-bot-deathmatch-ml-1618124368"></a>
 ### botCTFCarryingFlag
@@ -452,7 +452,7 @@ BotCTFCarryingFlag
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L304)
 
 <a id="function-function-mq3-game-bot-deathmatch-botctfretreatgoals-function-botctfretreatgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-920941517"></a>
 ### botCTFRetreatGoals
@@ -470,7 +470,7 @@ Forward `botCTFRetreatGoals` to `mq3.game.bot_deathmatch.strategicGoal` and retu
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L419)
 
 <a id="function-function-mq3-game-bot-deathmatch-botctfseekgoals-function-botctfseekgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-266761961"></a>
 ### botCTFSeekGoals
@@ -488,7 +488,7 @@ Forward `botCTFSeekGoals` to `mq3.game.bot_deathmatch.strategicGoal` and return 
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L414)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L414)
 
 <a id="function-function-mq3-game-bot-deathmatch-botdeathmatchai-function-botdeathmatchai-state-bot-thinktime-src-mq3-game-bot-deathmatch-ml-820211143"></a>
 ### botDeathmatchAI
@@ -506,7 +506,7 @@ Set `bot.thinktime` to `thinktime` in `mq3.game.bot_deathmatch.botDeathmatchAI`.
 | `thinktime` | `dynamic` | — | Bot thinking interval in seconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L869)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L869)
 
 <a id="function-function-mq3-game-bot-deathmatch-botdontavoid-function-botdontavoid-state-bot-name-src-mq3-game-bot-deathmatch-ml-1383976739"></a>
 ### botDontAvoid
@@ -524,7 +524,7 @@ Forward `botDontAvoid` to `mq3.game.bot_navigation.dontAvoid` and return the del
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L639)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L639)
 
 <a id="function-function-mq3-game-bot-deathmatch-botenableactivategoalareas-function-botenableactivategoalareas-state-activategoal-enable-src-mq3-game-bot-deathmatch-ml-25390424"></a>
 ### botEnableActivateGoalAreas
@@ -542,7 +542,7 @@ Forward `botEnableActivateGoalAreas` to `mq3.game.bot_navigation.enableActivateG
 | `enable` | `dynamic` | — | Value used by `enableActivateGoalAreas` in `disabled=not enable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L767)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L767)
 
 <a id="function-function-mq3-game-bot-deathmatch-botenemycubecarriervisible-function-botenemycubecarriervisible-state-bot-src-mq3-game-bot-deathmatch-ml-1303348388"></a>
 ### botEnemyCubeCarrierVisible
@@ -559,7 +559,7 @@ Forward `botEnemyCubeCarrierVisible` to `mq3.game.bot_deathmatch.carrierVisible`
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`, `entitynum`, `eye` and `viewangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L700)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L700)
 
 <a id="function-function-mq3-game-bot-deathmatch-botenemyflag-function-botenemyflag-state-bot-src-mq3-game-bot-deathmatch-ml-1346338988"></a>
 ### botEnemyFlag
@@ -576,7 +576,7 @@ BotEnemyFlag and BotTeamFlag
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L325)
 
 <a id="function-function-mq3-game-bot-deathmatch-botenemyflagcarriervisible-function-botenemyflagcarriervisible-state-bot-src-mq3-game-bot-deathmatch-ml-342264084"></a>
 ### botEnemyFlagCarrierVisible
@@ -593,7 +593,7 @@ Forward `botEnemyFlagCarrierVisible` to `mq3.game.bot_deathmatch.carrierVisible`
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`, `entitynum`, `eye` and `viewangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L685)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L685)
 
 <a id="function-function-mq3-game-bot-deathmatch-botentityvisible-function-botentityvisible-state-viewer-eye-viewangles-fov-ent-src-mq3-game-bot-deathmatch-ml-307646783"></a>
 ### botEntityVisible
@@ -614,7 +614,7 @@ Use `state.visibleFn` to perform `botEntityVisible`. Return paths include `0.0`.
 | `ent` | `dynamic` | — | Value passed as argument 6 to `state.visibleFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L660)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L660)
 
 <a id="function-function-mq3-game-bot-deathmatch-botfeelingbad-function-botfeelingbad-state-bot-src-mq3-game-bot-deathmatch-ml-1544753888"></a>
 ### botFeelingBad
@@ -631,7 +631,7 @@ Forward `botFeelingBad` to `mq3.game.bot_combat_ai.feelingBad` and return the de
 | `bot` | `dynamic` | — | Bot AI state; accesses `weaponnum` and `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L599)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L599)
 
 <a id="function-function-mq3-game-bot-deathmatch-botfindenemy-function-botfindenemy-state-bot-curenemy-src-mq3-game-bot-deathmatch-ml-1586427570"></a>
 ### botFindEnemy
@@ -649,7 +649,7 @@ Forward `botFindEnemy` to `mq3.game.bot_combat_ai.findEnemy` and return the dele
 | `curenemy` | `dynamic` | — | Value passed as argument 2 to `services.entityInfoFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L665)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L665)
 
 <a id="function-function-mq3-game-bot-deathmatch-botfindwaypoint-function-botfindwaypoint-state-waypoints-name-src-mq3-game-bot-deathmatch-ml-1175043908"></a>
 ### botFindWayPoint
@@ -667,7 +667,7 @@ Find a waypoint by ASCII case-insensitive name and return void when absent.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L584)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L584)
 
 <a id="function-function-mq3-game-bot-deathmatch-botfreewaypoints-function-botfreewaypoints-state-waypoints-src-mq3-game-bot-deathmatch-ml-1485442065"></a>
 ### botFreeWaypoints
@@ -684,7 +684,7 @@ Set `state.waypoints` to `[]` in `mq3.game.bot_deathmatch.botFreeWaypoints`.
 | `waypoints` | `dynamic` | — | Value used by `botFreeWaypoints` in `state.waypoints=[]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L588)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L588)
 
 <a id="function-function-mq3-game-bot-deathmatch-botfuncbuttonactivategoal-function-botfuncbuttonactivategoal-state-bot-bspent-activategoal-src-mq3-game-bot-deathmatch-ml-648216642"></a>
 ### botFuncButtonActivateGoal
@@ -703,7 +703,7 @@ Forward `botFuncButtonActivateGoal` to `mq3.game.bot_navigation.getActivateGoal`
 | `activategoal` | `dynamic` | — | Activategoal record; accesses `numareas` and `areas`. May update `activategoal.areas` and `activategoal.numareas` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L731)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L731)
 
 <a id="function-function-mq3-game-bot-deathmatch-botfuncdooractivategoal-function-botfuncdooractivategoal-state-bot-bspent-activategoal-src-mq3-game-bot-deathmatch-ml-1291690462"></a>
 ### botFuncDoorActivateGoal
@@ -722,7 +722,7 @@ Forward `botFuncDoorActivateGoal` to `mq3.game.bot_navigation.getActivateGoal` a
 | `activategoal` | `dynamic` | — | Activategoal record; accesses `numareas` and `areas`. May update `activategoal.areas` and `activategoal.numareas` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L737)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L737)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgetactivategoal-function-botgetactivategoal-state-bot-entitynum-activategoal-src-mq3-game-bot-deathmatch-ml-479939289"></a>
 ### botGetActivateGoal
@@ -741,7 +741,7 @@ Forward `botGetActivateGoal` to `mq3.game.bot_navigation.getActivateGoal` and re
 | `activategoal` | `dynamic` | — | Activategoal record; accesses `numareas` and `areas`. May update `activategoal.areas` and `activategoal.numareas` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L749)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L749)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgetalternateroutegoal-function-botgetalternateroutegoal-state-bot-base-src-mq3-game-bot-deathmatch-ml-666852481"></a>
 ### botGetAlternateRouteGoal
@@ -759,7 +759,7 @@ Forward `botGetAlternateRouteGoal` to `mq3.game.bot_navigation.getAlternateRoute
 | `base` | `dynamic` | — | Value used by `getAlternateRouteGoal` in `if base==TEAM_RED then goals=redGoals end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L861)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L861)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgoalforbspentity-function-botgoalforbspentity-state-classname-value-src-mq3-game-bot-deathmatch-ml-136843383"></a>
 ### botGoalForBSPEntity
@@ -777,7 +777,7 @@ Set `value.origin` to `ent.origin+[ ]` and `value.areanum` to `botPointAreaNum(s
 | `value` | `dynamic` | — | Value record; accesses `origin` and `areanum`. May update `value.origin` and `value.areanum` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L892)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L892)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgocamp-function-botgocamp-state-bot-value-src-mq3-game-bot-deathmatch-ml-1376524619"></a>
 ### botGoCamp
@@ -795,7 +795,7 @@ Forward `botGoCamp` to `mq3.game.bot_navigation.goCamp` and return the delegated
 | `value` | `dynamic` | — | Bot navigation goal; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L630)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L630)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgoforactivategoal-function-botgoforactivategoal-state-bot-activategoal-src-mq3-game-bot-deathmatch-ml-637898538"></a>
 ### botGoForActivateGoal
@@ -813,7 +813,7 @@ Forward `botGoForActivateGoal` to `mq3.game.bot_navigation.goForActivateGoal` an
 | `activategoal` | `dynamic` | — | Activategoal record; accesses `inuse`, `time`, `startTime`, `goal` and `origin`. May update `activategoal.inuse`, `activategoal.time` and `activategoal.startTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L777)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L777)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgoforpowerups-function-botgoforpowerups-state-bot-src-mq3-game-bot-deathmatch-ml-736653480"></a>
 ### botGoForPowerups
@@ -830,7 +830,7 @@ Forward `botGoForPowerups` to `mq3.game.bot_navigation.goForPowerups` and return
 | `bot` | `dynamic` | — | Bot AI state; accesses `ltgTime`. May update `bot.ltgTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L643)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L643)
 
 <a id="function-function-mq3-game-bot-deathmatch-botgoharvest-function-botgoharvest-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-790118585"></a>
 ### botGoHarvest
@@ -848,7 +848,7 @@ Set `bot.ltgtype` to `12` and `bot.teamgoalTime` to `state.now+120.0` in `mq3.ga
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L444)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L444)
 
 <a id="function-function-mq3-game-bot-deathmatch-botharvestercarryingcubes-function-botharvestercarryingcubes-state-bot-src-mq3-game-bot-deathmatch-ml-2110732752"></a>
 ### botHarvesterCarryingCubes
@@ -865,7 +865,7 @@ BotHarvesterCarryingCubes
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L308)
 
 <a id="function-function-mq3-game-bot-deathmatch-botharvesterretreatgoals-function-botharvesterretreatgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-941188889"></a>
 ### botHarvesterRetreatGoals
@@ -883,7 +883,7 @@ Forward `botHarvesterRetreatGoals` to `mq3.game.bot_deathmatch.strategicGoal` an
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L454)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L454)
 
 <a id="function-function-mq3-game-bot-deathmatch-botharvesterseekgoals-function-botharvesterseekgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-427194531"></a>
 ### botHarvesterSeekGoals
@@ -901,7 +901,7 @@ Forward `botHarvesterSeekGoals` to `mq3.game.bot_deathmatch.strategicGoal` and r
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L449)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L449)
 
 <a id="function-function-mq3-game-bot-deathmatch-bothaspersistantpowerupandweapon-function-bothaspersistantpowerupandweapon-state-bot-src-mq3-game-bot-deathmatch-ml-811946204"></a>
 ### botHasPersistantPowerupAndWeapon
@@ -918,7 +918,7 @@ Check whether health, armor, powerup and ammunition reserves support an aggressi
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L619)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L619)
 
 <a id="function-function-mq3-game-bot-deathmatch-botinitwaypoints-function-botinitwaypoints-state-src-mq3-game-bot-deathmatch-ml-683233717"></a>
 ### botInitWaypoints
@@ -934,7 +934,7 @@ Waypoint pool/lifecycle.
 | `state` | `dynamic` | — | Bot deathmatch state; accesses `waypoints`. May update `state.waypoints` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L573)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L573)
 
 <a id="function-function-mq3-game-bot-deathmatch-botinlavaorslime-function-botinlavaorslime-state-bot-src-mq3-game-bot-deathmatch-ml-1512419696"></a>
 ### botInLavaOrSlime
@@ -951,7 +951,7 @@ Forward `botInLavaOrSlime` to `mq3.game.bot_combat_ai.inLavaOrSlime` and return 
 | `bot` | `dynamic` | — | Bot AI state; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L569)
 
 <a id="function-function-mq3-game-bot-deathmatch-botintermission-function-botintermission-state-bot-src-mq3-game-bot-deathmatch-ml-1705939934"></a>
 ### botIntermission
@@ -968,7 +968,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_combat_ai.intermission` w
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L565)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L565)
 
 <a id="function-function-mq3-game-bot-deathmatch-botisdead-function-botisdead-state-bot-src-mq3-game-bot-deathmatch-ml-1146076366"></a>
 ### botIsDead
@@ -985,7 +985,7 @@ Forward `botIsDead` to `mq3.game.bot_combat_ai.isDead` and return the delegated 
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L557)
 
 <a id="function-function-mq3-game-bot-deathmatch-botisgoingtoactivateentity-function-botisgoingtoactivateentity-state-bot-entitynum-src-mq3-game-bot-deathmatch-ml-2133325695"></a>
 ### botIsGoingToActivateEntity
@@ -1003,7 +1003,7 @@ Forward `botIsGoingToActivateEntity` to `mq3.game.bot_navigation.isGoingToActiva
 | `entitynum` | `dynamic` | — | Value used by `isGoingToActivateEntity` in `if goal.time>=need(services.floatTimeFn,"FloatTime")(services) and goal.goal.entitynum==entitynum then return tr...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L772)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L772)
 
 <a id="function-function-mq3-game-bot-deathmatch-botisobserver-function-botisobserver-state-bot-src-mq3-game-bot-deathmatch-ml-1443998658"></a>
 ### botIsObserver
@@ -1020,7 +1020,7 @@ Test `bot.curPs.pm_type==c.PM_SPECTATOR` as the condition for `botIsObserver`.
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L561)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L561)
 
 <a id="function-function-mq3-game-bot-deathmatch-botmapscripts-function-botmapscripts-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-986668055"></a>
 ### botMapScripts
@@ -1038,7 +1038,7 @@ Map, movers and activation.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L714)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L714)
 
 <a id="function-function-mq3-game-bot-deathmatch-botmodelminsmaxs-function-botmodelminsmaxs-state-modelindex-etype-contents-src-mq3-game-bot-deathmatch-ml-700149437"></a>
 ### botModelMinsMaxs
@@ -1057,7 +1057,7 @@ Find a matching model entity and return its number and world-space bounding box,
 | `contents` | `dynamic` | — | Value used by `botModelMinsMaxs` in `for each value in state.entities if value.valid and value.modelindex==modelindex and (eType==0 or value.eType==e...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L723)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L723)
 
 <a id="function-function-mq3-game-bot-deathmatch-botobeliskretreatgoals-function-botobeliskretreatgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1089601625"></a>
 ### botObeliskRetreatGoals
@@ -1075,7 +1075,7 @@ Forward `botObeliskRetreatGoals` to `mq3.game.bot_deathmatch.strategicGoal` and 
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L439)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L439)
 
 <a id="function-function-mq3-game-bot-deathmatch-botobeliskseekgoals-function-botobeliskseekgoals-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1399869941"></a>
 ### botObeliskSeekGoals
@@ -1093,7 +1093,7 @@ Forward `botObeliskSeekGoals` to `mq3.game.bot_deathmatch.strategicGoal` and ret
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L434)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L434)
 
 <a id="function-function-mq3-game-bot-deathmatch-botoppositeteam-function-botoppositeteam-state-bot-src-mq3-game-bot-deathmatch-ml-135182662"></a>
 ### botOppositeTeam
@@ -1110,7 +1110,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_team_helpers.oppositeTeam
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L316)
 
 <a id="function-function-mq3-game-bot-deathmatch-botpointareanum-function-botpointareanum-state-origin-src-mq3-game-bot-deathmatch-ml-1013396011"></a>
 ### botPointAreaNum
@@ -1127,7 +1127,7 @@ Client and string helpers.
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L470)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L470)
 
 <a id="function-function-mq3-game-bot-deathmatch-botpopfromactivategoalstack-function-botpopfromactivategoalstack-state-bot-src-mq3-game-bot-deathmatch-ml-338195668"></a>
 ### botPopFromActivateGoalStack
@@ -1144,7 +1144,7 @@ Forward `botPopFromActivateGoalStack` to `mq3.game.bot_navigation.popActivateGoa
 | `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`. May update `bot.activateStackIndex` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L753)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L753)
 
 <a id="function-function-mq3-game-bot-deathmatch-botprintactivategoalinfo-function-botprintactivategoalinfo-state-bot-activategoal-bspent-retailactive-src-mq3-game-bot-deathmatch-ml-292208673"></a>
 ### botPrintActivateGoalInfo
@@ -1164,7 +1164,7 @@ Record or dispatch `"activate-info"` actions in `botPrintActivateGoalInfo`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L784)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L784)
 
 <a id="function-function-mq3-game-bot-deathmatch-botpushontoactivategoalstack-function-botpushontoactivategoalstack-state-bot-activategoal-src-mq3-game-bot-deathmatch-ml-428704202"></a>
 ### botPushOntoActivateGoalStack
@@ -1182,7 +1182,7 @@ Forward `botPushOntoActivateGoalStack` to `mq3.game.bot_navigation.pushActivateG
 | `activategoal` | `dynamic` | — | Parser source state; accesses `goal`, `areas`, `inuse`, `time` and `startTime` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L758)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L758)
 
 <a id="function-function-mq3-game-bot-deathmatch-botrandommove-function-botrandommove-state-bot-moveresult-src-mq3-game-bot-deathmatch-ml-1682619946"></a>
 ### botRandomMove
@@ -1200,7 +1200,7 @@ Forward `botRandomMove` to `mq3.game.bot_navigation.randomMove` and return the d
 | `moveresult` | `dynamic` | — | Moveresult record; accesses `failure` and `movedir`. May update `moveresult.failure` and `moveresult.movedir` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L789)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L789)
 
 <a id="function-function-mq3-game-bot-deathmatch-botrefuseorder-function-botrefuseorder-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1458534181"></a>
 ### botRefuseOrder
@@ -1218,7 +1218,7 @@ BotRefuseOrder
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L396)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L396)
 
 <a id="function-function-mq3-game-bot-deathmatch-botrememberlastorderedtask-function-botrememberlastorderedtask-state-bot-src-mq3-game-bot-deathmatch-ml-213209232"></a>
 ### botRememberLastOrderedTask
@@ -1235,7 +1235,7 @@ BotRememberLastOrderedTask
 | `bot` | `dynamic` | — | Bot AI state; accesses `ordered`, `client`, `decisionmaker`, `ltgtype` and `teamGoal` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L372)
 
 <a id="function-function-mq3-game-bot-deathmatch-botroamgoal-function-botroamgoal-state-bot-src-mq3-game-bot-deathmatch-ml-482082278"></a>
 ### botRoamGoal
@@ -1252,7 +1252,7 @@ Choose a point one hundred units around the bot using the supplied random angle 
 | `bot` | `dynamic` | — | Bot AI state; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L647)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L647)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsameteam-function-botsameteam-state-bot-entitynumber-src-mq3-game-bot-deathmatch-ml-367844770"></a>
 ### botSameTeam
@@ -1270,7 +1270,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_team_helpers.sameTeam` wh
 | `entityNumber` | `dynamic` | — | Entity number in the game entity table. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L321)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L321)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetentitynumforgoal-function-botsetentitynumforgoal-state-value-classname-src-mq3-game-bot-deathmatch-ml-1833605121"></a>
 ### botSetEntityNumForGoal
@@ -1288,7 +1288,7 @@ Set `value.entitynum` to `ent.number` in `mq3.game.bot_deathmatch.botSetEntityNu
 | `classname` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L884)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L884)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetentitynumforgoalwithmodel-function-botsetentitynumforgoalwithmodel-state-value-etype-modelname-src-mq3-game-bot-deathmatch-ml-262189745"></a>
 ### botSetEntityNumForGoalWithModel
@@ -1307,7 +1307,7 @@ Set `value.entitynum` to `ent.number` in `mq3.game.bot_deathmatch.botSetEntityNu
 | `modelname` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `botSetEntityNumForGoalWithModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L876)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L876)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetlastorderedtask-function-botsetlastorderedtask-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-256025375"></a>
 ### botSetLastOrderedTask
@@ -1325,7 +1325,7 @@ BotSetLastOrderedTask
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L387)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetmovedir-function-botsetmovedir-angles-src-mq3-game-bot-deathmatch-ml-357204744"></a>
 ### botSetMovedir
@@ -1341,7 +1341,7 @@ Forward `botSetMovedir` to `mq3.game.bot_navigation.setMovedir` and return the d
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L717)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L717)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetteamstatus-function-botsetteamstatus-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-642751113"></a>
 ### botSetTeamStatus
@@ -1359,7 +1359,7 @@ BotSetTeamStatus
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L379)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L379)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetteleporttime-function-botsetteleporttime-state-bot-src-mq3-game-bot-deathmatch-ml-1788206848"></a>
 ### botSetTeleportTime
@@ -1376,7 +1376,7 @@ Set `state.combatServices.floatTimeFn` to `nowFn` and `state.combatServices.cont
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`, `lastEFlags` and `teleportTime`. May update `bot.teleportTime` and `bot.lastEFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L550)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L550)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetupalternativeroutegoals-function-botsetupalternativeroutegoals-state-src-mq3-game-bot-deathmatch-ml-615240513"></a>
 ### botSetupAlternativeRouteGoals
@@ -1392,7 +1392,7 @@ Record or dispatch `"alternate-route-setup"` actions in `botSetupAlternativeRout
 | `state` | `dynamic` | — | Bot deathmatch state; accesses `setup`, `redAltGoals` and `blueAltGoals`. May update `state.setup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L864)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L864)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetupdeathmatchai-function-botsetupdeathmatchai-state-retailactive-src-mq3-game-bot-deathmatch-ml-896670240"></a>
 ### botSetupDeathmatchAI
@@ -1409,7 +1409,7 @@ Record or dispatch `"deathmatch-setup"` actions in `botSetupDeathmatchAI`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L898)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L898)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetupformovement-function-botsetupformovement-state-bot-src-mq3-game-bot-deathmatch-ml-633219648"></a>
 ### botSetupForMovement
@@ -1426,7 +1426,7 @@ Forward `botSetupForMovement` to `mq3.game.bot_navigation.setupForMovement` and 
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`, `entitynum`, `client`, `thinktime` and `viewangles` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L513)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsetuserinfo-function-botsetuserinfo-state-bot-key-value-retailactive-src-mq3-game-bot-deathmatch-ml-589310157"></a>
 ### botSetUserInfo
@@ -1446,7 +1446,7 @@ BotSetUserInfo
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L368)
 
 <a id="function-function-mq3-game-bot-deathmatch-botshutdowndeathmatchai-function-botshutdowndeathmatchai-state-src-mq3-game-bot-deathmatch-ml-1003289329"></a>
 ### botShutdownDeathmatchAI
@@ -1462,7 +1462,7 @@ Update `state.setup`, `state.redAltGoals` and `state.blueAltGoals` during `botSh
 | `state` | `dynamic` | — | Bot deathmatch state; accesses `setup`, `redAltGoals` and `blueAltGoals`. May update `state.setup`, `state.redAltGoals` and `state.blueAltGoals` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L901)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L901)
 
 <a id="function-function-mq3-game-bot-deathmatch-botsynonymcontext-function-botsynonymcontext-state-bot-src-mq3-game-bot-deathmatch-ml-1177983046"></a>
 ### botSynonymContext
@@ -1479,7 +1479,7 @@ Apply `mq3.game.bot_deathmatch.teamValue` while evaluating `botSynonymContext`. 
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L504)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L504)
 
 <a id="function-function-mq3-game-bot-deathmatch-botteam-function-botteam-state-bot-src-mq3-game-bot-deathmatch-ml-109247032"></a>
 ### botTeam
@@ -1496,7 +1496,7 @@ BotTeam, BotOppositeTeam and BotSameTeam
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L312)
 
 <a id="function-function-mq3-game-bot-deathmatch-botteamcubecarriervisible-function-botteamcubecarriervisible-state-bot-src-mq3-game-bot-deathmatch-ml-1914956834"></a>
 ### botTeamCubeCarrierVisible
@@ -1513,7 +1513,7 @@ Forward `botTeamCubeCarrierVisible` to `mq3.game.bot_deathmatch.carrierVisible` 
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`, `entitynum`, `eye` and `viewangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L696)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L696)
 
 <a id="function-function-mq3-game-bot-deathmatch-botteamflag-function-botteamflag-state-bot-src-mq3-game-bot-deathmatch-ml-359605496"></a>
 ### botTeamFlag
@@ -1530,7 +1530,7 @@ Apply `mq3.game.bot_deathmatch.teamValue` while evaluating `botTeamFlag`. Return
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L329)
 
 <a id="function-function-mq3-game-bot-deathmatch-botteamflagcarrier-function-botteamflagcarrier-state-bot-src-mq3-game-bot-deathmatch-ml-471852400"></a>
 ### botTeamFlagCarrier
@@ -1547,7 +1547,7 @@ Apply `mq3.game.bot_deathmatch.botSameTeam` and `mq3.game.bot_deathmatch.entityC
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L681)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L681)
 
 <a id="function-function-mq3-game-bot-deathmatch-botteamflagcarriervisible-function-botteamflagcarriervisible-state-bot-src-mq3-game-bot-deathmatch-ml-343464464"></a>
 ### botTeamFlagCarrierVisible
@@ -1564,7 +1564,7 @@ Forward `botTeamFlagCarrierVisible` to `mq3.game.bot_deathmatch.carrierVisible` 
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`, `entitynum`, `eye` and `viewangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L677)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L677)
 
 <a id="function-function-mq3-game-bot-deathmatch-botteamgoals-function-botteamgoals-state-bot-retreat-retailactive-src-mq3-game-bot-deathmatch-ml-553265732"></a>
 ### botTeamGoals
@@ -1583,7 +1583,7 @@ BotTeamGoals
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L460)
 
 <a id="function-function-mq3-game-bot-deathmatch-bottriggermultipleactivategoal-function-bottriggermultipleactivategoal-state-bot-bspent-activategoal-src-mq3-game-bot-deathmatch-ml-1020619020"></a>
 ### botTriggerMultipleActivateGoal
@@ -1602,7 +1602,7 @@ Forward `botTriggerMultipleActivateGoal` to `mq3.game.bot_navigation.getActivate
 | `activategoal` | `dynamic` | — | Activategoal record; accesses `numareas` and `areas`. May update `activategoal.areas` and `activategoal.numareas` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L743)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L743)
 
 <a id="function-function-mq3-game-bot-deathmatch-botupdatebattleinventory-function-botupdatebattleinventory-state-bot-enemy-src-mq3-game-bot-deathmatch-ml-479106914"></a>
 ### botUpdateBattleInventory
@@ -1620,7 +1620,7 @@ Forward `botUpdateBattleInventory` to `mq3.game.bot_inventory_ai.updateBattleInv
 | `enemy` | `dynamic` | — | Value passed as argument 2 to `services.entityInfoFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L518)
 
 <a id="function-function-mq3-game-bot-deathmatch-botupdateinventory-function-botupdateinventory-state-bot-src-mq3-game-bot-deathmatch-ml-677360192"></a>
 ### botUpdateInventory
@@ -1637,7 +1637,7 @@ Forward `botUpdateInventory` to `mq3.game.bot_inventory_ai.updateInventory` and 
 | `bot` | `dynamic` | — | Bot AI state; accesses `inventory` and `curPs`. May update `bot.inventory[INVENTORY_ARMOR]`, `bot.inventory[INVENTORY_GAUNTLET]` and `bot.inventory[INVENTORY_SHOTGUN]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L522)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L522)
 
 <a id="function-function-mq3-game-bot-deathmatch-botuseinvulnerability-function-botuseinvulnerability-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-2129144507"></a>
 ### botUseInvulnerability
@@ -1655,7 +1655,7 @@ Record or dispatch `"use-item"` actions in `botUseInvulnerability`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L546)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L546)
 
 <a id="function-function-mq3-game-bot-deathmatch-botusekamikaze-function-botusekamikaze-state-bot-retailactive-src-mq3-game-bot-deathmatch-ml-1999922809"></a>
 ### botUseKamikaze
@@ -1673,7 +1673,7 @@ Record or dispatch `"use-item"` actions in `botUseKamikaze`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L541)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L541)
 
 <a id="function-function-mq3-game-bot-deathmatch-botvisibleteammatesandenemies-function-botvisibleteammatesandenemies-state-bot-range-src-mq3-game-bot-deathmatch-ml-44090261"></a>
 ### botVisibleTeamMatesAndEnemies
@@ -1691,7 +1691,7 @@ Apply `mq3.game.bot_deathmatch.distanceSquared`, `mq3.game.bot_deathmatch.botEnt
 | `range` | `dynamic` | — | Value used by `botVisibleTeamMatesAndEnemies` in `for i=0 to state.maxclients-1 if i!=bot.client and state.entities[i].valid and distanceSquared(bot.origin,state....`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L690)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L690)
 
 <a id="function-function-mq3-game-bot-deathmatch-botwantstocamp-function-botwantstocamp-state-bot-src-mq3-game-bot-deathmatch-ml-1662188480"></a>
 ### botWantsToCamp
@@ -1708,7 +1708,7 @@ Forward `botWantsToCamp` to `mq3.game.bot_navigation.wantsToCamp` and return the
 | `bot` | `dynamic` | — | Bot AI state; accesses `character`, `ltgtype`, `campTime`, `inventory` and `areanum` and related fields. May update `bot.campTime` and `bot.ordered` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L634)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L634)
 
 <a id="function-function-mq3-game-bot-deathmatch-botwantstochase-function-botwantstochase-state-bot-src-mq3-game-bot-deathmatch-ml-50765606"></a>
 ### botWantsToChase
@@ -1725,7 +1725,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_combat_ai.wantsToChase` w
 | `bot` | `dynamic` | — | Bot AI state; accesses `enemy` and `ltgtype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L607)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L607)
 
 <a id="function-function-mq3-game-bot-deathmatch-botwantstohelp-function-botwantstohelp-state-bot-src-mq3-game-bot-deathmatch-ml-150397552"></a>
 ### botWantsToHelp
@@ -1742,7 +1742,7 @@ Return `true` for `botWantsToHelp`.
 | `bot` | `dynamic` | — | Not read by this implementation; retained in the `botWantsToHelp` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L611)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L611)
 
 <a id="function-function-mq3-game-bot-deathmatch-botwantstoretreat-function-botwantstoretreat-state-bot-src-mq3-game-bot-deathmatch-ml-560850472"></a>
 ### botWantsToRetreat
@@ -1759,7 +1759,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_combat_ai.wantsToRetreat`
 | `bot` | `dynamic` | — | Bot AI state; accesses `enemy` and `ltgtype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L603)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L603)
 
 <a id="function-function-mq3-game-bot-deathmatch-carriervisible-function-carriervisible-state-bot-teamcarrier-cubes-src-mq3-game-bot-deathmatch-ml-2069912235"></a>
 ### carrierVisible
@@ -1778,7 +1778,7 @@ Apply `mq3.game.bot_deathmatch.botEntityVisible`, `mq3.game.bot_deathmatch.botSa
 | `cubes` | `dynamic` | — | Value used by `carrierVisible` in `if cubes then carrying=entityCarriesCubes(state,state.entities[i]) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L671)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L671)
 
 <a id="function-function-mq3-game-bot-deathmatch-clientfromname-function-clientfromname-state-name-src-mq3-game-bot-deathmatch-ml-390755490"></a>
 ### clientFromName
@@ -1795,7 +1795,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_team_helpers.clientFromNa
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L482)
 
 <a id="function-function-mq3-game-bot-deathmatch-clientname-function-clientname-state-client-src-mq3-game-bot-deathmatch-ml-2015196010"></a>
 ### clientName
@@ -1812,7 +1812,7 @@ Apply `mq3.game.bot_team_helpers.cleanClientText` and `mq3.shared.info.value` wh
 | `client` | `dynamic` | — | Operand used to evaluate the returned expression `teams.cleanClientText(info.value(state.configs[client],"n"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L474)
 
 <a id="function-function-mq3-game-bot-deathmatch-clientonsameteamfromname-function-clientonsameteamfromname-state-bot-name-src-mq3-game-bot-deathmatch-ml-1562423779"></a>
 ### clientOnSameTeamFromName
@@ -1830,7 +1830,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_team_helpers.clientOnSame
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L487)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L487)
 
 <a id="function-function-mq3-game-bot-deathmatch-clientskin-function-clientskin-state-client-src-mq3-game-bot-deathmatch-ml-905105514"></a>
 ### clientSkin
@@ -1847,7 +1847,7 @@ Apply `mq3.shared.info.value` while evaluating `clientSkin`. Return paths includ
 | `client` | `dynamic` | — | Operand used to evaluate the returned expression `info.value(state.configs[client],"model")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L478)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L478)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-contents-lava-const-contents-lava-headers-contents-lava-src-mq3-game-bot-deathmatch-ml-1781051302"></a>
 ### CONTENTS_LAVA
@@ -1859,7 +1859,7 @@ const CONTENTS_LAVA = headers.CONTENTS_LAVA
 Collision-contents bit identifying lava space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L77)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-contents-slime-const-contents-slime-headers-contents-slime-src-mq3-game-bot-deathmatch-ml-2023096164"></a>
 ### CONTENTS_SLIME
@@ -1871,7 +1871,7 @@ const CONTENTS_SLIME = headers.CONTENTS_SLIME
 Collision-contents bit identifying slime space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L75)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-contents-water-const-contents-water-headers-contents-water-src-mq3-game-bot-deathmatch-ml-1702742467"></a>
 ### CONTENTS_WATER
@@ -1883,7 +1883,7 @@ const CONTENTS_WATER = headers.CONTENTS_WATER
 Collision-contents bit identifying water space or objects.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L73)
 
 <a id="function-function-mq3-game-bot-deathmatch-copygoal-function-copygoal-value-src-mq3-game-bot-deathmatch-ml-311180753"></a>
 ### copyGoal
@@ -1899,7 +1899,7 @@ Create a `mq3.game.bot_deathmatch.Goal` record, initializing `number` as `value.
 | `value` | `dynamic` | — | Value record; accesses `number`, `entitynum`, `areanum`, `origin` and `mins` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L266)
 
 <a id="function-function-mq3-game-bot-deathmatch-create-function-create-src-mq3-game-bot-deathmatch-ml-652219274"></a>
 ### create
@@ -1911,7 +1911,7 @@ function create()
 Build the `mq3.game.bot_deathmatch.State` result for `create`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L268)
 
 <a id="function-function-mq3-game-bot-deathmatch-distancesquared-function-distancesquared-a-b-src-mq3-game-bot-deathmatch-ml-1920583433"></a>
 ### distanceSquared
@@ -1928,7 +1928,7 @@ Calculate squared Euclidean distance between two three-component points without 
 | `b` | `dynamic` | — | Second three-component point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L295)
 
 <a id="function-function-mq3-game-bot-deathmatch-easyclientname-function-easyclientname-state-client-src-mq3-game-bot-deathmatch-ml-1065682858"></a>
 ### easyClientName
@@ -1945,7 +1945,7 @@ Apply `mq3.game.bot_deathmatch.clientName` while evaluating `easyClientName`. Re
 | `client` | `dynamic` | — | Operand used to evaluate the returned expression `teams.cleanClientText(info.value(state.configs[client],"n"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L495)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-ef-dead-const-ef-dead-1-src-mq3-game-bot-deathmatch-ml-1359753776"></a>
 ### EF_DEAD
@@ -1957,7 +1957,7 @@ const EF_DEAD = 1
 Network entity-flag bit indicating dead.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L69)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-ef-kamikaze-const-ef-kamikaze-1048576-src-mq3-game-bot-deathmatch-ml-2127703394"></a>
 ### EF_KAMIKAZE
@@ -1969,7 +1969,7 @@ const EF_KAMIKAZE = 1048576
 Network entity-flag bit indicating kamikaze.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L71)
 
 <a id="function-function-mq3-game-bot-deathmatch-emit-function-emit-state-kind-bot-text-value-point-retailactive-src-mq3-game-bot-deathmatch-ml-389674577"></a>
 ### emit
@@ -1991,7 +1991,7 @@ Set `state.actions` to `state.actions+[action]` in `mq3.game.bot_deathmatch.emit
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L281)
 
 <a id="function-function-mq3-game-bot-deathmatch-entity-function-entity-number-src-mq3-game-bot-deathmatch-ml-1849062607"></a>
 ### entity
@@ -2007,7 +2007,7 @@ Create a `mq3.game.bot_deathmatch.Entity` record, initializing `number` from `nu
 | `number` | `dynamic` | — | Initial value stored in `mq3.game.bot_deathmatch.Entity.number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L263)
 
 - [mq3.game.bot_deathmatch.Entity](Type-mq3-game-bot-deathmatch-entity-401888652.md) — struct
 <a id="function-function-mq3-game-bot-deathmatch-entitycarriescubes-function-entitycarriescubes-state-value-src-mq3-game-bot-deathmatch-ml-2123979656"></a>
@@ -2025,7 +2025,7 @@ Test `state.gametype==GT_HARVESTER and value.generic1>0` as the condition for `e
 | `value` | `dynamic` | — | Value record; accesses `generic1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L356)
 
 <a id="function-function-mq3-game-bot-deathmatch-entitycarriesflag-function-entitycarriesflag-value-src-mq3-game-bot-deathmatch-ml-1115623089"></a>
 ### entityCarriesFlag
@@ -2041,7 +2041,7 @@ Entity predicates.
 | `value` | `dynamic` | — | Entinfo record; accesses `powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L333)
 
 <a id="function-function-mq3-game-bot-deathmatch-entitycarriesflagmode-function-entitycarriesflagmode-value-missionpack-src-mq3-game-bot-deathmatch-ml-1142380844"></a>
 ### entityCarriesFlagMode
@@ -2058,7 +2058,7 @@ Test `entityCarriesFlag(value) or (missionpack and (value.powerups&(1<<c.PW_NEUT
 | `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L337)
 
 <a id="function-function-mq3-game-bot-deathmatch-entityhaskamikaze-function-entityhaskamikaze-value-src-mq3-game-bot-deathmatch-ml-236540293"></a>
 ### entityHasKamikaze
@@ -2074,7 +2074,7 @@ Test `(value.flags&EF_KAMIKAZE)!=0` as the condition for `entityHasKamikaze`.
 | `value` | `dynamic` | — | Value record; accesses `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L352)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L352)
 
 <a id="function-function-mq3-game-bot-deathmatch-entityhasquad-function-entityhasquad-value-src-mq3-game-bot-deathmatch-ml-827507665"></a>
 ### entityHasQuad
@@ -2090,7 +2090,7 @@ Forward `entityHasQuad` to `mq3.game.bot_combat_ai.entityHasQuad` and return the
 | `value` | `dynamic` | — | Entinfo record; accesses `powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L349)
 
 <a id="function-function-mq3-game-bot-deathmatch-entityischatting-function-entityischatting-value-src-mq3-game-bot-deathmatch-ml-656772689"></a>
 ### entityIsChatting
@@ -2106,7 +2106,7 @@ Forward `entityIsChatting` to `mq3.game.bot_combat_ai.entityIsChatting` and retu
 | `value` | `dynamic` | — | Entinfo record; accesses `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L346)
 
 <a id="function-function-mq3-game-bot-deathmatch-entityisdead-function-entityisdead-state-value-src-mq3-game-bot-deathmatch-ml-88371160"></a>
 ### entityIsDead
@@ -2123,7 +2123,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_team_helpers.entityIsDead
 | `value` | `dynamic` | — | Value record; accesses `number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L360)
 
 <a id="function-function-mq3-game-bot-deathmatch-entityisinvisible-function-entityisinvisible-value-src-mq3-game-bot-deathmatch-ml-536754145"></a>
 ### entityIsInvisible
@@ -2139,7 +2139,7 @@ Forward `entityIsInvisible` to `mq3.game.bot_combat_ai.entityIsInvisible` and re
 | `value` | `dynamic` | — | Entinfo record; accesses `powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L340)
 
 <a id="function-function-mq3-game-bot-deathmatch-entityisshooting-function-entityisshooting-value-src-mq3-game-bot-deathmatch-ml-2092573409"></a>
 ### entityIsShooting
@@ -2155,7 +2155,7 @@ Forward `entityIsShooting` to `mq3.game.bot_combat_ai.entityIsShooting` and retu
 | `value` | `dynamic` | — | Entinfo record; accesses `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L343)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-et-missile-const-et-missile-3-src-mq3-game-bot-deathmatch-ml-1981654112"></a>
 ### ET_MISSILE
@@ -2167,7 +2167,7 @@ const ET_MISSILE = 3
 Network entity-type identifier representing missile.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L63)
 
 <a id="function-function-mq3-game-bot-deathmatch-goal-function-goal-src-mq3-game-bot-deathmatch-ml-1288445710"></a>
 ### goal
@@ -2179,7 +2179,7 @@ function goal()
 Create a `mq3.game.bot_deathmatch.Goal` record, initializing `origin` as `[0.0,0.0,0.0]`, `mins` as `[0.0,0.0,0.0]` and `maxs` as `[0.0,0.0,0.0]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L260)
 
 - [mq3.game.bot_deathmatch.Goal](Type-mq3-game-bot-deathmatch-goal-466156508.md) — struct
 <a id="constant-constant-mq3-game-bot-deathmatch-gt-1fctf-const-gt-1fctf-5-src-mq3-game-bot-deathmatch-ml-1621703218"></a>
@@ -2192,7 +2192,7 @@ const GT_1FCTF = 5
 Game-mode identifier selecting 1 fctf rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L27)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-gt-ctf-const-gt-ctf-4-src-mq3-game-bot-deathmatch-ml-685972341"></a>
 ### GT_CTF
@@ -2204,7 +2204,7 @@ const GT_CTF = 4
 Game-mode identifier selecting capture the flag rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L25)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-gt-harvester-const-gt-harvester-7-src-mq3-game-bot-deathmatch-ml-1875304792"></a>
 ### GT_HARVESTER
@@ -2216,7 +2216,7 @@ const GT_HARVESTER = 7
 Game-mode identifier selecting harvester rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L31)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-gt-obelisk-const-gt-obelisk-6-src-mq3-game-bot-deathmatch-ml-376019187"></a>
 ### GT_OBELISK
@@ -2228,7 +2228,7 @@ const GT_OBELISK = 6
 Game-mode identifier selecting obelisk rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L29)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-gt-team-const-gt-team-3-src-mq3-game-bot-deathmatch-ml-1317523446"></a>
 ### GT_TEAM
@@ -2240,7 +2240,7 @@ const GT_TEAM = 3
 Game-mode identifier selecting team rules.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L23)
 
 <a id="function-function-mq3-game-bot-deathmatch-infieldofvision-function-infieldofvision-viewangles-fov-angles-src-mq3-game-bot-deathmatch-ml-1460599452"></a>
 ### inFieldOfVision
@@ -2258,7 +2258,7 @@ Exact aliases for the remaining existing native implementations.
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L907)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L907)
 
 <a id="function-function-mq3-game-bot-deathmatch-intvalue-function-intvalue-value-src-mq3-game-bot-deathmatch-ml-918538705"></a>
 ### intValue
@@ -2274,7 +2274,7 @@ Convert a truth value to the integer one or zero for game-policy arithmetic.
 | `value` | `dynamic` | — | Value used by `intValue` in `if value then return 1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L409)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-ammoregen-const-inventory-ammoregen-headers-inventory-ammoregen-src-mq3-game-bot-deathmatch-ml-2146090389"></a>
 ### INVENTORY_AMMOREGEN
@@ -2286,7 +2286,7 @@ const INVENTORY_AMMOREGEN = headers.INVENTORY_AMMOREGEN
 Bot inventory slot used to read or update ammoregen.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L61)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-bluecube-const-inventory-bluecube-headers-inventory-bluecube-src-mq3-game-bot-deathmatch-ml-2074726373"></a>
 ### INVENTORY_BLUECUBE
@@ -2298,7 +2298,7 @@ const INVENTORY_BLUECUBE = headers.INVENTORY_BLUECUBE
 Bot inventory slot used to read or update bluecube.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-doubler-const-inventory-doubler-headers-inventory-doubler-src-mq3-game-bot-deathmatch-ml-449580483"></a>
 ### INVENTORY_DOUBLER
@@ -2310,7 +2310,7 @@ const INVENTORY_DOUBLER = headers.INVENTORY_DOUBLER
 Bot inventory slot used to read or update doubler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L59)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-environmentsuit-const-inventory-environmentsuit-headers-inventory-environmentsuit-src-mq3-game-bot-deathmatch-ml-1721868552"></a>
 ### INVENTORY_ENVIRONMENTSUIT
@@ -2322,7 +2322,7 @@ const INVENTORY_ENVIRONMENTSUIT = headers.INVENTORY_ENVIRONMENTSUIT
 Bot inventory slot used to read or update environmentsuit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L47)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-guard-const-inventory-guard-headers-inventory-guard-src-mq3-game-bot-deathmatch-ml-526676739"></a>
 ### INVENTORY_GUARD
@@ -2334,7 +2334,7 @@ const INVENTORY_GUARD = headers.INVENTORY_GUARD
 Bot inventory slot used to read or update guard.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L57)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-health-const-inventory-health-headers-inventory-health-src-mq3-game-bot-deathmatch-ml-2131194970"></a>
 ### INVENTORY_HEALTH
@@ -2346,7 +2346,7 @@ const INVENTORY_HEALTH = headers.INVENTORY_HEALTH
 Bot inventory slot used to read or update health.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L37)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-invulnerability-const-inventory-invulnerability-headers-inventory-invulnerability-src-mq3-game-bot-deathmatch-ml-442202185"></a>
 ### INVENTORY_INVULNERABILITY
@@ -2358,7 +2358,7 @@ const INVENTORY_INVULNERABILITY = headers.INVENTORY_INVULNERABILITY
 Bot inventory slot used to read or update invulnerability.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L45)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-kamikaze-const-inventory-kamikaze-headers-inventory-kamikaze-src-mq3-game-bot-deathmatch-ml-2047813519"></a>
 ### INVENTORY_KAMIKAZE
@@ -2370,7 +2370,7 @@ const INVENTORY_KAMIKAZE = headers.INVENTORY_KAMIKAZE
 Bot inventory slot used to read or update kamikaze.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L43)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-medkit-const-inventory-medkit-headers-inventory-medkit-src-mq3-game-bot-deathmatch-ml-1419937774"></a>
 ### INVENTORY_MEDKIT
@@ -2382,7 +2382,7 @@ const INVENTORY_MEDKIT = headers.INVENTORY_MEDKIT
 Bot inventory slot used to read or update medkit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L41)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-neutralflag-const-inventory-neutralflag-headers-inventory-neutralflag-src-mq3-game-bot-deathmatch-ml-1336090719"></a>
 ### INVENTORY_NEUTRALFLAG
@@ -2394,7 +2394,7 @@ const INVENTORY_NEUTRALFLAG = headers.INVENTORY_NEUTRALFLAG
 Bot inventory slot used to read or update neutralflag.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L49)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-redcube-const-inventory-redcube-headers-inventory-redcube-src-mq3-game-bot-deathmatch-ml-1086205982"></a>
 ### INVENTORY_REDCUBE
@@ -2406,7 +2406,7 @@ const INVENTORY_REDCUBE = headers.INVENTORY_REDCUBE
 Bot inventory slot used to read or update redcube.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-scout-const-inventory-scout-headers-inventory-scout-src-mq3-game-bot-deathmatch-ml-1509927462"></a>
 ### INVENTORY_SCOUT
@@ -2418,7 +2418,7 @@ const INVENTORY_SCOUT = headers.INVENTORY_SCOUT
 Bot inventory slot used to read or update scout.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L55)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-inventory-teleporter-const-inventory-teleporter-headers-inventory-teleporter-src-mq3-game-bot-deathmatch-ml-306984904"></a>
 ### INVENTORY_TELEPORTER
@@ -2430,7 +2430,7 @@ const INVENTORY_TELEPORTER = headers.INVENTORY_TELEPORTER
 Bot inventory slot used to read or update teleporter.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L39)
 
 - [mq3.game.bot_deathmatch.LastTask](Type-mq3-game-bot-deathmatch-lasttask-2104050610.md) — struct
 <a id="constant-constant-mq3-game-bot-deathmatch-max-clients-const-max-clients-64-src-mq3-game-bot-deathmatch-ml-1125504737"></a>
@@ -2443,7 +2443,7 @@ const MAX_CLIENTS = 64
 Maximum number of client slots represented by the original game protocol.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L21)
 
 <a id="function-function-mq3-game-bot-deathmatch-nowfn-function-nowfn-services-src-mq3-game-bot-deathmatch-ml-1672263250"></a>
 ### nowFn
@@ -2459,7 +2459,7 @@ Return `services.context.now` for `nowFn`.
 | `services` | `dynamic` | — | Host service callbacks; accesses `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L553)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L553)
 
 - [mq3.game.bot_deathmatch.State](Type-mq3-game-bot-deathmatch-state-650922884.md) — struct
 <a id="function-function-mq3-game-bot-deathmatch-strategicgoal-function-strategicgoal-state-bot-name-retreat-retailactive-src-mq3-game-bot-deathmatch-ml-1908235351"></a>
@@ -2480,7 +2480,7 @@ Record or dispatch `"strategy"` actions in `strategicGoal`.
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L404)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L404)
 
 <a id="function-function-mq3-game-bot-deathmatch-stristr-function-stristr-text-needle-src-mq3-game-bot-deathmatch-ml-1822027560"></a>
 ### stristr
@@ -2497,7 +2497,7 @@ Return the result of `strings.indexOf(strings.toLowerAscii(text),strings.toLower
 | `needle` | `dynamic` | — | Text or value to search for. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L491)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L491)
 
 <a id="function-function-mq3-game-bot-deathmatch-sync-function-sync-state-src-mq3-game-bot-deathmatch-ml-1487792009"></a>
 ### sync
@@ -2513,7 +2513,7 @@ Synchronize combat and team services with the deathmatch game type, client limit
 | `state` | `dynamic` | — | Bot deathmatch state; accesses `combatServices`, `gametype`, `teamState`, `maxclients` and `configs`. May update `state.combatServices.gametype`, `state.teamState.gametype` and `state.teamState.maxclients` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L287)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-team-blue-const-team-blue-2-src-mq3-game-bot-deathmatch-ml-1411769383"></a>
 ### TEAM_BLUE
@@ -2525,7 +2525,7 @@ const TEAM_BLUE = 2
 Team identifier selecting the blue team/category.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L35)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-team-red-const-team-red-1-src-mq3-game-bot-deathmatch-ml-918175840"></a>
 ### TEAM_RED
@@ -2537,7 +2537,7 @@ const TEAM_RED = 1
 Team identifier selecting the red team/category.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L33)
 
 <a id="function-function-mq3-game-bot-deathmatch-teamplayison-function-teamplayison-state-src-mq3-game-bot-deathmatch-ml-1724070597"></a>
 ### teamPlayIsOn
@@ -2553,7 +2553,7 @@ Test `state.gametype>=GT_TEAM` as the condition for `teamPlayIsOn`.
 | `state` | `dynamic` | — | Bot deathmatch state; accesses `gametype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L591)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L591)
 
 <a id="function-function-mq3-game-bot-deathmatch-teamvalue-function-teamvalue-state-bot-src-mq3-game-bot-deathmatch-ml-325888020"></a>
 ### teamValue
@@ -2570,7 +2570,7 @@ Apply `mq3.game.bot_deathmatch.sync` and `mq3.game.bot_team_helpers.team` while 
 | `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L291)
 
 - [mq3.game.bot_deathmatch.Waypoint](Type-mq3-game-bot-deathmatch-waypoint-851135484.md) — struct
 <a id="constant-constant-mq3-game-bot-deathmatch-wp-grenade-launcher-const-wp-grenade-launcher-4-src-mq3-game-bot-deathmatch-ml-1045347729"></a>
@@ -2583,7 +2583,7 @@ const WP_GRENADE_LAUNCHER = 4
 Weapon identifier selecting grenade launcher.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L65)
 
 <a id="constant-constant-mq3-game-bot-deathmatch-wp-prox-launcher-const-wp-prox-launcher-11-src-mq3-game-bot-deathmatch-ml-251090599"></a>
 ### WP_PROX_LAUNCHER
@@ -2595,4 +2595,4 @@ const WP_PROX_LAUNCHER = 11
 Weapon identifier selecting prox launcher.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L67)

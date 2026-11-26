@@ -12,7 +12,7 @@ struct Define
 Define record for vm.pc_parser, containing `name`, `parameters`, `tokens`, `functionLike`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L68)
 
 ## Members
 
@@ -26,7 +26,7 @@ functionLike
 Nonzero when the macro requires an argument list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L76)
 
 <a id="field-field-mq3-vm-pc-parser-define-name-name-src-mq3-vm-pc-parser-ml-580665868"></a>
 ### name
@@ -38,7 +38,7 @@ name
 Identifier bound to this preprocessor macro.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L70)
 
 <a id="field-field-mq3-vm-pc-parser-define-parameters-parameters-src-mq3-vm-pc-parser-ml-1256120846"></a>
 ### parameters
@@ -50,7 +50,7 @@ parameters
 Formal parameter names accepted by a function-like macro.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L72)
 
 <a id="field-field-mq3-vm-pc-parser-define-tokens-tokens-src-mq3-vm-pc-parser-ml-524640530"></a>
 ### tokens
@@ -62,4 +62,4 @@ tokens
 Token sequence forming the macro replacement or parser result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L74)

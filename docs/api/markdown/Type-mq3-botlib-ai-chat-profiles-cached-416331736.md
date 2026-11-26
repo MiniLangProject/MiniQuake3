@@ -12,7 +12,7 @@ struct Cached
 `Cached` record for ai chat profiles, containing `filename`, `chatName` and `profile`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L76)
 
 ## Members
 
@@ -26,7 +26,7 @@ chatName
 Name identifying the initial-chat profile selected from its source file.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L80)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-cached-filename-filename-src-mq3-botlib-ai-chat-profiles-ml-245894813"></a>
 ### filename
@@ -38,7 +38,7 @@ filename
 Path of the file associated with this operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L78)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-cached-profile-profile-src-mq3-botlib-ai-chat-profiles-ml-1685316235"></a>
 ### profile
@@ -50,4 +50,4 @@ profile
 Parsed initial-chat profile retained in the cache.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L82)

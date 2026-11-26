@@ -12,7 +12,7 @@ struct Action
 `Action` record for aas reachability, containing `boundary`, `kind`, `source`, `destination` and `detail` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L138)
 
 ## Members
 
@@ -26,7 +26,7 @@ boundary
 Subsystem boundary at which this host action must be dispatched.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L140)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-destination-destination-src-mq3-botlib-aas-reachability-ml-488709601"></a>
 ### destination
@@ -38,7 +38,7 @@ destination
 Destination area or entity associated with the action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L146)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-detail-detail-src-mq3-botlib-aas-reachability-ml-1189206527"></a>
 ### detail
@@ -50,7 +50,7 @@ detail
 Additional diagnostic information about the generated movement link.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L148)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-dispatched-dispatched-src-mq3-botlib-aas-reachability-ml-525415535"></a>
 ### dispatched
@@ -62,7 +62,7 @@ dispatched
 True after the recorded action has been delivered to the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L150)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-kind-kind-src-mq3-botlib-aas-reachability-ml-1637541165"></a>
 ### kind
@@ -74,7 +74,7 @@ kind
 Discriminator identifying the recorded reachability-generation action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L142)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-source-source-src-mq3-botlib-aas-reachability-ml-2086859047"></a>
 ### source
@@ -86,4 +86,4 @@ source
 Source area or entity associated with the action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L144)

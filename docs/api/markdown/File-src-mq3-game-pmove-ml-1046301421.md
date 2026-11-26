@@ -35,7 +35,7 @@ Apply `mq3.game.pmove.syncKernel`, `mq3.game.movement.accelerate` and `mq3.game.
 | `accel` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L132)
 
 <a id="function-function-mq3-game-pmove-addevent-function-addevent-p-event-src-mq3-game-pmove-ml-1954529014"></a>
 ### addEvent
@@ -52,7 +52,7 @@ Update `p.ps.events[slot]`, `p.ps.eventParms[slot]` and `p.ps.eventSequence` dur
 | `event` | `dynamic` | — | Player or entity event identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L155)
 
 <a id="function-function-mq3-game-pmove-airmove-function-airmove-p-src-mq3-game-pmove-ml-1133189074"></a>
 ### airMove
@@ -68,7 +68,7 @@ Update `p.forward[2]`, `p.right[2]` and `p.ps.velocity` during `airMove`.
 | `p` | `dynamic` | — | Player movement context; accesses `forward`, `right`, `cmd`, `k` and `ps`. May update `p.forward[2]`, `p.right[2]` and `p.ps.velocity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L320)
 
 <a id="constant-constant-mq3-game-pmove-all-times-const-all-times-352-src-mq3-game-pmove-ml-632968233"></a>
 ### ALL_TIMES
@@ -80,7 +80,7 @@ const ALL_TIMES = 352
 Combined movement mask for landing, knockback, and water-jump timers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L14)
 
 <a id="function-function-mq3-game-pmove-animate-function-animate-p-src-mq3-game-pmove-ml-1713434970"></a>
 ### animate
@@ -96,7 +96,7 @@ Set `p.ps.torsoTimer` to `internal.TIMER_GESTURE` in `mq3.game.pmove.animate`.
 | `p` | `dynamic` | — | Player movement context; accesses `cmd` and `ps`. May update `p.ps.torsoTimer` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L707)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L707)
 
 <a id="function-function-mq3-game-pmove-beginweaponchange-function-beginweaponchange-p-weapon-src-mq3-game-pmove-ml-1346492394"></a>
 ### beginWeaponChange
@@ -113,7 +113,7 @@ Set `p.ps.weaponstate` to `c.WEAPON_DROPPING` and `p.ps.weaponTime` to `p.ps.wea
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L635)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L635)
 
 <a id="function-function-mq3-game-pmove-checkduck-function-checkduck-p-src-mq3-game-pmove-ml-133061486"></a>
 ### checkDuck
@@ -129,7 +129,7 @@ Update `p.k.mins`, `p.k.maxs`, `p.ps.pm_flags` and `p.ps.viewheight` and related
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `k`, `cmd` and `traceFn`. May update `p.k.mins`, `p.k.maxs` and `p.ps.pm_flags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L557)
 
 <a id="function-function-mq3-game-pmove-checkjump-function-checkjump-p-src-mq3-game-pmove-ml-1830275336"></a>
 ### checkJump
@@ -145,7 +145,7 @@ Update `p.cmd.upmove`, `p.k.groundPlane`, `p.k.walking` and `p.ps.pm_flags` and 
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `cmd` and `k`. May update `p.cmd.upmove`, `p.k.groundPlane` and `p.k.walking` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L237)
 
 <a id="function-function-mq3-game-pmove-checkstuck-function-checkstuck-p-src-mq3-game-pmove-ml-1461164508"></a>
 ### checkStuck
@@ -161,7 +161,7 @@ Return `p.traceFn(p,p.ps.origin,p.ps.origin).trace.allsolid` for `checkStuck`.
 | `p` | `dynamic` | — | Player movement context; accesses `traceFn` and `ps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L493)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L493)
 
 <a id="function-function-mq3-game-pmove-checkwaterjump-function-checkwaterjump-p-src-mq3-game-pmove-ml-1652438776"></a>
 ### checkWaterJump
@@ -177,7 +177,7 @@ Update `p.ps.velocity`, `p.ps.velocity[2]`, `p.ps.pm_flags` and `p.ps.pm_time` d
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `k`, `forward` and `pointFn`. May update `p.ps.velocity`, `p.ps.velocity[2]` and `p.ps.pm_flags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L249)
 
 <a id="function-function-mq3-game-pmove-clearground-function-clearground-p-src-mq3-game-pmove-ml-491287928"></a>
 ### clearGround
@@ -193,7 +193,7 @@ Update `p.ps.groundEntityNum`, `p.k.groundPlane` and `p.k.walking` during `clear
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `k`. May update `p.ps.groundEntityNum`, `p.k.groundPlane` and `p.k.walking` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L468)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L468)
 
 - [mq3.game.pmove.Command](Type-mq3-game-pmove-command-1751700588.md) — struct
 <a id="function-function-mq3-game-pmove-continuelegs-function-continuelegs-p-anim-src-mq3-game-pmove-ml-2108847395"></a>
@@ -211,7 +211,7 @@ Apply `mq3.game.pmove.startLegs` while evaluating `continueLegs`.
 | `anim` | `dynamic` | — | Value used by `startLegs` in `p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L181)
 
 <a id="function-function-mq3-game-pmove-continuetorso-function-continuetorso-p-anim-src-mq3-game-pmove-ml-660253583"></a>
 ### continueTorso
@@ -228,7 +228,7 @@ Apply `mq3.game.pmove.startTorso` while evaluating `continueTorso`.
 | `anim` | `dynamic` | — | Value used by `startTorso` in `p.ps.torsoAnim = ((p.ps.torsoAnim & 128)^128)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L189)
 
 <a id="function-function-mq3-game-pmove-correctallsolid-function-correctallsolid-p-src-mq3-game-pmove-ml-1261807240"></a>
 ### correctAllSolid
@@ -244,7 +244,7 @@ Use `p.traceFn` to perform `correctAllSolid`.
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `traceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L474)
 
 <a id="function-function-mq3-game-pmove-crashland-function-crashland-p-src-mq3-game-pmove-ml-328675112"></a>
 ### crashLand
@@ -260,7 +260,7 @@ Set `p.ps.legsTimer` to `internal.TIMER_LAND` and `p.ps.bobCycle` to `0` in `mq3
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `previousOrigin`, `previousVelocity` and `k`. May update `p.ps.legsTimer` and `p.ps.bobCycle` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L429)
 
 <a id="function-function-mq3-game-pmove-create-function-create-ps-tracefn-pointfn-context-src-mq3-game-pmove-ml-77096573"></a>
 ### create
@@ -279,7 +279,7 @@ Apply `mq3.game.movement.create` and `mq3.collision.brush.emptyTrace` while eval
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L94)
 
 <a id="function-function-mq3-game-pmove-deadmove-function-deadmove-p-src-mq3-game-pmove-ml-1603697552"></a>
 ### deadMove
@@ -295,7 +295,7 @@ Set `p.ps.velocity` to `[0.0,0.0,0.0]` and `p.ps.velocity` to `q.VectorScale(p.p
 | `p` | `dynamic` | — | Player movement context; accesses `k` and `ps`. May update `p.ps.velocity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L387)
 
 <a id="function-function-mq3-game-pmove-droptimers-function-droptimers-p-src-mq3-game-pmove-ml-1543451820"></a>
 ### dropTimers
@@ -311,7 +311,7 @@ Advance movement and animation timers by the frame duration, clearing expired mo
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `msec`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L715)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L715)
 
 <a id="function-function-mq3-game-pmove-finishweaponchange-function-finishweaponchange-p-src-mq3-game-pmove-ml-454323312"></a>
 ### finishWeaponChange
@@ -327,7 +327,7 @@ Update `p.ps.weapon`, `p.ps.weaponstate` and `p.ps.weaponTime` during `finishWea
 | `p` | `dynamic` | — | Player movement context; accesses `cmd` and `ps`. May update `p.ps.weapon`, `p.ps.weaponstate` and `p.ps.weaponTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L644)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L644)
 
 <a id="function-function-mq3-game-pmove-flymove-function-flymove-p-src-mq3-game-pmove-ml-1294450536"></a>
 ### flyMove
@@ -343,7 +343,7 @@ Apply `mq3.game.pmove.friction`, `mq3.game.pmove.swimmingWish` and `mq3.game.pmo
 | `p` | `dynamic` | — | Player movement context; accesses `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L312)
 
 <a id="function-function-mq3-game-pmove-footstepforsurface-function-footstepforsurface-p-src-mq3-game-pmove-ml-2036289912"></a>
 ### footstepForSurface
@@ -359,7 +359,7 @@ Select no footstep, a metal footstep or a normal footstep from the ground surfac
 | `p` | `dynamic` | — | Player movement context; accesses `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L422)
 
 <a id="function-function-mq3-game-pmove-footsteps-function-footsteps-p-src-mq3-game-pmove-ml-880760994"></a>
 ### footsteps
@@ -375,7 +375,7 @@ Update `p.xyspeed` and `p.ps.bobCycle` during `footsteps`.
 | `p` | `dynamic` | — | Player movement context; accesses `xyspeed`, `ps`, `k`, `cmd` and `msec` and related fields. May update `p.xyspeed` and `p.ps.bobCycle` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L584)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L584)
 
 <a id="function-function-mq3-game-pmove-forcelegs-function-forcelegs-p-anim-src-mq3-game-pmove-ml-1906610087"></a>
 ### forceLegs
@@ -392,7 +392,7 @@ Set `p.ps.legsTimer` to `0` in `mq3.game.pmove.forceLegs`.
 | `anim` | `dynamic` | — | Value used by `startLegs` in `p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L197)
 
 <a id="function-function-mq3-game-pmove-friction-function-friction-p-src-mq3-game-pmove-ml-1833737688"></a>
 ### friction
@@ -408,7 +408,7 @@ Apply `mq3.game.pmove.syncKernel`, `mq3.game.movement.friction` and `mq3.game.pm
 | `p` | `dynamic` | — | Player movement context; accesses `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L123)
 
 <a id="function-function-mq3-game-pmove-grapplemove-function-grapplemove-p-src-mq3-game-pmove-ml-1044153928"></a>
 ### grappleMove
@@ -424,7 +424,7 @@ Set `p.ps.velocity` to `q.VectorScale(wish,speed)` and `p.k.groundPlane` to `fal
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `forward` and `k`. May update `p.ps.velocity` and `p.k.groundPlane` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L336)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L336)
 
 <a id="function-function-mq3-game-pmove-groundtrace-function-groundtrace-p-src-mq3-game-pmove-ml-327296616"></a>
 ### groundTrace
@@ -440,7 +440,7 @@ Update `p.ps.groundEntityNum`, `p.k.groundPlane`, `p.k.walking` and `p.ps.pm_fla
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `traceFn`, `groundTrace`, `k` and `previousVelocity`. May update `p.ps.groundEntityNum`, `p.k.groundPlane` and `p.k.walking` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L511)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L511)
 
 <a id="function-function-mq3-game-pmove-groundtracemissed-function-groundtracemissed-p-src-mq3-game-pmove-ml-164809258"></a>
 ### groundTraceMissed
@@ -456,7 +456,7 @@ Use `p.traceFn` to perform `groundTraceMissed`.
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `traceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L500)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L500)
 
 <a id="function-function-mq3-game-pmove-invulnerabilitymove-function-invulnerabilitymove-p-src-mq3-game-pmove-ml-1226493676"></a>
 ### invulnerabilityMove
@@ -472,7 +472,7 @@ Update `p.cmd.forwardmove`, `p.cmd.rightmove`, `p.cmd.upmove` and `p.ps.velocity
 | `p` | `dynamic` | — | Player movement context; accesses `cmd` and `ps`. May update `p.cmd.forwardmove`, `p.cmd.rightmove` and `p.cmd.upmove` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L304)
 
 <a id="function-function-mq3-game-pmove-jumpanimation-function-jumpanimation-p-src-mq3-game-pmove-ml-1260564184"></a>
 ### jumpAnimation
@@ -488,7 +488,7 @@ Set `p.ps.pm_flags` to `p.ps.pm_flags & ~8` and `p.ps.pm_flags` to `p.ps.pm_flag
 | `p` | `dynamic` | — | Player movement context; accesses `cmd` and `ps`. May update `p.ps.pm_flags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L226)
 
 <a id="function-function-mq3-game-pmove-kerneltrace-function-kerneltrace-k-start-finish-src-mq3-game-pmove-ml-742067610"></a>
 ### kernelTrace
@@ -506,7 +506,7 @@ Run the movement collision callback with the kernel bounds and preserve its trac
 | `finish` | `dynamic` | — | Value passed as argument 3 to `p.traceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L84)
 
 <a id="function-function-mq3-game-pmove-move-function-move-p-src-mq3-game-pmove-ml-1508235592"></a>
 ### move
@@ -522,7 +522,7 @@ Update `p.cmd.weapon`, `p.cmd.forwardmove`, `p.cmd.rightmove` and `p.cmd.upmove`
 | `p` | `dynamic` | — | Player movement context; accesses `fixed`, `fixedMsec`, `ps` and `cmd`. May update `p.cmd.weapon`, `p.cmd.forwardmove` and `p.cmd.rightmove` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L792)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L792)
 
 <a id="function-function-mq3-game-pmove-movementdir-function-movementdir-p-src-mq3-game-pmove-ml-1541720416"></a>
 ### movementDir
@@ -538,7 +538,7 @@ Update `p.ps.movementDir` during `movementDir`.
 | `p` | `dynamic` | — | Player movement context; accesses `cmd` and `ps`. May update `p.ps.movementDir` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L205)
 
 <a id="function-function-mq3-game-pmove-noclipmove-function-noclipmove-p-src-mq3-game-pmove-ml-1752206632"></a>
 ### noclipMove
@@ -554,7 +554,7 @@ Update `p.ps.viewheight`, `p.ps.velocity` and `p.ps.origin` during `noclipMove`.
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `k`, `forward`, `cmd` and `right`. May update `p.ps.viewheight`, `p.ps.velocity` and `p.ps.origin` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L398)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L398)
 
 <a id="constant-constant-mq3-game-pmove-overclip-const-overclip-internal-overclip-src-mq3-game-pmove-ml-1282249584"></a>
 ### OVERCLIP
@@ -566,7 +566,7 @@ const OVERCLIP = internal.OVERCLIP
 Small collision-plane overbounce factor that prevents motion from sticking to a surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L16)
 
 - [mq3.game.pmove.PmoveContext](Type-mq3-game-pmove-pmovecontext-1916135903.md) — struct
 <a id="function-function-mq3-game-pmove-scale-function-scale-p-src-mq3-game-pmove-ml-1618783152"></a>
@@ -583,7 +583,7 @@ Set `p.k.speed` to `p.ps.speed` in `mq3.game.pmove.scale`. Return paths include 
 | `p` | `dynamic` | — | Player movement context; accesses `k`, `ps` and `cmd`. May update `p.k.speed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L148)
 
 <a id="function-function-mq3-game-pmove-setgroundtrace-function-setgroundtrace-p-hit-src-mq3-game-pmove-ml-975010301"></a>
 ### setGroundTrace
@@ -600,7 +600,7 @@ Update `p.groundTrace`, `p.k.groundNormal` and `p.k.groundFlags` during `setGrou
 | `hit` | `dynamic` | — | Hit record; accesses `trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L461)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L461)
 
 <a id="function-function-mq3-game-pmove-setwaterlevel-function-setwaterlevel-p-src-mq3-game-pmove-ml-919607510"></a>
 ### setWaterLevel
@@ -616,7 +616,7 @@ Update `p.k.waterlevel` and `p.watertype` during `setWaterLevel`.
 | `p` | `dynamic` | — | Player movement context; accesses `k`, `watertype`, `ps` and `pointFn`. May update `p.k.waterlevel` and `p.watertype` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L539)
 
 <a id="function-function-mq3-game-pmove-single-function-single-p-src-mq3-game-pmove-ml-1762688816"></a>
 ### single
@@ -632,7 +632,7 @@ Update `p.watertype`, `p.previousWaterlevel`, `p.msec` and `p.previousOrigin` an
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `cmd`, `k`, `watertype` and `previousWaterlevel` and related fields. May update `p.watertype`, `p.previousWaterlevel` and `p.msec` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L745)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L745)
 
 <a id="function-function-mq3-game-pmove-slide-function-slide-p-gravity-step-src-mq3-game-pmove-ml-622661496"></a>
 ### slide
@@ -650,7 +650,7 @@ Apply `mq3.game.pmove.syncKernel`, `mq3.game.movement.stepSlideMove` and `mq3.ga
 | `step` | `dynamic` | — | Value used by `slide` in `if step then kernel.stepSlideMove(p.k,gravity) else kernel.slideMove(p.k,gravity) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L140)
 
 <a id="function-function-mq3-game-pmove-standtorso-function-standtorso-p-continuing-src-mq3-game-pmove-ml-560869258"></a>
 ### standTorso
@@ -667,7 +667,7 @@ Apply `mq3.game.pmove.continueTorso` and `mq3.game.pmove.startTorso` while evalu
 | `continuing` | `dynamic` | — | Value used by `standTorso` in `if continuing then continueTorso(p,anim) else startTorso(p,anim) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L655)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L655)
 
 <a id="function-function-mq3-game-pmove-startlegs-function-startlegs-p-anim-src-mq3-game-pmove-ml-1527557573"></a>
 ### startLegs
@@ -684,7 +684,7 @@ Set `p.ps.legsAnim` to `((p.ps.legsAnim & 128)^128)|anim` in `mq3.game.pmove.sta
 | `anim` | `dynamic` | — | Value used by `startLegs` in `p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L173)
 
 <a id="function-function-mq3-game-pmove-starttorso-function-starttorso-p-anim-src-mq3-game-pmove-ml-1404309543"></a>
 ### startTorso
@@ -701,7 +701,7 @@ Set `p.ps.torsoAnim` to `((p.ps.torsoAnim & 128)^128)|anim` in `mq3.game.pmove.s
 | `anim` | `dynamic` | — | Value used by `startTorso` in `p.ps.torsoAnim = ((p.ps.torsoAnim & 128)^128)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L165)
 
 <a id="function-function-mq3-game-pmove-swimmingwish-function-swimmingwish-p-cmdscale-sink-src-mq3-game-pmove-ml-245834447"></a>
 ### swimmingWish
@@ -719,7 +719,7 @@ Build the desired swimming velocity from view-relative command axes, with an opt
 | `sink` | `dynamic` | — | Value used by `swimmingWish` in `if sink then wish[2] = -60.0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L273)
 
 <a id="function-function-mq3-game-pmove-synckernel-function-synckernel-p-src-mq3-game-pmove-ml-818470648"></a>
 ### syncKernel
@@ -735,7 +735,7 @@ Copy the player movement inputs into the reusable collision and movement kernel.
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L103)
 
 <a id="function-function-mq3-game-pmove-syncplayer-function-syncplayer-p-src-mq3-game-pmove-ml-1859715896"></a>
 ### syncPlayer
@@ -751,7 +751,7 @@ Copy the movement kernel results back into the player state.
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `k`. May update `p.ps.origin`, `p.ps.velocity` and `p.ps.eventSequence` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L115)
 
 <a id="function-function-mq3-game-pmove-torsoanimation-function-torsoanimation-p-src-mq3-game-pmove-ml-1066067380"></a>
 ### torsoAnimation
@@ -767,7 +767,7 @@ Apply `mq3.game.pmove.standTorso` while evaluating `torsoAnimation`.
 | `p` | `dynamic` | — | Player movement context; accesses `ps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L663)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L663)
 
 <a id="function-function-mq3-game-pmove-updateviewangles-function-updateviewangles-ps-cmd-src-mq3-game-pmove-ml-380882677"></a>
 ### updateViewAngles
@@ -784,7 +784,7 @@ Update `ps.delta_angles[axis]` and `ps.viewangles[axis]` during `updateViewAngle
 | `cmd` | `dynamic` | — | Input user command; accesses `angles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L729)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L729)
 
 <a id="function-function-mq3-game-pmove-walkmove-function-walkmove-p-src-mq3-game-pmove-ml-205469276"></a>
 ### walkMove
@@ -800,7 +800,7 @@ Update `p.forward[2]`, `p.right[2]`, `p.forward` and `p.right` and related state
 | `p` | `dynamic` | — | Player movement context; accesses `k`, `forward`, `right`, `cmd` and `ps`. May update `p.forward[2]`, `p.right[2]` and `p.forward` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L349)
 
 <a id="function-function-mq3-game-pmove-waterevents-function-waterevents-p-src-mq3-game-pmove-ml-1810704284"></a>
 ### waterEvents
@@ -816,7 +816,7 @@ Apply `mq3.game.pmove.addEvent` while evaluating `waterEvents`.
 | `p` | `dynamic` | — | Player movement context; accesses `previousWaterlevel` and `k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L623)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L623)
 
 <a id="function-function-mq3-game-pmove-waterjumpmove-function-waterjumpmove-p-src-mq3-game-pmove-ml-766063252"></a>
 ### waterJumpMove
@@ -832,7 +832,7 @@ Update `p.ps.velocity[2]`, `p.ps.pm_flags` and `p.ps.pm_time` during `waterJumpM
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `k`. May update `p.ps.velocity[2]`, `p.ps.pm_flags` and `p.ps.pm_time` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L262)
 
 <a id="function-function-mq3-game-pmove-watermove-function-watermove-p-src-mq3-game-pmove-ml-2033233544"></a>
 ### waterMove
@@ -848,7 +848,7 @@ Set `p.ps.velocity` to `kernel.clipVelocity(p.ps.velocity,p.k.groundNormal,OVERC
 | `p` | `dynamic` | — | Player movement context; accesses `ps` and `k`. May update `p.ps.velocity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L287)
 
 <a id="function-function-mq3-game-pmove-weapon-function-weapon-p-src-mq3-game-pmove-ml-62382976"></a>
 ### weapon
@@ -864,4 +864,4 @@ Apply `mq3.game.constants.itemTag`, `mq3.game.pmove.addEvent` and `mq3.game.pmov
 | `p` | `dynamic` | — | Player movement context; accesses `ps`, `cmd`, `msec` and `gauntletHit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L669)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L669)

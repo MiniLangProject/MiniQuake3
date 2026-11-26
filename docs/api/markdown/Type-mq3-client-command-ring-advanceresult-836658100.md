@@ -12,7 +12,7 @@ struct AdvanceResult
 Stores command ring advance result record, including `created`, `frameMsec`, `oldFrameTime`, `commandNumber`, `slot`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L16)
 
 ## Members
 
@@ -26,7 +26,7 @@ commandNumber
 When constructing this record, `advance` supplies `commandNumber` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L24)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-created-created-src-mq3-client-command-ring-ml-774292116"></a>
 ### created
@@ -38,7 +38,7 @@ created
 When constructing this record, `advance` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L18)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-framemsec-framemsec-src-mq3-client-command-ring-ml-15936400"></a>
 ### frameMsec
@@ -50,7 +50,7 @@ frameMsec
 When constructing this record, `advance` supplies `0` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L20)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-oldframetime-oldframetime-src-mq3-client-command-ring-ml-459028618"></a>
 ### oldFrameTime
@@ -62,7 +62,7 @@ oldFrameTime
 Client time in milliseconds at which the previous animation frame was exact.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L22)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-slot-slot-src-mq3-client-command-ring-ml-912844624"></a>
 ### slot
@@ -74,4 +74,4 @@ slot
 Ring-buffer slot selected for the newly advanced command sequence.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L26)

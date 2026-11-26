@@ -30,7 +30,7 @@ Allocates 24-byte output records and interpolates current/previous MD3 vertices 
 | `backlerp` | `dynamic` | — | Value forwarded as `backlerp` to `mq3.renderer.native_md3.lerpNative`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_md3.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_md3.ml#L50)
 
 <a id="extern_function-extern-function-mq3-renderer-native-md3-lerpnative-extern-function-lerpnative-fresh-as-ptr-freshbytes-as-i32-old-as-ptr-oldbytes-as-i32-table-as-ptr-tablebytes-as-i32-output-as-ptr-outputbytes-as-i32-count-as-i32-backlerp-as-double-from-miniquake3-qvm-dll-symbol-mq3-md3-lerp-returns-i32-src-mq3-renderer-native-md3-ml-1194936936"></a>
 ### lerpNative
@@ -57,7 +57,7 @@ Interpolates MD3 frame vertices and normals into the native packed output buffer
 
 **Returns:** 1 when interpolation succeeds; 0 for rejected native input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_md3.ml#L17)
 
 <a id="function-function-mq3-renderer-native-md3-tablebytes-function-tablebytes-table-src-mq3-renderer-native-md3-ml-510421416"></a>
 ### tableBytes
@@ -73,7 +73,7 @@ Packs the 1024 normal-lookup values as little-endian float32 bytes for native MD
 | `table` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_md3.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_md3.ml#L40)
 
 <a id="function-function-mq3-renderer-native-md3-transform-function-transform-input-count-origin-axis-src-mq3-renderer-native-md3-ml-867403122"></a>
 ### transform
@@ -92,7 +92,7 @@ Allocates transformed position/normal records and applies the supplied three-axi
 | `axis` | `dynamic` | — | Three three-component basis vectors used for position and normal transformation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_md3.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_md3.ml#L59)
 
 <a id="extern_function-extern-function-mq3-renderer-native-md3-transformnative-extern-function-transformnative-input-as-ptr-inputbytes-as-i32-output-as-ptr-outputbytes-as-i32-count-as-i32-ox-as-double-oy-as-double-oz-as-double-a00-as-double-a01-as-double-a02-as-double-a10-as-double-a11-as-double-a12-as-double-a20-as-double-a21-as-double-a22-as-double-from-miniquake3-qvm-dll-symbol-mq3-md3-transform-returns-i32-src-mq3-renderer-native-md3-ml-1778895671"></a>
 ### transformNative
@@ -126,7 +126,7 @@ Transforms packed MD3 geometry using the supplied entity transform.
 
 **Returns:** 1 when transformation succeeds; 0 for rejected native input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_md3.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_md3.ml#L37)
 
 <a id="function-function-mq3-renderer-native-md3-unpack-function-unpack-data-count-src-mq3-renderer-native-md3-ml-1251557883"></a>
 ### unpack
@@ -143,4 +143,4 @@ Decodes 24-byte native vertex records into separate position and normal arrays.
 | `count` | `dynamic` | — | Argument 1 supplied to `array`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/native_md3.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/native_md3.ml#L66)

@@ -12,7 +12,7 @@ struct Attachment
 Stores playable viewmodel attachment record, including `classname`, `path`, `frames`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L85)
 
 ## Members
 
@@ -26,7 +26,7 @@ classname
 Weapon classname identifying the first-person model attachment being prepared.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L87)
 
 <a id="field-field-mq3-client-playable-viewmodel-attachment-frames-frames-src-mq3-client-playable-viewmodel-ml-151501086"></a>
 ### frames
@@ -38,7 +38,7 @@ frames
 When constructing this record, `loadCatalog` supplies `model.tags` for this member. Used by `attachmentTag` during subsequent processing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L92)
 
 <a id="field-field-mq3-client-playable-viewmodel-attachment-path-path-src-mq3-client-playable-viewmodel-ml-1714699568"></a>
 ### path
@@ -50,4 +50,4 @@ path
 When constructing this record, `loadCatalog` supplies `path` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L89)

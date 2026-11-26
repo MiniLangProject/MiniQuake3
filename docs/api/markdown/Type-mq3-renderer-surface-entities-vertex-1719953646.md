@@ -12,7 +12,7 @@ struct Vertex
 Data record for `mq3.renderer.surface_entities.Vertex`; groups `xyz`, `normal`, `tex0`, `tex1`, `color`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L13)
 
 ## Members
 
@@ -26,7 +26,7 @@ color
 Color assigned to a procedurally generated entity vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L23)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-normal-normal-src-mq3-renderer-surface-entities-ml-1972012477"></a>
 ### normal
@@ -38,7 +38,7 @@ normal
 Normal assigned to a generated procedural-entity vertex for material evaluation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L17)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-tex0-tex0-src-mq3-renderer-surface-entities-ml-1176920305"></a>
 ### tex0
@@ -50,7 +50,7 @@ tex0
 Texture coordinates supplied to the first texture unit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L19)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-tex1-tex1-src-mq3-renderer-surface-entities-ml-1513306867"></a>
 ### tex1
@@ -62,7 +62,7 @@ tex1
 Texture coordinates supplied to the second texture unit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L21)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-xyz-xyz-src-mq3-renderer-surface-entities-ml-1493934739"></a>
 ### xyz
@@ -74,4 +74,4 @@ xyz
 Three-dimensional position of this vertex.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L15)

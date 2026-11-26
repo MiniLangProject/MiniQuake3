@@ -28,7 +28,7 @@ Forward `Blocked_Door` to `mq3.game.movers.blockedDoor` and return the delegated
 | `other` | `dynamic` | — | Other record; accesses `client`, `s` and `item`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L100)
 
 <a id="function-function-mq3-game-g-mover-dispatch-function-dispatch-level-ent-src-mq3-game-g-mover-ml-858598263"></a>
 ### dispatch
@@ -45,7 +45,7 @@ Forward `dispatch` to `mq3.game.movers.dispatch` and return the delegated result
 | `ent` | `dynamic` | — | Game entity; accesses `classname`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L195)
 
 <a id="function-function-mq3-game-g-mover-g-checkproxmineposition-function-g-checkproxmineposition-level-check-src-mq3-game-g-mover-ml-657041586"></a>
 ### G_CheckProxMinePosition
@@ -62,7 +62,7 @@ Forward `G_CheckProxMinePosition` to `mq3.game.movers.checkProxMinePosition` and
 | `check` | `dynamic` | — | Check record; accesses `s` and `movedir`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L35)
 
 <a id="function-function-mq3-game-g-mover-g-createrotationmatrix-function-g-createrotationmatrix-angles-src-mq3-game-g-mover-ml-1414496122"></a>
 ### G_CreateRotationMatrix
@@ -78,7 +78,7 @@ Forward `G_CreateRotationMatrix` to `mq3.game.movers.createRotationMatrix` and r
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L14)
 
 <a id="function-function-mq3-game-g-mover-g-moverpush-function-g-moverpush-level-pusher-move-amove-src-mq3-game-g-mover-ml-1660023486"></a>
 ### G_MoverPush
@@ -97,7 +97,7 @@ Apply `mq3.game.movers.pushPart` and `mq3.game.movers.restorePush` while evaluat
 | `amove` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L48)
 
 <a id="function-function-mq3-game-g-mover-g-moverteam-function-g-moverteam-level-ent-src-mq3-game-g-mover-ml-1872006011"></a>
 ### G_MoverTeam
@@ -114,7 +114,7 @@ Forward `G_MoverTeam` to `mq3.game.movers.moveTeam` and return the delegated res
 | `ent` | `dynamic` | — | Leader record; accesses `blocked`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L61)
 
 <a id="function-function-mq3-game-g-mover-g-rotatepoint-function-g-rotatepoint-point-matrix-src-mq3-game-g-mover-ml-1384049559"></a>
 ### G_RotatePoint
@@ -131,7 +131,7 @@ Forward `G_RotatePoint` to `mq3.game.movers.rotatePoint` and return the delegate
 | `matrix` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L21)
 
 <a id="function-function-mq3-game-g-mover-g-runmover-function-g-runmover-level-ent-src-mq3-game-g-mover-ml-1499029447"></a>
 ### G_RunMover
@@ -148,7 +148,7 @@ Forward `G_RunMover` to `mq3.game.movers.run` and return the delegated result.
 | `ent` | `dynamic` | — | Game entity; accesses `flags` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L65)
 
 <a id="function-function-mq3-game-g-mover-g-testentityposition-function-g-testentityposition-level-ent-src-mq3-game-g-mover-ml-483298159"></a>
 ### G_TestEntityPosition
@@ -165,7 +165,7 @@ Forward `G_TestEntityPosition` to `mq3.game.movers.testEntityPosition` and retur
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `client`, `clipmask` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L11)
 
 <a id="function-function-mq3-game-g-mover-g-transposematrix-function-g-transposematrix-matrix-src-mq3-game-g-mover-ml-1258273005"></a>
 ### G_TransposeMatrix
@@ -181,7 +181,7 @@ Forward `G_TransposeMatrix` to `mq3.game.movers.transposeMatrix` and return the 
 | `matrix` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L17)
 
 <a id="function-function-mq3-game-g-mover-g-trypushingentity-function-g-trypushingentity-level-check-pusher-move-amove-src-mq3-game-g-mover-ml-1413660946"></a>
 ### G_TryPushingEntity
@@ -201,7 +201,7 @@ Apply `mq3.game.movers.tryPush` while evaluating `G_TryPushingEntity`. Return pa
 | `amove` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L28)
 
 <a id="function-function-mq3-game-g-mover-g-trypushingproxmine-function-g-trypushingproxmine-level-check-pusher-move-amove-src-mq3-game-g-mover-ml-1725175798"></a>
 ### G_TryPushingProxMine
@@ -221,7 +221,7 @@ Forward `G_TryPushingProxMine` to `mq3.game.movers.tryPushingProxMine` and retur
 | `amove` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L42)
 
 <a id="function-function-mq3-game-g-mover-initmover-function-initmover-level-ent-src-mq3-game-g-mover-ml-309843085"></a>
 ### InitMover
@@ -238,7 +238,7 @@ Forward `InitMover` to `mq3.game.movers.initMover` and return the delegated resu
 | `ent` | `dynamic` | — | Game entity; accesses `model2`, `s`, `use`, `reached` and `moverState` and related fields. May update `ent.s.modelindex2`, `ent.s.loopSound` and `ent.s.constantLight` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L95)
 
 <a id="function-function-mq3-game-g-mover-matchteam-function-matchteam-level-leader-state-time-src-mq3-game-g-mover-ml-179352445"></a>
 ### MatchTeam
@@ -257,7 +257,7 @@ Forward `MatchTeam` to `mq3.game.movers.matchTeam` and return the delegated resu
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L77)
 
 <a id="function-function-mq3-game-g-mover-reached-binarymover-function-reached-binarymover-level-ent-src-mq3-game-g-mover-ml-1043475889"></a>
 ### Reached_BinaryMover
@@ -274,7 +274,7 @@ Forward `Reached_BinaryMover` to `mq3.game.movers.reachedBinary` and return the 
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `soundLoop`, `moverState`, `soundPos2` and `think` and related fields. May update `ent.s.loopSound`, `ent.think` and `ent.nextthink` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L85)
 
 <a id="function-function-mq3-game-g-mover-reached-train-function-reached-train-level-ent-src-mq3-game-g-mover-ml-808815929"></a>
 ### Reached_Train
@@ -291,7 +291,7 @@ Forward `Reached_Train` to `mq3.game.movers.reachedTrain` and return the delegat
 | `ent` | `dynamic` | — | Game entity; accesses `nextTrain`, `pos1`, `pos2`, `speed` and `s` and related fields. May update `ent.nextTrain`, `ent.pos1` and `ent.pos2` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L162)
 
 <a id="function-function-mq3-game-g-mover-returntopos1-function-returntopos1-level-ent-src-mq3-game-g-mover-ml-2102009455"></a>
 ### ReturnToPos1
@@ -308,7 +308,7 @@ Forward `ReturnToPos1` to `mq3.game.movers.returnToPos1` and return the delegate
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `soundLoop` and `sound2to1`. May update `ent.s.loopSound` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L81)
 
 <a id="function-function-mq3-game-g-mover-setmoverstate-function-setmoverstate-level-ent-state-time-src-mq3-game-g-mover-ml-2054761055"></a>
 ### SetMoverState
@@ -327,7 +327,7 @@ Forward `SetMoverState` to `mq3.game.movers.setMoverState` and return the delega
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L71)
 
 <a id="function-function-mq3-game-g-mover-sp-func-bobbing-function-sp-func-bobbing-level-ent-src-mq3-game-g-mover-ml-144961231"></a>
 ### SP_func_bobbing
@@ -344,7 +344,7 @@ Forward `SP_func_bobbing` to `mq3.game.movers.spawnBobbing` and return the deleg
 | `ent` | `dynamic` | — | Game entity; accesses `speed`, `damage`, `model`, `s` and `r` and related fields. May update `ent.speed`, `ent.damage` and `ent.s.pos.trBase` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L186)
 
 <a id="function-function-mq3-game-g-mover-sp-func-button-function-sp-func-button-level-ent-src-mq3-game-g-mover-ml-324118455"></a>
 ### SP_func_button
@@ -361,7 +361,7 @@ Forward `SP_func_button` to `mq3.game.movers.spawnButton` and return the delegat
 | `ent` | `dynamic` | — | Game entity; accesses `sound1to2`, `speed`, `wait`, `pos1` and `s` and related fields. May update `ent.sound1to2`, `ent.speed` and `ent.wait` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L154)
 
 <a id="function-function-mq3-game-g-mover-sp-func-door-function-sp-func-door-level-ent-src-mq3-game-g-mover-ml-1336730827"></a>
 ### SP_func_door
@@ -378,7 +378,7 @@ Forward `SP_func_door` to `mq3.game.movers.spawnDoor` and return the delegated r
 | `ent` | `dynamic` | — | Game entity; accesses `sound1to2`, `sound2to1`, `soundPos1`, `soundPos2` and `blocked` and related fields. May update `ent.sound1to2`, `ent.sound2to1` and `ent.soundPos1` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L124)
 
 <a id="function-function-mq3-game-g-mover-sp-func-pendulum-function-sp-func-pendulum-level-ent-src-mq3-game-g-mover-ml-1705513711"></a>
 ### SP_func_pendulum
@@ -395,7 +395,7 @@ Forward `SP_func_pendulum` to `mq3.game.movers.spawnPendulum` and return the del
 | `ent` | `dynamic` | — | Game entity; accesses `damage`, `model`, `r` and `s`. May update `ent.damage`, `ent.s.pos.trDuration` and `ent.s.pos.trBase` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L190)
 
 <a id="function-function-mq3-game-g-mover-sp-func-plat-function-sp-func-plat-level-ent-src-mq3-game-g-mover-ml-38616079"></a>
 ### SP_func_plat
@@ -412,7 +412,7 @@ Forward `SP_func_plat` to `mq3.game.movers.spawnPlat` and return the delegated r
 | `ent` | `dynamic` | — | Game entity; accesses `sound1to2`, `sound2to1`, `soundPos1`, `soundPos2` and `s` and related fields. May update `ent.sound1to2`, `ent.sound2to1` and `ent.soundPos1` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L144)
 
 <a id="function-function-mq3-game-g-mover-sp-func-rotating-function-sp-func-rotating-level-ent-src-mq3-game-g-mover-ml-1093274111"></a>
 ### SP_func_rotating
@@ -429,7 +429,7 @@ Forward `SP_func_rotating` to `mq3.game.movers.spawnRotating` and return the del
 | `ent` | `dynamic` | — | Game entity; accesses `speed`, `damage`, `s`, `spawnflags` and `model` and related fields. May update `ent.speed`, `ent.damage` and `ent.s.apos.trType` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L182)
 
 <a id="function-function-mq3-game-g-mover-sp-func-static-function-sp-func-static-level-ent-src-mq3-game-g-mover-ml-212347083"></a>
 ### SP_func_static
@@ -446,7 +446,7 @@ Forward `SP_func_static` to `mq3.game.movers.spawnStatic` and return the delegat
 | `ent` | `dynamic` | — | Game entity; accesses `model`, `s` and `r`. May update `ent.s.pos.trBase` and `ent.r.currentOrigin` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L178)
 
 <a id="function-function-mq3-game-g-mover-sp-func-train-function-sp-func-train-level-ent-src-mq3-game-g-mover-ml-1226338701"></a>
 ### SP_func_train
@@ -463,7 +463,7 @@ Forward `SP_func_train` to `mq3.game.movers.spawnTrain` and return the delegated
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `spawnflags`, `damage`, `speed` and `target` and related fields. May update `ent.s.angles`, `ent.damage` and `ent.speed` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L174)
 
 <a id="function-function-mq3-game-g-mover-sp-path-corner-function-sp-path-corner-level-ent-src-mq3-game-g-mover-ml-682182347"></a>
 ### SP_path_corner
@@ -480,7 +480,7 @@ Forward `SP_path_corner` to `mq3.game.movers.spawnPathCorner` and return the del
 | `ent` | `dynamic` | — | Game entity; accesses `targetname` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L170)
 
 <a id="function-function-mq3-game-g-mover-spawnplattrigger-function-spawnplattrigger-level-ent-src-mq3-game-g-mover-ml-1429540767"></a>
 ### SpawnPlatTrigger
@@ -497,7 +497,7 @@ Forward `SpawnPlatTrigger` to `mq3.game.movers.spawnPlatTrigger` and return the 
 | `ent` | `dynamic` | — | Game entity; accesses `pos1` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L140)
 
 <a id="function-function-mq3-game-g-mover-think-beginmoving-function-think-beginmoving-level-ent-src-mq3-game-g-mover-ml-288712247"></a>
 ### Think_BeginMoving
@@ -514,7 +514,7 @@ Forward `Think_BeginMoving` to `mq3.game.movers.beginMoving` and return the dele
 | `ent` | `dynamic` | — | Game entity; accesses `s`. May update `ent.s.pos.trTime` and `ent.s.pos.trType` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L158)
 
 <a id="function-function-mq3-game-g-mover-think-matchteam-function-think-matchteam-level-ent-src-mq3-game-g-mover-ml-176063361"></a>
 ### Think_MatchTeam
@@ -531,7 +531,7 @@ Forward `Think_MatchTeam` to `mq3.game.movers.thinkMatchTeam` and return the del
 | `ent` | `dynamic` | — | Game entity; accesses `moverState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L120)
 
 <a id="function-function-mq3-game-g-mover-think-setuptraintargets-function-think-setuptraintargets-level-ent-src-mq3-game-g-mover-ml-700290955"></a>
 ### Think_SetupTrainTargets
@@ -548,7 +548,7 @@ Forward `Think_SetupTrainTargets` to `mq3.game.movers.setupTrain` and return the
 | `ent` | `dynamic` | — | Game entity; accesses `nextTrain`, `target` and `r`. May update `ent.nextTrain` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L166)
 
 <a id="function-function-mq3-game-g-mover-think-spawnnewdoortrigger-function-think-spawnnewdoortrigger-level-ent-src-mq3-game-g-mover-ml-1571867131"></a>
 ### Think_SpawnNewDoorTrigger
@@ -565,7 +565,7 @@ Forward `Think_SpawnNewDoorTrigger` to `mq3.game.movers.spawnDoorTrigger` and re
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `moverState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L116)
 
 <a id="function-function-mq3-game-g-mover-touch-button-function-touch-button-level-ent-other-trace-src-mq3-game-g-mover-ml-1688423698"></a>
 ### Touch_Button
@@ -584,7 +584,7 @@ Forward `Touch_Button` to `mq3.game.movers.touchButton` and return the delegated
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.movers.touchButton`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L150)
 
 <a id="function-function-mq3-game-g-mover-touch-doortrigger-function-touch-doortrigger-level-ent-other-trace-src-mq3-game-g-mover-ml-672627494"></a>
 ### Touch_DoorTrigger
@@ -603,7 +603,7 @@ Forward `Touch_DoorTrigger` to `mq3.game.movers.touchDoorTrigger` and return the
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.movers.touchDoorTrigger`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L112)
 
 <a id="function-function-mq3-game-g-mover-touch-doortriggerspectator-function-touch-doortriggerspectator-level-ent-other-trace-src-mq3-game-g-mover-ml-1927512254"></a>
 ### Touch_DoorTriggerSpectator
@@ -622,7 +622,7 @@ Forward `Touch_DoorTriggerSpectator` to `mq3.game.movers.touchDoorTrigger` and r
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.movers.touchDoorTrigger`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L106)
 
 <a id="function-function-mq3-game-g-mover-touch-plat-function-touch-plat-level-ent-other-trace-src-mq3-game-g-mover-ml-479484046"></a>
 ### Touch_Plat
@@ -641,7 +641,7 @@ Forward `Touch_Plat` to `mq3.game.movers.touchPlat` and return the delegated res
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.movers.touchPlat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L130)
 
 <a id="function-function-mq3-game-g-mover-touch-platcentertrigger-function-touch-platcentertrigger-level-ent-other-trace-src-mq3-game-g-mover-ml-1747658982"></a>
 ### Touch_PlatCenterTrigger
@@ -660,7 +660,7 @@ Forward `Touch_PlatCenterTrigger` to `mq3.game.movers.touchPlatTrigger` and retu
 | `trace` | `dynamic` | — | Value passed as argument 4 to `mq3.game.movers.touchPlatTrigger`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L136)
 
 <a id="function-function-mq3-game-g-mover-use-binarymover-function-use-binarymover-level-ent-other-activator-src-mq3-game-g-mover-ml-532793408"></a>
 ### Use_BinaryMover
@@ -679,4 +679,4 @@ Forward `Use_BinaryMover` to `mq3.game.movers.useBinary` and return the delegate
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mover.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mover.ml#L91)

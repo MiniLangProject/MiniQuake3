@@ -12,7 +12,7 @@ struct ConnectionHost
 Stores remote play connection host record, including `socket`, `userinfo`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L39)
 
 ## Members
 
@@ -26,7 +26,7 @@ socket
 When constructing this record, `create` supplies `socket` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L41)
 
 <a id="field-field-mq3-client-remote-play-connectionhost-userinfo-userinfo-src-mq3-client-remote-play-ml-320764781"></a>
 ### userinfo
@@ -38,4 +38,4 @@ userinfo
 When constructing this record, `create` supplies `userinfo` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L43)

@@ -12,7 +12,7 @@ struct ScreenLine
 Stores playable viewer screen line record, including `visible`, `a`, `b`, `clipped`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L61)
 
 ## Members
 
@@ -26,7 +26,7 @@ a
 Alpha component controlling opacity or blending.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L65)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-b-b-src-mq3-client-playable-viewer-ml-94743379"></a>
 ### b
@@ -38,7 +38,7 @@ b
 Blue component of the stored color.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L67)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-clipped-clipped-src-mq3-client-playable-viewer-ml-657868591"></a>
 ### clipped
@@ -50,7 +50,7 @@ clipped
 When constructing this record, `projectLine` supplies `false` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L69)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-visible-visible-src-mq3-client-playable-viewer-ml-1039275755"></a>
 ### visible
@@ -62,4 +62,4 @@ visible
 True when the record is eligible for the current drawing or browser-display pass.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L63)

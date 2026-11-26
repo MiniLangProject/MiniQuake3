@@ -12,7 +12,7 @@ struct FieldValue
 `FieldValue` record for l struct, containing `definition` and `values`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L56)
 
 ## Members
 
@@ -26,7 +26,7 @@ definition
 Structure or field descriptor used to interpret this parsed value.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L58)
 
 <a id="field-field-mq3-botlib-l-struct-fieldvalue-values-values-src-mq3-botlib-l-struct-ml-1815521502"></a>
 ### values
@@ -38,4 +38,4 @@ values
 Parsed scalar or array elements stored for this field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L60)

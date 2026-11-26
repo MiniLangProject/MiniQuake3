@@ -12,7 +12,7 @@ struct Buffer
 Buffer record for audio.snd_mem_runtime, containing `samples`, `next`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L17)
 
 ## Members
 
@@ -26,7 +26,7 @@ next
 Next buffer in the free list or loaded sound chain.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-buffer-samples-samples-src-mq3-audio-snd-mem-runtime-ml-1846917209"></a>
 ### samples
@@ -38,4 +38,4 @@ samples
 Little-endian signed 16-bit mono PCM bytes stored in this sound-memory chunk.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L19)

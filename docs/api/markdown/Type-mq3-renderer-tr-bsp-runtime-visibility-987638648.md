@@ -12,7 +12,7 @@ struct Visibility
 Data record for `mq3.renderer.tr_bsp_runtime.Visibility`; groups `numClusters`, `clusterBytes`, `data`, `novis`, `external`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L117)
 
 ## Members
 
@@ -26,7 +26,7 @@ clusterBytes
 Number of bytes in one potentially-visible-cluster bitset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L121)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-data-data-src-mq3-renderer-tr-bsp-runtime-ml-1500402121"></a>
 ### data
@@ -38,7 +38,7 @@ data
 Packed potentially-visible-cluster bitsets loaded from the BSP visibility lump.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L123)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-external-external-src-mq3-renderer-tr-bsp-runtime-ml-2116161883"></a>
 ### external
@@ -50,7 +50,7 @@ external
 Whether visibility bytes are supplied by the collision subsystem.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L127)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-novis-novis-src-mq3-renderer-tr-bsp-runtime-ml-938863925"></a>
 ### novis
@@ -62,7 +62,7 @@ novis
 Fallback visibility mask used when no valid PVS data is available.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L125)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-numclusters-numclusters-src-mq3-renderer-tr-bsp-runtime-ml-1250188817"></a>
 ### numClusters
@@ -74,4 +74,4 @@ numClusters
 Number of clusters represented by the visibility table.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_bsp_runtime.ml#L119)

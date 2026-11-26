@@ -12,7 +12,7 @@ struct Settings
 `Settings` record for bot client resources, containing `characterfile`, `skill` and `team`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_client_resources.ml#L32)
 
 ## Members
 
@@ -26,7 +26,7 @@ characterfile
 Path of the bot-character definition used to configure this bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_client_resources.ml#L34)
 
 <a id="field-field-mq3-game-bot-client-resources-settings-skill-skill-src-mq3-game-bot-client-resources-ml-1124777072"></a>
 ### skill
@@ -38,7 +38,7 @@ skill
 Configured bot skill level supplied to character and decision logic.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_client_resources.ml#L36)
 
 <a id="field-field-mq3-game-bot-client-resources-settings-team-team-src-mq3-game-bot-client-resources-ml-1441894238"></a>
 ### team
@@ -50,4 +50,4 @@ team
 Team assignment associated with the client, bot, or action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_client_resources.ml#L38)

@@ -12,7 +12,7 @@ struct PackedVertex
 Data record for `mq3.renderer.surface_md3.PackedVertex`; groups `xyz`, `packedNormal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_md3.ml#L19)
 
 ## Members
 
@@ -26,7 +26,7 @@ packedNormal
 MD3 normal encoded as two angular bytes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_md3.ml#L23)
 
 <a id="field-field-mq3-renderer-surface-md3-packedvertex-xyz-xyz-src-mq3-renderer-surface-md3-ml-263249819"></a>
 ### xyz
@@ -38,4 +38,4 @@ xyz
 Three-dimensional vertex positions used by this geometry record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_md3.ml#L21)

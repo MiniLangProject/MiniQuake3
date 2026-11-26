@@ -11,7 +11,7 @@ Reachable from entry: **yes**
 - `mq3/compat/numeric.ml` as `n` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
 - `mq3/vm/interpreter.ml` as `interpreter` → [src/mq3/vm/interpreter.ml](File-src-mq3-vm-interpreter-ml-500037689.md)
 - `mq3/vm/jit_compat.ml` as `jit` → [src/mq3/vm/jit_compat.ml](File-src-mq3-vm-jit-compat-ml-1033093697.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -30,7 +30,7 @@ Compute arg ptr in vm.runtime; the normal completion returns `(value & runtime.c
 | `value` | `dynamic` | — | Value used in `(value == 0)` and `((value == 0) or (runtime == void))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L374)
 
 <a id="function-function-mq3-vm-runtime-call-function-call-runtime-slot-args-src-mq3-vm-runtime-ml-1716349039"></a>
 ### call
@@ -51,7 +51,7 @@ Direct state writes: `runtime.last`, `runtime.current`.
 | `args` | `dynamic` | — | Args passed as `args` to `mq3.vm.runtime.callCompiled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L296)
 
 <a id="function-function-mq3-vm-runtime-callcompiled-function-callcompiled-slot-args-src-mq3-vm-runtime-ml-495453561"></a>
 ### callCompiled
@@ -68,7 +68,7 @@ Return `mq3.vm.jit_compat.VM_CallCompiled(slot.compiledPlan, args)` from `vm.run
 | `args` | `dynamic` | — | Args passed as `args` to `mq3.vm.jit_compat.VM_CallCompiled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L306)
 
 <a id="function-function-mq3-vm-runtime-clear-function-clear-runtime-src-mq3-vm-runtime-ml-1964764874"></a>
 ### clear
@@ -84,7 +84,7 @@ Return `mq3.vm.runtime.freeAll(runtime)` from `vm.runtime.clear`.
 | `runtime` | `dynamic` | — | Runtime passed as `runtime` to `mq3.vm.runtime.freeAll`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L369)
 
 <a id="function-function-mq3-vm-runtime-compile-function-compile-slot-image-syscall-src-mq3-vm-runtime-ml-652648954"></a>
 ### compile
@@ -104,7 +104,7 @@ Direct state writes: `slot.compiledPlan`, `slot.machine`, `slot.compiled`, `slot
 | `syscall` | `dynamic` | — | Callback passed as `callback` to `mq3.vm.jit_compat.VM_Compile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L238)
 
 <a id="function-function-mq3-vm-runtime-create-function-create-host-src-mq3-vm-runtime-ml-1221969992"></a>
 ### create
@@ -122,7 +122,7 @@ Validation failures include `VM runtime: missing image loader`.
 | `host` | `dynamic` | — | Record exposing `loadFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L106)
 
 <a id="function-function-mq3-vm-runtime-debug-function-debug-runtime-level-src-mq3-vm-runtime-ml-1953335482"></a>
 ### debug
@@ -141,7 +141,7 @@ Direct state writes: `runtime.debugLevel`.
 | `level` | `dynamic` | — | Level operand used by `debug`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L120)
 
 <a id="function-function-mq3-vm-runtime-dllsyscall-function-dllsyscall-runtime-args-src-mq3-vm-runtime-ml-1402127227"></a>
 ### dllSyscall
@@ -160,7 +160,7 @@ Validation failures include `VM runtime: DLL syscall without current VM`; `VM ru
 | `args` | `dynamic` | — | Args used in `len(args)` and `args[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L313)
 
 <a id="function-function-mq3-vm-runtime-emptyslot-function-emptyslot-src-mq3-vm-runtime-ml-553813852"></a>
 ### emptySlot
@@ -172,7 +172,7 @@ function emptySlot()
 Create `mq3.vm.runtime.Slot` with name=""; image=void; machine=void; syscall=void; active=false; generation=0; symbols=[]; numSymbols=0; compiled=false; native=false; codeLength=0; tableLength=0; compiledPlan=void.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L101)
 
 <a id="function-function-mq3-vm-runtime-explicitargptr-function-explicitargptr-runtime-slot-value-src-mq3-vm-runtime-ml-1137133541"></a>
 ### explicitArgPtr
@@ -190,7 +190,7 @@ Compute explicit arg ptr in vm.runtime; the normal completion returns `(value & 
 | `value` | `dynamic` | — | Value used in `(value == 0)` and `(value & slot.machine.mask)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L382)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L382)
 
 <a id="function-function-mq3-vm-runtime-find-function-find-runtime-name-src-mq3-vm-runtime-ml-664371217"></a>
 ### find
@@ -207,7 +207,7 @@ Find runtime in vm.runtime.
 | `name` | `dynamic` | — | Right passed as `right` to `mq3.vm.runtime.sameName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L217)
 
 <a id="function-function-mq3-vm-runtime-free-function-free-runtime-slot-src-mq3-vm-runtime-ml-859786096"></a>
 ### free
@@ -227,7 +227,7 @@ Direct state writes: `runtime.current`, `runtime.last`, `slot.name`, `slot.image
 | `slot` | `dynamic` | — | Record exposing `active`, `name`. Updated in place: `name`, `image`, `machine`, `syscall`, `active`, `symbols` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L344)
 
 <a id="function-function-mq3-vm-runtime-freeall-function-freeall-runtime-src-mq3-vm-runtime-ml-1778016054"></a>
 ### freeAll
@@ -246,7 +246,7 @@ Direct state writes: `runtime.current`, `runtime.last`.
 | `runtime` | `dynamic` | — | Record exposing `slots`, `services`. Updated in place: `current`, `last`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L359)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L359)
 
 <a id="function-function-mq3-vm-runtime-info-function-info-runtime-src-mq3-vm-runtime-ml-1354477032"></a>
 ### info
@@ -262,7 +262,7 @@ Compute info in vm.runtime; the normal completion returns `result`.
 | `runtime` | `dynamic` | — | Record exposing `slots`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L409)
 
 <a id="function-function-mq3-vm-runtime-init-function-init-runtime-src-mq3-vm-runtime-ml-366723248"></a>
 ### init
@@ -281,7 +281,7 @@ Direct state writes: `runtime.debugLevel`, `runtime.syscallCount`, `runtime.sysc
 | `runtime` | `dynamic` | — | Record exposing `services`. Updated in place: `debugLevel`, `syscallCount`, `syscallLog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L436)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L436)
 
 <a id="function-function-mq3-vm-runtime-load-function-load-runtime-name-syscall-src-mq3-vm-runtime-ml-1204895070"></a>
 ### load
@@ -299,7 +299,7 @@ Return `mq3.vm.runtime.loadMode(runtime, name, syscall, VMI_BYTECODE)` from `vm.
 | `syscall` | `dynamic` | — | Syscall passed as `syscall` to `mq3.vm.runtime.loadMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L281)
 
 <a id="function-function-mq3-vm-runtime-loadimage-function-loadimage-runtime-name-src-mq3-vm-runtime-ml-801194931"></a>
 ### loadImage
@@ -316,7 +316,7 @@ Load image in vm.runtime; the normal completion returns `image`.
 | `name` | `dynamic` | — | Name used in `("vm/" + name)` and `(("vm/" + name) + ".qvm")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L226)
 
 <a id="function-function-mq3-vm-runtime-loadmapsymbols-function-loadmapsymbols-runtime-slot-src-mq3-vm-runtime-ml-1556976408"></a>
 ### loadMapSymbols
@@ -333,7 +333,7 @@ Load map symbols in vm.runtime; the normal completion returns `loadSymbols(slot,
 | `slot` | `dynamic` | — | Record exposing `numSymbols`, `name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L244)
 
 <a id="function-function-mq3-vm-runtime-loadmode-function-loadmode-runtime-name-syscall-mode-src-mq3-vm-runtime-ml-2090478623"></a>
 ### loadMode
@@ -354,7 +354,7 @@ Validation failures include `VM runtime: bad create parameters`; `VM runtime: no
 | `mode` | `dynamic` | — | Mode used in `(mode == VMI_NATIVE)` and `(mode >= VMI_COMPILED)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L259)
 
 <a id="function-function-mq3-vm-runtime-loadsymbols-function-loadsymbols-slot-text-developer-src-mq3-vm-runtime-ml-1066745431"></a>
 ### loadSymbols
@@ -375,7 +375,7 @@ Direct state writes: `slot.symbols`, `slot.numSymbols`.
 | `developer` | `dynamic` | — | Developer operand used by `loadSymbols`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L192)
 
 <a id="function-function-mq3-vm-runtime-logsyscalls-function-logsyscalls-runtime-argsoffset-args-src-mq3-vm-runtime-ml-1318932305"></a>
 ### logSyscalls
@@ -396,7 +396,7 @@ Direct state writes: `runtime.syscallCount`, `runtime.syscallLog`.
 | `args` | `dynamic` | — | Args used in `len(args)` and `args[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L424)
 
 <a id="constant-constant-mq3-vm-runtime-max-vm-const-max-vm-3-src-mq3-vm-runtime-ml-1171798936"></a>
 ### MAX_VM
@@ -408,7 +408,7 @@ const MAX_VM = 3
 Number of named VM slots available for the game, client game, and user interface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L11)
 
 <a id="function-function-mq3-vm-runtime-parsehex-function-parsehex-text-src-mq3-vm-runtime-ml-501224239"></a>
 ### parseHex
@@ -424,7 +424,7 @@ ParseHex intentionally ignores non-hex characters rather than terminating.
 | `text` | `dynamic` | — | Text used in `bytes(text)` and `(text == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L124)
 
 <a id="function-function-mq3-vm-runtime-profile-function-profile-runtime-src-mq3-vm-runtime-ml-458567638"></a>
 ### profile
@@ -440,7 +440,7 @@ Compute profile in vm.runtime; the normal completion returns `[lines, total]`.
 | `runtime` | `dynamic` | — | Record exposing `last`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L395)
 
 <a id="function-function-mq3-vm-runtime-profilesort-function-profilesort-left-right-src-mq3-vm-runtime-ml-323439001"></a>
 ### profileSort
@@ -457,7 +457,7 @@ Compute profile sort in vm.runtime; the normal completion returns `0`.
 | `right` | `dynamic` | — | Record exposing `profileCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L390)
 
 <a id="function-function-mq3-vm-runtime-restart-function-restart-runtime-slot-src-mq3-vm-runtime-ml-317404674"></a>
 ### restart
@@ -477,7 +477,7 @@ Direct state writes: `slot.image`, `slot.generation`.
 | `slot` | `dynamic` | — | Record exposing `active`, `name`, `syscall`, `machine`, `generation`. Updated in place: `image`, `generation`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L327)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L327)
 
 <a id="function-function-mq3-vm-runtime-restorecurrent-function-restorecurrent-runtime-previous-src-mq3-vm-runtime-ml-910596479"></a>
 ### restoreCurrent
@@ -496,7 +496,7 @@ Direct state writes: `runtime.current`.
 | `previous` | `dynamic` | — | Previous used in `(previous != void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L288)
 
 - [mq3.vm.runtime.Runtime](Type-mq3-vm-runtime-runtime-1291952059.md) — struct
 <a id="function-function-mq3-vm-runtime-samename-function-samename-left-right-src-mq3-vm-runtime-ml-642979367"></a>
@@ -514,7 +514,7 @@ Compute vm.runtime.sameName as `(strings.toLowerAscii(left) == strings.toLowerAs
 | `right` | `dynamic` | — | Right used in `strings.toLowerAscii(right)` and `(strings.toLowerAscii(left) == strings.toLowerAscii(right))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L213)
 
 <a id="function-function-mq3-vm-runtime-services-function-services-src-mq3-vm-runtime-ml-45030966"></a>
 ### services
@@ -526,7 +526,7 @@ function services()
 Create `mq3.vm.runtime.Services` with loadFn=void; symbolFn=void; developerFn=void; diagnosticFn=void; registerCvarFn=void; addCommandFn=void; logFn=void; context=void.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L99)
 
 - [mq3.vm.runtime.Services](Type-mq3-vm-runtime-services-861255749.md) — struct
 - [mq3.vm.runtime.Slot](Type-mq3-vm-runtime-slot-1102647489.md) — struct
@@ -540,7 +540,7 @@ const STACK_SIZE = 131072
 Number of bytes reserved for the QVM program stack.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
 
 - [mq3.vm.runtime.Symbol](Type-mq3-vm-runtime-symbol-1074374177.md) — struct
 <a id="function-function-mq3-vm-runtime-symbolforcompiledpointer-function-symbolforcompiledpointer-slot-code-src-mq3-vm-runtime-ml-1523936105"></a>
@@ -558,7 +558,7 @@ Compute symbol for compiled pointer in vm.runtime; the normal completion returns
 | `code` | `dynamic` | — | Code used in `(code < 0)` and `(code >= slot.codeLength)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L164)
 
 <a id="function-function-mq3-vm-runtime-symboltovalue-function-symboltovalue-slot-name-src-mq3-vm-runtime-ml-1400652383"></a>
 ### symbolToValue
@@ -575,7 +575,7 @@ Compute symbol to value in vm.runtime; the normal completion returns `0`.
 | `name` | `dynamic` | — | Name used in `(entry.name == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L156)
 
 <a id="function-function-mq3-vm-runtime-tokens-function-tokens-text-src-mq3-vm-runtime-ml-88495219"></a>
 ### tokens
@@ -591,7 +591,7 @@ Compute tokens in vm.runtime; the normal completion returns `result`.
 | `text` | `dynamic` | — | Text used in `bytes(text)` and `(text == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L175)
 
 <a id="function-function-mq3-vm-runtime-valuetofunctionsymbol-function-valuetofunctionsymbol-slot-value-src-mq3-vm-runtime-ml-1466433503"></a>
 ### valueToFunctionSymbol
@@ -608,7 +608,7 @@ Compute value to function symbol in vm.runtime; the normal completion returns `e
 | `value` | `dynamic` | — | Value used in `(slot.symbols[index].value <= value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L139)
 
 <a id="function-function-mq3-vm-runtime-valuetosymbol-function-valuetosymbol-slot-value-src-mq3-vm-runtime-ml-480704415"></a>
 ### valueToSymbol
@@ -625,7 +625,7 @@ Compute value to symbol in vm.runtime; the normal completion returns `((entry.na
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.runtime.valueToFunctionSymbol`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L148)
 
 <a id="function-function-mq3-vm-runtime-vm2c-function-vm2c-pointer-length-src-mq3-vm-runtime-ml-873359967"></a>
 ### vm2c
@@ -642,7 +642,7 @@ VM_VM2C is an identity conversion in the shipped engine.
 | `length` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L114)
 
 <a id="constant-constant-mq3-vm-runtime-vmi-bytecode-const-vmi-bytecode-1-src-mq3-vm-runtime-ml-2059184582"></a>
 ### VMI_BYTECODE
@@ -654,7 +654,7 @@ const VMI_BYTECODE = 1
 VM execution mode that interprets Quake virtual-machine bytecode.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L15)
 
 <a id="constant-constant-mq3-vm-runtime-vmi-compiled-const-vmi-compiled-2-src-mq3-vm-runtime-ml-1226008259"></a>
 ### VMI_COMPILED
@@ -666,7 +666,7 @@ const VMI_COMPILED = 2
 VM execution mode that requests the supported compiled execution path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
 
 <a id="constant-constant-mq3-vm-runtime-vmi-native-const-vmi-native-0-src-mq3-vm-runtime-ml-422896281"></a>
 ### VMI_NATIVE
@@ -678,4 +678,4 @@ const VMI_NATIVE = 0
 VM execution mode that loads the native game-module implementation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L13)

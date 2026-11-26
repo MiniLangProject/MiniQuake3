@@ -13,7 +13,7 @@ Reachable from entry: **no**
 - `mq3/game/movement.ml` as `movement` → [src/mq3/game/movement.ml](File-src-mq3-game-movement-ml-621504687.md)
 - `mq3/server/world.ml` as `sv` → [src/mq3/server/world.ml](File-src-mq3-server-world-ml-118313937.md)
 - `mq3/shared/math.ml` as `q` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -35,7 +35,7 @@ Apply `mq3.game.player_spawns.randomTeam`, `mq3.game.player_spawns.selectSpawn` 
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L170)
 
 <a id="function-function-mq3-game-player-spawns-distancefrom-function-distancefrom-spot-point-src-mq3-game-player-spawns-ml-374925736"></a>
 ### distanceFrom
@@ -52,7 +52,7 @@ Measure Euclidean distance from a player spawn point to a world-space point.
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L40)
 
 <a id="function-function-mq3-game-player-spawns-findclass-function-findclass-level-after-name-src-mq3-game-player-spawns-ml-272860753"></a>
 ### findClass
@@ -70,7 +70,7 @@ Find the next active entity with a case-insensitive class-name match for player 
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L15)
 
 <a id="function-function-mq3-game-player-spawns-findintermission-function-findintermission-level-src-mq3-game-player-spawns-ml-668410224"></a>
 ### findIntermission
@@ -86,7 +86,7 @@ Update `level.intermission_origin` and `level.intermission_angle` during `findIn
 | `level` | `dynamic` | — | Game-level state; accesses `intermission_origin` and `intermission_angle`. May update `level.intermission_origin` and `level.intermission_angle` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L177)
 
 <a id="function-function-mq3-game-player-spawns-furthest-function-furthest-level-avoid-origin-angles-src-mq3-game-player-spawns-ml-250756977"></a>
 ### furthest
@@ -105,7 +105,7 @@ Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag`
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L91)
 
 <a id="function-function-mq3-game-player-spawns-initial-function-initial-level-origin-angles-src-mq3-game-player-spawns-ml-2123626330"></a>
 ### initial
@@ -123,7 +123,7 @@ Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.selectSpawn` a
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L130)
 
 <a id="function-function-mq3-game-player-spawns-nearest-function-nearest-level-point-src-mq3-game-player-spawns-ml-512531602"></a>
 ### nearest
@@ -140,7 +140,7 @@ Apply `mq3.game.player_spawns.findClass` and `mq3.game.player_spawns.distanceFro
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L50)
 
 <a id="function-function-mq3-game-player-spawns-randomdeathmatch-function-randomdeathmatch-level-src-mq3-game-player-spawns-ml-1819014716"></a>
 ### randomDeathmatch
@@ -156,7 +156,7 @@ Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag`
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L62)
 
 <a id="function-function-mq3-game-player-spawns-randomteam-function-randomteam-level-teamstate-team-src-mq3-game-player-spawns-ml-820015881"></a>
 ### randomTeam
@@ -174,7 +174,7 @@ Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag`
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L145)
 
 <a id="function-function-mq3-game-player-spawns-selectspawn-function-selectspawn-level-avoid-origin-angles-src-mq3-game-player-spawns-ml-2078758599"></a>
 ### selectSpawn
@@ -193,7 +193,7 @@ Forward `selectSpawn` to `mq3.game.player_spawns.furthest` and return the delega
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L123)
 
 <a id="function-function-mq3-game-player-spawns-spawnresult-function-spawnresult-spot-origin-angles-src-mq3-game-player-spawns-ml-81563016"></a>
 ### spawnResult
@@ -211,7 +211,7 @@ Update `origin[axis]`, `angles[axis]` and `origin[2]` during `spawnResult`. Retu
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. Entries may be updated in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L78)
 
 <a id="function-function-mq3-game-player-spawns-spectator-function-spectator-level-origin-angles-src-mq3-game-player-spawns-ml-1068794004"></a>
 ### spectator
@@ -229,7 +229,7 @@ Set `origin[axis]` to `level.intermission_origin[axis]` and `angles[axis]` to `l
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. Entries may be updated in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L200)
 
 <a id="function-function-mq3-game-player-spawns-wouldtelefrag-function-wouldtelefrag-level-spot-src-mq3-game-player-spawns-ml-798618798"></a>
 ### wouldTelefrag
@@ -246,4 +246,4 @@ Apply `mq3.server.world.areaEntities` while evaluating `wouldTelefrag`.
 | `spot` | `dynamic` | — | Spot record; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L27)

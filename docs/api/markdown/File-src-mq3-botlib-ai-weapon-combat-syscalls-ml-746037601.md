@@ -32,7 +32,7 @@ Apply `mq3.botlib.ai_weapon_combat_syscalls.readInventory`, `mq3.vm.syscall_comm
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L26)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-syscalls-inventory-count-const-inventory-count-256-src-mq3-botlib-ai-weapon-combat-syscalls-ml-2143757898"></a>
 ### INVENTORY_COUNT
@@ -44,7 +44,7 @@ const INVENTORY_COUNT = 256
 Number of inventory integer slots read from the bot VM ABI.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-syscalls-readinventory-function-readinventory-vm-address-src-mq3-botlib-ai-weapon-combat-syscalls-ml-427997881"></a>
 ### readInventory
@@ -61,4 +61,4 @@ Apply `mq3.vm.syscall_common.pointer` while evaluating `readInventory`.
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L15)

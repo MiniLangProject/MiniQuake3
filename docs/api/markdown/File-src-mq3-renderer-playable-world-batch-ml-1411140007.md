@@ -18,9 +18,9 @@ Reachable from entry: **yes**
 - `mq3/renderer/playable_materials.ml` as `materials` → [src/mq3/renderer/playable_materials.ml](File-src-mq3-renderer-playable-materials-ml-320329628.md)
 - `mq3/renderer/shader_parser.ml` as `shaderParser` → [src/mq3/renderer/shader_parser.ml](File-src-mq3-renderer-shader-parser-ml-2114769074.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/ds/hashmap.ml` as `maps` → `../MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
-- `std/ds/list.ml` as `lists` → `../MiniLangCompilerML/std/ds/list.ml` — external dependency
-- `std/sort.ml` as `sorting` → `../MiniLangCompilerML/std/sort.ml` — external dependency
+- `std/ds/hashmap.ml` as `maps` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/hashmap.ml` — external dependency
+- `std/ds/list.ml` as `lists` → `../../a7594a0c0299/MiniLangCompilerML/std/ds/list.ml` — external dependency
+- `std/sort.ml` as `sorting` → `../../a7594a0c0299/MiniLangCompilerML/std/sort.ml` — external dependency
 
 ## Declarations
 
@@ -39,7 +39,7 @@ Builds `result.tx`, `result.ty` in `mq3.renderer.playable_world_batch.affineFor`
 | `nowMilliseconds` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.playable_materials.waveSample`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L598)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L598)
 
 <a id="function-function-mq3-renderer-playable-world-batch-appendresolved-function-appendresolved-commands-triangle-baseslot-uselightmap-src-mq3-renderer-playable-world-batch-ml-925146760"></a>
 ### appendResolved
@@ -58,7 +58,7 @@ Chooses base/lightmap slots and appends a resolved world triangle with appropria
 | `useLightmap` | `dynamic` | — | Input tested by `useLightmap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L192)
 
 <a id="function-function-mq3-renderer-playable-world-batch-applyaffine-function-applyaffine-transform-as-uvaffine-uv-as-array-returns-array-src-mq3-renderer-playable-world-batch-ml-1875383722"></a>
 ### applyAffine
@@ -77,7 +77,7 @@ Applies a 2-by-2 UV transform and translation to one texture-coordinate pair.
 
 **Returns:** The transformed [u, v] coordinate pair.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L618)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L618)
 
 <a id="function-function-mq3-renderer-playable-world-batch-attachdynamiclights-function-attachdynamiclights-batch-renderdata-receiveflags-catalog-src-mq3-renderer-playable-world-batch-ml-142044639"></a>
 ### attachDynamicLights
@@ -96,7 +96,7 @@ Updates `batch.dlightBatch`, `batch.dlightCatalog` in `mq3.renderer.playable_wor
 | `catalog` | `dynamic` | — | Value assigned to `batch.dlightCatalog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L575)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L575)
 
 <a id="function-function-mq3-renderer-playable-world-batch-attachdynamiclightsoriented-function-attachdynamiclightsoriented-batch-renderdata-receiveflags-catalog-origins-axes-bounds-src-mq3-renderer-playable-world-batch-ml-1774947484"></a>
 ### attachDynamicLightsOriented
@@ -118,7 +118,7 @@ Updates `batch.dlightBatch`, `batch.dlightCatalog` in `mq3.renderer.playable_wor
 | `bounds` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.playable_dynamic_lights.buildOriented`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L587)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L587)
 
 <a id="function-function-mq3-renderer-playable-world-batch-attachfog-function-attachfog-batch-renderdata-catalog-src-mq3-renderer-playable-world-batch-ml-1408784339"></a>
 ### attachFog
@@ -136,7 +136,7 @@ Updates `batch.fogBatch`, `batch.fogCatalog` in `mq3.renderer.playable_world_bat
 | `catalog` | `dynamic` | — | Value assigned to `batch.fogCatalog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L561)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L561)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autosprite2quad-function-autosprite2quad-pass-triangleindex-forward-src-mq3-renderer-playable-world-batch-ml-1887203224"></a>
 ### autosprite2Quad
@@ -154,7 +154,7 @@ Autosprite2Deform keeps the long axis fixed and rotates only the two short edges
 | `forward` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L702)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L702)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autospritecorner-function-autospritecorner-triangleindex-as-int-vertex-as-int-returns-int-src-mq3-renderer-playable-world-batch-ml-803813818"></a>
 ### autospriteCorner
@@ -173,7 +173,7 @@ Maps a triangle-local vertex onto one of four autosprite quad corners using tria
 
 **Returns:** Quad corner from [0,1,3] for even triangles or [3,1,2] for odd triangles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L683)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L683)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autospritequad-function-autospritequad-pass-triangleindex-leftdir-updir-src-mq3-renderer-playable-world-batch-ml-1377053455"></a>
 ### autospriteQuad
@@ -192,7 +192,7 @@ AutospriteDeform rebuilds each independent pair of triangles as one square whose
 | `upDir` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L667)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L667)
 
 <a id="function-function-mq3-renderer-playable-world-batch-autospriteuv-function-autospriteuv-triangleindex-vertex-src-mq3-renderer-playable-world-batch-ml-1964574270"></a>
 ### autospriteUV
@@ -209,7 +209,7 @@ Returns `[[0.0,1.0],[1.0,0.0],[1.0,1.0]][vertex]` from `mq3.renderer.playable_wo
 | `vertex` | `dynamic` | — | Input tested by `triangleIndex%2==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L690)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L690)
 
 - [mq3.renderer.playable_world_batch.Batch](Type-mq3-renderer-playable-world-batch-batch-1905366517.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-build-function-build-renderdata-materialslots-skytextureflags-src-mq3-renderer-playable-world-batch-ml-13370115"></a>
@@ -228,7 +228,7 @@ Compatibility builder: byte layout and single submission remain unchanged.
 | `skyTextureFlags` | `dynamic` | — | Value forwarded as `flags` to `mq3.renderer.playable_world_batch.isSky`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L203)
 
 <a id="function-function-mq3-renderer-playable-world-batch-buildmaterials-function-buildmaterials-renderdata-catalog-skytextureflags-src-mq3-renderer-playable-world-batch-ml-930560880"></a>
 ### buildMaterials
@@ -246,7 +246,7 @@ Static opaque primaries stay in the bit-identical base stream. Dynamic and suppo
 | `skyTextureFlags` | `dynamic` | — | Value forwarded as `flags` to `mq3.renderer.playable_world_batch.groupedTriangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L457)
 
 <a id="function-function-mq3-renderer-playable-world-batch-buildstagepass-function-buildstagepass-renderdata-material-stage-primary-depthequal-flags-src-mq3-renderer-playable-world-batch-ml-395295605"></a>
 ### buildStagePass
@@ -267,7 +267,7 @@ Computes `buildStagePass` from `buildStagePassTriangles(triangles,material,stage
 | `flags` | `dynamic` | — | Value forwarded as `flags` to `mq3.renderer.playable_world_batch.isSky`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L423)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L423)
 
 <a id="function-function-mq3-renderer-playable-world-batch-buildstagepasstriangles-function-buildstagepasstriangles-triangles-material-stage-primary-depthequal-indexscratch-src-mq3-renderer-playable-world-batch-ml-1988558213"></a>
 ### buildStagePassTriangles
@@ -288,7 +288,7 @@ Builds `mq3.renderer.playable_world_batch.StagePass` after updating `sourceUvs[o
 | `indexScratch` | `dynamic` | — | Value forwarded as `scratch` to `mq3.renderer.playable_world_batch.createVertexCacheWithScratch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L384)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L384)
 
 <a id="function-function-mq3-renderer-playable-world-batch-contains-function-contains-values-as-array-wanted-as-int-returns-bool-src-mq3-renderer-playable-world-batch-ml-1927507642"></a>
 ### contains
@@ -307,7 +307,7 @@ Tests whether an integer occurs in the supplied array.
 
 **Returns:** True when any array element equals wanted; false otherwise.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L237)
 
 <a id="function-function-mq3-renderer-playable-world-batch-containsposition-function-containsposition-values-wanted-src-mq3-renderer-playable-world-batch-ml-679283887"></a>
 ### containsPosition
@@ -324,7 +324,7 @@ Returns `false` from `mq3.renderer.playable_world_batch.containsPosition`; earli
 | `wanted` | `dynamic` | — | Input used by `for each value in values if value==wanted then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L633)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L633)
 
 <a id="function-function-mq3-renderer-playable-world-batch-countstagetriangles-function-countstagetriangles-renderdata-textureindex-flags-src-mq3-renderer-playable-world-batch-ml-52229624"></a>
 ### countStageTriangles
@@ -342,7 +342,7 @@ Returns `count` from `mq3.renderer.playable_world_batch.countStageTriangles`.
 | `flags` | `dynamic` | — | Value forwarded as `flags` to `mq3.renderer.playable_world_batch.isSky`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L292)
 
 <a id="function-function-mq3-renderer-playable-world-batch-createvertexcache-function-createvertexcache-sourceindexes-src-mq3-renderer-playable-world-batch-ml-148825539"></a>
 ### createVertexCache
@@ -358,7 +358,7 @@ Calls `mq3.renderer.playable_world_batch.createVertexCacheWithScratch` with `(so
 | `sourceIndexes` | `dynamic` | — | Value forwarded as `sourceIndexes` to `mq3.renderer.playable_world_batch.createVertexCacheWithScratch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L361)
 
 <a id="function-function-mq3-renderer-playable-world-batch-createvertexcachewithscratch-function-createvertexcachewithscratch-sourceindexes-scratch-src-mq3-renderer-playable-world-batch-ml-553697777"></a>
 ### createVertexCacheWithScratch
@@ -375,7 +375,7 @@ Builds `mq3.renderer.playable_world_batch.VertexCache` after updating `scratch.v
 | `scratch` | `dynamic` | — | Mutable record or buffer; this call updates `scratch.visited`, `scratch.slots`, `scratch.serial`, `scratch.visited[sourceIndex]`, `scratch.slots[sourceIndex]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L318)
 
 <a id="function-function-mq3-renderer-playable-world-batch-deformednormal-function-deformednormal-position-normal-deforms-nowmilliseconds-noise-src-mq3-renderer-playable-world-batch-ml-564800094"></a>
 ### deformedNormal
@@ -395,7 +395,7 @@ Builds `result[0]`, `result[1]`, `result[2]` in `mq3.renderer.playable_world_bat
 | `noise` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.noise.get4f`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L762)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L762)
 
 <a id="function-function-mq3-renderer-playable-world-batch-deformedposition-function-deformedposition-position-normal-uv-deforms-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-1390023845"></a>
 ### deformedPosition
@@ -415,7 +415,7 @@ Computes `deformedPosition` from `[position[0],position[1],position[2]]` using `
 | `nowMilliseconds` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.playable_materials.waveSampleOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L740)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L740)
 
 <a id="function-function-mq3-renderer-playable-world-batch-draw-function-draw-batch-projection-src-mq3-renderer-playable-world-batch-ml-1848115505"></a>
 ### draw
@@ -432,7 +432,7 @@ Returns `window.submitWorldTriangleBatch(batch.commands,projection)` from `mq3.r
 | `projection` | `dynamic` | — | Argument 2 supplied to `mq3.platform.playable_window.submitWorldTriangleBatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L217)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterials-function-drawmaterials-batch-projection-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-1192077807"></a>
 ### drawMaterials
@@ -450,7 +450,7 @@ Calls `mq3.renderer.playable_world_batch.drawMaterialsLitTarget` with `(batch,pr
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_world_batch.drawMaterialsLitTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L933)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L933)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialslit-function-drawmaterialslit-batch-projection-nowmilliseconds-lights-src-mq3-renderer-playable-world-batch-ml-1546989170"></a>
 ### drawMaterialsLit
@@ -469,7 +469,7 @@ Calls `mq3.renderer.playable_world_batch.drawMaterialsLitTarget` with `(batch,pr
 | `lights` | `dynamic` | — | Value forwarded as `lights` to `mq3.renderer.playable_world_batch.drawMaterialsLitTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L928)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L928)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialslittarget-function-drawmaterialslittarget-batch-projection-nowmilliseconds-lights-area-src-mq3-renderer-playable-world-batch-ml-776668523"></a>
 ### drawMaterialsLitTarget
@@ -489,7 +489,7 @@ Draws opaque base geometry and ordered shader passes, inserting dynamic lighting
 | `area` | `dynamic` | — | Argument 3 supplied to `mq3.platform.playable_window.submitWorldTriangleBatchViewport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L909)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L909)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialslitviewport-function-drawmaterialslitviewport-batch-projection-nowmilliseconds-lights-area-src-mq3-renderer-playable-world-batch-ml-1054479403"></a>
 ### drawMaterialsLitViewport
@@ -509,7 +509,7 @@ Calls `mq3.renderer.playable_world_batch.drawMaterialsLitTarget` with `(batch,pr
 | `area` | `dynamic` | — | Value forwarded as `area` to `mq3.renderer.playable_world_batch.drawMaterialsLitTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L940)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L940)
 
 <a id="function-function-mq3-renderer-playable-world-batch-drawmaterialsviewport-function-drawmaterialsviewport-batch-projection-nowmilliseconds-area-src-mq3-renderer-playable-world-batch-ml-1463560006"></a>
 ### drawMaterialsViewport
@@ -528,7 +528,7 @@ Calls `mq3.renderer.playable_world_batch.drawMaterialsLitTarget` with `(batch,pr
 | `area` | `dynamic` | — | Value forwarded as `area` to `mq3.renderer.playable_world_batch.drawMaterialsLitTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L946)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L946)
 
 <a id="function-function-mq3-renderer-playable-world-batch-dynamicmaterialstage-function-dynamicmaterialstage-material-stage-src-mq3-renderer-playable-world-batch-ml-1912916429"></a>
 ### dynamicMaterialStage
@@ -545,7 +545,7 @@ Computes `material.polygonOffset or len(material.deforms)>0 or dynamicStage(stag
 | `stage` | `dynamic` | — | Value forwarded as `stage` to `mq3.renderer.playable_world_batch.dynamicStage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L229)
 
 <a id="function-function-mq3-renderer-playable-world-batch-dynamicstage-function-dynamicstage-stage-src-mq3-renderer-playable-world-batch-ml-1065626246"></a>
 ### dynamicStage
@@ -561,7 +561,7 @@ Detects shader stages that require dynamic handling because of lightmaps, animat
 | `stage` | `dynamic` | — | Record providing `stage.bspLightmap`, `stage.clampTexture`, `stage.depthWrite`, `stage.depthEqual`, `stage.slots`, `stage.uvMods`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L225)
 
 <a id="function-function-mq3-renderer-playable-world-batch-edgevertices-function-edgevertices-index-src-mq3-renderer-playable-world-batch-ml-1571333844"></a>
 ### edgeVertices
@@ -577,7 +577,7 @@ Returns `[2,3]` from `mq3.renderer.playable_world_batch.edgeVertices`; earlier b
 | `index` | `dynamic` | — | Tetrahedron-edge selector: 0..4 select the first five pairs; other values select [2,3]. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L693)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L693)
 
 <a id="function-function-mq3-renderer-playable-world-batch-fail-function-fail-text-src-mq3-renderer-playable-world-batch-ml-1564841641"></a>
 ### fail
@@ -593,7 +593,7 @@ Creates error `7490` with message `"playable world batch: "+text`.
 | `text` | `dynamic` | — | Input used in the result expression `error(7490,"playable world batch: "+text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L173)
 
 <a id="function-function-mq3-renderer-playable-world-batch-fillmaterialbase-function-fillmaterialbase-base-renderdata-lookup-skytextureflags-src-mq3-renderer-playable-world-batch-ml-125989610"></a>
 ### fillMaterialBase
@@ -612,7 +612,7 @@ BSP and MD3 triangles typically arrive in material runs. Resolve the opaque prim
 | `skyTextureFlags` | `dynamic` | — | Value forwarded as `flags` to `mq3.renderer.playable_world_batch.isSky`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L434)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L434)
 
 <a id="function-function-mq3-renderer-playable-world-batch-groupedtriangles-function-groupedtriangles-renderdata-flags-count-src-mq3-renderer-playable-world-batch-ml-1779176292"></a>
 ### groupedTriangles
@@ -630,7 +630,7 @@ Builds `sizes[triangle.textureIndex]`, `result[index]`, `offsets[index]` in `mq3
 | `count` | `dynamic` | — | Argument 1 supplied to `array`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L305)
 
 <a id="function-function-mq3-renderer-playable-world-batch-hasdeform-function-hasdeform-deforms-as-array-kind-as-string-returns-bool-src-mq3-renderer-playable-world-batch-ml-705133687"></a>
 ### hasDeform
@@ -649,7 +649,7 @@ Tests whether any deformation in the sequence has the requested kind.
 
 **Returns:** True when a matching deformation exists; false otherwise.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L629)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L629)
 
 <a id="function-function-mq3-renderer-playable-world-batch-hasentitytranslate-function-hasentitytranslate-stage-src-mq3-renderer-playable-world-batch-ml-1921778762"></a>
 ### hasEntityTranslate
@@ -665,7 +665,7 @@ Returns `false` from `mq3.renderer.playable_world_batch.hasEntityTranslate`; ear
 | `stage` | `dynamic` | — | Record providing `stage.uvMods`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L624)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L624)
 
 <a id="function-function-mq3-renderer-playable-world-batch-hasturbulence-function-hasturbulence-stage-src-mq3-renderer-playable-world-batch-ml-1090867404"></a>
 ### hasTurbulence
@@ -681,7 +681,7 @@ Returns `false` from `mq3.renderer.playable_world_batch.hasTurbulence`; earlier 
 | `stage` | `dynamic` | — | Record providing `stage.uvMods`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L621)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L621)
 
 <a id="function-function-mq3-renderer-playable-world-batch-identityaffine-function-identityaffine-returns-uvaffine-src-mq3-renderer-playable-world-batch-ml-500823941"></a>
 ### identityAffine
@@ -695,7 +695,7 @@ Constructs `mq3.renderer.playable_world_batch.UvAffine` with `m00` = `1.0`, `m01
 
 **Returns:** The value `UvAffine(1.0,0.0,0.0,1.0,0.0,0.0)`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L594)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L594)
 
 <a id="function-function-mq3-renderer-playable-world-batch-issky-inline-function-issky-triangle-flags-as-array-returns-bool-src-mq3-renderer-playable-world-batch-ml-2043046492"></a>
 ### isSky
@@ -714,7 +714,7 @@ Checks that a triangle texture index is in range and marked as sky in the textur
 
 **Returns:** True only for an in-range texture index whose sky flag is set.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L181)
 
 - [mq3.renderer.playable_world_batch.MaterialBatch](Type-mq3-renderer-playable-world-batch-materialbatch-2042443654.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-materialbefore-function-materialbefore-left-right-src-mq3-renderer-playable-world-batch-ml-1805883409"></a>
@@ -732,7 +732,7 @@ Computes `left.sort<right.sort or (left.sort==right.sort and left.textureIndex<r
 | `right` | `dynamic` | — | Record providing `right.sort`, `right.textureIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L241)
 
 <a id="function-function-mq3-renderer-playable-world-batch-materialfor-function-materialfor-catalog-textureindex-src-mq3-renderer-playable-world-batch-ml-1077792682"></a>
 ### materialFor
@@ -749,7 +749,7 @@ Returns `void` from `mq3.renderer.playable_world_batch.materialFor`; earlier bra
 | `textureIndex` | `dynamic` | — | Input used by `for each material in catalog.materials if material.textureIndex==textureIndex then return material`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L222)
 
 <a id="function-function-mq3-renderer-playable-world-batch-materialtable-function-materialtable-renderdata-catalog-src-mq3-renderer-playable-world-batch-ml-53648789"></a>
 ### materialTable
@@ -766,7 +766,7 @@ Builds `result[material.textureIndex]` in `mq3.renderer.playable_world_batch.mat
 | `catalog` | `dynamic` | — | Record providing `catalog.materials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L296)
 
 <a id="function-function-mq3-renderer-playable-world-batch-materialusesbsplightmap-function-materialusesbsplightmap-material-src-mq3-renderer-playable-world-batch-ml-2086389251"></a>
 ### materialUsesBspLightmap
@@ -782,7 +782,7 @@ Returns `false` from `mq3.renderer.playable_world_batch.materialUsesBspLightmap`
 | `material` | `dynamic` | — | Record providing `material.stages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L232)
 
 <a id="constant-constant-mq3-renderer-playable-world-batch-max-bsp-lightmaps-const-max-bsp-lightmaps-256-src-mq3-renderer-playable-world-batch-ml-508877450"></a>
 ### MAX_BSP_LIGHTMAPS
@@ -794,7 +794,7 @@ const MAX_BSP_LIGHTMAPS = 256
 Maximum number of BSP lightmaps retained for material preparation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L183)
 
 <a id="function-function-mq3-renderer-playable-world-batch-packedspecularnormals-function-packedspecularnormals-sourcenormals-src-mq3-renderer-playable-world-batch-ml-1331244169"></a>
 ### packedSpecularNormals
@@ -810,7 +810,7 @@ Calls `mq3.renderer.playable_world_batch.packSpecularNormalsInto` with `(sourceN
 | `sourceNormals` | `dynamic` | — | Value forwarded as `sourceNormals` to `mq3.renderer.playable_world_batch.packSpecularNormalsInto`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L376)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L376)
 
 <a id="function-function-mq3-renderer-playable-world-batch-packspecularnormalsinto-function-packspecularnormalsinto-sourcenormals-packed-src-mq3-renderer-playable-world-batch-ml-843896211"></a>
 ### packSpecularNormalsInto
@@ -827,7 +827,7 @@ Packs three float32 normals per triangle into 36-byte records for native specula
 | `packed` | `dynamic` | — | Argument 1 supplied to `mq3.platform.playable_window.writeBatchF32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L365)
 
 <a id="function-function-mq3-renderer-playable-world-batch-passchanges-function-passchanges-pass-fogcatalog-src-mq3-renderer-playable-world-batch-ml-1493992092"></a>
 ### passChanges
@@ -844,7 +844,7 @@ A retained pass exists for render-state reasons as well as for changing vertex d
 | `fogCatalog` | `dynamic` | — | Input used in the result expression `fogCatalog!=void and passHasFog(pass)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L648)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L648)
 
 <a id="function-function-mq3-renderer-playable-world-batch-passhasfog-function-passhasfog-pass-src-mq3-renderer-playable-world-batch-ml-516851215"></a>
 ### passHasFog
@@ -860,7 +860,7 @@ Returns `false` from `mq3.renderer.playable_world_batch.passHasFog`; earlier bra
 | `pass` | `dynamic` | — | Record providing `pass.fogAdjustment`, `pass.fogIndexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L636)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L636)
 
 <a id="function-function-mq3-renderer-playable-world-batch-refreshmaterials-function-refreshmaterials-batch-renderdata-catalog-skytextureflags-src-mq3-renderer-playable-world-batch-ml-1495440422"></a>
 ### refreshMaterials
@@ -879,7 +879,7 @@ Updates `batch.base`, `batch.sourceTriangles`, `batch.drawableTriangles`, `batch
 | `skyTextureFlags` | `dynamic` | — | Value forwarded as `flags` to `mq3.renderer.playable_world_batch.isSky`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L528)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L528)
 
 <a id="function-function-mq3-renderer-playable-world-batch-refreshstagepass-function-refreshstagepass-pass-renderdata-src-mq3-renderer-playable-world-batch-ml-2061349663"></a>
 ### refreshStagePass
@@ -896,7 +896,7 @@ Refreshes a retained material batch when triangle/material topology is unchanged
 | `renderData` | `dynamic` | — | Record providing `renderData.triangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L496)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L496)
 
 <a id="function-function-mq3-renderer-playable-world-batch-releasematerials-function-releasematerials-catalog-src-mq3-renderer-playable-world-batch-ml-1958158671"></a>
 ### releaseMaterials
@@ -912,7 +912,7 @@ Computes `releaseMaterials` from `len(released)` using `mq3.renderer.playable_wo
 | `catalog` | `dynamic` | — | Record providing `catalog.materials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L276)
 
 <a id="function-function-mq3-renderer-playable-world-batch-resolvedlightmapslot-function-resolvedlightmapslot-triangle-src-mq3-renderer-playable-world-batch-ml-52268542"></a>
 ### resolvedLightmapSlot
@@ -928,7 +928,7 @@ Returns `slot` from `mq3.renderer.playable_world_batch.resolvedLightmapSlot`; ea
 | `triangle` | `dynamic` | — | Record providing `triangle.lightmapIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L186)
 
 <a id="function-function-mq3-renderer-playable-world-batch-sortedmaterials-function-sortedmaterials-values-src-mq3-renderer-playable-world-batch-ml-1548489570"></a>
 ### sortedMaterials
@@ -944,7 +944,7 @@ Returns `result` from `mq3.renderer.playable_world_batch.sortedMaterials`.
 | `values` | `dynamic` | — | Argument 3 supplied to `copyArray`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L244)
 
 <a id="function-function-mq3-renderer-playable-world-batch-specularalpha-function-specularalpha-position-normal-vieworigin-src-mq3-renderer-playable-world-batch-ml-514220667"></a>
 ### specularAlpha
@@ -962,7 +962,7 @@ RB_CalcSpecularAlpha keeps this hard-coded light origin in the original renderer
 | `viewOrigin` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L781)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L781)
 
 - [mq3.renderer.playable_world_batch.StagePass](Type-mq3-renderer-playable-world-batch-stagepass-972420306.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-updatepass-function-updatepass-pass-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-1332761149"></a>
@@ -980,7 +980,7 @@ Calls `mq3.renderer.playable_world_batch.updatePassView` with `(pass,[0.0,0.0,0.
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_world_batch.updatePassView`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L902)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L902)
 
 <a id="function-function-mq3-renderer-playable-world-batch-updatepassaxes-function-updatepassaxes-pass-vieworigin-leftdir-updir-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-609918520"></a>
 ### updatePassAxes
@@ -1000,7 +1000,7 @@ Calls `mq3.renderer.playable_world_batch.updatePassAxesFog` with `(pass,viewOrig
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_world_batch.updatePassAxesFog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L893)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L893)
 
 <a id="function-function-mq3-renderer-playable-world-batch-updatepassaxesfog-function-updatepassaxesfog-pass-vieworigin-leftdir-updir-nowmilliseconds-fogcatalog-src-mq3-renderer-playable-world-batch-ml-2048888017"></a>
 ### updatePassAxesFog
@@ -1021,7 +1021,7 @@ Updates `pass.initialized`, `pass.cacheSerial` in `mq3.renderer.playable_world_b
 | `fogCatalog` | `dynamic` | — | Record providing `fogCatalog.fogs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L794)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L794)
 
 <a id="function-function-mq3-renderer-playable-world-batch-updatepassview-function-updatepassview-pass-vieworigin-nowmilliseconds-src-mq3-renderer-playable-world-batch-ml-64007940"></a>
 ### updatePassView
@@ -1039,7 +1039,7 @@ Calls `mq3.renderer.playable_world_batch.updatePassAxes` with `(pass,viewOrigin,
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_world_batch.updatePassAxes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L898)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L898)
 
 <a id="function-function-mq3-renderer-playable-world-batch-uploadmaterials-function-uploadmaterials-catalog-src-mq3-renderer-playable-world-batch-ml-1474389197"></a>
 ### uploadMaterials
@@ -1055,7 +1055,7 @@ Calls `mq3.renderer.playable_world_batch.uploadMaterialsFrom` with `(catalog,0)`
 | `catalog` | `dynamic` | — | Value forwarded as `catalog` to `mq3.renderer.playable_world_batch.uploadMaterialsFrom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L273)
 
 <a id="function-function-mq3-renderer-playable-world-batch-uploadmaterialsfrom-function-uploadmaterialsfrom-catalog-firstslot-src-mq3-renderer-playable-world-batch-ml-1062060427"></a>
 ### uploadMaterialsFrom
@@ -1072,7 +1072,7 @@ Builds `uploaded[slot]` in `mq3.renderer.playable_world_batch.uploadMaterialsFro
 | `firstSlot` | `dynamic` | — | Input tested by `slot>=firstSlot and not uploaded[slot]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L251)
 
 - [mq3.renderer.playable_world_batch.UvAffine](Type-mq3-renderer-playable-world-batch-uvaffine-1068578019.md) — struct
 - [mq3.renderer.playable_world_batch.VertexCache](Type-mq3-renderer-playable-world-batch-vertexcache-993990901.md) — struct
@@ -1086,7 +1086,7 @@ function vertexIndexScratch()
 Constructs `mq3.renderer.playable_world_batch.VertexIndexScratch` with `visited` = `[]`, `slots` = `[]`, `serial` = `0`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L314)
 
 - [mq3.renderer.playable_world_batch.VertexIndexScratch](Type-mq3-renderer-playable-world-batch-vertexindexscratch-849012407.md) — struct
 <a id="function-function-mq3-renderer-playable-world-batch-vertexlight-function-vertexlight-vertex-src-mq3-renderer-playable-world-batch-ml-21699612"></a>
@@ -1103,4 +1103,4 @@ Computes `(vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0)` for `mq
 | `vertex` | `dynamic` | — | Record providing `vertex.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L176)

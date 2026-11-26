@@ -12,7 +12,7 @@ struct Catalog
 Stores base Quake III HUD catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L52)
 
 ## Members
 
@@ -26,7 +26,7 @@ assets
 Loaded base-game HUD artwork indexed for status digits, icons, and other status-bar drawing.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L54)
 
 <a id="field-field-mq3-client-baseq3-hud-catalog-firsttextureslot-firsttextureslot-src-mq3-client-baseq3-hud-ml-2020513550"></a>
 ### firstTextureSlot
@@ -38,7 +38,7 @@ firstTextureSlot
 First texture-cache slot reserved for this module's media resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L56)
 
 <a id="field-field-mq3-client-baseq3-hud-catalog-texturecount-texturecount-src-mq3-client-baseq3-hud-ml-643289992"></a>
 ### textureCount
@@ -50,4 +50,4 @@ textureCount
 Number of texture resources or texture-cache slots represented by this media record.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/baseq3_hud.ml#L58)

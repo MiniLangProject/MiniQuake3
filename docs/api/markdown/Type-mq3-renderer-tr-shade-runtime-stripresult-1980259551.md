@@ -12,7 +12,7 @@ struct StripResult
 Data record for `mq3.renderer.tr_shade_runtime.StripResult`; groups `strips`, `begins`, `vertexes`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L31)
 
 ## Members
 
@@ -26,7 +26,7 @@ begins
 Number of graphics primitive-begin operations required by the strip plan.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L35)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-stripresult-strips-strips-src-mq3-renderer-tr-shade-runtime-ml-754899082"></a>
 ### strips
@@ -38,7 +38,7 @@ strips
 Triangle strips produced by index-stream conversion.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-stripresult-vertexes-vertexes-src-mq3-renderer-tr-shade-runtime-ml-1670833356"></a>
 ### vertexes
@@ -50,4 +50,4 @@ vertexes
 Number of vertex emissions needed by the generated triangle strips.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L37)

@@ -11,8 +11,8 @@ Reachable from entry: **no**
 - `mq3/platform/win_headers.ml` as `winHeaders` → [src/mq3/platform/win_headers.ml](File-src-mq3-platform-win-headers-ml-1370828404.md)
 - `mq3/platform/win_qgl_runtime.ml` as `winQgl` → [src/mq3/platform/win_qgl_runtime.ml](File-src-mq3-platform-win-qgl-runtime-ml-1575058175.md)
 - `mq3/renderer/qgl.ml` as `qgl` → [src/mq3/renderer/qgl.ml](File-src-mq3-renderer-qgl-ml-2071350969.md)
-- `std/array.ml` as `arrays` → `../MiniLangCompilerML/std/array.ml` — external dependency
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/array.ml` as `arrays` → `../../a7594a0c0299/MiniLangCompilerML/std/array.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -26,7 +26,7 @@ function create()
 Constructs `mq3.platform.win_glimp_runtime.Runtime` with `osSupported` = `true`, `driverLoaded` = `false`, `windowCreated` = `false`, `contextCreated` = `false` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L132)
 
 - [mq3.platform.win_glimp_runtime.Extensions](Type-mq3-platform-win-glimp-runtime-extensions-306663490.md) — struct
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-endframe-function-glimp-endframe-state-drawbuffer-src-mq3-platform-win-glimp-runtime-ml-1309183397"></a>
@@ -44,7 +44,7 @@ Updates `state.swaps` in `mq3.platform.win_glimp_runtime.GLimp_EndFrame`; return
 | `drawBuffer` | `dynamic` | — | Input tested by `state.active and drawBuffer!="GL_FRONT"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L292)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-frontendsleep-function-glimp-frontendsleep-state-src-mq3-platform-win-glimp-runtime-ml-747004283"></a>
 ### GLimp_FrontEndSleep
@@ -60,7 +60,7 @@ Computes `state.renderCompleted` for `mq3.platform.win_glimp_runtime.GLimp_Front
 | `state` | `dynamic` | — | Record providing `state.renderCompleted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L312)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-init-function-glimp-init-state-platform-major-driver-modes-mode-extensiontext-src-mq3-platform-win-glimp-runtime-ml-1879999656"></a>
 ### GLimp_Init
@@ -82,7 +82,7 @@ Updates `state.osSupported`, `state.active` in `mq3.platform.win_glimp_runtime.G
 | `extensionText` | `dynamic` | — | Value forwarded as `text` to `mq3.platform.win_glimp_runtime.GLW_InitExtensions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L285)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-logcomment-function-glimp-logcomment-state-comment-src-mq3-platform-win-glimp-runtime-ml-1388687776"></a>
 ### GLimp_LogComment
@@ -99,7 +99,7 @@ Updates `state.logs` in `mq3.platform.win_glimp_runtime.GLimp_LogComment`.
 | `comment` | `dynamic` | — | Input used by `state.logs=state.logs+[comment]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L299)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-renderersleep-function-glimp-renderersleep-state-src-mq3-platform-win-glimp-runtime-ml-1488759829"></a>
 ### GLimp_RendererSleep
@@ -115,7 +115,7 @@ Updates `state.renderCompleted`, `state.renderCommands` in `mq3.platform.win_gli
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.renderCompleted`, `state.renderCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L309)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-renderthreadwrapper-function-glimp-renderthreadwrapper-state-src-mq3-platform-win-glimp-runtime-ml-1125637871"></a>
 ### GLimp_RenderThreadWrapper
@@ -131,7 +131,7 @@ Updates `state.renderCommands`, `state.renderCompleted` in `mq3.platform.win_gli
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.renderCommands`, `state.renderCompleted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L302)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-shutdown-function-glimp-shutdown-state-src-mq3-platform-win-glimp-runtime-ml-1067440365"></a>
 ### GLimp_Shutdown
@@ -147,7 +147,7 @@ Updates `state.contextCreated`, `state.windowCreated`, `state.driverLoaded`, `st
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.contextCreated`, `state.windowCreated`, `state.driverLoaded`, `state.active`, `state.displayChanged`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L295)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-spawnrenderthread-function-glimp-spawnrenderthread-state-enabled-src-mq3-platform-win-glimp-runtime-ml-1852302926"></a>
 ### GLimp_SpawnRenderThread
@@ -164,7 +164,7 @@ Updates `state.rendererThread`, `state.renderCompleted` in `mq3.platform.win_gli
 | `enabled` | `dynamic` | — | Value assigned to `state.rendererThread`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L306)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glimp-wakerenderer-function-glimp-wakerenderer-state-data-src-mq3-platform-win-glimp-runtime-ml-128472505"></a>
 ### GLimp_WakeRenderer
@@ -181,7 +181,7 @@ Updates `state.renderCommands`, `state.renderCompleted` in `mq3.platform.win_gli
 | `data` | `dynamic` | — | Input used by `state.renderCommands=state.renderCommands+[data]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L316)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-checkosversion-function-glw-checkosversion-platform-major-src-mq3-platform-win-glimp-runtime-ml-467845882"></a>
 ### GLW_CheckOSVersion
@@ -198,7 +198,7 @@ Computes `platform==2 and major>=4` for `mq3.platform.win_glimp_runtime.GLW_Chec
 | `major` | `dynamic` | — | Input used in the result expression `platform==2 and major>=4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L256)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-choosepfd-function-glw-choosepfd-candidates-desired-allowsoftware-src-mq3-platform-win-glimp-runtime-ml-898147470"></a>
 ### GLW_ChoosePFD
@@ -216,7 +216,7 @@ Computes `GLW_ChoosePFD` from `best.index` using `mq3.platform.win_glimp_runtime
 | `allowSoftware` | `dynamic` | — | Value forwarded as `allowSoftware` to `mq3.platform.win_glimp_runtime.pfdUsable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L157)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-createpfd-function-glw-createpfd-colorbits-depthbits-stencilbits-stereo-src-mq3-platform-win-glimp-runtime-ml-1755742956"></a>
 ### GLW_CreatePFD
@@ -235,7 +235,7 @@ Builds `mq3.platform.win_glimp_runtime.PFD` for `mq3.platform.win_glimp_runtime.
 | `stereo` | `dynamic` | — | Input tested by `stereo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L140)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-createwindow-function-glw-createwindow-state-driver-width-height-colorbits-fullscreen-src-mq3-platform-win-glimp-runtime-ml-226654022"></a>
 ### GLW_CreateWindow
@@ -256,7 +256,7 @@ Updates `state.windowCreated`, `state.fullscreen`, `state.mode.width`, `state.mo
 | `fullscreen` | `dynamic` | — | Value assigned to `state.fullscreen`, `state.mode.fullscreen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L204)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-initdriver-function-glw-initdriver-state-driver-colorbits-depthbits-stencilbits-stereo-hostok-src-mq3-platform-win-glimp-runtime-ml-104548985"></a>
 ### GLW_InitDriver
@@ -278,7 +278,7 @@ Computes `GLW_InitDriver` from `result==TRY_PFD_SUCCESS` using `mq3.platform.win
 | `hostOk` | `dynamic` | — | Input tested by `not hostOk`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L192)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-initextensions-function-glw-initextensions-state-text-allowextensions-src-mq3-platform-win-glimp-runtime-ml-1415398701"></a>
 ### GLW_InitExtensions
@@ -296,7 +296,7 @@ Updates `state.extensionText`, `state.extensions.textureCompression`, `state.ext
 | `allowExtensions` | `dynamic` | — | Input tested by `not allowExtensions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L245)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-loadopengl-function-glw-loadopengl-state-driver-loadsucceeded-modes-mode-colorbits-fullscreen-src-mq3-platform-win-glimp-runtime-ml-1785288667"></a>
 ### GLW_LoadOpenGL
@@ -318,7 +318,7 @@ Updates `state.driverLoaded`, `state.glwState.hinstOpenGL` in `mq3.platform.win_
 | `fullscreen` | `dynamic` | — | Value forwarded as `fullscreen` to `mq3.platform.win_glimp_runtime.GLW_StartDriverAndSetMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L265)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-makecontext-function-glw-makecontext-state-pfd-choosesucceeded-setsucceeded-createsucceeded-makecurrentsucceeded-src-mq3-platform-win-glimp-runtime-ml-780480053"></a>
 ### GLW_MakeContext
@@ -339,7 +339,7 @@ Updates `state.pfd`, `state.contextCreated` in `mq3.platform.win_glimp_runtime.G
 | `makeCurrentSucceeded` | `dynamic` | — | Input tested by `not makeCurrentSucceeded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L177)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-setmode-function-glw-setmode-state-driver-mode-colorbits-fullscreen-modes-displayaccepted-src-mq3-platform-win-glimp-runtime-ml-1916740021"></a>
 ### GLW_SetMode
@@ -361,7 +361,7 @@ Updates `state.mode`, `state.displayChanged` in `mq3.platform.win_glimp_runtime.
 | `displayAccepted` | `dynamic` | — | Input tested by `fullscreen and not displayAccepted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L222)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-startdriverandsetmode-function-glw-startdriverandsetmode-state-driver-mode-colorbits-fullscreen-modes-displayaccepted-src-mq3-platform-win-glimp-runtime-ml-1734195931"></a>
 ### GLW_StartDriverAndSetMode
@@ -383,7 +383,7 @@ Computes `GLW_SetMode(state,driver,mode,colorbits,fullscreen,modes,displayAccept
 | `displayAccepted` | `dynamic` | — | Value forwarded as `displayAccepted` to `mq3.platform.win_glimp_runtime.GLW_SetMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L236)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-glw-startopengl-function-glw-startopengl-state-driver-modes-mode-src-mq3-platform-win-glimp-runtime-ml-570450280"></a>
 ### GLW_StartOpenGL
@@ -402,7 +402,7 @@ Calls `mq3.platform.win_glimp_runtime.GLW_LoadOpenGL` with `(state,driver,true,m
 | `mode` | `dynamic` | — | Value forwarded as `mode` to `mq3.platform.win_glimp_runtime.GLW_LoadOpenGL`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L276)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-hasextension-function-hasextension-text-name-src-mq3-platform-win-glimp-runtime-ml-536428202"></a>
 ### hasExtension
@@ -419,7 +419,7 @@ Returns `strings.contains(padded," "+name+" ")` from `mq3.platform.win_glimp_run
 | `name` | `dynamic` | — | Input used in the result expression `strings.contains(padded," "+name+" ")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L240)
 
 - [mq3.platform.win_glimp_runtime.Mode](Type-mq3-platform-win-glimp-runtime-mode-524687211.md) — struct
 - [mq3.platform.win_glimp_runtime.PFD](Type-mq3-platform-win-glimp-runtime-pfd-111715386.md) — struct
@@ -433,7 +433,7 @@ const PFD_DOUBLEBUFFER = 1
 Windows pixel-format flag requesting front and back buffers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L26)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-pfd-draw-to-window-const-pfd-draw-to-window-4-src-mq3-platform-win-glimp-runtime-ml-1222760651"></a>
 ### PFD_DRAW_TO_WINDOW
@@ -445,7 +445,7 @@ const PFD_DRAW_TO_WINDOW = 4
 Windows pixel-format flag permitting rendering to a window.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L30)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-pfd-generic-format-const-pfd-generic-format-64-src-mq3-platform-win-glimp-runtime-ml-200095045"></a>
 ### PFD_GENERIC_FORMAT
@@ -457,7 +457,7 @@ const PFD_GENERIC_FORMAT = 64
 Windows pixel-format flag identifying the generic software implementation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L34)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-pfd-stereo-const-pfd-stereo-2-src-mq3-platform-win-glimp-runtime-ml-1450618003"></a>
 ### PFD_STEREO
@@ -469,7 +469,7 @@ const PFD_STEREO = 2
 Windows pixel-format flag requesting stereo drawing buffers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-pfd-support-opengl-const-pfd-support-opengl-32-src-mq3-platform-win-glimp-runtime-ml-390197742"></a>
 ### PFD_SUPPORT_OPENGL
@@ -481,7 +481,7 @@ const PFD_SUPPORT_OPENGL = 32
 Windows pixel-format flag indicating OpenGL support.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L32)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-pfd-type-rgba-const-pfd-type-rgba-0-src-mq3-platform-win-glimp-runtime-ml-994643549"></a>
 ### PFD_TYPE_RGBA
@@ -493,7 +493,7 @@ const PFD_TYPE_RGBA = 0
 Windows pixel-format selector for RGBA color pixels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L36)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-pfdusable-function-pfdusable-value-desired-allowsoftware-src-mq3-platform-win-glimp-runtime-ml-14889091"></a>
 ### pfdUsable
@@ -511,7 +511,7 @@ Checks pixel type, required flags, depth/stencil precision, and software-rendere
 | `allowSoftware` | `dynamic` | — | Input tested by `not allowSoftware and (value.flags&PFD_GENERIC_FORMAT)!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L148)
 
 <a id="function-function-mq3-platform-win-glimp-runtime-printcdserror-function-printcdserror-value-src-mq3-platform-win-glimp-runtime-ml-1161077183"></a>
 ### PrintCDSError
@@ -527,7 +527,7 @@ Computes `PrintCDSError` from `"unknown error"`.
 | `value` | `dynamic` | — | Input tested by `value==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L210)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-rserr-invalid-fullscreen-const-rserr-invalid-fullscreen-1-src-mq3-platform-win-glimp-runtime-ml-147569856"></a>
 ### RSERR_INVALID_FULLSCREEN
@@ -539,7 +539,7 @@ const RSERR_INVALID_FULLSCREEN = 1
 Graphics-mode result indicating that the requested fullscreen mode is unavailable.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L14)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-rserr-invalid-mode-const-rserr-invalid-mode-2-src-mq3-platform-win-glimp-runtime-ml-2070144345"></a>
 ### RSERR_INVALID_MODE
@@ -551,7 +551,7 @@ const RSERR_INVALID_MODE = 2
 Graphics-mode result indicating that the requested display mode is invalid.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L16)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-rserr-ok-const-rserr-ok-0-src-mq3-platform-win-glimp-runtime-ml-1658772373"></a>
 ### RSERR_OK
@@ -563,7 +563,7 @@ const RSERR_OK = 0
 Graphics-mode result indicating successful initialization.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L12)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-rserr-unknown-const-rserr-unknown-3-src-mq3-platform-win-glimp-runtime-ml-1361529200"></a>
 ### RSERR_UNKNOWN
@@ -575,7 +575,7 @@ const RSERR_UNKNOWN = 3
 Graphics-mode result indicating an unclassified initialization failure.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L18)
 
 - [mq3.platform.win_glimp_runtime.Runtime](Type-mq3-platform-win-glimp-runtime-runtime-1470693324.md) — struct
 <a id="constant-constant-mq3-platform-win-glimp-runtime-try-pfd-fail-hard-const-try-pfd-fail-hard-2-src-mq3-platform-win-glimp-runtime-ml-1811278703"></a>
@@ -588,7 +588,7 @@ const TRY_PFD_FAIL_HARD = 2
 Pixel-format failure requiring the current context-initialization attempt to stop.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L24)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-try-pfd-fail-soft-const-try-pfd-fail-soft-1-src-mq3-platform-win-glimp-runtime-ml-2056490114"></a>
 ### TRY_PFD_FAIL_SOFT
@@ -600,7 +600,7 @@ const TRY_PFD_FAIL_SOFT = 1
 Pixel-format failure allowing another candidate format to be tried.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L22)
 
 <a id="constant-constant-mq3-platform-win-glimp-runtime-try-pfd-success-const-try-pfd-success-0-src-mq3-platform-win-glimp-runtime-ml-1144451121"></a>
 ### TRY_PFD_SUCCESS
@@ -612,4 +612,4 @@ const TRY_PFD_SUCCESS = 0
 Pixel-format selection result indicating success.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L20)

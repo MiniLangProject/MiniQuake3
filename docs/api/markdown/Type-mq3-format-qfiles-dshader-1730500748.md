@@ -12,7 +12,7 @@ struct Dshader
 Dshader record for format.qfiles, containing `shader`, `surfaceFlags`, `contentFlags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L468)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L468)
 
 ## Members
 
@@ -26,7 +26,7 @@ contentFlags
 Contents bits describing collision and volume behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L474)
 
 <a id="field-field-mq3-format-qfiles-dshader-shader-shader-src-mq3-format-qfiles-ml-1340835016"></a>
 ### shader
@@ -38,7 +38,7 @@ shader
 Shader name or descriptor associated with this surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L470)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L470)
 
 <a id="field-field-mq3-format-qfiles-dshader-surfaceflags-surfaceflags-src-mq3-format-qfiles-ml-1496987482"></a>
 ### surfaceFlags
@@ -50,4 +50,4 @@ surfaceFlags
 Surface-property flags reported for the intersected surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L472)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L472)

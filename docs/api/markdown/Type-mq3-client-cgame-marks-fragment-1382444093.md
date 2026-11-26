@@ -12,7 +12,7 @@ struct Fragment
 Stores client game marks fragment record, including `points`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L42)
 
 ## Members
 
@@ -26,4 +26,4 @@ points
 When constructing this record, `impactMark` supplies `quad` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L44)

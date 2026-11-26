@@ -12,7 +12,7 @@ struct Surface
 Surface record for collision.world, containing `patch`, `contents`, `flags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L111)
 
 ## Members
 
@@ -26,7 +26,7 @@ contents
 Collision or AAS contents flags describing the represented volume.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L115)
 
 <a id="field-field-mq3-collision-world-surface-flags-flags-src-mq3-collision-world-ml-1969847770"></a>
 ### flags
@@ -38,7 +38,7 @@ flags
 Surface-property flags returned when this surface is hit.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L117)
 
 <a id="field-field-mq3-collision-world-surface-patch-patch-src-mq3-collision-world-ml-211908322"></a>
 ### patch
@@ -50,4 +50,4 @@ patch
 Patch-collision mesh associated with the surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/world.ml#L113)

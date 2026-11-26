@@ -12,7 +12,7 @@ struct EntityInfo
 `EntityInfo` record for bot combat ai, containing `number`, `powerups` and `flags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L116)
 
 ## Members
 
@@ -26,7 +26,7 @@ flags
 Entity-flag mask supplied by the tracked game or botlib entity state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L122)
 
 <a id="field-field-mq3-game-bot-combat-ai-entityinfo-number-number-src-mq3-game-bot-combat-ai-ml-714897256"></a>
 ### number
@@ -38,7 +38,7 @@ number
 Entity number identifying the tracked game object.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L118)
 
 <a id="field-field-mq3-game-bot-combat-ai-entityinfo-powerups-powerups-src-mq3-game-bot-combat-ai-ml-1981535644"></a>
 ### powerups
@@ -50,4 +50,4 @@ powerups
 Powerup state or expiration values indexed by PW_* identifiers.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L120)

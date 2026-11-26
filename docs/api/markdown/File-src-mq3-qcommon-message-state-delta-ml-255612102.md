@@ -30,7 +30,7 @@ Compute array mask in qcommon.message_state_delta; the normal completion returns
 | `fromValues` | `dynamic` | — | From values used in `fromValues[index]` and `(toValues[index] != fromValues[index])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L134)
 
 <a id="function-function-mq3-qcommon-message-state-delta-entitybits-function-entitybits-src-mq3-qcommon-message-state-delta-ml-883657394"></a>
 ### entityBits
@@ -42,7 +42,7 @@ function entityBits()
 Compute qcommon.message_state_delta.entityBits as `[32, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 8, 8, 8, 8, 10, 8, 19, 10, 8, 8, 0, 32, 8, 0, 0, 0, 24, 16, 8, 10, 8, 8, 0, 0, 0, 8, 0, 32, 32, 32, 0, 0, 0, 0, 32, 0, 0, 0, 32, 16]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L22)
 
 <a id="function-function-mq3-qcommon-message-state-delta-entitydata-function-entitydata-state-src-mq3-qcommon-message-state-delta-ml-109694951"></a>
 ### entityData
@@ -58,7 +58,7 @@ Return `mq3.qcommon.message_state_delta.stateData(entitystate.words(state), enti
 | `state` | `dynamic` | — | State passed as `state` to `mq3.game.entitystate.words`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L39)
 
 <a id="function-function-mq3-qcommon-message-state-delta-entityoffsets-function-entityoffsets-src-mq3-qcommon-message-state-delta-ml-143023600"></a>
 ### entityOffsets
@@ -70,7 +70,7 @@ function entityOffsets()
 Struct byte offsets in the exact, deliberately hand-tuned wire order of msg.c.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L20)
 
 <a id="constant-constant-mq3-qcommon-message-state-delta-float-int-bias-const-float-int-bias-4096-src-mq3-qcommon-message-state-delta-ml-12164716"></a>
 ### FLOAT_INT_BIAS
@@ -82,7 +82,7 @@ const FLOAT_INT_BIAS = 4096
 Bias added to signed integer-like floats before compact delta encoding.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L17)
 
 <a id="constant-constant-mq3-qcommon-message-state-delta-float-int-bits-const-float-int-bits-13-src-mq3-qcommon-message-state-delta-ml-1381317251"></a>
 ### FLOAT_INT_BITS
@@ -94,7 +94,7 @@ const FLOAT_INT_BITS = 13
 Number of payload bits used when a delta-compressed float is represented as an integer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L15)
 
 <a id="constant-constant-mq3-qcommon-message-state-delta-gentitynum-bits-const-gentitynum-bits-10-src-mq3-qcommon-message-state-delta-ml-2034970216"></a>
 ### GENTITYNUM_BITS
@@ -106,7 +106,7 @@ const GENTITYNUM_BITS = 10
 Don't need to send any more.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L11)
 
 <a id="constant-constant-mq3-qcommon-message-state-delta-max-gentities-const-max-gentities-1024-src-mq3-qcommon-message-state-delta-ml-697810970"></a>
 ### MAX_GENTITIES
@@ -118,7 +118,7 @@ const MAX_GENTITIES = 1024
 Maximum number of addressable game-entity slots.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L13)
 
 <a id="function-function-mq3-qcommon-message-state-delta-playerbits-function-playerbits-src-mq3-qcommon-message-state-delta-ml-349273486"></a>
 ### playerBits
@@ -130,7 +130,7 @@ function playerBits()
 Compute qcommon.message_state_delta.playerBits as `[32, 0, 0, 8, 0, 0, 0, 0, - 16, 0, 0, 8, - 16, 16, 8, 4, 8, 8, 8, 16, 10, 4, 16, 10, 16, 16, 16, 8, - 8, 8, 8, 8, 8, 8, 8, 16, 16, 12, 8, 8, 8, 5, 0, 0, 0, 0, 10, 16]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L26)
 
 <a id="function-function-mq3-qcommon-message-state-delta-playerdata-function-playerdata-state-src-mq3-qcommon-message-state-delta-ml-7468883"></a>
 ### playerData
@@ -146,7 +146,7 @@ Return `mq3.qcommon.message_state_delta.stateData(playerstate.words(state), play
 | `state` | `dynamic` | — | Ps passed as `ps` to `mq3.game.playerstate.words`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L42)
 
 <a id="function-function-mq3-qcommon-message-state-delta-playeroffsets-function-playeroffsets-src-mq3-qcommon-message-state-delta-ml-1910777500"></a>
 ### playerOffsets
@@ -158,7 +158,7 @@ function playerOffsets()
 Compute qcommon.message_state_delta.playerOffsets as `[0, 20, 24, 8, 32, 36, 156, 152, 44, 28, 40, 72, 16, 108, 84, 88, 112, 76, 116, 12, 68, 148, 104, 128, 48, 52, 60, 132, 164, 168, 172, 176, 180, 440, 4, 56, 64, 80, 120, 124, 140, 144, 160, 92, 96, 100, 448, 444]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L24)
 
 <a id="function-function-mq3-qcommon-message-state-delta-readdeltaentity-function-readdeltaentity-msg-basestate-number-src-mq3-qcommon-message-state-delta-ml-1267940896"></a>
 ### readDeltaEntity
@@ -176,7 +176,7 @@ The entity number has already been consumed, as in MSG_ReadDeltaEntity.
 | `number` | `dynamic` | — | Number used in `(number < 0)` and `(number >= MAX_GENTITIES)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L109)
 
 <a id="function-function-mq3-qcommon-message-state-delta-readdeltaplayerstate-function-readdeltaplayerstate-msg-basestate-src-mq3-qcommon-message-state-delta-ml-2025929015"></a>
 ### readDeltaPlayerstate
@@ -195,7 +195,7 @@ Validation failures include `message delta: bad player field count`.
 | `baseState` | `dynamic` | — | State passed as `state` to `mq3.qcommon.message_state_delta.playerData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L204)
 
 <a id="function-function-mq3-qcommon-message-state-delta-readfloat-function-readfloat-msg-allowzero-src-mq3-qcommon-message-state-delta-ml-1923554854"></a>
 ### readFloat
@@ -212,7 +212,7 @@ Read float in qcommon.message_state_delta; the normal completion returns `messag
 | `allowZero` | `dynamic` | — | Allow zero used in `(allowZero and (message.readBits(msg, 1) == 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L65)
 
 <a id="function-function-mq3-qcommon-message-state-delta-readshortarray-function-readshortarray-msg-values-src-mq3-qcommon-message-state-delta-ml-384364997"></a>
 ### readShortArray
@@ -231,7 +231,7 @@ Direct state writes: `values elements`.
 | `values` | `dynamic` | — | Mutable sequence written at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L193)
 
 <a id="function-function-mq3-qcommon-message-state-delta-statedata-function-statedata-words-size-src-mq3-qcommon-message-state-delta-ml-1614670192"></a>
 ### stateData
@@ -248,7 +248,7 @@ Compute state data in qcommon.message_state_delta; the normal completion returns
 | `size` | `dynamic` | — | Size used in `bytes(size, 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L31)
 
 <a id="function-function-mq3-qcommon-message-state-delta-writedeltaentity-function-writedeltaentity-msg-basestate-nextstate-force-src-mq3-qcommon-message-state-delta-ml-454087322"></a>
 ### writeDeltaEntity
@@ -267,7 +267,7 @@ Returns true when a record was emitted. A void `nextState` emits a remove record
 | `force` | `dynamic` | — | Force operand used by `writeDeltaEntity`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L76)
 
 <a id="function-function-mq3-qcommon-message-state-delta-writedeltaplayerstate-function-writedeltaplayerstate-msg-basestate-nextstate-src-mq3-qcommon-message-state-delta-ml-808497309"></a>
 ### writeDeltaPlayerstate
@@ -287,7 +287,7 @@ Validation failures include `message delta: missing playerstate`.
 | `nextState` | `dynamic` | — | Record exposing `stats`, `persistant`, `ammo`, `powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L156)
 
 <a id="function-function-mq3-qcommon-message-state-delta-writefloat-function-writefloat-msg-raw-allowzero-src-mq3-qcommon-message-state-delta-ml-1849026338"></a>
 ### writeFloat
@@ -305,7 +305,7 @@ Write float in qcommon.message_state_delta.
 | `allowZero` | `dynamic` | — | Allow zero operand used by `writeFloat`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L48)
 
 <a id="function-function-mq3-qcommon-message-state-delta-writeshortarray-function-writeshortarray-msg-mask-values-src-mq3-qcommon-message-state-delta-ml-320522645"></a>
 ### writeShortArray
@@ -323,4 +323,4 @@ Write short array in qcommon.message_state_delta.
 | `values` | `dynamic` | — | Values used in `values[index]` and `message.writeShort(msg, values[index])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_state_delta.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/message_state_delta.ml#L144)

@@ -12,7 +12,7 @@ struct RealTimeValue
 RealTimeValue record for vm.cgame_misc_traps, containing `epoch`, `data`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
 
 ## Members
 
@@ -26,7 +26,7 @@ data
 Packed qtime ABI fields accompanying the epoch return value.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L20)
 
 <a id="field-field-mq3-vm-cgame-misc-traps-realtimevalue-epoch-epoch-src-mq3-vm-cgame-misc-traps-ml-986672303"></a>
 ### epoch
@@ -38,4 +38,4 @@ epoch
 Calendar time represented as the epoch value returned by the host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L18)

@@ -12,7 +12,7 @@ struct Submission
 Data record for `mq3.renderer.surface_trails.Submission`; groups `vertices`, `indexes`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L20)
 
 ## Members
 
@@ -26,7 +26,7 @@ indexes
 Triangle indices joining the generated rail-trail vertices.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L24)
 
 <a id="field-field-mq3-renderer-surface-trails-submission-vertices-vertices-src-mq3-renderer-surface-trails-ml-1126531515"></a>
 ### vertices
@@ -38,4 +38,4 @@ vertices
 Generated vertex records forming the rail-trail geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L22)

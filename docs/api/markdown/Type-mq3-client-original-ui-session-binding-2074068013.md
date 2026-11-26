@@ -12,7 +12,7 @@ struct Binding
 Stores original UI session binding record, including `virtualKey`, `quakeKey`, `normalChar`, `shiftedChar`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L112)
 
 ## Members
 
@@ -26,7 +26,7 @@ normalChar
 When constructing this record, `binding` supplies `normalChar` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L118)
 
 <a id="field-field-mq3-client-original-ui-session-binding-quakekey-quakekey-src-mq3-client-original-ui-session-ml-63344524"></a>
 ### quakeKey
@@ -38,7 +38,7 @@ quakeKey
 When constructing this record, `binding` supplies `quakeKey` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L116)
 
 <a id="field-field-mq3-client-original-ui-session-binding-shiftedchar-shiftedchar-src-mq3-client-original-ui-session-ml-2110615100"></a>
 ### shiftedChar
@@ -50,7 +50,7 @@ shiftedChar
 When constructing this record, `binding` supplies `shiftedChar` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L120)
 
 <a id="field-field-mq3-client-original-ui-session-binding-virtualkey-virtualkey-src-mq3-client-original-ui-session-ml-639550284"></a>
 ### virtualKey
@@ -62,4 +62,4 @@ virtualKey
 When constructing this record, `binding` supplies `virtualKey` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L114)

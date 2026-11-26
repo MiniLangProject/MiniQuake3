@@ -38,7 +38,7 @@ Forward `AddRemap` to `mq3.game.targets.addRemap` and return the delegated resul
 | `timeOffset` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L75)
 
 <a id="function-function-mq3-game-g-utils-buildshaderstateconfig-function-buildshaderstateconfig-level-src-mq3-game-g-utils-ml-2062757494"></a>
 ### BuildShaderStateConfig
@@ -54,7 +54,7 @@ Forward `BuildShaderStateConfig` to `mq3.game.targets.shaderState` and return th
 | `level` | `dynamic` | — | Game-level state; accesses `shaderRemaps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L81)
 
 <a id="function-function-mq3-game-g-utils-debugline-function-debugline-start-finish-color-createfn-context-src-mq3-game-g-utils-ml-972891297"></a>
 ### DebugLine
@@ -74,7 +74,7 @@ Apply `mq3.game.movement.copy` while evaluating `DebugLine`. Return paths includ
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L294)
 
 <a id="function-function-mq3-game-g-utils-g-addevent-function-g-addevent-level-ent-event-eventparm-src-mq3-game-g-utils-ml-1929994329"></a>
 ### G_AddEvent
@@ -93,7 +93,7 @@ Apply `mq3.game.entities.diagnostic` and `mq3.game.events.add` while evaluating 
 | `eventParm` | `dynamic` | — | Integer parameter stored alongside the player event. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L264)
 
 <a id="function-function-mq3-game-g-utils-g-addpredictableevent-function-g-addpredictableevent-level-ent-event-eventparm-src-mq3-game-g-utils-ml-861888125"></a>
 ### G_AddPredictableEvent
@@ -112,7 +112,7 @@ Append a predictable event and parameter to the client player-state ring and inc
 | `eventParm` | `dynamic` | — | Integer parameter stored alongside the player event. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L251)
 
 <a id="function-function-mq3-game-g-utils-g-entitiesfree-function-g-entitiesfree-level-src-mq3-game-g-utils-ml-1604907658"></a>
 ### G_EntitiesFree
@@ -128,7 +128,7 @@ Forward `G_EntitiesFree` to `mq3.game.entities.entitiesFree` and return the dele
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L220)
 
 <a id="function-function-mq3-game-g-utils-g-find-function-g-find-level-cursor-field-match-src-mq3-game-g-utils-ml-2080849275"></a>
 ### G_Find
@@ -147,7 +147,7 @@ Apply `mq3.game.g_utils.namesEqual` and `mq3.game.g_utils.stringField` while eva
 | `match` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L138)
 
 <a id="function-function-mq3-game-g-utils-g-findconfigstringindex-function-g-findconfigstringindex-level-name-start-max-create-src-mq3-game-g-utils-ml-1675771825"></a>
 ### G_FindConfigstringIndex
@@ -167,7 +167,7 @@ Forward `G_FindConfigstringIndex` to `mq3.game.spawn_values.configIndex` and ret
 | `create` | `dynamic` | — | Value used by `configIndex` in `if not create then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L91)
 
 <a id="function-function-mq3-game-g-utils-g-freeentity-function-g-freeentity-level-ent-src-mq3-game-g-utils-ml-1721762751"></a>
 ### G_FreeEntity
@@ -184,7 +184,7 @@ Forward `G_FreeEntity` to `mq3.game.entities.free` and return the delegated resu
 | `ent` | `dynamic` | — | Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `ent.r`, `ent.s` and `ent.client` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L227)
 
 <a id="function-function-mq3-game-g-utils-g-initgentity-function-g-initgentity-ent-src-mq3-game-g-utils-ml-1722090267"></a>
 ### G_InitGentity
@@ -200,7 +200,7 @@ Forward `G_InitGentity` to `mq3.game.entities.initEntity` and return the delegat
 | `ent` | `dynamic` | — | Game entity; accesses `inuse`, `classname`, `s`, `slot` and `r`. May update `ent.inuse`, `ent.classname` and `ent.s.number` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L208)
 
 <a id="function-function-mq3-game-g-utils-g-killbox-function-g-killbox-level-ent-src-mq3-game-g-utils-ml-1783476369"></a>
 ### G_KillBox
@@ -217,7 +217,7 @@ Forward `G_KillBox` to `mq3.game.teleport.killBox` and return the delegated resu
 | `ent` | `dynamic` | — | Game entity; accesses `client` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L242)
 
 <a id="function-function-mq3-game-g-utils-g-modelindex-function-g-modelindex-level-name-src-mq3-game-g-utils-ml-2132885939"></a>
 ### G_ModelIndex
@@ -234,7 +234,7 @@ Forward `G_ModelIndex` to `mq3.game.spawn_values.modelIndex` and return the dele
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L98)
 
 <a id="function-function-mq3-game-g-utils-g-picktarget-function-g-picktarget-level-targetname-src-mq3-game-g-utils-ml-84911592"></a>
 ### G_PickTarget
@@ -251,7 +251,7 @@ Forward `G_PickTarget` to `mq3.game.entities.pickTarget` and return the delegate
 | `targetname` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L154)
 
 <a id="function-function-mq3-game-g-utils-g-setmovedir-function-g-setmovedir-angles-movedir-src-mq3-game-g-utils-ml-880358044"></a>
 ### G_SetMovedir
@@ -268,7 +268,7 @@ Set `movedir[axis]` to `result[axis]` and `angles[axis]` to `0.0` in `mq3.game.g
 | `movedir` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L186)
 
 <a id="function-function-mq3-game-g-utils-g-setorigin-function-g-setorigin-ent-origin-src-mq3-game-g-utils-ml-282054333"></a>
 ### G_SetOrigin
@@ -285,7 +285,7 @@ Forward `G_SetOrigin` to `mq3.game.entities.setOrigin` and return the delegated 
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L284)
 
 <a id="function-function-mq3-game-g-utils-g-sound-function-g-sound-level-ent-channel-soundindex-src-mq3-game-g-utils-ml-17020299"></a>
 ### G_Sound
@@ -304,7 +304,7 @@ Forward `G_Sound` to `mq3.game.events.sound` and return the delegated result.
 | `soundIndex` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L277)
 
 <a id="function-function-mq3-game-g-utils-g-soundindex-function-g-soundindex-level-name-src-mq3-game-g-utils-ml-1386850935"></a>
 ### G_SoundIndex
@@ -321,7 +321,7 @@ Forward `G_SoundIndex` to `mq3.game.spawn_values.soundIndex` and return the dele
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L105)
 
 <a id="function-function-mq3-game-g-utils-g-spawn-function-g-spawn-level-src-mq3-game-g-utils-ml-488110004"></a>
 ### G_Spawn
@@ -337,7 +337,7 @@ Forward `G_Spawn` to `mq3.game.entities.spawn` and return the delegated result.
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities`, `startTime` and `time`. May update `level.num_entities` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L214)
 
 <a id="function-function-mq3-game-g-utils-g-teamcommand-function-g-teamcommand-level-team-cmd-src-mq3-game-g-utils-ml-591989161"></a>
 ### G_TeamCommand
@@ -355,7 +355,7 @@ Use `level.serverCommandFn` to perform `G_TeamCommand`.
 | `cmd` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L113)
 
 <a id="function-function-mq3-game-g-utils-g-tempentity-function-g-tempentity-level-origin-event-src-mq3-game-g-utils-ml-353618446"></a>
 ### G_TempEntity
@@ -373,7 +373,7 @@ Forward `G_TempEntity` to `mq3.game.entities.tempEntity` and return the delegate
 | `event` | `dynamic` | — | Player or entity event identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L235)
 
 <a id="function-function-mq3-game-g-utils-g-usetargets-function-g-usetargets-level-ent-activator-src-mq3-game-g-utils-ml-208348862"></a>
 ### G_UseTargets
@@ -391,7 +391,7 @@ Forward `G_UseTargets` to `mq3.game.targets.useTargets` and return the delegated
 | `activator` | `dynamic` | — | Entity responsible for activating the target. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L162)
 
 <a id="constant-constant-mq3-game-g-utils-maxchoices-const-maxchoices-32-src-mq3-game-g-utils-ml-649767850"></a>
 ### MAXCHOICES
@@ -403,7 +403,7 @@ const MAXCHOICES = 32
 Maximum number of candidate choices collected before a random selection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L18)
 
 <a id="function-function-mq3-game-g-utils-namesequal-function-namesequal-first-second-src-mq3-game-g-utils-ml-1677218458"></a>
 ### namesEqual
@@ -420,7 +420,7 @@ Apply `mq3.game.g_utils.nativeText` while evaluating `namesEqual`.
 | `second` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L35)
 
 <a id="function-function-mq3-game-g-utils-nativetext-function-nativetext-text-src-mq3-game-g-utils-ml-2005247959"></a>
 ### nativeText
@@ -436,7 +436,7 @@ Read a native string through its first zero byte and reject non-string values wh
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L22)
 
 <a id="function-function-mq3-game-g-utils-stringfield-function-stringfield-ent-field-src-mq3-game-g-utils-ml-1903649065"></a>
 ### stringField
@@ -453,7 +453,7 @@ Select a supported string field from a typed game entity and reject unsupported 
 | `field` | `dynamic` | — | Value used by `stringField` in `switch field`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L55)
 
 <a id="function-function-mq3-game-g-utils-tv-function-tv-x-y-z-src-mq3-game-g-utils-ml-1046810685"></a>
 ### tv
@@ -471,7 +471,7 @@ Return a new array `[n.f32(x),n.f32(y),n.f32(z)]` for `tv`.
 | `z` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L170)
 
 <a id="function-function-mq3-game-g-utils-vectoyaw-function-vectoyaw-vector-src-mq3-game-g-utils-ml-1205583111"></a>
 ### vectoyaw
@@ -487,7 +487,7 @@ Convert the horizontal vector direction to yaw in the nonnegative degree range.
 | `vector` | `dynamic` | — | Array or byte sequence accessed at `1` and `0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L196)
 
 <a id="function-function-mq3-game-g-utils-vtos-function-vtos-level-vector-src-mq3-game-g-utils-ml-959688515"></a>
 ### vtos
@@ -504,4 +504,4 @@ Forward `vtos` to `mq3.game.entities.vtos` and return the delegated result.
 | `vector` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L179)

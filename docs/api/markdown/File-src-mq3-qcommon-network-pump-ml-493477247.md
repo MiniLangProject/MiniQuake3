@@ -31,7 +31,7 @@ Create a nonblocking client/server UDP pump with reusable receive buffers. At le
 | `serverPacketFn` | `dynamic` | — | Optional callback `(context, address, data)` for server-side datagrams. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L60)
 
 <a id="function-function-mq3-qcommon-network-pump-drain-function-drain-runtime-maxpackets-src-mq3-qcommon-network-pump-ml-2080990963"></a>
 ### drain
@@ -48,7 +48,7 @@ Drain currently available datagrams up to an explicit per-frame budget. A zero b
 | `maxPackets` | `dynamic` | — | Maximum number of datagrams to process in this call, not a byte limit. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L108)
 
 <a id="function-function-mq3-qcommon-network-pump-pumponce-function-pumponce-runtime-src-mq3-qcommon-network-pump-ml-271500050"></a>
 ### pumpOnce
@@ -64,7 +64,7 @@ Consume at most one datagram.  When both queues are ready, alternate the first s
 | `runtime` | `dynamic` | — | Nonblocking pump whose next polling side is updated after a successful receive. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L94)
 
 <a id="function-function-mq3-qcommon-network-pump-receiveside-function-receiveside-runtime-side-src-mq3-qcommon-network-pump-ml-1670796535"></a>
 ### receiveSide
@@ -81,7 +81,7 @@ Try to receive one datagram from the selected socket and invoke its optional pac
 | `side` | `dynamic` | — | Endpoint selector, SIDE_CLIENT or SIDE_SERVER. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L72)
 
 - [mq3.qcommon.network_pump.Runtime](Type-mq3-qcommon-network-pump-runtime-1753198241.md) — struct
 <a id="constant-constant-mq3-qcommon-network-pump-side-client-const-side-client-0-src-mq3-qcommon-network-pump-ml-1155793613"></a>
@@ -94,7 +94,7 @@ const SIDE_CLIENT = 0
 Network-pump selector for the client side.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L7)
 
 <a id="constant-constant-mq3-qcommon-network-pump-side-server-const-side-server-1-src-mq3-qcommon-network-pump-ml-2135689626"></a>
 ### SIDE_SERVER
@@ -106,6 +106,6 @@ const SIDE_SERVER = 1
 Network-pump selector for the server side.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L9)
 
 - [mq3.qcommon.network_pump.Step](Type-mq3-qcommon-network-pump-step-1198220221.md) — struct

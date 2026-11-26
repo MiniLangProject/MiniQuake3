@@ -12,7 +12,7 @@ struct Damage
 Stores playable player projectiles damage record, including `targetIndex`, `amount`, `direct`, `killed`, `awardedScore`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L93)
 
 ## Members
 
@@ -26,7 +26,7 @@ amount
 When constructing this record, `applyDamage` supplies `amount` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L97)
 
 <a id="field-field-mq3-client-playable-player-projectiles-damage-awardedscore-awardedscore-src-mq3-client-playable-player-projectiles-ml-1921053180"></a>
 ### awardedScore
@@ -38,7 +38,7 @@ awardedScore
 When constructing this record, `applyDamage` supplies `awarded` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L103)
 
 <a id="field-field-mq3-client-playable-player-projectiles-damage-direct-direct-src-mq3-client-playable-player-projectiles-ml-1660200230"></a>
 ### direct
@@ -50,7 +50,7 @@ direct
 When constructing this record, `applyDamage` supplies `direct` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L99)
 
 <a id="field-field-mq3-client-playable-player-projectiles-damage-killed-killed-src-mq3-client-playable-player-projectiles-ml-234050534"></a>
 ### killed
@@ -62,7 +62,7 @@ killed
 When constructing this record, `applyDamage` supplies `killed` for this member.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L101)
 
 <a id="field-field-mq3-client-playable-player-projectiles-damage-targetindex-targetindex-src-mq3-client-playable-player-projectiles-ml-1427640452"></a>
 ### targetIndex
@@ -74,4 +74,4 @@ targetIndex
 Index identifying the selected target in the owning target collection.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L95)

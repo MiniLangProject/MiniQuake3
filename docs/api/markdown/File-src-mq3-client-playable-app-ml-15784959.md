@@ -68,7 +68,7 @@ Reachable from entry: **yes**
 - `mq3/renderer/player_skins.ml` as `playerSkins` → [src/mq3/renderer/player_skins.ml](File-src-mq3-renderer-player-skins-ml-163797353.md)
 - `mq3/renderer/world_surface_selection.ml` as `worldSelection` → [src/mq3/renderer/world_surface_selection.ml](File-src-mq3-renderer-world-surface-selection-ml-1945526598.md)
 - `mq3/shared/math.ml` as `qmath` → [src/mq3/shared/math.ml](File-src-mq3-shared-math-ml-294597397.md)
-- `std/time.ml` as `time` → `../MiniLangCompilerML/std/time.ml` — external dependency
+- `std/time.ml` as `time` → `../../a7594a0c0299/MiniLangCompilerML/std/time.ml` — external dependency
 
 ## Declarations
 
@@ -87,7 +87,7 @@ Calls `mq3.format.player_animation.samplePlayer`, `mq3.renderer.player_model_ass
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L717)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L717)
 
 <a id="function-function-mq3-client-playable-app-appendskintextures-function-appendskintextures-textures-skin-part-src-mq3-client-playable-app-ml-603126326"></a>
 ### appendSkinTextures
@@ -105,7 +105,7 @@ Calls `mq3.client.playable_app.textureSlotForName`, `mq3.client.playable_app.nex
 | `part` | `dynamic` | — | Value used by `textures=textures+[PlayerTexture(part,binding.surface,binding.imageName,binding.image,slot)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L647)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L647)
 
 <a id="function-function-mq3-client-playable-app-applyselectedweapon-function-applyselectedweapon-inventorystate-weaponstate-playerstate-itemstate-combatstate-src-mq3-client-playable-app-ml-2101830405"></a>
 ### applySelectedWeapon
@@ -125,7 +125,7 @@ Updates `weaponState.ammo`, `playerState.weapon`, `playerState.ammo`, `itemState
 | `combatState` | `dynamic` | — | Mutable playable app record/storage; this routine assigns `combatState.weaponName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L431)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L431)
 
 <a id="function-function-mq3-client-playable-app-archivebytes-function-archivebytes-archive-name-src-mq3-client-playable-app-ml-106071433"></a>
 ### archiveBytes
@@ -142,7 +142,7 @@ Calls `mq3.format.pk3.read` from playable app `archiveBytes`. The final path ret
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable app resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L319)
 
 <a id="function-function-mq3-client-playable-app-archivemodel-function-archivemodel-archive-name-maxtriangles-src-mq3-client-playable-app-ml-50455986"></a>
 ### archiveModel
@@ -160,7 +160,7 @@ Calls `mq3.format.pk3.read`, `mq3.format.md3.load`, `mq3.format.md3.renderTriang
 | `maxTriangles` | `dynamic` | — | Upper bound on emitted render triangles. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L308)
 
 <a id="function-function-mq3-client-playable-app-archiveplayerassets-function-archiveplayerassets-archive-shaderscripts-src-mq3-client-playable-app-ml-1439517895"></a>
 ### archivePlayerAssets
@@ -177,7 +177,7 @@ Calls `mq3.client.playable_app.archiveBytes`, `mq3.renderer.player_model_assembl
 | `shaderScripts` | `dynamic` | — | Value used by `lowerSkin=try(playerSkins.loadResolved(archive,playerSkins.SARGE_LOWER,shaderScripts))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L659)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L659)
 
 <a id="function-function-mq3-client-playable-app-archivesound-function-archivesound-archive-name-src-mq3-client-playable-app-ml-231957685"></a>
 ### archiveSound
@@ -194,7 +194,7 @@ Calls `mq3.format.pk3.read`, `mq3.audio.wav.decode` from playable app `archiveSo
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable app resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L237)
 
 <a id="function-function-mq3-client-playable-app-captureenemypositions-function-captureenemypositions-targetstate-src-mq3-client-playable-app-ml-1992751466"></a>
 ### captureEnemyPositions
@@ -210,7 +210,7 @@ Evaluates playable app `captureEnemyPositions` and returns `result` according to
 | `targetState` | `dynamic` | — | Record read through `targetState.targets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L164)
 
 <a id="function-function-mq3-client-playable-app-collideenemypositions-function-collideenemypositions-world-targetstate-previous-src-mq3-client-playable-app-ml-1639791781"></a>
 ### collideEnemyPositions
@@ -228,7 +228,7 @@ Calls `mq3.client.playable_enemy_movement.moveTarget` from playable app `collide
 | `previous` | `dynamic` | — | Sequence read at `previous[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L186)
 
 <a id="function-function-mq3-client-playable-app-createrendertargets-function-createrendertargets-targetstate-src-mq3-client-playable-app-ml-2026235866"></a>
 ### createRenderTargets
@@ -244,7 +244,7 @@ Calls `mq3.client.playable_target_render.target` from playable app `createRender
 | `targetState` | `dynamic` | — | Record read through `targetState.targets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L858)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L858)
 
 <a id="function-function-mq3-client-playable-app-detailedplayertextureslot-function-detailedplayertextureslot-assets-triangle-src-mq3-client-playable-app-ml-1182518443"></a>
 ### detailedPlayerTextureSlot
@@ -261,7 +261,7 @@ Calls `stringEqualsIgnoreCaseAscii` from playable app `detailedPlayerTextureSlot
 | `triangle` | `dynamic` | — | Record read through `triangle.imageName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L698)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L698)
 
 <a id="function-function-mq3-client-playable-app-digitweapondown-function-digitweapondown-src-mq3-client-playable-app-ml-1540387160"></a>
 ### digitWeaponDown
@@ -273,7 +273,7 @@ function digitWeaponDown()
 Calls `mq3.platform.playable_window.keyDown` from playable app `digitWeaponDown`. The final path returns `0`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L412)
 
 <a id="function-function-mq3-client-playable-app-drawclippeditemtriangles-function-drawclippeditemtriangles-projection-triangles-lightgrid-src-mq3-client-playable-app-ml-2041707728"></a>
 ### drawClippedItemTriangles
@@ -291,7 +291,7 @@ Calls `mq3.renderer.playable_light_grid.entitySample`, `mq3.client.playable_app.
 | `lightGrid` | `dynamic` | — | Value used by `if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L541)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L541)
 
 <a id="function-function-mq3-client-playable-app-drawitemtriangles-function-drawitemtriangles-projection-triangles-lightgrid-src-mq3-client-playable-app-ml-1351745200"></a>
 ### drawItemTriangles
@@ -309,7 +309,7 @@ Calls `mq3.client.playable_viewer.projectPrepared`, `mq3.renderer.playable_light
 | `lightGrid` | `dynamic` | — | Value used by `if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L525)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L525)
 
 <a id="function-function-mq3-client-playable-app-drawmodeltriangle-function-drawmodeltriangle-projection-triangle-red-green-blue-lit-sampled-src-mq3-client-playable-app-ml-458220958"></a>
 ### drawModelTriangle
@@ -331,7 +331,7 @@ Calls `mq3.client.playable_viewer.preparedViewPoint`, `mq3.client.playable_app.m
 | `sampled` | `dynamic` | — | Value used by `if lit then color=modelColor(sampled,triangle.normals[corner]) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L500)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L500)
 
 <a id="function-function-mq3-client-playable-app-drawprojectiletriangles-function-drawprojectiletriangles-projection-triangles-lightgrid-src-mq3-client-playable-app-ml-1168234008"></a>
 ### drawProjectileTriangles
@@ -349,7 +349,7 @@ Calls `mq3.client.playable_viewer.projectPrepared`, `mq3.renderer.playable_light
 | `lightGrid` | `dynamic` | — | Value used by `if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L554)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L554)
 
 <a id="function-function-mq3-client-playable-app-drawtargetweapon-function-drawtargetweapon-projection-itemcatalog-modelassets-index-input-lower-upper-root-show-now-lightgrid-src-mq3-client-playable-app-ml-1894653815"></a>
 ### drawTargetWeapon
@@ -375,7 +375,7 @@ Updates `modelAssets.barrelStates` during playable app `drawTargetWeapon`.
 | `lightGrid` | `dynamic` | — | Value used by `drawn=drawItemTriangles(projection,triangles+barrel,lightGrid)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L754)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L754)
 
 <a id="function-function-mq3-client-playable-app-drawtinteditemtriangles-function-drawtinteditemtriangles-projection-triangles-red-green-blue-src-mq3-client-playable-app-ml-1244049584"></a>
 ### drawTintedItemTriangles
@@ -395,7 +395,7 @@ Calls `mq3.client.playable_app.drawModelTriangle` from playable app `drawTintedI
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L601)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L601)
 
 <a id="function-function-mq3-client-playable-app-enemyattackmuzzles-function-enemyattackmuzzles-camera-targetstate-modelassets-itemcatalog-enemystate-src-mq3-client-playable-app-ml-1251370192"></a>
 ### enemyAttackMuzzles
@@ -415,7 +415,7 @@ Calls `mq3.format.player_animation.sampleAnimation`, `mq3.client.playable_app.ta
 | `enemyState` | `dynamic` | — | Record read through `enemyState.events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L799)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L799)
 
 <a id="function-function-mq3-client-playable-app-fallbackmodellight-function-fallbackmodellight-normal-src-mq3-client-playable-app-ml-1044856901"></a>
 ### fallbackModelLight
@@ -431,7 +431,7 @@ Calls `mq3.shared.math.VectorNormalize`, `mq3.shared.math.DotProduct` from playa
 | `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L476)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L476)
 
 <a id="function-function-mq3-client-playable-app-field-function-field-fields-key-src-mq3-client-playable-app-ml-492997800"></a>
 ### field
@@ -448,7 +448,7 @@ Evaluates playable app `field` and returns `pair[1]`, `""` according to its guar
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable app entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L203)
 
 <a id="function-function-mq3-client-playable-app-firstfreehudtexture-function-firstfreehudtexture-modelassets-itemcatalog-src-mq3-client-playable-app-ml-560772144"></a>
 ### firstFreeHudTexture
@@ -465,7 +465,7 @@ Calls `mq3.client.playable_app.firstFreeModelTexture` from playable app `firstFr
 | `itemCatalog` | `dynamic` | — | Item definitions and associated render resources. Record read through `itemCatalog.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L375)
 
 <a id="function-function-mq3-client-playable-app-firstfreemenutexture-function-firstfreemenutexture-modelassets-itemcatalog-basehudcatalog-src-mq3-client-playable-app-ml-1119881569"></a>
 ### firstFreeMenuTexture
@@ -483,7 +483,7 @@ Calls `mq3.client.playable_app.firstFreeHudTexture` from playable app `firstFree
 | `baseHudCatalog` | `dynamic` | — | Record read through `baseHudCatalog.firstTextureSlot`, `baseHudCatalog.textureCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L385)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L385)
 
 <a id="function-function-mq3-client-playable-app-firstfreemodeltexture-function-firstfreemodeltexture-modelassets-src-mq3-client-playable-app-ml-865218468"></a>
 ### firstFreeModelTexture
@@ -499,7 +499,7 @@ Evaluates playable app `firstFreeModelTexture` and returns `slot` according to i
 | `modelAssets` | `dynamic` | — | Loaded model resources used by the rendering operation. Record read through `modelAssets.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L366)
 
 <a id="function-function-mq3-client-playable-app-frameloop-function-frameloop-camera-geometry-triangles-worldbatchstate-materialcatalog-fogcatalog-dlightcatalog-markcatalog-markstate-explosioncatalog-worldcache-worldconfig-selectedfaceindexes-materialslots-skytextureflags-dlightreceiveflags-skycatalog-itemcatalog-projectilecatalog-projectilefxstate-hudstate-basehudcatalog-basehudstate-menucatalog-menustate-matchmedia-itemstate-inventorystate-weaponstate-targetstate-rendertargets-modelassets-combatstate-matchstate-playerstate-enemystate-eventstate-playerprojectilestate-controller-fpsstate-viewmodeltracker-viewmodelsettings-viewmodelcatalog-viewmodelanimation-barrelstate-spatialruntime-maxframes-matchsounds-firesound-weaponsoundcatalog-enemyfiresound-enemyimpactsound-pickupsound-jumpsound-painsound-deathsound-src-mq3-client-playable-app-ml-1951504146"></a>
 ### frameLoop
@@ -570,7 +570,7 @@ Updates `controller.motion.origin`, `controller.motion.velocity`, `camera.positi
 | `deathSound` | `dynamic` | — | Value used by `if deathSound!=void then ignored=try(audio.play(deathSound)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L1085)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L1085)
 
 <a id="function-function-mq3-client-playable-app-gauntlethastarget-function-gauntlethastarget-weaponstate-camera-targetstate-src-mq3-client-playable-app-ml-1589280488"></a>
 ### gauntletHasTarget
@@ -588,7 +588,7 @@ Calls `mq3.client.playable_weapon.muzzlePoint`, `mq3.client.playable_viewer.came
 | `targetState` | `dynamic` | — | Record read through `targetState.targets`, `targetState.radius`, `targetState.minZ`, `targetState.maxZ`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L464)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L464)
 
 <a id="constant-constant-mq3-client-playable-app-height-const-height-480-src-mq3-client-playable-app-ml-152321181"></a>
 ### HEIGHT
@@ -600,7 +600,7 @@ const HEIGHT = 480
 Default render-target height used by the native playable preview.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L71)
 
 <a id="constant-constant-mq3-client-playable-app-horizontal-fov-const-horizontal-fov-90-src-mq3-client-playable-app-ml-413634250"></a>
 ### HORIZONTAL_FOV
@@ -612,7 +612,7 @@ const HORIZONTAL_FOV = 90
 Horizontal preview-camera field of view in degrees.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L73)
 
 <a id="function-function-mq3-client-playable-app-isplayerprojectile-function-isplayerprojectile-classname-src-mq3-client-playable-app-ml-504380939"></a>
 ### isPlayerProjectile
@@ -628,7 +628,7 @@ Computes `classname=="weapon_rocketlauncher" or classname=="weapon_plasmagun" or
 | `classname` | `dynamic` | — | Value used by `return classname=="weapon_rocketlauncher" or classname=="weapon_plasmagun" or classname=="weapon_grenadelauncher" or classname=="weapon_bfg"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L300)
 
 <a id="constant-constant-mq3-client-playable-app-item-pose-interval-const-item-pose-interval-1-src-mq3-client-playable-app-ml-1903574164"></a>
 ### ITEM_POSE_INTERVAL
@@ -640,7 +640,7 @@ const ITEM_POSE_INTERVAL = 1
 The optimized indexed-MD3 path keeps stock bob/spin transforms affordable at render cadence instead of visibly stepping the pickup animation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L107)
 
 <a id="function-function-mq3-client-playable-app-itemclassnames-function-itemclassnames-items-src-mq3-client-playable-app-ml-8280500"></a>
 ### itemClassnames
@@ -656,7 +656,7 @@ Calls `mq3.client.playable_weapon_barrel.classnames`, `stringEqualsIgnoreCaseAsc
 | `items` | `dynamic` | — | Value used by `for each value in items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L343)
 
 <a id="constant-constant-mq3-client-playable-app-lightmap-slots-const-lightmap-slots-playableworldbatch-max-bsp-lightmaps-src-mq3-client-playable-app-ml-1946271365"></a>
 ### LIGHTMAP_SLOTS
@@ -668,7 +668,7 @@ const LIGHTMAP_SLOTS = playableWorldBatch.MAX_BSP_LIGHTMAPS
 Number of texture slots reserved for the world's BSP lightmaps.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L79)
 
 <a id="constant-constant-mq3-client-playable-app-max-detailed-player-models-const-max-detailed-player-models-5-src-mq3-client-playable-app-ml-1085198510"></a>
 ### MAX_DETAILED_PLAYER_MODELS
@@ -680,7 +680,7 @@ const MAX_DETAILED_PLAYER_MODELS = 5
 Capacity limit for the detailed player models collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L86)
 
 <a id="constant-constant-mq3-client-playable-app-max-item-models-const-max-item-models-48-src-mq3-client-playable-app-ml-1754453139"></a>
 ### MAX_ITEM_MODELS
@@ -692,7 +692,7 @@ const MAX_ITEM_MODELS = 48
 Capacity limit for the item models collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L94)
 
 <a id="constant-constant-mq3-client-playable-app-max-item-textures-const-max-item-textures-64-src-mq3-client-playable-app-ml-1687092561"></a>
 ### MAX_ITEM_TEXTURES
@@ -704,7 +704,7 @@ const MAX_ITEM_TEXTURES = 64
 Capacity limit for the item textures collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L96)
 
 <a id="constant-constant-mq3-client-playable-app-max-item-triangles-const-max-item-triangles-5000-src-mq3-client-playable-app-ml-703866166"></a>
 ### MAX_ITEM_TRIANGLES
@@ -716,7 +716,7 @@ const MAX_ITEM_TRIANGLES = 5000
 Capacity limit for the item triangles collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L100)
 
 <a id="constant-constant-mq3-client-playable-app-max-lines-const-max-lines-0-src-mq3-client-playable-app-ml-1724585825"></a>
 ### MAX_LINES
@@ -728,7 +728,7 @@ const MAX_LINES = 0
 Capacity limit for the lines collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L75)
 
 <a id="constant-constant-mq3-client-playable-app-max-native-texture-slots-const-max-native-texture-slots-player-texture-first-slot-176-src-mq3-client-playable-app-ml-834837129"></a>
 ### MAX_NATIVE_TEXTURE_SLOTS
@@ -740,7 +740,7 @@ const MAX_NATIVE_TEXTURE_SLOTS = PLAYER_TEXTURE_FIRST_SLOT + 176
 Capacity limit for the native texture slots collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L92)
 
 <a id="constant-constant-mq3-client-playable-app-max-projectile-textures-const-max-projectile-textures-8-src-mq3-client-playable-app-ml-515965121"></a>
 ### MAX_PROJECTILE_TEXTURES
@@ -752,7 +752,7 @@ const MAX_PROJECTILE_TEXTURES = 8
 Capacity limit for the projectile textures collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L109)
 
 <a id="constant-constant-mq3-client-playable-app-max-projectile-triangles-const-max-projectile-triangles-1024-src-mq3-client-playable-app-ml-1779096696"></a>
 ### MAX_PROJECTILE_TRIANGLES
@@ -764,7 +764,7 @@ const MAX_PROJECTILE_TRIANGLES = 1024
 Capacity limit for the projectile triangles collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L112)
 
 <a id="constant-constant-mq3-client-playable-app-max-target-weapon-triangles-const-max-target-weapon-triangles-512-src-mq3-client-playable-app-ml-53578509"></a>
 ### MAX_TARGET_WEAPON_TRIANGLES
@@ -776,7 +776,7 @@ const MAX_TARGET_WEAPON_TRIANGLES = 512
 Capacity limit for the target weapon triangles collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L89)
 
 <a id="constant-constant-mq3-client-playable-app-max-triangles-per-item-const-max-triangles-per-item-512-src-mq3-client-playable-app-ml-1341697715"></a>
 ### MAX_TRIANGLES_PER_ITEM
@@ -788,7 +788,7 @@ const MAX_TRIANGLES_PER_ITEM = 512
 Capacity limit for the triangles per item collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L102)
 
 <a id="constant-constant-mq3-client-playable-app-max-triangles-per-projectile-const-max-triangles-per-projectile-256-src-mq3-client-playable-app-ml-2052194728"></a>
 ### MAX_TRIANGLES_PER_PROJECTILE
@@ -800,7 +800,7 @@ const MAX_TRIANGLES_PER_PROJECTILE = 256
 Capacity limit for the triangles per projectile collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L115)
 
 <a id="constant-constant-mq3-client-playable-app-max-viewmodel-triangles-const-max-viewmodel-triangles-2048-src-mq3-client-playable-app-ml-373326581"></a>
 ### MAX_VIEWMODEL_TRIANGLES
@@ -812,7 +812,7 @@ const MAX_VIEWMODEL_TRIANGLES = 2048
 Capacity limit for the viewmodel triangles collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L104)
 
 <a id="constant-constant-mq3-client-playable-app-max-visible-items-const-max-visible-items-24-src-mq3-client-playable-app-ml-2036586065"></a>
 ### MAX_VISIBLE_ITEMS
@@ -824,7 +824,7 @@ const MAX_VISIBLE_ITEMS = 24
 Capacity limit for the visible items collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L98)
 
 <a id="function-function-mq3-client-playable-app-modelcolor-function-modelcolor-sampled-normal-src-mq3-client-playable-app-ml-1900989541"></a>
 ### modelColor
@@ -841,7 +841,7 @@ Calls `mq3.renderer.playable_light_grid.vertexColor`, `mq3.compat.numeric.trunc3
 | `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L487)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L487)
 
 <a id="function-function-mq3-client-playable-app-nextplayertextureslot-function-nextplayertextureslot-textures-src-mq3-client-playable-app-ml-762116828"></a>
 ### nextPlayerTextureSlot
@@ -857,7 +857,7 @@ Evaluates playable app `nextPlayerTextureSlot` and returns `slot` according to i
 | `textures` | `dynamic` | — | Value used by `for each texture in textures if texture.slot>=slot then slot=texture.slot+1 end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L335)
 
 <a id="function-function-mq3-client-playable-app-pickupmodeltriangles-function-pickupmodeltriangles-camera-catalog-items-now-src-mq3-client-playable-app-ml-943209906"></a>
 ### pickupModelTriangles
@@ -876,7 +876,7 @@ Calls `mq3.client.playable_viewer.projectPoint`, `mq3.client.playable_item_model
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L575)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L575)
 
 <a id="function-function-mq3-client-playable-app-pickupname-function-pickupname-classname-src-mq3-client-playable-app-ml-144514743"></a>
 ### pickupName
@@ -892,7 +892,7 @@ Evaluates playable app `pickupName` and returns `"5 HEALTH"`, `"25 HEALTH"`, `"5
 | `classname` | `dynamic` | — | Value used by `if classname=="item_health_small" then return "5 HEALTH" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L393)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L393)
 
 <a id="constant-constant-mq3-client-playable-app-player-texture-first-slot-const-player-texture-first-slot-lightmap-slots-272-src-mq3-client-playable-app-ml-431845817"></a>
 ### PLAYER_TEXTURE_FIRST_SLOT
@@ -904,7 +904,7 @@ const PLAYER_TEXTURE_FIRST_SLOT = LIGHTMAP_SLOTS + 272
 Texture-cache slot or starting slot reserved for the player rendering resources.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L81)
 
 <a id="constant-constant-mq3-client-playable-app-player-triangles-per-surface-const-player-triangles-per-surface-8192-src-mq3-client-playable-app-ml-1431231187"></a>
 ### PLAYER_TRIANGLES_PER_SURFACE
@@ -916,7 +916,7 @@ const PLAYER_TRIANGLES_PER_SURFACE = 8192
 Maximum triangle budget allocated to one animated player-model surface.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L83)
 
 - [mq3.client.playable_app.PlayerModelAssets](Type-mq3-client-playable-app-playermodelassets-1156371250.md) — struct
 <a id="function-function-mq3-client-playable-app-playerprojectilesnapshots-function-playerprojectilesnapshots-previous-state-now-src-mq3-client-playable-app-ml-1928999950"></a>
@@ -935,7 +935,7 @@ Calls `mq3.client.playable_projectile_view.alive`, `mq3.client.playable_projecti
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L279)
 
 - [mq3.client.playable_app.PlayerSkinSet](Type-mq3-client-playable-app-playerskinset-615689265.md) — struct
 - [mq3.client.playable_app.PlayerTexture](Type-mq3-client-playable-app-playertexture-686084825.md) — struct
@@ -954,7 +954,7 @@ Calls `stringEqualsIgnoreCaseAscii` from playable app `playerTextureSlot`. The f
 | `triangle` | `dynamic` | — | Record read through `triangle.part`, `triangle.surfaceIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L684)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L684)
 
 <a id="function-function-mq3-client-playable-app-projectilesnapshots-function-projectilesnapshots-previous-state-now-src-mq3-client-playable-app-ml-156823640"></a>
 ### projectileSnapshots
@@ -972,7 +972,7 @@ Calls `mq3.client.playable_projectile_view.alive`, `mq3.client.playable_projecti
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L256)
 
 <a id="function-function-mq3-client-playable-app-render-function-render-camera-geometry-worldbatchstate-materialcatalog-skycatalog-itemcatalog-projectilecatalog-projectilefxstate-markstate-markcatalog-explosioncatalog-runtime-pickuptriangles-hudstate-basehudcatalog-basehudstate-menucatalog-menustate-matchmedia-itemstate-playerstate-shoteffects-projectileeffects-rendertargets-visibletargets-modelassets-eventstate-enemystate-weaponstate-combatstate-matchstate-matchview-matchcenter-viewmodeltransform-viewmodelclassname-viewmodelbarrelangle-viewmodelswitching-now-menuopen-src-mq3-client-playable-app-ml-251908520"></a>
 ### render
@@ -1026,7 +1026,7 @@ Calls `mq3.platform.playable_window.beginFrame`, `mq3.client.playable_menu.drawR
 | `menuOpen` | `dynamic` | — | Value used by `if menuOpen then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L963)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L963)
 
 - [mq3.client.playable_app.RenderRuntime](Type-mq3-client-playable-app-renderruntime-1103072733.md) — struct
 <a id="function-function-mq3-client-playable-app-rendertargetmodels-function-rendertargetmodels-camera-projection-rendertargets-modelassets-itemcatalog-eventstate-enemystate-now-lightgrid-src-mq3-client-playable-app-ml-1022884198"></a>
@@ -1051,7 +1051,7 @@ Calls `mq3.renderer.player_render_cache.beginFrame`, `mq3.client.playable_enemy_
 | `lightGrid` | `dynamic` | — | Value used by `if lightGrid!=void then targetLight=playableLightGrid.entitySample(lightGrid,target.origin) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L822)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L822)
 
 <a id="function-function-mq3-client-playable-app-rendertargetshadows-function-rendertargetshadows-projection-targets-eventstate-enemystate-now-runtime-src-mq3-client-playable-app-ml-1208090429"></a>
 ### renderTargetShadows
@@ -1072,7 +1072,7 @@ Calls `mq3.client.playable_enemy_events.input`, `mq3.client.playable_player_shad
 | `runtime` | `dynamic` | — | Record read through `runtime.shadowCatalog`, `runtime.collisionWorld`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L916)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L916)
 
 <a id="function-function-mq3-client-playable-app-renderviewmodel-function-renderviewmodel-projection-catalog-weaponstate-combatstate-now-transform-weaponclass-barrelangle-showflash-lightgrid-src-mq3-client-playable-app-ml-676274938"></a>
 ### renderViewModel
@@ -1097,7 +1097,7 @@ Calls `mq3.client.playable_item_models.find`, `mq3.client.playable_item_models.r
 | `lightGrid` | `dynamic` | — | Value used by `drawn=drawClippedItemTriangles(projection,triangles,lightGrid)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L620)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L620)
 
 <a id="function-function-mq3-client-playable-app-reserveplayerspawn-function-reserveplayerspawn-targetstate-playerstate-spawnindex-src-mq3-client-playable-app-ml-874209143"></a>
 ### reservePlayerSpawn
@@ -1115,7 +1115,7 @@ Evaluates playable app `reservePlayerSpawn` and returns `void` according to its 
 | `spawnIndex` | `dynamic` | — | Value used by `previous=spawnIndex-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L896)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L896)
 
 <a id="function-function-mq3-client-playable-app-restoreenemypositions-function-restoreenemypositions-targetstate-previous-src-mq3-client-playable-app-ml-1732109207"></a>
 ### restoreEnemyPositions
@@ -1132,7 +1132,7 @@ Evaluates playable app `restoreEnemyPositions` and returns `void` according to i
 | `previous` | `dynamic` | — | Sequence read at `previous[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L173)
 
 <a id="function-function-mq3-client-playable-app-run-function-run-map-sound-archive-src-mq3-client-playable-app-ml-1453089955"></a>
 ### run
@@ -1150,7 +1150,7 @@ Adapts `mq3.client.playable_app.runLimited` to playable app `run`, returning its
 | `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.playable_app.runLimited`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L1619)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L1619)
 
 <a id="function-function-mq3-client-playable-app-runlimited-function-runlimited-map-maxframes-sound-archive-src-mq3-client-playable-app-ml-1125189227"></a>
 ### runLimited
@@ -1169,7 +1169,7 @@ Calls `mq3.platform.playable_window.open`, `mq3.client.cgame_info.create`, `mq3.
 | `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L1315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L1315)
 
 <a id="function-function-mq3-client-playable-app-shownativeloading-function-shownativeloading-state-progress-text-src-mq3-client-playable-app-ml-1096467889"></a>
 ### showNativeLoading
@@ -1187,7 +1187,7 @@ Calls `mq3.client.cgame_info.loadingString`, `mq3.platform.playable_window.showL
 | `text` | `dynamic` | — | Text consumed or emitted by `showNativeLoading` in the playable app path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L1306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L1306)
 
 <a id="function-function-mq3-client-playable-app-smoke-function-smoke-map-frames-src-mq3-client-playable-app-ml-949639806"></a>
 ### smoke
@@ -1204,7 +1204,7 @@ Calls `mq3.client.playable_app.runLimited` from playable app `smoke`. The final 
 | `frames` | `dynamic` | — | Value used by `if frames<1 or frames>600 then return error(7482,"preview smoke frame count outside range") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L1623)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L1623)
 
 <a id="function-function-mq3-client-playable-app-smokeassets-function-smokeassets-map-frames-archive-src-mq3-client-playable-app-ml-453580748"></a>
 ### smokeAssets
@@ -1222,7 +1222,7 @@ Calls `mq3.client.playable_app.runLimited` from playable app `smokeAssets`. The 
 | `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L1631)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L1631)
 
 <a id="function-function-mq3-client-playable-app-startpose-function-startpose-map-src-mq3-client-playable-app-ml-1206186748"></a>
 ### startPose
@@ -1238,7 +1238,7 @@ Calls `mq3.format.bsp.entities`, `mq3.client.playable_app.field`, `mq3.compat.te
 | `map` | `dynamic` | — | map record passed to the playable app helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L212)
 
 <a id="function-function-mq3-client-playable-app-synchudweaponselection-function-synchudweaponselection-hudstate-inventorystate-now-src-mq3-client-playable-app-ml-695184161"></a>
 ### syncHudWeaponSelection
@@ -1256,7 +1256,7 @@ Calls `mq3.client.playable_weapon_inventory.owns`, `mq3.client.playable_weapon_i
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L447)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L447)
 
 <a id="function-function-mq3-client-playable-app-syncrendertargets-function-syncrendertargets-targetstate-rendertargets-combathit-now-src-mq3-client-playable-app-ml-79980475"></a>
 ### syncRenderTargets
@@ -1275,7 +1275,7 @@ Updates `renderTargets[combatHit.targetIndex].hitFlashUntil` during playable app
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L869)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L869)
 
 <a id="function-function-mq3-client-playable-app-targetmuzzlelights-function-targetmuzzlelights-camera-rendertargets-modelassets-itemcatalog-eventstate-enemystate-now-src-mq3-client-playable-app-ml-662391757"></a>
 ### targetMuzzleLights
@@ -1297,7 +1297,7 @@ Calls `mq3.client.playable_enemy_events.input`, `mq3.format.player_animation.sam
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L778)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L778)
 
 <a id="function-function-mq3-client-playable-app-targettransform-function-targettransform-target-camera-src-mq3-client-playable-app-ml-1412105482"></a>
 ### targetTransform
@@ -1314,7 +1314,7 @@ Calls `mq3.shared.math.VectorNormalize`, `mq3.renderer.player_model_assembly.ide
 | `camera` | `dynamic` | — | Camera state used to transform/project the scene. Record read through `camera.position`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L706)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L706)
 
 <a id="function-function-mq3-client-playable-app-targetweapontransform-function-targetweapontransform-modelassets-lowersample-uppersample-root-src-mq3-client-playable-app-ml-1451392849"></a>
 ### targetWeaponTransform
@@ -1333,7 +1333,7 @@ Calls `mq3.renderer.player_render_cache.keyFor`, `mq3.renderer.player_model_asse
 | `root` | `dynamic` | — | Value used by `assembled=playerAssembly.assemble(modelAssets.models,lower,upper,playerAssembly.animation(0,0,0.0),root)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L733)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L733)
 
 <a id="function-function-mq3-client-playable-app-textureslotforname-function-textureslotforname-textures-name-src-mq3-client-playable-app-ml-1065015509"></a>
 ### textureSlotForName
@@ -1350,7 +1350,7 @@ Calls `stringEqualsIgnoreCaseAscii` from playable app `textureSlotForName`. The 
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable app resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L328)
 
 <a id="function-function-mq3-client-playable-app-trailfor-function-trailfor-trails-projectileid-src-mq3-client-playable-app-ml-1686190637"></a>
 ### trailFor
@@ -1367,7 +1367,7 @@ Evaluates playable app `trailFor` and returns `trail`, `void` according to its g
 | `projectileId` | `dynamic` | — | Value used by `for each trail in trails if trail.projectileId==projectileId then return trail end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L247)
 
 <a id="function-function-mq3-client-playable-app-vertexlight-function-vertexlight-vertex-src-mq3-client-playable-app-ml-2043307020"></a>
 ### vertexLight
@@ -1383,7 +1383,7 @@ Computes `(vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0)` for pla
 | `vertex` | `dynamic` | — | Record read through `vertex.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L230)
 
 <a id="function-function-mq3-client-playable-app-visibletargetviews-function-visibletargetviews-enemystate-rendertargets-now-src-mq3-client-playable-app-ml-45553605"></a>
 ### visibleTargetViews
@@ -1401,7 +1401,7 @@ Evaluates playable app `visibleTargetViews` and returns `result` according to it
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L883)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L883)
 
 <a id="constant-constant-mq3-client-playable-app-width-const-width-640-src-mq3-client-playable-app-ml-1512300219"></a>
 ### WIDTH
@@ -1413,7 +1413,7 @@ const WIDTH = 640
 Baseq3's virtual screen and default cg_fov are 640x480 and 90 degrees. Using them directly avoids HUD/aspect distortion and lowers software fill cost.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L69)
 
 <a id="constant-constant-mq3-client-playable-app-world-selection-interval-const-world-selection-interval-15-src-mq3-client-playable-app-ml-1232601541"></a>
 ### WORLD_SELECTION_INTERVAL
@@ -1425,4 +1425,4 @@ const WORLD_SELECTION_INTERVAL = 15
 Number of rendered frames between periodic world-selection updates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L77)

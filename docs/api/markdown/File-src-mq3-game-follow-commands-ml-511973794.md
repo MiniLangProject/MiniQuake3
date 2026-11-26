@@ -31,7 +31,7 @@ Require a valid client entity and return its client state for a spectator-follow
 | `ent` | `dynamic` | — | Game entity; accesses `client` and `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L32)
 
 <a id="function-function-mq3-game-follow-commands-clientnumber-function-clientnumber-level-ent-text-src-mq3-game-follow-commands-ml-140410898"></a>
 ### clientNumber
@@ -49,7 +49,7 @@ Apply `mq3.game.follow_commands.caller`, `mq3.game.client_info.infoClientLimit` 
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L40)
 
 <a id="function-function-mq3-game-follow-commands-cycle-function-cycle-level-ent-direction-src-mq3-game-follow-commands-ml-888054494"></a>
 ### cycle
@@ -67,7 +67,7 @@ Set `ent.client.spectatorClient` to `slot` and `ent.client.spectatorState` to `2
 | `direction` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L79)
 
 <a id="function-function-mq3-game-follow-commands-follow-function-follow-level-ent-argv-src-mq3-game-follow-commands-ml-766171577"></a>
 ### follow
@@ -85,7 +85,7 @@ Set `ent.client.spectatorState` to `2` and `ent.client.spectatorClient` to `slot
 | `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L61)
 
 <a id="function-function-mq3-game-follow-commands-sanitize-function-sanitize-text-src-mq3-game-follow-commands-ml-472988715"></a>
 ### sanitize
@@ -101,4 +101,4 @@ Apply `mq3.shared.info.textBytes` while evaluating `sanitize`. Return paths incl
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L14)

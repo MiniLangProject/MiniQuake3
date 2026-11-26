@@ -9,7 +9,7 @@ Reachable from entry: **no**
 ## Imports
 
 - `mq3/client/ui_qmenu.ml` as `qmenu` → [src/mq3/client/ui_qmenu.ml](File-src-mq3-client-ui-qmenu-ml-201905758.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -34,7 +34,7 @@ Calls `mq3.client.ui_qmenu.item` from UI serverinfo `bitmap`. The final path ret
 | `h` | `dynamic` | — | Value assigned to `value.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L163)
 
 <a id="function-function-mq3-client-ui-serverinfo-create-function-create-retailactive-src-mq3-client-ui-serverinfo-ml-717389117"></a>
 ### create
@@ -50,7 +50,7 @@ Creates a `mq3.client.ui_serverinfo.State` record. Assigns `retailActive` from `
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L100)
 
 <a id="function-function-mq3-client-ui-serverinfo-digitaddress-function-digitaddress-value-src-mq3-client-ui-serverinfo-ml-1638263035"></a>
 ### digitAddress
@@ -66,7 +66,7 @@ Evaluates UI serverinfo `digitAddress` and returns `false`, `c>=48 and c<=57` ac
 | `value` | `dynamic` | — | Value tested by `value==""` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L117)
 
 <a id="function-function-mq3-client-ui-serverinfo-emit-function-emit-state-boundary-kind-name-text-x-y-number-src-mq3-client-ui-serverinfo-ml-2027722389"></a>
 ### emit
@@ -89,7 +89,7 @@ Appends a UI serverinfo action record to the queued engine requests. Retail-QVM 
 | `number` | `dynamic` | — | Value used by `action=Action(boundary,kind,name,text,x,y,number,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L110)
 
 <a id="function-function-mq3-client-ui-serverinfo-favorites-add-function-favorites-add-state-src-mq3-client-ui-serverinfo-ml-1715188321"></a>
 ### Favorites_Add
@@ -105,7 +105,7 @@ Favorites_Add
 | `state` | `dynamic` | — | Mutable UI serverinfo record/storage; this routine assigns `state.favorites`, `state.favorites[best-1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L124)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-id-add-const-id-add-100-src-mq3-client-ui-serverinfo-ml-1464151984"></a>
 ### ID_ADD
@@ -117,7 +117,7 @@ const ID_ADD = 100
 Menu control identifier routed to the add action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-id-back-const-id-back-101-src-mq3-client-ui-serverinfo-ml-466637475"></a>
 ### ID_BACK
@@ -129,7 +129,7 @@ const ID_BACK = 101
 Event identifier of the Back control used to leave the server-information dialog and return to its parent menu.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L21)
 
 <a id="function-function-mq3-client-ui-serverinfo-infopairs-function-infopairs-text-src-mq3-client-ui-serverinfo-ml-357555049"></a>
 ### infoPairs
@@ -145,7 +145,7 @@ Calls `std.string.split` from UI serverinfo `infoPairs`. The final path returns 
 | `text` | `dynamic` | — | Text consumed or emitted by `infoPairs` in the UI serverinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L120)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-max-favoriteservers-const-max-favoriteservers-16-src-mq3-client-ui-serverinfo-ml-912398238"></a>
 ### MAX_FAVORITESERVERS
@@ -157,7 +157,7 @@ const MAX_FAVORITESERVERS = 16
 Capacity limit for the favoriteservers collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L23)
 
 <a id="function-function-mq3-client-ui-serverinfo-same-function-same-a-b-src-mq3-client-ui-serverinfo-ml-1370120315"></a>
 ### same
@@ -174,7 +174,7 @@ Compares two UI serverinfo names using ASCII case-insensitive equality.
 | `b` | `dynamic` | — | Argument 2 of `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L114)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-back0-const-serverinfo-back0-menu-art-back-0-src-mq3-client-ui-serverinfo-ml-30461817"></a>
 ### SERVERINFO_BACK0
@@ -186,7 +186,7 @@ const SERVERINFO_BACK0 = "menu/art/back_0"
 Virtual asset path used to load the serverinfo back0 renderer or menu resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-back1-const-serverinfo-back1-menu-art-back-1-src-mq3-client-ui-serverinfo-ml-1991637338"></a>
 ### SERVERINFO_BACK1
@@ -198,7 +198,7 @@ const SERVERINFO_BACK1 = "menu/art/back_1"
 Virtual asset path used to load the serverinfo back1 renderer or menu resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L16)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-cache-function-serverinfo-cache-state-src-mq3-client-ui-serverinfo-ml-435293031"></a>
 ### ServerInfo_Cache
@@ -214,7 +214,7 @@ ServerInfo_Cache
 | `state` | `dynamic` | — | Shared UI serverinfo state passed to the helper calls in `ServerInfo_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L153)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-event-function-serverinfo-event-state-id-event-src-mq3-client-ui-serverinfo-ml-1452128182"></a>
 ### ServerInfo_Event
@@ -232,7 +232,7 @@ ServerInfo_Event
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L133)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-framel-const-serverinfo-framel-menu-art-frame2-l-src-mq3-client-ui-serverinfo-ml-1343847279"></a>
 ### SERVERINFO_FRAMEL
@@ -244,7 +244,7 @@ const SERVERINFO_FRAMEL = "menu/art/frame2_l"
 Virtual asset path used to load the serverinfo framel renderer or menu resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-framer-const-serverinfo-framer-menu-art-frame1-r-src-mq3-client-ui-serverinfo-ml-314678214"></a>
 ### SERVERINFO_FRAMER
@@ -256,7 +256,7 @@ const SERVERINFO_FRAMER = "menu/art/frame1_r"
 Virtual asset path used to load the serverinfo framer renderer or menu resource.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L12)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-menudraw-function-serverinfo-menudraw-state-realtime-src-mq3-client-ui-serverinfo-ml-1549688922"></a>
 ### ServerInfo_MenuDraw
@@ -273,7 +273,7 @@ ServerInfo_MenuDraw
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L140)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-menukey-function-serverinfo-menukey-state-key-cursorx-cursory-src-mq3-client-ui-serverinfo-ml-1910452143"></a>
 ### ServerInfo_MenuKey
@@ -292,7 +292,7 @@ ServerInfo_MenuKey
 | `cursory` | `dynamic` | — | Argument 4 of `mq3.client.ui_qmenu.Menu_DefaultKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L149)
 
 - [mq3.client.ui_serverinfo.State](Type-mq3-client-ui-serverinfo-state-17572200.md) — struct
 <a id="function-function-mq3-client-ui-serverinfo-ui-serverinfomenu-function-ui-serverinfomenu-state-serverinfo-svrunning-currentaddress-favorites-src-mq3-client-ui-serverinfo-ml-882246256"></a>
@@ -313,4 +313,4 @@ UI_ServerInfoMenu
 | `favorites` | `dynamic` | — | Value assigned to `state.favorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L171)

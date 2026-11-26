@@ -9,7 +9,7 @@ Reachable from entry: **no**
 ## Imports
 
 - `mq3/compat/numeric.ml` as `numeric` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
-- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+- `std/string.ml` as `strings` → `../../a7594a0c0299/MiniLangCompilerML/std/string.ml` — external dependency
 
 ## Declarations
 
@@ -28,7 +28,7 @@ Updates `state.mode`, `state.tq`, `state.lighting`, `state.colorDepth` and addit
 | `index` | `dynamic` | — | Value used by `value=templates()[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L491)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L491)
 
 <a id="function-function-mq3-client-ui-video-booleannumber-function-booleannumber-value-src-mq3-client-ui-video-ml-1558435103"></a>
 ### booleanNumber
@@ -44,7 +44,7 @@ Evaluates UI video `booleanNumber` and returns `1`, `0` according to its guard/s
 | `value` | `dynamic` | — | Value tested by `value` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L447)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L447)
 
 - [mq3.client.ui_video.ChoiceList](Type-mq3-client-ui-video-choicelist-1812260872.md) — struct
 <a id="function-function-mq3-client-ui-video-copyinitial-function-copyinitial-value-src-mq3-client-ui-video-ml-1216927423"></a>
@@ -61,7 +61,7 @@ Adapts `mq3.client.ui_video.initial` to UI video `copyInitial`, returning its re
 | `value` | `dynamic` | — | Record read through `value.mode`, `value.fullscreen`, `value.tq`, `value.lighting` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L284)
 
 <a id="function-function-mq3-client-ui-video-draw-function-draw-state-text-x-y-alignment-retailactive-src-mq3-client-ui-video-ml-378653897"></a>
 ### draw
@@ -82,7 +82,7 @@ Updates `state.drawLines`, `state.actions` during UI video `draw`.
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L336)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L336)
 
 - [mq3.client.ui_video.DrawLine](Type-mq3-client-ui-video-drawline-655896091.md) — struct
 <a id="function-function-mq3-client-ui-video-driverinfocache-function-driverinfocache-state-retailactive-src-mq3-client-ui-video-ml-962839168"></a>
@@ -100,7 +100,7 @@ DriverInfo_Cache
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L371)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L371)
 
 <a id="function-function-mq3-client-ui-video-driverinfoevent-function-driverinfoevent-state-eventcode-retailactive-src-mq3-client-ui-video-ml-297760049"></a>
 ### driverInfoEvent
@@ -118,7 +118,7 @@ DriverInfo_Event
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L323)
 
 <a id="function-function-mq3-client-ui-video-driverinfomenudraw-function-driverinfomenudraw-state-retailactive-src-mq3-client-ui-video-ml-824449996"></a>
 ### driverInfoMenuDraw
@@ -135,7 +135,7 @@ DriverInfo_MenuDraw
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L345)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L345)
 
 - [mq3.client.ui_video.DriverInfoState](Type-mq3-client-ui-video-driverinfostate-600293082.md) — struct
 <a id="function-function-mq3-client-ui-video-driverstate-function-driverstate-config-src-mq3-client-ui-video-ml-1664477902"></a>
@@ -152,7 +152,7 @@ Creates a `mq3.client.ui_video.DriverInfoState` record. Assigns `config` from `c
 | `config` | `dynamic` | — | Value used to initialize `DriverInfoState.config`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L296)
 
 - [mq3.client.ui_video.GlConfig](Type-mq3-client-ui-video-glconfig-65228990.md) — struct
 <a id="constant-constant-mq3-client-ui-video-gldrv-icd-const-gldrv-icd-0-src-mq3-client-ui-video-ml-1283639161"></a>
@@ -165,7 +165,7 @@ const GLDRV_ICD = 0
 Renderer-driver category identifying a standard installable OpenGL driver.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-video-gldrv-voodoo-const-gldrv-voodoo-2-src-mq3-client-ui-video-ml-461396301"></a>
 ### GLDRV_VOODOO
@@ -177,7 +177,7 @@ const GLDRV_VOODOO = 2
 Renderer-driver category identifying the legacy Voodoo driver path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L34)
 
 <a id="constant-constant-mq3-client-ui-video-glhw-3dfx-2d3d-const-glhw-3dfx-2d3d-1-src-mq3-client-ui-video-ml-979199922"></a>
 ### GLHW_3DFX_2D3D
@@ -189,7 +189,7 @@ const GLHW_3DFX_2D3D = 1
 Renderer-hardware category identifying the legacy 3Dfx 2D/3D hardware path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L36)
 
 <a id="function-function-mq3-client-ui-video-graphicschoices-function-graphicschoices-src-mq3-client-ui-video-ml-1896448560"></a>
 ### graphicsChoices
@@ -201,7 +201,7 @@ function graphicsChoices()
 Builds the UI video `graphicsChoices` sequence from `[ ChoiceList("Graphics Settings",["High Quality","Normal","Fast","Fastest","Custom"]), ChoiceList("GL Driver",["Default","Voodoo"]), ChoiceList("GL Extensions",["Off","On"]), ChoiceList("Video Mode...`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L596)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L596)
 
 <a id="function-function-mq3-client-ui-video-graphicsitems-function-graphicsitems-state-src-mq3-client-ui-video-ml-702251099"></a>
 ### graphicsItems
@@ -217,7 +217,7 @@ Builds the UI video `graphicsItems` sequence from `[ item(0,"btext","SYSTEM SETU
 | `state` | `dynamic` | — | Record read through `state.driverHidden`, `state.colorDepthGrayed`, `state.fullscreenGrayed`, `state.applyVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L569)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionsapplychanges-function-graphicsoptionsapplychanges-state-eventcode-retailactive-src-mq3-client-ui-video-ml-410534257"></a>
 ### graphicsOptionsApplyChanges
@@ -235,7 +235,7 @@ GraphicsOptions_ApplyChanges
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L456)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L456)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionscache-function-graphicsoptionscache-state-retailactive-src-mq3-client-ui-video-ml-1455954976"></a>
 ### graphicsOptionsCache
@@ -252,7 +252,7 @@ GraphicsOptions_Cache
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L614)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L614)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionscheckconfig-function-graphicsoptionscheckconfig-state-src-mq3-client-ui-video-ml-822162865"></a>
 ### graphicsOptionsCheckConfig
@@ -268,7 +268,7 @@ GraphicsOptions_CheckConfig
 | `state` | `dynamic` | — | Mutable UI video record/storage; this routine assigns `state.preset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L413)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionsevent-function-graphicsoptionsevent-state-id-eventcode-config-retailactive-src-mq3-client-ui-video-ml-81497916"></a>
 ### graphicsOptionsEvent
@@ -288,7 +288,7 @@ GraphicsOptions_Event
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L503)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L503)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionsgetinitialvideo-function-graphicsoptionsgetinitialvideo-state-src-mq3-client-ui-video-ml-2007241281"></a>
 ### graphicsOptionsGetInitialVideo
@@ -304,7 +304,7 @@ GraphicsOptions_GetInitialVideo
 | `state` | `dynamic` | — | Mutable UI video record/storage; this routine assigns `state.initial`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L399)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L399)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionsmenudraw-function-graphicsoptionsmenudraw-state-retailactive-src-mq3-client-ui-video-ml-1577931960"></a>
 ### graphicsOptionsMenuDraw
@@ -321,7 +321,7 @@ GraphicsOptions_MenuDraw
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L537)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L537)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionsmenuinit-function-graphicsoptionsmenuinit-cvars-config-retailactive-src-mq3-client-ui-video-ml-1985436064"></a>
 ### graphicsOptionsMenuInit
@@ -339,7 +339,7 @@ GraphicsOptions_MenuInit
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L624)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L624)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionssetmenuitems-function-graphicsoptionssetmenuitems-state-cvars-src-mq3-client-ui-video-ml-259566898"></a>
 ### graphicsOptionsSetMenuItems
@@ -356,7 +356,7 @@ GraphicsOptions_SetMenuItems
 | `cvars` | `dynamic` | — | Record read through `cvars.mode`, `cvars.fullscreen`, `cvars.allowExtensions`, `cvars.picmip` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L547)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L547)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionstqevent-function-graphicsoptionstqevent-state-eventcode-src-mq3-client-ui-video-ml-51210260"></a>
 ### graphicsOptionsTQEvent
@@ -373,7 +373,7 @@ GraphicsOptions_TQEvent
 | `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L528)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L528)
 
 <a id="function-function-mq3-client-ui-video-graphicsoptionsupdatemenuitems-function-graphicsoptionsupdatemenuitems-state-src-mq3-client-ui-video-ml-103722293"></a>
 ### graphicsOptionsUpdateMenuItems
@@ -389,7 +389,7 @@ GraphicsOptions_UpdateMenuItems
 | `state` | `dynamic` | — | Mutable UI video record/storage; this routine assigns `state.fullscreen`, `state.fullscreenGrayed`, `state.colorDepth`, `state.colorDepthGrayed` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L424)
 
 <a id="function-function-mq3-client-ui-video-graphicsstate-function-graphicsstate-src-mq3-client-ui-video-ml-929715134"></a>
 ### graphicsState
@@ -401,7 +401,7 @@ function graphicsState()
 Calls `mq3.client.ui_video.initial`, `mq3.client.ui_video.GraphicsState` from UI video `graphicsState`. The final path returns `GraphicsState(0,false,0,0,0,0,0,0,0,false,4,false,false,false,false,base,[],[],[],[])`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L289)
 
 - [mq3.client.ui_video.GraphicsState](Type-mq3-client-ui-video-graphicsstate-1145696651.md) — struct
 <a id="function-function-mq3-client-ui-video-host-function-host-actions-boundary-kind-name-text-number-retailactive-src-mq3-client-ui-video-ml-1896259887"></a>
@@ -424,7 +424,7 @@ Computes `actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L239)
 
 - [mq3.client.ui_video.HostAction](Type-mq3-client-ui-video-hostaction-695301095.md) — struct
 <a id="constant-constant-mq3-client-ui-video-id-back2-const-id-back2-101-src-mq3-client-ui-video-ml-565232817"></a>
@@ -437,7 +437,7 @@ const ID_BACK2 = 101
 Menu control identifier routed to the back2 action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-video-id-display-const-id-display-107-src-mq3-client-ui-video-ml-1577763305"></a>
 ### ID_DISPLAY
@@ -449,7 +449,7 @@ const ID_DISPLAY = 107
 Menu control identifier routed to the display action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-video-id-driverinfo-const-id-driverinfo-105-src-mq3-client-ui-video-ml-281997133"></a>
 ### ID_DRIVERINFO
@@ -461,7 +461,7 @@ const ID_DRIVERINFO = 105
 Menu control identifier routed to the driverinfo action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-video-id-driverinfoback-const-id-driverinfoback-100-src-mq3-client-ui-video-ml-1921021320"></a>
 ### ID_DRIVERINFOBACK
@@ -473,7 +473,7 @@ const ID_DRIVERINFOBACK = 100
 Menu control identifier routed to the driverinfoback action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-video-id-fullscreen-const-id-fullscreen-102-src-mq3-client-ui-video-ml-473446874"></a>
 ### ID_FULLSCREEN
@@ -485,7 +485,7 @@ const ID_FULLSCREEN = 102
 Menu control identifier routed to the fullscreen action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-video-id-graphics-const-id-graphics-106-src-mq3-client-ui-video-ml-985999898"></a>
 ### ID_GRAPHICS
@@ -497,7 +497,7 @@ const ID_GRAPHICS = 106
 Menu control identifier routed to the graphics action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-video-id-list-const-id-list-103-src-mq3-client-ui-video-ml-588254255"></a>
 ### ID_LIST
@@ -509,7 +509,7 @@ const ID_LIST = 103
 Menu control identifier routed to the list action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-video-id-mode-const-id-mode-104-src-mq3-client-ui-video-ml-219250348"></a>
 ### ID_MODE
@@ -521,7 +521,7 @@ const ID_MODE = 104
 Menu control identifier routed to the mode action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-video-id-network-const-id-network-109-src-mq3-client-ui-video-ml-2059314911"></a>
 ### ID_NETWORK
@@ -533,7 +533,7 @@ const ID_NETWORK = 109
 Menu control identifier routed to the network action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-video-id-sound-const-id-sound-108-src-mq3-client-ui-video-ml-779040932"></a>
 ### ID_SOUND
@@ -545,7 +545,7 @@ const ID_SOUND = 108
 Menu control identifier routed to the sound action by the menu event handler.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L28)
 
 <a id="function-function-mq3-client-ui-video-initial-function-initial-mode-fullscreen-tq-lighting-colordepth-texturebits-geometry-filter-driver-extensions-src-mq3-client-ui-video-ml-122464266"></a>
 ### initial
@@ -570,7 +570,7 @@ Creates a `mq3.client.ui_video.InitialVideo` record. Assigns `mode` from `mode`,
 | `extensions` | `dynamic` | — | Value used to initialize `InitialVideo.extensions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L267)
 
 - [mq3.client.ui_video.InitialVideo](Type-mq3-client-ui-video-initialvideo-247248992.md) — struct
 <a id="function-function-mq3-client-ui-video-item-function-item-id-kind-name-x-y-active-hidden-grayed-src-mq3-client-ui-video-ml-1653476329"></a>
@@ -594,7 +594,7 @@ Creates a `mq3.client.ui_video.Item` record. Assigns `id` from `id`, `kind` from
 | `grayed` | `dynamic` | — | Value used to initialize `Item.grayed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L252)
 
 - [mq3.client.ui_video.Item](Type-mq3-client-ui-video-item-1259132532.md) — struct
 <a id="constant-constant-mq3-client-ui-video-qm-activated-const-qm-activated-3-src-mq3-client-ui-video-ml-1554910316"></a>
@@ -607,7 +607,7 @@ const QM_ACTIVATED = 3
 Activation callback event accepted by the graphics-options and driver-information menus before it processes the selected control action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L10)
 
 <a id="function-function-mq3-client-ui-video-sametemplate-function-sametemplate-state-value-src-mq3-client-ui-video-ml-1194248496"></a>
 ### sameTemplate
@@ -624,7 +624,7 @@ Computes `value.colorDepth==state.colorDepth and value.driver==state.driver and 
 | `value` | `dynamic` | — | Record read through `value.colorDepth`, `value.driver`, `value.mode`, `value.fullscreen` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L407)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L407)
 
 <a id="function-function-mq3-client-ui-video-templates-function-templates-src-mq3-client-ui-video-ml-609096720"></a>
 ### templates
@@ -636,7 +636,7 @@ function templates()
 Builds the UI video `templates` sequence from `[ initial(4,true,2,0,2,2,1,1,0,true), initial(3,true,2,0,0,0,1,0,0,true), initial(2,true,1,0,1,0,0,0,0,true), initial(2,true,1,1,1,0,0,0,0,true), initial(3,true,1,0,0,0,1,0,0,true) ]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L272)
 
 <a id="function-function-mq3-client-ui-video-uidriverinfomenu-function-uidriverinfomenu-config-retailactive-src-mq3-client-ui-video-ml-1315601817"></a>
 ### uiDriverInfoMenu
@@ -653,7 +653,7 @@ UI_DriverInfo_Menu
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L380)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L380)
 
 <a id="function-function-mq3-client-ui-video-uigraphicsoptionsmenu-function-uigraphicsoptionsmenu-cvars-config-retailactive-src-mq3-client-ui-video-ml-442802408"></a>
 ### uiGraphicsOptionsMenu
@@ -671,7 +671,7 @@ UI_GraphicsOptionsMenu
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L641)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L641)
 
 - [mq3.client.ui_video.VideoCvars](Type-mq3-client-ui-video-videocvars-2113014957.md) — struct
 <a id="function-function-mq3-client-ui-video-words-function-words-text-limit-src-mq3-client-ui-video-ml-550680260"></a>
@@ -689,7 +689,7 @@ Calls `decode`, `slice`, `std.string.substr` from UI video `words`. The final pa
 | `limit` | `dynamic` | — | Upper limit applied while collecting or rendering the result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L303)
 
 <a id="function-function-mq3-client-ui-video-write-function-write-state-name-text-number-retailactive-src-mq3-client-ui-video-ml-456407039"></a>
 ### write
@@ -709,4 +709,4 @@ Updates `state.actions` during UI video `write`.
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L440)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L440)

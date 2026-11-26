@@ -18,7 +18,7 @@ function declarationNames()
 List the 22 names in audio.snd_public.declarationNames, beginning with `S_Init`, `S_Shutdown`, `S_StartSound`, `S_StartLocalSound`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L6)
 
 <a id="function-function-mq3-audio-snd-public-soundcommandkind-function-soundcommandkind-name-src-mq3-audio-snd-public-ml-1413523957"></a>
 ### soundCommandKind
@@ -34,7 +34,7 @@ Compute sound command kind in audio.snd_public; the normal completion returns `-
 | `name` | `dynamic` | — | Name used in `(names[index] == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L17)
 
 <a id="function-function-mq3-audio-snd-public-validentity-function-validentity-entity-src-mq3-audio-snd-public-ml-2113154263"></a>
 ### validEntity
@@ -50,7 +50,7 @@ Compute audio.snd_public.validEntity as `((entity >= 0) and (entity < 1024))`.
 | `entity` | `dynamic` | — | Entity used in `(entity >= 0)` and `(entity < 1024)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L14)
 
 <a id="function-function-mq3-audio-snd-public-validrawformat-function-validrawformat-rate-width-channels-src-mq3-audio-snd-public-ml-719935388"></a>
 ### validRawFormat
@@ -68,4 +68,4 @@ Compute audio.snd_public.validRawFormat as `(((rate > 0) and ((width == 1) or (w
 | `channels` | `dynamic` | — | Channels used in `(channels == 1)` and `(channels == 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L11)

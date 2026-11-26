@@ -12,7 +12,7 @@ struct Powerup
 Stores client game newdraw powerup record, including `id`, `expires`, `icon`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L290)
 
 ## Members
 
@@ -26,7 +26,7 @@ expires
 Server/client presentation timestamp at which the timed powerup expires.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L294)
 
 <a id="field-field-mq3-client-cgame-newdraw-powerup-icon-icon-src-mq3-client-cgame-newdraw-ml-1117067909"></a>
 ### icon
@@ -38,7 +38,7 @@ icon
 Image or shader resource used to draw the active powerup in the HUD.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L296)
 
 <a id="field-field-mq3-client-cgame-newdraw-powerup-id-id-src-mq3-client-cgame-newdraw-ml-95583901"></a>
 ### id
@@ -50,4 +50,4 @@ id
 Native item or powerup identifier associated with this definition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L292)

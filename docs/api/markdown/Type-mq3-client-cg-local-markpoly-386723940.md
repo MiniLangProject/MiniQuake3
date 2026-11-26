@@ -12,7 +12,7 @@ struct MarkPoly
 Stores client game local mark poly record, including `prevMark`, `nextMark`, `time`, `markShader`, `alphaFade`, `color` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L285)
 
 ## Members
 
@@ -26,7 +26,7 @@ alphaFade
 True when the mark fades its alpha channel instead of its RGB components.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L295)
 
 <a id="field-field-mq3-client-cg-local-markpoly-color-color-src-mq3-client-cg-local-ml-1581117830"></a>
 ### color
@@ -38,7 +38,7 @@ color
 RGBA base color retained by the native-compatible persistent mark polygon.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L297)
 
 <a id="field-field-mq3-client-cg-local-markpoly-markshader-markshader-src-mq3-client-cg-local-ml-1901736878"></a>
 ### markShader
@@ -50,7 +50,7 @@ markShader
 Shader used to draw the surface-impact decal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L293)
 
 <a id="field-field-mq3-client-cg-local-markpoly-nextmark-nextmark-src-mq3-client-cg-local-ml-2097457066"></a>
 ### nextMark
@@ -62,7 +62,7 @@ nextMark
 Next mark polygon in the active or free linked list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L289)
 
 <a id="field-field-mq3-client-cg-local-markpoly-poly-poly-src-mq3-client-cg-local-ml-686075698"></a>
 ### poly
@@ -74,7 +74,7 @@ poly
 Polygon description or associated polygon storage used by the mark.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L299)
 
 <a id="field-field-mq3-client-cg-local-markpoly-prevmark-prevmark-src-mq3-client-cg-local-ml-795656910"></a>
 ### prevMark
@@ -86,7 +86,7 @@ prevMark
 Previous mark polygon in the active or free linked list.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L287)
 
 <a id="field-field-mq3-client-cg-local-markpoly-time-time-src-mq3-client-cg-local-ml-676082188"></a>
 ### time
@@ -98,7 +98,7 @@ time
 Client timestamp used as the creation or update reference for this temporary visual effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L291)
 
 <a id="field-field-mq3-client-cg-local-markpoly-verts-verts-src-mq3-client-cg-local-ml-1565568294"></a>
 ### verts
@@ -110,4 +110,4 @@ verts
 Vertex records forming the polygon or rendered geometry.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L301)

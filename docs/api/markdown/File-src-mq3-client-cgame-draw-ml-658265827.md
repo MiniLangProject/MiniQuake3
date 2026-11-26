@@ -35,7 +35,7 @@ Creates a `mq3.client.cgame_draw.Action` record. Assigns `kind` from `kind`, `x`
 | `client` | `dynamic` | — | Value used to initialize `Action.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L339)
 
 - [mq3.client.cgame_draw.Action](Type-mq3-client-cgame-draw-action-1204758205.md) — struct
 <a id="function-function-mq3-client-cgame-draw-addlagometerframeinfo-function-addlagometerframeinfo-value-src-mq3-client-cgame-draw-ml-376739945"></a>
@@ -52,7 +52,7 @@ CG_AddLagometerFrameInfo
 | `value` | `dynamic` | — | Mutable client game draw record/storage; this routine assigns `value.lag.frameSamples`, `value.lag.frameSamples[value.lag.frameCount%LAG_SAMPLES]`, `value.lag.frameCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L643)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L643)
 
 <a id="function-function-mq3-client-cgame-draw-addlagometersnapshotinfo-function-addlagometersnapshotinfo-value-ping-flags-present-src-mq3-client-cgame-draw-ml-1341373943"></a>
 ### addLagometerSnapshotInfo
@@ -71,7 +71,7 @@ CG_AddLagometerSnapshotInfo
 | `present` | `dynamic` | — | Value used by `if not present then sample=-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L649)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L649)
 
 <a id="constant-constant-mq3-client-cgame-draw-attacker-head-time-const-attacker-head-time-10000-src-mq3-client-cgame-draw-ml-1964275422"></a>
 ### ATTACKER_HEAD_TIME
@@ -83,7 +83,7 @@ const ATTACKER_HEAD_TIME = 10000
 Milliseconds for which the latest attacker's head icon is displayed.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L67)
 
 <a id="constant-constant-mq3-client-cgame-draw-bigchar-height-const-bigchar-height-16-src-mq3-client-cgame-draw-ml-1709975204"></a>
 ### BIGCHAR_HEIGHT
@@ -95,7 +95,7 @@ const BIGCHAR_HEIGHT = 16
 Bigchar font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L53)
 
 <a id="constant-constant-mq3-client-cgame-draw-bigchar-width-const-bigchar-width-16-src-mq3-client-cgame-draw-ml-1710069878"></a>
 ### BIGCHAR_WIDTH
@@ -107,7 +107,7 @@ const BIGCHAR_WIDTH = 16
 Bigchar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L51)
 
 <a id="function-function-mq3-client-cgame-draw-centerprint-function-centerprint-value-text-y-charwidth-src-mq3-client-cgame-draw-ml-52624607"></a>
 ### centerPrint
@@ -126,7 +126,7 @@ CG_CenterPrint
 | `charWidth` | `dynamic` | — | Value assigned to `value.centerPrintCharWidth`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L669)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L669)
 
 <a id="function-function-mq3-client-cgame-draw-clamp-function-clamp-value-low-high-src-mq3-client-cgame-draw-ml-1641474921"></a>
 ### clamp
@@ -144,7 +144,7 @@ Clamps `value` to the inclusive bounds `low` and `high` for client game draw.
 | `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L369)
 
 <a id="function-function-mq3-client-cgame-draw-clear-function-clear-value-src-mq3-client-cgame-draw-ml-1117025595"></a>
 ### clear
@@ -160,7 +160,7 @@ Updates `value.actions` during client game draw `clear`.
 | `value` | `dynamic` | — | Mutable client game draw record/storage; this routine assigns `value.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L361)
 
 <a id="function-function-mq3-client-cgame-draw-client-function-client-name-team-src-mq3-client-cgame-draw-ml-1656745088"></a>
 ### client
@@ -177,7 +177,7 @@ Creates a `mq3.client.cgame_draw.Client` record. Assigns `name` from `name`, `te
 | `team` | `dynamic` | — | Value used to initialize `Client.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L348)
 
 - [mq3.client.cgame_draw.Client](Type-mq3-client-cgame-draw-client-255942216.md) — struct
 <a id="function-function-mq3-client-cgame-draw-colorhealth-function-colorhealth-health-armor-src-mq3-client-cgame-draw-ml-537516291"></a>
@@ -195,7 +195,7 @@ Calls `mq3.compat.numeric.trunc32` from client game draw `colorHealth`. The fina
 | `armor` | `dynamic` | — | Value used by `count=armor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L373)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L373)
 
 <a id="function-function-mq3-client-cgame-draw-draw2dframe-function-draw2dframe-value-trace-retailactive-src-mq3-client-cgame-draw-ml-1778631291"></a>
 ### draw2DFrame
@@ -213,7 +213,7 @@ CG_Draw2D
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L736)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L736)
 
 <a id="function-function-mq3-client-cgame-draw-draw3dmodel-function-draw3dmodel-value-x-y-w-h-model-skin-origin-angles-retailactive-src-mq3-client-cgame-draw-ml-1807334442"></a>
 ### draw3DModel
@@ -238,7 +238,7 @@ CG_Draw3DModel
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L495)
 
 <a id="function-function-mq3-client-cgame-draw-drawactive-function-drawactive-value-stereoview-hassnapshot-trace-retailactive-src-mq3-client-cgame-draw-ml-1103714308"></a>
 ### drawActive
@@ -258,7 +258,7 @@ CG_DrawActive
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L756)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L756)
 
 <a id="function-function-mq3-client-cgame-draw-drawammowarning-function-drawammowarning-value-enabled-retailactive-src-mq3-client-cgame-draw-ml-2077451729"></a>
 ### drawAmmoWarning
@@ -276,7 +276,7 @@ CG_DrawAmmoWarning
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L717)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L717)
 
 <a id="function-function-mq3-client-cgame-draw-drawattacker-function-drawattacker-value-y-retailactive-src-mq3-client-cgame-draw-ml-539271779"></a>
 ### drawAttacker
@@ -294,7 +294,7 @@ CG_DrawAttacker
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L550)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L550)
 
 <a id="function-function-mq3-client-cgame-draw-drawcenterstring-function-drawcenterstring-value-centertime-retailactive-src-mq3-client-cgame-draw-ml-261518048"></a>
 ### drawCenterString
@@ -312,7 +312,7 @@ CG_DrawCenterString
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L674)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L674)
 
 <a id="function-function-mq3-client-cgame-draw-drawcrosshair-function-drawcrosshair-value-retailactive-src-mq3-client-cgame-draw-ml-1329456004"></a>
 ### drawCrosshair
@@ -329,7 +329,7 @@ CG_DrawCrosshair
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L678)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L678)
 
 <a id="function-function-mq3-client-cgame-draw-drawcrosshairnames-function-drawcrosshairnames-value-trace-retailactive-src-mq3-client-cgame-draw-ml-1778584617"></a>
 ### drawCrosshairNames
@@ -347,7 +347,7 @@ CG_DrawCrosshairNames
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L687)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L687)
 
 <a id="function-function-mq3-client-cgame-draw-drawdisconnect-function-drawdisconnect-value-commandtime-currentcmdtime-retailactive-src-mq3-client-cgame-draw-ml-513330022"></a>
 ### drawDisconnect
@@ -366,7 +366,7 @@ CG_DrawDisconnect
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L655)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L655)
 
 <a id="function-function-mq3-client-cgame-draw-drawfield-function-drawfield-value-x-y-width-number-retailactive-src-mq3-client-cgame-draw-ml-521484224"></a>
 ### drawField
@@ -387,7 +387,7 @@ CG_DrawField
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L480)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L480)
 
 <a id="function-function-mq3-client-cgame-draw-drawflagmodel-function-drawflagmodel-value-x-y-w-h-team-force2d-retailactive-src-mq3-client-cgame-draw-ml-1748405440"></a>
 ### drawFlagModel
@@ -410,7 +410,7 @@ CG_DrawFlagModel
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L515)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L515)
 
 <a id="function-function-mq3-client-cgame-draw-drawfollow-function-drawfollow-value-retailactive-src-mq3-client-cgame-draw-ml-1812923680"></a>
 ### drawFollow
@@ -427,7 +427,7 @@ CG_DrawFollow
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L712)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L712)
 
 <a id="function-function-mq3-client-cgame-draw-drawfps-function-drawfps-value-y-milliseconds-retailactive-src-mq3-client-cgame-draw-ml-797014159"></a>
 ### drawFPS
@@ -446,7 +446,7 @@ CG_DrawFPS
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L561)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L561)
 
 <a id="function-function-mq3-client-cgame-draw-drawhead-function-drawhead-value-x-y-w-h-clientnum-angles-retailactive-src-mq3-client-cgame-draw-ml-355120101"></a>
 ### drawHead
@@ -469,7 +469,7 @@ CG_DrawHead
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L505)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L505)
 
 <a id="function-function-mq3-client-cgame-draw-drawholdableitem-function-drawholdableitem-value-icon-retailactive-src-mq3-client-cgame-draw-ml-1767152541"></a>
 ### drawHoldableItem
@@ -487,7 +487,7 @@ CG_DrawHoldableItem
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L626)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L626)
 
 <a id="function-function-mq3-client-cgame-draw-drawintermission-function-drawintermission-value-centertime-retailactive-src-mq3-client-cgame-draw-ml-684769160"></a>
 ### drawIntermission
@@ -505,7 +505,7 @@ CG_DrawIntermission
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L708)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L708)
 
 <a id="function-function-mq3-client-cgame-draw-drawlagometer-function-drawlagometer-value-enabled-commandtime-currentcmdtime-retailactive-src-mq3-client-cgame-draw-ml-2124869425"></a>
 ### drawLagometer
@@ -525,7 +525,7 @@ CG_DrawLagometer
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L662)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L662)
 
 <a id="function-function-mq3-client-cgame-draw-drawlowerleft-function-drawlowerleft-value-itemname-itemicon-pickuptime-retailactive-src-mq3-client-cgame-draw-ml-1003551099"></a>
 ### drawLowerLeft
@@ -545,7 +545,7 @@ CG_DrawLowerLeft
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_draw.drawPickupItem`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L617)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L617)
 
 <a id="function-function-mq3-client-cgame-draw-drawlowerright-function-drawlowerright-value-score1-score2-retailactive-src-mq3-client-cgame-draw-ml-1472100257"></a>
 ### drawLowerRight
@@ -564,7 +564,7 @@ CG_DrawLowerRight
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L602)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L602)
 
 <a id="function-function-mq3-client-cgame-draw-drawpersistantpowerup-function-drawpersistantpowerup-value-icon-retailactive-src-mq3-client-cgame-draw-ml-272182603"></a>
 ### drawPersistantPowerup
@@ -582,7 +582,7 @@ CG_DrawPersistantPowerup
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L631)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L631)
 
 <a id="function-function-mq3-client-cgame-draw-drawpic-function-drawpic-value-x-y-w-h-shader-color-retailactive-src-mq3-client-cgame-draw-ml-665871232"></a>
 ### drawPic
@@ -605,7 +605,7 @@ Adapts `mq3.client.cgame_draw.publish` to client game draw `drawPic`, returning 
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_draw.publish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L397)
 
 <a id="function-function-mq3-client-cgame-draw-drawpickupitem-function-drawpickupitem-value-y-itemname-itemicon-pickuptime-retailactive-src-mq3-client-cgame-draw-ml-2116903660"></a>
 ### drawPickupItem
@@ -626,7 +626,7 @@ CG_DrawPickupItem
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L610)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L610)
 
 <a id="function-function-mq3-client-cgame-draw-drawpowerups-function-drawpowerups-value-y-retailactive-src-mq3-client-cgame-draw-ml-1948264811"></a>
 ### drawPowerups
@@ -644,7 +644,7 @@ CG_DrawPowerups
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L596)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L596)
 
 <a id="function-function-mq3-client-cgame-draw-drawproxwarning-function-drawproxwarning-value-ticking-proxtick-retailactive-src-mq3-client-cgame-draw-ml-974243677"></a>
 ### drawProxWarning
@@ -663,7 +663,7 @@ CG_DrawProxWarning
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L723)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L723)
 
 <a id="function-function-mq3-client-cgame-draw-drawreward-function-drawreward-value-rewardtime-rewardcount-rewardshader-rewardsound-retailactive-src-mq3-client-cgame-draw-ml-1267597860"></a>
 ### drawReward
@@ -684,7 +684,7 @@ CG_DrawReward
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L639)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L639)
 
 <a id="function-function-mq3-client-cgame-draw-drawscoreboard-function-drawscoreboard-value-retailactive-src-mq3-client-cgame-draw-ml-1080761028"></a>
 ### drawScoreboard
@@ -701,7 +701,7 @@ CG_DrawScoreboard
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L703)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L703)
 
 <a id="function-function-mq3-client-cgame-draw-drawscores-function-drawscores-value-y-score1-score2-retailactive-src-mq3-client-cgame-draw-ml-558466218"></a>
 ### drawScores
@@ -721,7 +721,7 @@ CG_DrawScores
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L591)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L591)
 
 <a id="function-function-mq3-client-cgame-draw-drawsnapshot-function-drawsnapshot-value-y-retailactive-src-mq3-client-cgame-draw-ml-1001431087"></a>
 ### drawSnapshot
@@ -739,7 +739,7 @@ CG_DrawSnapshot
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L555)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L555)
 
 <a id="function-function-mq3-client-cgame-draw-drawspectator-function-drawspectator-value-retailactive-src-mq3-client-cgame-draw-ml-708669958"></a>
 ### drawSpectator
@@ -756,7 +756,7 @@ CG_DrawSpectator
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L691)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L691)
 
 <a id="function-function-mq3-client-cgame-draw-drawstatusbar-function-drawstatusbar-value-retailactive-src-mq3-client-cgame-draw-ml-665236070"></a>
 ### drawStatusBar
@@ -773,7 +773,7 @@ CG_DrawStatusBar
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L542)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L542)
 
 <a id="function-function-mq3-client-cgame-draw-drawstatusbarflag-function-drawstatusbarflag-value-x-team-retailactive-src-mq3-client-cgame-draw-ml-1102559987"></a>
 ### drawStatusBarFlag
@@ -792,7 +792,7 @@ CG_DrawStatusBarFlag
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_draw.drawFlagModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L528)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L528)
 
 <a id="function-function-mq3-client-cgame-draw-drawstatusbarhead-function-drawstatusbarhead-value-x-damagetime-damagex-retailactive-src-mq3-client-cgame-draw-ml-1834358821"></a>
 ### drawStatusBarHead
@@ -812,7 +812,7 @@ CG_DrawStatusBarHead
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L522)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L522)
 
 <a id="function-function-mq3-client-cgame-draw-drawteambackground-function-drawteambackground-value-x-y-w-h-alpha-team-retailactive-src-mq3-client-cgame-draw-ml-69611821"></a>
 ### drawTeamBackground
@@ -835,7 +835,7 @@ CG_DrawTeamBackground
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L538)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L538)
 
 <a id="function-function-mq3-client-cgame-draw-drawteaminfo-function-drawteaminfo-value-retailactive-src-mq3-client-cgame-draw-ml-1061803684"></a>
 ### drawTeamInfo
@@ -852,7 +852,7 @@ CG_DrawTeamInfo
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_draw.drawTeamOverlay`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L621)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L621)
 
 <a id="function-function-mq3-client-cgame-draw-drawteamoverlay-function-drawteamoverlay-value-y-right-upper-retailactive-src-mq3-client-cgame-draw-ml-424567019"></a>
 ### drawTeamOverlay
@@ -872,7 +872,7 @@ CG_DrawTeamOverlay
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L573)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L573)
 
 <a id="function-function-mq3-client-cgame-draw-drawteamvote-function-drawteamvote-value-retailactive-src-mq3-client-cgame-draw-ml-863718204"></a>
 ### drawTeamVote
@@ -889,7 +889,7 @@ CG_DrawTeamVote
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L699)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L699)
 
 <a id="function-function-mq3-client-cgame-draw-drawtext-function-drawtext-value-x-y-text-size-color-retailactive-src-mq3-client-cgame-draw-ml-282281068"></a>
 ### drawText
@@ -911,7 +911,7 @@ Adapts `mq3.client.cgame_draw.publish` to client game draw `drawText`, returning
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_draw.publish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L387)
 
 <a id="function-function-mq3-client-cgame-draw-drawtimedmenus-function-drawtimedmenus-value-retailactive-src-mq3-client-cgame-draw-ml-506258128"></a>
 ### drawTimedMenus
@@ -928,7 +928,7 @@ CG_DrawTimedMenus
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L731)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L731)
 
 <a id="function-function-mq3-client-cgame-draw-drawtimer-function-drawtimer-value-y-retailactive-src-mq3-client-cgame-draw-ml-875145741"></a>
 ### drawTimer
@@ -946,7 +946,7 @@ CG_DrawTimer
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L566)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L566)
 
 <a id="function-function-mq3-client-cgame-draw-drawtourneyscoreboard-function-drawtourneyscoreboard-value-retailactive-src-mq3-client-cgame-draw-ml-910785524"></a>
 ### drawTourneyScoreboard
@@ -963,7 +963,7 @@ CG_DrawTourneyScoreboard
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L749)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L749)
 
 <a id="function-function-mq3-client-cgame-draw-drawupperright-function-drawupperright-value-milliseconds-retailactive-src-mq3-client-cgame-draw-ml-2126227642"></a>
 ### drawUpperRight
@@ -981,7 +981,7 @@ CG_DrawUpperRight
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L583)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L583)
 
 <a id="function-function-mq3-client-cgame-draw-drawvote-function-drawvote-value-retailactive-src-mq3-client-cgame-draw-ml-394075668"></a>
 ### drawVote
@@ -998,7 +998,7 @@ CG_DrawVote
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L695)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L695)
 
 <a id="function-function-mq3-client-cgame-draw-drawwarmup-function-drawwarmup-value-retailactive-src-mq3-client-cgame-draw-ml-1906095276"></a>
 ### drawWarmup
@@ -1015,7 +1015,7 @@ CG_DrawWarmup
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L727)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L727)
 
 <a id="constant-constant-mq3-client-cgame-draw-fade-time-const-fade-time-200-src-mq3-client-cgame-draw-ml-1891827379"></a>
 ### FADE_TIME
@@ -1027,7 +1027,7 @@ const FADE_TIME = 200
 Duration in milliseconds of the standard CGame presentation fade.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L49)
 
 <a id="function-function-mq3-client-cgame-draw-fadealpha-function-fadealpha-value-start-total-src-mq3-client-cgame-draw-ml-784739827"></a>
 ### fadeAlpha
@@ -1045,7 +1045,7 @@ Evaluates client game draw `fadeAlpha` and returns `0.0`, `(total-t)/FADE_TIME`,
 | `total` | `dynamic` | — | Value used by `if t<0 or t>=total then return 0.0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L378)
 
 <a id="constant-constant-mq3-client-cgame-draw-giant-height-const-giant-height-48-src-mq3-client-cgame-draw-ml-508199019"></a>
 ### GIANT_HEIGHT
@@ -1057,7 +1057,7 @@ const GIANT_HEIGHT = 48
 Height of a giant-font character in virtual screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L57)
 
 <a id="constant-constant-mq3-client-cgame-draw-giant-width-const-giant-width-32-src-mq3-client-cgame-draw-ml-1658261324"></a>
 ### GIANT_WIDTH
@@ -1069,7 +1069,7 @@ const GIANT_WIDTH = 32
 Width of a giant-font character in virtual screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L55)
 
 - [mq3.client.cgame_draw.Glyph](Type-mq3-client-cgame-draw-glyph-2074225799.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-draw-ml-1242809909"></a>
@@ -1082,7 +1082,7 @@ const GT_CTF = 4
 Native game-type value for capture the flag, used when choosing team, tournament, and single-player HUD presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L31)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-ffa-const-gt-ffa-0-src-mq3-client-cgame-draw-ml-22151233"></a>
 ### GT_FFA
@@ -1094,7 +1094,7 @@ const GT_FFA = 0
 Native game-type identifier selecting free-for-all deathmatch.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L19)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-single-player-const-gt-single-player-2-src-mq3-client-cgame-draw-ml-1903452941"></a>
 ### GT_SINGLE_PLAYER
@@ -1106,7 +1106,7 @@ const GT_SINGLE_PLAYER = 2
 Native game-type value for single-player arena progression, used when choosing team, tournament, and single-player HUD presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L25)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-team-const-gt-team-3-src-mq3-client-cgame-draw-ml-708610706"></a>
 ### GT_TEAM
@@ -1118,7 +1118,7 @@ const GT_TEAM = 3
 Native game-type value for team deathmatch, used when choosing team, tournament, and single-player HUD presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L28)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-tournament-const-gt-tournament-1-src-mq3-client-cgame-draw-ml-511968384"></a>
 ### GT_TOURNAMENT
@@ -1130,7 +1130,7 @@ const GT_TOURNAMENT = 1
 Native game-type value for one-on-one tournament play, used when choosing team, tournament, and single-player HUD presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-draw-icon-size-const-icon-size-48-src-mq3-client-cgame-draw-ml-2079988175"></a>
 ### ICON_SIZE
@@ -1142,7 +1142,7 @@ const ICON_SIZE = 48
 Default square HUD icon size in virtual screen coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L63)
 
 <a id="constant-constant-mq3-client-cgame-draw-item-blob-time-const-item-blob-time-200-src-mq3-client-cgame-draw-ml-964137875"></a>
 ### ITEM_BLOB_TIME
@@ -1154,7 +1154,7 @@ const ITEM_BLOB_TIME = 200
 Duration in milliseconds of the pickup-icon emphasis effect.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L65)
 
 <a id="constant-constant-mq3-client-cgame-draw-lag-samples-const-lag-samples-128-src-mq3-client-cgame-draw-ml-1008355790"></a>
 ### LAG_SAMPLES
@@ -1166,7 +1166,7 @@ const LAG_SAMPLES = 128
 Number of frame or packet samples retained by the lagometer history.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L45)
 
 <a id="function-function-mq3-client-cgame-draw-lagometer-function-lagometer-src-mq3-client-cgame-draw-ml-340910942"></a>
 ### lagometer
@@ -1178,7 +1178,7 @@ function lagometer()
 Creates a `mq3.client.cgame_draw.Lagometer` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L354)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L354)
 
 - [mq3.client.cgame_draw.Lagometer](Type-mq3-client-cgame-draw-lagometer-1572914679.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-max-clients-const-max-clients-64-src-mq3-client-cgame-draw-ml-488723977"></a>
@@ -1191,7 +1191,7 @@ const MAX_CLIENTS = 64
 Capacity limit for the clients collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L41)
 
 <a id="constant-constant-mq3-client-cgame-draw-max-locations-const-max-locations-64-src-mq3-client-cgame-draw-ml-1541394337"></a>
 ### MAX_LOCATIONS
@@ -1203,7 +1203,7 @@ const MAX_LOCATIONS = 64
 Capacity limit for the locations collection or bounded storage used by this client module.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L43)
 
 <a id="constant-constant-mq3-client-cgame-draw-pm-intermission-const-pm-intermission-5-src-mq3-client-cgame-draw-ml-1209839204"></a>
 ### PM_INTERMISSION
@@ -1215,7 +1215,7 @@ const PM_INTERMISSION = 5
 Player-movement mode selecting intermission input and physics behavior.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L33)
 
 <a id="constant-constant-mq3-client-cgame-draw-pmf-follow-const-pmf-follow-4096-src-mq3-client-cgame-draw-ml-2026695574"></a>
 ### PMF_FOLLOW
@@ -1227,7 +1227,7 @@ const PMF_FOLLOW = 4096
 Player-movement state flag indicating follow.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L35)
 
 <a id="constant-constant-mq3-client-cgame-draw-pmf-scoreboard-const-pmf-scoreboard-8192-src-mq3-client-cgame-draw-ml-1707477489"></a>
 ### PMF_SCOREBOARD
@@ -1239,7 +1239,7 @@ const PMF_SCOREBOARD = 8192
 Player-movement state flag indicating scoreboard.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L37)
 
 <a id="function-function-mq3-client-cgame-draw-powerup-function-powerup-expires-icon-src-mq3-client-cgame-draw-ml-285432637"></a>
 ### powerup
@@ -1256,7 +1256,7 @@ Creates a `mq3.client.cgame_draw.Powerup` record. Assigns `expires` from `expire
 | `icon` | `dynamic` | — | Value used to initialize `Powerup.icon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L352)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L352)
 
 - [mq3.client.cgame_draw.Powerup](Type-mq3-client-cgame-draw-powerup-677849029.md) — struct
 <a id="function-function-mq3-client-cgame-draw-printablelength-function-printablelength-text-src-mq3-client-cgame-draw-ml-284129015"></a>
@@ -1273,7 +1273,7 @@ Evaluates client game draw `printableLength` and returns `count` according to it
 | `text` | `dynamic` | — | Text consumed or emitted by `printableLength` in the client game draw path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L364)
 
 <a id="function-function-mq3-client-cgame-draw-publish-function-publish-state-command-retailactive-src-mq3-client-cgame-draw-ml-1104847579"></a>
 ### publish
@@ -1291,7 +1291,7 @@ Updates `command.dispatched`, `state.actions`, `state.emitted`, `state.suppresse
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L344)
 
 <a id="function-function-mq3-client-cgame-draw-scanforcrosshairentity-function-scanforcrosshairentity-value-trace-src-mq3-client-cgame-draw-ml-751014508"></a>
 ### scanForCrosshairEntity
@@ -1308,7 +1308,7 @@ CG_ScanForCrosshairEntity
 | `trace` | `dynamic` | — | Record read through `trace.entityNum`, `trace.fog`, `trace.invisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L682)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L682)
 
 <a id="constant-constant-mq3-client-cgame-draw-snapflag-rate-delayed-const-snapflag-rate-delayed-1-src-mq3-client-cgame-draw-ml-1339160196"></a>
 ### SNAPFLAG_RATE_DELAYED
@@ -1320,7 +1320,7 @@ const SNAPFLAG_RATE_DELAYED = 1
 Snapshot flag indicating that rate limiting delayed the snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="function-function-mq3-client-cgame-draw-state-function-state-src-mq3-client-cgame-draw-ml-695311296"></a>
 ### state
@@ -1332,7 +1332,7 @@ function state()
 Creates a `mq3.client.cgame_draw.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L356)
 
 - [mq3.client.cgame_draw.State](Type-mq3-client-cgame-draw-state-1790363816.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-team-blue-const-team-blue-2-src-mq3-client-cgame-draw-ml-790549327"></a>
@@ -1345,7 +1345,7 @@ const TEAM_BLUE = 2
 Native team identifier for blue, used by player and team presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L15)
 
 <a id="constant-constant-mq3-client-cgame-draw-team-free-const-team-free-0-src-mq3-client-cgame-draw-ml-840232769"></a>
 ### TEAM_FREE
@@ -1357,7 +1357,7 @@ const TEAM_FREE = 0
 Native team identifier for free, used by player and team presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L11)
 
 <a id="constant-constant-mq3-client-cgame-draw-team-red-const-team-red-1-src-mq3-client-cgame-draw-ml-811640460"></a>
 ### TEAM_RED
@@ -1369,7 +1369,7 @@ const TEAM_RED = 1
 Native team identifier for red, used by player and team presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L13)
 
 <a id="constant-constant-mq3-client-cgame-draw-team-spectator-const-team-spectator-3-src-mq3-client-cgame-draw-ml-2106377002"></a>
 ### TEAM_SPECTATOR
@@ -1381,7 +1381,7 @@ const TEAM_SPECTATOR = 3
 Native team identifier for spectator, used by player and team presentation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L17)
 
 <a id="function-function-mq3-client-cgame-draw-textheight-function-textheight-text-scale-limit-glyphs-glyphscale-src-mq3-client-cgame-draw-ml-1873873651"></a>
 ### textHeight
@@ -1401,7 +1401,7 @@ CG_Text_Height
 | `glyphScale` | `dynamic` | — | Value used by `return n.trunc32(height*scale*glyphScale)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L421)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L421)
 
 <a id="function-function-mq3-client-cgame-draw-textpaint-function-textpaint-value-x-y-scale-color-text-adjust-limit-style-glyphs-glyphscale-retailactive-src-mq3-client-cgame-draw-ml-1460931127"></a>
 ### textPaint
@@ -1428,7 +1428,7 @@ CG_Text_Paint
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L458)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L458)
 
 <a id="function-function-mq3-client-cgame-draw-textpaintchar-function-textpaintchar-value-x-y-width-height-scale-s-t-s2-t2-shader-retailactive-src-mq3-client-cgame-draw-ml-1417190871"></a>
 ### textPaintChar
@@ -1455,7 +1455,7 @@ CG_Text_PaintChar
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_draw.publish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L444)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L444)
 
 <a id="function-function-mq3-client-cgame-draw-textwidth-function-textwidth-text-scale-limit-glyphs-glyphscale-src-mq3-client-cgame-draw-ml-687302853"></a>
 ### textWidth
@@ -1475,7 +1475,7 @@ CG_Text_Width
 | `glyphScale` | `dynamic` | — | Value used by `return n.trunc32(width*scale*glyphScale)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L405)
 
 <a id="constant-constant-mq3-client-cgame-draw-tinychar-height-const-tinychar-height-8-src-mq3-client-cgame-draw-ml-395234753"></a>
 ### TINYCHAR_HEIGHT
@@ -1487,7 +1487,7 @@ const TINYCHAR_HEIGHT = 8
 Tinychar font metric controlling height in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L61)
 
 <a id="constant-constant-mq3-client-cgame-draw-tinychar-width-const-tinychar-width-8-src-mq3-client-cgame-draw-ml-731760785"></a>
 ### TINYCHAR_WIDTH
@@ -1499,7 +1499,7 @@ const TINYCHAR_WIDTH = 8
 Tinychar font metric controlling width in virtual UI coordinates.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L59)
 
 - [mq3.client.cgame_draw.TraceResult](Type-mq3-client-cgame-draw-traceresult-1778805101.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-vote-time-const-vote-time-30000-src-mq3-client-cgame-draw-ml-327002058"></a>
@@ -1512,4 +1512,4 @@ const VOTE_TIME = 30000
 Duration in milliseconds of a server or team vote.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L47)

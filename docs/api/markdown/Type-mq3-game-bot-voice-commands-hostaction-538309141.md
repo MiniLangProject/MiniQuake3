@@ -12,7 +12,7 @@ struct HostAction
 `HostAction` record for bot voice commands, containing `kind`, `client`, `channel`, `text` and `value` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L89)
 
 ## Members
 
@@ -26,7 +26,7 @@ channel
 Delivery channel selected for the host chat/message action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L95)
 
 <a id="field-field-mq3-game-bot-voice-commands-hostaction-client-client-src-mq3-game-bot-voice-commands-ml-1671246037"></a>
 ### client
@@ -38,7 +38,7 @@ client
 Client slot associated with the host action produced by a voice command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L93)
 
 <a id="field-field-mq3-game-bot-voice-commands-hostaction-dispatched-dispatched-src-mq3-game-bot-voice-commands-ml-717581669"></a>
 ### dispatched
@@ -50,7 +50,7 @@ dispatched
 Nonzero after the action has been delivered to its host callback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L101)
 
 <a id="field-field-mq3-game-bot-voice-commands-hostaction-kind-kind-src-mq3-game-bot-voice-commands-ml-1760399363"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 Discriminator selecting the recorded bot action or decision event.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L91)
 
 <a id="field-field-mq3-game-bot-voice-commands-hostaction-text-text-src-mq3-game-bot-voice-commands-ml-292875661"></a>
 ### text
@@ -74,7 +74,7 @@ text
 Text payload supplied to the recorded command, chat, or host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L97)
 
 <a id="field-field-mq3-game-bot-voice-commands-hostaction-value-value-src-mq3-game-bot-voice-commands-ml-1086820347"></a>
 ### value
@@ -86,4 +86,4 @@ value
 Numeric/result payload supplied to the recorded host action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L99)

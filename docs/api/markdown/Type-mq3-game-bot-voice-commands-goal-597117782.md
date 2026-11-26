@@ -12,7 +12,7 @@ struct Goal
 `Goal` record for bot voice commands, containing `entitynum`, `areanum`, `origin`, `mins` and `maxs` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L67)
 
 ## Members
 
@@ -26,7 +26,7 @@ areanum
 AAS area containing the bot or spatial goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L71)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-entitynum-entitynum-src-mq3-game-bot-voice-commands-ml-1138585522"></a>
 ### entitynum
@@ -38,7 +38,7 @@ entitynum
 Entity number associated with the goal selected by a bot voice command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L69)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-maxs-maxs-src-mq3-game-bot-voice-commands-ml-1208688072"></a>
 ### maxs
@@ -50,7 +50,7 @@ maxs
 Upper local bounding-box corner of the goal selected by a bot voice command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L77)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-mins-mins-src-mq3-game-bot-voice-commands-ml-1996470656"></a>
 ### mins
@@ -62,7 +62,7 @@ mins
 Lower local bounding-box corner of the goal selected by a bot voice command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L75)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-origin-origin-src-mq3-game-bot-voice-commands-ml-187883086"></a>
 ### origin
@@ -74,7 +74,7 @@ origin
 World-space target position of the goal selected by a bot voice command.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L73)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-tag-tag-src-mq3-game-bot-voice-commands-ml-1557719674"></a>
 ### tag
@@ -86,4 +86,4 @@ tag
 Identifier identifying the voice-command navigation goal.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L79)

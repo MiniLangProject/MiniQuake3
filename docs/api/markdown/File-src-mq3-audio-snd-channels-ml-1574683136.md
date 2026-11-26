@@ -26,7 +26,7 @@ Count mixer-channel records whose active flag is set.
 | `state` | `dynamic` | — | Channel pool containing the active flags to count. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L77)
 
 <a id="function-function-mq3-audio-snd-channels-advance-function-advance-state-milliseconds-src-mq3-audio-snd-channels-ml-616922669"></a>
 ### advance
@@ -45,7 +45,7 @@ Direct state writes: `state.time`.
 | `milliseconds` | `dynamic` | — | Milliseconds used in `(milliseconds > 0)` and `(state.time + milliseconds)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L73)
 
 <a id="constant-constant-mq3-audio-snd-channels-chan-announcer-const-chan-announcer-7-src-mq3-audio-snd-channels-ml-1658312664"></a>
 ### CHAN_ANNOUNCER
@@ -57,7 +57,7 @@ const CHAN_ANNOUNCER = 7
 Entity-channel identifier reserved for announcer audio.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
 
 - [mq3.audio.snd_channels.Channel](Type-mq3-audio-snd-channels-channel-424757083.md) — struct
 <a id="function-function-mq3-audio-snd-channels-create-function-create-src-mq3-audio-snd-channels-ml-1744450608"></a>
@@ -70,7 +70,7 @@ function create()
 Create snd channels in audio.snd_channels; the normal completion returns `State(channels, free, 0, 0)`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L49)
 
 <a id="constant-constant-mq3-audio-snd-channels-max-channels-const-max-channels-sndlocal-max-channels-src-mq3-audio-snd-channels-ml-469506884"></a>
 ### MAX_CHANNELS
@@ -82,7 +82,7 @@ const MAX_CHANNELS = sndLocal.MAX_CHANNELS
 Maximum number of simultaneously allocated sound channels.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L8)
 
 <a id="function-function-mq3-audio-snd-channels-release-function-release-state-slot-src-mq3-audio-snd-channels-ml-829735849"></a>
 ### release
@@ -101,7 +101,7 @@ Direct state writes: `state.freeSlots`.
 | `slot` | `dynamic` | — | Zero-based index into `state.channels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L86)
 
 <a id="function-function-mq3-audio-snd-channels-setlistener-function-setlistener-state-entity-src-mq3-audio-snd-channels-ml-1322003246"></a>
 ### setListener
@@ -120,7 +120,7 @@ Direct state writes: `state.listener`.
 | `entity` | `dynamic` | — | Entity operand used by `setListener`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L61)
 
 <a id="function-function-mq3-audio-snd-channels-settime-function-settime-state-milliseconds-src-mq3-audio-snd-channels-ml-185905951"></a>
 ### setTime
@@ -139,7 +139,7 @@ Direct state writes: `state.time`.
 | `milliseconds` | `dynamic` | — | Milliseconds operand used by `setTime`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L67)
 
 <a id="function-function-mq3-audio-snd-channels-start-function-start-state-entity-handle-entchannel-src-mq3-audio-snd-channels-ml-864241112"></a>
 ### start
@@ -160,7 +160,7 @@ Direct state writes: `state.freeSlots`.
 | `entchannel` | `dynamic` | — | Entchannel used in `(channel.entchannel != CHAN_ANNOUNCER)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L98)
 
 - [mq3.audio.snd_channels.Start](Type-mq3-audio-snd-channels-start-1995314412.md) — struct
 - [mq3.audio.snd_channels.State](Type-mq3-audio-snd-channels-state-1811746341.md) — struct

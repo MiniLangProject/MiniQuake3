@@ -12,7 +12,7 @@ struct Snapshot
 Snapshot record for engine.local_qvm_match, containing `serverTime`, `playerState`, `entities`, `areaBits`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L486)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L486)
 
 ## Members
 
@@ -26,7 +26,7 @@ areaBits
 Bit mask describing the snapshot's visible or accessible areas.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L494)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L494)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-entities-entities-src-mq3-engine-local-qvm-match-ml-1694939923"></a>
 ### entities
@@ -38,7 +38,7 @@ entities
 Entity records associated with the current world, scene, or snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L492)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L492)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-playerstate-playerstate-src-mq3-engine-local-qvm-match-ml-1023706877"></a>
 ### playerState
@@ -50,7 +50,7 @@ playerState
 Player movement and gameplay state carried by the snapshot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L490)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L490)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-servertime-servertime-src-mq3-engine-local-qvm-match-ml-1582300509"></a>
 ### serverTime
@@ -62,4 +62,4 @@ serverTime
 Server timestamp of the snapshot, in milliseconds.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L488)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L488)

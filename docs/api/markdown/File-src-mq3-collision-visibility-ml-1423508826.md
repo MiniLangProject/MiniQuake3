@@ -29,7 +29,7 @@ Compute adjust area portal state in collision.visibility.
 | `open` | `dynamic` | — | Open operand used by `adjustAreaPortalState`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L135)
 
 <a id="function-function-mq3-collision-visibility-areasconnected-function-areasconnected-state-area1-area2-src-mq3-collision-visibility-ml-495394468"></a>
 ### areasConnected
@@ -47,7 +47,7 @@ Compute areas connected in collision.visibility; the normal completion returns `
 | `area2` | `dynamic` | — | Zero-based index into `state.floodnums`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L155)
 
 <a id="function-function-mq3-collision-visibility-clusterpvs-function-clusterpvs-state-cluster-src-mq3-collision-visibility-ml-297880431"></a>
 ### clusterPVS
@@ -64,7 +64,7 @@ Compute cluster pvs in collision.visibility; the normal completion returns `slic
 | `cluster` | `dynamic` | — | Cluster used in `(cluster >= 0)` and `(cluster < state.numClusters)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L86)
 
 <a id="function-function-mq3-collision-visibility-clustervisible-function-clustervisible-state-as-visibility-sourcecluster-as-int-targetcluster-as-int-returns-bool-src-mq3-collision-visibility-ml-1939401254"></a>
 ### clusterVisible
@@ -84,7 +84,7 @@ Hot PVS tests need one bit, not a freshly copied visibility row. Match clusterPV
 
 **Returns:** True when the selected PVS bit is set; false when it is clear or the target bit is out of range.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L99)
 
 <a id="function-function-mq3-collision-visibility-fail-function-fail-message-src-mq3-collision-visibility-ml-2127380473"></a>
 ### fail
@@ -100,7 +100,7 @@ Create the collision.visibility error for `fail` with 3504 and the supplied diag
 | `message` | `dynamic` | — | Message used in `("Visibility: " + message)` and `error(3504, ("Visibility: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L34)
 
 <a id="function-function-mq3-collision-visibility-floodconnections-function-floodconnections-state-src-mq3-collision-visibility-ml-1123845631"></a>
 ### floodConnections
@@ -118,7 +118,7 @@ Direct state writes: `state.floodnums`.
 | `state` | `dynamic` | — | Record exposing `numAreas`, `floodnums`, `portals`. Updated in place: `floodnums`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L110)
 
 <a id="function-function-mq3-collision-visibility-leafarea-function-leafarea-state-leaf-src-mq3-collision-visibility-ml-1772597767"></a>
 ### leafArea
@@ -135,7 +135,7 @@ Compute leaf area in collision.visibility; the normal completion returns `state.
 | `leaf` | `dynamic` | — | Zero-based index into `state.areas`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L79)
 
 <a id="function-function-mq3-collision-visibility-leafcluster-function-leafcluster-state-leaf-src-mq3-collision-visibility-ml-291025587"></a>
 ### leafCluster
@@ -152,7 +152,7 @@ Compute leaf cluster in collision.visibility; the normal completion returns `sta
 | `leaf` | `dynamic` | — | Zero-based index into `state.clusters`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L72)
 
 <a id="function-function-mq3-collision-visibility-load-function-load-map-src-mq3-collision-visibility-ml-506039826"></a>
 ### load
@@ -168,7 +168,7 @@ Load visibility in collision.visibility; the normal completion returns `state`.
 | `map` | `dynamic` | — | Record exposing `counts`, `offsets`, `data`, `lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L40)
 
 - [mq3.collision.visibility.Visibility](Type-mq3-collision-visibility-visibility-625257514.md) — struct
 <a id="function-function-mq3-collision-visibility-writeareabits-function-writeareabits-state-buffer-area-src-mq3-collision-visibility-ml-2101091682"></a>
@@ -189,4 +189,4 @@ Direct state writes: `buffer elements`.
 | `area` | `dynamic` | — | Zero-based index into `state.floodnums`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/visibility.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/collision/visibility.ml#L168)

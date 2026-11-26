@@ -27,7 +27,7 @@ Forward `G_Alloc` to `mq3.game.memory.allocate` and return the delegated result.
 | `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L13)
 
 <a id="function-function-mq3-game-g-mem-g-initmemory-function-g-initmemory-level-src-mq3-game-g-mem-ml-1103109070"></a>
 ### G_InitMemory
@@ -43,7 +43,7 @@ Forward `G_InitMemory` to `mq3.game.memory.init` and return the delegated result
 | `level` | `dynamic` | — | Game-level state; accesses `memoryState`. May update `level.memoryState` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L16)
 
 <a id="constant-constant-mq3-game-g-mem-poolsize-const-poolsize-262144-src-mq3-game-g-mem-ml-978704872"></a>
 ### POOLSIZE
@@ -55,7 +55,7 @@ const POOLSIZE = 262144
 Byte capacity of the fixed game-module allocation pool.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L8)
 
 <a id="function-function-mq3-game-g-mem-svcmd-gamemem-f-function-svcmd-gamemem-f-level-src-mq3-game-g-mem-ml-1222398686"></a>
 ### Svcmd_GameMem_f
@@ -71,4 +71,4 @@ Forward `Svcmd_GameMem_f` to `mq3.game.memory.status` and return the delegated r
 | `level` | `dynamic` | — | Game-level state; accesses `memoryState`. May update `level.memoryState` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L19)

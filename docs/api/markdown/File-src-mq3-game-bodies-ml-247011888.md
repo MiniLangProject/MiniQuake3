@@ -39,7 +39,7 @@ Update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]`, `hit.endpos[2]` and `ent.
 | `hit` | `dynamic` | — | Hit record; accesses `trace`, `endpos` and `entityNum`. May update `hit.endpos[2]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L127)
 
 <a id="function-function-mq3-game-bodies-copytoqueue-function-copytoqueue-level-ent-src-mq3-game-bodies-ml-1802435609"></a>
 ### copyToQueue
@@ -56,7 +56,7 @@ Set `level.bodyQueIndex` to `local.nextBodyQueueSlot(level.bodyQueIndex)` in `mq
 | `ent` | `dynamic` | — | Game entity; accesses `s`, `client`, `r` and `health`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L97)
 
 <a id="function-function-mq3-game-bodies-die-function-die-level-self-inflictor-attacker-damage-meansofdeath-src-mq3-game-bodies-ml-1278382099"></a>
 ### die
@@ -77,7 +77,7 @@ Set `self.health` to `-39` in `mq3.game.bodies.die`. Return paths include `gib(l
 | `meansOfDeath` | `dynamic` | — | Not read by this implementation; retained in the `die` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L67)
 
 <a id="function-function-mq3-game-bodies-gib-function-gib-level-self-killer-src-mq3-game-bodies-ml-1680785247"></a>
 ### gib
@@ -95,7 +95,7 @@ Update `self.takedamage`, `self.s.eType` and `self.r.contents` during `gib`.
 | `killer` | `dynamic` | — | Integer parameter stored alongside the emitted event. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L50)
 
 <a id="function-function-mq3-game-bodies-initqueue-function-initqueue-level-src-mq3-game-bodies-ml-2120058292"></a>
 ### initQueue
@@ -111,7 +111,7 @@ Update `level.bodyQueIndex`, `level.bodyQue` and `level.bodyQue[i]` during `init
 | `level` | `dynamic` | — | Game-level state; accesses `bodyQueIndex` and `bodyQue`. May update `level.bodyQueIndex`, `level.bodyQue` and `level.bodyQue[i]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L74)
 
 <a id="function-function-mq3-game-bodies-lookatkiller-function-lookatkiller-level-self-inflictor-attacker-src-mq3-game-bodies-ml-1830717165"></a>
 ### lookAtKiller
@@ -130,7 +130,7 @@ Set `self.client.ps.stats[c.STAT_DEAD_YAW]` to `n.trunc32(self.s.angles[1])` and
 | `attacker` | `dynamic` | — | Entity credited with the attack. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L33)
 
 <a id="function-function-mq3-game-bodies-run-function-run-level-ent-src-mq3-game-bodies-ml-1004141553"></a>
 ### run
@@ -147,7 +147,7 @@ Update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` during `
 | `ent` | `dynamic` | — | Game entity; accesses `classname`, `s`, `clipmask` and `r`. May update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L148)
 
 <a id="function-function-mq3-game-bodies-sink-function-sink-level-ent-src-mq3-game-bodies-ml-861259595"></a>
 ### sink
@@ -164,7 +164,7 @@ Update `ent.physicsObject`, `ent.nextthink` and `ent.s.pos.trBase[2]` during `si
 | `ent` | `dynamic` | — | Game entity; accesses `timestamp`, `physicsObject`, `nextthink` and `s`. May update `ent.physicsObject`, `ent.nextthink` and `ent.s.pos.trBase[2]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L89)
 
 <a id="function-function-mq3-game-bodies-vectoryaw-function-vectoryaw-vector-src-mq3-game-bodies-ml-1820394903"></a>
 ### vectorYaw
@@ -180,4 +180,4 @@ Convert a horizontal direction vector to the nonnegative yaw angle used to orien
 | `vector` | `dynamic` | — | Array or byte sequence accessed at `1` and `0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L19)

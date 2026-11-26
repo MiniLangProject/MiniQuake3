@@ -12,7 +12,7 @@ struct Player
 `Player` record for bot chat, containing `active`, `name`, `team` and `score`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L109)
 
 ## Members
 
@@ -26,7 +26,7 @@ active
 Nonzero when this player participates in the tracked game state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L111)
 
 <a id="field-field-mq3-game-bot-chat-player-name-name-src-mq3-game-bot-chat-ml-1506967176"></a>
 ### name
@@ -38,7 +38,7 @@ name
 Player name used by bot chat composition.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L113)
 
 <a id="field-field-mq3-game-bot-chat-player-score-score-src-mq3-game-bot-chat-ml-997473874"></a>
 ### score
@@ -50,7 +50,7 @@ score
 Score currently recorded for the represented player or bot.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L117)
 
 <a id="field-field-mq3-game-bot-chat-player-team-team-src-mq3-game-bot-chat-ml-1336217732"></a>
 ### team
@@ -62,4 +62,4 @@ team
 Team assignment associated with the client, bot, or action.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L115)
